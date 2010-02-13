@@ -1,0 +1,17 @@
+#summary Useful links
+
+= Introduction =
+
+This pages is used to store all the intersting links realted to the project. Every time you find a web page that can be useful for the videogame development, please post it here under the right sub-group.
+
+
+= Links  =
+
+== Development ==
+
+ * [http://www.ogre3d.org Ogre Main Page]
+ * [http://www.ogre3d.org/forums/ Ogre Forums]
+
+== Beat'em Up Tips'n'Tricks==
+
+ * [http://www.gamasutra.com/features/20050428/sang_01.shtml Improving the combat 'Impact' of action games (from Gamasutra)]
