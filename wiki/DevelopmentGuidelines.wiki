@@ -4,6 +4,8 @@
 
 This page will detail the development guidelines and the coding rules applied to this project. Since the project is Ogre based, we will try to adopt the same coding rules, with some modification. Following detailes are taken from: 
 
+[http://ogre.svn.sourceforge.net/viewvc/ogre/trunk/Docs/CodingStandards.html OGRE Coding Standards]
+
 
 = Details =
 
@@ -51,7 +53,7 @@ If you serialise / deserialise any data, subclass from Serializer and use its me
  * Always prefer the STL over custom containers / algorithms.
  * Always prefer C++ techniques over C.
  * Avoid C-strings (char`*` and functions like sprintf, strcpy, use Ogre::String)
- * Avoid old I/O routines (fopen et al, use <iostream>)
+ * Avoid old I/O routines (fopen et al, use `<`iostream`>`)
  * Use abstract classes or templates not void`*`
  * Use overloaded methods not varargs.
  * Minimum C++ compiler level is MSVC 7.1 or gcc 3.1. Compilers which do not support things like partial template specialisation properly (such as older versions of MSVC) are not supported.
