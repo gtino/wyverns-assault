@@ -12,6 +12,12 @@ This pages is used to store all the intersting links realted to the project. Eve
  * [http://www.ogre3d.org Ogre Main Page]
  * [http://www.ogre3d.org/forums/ Ogre Forums]
 
+== Tools ==
+=== GUI ===
+ * [http://www.cegui.org.uk/wiki/index.php/Main_Page CEGUI]
+ * [http://www.ogre3d.org/wiki/index.php/Awesomium Awesonium]
+ * [http://www.ogre3d.org/wiki/index.php/NaviLibrary Navi Library]
+
 == Game Coding ==
 
  * [http://www.gamasutra.com/features/20050414/rouwe_01.shtml Implementing MVC]
