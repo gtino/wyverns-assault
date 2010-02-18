@@ -18,6 +18,10 @@ This pages is used to store all the intersting links realted to the project. Eve
  * [http://www.ogre3d.org/wiki/index.php/Awesomium Awesonium]
  * [http://www.ogre3d.org/wiki/index.php/NaviLibrary Navi Library]
 
+=== Viewers ===
+ * [http://gamepipe.usc.edu/animation/Bake_Export/OgreLexiViewerInstall_1.0.7.msi Lexi Viewer]
+ * [http://gamepipe.usc.edu/animation/Bake_Export/AniViewer.rar Ani Viewer]
+
 == Game Coding ==
 
  * [http://www.gamasutra.com/features/20050414/rouwe_01.shtml Implementing MVC]
