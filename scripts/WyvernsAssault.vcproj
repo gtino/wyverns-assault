@@ -210,6 +210,54 @@
 			<Filter
 				Name="GameStates"
 				>
+				<File
+					RelativePath="..\src\GameStates\BaseState.cpp"
+					>
+				</File>
+				<File
+					RelativePath="..\src\GameStates\EndingState.cpp"
+					>
+				</File>
+				<File
+					RelativePath="..\src\GameStates\GameoverState.cpp"
+					>
+				</File>
+				<File
+					RelativePath="..\src\GameStatesManager.cpp"
+					>
+				</File>
+				<File
+					RelativePath="..\src\GameStates\IntroState.cpp"
+					>
+				</File>
+				<File
+					RelativePath="..\src\GameStates\MainMenuState.cpp"
+					>
+				</File>
+				<File
+					RelativePath="..\src\GameStates\OutroState.cpp"
+					>
+				</File>
+				<File
+					RelativePath="..\src\GameStates\PlayState.cpp"
+					>
+				</File>
+				<File
+					RelativePath="..\src\GameStates\SplashScreenState.cpp"
+					>
+				</File>
+			</Filter>
+			<Filter
+				Name="GUI"
+				>
+			</Filter>
+			<Filter
+				Name="Input"
+				>
+			</Filter>
+			<Filter
+				Name="Camera"
+				>
 			</Filter>
 		</Filter>
 		<Filter
@@ -235,6 +283,54 @@
 			</File>
 			<Filter
 				Name="GameStates"
+				>
+				<File
+					RelativePath="..\include\GameStates\BaseState.h"
+					>
+				</File>
+				<File
+					RelativePath="..\include\GameStates\EndingState.h"
+					>
+				</File>
+				<File
+					RelativePath="..\include\GameStates\GameoverState.h"
+					>
+				</File>
+				<File
+					RelativePath="..\include\GameStates\GameStatesManager.h"
+					>
+				</File>
+				<File
+					RelativePath="..\include\GameStates\IntroState.h"
+					>
+				</File>
+				<File
+					RelativePath="..\include\GameStates\MainMenuState.h"
+					>
+				</File>
+				<File
+					RelativePath="..\include\GameStates\OutroState.h"
+					>
+				</File>
+				<File
+					RelativePath="..\include\GameStates\PlayState.h"
+					>
+				</File>
+				<File
+					RelativePath="..\include\GameStates\SplashScreenState.h"
+					>
+				</File>
+			</Filter>
+			<Filter
+				Name="GUI"
+				>
+			</Filter>
+			<Filter
+				Name="Input"
+				>
+			</Filter>
+			<Filter
+				Name="Camera"
 				>
 			</Filter>
 		</Filter>
