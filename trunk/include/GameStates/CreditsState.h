@@ -20,21 +20,21 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
 -----------------------------------------------------------------------------
 */
-#ifndef __OUTRO_STATE_H_
-#define __OUTRO_STATE_H_
+#ifndef __CREDITS_STATE_H_
+#define __CREDITS_STATE_H_
 
 #include "BaseState.h"
 
 namespace WyvernsAssault
 {
 	/**
-		Outro game state class
+		Credits game state class
 	*/
-	class OutroState : public BaseState
+	class CreditsState : public BaseState
 	{
 	public:
-		OutroState();
-		~OutroState();
+		CreditsState();
+		~CreditsState();
 
 	public:
 		/** Initialize current state */
@@ -51,4 +51,4 @@ namespace WyvernsAssault
 		void destroy();
 	};
 }
-#endif // __OUTRO_STATE_H_
+#endif // __CREDITS_STATE_H_

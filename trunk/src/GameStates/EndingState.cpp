@@ -2,6 +2,20 @@
 
 using namespace WyvernsAssault;
 
+EndingState::EndingState()
+{
+	//
+	// TODO Constructor logic HERE
+	//
+}
+
+EndingState::~EndingState()
+{
+	//
+	// TODO Distructor logic HERE
+	//
+}
+
 /** Initialize current state */
 void EndingState::initialise()
 {

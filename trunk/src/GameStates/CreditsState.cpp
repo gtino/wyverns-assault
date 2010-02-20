@@ -1,23 +1,23 @@
-#include "..\include\GameStates\GameoverState.h"
+#include "..\include\GameStates\CreditsState.h"
 
 using namespace WyvernsAssault;
 
-GameoverState::GameoverState()
+CreditsState::CreditsState()
 {
 	//
-	// TODO Constructor logic HERE
+	// TODO Constructor
 	//
 }
 
-GameoverState::~GameoverState()
+CreditsState::~CreditsState()
 {
 	//
-	// TODO Distructor logic HERE
+	// TODO Destructor
 	//
 }
 
 /** Initialize current state */
-void GameoverState::initialise()
+void CreditsState::initialise()
 {
 	//
 	// TODO Initialize
@@ -25,7 +25,7 @@ void GameoverState::initialise()
 }
 
 /** Load resources */
-void GameoverState::load()
+void CreditsState::load()
 {
 	//
 	// TODO Load 
@@ -33,7 +33,7 @@ void GameoverState::load()
 }
 
 /** Update internal stuff */
-void GameoverState::update()
+void CreditsState::update()
 {
 	//
 	// TODO Update
@@ -41,7 +41,7 @@ void GameoverState::update()
 }
 
 /** Render */
-void GameoverState::render()
+void CreditsState::render()
 {
 	//
 	// TODO Render
@@ -49,7 +49,7 @@ void GameoverState::render()
 }
 
 /** Unload resources */
-void GameoverState::unload() 
+void CreditsState::unload() 
 {
 	//
 	// TODO Unload
@@ -57,7 +57,7 @@ void GameoverState::unload()
 }
 
 /** Destroy the state */
-void GameoverState::destroy()
+void CreditsState::destroy()
 {
 	//
 	// TODO Destroy

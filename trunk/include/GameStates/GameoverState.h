@@ -30,7 +30,7 @@ namespace WyvernsAssault
 	/**
 		Gameover game state class
 	*/
-	class GameoverState : BaseState
+	class GameoverState : public BaseState
 	{
 	public:
 		GameoverState();

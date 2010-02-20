@@ -2,6 +2,20 @@
 
 using namespace WyvernsAssault;
 
+PlayState::PlayState()
+{
+	//
+	// TODO Constructor logic HERE
+	//
+}
+
+PlayState::~PlayState()
+{
+	//
+	// TODO Distructor logic HERE
+	//
+}
+
 /** Initialize current state */
 void PlayState::initialise()
 {

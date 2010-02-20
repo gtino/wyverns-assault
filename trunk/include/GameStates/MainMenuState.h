@@ -30,7 +30,7 @@ namespace WyvernsAssault
 	/**
 		MainMenu game state class
 	*/
-	class MainMenuState : BaseState
+	class MainMenuState : public BaseState
 	{
 	public:
 		MainMenuState();

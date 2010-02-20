@@ -2,6 +2,20 @@
 
 using namespace WyvernsAssault;
 
+IntroState::IntroState()
+{
+	//
+	// TODO Constructor
+	//
+}
+
+IntroState::~IntroState()
+{
+	//
+	// TODO Destructor
+	//
+}
+
 /** Initialize current state */
 void IntroState::initialise()
 {

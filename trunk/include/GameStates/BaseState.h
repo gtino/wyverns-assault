@@ -32,7 +32,7 @@ namespace WyvernsAssault
 	{
 	public:
 		BaseState();
-		~BaseState();
+		virtual ~BaseState() = 0;
 
 	public:
 		/** Initialize current state */

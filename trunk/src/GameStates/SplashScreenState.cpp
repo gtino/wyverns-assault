@@ -2,6 +2,20 @@
 
 using namespace WyvernsAssault;
 
+SplashScreenState::SplashScreenState()
+{
+	//
+	// TODO Constructor
+	//
+}
+
+SplashScreenState::~SplashScreenState()
+{
+	//
+	// TODO Destructor
+	//
+}
+
 /** Initialize current state */
 void SplashScreenState::initialise()
 {

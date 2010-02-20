@@ -2,6 +2,20 @@
 
 using namespace WyvernsAssault;
 
+OutroState::OutroState()
+{
+	//
+	// TODO Constructor logic HERE
+	//
+}
+
+OutroState::~OutroState()
+{
+	//
+	// TODO Distructor logic HERE
+	//
+}
+
 /** Initialize current state */
 void OutroState::initialise()
 {
