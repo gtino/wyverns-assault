@@ -30,7 +30,7 @@ namespace WyvernsAssault
 	/**
 		SplashScreen game state class
 	*/
-	class SplashScreenState : BaseState
+	class SplashScreenState : public BaseState
 	{
 	public:
 		SplashScreenState();

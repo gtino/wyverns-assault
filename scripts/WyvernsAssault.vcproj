@@ -215,6 +215,10 @@
 					>
 				</File>
 				<File
+					RelativePath="..\src\GameStates\CreditsState.cpp"
+					>
+				</File>
+				<File
 					RelativePath="..\src\GameStates\EndingState.cpp"
 					>
 				</File>
@@ -286,6 +290,10 @@
 				>
 				<File
 					RelativePath="..\include\GameStates\BaseState.h"
+					>
+				</File>
+				<File
+					RelativePath="..\include\GameStates\CreditsState.h"
 					>
 				</File>
 				<File

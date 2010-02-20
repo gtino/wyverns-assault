@@ -30,7 +30,7 @@ namespace WyvernsAssault
 	/**
 		Ending game state class
 	*/
-	class EndingState : BaseState
+	class EndingState : public BaseState
 	{
 	public:
 		EndingState();

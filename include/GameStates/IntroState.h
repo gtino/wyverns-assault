@@ -30,7 +30,7 @@ namespace WyvernsAssault
 	/**
 		Intro game state class
 	*/
-	class IntroState : BaseState
+	class IntroState : public BaseState
 	{
 	public:
 		IntroState();

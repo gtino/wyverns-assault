@@ -2,6 +2,20 @@
 
 using namespace WyvernsAssault;
 
+MainMenuState::MainMenuState()
+{
+	//
+	// TODO Constructor logic HERE
+	//
+}
+
+MainMenuState::~MainMenuState()
+{
+	//
+	// TODO Distructor logic HERE
+	//
+}
+
 /** Initialize current state */
 void MainMenuState::initialise()
 {
