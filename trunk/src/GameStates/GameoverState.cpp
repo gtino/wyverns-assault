@@ -2,7 +2,7 @@
 
 using namespace WyvernsAssault;
 
-GameoverState::GameoverState(GraphicsManager& graphicsManager, GameInputManager& inputManager, AudioManager& audioManager)
+GameoverState::GameoverState(GraphicsManager& graphicsManager, InputManager& inputManager, AudioManager& audioManager)
 {
 	//
 	// TODO Constructor logic HERE

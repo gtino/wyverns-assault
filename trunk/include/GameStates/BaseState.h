@@ -31,7 +31,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 //
 // User input
 //
-#include "..\Input\GameInputManager.h"
+#include "..\Input\InputManager.h"
 
 //
 // Audio
@@ -60,7 +60,7 @@ namespace WyvernsAssault
 	{
 	public:
 		BaseState();
-		BaseState(GraphicsManager& graphicsManager, GameInputManager& inputManager, AudioManager& audioManager);
+		BaseState(GraphicsManager& graphicsManager, InputManager& inputManager, AudioManager& audioManager);
 		virtual ~BaseState() = 0;
 
 	public:
@@ -96,7 +96,7 @@ namespace WyvernsAssault
 		/** Graphics manager */
 		GraphicsManager* mGraphicsManager;
 		/** Input manager */
-		GameInputManager* mInputManager;
+		InputManager* mInputManager;
 		/** Audio manager */
 		AudioManager* mAudioManager;
 

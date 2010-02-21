@@ -38,12 +38,12 @@ namespace WyvernsAssault
 	/**
 		Class used to manager user input, from keyboard, mouse, joystick and so on...
 	*/
-	class GameInputManager	: public OIS::MouseListener
+	class InputManager	: public OIS::MouseListener
 							, public OIS::KeyListener
 	{
 	public:
-		GameInputManager();
-		~GameInputManager();
+		InputManager();
+		~InputManager();
 
 	public:
 		/** Initialize the input manager */

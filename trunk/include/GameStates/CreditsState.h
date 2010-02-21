@@ -33,7 +33,7 @@ namespace WyvernsAssault
 	class CreditsState : public BaseState
 	{
 	public:
-		CreditsState(GraphicsManager& graphicsManager, GameInputManager& inputManager, AudioManager& audioManager);
+		CreditsState(GraphicsManager& graphicsManager, InputManager& inputManager, AudioManager& audioManager);
 		~CreditsState();
 
 	public:

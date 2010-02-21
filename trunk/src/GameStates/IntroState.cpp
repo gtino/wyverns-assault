@@ -2,7 +2,7 @@
 
 using namespace WyvernsAssault;
 
-IntroState::IntroState(GraphicsManager& graphicsManager, GameInputManager& inputManager, AudioManager& audioManager)
+IntroState::IntroState(GraphicsManager& graphicsManager, InputManager& inputManager, AudioManager& audioManager)
 {
 	//
 	// TODO Constructor

@@ -19,7 +19,7 @@ GameStatesManager::~GameStatesManager()
 	finalize();
 }
 
-void GameStatesManager::initialize(GraphicsManager& graphicsManager, GameInputManager& inputManager, AudioManager& audioManager)
+void GameStatesManager::initialize(GraphicsManager& graphicsManager, InputManager& inputManager, AudioManager& audioManager)
 {
 	//
 	// NOTE Here we simply create the game states list, hard coded.
