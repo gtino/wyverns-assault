@@ -227,7 +227,7 @@
 					>
 				</File>
 				<File
-					RelativePath="..\src\GameStatesManager.cpp"
+					RelativePath="..\src\GameStates\GameStatesManager.cpp"
 					>
 				</File>
 				<File
@@ -258,10 +258,30 @@
 			<Filter
 				Name="Input"
 				>
+				<File
+					RelativePath="..\src\Input\GameInputManager.cpp"
+					>
+				</File>
 			</Filter>
 			<Filter
 				Name="Camera"
 				>
+			</Filter>
+			<Filter
+				Name="Audio"
+				>
+				<File
+					RelativePath="..\src\Audio\AudioManager.cpp"
+					>
+				</File>
+			</Filter>
+			<Filter
+				Name="Graphics"
+				>
+				<File
+					RelativePath="..\src\Graphics\GraphicsManager.cpp"
+					>
+				</File>
 			</Filter>
 		</Filter>
 		<Filter
@@ -336,10 +356,30 @@
 			<Filter
 				Name="Input"
 				>
+				<File
+					RelativePath="..\include\Input\GameInputManager.h"
+					>
+				</File>
 			</Filter>
 			<Filter
 				Name="Camera"
 				>
+			</Filter>
+			<Filter
+				Name="Audio"
+				>
+				<File
+					RelativePath="..\include\Audio\AudioManager.h"
+					>
+				</File>
+			</Filter>
+			<Filter
+				Name="Graphics"
+				>
+				<File
+					RelativePath="..\include\Graphics\GraphicsManager.h"
+					>
+				</File>
 			</Filter>
 		</Filter>
 		<Filter
