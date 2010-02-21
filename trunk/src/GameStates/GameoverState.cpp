@@ -2,7 +2,7 @@
 
 using namespace WyvernsAssault;
 
-GameoverState::GameoverState()
+GameoverState::GameoverState(GameInputManager& inputManager, AudioManager& audioManager)
 {
 	//
 	// TODO Constructor logic HERE
@@ -21,6 +21,14 @@ void GameoverState::initialise()
 {
 	//
 	// TODO Initialize
+	//
+}
+
+/** Manage input */
+void GameoverState::input()
+{
+	//
+	// TODO Read input
 	//
 }
 
@@ -62,4 +70,13 @@ void GameoverState::destroy()
 	//
 	// TODO Destroy
 	//
+}
+
+/** Get state Id */
+GameStateId GameoverState::getStateId()
+{
+	//
+	// BEWARE! Make sure this is the correspondent state or we fuck up everything!
+	//
+	return GameStateId::GameOver;
 }

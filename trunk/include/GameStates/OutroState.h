@@ -33,7 +33,7 @@ namespace WyvernsAssault
 	class OutroState : public BaseState
 	{
 	public:
-		OutroState();
+		OutroState(GameInputManager& inputManager, AudioManager& audioManager);
 		~OutroState();
 
 	public:
@@ -41,14 +41,19 @@ namespace WyvernsAssault
 		void initialise();
 		/** Load resources */
 		void load();
-		/** Update internal stuff */
-		void update();
-		/** Render */
-		void render();
+		/** Manage input - INPUT */
+		virtual void input();
+		/** Update internal stuff - PROCESS */
+		virtual void update();
+		/** Render - OUTPUT */
+		virtual void render();
 		/** Unload resources */
 		void unload();
 		/** Destroy the state */
 		void destroy();
+
+		/** Get state Id */
+		virtual GameStateId getStateId();
 	};
 }
 #endif // __OUTRO_STATE_H_

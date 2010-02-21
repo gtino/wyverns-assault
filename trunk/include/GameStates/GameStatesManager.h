@@ -23,8 +23,13 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #ifndef __GAME_STATES_MANAGER_H_
 #define __GAME_STATES_MANAGER_H_
 
+#include <Ogre.h>
+
 #include <map>
 
+//
+// Game States
+//
 #include "BaseState.h"
 #include "SplashScreenState.h"
 #include "IntroState.h"
@@ -36,26 +41,29 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #include "SplashScreenState.h"
 #include "CreditsState.h"
 
+//
+// User input
+//
+#include "..\Input\GameInputManager.h"
+
+//
+// Audio
+//
+#include "..\Audio\AudioManager.h"
+
 using namespace std;
 
 namespace WyvernsAssault
 {
-	/** List of game states of the game */
-	enum GameState
-	{
-		SplashScreen	= 0, // Splash screen
-		Intro			= 1,
-		MainMenu		= 2,
-		Play			= 3,
-		GameOver		= 4,
-		Ending			= 5,
-		Outro			= 6,
-		Credits			= 7
-	};
-
 	/** The games states map type */
-	typedef std::map<GameState, BaseState*> GameStatesMap;
+	typedef std::map<GameStateId, BaseState*> GameStatesMap;
 	typedef GameStatesMap::iterator GameStatesMapIterator;
+
+	/** Game options */
+
+	/** Game levels */
+
+	/** Game score */
 
 	/**
 		Class used to manage the game states
@@ -68,17 +76,30 @@ namespace WyvernsAssault
 
 	public:
 		/** Initialize the manager */
-		void initialise();
+		void initialize();
 		/** Destroy and release all resources used by the manager */
-		void destroy();
-		/** Run the current state */
-		void run();
+		void finalize();
+		/** Run the current state (main loop)*/
+		void loop();
+
+	private:
+		/** Change state */
+		void changeState(BaseState* newState);
+		/** Retrive a game state reference by its ID */
+		BaseState* getGameStateById(const GameStateId id);
 
 	private:
 		/** Map of game states */ 
 		GameStatesMap mGameStates;
+
 		/** Current (active) game state */
 		BaseState* mCurrentState;
+		GameStateId mCurrentStateId;
+
+		/** Audio manager */
+		AudioManager mAudioManager;
+		/** Input manager */
+		GameInputManager mInputManager;
 	};
 }
 

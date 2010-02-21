@@ -4,9 +4,17 @@ using namespace WyvernsAssault;
 
 BaseState::BaseState()
 {
-	//
-	// TODO Constructor logic HERE
-	//
+}
+
+BaseState::BaseState(GameInputManager& inputManager, AudioManager& audioManager)
+{
+	this->mInputManager = &inputManager;
+	this->mAudioManager = &audioManager;
+
+
+	this->mIsActive = false;
+	this->mIsDead = false;
+	this->mIsPaused = false;
 }
 
 BaseState::~BaseState()

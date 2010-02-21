@@ -20,45 +20,42 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
 -----------------------------------------------------------------------------
 */
+#ifndef __GRAPHICS_MANAGER_H_
+#define __GRAPHICS_MANAGER_H_
 
-#include "WyvernsAssault.h"
+#include <Ogre.h>
+#include <OgreRenderWindow.h>
 
-#if OGRE_PLATFORM == OGRE_PLATFORM_WIN32
-#define WIN32_LEAN_AND_MEAN
-#include "windows.h"
-#endif
+using namespace Ogre;
 
-#ifdef __cplusplus
-	extern "C" {
-#endif
+namespace WyvernsAssault
+{
+	/**
+		Class used to deal with the graphics layer
+	*/
+	class GraphicsManager
+	{
+	public:
+		GraphicsManager();
+		~GraphicsManager();
 
-#if OGRE_PLATFORM == OGRE_PLATFORM_WIN32
-		INT WINAPI WinMain( HINSTANCE hInst, HINSTANCE, LPSTR strCmdLine, INT )
-#else
-		int main(int argc, char *argv[])
-#endif
-		{
-			// Create game object
-			WyvernsAssault::Game theGame;
+	public:
+		/** Initialize graphics */
+		void initialize();
+		/** Finalize graphics */
+		void finalize();
+		
+		/** Load graphics resources */
+		void loadResources();
+		/** Unload graphics resources */
+		void unloadResources();
 
-			// Initialize it
-			theGame.initialize();
+		/** Retrieve the render window */
+		RenderWindow* getRenderWindow();
 
-			try {
-				// Run the game!
-				theGame.go();
-			} catch( Ogre::Exception& e ) {
-#if OGRE_PLATFORM == OGRE_PLATFORM_WIN32
-				MessageBox( NULL, e.getFullDescription().c_str(), "An exception has occured!", MB_OK | MB_ICONERROR | MB_TASKMODAL);
-#else
-				std::cerr << "An exception has occured: " <<
-					e.getFullDescription().c_str() << std::endl;
-#endif
-			}
+	private:
+		RenderWindow* mRenderWindow;
+	};
+}
 
-			return 0;
-		}
-
-#ifdef __cplusplus
-	}
-#endif
+#endif // __GRAPHICS_MANAGER_H_

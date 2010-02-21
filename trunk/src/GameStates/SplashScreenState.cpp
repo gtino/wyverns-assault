@@ -2,7 +2,7 @@
 
 using namespace WyvernsAssault;
 
-SplashScreenState::SplashScreenState()
+SplashScreenState::SplashScreenState(GameInputManager& inputManager, AudioManager& audioManager)
 {
 	//
 	// TODO Constructor
@@ -29,6 +29,14 @@ void SplashScreenState::load()
 {
 	//
 	// TODO Load 
+	//
+}
+
+/** Manage input */
+void SplashScreenState::input()
+{
+	//
+	// TODO Read input
 	//
 }
 
@@ -62,4 +70,13 @@ void SplashScreenState::destroy()
 	//
 	// TODO Destroy
 	//
+}
+
+/** Get state Id */
+GameStateId SplashScreenState::getStateId()
+{
+	//
+	// BEWARE! Make sure this is the correspondent state or we fuck up everything!
+	//
+	return GameStateId::SplashScreen;
 }

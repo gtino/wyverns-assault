@@ -2,7 +2,7 @@
 
 using namespace WyvernsAssault;
 
-EndingState::EndingState()
+EndingState::EndingState(GameInputManager& inputManager, AudioManager& audioManager)
 {
 	//
 	// TODO Constructor logic HERE
@@ -29,6 +29,14 @@ void EndingState::load()
 {
 	//
 	// TODO Load 
+	//
+}
+
+/** Manage input */
+void EndingState::input()
+{
+	//
+	// TODO Read input
 	//
 }
 
@@ -62,4 +70,13 @@ void EndingState::destroy()
 	//
 	// TODO Destroy
 	//
+}
+
+/** Get state Id */
+GameStateId EndingState::getStateId()
+{
+	//
+	// BEWARE! Make sure this is the correspondent state or we fuck up everything!
+	//
+	return GameStateId::Ending;
 }

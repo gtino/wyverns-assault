@@ -2,7 +2,7 @@
 
 using namespace WyvernsAssault;
 
-CreditsState::CreditsState()
+CreditsState::CreditsState(GameInputManager& inputManager, AudioManager& audioManager)
 {
 	//
 	// TODO Constructor
@@ -29,6 +29,14 @@ void CreditsState::load()
 {
 	//
 	// TODO Load 
+	//
+}
+
+/** Manage input */
+void CreditsState::input()
+{
+	//
+	// TODO Read input
 	//
 }
 
@@ -62,4 +70,13 @@ void CreditsState::destroy()
 	//
 	// TODO Destroy
 	//
+}
+
+/** Get state Id */
+GameStateId CreditsState::getStateId()
+{
+	//
+	// BEWARE! Make sure this is the correspondent state or we fuck up everything!
+	//
+	return GameStateId::Credits;
 }
