@@ -2,14 +2,7 @@
 
 using namespace WyvernsAssault;
 
-IntroState::IntroState()
-{
-	//
-	// Private constructor, DO NOT use it
-	//
-}
-
-IntroState::IntroState(GameInputManager& inputManager, AudioManager& audioManager)
+IntroState::IntroState(GraphicsManager& graphicsManager, GameInputManager& inputManager, AudioManager& audioManager)
 {
 	//
 	// TODO Constructor

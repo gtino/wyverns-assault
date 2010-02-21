@@ -24,6 +24,11 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #define __BASE_STATE_H_
 
 //
+// Graphics Manager
+//
+#include "..\Graphics\GraphicsManager.h"
+
+//
 // User input
 //
 #include "..\Input\GameInputManager.h"
@@ -55,7 +60,7 @@ namespace WyvernsAssault
 	{
 	public:
 		BaseState();
-		BaseState(GameInputManager& inputManager, AudioManager& audioManager);
+		BaseState(GraphicsManager& graphicsManager, GameInputManager& inputManager, AudioManager& audioManager);
 		virtual ~BaseState() = 0;
 
 	public:
@@ -88,6 +93,8 @@ namespace WyvernsAssault
 		bool mIsDead;
 
 	protected:
+		/** Graphics manager */
+		GraphicsManager* mGraphicsManager;
 		/** Input manager */
 		GameInputManager* mInputManager;
 		/** Audio manager */

@@ -23,14 +23,26 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #ifndef __GAME_H__
 #define __GAME_H__
 
+#if OGRE_PLATFORM == OGRE_PLATFORM_WIN32
+#include "../resources/resource.h"
+#endif
+
+//
+// Game internal includes
+//
 #include ".\Graphics\GraphicsManager.h"
 #include ".\Input\GameInputManager.h"
 #include ".\Audio\AudioManager.h"
 #include ".\GameStates\GameStatesManager.h"
 
+//
+// Defines
+//
+#define WYVERN_ASSAULT_RESOURCES_FILE ".\config\resources.cfg"
+
 namespace WyvernsAssault
 {
-	class Game
+	class Game : public Ogre::Singleton<Game>, public FrameListener, public WindowEventListener
 	{
 	public:
 		//Constructor
@@ -46,6 +58,10 @@ namespace WyvernsAssault
 		void finalize();
 
 	private:
+		/** Setup resources (i.e. read and parse resources .cfg file) */
+		void setupResources();
+
+	private:
 
 		/** Graphics manager */
 		GraphicsManager mGraphicsManager;
@@ -58,5 +74,10 @@ namespace WyvernsAssault
 		GameStatesManager mGameStatesManager;
 	};
 }
+
+//
+// Game singleton 
+//
+template<> WyvernsAssault::Game* Ogre::Singleton<WyvernsAssault::Game>::ms_Singleton = 0;
 
 #endif // __GAME_H__

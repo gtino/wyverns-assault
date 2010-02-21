@@ -33,11 +33,8 @@ namespace WyvernsAssault
 	class IntroState : public BaseState
 	{
 	public:
-		IntroState(GameInputManager& inputManager, AudioManager& audioManager);
+		IntroState(GraphicsManager& graphicsManager, GameInputManager& inputManager, AudioManager& audioManager);
 		~IntroState();
-
-	private:
-		IntroState();
 
 	public:
 		/** Initialize current state */
