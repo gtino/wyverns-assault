@@ -227,10 +227,6 @@
 					>
 				</File>
 				<File
-					RelativePath="..\src\States\GameStatesManager.cpp"
-					>
-				</File>
-				<File
 					RelativePath="..\src\States\IntroState.cpp"
 					>
 				</File>
@@ -248,6 +244,10 @@
 				</File>
 				<File
 					RelativePath="..\src\States\SplashScreenState.cpp"
+					>
+				</File>
+				<File
+					RelativePath="..\src\States\StatesManager.cpp"
 					>
 				</File>
 			</Filter>
@@ -325,10 +325,6 @@
 					>
 				</File>
 				<File
-					RelativePath="..\include\States\GameStatesManager.h"
-					>
-				</File>
-				<File
 					RelativePath="..\include\States\IntroState.h"
 					>
 				</File>
@@ -346,6 +342,10 @@
 				</File>
 				<File
 					RelativePath="..\include\States\SplashScreenState.h"
+					>
+				</File>
+				<File
+					RelativePath="..\include\States\StatesManager.h"
 					>
 				</File>
 			</Filter>
