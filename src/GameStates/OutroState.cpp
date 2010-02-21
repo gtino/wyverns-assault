@@ -2,7 +2,7 @@
 
 using namespace WyvernsAssault;
 
-OutroState::OutroState(GameInputManager& inputManager, AudioManager& audioManager)
+OutroState::OutroState(GraphicsManager& graphicsManager, GameInputManager& inputManager, AudioManager& audioManager)
 {
 	//
 	// TODO Constructor logic HERE

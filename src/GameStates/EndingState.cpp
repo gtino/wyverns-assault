@@ -2,7 +2,7 @@
 
 using namespace WyvernsAssault;
 
-EndingState::EndingState(GameInputManager& inputManager, AudioManager& audioManager)
+EndingState::EndingState(GraphicsManager& graphicsManager, GameInputManager& inputManager, AudioManager& audioManager)
 {
 	//
 	// TODO Constructor logic HERE

@@ -23,6 +23,10 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #ifndef __GRAPHICS_MANAGER_H_
 #define __GRAPHICS_MANAGER_H_
 
+#if OGRE_PLATFORM == OGRE_PLATFORM_WIN32
+#include "../../resources/resource.h"
+#endif
+
 #include <Ogre.h>
 #include <OgreRenderWindow.h>
 
@@ -33,7 +37,7 @@ namespace WyvernsAssault
 	/**
 		Class used to deal with the graphics layer
 	*/
-	class GraphicsManager
+	class GraphicsManager :  public FrameListener, public WindowEventListener
 	{
 	public:
 		GraphicsManager();
@@ -41,7 +45,7 @@ namespace WyvernsAssault
 
 	public:
 		/** Initialize graphics */
-		void initialize();
+		bool initialize();
 		/** Finalize graphics */
 		void finalize();
 		
@@ -51,10 +55,19 @@ namespace WyvernsAssault
 		void unloadResources();
 
 		/** Retrieve the render window */
-		RenderWindow* getRenderWindow();
+		Root*			getRoot(void);
+		RenderWindow*	getRenderWindow(void);
+		SceneManager*	getSceneManager(void);
+
+	private: 
+		bool configure(void);
+		void chooseSceneManager(void);
+		void createResourceListener(void);
 
 	private:
-		RenderWindow* mRenderWindow;
+		Root*			mRoot;
+		RenderWindow*	mRenderWindow;
+		SceneManager*	mSceneManager;
 	};
 }
 

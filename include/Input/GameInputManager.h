@@ -25,6 +25,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
 #include <ois/OIS.h>
 
+#include <Ogre.h>
 #include <OgreRenderWindow.h>
 
 namespace Ogre
@@ -38,7 +39,7 @@ namespace WyvernsAssault
 		Class used to manager user input, from keyboard, mouse, joystick and so on...
 	*/
 	class GameInputManager	: public OIS::MouseListener
-						, public OIS::KeyListener
+							, public OIS::KeyListener
 	{
 	public:
 		GameInputManager();
@@ -57,6 +58,9 @@ namespace WyvernsAssault
 		/** Read all user inputs */
 		void capture();
 
+		virtual void switchMouseMode();
+		virtual void switchKeyMode();
+
 		virtual bool mouseMoved( const OIS::MouseEvent& e );
 		virtual bool mousePressed( const OIS::MouseEvent& e, OIS::MouseButtonID button );
 		virtual bool mouseReleased( const OIS::MouseEvent& e, OIS::MouseButtonID button );
@@ -69,6 +73,10 @@ namespace WyvernsAssault
 		OIS::Keyboard* mKeyboard;
 		OIS::Mouse* mMouse;
 		OIS::JoyStick* mJoyStick;
+		
+		bool mUseBufferedInputMouse;
+		bool mUseBufferedInputKeys;
+		bool mInputTypeSwitchingOn;
 	};
 }
 

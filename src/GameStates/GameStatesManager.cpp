@@ -19,24 +19,21 @@ GameStatesManager::~GameStatesManager()
 	finalize();
 }
 
-void GameStatesManager::initialize()
+void GameStatesManager::initialize(GraphicsManager& graphicsManager, GameInputManager& inputManager, AudioManager& audioManager)
 {
-	this->mAudioManager.initialize();
-	//this->mInputManager.initialize();
-
 	//
 	// NOTE Here we simply create the game states list, hard coded.
 	//		Maybe it is better to provide some kind of way to load it
 	//		'on the fly', reading it from a .cfg file?
 	//
-	this->mGameStates[GameStateId::SplashScreen]	= new SplashScreenState(this->mInputManager, this->mAudioManager);
-	this->mGameStates[GameStateId::Intro]			= new IntroState(this->mInputManager, this->mAudioManager);
-	this->mGameStates[GameStateId::MainMenu]		= new MainMenuState(this->mInputManager, this->mAudioManager);
-	this->mGameStates[GameStateId::Ending]		= new EndingState(this->mInputManager, this->mAudioManager);
-	this->mGameStates[GameStateId::GameOver]		= new GameoverState(this->mInputManager, this->mAudioManager);
-	this->mGameStates[GameStateId::Play]			= new PlayState(this->mInputManager, this->mAudioManager);
-	this->mGameStates[GameStateId::Credits]		= new CreditsState(this->mInputManager, this->mAudioManager);
-	this->mGameStates[GameStateId::Outro]			= new OutroState(this->mInputManager, this->mAudioManager);
+	this->mGameStates[GameStateId::SplashScreen]	= new SplashScreenState(graphicsManager, inputManager, audioManager);
+	this->mGameStates[GameStateId::Intro]			= new IntroState(graphicsManager, inputManager, audioManager);
+	this->mGameStates[GameStateId::MainMenu]		= new MainMenuState(graphicsManager, inputManager, audioManager);
+	this->mGameStates[GameStateId::Ending]			= new EndingState(graphicsManager, inputManager, audioManager);
+	this->mGameStates[GameStateId::GameOver]		= new GameoverState(graphicsManager, inputManager, audioManager);
+	this->mGameStates[GameStateId::Play]			= new PlayState(graphicsManager, inputManager, audioManager);
+	this->mGameStates[GameStateId::Credits]			= new CreditsState(graphicsManager, inputManager, audioManager);
+	this->mGameStates[GameStateId::Outro]			= new OutroState(graphicsManager, inputManager, audioManager);
 }
 
 void GameStatesManager::finalize()

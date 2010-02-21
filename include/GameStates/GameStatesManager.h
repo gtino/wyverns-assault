@@ -76,7 +76,7 @@ namespace WyvernsAssault
 
 	public:
 		/** Initialize the manager */
-		void initialize();
+		void initialize(GraphicsManager& graphicsManager, GameInputManager& gameInputManager, AudioManager& audioManager);
 		/** Destroy and release all resources used by the manager */
 		void finalize();
 		/** Run the current state (main loop)*/
@@ -94,12 +94,8 @@ namespace WyvernsAssault
 
 		/** Current (active) game state */
 		BaseState* mCurrentState;
+		/** Id of the current (active) game state */
 		GameStateId mCurrentStateId;
-
-		/** Audio manager */
-		AudioManager mAudioManager;
-		/** Input manager */
-		GameInputManager mInputManager;
 	};
 }
 

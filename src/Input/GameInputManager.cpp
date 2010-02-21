@@ -7,6 +7,9 @@ GameInputManager::GameInputManager()
 , mKeyboard( NULL )
 , mMouse( NULL )
 , mJoyStick( NULL )
+, mUseBufferedInputKeys(false)
+, mUseBufferedInputMouse(false)
+, mInputTypeSwitchingOn(false)
 {
 	//
 	// TODO Constructor
@@ -105,6 +108,18 @@ void GameInputManager::capture()
 	mMouse->capture();
 	mKeyboard->capture();
 	//mJoyStick->capture(); // TODO Set up joystick properly
+}
+
+void GameInputManager::switchMouseMode()
+{
+	mUseBufferedInputMouse = !mUseBufferedInputMouse;
+	mMouse->setBuffered(mUseBufferedInputMouse);
+}
+
+void GameInputManager::switchKeyMode()
+{
+	mUseBufferedInputKeys = !mUseBufferedInputKeys;
+	mKeyboard->setBuffered(mUseBufferedInputKeys);
 }
 
 bool GameInputManager::mouseMoved( const OIS::MouseEvent& e ) 

@@ -2,7 +2,7 @@
 
 using namespace WyvernsAssault;
 
-CreditsState::CreditsState(GameInputManager& inputManager, AudioManager& audioManager)
+CreditsState::CreditsState(GraphicsManager& graphicsManager, GameInputManager& inputManager, AudioManager& audioManager)
 {
 	//
 	// TODO Constructor
