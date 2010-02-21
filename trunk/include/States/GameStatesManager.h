@@ -61,8 +61,8 @@ using namespace std;
 namespace WyvernsAssault
 {
 	/** The games states map type */
-	typedef std::map<GameStateId, BaseState*> GameStatesMap;
-	typedef GameStatesMap::iterator GameStatesMapIterator;
+	typedef std::map<GameStateId, BaseState*> StatesMap;
+	typedef StatesMap::iterator StatesMapIterator;
 
 	/** Game options */
 
@@ -73,11 +73,11 @@ namespace WyvernsAssault
 	/**
 		Class used to manage the game states
 	*/
-	class GameStatesManager
+	class StatesManager
 	{
 	public:
-		GameStatesManager();
-		~GameStatesManager();
+		StatesManager();
+		~StatesManager();
 
 	public:
 		/** Initialize the manager */
@@ -95,7 +95,7 @@ namespace WyvernsAssault
 
 	private:
 		/** Map of game states */ 
-		GameStatesMap mGameStates;
+		StatesMap mStates;
 
 		/** Current (active) game state */
 		BaseState* mCurrentState;

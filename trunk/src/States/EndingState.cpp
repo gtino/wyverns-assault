@@ -1,4 +1,4 @@
-#include "..\include\GameStates\EndingState.h"
+#include "..\include\States\EndingState.h"
 
 using namespace WyvernsAssault;
 

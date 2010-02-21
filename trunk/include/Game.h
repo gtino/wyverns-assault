@@ -33,7 +33,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #include ".\Graphics\GraphicsManager.h"
 #include ".\Input\InputManager.h"
 #include ".\Audio\AudioManager.h"
-#include ".\GameStates\GameStatesManager.h"
+#include ".\States\StatesManager.h"
 
 //
 // Defines
@@ -71,7 +71,7 @@ namespace WyvernsAssault
 		InputManager mInputManager;
 
 		/** Game states (FSM) manager */
-		GameStatesManager mGameStatesManager;
+		StatesManager mStatesManager;
 	};
 }
 

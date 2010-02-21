@@ -1,4 +1,4 @@
-#include "..\include\GameStates\CreditsState.h"
+#include "..\include\States\CreditsState.h"
 
 using namespace WyvernsAssault;
 
