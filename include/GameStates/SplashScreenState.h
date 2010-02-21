@@ -33,7 +33,7 @@ namespace WyvernsAssault
 	class SplashScreenState : public BaseState
 	{
 	public:
-		SplashScreenState();
+		SplashScreenState(GameInputManager& inputManager, AudioManager& audioManager);
 		~SplashScreenState();
 
 	public:
@@ -41,14 +41,19 @@ namespace WyvernsAssault
 		void initialise();
 		/** Load resources */
 		void load();
-		/** Update internal stuff */
-		void update();
-		/** Render */
-		void render();
+		/** Manage input - INPUT */
+		virtual void input();
+		/** Update internal stuff - PROCESS */
+		virtual void update();
+		/** Render - OUTPUT */
+		virtual void render();
 		/** Unload resources */
 		void unload();
 		/** Destroy the state */
 		void destroy();
+
+		/** Get state Id */
+		virtual GameStateId getStateId();
 	};
 }
 #endif // __SPLASH_SCREEN_STATE_H_

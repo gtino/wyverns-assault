@@ -2,7 +2,7 @@
 
 using namespace WyvernsAssault;
 
-OutroState::OutroState()
+OutroState::OutroState(GameInputManager& inputManager, AudioManager& audioManager)
 {
 	//
 	// TODO Constructor logic HERE
@@ -29,6 +29,14 @@ void OutroState::load()
 {
 	//
 	// TODO Load 
+	//
+}
+
+/** Manage input */
+void OutroState::input()
+{
+	//
+	// TODO Read input
 	//
 }
 
@@ -62,4 +70,13 @@ void OutroState::destroy()
 	//
 	// TODO Destroy
 	//
+}
+
+/** Get state Id */
+GameStateId OutroState::getStateId()
+{
+	//
+	// BEWARE! Make sure this is the correspondent state or we fuck up everything!
+	//
+	return GameStateId::Outro;
 }

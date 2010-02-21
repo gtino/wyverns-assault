@@ -2,7 +2,7 @@
 
 using namespace WyvernsAssault;
 
-PlayState::PlayState()
+PlayState::PlayState(GameInputManager& inputManager, AudioManager& audioManager)
 {
 	//
 	// TODO Constructor logic HERE
@@ -29,6 +29,14 @@ void PlayState::load()
 {
 	//
 	// TODO Load 
+	//
+}
+
+/** Manage input */
+void PlayState::input()
+{
+	//
+	// TODO Read input
 	//
 }
 
@@ -62,4 +70,13 @@ void PlayState::destroy()
 	//
 	// TODO Destroy
 	//
+}
+
+/** Get state Id */
+GameStateId PlayState::getStateId()
+{
+	//
+	// BEWARE! Make sure this is the correspondent state or we fuck up everything!
+	//
+	return GameStateId::Play;
 }

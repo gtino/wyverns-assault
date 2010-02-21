@@ -33,22 +33,30 @@ namespace WyvernsAssault
 	class IntroState : public BaseState
 	{
 	public:
-		IntroState();
+		IntroState(GameInputManager& inputManager, AudioManager& audioManager);
 		~IntroState();
+
+	private:
+		IntroState();
 
 	public:
 		/** Initialize current state */
 		void initialise();
 		/** Load resources */
 		void load();
-		/** Update internal stuff */
-		void update();
-		/** Render */
-		void render();
+		/** Manage input - INPUT */
+		virtual void input();
+		/** Update internal stuff - PROCESS */
+		virtual void update();
+		/** Render - OUTPUT */
+		virtual void render();
 		/** Unload resources */
 		void unload();
 		/** Destroy the state */
 		void destroy();
+
+		/** Get state Id */
+		virtual GameStateId getStateId();
 	};
 }
 #endif // __INTRO_STATE_H_

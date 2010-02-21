@@ -2,7 +2,7 @@
 
 using namespace WyvernsAssault;
 
-MainMenuState::MainMenuState()
+MainMenuState::MainMenuState(GameInputManager& inputManager, AudioManager& audioManager)
 {
 	//
 	// TODO Constructor logic HERE
@@ -21,6 +21,14 @@ void MainMenuState::initialise()
 {
 	//
 	// TODO Initialize
+	//
+}
+
+/** Manage input */
+void MainMenuState::input()
+{
+	//
+	// TODO Read input
 	//
 }
 
@@ -62,4 +70,13 @@ void MainMenuState::destroy()
 	//
 	// TODO Destroy
 	//
+}
+
+/** Get state Id */
+GameStateId MainMenuState::getStateId()
+{
+	//
+	// BEWARE! Make sure this is the correspondent state or we fuck up everything!
+	//
+	return GameStateId::MainMenu;
 }

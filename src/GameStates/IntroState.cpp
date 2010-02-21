@@ -5,6 +5,13 @@ using namespace WyvernsAssault;
 IntroState::IntroState()
 {
 	//
+	// Private constructor, DO NOT use it
+	//
+}
+
+IntroState::IntroState(GameInputManager& inputManager, AudioManager& audioManager)
+{
+	//
 	// TODO Constructor
 	//
 }
@@ -21,6 +28,14 @@ void IntroState::initialise()
 {
 	//
 	// TODO Initialize
+	//
+}
+
+/** Manage input */
+void IntroState::input()
+{
+	//
+	// TODO Read input
 	//
 }
 
@@ -62,4 +77,13 @@ void IntroState::destroy()
 	//
 	// TODO Destroy
 	//
+}
+
+/** Get state Id */
+GameStateId IntroState::getStateId()
+{
+	//
+	// BEWARE! Make sure this is the correspondent state or we fuck up everything!
+	//
+	return GameStateId::Intro;
 }
