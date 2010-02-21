@@ -1,4 +1,4 @@
-#include "..\include\GameStates\MainMenuState.h"
+#include "..\include\States\MainMenuState.h"
 
 using namespace WyvernsAssault;
 

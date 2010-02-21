@@ -208,46 +208,46 @@
 				>
 			</File>
 			<Filter
-				Name="GameStates"
+				Name="States"
 				>
 				<File
-					RelativePath="..\src\GameStates\BaseState.cpp"
+					RelativePath="..\src\States\BaseState.cpp"
 					>
 				</File>
 				<File
-					RelativePath="..\src\GameStates\CreditsState.cpp"
+					RelativePath="..\src\States\CreditsState.cpp"
 					>
 				</File>
 				<File
-					RelativePath="..\src\GameStates\EndingState.cpp"
+					RelativePath="..\src\States\EndingState.cpp"
 					>
 				</File>
 				<File
-					RelativePath="..\src\GameStates\GameoverState.cpp"
+					RelativePath="..\src\States\GameoverState.cpp"
 					>
 				</File>
 				<File
-					RelativePath="..\src\GameStates\GameStatesManager.cpp"
+					RelativePath="..\src\States\GameStatesManager.cpp"
 					>
 				</File>
 				<File
-					RelativePath="..\src\GameStates\IntroState.cpp"
+					RelativePath="..\src\States\IntroState.cpp"
 					>
 				</File>
 				<File
-					RelativePath="..\src\GameStates\MainMenuState.cpp"
+					RelativePath="..\src\States\MainMenuState.cpp"
 					>
 				</File>
 				<File
-					RelativePath="..\src\GameStates\OutroState.cpp"
+					RelativePath="..\src\States\OutroState.cpp"
 					>
 				</File>
 				<File
-					RelativePath="..\src\GameStates\PlayState.cpp"
+					RelativePath="..\src\States\PlayState.cpp"
 					>
 				</File>
 				<File
-					RelativePath="..\src\GameStates\SplashScreenState.cpp"
+					RelativePath="..\src\States\SplashScreenState.cpp"
 					>
 				</File>
 			</Filter>
@@ -306,46 +306,46 @@
 				>
 			</File>
 			<Filter
-				Name="GameStates"
+				Name="States"
 				>
 				<File
-					RelativePath="..\include\GameStates\BaseState.h"
+					RelativePath="..\include\States\BaseState.h"
 					>
 				</File>
 				<File
-					RelativePath="..\include\GameStates\CreditsState.h"
+					RelativePath="..\include\States\CreditsState.h"
 					>
 				</File>
 				<File
-					RelativePath="..\include\GameStates\EndingState.h"
+					RelativePath="..\include\States\EndingState.h"
 					>
 				</File>
 				<File
-					RelativePath="..\include\GameStates\GameoverState.h"
+					RelativePath="..\include\States\GameoverState.h"
 					>
 				</File>
 				<File
-					RelativePath="..\include\GameStates\GameStatesManager.h"
+					RelativePath="..\include\States\GameStatesManager.h"
 					>
 				</File>
 				<File
-					RelativePath="..\include\GameStates\IntroState.h"
+					RelativePath="..\include\States\IntroState.h"
 					>
 				</File>
 				<File
-					RelativePath="..\include\GameStates\MainMenuState.h"
+					RelativePath="..\include\States\MainMenuState.h"
 					>
 				</File>
 				<File
-					RelativePath="..\include\GameStates\OutroState.h"
+					RelativePath="..\include\States\OutroState.h"
 					>
 				</File>
 				<File
-					RelativePath="..\include\GameStates\PlayState.h"
+					RelativePath="..\include\States\PlayState.h"
 					>
 				</File>
 				<File
-					RelativePath="..\include\GameStates\SplashScreenState.h"
+					RelativePath="..\include\States\SplashScreenState.h"
 					>
 				</File>
 			</Filter>

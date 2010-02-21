@@ -32,7 +32,7 @@ void Game::initialize()
 	mInputManager.initialize(mGraphicsManager.getRenderWindow(), true);
 
 	// Initialize Game states (FSM) manager
-	mGameStatesManager.initialize(mGraphicsManager, mInputManager, mAudioManager);
+	mStatesManager.initialize(mGraphicsManager, mInputManager, mAudioManager);
 
 	// Load graphic resourcrs
 	mGraphicsManager.loadResources();

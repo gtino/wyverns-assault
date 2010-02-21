@@ -1,4 +1,4 @@
-#include "..\include\GameStates\SplashScreenState.h"
+#include "..\include\States\SplashScreenState.h"
 
 using namespace WyvernsAssault;
 

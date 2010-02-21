@@ -1,8 +1,8 @@
-#include "..\include\GameStates\GameStatesManager.h"
+#include "..\include\States\StatesManager.h"
 
 using namespace WyvernsAssault;
 
-GameStatesManager::GameStatesManager()
+StatesManager::StatesManager()
 : mCurrentStateId ( GameStateId::SplashScreen )
 {
 	//
@@ -11,7 +11,7 @@ GameStatesManager::GameStatesManager()
 	this->mCurrentState = getGameStateById(mCurrentStateId);
 }
 
-GameStatesManager::~GameStatesManager()
+StatesManager::~StatesManager()
 {
 	//
 	// TODO Destructor
@@ -19,38 +19,38 @@ GameStatesManager::~GameStatesManager()
 	finalize();
 }
 
-void GameStatesManager::initialize(GraphicsManager& graphicsManager, InputManager& inputManager, AudioManager& audioManager)
+void StatesManager::initialize(GraphicsManager& graphicsManager, InputManager& inputManager, AudioManager& audioManager)
 {
 	//
 	// NOTE Here we simply create the game states list, hard coded.
 	//		Maybe it is better to provide some kind of way to load it
 	//		'on the fly', reading it from a .cfg file?
 	//
-	this->mGameStates[GameStateId::SplashScreen]	= new SplashScreenState(graphicsManager, inputManager, audioManager);
-	this->mGameStates[GameStateId::Intro]			= new IntroState(graphicsManager, inputManager, audioManager);
-	this->mGameStates[GameStateId::MainMenu]		= new MainMenuState(graphicsManager, inputManager, audioManager);
-	this->mGameStates[GameStateId::Ending]			= new EndingState(graphicsManager, inputManager, audioManager);
-	this->mGameStates[GameStateId::GameOver]		= new GameoverState(graphicsManager, inputManager, audioManager);
-	this->mGameStates[GameStateId::Play]			= new PlayState(graphicsManager, inputManager, audioManager);
-	this->mGameStates[GameStateId::Credits]			= new CreditsState(graphicsManager, inputManager, audioManager);
-	this->mGameStates[GameStateId::Outro]			= new OutroState(graphicsManager, inputManager, audioManager);
+	this->mStates[GameStateId::SplashScreen]	= new SplashScreenState(graphicsManager, inputManager, audioManager);
+	this->mStates[GameStateId::Intro]			= new IntroState(graphicsManager, inputManager, audioManager);
+	this->mStates[GameStateId::MainMenu]		= new MainMenuState(graphicsManager, inputManager, audioManager);
+	this->mStates[GameStateId::Ending]			= new EndingState(graphicsManager, inputManager, audioManager);
+	this->mStates[GameStateId::GameOver]		= new GameoverState(graphicsManager, inputManager, audioManager);
+	this->mStates[GameStateId::Play]			= new PlayState(graphicsManager, inputManager, audioManager);
+	this->mStates[GameStateId::Credits]			= new CreditsState(graphicsManager, inputManager, audioManager);
+	this->mStates[GameStateId::Outro]			= new OutroState(graphicsManager, inputManager, audioManager);
 }
 
-void GameStatesManager::finalize()
+void StatesManager::finalize()
 {
 	//
 	// TODO Destroy
 	//
-	//GameStatesMapIterator it;
-	//for(it = mGameStates.begin(); it != mGameStates.end(); it++)
+	//StatesMapIterator it;
+	//for(it = mStates.begin(); it != mStates.end(); it++)
 	//{
 	//	delete it->second;
 	//}
 
-	mGameStates.clear(); // destructors should be called automatically...
+	mStates.clear(); // destructors should be called automatically...
 }
 
-void GameStatesManager::loop()
+void StatesManager::loop()
 {
 	//
 	// Read input
@@ -88,7 +88,7 @@ void GameStatesManager::loop()
 
 // ------------ PRIVATE METHODS -------------------
 
-void GameStatesManager::changeState(BaseState* newState)
+void StatesManager::changeState(BaseState* newState)
 {
 	// 
 	// Unload resources for current state
@@ -121,7 +121,7 @@ void GameStatesManager::changeState(BaseState* newState)
 	this->mCurrentState->load();
 }
 
-BaseState* GameStatesManager::getGameStateById(const GameStateId gameStateId)
+BaseState* StatesManager::getGameStateById(const GameStateId gameStateId)
 {
-	return this->mGameStates[gameStateId];
+	return this->mStates[gameStateId];
 }
