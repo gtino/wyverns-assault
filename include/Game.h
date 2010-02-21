@@ -31,7 +31,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 // Game internal includes
 //
 #include ".\Graphics\GraphicsManager.h"
-#include ".\Input\GameInputManager.h"
+#include ".\Input\InputManager.h"
 #include ".\Audio\AudioManager.h"
 #include ".\GameStates\GameStatesManager.h"
 
@@ -68,7 +68,7 @@ namespace WyvernsAssault
 		/** Audio manager */
 		AudioManager mAudioManager;
 		/** Input manager */
-		GameInputManager mInputManager;
+		InputManager mInputManager;
 
 		/** Game states (FSM) manager */
 		GameStatesManager mGameStatesManager;

@@ -42,9 +42,14 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #include "CreditsState.h"
 
 //
+// Audio
+//
+#include "..\Graphics\GraphicsManager.h"
+
+//
 // User input
 //
-#include "..\Input\GameInputManager.h"
+#include "..\Input\InputManager.h"
 
 //
 // Audio
@@ -76,7 +81,7 @@ namespace WyvernsAssault
 
 	public:
 		/** Initialize the manager */
-		void initialize(GraphicsManager& graphicsManager, GameInputManager& gameInputManager, AudioManager& audioManager);
+		void initialize(GraphicsManager& graphicsManager, InputManager& gameInputManager, AudioManager& audioManager);
 		/** Destroy and release all resources used by the manager */
 		void finalize();
 		/** Run the current state (main loop)*/

@@ -1,8 +1,8 @@
-#include "..\include\Input\GameInputManager.h"
+#include "..\include\Input\InputManager.h"
 
 using namespace WyvernsAssault;
 
-GameInputManager::GameInputManager()
+InputManager::InputManager()
 : mInputManager( NULL )
 , mKeyboard( NULL )
 , mMouse( NULL )
@@ -16,7 +16,7 @@ GameInputManager::GameInputManager()
 	//
 }
 
-GameInputManager::~GameInputManager()
+InputManager::~InputManager()
 {
 	//
 	// TODO Destructor
@@ -24,7 +24,7 @@ GameInputManager::~GameInputManager()
 }
 
 /** Initialize the input manager */
-void GameInputManager::initialize( Ogre::RenderWindow* window, bool showDefaultMousePointer )
+void InputManager::initialize( Ogre::RenderWindow* window, bool showDefaultMousePointer )
 {	
 	size_t windowHandle = 0;
 	window->getCustomAttribute( "WINDOW", &windowHandle );
@@ -64,7 +64,7 @@ void GameInputManager::initialize( Ogre::RenderWindow* window, bool showDefaultM
 	//
 }
 
-void GameInputManager::finalize()
+void InputManager::finalize()
 {
 	if ( mInputManager )
 	{
@@ -88,7 +88,7 @@ void GameInputManager::finalize()
 }
 
 /** Acquire all inputs */
-void GameInputManager::acquireAll()
+void InputManager::acquireAll()
 {
 	//
 	// TBD Is this really needed?
@@ -96,53 +96,53 @@ void GameInputManager::acquireAll()
 }
 
 /** Relese all inputs */
-void GameInputManager::unacquireAll()
+void InputManager::unacquireAll()
 {
 	//
 	// TBD Is this really needed?
 	//
 }
 
-void GameInputManager::capture()
+void InputManager::capture()
 {
 	mMouse->capture();
 	mKeyboard->capture();
 	//mJoyStick->capture(); // TODO Set up joystick properly
 }
 
-void GameInputManager::switchMouseMode()
+void InputManager::switchMouseMode()
 {
 	mUseBufferedInputMouse = !mUseBufferedInputMouse;
 	mMouse->setBuffered(mUseBufferedInputMouse);
 }
 
-void GameInputManager::switchKeyMode()
+void InputManager::switchKeyMode()
 {
 	mUseBufferedInputKeys = !mUseBufferedInputKeys;
 	mKeyboard->setBuffered(mUseBufferedInputKeys);
 }
 
-bool GameInputManager::mouseMoved( const OIS::MouseEvent& e ) 
+bool InputManager::mouseMoved( const OIS::MouseEvent& e ) 
 {
 	return true;
 }
 
-bool GameInputManager::mousePressed( const OIS::MouseEvent& e, OIS::MouseButtonID button )
+bool InputManager::mousePressed( const OIS::MouseEvent& e, OIS::MouseButtonID button )
 {
 	return true;
 }
 
-bool GameInputManager::mouseReleased( const OIS::MouseEvent& e, OIS::MouseButtonID button )
+bool InputManager::mouseReleased( const OIS::MouseEvent& e, OIS::MouseButtonID button )
 {
 	return true;
 }
 
-bool GameInputManager::keyPressed( const OIS::KeyEvent& e )
+bool InputManager::keyPressed( const OIS::KeyEvent& e )
 {
 	return true;
 }
 
-bool GameInputManager::keyReleased( const OIS::KeyEvent& e )
+bool InputManager::keyReleased( const OIS::KeyEvent& e )
 {
 	return true;
 }

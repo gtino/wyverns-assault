@@ -33,7 +33,7 @@ namespace WyvernsAssault
 	class PlayState : public BaseState
 	{
 	public:
-		PlayState(GraphicsManager& graphicsManager, GameInputManager& inputManager, AudioManager& audioManager);
+		PlayState(GraphicsManager& graphicsManager, InputManager& inputManager, AudioManager& audioManager);
 		~PlayState();
 
 	public:

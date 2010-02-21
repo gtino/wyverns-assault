@@ -6,7 +6,7 @@ BaseState::BaseState()
 {
 }
 
-BaseState::BaseState(GraphicsManager& graphicsManager, GameInputManager& inputManager, AudioManager& audioManager)
+BaseState::BaseState(GraphicsManager& graphicsManager, InputManager& inputManager, AudioManager& audioManager)
 {
 	this->mGraphicsManager	= &graphicsManager;
 	this->mInputManager		= &inputManager;

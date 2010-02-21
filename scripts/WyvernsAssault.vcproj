@@ -259,7 +259,7 @@
 				Name="Input"
 				>
 				<File
-					RelativePath="..\src\Input\GameInputManager.cpp"
+					RelativePath="..\src\Input\InputManager.cpp"
 					>
 				</File>
 			</Filter>
@@ -357,7 +357,7 @@
 				Name="Input"
 				>
 				<File
-					RelativePath="..\include\Input\GameInputManager.h"
+					RelativePath="..\include\Input\InputManager.h"
 					>
 				</File>
 			</Filter>

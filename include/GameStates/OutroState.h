@@ -33,7 +33,7 @@ namespace WyvernsAssault
 	class OutroState : public BaseState
 	{
 	public:
-		OutroState(GraphicsManager& graphicsManager, GameInputManager& inputManager, AudioManager& audioManager);
+		OutroState(GraphicsManager& graphicsManager, InputManager& inputManager, AudioManager& audioManager);
 		~OutroState();
 
 	public:
