@@ -32,6 +32,7 @@ This pages is used to store all the intersting links realted to the project. Eve
  * [http://www.ogre3d.org/wiki/index.php/Managing_Game_States_with_OGRE Managing Game States with OGRE]
  * [http://www.ogre3d.org/wiki/index.php/Game_State_Manager Game State Manager]
  * [http://gamedevgeek.com/tutorials/managing-game-states-in-c/ Managing Game States in C++]
+ * [http://guff.tigris.org/docs/SBGames06-en.pdf An Architecture For Game State Management Based On State Hierarchies]
 
 == Beat'em Up Tips'n'Tricks==
 
