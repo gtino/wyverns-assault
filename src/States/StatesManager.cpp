@@ -8,7 +8,6 @@ StatesManager::StatesManager()
 	//
 	// TODO Constructor
 	//
-	this->mCurrentState = getGameStateById(mCurrentStateId);
 }
 
 StatesManager::~StatesManager()
@@ -48,6 +47,11 @@ void StatesManager::initialize(GraphicsManager& graphicsManager, InputManager& i
 	this->mStates[GameStateId::Play]			= new PlayState(graphicsManager, inputManager, audioManager);
 	this->mStates[GameStateId::Credits]			= new CreditsState(graphicsManager, inputManager, audioManager);
 	this->mStates[GameStateId::Outro]			= new OutroState(graphicsManager, inputManager, audioManager);
+
+	//
+	// Let's start with the first state!
+	//
+	changeState(getGameStateById(mCurrentStateId));
 }
 
 void StatesManager::finalize()
@@ -64,40 +68,51 @@ void StatesManager::finalize()
 	this->mInputManager->removeListener(this);
 }
 
-void StatesManager::loop()
+bool StatesManager::loop()
 {
-	//
-	// Read (UNBUFFERED) input
-	//
-	this->mCurrentState->input();
-
-	//
-	// Process game logic/physics/state
-	//
-	this->mCurrentState->update();
-
-	//
-	// Render output
-	//
-	this->mCurrentState->render();
-
-	//
-	// Read next state. If it is not the current one, perform a state change!
-	// 
-	GameStateId nextStateId = mCurrentState->getNextStateId();
-
-	if(mCurrentStateId != nextStateId)
-	{
 		//
-		// Retrieve the state corrisponding to the given state id
+		// Read (UNBUFFERED) input
 		//
-		BaseState* newState = this->getGameStateById(nextStateId);
+		this->mCurrentState->input();
 
 		//
-		// Perform the state change
+		// Process game logic/physics/state
 		//
-		this->changeState(newState);
-	}
+		this->mCurrentState->update();
+
+		//
+		// Render output
+		//
+		this->mCurrentState->render();
+
+		//
+		// Read next state. If it is not the current one, perform a state change!
+		// 
+		GameStateId nextStateId = mCurrentState->getNextStateId();
+
+		//
+		// Special case, we just exit the application
+		//
+		if(nextStateId == GameStateId::Exit)
+			return false;
+
+		if(mCurrentStateId != nextStateId)
+		{
+			//
+			// Retrieve the state corrisponding to the given state id
+			//
+			BaseState* newState = this->getGameStateById(nextStateId);
+
+			//
+			// Perform the state change
+			//
+			this->changeState(newState);
+		}
+
+		//
+		// Keep going 
+		//
+		return true;
 }
 
 // ------------ PRIVATE METHODS -------------------

@@ -51,7 +51,8 @@ namespace WyvernsAssault
 		GameOver		= 4,
 		Ending			= 5,
 		Outro			= 6,
-		Credits			= 7
+		Credits			= 7,
+		Exit			= 8 // Special state, it is just a flag to exit the application
 	};
 
 	/**

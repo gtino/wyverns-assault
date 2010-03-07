@@ -44,6 +44,34 @@ void Game::go()
 	//
 	// TODO Main game loop
 	//
+	Ogre::Timer loopTimer;
+
+	bool continueRunning = true;
+	while ( continueRunning )
+	{
+		Ogre::WindowEventUtilities::messagePump();
+
+		// Get elaspes microseconds
+		float elapsedSeconds = loopTimer.getMicroseconds() * 1.0 / 1000000;
+
+		//
+		// Should we keep going? (Game logic)
+		//
+		continueRunning = mStatesManager.loop();
+
+		//
+		// Did the user close the application window?
+		//
+		bool windowClosed = mGraphicsManager.getRenderWindow()->isClosed();
+		continueRunning &= ! windowClosed;
+
+		loopTimer.reset();
+
+		bool renderFrameSuccess = mGraphicsManager.renderOneFrame();
+		continueRunning &= renderFrameSuccess;
+
+		//continueRunning &= ! m_exitRequested;	
+	}
 }
 
 /** Finalize the game */

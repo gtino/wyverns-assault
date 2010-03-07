@@ -51,6 +51,7 @@ void InputManager::initialize( Ogre::RenderWindow* window, bool showDefaultMouse
 
 	mKeyboard = static_cast< OIS::Keyboard* >( mInputManager->createInputObject( OIS::OISKeyboard, true ) );
 	mMouse = static_cast< OIS::Mouse* >( mInputManager->createInputObject( OIS::OISMouse, true ) );
+	//mJoyStick = static_cast< OIS::JoyStick* >( mInputManager->createInputObject( OIS::OISJoyStick, true ) );
 
 	const OIS::MouseState& mouseState = mMouse->getMouseState();
 
@@ -59,10 +60,7 @@ void InputManager::initialize( Ogre::RenderWindow* window, bool showDefaultMouse
 
 	mMouse->setEventCallback( this );
 	mKeyboard->setEventCallback( this );
-
-	//
-	// TODO Initialize JoyStick!
-	//
+	//mJoyStick->setEventCallback( this );
 }
 
 void InputManager::finalize()

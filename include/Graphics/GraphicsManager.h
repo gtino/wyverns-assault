@@ -62,6 +62,9 @@ namespace WyvernsAssault
 		/** Unload graphics resources */
 		void unloadResources();
 
+		/** Render one frame */
+		bool renderOneFrame();
+
 		/** Retrieve the render window */
 		Root*			getRoot(void);
 		RenderWindow*	getRenderWindow(void);
