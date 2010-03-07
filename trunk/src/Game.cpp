@@ -77,6 +77,8 @@ void Game::go()
 /** Finalize the game */
 void Game::finalize()
 {
+	// Unregister and dispose of the StatesManager
+	mStatesManager.finalize();
 	// Unload all graphics data
 	mGraphicsManager.unloadResources();
 	// Finalize all

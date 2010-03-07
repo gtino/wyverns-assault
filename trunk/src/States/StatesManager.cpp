@@ -22,6 +22,20 @@ StatesManager::~StatesManager()
 void StatesManager::initialize(GraphicsManager& graphicsManager, InputManager& inputManager, AudioManager& audioManager)
 {
 	//
+	// Keep a reference to the managers
+	//
+	this->mGraphicsManager = &graphicsManager;
+	this->mInputManager = &inputManager;
+	this->mAudioManager = &audioManager;
+
+	//
+	// Register this class as listerer for the input manager (buffered input!)
+	// Buffered events will call buffered input methods of this class
+	// Fo unbuffered input we will have to access the mInputManager directly
+	// in the game loop
+	this->mInputManager->addListener(this);
+
+	//
 	// NOTE Here we simply create the game states list, hard coded.
 	//		Maybe it is better to provide some kind of way to load it
 	//		'on the fly', reading it from a .cfg file?
@@ -41,20 +55,19 @@ void StatesManager::finalize()
 	//
 	// TODO Destroy
 	//
-	//StatesMapIterator it;
-	//for(it = mStates.begin(); it != mStates.end(); it++)
-	//{
-	//	delete it->second;
-	//}
+	StatesMapIterator it;
+	for(it = mStates.begin(); it != mStates.end(); it++)
+	{
+		delete it->second;
+	}
 
-	mStates.clear(); // destructors should be called automatically...
-	mStatesStack.clear(); // TBD states have already been destroyed. Make sure this call does not fail for this reason!
+	this->mInputManager->removeListener(this);
 }
 
 void StatesManager::loop()
 {
 	//
-	// Read input
+	// Read (UNBUFFERED) input
 	//
 	this->mCurrentState->input();
 
@@ -175,4 +188,76 @@ void StatesManager::popState()
 BaseState* StatesManager::getGameStateById(const GameStateId gameStateId)
 {
 	return this->mStates[gameStateId];
+}
+
+// ------------------
+// Keyboard listeners
+// ------------------
+/** Buffered input - keyboard key clicked */
+bool StatesManager::keyClicked(const OIS::KeyEvent& e)
+{
+	// call keyClicked of current state
+	return this->mCurrentState->keyClicked(e);
+}
+
+/** Buffered input - keyboard key clicked */
+bool StatesManager::keyPressed(const OIS::KeyEvent& e)
+{
+	// call keyPressed of current state
+	return this->mCurrentState->keyPressed(e);
+}
+
+/** Buffered input - keyboard key clicked */
+bool StatesManager::keyReleased(const OIS::KeyEvent& e)
+{
+	// call keyReleased of current state
+	return this->mCurrentState->keyReleased(e);
+}
+
+//
+// MouseListener
+//
+/** Buffered input - mouse moved */
+bool StatesManager::mouseMoved(const OIS::MouseEvent &evt)
+{
+	return this->mCurrentState->mouseMoved(evt);
+}
+
+/** Buffered input - mouse button pressed */
+bool StatesManager::mousePressed(const OIS::MouseEvent &evt, OIS::MouseButtonID buttonId)
+{
+	return this->mCurrentState->mousePressed(evt,buttonId);
+}
+
+/** Buffered input - mouse button released */
+bool StatesManager::mouseReleased(const OIS::MouseEvent &evt, OIS::MouseButtonID buttonId)
+{
+	return this->mCurrentState->mouseReleased(evt,buttonId);
+}
+
+//
+// JoyStickListener
+//
+/** Buffered input - joystick button pressed */
+bool StatesManager::buttonPressed(const OIS::JoyStickEvent &evt, int index)
+{
+	return this->mCurrentState->buttonPressed(evt,index);
+}
+
+/** Buffered input - joystick button released */
+bool StatesManager::buttonReleased(const OIS::JoyStickEvent &evt, int index)
+{
+	return this->mCurrentState->buttonReleased(evt,index);
+}
+
+/** Buffered input - axis pad moved */
+bool StatesManager::axisMoved(const OIS::JoyStickEvent &evt, int index)
+{
+	return this->mCurrentState->axisMoved(evt,index);
+}
+
+/** Buffered input - pov moved */
+bool StatesManager::povMoved(const OIS::JoyStickEvent &evt, int index)
+{
+	return this->mCurrentState->povMoved(evt,index);
 }

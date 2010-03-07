@@ -25,6 +25,12 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
 #include <Ogre.h>
 
+#include "OISEvents.h"
+#include "OISInputManager.h"
+#include "OISMouse.h"
+#include "OISKeyboard.h"
+#include "OISJoyStick.h"
+
 #include <map>
 
 //
@@ -47,9 +53,10 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #include "..\Graphics\GraphicsManager.h"
 
 //
-// User input
+// User input listener
 //
 #include "..\Input\InputManager.h"
+#include "..\Input\InputListener.h"
 
 //
 // Audio
@@ -77,7 +84,7 @@ namespace WyvernsAssault
 	/**
 		Class used to manage the game states
 	*/
-	class StatesManager
+	class StatesManager : public InputListener
 	{
 	public:
 		StatesManager();
@@ -90,6 +97,38 @@ namespace WyvernsAssault
 		void finalize();
 		/** Run the current state (main loop)*/
 		void loop();
+
+		//
+		// Keyboard listeners
+		//
+		/** Buffered input - keyboard key clicked */
+		bool keyClicked(const OIS::KeyEvent& e);
+		/** Buffered input - keyboard key clicked */
+		bool keyPressed(const OIS::KeyEvent& e);
+		/** Buffered input - keyboard key clicked */
+		bool keyReleased(const OIS::KeyEvent& e);
+
+		//
+		// MouseListener
+		//
+		/** Buffered input - mouse moved */
+		bool mouseMoved(const OIS::MouseEvent &evt);
+		/** Buffered input - mouse button pressed */
+		bool mousePressed(const OIS::MouseEvent &evt, OIS::MouseButtonID);
+		/** Buffered input - mouse button released */
+		bool mouseReleased(const OIS::MouseEvent &evt, OIS::MouseButtonID);
+	
+		//
+		// JoyStickListener
+		//
+		/** Buffered input - joystick button pressed */
+		bool buttonPressed(const OIS::JoyStickEvent &evt, int index);
+		/** Buffered input - joystick button released */
+		bool buttonReleased(const OIS::JoyStickEvent &evt, int index);
+		/** Buffered input - axis pad moved */
+		bool axisMoved(const OIS::JoyStickEvent &evt, int index);
+		/** Buffered input - pov moved */
+		bool povMoved(const OIS::JoyStickEvent &evt, int index);
 
 	private:
 		/** Change state */
@@ -111,6 +150,11 @@ namespace WyvernsAssault
 		BaseState* mCurrentState;
 		/** Id of the current (active) game state */
 		GameStateId mCurrentStateId;
+
+		/** Graphics Manager */
+		GraphicsManager* mGraphicsManager;
+		InputManager* mInputManager;
+		AudioManager* mAudioManager;
 	};
 }
 

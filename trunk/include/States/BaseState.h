@@ -32,6 +32,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 // User input
 //
 #include "..\Input\InputManager.h"
+#include "..\Input\InputListener.h"
 
 //
 // Audio
@@ -56,7 +57,7 @@ namespace WyvernsAssault
 	/**
 		Base game state class
 	*/
-	class BaseState
+	class BaseState : public InputListener
 	{
 	public:
 		BaseState();

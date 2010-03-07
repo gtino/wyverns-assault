@@ -23,10 +23,16 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #ifndef __INPUT_MANAGER_H_
 #define __INPUT_MANAGER_H_
 
+#include <vector>
+
 #include <ois/OIS.h>
 
 #include <Ogre.h>
 #include <OgreRenderWindow.h>
+
+#include "InputListener.h"
+
+#define WA_CALL_LISTENERS(method) for ( InputListenersIterator it=mRegisteredListeners.begin() ; it < mRegisteredListeners.end(); it++ ) {(*it)->method;}
 
 namespace Ogre
 {
@@ -35,11 +41,16 @@ namespace Ogre
 
 namespace WyvernsAssault
 {
+	/** The input listenrs list */
+	typedef std::vector<InputListener*> InputListenersList;
+	typedef InputListenersList::iterator InputListenersIterator;
+
 	/**
 		Class used to manager user input, from keyboard, mouse, joystick and so on...
 	*/
 	class InputManager	: public OIS::MouseListener
-							, public OIS::KeyListener
+						, public OIS::KeyListener
+						, public OIS::JoyStickListener
 	{
 	public:
 		InputManager();
@@ -50,6 +61,10 @@ namespace WyvernsAssault
 		void initialize( Ogre::RenderWindow* window, bool showDefaultMousePointer );
 		/** Finalize the input manager */
 		void finalize();
+		/** Add input listener */
+		void addListener(InputListener* listener);
+		/** Remove input listener */
+		void removeListener(InputListener* listener);
 
 		/** Acquire all inputs */
 		void acquireAll();
@@ -60,13 +75,39 @@ namespace WyvernsAssault
 
 		virtual void switchMouseMode();
 		virtual void switchKeyMode();
+		virtual void switchJoyStickMode();
 
-		virtual bool mouseMoved( const OIS::MouseEvent& e );
-		virtual bool mousePressed( const OIS::MouseEvent& e, OIS::MouseButtonID button );
-		virtual bool mouseReleased( const OIS::MouseEvent& e, OIS::MouseButtonID button );
+		//
+		// Keyboard listeners
+		//
+		/** Buffered input - keyboard key clicked */
+		bool keyClicked(const OIS::KeyEvent& e);
+		/** Buffered input - keyboard key clicked */
+		bool keyPressed(const OIS::KeyEvent& e);
+		/** Buffered input - keyboard key clicked */
+		bool keyReleased(const OIS::KeyEvent& e);
 
-		virtual bool keyPressed( const OIS::KeyEvent& e );
-		virtual bool keyReleased( const OIS::KeyEvent& e );
+		//
+		// MouseListener
+		//
+		/** Buffered input - mouse moved */
+		bool mouseMoved(const OIS::MouseEvent &evt);
+		/** Buffered input - mouse button pressed */
+		bool mousePressed(const OIS::MouseEvent &evt, OIS::MouseButtonID);
+		/** Buffered input - mouse button released */
+		bool mouseReleased(const OIS::MouseEvent &evt, OIS::MouseButtonID);
+	
+		//
+		// JoyStickListener
+		//
+		/** Buffered input - joystick button pressed */
+		bool buttonPressed(const OIS::JoyStickEvent &evt, int index);
+		/** Buffered input - joystick button released */
+		bool buttonReleased(const OIS::JoyStickEvent &evt, int index);
+		/** Buffered input - axis pad moved */
+		bool axisMoved(const OIS::JoyStickEvent &evt, int index);
+		/** Buffered input - pov moved */
+		bool povMoved(const OIS::JoyStickEvent &evt, int index);
 
 	protected:
 		OIS::InputManager* mInputManager;
@@ -76,7 +117,10 @@ namespace WyvernsAssault
 		
 		bool mUseBufferedInputMouse;
 		bool mUseBufferedInputKeys;
+		bool mUseBufferedInputJoyStick;
 		bool mInputTypeSwitchingOn;
+
+		InputListenersList mRegisteredListeners;
 	};
 }
 
