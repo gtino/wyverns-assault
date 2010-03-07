@@ -166,3 +166,9 @@ SceneManager* GraphicsManager::getSceneManager()
 {
 	return this->mSceneManager;
 }
+
+/** Render one frame */
+bool GraphicsManager::renderOneFrame()
+{
+	return mRoot->renderOneFrame();
+}

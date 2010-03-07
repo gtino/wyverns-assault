@@ -7,6 +7,7 @@ SplashScreenState::SplashScreenState(GraphicsManager& graphicsManager, InputMana
 	//
 	// TODO Constructor
 	//
+	this->mNextGameStateId = this->getStateId();
 }
 
 SplashScreenState::~SplashScreenState()
@@ -95,4 +96,12 @@ void SplashScreenState::resume()
 	//
 	// TODO : Resume state
 	//
+}
+
+/** Buffered input - keyboard key clicked */
+bool SplashScreenState::keyClicked(const OIS::KeyEvent& e)
+{
+	this->mNextGameStateId = GameStateId::Exit;
+
+	return true;
 }

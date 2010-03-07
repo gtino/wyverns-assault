@@ -56,6 +56,10 @@ namespace WyvernsAssault
 		/** Called when the state has to be resumed (from pause) */
 		void resume();
 
+	public:
+		/** Buffered input - keyboard key clicked */
+		bool keyClicked(const OIS::KeyEvent& e);
+
 		/** Get state Id */
 		GameStateId getStateId();
 	};
