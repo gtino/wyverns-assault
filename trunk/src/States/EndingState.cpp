@@ -80,3 +80,19 @@ GameStateId EndingState::getStateId()
 	//
 	return GameStateId::Ending;
 }
+
+/** Called when the state has to be paused */
+void EndingState::pause()
+{
+	//
+	// TODO : Pause state
+	//
+}
+
+/** Called when the state has to be resumed (from pause) */
+void EndingState::resume()
+{
+	//
+	// TODO : Resume state
+	//
+}

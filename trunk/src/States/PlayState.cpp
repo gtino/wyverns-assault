@@ -80,3 +80,19 @@ GameStateId PlayState::getStateId()
 	//
 	return GameStateId::Play;
 }
+
+/** Called when the state has to be paused */
+void PlayState::pause()
+{
+	//
+	// TODO : Pause state
+	//
+}
+
+/** Called when the state has to be resumed (from pause) */
+void PlayState::resume()
+{
+	//
+	// TODO : Resume state
+	//
+}
