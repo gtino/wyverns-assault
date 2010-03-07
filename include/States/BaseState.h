@@ -79,6 +79,15 @@ namespace WyvernsAssault
 		/** Destroy the state */
 		virtual void destroy() = 0;
 
+		/** Called the first time we enter the state */
+		void enter();
+		/** Called when we exit from the state */
+		void exit();
+		/** Called when the state has to be paused */
+		virtual void pause() = 0;
+		/** Called when the state has to be resumed (from pause) */
+		virtual void resume() = 0;
+
 		/** Get state Id */
 		virtual GameStateId getStateId() = 0;
 		/** Get NEXT state Id */

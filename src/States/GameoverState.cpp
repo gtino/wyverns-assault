@@ -80,3 +80,19 @@ GameStateId GameoverState::getStateId()
 	//
 	return GameStateId::GameOver;
 }
+
+/** Called when the state has to be paused */
+void GameoverState::pause()
+{
+	//
+	// TODO : Pause state
+	//
+}
+
+/** Called when the state has to be resumed (from pause) */
+void GameoverState::resume()
+{
+	//
+	// TODO : Resume state
+	//
+}

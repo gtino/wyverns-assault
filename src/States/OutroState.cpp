@@ -80,3 +80,19 @@ GameStateId OutroState::getStateId()
 	//
 	return GameStateId::Outro;
 }
+
+/** Called when the state has to be paused */
+void OutroState::pause()
+{
+	//
+	// TODO : Pause state
+	//
+}
+
+/** Called when the state has to be resumed (from pause) */
+void OutroState::resume()
+{
+	//
+	// TODO : Resume state
+	//
+}

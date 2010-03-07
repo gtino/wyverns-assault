@@ -48,6 +48,7 @@ void StatesManager::finalize()
 	//}
 
 	mStates.clear(); // destructors should be called automatically...
+	mStatesStack.clear(); // TBD states have already been destroyed. Make sure this call does not fail for this reason!
 }
 
 void StatesManager::loop()
@@ -88,22 +89,21 @@ void StatesManager::loop()
 
 // ------------ PRIVATE METHODS -------------------
 
-void StatesManager::changeState(BaseState* newState)
+void StatesManager::changeState(BaseState* state)
 {
-	// 
-	// Unload resources for current state
-	//
-	this->mCurrentState->unload();
-
-	//
-	// Destroy and finalize current state
-	//
-	this->mCurrentState->destroy();
+	// cleanup the current state
+	if ( !mStatesStack.empty() ) {
+		//
+		// Exit from current state
+		//
+		mStatesStack.back()->exit();
+		mStatesStack.pop_back();
+	}
 
 	//
 	// Set new state as current state
 	//
-	this->mCurrentState = newState;
+	this->mCurrentState = state;
 
 	//
 	// Save current state Id
@@ -111,14 +111,65 @@ void StatesManager::changeState(BaseState* newState)
 	this->mCurrentStateId = this->mCurrentState->getStateId();
 
 	//
-	// Initialize it
+	// Store and init the new state
 	//
-	this->mCurrentState->initialise();
+	mStatesStack.push_back(state);
+	mStatesStack.back()->enter();
+}
+
+
+void StatesManager::pushState(BaseState* state)
+{
+	//
+	// Pause current state
+	//
+	if ( !mStatesStack.empty() ) {
+		mStatesStack.back()->pause();
+	}
 
 	//
-	// ...and load its resources
+	// Set new state as current state
 	//
-	this->mCurrentState->load();
+	this->mCurrentState = state;
+
+	//
+	// Save current state Id
+	//
+	this->mCurrentStateId = this->mCurrentState->getStateId();
+
+	//
+	// Store and init the new state
+	//
+	mStatesStack.push_back(state);
+	mStatesStack.back()->enter();
+}
+
+void StatesManager::popState()
+{
+	//
+	// Cleanup the current state
+	//
+	if ( !mStatesStack.empty() ) {
+		mStatesStack.back()->exit();
+		mStatesStack.pop_back();
+	}
+
+	//
+	// Set new state as current state
+	//
+	this->mCurrentState = mStatesStack.back();
+
+	//
+	// Save current state Id
+	//
+	this->mCurrentStateId = this->mCurrentState->getStateId();
+
+	//
+	// Resume previous state
+	//
+	if ( !mStatesStack.empty() ) {
+		mStatesStack.back()->resume();
+	}
 }
 
 BaseState* StatesManager::getGameStateById(const GameStateId gameStateId)

@@ -80,3 +80,19 @@ GameStateId MainMenuState::getStateId()
 	//
 	return GameStateId::MainMenu;
 }
+
+/** Called when the state has to be paused */
+void MainMenuState::pause()
+{
+	//
+	// TODO : Pause state
+	//
+}
+
+/** Called when the state has to be resumed (from pause) */
+void MainMenuState::resume()
+{
+	//
+	// TODO : Resume state
+	//
+}

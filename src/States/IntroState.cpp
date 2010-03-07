@@ -80,3 +80,19 @@ GameStateId IntroState::getStateId()
 	//
 	return GameStateId::Intro;
 }
+
+/** Called when the state has to be paused */
+void IntroState::pause()
+{
+	//
+	// TODO : Pause state
+	//
+}
+
+/** Called when the state has to be resumed (from pause) */
+void IntroState::resume()
+{
+	//
+	// TODO : Resume state
+	//
+}

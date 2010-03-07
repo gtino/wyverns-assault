@@ -64,6 +64,10 @@ namespace WyvernsAssault
 	typedef std::map<GameStateId, BaseState*> StatesMap;
 	typedef StatesMap::iterator StatesMapIterator;
 
+	/** The games states stack type */
+	typedef std::vector<BaseState*> StatesStack;
+	typedef StatesStack::iterator StatesStackIterator;
+
 	/** Game options */
 
 	/** Game levels */
@@ -89,13 +93,19 @@ namespace WyvernsAssault
 
 	private:
 		/** Change state */
-		void changeState(BaseState* newState);
+		void changeState(BaseState* state);
+		/** Push a state on the top of the stack */
+		void pushState(BaseState* state);
+		/** Pop a state from the top of the stack */
+		void popState();
 		/** Retrive a game state reference by its ID */
 		BaseState* getGameStateById(const GameStateId id);
 
 	private:
-		/** Map of game states */ 
+		/** Map of game states [ID - State]*/ 
 		StatesMap mStates;
+		/** States hitory stack (for push-pop info) */
+		StatesStack mStatesStack;
 
 		/** Current (active) game state */
 		BaseState* mCurrentState;

@@ -24,3 +24,29 @@ BaseState::~BaseState()
 	// TODO Distructor logic HERE
 	//
 }
+
+void BaseState::enter()
+{
+	//
+	// Initialize the state...
+	//
+	this->initialise();
+
+	//
+	// ...and load its resources
+	//
+	this->load();
+}
+
+void BaseState::exit()
+{
+	// 
+	// Unload resources for current state
+	//
+	this->unload();
+
+	//
+	// Destroy and finalize current state
+	//
+	this->destroy();
+}

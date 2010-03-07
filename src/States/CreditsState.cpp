@@ -80,3 +80,19 @@ GameStateId CreditsState::getStateId()
 	//
 	return GameStateId::Credits;
 }
+
+/** Called when the state has to be paused */
+void CreditsState::pause()
+{
+	//
+	// TODO : Pause state
+	//
+}
+
+/** Called when the state has to be resumed (from pause) */
+void CreditsState::resume()
+{
+	//
+	// TODO : Resume state
+	//
+}

@@ -80,3 +80,19 @@ GameStateId SplashScreenState::getStateId()
 	//
 	return GameStateId::SplashScreen;
 }
+
+/** Called when the state has to be paused */
+void SplashScreenState::pause()
+{
+	//
+	// TODO : Pause state
+	//
+}
+
+/** Called when the state has to be resumed (from pause) */
+void SplashScreenState::resume()
+{
+	//
+	// TODO : Resume state
+	//
+}

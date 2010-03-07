@@ -42,18 +42,22 @@ namespace WyvernsAssault
 		/** Load resources */
 		void load();
 		/** Manage input - INPUT */
-		virtual void input();
+		void input();
 		/** Update internal stuff - PROCESS */
-		virtual void update();
+		void update();
 		/** Render - OUTPUT */
-		virtual void render();
+		void render();
 		/** Unload resources */
 		void unload();
 		/** Destroy the state */
 		void destroy();
+		/** Called when the state has to be paused */
+		void pause();
+		/** Called when the state has to be resumed (from pause) */
+		void resume();
 
 		/** Get state Id */
-		virtual GameStateId getStateId();
+		GameStateId getStateId();
 	};
 }
 #endif // __ENDING_STATE_H_
