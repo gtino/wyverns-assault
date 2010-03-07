@@ -9,6 +9,7 @@ InputManager::InputManager()
 , mJoyStick( NULL )
 , mUseBufferedInputKeys(false)
 , mUseBufferedInputMouse(false)
+, mUseBufferedInputJoyStick(false)
 , mInputTypeSwitchingOn(false)
 {
 	//
@@ -87,6 +88,19 @@ void InputManager::finalize()
 	}
 }
 
+/** Add input listener */
+void InputManager::addListener(InputListener* listener)
+{
+	// TODO Check if listener is already present!
+	this->mRegisteredListeners.push_back(listener);
+}
+
+/** Remove input listener */
+void InputManager::removeListener(InputListener* listener)
+{
+	// TODO Remove listener (if present)!
+}
+
 /** Acquire all inputs */
 void InputManager::acquireAll()
 {
@@ -122,27 +136,87 @@ void InputManager::switchKeyMode()
 	mKeyboard->setBuffered(mUseBufferedInputKeys);
 }
 
+void InputManager::switchJoyStickMode()
+{
+	mUseBufferedInputJoyStick = !mUseBufferedInputJoyStick;
+	mJoyStick->setBuffered(mUseBufferedInputJoyStick);
+}
+
+// ---------------
+// Mouse Listeners
+// ---------------
+/** Buffered input - mouse moved */
 bool InputManager::mouseMoved( const OIS::MouseEvent& e ) 
 {
+	WA_CALL_LISTENERS(mouseMoved(e))
 	return true;
 }
 
+/** Buffered input - mouse button pressed */
 bool InputManager::mousePressed( const OIS::MouseEvent& e, OIS::MouseButtonID button )
 {
+	WA_CALL_LISTENERS(mousePressed(e, button))
 	return true;
 }
 
+/** Buffered input - mouse button released */
 bool InputManager::mouseReleased( const OIS::MouseEvent& e, OIS::MouseButtonID button )
 {
+	WA_CALL_LISTENERS(mouseReleased(e, button))
 	return true;
 }
 
+// ------------------
+// Keyboard listeners
+// ------------------
+/** Buffered input - keyboard key clicked */
+bool InputManager::keyClicked(const OIS::KeyEvent& e)
+{
+	WA_CALL_LISTENERS(keyClicked(e))
+	return true;
+}
+
+/** Buffered input - keyboard key clicked */
 bool InputManager::keyPressed( const OIS::KeyEvent& e )
 {
+	WA_CALL_LISTENERS(keyPressed(e))
 	return true;
 }
 
+/** Buffered input - keyboard key clicked */
 bool InputManager::keyReleased( const OIS::KeyEvent& e )
 {
+	WA_CALL_LISTENERS(keyReleased(e))
+	return true;
+}
+
+// ----------------
+// JoyStickListener
+// ----------------
+/** Buffered input - joystick button pressed */
+bool InputManager::buttonPressed(const OIS::JoyStickEvent &evt, int index)
+{
+	WA_CALL_LISTENERS(buttonPressed(evt,index))
+	return true;
+}
+
+/** Buffered input - joystick button released */
+bool InputManager::buttonReleased(const OIS::JoyStickEvent &evt, int index)
+{
+	WA_CALL_LISTENERS(buttonReleased(evt,index))
+	return true;
+}
+
+/** Buffered input - axis pad moved */
+bool InputManager::axisMoved(const OIS::JoyStickEvent &evt, int index)
+{
+	WA_CALL_LISTENERS(axisMoved(evt,index))
+	return true;
+}
+
+/** Buffered input - pov moved */
+bool InputManager::povMoved(const OIS::JoyStickEvent &evt, int index)
+{
+	WA_CALL_LISTENERS(povMoved(evt,index))
 	return true;
 }
