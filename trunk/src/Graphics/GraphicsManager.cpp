@@ -19,8 +19,16 @@ GraphicsManager::~GraphicsManager()
 
 bool GraphicsManager::initialize()
 {
+	// create an instance of LogManager prior to using LogManager::getSingleton()
+	Ogre::LogManager* logMgr = new Ogre::LogManager;
+	Ogre::Log *log = Ogre::LogManager::getSingleton().createLog("log.log", true, true, false);
+	log->setLogDetail(Ogre::LL_BOREME);
+
 	// Create the root
-	mRoot = new Root();
+	mRoot = new Ogre::Root( ".\\config\\Plugins.cfg", ".\\config\\config.cfg"/*, "ogre_log.txt" */);
+
+	// Setup resource locations
+	setupResources();
 
 	// Configure (configuration window)
 	bool carryOn = configure();
@@ -41,9 +49,34 @@ bool GraphicsManager::initialize()
 	return true;
 }
 
+void GraphicsManager::setupResources()
+{
+	// Load resource paths from config file
+	ConfigFile cf;
+	cf.load(WYVERN_ASSAULT_RESOURCES_FILE);
+
+	// Go through all sections & settings in the file
+	ConfigFile::SectionIterator seci = cf.getSectionIterator();
+
+	String secName, typeName, archName;
+	while (seci.hasMoreElements())
+	{
+		secName = seci.peekNextKey();
+		ConfigFile::SettingsMultiMap *settings = seci.getNext();
+		ConfigFile::SettingsMultiMap::iterator i;
+		for (i = settings->begin(); i != settings->end(); ++i)
+		{
+			typeName = i->first;
+			archName = i->second;
+			ResourceGroupManager::getSingleton().addResourceLocation(
+				archName, typeName, secName);
+		}
+	}
+}
+
 bool GraphicsManager::configure()
 {
-		// Show the configuration dialog and initialise the system
+	// Show the configuration dialog and initialise the system
 	// You can skip this and use root.restoreConfig() to load configuration
 	// settings if you were sure there are valid ones saved in ogre.cfg
 	if(mRoot->showConfigDialog())

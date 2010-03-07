@@ -30,6 +30,11 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #include <Ogre.h>
 #include <OgreRenderWindow.h>
 
+//
+// Defines
+//
+#define WYVERN_ASSAULT_RESOURCES_FILE ".\\config\\resources.cfg"
+
 using namespace Ogre;
 
 namespace WyvernsAssault
@@ -63,6 +68,8 @@ namespace WyvernsAssault
 		bool configure(void);
 		void chooseSceneManager(void);
 		void createResourceListener(void);
+		/** Setup resources (i.e. read and parse resources .cfg file) */
+		void setupResources();
 
 	private:
 		Root*			mRoot;

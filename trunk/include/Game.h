@@ -35,11 +35,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #include ".\Audio\AudioManager.h"
 #include ".\States\StatesManager.h"
 
-//
-// Defines
-//
-#define WYVERN_ASSAULT_RESOURCES_FILE ".\config\resources.cfg"
-
 namespace WyvernsAssault
 {
 	class Game : public Ogre::Singleton<Game>, public FrameListener, public WindowEventListener
@@ -56,10 +51,6 @@ namespace WyvernsAssault
 		void go(); 
 		/** Finalize the game */
 		void finalize();
-
-	private:
-		/** Setup resources (i.e. read and parse resources .cfg file) */
-		void setupResources();
 
 	private:
 
