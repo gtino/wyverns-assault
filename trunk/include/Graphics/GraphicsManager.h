@@ -33,7 +33,10 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 //
 // Defines
 //
-#define WYVERN_ASSAULT_RESOURCES_FILE ".\\config\\resources.cfg"
+#define WYVERNS_ASSAULT_RESOURCES_FILE	".\\config\\resources.cfg"
+#define WYVERNS_ASSAULT_PLUGINS_FILE	".\\config\\plugins.cfg"
+#define WYVERNS_ASSAULT_CONFIG_FILE		".\\config\\config.cfg"
+#define WYVERNS_ASSAULT_LOG_FILE		".\\log.log"
 
 using namespace Ogre;
 

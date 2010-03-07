@@ -21,11 +21,11 @@ bool GraphicsManager::initialize()
 {
 	// create an instance of LogManager prior to using LogManager::getSingleton()
 	Ogre::LogManager* logMgr = new Ogre::LogManager;
-	Ogre::Log *log = Ogre::LogManager::getSingleton().createLog("log.log", true, true, false);
+	Ogre::Log *log = Ogre::LogManager::getSingleton().createLog(WYVERNS_ASSAULT_LOG_FILE, true, true, false);
 	log->setLogDetail(Ogre::LL_BOREME);
 
 	// Create the root
-	mRoot = new Ogre::Root( ".\\config\\Plugins.cfg", ".\\config\\config.cfg"/*, "ogre_log.txt" */);
+	mRoot = new Ogre::Root( WYVERNS_ASSAULT_PLUGINS_FILE, WYVERNS_ASSAULT_CONFIG_FILE);
 
 	// Setup resource locations
 	setupResources();
@@ -53,7 +53,7 @@ void GraphicsManager::setupResources()
 {
 	// Load resource paths from config file
 	ConfigFile cf;
-	cf.load(WYVERN_ASSAULT_RESOURCES_FILE);
+	cf.load(WYVERNS_ASSAULT_RESOURCES_FILE);
 
 	// Go through all sections & settings in the file
 	ConfigFile::SectionIterator seci = cf.getSectionIterator();
