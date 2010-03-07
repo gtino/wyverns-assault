@@ -19,9 +19,6 @@ Game::~Game()
 /** Initialize */ 
 void Game::initialize()
 {
-	// Setup resources
-	setupResources();
-
 	// Initialize graphic manager
 	mGraphicsManager.initialize();
 
@@ -39,31 +36,6 @@ void Game::initialize()
 
 	// Then we load audio
 	mAudioManager.loadResources();
-}
-
-void Game::setupResources()
-{
-	// Load resource paths from config file
-	ConfigFile cf;
-	cf.load(WYVERN_ASSAULT_RESOURCES_FILE);
-
-	// Go through all sections & settings in the file
-	ConfigFile::SectionIterator seci = cf.getSectionIterator();
-
-	String secName, typeName, archName;
-	while (seci.hasMoreElements())
-	{
-		secName = seci.peekNextKey();
-		ConfigFile::SettingsMultiMap *settings = seci.getNext();
-		ConfigFile::SettingsMultiMap::iterator i;
-		for (i = settings->begin(); i != settings->end(); ++i)
-		{
-			typeName = i->first;
-			archName = i->second;
-			ResourceGroupManager::getSingleton().addResourceLocation(
-				archName, typeName, secName);
-		}
-	}
 }
 
 /** Main loop */
