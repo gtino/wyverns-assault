@@ -3,7 +3,8 @@
 using namespace WyvernsAssault;
 
 SplashScreenState::SplashScreenState(GraphicsManager& graphicsManager, InputManager& inputManager, AudioManager& audioManager)
-{
+: BaseState(graphicsManager,inputManager,audioManager)
+{	
 	//
 	// TODO Constructor
 	//
@@ -39,6 +40,7 @@ void SplashScreenState::input()
 	//
 	// TODO Read input
 	//
+	this->mInputManager->capture();
 }
 
 /** Update internal stuff */
@@ -99,7 +101,7 @@ void SplashScreenState::resume()
 }
 
 /** Buffered input - keyboard key clicked */
-bool SplashScreenState::keyClicked(const OIS::KeyEvent& e)
+bool SplashScreenState::keyReleased(const OIS::KeyEvent& e)
 {
 	this->mNextGameStateId = GameStateId::Exit;
 

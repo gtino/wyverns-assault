@@ -58,7 +58,7 @@ namespace WyvernsAssault
 
 	public:
 		/** Buffered input - keyboard key clicked */
-		bool keyClicked(const OIS::KeyEvent& e);
+		bool keyReleased(const OIS::KeyEvent& e);
 
 		/** Get state Id */
 		GameStateId getStateId();

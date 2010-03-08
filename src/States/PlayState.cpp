@@ -3,6 +3,7 @@
 using namespace WyvernsAssault;
 
 PlayState::PlayState(GraphicsManager& graphicsManager, InputManager& inputManager, AudioManager& audioManager)
+: BaseState(graphicsManager,inputManager,audioManager)
 {
 	//
 	// TODO Constructor logic HERE
