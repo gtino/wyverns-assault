@@ -73,6 +73,13 @@ namespace WyvernsAssault
 		/** Read all user inputs */
 		void capture();
 
+		/** Get Keyboard */
+		OIS::Keyboard* getKeyboard();
+		/** Get Mouse */
+		OIS::Mouse* getMouse();
+		/** Get Joystick */
+		OIS::JoyStick* getJoyStick();
+
 		virtual void switchMouseMode();
 		virtual void switchKeyMode();
 		virtual void switchJoyStickMode();
@@ -81,11 +88,11 @@ namespace WyvernsAssault
 		// Keyboard listeners
 		//
 		/** Buffered input - keyboard key clicked */
-		bool keyClicked(const OIS::KeyEvent& e);
+		virtual bool keyClicked(const OIS::KeyEvent& e);
 		/** Buffered input - keyboard key clicked */
-		bool keyPressed(const OIS::KeyEvent& e);
+		virtual bool keyPressed(const OIS::KeyEvent& e);
 		/** Buffered input - keyboard key clicked */
-		bool keyReleased(const OIS::KeyEvent& e);
+		virtual bool keyReleased(const OIS::KeyEvent& e);
 
 		//
 		// MouseListener
