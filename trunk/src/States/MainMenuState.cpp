@@ -3,6 +3,7 @@
 using namespace WyvernsAssault;
 
 MainMenuState::MainMenuState(GraphicsManager& graphicsManager, InputManager& inputManager, AudioManager& audioManager)
+: BaseState(graphicsManager,inputManager,audioManager)
 {
 	//
 	// TODO Constructor logic HERE

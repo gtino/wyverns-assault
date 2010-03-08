@@ -22,6 +22,7 @@ InputManager::~InputManager()
 	//
 	// TODO Destructor
 	//
+	finalize();
 }
 
 /** Initialize the input manager */
@@ -70,19 +71,23 @@ void InputManager::finalize()
 		if ( mMouse )
 		{
 			mInputManager->destroyInputObject( mMouse );
+			mMouse = 0;
 		}
 
 		if ( mKeyboard )
 		{
 			mInputManager->destroyInputObject( mKeyboard );
+			mKeyboard = 0;
 		}
 
 		if( mJoyStick )
 		{
 			mInputManager->destroyInputObject( mJoyStick );
+			mJoyStick = 0;
 		}
 
 		OIS::InputManager::destroyInputSystem( mInputManager );
+		mInputManager = 0;
 	}
 }
 
@@ -117,8 +122,8 @@ void InputManager::unacquireAll()
 
 void InputManager::capture()
 {
-	mMouse->capture();
-	mKeyboard->capture();
+	//mMouse->capture();
+	this->mKeyboard->capture();
 	//mJoyStick->capture(); // TODO Set up joystick properly
 }
 
