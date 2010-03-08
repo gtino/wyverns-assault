@@ -122,9 +122,27 @@ void InputManager::unacquireAll()
 
 void InputManager::capture()
 {
-	//mMouse->capture();
+	mMouse->capture();
 	this->mKeyboard->capture();
 	//mJoyStick->capture(); // TODO Set up joystick properly
+}
+
+/** Get Keyboard */
+OIS::Keyboard* InputManager::getKeyboard()
+{
+	return mKeyboard;
+}
+
+/** Get Mouse */
+OIS::Mouse* InputManager::getMouse()
+{
+	return mMouse;
+}
+
+/** Get Joystick */
+OIS::JoyStick* InputManager::getJoyStick()
+{
+	return mJoyStick;
 }
 
 void InputManager::switchMouseMode()
