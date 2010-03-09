@@ -42,7 +42,7 @@ void IntroState::load()
 }
 
 /** Update internal stuff */
-void IntroState::update()
+void IntroState::update(const float elapsedSeconds)
 {
 	//
 	// TODO Update
@@ -50,7 +50,7 @@ void IntroState::update()
 }
 
 /** Render */
-void IntroState::render()
+void IntroState::render(const float elapsedSeconds)
 {
 	//
 	// TODO Render

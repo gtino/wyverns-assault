@@ -68,7 +68,7 @@ void StatesManager::finalize()
 	this->mInputManager->removeListener(this);
 }
 
-bool StatesManager::loop()
+bool StatesManager::loop(const float elapsedSeconds)
 {
 		//
 		// Read (UNBUFFERED) input
@@ -78,12 +78,12 @@ bool StatesManager::loop()
 		//
 		// Process game logic/physics/state
 		//
-		this->mCurrentState->update();
+		this->mCurrentState->update(elapsedSeconds);
 
 		//
 		// Render output
 		//
-		this->mCurrentState->render();
+		this->mCurrentState->render(elapsedSeconds);
 
 		//
 		// Read next state. If it is not the current one, perform a state change!

@@ -44,7 +44,7 @@ void SplashScreenState::input()
 }
 
 /** Update internal stuff */
-void SplashScreenState::update()
+void SplashScreenState::update(const float elapsedSeconds)
 {
 	//
 	// TODO Update
@@ -52,7 +52,7 @@ void SplashScreenState::update()
 }
 
 /** Render */
-void SplashScreenState::render()
+void SplashScreenState::render(const float elapsedSeconds)
 {
 	//
 	// TODO Render

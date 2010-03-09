@@ -42,7 +42,7 @@ void MainMenuState::load()
 }
 
 /** Update internal stuff */
-void MainMenuState::update()
+void MainMenuState::update(const float elapsedSeconds)
 {
 	//
 	// TODO Update
@@ -50,7 +50,7 @@ void MainMenuState::update()
 }
 
 /** Render */
-void MainMenuState::render()
+void MainMenuState::render(const float elapsedSeconds)
 {
 	//
 	// TODO Render

@@ -42,7 +42,7 @@ void EndingState::input()
 }
 
 /** Update internal stuff */
-void EndingState::update()
+void EndingState::update(const float elapsedSeconds)
 {
 	//
 	// TODO Update
@@ -50,7 +50,7 @@ void EndingState::update()
 }
 
 /** Render */
-void EndingState::render()
+void EndingState::render(const float elapsedSeconds)
 {
 	//
 	// TODO Render

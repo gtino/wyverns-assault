@@ -55,9 +55,9 @@ void Game::go()
 		float elapsedSeconds = loopTimer.getMicroseconds() * 1.0 / 1000000;
 
 		//
-		// Should we keep going? (Game logic)
+		// Should we keep going? (Game input,logic,rendering)
 		//
-		continueRunning = mStatesManager.loop();
+		continueRunning = mStatesManager.loop(elapsedSeconds);
 
 		//
 		// Did the user close the application window?

@@ -96,7 +96,7 @@ namespace WyvernsAssault
 		/** Destroy and release all resources used by the manager */
 		void finalize();
 		/** Run the current state (main loop)*/
-		bool loop();
+		bool loop(const float elapsedSeconds);
 
 		//
 		// Keyboard listeners

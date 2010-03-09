@@ -42,7 +42,7 @@ void PlayState::input()
 }
 
 /** Update internal stuff */
-void PlayState::update()
+void PlayState::update(const float elapsedSeconds)
 {
 	//
 	// TODO Update
@@ -50,7 +50,7 @@ void PlayState::update()
 }
 
 /** Render */
-void PlayState::render()
+void PlayState::render(const float elapsedSeconds)
 {
 	//
 	// TODO Render
