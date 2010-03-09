@@ -79,10 +79,20 @@ namespace WyvernsAssault
 		OIS::Mouse* getMouse();
 		/** Get Joystick */
 		OIS::JoyStick* getJoyStick();
-
+		
+		/** Switches mouse mode (buffered/unbuffered) */
 		virtual void switchMouseMode();
+		/** Switches keyboard mode (buffered/unbuffered) */
 		virtual void switchKeyMode();
+		/** Switches joystick mode (buffered/unbuffered) */
 		virtual void switchJoyStickMode();
+
+		/** Set mouse mode (true:buffered/false:unbuffered) */
+		virtual void setMouseMode(const bool isBuffered);
+		/** Set keyboard mode (true:buffered/false:unbuffered) */
+		virtual void setKeyMode(const bool isBuffered);
+		/** Set joystick mode (true:buffered/false:unbuffered) */
+		virtual void setJoyStickMode(const bool isBuffered);
 
 		//
 		// Keyboard listeners
