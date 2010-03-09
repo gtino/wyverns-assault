@@ -42,7 +42,7 @@ void OutroState::input()
 }
 
 /** Update internal stuff */
-void OutroState::update()
+void OutroState::update(const float elapsedSeconds)
 {
 	//
 	// TODO Update
@@ -50,7 +50,7 @@ void OutroState::update()
 }
 
 /** Render */
-void OutroState::render()
+void OutroState::render(const float elapsedSeconds)
 {
 	//
 	// TODO Render

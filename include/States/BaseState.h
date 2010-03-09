@@ -73,9 +73,9 @@ namespace WyvernsAssault
 		/** Manage input - INPUT */
 		virtual void input() = 0;
 		/** Update internal stuff - PROCESS */
-		virtual void update() = 0;
+		virtual void update(const float elapsedSeconds) = 0;
 		/** Render - OUTPUT */
-		virtual void render() = 0;
+		virtual void render(const float elapsedSeconds) = 0;
 		/** Unload resources */
 		virtual void unload() = 0;
 		/** Destroy the state */

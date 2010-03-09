@@ -42,7 +42,7 @@ void CreditsState::input()
 }
 
 /** Update internal stuff */
-void CreditsState::update()
+void CreditsState::update(const float elapsedSeconds)
 {
 	//
 	// TODO Update
@@ -50,7 +50,7 @@ void CreditsState::update()
 }
 
 /** Render */
-void CreditsState::render()
+void CreditsState::render(const float elapsedSeconds)
 {
 	//
 	// TODO Render

@@ -42,7 +42,7 @@ void GameoverState::load()
 }
 
 /** Update internal stuff */
-void GameoverState::update()
+void GameoverState::update(const float elapsedSeconds)
 {
 	//
 	// TODO Update
@@ -50,7 +50,7 @@ void GameoverState::update()
 }
 
 /** Render */
-void GameoverState::render()
+void GameoverState::render(const float elapsedSeconds)
 {
 	//
 	// TODO Render
