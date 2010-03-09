@@ -16,6 +16,7 @@ SplashScreenState::~SplashScreenState()
 	//
 	// TODO Destructor
 	//
+	destroy();
 }
 
 /** Initialize current state */
@@ -24,6 +25,11 @@ void SplashScreenState::initialise()
 	//
 	// TODO Initialize
 	//
+	mCamera = mGraphicsManager->getSceneManager()->createCamera( "DefaultCamera" );
+
+	mViewport = mGraphicsManager->getRenderWindow()->addViewport( mCamera );
+
+	mViewport->setBackgroundColour( Ogre::ColourValue( 1, 1, 1 ) );
 }
 
 /** Load resources */
@@ -32,6 +38,32 @@ void SplashScreenState::load()
 	//
 	// TODO Load 
 	//
+	// Create background material
+	mBackgroundMaterial = MaterialManager::getSingleton().create("SplashScreenBackground", "General");
+	mBackgroundMaterial->getTechnique(0)->getPass(0)->createTextureUnitState("SplashScreen.png");
+	mBackgroundMaterial->getTechnique(0)->getPass(0)->setDepthCheckEnabled(false);
+	mBackgroundMaterial->getTechnique(0)->getPass(0)->setDepthWriteEnabled(false);
+	mBackgroundMaterial->getTechnique(0)->getPass(0)->setLightingEnabled(false);
+
+	// Create background rectangle covering the whole screen
+	mRectangle = new Rectangle2D(true);
+	mRectangle->setCorners(-1.0, 1.0, 1.0, -1.0);
+	mRectangle->setMaterial("SplashScreenBackground");
+
+	// Render the background before everything else
+	mRectangle->setRenderQueueGroup(RENDER_QUEUE_BACKGROUND);
+
+	// Use infinite AAB to always stay visible
+	AxisAlignedBox aabInf;
+	aabInf.setInfinite();
+	mRectangle->setBoundingBox(aabInf);
+
+	// Attach background to the scene
+	mBackgroundNode = mGraphicsManager->getSceneManager()->getRootSceneNode()->createChildSceneNode("SplashScreenBackground");
+	mBackgroundNode->attachObject(mRectangle);
+
+	// Example of background scrolling
+	//material->getTechnique(0)->getPass(0)->getTextureUnitState(0)->setScrollAnimation(-0.25, 0.0);
 }
 
 /** Manage input */
@@ -65,6 +97,7 @@ void SplashScreenState::unload()
 	//
 	// TODO Unload
 	//
+	mBackgroundNode->detachAllObjects();
 }
 
 /** Destroy the state */
@@ -103,7 +136,13 @@ void SplashScreenState::resume()
 /** Buffered input - keyboard key clicked */
 bool SplashScreenState::keyReleased(const OIS::KeyEvent& e)
 {
-	this->mNextGameStateId = GameStateId::Exit;
+	switch(e.key)
+	{
+	case OIS::KC_P:
+		this->mNextGameStateId = GameStateId::Intro;
+	case OIS::KC_ESCAPE:
+		this->mNextGameStateId = GameStateId::Exit;
+	}
 
 	return true;
 }
