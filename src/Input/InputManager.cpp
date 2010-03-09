@@ -167,21 +167,21 @@ void InputManager::switchJoyStickMode()
 }
 
 /** Set mouse mode (true:buffered/false:unbuffered) */
-void setMouseMode(const bool isBuffered)
+void InputManager::setMouseMode(const bool isBuffered)
 {
 	mUseBufferedInputMouse = isBuffered;
 	mMouse->setBuffered(mUseBufferedInputMouse);
 }
 
 /** Set keyboard mode (true:buffered/false:unbuffered) */
-void setKeyMode(const bool isBuffered)
+void InputManager::setKeyMode(const bool isBuffered)
 {
 	mUseBufferedInputKeys = isBuffered;
 	mKeyboard->setBuffered(mUseBufferedInputKeys);
 }
 
 /** Set joystick mode (true:buffered/false:unbuffered) */
-void setJoyStickMode(const bool isBuffered)
+void InputManager::setJoyStickMode(const bool isBuffered)
 {
 	mUseBufferedInputJoyStick = isBuffered;
 	mJoyStick->setBuffered(mUseBufferedInputJoyStick);
