@@ -143,10 +143,21 @@ bool SplashScreenState::keyReleased(const OIS::KeyEvent& e)
 {
 	switch(e.key)
 	{
-	case OIS::KC_P:
-		this->mNextGameStateId = GameStateId::Intro;
 	case OIS::KC_ESCAPE:
 		this->mNextGameStateId = GameStateId::Exit;
+		break;
+	}
+
+	return true;
+}
+
+bool SplashScreenState::mousePressed(const OIS::MouseEvent &evt, OIS::MouseButtonID buttonId)
+{
+	switch(buttonId)
+	{
+		case OIS::MouseButtonID::MB_Left:
+			this->mNextGameStateId = GameStateId::Intro;
+			break;
 	}
 
 	return true;

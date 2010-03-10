@@ -8,6 +8,7 @@ IntroState::IntroState(GraphicsManager& graphicsManager, InputManager& inputMana
 	//
 	// TODO Constructor
 	//
+	this->mNextGameStateId = this->getStateId();
 }
 
 IntroState::~IntroState()
@@ -37,6 +38,7 @@ void IntroState::input()
 	//
 	// TODO Read input
 	//
+	this->mInputManager->capture();
 }
 
 /** Load resources */
@@ -141,10 +143,21 @@ bool IntroState::keyReleased(const OIS::KeyEvent& e)
 {
 	switch(e.key)
 	{
-	case OIS::KC_P:
-		this->mNextGameStateId = GameStateId::SplashScreen;
 	case OIS::KC_ESCAPE:
 		this->mNextGameStateId = GameStateId::Exit;
+		break;
+	}
+
+	return true;
+}
+
+bool IntroState::mousePressed(const OIS::MouseEvent &evt, OIS::MouseButtonID buttonId)
+{
+	switch(buttonId)
+	{
+		case OIS::MouseButtonID::MB_Left:
+			this->mNextGameStateId = GameStateId::MainMenu;
+			break;
 	}
 
 	return true;
