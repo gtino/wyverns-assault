@@ -184,7 +184,7 @@ void InputManager::setKeyMode(const bool isBuffered)
 void InputManager::setJoyStickMode(const bool isBuffered)
 {
 	mUseBufferedInputJoyStick = isBuffered;
-	mJoyStick->setBuffered(mUseBufferedInputJoyStick);
+	//mJoyStick->setBuffered(mUseBufferedInputJoyStick);
 }
 
 // ---------------
