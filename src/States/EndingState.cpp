@@ -18,7 +18,7 @@ EndingState::~EndingState()
 }
 
 /** Initialize current state */
-void EndingState::initialise()
+void EndingState::initialize()
 {
 	//
 	// TODO Initialize
@@ -66,7 +66,7 @@ void EndingState::unload()
 }
 
 /** Destroy the state */
-void EndingState::destroy()
+void EndingState::finalize()
 {
 	//
 	// TODO Destroy

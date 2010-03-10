@@ -32,7 +32,7 @@ void BaseState::enter()
 	//
 	// Initialize the state...
 	//
-	this->initialise();
+	this->initialize();
 
 	//
 	// ...and load its resources
@@ -50,5 +50,5 @@ void BaseState::exit()
 	//
 	// Destroy and finalize current state
 	//
-	this->destroy();
+	this->finalize();
 }

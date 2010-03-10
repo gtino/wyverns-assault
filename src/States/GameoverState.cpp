@@ -18,7 +18,7 @@ GameoverState::~GameoverState()
 }
 
 /** Initialize current state */
-void GameoverState::initialise()
+void GameoverState::initialize()
 {
 	//
 	// TODO Initialize
@@ -66,7 +66,7 @@ void GameoverState::unload()
 }
 
 /** Destroy the state */
-void GameoverState::destroy()
+void GameoverState::finalize()
 {
 	//
 	// TODO Destroy

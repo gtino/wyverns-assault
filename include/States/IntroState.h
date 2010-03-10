@@ -38,7 +38,7 @@ namespace WyvernsAssault
 
 	public:
 		/** Initialize current state */
-		void initialise();
+		void initialize();
 		/** Load resources */
 		void load();
 		/** Manage input - INPUT */
@@ -50,14 +50,24 @@ namespace WyvernsAssault
 		/** Unload resources */
 		void unload();
 		/** Destroy the state */
-		void destroy();
+		void finalize();
 		/** Called when the state has to be paused */
 		void pause();
 		/** Called when the state has to be resumed (from pause) */
 		void resume();
 
+		/** Buffered input - keyboard key clicked */
+		bool keyReleased(const OIS::KeyEvent& e);
+
 		/** Get state Id */
 		GameStateId getStateId();
+	private:
+		Ogre::Camera* mCamera;
+		Ogre::Viewport* mViewport;
+
+		Ogre::SceneNode* mBackgroundNode;
+		Ogre::MaterialPtr mBackgroundMaterial;
+		Ogre::Rectangle2D* mRectangle;
 	};
 }
 #endif // __INTRO_STATE_H_

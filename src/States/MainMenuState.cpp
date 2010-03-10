@@ -18,7 +18,7 @@ MainMenuState::~MainMenuState()
 }
 
 /** Initialize current state */
-void MainMenuState::initialise()
+void MainMenuState::initialize()
 {
 	//
 	// TODO Initialize
@@ -66,7 +66,7 @@ void MainMenuState::unload()
 }
 
 /** Destroy the state */
-void MainMenuState::destroy()
+void MainMenuState::finalize()
 {
 	//
 	// TODO Destroy
