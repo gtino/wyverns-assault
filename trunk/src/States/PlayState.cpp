@@ -18,7 +18,7 @@ PlayState::~PlayState()
 }
 
 /** Initialize current state */
-void PlayState::initialise()
+void PlayState::initialize()
 {
 	//
 	// TODO Initialize
@@ -66,7 +66,7 @@ void PlayState::unload()
 }
 
 /** Destroy the state */
-void PlayState::destroy()
+void PlayState::finalize()
 {
 	//
 	// TODO Destroy

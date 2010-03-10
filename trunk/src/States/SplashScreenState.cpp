@@ -16,11 +16,11 @@ SplashScreenState::~SplashScreenState()
 	//
 	// TODO Destructor
 	//
-	destroy();
+	finalize();
 }
 
 /** Initialize current state */
-void SplashScreenState::initialise()
+void SplashScreenState::initialize()
 {
 	//
 	// TODO Initialize
@@ -101,11 +101,16 @@ void SplashScreenState::unload()
 }
 
 /** Destroy the state */
-void SplashScreenState::destroy()
+void SplashScreenState::finalize()
 {
 	//
 	// TODO Destroy
 	//
+	mGraphicsManager->getSceneManager()->clearScene();
+
+	mGraphicsManager->getSceneManager()->destroyAllCameras();
+
+	mGraphicsManager->getRoot()->getAutoCreatedWindow()->removeAllViewports();
 }
 
 /** Get state Id */

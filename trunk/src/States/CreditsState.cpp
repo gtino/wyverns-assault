@@ -18,7 +18,7 @@ CreditsState::~CreditsState()
 }
 
 /** Initialize current state */
-void CreditsState::initialise()
+void CreditsState::initialize()
 {
 	//
 	// TODO Initialize
@@ -66,7 +66,7 @@ void CreditsState::unload()
 }
 
 /** Destroy the state */
-void CreditsState::destroy()
+void CreditsState::finalize()
 {
 	//
 	// TODO Destroy

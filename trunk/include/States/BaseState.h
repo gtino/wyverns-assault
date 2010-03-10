@@ -67,7 +67,7 @@ namespace WyvernsAssault
 
 	public:
 		/** Initialize current state */
-		virtual void initialise() = 0;
+		virtual void initialize() = 0;
 		/** Load resources */
 		virtual void load() = 0;
 		/** Manage input - INPUT */
@@ -79,7 +79,7 @@ namespace WyvernsAssault
 		/** Unload resources */
 		virtual void unload() = 0;
 		/** Destroy the state */
-		virtual void destroy() = 0;
+		virtual void finalize() = 0;
 
 		/** Called the first time we enter the state */
 		void enter();

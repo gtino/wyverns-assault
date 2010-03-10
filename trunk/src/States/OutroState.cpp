@@ -18,7 +18,7 @@ OutroState::~OutroState()
 }
 
 /** Initialize current state */
-void OutroState::initialise()
+void OutroState::initialize()
 {
 	//
 	// TODO Initialize
@@ -66,7 +66,7 @@ void OutroState::unload()
 }
 
 /** Destroy the state */
-void OutroState::destroy()
+void OutroState::finalize()
 {
 	//
 	// TODO Destroy

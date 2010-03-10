@@ -38,7 +38,7 @@ namespace WyvernsAssault
 
 	public:
 		/** Initialize current state */
-		void initialise();
+		void initialize();
 		/** Load resources */
 		void load();
 		/** Manage input - INPUT */
@@ -50,7 +50,7 @@ namespace WyvernsAssault
 		/** Unload resources */
 		void unload();
 		/** Destroy the state */
-		void destroy();
+		void finalize();
 		/** Called when the state has to be paused */
 		void pause();
 		/** Called when the state has to be resumed (from pause) */
