@@ -31,6 +31,10 @@ void PlayState::initialize()
 	//
 	this->mNextGameStateId = this->getStateId();
 
+	// Camera manager constructor
+	mCameraManager = new CameraManager(mGraphicsManager->getSceneManager(), mGraphicsManager->getRoot());
+	mCameraManager.initialize();
+
 	mCamera = mGraphicsManager->getSceneManager()->createCamera( "GameCamera" );
 
 	mViewport = mGraphicsManager->getRenderWindow()->addViewport( mCamera );
