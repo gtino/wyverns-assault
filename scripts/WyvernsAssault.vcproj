@@ -291,6 +291,30 @@
 					>
 				</File>
 			</Filter>
+			<Filter
+				Name="SceneLoader"
+				>
+				<File
+					RelativePath="..\src\SceneLoader\DotSceneLoader.cpp"
+					>
+				</File>
+				<File
+					RelativePath="..\src\SceneLoader\tinystr.cpp"
+					>
+				</File>
+				<File
+					RelativePath="..\src\SceneLoader\tinyxml.cpp"
+					>
+				</File>
+				<File
+					RelativePath="..\src\SceneLoader\tinyxmlerror.cpp"
+					>
+				</File>
+				<File
+					RelativePath="..\src\SceneLoader\tinyxmlparser.cpp"
+					>
+				</File>
+			</Filter>
 		</Filter>
 		<Filter
 			Name="Header Files"
@@ -394,6 +418,22 @@
 				>
 				<File
 					RelativePath="..\include\Graphics\GraphicsManager.h"
+					>
+				</File>
+			</Filter>
+			<Filter
+				Name="SceneLoader"
+				>
+				<File
+					RelativePath="..\include\SceneLoader\DotSceneLoader.h"
+					>
+				</File>
+				<File
+					RelativePath="..\include\SceneLoader\tinystr.h"
+					>
+				</File>
+				<File
+					RelativePath="..\include\SceneLoader\tinyxml.h"
 					>
 				</File>
 			</Filter>
