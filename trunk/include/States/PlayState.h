@@ -25,8 +25,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
 #include "BaseState.h"
 
-#include "..\include\Camera\CameraManager.h"
-
 namespace WyvernsAssault
 {
 	/**
@@ -71,9 +69,6 @@ namespace WyvernsAssault
 		Ogre::SceneNode* mBackgroundNode;
 		Ogre::MaterialPtr mBackgroundMaterial;
 		Ogre::Rectangle2D* mRectangle;
-
-	private:
-		CameraManager* mCameraManager;
 	};
 }
 #endif // __PLAY_STATE_H_
