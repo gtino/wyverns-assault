@@ -1,0 +1,71 @@
+<scene>
+	<camera name="Camera">
+		<clipping near="1" far="1000"/>
+		<position x="400" y="200" z="500"/>
+		<lookAt x="300" y="0" z="0"/>
+	</camera>
+	<light name="AmbientLight" type="point">
+		<position x="0" y="200" z="0"/>
+		<colourDiffuse r="0.5" g="0.5" b="0.2"/>
+		<colourSpecular r="0.5" g="0.5" b="0.5"/>
+	</light>
+	<nodes>
+	<node>
+		<entity meshFile="L1.1.mesh" name="entity0"/>
+	</node>
+	<node>
+		<position x="20" y="0" z="-60"/>
+		<entity meshFile="background_plane1.mesh" name="entity1"/>
+	</node>
+	<node>
+		<position x="180.567" y="-31.675" z="-31.726"/>
+		<entity meshFile="obstacle_rock.mesh" name="entity2"/>
+	</node>
+	<node>
+		<position x="313.96" y="-42.397" z="-18.637"/>
+		<entity meshFile="rock1.mesh" name="entity3"/>
+	</node>
+	<node>
+		<position x="368.305" y="-43.185" z="-25.686"/>
+		<entity meshFile="rock2.mesh" name="entity4"/>
+	</node>
+	<node>
+		<position x="379.505" y="-44.518" z="-53.816"/>
+		<entity meshFile="rock3.mesh" name="entity5"/>
+	</node>
+	<node>
+		<position x="0" y="200" z="0"/>
+		<entity meshFile="rock4.mesh" name="entity6"/>
+	</node>
+	<node>
+		<position x="0" y="200" z="0"/>
+		<entity meshFile="rock5.mesh" name="entity7"/>
+	</node>
+	<node>
+		<position x="0" y="200" z="0"/>
+		<entity meshFile="rock6.mesh" name="entity8"/>
+	</node>
+	<node>
+		<position x="0" y="200" z="0"/>
+		<entity meshFile="rock7.mesh" name="entity9"/>
+	</node>
+	<node>
+		<position x="474.844" y="-42.581" z="-45.942"/>
+		<entity meshFile="wheat.mesh" name="entity10"/>
+	</node>
+	<node>
+		<entity meshFile="house.mesh" name="entity11"/>
+	</node>
+	<node>
+		<position x="0" y="10" z="0"/>
+		<entity meshFile="house.mesh" name="entity12"/>
+	</node>
+	<node>
+		<entity meshFile="house_fence.mesh" name="entity13"/>
+	</node>
+	</nodes>
+</scene>
+
+
+
+
