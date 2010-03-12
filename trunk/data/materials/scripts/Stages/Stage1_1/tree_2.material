@@ -12,7 +12,7 @@ material lilafullapetita
 			texture_unit Map#179
 			{
 				texture_alias Map#179
-				texture tree2_small.jpg
+				texture tree2_small.png
 				filtering linear linear linear
 			}
 		}
@@ -53,7 +53,7 @@ material lilafullagran
 			texture_unit Map#176
 			{
 				texture_alias Map#176
-				texture tree2.jpg
+				texture tree2.png
 				filtering linear linear linear
 			}
 		}

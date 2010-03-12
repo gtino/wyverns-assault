@@ -12,7 +12,7 @@ material polifullagran
 			texture_unit Map#167
 			{
 				texture_alias Map#167
-				texture tree3.jpg
+				texture tree3.png
 				filtering linear linear linear
 			}
 		}
@@ -36,7 +36,7 @@ material polifullamitja
 			texture_unit Map#170
 			{
 				texture_alias Map#170
-				texture tree3_medium.jpg
+				texture tree3_medium.png
 				filtering linear linear linear
 			}
 		}
@@ -60,7 +60,7 @@ material polifullapetita
 			texture_unit Map#173
 			{
 				texture_alias Map#173
-				texture tree3_small.jpg
+				texture tree3_small.png
 				filtering linear linear linear
 			}
 		}

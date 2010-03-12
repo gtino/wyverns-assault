@@ -12,7 +12,7 @@ material campdeblat
 			texture_unit Map#155
 			{
 				texture_alias Map#155
-				texture wheat.jpg
+				texture wheat.png
 				filtering linear linear linear
 			}
 		}

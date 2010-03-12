@@ -6,7 +6,6 @@
 #include "OgreVector3.h"
 #include "OgreQuaternion.h"
 #include "vector"
-#include "GameLevel.h"
 
 // Forward declarations
 class TiXmlElement;
@@ -35,7 +34,7 @@ namespace Ogre
 		DotSceneLoader() : mSceneMgr(0) {}
 		virtual ~DotSceneLoader() {}
 
-		void parseDotScene(const String &SceneName, const String &groupName, SceneNode *pAttachNode = NULL, const String &sPrependNode = "");
+		void parseDotScene(const String &SceneName, const String &groupName,SceneManager *levelSceneManager ,SceneNode *pAttachNode = NULL, const String &sPrependNode = "");
 		String getProperty(const String &ndNm, const String &prop);
 
 		std::vector<nodeProperty> nodeProperties;
