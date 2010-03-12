@@ -1,0 +1,14 @@
+
+material 18-Default
+{
+	technique
+	{
+		pass
+		{
+		}
+
+	}
+
+}
+
+
