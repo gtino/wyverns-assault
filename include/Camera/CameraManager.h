@@ -37,7 +37,7 @@ namespace WyvernsAssault
 	class CameraManager
 	{
 	public:
-		CameraManager(SceneManager* sceneManager, Root* root);
+		CameraManager(SceneManager* sceneManager, RenderWindow* renderWindow);
 		~CameraManager();
 
 	public: 
@@ -60,18 +60,19 @@ namespace WyvernsAssault
 		/** Set default camera **/
 		void setDefaultCamera();
 		/** Get camera camera **/
-		String getDefaultCamera();
+		Camera* getDefaultCamera();
 		/** Enable default camera **/
 		void enableDetaultCamera();
 	
 	private:
-		Camera*			mCameras[MAXCAMERAS];
+		Camera*			mCamera;
 		Camera*			mDefaultCamera;
-		Viewport*		mViewport;
+//		Viewport*		mViewport;
+//		Viewport*		mDefaultViewport;
 
 	private:
-		Root*			mRoot;
 		SceneManager*	mSceneManager;
+		RenderWindow*	mRenderWindow;
 	};
 }
 

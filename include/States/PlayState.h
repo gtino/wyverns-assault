@@ -73,7 +73,7 @@ namespace WyvernsAssault
 		Ogre::Rectangle2D* mRectangle;
 
 	private:
-		CameraManager mCameraManager;
+		CameraManager* mCameraManager;
 	};
 }
 #endif // __PLAY_STATE_H_

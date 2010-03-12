@@ -3,10 +3,10 @@
 using namespace Ogre;
 using namespace WyvernsAssault;
 
-CameraManager::CameraManager(SceneManager* sceneManager, Root* root)
+CameraManager::CameraManager(SceneManager* sceneManager, RenderWindow* renderWindow)
 {
-	this->mRoot = root;
 	this->mSceneManager = sceneManager;
+	this->mRenderWindow = renderWindow;
 }
 
 CameraManager::~CameraManager()
@@ -20,15 +20,15 @@ CameraManager::~CameraManager()
 /** Initialize the audio manager */
 void CameraManager::initialize()
 {
-	mDefaultCamera = mSceneManager->createCamera( "Default" );
+	setDefaultCamera();
+	setCamera("Camera1", Vector3(1.0,1.0,1.0), Vector3(0.0,0.0,0.0));
+	setCamera("Camera2", Vector3(10.0,10.0,10.0), Vector3(0.0,0.0,0.0));
 }
 
 /** Finalize the audio manager */
 void CameraManager::finalize()
 {
-	//
-	// TODO Finalize
-	//
+	mSceneManager->destroyAllCameras();
 }
 
 void CameraManager::loadResources()
@@ -45,37 +45,34 @@ void CameraManager::unloadResources()
 	//
 }
 
-/*****************/
-
 void CameraManager::setCamera(String name, Vector3 position, Vector3 lookAt)
 {
-	Camera* mCamera = this->mSceneManager->createCamera(name);
+	mCamera = mSceneManager->createCamera(name);
 	mCamera->setPosition(position);
 	mCamera->lookAt(lookAt);
 }
 
 Camera* CameraManager::getCamera(String name)
 {
-	return this->mCameras[0];
+	return this->mSceneManager->getCamera(name);
 }
 
 void CameraManager::enableCamera(String name)
 {
-	this->mSceneManager->getSceneNode(name);
+
 }
 
 void CameraManager::setDefaultCamera()
 {
-
+	mDefaultCamera = mSceneManager->createCamera( "Default" );
 }
 
-String CameraManager::getDefaultCamera()
+Camera* CameraManager::getDefaultCamera()
 {
-	return mDefaultCamera->getName();
+	return mDefaultCamera;
 }
 
 void CameraManager::enableDetaultCamera()
 {
 
 }
-/*****************/
