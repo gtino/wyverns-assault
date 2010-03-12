@@ -1,0 +1,65 @@
+
+material 057-Default
+{
+	technique Map#188
+	{
+		pass Map#189
+		{
+			ambient 0.698039 0.698039 0.698039 1
+			diffuse 0.698039 0.698039 0.698039 1
+			specular 0.898039 0.898039 0.898039 1 20
+
+			texture_unit Map#190
+			{
+				texture_alias Map#190
+				texture house.jpg
+				filtering linear linear linear
+			}
+		}
+
+	}
+
+}
+
+
+
+material tritronc
+{
+	technique
+	{
+		pass
+		{
+			ambient 0.552941 0.309804 0.145098 1
+			diffuse 0.552941 0.309804 0.145098 1
+			specular 0 0 0 10 0
+		}
+
+	}
+
+}
+
+
+
+material 08-Default
+{
+	technique Map#191
+	{
+		pass Map#192
+		{
+			ambient 0.698039 0.698039 0.698039 1
+			diffuse 0.698039 0.698039 0.698039 1
+			specular 0.898039 0.898039 0.898039 1 20
+
+			texture_unit Map#193
+			{
+				texture_alias Map#193
+				texture roof.jpg
+				filtering linear linear linear
+			}
+		}
+
+	}
+
+}
+
+
