@@ -25,6 +25,8 @@ void MainMenuState::initialize()
 	//
 	// TODO Initialize
 	//
+	this->mNextGameStateId = this->getStateId();
+
 	mCamera = mGraphicsManager->getSceneManager()->createCamera( "DefaultCamera" );
 
 	mViewport = mGraphicsManager->getRenderWindow()->addViewport( mCamera );

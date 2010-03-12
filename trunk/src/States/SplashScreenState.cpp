@@ -8,7 +8,6 @@ SplashScreenState::SplashScreenState(GraphicsManager& graphicsManager, InputMana
 	//
 	// TODO Constructor
 	//
-	this->mNextGameStateId = this->getStateId();
 }
 
 SplashScreenState::~SplashScreenState()
@@ -25,6 +24,8 @@ void SplashScreenState::initialize()
 	//
 	// TODO Initialize
 	//
+	this->mNextGameStateId = this->getStateId();
+
 	mCamera = mGraphicsManager->getSceneManager()->createCamera( "DefaultCamera" );
 
 	mViewport = mGraphicsManager->getRenderWindow()->addViewport( mCamera );

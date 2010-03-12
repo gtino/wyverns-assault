@@ -58,6 +58,17 @@ namespace WyvernsAssault
 
 		/** Get state Id */
 		GameStateId getStateId();
+
+		/** Buffered input - keyboard key clicked */
+		bool keyReleased(const OIS::KeyEvent& e);
+
+	private:
+		Ogre::Camera* mCamera;
+		Ogre::Viewport* mViewport;
+
+		Ogre::SceneNode* mBackgroundNode;
+		Ogre::MaterialPtr mBackgroundMaterial;
+		Ogre::Rectangle2D* mRectangle;
 	};
 }
 #endif // __GAMEOVER_STATE_H_

@@ -8,7 +8,6 @@ IntroState::IntroState(GraphicsManager& graphicsManager, InputManager& inputMana
 	//
 	// TODO Constructor
 	//
-	this->mNextGameStateId = this->getStateId();
 }
 
 IntroState::~IntroState()
@@ -16,15 +15,19 @@ IntroState::~IntroState()
 	//
 	// TODO Destructor
 	//
-	finalize();
+	exit();
 }
 
 /** Initialize current state */
 void IntroState::initialize()
 {
+	this->mNextGameStateId = this->getStateId();
+
 	//
 	// TODO Initialize
 	//
+	this->mNextGameStateId = this->getStateId();
+
 	mCamera = mGraphicsManager->getSceneManager()->createCamera( "DefaultCamera" );
 
 	mViewport = mGraphicsManager->getRenderWindow()->addViewport( mCamera );
