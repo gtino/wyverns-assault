@@ -29,7 +29,7 @@ material trifulla
 			texture_unit Map#161
 			{
 				texture_alias Map#161
-				texture tree1.jpg
+				texture tree1.png
 				filtering linear linear linear
 			}
 		}

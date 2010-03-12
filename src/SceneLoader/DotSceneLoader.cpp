@@ -1,12 +1,16 @@
-#include "DotSceneLoader.h"
-#include "tinyxml.h"
+#include "..\include\SceneLoader\DotSceneLoader.h"
+#include "..\include\SceneLoader\tinyxml.h"
 #include "Ogre.h"
 
 using namespace std;
 using namespace Ogre;
 
-void DotSceneLoader::parseDotScene(const String &SceneName, const String &groupName, SceneNode *pAttachNode, const String &sPrependNode)
+void DotSceneLoader::parseDotScene(const String &SceneName, const String &groupName, SceneManager *levelSceneManager ,SceneNode *pAttachNode, const String &sPrependNode)
 {
+
+	//Set SceneManager
+	mSceneMgr = levelSceneManager;
+
 	//Set up shared object values
 	m_sGroupName = groupName;
 	m_sPrependNode = sPrependNode;
@@ -59,7 +63,7 @@ void DotSceneLoader::parseDotScene(const String &SceneName, const String &groupN
 	// figure out where to attach any nodes we create
 	mAttachNode = pAttachNode;
 	if(!mAttachNode)
-		mAttachNode = GAMELEVEL.GetSceneManager()->getRootSceneNode();
+		mAttachNode = mSceneMgr->getRootSceneNode();
 
 	// Process the scene
 	processScene(XMLRoot);
@@ -103,8 +107,10 @@ void DotSceneLoader::processScene(TiXmlElement *XMLRoot)
 
 	// Process camera
 	pElement = XMLRoot->FirstChildElement("camera");
-	if(pElement)
+	if(pElement){
+		LogManager::getSingleton().logMessage("[DotSceneLoader] Camera detected ");
 		processCamera(pElement);
+	}
 
 	LogManager::getSingleton().logMessage("[DotSceneLoader] Camera processed.");
 
@@ -155,7 +161,7 @@ void DotSceneLoader::processLight(TiXmlElement *XMLNode, SceneNode *pParent)
 	String id = getAttrib(XMLNode, "id");
 	
 	// Create the light
-	Light *pLight = GAMELEVEL.GetSceneManager()->createLight(name);
+	Light *pLight = mSceneMgr->createLight(name);
 	if(pParent)
 		pParent->attachObject(pLight);
 
@@ -216,14 +222,15 @@ void DotSceneLoader::processCamera(TiXmlElement *XMLNode, SceneNode *pParent)
 	String projectionType = getAttrib(XMLNode, "projectionType", "perspective");
 
 	// Find an existing cmaera
-	Camera *pCamera = GAMELEVEL.GetSceneManager()->getCamera(name);
+	Camera *pCamera = mSceneMgr->getCamera(name);
 	
 	if (pCamera == NULL)
 	{
 		// Create the camera
-		Camera *pCamera = GAMELEVEL.GetSceneManager()->createCamera(name);
+		Camera *pCamera = mSceneMgr->createCamera(name);
 		if(pParent)
 			pParent->attachObject(pCamera);
+			LogManager::getSingleton().logMessage("[DotSceneLoader] Crea Camara.");
 	}
 
 	// Set the field-of-view
@@ -247,6 +254,7 @@ void DotSceneLoader::processCamera(TiXmlElement *XMLNode, SceneNode *pParent)
 	{
 		pCamera->setNearClipDistance(getAttribReal(pElement, "near", 0));
 		pCamera->setFarClipDistance(getAttribReal(pElement, "far", 0));
+		LogManager::getSingleton().logMessage("[DotSceneLoader] Set Clipping.");
 	}
 
 	// Process position
@@ -425,7 +433,7 @@ void DotSceneLoader::processLookTarget(TiXmlElement *XMLNode, SceneNode *pParent
 	{
 		if(!nodeName.empty())
 		{
-			SceneNode *pLookNode = GAMELEVEL.GetSceneManager()->getSceneNode(nodeName);
+			SceneNode *pLookNode = mSceneMgr->getSceneNode(nodeName);
 			position = pLookNode->_getDerivedPosition();
 		}
 
@@ -459,7 +467,7 @@ void DotSceneLoader::processTrackTarget(TiXmlElement *XMLNode, SceneNode *pParen
 	// Setup the track target
 	try
 	{
-		SceneNode *pTrackNode = GAMELEVEL.GetSceneManager()->getSceneNode(nodeName);
+		SceneNode *pTrackNode = mSceneMgr->getSceneNode(nodeName);
 		pParent->setAutoTracking(true, pTrackNode, localDirection, offset);
 	}
 	catch(Ogre::Exception &/*e*/)
@@ -491,7 +499,7 @@ void DotSceneLoader::processEntity(TiXmlElement *XMLNode, SceneNode *pParent)
 	try
 	{
 		MeshManager::getSingleton().load(meshFile, m_sGroupName);
-		pEntity = GAMELEVEL.GetSceneManager()->createEntity(name, meshFile);
+		pEntity = mSceneMgr->createEntity(name, meshFile);
 		pEntity->setCastShadows(castShadows);
 		pParent->attachObject(pEntity);
 
@@ -521,7 +529,7 @@ void DotSceneLoader::processSkyBox(TiXmlElement *XMLNode)
 		rotation = parseQuaternion(pElement);
 
 	// Setup the sky box
-	GAMELEVEL.GetSceneManager()->setSkyBox(true, material, distance, drawFirst, rotation, m_sGroupName);
+	mSceneMgr->setSkyBox(true, material, distance, drawFirst, rotation, m_sGroupName);
 }
 
 void DotSceneLoader::processLightRange(TiXmlElement *XMLNode, Light *pLight)

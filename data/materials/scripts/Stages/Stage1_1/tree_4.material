@@ -12,7 +12,7 @@ material avetfulla
 			texture_unit Map#187
 			{
 				texture_alias Map#187
-				texture tree4.jpg
+				texture tree4.png
 				filtering linear linear linear
 			}
 		}

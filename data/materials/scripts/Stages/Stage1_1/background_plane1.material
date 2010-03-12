@@ -36,7 +36,7 @@ material 12-Default
 			texture_unit Map#158
 			{
 				texture_alias Map#158
-				texture backgroundfield.jpg
+				texture backgroundfield.png
 				filtering linear linear linear
 			}
 		}

@@ -12,7 +12,7 @@ material rocsobstacle
 			texture_unit Map#122
 			{
 				texture_alias Map#122
-				texture obstaclerock.jpg
+				texture obstaclerock.png
 				filtering linear linear linear
 			}
 		}

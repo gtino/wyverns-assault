@@ -12,7 +12,7 @@ material riu1
 			texture_unit Map#145
 			{
 				texture_alias Map#145
-				texture water1.jpg
+				texture water1.png
 				filtering linear linear linear
 				alpha_op_ex modulate src_current src_texture
 			}
@@ -37,7 +37,7 @@ material Material#6
 			texture_unit Map#149
 			{
 				texture_alias Map#149
-				texture mixfloor.jpg
+				texture mixfloor.png
 				filtering linear linear linear
 			}
 		}
@@ -61,7 +61,7 @@ material terra
 			texture_unit Map#116
 			{
 				texture_alias Map#116
-				texture sandfloor.jpg
+				texture sandfloor.png
 				filtering linear linear linear
 			}
 		}
@@ -85,7 +85,7 @@ material rocamuntanya
 			texture_unit Map#119
 			{
 				texture_alias Map#119
-				texture rockmountain.jpg
+				texture rockmountain.png
 				filtering linear linear linear
 			}
 		}
@@ -109,7 +109,7 @@ material riu2
 			texture_unit Map#152
 			{
 				texture_alias Map#152
-				texture water2.jpg
+				texture water2.png
 				filtering linear linear linear
 			}
 		}

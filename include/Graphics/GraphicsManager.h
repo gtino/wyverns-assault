@@ -49,6 +49,7 @@ namespace WyvernsAssault
 	{
 	public:
 		GraphicsManager();
+
 		~GraphicsManager();
 
 	public:
