@@ -58,6 +58,9 @@ namespace WyvernsAssault
 
 		/** Get state Id */
 		GameStateId getStateId();
+
+		/** Buffered input - keyboard key clicked */
+		bool keyReleased(const OIS::KeyEvent& e);
 	
 	private:
 		Ogre::Camera* mCamera;

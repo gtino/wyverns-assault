@@ -8,7 +8,6 @@ PlayState::PlayState(GraphicsManager& graphicsManager, InputManager& inputManage
 	//
 	// TODO Constructor logic HERE
 	//
-	this->mNextGameStateId = this->getStateId();
 }
 
 PlayState::~PlayState()
@@ -22,14 +21,16 @@ PlayState::~PlayState()
 /** Initialize current state */
 void PlayState::initialize()
 {
-	mInputManager->setKeyMode(false);
-	mInputManager->setMouseMode(false);
-	mInputManager->setJoyStickMode(false);
+	mInputManager->setKeyMode(true);
+	mInputManager->setMouseMode(true);
+	mInputManager->setJoyStickMode(true);
 
 
 	//
 	// TODO Initialize
 	//
+	this->mNextGameStateId = this->getStateId();
+
 	mCamera = mGraphicsManager->getSceneManager()->createCamera( "GameCamera" );
 
 	mViewport = mGraphicsManager->getRenderWindow()->addViewport( mCamera );
@@ -137,4 +138,20 @@ void PlayState::resume()
 	//
 	// TODO : Resume state
 	//
+}
+
+/** Buffered input - keyboard key clicked */
+bool PlayState::keyReleased(const OIS::KeyEvent& e)
+{
+	switch(e.key)
+	{
+	case OIS::KeyCode::KC_W:
+		this->mNextGameStateId = GameStateId::Ending;
+		break;
+	case OIS::KeyCode::KC_G:
+		this->mNextGameStateId = GameStateId::GameOver;
+		break;
+	}
+
+	return true;
 }
