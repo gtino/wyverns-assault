@@ -29,10 +29,10 @@ bool GuiManager::initialize(Ogre::RenderWindow* window)
 {
 	//CEGUI::OgreCEGUIRenderer* m_GUIrenderer = new CEGUI::OgreCEGUIRenderer(mWindow,Ogre::RENDER_QUEUE_OVERLAY, false, 3000);
 	//mSystem  =new CEGUI::System(m_GUIrenderer);
-	CEGUI::Logger::getSingleton().setLoggingLevel(CEGUI::Informative); // this is recomenned to help with debugging, but not necessary
+	//CEGUI::Logger::getSingleton().setLoggingLevel(CEGUI::Informative); // this is recomenned to help with debugging, but not necessary
 	
 	// Load resources
-	loadResources();
+	//loadResources();
 
 	return true;
 }
@@ -105,8 +105,8 @@ void GuiManager::finalize()
 void GuiManager::loadResources()
 {
 	//load Scheme
-	CEGUI::SchemeManager::getSingleton().loadScheme((CEGUI::utf8*)"TaharezLookSkin.scheme");
-	mSystem->setDefaultMouseCursor((CEGUI::utf8*)"TaharezLook", (CEGUI::utf8*)"MouseArrow");
+	//CEGUI::SchemeManager::getSingleton().loadScheme((CEGUI::utf8*)"TaharezLookSkin.scheme");
+	//mSystem->setDefaultMouseCursor((CEGUI::utf8*)"TaharezLook", (CEGUI::utf8*)"MouseArrow");
 }
 
 /*void GuiManager::unloadResources()
@@ -118,18 +118,18 @@ void GuiManager::loadResources()
 
 void GuiManager::loadMenu(void){
 
-	CEGUI::Window* m_sheet = CEGUI::WindowManager::getSingleton().loadWindowLayout((CEGUI::utf8*)"ogregui.layout"); 
-	mSystem->setGUISheet(m_sheet);
+	//CEGUI::Window* m_sheet = CEGUI::WindowManager::getSingleton().loadWindowLayout((CEGUI::utf8*)"ogregui.layout"); 
+	//mSystem->setGUISheet(m_sheet);
 	
-	WindowManager* Wmgr = WindowManager::getSingletonPtr();
-	System* mGUISystem = System::getSingletonPtr();
-	Window* myRoot = Wmgr->getWindow("RootWindow"); // get default window
+	//WindowManager* Wmgr = WindowManager::getSingletonPtr();
+	//System* mGUISystem = System::getSingletonPtr();
+	//Window* myRoot = Wmgr->getWindow("RootWindow"); // get default window
 
 	// Menu Background
-	Window* MenuBackground = Wmgr->createWindow("TaharezLook/StaticImage", "Background");
-	myRoot->addChildWindow( MenuBackground );
-	MenuBackground->setPosition( UVector2( UDim( 0.0f, 0.0f ), UDim( 0.0f, 0.0f) ) );
-	MenuBackground->setSize( UVector2( UDim( 1.0f, 0.0f ), UDim( 1.0f, 0.0f ) ) );  // full screen
+	//Window* MenuBackground = Wmgr->createWindow("TaharezLook/StaticImage", "Background");
+	//myRoot->addChildWindow( MenuBackground );
+	//MenuBackground->setPosition( UVector2( UDim( 0.0f, 0.0f ), UDim( 0.0f, 0.0f) ) );
+	//MenuBackground->setSize( UVector2( UDim( 1.0f, 0.0f ), UDim( 1.0f, 0.0f ) ) );  // full screen
 
 	// New game Button 
 	//PushButton* NewGame = (PushButton*)Wmgr->createWindow("TaharezLook/Button", "NewGame");
