@@ -32,13 +32,20 @@ void PlayState::initialize()
 	mCameraManager = new CameraManager(mGraphicsManager->getSceneManager(), mGraphicsManager->getRenderWindow());
 	mCameraManager->initialize();
 
+	// Lights manager constructor
+	mLightsManager = new LightsManager(mGraphicsManager->getSceneManager());
+	mLightsManager->initialize();
+
 	std::auto_ptr<DotSceneLoader> sceneLoader(new DotSceneLoader());
-	sceneLoader->parseDotScene("Stage1_1.XML","General",mGraphicsManager->getSceneManager(), mCameraManager);
+	sceneLoader->parseDotScene("Stage1_1.XML","General",mGraphicsManager->getSceneManager(), mCameraManager, mLightsManager);
 
 	/** Temporal player node - DELETE **/
 	player = mGraphicsManager->getSceneManager()->createEntity("Player", "house.mesh");
 	mPlayer = mGraphicsManager->getSceneManager()->getRootSceneNode()->createChildSceneNode();
 	mPlayer->attachObject(player);
+	mPlayer->setPosition(Vector3(20,0,0));
+
+	mCameraManager->gameCamera(mPlayer);
 	/***********************************/
 }
 

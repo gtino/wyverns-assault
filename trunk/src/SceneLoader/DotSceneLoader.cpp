@@ -5,7 +5,7 @@
 using namespace std;
 using namespace Ogre;
 
-void DotSceneLoader::parseDotScene(const String &SceneName, const String &groupName, SceneManager *levelSceneManager, WyvernsAssault::CameraManager* cameraManager,SceneNode *pAttachNode, const String &sPrependNode)
+void DotSceneLoader::parseDotScene(const String &SceneName, const String &groupName, SceneManager *levelSceneManager, WyvernsAssault::CameraManager* cameraManager, WyvernsAssault::LightsManager* lightsManager, SceneNode *pAttachNode, const String &sPrependNode)
 {
 
 	//Set SceneManager
@@ -13,6 +13,9 @@ void DotSceneLoader::parseDotScene(const String &SceneName, const String &groupN
 
 	//Set CameraManager
 	mCameraManager = cameraManager;
+
+	//Set LightsManager
+	mLightsManager = lightsManager;
 
 	//Set up shared object values
 	m_sGroupName = groupName;
@@ -172,38 +175,13 @@ void DotSceneLoader::processLights(TiXmlElement *XMLNode)
 {
 	TiXmlElement *pElement;
 
-	// Process node
-	pElement = XMLNode->FirstChildElement("node");
+	// Process light
+	pElement = XMLNode->FirstChildElement("light");
 	while(pElement)
 	{
-		processNode(pElement);
-		pElement = pElement->NextSiblingElement("node");
+		processLight(pElement);
+		pElement = pElement->NextSiblingElement("light");
 	}
-		
-	// Process position
-	pElement = XMLNode->FirstChildElement("position");
-	if(pElement)
-	{
-		mAttachNode->setPosition(parseVector3(pElement));
-		mAttachNode->setInitialState();
-	}
-
-	// Process rotation
-	pElement = XMLNode->FirstChildElement("rotation");
-	if(pElement)
-	{
-		mAttachNode->setOrientation(parseQuaternion(pElement));
-		mAttachNode->setInitialState();
-	}
-
-	// Process scale
-	pElement = XMLNode->FirstChildElement("scale");
-	if(pElement)
-	{
-		mAttachNode->setScale(parseVector3(pElement));
-		mAttachNode->setInitialState();
-	}
-
 }
 
 void DotSceneLoader::processNode(TiXmlElement *XMLNode, SceneNode *pParent)
@@ -339,106 +317,105 @@ void DotSceneLoader::processCamera(TiXmlElement *XMLNode, SceneNode *pParent)
 
 void DotSceneLoader::processLight(TiXmlElement *XMLNode, SceneNode *pParent)
 {
-	// Construct the node's name
-	String name = m_sPrependNode + getAttrib(XMLNode, "name");
-
-	// Create the scene node
-	SceneNode *pNode;
-	if(name.empty())
-	{
-		// Let Ogre choose the name
-		if(pParent)
-			pNode = pParent->createChildSceneNode();
-		else
-			pNode = mAttachNode->createChildSceneNode();
-	}
-	else
-	{
-		// Provide the name
-		if(pParent)
-			pNode = pParent->createChildSceneNode(name);
-		else
-			pNode = mAttachNode->createChildSceneNode(name);
-	}
-
-	// Process other attributes
-	String id = getAttrib(XMLNode, "id");
-	bool isTarget = getAttribBool(XMLNode, "isTarget");
+	String type, name;
+	Light::LightTypes lType;
+	Vector3 position, direction;
+	ColourValue diffuse, specular;
 
 	TiXmlElement *pElement;
 
-	// Process position
-	pElement = XMLNode->FirstChildElement("position");
-	if(pElement)
+	type = getAttrib(XMLNode, "type");
+
+	// Process light type
+	if(type == "ambient")
 	{
-		pNode->setPosition(parseVector3(pElement));
-		pNode->setInitialState();
+		// Special light type, only color
+		pElement = XMLNode->FirstChildElement("color");
+		if(pElement)
+		{
+			diffuse = parseColour(pElement);
+			mLightsManager->setAmbientLight(diffuse);
+		}
 	}
-
-	// Process rotation
-	pElement = XMLNode->FirstChildElement("rotation");
-	if(pElement)
+	else
 	{
-		pNode->setOrientation(parseQuaternion(pElement));
-		pNode->setInitialState();
-	}
-
-	// Process scale
-	pElement = XMLNode->FirstChildElement("scale");
-	if(pElement)
-	{
-		pNode->setScale(parseVector3(pElement));
-		pNode->setInitialState();
-	}
-
-	// Process yaw
-	pElement = XMLNode->FirstChildElement("yaw");
-	if(pElement)
-	{
-		pNode->yaw(Ogre::Radian(getAttribReal(pElement,"angle",0)));
-		pNode->setInitialState();
-	}
-
-	// Process lookTarget
-	pElement = XMLNode->FirstChildElement("lookTarget");
-	if(pElement)
-		processLookTarget(pElement, pNode);
-
-	// Process trackTarget
-	pElement = XMLNode->FirstChildElement("trackTarget");
-	if(pElement)
-		processTrackTarget(pElement, pNode);
-
-	// Process node
-	pElement = XMLNode->FirstChildElement("node");
-	while(pElement)
-	{
-		processNode(pElement, pNode);
-		pElement = pElement->NextSiblingElement("node");
-	}
-
-	// Process entity
-	pElement = XMLNode->FirstChildElement("entity");
-	while(pElement)
-	{
-		processEntity(pElement, pNode);
-		pElement = pElement->NextSiblingElement("entity");
-	}
-
-	// Process light
-	pElement = XMLNode->FirstChildElement("lights");
-	while(pElement)
-	{
-		processLights(pElement);
-		pElement = pElement->NextSiblingElement("lights");
-	}
-
-	// Process camera
-	pElement = XMLNode->FirstChildElement("cameras");
-	while(pElement)
-	{
-		processCameras(pElement);
-		pElement = pElement->NextSiblingElement("cameras");
+		// Other light types
+		name = getAttrib(XMLNode, "name");
+		if (type == "point")
+		{
+			lType = Light::LT_POINT;
+			// Process position
+			pElement = XMLNode->FirstChildElement("position");
+			if(pElement)
+			{
+				position = parseVector3(pElement);
+			}
+			// Process diffuse color
+			pElement = XMLNode->FirstChildElement("diffuse");
+			if(pElement)
+			{
+				diffuse = parseColour(pElement);
+			}
+			// Process specular color
+			pElement = XMLNode->FirstChildElement("specular");
+			if(pElement)
+			{
+				specular = parseColour(pElement);
+			}
+			mLightsManager->createLight(name, lType, diffuse, specular, position);
+		}
+		else if(type == "directional")
+		{
+			lType = Light::LT_DIRECTIONAL;
+			// Process direction
+			pElement = XMLNode->FirstChildElement("direction");
+			if(pElement)
+			{
+				direction = parseVector3(pElement);
+			}
+			// Process diffuse color
+			pElement = XMLNode->FirstChildElement("diffuse");
+			if(pElement)
+			{
+				diffuse = parseColour(pElement);
+			}
+			// Process specular color
+			pElement = XMLNode->FirstChildElement("specular");
+			if(pElement)
+			{
+				specular = parseColour(pElement);
+			}
+			mLightsManager->createLight(name, lType, diffuse, specular, Vector3::ZERO, direction);
+		}
+		else if(type == "spot")
+		{
+			lType = Light::LT_SPOTLIGHT;
+			// Process position
+			pElement = XMLNode->FirstChildElement("position");
+			if(pElement)
+			{
+				position = parseVector3(pElement);
+			}
+			// Process direction
+			pElement = XMLNode->FirstChildElement("direction");
+			if(pElement)
+			{
+				direction = parseVector3(pElement);
+			}
+			// Process diffuse color
+			pElement = XMLNode->FirstChildElement("diffuse");
+			if(pElement)
+			{
+				diffuse = parseColour(pElement);
+			}
+			// Process specular color
+			pElement = XMLNode->FirstChildElement("specular");
+			if(pElement)
+			{
+				specular = parseColour(pElement);
+			}
+			mLightsManager->createLight(name, lType, diffuse, specular, position, direction);
+		}
 	}
 }
 
@@ -606,7 +583,6 @@ String DotSceneLoader::getAttrib(TiXmlElement *XMLNode, const String &attrib, co
 	else
 		return defaultValue;
 }
-
 Real DotSceneLoader::getAttribReal(TiXmlElement *XMLNode, const String &attrib, Real defaultValue)
 {
 	if(XMLNode->Attribute(attrib.c_str()))
@@ -633,7 +609,6 @@ bool DotSceneLoader::getAttribBool(TiXmlElement *XMLNode, const String &attrib, 
 
 	return false;
 }
-
 
 Vector3 DotSceneLoader::parseVector3(TiXmlElement *XMLNode)
 {
