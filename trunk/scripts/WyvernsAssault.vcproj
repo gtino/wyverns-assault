@@ -68,7 +68,7 @@
 				AdditionalDependencies="OgreMain_d.lib OIS_d.lib CEGUIBase_d.lib OgreGUIRenderer_d.lib"
 				OutputFile="$(OutDir)\$(ProjectName).exe"
 				LinkIncremental="2"
-				AdditionalLibraryDirectories="$(OGRE_HOME)\lib"
+				AdditionalLibraryDirectories="&quot;$(OGRE_HOME)\lib&quot;"
 				GenerateDebugInformation="true"
 				ProgramDatabaseFile="$(OutDir)/WyvernsAssault.pdb"
 				SubSystem="2"
@@ -252,10 +252,6 @@
 				</File>
 			</Filter>
 			<Filter
-				Name="GUI"
-				>
-			</Filter>
-			<Filter
 				Name="Input"
 				>
 				<File
@@ -312,6 +308,14 @@
 				</File>
 				<File
 					RelativePath="..\src\SceneLoader\tinyxmlparser.cpp"
+					>
+				</File>
+			</Filter>
+			<Filter
+				Name="GUI"
+				>
+				<File
+					RelativePath="..\src\GUI\GuiManager.cpp"
 					>
 				</File>
 			</Filter>
@@ -384,6 +388,10 @@
 			<Filter
 				Name="GUI"
 				>
+				<File
+					RelativePath="..\include\GUI\GuiManager.h"
+					>
+				</File>
 			</Filter>
 			<Filter
 				Name="Input"
