@@ -31,7 +31,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #define GAMECAMERA		1
 #define FPSCAMERA		2
 #define FIXEDCAMERA		3
-#define TRAVELLCAMERA	4
+#define TRAVELCAMERA	4
 
 using namespace Ogre;
 
@@ -57,15 +57,21 @@ namespace WyvernsAssault
 		/** Get camera type **/
 		int getCameraType(){ return mCameraType; }
 
+		/** Camera functions **/
 		void positionCamera(Vector3 position);
 		void lookAtCamera(Vector3 lookAt);
 		void moveCamera(Vector3 move);
 		void followNode(SceneNode* node, Vector3 offset = Vector3::ZERO);
 		void updateCamera(SceneNode* node);
 
+		/** Camera types functions **/
 		void gameCamera(SceneNode* node);
 		void fpsCamera(SceneNode* node);
 		void fixedCamera(int id);
+		void travelCamera(int id);
+
+		/** Fixed cameras functions **/
+		void setFixedCamera(int camera, Vector3 position, Vector3 lookAt);
 
 	
 	private:

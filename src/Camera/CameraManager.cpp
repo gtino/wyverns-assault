@@ -22,10 +22,6 @@ void CameraManager::initialize()
 	mCamera->setNearClipDistance(1);
 	mCamera->setFarClipDistance(1000);
 	mViewport = mRenderWindow->addViewport( mCamera );
-	mFixedCameras[0][0] = Vector3(100,50,100);
-	mFixedCameras[0][1] = Vector3(10,0,10);
-	mFixedCameras[1][0] = Vector3(300,50,150);
-	mFixedCameras[1][1] = Vector3(100,-5,-10);
 }
 
 /** Finalize the camera manager */
@@ -72,7 +68,7 @@ void CameraManager::updateCamera(SceneNode* node)
 
 			break;
 
-		case TRAVELLCAMERA:
+		case TRAVELCAMERA:
 
 			break;
 	}
@@ -84,15 +80,14 @@ void CameraManager::gameCamera(SceneNode* node)
 {
 	mCameraType = GAMECAMERA;
 	followNode(node);
-	positionCamera(node->getPosition() + Vector3(-5,30,80));
+	positionCamera(node->getPosition() + Vector3(5,30,50));
 }
 
 void CameraManager::fpsCamera(SceneNode* node)
 {
 	mCameraType = FPSCAMERA;
 	mCamera->setAutoTracking(false);
-	//followNode(node);
-	positionCamera(node->getPosition());
+	positionCamera(node->getPosition() + Vector3(0,PLAYERHEIGHT,0));
 	lookAtCamera(node->getPosition() + Vector3(100,PLAYERHEIGHT,0));
 }
 
@@ -102,4 +97,17 @@ void CameraManager::fixedCamera(int id)
 	mCamera->setAutoTracking(false);
 	positionCamera(mFixedCameras[id][0]);
 	lookAtCamera(mFixedCameras[id][1]);
+}
+
+void CameraManager::travelCamera(int id)
+{
+	mCameraType = TRAVELCAMERA;
+	mCamera->setAutoTracking(false);
+}
+
+/** Fixed cameras functions **/
+void CameraManager::setFixedCamera(int camera, Vector3 position, Vector3 lookAt)
+{
+	mFixedCameras[camera][0] = position;
+	mFixedCameras[camera][1] = lookAt;
 }

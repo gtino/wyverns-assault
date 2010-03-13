@@ -5,11 +5,14 @@
 using namespace std;
 using namespace Ogre;
 
-void DotSceneLoader::parseDotScene(const String &SceneName, const String &groupName, SceneManager *levelSceneManager ,SceneNode *pAttachNode, const String &sPrependNode)
+void DotSceneLoader::parseDotScene(const String &SceneName, const String &groupName, SceneManager *levelSceneManager, WyvernsAssault::CameraManager* cameraManager,SceneNode *pAttachNode, const String &sPrependNode)
 {
 
 	//Set SceneManager
 	mSceneMgr = levelSceneManager;
+
+	//Set CameraManager
+	mCameraManager = cameraManager;
 
 	//Set up shared object values
 	m_sGroupName = groupName;
@@ -97,23 +100,21 @@ void DotSceneLoader::processScene(TiXmlElement *XMLRoot)
 		processNodes(pElement);
 	
 	LogManager::getSingleton().logMessage("[DotSceneLoader] Nodes processed.");
-
-	// Process light
-	pElement = XMLRoot->FirstChildElement("light");
-	if(pElement)
-		processLight(pElement);
-
-	LogManager::getSingleton().logMessage("[DotSceneLoader] Light processed.");
-
-	// Process camera
-	pElement = XMLRoot->FirstChildElement("camera");
+	
+	// Process cameras
+	pElement = XMLRoot->FirstChildElement("cameras");
 	if(pElement){
-		LogManager::getSingleton().logMessage("[DotSceneLoader] Camera detected ");
-		processCamera(pElement);
+		processCameras(pElement);
 	}
 
 	LogManager::getSingleton().logMessage("[DotSceneLoader] Camera processed.");
 
+	// Process lights
+	pElement = XMLRoot->FirstChildElement("lights");
+	if(pElement)
+		processLights(pElement);
+
+	LogManager::getSingleton().logMessage("[DotSceneLoader] Light processed.");
 }
 
 void DotSceneLoader::processNodes(TiXmlElement *XMLNode)
@@ -154,142 +155,53 @@ void DotSceneLoader::processNodes(TiXmlElement *XMLNode)
 
 }
 
-void DotSceneLoader::processLight(TiXmlElement *XMLNode, SceneNode *pParent)
+void DotSceneLoader::processCameras(TiXmlElement *XMLNode)
 {
-	// Process attributes
-	String name = getAttrib(XMLNode, "name");
-	String id = getAttrib(XMLNode, "id");
-	
-	// Create the light
-	Light *pLight = mSceneMgr->createLight(name);
-	if(pParent)
-		pParent->attachObject(pLight);
-
-	String sValue = getAttrib(XMLNode, "type");
-	if(sValue == "point")
-		pLight->setType(Light::LT_POINT);
-	else if(sValue == "directional")
-		pLight->setType(Light::LT_DIRECTIONAL);
-	else if(sValue == "spot")
-		pLight->setType(Light::LT_SPOTLIGHT);
-	else if(sValue == "radPoint")
-		pLight->setType(Light::LT_POINT);
-
-	pLight->setVisible(getAttribBool(XMLNode, "visible", true));
-	pLight->setCastShadows(getAttribBool(XMLNode, "castShadows", true));
-
 	TiXmlElement *pElement;
 
-	// Process position
-	pElement = XMLNode->FirstChildElement("position");
-	if(pElement)
-		pLight->setPosition(parseVector3(pElement));
-
-	// Process normal
-	pElement = XMLNode->FirstChildElement("normal");
-	if(pElement)
-		pLight->setDirection(parseVector3(pElement));
-
-	// Process colourDiffuse
-	pElement = XMLNode->FirstChildElement("colourDiffuse");
-	if(pElement)
-		pLight->setDiffuseColour(parseColour(pElement));
-
-	// Process colourSpecular
-	pElement = XMLNode->FirstChildElement("colourSpecular");
-	if(pElement)
-		pLight->setSpecularColour(parseColour(pElement));
-
-	// Process lightRange
-	pElement = XMLNode->FirstChildElement("lightRange");
-	if(pElement)
-		processLightRange(pElement, pLight);
-
-	// Process lightAttenuation
-	pElement = XMLNode->FirstChildElement("lightAttenuation");
-	if(pElement)
-		processLightAttenuation(pElement, pLight);
+	// Process camera
+	pElement = XMLNode->FirstChildElement("camera");
+	while(pElement)
+	{
+		processCamera(pElement);
+		pElement = pElement->NextSiblingElement("camera");
+	}
 }
 
-void DotSceneLoader::processCamera(TiXmlElement *XMLNode, SceneNode *pParent)
+void DotSceneLoader::processLights(TiXmlElement *XMLNode)
 {
-
-	// Process attributes
-	String name = getAttrib(XMLNode, "name");
-	String id = getAttrib(XMLNode, "id");
-	Real fov = getAttribReal(XMLNode, "fov", 45);
-	Real aspectRatio = getAttribReal(XMLNode, "aspectRatio", 1.3333);
-	String projectionType = getAttrib(XMLNode, "projectionType", "perspective");
-
-	// Find an existing cmaera
-	Camera *pCamera = mSceneMgr->getCamera(name);
-	
-	if (pCamera == NULL)
-	{
-		// Create the camera
-		Camera *pCamera = mSceneMgr->createCamera(name);
-		if(pParent)
-			pParent->attachObject(pCamera);
-			LogManager::getSingleton().logMessage("[DotSceneLoader] Crea Camara.");
-	}
-
-	// Set the field-of-view
-	pCamera->setFOVy(Ogre::Degree(fov));
-
-	// Set the aspect ratio
-	pCamera->setAspectRatio(aspectRatio);
-
-	// Set the projection type
-	if(projectionType == "perspective")
-		pCamera->setProjectionType(PT_PERSPECTIVE);
-	else if(projectionType == "orthographic")
-		pCamera->setProjectionType(PT_ORTHOGRAPHIC);
-
-
 	TiXmlElement *pElement;
 
-	// Process clipping
-	pElement = XMLNode->FirstChildElement("clipping");
-	if(pElement)
+	// Process node
+	pElement = XMLNode->FirstChildElement("node");
+	while(pElement)
 	{
-		pCamera->setNearClipDistance(getAttribReal(pElement, "near", 0));
-		pCamera->setFarClipDistance(getAttribReal(pElement, "far", 0));
-		LogManager::getSingleton().logMessage("[DotSceneLoader] Set Clipping.");
+		processNode(pElement);
+		pElement = pElement->NextSiblingElement("node");
 	}
-
+		
 	// Process position
 	pElement = XMLNode->FirstChildElement("position");
 	if(pElement)
-		pCamera->setPosition(parseVector3(pElement));
-	
-	// Process roll
-	pElement = XMLNode->FirstChildElement("roll");
-	if(pElement)
-		pCamera->roll(Ogre::Radian(getAttribReal(pElement,"angle",0)));
-
-	// Process yaw
-	pElement = XMLNode->FirstChildElement("yaw");
-	if(pElement)
-		pCamera->yaw(Ogre::Radian(getAttribReal(pElement,"angle",0)));
-
-	// Process pitch
-	pElement = XMLNode->FirstChildElement("pitch");
-	if(pElement)
-		pCamera->pitch(Ogre::Radian(getAttribReal(pElement,"angle",0)));
-
-	// Process lookAt
-	pElement = XMLNode->FirstChildElement("lookAt");
-	if(pElement)
-		pCamera->lookAt(parseVector3(pElement));
+	{
+		mAttachNode->setPosition(parseVector3(pElement));
+		mAttachNode->setInitialState();
+	}
 
 	// Process rotation
 	pElement = XMLNode->FirstChildElement("rotation");
 	if(pElement)
-		pCamera->setOrientation(parseQuaternion(pElement));
-	
-	for( pElement = XMLNode->FirstChildElement("cumulativeRotation"); pElement; pElement = pElement->NextSiblingElement("cumulativeRotation") )	
 	{
-		pCamera->setOrientation(pCamera->getOrientation() * parseQuaternion(pElement));
+		mAttachNode->setOrientation(parseQuaternion(pElement));
+		mAttachNode->setInitialState();
+	}
+
+	// Process scale
+	pElement = XMLNode->FirstChildElement("scale");
+	if(pElement)
+	{
+		mAttachNode->setScale(parseVector3(pElement));
+		mAttachNode->setInitialState();
 	}
 
 }
@@ -383,19 +295,150 @@ void DotSceneLoader::processNode(TiXmlElement *XMLNode, SceneNode *pParent)
 	}
 
 	// Process light
-	pElement = XMLNode->FirstChildElement("light");
+	pElement = XMLNode->FirstChildElement("lights");
 	while(pElement)
 	{
-		processLight(pElement, pNode);
-		pElement = pElement->NextSiblingElement("light");
+		processLights(pElement);
+		pElement = pElement->NextSiblingElement("lights");
 	}
 
 	// Process camera
-	pElement = XMLNode->FirstChildElement("camera");
+	pElement = XMLNode->FirstChildElement("cameras");
 	while(pElement)
 	{
-		processCamera(pElement, pNode);
-		pElement = pElement->NextSiblingElement("camera");
+		processCameras(pElement);
+		pElement = pElement->NextSiblingElement("cameras");
+	}
+}
+
+void DotSceneLoader::processCamera(TiXmlElement *XMLNode, SceneNode *pParent)
+{
+	int id;
+	Vector3 position, lookAt;
+
+	TiXmlElement *pElement;
+
+	id = getAttribInt(XMLNode, "id");
+
+	// Process position
+	pElement = XMLNode->FirstChildElement("position");
+	if(pElement)
+	{
+		position = parseVector3(pElement);
+	}
+	
+	// Process lookAt
+	pElement = XMLNode->FirstChildElement("lookAt");
+	if(pElement)
+	{
+		lookAt = parseVector3(pElement);
+	}
+
+	mCameraManager->setFixedCamera(id, position, lookAt);
+}
+
+void DotSceneLoader::processLight(TiXmlElement *XMLNode, SceneNode *pParent)
+{
+	// Construct the node's name
+	String name = m_sPrependNode + getAttrib(XMLNode, "name");
+
+	// Create the scene node
+	SceneNode *pNode;
+	if(name.empty())
+	{
+		// Let Ogre choose the name
+		if(pParent)
+			pNode = pParent->createChildSceneNode();
+		else
+			pNode = mAttachNode->createChildSceneNode();
+	}
+	else
+	{
+		// Provide the name
+		if(pParent)
+			pNode = pParent->createChildSceneNode(name);
+		else
+			pNode = mAttachNode->createChildSceneNode(name);
+	}
+
+	// Process other attributes
+	String id = getAttrib(XMLNode, "id");
+	bool isTarget = getAttribBool(XMLNode, "isTarget");
+
+	TiXmlElement *pElement;
+
+	// Process position
+	pElement = XMLNode->FirstChildElement("position");
+	if(pElement)
+	{
+		pNode->setPosition(parseVector3(pElement));
+		pNode->setInitialState();
+	}
+
+	// Process rotation
+	pElement = XMLNode->FirstChildElement("rotation");
+	if(pElement)
+	{
+		pNode->setOrientation(parseQuaternion(pElement));
+		pNode->setInitialState();
+	}
+
+	// Process scale
+	pElement = XMLNode->FirstChildElement("scale");
+	if(pElement)
+	{
+		pNode->setScale(parseVector3(pElement));
+		pNode->setInitialState();
+	}
+
+	// Process yaw
+	pElement = XMLNode->FirstChildElement("yaw");
+	if(pElement)
+	{
+		pNode->yaw(Ogre::Radian(getAttribReal(pElement,"angle",0)));
+		pNode->setInitialState();
+	}
+
+	// Process lookTarget
+	pElement = XMLNode->FirstChildElement("lookTarget");
+	if(pElement)
+		processLookTarget(pElement, pNode);
+
+	// Process trackTarget
+	pElement = XMLNode->FirstChildElement("trackTarget");
+	if(pElement)
+		processTrackTarget(pElement, pNode);
+
+	// Process node
+	pElement = XMLNode->FirstChildElement("node");
+	while(pElement)
+	{
+		processNode(pElement, pNode);
+		pElement = pElement->NextSiblingElement("node");
+	}
+
+	// Process entity
+	pElement = XMLNode->FirstChildElement("entity");
+	while(pElement)
+	{
+		processEntity(pElement, pNode);
+		pElement = pElement->NextSiblingElement("entity");
+	}
+
+	// Process light
+	pElement = XMLNode->FirstChildElement("lights");
+	while(pElement)
+	{
+		processLights(pElement);
+		pElement = pElement->NextSiblingElement("lights");
+	}
+
+	// Process camera
+	pElement = XMLNode->FirstChildElement("cameras");
+	while(pElement)
+	{
+		processCameras(pElement);
+		pElement = pElement->NextSiblingElement("cameras");
 	}
 }
 
