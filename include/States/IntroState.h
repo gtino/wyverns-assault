@@ -67,6 +67,7 @@ namespace WyvernsAssault
 	private:
 		Ogre::Camera* mCamera;
 		Ogre::Viewport* mViewport;
+		GuiManager* mGuiManager;
 
 		Ogre::SceneNode* mBackgroundNode;
 		Ogre::MaterialPtr mBackgroundMaterial;

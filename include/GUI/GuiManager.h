@@ -55,7 +55,7 @@ namespace WyvernsAssault
 
 	public:
 		/** Initialize CEGUI */
-		bool initialize();
+		bool initialize(Ogre::RenderWindow* window);
 		/** Finalize CEGUI */
 		void finalize();
 		
@@ -64,6 +64,7 @@ namespace WyvernsAssault
 		/** Unload CEGUI resources */
 		void unloadResources();
 
+		void loadMenu(void);
 		/** Render one frame */
 		//bool renderOneFrame();
 
@@ -73,7 +74,7 @@ namespace WyvernsAssault
 		//CEGUIManager*	getSceneManager(void);
 
 	private:
-		void chooseMenu(void);
+		void choose(void);
 		//bool configure(void);
 		//void chooseSceneManager(void);
 		//void createResourceListener(void);
