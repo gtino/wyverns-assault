@@ -51,8 +51,8 @@ void MainMenuState::load()
 	//
 	// TODO Load 
 	//
-	mGuiManager->loadResources();
-	mGuiManager->loadMenu();
+	//mGuiManager->loadResources();
+	//mGuiManager->loadMenu();
 	// Create background material
 	mBackgroundMaterial = MaterialManager::getSingleton().create("MainMenuBackground", "General");
 	mBackgroundMaterial->getTechnique(0)->getPass(0)->createTextureUnitState("MainMenu.png");
