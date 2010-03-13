@@ -25,7 +25,13 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
 #include <Ogre.h>
 
-#define MAXCAMERAS	10
+#define FIXEDCAMERAS	8
+#define PLAYERHEIGHT	5
+// Camera types
+#define GAMECAMERA		1
+#define FPSCAMERA		2
+#define FIXEDCAMERA		3
+#define TRAVELLCAMERA	4
 
 using namespace Ogre;
 
@@ -45,30 +51,28 @@ namespace WyvernsAssault
 		void initialize();
 		/** Finalize the camera manager */
 		void finalize();
-		/** Load camera resources */
-		void loadResources();
-		/** Unload camera resources */
-		void unloadResources();
 
-		/** Set camera from camera array **/
-		void setCamera(String name, Vector3 position, Vector3 lootAt);
-		/** Get camera from camera array **/
-		Camera* getCamera(String name);
-		/** Enable camera **/
-		void enableCamera(String name);
+		/** Get camera **/
+		Camera* getCamera(){ return mCamera; }
+		/** Get camera type **/
+		int getCameraType(){ return mCameraType; }
 
-		/** Set default camera **/
-		void setDefaultCamera();
-		/** Get camera camera **/
-		Camera* getDefaultCamera();
-		/** Enable default camera **/
-		void enableDetaultCamera();
+		void positionCamera(Vector3 position);
+		void lookAtCamera(Vector3 lookAt);
+		void moveCamera(Vector3 move);
+		void followNode(SceneNode* node, Vector3 offset = Vector3::ZERO);
+		void updateCamera(SceneNode* node);
+
+		void gameCamera(SceneNode* node);
+		void fpsCamera(SceneNode* node);
+		void fixedCamera(int id);
+
 	
 	private:
 		Camera*			mCamera;
-		Camera*			mDefaultCamera;
-//		Viewport*		mViewport;
-//		Viewport*		mDefaultViewport;
+		int				mCameraType;
+		Viewport*		mViewport;
+		Vector3			mFixedCameras[FIXEDCAMERAS][2];
 
 	private:
 		SceneManager*	mSceneManager;
