@@ -33,11 +33,13 @@ void PlayState::initialize()
 	mCameraManager->initialize();
 
 	std::auto_ptr<DotSceneLoader> sceneLoader(new DotSceneLoader());
-	sceneLoader->parseDotScene("Stage1_1.XML","General",mGraphicsManager->getSceneManager());
+	sceneLoader->parseDotScene("Stage1_1.XML","General",mGraphicsManager->getSceneManager(), mCameraManager);
 
+	/** Temporal player node - DELETE **/
 	player = mGraphicsManager->getSceneManager()->createEntity("Player", "house.mesh");
 	mPlayer = mGraphicsManager->getSceneManager()->getRootSceneNode()->createChildSceneNode();
 	mPlayer->attachObject(player);
+	/***********************************/
 }
 
 /** Load resources */
@@ -78,26 +80,52 @@ void PlayState::update(const float elapsedSeconds)
 	{
 		mCameraManager->fixedCamera(1);
 	}
+	else if(this->mInputManager->getKeyboard()->isKeyDown(OIS::KeyCode::KC_5))
+	{
+		mCameraManager->fixedCamera(2);
+	}
+	else if(this->mInputManager->getKeyboard()->isKeyDown(OIS::KeyCode::KC_6))
+	{
+		mCameraManager->fixedCamera(3);
+	}
+	else if(this->mInputManager->getKeyboard()->isKeyDown(OIS::KeyCode::KC_7))
+	{
+		mCameraManager->fixedCamera(4);
+	}
+	else if(this->mInputManager->getKeyboard()->isKeyDown(OIS::KeyCode::KC_8))
+	{
+		mCameraManager->fixedCamera(5);
+	}
+	else if(this->mInputManager->getKeyboard()->isKeyDown(OIS::KeyCode::KC_9))
+	{
+		mCameraManager->fixedCamera(6);
+	}
+	else if(this->mInputManager->getKeyboard()->isKeyDown(OIS::KeyCode::KC_0))
+	{
+		mCameraManager->travelCamera(0);
+	}
 	
 	// Movement
 	if(mCameraManager->getCameraType() == GAMECAMERA)
 	{
+		// 4 directions move
 		if(this->mInputManager->getKeyboard()->isKeyDown(OIS::KeyCode::KC_RIGHT))
 		{
 			mPlayer->setPosition(mPlayer->getPosition() + Vector3(SPEED,0,0));
 		}
-		else if(this->mInputManager->getKeyboard()->isKeyDown(OIS::KeyCode::KC_LEFT))
+		if(this->mInputManager->getKeyboard()->isKeyDown(OIS::KeyCode::KC_LEFT))
 		{
 			mPlayer->setPosition(mPlayer->getPosition() + Vector3(-SPEED,0,0));
 		}
-		else if(this->mInputManager->getKeyboard()->isKeyDown(OIS::KeyCode::KC_UP))
+		if(this->mInputManager->getKeyboard()->isKeyDown(OIS::KeyCode::KC_UP))
 		{
 			mPlayer->setPosition(mPlayer->getPosition() + Vector3(0,0,-SPEED));
 		}
-		else if(this->mInputManager->getKeyboard()->isKeyDown(OIS::KeyCode::KC_DOWN))
+		if(this->mInputManager->getKeyboard()->isKeyDown(OIS::KeyCode::KC_DOWN))
 		{
 			mPlayer->setPosition(mPlayer->getPosition() + Vector3(0,0,SPEED));
 		}
+		// Update camera position
 		mCameraManager->updateCamera(mPlayer);
 	}
 	else if(mCameraManager->getCameraType() == FPSCAMERA)
@@ -106,18 +134,20 @@ void PlayState::update(const float elapsedSeconds)
 		{
 			mPlayer->setPosition(mPlayer->getPosition() + Vector3(0,0,SPEED));
 		}
-		else if(this->mInputManager->getKeyboard()->isKeyDown(OIS::KeyCode::KC_LEFT))
+		if(this->mInputManager->getKeyboard()->isKeyDown(OIS::KeyCode::KC_LEFT))
 		{
 			mPlayer->setPosition(mPlayer->getPosition() + Vector3(0,0,-SPEED));
 		}
-		else if(this->mInputManager->getKeyboard()->isKeyDown(OIS::KeyCode::KC_UP))
+		if(this->mInputManager->getKeyboard()->isKeyDown(OIS::KeyCode::KC_UP))
 		{
 			mPlayer->setPosition(mPlayer->getPosition() + Vector3(SPEED,0,0));
 		}
-		else if(this->mInputManager->getKeyboard()->isKeyDown(OIS::KeyCode::KC_DOWN))
+		if(this->mInputManager->getKeyboard()->isKeyDown(OIS::KeyCode::KC_DOWN))
 		{
 			mPlayer->setPosition(mPlayer->getPosition() + Vector3(-SPEED,0,0));
 		}
+
+		// Update camera position
 		mCameraManager->updateCamera(mPlayer);
 	}
 }

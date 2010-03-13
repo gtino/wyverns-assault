@@ -7,6 +7,8 @@
 #include "OgreQuaternion.h"
 #include "vector"
 
+#include "..\Camera\CameraManager.h"
+
 // Forward declarations
 class TiXmlElement;
 
@@ -34,7 +36,7 @@ namespace Ogre
 		DotSceneLoader() : mSceneMgr(0) {}
 		virtual ~DotSceneLoader() {}
 
-		void parseDotScene(const String &SceneName, const String &groupName,SceneManager *levelSceneManager ,SceneNode *pAttachNode = NULL, const String &sPrependNode = "");
+		void parseDotScene(const String &SceneName, const String &groupName,SceneManager *levelSceneManager, WyvernsAssault::CameraManager* cameraManager, SceneNode *pAttachNode = NULL, const String &sPrependNode = "");
 		String getProperty(const String &ndNm, const String &prop);
 
 		std::vector<nodeProperty> nodeProperties;
@@ -45,10 +47,13 @@ namespace Ogre
 		void processScene(TiXmlElement *XMLRoot);
 
 		void processNodes(TiXmlElement *XMLNode);
-		void processLight(TiXmlElement *XMLNode, SceneNode *pParent = 0);
-		void processCamera(TiXmlElement *XMLNode, SceneNode *pParent = 0);
+		void processCameras(TiXmlElement *XMLNode);
+		void processLights(TiXmlElement *XMLNode);		
 
 		void processNode(TiXmlElement *XMLNode, SceneNode *pParent = 0);
+		void processCamera(TiXmlElement *XMLNode, SceneNode *pParent = 0);
+		void processLight(TiXmlElement *XMLNode, SceneNode *pParent = 0);
+
 		void processLookTarget(TiXmlElement *XMLNode, SceneNode *pParent);
 		void processTrackTarget(TiXmlElement *XMLNode, SceneNode *pParent);
 		void processEntity(TiXmlElement *XMLNode, SceneNode *pParent);
@@ -67,11 +72,12 @@ namespace Ogre
 		Quaternion parseQuaternion(TiXmlElement *XMLNode);
 		ColourValue parseColour(TiXmlElement *XMLNode);
 
-
+	private:
 		SceneManager *mSceneMgr;
 		SceneNode *mAttachNode;
 		String m_sGroupName;
 		String m_sPrependNode;
+		WyvernsAssault::CameraManager* mCameraManager;
 	};
 }
 
