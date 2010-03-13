@@ -18,6 +18,7 @@ BaseState::BaseState(GraphicsManager& graphicsManager, InputManager& inputManage
 	this->mGraphicsManager	= &graphicsManager;
 	this->mInputManager		= &inputManager;
 	this->mAudioManager		= &audioManager;
+
 }
 
 BaseState::~BaseState()

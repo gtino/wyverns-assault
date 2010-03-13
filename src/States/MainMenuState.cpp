@@ -32,6 +32,8 @@ void MainMenuState::initialize()
 	mViewport = mGraphicsManager->getRenderWindow()->addViewport( mCamera );
 
 	mViewport->setBackgroundColour( Ogre::ColourValue( 1, 1, 1 ) );
+
+	mGuiManager->initialize(mGraphicsManager->getRenderWindow());
 }
 
 /** Manage input */
@@ -49,6 +51,8 @@ void MainMenuState::load()
 	//
 	// TODO Load 
 	//
+	mGuiManager->loadResources();
+	mGuiManager->loadMenu();
 	// Create background material
 	mBackgroundMaterial = MaterialManager::getSingleton().create("MainMenuBackground", "General");
 	mBackgroundMaterial->getTechnique(0)->getPass(0)->createTextureUnitState("MainMenu.png");
