@@ -31,6 +31,8 @@ void CreditsState::initialize()
 	mViewport = mGraphicsManager->getRenderWindow()->addViewport( mCamera );
 
 	mViewport->setBackgroundColour( Ogre::ColourValue( 1, 1, 1 ) );
+	
+	mGuiManager->initialize(mGraphicsManager->getRenderWindow());
 }
 
 /** Load resources */
@@ -39,7 +41,7 @@ void CreditsState::load()
 	//
 	// TODO Load 
 	//
-		// Create background material
+		// Create background 
 	mBackgroundMaterial = MaterialManager::getSingleton().create("CreditsBackground", "General");
 	mBackgroundMaterial->getTechnique(0)->getPass(0)->createTextureUnitState("Credits.png");
 	mBackgroundMaterial->getTechnique(0)->getPass(0)->setDepthCheckEnabled(false);

@@ -31,6 +31,8 @@ void EndingState::initialize()
 	mViewport = mGraphicsManager->getRenderWindow()->addViewport( mCamera );
 
 	mViewport->setBackgroundColour( Ogre::ColourValue( 1, 1, 1 ) );
+
+	mGuiManager->initialize(mGraphicsManager->getRenderWindow());
 }
 
 /** Load resources */
