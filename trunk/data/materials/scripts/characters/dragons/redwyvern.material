@@ -1,0 +1,44 @@
+
+material RedWyvernBody
+{
+	technique
+	{
+		pass
+		{
+			diffuse 0.244 0.244 0.244 1
+			specular 0.7 0.7 0.7 1 10
+			emissive 0.244 0.244 0.244 1
+			cull_hardware none
+			cull_software none
+
+			texture_unit
+			{
+				texture RedWyvernTextureBody.psd
+			}
+		}
+
+	}
+
+}
+
+material RedWyvernHead
+{
+	technique
+	{
+		pass
+		{
+			diffuse 0.244 0.244 0.244 1
+			specular 0.7 0.7 0.7 1 10
+			emissive 0.244 0.244 0.244 1
+			cull_hardware none
+			cull_software none
+
+			texture_unit
+			{
+				texture RedWyvernTextureHead.psd
+			}
+		}
+
+	}
+
+}
