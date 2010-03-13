@@ -33,7 +33,7 @@ void PlayState::initialize()
 	mCameraManager->initialize();
 
 	std::auto_ptr<DotSceneLoader> sceneLoader(new DotSceneLoader());
-	sceneLoader->parseDotScene("Stage1_1.XML","General",mGraphicsManager->getSceneManager(), mCameraManager);
+	sceneLoader->parseDotScene("Stage1_1.XML","General",mGraphicsManager->getSceneManager());
 
 	player = mGraphicsManager->getSceneManager()->createEntity("Player", "house.mesh");
 	mPlayer = mGraphicsManager->getSceneManager()->getRootSceneNode()->createChildSceneNode();
