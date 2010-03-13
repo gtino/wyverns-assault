@@ -26,21 +26,18 @@ void PlayState::initialize()
 	mInputManager->setMouseMode(true);
 	mInputManager->setJoyStickMode(true);
 
-
-	//
-	// TODO Initialize
-	//
 	this->mNextGameStateId = this->getStateId();
 
-	mCamera = mGraphicsManager->getSceneManager()->createCamera( "Camera" );
-
-	mViewport = mGraphicsManager->getRenderWindow()->addViewport( mCamera );
-
-	mViewport->setBackgroundColour( Ogre::ColourValue( 1, 1, 1 ) );
+	// Camera manager constructor
+	mCameraManager = new CameraManager(mGraphicsManager->getSceneManager(), mGraphicsManager->getRenderWindow());
+	mCameraManager->initialize();
 
 	std::auto_ptr<DotSceneLoader> sceneLoader(new DotSceneLoader());
-	sceneLoader->parseDotScene("Stage1_1.XML","General",mGraphicsManager->getSceneManager());
+	sceneLoader->parseDotScene("Stage1_1.XML","General",mGraphicsManager->getSceneManager(), mCameraManager);
 
+	player = mGraphicsManager->getSceneManager()->createEntity("Player", "house.mesh");
+	mPlayer = mGraphicsManager->getSceneManager()->getRootSceneNode()->createChildSceneNode();
+	mPlayer->attachObject(player);
 }
 
 /** Load resources */
@@ -64,34 +61,65 @@ void PlayState::input()
 void PlayState::update(const float elapsedSeconds)
 {
 
-/*
-	//
-	// TODO Update
-	//
-	float r,g;
-
-	if(this->mInputManager->getKeyboard()->isKeyDown(OIS::KeyCode::KC_DOWN))
+	// Camera switch key control
+	if(this->mInputManager->getKeyboard()->isKeyDown(OIS::KeyCode::KC_1))
 	{
-		r = mViewport->getBackgroundColour().r-0.01f;
-		mViewport->setBackgroundColour( Ogre::ColourValue( r >= 0.0f ? r : 0.0f, 1 , 1 ) );
+		mCameraManager->gameCamera(mPlayer);
 	}
-	else if(this->mInputManager->getKeyboard()->isKeyDown(OIS::KeyCode::KC_UP))
+	else if(this->mInputManager->getKeyboard()->isKeyDown(OIS::KeyCode::KC_2))
 	{
-		r = mViewport->getBackgroundColour().r+0.01f;
-		mViewport->setBackgroundColour( Ogre::ColourValue( r <= 1.0f ? r : 1.0f, 1, 1 ) );
+		mCameraManager->fpsCamera(mPlayer);
 	}
-
-	if(this->mInputManager->getMouse()->getMouseState().Y.abs > this->mInputManager->getMouse()->getMouseState().height/2)
+	else if(this->mInputManager->getKeyboard()->isKeyDown(OIS::KeyCode::KC_3))
 	{
-		g = mViewport->getBackgroundColour().g-0.01f;
-		mViewport->setBackgroundColour( Ogre::ColourValue( mViewport->getBackgroundColour().r, 1.0f , 1 ) );
+		mCameraManager->fixedCamera(0);
 	}
-	else
+	else if(this->mInputManager->getKeyboard()->isKeyDown(OIS::KeyCode::KC_4))
 	{
-		g = mViewport->getBackgroundColour().g-0.01f;
-		mViewport->setBackgroundColour( Ogre::ColourValue( mViewport->getBackgroundColour().r, 0.0f , 1 ) );
+		mCameraManager->fixedCamera(1);
 	}
-	*/
+	
+	// Movement
+	if(mCameraManager->getCameraType() == GAMECAMERA)
+	{
+		if(this->mInputManager->getKeyboard()->isKeyDown(OIS::KeyCode::KC_RIGHT))
+		{
+			mPlayer->setPosition(mPlayer->getPosition() + Vector3(SPEED,0,0));
+		}
+		else if(this->mInputManager->getKeyboard()->isKeyDown(OIS::KeyCode::KC_LEFT))
+		{
+			mPlayer->setPosition(mPlayer->getPosition() + Vector3(-SPEED,0,0));
+		}
+		else if(this->mInputManager->getKeyboard()->isKeyDown(OIS::KeyCode::KC_UP))
+		{
+			mPlayer->setPosition(mPlayer->getPosition() + Vector3(0,0,-SPEED));
+		}
+		else if(this->mInputManager->getKeyboard()->isKeyDown(OIS::KeyCode::KC_DOWN))
+		{
+			mPlayer->setPosition(mPlayer->getPosition() + Vector3(0,0,SPEED));
+		}
+		mCameraManager->updateCamera(mPlayer);
+	}
+	else if(mCameraManager->getCameraType() == FPSCAMERA)
+	{
+		if(this->mInputManager->getKeyboard()->isKeyDown(OIS::KeyCode::KC_RIGHT))
+		{
+			mPlayer->setPosition(mPlayer->getPosition() + Vector3(0,0,SPEED));
+		}
+		else if(this->mInputManager->getKeyboard()->isKeyDown(OIS::KeyCode::KC_LEFT))
+		{
+			mPlayer->setPosition(mPlayer->getPosition() + Vector3(0,0,-SPEED));
+		}
+		else if(this->mInputManager->getKeyboard()->isKeyDown(OIS::KeyCode::KC_UP))
+		{
+			mPlayer->setPosition(mPlayer->getPosition() + Vector3(SPEED,0,0));
+		}
+		else if(this->mInputManager->getKeyboard()->isKeyDown(OIS::KeyCode::KC_DOWN))
+		{
+			mPlayer->setPosition(mPlayer->getPosition() + Vector3(-SPEED,0,0));
+		}
+		mCameraManager->updateCamera(mPlayer);
+	}
 }
 
 /** Render */
