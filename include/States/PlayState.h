@@ -25,6 +25,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
 #include "BaseState.h"
 #include "..\Camera\CameraManager.h"
+#include "..\Graphics\LightsManager.h"
 
 #define SPEED	0.25
 
@@ -75,6 +76,9 @@ namespace WyvernsAssault
 
 	private:
 		CameraManager* mCameraManager;
+		LightsManager* mLightsManager;
+
+		// Temporal player node - DELETE
 		Entity* player;
 		SceneNode*	mPlayer;
 	};

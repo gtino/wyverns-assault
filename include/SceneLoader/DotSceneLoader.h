@@ -8,6 +8,7 @@
 #include "vector"
 
 #include "..\Camera\CameraManager.h"
+#include "..\Graphics\LightsManager.h"
 
 // Forward declarations
 class TiXmlElement;
@@ -36,7 +37,7 @@ namespace Ogre
 		DotSceneLoader() : mSceneMgr(0) {}
 		virtual ~DotSceneLoader() {}
 
-		void parseDotScene(const String &SceneName, const String &groupName,SceneManager *levelSceneManager, WyvernsAssault::CameraManager* cameraManager, SceneNode *pAttachNode = NULL, const String &sPrependNode = "");
+		void parseDotScene(const String &SceneName, const String &groupName,SceneManager *levelSceneManager, WyvernsAssault::CameraManager* cameraManager, WyvernsAssault::LightsManager* lightsManager, SceneNode *pAttachNode = NULL, const String &sPrependNode = "");
 		String getProperty(const String &ndNm, const String &prop);
 
 		std::vector<nodeProperty> nodeProperties;
@@ -78,6 +79,7 @@ namespace Ogre
 		String m_sGroupName;
 		String m_sPrependNode;
 		WyvernsAssault::CameraManager* mCameraManager;
+		WyvernsAssault::LightsManager* mLightsManager;
 	};
 }
 
