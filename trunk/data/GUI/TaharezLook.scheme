@@ -1,8 +1,0 @@
-<?xml version="1.0" ?>
-<GUIScheme Name="TaharezLook">
-	<Imageset Name="TaharezLook" Filename="TaharezLook.imageset" />
-	<Font Name="Tahoma-12" Filename="tahoma-12.font" />
-	<WindowSet Filename="CEGUITaharezLook">
-		<WindowFactory Name="TaharezLook/Button" />
-	</WindowSet>
-</GUIScheme>
