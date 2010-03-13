@@ -573,7 +573,7 @@
 			</File>
 		</Filter>
 		<File
-			RelativePath=".\ClassDiagram.cd"
+			RelativePath="..\docs\ClassDiagram.cd"
 			>
 		</File>
 		<File
