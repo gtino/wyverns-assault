@@ -11,68 +11,95 @@ CameraManager::CameraManager(SceneManager* sceneManager, RenderWindow* renderWin
 
 CameraManager::~CameraManager()
 {
-	//
-	// TODO Destructor
-	//
 	finalize();
 }
 
-/** Initialize the audio manager */
+/** Initialize the camera manager */
 void CameraManager::initialize()
 {
-	setDefaultCamera();
-	setCamera("Camera1", Vector3(1.0,1.0,1.0), Vector3(0.0,0.0,0.0));
-	setCamera("Camera2", Vector3(10.0,10.0,10.0), Vector3(0.0,0.0,0.0));
+	mCameraType = FIXEDCAMERA;
+	mCamera = mSceneManager->createCamera( "Camera" );
+	mCamera->setNearClipDistance(1);
+	mCamera->setFarClipDistance(1000);
+	mViewport = mRenderWindow->addViewport( mCamera );
+	mFixedCameras[0][0] = Vector3(100,50,100);
+	mFixedCameras[0][1] = Vector3(10,0,10);
+	mFixedCameras[1][0] = Vector3(300,50,150);
+	mFixedCameras[1][1] = Vector3(100,-5,-10);
 }
 
-/** Finalize the audio manager */
+/** Finalize the camera manager */
 void CameraManager::finalize()
 {
 	mSceneManager->destroyAllCameras();
 }
 
-void CameraManager::loadResources()
-{
-	//
-	// TODO Load resources
-	//
-}
+/** Camera functions **/
 
-void CameraManager::unloadResources()
+void CameraManager::positionCamera(Vector3 position)
 {
-	//
-	// TODO Unload resources
-	//
-}
-
-void CameraManager::setCamera(String name, Vector3 position, Vector3 lookAt)
-{
-	mCamera = mSceneManager->createCamera(name);
 	mCamera->setPosition(position);
+}
+
+void CameraManager::lookAtCamera(Vector3 lookAt)
+{
 	mCamera->lookAt(lookAt);
 }
 
-Camera* CameraManager::getCamera(String name)
+void CameraManager::moveCamera(Vector3 move)
 {
-	return this->mSceneManager->getCamera(name);
+	mCamera->move(move);
 }
 
-void CameraManager::enableCamera(String name)
+void CameraManager::followNode(SceneNode* node, Vector3 offset)
 {
-
+	mCamera->setAutoTracking(true, node, offset);
 }
 
-void CameraManager::setDefaultCamera()
+void CameraManager::updateCamera(SceneNode* node)
 {
-	mDefaultCamera = mSceneManager->createCamera( "Default" );
+	switch(mCameraType)
+	{
+		case GAMECAMERA:
+			positionCamera(node->getPosition() + Vector3(-5,30,80));
+			break;
+
+		case FPSCAMERA:
+			positionCamera(node->getPosition());
+			break;
+
+		case FIXEDCAMERA:
+
+			break;
+
+		case TRAVELLCAMERA:
+
+			break;
+	}
 }
 
-Camera* CameraManager::getDefaultCamera()
+/** Camera types **/
+
+void CameraManager::gameCamera(SceneNode* node)
 {
-	return mDefaultCamera;
+	mCameraType = GAMECAMERA;
+	followNode(node);
+	positionCamera(node->getPosition() + Vector3(-5,30,80));
 }
 
-void CameraManager::enableDetaultCamera()
+void CameraManager::fpsCamera(SceneNode* node)
 {
+	mCameraType = FPSCAMERA;
+	mCamera->setAutoTracking(false);
+	//followNode(node);
+	positionCamera(node->getPosition());
+	lookAtCamera(node->getPosition() + Vector3(100,PLAYERHEIGHT,0));
+}
 
+void CameraManager::fixedCamera(int id)
+{
+	mCameraType = FIXEDCAMERA;
+	mCamera->setAutoTracking(false);
+	positionCamera(mFixedCameras[id][0]);
+	lookAtCamera(mFixedCameras[id][1]);
 }
