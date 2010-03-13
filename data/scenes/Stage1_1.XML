@@ -59,19 +59,19 @@
 		<entity meshFile="rock3.mesh" name="entity5"/>
 	</node>
 	<node>
-		<position x="0" y="200" z="0"/>
+		<position x="556.092" y="-41.799" z="-68.425"/>
 		<entity meshFile="rock4.mesh" name="entity6"/>
 	</node>
 	<node>
-		<position x="0" y="200" z="0"/>
+		<position x="611.788" y="-43.621" z="-30.284"/>
 		<entity meshFile="rock5.mesh" name="entity7"/>
 	</node>
 	<node>
-		<position x="0" y="200" z="0"/>
+		<position x="620.141" y="-43.621" z="-77.297"/>
 		<entity meshFile="rock6.mesh" name="entity8"/>
 	</node>
 	<node>
-		<position x="0" y="200" z="0"/>
+		<position x="635.358" y="-43.621" z="-18.182"/>
 		<entity meshFile="rock7.mesh" name="entity9"/>
 	</node>
 	<node>
@@ -79,17 +79,68 @@
 		<entity meshFile="wheat.mesh" name="entity10"/>
 	</node>
 	<node>
+		<position x="328.057" y="-36.545" z="-29.16"/>
 		<entity meshFile="house.mesh" name="entity11"/>
 	</node>
 	<node>
-		<position x="0" y="10" z="0"/>
+		<position x="350.057" y="-36.196" z="-62.322"/>
 		<entity meshFile="house.mesh" name="entity12"/>
 	</node>
 	<node>
-		<entity meshFile="house_fence.mesh" name="entity13"/>
+		<position x="421.31" y="-37.51" z="-61.074"/>
+		<entity meshFile="house.mesh" name="entity13"/>
+	</node>
+	<node>
+		<position x="425.963" y="-37.755" z="-30.615"/>
+		<entity meshFile="house.mesh" name="entity14"/>
+	</node>
+	<node>
+		<position x="568.335" y="-37.305" z="-25.372"/>
+		<entity meshFile="house.mesh" name="entity15"/>
+	</node>
+	<node>
+		<position x="575.748" y="-37.691" z="-69.178"/>
+		<entity meshFile="house.mesh" name="entity16"/>
+	</node>
+	<node>
+		<position x="667.364" y="-37.45" z="-49.728"/>
+		<entity meshFile="house.mesh" name="entity17"/>
+	</node>
+	<node>
+		<position x="686.918" y="-38.102" z="-54.687"/>
+		<entity meshFile="house.mesh" name="entity18"/>
+	</node>
+	<node>
+		<position x="699.088" y="-37.364" z="-21.071"/>
+		<entity meshFile="house.mesh" name="entity19"/>
+	</node>
+	<node>
+		<position x="707.306" y="-37.655" z="-44.25"/>
+		<entity meshFile="house.mesh" name="entity20"/>
+	</node>
+	<node>
+		<position x="726.127" y="-37.544" z="-55.279"/>
+		<entity meshFile="house.mesh" name="entity21"/>
+	</node>
+	<node>
+		<position x="731.431" y="-37.539" z="-68.203"/>
+		<entity meshFile="house.mesh" name="entity22"/>
+	</node>
+	<node>
+		<position x="742.071" y="-37.515" z="-21.8"/>
+		<entity meshFile="house.mesh" name="entity23"/>
+	</node>
+
+	<node>
+		<entity meshFile="house_fence.mesh" name="entity24"/>
 	</node>
 	</nodes>
 </scene>
+
+
+
+
+
 
 
 
