@@ -39,6 +39,11 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 //
 #include "..\Audio\AudioManager.h"
 
+//
+// Gui
+//
+#include "..\GUI\GuiManager.h"
+
 namespace WyvernsAssault
 {
 	/** List of game states of the game */
@@ -110,6 +115,8 @@ namespace WyvernsAssault
 		InputManager* mInputManager;
 		/** Audio manager */
 		AudioManager* mAudioManager;
+		/** Gui manager */
+		GuiManager* mGuiManager;
 
 		/** Next Game State Id */
 		GameStateId mNextGameStateId;

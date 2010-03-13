@@ -34,6 +34,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #include ".\Input\InputManager.h"
 #include ".\Audio\AudioManager.h"
 #include ".\States\StatesManager.h"
+#include ".\GUI\GuiManager.h"
 
 namespace WyvernsAssault
 {

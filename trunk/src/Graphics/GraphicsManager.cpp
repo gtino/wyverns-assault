@@ -26,7 +26,7 @@ bool GraphicsManager::initialize()
 
 	// Create the root
 	mRoot = new Ogre::Root( WYVERNS_ASSAULT_PLUGINS_FILE, WYVERNS_ASSAULT_CONFIG_FILE);
-
+	
 	// Setup resource locations
 	setupResources();
 

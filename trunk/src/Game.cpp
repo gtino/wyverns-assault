@@ -30,7 +30,7 @@ void Game::initialize()
 
 	// Initialize Game states (FSM) manager
 	mStatesManager.initialize(mGraphicsManager, mInputManager, mAudioManager);
-
+	
 	// Load graphic resourcrs
 	mGraphicsManager.loadResources();
 
