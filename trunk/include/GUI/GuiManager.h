@@ -50,7 +50,7 @@ namespace WyvernsAssault
 	class GuiManager :  public FrameListener, public WindowEventListener
 	{
 	public:
-		GuiManager();
+		GuiManager(Ogre::Root* root, Ogre::RenderWindow* window);
 		~GuiManager();
 
 	public:

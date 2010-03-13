@@ -9,11 +9,13 @@ using namespace Ogre;
 using namespace CEGUI;
 using namespace WyvernsAssault;
 
-GuiManager::GuiManager()
+GuiManager::GuiManager(Ogre::Root* root, Ogre::RenderWindow* window)
 {
 	//
 	// TODO Constructor
 	//
+	mRoot = root;
+	mWindow = window;
 }
 
 GuiManager::~GuiManager()
@@ -25,33 +27,6 @@ GuiManager::~GuiManager()
 
 bool GuiManager::initialize()
 {
-	// create an instance of LogManager prior to using LogManager::getSingleton()
-	Ogre::LogManager* logMgr = new Ogre::LogManager;
-	Ogre::Log *log = Ogre::LogManager::getSingleton().createLog(WYVERNS_ASSAULT_LOG_FILE, true, true, false);
-	log->setLogDetail(Ogre::LL_BOREME);
-	
-	mRoot = new Ogre::Root( "Plugins.cfg", "ogre_configuration.txt"/*, "ogre_log.txt" */);
-	
-	//
-	// Don't ask for configuration if a .cfg file is already present
-	//
-	if (!mRoot->restoreConfig())
-	{
-		// Initialise display options.
-		// It shows the ugly dialog at start-up, so if you don't want to see it, it's up to you 
-		// to remove this line and initialise display options manually ( e.g. reading them from 
-		// a text file ).
-		bool configDialogUserContinue = mRoot->showConfigDialog();
-
-		if ( ! configDialogUserContinue )
-		{
-			throw std::exception( "User closed/canceled config dialog" );
-		}
-	}
-
-	// Create window with chosen display options.
-	mWindow = mRoot->initialise( true, "Ogre Window" );
-
 	CEGUI::OgreCEGUIRenderer* m_GUIrenderer = new CEGUI::OgreCEGUIRenderer(mWindow,Ogre::RENDER_QUEUE_OVERLAY, false, 3000);
 	mSystem  =new CEGUI::System(m_GUIrenderer);
 	CEGUI::Logger::getSingleton().setLoggingLevel(CEGUI::Informative); // this is recomenned to help with debugging, but not necessary
