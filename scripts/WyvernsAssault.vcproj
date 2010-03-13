@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="Windows-1252"?>
 <VisualStudioProject
 	ProjectType="Visual C++"
-	Version="9,00"
+	Version="9.00"
 	Name="WyvernsAssault"
 	ProjectGUID="{DA8BACB6-E0B2-465D-84CE-60A33C2E795E}"
 	RootNamespace="WyvernsAssault"
@@ -319,6 +319,62 @@
 					>
 				</File>
 			</Filter>
+			<Filter
+				Name="Physics"
+				>
+				<File
+					RelativePath="..\src\Physics\PhysicsManager.cpp"
+					>
+				</File>
+			</Filter>
+			<Filter
+				Name="Logic"
+				>
+				<File
+					RelativePath="..\src\Logic\LogicManager.cpp"
+					>
+				</File>
+			</Filter>
+			<Filter
+				Name="Data"
+				>
+				<File
+					RelativePath="..\src\Data\DataManager.cpp"
+					>
+				</File>
+			</Filter>
+			<Filter
+				Name="Entity"
+				>
+				<File
+					RelativePath="..\src\Entity\EntityManager.cpp"
+					>
+				</File>
+				<Filter
+					Name="Player"
+					>
+					<File
+						RelativePath="..\src\Entity\Player\PlayerManager.cpp"
+						>
+					</File>
+				</Filter>
+				<Filter
+					Name="Item"
+					>
+					<File
+						RelativePath="..\src\Entity\Item\ItemManager.cpp"
+						>
+					</File>
+				</Filter>
+				<Filter
+					Name="Enemy"
+					>
+					<File
+						RelativePath="..\src\Entity\Enemy\EnemyManager.cpp"
+						>
+					</File>
+				</Filter>
+			</Filter>
 		</Filter>
 		<Filter
 			Name="Header Files"
@@ -445,6 +501,62 @@
 					>
 				</File>
 			</Filter>
+			<Filter
+				Name="Physics"
+				>
+				<File
+					RelativePath="..\include\Physics\PhysicsManager.h"
+					>
+				</File>
+			</Filter>
+			<Filter
+				Name="Logic"
+				>
+				<File
+					RelativePath="..\include\Logic\LogicManager.h"
+					>
+				</File>
+			</Filter>
+			<Filter
+				Name="Entity"
+				>
+				<File
+					RelativePath="..\include\Entity\EntityManager.h"
+					>
+				</File>
+				<Filter
+					Name="Player"
+					>
+					<File
+						RelativePath="..\include\Entity\Player\PlayerManager.h"
+						>
+					</File>
+				</Filter>
+				<Filter
+					Name="Enemy"
+					>
+					<File
+						RelativePath="..\include\Entity\Enemy\EnemyManager.h"
+						>
+					</File>
+				</Filter>
+				<Filter
+					Name="Item"
+					>
+					<File
+						RelativePath="..\include\Entity\Item\ItemManager.h"
+						>
+					</File>
+				</Filter>
+			</Filter>
+			<Filter
+				Name="Data"
+				>
+				<File
+					RelativePath="..\include\Data\DataManager.h"
+					>
+				</File>
+			</Filter>
 		</Filter>
 		<Filter
 			Name="Resource Files"
@@ -460,6 +572,10 @@
 				>
 			</File>
 		</Filter>
+		<File
+			RelativePath=".\ClassDiagram.cd"
+			>
+		</File>
 		<File
 			RelativePath="..\docs\ReadMe.txt"
 			>
