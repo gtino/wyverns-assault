@@ -1,0 +1,18 @@
+<?xml version="1.0" ?>
+<Imageset Name="TaharezLook" Imagefile="TaharezLook.bmp" NativeHorzRes="800" NativeVertRes="600" AutoScaled="true">
+	<Image Name="GameButton"    XPos="2" YPos="2" Width="64" Height="64" />
+	<Image Name="OptionsButton" XPos="2" YPos="2" Width="64" Height="64" />
+	<Image Name="CreditsButton" XPos="2" YPos="2" Width="64" Height="64" />
+	<Image Name="QuitButton" XPos="2" YPos="2" Width="64" Height="64" />
+	<Image Name="WindowTopEdge" XPos="9" YPos="68" Width="23" Height="1" />
+	<Image Name="WindowBottomEdge" XPos="9" YPos="143" Width="23" Height="1" />
+	<Image Name="WindowTopLeft" XPos="2" YPos="68" Width="5" Height="24" />
+	<Image Name="WindowTopRight" XPos="34" YPos="68" Width="5" Height="24" />
+	<Image Name="MouseArrow" XPos="138" YPos="127" Width="31" Height="25" XOffset="0" YOffset="0" />
+	<Image Name="MouseMoveCursor" XPos="201" YPos="127" Width="18" Height="18" XOffset="-8" YOffset="-8" />
+	<Image Name="MouseNoSoCursor" XPos="221" YPos="127" Width="8" Height="18" XOffset="-3" YOffset="-8" />
+	<Image Name="MouseEsWeCursor" XPos="182" YPos="150" Width="18" Height="8" XOffset="-8" YOffset="-3" />
+	<Image Name="MouseNeSwCursor" XPos="201" YPos="147" Width="14" Height="14" XOffset="-7" YOffset="-7" />
+	<Image Name="MouseNwSeCursor" XPos="230" YPos="126" Width="14" Height="14" XOffset="-7" YOffset="-7" />
+	<Image Name="MouseTextBar" XPos="173" YPos="127" Width="7" Height="18" XOffset="-2" YOffset="-9" />
+</Imageset>
