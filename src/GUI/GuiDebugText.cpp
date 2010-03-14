@@ -5,13 +5,44 @@ using namespace Ogre;
 using namespace WyvernsAssault;
 
 //------------------------------------------------------------------------------
-GuiDebugText::GuiDebugText()
+GuiDebugText::GuiDebugText() 
+: mPanel(0)
 //------------------------------------------------------------------------------
 {
 	mPanel = 0;
 	mOverlay = 0;
 	memset(mTextAreas, 0, MAX_TEXT_AREAS*sizeof(TextAreaOverlayElement*));
 }
+
+GuiDebugText::~GuiDebugText()
+{
+	finalize();
+}
+
+void GuiDebugText::finalize()
+{
+	if(mPanel)
+	{
+		OverlayManager::getSingleton().destroyOverlayElement(mPanel);
+		mPanel = 0;
+	}
+
+	if(mOverlay)
+	{
+		OverlayManager::getSingleton().destroy(mOverlay);
+		mOverlay = 0;
+	}
+
+	for (int i = 0; i<MAX_TEXT_AREAS; ++i)
+	{
+		if(mTextAreas[i] != 0)
+		{
+			OverlayManager::getSingleton().destroyOverlayElement(mTextAreas[i]);
+			mTextAreas[i] = 0;
+		}
+	}
+}
+
 //------------------------------------------------------------------------------
 void GuiDebugText::init()
 //------------------------------------------------------------------------------
@@ -23,26 +54,13 @@ void GuiDebugText::init()
 	mPanel->setPosition(0, 0);
 	mPanel->setDimensions(1.0f, 1.0f);
 	//panel->setMaterialName("MaterialName"); // Optional background material
-	// get the font manager
-	FontManager &fontMgr = FontManager::getSingleton();
-	// create a font resource
-	ResourcePtr font = fontMgr.create("MyFont","General");
-	// set as truetype
-	font->setParameter("type","truetype");
-	// set the .ttf file name
-	font->setParameter("source","BADABB_.ttf");
-	// set the size
-	font->setParameter("size","26");
-	// set the dpi
-	font->setParameter("resolution","96");
-	// load the ttf
-	font->load();
+
 	for (int i = 0; i<MAX_TEXT_AREAS; ++i)
 	{
 		mTextAreas[i] = static_cast<TextAreaOverlayElement*>(
 		OverlayManager::getSingleton().createOverlayElement("TextArea",           StringConverter::toString(i) + "TextAreaName"));
 		mTextAreas[i]->setMetricsMode(Ogre::GMM_RELATIVE);
-		mTextAreas[i]->setFontName("MyFont");
+		mTextAreas[i]->setFontName("Fonts\GuiDebugText");
 		mTextAreas[i]->setColourBottom(ColourValue(1,1,1));
 		mTextAreas[i]->setColourTop(ColourValue(1,1,1));
 		mTextAreas[i]->setDimensions(1.0f, 1.0f);

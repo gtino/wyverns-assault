@@ -135,8 +135,21 @@ void GraphicsManager::loadResources()
 	mSceneManager->clearSpecialCaseRenderQueues();
 	mSceneManager->setSpecialCaseRenderQueueMode(SceneManager::SCRQM_EXCLUDE);
 
-	//mLoadingBar->finish();
-	//delete mLoadingBar;
+	// Load debug fonts
+	// get the font manager
+	FontManager &fontMgr = FontManager::getSingleton();
+	// create a font resource
+	ResourcePtr bbFont = fontMgr.create("Fonts\GuiDebugText","General");
+	// set as truetype
+	bbFont->setParameter("type","truetype");
+	// set the .ttf file name
+	bbFont->setParameter("source","BADABB_.ttf");
+	// set the size
+	bbFont->setParameter("size","26");
+	// set the dpi
+	bbFont->setParameter("resolution","96");
+	// load the ttf
+	bbFont->load();
 }
 
 void GraphicsManager::unloadResources()

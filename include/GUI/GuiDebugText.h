@@ -30,8 +30,10 @@ namespace WyvernsAssault
 	{
 	public:
 		GuiDebugText();
+		~GuiDebugText();
 
 		void init();
+		void finalize();
 		// Print at <x/y>
 		void print(float x, float y, const char*, ...);
 		void print(float x, float y, float size, const char*, ...);
@@ -63,6 +65,7 @@ namespace WyvernsAssault
 
 		typedef std::vector<Entry> Strings;
 		ColourValue mColour;
+		ResourcePtr mFont;
 		Strings mStrings;
 		Overlay* mOverlay;
 		OverlayContainer* mPanel;
