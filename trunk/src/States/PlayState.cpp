@@ -36,17 +36,16 @@ void PlayState::initialize()
 	mLightsManager = new LightsManager(mGraphicsManager->getSceneManager());
 	mLightsManager->initialize();
 
+	//Load scene XML file
 	std::auto_ptr<DotSceneLoader> sceneLoader(new DotSceneLoader());
 	sceneLoader->parseDotScene("Stage1_1.XML","General",mGraphicsManager->getSceneManager(), mCameraManager, mLightsManager);
 
-	/** Temporal player node - DELETE **/
-	player = mGraphicsManager->getSceneManager()->createEntity("Player", "house.mesh");
-	mPlayer = mGraphicsManager->getSceneManager()->getRootSceneNode()->createChildSceneNode();
-	mPlayer->attachObject(player);
-	mPlayer->setPosition(Vector3(50,-20,-45));
+	// Player manager constructor
+	mPlayerManager = new PlayerManager();
+	mPlayerManager->initialize("redWyvern","redwyvern.mesh",mGraphicsManager->getSceneManager(),Vector3(100,-20,-45));
 
-	mCameraManager->gameCamera(mPlayer);
-	/***********************************/
+	mCameraManager->gameCamera(mPlayerManager->GetPlayerSceneNode());
+
 }
 
 /** Load resources */
@@ -73,11 +72,11 @@ void PlayState::update(const float elapsedSeconds)
 	// Camera switch key control
 	if(this->mInputManager->getKeyboard()->isKeyDown(OIS::KeyCode::KC_1))
 	{
-		mCameraManager->gameCamera(mPlayer);
+		mCameraManager->gameCamera(mPlayerManager->GetPlayerSceneNode());
 	}
 	else if(this->mInputManager->getKeyboard()->isKeyDown(OIS::KeyCode::KC_2))
 	{
-		mCameraManager->fpsCamera(mPlayer);
+		mCameraManager->fpsCamera(mPlayerManager->GetPlayerSceneNode());
 	}
 	else if(this->mInputManager->getKeyboard()->isKeyDown(OIS::KeyCode::KC_3))
 	{
@@ -118,44 +117,44 @@ void PlayState::update(const float elapsedSeconds)
 		// 4 directions move
 		if(this->mInputManager->getKeyboard()->isKeyDown(OIS::KeyCode::KC_RIGHT))
 		{
-			mPlayer->setPosition(mPlayer->getPosition() + Vector3(SPEED,0,0));
+			mPlayerManager->setPosition(mPlayerManager->getPosition() + Vector3(SPEED,0,0));
 		}
 		if(this->mInputManager->getKeyboard()->isKeyDown(OIS::KeyCode::KC_LEFT))
 		{
-			mPlayer->setPosition(mPlayer->getPosition() + Vector3(-SPEED,0,0));
+			mPlayerManager->setPosition(mPlayerManager->getPosition() + Vector3(-SPEED,0,0));
 		}
 		if(this->mInputManager->getKeyboard()->isKeyDown(OIS::KeyCode::KC_UP))
 		{
-			mPlayer->setPosition(mPlayer->getPosition() + Vector3(0,0,-SPEED));
+			mPlayerManager->setPosition(mPlayerManager->getPosition() + Vector3(0,0,-SPEED));
 		}
 		if(this->mInputManager->getKeyboard()->isKeyDown(OIS::KeyCode::KC_DOWN))
 		{
-			mPlayer->setPosition(mPlayer->getPosition() + Vector3(0,0,SPEED));
+			mPlayerManager->setPosition(mPlayerManager->getPosition() + Vector3(0,0,SPEED));
 		}
 		// Update camera position
-		mCameraManager->updateCamera(mPlayer);
+		mCameraManager->updateCamera(mPlayerManager->GetPlayerSceneNode());
 	}
 	else if(mCameraManager->getCameraType() == FPSCAMERA)
 	{
 		if(this->mInputManager->getKeyboard()->isKeyDown(OIS::KeyCode::KC_RIGHT))
 		{
-			mPlayer->setPosition(mPlayer->getPosition() + Vector3(0,0,SPEED));
+			mPlayerManager->setPosition(mPlayerManager->getPosition() + Vector3(0,0,SPEED));
 		}
 		if(this->mInputManager->getKeyboard()->isKeyDown(OIS::KeyCode::KC_LEFT))
 		{
-			mPlayer->setPosition(mPlayer->getPosition() + Vector3(0,0,-SPEED));
+			mPlayerManager->setPosition(mPlayerManager->getPosition() + Vector3(0,0,-SPEED));
 		}
 		if(this->mInputManager->getKeyboard()->isKeyDown(OIS::KeyCode::KC_UP))
 		{
-			mPlayer->setPosition(mPlayer->getPosition() + Vector3(SPEED,0,0));
+			mPlayerManager->setPosition(mPlayerManager->getPosition() + Vector3(SPEED,0,0));
 		}
 		if(this->mInputManager->getKeyboard()->isKeyDown(OIS::KeyCode::KC_DOWN))
 		{
-			mPlayer->setPosition(mPlayer->getPosition() + Vector3(-SPEED,0,0));
+			mPlayerManager->setPosition(mPlayerManager->getPosition() + Vector3(-SPEED,0,0));
 		}
 
 		// Update camera position
-		mCameraManager->updateCamera(mPlayer);
+		mCameraManager->updateCamera(mPlayerManager->GetPlayerSceneNode());
 	}
 }
 
@@ -188,6 +187,9 @@ void PlayState::finalize()
 	mGraphicsManager->getSceneManager()->destroyAllCameras();
 
 	mGraphicsManager->getRoot()->getAutoCreatedWindow()->removeAllViewports();
+
+	mPlayerManager->finalize();
+
 }
 
 /** Get state Id */

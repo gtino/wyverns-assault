@@ -26,6 +26,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #include "BaseState.h"
 #include "..\Camera\CameraManager.h"
 #include "..\Graphics\LightsManager.h"
+#include "..\Entity\Player\PlayerManager.h"
 
 #define SPEED	1
 
@@ -67,7 +68,7 @@ namespace WyvernsAssault
 		bool keyReleased(const OIS::KeyEvent& e);
 	
 	private:
-//		Ogre::Camera* mCamera;
+		//Ogre::Camera* mCamera;
 		Ogre::Viewport* mViewport;
 		GuiManager* mGuiManager;
 
@@ -78,10 +79,8 @@ namespace WyvernsAssault
 	private:
 		CameraManager* mCameraManager;
 		LightsManager* mLightsManager;
+		PlayerManager* mPlayerManager;
 
-		// Temporal player node - DELETE
-		Entity* player;
-		SceneNode*	mPlayer;
 	};
 }
 #endif // __PLAY_STATE_H_
