@@ -212,7 +212,9 @@ void PlayState::finalize()
 	BaseState::finalize();
 
 	mPlayerManager->finalize();
-
+	
+	/** Dispose of Debug text **/
+	mFpsDebugText.finalize();
 }
 
 /** Get state Id */
