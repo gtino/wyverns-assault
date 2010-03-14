@@ -1,20 +1,15 @@
 #include "..\include\GUI\GuiManager.h"
-#include <Ogre.h>
-#include <CEGUI/CEGUI.h>
-#include <OgreCEGUIRenderer.h>
-#include <OgreRenderWindow.h>
-#include <OIS/OIS.h>
 
 using namespace Ogre;
-using namespace CEGUI;
 using namespace WyvernsAssault;
 
-GuiManager::GuiManager(Ogre::Root* root, Ogre::RenderWindow* window)
+GuiManager::GuiManager(Ogre::Root* root, Ogre::SceneManager* sceneManager, Ogre::RenderWindow* window)
 {
 	//
 	// TODO Constructor
 	//
 	mRoot = root;
+	mSceneManager = sceneManager;
 	mWindow = window;
 }
 
@@ -23,17 +18,11 @@ GuiManager::~GuiManager()
 	//
 	// TODO Destructor
 	//
+	finalize();
 }
 
-bool GuiManager::initialize(Ogre::RenderWindow* window)
+bool GuiManager::initialize()
 {
-	//CEGUI::OgreCEGUIRenderer* m_GUIrenderer = new CEGUI::OgreCEGUIRenderer(mWindow,Ogre::RENDER_QUEUE_OVERLAY, false, 3000);
-	//mSystem  =new CEGUI::System(m_GUIrenderer);
-	//CEGUI::Logger::getSingleton().setLoggingLevel(CEGUI::Informative); // this is recomenned to help with debugging, but not necessary
-	
-	// Load resources
-	//loadResources();
-
 	return true;
 }
 
@@ -102,129 +91,32 @@ void GuiManager::finalize()
 	//
 }
 
-void GuiManager::loadResources()
+//----------------------------------------------------------------//
+bool GuiManager::mouseMoved( const OIS::MouseEvent &arg )
 {
-	//load Scheme
-	//CEGUI::SchemeManager::getSingleton().loadScheme((CEGUI::utf8*)"TaharezLookSkin.scheme");
-	//mSystem->setDefaultMouseCursor((CEGUI::utf8*)"TaharezLook", (CEGUI::utf8*)"MouseArrow");
-}
-
-/*void GuiManager::unloadResources()
-{
-	//
-	// TODO Unload resources
-	//
-}*/
-
-void GuiManager::loadMenu(void){
-
-	//CEGUI::Window* m_sheet = CEGUI::WindowManager::getSingleton().loadWindowLayout((CEGUI::utf8*)"ogregui.layout"); 
-	//mSystem->setGUISheet(m_sheet);
-	
-	//WindowManager* Wmgr = WindowManager::getSingletonPtr();
-	//System* mGUISystem = System::getSingletonPtr();
-	//Window* myRoot = Wmgr->getWindow("RootWindow"); // get default window
-
-	// Menu Background
-	//Window* MenuBackground = Wmgr->createWindow("TaharezLook/StaticImage", "Background");
-	//myRoot->addChildWindow( MenuBackground );
-	//MenuBackground->setPosition( UVector2( UDim( 0.0f, 0.0f ), UDim( 0.0f, 0.0f) ) );
-	//MenuBackground->setSize( UVector2( UDim( 1.0f, 0.0f ), UDim( 1.0f, 0.0f ) ) );  // full screen
-
-	// New game Button 
-	//PushButton* NewGame = (PushButton*)Wmgr->createWindow("TaharezLook/Button", "NewGame");
-	//MenuBackground->addChildWindow( NewGame );
-	//NewGame->setPosition( UVector2( UDim( 0.2f, 0.0f), UDim( 0.2f, 0.0f ) ) );
-	//NewGame->setSize( UVector2( UDim( 0.4f, 0.0f ), UDim( 0.2f, 0.0f ) ) );
-	
-	// Options game Button 
-	//PushButton* OptionsGame= (PushButton*)Wmgr->createWindow("TaharezLook/Button", "OptionsGame");
-	//MenuBackground->addChildWindow( OptionsGame );
-	//OptionsGame->setPosition( UVector2( UDim( 0.2f, 0.0f ), UDim( 0.45f, 0.0f ) ) );
-	//OptionsGame->setSize( UVector2( UDim( 0.4f, 0.0f ), UDim( 0.2f, 0.0f ) ) );
-
-	// Credits game Button 
-	//PushButton* CreditsGame= (PushButton*)Wmgr->createWindow("TaharezLook/Button", "CreditsGame");
-	//MenuBackground->addChildWindow( CreditsGame );
-	//CreditsGame->setPosition( UVector2( UDim( 0.2f, 0.0f ), UDim( 0.45f, 0.0f ) ) );
-	//CreditsGame->setSize( UVector2( UDim( 0.4f, 0.0f ), UDim( 0.2f, 0.0f ) ) );
-
-	// Quit game Button 
-	//PushButton* QuitGame= (PushButton*)Wmgr->createWindow("TaharezLook/Button", "QuitGame");
-	//MenuBackground->addChildWindow( QuitGame );
-	//QuitGame->setPosition( UVector2( UDim( 0.2f, 0.0f ), UDim( 0.7f, 0.0f ) ) );
-	//QuitGame->setSize( UVector2( UDim( 0.4f, 0.0f ), UDim( 0.2f, 0.0f ) ) );
-
-	//mSystem->setGUISheet(myRoot); // this line is redundant since you didn't change gui sheets, but its here to make sure
-	
-	
-}
-/*void GuiManager::chooseSceneManager(void)
-{
-	// Get the SceneManager, in this case a generic one
-	mSceneManager = mRoot->createSceneManager(ST_GENERIC);
-}*/
-
-/*Root* GuiManager::getRoot()
-{
-	return this->mRoot;
-}*/
-
-/*RenderWindow* GuiManager::getRenderWindow()
-{
-	return this->mRenderWindow;
-}*/
-
-/*SceneManager* GuiManager::getSceneManager()
-{
-	return this->mSceneManager;
-}*/
-
-/** Render one frame */
-/*bool GuiManager::renderOneFrame()
-{
-	//return mRoot->renderOneFrame();
 	return true;
-}*/
+}
 
-void GuiManager::choose(){
-	//CEGUI::Window* m_sheet = CEGUI::WindowManager::getSingleton().loadWindowLayout((CEGUI::utf8*)"ogregui.layout"); 
-	//mSystem->setGUISheet(m_sheet);
-	
-	//WindowManager* Wmgr = WindowManager::getSingletonPtr();
-	//System* mGUISystem = System::getSingletonPtr();
-	//Window* myRoot = Wmgr->getWindow("RootWindow"); // get default window
+//----------------------------------------------------------------//
+bool GuiManager::mousePressed( const OIS::MouseEvent &arg, OIS::MouseButtonID id )
+{
+	return true;
+}
 
-	// Menu Background
-	//Window* MenuBackground = Wmgr->createWindow("TaharezLook/StaticImage", "Background");
-	//myRoot->addChildWindow( MenuBackground );
-	//MenuBackground->setPosition( UVector2( UDim( 0.0f, 0.0f ), UDim( 0.0f, 0.0f) ) );
-	//MenuBackground->setSize( UVector2( UDim( 1.0f, 0.0f ), UDim( 1.0f, 0.0f ) ) );  // full screen
+//----------------------------------------------------------------//
+bool GuiManager::mouseReleased( const OIS::MouseEvent &arg, OIS::MouseButtonID id )
+{
+	return true;
+}
 
-	// New game Button 
-	//PushButton* NewGame = (PushButton*)Wmgr->createWindow("TaharezLook/Button", "NewGame");
-	//MenuBackground->addChildWindow( NewGame );
-	//NewGame->setPosition( UVector2( UDim( 0.2f, 0.0f), UDim( 0.2f, 0.0f ) ) );
-	//NewGame->setSize( UVector2( UDim( 0.4f, 0.0f ), UDim( 0.2f, 0.0f ) ) );
-	
-	// Options game Button 
-	//PushButton* OptionsGame= (PushButton*)Wmgr->createWindow("TaharezLook/Button", "OptionsGame");
-	//MenuBackground->addChildWindow( OptionsGame );
-	//OptionsGame->setPosition( UVector2( UDim( 0.2f, 0.0f ), UDim( 0.45f, 0.0f ) ) );
-	//OptionsGame->setSize( UVector2( UDim( 0.4f, 0.0f ), UDim( 0.2f, 0.0f ) ) );
+//----------------------------------------------------------------//
+bool GuiManager::keyPressed( const OIS::KeyEvent &arg )
+{
+	return true;
+}
 
-	// Credits game Button 
-	//PushButton* CreditsGame= (PushButton*)Wmgr->createWindow("TaharezLook/Button", "CreditsGame");
-	//MenuBackground->addChildWindow( CreditsGame );
-	//CreditsGame->setPosition( UVector2( UDim( 0.2f, 0.0f ), UDim( 0.45f, 0.0f ) ) );
-	//CreditsGame->setSize( UVector2( UDim( 0.4f, 0.0f ), UDim( 0.2f, 0.0f ) ) );
-
-	// Quit game Button 
-	//PushButton* QuitGame= (PushButton*)Wmgr->createWindow("TaharezLook/Button", "QuitGame");
-	//MenuBackground->addChildWindow( QuitGame );
-	//QuitGame->setPosition( UVector2( UDim( 0.2f, 0.0f ), UDim( 0.7f, 0.0f ) ) );
-	//QuitGame->setSize( UVector2( UDim( 0.4f, 0.0f ), UDim( 0.2f, 0.0f ) ) );
-
-	//mSystem->setGUISheet(myRoot); // this line is redundant since you didn't change gui sheets, but its here to make sure
-	
+//----------------------------------------------------------------//
+bool GuiManager::keyReleased( const OIS::KeyEvent &arg )
+{
+	return true;
 }

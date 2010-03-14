@@ -22,6 +22,8 @@ PlayState::~PlayState()
 /** Initialize current state */
 void PlayState::initialize()
 {
+	BaseState::initialize();
+
 	mInputManager->setKeyMode(true);
 	mInputManager->setMouseMode(true);
 	mInputManager->setJoyStickMode(true);
@@ -29,7 +31,7 @@ void PlayState::initialize()
 	this->mNextGameStateId = this->getStateId();
 
 	// Camera manager constructor
-	mCameraManager = new CameraManager(mGraphicsManager->getSceneManager(), mGraphicsManager->getRenderWindow());
+	mCameraManager = new CameraManager(mGraphicsManager->getSceneManager(), mGraphicsManager->getRenderWindow(), mViewport);
 	mCameraManager->initialize();
 
 	// Lights manager constructor
@@ -39,6 +41,10 @@ void PlayState::initialize()
 	//Load scene XML file
 	std::auto_ptr<DotSceneLoader> sceneLoader(new DotSceneLoader());
 	sceneLoader->parseDotScene("Stage1_1.XML","General",mGraphicsManager->getSceneManager(), mCameraManager, mLightsManager);
+
+	/** DEBUG Labels **/
+	mFpsDebugText.init();
+	mFpsDebugText.setColor(ColourValue(0.0f,0.0f,0.0f,1.0f));
 
 	// Player manager constructor
 	mPlayerManager = new PlayerManager();
@@ -52,8 +58,18 @@ void PlayState::initialize()
 void PlayState::load()
 {
 	//
-	// TODO Load 
+	// Gui Screen for this state
 	//
+	mGuiScreen = new GuiScreen(mSceneManager, GuiScreenId::IntroGui, "PlayScreen");
+	
+	//
+	// TODO Add Gui Widgets
+	//
+
+	//
+	// Register the screen as input event listener, so it can receive events
+	//
+	mInputManager->addListener(mGuiScreen);
 }
 
 /** Manage input */
@@ -68,6 +84,11 @@ void PlayState::input()
 /** Update internal stuff */
 void PlayState::update(const float elapsedSeconds)
 {
+	//
+	// FREE DEBUG STUFF
+	//
+	mFpsDebugText.frameStarted();
+	mFpsDebugText.print(0.01f,0.01f,"FPS : %f",elapsedSeconds);
 
 	// Camera switch key control
 	if(this->mInputManager->getKeyboard()->isKeyDown(OIS::KeyCode::KC_1))
@@ -162,15 +183,24 @@ void PlayState::update(const float elapsedSeconds)
 void PlayState::render(const float elapsedSeconds)
 {
 	//
-	// TODO Render
+	// FREE DEBUG STUFF
 	//
-//	if (mGraphicsManager->getRoot())
-//		mGraphicsManager->getRoot()->startRendering();
+	mFpsDebugText.update();
 }
 
 /** Unload resources */
 void PlayState::unload() 
 {
+	if(mGuiScreen)
+	{
+		//
+		// Register the screen as input event listener, so it can receive events
+		//
+		mInputManager->removeListener(mGuiScreen);
+
+		delete mGuiScreen;
+		mGuiScreen = 0;
+	}
 	//
 	// TODO Unload
 	//
@@ -179,14 +209,7 @@ void PlayState::unload()
 /** Destroy the state */
 void PlayState::finalize()
 {
-	//
-	// TODO Destroy
-	//
-	mGraphicsManager->getSceneManager()->clearScene();
-
-	mGraphicsManager->getSceneManager()->destroyAllCameras();
-
-	mGraphicsManager->getRoot()->getAutoCreatedWindow()->removeAllViewports();
+	BaseState::finalize();
 
 	mPlayerManager->finalize();
 

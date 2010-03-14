@@ -20,47 +20,40 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
 -----------------------------------------------------------------------------
 */
-#ifndef __GAMEOVER_STATE_H_
-#define __GAMEOVER_STATE_H_
+#ifndef __GUI_BUTTON_H_
+#define __GUI_BUTTON_H_
 
-#include "BaseState.h"
+#include <Ogre.h>
+#include <OgreRenderWindow.h>
+
+#include "GuiWidget.h"
+#include "GuiImage.h"
+
+using namespace Ogre;
 
 namespace WyvernsAssault
 {
-	/**
-		Gameover game state class
-	*/
-	class GameoverState : public BaseState
+	class GuiButton : public GuiWidget
 	{
 	public:
-		GameoverState(GraphicsManager& graphicsManager, InputManager& inputManager, AudioManager& audioManager);
-		~GameoverState();
+		GuiButton();
+		~GuiButton();
 
 	public:
-		/** Initialize current state */
-		void initialize();
-		/** Load resources */
-		void load();
-		/** Manage input - INPUT */
-		void input();
-		/** Update internal stuff - PROCESS */
-		void update(const float elapsedSeconds);
-		/** Render - OUTPUT */
-		void render(const float elapsedSeconds);
-		/** Unload resources */
-		void unload();
-		/** Destroy the state */
-		void finalize();
-		/** Called when the state has to be paused */
-		void pause();
-		/** Called when the state has to be resumed (from pause) */
-		void resume();
+		void setImageNormal(Ogre::String image);
+		void setImageDown(Ogre::String image);
+		void setImageSelected(Ogre::String image);
+		void setImageDisabled(Ogre::String image);
 
-		/** Get state Id */
-		GameStateId getStateId();
+	protected:
+		Ogre::SceneNode* mButtonNode;
+		Ogre::Rectangle2D* mButtonRectangle;
 
-		/** Buffered input - keyboard key clicked */
-		bool keyReleased(const OIS::KeyEvent& e);
+		GuiImage* mNormalImage;
+		GuiImage* mDownImage;
+		GuiImage* mSelectedImage;
+		GuiImage* mDisabledImage;
 	};
 }
-#endif // __GAMEOVER_STATE_H_
+
+#endif // __GUI_BUTTON_H_

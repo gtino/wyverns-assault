@@ -20,47 +20,45 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
 -----------------------------------------------------------------------------
 */
-#ifndef __GAMEOVER_STATE_H_
-#define __GAMEOVER_STATE_H_
+#ifndef __GUI_WIDGET_H_
+#define __GUI_WIDGET_H_
 
-#include "BaseState.h"
+#include <Ogre.h>
+#include <OgreRenderWindow.h>
+
+using namespace Ogre;
 
 namespace WyvernsAssault
 {
-	/**
-		Gameover game state class
-	*/
-	class GameoverState : public BaseState
+	typedef int GuiWidgetId;
+
+	struct GuiSize
+	{
+		float width;
+		float heigth;
+ 	};
+
+	struct GuiPosition
+	{
+		float x;
+		float y;
+	};
+
+	class GuiWidget
 	{
 	public:
-		GameoverState(GraphicsManager& graphicsManager, InputManager& inputManager, AudioManager& audioManager);
-		~GameoverState();
+		GuiWidget();
+		virtual ~GuiWidget() = 0;
 
-	public:
-		/** Initialize current state */
-		void initialize();
-		/** Load resources */
-		void load();
-		/** Manage input - INPUT */
-		void input();
-		/** Update internal stuff - PROCESS */
-		void update(const float elapsedSeconds);
-		/** Render - OUTPUT */
-		void render(const float elapsedSeconds);
-		/** Unload resources */
-		void unload();
-		/** Destroy the state */
-		void finalize();
-		/** Called when the state has to be paused */
-		void pause();
-		/** Called when the state has to be resumed (from pause) */
-		void resume();
+		virtual GuiPosition getPosition(){return mPosition;};
+		virtual GuiSize getSize(){return mSize;};
+		virtual void setPosition(GuiPosition position){mPosition = position;};
+		virtual void setSize(GuiSize size){mSize = size;};
 
-		/** Get state Id */
-		GameStateId getStateId();
-
-		/** Buffered input - keyboard key clicked */
-		bool keyReleased(const OIS::KeyEvent& e);
+	protected:
+		GuiPosition mPosition;
+		GuiSize mSize;
 	};
 }
-#endif // __GAMEOVER_STATE_H_
+
+#endif // __GUI_WIDGET_H_

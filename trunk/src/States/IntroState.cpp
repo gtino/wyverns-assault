@@ -21,18 +21,7 @@ IntroState::~IntroState()
 /** Initialize current state */
 void IntroState::initialize()
 {
-	this->mNextGameStateId = this->getStateId();
-
-	//
-	// TODO Initialize
-	//
-	this->mNextGameStateId = this->getStateId();
-
-	mCamera = mGraphicsManager->getSceneManager()->createCamera( "DefaultCamera" );
-
-	mViewport = mGraphicsManager->getRenderWindow()->addViewport( mCamera );
-
-	mViewport->setBackgroundColour( Ogre::ColourValue( 1, 1, 1 ) );
+	BaseState::initialize();
 }
 
 /** Manage input */
@@ -48,34 +37,19 @@ void IntroState::input()
 void IntroState::load()
 {
 	//
-	// TODO Load 
+	// Gui Screen for this state
 	//
-	// Create background material
-	mBackgroundMaterial = MaterialManager::getSingleton().create("IntroBackground", "General");
-	mBackgroundMaterial->getTechnique(0)->getPass(0)->createTextureUnitState("Intro.png");
-	mBackgroundMaterial->getTechnique(0)->getPass(0)->setDepthCheckEnabled(false);
-	mBackgroundMaterial->getTechnique(0)->getPass(0)->setDepthWriteEnabled(false);
-	mBackgroundMaterial->getTechnique(0)->getPass(0)->setLightingEnabled(false);
+	mGuiScreen = new GuiScreen(mSceneManager, GuiScreenId::IntroGui, "IntroScreen");
+	
+	GuiBackground* guiBackground = new GuiBackground();
+	guiBackground->setImage("Intro.png","IntroBackground","General");
 
-	// Create background rectangle covering the whole screen
-	mRectangle = new Rectangle2D(true);
-	mRectangle->setCorners(-1.0, 1.0, 1.0, -1.0);
-	mRectangle->setMaterial("IntroBackground");
+	mGuiScreen->setBackground(guiBackground);
 
-	// Render the background before everything else
-	mRectangle->setRenderQueueGroup(RENDER_QUEUE_BACKGROUND);
-
-	// Use infinite AAB to always stay visible
-	AxisAlignedBox aabInf;
-	aabInf.setInfinite();
-	mRectangle->setBoundingBox(aabInf);
-
-	// Attach background to the scene
-	mBackgroundNode = mGraphicsManager->getSceneManager()->getRootSceneNode()->createChildSceneNode("IntroBackground");
-	mBackgroundNode->attachObject(mRectangle);
-
-	// Example of background scrolling
-	//material->getTechnique(0)->getPass(0)->getTextureUnitState(0)->setScrollAnimation(-0.25, 0.0);
+	//
+	// Register the screen as input event listener, so it can receive events
+	//
+	mInputManager->addListener(mGuiScreen);
 }
 
 /** Update internal stuff */
@@ -97,23 +71,25 @@ void IntroState::render(const float elapsedSeconds)
 /** Unload resources */
 void IntroState::unload() 
 {
+	if(mGuiScreen)
+	{
+		//
+		// Register the screen as input event listener, so it can receive events
+		//
+		mInputManager->removeListener(mGuiScreen);
+
+		delete mGuiScreen;
+		mGuiScreen = 0;
+	}
 	//
 	// TODO Unload
 	//
-	mBackgroundNode->detachAllObjects();
 }
 
 /** Destroy the state */
 void IntroState::finalize()
 {
-	//
-	// TODO Destroy
-	//
-	mGraphicsManager->getSceneManager()->clearScene();
-
-	mGraphicsManager->getSceneManager()->destroyAllCameras();
-
-	mGraphicsManager->getRoot()->getAutoCreatedWindow()->removeAllViewports();
+	BaseState::finalize();
 }
 
 /** Get state Id */
