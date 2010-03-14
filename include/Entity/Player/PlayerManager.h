@@ -24,6 +24,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #define __PLAYER_MANAGER_H__
 
 #include "..\..\..\include\Entity\EntityManager.h"
+#include <Ogre.h>
 
 namespace WyvernsAssault
 {
@@ -35,6 +36,22 @@ namespace WyvernsAssault
 	public:
 		PlayerManager();
 		~PlayerManager();
+
+		void initialize(Ogre::String name, Ogre::String mesh, Ogre::SceneManager* levelSceneManager, Ogre::Vector3 position);
+		void finalize();
+
+		Ogre::SceneNode* GetPlayerSceneNode() const {return playerSceneNode;}
+
+		void setPosition(Ogre::Vector3 position){playerSceneNode->setPosition(position);}
+		Ogre::Vector3 getPosition(){return playerSceneNode->getPosition();} 
+
+
+	private:
+		void initializeVariables();
+
+		Ogre::SceneManager *mSceneMgr;
+		Ogre::Entity* playerMesh;
+		Ogre::SceneNode* playerSceneNode;
 	};
 }
 
