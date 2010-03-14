@@ -118,6 +118,13 @@ void DotSceneLoader::processScene(TiXmlElement *XMLRoot)
 		processLights(pElement);
 
 	LogManager::getSingleton().logMessage("[DotSceneLoader] Light processed.");
+
+	// Process skyBox
+	pElement = XMLRoot->FirstChildElement("skyBox");
+	if(pElement)
+		processSkyBox(pElement);
+
+	LogManager::getSingleton().logMessage("[DotSceneLoader] SkyBox processed.");
 }
 
 void DotSceneLoader::processNodes(TiXmlElement *XMLNode)
@@ -537,7 +544,7 @@ void DotSceneLoader::processSkyBox(TiXmlElement *XMLNode)
 {
 	// Process attributes
 	String material = getAttrib(XMLNode, "material");
-	Real distance = getAttribReal(XMLNode, "distance", 5000);
+	Real distance = getAttribReal(XMLNode, "distance", 100);
 	bool drawFirst = getAttribBool(XMLNode, "drawFirst", true);
 
 	TiXmlElement *pElement;

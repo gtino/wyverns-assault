@@ -50,6 +50,7 @@
 			<specular r="0.9" g="0.0" b="0.0"/>
 		</light>
 	</lights>
+	<skyBox material="MySky" distance="50"/>
 	<nodes>
 		<node>
 			<entity meshFile="L1.1.mesh" name="entity0"/>
