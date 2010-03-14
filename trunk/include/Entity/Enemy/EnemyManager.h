@@ -24,6 +24,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #define __ENEMY_MANAGER_H__
 
 #include "..\..\..\include\Entity\EntityManager.h"
+#include <Ogre.h>
 
 namespace WyvernsAssault
 {
@@ -32,9 +33,25 @@ namespace WyvernsAssault
 	*/
 	class EnemyManager : public EntityManager
 	{
-	public:
+		public:
 		EnemyManager();
 		~EnemyManager();
+
+		void initialize(Ogre::String name, Ogre::String mesh, Ogre::SceneManager* levelSceneManager, Ogre::Vector3 position);
+		void finalize();
+
+		Ogre::SceneNode* getEnemySceneNode() const {return enemySceneNode;}
+
+		void setPosition(Ogre::Vector3 position){enemySceneNode->setPosition(position);}
+		Ogre::Vector3 getPosition(){return enemySceneNode->getPosition();} 
+
+
+	private:
+		void initializeVariables();
+
+		Ogre::SceneManager *mSceneMgr;
+		Ogre::Entity* enemyMesh;
+		Ogre::SceneNode* enemySceneNode;
 	};
 }
 
