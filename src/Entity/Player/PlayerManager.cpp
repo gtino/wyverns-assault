@@ -26,15 +26,15 @@ void PlayerManager::initialize(Ogre::String name, Ogre::String mesh, Ogre::Scene
 	playerMesh = mSceneMgr->createEntity(name,mesh);
 	playerSceneNode = mSceneMgr->getRootSceneNode()->createChildSceneNode();
 	playerSceneNode->attachObject(playerMesh);
-	playerSceneNode->scale(0.5,0.5,0.5);
-	playerSceneNode->yaw(Ogre::Radian(0.90));
+	playerSceneNode->scale(0.2,0.2,0.2);
+	playerSceneNode->yaw(Ogre::Radian(Ogre::Degree(90)));
 	setPosition(position);
 }
 
 void PlayerManager::finalize()
 {
-	playerSceneNode->detachAllObjects();
-	mSceneMgr->getRootSceneNode()->removeAndDestroyChild(playerSceneNode->getName());
-	mSceneMgr->destroyEntity(playerMesh);
+//	playerSceneNode->detachAllObjects();
+//	mSceneMgr->getRootSceneNode()->removeAndDestroyChild(playerSceneNode->getName());
+//	mSceneMgr->destroyEntity(playerMesh);
 	initializeVariables();
 }

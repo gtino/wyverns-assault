@@ -26,12 +26,16 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #include <Ogre.h>
 
 #define FIXEDCAMERAS	8
-#define PLAYERHEIGHT	5
+#define TRAVELCAMERAS	8
+#define TRAVELPOINTS	20
 // Camera types
 #define GAMECAMERA		1
 #define FPSCAMERA		2
 #define FIXEDCAMERA		3
 #define TRAVELCAMERA	4
+// Player height for fps camera
+#define PLAYERHEIGHT	10
+#define PLAYERWIDTH		5
 
 using namespace Ogre;
 
@@ -59,6 +63,7 @@ namespace WyvernsAssault
 
 		/** Camera functions **/
 		void positionCamera(Vector3 position);
+		void rotateCamera(Radian x, Radian y, Radian z);
 		void lookAtCamera(Vector3 lookAt);
 		void moveCamera(Vector3 move);
 		void followNode(SceneNode* node, Vector3 offset = Vector3::ZERO);
@@ -72,13 +77,19 @@ namespace WyvernsAssault
 
 		/** Fixed cameras functions **/
 		void setFixedCamera(int camera, Vector3 position, Vector3 lookAt);
+		
+		/** Travel cameras functions **/
+		void setTravelCamera(int camera, int point, Vector3 position, Vector3 lookAt);
 
+		/** Debug camera functions **/
+		void switchtPolygonMode();
 	
 	private:
 		Camera*			mCamera;
 		int				mCameraType;
 		Viewport*		mViewport;
 		Vector3			mFixedCameras[FIXEDCAMERAS][2];
+		Vector3			mTravelCameras[TRAVELCAMERAS][TRAVELPOINTS][2];
 
 	private:
 		SceneManager*	mSceneManager;
