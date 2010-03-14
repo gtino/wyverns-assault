@@ -27,7 +27,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #include "..\Camera\CameraManager.h"
 #include "..\Graphics\LightsManager.h"
 
-#define SPEED	0.25
+#define SPEED	1
 
 namespace WyvernsAssault
 {
