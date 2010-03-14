@@ -18,339 +18,626 @@
     <Position X="7.25" Y="7.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAQAAAAAAAAAQAAAAAAAAAAAAAIAAAAAAAAAAAgAA=</HashCode>
-      <FileName>c:\Users\giorgio.tino\svnroot\wyverns-assault\include\SceneLoader\tinyxml.h</FileName>
+      <FileName>c:\users\giorgio.tino\svnroot\wyverns-assault\include\sceneloader\tinyxml.h</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="TiXmlBase" Collapsed="true">
     <Position X="3.75" Y="4.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>IAgggBQAEAgEAAAQAgBhARASADAQAiAIAAAgAAAkAAA=</HashCode>
-      <FileName>c:\Users\giorgio.tino\svnroot\wyverns-assault\include\SceneLoader\tinyxml.h</FileName>
+      <FileName>c:\users\giorgio.tino\svnroot\wyverns-assault\include\sceneloader\tinyxml.h</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="TiXmlNode" Collapsed="true">
     <Position X="3.75" Y="6" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AKAgAAAIAEAECiBAhEAAYQAEAAqBgCACAYtgAAtAIDA=</HashCode>
-      <FileName>c:\Users\giorgio.tino\svnroot\wyverns-assault\include\SceneLoader\tinyxml.h</FileName>
+      <FileName>c:\users\giorgio.tino\svnroot\wyverns-assault\include\sceneloader\tinyxml.h</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="TiXmlAttribute" Collapsed="true">
     <Position X="5.5" Y="6" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AgQggAAAgAAQAgAEAADAAwQAAAIEAGQAAABgQAIEEgA=</HashCode>
-      <FileName>c:\Users\giorgio.tino\svnroot\wyverns-assault\include\SceneLoader\tinyxml.h</FileName>
+      <FileName>c:\users\giorgio.tino\svnroot\wyverns-assault\include\sceneloader\tinyxml.h</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="TiXmlAttributeSet" Collapsed="true">
     <Position X="4.25" Y="11" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAIAAAAAAAAAAQAAQAAABQAAAAAJAAAAACACAAAAAAA=</HashCode>
-      <FileName>c:\Users\giorgio.tino\svnroot\wyverns-assault\include\SceneLoader\tinyxml.h</FileName>
+      <FileName>c:\users\giorgio.tino\svnroot\wyverns-assault\include\sceneloader\tinyxml.h</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="TiXmlElement" Collapsed="true">
     <Position X="2.5" Y="7.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AIAgAAAAACACAAAJAAAAIYAAgQCAAAwBCBAAAAAEIFE=</HashCode>
-      <FileName>c:\Users\giorgio.tino\svnroot\wyverns-assault\include\SceneLoader\tinyxml.h</FileName>
+      <FileName>c:\users\giorgio.tino\svnroot\wyverns-assault\include\sceneloader\tinyxml.h</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="TiXmlComment" Collapsed="true">
     <Position X="5" Y="7.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AIAgAIAAAAAAAAAAAAAAAQAAAAAAAAAIAAAAAAAEIBA=</HashCode>
-      <FileName>c:\Users\giorgio.tino\svnroot\wyverns-assault\include\SceneLoader\tinyxml.h</FileName>
+      <FileName>c:\users\giorgio.tino\svnroot\wyverns-assault\include\sceneloader\tinyxml.h</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="TiXmlText" Collapsed="true">
     <Position X="5" Y="8.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AKAgAAAABAAAAAAAAEAAAQBAAAABgAAAAAAAAAAEIBQ=</HashCode>
-      <FileName>c:\Users\giorgio.tino\svnroot\wyverns-assault\include\SceneLoader\tinyxml.h</FileName>
+      <FileName>c:\users\giorgio.tino\svnroot\wyverns-assault\include\sceneloader\tinyxml.h</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="TiXmlDeclaration" Collapsed="true">
     <Position X="2.5" Y="10" Width="1.5" />
     <TypeIdentifier>
       <HashCode>IIAgACCAAAQAAAAAAAAAAQAAgAAAAIAAAAIIAAAEKBA=</HashCode>
-      <FileName>c:\Users\giorgio.tino\svnroot\wyverns-assault\include\SceneLoader\tinyxml.h</FileName>
+      <FileName>c:\users\giorgio.tino\svnroot\wyverns-assault\include\sceneloader\tinyxml.h</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="TiXmlUnknown" Collapsed="true">
     <Position X="5" Y="10" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AIAgAAAAAEAAAAAAAAAAAQACAAAAAAAAAAAAAIAEIBA=</HashCode>
-      <FileName>c:\Users\giorgio.tino\svnroot\wyverns-assault\include\SceneLoader\tinyxml.h</FileName>
+      <FileName>c:\users\giorgio.tino\svnroot\wyverns-assault\include\sceneloader\tinyxml.h</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="TiXmlDocument" Collapsed="true">
     <Position X="2.5" Y="8.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AIAgAAAABBAQAQABAgEICQAAAAEQBAABFAAAAEgUJBA=</HashCode>
-      <FileName>c:\Users\giorgio.tino\svnroot\wyverns-assault\include\SceneLoader\tinyxml.h</FileName>
+      <FileName>c:\users\giorgio.tino\svnroot\wyverns-assault\include\sceneloader\tinyxml.h</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="TiXmlHandle" Collapsed="true">
     <Position X="7.75" Y="11" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AQAAEAAAAEAAAIAAAEgAIQABAAAAAAAAAIEICAEAABA=</HashCode>
-      <FileName>c:\Users\giorgio.tino\svnroot\wyverns-assault\include\SceneLoader\tinyxml.h</FileName>
+      <FileName>c:\users\giorgio.tino\svnroot\wyverns-assault\include\sceneloader\tinyxml.h</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="TiXmlPrinter" Collapsed="true">
     <Position X="7.25" Y="8.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAQAAAEABEhAQgBAAQAAAAEAAAAAAAAABQIBQAwAA=</HashCode>
-      <FileName>c:\Users\giorgio.tino\svnroot\wyverns-assault\include\SceneLoader\tinyxml.h</FileName>
+      <FileName>c:\users\giorgio.tino\svnroot\wyverns-assault\include\sceneloader\tinyxml.h</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="WyvernsAssault::Game" Collapsed="true">
     <Position X="27" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAGQAAAAAAiIAAAAAIAAAAIAAAA=</HashCode>
-      <FileName>c:\Users\giorgio.tino\svnroot\wyverns-assault\include\Game.h</FileName>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>c:\users\giorgio.tino\svnroot\wyverns-assault\include\game.h</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="WyvernsAssault::BaseState" Collapsed="true">
     <Position X="17" Y="1.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>CIgAIAAABIAAAAAAAAGAAQBAAAAAAFAABoAIACIUIAA=</HashCode>
-      <FileName>c:\Users\giorgio.tino\svnroot\wyverns-assault\include\States\BaseState.h</FileName>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>c:\users\giorgio.tino\svnroot\wyverns-assault\include\states\basestate.h</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="WyvernsAssault::CreditsState" Collapsed="true">
     <Position X="19.25" Y="5.25" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>GIAIAAAACIAAAAAAAAUBAAAAAACACFAAAIAQAAAUIAA=</HashCode>
-      <FileName>c:\Users\giorgio.tino\svnroot\wyverns-assault\include\States\CreditsState.h</FileName>
+      <HashCode>GIAAAAAACIAAAAAAAAEAAAAAAAAACFAAAIAAAAAUIAA=</HashCode>
+      <FileName>c:\users\giorgio.tino\svnroot\wyverns-assault\include\states\creditsstate.h</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="WyvernsAssault::EndingState" Collapsed="true">
     <Position X="14.75" Y="7.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>GIAIAAAAAIAAAAAAAAUBAAAAAACAAFAAAIAQAAAUJIA=</HashCode>
-      <FileName>c:\Users\giorgio.tino\svnroot\wyverns-assault\include\States\EndingState.h</FileName>
+      <HashCode>GIAAAAAAAIAAAAAAAAEAAAAAAAAAAFAAAIAAAAAUJIA=</HashCode>
+      <FileName>c:\users\giorgio.tino\svnroot\wyverns-assault\include\states\endingstate.h</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="WyvernsAssault::GameoverState" Collapsed="true">
     <Position X="14.75" Y="6.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>GIAIAAAAAIAAAAAAAAUBAAAAAACAAFAAAIAwBAAUIAA=</HashCode>
-      <FileName>c:\Users\giorgio.tino\svnroot\wyverns-assault\include\States\GameoverState.h</FileName>
+      <HashCode>GIAAAAAAAIAAAAAAAAEAAAAAAAAAAFAAAIAgBAAUIAA=</HashCode>
+      <FileName>c:\users\giorgio.tino\svnroot\wyverns-assault\include\states\gameoverstate.h</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="WyvernsAssault::IntroState" Collapsed="true">
     <Position X="14.75" Y="5.25" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>GIAIAAAAAIAAAAABAAUBAAAAAACAAFAAAIAQACAUKAA=</HashCode>
-      <FileName>c:\Users\giorgio.tino\svnroot\wyverns-assault\include\States\IntroState.h</FileName>
+      <HashCode>GIAAAAAAAIAAAAABAAEAAAAAAAAAAFAAAIAAACAUKAA=</HashCode>
+      <FileName>c:\users\giorgio.tino\svnroot\wyverns-assault\include\states\introstate.h</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="WyvernsAssault::MainMenuState" Collapsed="true">
     <Position X="14.75" Y="4" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>GIAIAAAAAIAABAAAACUBAAAAAACAAFAAAIAQAAAUIAA=</HashCode>
-      <FileName>c:\Users\giorgio.tino\svnroot\wyverns-assault\include\States\MainMenuState.h</FileName>
+      <HashCode>GIAAAAAAAIAABAAAACEAAAAAAAAAAFAAAIAAAAAUIAA=</HashCode>
+      <FileName>c:\users\giorgio.tino\svnroot\wyverns-assault\include\states\mainmenustate.h</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="WyvernsAssault::OutroState" Collapsed="true">
     <Position X="19.25" Y="7.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>CoAAAAAAAIAAAAAAAAEAAAAAAAAAAFAAAIAgAAAUIAA=</HashCode>
-      <FileName>c:\Users\giorgio.tino\svnroot\wyverns-assault\include\States\OutroState.h</FileName>
+      <FileName>c:\users\giorgio.tino\svnroot\wyverns-assault\include\states\outrostate.h</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="WyvernsAssault::PlayState" Collapsed="true">
     <Position X="19.25" Y="6.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>GIAQAAECAIAAAAAAAAUBAAAAAACAAFABAIAQAAA0IAA=</HashCode>
-      <FileName>c:\Users\giorgio.tino\svnroot\wyverns-assault\include\States\PlayState.h</FileName>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>c:\users\giorgio.tino\svnroot\wyverns-assault\include\states\playstate.h</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="WyvernsAssault::SplashScreenState" Collapsed="true">
     <Position X="19.25" Y="4" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>GIAIAAAAAIAAAAAAIAUBAAAAAACBAFAAAIAQACAUIAA=</HashCode>
-      <FileName>c:\Users\giorgio.tino\svnroot\wyverns-assault\include\States\SplashScreenState.h</FileName>
+      <HashCode>GIAAAAAAAIAAAAAAIAEAAAAAAAABAFAAAIAAACAUIAA=</HashCode>
+      <FileName>c:\users\giorgio.tino\svnroot\wyverns-assault\include\states\splashscreenstate.h</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="WyvernsAssault::StatesManager" Collapsed="true">
     <Position X="17" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>FCgAAAAACAAQCEAAAAXAAIAAAgAEIAAAAMAAACIERAA=</HashCode>
-      <FileName>c:\Users\giorgio.tino\svnroot\wyverns-assault\include\States\StatesManager.h</FileName>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>c:\users\giorgio.tino\svnroot\wyverns-assault\include\states\statesmanager.h</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="WyvernsAssault::GuiManager" Collapsed="true">
     <Position X="23.5" Y="1.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AwAAABAAAAAAAAAICAEAAAABQAAAAAAAAIAAAAAAQAA=</HashCode>
-      <FileName>c:\Users\giorgio.tino\svnroot\wyverns-assault\include\GUI\GuiManager.h</FileName>
+      <HashCode>EigAAAAAAAAAAAAIAAEAAAAAQAAAAAAAAMAAACACQAA=</HashCode>
+      <FileName>c:\users\giorgio.tino\svnroot\wyverns-assault\include\gui\guimanager.h</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="WyvernsAssault::InputListener">
     <Position X="15" Y="0.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>ECgAAAAAAAAAAAAAAIAAAAAAAACEIAAAAEAAACAEQAA=</HashCode>
-      <FileName>c:\Users\giorgio.tino\svnroot\wyverns-assault\include\Input\InputListener.h</FileName>
+      <FileName>c:\users\giorgio.tino\svnroot\wyverns-assault\include\input\inputlistener.h</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="WyvernsAssault::InputManager">
     <Position X="12" Y="0.5" Width="2.25" />
     <TypeIdentifier>
       <HashCode>ECgIAEAAEAEAMAAAAAEAAIAAIJQEcAUIAMAIYLIEQwE=</HashCode>
-      <FileName>c:\Users\giorgio.tino\svnroot\wyverns-assault\include\Input\InputManager.h</FileName>
+      <FileName>c:\users\giorgio.tino\svnroot\wyverns-assault\include\input\inputmanager.h</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="WyvernsAssault::CameraManager" Collapsed="true">
     <Position X="23.5" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAIAAAQBAAABgggAAEFAICACAAACAAACIAAABAiACA=</HashCode>
-      <FileName>c:\Users\giorgio.tino\svnroot\wyverns-assault\include\Camera\CameraManager.h</FileName>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>c:\users\giorgio.tino\svnroot\wyverns-assault\include\camera\cameramanager.h</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="WyvernsAssault::AudioManager" Collapsed="true">
     <Position X="21.75" Y="0.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAABAAAAAAAAAACAEAAAAAAAAAAAAAAIEAAACAAAA=</HashCode>
-      <FileName>c:\Users\giorgio.tino\svnroot\wyverns-assault\include\Audio\AudioManager.h</FileName>
+      <FileName>c:\users\giorgio.tino\svnroot\wyverns-assault\include\audio\audiomanager.h</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="WyvernsAssault::GraphicsManager">
     <Position X="9.75" Y="3.25" Width="2" />
     <TypeIdentifier>
       <HashCode>QQAAABCAAAAAAAAACAEACAgASAABAAAAAIAARAACQAA=</HashCode>
-      <FileName>c:\Users\giorgio.tino\svnroot\wyverns-assault\include\Graphics\GraphicsManager.h</FileName>
+      <FileName>c:\users\giorgio.tino\svnroot\wyverns-assault\include\graphics\graphicsmanager.h</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Ogre::nodeProperty" Collapsed="true">
     <Position X="6" Y="11" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAIAAQAAAAAAAAAAAAAAAAAAAAAAAAAACAAYAAAAAAA=</HashCode>
-      <FileName>c:\Users\giorgio.tino\svnroot\wyverns-assault\include\SceneLoader\DotSceneLoader.h</FileName>
+      <FileName>c:\users\giorgio.tino\svnroot\wyverns-assault\include\sceneloader\dotsceneloader.h</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Ogre::DotSceneLoader" Collapsed="true">
     <Position X="5.5" Y="4.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AggCQBAgAAFggkAIgAAAABQACQAAAAEQFAJBAIACAAA=</HashCode>
-      <FileName>c:\Users\giorgio.tino\svnroot\wyverns-assault\include\SceneLoader\DotSceneLoader.h</FileName>
+      <HashCode>AggCQBEgAAFggkAIglAAABQACQAAAAEQFAJBAIACAAA=</HashCode>
+      <FileName>c:\users\giorgio.tino\svnroot\wyverns-assault\include\sceneloader\dotsceneloader.h</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="WyvernsAssault::PhysicsManager" Collapsed="true">
     <Position X="21.75" Y="4" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAgAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>c:\Users\giorgio.tino\svnroot\wyverns-assault\include\Physics\PhysicsManager.h</FileName>
+      <FileName>c:\users\giorgio.tino\svnroot\wyverns-assault\include\physics\physicsmanager.h</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="WyvernsAssault::LogicManager" Collapsed="true">
     <Position X="23.5" Y="2.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQABAAAAAAA=</HashCode>
-      <FileName>c:\Users\giorgio.tino\svnroot\wyverns-assault\include\Logic\LogicManager.h</FileName>
+      <FileName>c:\users\giorgio.tino\svnroot\wyverns-assault\include\logic\logicmanager.h</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="WyvernsAssault::EntityManager" Collapsed="true">
     <Position X="8" Y="0.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAABAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>c:\Users\giorgio.tino\svnroot\wyverns-assault\include\Entity\EntityManager.h</FileName>
+      <FileName>c:\users\giorgio.tino\svnroot\wyverns-assault\include\entity\entitymanager.h</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="WyvernsAssault::PlayerManager" Collapsed="true">
     <Position X="5.75" Y="2" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAABAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>c:\Users\giorgio.tino\svnroot\wyverns-assault\include\Entity\Player\PlayerManager.h</FileName>
+      <FileName>c:\users\giorgio.tino\svnroot\wyverns-assault\include\entity\player\playermanager.h</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="WyvernsAssault::EnemyManager" Collapsed="true">
     <Position X="8" Y="2" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAACAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>c:\Users\giorgio.tino\svnroot\wyverns-assault\include\Entity\Enemy\EnemyManager.h</FileName>
+      <FileName>c:\users\giorgio.tino\svnroot\wyverns-assault\include\entity\enemy\enemymanager.h</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="WyvernsAssault::ItemManager" Collapsed="true">
     <Position X="10.25" Y="2" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAQAAAAAAAAAACAAAAAAAAAAAAA=</HashCode>
-      <FileName>c:\Users\giorgio.tino\svnroot\wyverns-assault\include\Entity\Item\ItemManager.h</FileName>
+      <FileName>c:\users\giorgio.tino\svnroot\wyverns-assault\include\entity\item\itemmanager.h</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="WyvernsAssault::DataManager" Collapsed="true">
     <Position X="23.5" Y="3.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAEAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>c:\Users\giorgio.tino\svnroot\wyverns-assault\include\Data\DataManager.h</FileName>
+      <FileName>c:\users\giorgio.tino\svnroot\wyverns-assault\include\data\datamanager.h</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="TiXmlString" Collapsed="true">
     <Position X="7.25" Y="4.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>CEAAAAIAAAAEAAAlAsICAQACAAAAAIoAiQERCAABAAA=</HashCode>
-      <FileName>c:\Users\giorgio.tino\svnroot\wyverns-assault\include\SceneLoader\tinystr.h</FileName>
+      <FileName>c:\users\giorgio.tino\svnroot\wyverns-assault\include\sceneloader\tinystr.h</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="TiXmlOutStream" Collapsed="true">
     <Position X="7.25" Y="6" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>c:\Users\giorgio.tino\svnroot\wyverns-assault\include\SceneLoader\tinystr.h</FileName>
+      <FileName>c:\users\giorgio.tino\svnroot\wyverns-assault\include\sceneloader\tinystr.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WyvernsAssault::BaseState" Collapsed="true">
+    <Position X="16.5" Y="13.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CogIIAAABIAAAAAAAAGBAQBAAAAAAFAABoAIACIWYAA=</HashCode>
+      <FileName>c:\Users\giorgio.tino\svnroot\wyverns-assault\include\States\BaseState.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WyvernsAssault::CreditsState" Collapsed="true">
+    <Position X="11" Y="14.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>GIAAAAAACIAAAAAAAAEAAAAAAAAACFAAAIAAAAAUIAA=</HashCode>
+      <FileName>c:\Users\giorgio.tino\svnroot\wyverns-assault\include\States\CreditsState.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WyvernsAssault::EndingState" Collapsed="true">
+    <Position X="13.25" Y="14.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>GIAAAAAAAIAAAAAAAAEAAAAAAAAAAFAAAIAAAAAUJIA=</HashCode>
+      <FileName>c:\Users\giorgio.tino\svnroot\wyverns-assault\include\States\EndingState.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WyvernsAssault::GameoverState" Collapsed="true">
+    <Position X="15.5" Y="14.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>GIAAAAAAAIAAAAAAAAEAAAAAAAAAAFAAAIAgBAAUIAA=</HashCode>
+      <FileName>c:\Users\giorgio.tino\svnroot\wyverns-assault\include\States\GameoverState.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WyvernsAssault::IntroState" Collapsed="true">
+    <Position X="17.75" Y="14.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>GIAAAAAAAIAAAAABAAEAAAAAAAAAAFAAAIAAACAUKAA=</HashCode>
+      <FileName>c:\Users\giorgio.tino\svnroot\wyverns-assault\include\States\IntroState.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WyvernsAssault::MainMenuState" Collapsed="true">
+    <Position X="20" Y="14.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>GIAAAAAAAIAABAAAACEAAAAAAAAAAFAAAIAAAAAUIAA=</HashCode>
+      <FileName>c:\Users\giorgio.tino\svnroot\wyverns-assault\include\States\MainMenuState.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WyvernsAssault::OutroState" Collapsed="true">
+    <Position X="22.25" Y="14.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CoAAAAAAAIAAAAAAAAEAAAAAAAAAAFAAAIAgAAAUIAA=</HashCode>
+      <FileName>c:\Users\giorgio.tino\svnroot\wyverns-assault\include\States\OutroState.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WyvernsAssault::PlayState" Collapsed="true">
+    <Position X="24.5" Y="14.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>GIAQAAEAAIAAAAAAAEEAAAAAAAAAAFAAAIQAAAA0IAA=</HashCode>
+      <FileName>c:\Users\giorgio.tino\svnroot\wyverns-assault\include\States\PlayState.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WyvernsAssault::SplashScreenState" Collapsed="true">
+    <Position X="8.75" Y="14.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>GIAAAAAAAIAAAAAAIAEAAAAAAAABAFAAAIAAACAUIAA=</HashCode>
+      <FileName>c:\Users\giorgio.tino\svnroot\wyverns-assault\include\States\SplashScreenState.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WyvernsAssault::StatesManager" Collapsed="true">
+    <Position X="18.75" Y="13.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>FCgAAAAACAAQCEAAAAXAAIAAAgAEIAAAAMAAACIERAA=</HashCode>
+      <FileName>c:\Users\giorgio.tino\svnroot\wyverns-assault\include\States\StatesManager.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WyvernsAssault::GuiManager" Collapsed="true">
+    <Position X="16.75" Y="10.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EigAAAAAAAAAAAAIAAEAAAAAQAAAAAAAAMAAACACQAA=</HashCode>
+      <FileName>c:\Users\giorgio.tino\svnroot\wyverns-assault\include\GUI\GuiManager.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WyvernsAssault::GuiBackground" Collapsed="true">
+    <Position X="10.25" Y="12.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACgA=</HashCode>
+      <FileName>c:\Users\giorgio.tino\svnroot\wyverns-assault\include\GUI\GuiBackground.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WyvernsAssault::GuiButton" Collapsed="true">
+    <Position X="12.5" Y="10.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAEAAAABAACBBAEAAAAAAgAAAAAEAAAAAAAAAAQQBQ=</HashCode>
+      <FileName>c:\Users\giorgio.tino\svnroot\wyverns-assault\include\GUI\GuiButton.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WyvernsAssault::GuiText" Collapsed="true">
+    <Position X="14.75" Y="10.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ABAAAAAAAAAAACAAAAAACACCAACAgAAIAAAAgAAIAgA=</HashCode>
+      <FileName>c:\Users\giorgio.tino\svnroot\wyverns-assault\include\GUI\GuiText.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WyvernsAssault::GuiWidget" Collapsed="true">
+    <Position X="12.5" Y="9.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAAIAAAAIAQAAgABAAAAAACAAAAAAAAAAAAAAAAAgA=</HashCode>
+      <FileName>c:\Users\giorgio.tino\svnroot\wyverns-assault\include\GUI\GuiWidget.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WyvernsAssault::GuiImage" Collapsed="true">
+    <Position X="10.25" Y="10.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAhAQAAAAAQIAAAAAQAAAAAAAAAAAAAAAABA=</HashCode>
+      <FileName>c:\Users\giorgio.tino\svnroot\wyverns-assault\include\GUI\GuiImage.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WyvernsAssault::GuiDebugText" Collapsed="true">
+    <Position X="14.75" Y="12.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAgAAIAAAAEIAAAAAAAAAABAYAAIAAIEAAAAMAAA=</HashCode>
+      <FileName>c:\Users\giorgio.tino\svnroot\wyverns-assault\include\GUI\GuiDebugText.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WyvernsAssault::InputListener" Collapsed="true">
+    <Position X="16.75" Y="12" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ECgAAAAAAAAAAAAAAIAAAAAAAACEIAAAAEAAACAEQAA=</HashCode>
+      <FileName>c:\Users\giorgio.tino\svnroot\wyverns-assault\include\Input\InputListener.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WyvernsAssault::InputManager" Collapsed="true">
+    <Position X="37.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ECgIAEAAEAEAMAAAAAEAAIAAIJQEcAUIAMAIYLIEQwE=</HashCode>
+      <FileName>c:\Users\giorgio.tino\svnroot\wyverns-assault\include\Input\InputManager.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WyvernsAssault::CameraManager" Collapsed="true">
+    <Position X="35.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ABAIAAAQBAAIBggkAAEHAICAKAAACAAECIAAABAiACA=</HashCode>
+      <FileName>c:\Users\giorgio.tino\svnroot\wyverns-assault\include\Camera\CameraManager.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WyvernsAssault::AudioManager" Collapsed="true">
+    <Position X="34" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAABAAAAAAAAAACAEAAAAAAAAAAAAAAIEAAACAAAA=</HashCode>
+      <FileName>c:\Users\giorgio.tino\svnroot\wyverns-assault\include\Audio\AudioManager.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WyvernsAssault::GraphicsManager" Collapsed="true">
+    <Position X="34" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QQAAABCAAAAAAAAACAEACAgASAABAAAAAIAARAACQAA=</HashCode>
+      <FileName>c:\Users\giorgio.tino\svnroot\wyverns-assault\include\Graphics\GraphicsManager.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WyvernsAssault::LightsManager" Collapsed="true">
+    <Position X="34" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ABAAAAAAAACCAAAAAAGAAAAAIAAAAAAAAIAAAAACAAA=</HashCode>
+      <FileName>c:\Users\giorgio.tino\svnroot\wyverns-assault\include\Graphics\LightsManager.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WyvernsAssault::PhysicsManager" Collapsed="true">
+    <Position X="37.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAgAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>c:\Users\giorgio.tino\svnroot\wyverns-assault\include\Physics\PhysicsManager.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WyvernsAssault::LogicManager" Collapsed="true">
+    <Position X="35.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQABAAAAAAA=</HashCode>
+      <FileName>c:\Users\giorgio.tino\svnroot\wyverns-assault\include\Logic\LogicManager.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WyvernsAssault::EntityManager" Collapsed="true">
+    <Position X="2.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAABAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>c:\Users\giorgio.tino\svnroot\wyverns-assault\include\Entity\EntityManager.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WyvernsAssault::PlayerManager" Collapsed="true">
+    <Position X="0.5" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAABAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>c:\Users\giorgio.tino\svnroot\wyverns-assault\include\Entity\Player\PlayerManager.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WyvernsAssault::EnemyManager" Collapsed="true">
+    <Position X="2.75" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAACAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>c:\Users\giorgio.tino\svnroot\wyverns-assault\include\Entity\Enemy\EnemyManager.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WyvernsAssault::ItemManager" Collapsed="true">
+    <Position X="5" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAQAAAAAAAAAACAAAAAAAAAAAAA=</HashCode>
+      <FileName>c:\Users\giorgio.tino\svnroot\wyverns-assault\include\Entity\Item\ItemManager.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WyvernsAssault::DataManager" Collapsed="true">
+    <Position X="37.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAEAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>c:\Users\giorgio.tino\svnroot\wyverns-assault\include\Data\DataManager.h</FileName>
     </TypeIdentifier>
   </Class>
   <Struct Name="TiXmlCursor" Collapsed="true">
     <Position X="2.5" Y="11" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAQACAAAAAAAAAAAABABAAAA=</HashCode>
-      <FileName>c:\Users\giorgio.tino\svnroot\wyverns-assault\include\SceneLoader\tinyxml.h</FileName>
+      <FileName>c:\users\giorgio.tino\svnroot\wyverns-assault\include\sceneloader\tinyxml.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="WyvernsAssault::GuiSize" Collapsed="true">
+    <Position X="35.75" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAABAA=</HashCode>
+      <FileName>c:\Users\giorgio.tino\svnroot\wyverns-assault\include\GUI\GuiWidget.h</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="WyvernsAssault::GuiPosition" Collapsed="true">
+    <Position X="34" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABgAAAAAAA=</HashCode>
+      <FileName>c:\Users\giorgio.tino\svnroot\wyverns-assault\include\GUI\GuiWidget.h</FileName>
     </TypeIdentifier>
   </Struct>
   <Typedef Name="WyvernsAssault::StatesMap" Collapsed="true">
     <Position X="25.25" Y="6" Width="3.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>c:\Users\giorgio.tino\svnroot\wyverns-assault\include\States\StatesManager.h</FileName>
+      <FileName>c:\users\giorgio.tino\svnroot\wyverns-assault\include\states\statesmanager.h</FileName>
     </TypeIdentifier>
   </Typedef>
   <Typedef Name="WyvernsAssault::StatesMapIterator" Collapsed="true">
     <Position X="27" Y="6" Width="2.75" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>c:\Users\giorgio.tino\svnroot\wyverns-assault\include\States\StatesManager.h</FileName>
+      <FileName>c:\users\giorgio.tino\svnroot\wyverns-assault\include\states\statesmanager.h</FileName>
     </TypeIdentifier>
   </Typedef>
   <Typedef Name="WyvernsAssault::StatesStack" Collapsed="true">
     <Position X="21.75" Y="6.75" Width="2.75" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>c:\Users\giorgio.tino\svnroot\wyverns-assault\include\States\StatesManager.h</FileName>
+      <FileName>c:\users\giorgio.tino\svnroot\wyverns-assault\include\states\statesmanager.h</FileName>
     </TypeIdentifier>
   </Typedef>
   <Typedef Name="WyvernsAssault::StatesStackIterator" Collapsed="true">
     <Position X="23.5" Y="6.75" Width="3" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>c:\Users\giorgio.tino\svnroot\wyverns-assault\include\States\StatesManager.h</FileName>
+      <FileName>c:\users\giorgio.tino\svnroot\wyverns-assault\include\states\statesmanager.h</FileName>
     </TypeIdentifier>
   </Typedef>
   <Typedef Name="WyvernsAssault::InputListenersList" Collapsed="true">
     <Position X="23.5" Y="6" Width="3.25" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>c:\Users\giorgio.tino\svnroot\wyverns-assault\include\Input\InputManager.h</FileName>
+      <FileName>c:\users\giorgio.tino\svnroot\wyverns-assault\include\input\inputmanager.h</FileName>
     </TypeIdentifier>
   </Typedef>
   <Typedef Name="WyvernsAssault::InputListenersIterator" Collapsed="true">
     <Position X="21.75" Y="6" Width="3.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>c:\users\giorgio.tino\svnroot\wyverns-assault\include\input\inputmanager.h</FileName>
+    </TypeIdentifier>
+  </Typedef>
+  <Typedef Name="WyvernsAssault::StatesMap" Collapsed="true">
+    <Position X="37.5" Y="6.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>c:\Users\giorgio.tino\svnroot\wyverns-assault\include\States\StatesManager.h</FileName>
+    </TypeIdentifier>
+  </Typedef>
+  <Typedef Name="WyvernsAssault::StatesMapIterator" Collapsed="true">
+    <Position X="34" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>c:\Users\giorgio.tino\svnroot\wyverns-assault\include\States\StatesManager.h</FileName>
+    </TypeIdentifier>
+  </Typedef>
+  <Typedef Name="WyvernsAssault::StatesStack" Collapsed="true">
+    <Position X="35.75" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>c:\Users\giorgio.tino\svnroot\wyverns-assault\include\States\StatesManager.h</FileName>
+    </TypeIdentifier>
+  </Typedef>
+  <Typedef Name="WyvernsAssault::StatesStackIterator" Collapsed="true">
+    <Position X="37.5" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>c:\Users\giorgio.tino\svnroot\wyverns-assault\include\States\StatesManager.h</FileName>
+    </TypeIdentifier>
+  </Typedef>
+  <Typedef Name="WyvernsAssault::GuiScreenMap" Collapsed="true">
+    <Position X="19" Y="11" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>c:\Users\giorgio.tino\svnroot\wyverns-assault\include\GUI\GuiManager.h</FileName>
+    </TypeIdentifier>
+  </Typedef>
+  <Typedef Name="WyvernsAssault::GuiScreenMapIterator" Collapsed="true">
+    <Position X="20.75" Y="11" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>c:\Users\giorgio.tino\svnroot\wyverns-assault\include\GUI\GuiManager.h</FileName>
+    </TypeIdentifier>
+  </Typedef>
+  <Typedef Name="WyvernsAssault::GuiWidgetId" Collapsed="true">
+    <Position X="37.5" Y="6" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>c:\Users\giorgio.tino\svnroot\wyverns-assault\include\GUI\GuiWidget.h</FileName>
+    </TypeIdentifier>
+  </Typedef>
+  <Typedef Name="WyvernsAssault::InputListenersList" Collapsed="true">
+    <Position X="35.75" Y="6.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>c:\Users\giorgio.tino\svnroot\wyverns-assault\include\Input\InputManager.h</FileName>
     </TypeIdentifier>
   </Typedef>
-  <Enum Name="__unnamed_00ea_1" Collapsed="true">
+  <Typedef Name="WyvernsAssault::InputListenersIterator" Collapsed="true">
+    <Position X="34" Y="6.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>c:\Users\giorgio.tino\svnroot\wyverns-assault\include\Input\InputManager.h</FileName>
+    </TypeIdentifier>
+  </Typedef>
+  <Enum Name="__unnamed_01f3_1" Collapsed="true">
     <Position X="21.75" Y="5" Width="1.75" />
     <TypeIdentifier>
       <HashCode>AAABAAAAAAAAAAAAAAAAAACABAAAAAAAAAAAAAAAAAA=</HashCode>
@@ -361,11 +648,18 @@
     <Position X="25.25" Y="5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAgAAAAAAAAAAAAAAAAAAAABAAAAAAAABAAAA=</HashCode>
-      <FileName>c:\Users\giorgio.tino\svnroot\wyverns-assault\include\SceneLoader\tinyxml.h</FileName>
+      <FileName>c:\users\giorgio.tino\svnroot\wyverns-assault\include\sceneloader\tinyxml.h</FileName>
     </TypeIdentifier>
   </Enum>
   <Enum Name="WyvernsAssault::GameStateId" Collapsed="true">
     <Position X="23.5" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>c:\users\giorgio.tino\svnroot\wyverns-assault\include\states\basestate.h</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="WyvernsAssault::GameStateId" Collapsed="true">
+    <Position X="34" Y="5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>gEAAgAAAAAAAAACAAAAAAAAQAAAAAAgApAAAAAAAAAA=</HashCode>
       <FileName>c:\Users\giorgio.tino\svnroot\wyverns-assault\include\States\BaseState.h</FileName>
