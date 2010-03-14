@@ -42,7 +42,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 //
 // Gui
 //
-#include "..\GUI\GuiManager.h"
+#include "..\GUI\GuiScreen.h"
+#include "..\GUI\GuiBackground.h"
 
 namespace WyvernsAssault
 {
@@ -115,11 +116,19 @@ namespace WyvernsAssault
 		InputManager* mInputManager;
 		/** Audio manager */
 		AudioManager* mAudioManager;
-		/** Gui manager */
-		GuiManager* mGuiManager;
 
 		/** Next Game State Id */
 		GameStateId mNextGameStateId;
+
+		/** The GUI manager */
+		GuiScreen* mGuiScreen;
+
+	protected:
+		Ogre::Root* mRoot;
+		Ogre::RenderWindow* mWindow;
+		Ogre::Camera* mCamera;
+		Ogre::Viewport* mViewport;
+		Ogre::SceneManager* mSceneManager;
 	};
 }
 #endif // __BASE_STATE_H_

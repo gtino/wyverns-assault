@@ -23,70 +23,47 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #ifndef __GUI_MANAGER_H_
 #define __GUI_MANAGER_H_
 
-#if OGRE_PLATFORM == OGRE_PLATFORM_WIN32
-#include "../../resources/resource.h"
-#endif
-
 #include <Ogre.h>
 #include <OgreRenderWindow.h>
-#include <CEGUI/CEGUI.h>
-#include <OgreCEGUIRenderer.h>
 
-//
-// Defines
-//
-#define WYVERNS_ASSAULT_RESOURCES_FILE	".\\config\\resources.cfg"
-#define WYVERNS_ASSAULT_PLUGINS_FILE	".\\config\\plugins.cfg"
-#define WYVERNS_ASSAULT_CONFIG_FILE		".\\config\\config.cfg"
-#define WYVERNS_ASSAULT_LOG_FILE		".\\log.log"
+#include "..\Input\InputListener.h"
+
+#include "GuiScreen.h"
 
 using namespace Ogre;
 
 namespace WyvernsAssault
 {
+	/** The widget map type */
+	typedef std::map<GuiScreenId, GuiScreen*> GuiScreenMap;
+	typedef GuiScreenMap::iterator GuiScreenMapIterator;
+
 	/**
 		Class used to deal with the graphics layer
 	*/
-	class GuiManager :  public FrameListener, public WindowEventListener
+	class GuiManager :  public InputListener
 	{
 	public:
-		GuiManager(Ogre::Root* root, Ogre::RenderWindow* window);
+		GuiManager(Ogre::Root* root, Ogre::SceneManager* sceneManager, Ogre::RenderWindow* window);
 		~GuiManager();
 
 	public:
 		/** Initialize CEGUI */
-		bool initialize(Ogre::RenderWindow* window);
+		bool initialize();
 		/** Finalize CEGUI */
 		void finalize();
-		
-		/** Load CEGUI resources */
-		void loadResources();
-		/** Unload CEGUI resources */
-		void unloadResources();
 
-		void loadMenu(void);
-		/** Render one frame */
-		//bool renderOneFrame();
-
-		/** Retrieve the render window */
-		//Root*			getRoot(void);
-		//RenderWindow*	getRenderWindow(void);
-		//CEGUIManager*	getSceneManager(void);
+	private: // InputListener
+		bool mouseMoved( const OIS::MouseEvent &arg );
+		bool mousePressed( const OIS::MouseEvent &arg, OIS::MouseButtonID id );
+		bool mouseReleased( const OIS::MouseEvent &arg, OIS::MouseButtonID id );
+		bool keyPressed( const OIS::KeyEvent &arg );
+		bool keyReleased( const OIS::KeyEvent &arg );
 
 	private:
-		void choose(void);
-		//bool configure(void);
-		//void chooseSceneManager(void);
-		//void createResourceListener(void);
-		/** Setup resources (i.e. read and parse resources .cfg file) */
-		//void setupResources();
-
-	private:
-		CEGUI::System*  mSystem;
 		Root*			mRoot;
 		RenderWindow*   mWindow;
-		//RenderWindow*	mRenderWindow;
-		//SceneManager*	mSceneManager;
+		SceneManager*	mSceneManager;
 	};
 }
 

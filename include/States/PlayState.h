@@ -28,6 +28,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #include "..\Graphics\LightsManager.h"
 #include "..\Entity\Player\PlayerManager.h"
 
+#include "..\GUI\GuiDebugText.h"
+
 #define SPEED	1
 
 namespace WyvernsAssault
@@ -66,21 +68,17 @@ namespace WyvernsAssault
 
 		/** Buffered input - keyboard key clicked */
 		bool keyReleased(const OIS::KeyEvent& e);
-	
-	private:
-		//Ogre::Camera* mCamera;
-		Ogre::Viewport* mViewport;
-		GuiManager* mGuiManager;
-
-		Ogre::SceneNode* mBackgroundNode;
-		Ogre::MaterialPtr mBackgroundMaterial;
-		Ogre::Rectangle2D* mRectangle;
 
 	private:
 		CameraManager* mCameraManager;
 		LightsManager* mLightsManager;
 		PlayerManager* mPlayerManager;
 
+
+		//
+		// DEBUG Text
+		//
+		GuiDebugText mFpsDebugText;
 	};
 }
 #endif // __PLAY_STATE_H_

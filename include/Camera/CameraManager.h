@@ -47,7 +47,7 @@ namespace WyvernsAssault
 	class CameraManager
 	{
 	public:
-		CameraManager(SceneManager* sceneManager, RenderWindow* renderWindow);
+		CameraManager(SceneManager* sceneManager, RenderWindow* renderWindow, Viewport* viewport);
 		~CameraManager();
 
 	public: 

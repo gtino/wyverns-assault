@@ -63,15 +63,6 @@ namespace WyvernsAssault
 
 		/** Get state Id */
 		GameStateId getStateId();
-
-	private:
-		Ogre::Camera* mCamera;
-		Ogre::Viewport* mViewport;
-		GuiManager* mGuiManager;
-
-		Ogre::SceneNode* mBackgroundNode;
-		Ogre::MaterialPtr mBackgroundMaterial;
-		Ogre::Rectangle2D* mRectangle;
 	};
 }
 #endif // __INTRO_STATE_H_

@@ -61,15 +61,6 @@ namespace WyvernsAssault
 
 		/** Buffered input - keyboard key clicked */
 		bool keyReleased(const OIS::KeyEvent& e);
-
-	private:
-		Ogre::Camera* mCamera;
-		Ogre::Viewport* mViewport;
-		GuiManager* mGuiManager;
-
-		Ogre::SceneNode* mBackgroundNode;
-		Ogre::MaterialPtr mBackgroundMaterial;
-		Ogre::Rectangle2D* mRectangle;
 	};
 }
 #endif // __MAIN_MENU_STATE_H

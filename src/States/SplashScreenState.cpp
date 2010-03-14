@@ -21,52 +21,26 @@ SplashScreenState::~SplashScreenState()
 /** Initialize current state */
 void SplashScreenState::initialize()
 {
-	//
-	// TODO Initialize
-	//
-	this->mNextGameStateId = this->getStateId();
-
-	mCamera = mGraphicsManager->getSceneManager()->createCamera( "DefaultCamera" );
-
-	mViewport = mGraphicsManager->getRenderWindow()->addViewport( mCamera );
-
-	mViewport->setBackgroundColour( Ogre::ColourValue( 1, 1, 1 ) );
-
-	mGuiManager->initialize(mGraphicsManager->getRenderWindow());
+	BaseState::initialize();
 }
 
 /** Load resources */
 void SplashScreenState::load()
 {
 	//
-	// TODO Load 
+	// Gui Screen for this state
 	//
-	// Create background material
-	mBackgroundMaterial = MaterialManager::getSingleton().create("SplashScreenBackground", "General");
-	mBackgroundMaterial->getTechnique(0)->getPass(0)->createTextureUnitState("SplashScreen.png");
-	mBackgroundMaterial->getTechnique(0)->getPass(0)->setDepthCheckEnabled(false);
-	mBackgroundMaterial->getTechnique(0)->getPass(0)->setDepthWriteEnabled(false);
-	mBackgroundMaterial->getTechnique(0)->getPass(0)->setLightingEnabled(false);
+	mGuiScreen = new GuiScreen(mSceneManager, GuiScreenId::IntroGui, "SplashScreenScreen");
+	
+	GuiBackground* guiBackground = new GuiBackground();
+	guiBackground->setImage("SplashScreen.png","SplashScreenBackground","General");
 
-	// Create background rectangle covering the whole screen
-	mRectangle = new Rectangle2D(true);
-	mRectangle->setCorners(-1.0, 1.0, 1.0, -1.0);
-	mRectangle->setMaterial("SplashScreenBackground");
+	mGuiScreen->setBackground(guiBackground);
 
-	// Render the background before everything else
-	mRectangle->setRenderQueueGroup(RENDER_QUEUE_BACKGROUND);
-
-	// Use infinite AAB to always stay visible
-	AxisAlignedBox aabInf;
-	aabInf.setInfinite();
-	mRectangle->setBoundingBox(aabInf);
-
-	// Attach background to the scene
-	mBackgroundNode = mGraphicsManager->getSceneManager()->getRootSceneNode()->createChildSceneNode("SplashScreenBackground");
-	mBackgroundNode->attachObject(mRectangle);
-
-	// Example of background scrolling
-	//material->getTechnique(0)->getPass(0)->getTextureUnitState(0)->setScrollAnimation(-0.25, 0.0);
+	//
+	// Register the screen as input event listener, so it can receive events
+	//
+	mInputManager->addListener(mGuiScreen);
 }
 
 /** Manage input */
@@ -97,23 +71,25 @@ void SplashScreenState::render(const float elapsedSeconds)
 /** Unload resources */
 void SplashScreenState::unload() 
 {
+	if(mGuiScreen)
+	{
+		//
+		// Register the screen as input event listener, so it can receive events
+		//
+		mInputManager->removeListener(mGuiScreen);
+
+		delete mGuiScreen;
+		mGuiScreen = 0;
+	}
 	//
 	// TODO Unload
 	//
-	mBackgroundNode->detachAllObjects();
 }
 
 /** Destroy the state */
 void SplashScreenState::finalize()
 {
-	//
-	// TODO Destroy
-	//
-	mGraphicsManager->getSceneManager()->clearScene();
-
-	mGraphicsManager->getSceneManager()->destroyAllCameras();
-
-	mGraphicsManager->getRoot()->getAutoCreatedWindow()->removeAllViewports();
+	BaseState::finalize();
 }
 
 /** Get state Id */

@@ -102,6 +102,13 @@ void InputManager::addListener(InputListener* listener)
 void InputManager::removeListener(InputListener* listener)
 {
 	// TODO Remove listener (if present)!
+	int i;
+	for (i=0; i<mRegisteredListeners.size(); i++)
+		if(mRegisteredListeners[i] == listener)	
+			break;
+
+	if(i < mRegisteredListeners.size())
+		mRegisteredListeners.erase(mRegisteredListeners.begin()+i);
 }
 
 /** Acquire all inputs */

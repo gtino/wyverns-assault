@@ -19,6 +19,7 @@ BaseState::BaseState(GraphicsManager& graphicsManager, InputManager& inputManage
 	this->mInputManager		= &inputManager;
 	this->mAudioManager		= &audioManager;
 
+
 }
 
 BaseState::~BaseState()
@@ -26,6 +27,42 @@ BaseState::~BaseState()
 	//
 	// TODO Distructor logic HERE
 	//
+}
+
+void BaseState::initialize()
+{
+	//
+	// TODO Initialize
+	//
+	this->mNextGameStateId = this->getStateId();
+
+	mGuiScreen = 0;
+
+	mRoot = mGraphicsManager->getRoot();
+
+	mWindow = mGraphicsManager->getRenderWindow();
+
+	mSceneManager = mGraphicsManager->getSceneManager();
+
+	mCamera = mSceneManager->createCamera( "DefaultCamera" );
+
+	mViewport = mWindow->addViewport( mCamera );
+
+	mViewport->setBackgroundColour( Ogre::ColourValue( 1, 1, 1 ) );
+}
+
+void BaseState::finalize()
+{
+	if(mSceneManager)
+	{
+		mSceneManager->clearScene();
+		mSceneManager->destroyAllCameras();
+	}
+
+	if(mRoot)
+	{
+		mRoot->getAutoCreatedWindow()->removeAllViewports();
+	}
 }
 
 void BaseState::enter()

@@ -56,14 +56,14 @@ void StatesManager::initialize(GraphicsManager& graphicsManager, InputManager& i
 
 void StatesManager::finalize()
 {
-	//
-	// TODO Destroy
-	//
+
 	StatesMapIterator it;
 	for(it = mStates.begin(); it != mStates.end(); it++)
 	{
 		delete it->second;
 	}
+
+	mStates.clear();
 
 	this->mInputManager->removeListener(this);
 }

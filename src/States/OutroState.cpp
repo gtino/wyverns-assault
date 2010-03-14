@@ -20,17 +20,26 @@ OutroState::~OutroState()
 /** Initialize current state */
 void OutroState::initialize()
 {
-	//
-	// TODO Initialize
-	//
+	BaseState::initialize();
 }
 
 /** Load resources */
 void OutroState::load()
 {
 	//
-	// TODO Load 
+	// Gui Screen for this state
 	//
+	mGuiScreen = new GuiScreen(mSceneManager, GuiScreenId::IntroGui, "OutroScreen");
+	
+	GuiBackground* guiBackground = new GuiBackground();
+	guiBackground->setImage("Outro.png","OutroBackground","General");
+
+	mGuiScreen->setBackground(guiBackground);
+
+	//
+	// Register the screen as input event listener, so it can receive events
+	//
+	mInputManager->addListener(mGuiScreen);
 }
 
 /** Manage input */
@@ -60,6 +69,16 @@ void OutroState::render(const float elapsedSeconds)
 /** Unload resources */
 void OutroState::unload() 
 {
+	if(mGuiScreen)
+	{
+		//
+		// Register the screen as input event listener, so it can receive events
+		//
+		mInputManager->removeListener(mGuiScreen);
+
+		delete mGuiScreen;
+		mGuiScreen = 0;
+	}
 	//
 	// TODO Unload
 	//
@@ -68,9 +87,7 @@ void OutroState::unload()
 /** Destroy the state */
 void OutroState::finalize()
 {
-	//
-	// TODO Destroy
-	//
+	BaseState::finalize();
 }
 
 /** Get state Id */

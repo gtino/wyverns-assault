@@ -3,10 +3,11 @@
 using namespace Ogre;
 using namespace WyvernsAssault;
 
-CameraManager::CameraManager(SceneManager* sceneManager, RenderWindow* renderWindow)
+CameraManager::CameraManager(SceneManager* sceneManager, RenderWindow* renderWindow, Viewport* viewport)
 {
 	this->mSceneManager = sceneManager;
 	this->mRenderWindow = renderWindow;
+	this->mViewport = viewport;
 }
 
 CameraManager::~CameraManager()
@@ -25,7 +26,8 @@ void CameraManager::initialize()
 	mCamera->setNearClipDistance(5);
 	mCamera->setFarClipDistance(5000);
 
-	mViewport = mRenderWindow->addViewport( mCamera );
+	//mViewport = mRenderWindow->addViewport( mCamera );
+	mViewport->setCamera(mCamera);
 	//mViewport->setDimensions(100, 100, 100, 100);
 
 	mCamera->setAspectRatio(Real(mViewport->getActualWidth()) / Real(mViewport->getActualHeight()));
