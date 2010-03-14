@@ -40,11 +40,10 @@ void PlayState::initialize()
 	sceneLoader->parseDotScene("Stage1_1.XML","General",mGraphicsManager->getSceneManager(), mCameraManager, mLightsManager);
 
 	/** Temporal player node - DELETE **/
-	player = mGraphicsManager->getSceneManager()->createEntity("Player", "redwyvern.mesh");
+	player = mGraphicsManager->getSceneManager()->createEntity("Player", "house.mesh");
 	mPlayer = mGraphicsManager->getSceneManager()->getRootSceneNode()->createChildSceneNode();
-	mPlayer->scale(Vector3(0.2,0.2,0.2));
 	mPlayer->attachObject(player);
-	mPlayer->setPosition(Vector3(20,0,0));
+	mPlayer->setPosition(Vector3(50,-20,-45));
 
 	mCameraManager->gameCamera(mPlayer);
 	/***********************************/
