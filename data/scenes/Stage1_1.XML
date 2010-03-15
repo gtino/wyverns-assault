@@ -303,15 +303,101 @@
 			<position x="257.167" y="-36.5" z="-55.417"/>
 			<entity meshFile="tree_1.mesh" name="entity51"/>
 		</node>
-	
 		<node>
 			<position x="257.742" y="-35.507" z="-62.918"/>
 			<entity meshFile="tree_3.mesh" name="entity52"/>
-		</node>
-	
+		</node>	
 		<node>
 			<position x="261.885" y="-36.989" z="-53.879"/>
 			<entity meshFile="tree_3.mesh" name="entity53"/>
+		</node>
+		<node>
+			<position x="349.185" y="-36" z="-39.879"/>
+			<entity meshFile="tree_1.mesh" name="entity54"/>
+		</node>
+		<node>
+			<position x="346.82" y="-36.368" z="-44.879"/>
+			<entity meshFile="tree_2.mesh" name="entity55"/>
+		</node>
+		<node>
+			<position x="344.066" y="-36.544" z="-47.97"/>
+			<entity meshFile="tree_4.mesh" name="entity56"/>
+		</node>
+		<node>
+			<position x="337.674" y="-36.271" z="-54.432"/>
+			<entity meshFile="tree_3.mesh" name="entity57"/>
+		</node>
+		<node>
+			<position x="344.427" y="-35.923" z="-57.305"/>
+			<entity meshFile="tree_1.mesh" name="entity58"/>
+		</node>
+		<node>
+			<position x="340.066" y="-36.46" z="-60.738"/>
+			<entity meshFile="tree_4.mesh" name="entity59"/>
+		</node>
+		<node>
+			<position x="538.517" y="-37.048" z="-17.64"/>
+			<entity meshFile="tree_4.mesh" name="entity60"/>
+		</node>
+		<node>
+			<position x="552.674" y="-36.888" z="-31.432"/>
+			<entity meshFile="tree_3.mesh" name="entity61"/>
+		</node>
+		<node>
+			<position x="559.427" y="-36.923" z="-36.305"/>
+			<entity meshFile="tree_1.mesh" name="entity62"/>
+		</node>
+		<node>
+			<position x="575.066" y="-37.46" z="-48.738"/>
+			<entity meshFile="tree_4.mesh" name="entity63"/>
+		</node>
+		<node>
+			<position x="572.517" y="-37.048" z="-17.64"/>
+			<entity meshFile="tree_4.mesh" name="entity64"/>
+		</node>
+		<node>
+			<position x="574.674" y="-37.888" z="-25.432"/>
+			<entity meshFile="tree_3.mesh" name="entity65"/>
+		</node>
+		<node>
+			<position x="578.427" y="-37.923" z="-20.305"/>
+			<entity meshFile="tree_2.mesh" name="entity66"/>
+		</node>
+		<node>
+			<position x="582.066" y="-37.46" z="-23.738"/>
+			<entity meshFile="tree_3.mesh" name="entity67"/>
+		</node>
+		<node>
+			<position x="588.066" y="-36.46" z="-20.738"/>
+			<entity meshFile="tree_1.mesh" name="entity68"/>
+		</node>
+		<node>
+			<position x="645.427" y="-36.923" z="-32.305"/>
+			<entity meshFile="tree_1.mesh" name="entity69"/>
+		</node>
+		<node>
+			<position x="653.066" y="-37.46" z="-24.738"/>
+			<entity meshFile="tree_4.mesh" name="entity70"/>
+		</node>
+		<node>
+			<position x="658.517" y="-37.455" z="-28.64"/>
+			<entity meshFile="tree_4.mesh" name="entity71"/>
+		</node>
+		<node>
+			<position x="660.674" y="-36.888" z="-12.432"/>
+			<entity meshFile="tree_3.mesh" name="entity72"/>
+		</node>
+		<node>
+			<position x="687.427" y="-36.923" z="-16.305"/>
+			<entity meshFile="tree_2.mesh" name="entity73"/>
+		</node>
+		<node>
+			<position x="685.066" y="-37.46" z="-25.738"/>
+			<entity meshFile="tree_3.mesh" name="entity74"/>
+		</node>
+		<node>
+			<position x="660.066" y="-36.46" z="-56.738"/>
+			<entity meshFile="tree_1.mesh" name="entity75"/>
 		</node>
 	</nodes>
 	<enemys>
@@ -555,7 +641,7 @@
 		
 		<!-- Battering Rams-->
 		<enemy>
-			<position x="350" y="-40" z="-40"/>
+			<position x="350" y="-40" z="-30"/>
 			<scale x="0.2" y="0.2" z="0.2"/>
  			<entity meshFile="batteringRAM.mesh" name="ram1"/>
 		</enemy>
