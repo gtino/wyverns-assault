@@ -34,3 +34,15 @@ void GuiButton::setImageDisabled(Ogre::String image)
 {
 	mDisabledImage->setImage(image, NULL, NULL);
 }
+
+void GuiButton::setPosition(float x, float y)
+{
+	mPosition.x = x;
+	mPosition.y = y;
+}
+
+void GuiButton::setSize(float h, float w)
+{
+	mSize.heigth = h;
+	mSize.width  = w;
+}

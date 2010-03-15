@@ -38,6 +38,24 @@ void GuiScreen::removeWidget(GuiWidgetId widgetId)
 	mWidgetMap.erase(widgetId);
 }
 
+GuiWidget* GuiScreen::nextWidget(GuiWidgetId widgetId)
+{	
+	// TODO
+	if (!mWidgetMap[widgetId++])
+		return (mWidgetMap[widgetId]);
+	else 
+		return (mWidgetMap[widgetId++]);
+}
+
+GuiWidget* GuiScreen::previousWidget(GuiWidgetId widgetId)
+{
+	// TODO
+	if (widgetId>0)
+		widgetId--;
+	return (mWidgetMap[widgetId]);
+
+}
+
 void GuiScreen::setBackground(GuiBackground* background)
 {
 	//// Attach background to the scene
@@ -51,7 +69,7 @@ void GuiScreen::setBackground(GuiBackground* background)
 //
 /** Buffered input - keyboard key clicked */
 bool GuiScreen::keyClicked(const OIS::KeyEvent& e)
-{
+{	 
 	return true;
 }
 

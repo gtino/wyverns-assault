@@ -54,16 +54,19 @@ void PlayState::initialize()
 	mFpsDebugText.setColor(ColourValue(0.0f,0.0f,0.0f,1.0f));
 
 	// Player UI
-	//GuiImage* mPlayerUI = new GuiImage();
-	//mPlayerUI->setImage("UI.png", "UI", "Interface");
-	//mPlayerUI->setPosition();
+	mGuiScreen = new GuiScreen(mSceneManager, GuiScreenId::PlayGui, "General");
+	GuiImage* mPlayerUI = new GuiImage();
+	mPlayerUI->setImage("UI.png", "PlayScreen", "Interface");
+	mPlayerUI->setPosition(0.05, 0.05);
+	mPlayerUI->setSize(0.15, 0.20);
+	mGuiScreen->addWidget(mPlayerUI,GuiWidgetPlayId::UserInterface1);	
+	mInputManager->addListener(mGuiScreen);
 
 	// Player manager constructor
 	mPlayerManager = new PlayerManager();
 	mPlayerManager->initialize("redWyvern","redwyvern.mesh",mGraphicsManager->getSceneManager(),Vector3(200,-38,-45));
 
 	mCameraManager->gameCamera(mPlayerManager->GetPlayerSceneNode());
-
 }
 
 /** Load resources */
@@ -77,7 +80,7 @@ void PlayState::load()
 	//
 	// TODO Add Gui Widgets
 	//
-
+	
 	//
 	// Register the screen as input event listener, so it can receive events
 	//

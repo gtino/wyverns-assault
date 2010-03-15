@@ -39,8 +39,8 @@ void SplashScreenState::load()
 	
 	// Gui Widgets for this state
 	GuiButton* goIntro = new GuiButton();
-	goIntro->setSize(0.20);
-	goIntro->setPosition(0.20);
+	goIntro->setSize(0.20, 0.20);
+	goIntro->setPosition(0.70, 0.40);
 	//goIntro->setImageNormal("IntroButton.png");
 	//goIntro->setImageDown("IntroButtonDown.png");
 	mGuiScreen->addWidget(goIntro,GuiWidgetPlayScreenId::GoIntro);
