@@ -46,6 +46,13 @@ void IntroState::load()
 
 	mGuiScreen->setBackground(guiBackground);
 
+	// Gui Widgets for this state
+	GuiButton* skipButton = new GuiButton();
+	skipButton->setSize(0.20);
+	skipButton->setPosition(0.20);
+	//playButton->setImageNormal("Play.png");
+	//playButton->setImageDown("PlayDown.png");
+	mGuiScreen->addWidget(skipButton,GuiWidgetIntroId::SkipIntro);
 	//
 	// Register the screen as input event listener, so it can receive events
 	//

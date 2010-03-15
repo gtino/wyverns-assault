@@ -31,6 +31,45 @@ using namespace Ogre;
 namespace WyvernsAssault
 {
 	typedef int GuiWidgetId;
+	
+	/** List of Credits states */
+	enum GuiWidgetCreditsId
+	{
+		ReturnMenu = 0
+	};
+
+	/** List of Ending states */
+	enum GuiWidgetEndingId
+	{
+	};
+
+	/** List of GameOver states */
+	enum GuiWidgetGameOverId
+	{
+	};
+
+	/** List of Intro states */
+	enum GuiWidgetIntroId
+	{
+		SkipIntro = 0
+	};
+	
+	/** List of menu states */
+	enum GuiWidgetMenuId
+	{	
+		PlayMenu	= 0,
+		OptionsMenu = 1,
+		CreditsMenu = 2,
+		QuitMenu	= 3	
+	};
+	
+	enum GuiWidgetPlayId
+	{
+	};
+
+	enum GuiWidgetPlayScreenId
+	{
+	};
 
 	struct GuiSize
 	{
@@ -52,8 +91,8 @@ namespace WyvernsAssault
 
 		virtual GuiPosition getPosition(){return mPosition;};
 		virtual GuiSize getSize(){return mSize;};
-		virtual void setPosition(GuiPosition position){mPosition = position;};
-		virtual void setSize(GuiSize size){mSize = size;};
+		virtual void setPosition(float position){mPosition.x = position; mPosition.y = position;};
+		virtual void setSize(float size){mSize.width = size; mSize.heigth = size * 3;};
 
 	protected:
 		GuiPosition mPosition;
