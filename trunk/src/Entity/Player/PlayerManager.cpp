@@ -15,8 +15,8 @@ PlayerManager::~PlayerManager()
 void PlayerManager::setPosition(Ogre::Vector3 position)
 {
 	// Constrain movement outside boundaries - TEMP
-	if (position.x < 0) position.x = 0;
-	if (position.z > -10) position.z = -10;
+	if (position.x < 0) position.x = 20;
+	if (position.z > -16) position.z = -16;
 	playerSceneNode->setPosition(position);
 };
 
