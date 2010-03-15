@@ -3,6 +3,18 @@
 using namespace WyvernsAssault;
 
 BaseState::BaseState()
+: mGuiScreen(0)
+, mSceneManager(0)
+, mRoot(0)
+, mWindow(0)
+, mCamera(0)
+, mViewport(0)
+, mGraphicsManager(0)
+, mInputManager(0)
+, mAudioManager(0)
+, mIsActive(false)
+, mIsDead(false)
+, mIsPaused(false)
 {
 	this->mIsActive = false;
 	this->mIsDead = false;
@@ -10,11 +22,19 @@ BaseState::BaseState()
 }
 
 BaseState::BaseState(GraphicsManager& graphicsManager, InputManager& inputManager, AudioManager& audioManager)
+: mGuiScreen(0)
+, mSceneManager(0)
+, mRoot(0)
+, mWindow(0)
+, mCamera(0)
+, mViewport(0)
+, mGraphicsManager(0)
+, mInputManager(0)
+, mAudioManager(0)
+, mIsActive(false)
+, mIsDead(false)
+, mIsPaused(false)
 {
-	this->mIsActive = false;
-	this->mIsDead = false;
-	this->mIsPaused = false;
-
 	this->mGraphicsManager	= &graphicsManager;
 	this->mInputManager		= &inputManager;
 	this->mAudioManager		= &audioManager;

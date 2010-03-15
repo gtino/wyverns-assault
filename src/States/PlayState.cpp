@@ -5,6 +5,10 @@ using namespace WyvernsAssault;
 
 PlayState::PlayState(GraphicsManager& graphicsManager, InputManager& inputManager, AudioManager& audioManager)
 : BaseState(graphicsManager,inputManager,audioManager)
+, mPlayerManager(NULL)
+, mLightsManager(NULL)
+, mCameraManager(NULL)
+, mEnemysManager(NULL)
 {
 	//
 	// TODO Constructor logic HERE
@@ -231,8 +235,30 @@ void PlayState::finalize()
 {
 	BaseState::finalize();
 
-	mPlayerManager->finalize();
+	if(mPlayerManager)
+	{
+		delete mPlayerManager;
+		mPlayerManager = NULL;
+	}
 	
+	if(mCameraManager)
+	{
+		delete mCameraManager;
+		mCameraManager = NULL;
+	}
+
+	if(mLightsManager)
+	{
+		delete mLightsManager;
+		mLightsManager = NULL;
+	}
+
+	if(mEnemysManager)
+	{
+		delete mEnemysManager;
+		mEnemysManager = NULL;
+	}
+
 	/** Dispose of Debug text **/
 	mFpsDebugText.finalize();
 }

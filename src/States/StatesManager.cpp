@@ -61,6 +61,7 @@ void StatesManager::finalize()
 	for(it = mStates.begin(); it != mStates.end(); it++)
 	{
 		delete it->second;
+		it->second = 0;
 	}
 
 	mStates.clear();
