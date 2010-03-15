@@ -34,8 +34,10 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #define FIXEDCAMERA		3
 #define TRAVELCAMERA	4
 // Player height for fps camera
-#define PLAYERHEIGHT	10
-#define PLAYERWIDTH		22
+#define PLAYERHEIGHT	5
+#define PLAYERWIDTH		0
+
+#define PI 3.14159265
 
 using namespace Ogre;
 
