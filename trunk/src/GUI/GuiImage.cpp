@@ -40,11 +40,21 @@ void GuiImage::setImage(const Ogre::String& filename, const Ogre::String& name, 
 	mImageRectangle->setBoundingBox(aabInf);
 
 	// Attach background to the scene
-	//mImageNode = mSceneManager->getRootNode()->createChildSceneNode(name);
-	//mImageNode->attachObject(mRectangle);
+	//mImageNode = node;
+	//mImageNode->attachObject(getImageRectangle());
 }
 
 Ogre::Rectangle2D* GuiImage::getImageRectangle()
 {
 	return mImageRectangle;
+}
+
+void GuiImage::setPosition(float x, float y)
+{
+	//mImageNode->setPosition(Vector3(x, y, 0));
+}
+
+void GuiImage::setSize(GuiSize size)
+{
+
 }

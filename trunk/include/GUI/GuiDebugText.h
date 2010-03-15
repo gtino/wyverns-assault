@@ -47,6 +47,8 @@ namespace WyvernsAssault
 		void update();
 		// Change the color
 		void setColor(ColourValue& color);
+		// Show/hide toogle
+		void toogle();
 
 	private:
 		struct Entry

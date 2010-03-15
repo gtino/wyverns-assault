@@ -35,7 +35,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #define TRAVELCAMERA	4
 // Player height for fps camera
 #define PLAYERHEIGHT	10
-#define PLAYERWIDTH		5
+#define PLAYERWIDTH		22
 
 using namespace Ogre;
 
@@ -83,6 +83,7 @@ namespace WyvernsAssault
 
 		/** Debug camera functions **/
 		void switchtPolygonMode();
+		String getPolygonMode();
 	
 	private:
 		Camera*			mCamera;

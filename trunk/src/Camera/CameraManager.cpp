@@ -25,12 +25,9 @@ void CameraManager::initialize()
 	
 	mCamera->setNearClipDistance(5);
 	mCamera->setFarClipDistance(5000);
-
-	//mViewport = mRenderWindow->addViewport( mCamera );
-	mViewport->setCamera(mCamera);
-	//mViewport->setDimensions(100, 100, 100, 100);
-
 	mCamera->setAspectRatio(Real(mViewport->getActualWidth()) / Real(mViewport->getActualHeight()));
+	
+	mViewport->setCamera(mCamera);
 
 	/** Dummy traveling cameras - DELETE **/
 
@@ -58,9 +55,9 @@ void CameraManager::positionCamera(Vector3 position)
 
 void CameraManager::rotateCamera(Radian x, Radian y, Radian z)
 {
-	if (x.valueRadians() != 0) mCamera->pitch(x);
-	if (y.valueRadians() != 0) mCamera->roll(y);
-	if (z.valueRadians() != 0) mCamera->yaw(z);
+	if (x.valueRadians() != 0) mCamera->roll(x);
+	if (y.valueRadians() != 0) mCamera->yaw(y);
+	if (z.valueRadians() != 0) mCamera->pitch(z);
 }
 
 void CameraManager::lookAtCamera(Vector3 lookAt)
@@ -70,7 +67,7 @@ void CameraManager::lookAtCamera(Vector3 lookAt)
 
 void CameraManager::moveCamera(Vector3 move)
 {
-	mCamera->getParentSceneNode()->translate(move);
+	mCamera->move(move);
 }
 
 void CameraManager::followNode(SceneNode* node, Vector3 offset)
@@ -80,10 +77,13 @@ void CameraManager::followNode(SceneNode* node, Vector3 offset)
 
 void CameraManager::updateCamera(SceneNode* node)
 {
+	int cameraHeight = node->getPosition().z;
+
 	switch(mCameraType)
 	{
-		case GAMECAMERA:
-			positionCamera(node->getPosition() + Vector3(-5,30,80));
+		case GAMECAMERA:			
+			//if (node->getPosition().z > -35) offset.z += node->getPosition().z;
+			positionCamera(Vector3(node->getPosition().x, node->getPosition().y - (cameraHeight+5), 5));
 			break;
 
 		case FPSCAMERA:
@@ -131,10 +131,10 @@ void CameraManager::travelCamera(int id)
 	mCamera->setAutoTracking(false);
 
 	// Position camera at first travel point
-	positionCamera(mTravelCameras[id][0][0]);
+	moveCamera(mCamera->getPosition() - mTravelCameras[id][0][0]);
 	lookAtCamera(mTravelCameras[id][0][1]);
 
-	// Move the camer trough travel point
+	// Move the camer through travel point
 	/*for(int point = 1; point < TRAVELPOINTS; point++)
 	{
 		if (mTravelCameras[id][point][0] == Vector3::ZERO || mTravelCameras[id][point][1] == Vector3::ZERO) break;
@@ -165,13 +165,19 @@ void CameraManager::switchtPolygonMode()
 		case PM_POINTS:
 			mCamera->setPolygonMode(PM_WIREFRAME);
 			break;
-
 		case PM_WIREFRAME:
 			mCamera->setPolygonMode(PM_SOLID);
 			break;
-
 		case PM_SOLID:
 			mCamera->setPolygonMode(PM_POINTS);
 			break;
 	}
 }
+
+String CameraManager::getPolygonMode()
+{
+	if(mCamera->getPolygonMode() == PM_POINTS) return "point";
+	else if(mCamera->getPolygonMode() == PM_WIREFRAME) return "wireframe";
+	else if(mCamera->getPolygonMode() == PM_SOLID) return "solid";
+	else return "unknown";
+};

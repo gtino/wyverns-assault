@@ -42,7 +42,8 @@ namespace WyvernsAssault
 
 		Ogre::SceneNode* GetPlayerSceneNode() const {return playerSceneNode;}
 
-		void setPosition(Ogre::Vector3 position){playerSceneNode->setPosition(position);}
+		void setPosition(Ogre::Vector3 position);
+		void setRotation(Ogre::Radian x, Ogre::Radian y, Ogre::Radian z);
 		Ogre::Vector3 getPosition(){return playerSceneNode->getPosition();} 
 
 
