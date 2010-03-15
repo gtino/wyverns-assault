@@ -35,7 +35,11 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 // Defines
 //
 #define WYVERNS_ASSAULT_RESOURCES_FILE	".\\config\\resources.cfg"
+#if _DEBUG
+#define WYVERNS_ASSAULT_PLUGINS_FILE	".\\config\\plugins_d.cfg"
+#else
 #define WYVERNS_ASSAULT_PLUGINS_FILE	".\\config\\plugins.cfg"
+#endif
 #define WYVERNS_ASSAULT_CONFIG_FILE		".\\config\\config.cfg"
 #define WYVERNS_ASSAULT_LOG_FILE		".\\log.log"
 
