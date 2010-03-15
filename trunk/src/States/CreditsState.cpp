@@ -30,7 +30,8 @@ void CreditsState::load()
 	//
 	// Gui Screen for this state
 	//
-	mGuiScreen = new GuiScreen(mSceneManager, GuiScreenId::IntroGui, "CreditsScreen");
+	mGuiScreen = new GuiScreen(mSceneManager, GuiScreenId::CreditsGui, "CreditsScreen");
+	//mGuiScreen = new GuiScreen(mSceneManager, GuiScreenId::IntroGui, "CreditsScreen");
 	
 	GuiBackground* guiBackground = new GuiBackground();
 	guiBackground->setImage("Credits.png","CreditsBackground","General");
@@ -39,8 +40,8 @@ void CreditsState::load()
 
 	// Gui Widgets for this state
 	GuiButton* menuButton = new GuiButton();
-	menuButton->setSize(0.20);
-	menuButton->setPosition(0.40);
+	menuButton->setSize(0.20, 0.20);
+	menuButton->setPosition(0.80, 0.50);
 	//menuButton->setImageNormal("MenuButton.png");
 	//menuButton->setImageDown("MenuButtonDown.png");
 	mGuiScreen->addWidget(menuButton,GuiWidgetCreditsId::CreditsToMenu);

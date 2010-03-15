@@ -39,7 +39,7 @@ void MainMenuState::load()
 	//
 	// Gui Screen for this state
 	//
-	mGuiScreen = new GuiScreen(mSceneManager, GuiScreenId::IntroGui, "MainMenuScreen");
+	mGuiScreen = new GuiScreen(mSceneManager, GuiScreenId::MainMenuGui, "MainMenuScreen");
 	
 	GuiBackground* guiBackground = new GuiBackground();
 	guiBackground->setImage("MainMenu.png","MainMenuBackground","General");
@@ -48,29 +48,29 @@ void MainMenuState::load()
 	
 	// Gui Widgets for this state
 	GuiButton* playButton = new GuiButton();
-	playButton->setSize(0.20);
-	playButton->setPosition(0.20);
+	playButton->setSize(0.15, 0.15);
+	playButton->setPosition(0.20, 0.15);
 	//playButton->setImageNormal("PlayButton.png");
 	//playButton->setImageDown("PlayButtonDown.png");
 	mGuiScreen->addWidget(playButton,GuiWidgetMenuId::PlayMenu);
 	
 	GuiButton* optionsButton = new GuiButton();
-	optionsButton->setSize(0.20);
-	optionsButton->setPosition(0.20);
+	optionsButton->setSize(0.15, 0.15);
+	optionsButton->setPosition(0.20, 0.40);
 	//optionsButton->setImageNormal("OptionsButton.png");
 	//optionsButton->setImageDown("OptionsDown.png");
 	mGuiScreen->addWidget(optionsButton,GuiWidgetMenuId::OptionsMenu);
 	
 	GuiButton* creditsButton = new GuiButton();
-	creditsButton->setSize(0.20);
-	creditsButton->setPosition(0.20);
+	creditsButton->setSize(0.15, 0.15);
+	creditsButton->setPosition(0.20, 0.65);
 	//creditsButton->setImageNormal("CreditsButton.png");
 	//creditsButton->setImageDown("CreditsButtonDown.png");
 	mGuiScreen->addWidget(creditsButton,GuiWidgetMenuId::CreditsMenu);
 	
 	GuiButton* quitButton = new GuiButton();
-	quitButton->setSize(0.20);
-	quitButton->setPosition(0.20);
+	quitButton->setSize(0.15, 0.15);
+	quitButton->setPosition(0.20, 0.80);
 	//quitButton->setImageNormal("QuitButton.png");
 	//quitButton->setImageDown("QuitButtonDown.png");
 	mGuiScreen->addWidget(quitButton,GuiWidgetMenuId::QuitMenu);
@@ -148,22 +148,22 @@ void MainMenuState::pause()
 	
 	// Gui Widgets for this state
 	GuiButton* playButton = new GuiButton();
-	playButton->setSize(0.20);
-	playButton->setPosition(0.15);
+	playButton->setSize(0.20, 0.20);
+	playButton->setPosition(0.25, 0.25);
 	//playButton->setImageNormal("PlayButton.png");
 	//playButton->setImageDown("PlayButtonDown.png");
 	mGuiScreen->addWidget(playButton,GuiWidgetMenuId::PlayMenu);
 	
 	GuiButton* optionsButton = new GuiButton();
-	optionsButton->setSize(0.20);
-	optionsButton->setPosition(0.40);
+	optionsButton->setSize(0.20, 0.20);
+	optionsButton->setPosition(0.20, 0.50);
 	//optionsButton->setImageNormal("OptionsButton.png");
 	//optionsButton->setImageDown("OptionsDown.png");
 	mGuiScreen->addWidget(optionsButton,GuiWidgetMenuId::OptionsMenu);
 	
 	GuiButton* quitButton = new GuiButton();
-	quitButton->setSize(0.20);
-	quitButton->setPosition(0.65);
+	quitButton->setSize(0.20, 0.20);
+	quitButton->setPosition(0.20, 0.75);
 	//quitButton->setImageNormal("QuitButton.png");
 	//quitButton->setImageDown("QuitButtonDown.png");
 	mGuiScreen->addWidget(quitButton,GuiWidgetMenuId::QuitMenu);

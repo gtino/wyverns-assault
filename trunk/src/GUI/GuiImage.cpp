@@ -51,10 +51,14 @@ Ogre::Rectangle2D* GuiImage::getImageRectangle()
 
 void GuiImage::setPosition(float x, float y)
 {
+	mPosition.x=x;
+	mPosition.y=y;
+
 	//mImageNode->setPosition(Vector3(x, y, 0));
 }
 
-void GuiImage::setSize(GuiSize size)
+void GuiImage::setSize(float h, float w)
 {
-
+	mSize.heigth = h;
+	mSize.width  = w;
 }

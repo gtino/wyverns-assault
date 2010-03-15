@@ -39,15 +39,15 @@ void EndingState::load()
 	
 	// Gui Widgets for this state
 	GuiButton* menuButton = new GuiButton();
-	menuButton->setSize(0.20);
-	menuButton->setPosition(0.20);
+	menuButton->setSize(0.20, 0.20);
+	menuButton->setPosition(0.70, 0.20);
 	//menuButton->setImageNormal("MenuButton.png");
 	//menuButton->setImageDown("MenuButtonDown.png");
 	mGuiScreen->addWidget(menuButton,GuiWidgetEndingId::EndingToMenu);
 	
 	GuiButton* creditsButton = new GuiButton();
-	creditsButton->setSize(0.20);
-	creditsButton->setPosition(0.60);
+	creditsButton->setSize(0.20, 0.20);
+	creditsButton->setPosition(0.70, 0.50);
 	//creditsButton->setImageNormal("CreditsButton.png");
 	//creditsButton->setImageDown("CreditsButtonDown.png");
 	mGuiScreen->addWidget(creditsButton,GuiWidgetEndingId::EndingToCredits);

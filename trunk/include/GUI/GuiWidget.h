@@ -68,7 +68,11 @@ namespace WyvernsAssault
 	};
 	
 	enum GuiWidgetPlayId
-	{
+	{	
+		UserInterface1 = 0,
+		UserInterface2 = 1,
+		UserInterface3 = 2,
+		UserInterface4 = 3
 	};
 
 	enum GuiWidgetPlayScreenId
@@ -103,8 +107,8 @@ namespace WyvernsAssault
 
 		virtual GuiPosition getPosition(){return mPosition;};
 		virtual GuiSize getSize(){return mSize;};
-		virtual void setPosition(float position){mPosition.x = position; mPosition.y = position;};
-		virtual void setSize(float size){mSize.width = size; mSize.heigth = size * 3;};
+		virtual void setPosition(float positionX, float positionY){mPosition.x = positionX; mPosition.y = positionY;};
+		virtual void setSize(float sizeX, float sizeY){mSize.width = sizeX; mSize.heigth = sizeY;};
 
 	protected:
 		GuiPosition mPosition;

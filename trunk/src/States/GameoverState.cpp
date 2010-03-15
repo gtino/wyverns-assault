@@ -48,14 +48,14 @@ void GameoverState::load()
 	
 	// Gui Widgets for this state
 	GuiButton* menuButton = new GuiButton();
-	menuButton->setSize(0.20);
-	menuButton->setPosition(0.20);
+	menuButton->setSize(0.20, 0.20);
+	menuButton->setPosition(0.20, 0.70);
 	//menuButton->setImageNormal("MenuButton.png");
 	//menuButton->setImageDown("MenuButtonDown.png");
 	mGuiScreen->addWidget(menuButton,GuiWidgetGameoverId::ReturnMenu);
 	GuiButton* quitButton = new GuiButton();
-	quitButton->setSize(0.20);
-	quitButton->setPosition(0.60);
+	quitButton->setSize(0.20, 0.20);
+	quitButton->setPosition(0.50, 0.70);
 	//quitButton->setImageNormal("QuitButton.png");
 	//quitButton->setImageDown("QuitButtonDown.png");
 	mGuiScreen->addWidget(quitButton,GuiWidgetGameoverId::QuitGame);

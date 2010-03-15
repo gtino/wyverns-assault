@@ -43,7 +43,7 @@ namespace WyvernsAssault
 		Ogre::Rectangle2D* getImageRectangle();
 
 		void setPosition(float x, float y);
-		void setSize(GuiSize size);
+		void setSize(float x, float y);
 
 	protected:
 		Ogre::SceneNode* mImageNode;

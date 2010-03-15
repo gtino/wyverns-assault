@@ -44,6 +44,9 @@ namespace WyvernsAssault
 		void setImageDown(Ogre::String image);
 		void setImageSelected(Ogre::String image);
 		void setImageDisabled(Ogre::String image);
+		
+		void setSize(float x, float y);
+		void setPosition(float x, float y);
 
 	protected:
 		Ogre::SceneNode* mButtonNode;

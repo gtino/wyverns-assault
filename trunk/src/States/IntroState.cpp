@@ -48,8 +48,8 @@ void IntroState::load()
 
 	// Gui Widgets for this state
 	GuiButton* skipButton = new GuiButton();
-	skipButton->setSize(0.20);
-	skipButton->setPosition(0.20);
+	skipButton->setSize(0.20, 0.20);
+	skipButton->setPosition(0.70, 0.50);
 	//playButton->setImageNormal("Skip.png");
 	//playButton->setImageDown("SkipDown.png");
 	mGuiScreen->addWidget(skipButton,GuiWidgetIntroId::SkipIntro);
