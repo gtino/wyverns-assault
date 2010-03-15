@@ -300,56 +300,67 @@
  			<entity meshFile="soldier.mesh" name="enemy0"/>
 		</enemy>
 		<enemy>
-			<position x="230" y="-36" z="-43"/>
+			<position x="230" y="-36" z="-41"/>
  			<entity meshFile="soldier.mesh" name="enemy1"/>
 		</enemy>
 		<enemy>
-			<position x="230" y="-36" z="-41"/>
+			<position x="230" y="-36" z="-37"/>
  			<entity meshFile="soldier.mesh" name="enemy2"/>
 		</enemy>
 		<enemy>
-			<position x="230" y="-36" z="-39"/>
+			<position x="230" y="-36" z="-33"/>
  			<entity meshFile="soldier.mesh" name="enemy3"/>
 		</enemy>
 		<enemy>
-			<position x="240" y="-36" z="-45"/>
+			<position x="232" y="-36.2" z="-45"/>
  			<entity meshFile="soldier.mesh" name="enemy4"/>
 		</enemy>
 		<enemy>
-			<position x="240" y="-36" z="-43"/>
+			<position x="232" y="-36.2" z="-41"/>
  			<entity meshFile="soldier.mesh" name="enemy5"/>
 		</enemy>
 		<enemy>
-			<position x="240" y="-36" z="-41"/>
+			<position x="232" y="-36.2" z="-37"/>
  			<entity meshFile="soldier.mesh" name="enemy6"/>
 		</enemy>
 		<enemy>
-			<position x="240" y="-36" z="-39"/>
+			<position x="232" y="-36.2" z="-33"/>
  			<entity meshFile="soldier.mesh" name="enemy7"/>
 		</enemy>
 		<enemy>
-			<position x="250" y="-36" z="-45"/>
+			<position x="234" y="-36.4" z="-45"/>
  			<entity meshFile="soldier.mesh" name="enemy8"/>
 		</enemy>
 		<enemy>
-			<position x="250" y="-36" z="-43"/>
+			<position x="234" y="-36.4" z="-41"/>
  			<entity meshFile="soldier.mesh" name="enemy9"/>
 		</enemy>
 		<enemy>
-			<position x="250" y="-36" z="-41"/>
+			<position x="234" y="-36.4" z="-37"/>
  			<entity meshFile="soldier.mesh" name="enemy10"/>
 		</enemy>
 		<enemy>
-			<position x="250" y="-36" z="-39"/>
+			<position x="234" y="-36.4" z="-33"/>
  			<entity meshFile="soldier.mesh" name="enemy11"/>
+		</enemy>
+		<enemy>
+			<position x="236" y="-36.4" z="-45"/>
+ 			<entity meshFile="soldier.mesh" name="enemy12"/>
+		</enemy>
+		<enemy>
+			<position x="236" y="-36.4" z="-41"/>
+ 			<entity meshFile="soldier.mesh" name="enemy13"/>
+		</enemy>
+		<enemy>
+			<position x="236" y="-36.4" z="-37"/>
+ 			<entity meshFile="soldier.mesh" name="enemy14"/>
+		</enemy>
+		<enemy>
+			<position x="236" y="-36.4" z="-33"/>
+ 			<entity meshFile="soldier.mesh" name="enemy15"/>
 		</enemy>
 	</enemys>
 </scene>
-
-
-
-
-
 
 
 
