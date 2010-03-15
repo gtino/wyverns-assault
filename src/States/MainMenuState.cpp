@@ -50,8 +50,8 @@ void MainMenuState::load()
 	GuiButton* playButton = new GuiButton();
 	playButton->setSize(0.20);
 	playButton->setPosition(0.20);
-	//playButton->setImageNormal("Play.png");
-	//playButton->setImageDown("PlayDown.png");
+	//playButton->setImageNormal("PlayButton.png");
+	//playButton->setImageDown("PlayButtonDown.png");
 	mGuiScreen->addWidget(playButton,GuiWidgetMenuId::PlayMenu);
 	
 	GuiButton* optionsButton = new GuiButton();
@@ -64,15 +64,15 @@ void MainMenuState::load()
 	GuiButton* creditsButton = new GuiButton();
 	creditsButton->setSize(0.20);
 	creditsButton->setPosition(0.20);
-	//creditsButton->setImageNormal("Credits.png");
-	//creditsButton->setImageDown("CreditsDown.png");
+	//creditsButton->setImageNormal("CreditsButton.png");
+	//creditsButton->setImageDown("CreditsButtonDown.png");
 	mGuiScreen->addWidget(creditsButton,GuiWidgetMenuId::CreditsMenu);
 	
 	GuiButton* quitButton = new GuiButton();
 	quitButton->setSize(0.20);
 	quitButton->setPosition(0.20);
-	//quitButton->setImageNormal("Quit.png");
-	//quitButton->setImageDown("QuitDown.png");
+	//quitButton->setImageNormal("QuitButton.png");
+	//quitButton->setImageDown("QuitButtonDown.png");
 	mGuiScreen->addWidget(quitButton,GuiWidgetMenuId::QuitMenu);
 
 	//
@@ -136,6 +136,43 @@ void MainMenuState::pause()
 	//
 	// TODO : Pause state
 	//
+	//
+	// Gui Screen for this state
+	//
+	mGuiScreen = new GuiScreen(mSceneManager, GuiScreenId::IntroGui, "MainMenuScreen");
+	
+	GuiBackground* guiBackground = new GuiBackground();
+	guiBackground->setImage("PauseMenu.png","PauseMenuBackground","General");
+
+	mGuiScreen->setBackground(guiBackground);
+	
+	// Gui Widgets for this state
+	GuiButton* playButton = new GuiButton();
+	playButton->setSize(0.20);
+	playButton->setPosition(0.15);
+	//playButton->setImageNormal("PlayButton.png");
+	//playButton->setImageDown("PlayButtonDown.png");
+	mGuiScreen->addWidget(playButton,GuiWidgetMenuId::PlayMenu);
+	
+	GuiButton* optionsButton = new GuiButton();
+	optionsButton->setSize(0.20);
+	optionsButton->setPosition(0.40);
+	//optionsButton->setImageNormal("OptionsButton.png");
+	//optionsButton->setImageDown("OptionsDown.png");
+	mGuiScreen->addWidget(optionsButton,GuiWidgetMenuId::OptionsMenu);
+	
+	GuiButton* quitButton = new GuiButton();
+	quitButton->setSize(0.20);
+	quitButton->setPosition(0.65);
+	//quitButton->setImageNormal("QuitButton.png");
+	//quitButton->setImageDown("QuitButtonDown.png");
+	mGuiScreen->addWidget(quitButton,GuiWidgetMenuId::QuitMenu);
+
+	//
+	// Register the screen as input event listener, so it can receive events
+	//
+	mInputManager->addListener(mGuiScreen);
+
 }
 
 /** Called when the state has to be resumed (from pause) */

@@ -35,17 +35,21 @@ namespace WyvernsAssault
 	/** List of Credits states */
 	enum GuiWidgetCreditsId
 	{
-		ReturnMenu = 0
+		CreditsToMenu = 0
 	};
 
 	/** List of Ending states */
 	enum GuiWidgetEndingId
 	{
+		EndingToMenu	= 0,
+		EndingToCredits = 1
 	};
 
 	/** List of GameOver states */
-	enum GuiWidgetGameOverId
+	enum GuiWidgetGameoverId
 	{
+		ReturnMenu = 0,
+		QuitGame   = 1
 	};
 
 	/** List of Intro states */
@@ -69,6 +73,14 @@ namespace WyvernsAssault
 
 	enum GuiWidgetPlayScreenId
 	{
+		GoIntro = 0
+	};
+
+	enum GuiWidgetPauseId
+	{
+		PlayGame    = 0,
+		OptionsGame = 1,
+		QuitToMenu  = 2
 	};
 
 	struct GuiSize
