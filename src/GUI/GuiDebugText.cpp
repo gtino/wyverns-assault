@@ -69,7 +69,7 @@ void GuiDebugText::init()
 	mOverlay = OverlayManager::getSingleton().create("GuiDebugText");
 	mOverlay->add2D(mPanel);
 	// Show the overlay
-	mOverlay->show();
+	mOverlay->hide();
 }
 
 //------------------------------------------------------------------------------
@@ -180,4 +180,10 @@ void GuiDebugText::print(const char* format, ...)
 	entry.mString = vprint(format, args);
 	va_end( args );   
 	mStrings.push_back(entry);
+}
+//------------------------------------------------------------------------------
+void GuiDebugText::toogle()
+{ 
+	if(mOverlay->isVisible()) mOverlay->hide();
+	else mOverlay->show();
 }

@@ -48,7 +48,9 @@ void BaseState::initialize()
 
 	mViewport = mWindow->addViewport( mCamera );
 
-	mViewport->setBackgroundColour( Ogre::ColourValue( 1, 1, 1 ) );
+	mCamera->setAspectRatio(Real(mViewport->getActualWidth()) / Real(mViewport->getActualHeight()));
+
+	mViewport->setBackgroundColour( Ogre::ColourValue( 0.95, 0.95, 0.95 ) );
 }
 
 void BaseState::finalize()

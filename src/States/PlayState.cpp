@@ -49,9 +49,14 @@ void PlayState::initialize()
 	mFpsDebugText.init();
 	mFpsDebugText.setColor(ColourValue(0.0f,0.0f,0.0f,1.0f));
 
+	// Player UI
+	//GuiImage* mPlayerUI = new GuiImage();
+	//mPlayerUI->setImage("UI.png", "UI", "Interface");
+	//mPlayerUI->setPosition();
+
 	// Player manager constructor
 	mPlayerManager = new PlayerManager();
-	mPlayerManager->initialize("redWyvern","redwyvern.mesh",mGraphicsManager->getSceneManager(),Vector3(100,-30,-45));
+	mPlayerManager->initialize("redWyvern","redwyvern.mesh",mGraphicsManager->getSceneManager(),Vector3(125,-35,-45));
 
 	mCameraManager->gameCamera(mPlayerManager->GetPlayerSceneNode());
 
@@ -91,7 +96,13 @@ void PlayState::update(const float elapsedSeconds)
 	// FREE DEBUG STUFF
 	//
 	mFpsDebugText.frameStarted();
-	mFpsDebugText.print(0.01f,0.01f,"FPS : %f",elapsedSeconds);
+	String poly = mCameraManager->getPolygonMode();
+	mFpsDebugText.print(0.01f,0.01f,
+		"POSITION: %g, %g, %g     MODE: %s     FPS : %g",		
+		mPlayerManager->getPosition().x, mPlayerManager->getPosition().y, mPlayerManager->getPosition().z,
+		mCameraManager->getPolygonMode().c_str(),
+		mWindow->getAverageFPS()
+		);
 
 	// Camera switch key control
 	if(this->mInputManager->getKeyboard()->isKeyDown(OIS::KeyCode::KC_1))
@@ -180,6 +191,12 @@ void PlayState::update(const float elapsedSeconds)
 		// Update camera position
 		mCameraManager->updateCamera(mPlayerManager->GetPlayerSceneNode());
 	}
+
+	// WIN game - TEMP
+	if(mPlayerManager->getPosition().x > 730)this->mNextGameStateId = GameStateId::Ending;;
+
+	// LOSE game - TEMP
+	if(mPlayerManager->getPosition().z < -80) this->mNextGameStateId = GameStateId::GameOver;;
 }
 
 /** Render */
@@ -255,6 +272,14 @@ bool PlayState::keyReleased(const OIS::KeyEvent& e)
 		break;
 	case OIS::KeyCode::KC_G:
 		this->mNextGameStateId = GameStateId::GameOver;
+		break;
+	// Debug polygon mode
+	case OIS::KeyCode::KC_F1:		
+		mCameraManager->switchtPolygonMode();
+		break;
+	// Debug frames per second
+	case OIS::KeyCode::KC_F2:		
+		mFpsDebugText.toogle();
 		break;
 	}
 
