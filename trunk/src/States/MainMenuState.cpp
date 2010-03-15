@@ -191,7 +191,12 @@ bool MainMenuState::keyReleased(const OIS::KeyEvent& e)
 	case OIS::KC_P:
 		this->mNextGameStateId = GameStateId::Play;
 		break;
-	case OIS::KC_E:
+	case OIS::KC_O:
+		this->mNextGameStateId = GameStateId::Options;
+		break;
+	case OIS::KC_C:
+		this->mNextGameStateId = GameStateId::Credits;
+		break;
 	case OIS::KC_ESCAPE:
 		this->mNextGameStateId = GameStateId::Exit;
 		break;
