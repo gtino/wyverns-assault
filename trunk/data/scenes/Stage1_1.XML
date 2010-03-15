@@ -1,7 +1,7 @@
 <scene>
 	<cameras>
 		<camera name="Camera1" id=0>
-			<position x="100" y="70" z="100"/>
+			<position x="10" y="70" z="100"/>
 			<lookAt x="150" y="0" z="-25"/>
 		</camera>
 		<camera name="Camera2" id=1>
@@ -43,11 +43,31 @@
 			<diffuse r="0.5" g="0.5" b="0.4"/>
 			<specular r="0.6" g="0.6" b="0.4"/>
 		</light>
-		<light name="Spot1" type="spot">
-			<position x="200" y="50" z="-20"/>
-			<direction x="0.5" y="-1" z="0"/>
-			<diffuse r="0.9" g="0.0" b="0.0"/>
-			<specular r="0.9" g="0.0" b="0.0"/>
+		
+		<light name="SpotEnemies1" type="spot">
+			<position x="235" y="10" z="-40"/>
+			<direction x="0" y="-1" z="0"/>
+			<diffuse r="0.9" g="0.1" b="0.1"/>
+			<specular r="0.9" g="0.1" b="0.1"/>
+		</light>
+		<light name="SpotEnemies2" type="spot">
+			<position x="408" y="5" z="-56"/>
+			<direction x="0" y="-1" z="0"/>
+			<diffuse r="0.9" g="0.1" b="0.1"/>
+			<specular r="0.9" g="0.1" b="0.1"/>
+		</light>
+		<light name="SpotEnemies3" type="spot">
+			<position x="532" y="3" z="-60"/>
+			<direction x="0" y="-1" z="0"/>
+			<diffuse r="0.9" g="0.1" b="0.1"/>
+			<specular r="0.9" g="0.1" b="0.1"/>
+		</light>		
+		
+		<light name="SpotWin" type="spot">
+			<position x="730" y="10" z="-45"/>
+			<direction x="0" y="-1" z="0"/>
+			<diffuse r="0.0" g="0.9" b="0.1"/>
+			<specular r="0.0" g="0.9" b="0.1"/>
 		</light>
 	</lights>
 	<skyBox material="MySky" distance="50"/>
@@ -295,6 +315,7 @@
 		</node>
 	</nodes>
 	<enemys>
+		<!-- Soldiers -->
 		<enemy>
 			<position x="230" y="-36" z="-45"/>
  			<entity meshFile="soldier.mesh" name="enemy0"/>
@@ -359,33 +380,206 @@
 			<position x="236" y="-36.4" z="-33"/>
  			<entity meshFile="soldier.mesh" name="enemy15"/>
 		</enemy>
+		
+		<enemy>
+			<position x="408" y="-38" z="-58"/>
+ 			<entity meshFile="soldier.mesh" name="enemy16"/>
+		</enemy>
+		<enemy>
+			<position x="400" y="-38" z="-55"/>
+ 			<entity meshFile="soldier.mesh" name="enemy17"/>
+		</enemy>
+		<enemy>
+			<position x="412" y="-38" z="-60"/>
+ 			<entity meshFile="soldier.mesh" name="enemy18"/>
+		</enemy>
+		<enemy>
+			<position x="403" y="-38" z="-65"/>
+ 			<entity meshFile="soldier.mesh" name="enemy19"/>
+		</enemy>
+		<enemy>
+			<position x="398" y="-38" z="-54"/>
+ 			<entity meshFile="soldier.mesh" name="enemy20"/>
+		</enemy>
+		<enemy>
+			<position x="412" y="-38" z="-52"/>
+ 			<entity meshFile="soldier.mesh" name="enemy21"/>
+		</enemy>
+		
+		<enemy>
+			<position x="532" y="-38" z="-60"/>
+ 			<entity meshFile="soldier.mesh" name="enemy22"/>
+		</enemy>
+		<enemy>
+			<position x="525" y="-38" z="-55"/>
+ 			<entity meshFile="soldier.mesh" name="enemy23"/>
+		</enemy>
+		<enemy>
+			<position x="536" y="-38" z="-62"/>
+ 			<entity meshFile="soldier.mesh" name="enemy24"/>
+		</enemy>
+		<enemy>
+			<position x="526" y="-38" z="-60"/>
+ 			<entity meshFile="soldier.mesh" name="enemy25"/>
+		</enemy>
+		
+		<enemy>
+			<position x="704" y="-38" z="-58"/>
+ 			<entity meshFile="soldier.mesh" name="enemy26"/>
+		</enemy>
+		<enemy>
+			<position x="701" y="-38" z="-55"/>
+ 			<entity meshFile="soldier.mesh" name="enemy27"/>
+		</enemy>
+		<enemy>
+			<position x="698" y="-38" z="-60"/>
+ 			<entity meshFile="soldier.mesh" name="enemy28"/>
+		</enemy>
+		<enemy>
+			<position x="707" y="-38" z="-58"/>
+ 			<entity meshFile="soldier.mesh" name="enemy29"/>
+		</enemy>
+		
+		<enemy>
+			<position x="714" y="-38" z="-21"/>
+ 			<entity meshFile="soldier.mesh" name="enemy30"/>
+		</enemy>
+		<enemy>
+			<position x="710" y="-38" z="-24"/>
+ 			<entity meshFile="soldier.mesh" name="enemy31"/>
+		</enemy>
+		
+		<enemy>
+			<position x="680" y="-38" z="-45"/>
+ 			<entity meshFile="soldier.mesh" name="enemy32"/>
+		</enemy>
+		<enemy>
+			<position x="685" y="-38" z="-37"/>
+ 			<entity meshFile="soldier.mesh" name="enemy33"/>
+		</enemy>
+		
+		<!-- Peasants -->
+		<enemy>
+			<position x="311" y="-38" z="-44"/>
+			<scale x="0.2" y="0.2" z="0.2"/>
+ 			<entity meshFile="peasant.mesh" name="peasant0"/>
+		</enemy>
+		<enemy>
+			<position x="306" y="-38" z="-50"/>
+			<scale x="0.2" y="0.2" z="0.2"/>
+ 			<entity meshFile="peasant.mesh" name="peasant1"/>
+		</enemy>
+		<enemy>
+			<position x="315" y="-38" z="-48"/>
+			<scale x="0.2" y="0.2" z="0.2"/>
+ 			<entity meshFile="peasant.mesh" name="peasant2"/>
+		</enemy>
+		<enemy>
+			<position x="319" y="-38" z="-45"/>
+			<scale x="0.2" y="0.2" z="0.2"/>
+ 			<entity meshFile="peasant.mesh" name="peasant3"/>
+		</enemy>
+		<enemy>
+			<position x="310" y="-38" z="-55"/>
+			<scale x="0.2" y="0.2" z="0.2"/>
+ 			<entity meshFile="peasant.mesh" name="peasant4"/>
+		</enemy>
+		<enemy>
+			<position x="303" y="-38" z="-45"/>
+			<scale x="0.2" y="0.2" z="0.2"/>
+ 			<entity meshFile="peasant.mesh" name="peasant5"/>
+		</enemy>
+		
+		<enemy>
+			<position x="434" y="-38" z="-44"/>
+			<scale x="0.2" y="0.2" z="0.2"/>
+ 			<entity meshFile="peasant.mesh" name="peasant6"/>
+		</enemy>
+		<enemy>
+			<position x="430" y="-38" z="-40"/>
+			<scale x="0.2" y="0.2" z="0.2"/>
+ 			<entity meshFile="peasant.mesh" name="peasant7"/>
+		</enemy>
+		<enemy>
+			<position x="428" y="-38" z="-44"/>
+			<scale x="0.2" y="0.2" z="0.2"/>
+ 			<entity meshFile="peasant.mesh" name="peasant8"/>
+		</enemy>
+		<enemy>
+			<position x="437" y="-38" z="-38"/>
+			<scale x="0.2" y="0.2" z="0.2"/>
+ 			<entity meshFile="peasant.mesh" name="peasant9"/>
+		</enemy>
+		
+		<enemy>
+			<position x="560" y="-38" z="-41"/>
+			<scale x="0.2" y="0.2" z="0.2"/>
+ 			<entity meshFile="peasant.mesh" name="peasant10"/>
+		</enemy>
+		<enemy>
+			<position x="567" y="-38" z="-40"/>
+			<scale x="0.2" y="0.2" z="0.2"/>
+ 			<entity meshFile="peasant.mesh" name="peasant11"/>
+		</enemy>
+		<enemy>
+			<position x="550" y="-38" z="-48"/>
+			<scale x="0.2" y="0.2" z="0.2"/>
+ 			<entity meshFile="peasant.mesh" name="peasant12"/>
+		</enemy>
+		<enemy>
+			<position x="556" y="-38" z="-46"/>
+			<scale x="0.2" y="0.2" z="0.2"/>
+ 			<entity meshFile="peasant.mesh" name="peasant13"/>
+		</enemy>
+		
+		<enemy>
+			<position x="690" y="-38" z="-35"/>
+			<scale x="0.2" y="0.2" z="0.2"/>
+ 			<entity meshFile="peasant.mesh" name="peasant14"/>
+		</enemy>
+		<enemy>
+			<position x="695" y="-38" z="-39"/>
+			<scale x="0.2" y="0.2" z="0.2"/>
+ 			<entity meshFile="peasant.mesh" name="peasant15"/>
+		</enemy>
+		<enemy>
+			<position x="693" y="-38" z="-33"/>
+			<scale x="0.2" y="0.2" z="0.2"/>
+ 			<entity meshFile="peasant.mesh" name="peasant16"/>
+		</enemy>
+		<enemy>
+			<position x="697" y="-38" z="-40"/>
+			<scale x="0.2" y="0.2" z="0.2"/>
+ 			<entity meshFile="peasant.mesh" name="peasant17"/>
+		</enemy>
+		
+		<!-- Battering Rams-->
 		<enemy>
 			<position x="350" y="-40" z="-40"/>
-			<scale x="0.5" y="0.5" z="0.5"/>
- 			<entity meshFile="batteringRAM.mesh" name="enemy16"/>
+			<scale x="0.2" y="0.2" z="0.2"/>
+ 			<entity meshFile="batteringRAM.mesh" name="ram1"/>
 		</enemy>
 		<enemy>
-			<position x="450" y="-40" z="-23"/>
-			<scale x="0.5" y="0.5" z="0.5"/>
- 			<entity meshFile="batteringRAM.mesh" name="enemy17"/>
+			<position x="518" y="-40" z="-49"/>
+			<scale x="0.2" y="0.2" z="0.2"/>
+ 			<entity meshFile="batteringRAM.mesh" name="ram2"/>
 		</enemy>
+		
+		<!-- Wizards -->
 		<enemy>
 			<position x="590" y="-38.5" z="-38"/>
- 			<entity meshFile="wizard.mesh" name="enemy18"/>
+ 			<entity meshFile="wizard.mesh" name="wizard1"/>
 		</enemy>
 		<enemy>
 			<position x="655" y="-38.5" z="-17"/>
- 			<entity meshFile="wizard.mesh" name="enemy19"/>
+ 			<entity meshFile="wizard.mesh" name="wizard2"/>
 		</enemy>
 		<enemy>
 			<position x="655" y="-38.5" z="-20"/>
- 			<entity meshFile="wizard.mesh" name="enemy20"/>
+			<yaw angle="0.10"/>
+ 			<entity meshFile="wizard.mesh" name="wizard3"/>
 		</enemy>
+		
+		<!-- Enemies list End -->
 	</enemys>
 </scene>
-
-
-
-
-
-
