@@ -359,8 +359,33 @@
 			<position x="236" y="-36.4" z="-33"/>
  			<entity meshFile="soldier.mesh" name="enemy15"/>
 		</enemy>
+		<enemy>
+			<position x="350" y="-40" z="-40"/>
+			<scale x="0.5" y="0.5" z="0.5"/>
+ 			<entity meshFile="batteringRAM.mesh" name="enemy16"/>
+		</enemy>
+		<enemy>
+			<position x="430" y="-40" z="-23"/>
+			<scale x="0.5" y="0.5" z="0.5"/>
+ 			<entity meshFile="batteringRAM.mesh" name="enemy17"/>
+		</enemy>
+		<enemy>
+			<position x="590" y="-38.5" z="-38"/>
+ 			<entity meshFile="wizard.mesh" name="enemy18"/>
+		</enemy>
+		<enemy>
+			<position x="655" y="-38.5" z="-17"/>
+ 			<entity meshFile="wizard.mesh" name="enemy19"/>
+		</enemy>
+		<enemy>
+			<position x="655" y="-38.5" z="-20"/>
+ 			<entity meshFile="wizard.mesh" name="enemy20"/>
+		</enemy>
 	</enemys>
 </scene>
+
+
+
 
 
 
