@@ -365,7 +365,7 @@
  			<entity meshFile="batteringRAM.mesh" name="enemy16"/>
 		</enemy>
 		<enemy>
-			<position x="430" y="-40" z="-23"/>
+			<position x="450" y="-40" z="-23"/>
 			<scale x="0.5" y="0.5" z="0.5"/>
  			<entity meshFile="batteringRAM.mesh" name="enemy17"/>
 		</enemy>
