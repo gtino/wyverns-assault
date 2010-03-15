@@ -105,10 +105,10 @@ void PlayState::update(const float elapsedSeconds)
 	mFpsDebugText.frameStarted();
 	String poly = mCameraManager->getPolygonMode();
 	mFpsDebugText.print(0.01f,0.01f,
-		"POSITION: %4.0f, %4.0f, %4.0f     CAMERA: %4.0f, %4.0f, %4.0f     MODE: %s     FPS : %4.0f",
-		mPlayerManager->getPosition().x, mPlayerManager->getPosition().y, mPlayerManager->getPosition().z,
-		mCameraManager->getCamera()->getPosition().x, mCameraManager->getCamera()->getPosition().y, mCameraManager->getCamera()->getPosition().z,
+		"MODE: %s     PLAYER: %4.0f, %4.0f, %4.0f     CAMERA: %4.0f, %3.0f, %4.2f     FPS : %4.0f",
 		mCameraManager->getPolygonMode().c_str(),
+		mPlayerManager->getPosition().x, mPlayerManager->getPosition().y, mPlayerManager->getPosition().z,
+		mCameraManager->getCamera()->getPosition().x, mCameraManager->getCamera()->getPosition().y, mCameraManager->getCamera()->getPosition().z,		
 		mWindow->getAverageFPS()
 		);
 

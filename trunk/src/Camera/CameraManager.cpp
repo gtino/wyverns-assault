@@ -28,16 +28,6 @@ void CameraManager::initialize()
 	mCamera->setAspectRatio(Real(mViewport->getActualWidth()) / Real(mViewport->getActualHeight()));
 	
 	mViewport->setCamera(mCamera);
-
-	/** Dummy traveling cameras - DELETE **/
-
-	setTravelCamera(0, 0, Vector3(0,50,100),	Vector3(0, 45, 95));
-	setTravelCamera(0, 1, Vector3(100,75,150),	Vector3(95, 70, 145));
-	setTravelCamera(0, 2, Vector3(200,100,200),	Vector3(195, 95, 195));
-	setTravelCamera(0, 3, Vector3(500,5,10),	Vector3(495, 0, 5));
-	setTravelCamera(0, 4, Vector3::ZERO,		Vector3::ZERO);
-
-	/**************************************/
 }
 
 /** Finalize the camera manager */
@@ -77,23 +67,25 @@ void CameraManager::followNode(SceneNode* node, Vector3 offset)
 
 void CameraManager::updateCamera(SceneNode* node)
 {
-	int cameraHeight = 10;
-	int cameraZ = 10;
+	float cameraHeight = 10;
+	float cameraZ = 10;
 
 	switch(mCameraType)
 	{
 		case GAMECAMERA:
-			// Camera height formula
+			// Camera positioning	-	NEED IMPROVING
 			if (node->getPosition().z > -45)
 			{
-				//cameraHeight	=	(65 - ((45 + node->getPosition().z)*2)) + node->getPosition().z;
-				//cameraZ			=	(65 - ((45 + node->getPosition().z)*2)) + node->getPosition().z;
+				cameraHeight	=	(55 - ((45 + node->getPosition().z)*2)) + node->getPosition().z;
+				cameraZ			=	(55 - ((45 + node->getPosition().z)*2)) + node->getPosition().z;
+				cameraZ			=	(cosf(cameraHeight * PI/180) * 10);
 			}
-			positionCamera(Vector3(node->getPosition().x, cameraHeight, cameraZ));
+			positionCamera(Vector3(node->getPosition().x, cameraHeight, cameraZ));			
 			break;
 
 		case FPSCAMERA:
-			positionCamera(node->getPosition());
+			positionCamera(node->getPosition() + Vector3(0,PLAYERHEIGHT,-PLAYERWIDTH));
+			lookAtCamera(node->getPosition() + Vector3(25,-PLAYERHEIGHT,-PLAYERWIDTH));
 			break;
 
 		case FIXEDCAMERA:
@@ -120,7 +112,7 @@ void CameraManager::fpsCamera(SceneNode* node)
 	mCameraType = FPSCAMERA;
 	mCamera->setAutoTracking(false);
 	positionCamera(node->getPosition() + Vector3(0,PLAYERHEIGHT,-PLAYERWIDTH));
-	lookAtCamera(node->getPosition() + Vector3(100,PLAYERHEIGHT,-PLAYERWIDTH));
+	lookAtCamera(node->getPosition() + Vector3(25,-PLAYERHEIGHT,-PLAYERWIDTH));
 }
 
 void CameraManager::fixedCamera(int id)
