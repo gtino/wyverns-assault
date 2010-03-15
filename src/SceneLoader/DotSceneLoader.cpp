@@ -1,11 +1,13 @@
 #include "..\include\SceneLoader\DotSceneLoader.h"
 #include "..\include\SceneLoader\tinyxml.h"
 #include "Ogre.h"
+#include "..\include\Entity\Enemy\Enemy.h"
 
 using namespace std;
 using namespace Ogre;
+using namespace WyvernsAssault;
 
-void DotSceneLoader::parseDotScene(const String &SceneName, const String &groupName, SceneManager *levelSceneManager, WyvernsAssault::CameraManager* cameraManager, WyvernsAssault::LightsManager* lightsManager, SceneNode *pAttachNode, const String &sPrependNode)
+void DotSceneLoader::parseDotScene(const String &SceneName, const String &groupName, SceneManager *levelSceneManager, WyvernsAssault::CameraManager* cameraManager, WyvernsAssault::LightsManager* lightsManager,WyvernsAssault::EnemysManager* enemysManager ,SceneNode *pAttachNode, const String &sPrependNode)
 {
 
 	//Set SceneManager
@@ -16,6 +18,9 @@ void DotSceneLoader::parseDotScene(const String &SceneName, const String &groupN
 
 	//Set LightsManager
 	mLightsManager = lightsManager;
+
+	//Set EnemysManager
+	mEnemysManager = enemysManager;
 
 	//Set up shared object values
 	m_sGroupName = groupName;
@@ -125,6 +130,14 @@ void DotSceneLoader::processScene(TiXmlElement *XMLRoot)
 		processSkyBox(pElement);
 
 	LogManager::getSingleton().logMessage("[DotSceneLoader] SkyBox processed.");
+
+	//Process enemys
+	pElement = XMLRoot->FirstChildElement("enemys");
+	if(pElement)
+		processEnemys(pElement);
+
+	LogManager::getSingleton().logMessage("[DotSceneLoader] Enemys processed.");
+
 }
 
 void DotSceneLoader::processNodes(TiXmlElement *XMLNode)
@@ -163,6 +176,42 @@ void DotSceneLoader::processNodes(TiXmlElement *XMLNode)
 		mAttachNode->setInitialState();
 	}
 
+}
+
+void DotSceneLoader::processEnemys(TiXmlElement *XMLNode)
+{
+	TiXmlElement *pElement;
+	TiXmlElement *pElementEntity;
+	TiXmlElement *pElementPosition;
+
+	// Process enemy
+	pElement = XMLNode->FirstChildElement("enemy");
+	while(pElement)
+	{
+
+		WyvernsAssault::Enemy* e = new Enemy();
+
+		// Process entity
+		pElementEntity = pElement->FirstChildElement("entity");
+		if(pElementEntity)
+		{
+			// Create Enemy
+			e->initialize(getAttrib(pElementEntity, "name"),getAttrib(pElementEntity, "meshFile"),mSceneMgr,Vector3(0,0,0));
+		}
+
+		// Process position
+		pElementPosition = pElement->FirstChildElement("position");
+		if(pElementPosition)
+		{
+			e->setPosition(parseVector3(pElementPosition));
+		}
+
+		// Add to EnemysManager
+		mEnemysManager->getList()->push_back(e);
+
+		pElement = pElement->NextSiblingElement("enemy");
+	}
+		
 }
 
 void DotSceneLoader::processCameras(TiXmlElement *XMLNode)

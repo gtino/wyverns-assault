@@ -9,6 +9,8 @@
 
 #include "..\Camera\CameraManager.h"
 #include "..\Graphics\LightsManager.h"
+#include "..\Entity\Enemy\EnemysManager.h"
+
 
 // Forward declarations
 class TiXmlElement;
@@ -37,7 +39,7 @@ namespace Ogre
 		DotSceneLoader() : mSceneMgr(0) {}
 		virtual ~DotSceneLoader() {}
 
-		void parseDotScene(const String &SceneName, const String &groupName,SceneManager *levelSceneManager, WyvernsAssault::CameraManager* cameraManager, WyvernsAssault::LightsManager* lightsManager, SceneNode *pAttachNode = NULL, const String &sPrependNode = "");
+		void parseDotScene(const String &SceneName, const String &groupName,SceneManager *levelSceneManager, WyvernsAssault::CameraManager* cameraManager, WyvernsAssault::LightsManager* lightsManager,WyvernsAssault::EnemysManager* enemysManager ,SceneNode *pAttachNode = NULL, const String &sPrependNode = "");
 		String getProperty(const String &ndNm, const String &prop);
 
 		std::vector<nodeProperty> nodeProperties;
@@ -50,6 +52,8 @@ namespace Ogre
 		void processNodes(TiXmlElement *XMLNode);
 		void processCameras(TiXmlElement *XMLNode);
 		void processLights(TiXmlElement *XMLNode);		
+		void processEnemys(TiXmlElement *XMLNode);	
+		void processSkyBox(TiXmlElement *XMLNode);
 
 		void processNode(TiXmlElement *XMLNode, SceneNode *pParent = 0);
 		void processCamera(TiXmlElement *XMLNode, SceneNode *pParent = 0);
@@ -58,8 +62,6 @@ namespace Ogre
 		void processLookTarget(TiXmlElement *XMLNode, SceneNode *pParent);
 		void processTrackTarget(TiXmlElement *XMLNode, SceneNode *pParent);
 		void processEntity(TiXmlElement *XMLNode, SceneNode *pParent);
-
-		void processSkyBox(TiXmlElement *XMLNode);
 
 		void processLightRange(TiXmlElement *XMLNode, Light *pLight);
 		void processLightAttenuation(TiXmlElement *XMLNode, Light *pLight);
@@ -80,6 +82,7 @@ namespace Ogre
 		String m_sPrependNode;
 		WyvernsAssault::CameraManager* mCameraManager;
 		WyvernsAssault::LightsManager* mLightsManager;
+		WyvernsAssault::EnemysManager* mEnemysManager;
 	};
 }
 

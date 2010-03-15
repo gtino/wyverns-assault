@@ -38,9 +38,12 @@ void PlayState::initialize()
 	mLightsManager = new LightsManager(mGraphicsManager->getSceneManager());
 	mLightsManager->initialize();
 
+	//Enemys manager constructor
+	mEnemysManager = new EnemysManager();
+
 	//Load scene XML file
 	std::auto_ptr<DotSceneLoader> sceneLoader(new DotSceneLoader());
-	sceneLoader->parseDotScene("Stage1_1.XML","General",mGraphicsManager->getSceneManager(), mCameraManager, mLightsManager);
+	sceneLoader->parseDotScene("Stage1_1.XML","General",mGraphicsManager->getSceneManager(), mCameraManager, mLightsManager, mEnemysManager);
 
 	/** DEBUG Labels **/
 	mFpsDebugText.init();
@@ -48,7 +51,7 @@ void PlayState::initialize()
 
 	// Player manager constructor
 	mPlayerManager = new PlayerManager();
-	mPlayerManager->initialize("redWyvern","redwyvern.mesh",mGraphicsManager->getSceneManager(),Vector3(100,-20,-45));
+	mPlayerManager->initialize("redWyvern","redwyvern.mesh",mGraphicsManager->getSceneManager(),Vector3(100,-30,-45));
 
 	mCameraManager->gameCamera(mPlayerManager->GetPlayerSceneNode());
 

@@ -294,9 +294,57 @@
 			<entity meshFile="tree_3.mesh" name="entity53"/>
 		</node>
 	</nodes>
+	<enemys>
+		<enemy>
+			<position x="230" y="-36" z="-45"/>
+ 			<entity meshFile="soldier.mesh" name="enemy0"/>
+		</enemy>
+		<enemy>
+			<position x="230" y="-36" z="-43"/>
+ 			<entity meshFile="soldier.mesh" name="enemy1"/>
+		</enemy>
+		<enemy>
+			<position x="230" y="-36" z="-41"/>
+ 			<entity meshFile="soldier.mesh" name="enemy2"/>
+		</enemy>
+		<enemy>
+			<position x="230" y="-36" z="-39"/>
+ 			<entity meshFile="soldier.mesh" name="enemy3"/>
+		</enemy>
+		<enemy>
+			<position x="240" y="-36" z="-45"/>
+ 			<entity meshFile="soldier.mesh" name="enemy4"/>
+		</enemy>
+		<enemy>
+			<position x="240" y="-36" z="-43"/>
+ 			<entity meshFile="soldier.mesh" name="enemy5"/>
+		</enemy>
+		<enemy>
+			<position x="240" y="-36" z="-41"/>
+ 			<entity meshFile="soldier.mesh" name="enemy6"/>
+		</enemy>
+		<enemy>
+			<position x="240" y="-36" z="-39"/>
+ 			<entity meshFile="soldier.mesh" name="enemy7"/>
+		</enemy>
+		<enemy>
+			<position x="250" y="-36" z="-45"/>
+ 			<entity meshFile="soldier.mesh" name="enemy8"/>
+		</enemy>
+		<enemy>
+			<position x="250" y="-36" z="-43"/>
+ 			<entity meshFile="soldier.mesh" name="enemy9"/>
+		</enemy>
+		<enemy>
+			<position x="250" y="-36" z="-41"/>
+ 			<entity meshFile="soldier.mesh" name="enemy10"/>
+		</enemy>
+		<enemy>
+			<position x="250" y="-36" z="-39"/>
+ 			<entity meshFile="soldier.mesh" name="enemy11"/>
+		</enemy>
+	</enemys>
 </scene>
-
-
 
 
 
