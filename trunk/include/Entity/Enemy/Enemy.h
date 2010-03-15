@@ -44,6 +44,7 @@ namespace WyvernsAssault
 		void setPosition(Ogre::Vector3 position){enemySceneNode->setPosition(position);}
 		Ogre::Vector3 getPosition(){return enemySceneNode->getPosition();} 
 
+		void setScale(Ogre::Vector3 scale){enemySceneNode->setScale(scale);}
 
 	private:
 		void initializeVariables();

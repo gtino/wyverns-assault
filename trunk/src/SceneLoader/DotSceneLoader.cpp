@@ -183,6 +183,7 @@ void DotSceneLoader::processEnemys(TiXmlElement *XMLNode)
 	TiXmlElement *pElement;
 	TiXmlElement *pElementEntity;
 	TiXmlElement *pElementPosition;
+	TiXmlElement *pElementScale;
 
 	// Process enemy
 	pElement = XMLNode->FirstChildElement("enemy");
@@ -204,6 +205,13 @@ void DotSceneLoader::processEnemys(TiXmlElement *XMLNode)
 		if(pElementPosition)
 		{
 			e->setPosition(parseVector3(pElementPosition));
+		}
+
+		// Process scale
+		pElementScale = pElement->FirstChildElement("scale");
+		if(pElementScale)
+		{
+			e->setScale(parseVector3(pElementScale));
 		}
 
 		// Add to EnemysManager
