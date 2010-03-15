@@ -77,13 +77,19 @@ void CameraManager::followNode(SceneNode* node, Vector3 offset)
 
 void CameraManager::updateCamera(SceneNode* node)
 {
-	int cameraHeight = node->getPosition().z;
+	int cameraHeight = 10;
+	int cameraZ = 10;
 
 	switch(mCameraType)
 	{
-		case GAMECAMERA:			
-			//if (node->getPosition().z > -35) offset.z += node->getPosition().z;
-			positionCamera(Vector3(node->getPosition().x, node->getPosition().y - (cameraHeight+5), 5));
+		case GAMECAMERA:
+			// Camera height formula
+			if (node->getPosition().z > -45)
+			{
+				//cameraHeight	=	(65 - ((45 + node->getPosition().z)*2)) + node->getPosition().z;
+				//cameraZ			=	(65 - ((45 + node->getPosition().z)*2)) + node->getPosition().z;
+			}
+			positionCamera(Vector3(node->getPosition().x, cameraHeight, cameraZ));
 			break;
 
 		case FPSCAMERA:

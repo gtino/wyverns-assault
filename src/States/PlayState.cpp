@@ -60,7 +60,7 @@ void PlayState::initialize()
 
 	// Player manager constructor
 	mPlayerManager = new PlayerManager();
-	mPlayerManager->initialize("redWyvern","redwyvern.mesh",mGraphicsManager->getSceneManager(),Vector3(125,-35,-45));
+	mPlayerManager->initialize("redWyvern","redwyvern.mesh",mGraphicsManager->getSceneManager(),Vector3(200,-38,-45));
 
 	mCameraManager->gameCamera(mPlayerManager->GetPlayerSceneNode());
 
