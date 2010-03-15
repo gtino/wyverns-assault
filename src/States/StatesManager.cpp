@@ -47,6 +47,7 @@ void StatesManager::initialize(GraphicsManager& graphicsManager, InputManager& i
 	this->mStates[GameStateId::Play]			= new PlayState(graphicsManager, inputManager, audioManager);
 	this->mStates[GameStateId::Credits]			= new CreditsState(graphicsManager, inputManager, audioManager);
 	this->mStates[GameStateId::Outro]			= new OutroState(graphicsManager, inputManager, audioManager);
+	this->mStates[GameStateId::Options]			= new OptionsState(graphicsManager, inputManager, audioManager);
 
 	//
 	// Let's start with the first state!
