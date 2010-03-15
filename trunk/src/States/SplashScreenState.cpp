@@ -36,7 +36,15 @@ void SplashScreenState::load()
 	guiBackground->setImage("SplashScreen.png","SplashScreenBackground","General");
 
 	mGuiScreen->setBackground(guiBackground);
-
+	
+	// Gui Widgets for this state
+	GuiButton* goIntro = new GuiButton();
+	goIntro->setSize(0.20);
+	goIntro->setPosition(0.20);
+	//goIntro->setImageNormal("IntroButton.png");
+	//goIntro->setImageDown("IntroButtonDown.png");
+	mGuiScreen->addWidget(goIntro,GuiWidgetPlayScreenId::GoIntro);
+	
 	//
 	// Register the screen as input event listener, so it can receive events
 	//

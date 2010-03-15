@@ -37,6 +37,14 @@ void CreditsState::load()
 
 	mGuiScreen->setBackground(guiBackground);
 
+	// Gui Widgets for this state
+	GuiButton* menuButton = new GuiButton();
+	menuButton->setSize(0.20);
+	menuButton->setPosition(0.40);
+	//menuButton->setImageNormal("MenuButton.png");
+	//menuButton->setImageDown("MenuButtonDown.png");
+	mGuiScreen->addWidget(menuButton,GuiWidgetCreditsId::CreditsToMenu);
+
 	//
 	// Register the screen as input event listener, so it can receive events
 	//
