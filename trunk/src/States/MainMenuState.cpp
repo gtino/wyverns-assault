@@ -1,5 +1,4 @@
 #include "..\include\States\MainMenuState.h"
-
 using namespace WyvernsAssault;
 
 MainMenuState::MainMenuState(GraphicsManager& graphicsManager, InputManager& inputManager, AudioManager& audioManager)
@@ -46,6 +45,35 @@ void MainMenuState::load()
 	guiBackground->setImage("MainMenu.png","MainMenuBackground","General");
 
 	mGuiScreen->setBackground(guiBackground);
+	
+	// Gui Widgets for this state
+	GuiButton* playButton = new GuiButton();
+	playButton->setSize(0.20);
+	playButton->setPosition(0.20);
+	//playButton->setImageNormal("Play.png");
+	//playButton->setImageDown("PlayDown.png");
+	mGuiScreen->addWidget(playButton,GuiWidgetMenuId::PlayMenu);
+	
+	GuiButton* optionsButton = new GuiButton();
+	optionsButton->setSize(0.20);
+	optionsButton->setPosition(0.20);
+	//optionsButton->setImageNormal("OptionsButton.png");
+	//optionsButton->setImageDown("OptionsDown.png");
+	mGuiScreen->addWidget(optionsButton,GuiWidgetMenuId::OptionsMenu);
+	
+	GuiButton* creditsButton = new GuiButton();
+	creditsButton->setSize(0.20);
+	creditsButton->setPosition(0.20);
+	//creditsButton->setImageNormal("Credits.png");
+	//creditsButton->setImageDown("CreditsDown.png");
+	mGuiScreen->addWidget(creditsButton,GuiWidgetMenuId::CreditsMenu);
+	
+	GuiButton* quitButton = new GuiButton();
+	quitButton->setSize(0.20);
+	quitButton->setPosition(0.20);
+	//quitButton->setImageNormal("Quit.png");
+	//quitButton->setImageDown("QuitDown.png");
+	mGuiScreen->addWidget(quitButton,GuiWidgetMenuId::QuitMenu);
 
 	//
 	// Register the screen as input event listener, so it can receive events
