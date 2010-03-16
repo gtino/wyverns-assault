@@ -40,7 +40,7 @@
 			<Tool
 				Name="VCCLCompilerTool"
 				Optimization="0"
-				AdditionalIncludeDirectories="..\include;&quot;$(OGRE_HOME)\include&quot;;&quot;$(OGRE_HOME)\include\OIS&quot;;&quot;$(OGRE_HOME)\include\CEGUI&quot;;&quot;$(OGRE_HOME)\samples\include&quot;"
+				AdditionalIncludeDirectories="..\include;&quot;$(OGRE_HOME)\include&quot;;&quot;$(OGRE_HOME)\include\OGRE&quot;;&quot;$(OGRE_HOME)\include\OIS&quot;;&quot;$(OGRE_HOME)\include\CEGUI&quot;;&quot;$(OGRE_HOME)\boost_1_42&quot;"
 				PreprocessorDefinitions="WIN32;_DEBUG;_WINDOWS"
 				MinimalRebuild="true"
 				ExceptionHandling="1"
@@ -65,10 +65,10 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="OgreMain_d.lib OIS_d.lib CEGUIBase_d.lib OgreGUIRenderer_d.lib"
+				AdditionalDependencies="OgreMain_d.lib OIS_d.lib"
 				OutputFile="$(OutDir)\$(ProjectName).exe"
 				LinkIncremental="2"
-				AdditionalLibraryDirectories="&quot;$(OGRE_HOME)\lib&quot;"
+				AdditionalLibraryDirectories="&quot;$(OGRE_HOME)\lib\$(ConfigurationName)&quot;;&quot;$(OGRE_HOME)\boost_1_42\lib&quot;"
 				GenerateDebugInformation="true"
 				ProgramDatabaseFile="$(OutDir)/WyvernsAssault.pdb"
 				SubSystem="2"
@@ -129,7 +129,7 @@
 				EnableIntrinsicFunctions="true"
 				FavorSizeOrSpeed="1"
 				OmitFramePointers="true"
-				AdditionalIncludeDirectories="..\include;&quot;$(OGRE_HOME)\include\OIS&quot;;&quot;$(OGRE_HOME)\include&quot;;&quot;$(OGRE_HOME)\include\CEGUI&quot;;&quot;$(OGRE_HOME)\samples\include&quot;"
+				AdditionalIncludeDirectories="..\include;&quot;$(OGRE_HOME)\include&quot;;&quot;$(OGRE_HOME)\include\OIS&quot;;&quot;$(OGRE_HOME)\include\OGRE&quot;;&quot;$(OGRE_HOME)\include\CEGUI&quot;;&quot;$(OGRE_HOME)\boost_1_42&quot;"
 				PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS"
 				StringPooling="true"
 				MinimalRebuild="true"
@@ -155,10 +155,10 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="OgreMain.lib OIS.lib CEGUIBase.lib OgreGUIRenderer.lib"
+				AdditionalDependencies="OgreMain.lib OIS.lib"
 				OutputFile="$(OutDir)\$(ProjectName).exe"
 				LinkIncremental="1"
-				AdditionalLibraryDirectories="&quot;$(OGRE_HOME)\lib&quot;"
+				AdditionalLibraryDirectories="&quot;$(OGRE_HOME)\lib\$(ConfigurationName)&quot;;&quot;$(OGRE_HOME)\boost_1_42\lib&quot;"
 				GenerateDebugInformation="false"
 				ProgramDatabaseFile=""
 				SubSystem="2"

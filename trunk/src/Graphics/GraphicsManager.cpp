@@ -4,6 +4,9 @@ using namespace Ogre;
 using namespace WyvernsAssault;
 
 GraphicsManager::GraphicsManager()
+: mRenderWindow(0)
+, mRoot(0)
+, mSceneManager(0)
 {
 	//
 	// TODO Constructor
