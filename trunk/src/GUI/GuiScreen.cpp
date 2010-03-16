@@ -23,6 +23,10 @@ GuiScreen::~GuiScreen()
 void GuiScreen::addWidget(GuiWidget* widget, GuiWidgetId widgetId)
 {
 	mWidgetMap[widgetId] = widget;
+
+	//// Attach background to the scene
+	SceneNode* n = mSceneManager->getRootSceneNode()->createChildSceneNode("Widget_"+widgetId);
+	n->attachObject(widget->getRectangle2D());
 }
 
 GuiWidget* GuiScreen::getWidget(GuiWidgetId widgetId)
@@ -60,7 +64,7 @@ void GuiScreen::setBackground(GuiBackground* background)
 {
 	//// Attach background to the scene
 	mBackgroundNode = mSceneManager->getRootSceneNode()->createChildSceneNode(mGuiScreenName+"_Background");
-	mBackgroundNode->attachObject(background->getImageRectangle());
+	mBackgroundNode->attachObject(background->getRectangle2D());
 }
 
 // -----------------------------------------

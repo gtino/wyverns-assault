@@ -37,6 +37,8 @@ namespace WyvernsAssault
 	public:
 		GuiBackground();
 		~GuiBackground();
+
+		void setImage(const Ogre::String& filename, const Ogre::String& name, const Ogre::String& group);
 	};
 }
 
