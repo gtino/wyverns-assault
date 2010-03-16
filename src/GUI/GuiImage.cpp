@@ -26,39 +26,13 @@ void GuiImage::setImage(const Ogre::String& filename, const Ogre::String& name, 
 	mImageMaterial->getTechnique(0)->getPass(0)->setDepthWriteEnabled(false);
 	mImageMaterial->getTechnique(0)->getPass(0)->setLightingEnabled(false);
 
-	// Create background rectangle covering the whole screen
-	mImageRectangle = new Rectangle2D(true);
-	mImageRectangle->setCorners(-1.0, 1.0, 1.0, -1.0);
-	mImageRectangle->setMaterial(name);
+	mRectangle2D->setMaterial(name);
 
-	// Render the background before everything else
-	mImageRectangle->setRenderQueueGroup(RENDER_QUEUE_BACKGROUND);
+	// Render the background after everything else
+	mRectangle2D->setRenderQueueGroup(RENDER_QUEUE_OVERLAY);
 
 	// Use infinite AAB to always stay visible
 	AxisAlignedBox aabInf;
 	aabInf.setInfinite();
-	mImageRectangle->setBoundingBox(aabInf);
-
-	// Attach background to the scene
-	//mImageNode = node;
-	//mImageNode->attachObject(getImageRectangle());
-}
-
-Ogre::Rectangle2D* GuiImage::getImageRectangle()
-{
-	return mImageRectangle;
-}
-
-void GuiImage::setPosition(float x, float y)
-{
-	mPosition.x=x;
-	mPosition.y=y;
-
-	//mImageNode->setPosition(Vector3(x, y, 0));
-}
-
-void GuiImage::setSize(float h, float w)
-{
-	mSize.heigth = h;
-	mSize.width  = w;
+	mRectangle2D->setBoundingBox(aabInf);
 }

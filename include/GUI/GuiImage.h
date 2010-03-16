@@ -40,15 +40,10 @@ namespace WyvernsAssault
 
 	public:
 		void setImage(const Ogre::String& filename, const Ogre::String& name, const Ogre::String& group);
-		Ogre::Rectangle2D* getImageRectangle();
-
-		void setPosition(float x, float y);
-		void setSize(float x, float y);
 
 	protected:
 		Ogre::SceneNode* mImageNode;
 		Ogre::MaterialPtr mImageMaterial;
-		Ogre::Rectangle2D* mImageRectangle;
 	};
 }
 

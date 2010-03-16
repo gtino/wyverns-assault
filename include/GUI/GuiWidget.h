@@ -89,14 +89,14 @@ namespace WyvernsAssault
 
 	struct GuiSize
 	{
-		float width;
-		float heigth;
+		Real width;
+		Real heigth;
  	};
 
 	struct GuiPosition
 	{
-		float x;
-		float y;
+		Real x;
+		Real y;
 	};
 
 	class GuiWidget
@@ -107,12 +107,21 @@ namespace WyvernsAssault
 
 		virtual GuiPosition getPosition(){return mPosition;};
 		virtual GuiSize getSize(){return mSize;};
-		virtual void setPosition(float positionX, float positionY){mPosition.x = positionX; mPosition.y = positionY;};
-		virtual void setSize(float sizeX, float sizeY){mSize.width = sizeX; mSize.heigth = sizeY;};
+		virtual void setPosition(float positionX, float positionY);
+		virtual void setSize(float sizeX, float sizeY);
+		virtual Ogre::Rectangle2D* getRectangle2D();
+
+	protected:
+		virtual void initialize();
+		virtual void finalize();
+		/** Called to recalc rectangle corners */
+		virtual void update();
 
 	protected:
 		GuiPosition mPosition;
 		GuiSize mSize;
+
+		Ogre::Rectangle2D* mRectangle2D;
 	};
 }
 

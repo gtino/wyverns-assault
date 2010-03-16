@@ -3,6 +3,7 @@
 using namespace WyvernsAssault;
 
 GuiButton::GuiButton()
+: GuiWidget()
 {
 	//
 	// TODO Constructor
