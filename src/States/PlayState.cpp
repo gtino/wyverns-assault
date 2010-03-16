@@ -56,9 +56,9 @@ void PlayState::initialize()
 	// Player UI
 	mGuiScreen = new GuiScreen(mSceneManager, GuiScreenId::PlayGui, "General");
 	GuiImage* mPlayerUI = new GuiImage();
-	mPlayerUI->setImage("UI.png", "PlayScreen", "Interface");
-	mPlayerUI->setPosition(0.05, 0.05);
-	mPlayerUI->setSize(0.15, 0.20);
+	mPlayerUI->setImage("UI.png", "PlayScreen", "General");
+	mPlayerUI->setPosition(-0.95, 0.95);
+	mPlayerUI->setSize(0.39, 0.22);
 	mGuiScreen->addWidget(mPlayerUI,GuiWidgetPlayId::UserInterface1);	
 	mInputManager->addListener(mGuiScreen);
 

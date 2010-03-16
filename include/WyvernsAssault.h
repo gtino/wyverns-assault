@@ -28,9 +28,9 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #if OGRE_PLATFORM == OGRE_PLATFORM_WIN32
 #include "../resources/resource.h"
 #endif
-#include <CEGUI.h>
-#include <CEGUISystem.h>
-#include <CEGUISchemeManager.h>
-#include <OgreCEGUIRenderer.h>
+//#include <CEGUI.h>
+//#include <CEGUISystem.h>
+//#include <CEGUISchemeManager.h>
+//#include <OgreCEGUIRenderer.h>
 
 #endif // #ifndef __WYVERNS_ASSAULT_H_
