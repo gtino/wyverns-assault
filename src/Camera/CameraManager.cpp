@@ -74,13 +74,14 @@ void CameraManager::updateCamera(SceneNode* node)
 	{
 		case GAMECAMERA:
 			// Camera positioning	-	NEED IMPROVING
-			if (node->getPosition().z > -45)
+			/*if (node->getPosition().z > -45)
 			{
 				cameraHeight	=	(55 - ((45 + node->getPosition().z)*2)) + node->getPosition().z;
 				cameraZ			=	(55 - ((45 + node->getPosition().z)*2)) + node->getPosition().z;
 				cameraZ			=	(cosf(cameraHeight * PI/180) * 10);
 			}
-			positionCamera(Vector3(node->getPosition().x, cameraHeight, cameraZ));			
+			positionCamera(Vector3(node->getPosition().x, cameraHeight, cameraZ));*/
+			positionCamera(node->getPosition() + Vector3(10,20,40));
 			break;
 
 		case FPSCAMERA:
@@ -104,7 +105,7 @@ void CameraManager::gameCamera(SceneNode* node)
 {
 	mCameraType = GAMECAMERA;
 	followNode(node);
-	positionCamera(node->getPosition() + Vector3(5,30,50));
+	positionCamera(node->getPosition() + Vector3(10,20,40));
 }
 
 void CameraManager::fpsCamera(SceneNode* node)

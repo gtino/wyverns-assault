@@ -22,9 +22,10 @@ void GuiImage::setImage(const Ogre::String& filename, const Ogre::String& name, 
 	// Create background material
 	mImageMaterial = MaterialManager::getSingleton().create(name, group);
 	mImageMaterial->getTechnique(0)->getPass(0)->createTextureUnitState(filename);
-	mImageMaterial->getTechnique(0)->getPass(0)->setDepthCheckEnabled(false);
-	mImageMaterial->getTechnique(0)->getPass(0)->setDepthWriteEnabled(false);
+	mImageMaterial->getTechnique(0)->getPass(0)->setDepthCheckEnabled(true);
+	mImageMaterial->getTechnique(0)->getPass(0)->setDepthWriteEnabled(true);
 	mImageMaterial->getTechnique(0)->getPass(0)->setLightingEnabled(false);
+	mImageMaterial->getTechnique(0)->getPass(0)->setSceneBlending(Ogre::SBT_TRANSPARENT_ALPHA);
 
 	mRectangle2D->setMaterial(name);
 

@@ -58,13 +58,22 @@ void PlayState::initialize()
 	GuiImage* mPlayerUI = new GuiImage();
 	mPlayerUI->setImage("UI.png", "PlayScreen", "General");
 	mPlayerUI->setPosition(-0.95, 0.95);
-	mPlayerUI->setSize(0.39, 0.22);
+	float width = 0.4f;
+	float height = 0.3f;
+
+	/*width = mGraphicsManager->getRenderWindow()->getViewport(0)->getActualWidth() / 4000.0f;
+	height = mGraphicsManager->getRenderWindow()->getViewport(0)->getActualHeight() / 4000.0f;
+	width = mGraphicsManager->getSceneManager()->getCamera("Camera")->getAspectRatio();
+	height = 1/mGraphicsManager->getSceneManager()->getCamera("Camera")->getAspectRatio();*/
+
+	mPlayerUI->setSize(width, height);
+
 	mGuiScreen->addWidget(mPlayerUI,GuiWidgetPlayId::UserInterface1);	
 	mInputManager->addListener(mGuiScreen);
 
 	// Player manager constructor
 	mPlayerManager = new PlayerManager();
-	mPlayerManager->initialize("redWyvern","redwyvern.mesh",mGraphicsManager->getSceneManager(),Vector3(200,-38,-45));
+	mPlayerManager->initialize("redWyvern","redwyvern.mesh",mGraphicsManager->getSceneManager(),Vector3(200,-40,-45));
 
 	mCameraManager->gameCamera(mPlayerManager->GetPlayerSceneNode());
 }
