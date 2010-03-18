@@ -74,6 +74,8 @@
 	<nodes>
 		<node>
 			<entity meshFile="L1.1.mesh" name="entity0"/>
+			<scale x="1" y="1" z="2.5"/>
+			<position x="0" y="0" z="80"/>
 		</node>
 		<node>
 			<position x="20" y="0" z="-60"/>
