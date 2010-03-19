@@ -23,8 +23,8 @@ void CameraManager::initialize()
 	
 	mSceneManager->getRootSceneNode()->createChildSceneNode()->attachObject(mCamera);
 	
-	mCamera->setNearClipDistance(5);
-	mCamera->setFarClipDistance(5000);
+	mCamera->setNearClipDistance(0.1);
+	mCamera->setFarClipDistance(3000);
 	mCamera->setAspectRatio(Real(mViewport->getActualWidth()) / Real(mViewport->getActualHeight()));
 	
 	mViewport->setCamera(mCamera);
@@ -63,9 +63,10 @@ void CameraManager::moveCamera(Vector3 move)
 void CameraManager::followNode(SceneNode* node, Vector3 offset)
 {
 	mCamera->setAutoTracking(true, node, offset);
+	mCamera->setFixedYawAxis(true);
 }
 
-void CameraManager::updateCamera(SceneNode* node)
+void CameraManager::updateCamera(SceneNode* node, SceneNode* target)
 {
 	float cameraHeight = 10;
 	float cameraZ = 10;
@@ -81,12 +82,12 @@ void CameraManager::updateCamera(SceneNode* node)
 				cameraZ			=	(cosf(cameraHeight * PI/180) * 10);
 			}
 			positionCamera(Vector3(node->getPosition().x, cameraHeight, cameraZ));*/
-			positionCamera(node->getPosition() + Vector3(10,20,40));
+			positionCamera(node->getPosition() + Vector3(10,20,50));
 			break;
 
 		case FPSCAMERA:
-			positionCamera(node->getPosition() + Vector3(0,PLAYERHEIGHT,-PLAYERWIDTH));
-			lookAtCamera(node->getPosition() + Vector3(25,-PLAYERHEIGHT,-PLAYERWIDTH));
+			positionCamera(node->getPosition() + Vector3(-20,20,-PLAYERWIDTH));			
+			lookAtCamera(target->getPosition() + Vector3(30,-3,-PLAYERWIDTH));
 			break;
 
 		case FIXEDCAMERA:

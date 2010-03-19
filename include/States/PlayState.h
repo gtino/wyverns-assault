@@ -31,8 +31,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
 #include "..\GUI\GuiDebugText.h"
 
-#define SPEED	0.5
-
 namespace WyvernsAssault
 {
 	/**

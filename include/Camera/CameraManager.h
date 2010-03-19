@@ -69,7 +69,7 @@ namespace WyvernsAssault
 		void lookAtCamera(Vector3 lookAt);
 		void moveCamera(Vector3 move);
 		void followNode(SceneNode* node, Vector3 offset = Vector3::ZERO);
-		void updateCamera(SceneNode* node);
+		void updateCamera(SceneNode* node, SceneNode* target);
 
 		/** Camera types functions **/
 		void gameCamera(SceneNode* node);

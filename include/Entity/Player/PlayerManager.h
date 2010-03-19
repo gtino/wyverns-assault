@@ -26,6 +26,12 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #include "..\..\..\include\Entity\EntityManager.h"
 #include <Ogre.h>
 
+// Player default movement speed
+#define SPEED	0.5
+#define OFFSET	4
+
+using namespace Ogre;
+
 namespace WyvernsAssault
 {
 	/**
@@ -37,22 +43,27 @@ namespace WyvernsAssault
 		PlayerManager();
 		~PlayerManager();
 
-		void initialize(Ogre::String name, Ogre::String mesh, Ogre::SceneManager* levelSceneManager, Ogre::Vector3 position);
+		void initialize(String name, String mesh, SceneManager* levelSceneManager, Vector3 position);
 		void finalize();
 
-		Ogre::SceneNode* GetPlayerSceneNode() const {return playerSceneNode;}
+		SceneNode* GetPlayerSceneNode() const {return mPlayerSceneNode;}
+		SceneNode* GetPlayerTargetNode() const {return mPlayerTargetNode;}
 
-		void setPosition(Ogre::Vector3 position);
-		void setRotation(Ogre::Radian x, Ogre::Radian y, Ogre::Radian z);
-		Ogre::Vector3 getPosition(){return playerSceneNode->getPosition();} 
+		Vector3 getPlayerPosition(){ return mPlayerSceneNode->getPosition(); }
 
+		// Player movement functions
+		void move(Real x, Real y, Real z);
 
 	private:
 		void initializeVariables();
+		SceneManager *mSceneManager;
 
-		Ogre::SceneManager *mSceneMgr;
-		Ogre::Entity* playerMesh;
-		Ogre::SceneNode* playerSceneNode;
+	private:
+		Entity*		mPlayerMesh;
+
+		SceneNode*	mPlayerSceneNode;
+		SceneNode*	mPlayerLookNode;
+		SceneNode*	mPlayerTargetNode;
 	};
 }
 
