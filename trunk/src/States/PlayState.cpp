@@ -73,7 +73,7 @@ void PlayState::initialize()
 
 	// Player manager constructor
 	mPlayerManager = new PlayerManager();
-	mPlayerManager->initialize("redWyvern","redwyvern.mesh",mGraphicsManager->getSceneManager(),Vector3(200,-40,-45));
+	mPlayerManager->initialize("redWyvern","redwyvern.mesh",mGraphicsManager->getSceneManager(),Vector3(300,-40,-45));
 
 	mCameraManager->gameCamera(mPlayerManager->GetPlayerSceneNode());
 }
@@ -116,7 +116,7 @@ void PlayState::update(const float elapsedSeconds)
 	mFpsDebugText.print(0.01f,0.01f,
 		"MODE: %s     PLAYER: %4.0f, %4.0f, %4.0f     CAMERA: %4.0f, %3.0f, %4.2f     FPS : %4.0f",
 		mCameraManager->getPolygonMode().c_str(),
-		mPlayerManager->getPosition().x, mPlayerManager->getPosition().y, mPlayerManager->getPosition().z,
+		mPlayerManager->getPlayerPosition().x, mPlayerManager->getPlayerPosition().y, mPlayerManager->getPlayerPosition().z,
 		mCameraManager->getCamera()->getPosition().x, mCameraManager->getCamera()->getPosition().y, mCameraManager->getCamera()->getPosition().z,		
 		mWindow->getAverageFPS()
 		);
@@ -160,60 +160,95 @@ void PlayState::update(const float elapsedSeconds)
 	}
 	else if(this->mInputManager->getKeyboard()->isKeyDown(OIS::KeyCode::KC_0))
 	{
-		mCameraManager->travelCamera(0);
+		
 	}
 	
 	// Movement
 	if(mCameraManager->getCameraType() == GAMECAMERA)
 	{
-		// 4 directions move
-		if(this->mInputManager->getKeyboard()->isKeyDown(OIS::KeyCode::KC_RIGHT))
+		// 8 directions move
+		if(this->mInputManager->getKeyboard()->isKeyDown(OIS::KeyCode::KC_RIGHT) && this->mInputManager->getKeyboard()->isKeyDown(OIS::KeyCode::KC_UP))
 		{
-			mPlayerManager->setPosition(mPlayerManager->getPosition() + Vector3(SPEED,0,0));
+			mPlayerManager->move(0.75,0,-0.75);
 		}
-		if(this->mInputManager->getKeyboard()->isKeyDown(OIS::KeyCode::KC_LEFT))
+		else if(this->mInputManager->getKeyboard()->isKeyDown(OIS::KeyCode::KC_RIGHT) && this->mInputManager->getKeyboard()->isKeyDown(OIS::KeyCode::KC_DOWN))
 		{
-			mPlayerManager->setPosition(mPlayerManager->getPosition() + Vector3(-SPEED,0,0));
+			mPlayerManager->move(0.75,0,0.75);
 		}
-		if(this->mInputManager->getKeyboard()->isKeyDown(OIS::KeyCode::KC_UP))
+		else if(this->mInputManager->getKeyboard()->isKeyDown(OIS::KeyCode::KC_LEFT) && this->mInputManager->getKeyboard()->isKeyDown(OIS::KeyCode::KC_UP))
 		{
-			mPlayerManager->setPosition(mPlayerManager->getPosition() + Vector3(0,0,-SPEED));
+			mPlayerManager->move(-0.75,0,-0.75);
 		}
-		if(this->mInputManager->getKeyboard()->isKeyDown(OIS::KeyCode::KC_DOWN))
+		else if(this->mInputManager->getKeyboard()->isKeyDown(OIS::KeyCode::KC_LEFT) && this->mInputManager->getKeyboard()->isKeyDown(OIS::KeyCode::KC_DOWN))
 		{
-			mPlayerManager->setPosition(mPlayerManager->getPosition() + Vector3(0,0,SPEED));
+			mPlayerManager->move(-0.75,0,0.75);
 		}
+		else if(this->mInputManager->getKeyboard()->isKeyDown(OIS::KeyCode::KC_RIGHT))
+		{
+			mPlayerManager->move(1,0,0);
+		}
+		else if(this->mInputManager->getKeyboard()->isKeyDown(OIS::KeyCode::KC_LEFT))
+		{
+			mPlayerManager->move(-1,0,0);
+		}
+		else if(this->mInputManager->getKeyboard()->isKeyDown(OIS::KeyCode::KC_UP))
+		{
+			mPlayerManager->move(0,0,-1);
+		}
+		else if(this->mInputManager->getKeyboard()->isKeyDown(OIS::KeyCode::KC_DOWN))
+		{
+			mPlayerManager->move(0,0,1);
+		}
+		
+
 		// Update camera position
-		mCameraManager->updateCamera(mPlayerManager->GetPlayerSceneNode());
+		mCameraManager->updateCamera(mPlayerManager->GetPlayerSceneNode(), mPlayerManager->GetPlayerTargetNode());
 	}
 	else if(mCameraManager->getCameraType() == FPSCAMERA)
 	{
-		if(this->mInputManager->getKeyboard()->isKeyDown(OIS::KeyCode::KC_RIGHT))
+		// 8 directions move
+		if(this->mInputManager->getKeyboard()->isKeyDown(OIS::KeyCode::KC_RIGHT) && this->mInputManager->getKeyboard()->isKeyDown(OIS::KeyCode::KC_UP))
 		{
-			mPlayerManager->setPosition(mPlayerManager->getPosition() + Vector3(0,0,SPEED));
+			mPlayerManager->move(0.75,0,0.75);
 		}
-		if(this->mInputManager->getKeyboard()->isKeyDown(OIS::KeyCode::KC_LEFT))
+		else if(this->mInputManager->getKeyboard()->isKeyDown(OIS::KeyCode::KC_RIGHT) && this->mInputManager->getKeyboard()->isKeyDown(OIS::KeyCode::KC_DOWN))
 		{
-			mPlayerManager->setPosition(mPlayerManager->getPosition() + Vector3(0,0,-SPEED));
+			mPlayerManager->move(-0.75,0,0.75);
 		}
-		if(this->mInputManager->getKeyboard()->isKeyDown(OIS::KeyCode::KC_UP))
+		else if(this->mInputManager->getKeyboard()->isKeyDown(OIS::KeyCode::KC_LEFT) && this->mInputManager->getKeyboard()->isKeyDown(OIS::KeyCode::KC_UP))
 		{
-			mPlayerManager->setPosition(mPlayerManager->getPosition() + Vector3(SPEED,0,0));
+			mPlayerManager->move(0.75,0,-0.75);
 		}
-		if(this->mInputManager->getKeyboard()->isKeyDown(OIS::KeyCode::KC_DOWN))
+		else if(this->mInputManager->getKeyboard()->isKeyDown(OIS::KeyCode::KC_LEFT) && this->mInputManager->getKeyboard()->isKeyDown(OIS::KeyCode::KC_DOWN))
 		{
-			mPlayerManager->setPosition(mPlayerManager->getPosition() + Vector3(-SPEED,0,0));
+			mPlayerManager->move(-0.75,0,-0.75);
+		}
+		else if(this->mInputManager->getKeyboard()->isKeyDown(OIS::KeyCode::KC_RIGHT))
+		{
+			mPlayerManager->move(0,0,1);
+		}
+		else if(this->mInputManager->getKeyboard()->isKeyDown(OIS::KeyCode::KC_LEFT))
+		{
+			mPlayerManager->move(0,0,-1);
+		}
+		else if(this->mInputManager->getKeyboard()->isKeyDown(OIS::KeyCode::KC_UP))
+		{
+			mPlayerManager->move(1,0,0);
+		}
+		else if(this->mInputManager->getKeyboard()->isKeyDown(OIS::KeyCode::KC_DOWN))
+		{
+			mPlayerManager->move(-1,0,0);
 		}
 
 		// Update camera position
-		mCameraManager->updateCamera(mPlayerManager->GetPlayerSceneNode());
+		mCameraManager->updateCamera(mPlayerManager->GetPlayerSceneNode(), mPlayerManager->GetPlayerTargetNode());
 	}
 
 	// WIN game - TEMP
-	if(mPlayerManager->getPosition().x > 730)this->mNextGameStateId = GameStateId::Ending;;
+	if(mPlayerManager->getPlayerPosition().x > 730)this->mNextGameStateId = GameStateId::Ending;;
 
 	// LOSE game - TEMP
-	if(mPlayerManager->getPosition().z < -80) this->mNextGameStateId = GameStateId::GameOver;;
+	if(mPlayerManager->getPlayerPosition().z < -80) this->mNextGameStateId = GameStateId::GameOver;;
 }
 
 /** Render */
@@ -316,7 +351,7 @@ bool PlayState::keyReleased(const OIS::KeyEvent& e)
 	case OIS::KeyCode::KC_F1:		
 		mCameraManager->switchtPolygonMode();
 		break;
-	// Debug frames per second
+	// Debug text
 	case OIS::KeyCode::KC_F2:		
 		mFpsDebugText.toogle();
 		break;

@@ -12,44 +12,49 @@ PlayerManager::~PlayerManager()
 
 }
 
-void PlayerManager::setPosition(Ogre::Vector3 position)
-{
-	// Constrain movement outside boundaries - TEMP
-	if (position.x < 20) position.x = 20;
-	if (position.z > -15) position.z = -15;
-	playerSceneNode->setPosition(position);
-};
-
-void PlayerManager::setRotation(Ogre::Radian x, Ogre::Radian y, Ogre::Radian z)
-{
-	if (x.valueRadians() != 0) playerSceneNode->roll(x);
-	if (y.valueRadians() != 0) playerSceneNode->yaw(y);
-	if (z.valueRadians() != 0) playerSceneNode->pitch(z);
-}
-
 void PlayerManager::initializeVariables()
 {
-	mSceneMgr = NULL;
-	playerMesh = NULL;
-	playerSceneNode = NULL;
+	mSceneManager		=	NULL;	
+	mPlayerMesh			=	NULL;
+	mPlayerSceneNode	=	NULL;
+	mPlayerLookNode		=	NULL;
+	mPlayerTargetNode	=	NULL;
 }
 
-void PlayerManager::initialize(Ogre::String name, Ogre::String mesh, Ogre::SceneManager *levelSceneManager, Ogre::Vector3 position)
+void PlayerManager::initialize(String name, String mesh, SceneManager *levelSceneManager, Vector3 position)
 {
+	mSceneManager = levelSceneManager;
 
-	mSceneMgr = levelSceneManager;
-	playerMesh = mSceneMgr->createEntity(name,mesh);
-	playerSceneNode = mSceneMgr->getRootSceneNode()->createChildSceneNode();
-	playerSceneNode->attachObject(playerMesh);
-	playerSceneNode->scale(0.15,0.15,0.15);
-	playerSceneNode->yaw(Ogre::Radian(Ogre::Degree(90)));
-	setPosition(position);
+	// Create player entity
+	mPlayerMesh = mSceneManager->createEntity(name, mesh);
+
+	// Create nodes
+	mPlayerSceneNode = mSceneManager->getRootSceneNode()->createChildSceneNode(name);
+	mPlayerTargetNode = mSceneManager->getRootSceneNode()->createChildSceneNode(name + "_target");
+	mPlayerLookNode = mPlayerSceneNode->createChildSceneNode(name + "_look", Vector3(0, 0, -OFFSET));
+
+	// Attach player entity mesh to player node
+	mPlayerSceneNode->attachObject(mPlayerMesh);
+
+	// Positioning
+	mPlayerSceneNode->setPosition(position);
+	mPlayerTargetNode->setPosition(mPlayerLookNode->_getDerivedPosition());
+	
+	// PlayerNode looks at playerTargetNode
+	mPlayerSceneNode->setAutoTracking(true, mPlayerTargetNode);
+
+	// Temporal scale and rotate - DELETE
+	mPlayerSceneNode ->scale(0.2,0.2,0.2);
 }
 
 void PlayerManager::finalize()
 {
-//	playerSceneNode->detachAllObjects();
-//	mSceneMgr->getRootSceneNode()->removeAndDestroyChild(playerSceneNode->getName());
-//	mSceneMgr->destroyEntity(playerMesh);
 	initializeVariables();
+}
+
+
+void PlayerManager::move(Real x, Real y, Real z)
+{
+	mPlayerSceneNode->translate(SPEED * x, SPEED * y, SPEED * z);
+	mPlayerTargetNode->setPosition(mPlayerLookNode->_getDerivedPosition());
 }
