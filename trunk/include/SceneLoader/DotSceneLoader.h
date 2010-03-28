@@ -54,6 +54,7 @@ namespace Ogre
 		void processLights(TiXmlElement *XMLNode);		
 		void processEnemys(TiXmlElement *XMLNode);	
 		void processSkyBox(TiXmlElement *XMLNode);
+		void processSkyDome(TiXmlElement *XMLNode);
 
 		void processNode(TiXmlElement *XMLNode, SceneNode *pParent = 0);
 		void processCamera(TiXmlElement *XMLNode, SceneNode *pParent = 0);
