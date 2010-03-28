@@ -130,6 +130,13 @@ void DotSceneLoader::processScene(TiXmlElement *XMLRoot)
 		processSkyBox(pElement);
 
 	LogManager::getSingleton().logMessage("[DotSceneLoader] SkyBox processed.");
+	
+	// Process skyDome
+	pElement = XMLRoot->FirstChildElement("skyDome");
+	if(pElement)
+		processSkyDome(pElement);
+
+	LogManager::getSingleton().logMessage("[DotSceneLoader] SkyDome processed.");
 
 	//Process enemys
 	pElement = XMLRoot->FirstChildElement("enemys");
@@ -604,16 +611,21 @@ void DotSceneLoader::processSkyBox(TiXmlElement *XMLNode)
 	Real distance = getAttribReal(XMLNode, "distance", 100);
 	bool drawFirst = getAttribBool(XMLNode, "drawFirst", true);
 
-	TiXmlElement *pElement;
-
-	// Process rotation (?)
-	Quaternion rotation = Quaternion::IDENTITY;
-	pElement = XMLNode->FirstChildElement("rotation");
-	if(pElement)
-		rotation = parseQuaternion(pElement);
-
 	// Setup the sky box
-	mSceneMgr->setSkyBox(true, material, distance, drawFirst, rotation, m_sGroupName);
+	mSceneMgr->setSkyBox(true, material, distance, drawFirst);
+}
+
+void DotSceneLoader::processSkyDome(TiXmlElement *XMLNode)
+{
+	// Process attributes
+	String material = getAttrib(XMLNode, "material");
+	Real curvature = getAttribReal(XMLNode, "curvature", 10);
+	Real tiling = getAttribReal(XMLNode, "tiling", 8);
+	Real distance = getAttribReal(XMLNode, "distance", 4000);
+	bool drawFirst = getAttribBool(XMLNode, "drawFirst", true);
+
+	// Setup the sky dome
+	mSceneMgr->setSkyDome(true, material, curvature, tiling, distance, drawFirst);
 }
 
 void DotSceneLoader::processLightRange(TiXmlElement *XMLNode, Light *pLight)
