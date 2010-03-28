@@ -70,7 +70,8 @@
 			<specular r="0.0" g="0.9" b="0.1"/>
 		</light>
 	</lights>
-	<skyBox material="MySky" distance="50"/>
+	<!--<skyBox material="NoonSkyBox" distance="50"/>-->
+	<skyDome material="CloudySky" curvature="5" tiling="8" distance="3000"/>
 	<nodes>
 		<node>
 			<entity meshFile="L1.1.mesh" name="entity0"/>
