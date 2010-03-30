@@ -25,19 +25,19 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
 #include <Ogre.h>
 
-#define FIXEDCAMERAS	8
-#define TRAVELCAMERAS	8
-#define TRAVELPOINTS	20
-// Camera types
-#define GAMECAMERA		1
-#define FPSCAMERA		2
-#define FIXEDCAMERA		3
-#define TRAVELCAMERA	4
-// Player height for fps camera
-#define PLAYERHEIGHT	5
-#define PLAYERWIDTH		0
+#include <CCSCameraControlSystem.h>
+#include "CCSBasicCameraModes.h"
+#include "CCSFreeCameraMode.h"
+#include "CCSOrbitalCameraMode.h"
 
-#define PI 3.14159265
+#define FIXEDCAMERAS	8
+
+// Camera types
+#define GAMECAMERA		0x00
+#define FPSCAMERA		0x01
+#define FIXEDCAMERA		0x02
+#define TRAVELCAMERA	0x03
+
 
 using namespace Ogre;
 
@@ -54,49 +54,54 @@ namespace WyvernsAssault
 
 	public: 
 		/** Initialize the camera manager */
-		void initialize();
+		void initialize(SceneNode* player);
 		/** Finalize the camera manager */
 		void finalize();
 
-		/** Get camera **/
-		Camera* getCamera(){ return mCamera; }
+		/** Get camera position **/
+		Vector3 getCameraPosition(){ return mCameraCS->getCameraPosition(); }
 		/** Get camera type **/
 		int getCameraType(){ return mCameraType; }
+		/** Get camera mode**/
+		String getCameraMode(){ return mCameraCS->getCameraModeName(mCameraCS->getCurrentCameraMode()); }
 
 		/** Camera functions **/
-		void positionCamera(Vector3 position);
-		void rotateCamera(Radian x, Radian y, Radian z);
-		void lookAtCamera(Vector3 lookAt);
-		void moveCamera(Vector3 move);
-		void followNode(SceneNode* node, Vector3 offset = Vector3::ZERO);
-		void updateCamera(SceneNode* node, SceneNode* target);
+		void updateCamera(SceneNode* node);
 
 		/** Camera types functions **/
-		void gameCamera(SceneNode* node);
-		void fpsCamera(SceneNode* node);
+		void gameCamera();
+		void fpsCamera();
 		void fixedCamera(int id);
 		void travelCamera(int id);
+		void scenarioCamera();
+		void nextCamera() { mCameraCS->setCurrentCameraMode(mCameraCS->getNextCameraMode()); }
 
 		/** Fixed cameras functions **/
-		void setFixedCamera(int camera, Vector3 position, Vector3 lookAt);
-		
-		/** Travel cameras functions **/
-		void setTravelCamera(int camera, int point, Vector3 position, Vector3 lookAt);
+		void setFixedCamera(int camera, Vector3 position, Real roll, Real yaw, Real pitch);
 
 		/** Debug camera functions **/
 		void switchtPolygonMode();
 		String getPolygonMode();
 	
-	private:
+	public:
 		Camera*			mCamera;
 		int				mCameraType;
-		Viewport*		mViewport;
-		Vector3			mFixedCameras[FIXEDCAMERAS][2];
-		Vector3			mTravelCameras[TRAVELCAMERAS][TRAVELPOINTS][2];
+
+		// Camera control system
+		CCS::CameraControlSystem*			mCameraCS;
+		// Camera modes
+		CCS::PlaneBindedCameraMode*			mCamPlaneMode;
+		CCS::FixedDirectionCameraMode*		mCamFixedDirMode;
+		CCS::FixedCameraMode*				mCamFixedMode;
+		CCS::FirstPersonCameraMode*			mCamFirstPersonMode;		
+		CCS::ChaseCameraMode*				mCamChaseMode;
+		CCS::AttachedCameraMode*			mCamAttachedMode;
+
 
 	private:
 		SceneManager*	mSceneManager;
 		RenderWindow*	mRenderWindow;
+		Viewport*		mViewport;
 	};
 }
 

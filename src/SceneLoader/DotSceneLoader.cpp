@@ -363,11 +363,15 @@ void DotSceneLoader::processNode(TiXmlElement *XMLNode, SceneNode *pParent)
 void DotSceneLoader::processCamera(TiXmlElement *XMLNode, SceneNode *pParent)
 {
 	int id;
-	Vector3 position, lookAt;
+	Real roll, yaw, pitch;
+	Vector3 position;
 
 	TiXmlElement *pElement;
 
-	id = getAttribInt(XMLNode, "id");
+	id		= getAttribInt(XMLNode, "id");
+	roll	= getAttribReal(XMLNode, "roll");
+	yaw		= getAttribReal(XMLNode, "yaw");
+	pitch	= getAttribReal(XMLNode, "pitch");
 
 	// Process position
 	pElement = XMLNode->FirstChildElement("position");
@@ -375,15 +379,8 @@ void DotSceneLoader::processCamera(TiXmlElement *XMLNode, SceneNode *pParent)
 	{
 		position = parseVector3(pElement);
 	}
-	
-	// Process lookAt
-	pElement = XMLNode->FirstChildElement("lookAt");
-	if(pElement)
-	{
-		lookAt = parseVector3(pElement);
-	}
 
-	mCameraManager->setFixedCamera(id, position, lookAt);
+	mCameraManager->setFixedCamera(id, position, roll, yaw, pitch);
 }
 
 void DotSceneLoader::processLight(TiXmlElement *XMLNode, SceneNode *pParent)
