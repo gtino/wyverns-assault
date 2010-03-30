@@ -8,6 +8,12 @@ CameraManager::CameraManager(SceneManager* sceneManager, RenderWindow* renderWin
 	this->mSceneManager = sceneManager;
 	this->mRenderWindow = renderWindow;
 	this->mViewport = viewport;
+
+	mCamera = NULL;
+	mCameraCS = NULL;
+	mCamPlaneMode = NULL;
+	mCamFixedDirMode = NULL;
+	mCamFixedMode = NULL;
 }
 
 CameraManager::~CameraManager()
@@ -16,146 +22,124 @@ CameraManager::~CameraManager()
 }
 
 /** Initialize the camera manager */
-void CameraManager::initialize()
+void CameraManager::initialize(SceneNode* player)
 {
-	mCameraType = FIXEDCAMERA;
 	mCamera = mSceneManager->createCamera( "Camera" );
-	
-	mSceneManager->getRootSceneNode()->createChildSceneNode()->attachObject(mCamera);
-	
+
 	mCamera->setNearClipDistance(0.1);
-	mCamera->setFarClipDistance(3000);
+	mCamera->setFarClipDistance(50000);
 	mCamera->setAspectRatio(Real(mViewport->getActualWidth()) / Real(mViewport->getActualHeight()));
 	
 	mViewport->setCamera(mCamera);
+
+	// Camera control system
+	mCameraCS = new CCS::CameraControlSystem(mSceneManager, "CCS", mCamera);
+
+	mCameraCS->setCameraTarget(player);
+
+	/** Define camera modes **/
+	// Plane binded
+	Plane* mPlane = new Plane(Vector3(0, -1, -1), Vector3(0,0,4000));
+    mCamPlaneMode = new CCS::PlaneBindedCameraMode(mCameraCS, *mPlane);	 
+	mCamPlaneMode->setCameraTightness(0.1);
+	mCameraCS->registerCameraMode("Plane Binded", mCamPlaneMode);
+
+	// Fixed direction
+	mCamFixedDirMode = new CCS::FixedDirectionCameraMode(mCameraCS, Ogre::Vector3(0,-0.5,-1), 1000);
+	mCameraCS->registerCameraMode("Fixed direction", mCamFixedDirMode);
+
+	// First person
+	mCamFirstPersonMode = new CCS::FirstPersonCameraMode(mCameraCS,Ogre::Vector3(0,17,-16)
+            , Ogre::Radian(0),Ogre::Radian(Ogre::Degree(180)),Ogre::Radian(0));
+	mCamFirstPersonMode->setCharacterVisible(false);
+	mCameraCS->registerCameraMode("First Person", mCamFirstPersonMode);
+
+	// Chase 
+	mCamChaseMode = new CCS::ChaseCameraMode(mCameraCS, Ogre::Vector3(-30,30,-80));    
+    mCamChaseMode->setCameraTightness(0.05);
+	//mCameraCS->registerCameraMode("Chase(0.05 tightness)", mCamChaseMode);
+
+	// Attached back/top
+	mCamAttachedMode = new CCS::AttachedCameraMode(mCameraCS,Ogre::Vector3(0,80,-300)
+            , Ogre::Radian(0),Ogre::Radian(Ogre::Degree(180)),Ogre::Radian(0));
+    //mCameraCS->registerCameraMode("Attached (back/top)",mCamAttachedMode);
+
+	// Fixed scenario camera
+	mCamFixedMode = new CCS::FixedCameraMode(mCameraCS);    
+    mCamFixedMode->setCameraPosition(Vector3(1000, 6500, 4500));
+    mCamFixedMode->setCameraOrientation( Quaternion(Radian(Degree(0)),Vector3::UNIT_Z)
+        * Quaternion(Radian(Degree(10)),Vector3::UNIT_Y)
+        * Quaternion(Radian(Degree(-50)),Vector3::UNIT_X));
+
+	// Register in camera control system
+	mCameraCS->registerCameraMode("Scenario", mCamFixedMode);
 }
 
 /** Finalize the camera manager */
 void CameraManager::finalize()
 {
 	mSceneManager->destroyAllCameras();
+	
+	mCamera = NULL;
+	mCameraCS = NULL;
+	mCamPlaneMode = NULL;
+	mCamFixedDirMode = NULL;
+	mCamFixedMode = NULL;
 }
 
 /** Camera functions **/
 
-void CameraManager::positionCamera(Vector3 position)
+void CameraManager::updateCamera(SceneNode* node)
 {
-	mCamera->setPosition(position);
-}
 
-void CameraManager::rotateCamera(Radian x, Radian y, Radian z)
-{
-	if (x.valueRadians() != 0) mCamera->roll(x);
-	if (y.valueRadians() != 0) mCamera->yaw(y);
-	if (z.valueRadians() != 0) mCamera->pitch(z);
-}
-
-void CameraManager::lookAtCamera(Vector3 lookAt)
-{
-	mCamera->lookAt(lookAt);
-}
-
-void CameraManager::moveCamera(Vector3 move)
-{
-	mCamera->move(move);
-}
-
-void CameraManager::followNode(SceneNode* node, Vector3 offset)
-{
-	mCamera->setAutoTracking(true, node, offset);
-	mCamera->setFixedYawAxis(true);
-}
-
-void CameraManager::updateCamera(SceneNode* node, SceneNode* target)
-{
-	float cameraHeight = 10;
-	float cameraZ = 10;
-
-	switch(mCameraType)
-	{
-		case GAMECAMERA:
-			// Camera positioning	-	NEED IMPROVING
-			/*if (node->getPosition().z > -45)
-			{
-				cameraHeight	=	(55 - ((45 + node->getPosition().z)*2)) + node->getPosition().z;
-				cameraZ			=	(55 - ((45 + node->getPosition().z)*2)) + node->getPosition().z;
-				cameraZ			=	(cosf(cameraHeight * PI/180) * 10);
-			}
-			positionCamera(Vector3(node->getPosition().x, cameraHeight, cameraZ));*/
-			positionCamera(node->getPosition() + Vector3(10,20,50));
-			break;
-
-		case FPSCAMERA:
-			positionCamera(node->getPosition() + Vector3(-20,20,-PLAYERWIDTH));			
-			lookAtCamera(target->getPosition() + Vector3(30,-3,-PLAYERWIDTH));
-			break;
-
-		case FIXEDCAMERA:
-
-			break;
-
-		case TRAVELCAMERA:
-
-			break;
-	}
 }
 
 /** Camera types **/
 
-void CameraManager::gameCamera(SceneNode* node)
+void CameraManager::gameCamera()
 {
 	mCameraType = GAMECAMERA;
-	followNode(node);
-	positionCamera(node->getPosition() + Vector3(10,20,40));
+	mCameraCS->setCurrentCameraMode(mCamPlaneMode);
 }
 
-void CameraManager::fpsCamera(SceneNode* node)
+void CameraManager::fpsCamera()
 {
 	mCameraType = FPSCAMERA;
-	mCamera->setAutoTracking(false);
-	positionCamera(node->getPosition() + Vector3(0,PLAYERHEIGHT,-PLAYERWIDTH));
-	lookAtCamera(node->getPosition() + Vector3(25,-PLAYERHEIGHT,-PLAYERWIDTH));
+	mCameraCS->setCurrentCameraMode(mCamFirstPersonMode);
 }
 
 void CameraManager::fixedCamera(int id)
 {
 	mCameraType = FIXEDCAMERA;
-	mCamera->setAutoTracking(false);
-	positionCamera(mFixedCameras[id][0]);
-	lookAtCamera(mFixedCameras[id][1]);
+	mCameraCS->setCurrentCameraMode(mCameraCS->getCameraMode("Fixed_" + id));
 }
 
 void CameraManager::travelCamera(int id)
 {
 	mCameraType = TRAVELCAMERA;
-	mCamera->setAutoTracking(false);
+}
 
-	// Position camera at first travel point
-	moveCamera(mCamera->getPosition() - mTravelCameras[id][0][0]);
-	lookAtCamera(mTravelCameras[id][0][1]);
-
-	// Move the camer through travel point
-	/*for(int point = 1; point < TRAVELPOINTS; point++)
-	{
-		if (mTravelCameras[id][point][0] == Vector3::ZERO || mTravelCameras[id][point][1] == Vector3::ZERO) break;
-		moveCamera(mTravelCameras[id][point][0] - mTravelCameras[id][point-1][0]);
-		lookAtCamera(mTravelCameras[id][point][1]);
-	}*/
+void CameraManager::scenarioCamera()
+{
+	mCameraType = FIXEDCAMERA;
+	mCameraCS->setCurrentCameraMode(mCameraCS->getCameraMode("Scenario"));
 }
 
 /** Fixed cameras functions **/
-void CameraManager::setFixedCamera(int camera, Vector3 position, Vector3 lookAt)
+void CameraManager::setFixedCamera(int camera, Vector3 position, Real roll, Real yaw, Real pitch)
 {
-	mFixedCameras[camera][0] = position;
-	mFixedCameras[camera][1] = lookAt;
+	mCamFixedMode = new CCS::FixedCameraMode(mCameraCS);    
+    mCamFixedMode->setCameraPosition(position);
+    mCamFixedMode->setCameraOrientation( Quaternion(Radian(Degree(roll)),Vector3::UNIT_Z)
+        * Quaternion(Radian(Degree(yaw)),Vector3::UNIT_Y)
+        * Quaternion(Radian(Degree(pitch)),Vector3::UNIT_X));
+
+	// Register in camera control system
+	char cameraName [30];
+	sprintf (cameraName, "Fixed %d", camera);
+	mCameraCS->registerCameraMode(cameraName, mCamFixedMode);
 }
 
-/** Travel cameras functions **/
-void CameraManager::setTravelCamera(int camera, int point, Vector3 position, Vector3 lookAt)
-{
-	mTravelCameras[camera][point][0] = position;
-	mTravelCameras[camera][point][1] = lookAt;
-}
 
 /** Debug camera functions **/
 void CameraManager::switchtPolygonMode()

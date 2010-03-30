@@ -1,0 +1,366 @@
+
+material Ground
+{
+	technique
+	{
+		pass
+		{
+			ambient 0 0 0 1
+
+			texture_unit
+			{
+				texture Island.png
+			}
+		}
+
+	}
+
+}
+
+
+
+material Concrete
+{
+	technique
+	{
+		pass
+		{
+			ambient 0.3 0.3 0.3 1
+			diffuse 0.7 0.7 0.7 1
+		}
+
+	}
+
+}
+
+
+
+material Hill
+{
+	technique
+	{
+		pass
+		{
+			ambient 0.698039 0.698039 0.698039 1
+			diffuse 0.698039 0.698039 0.698039 1
+			specular 0.898039 0.898039 0.898039 1 20
+
+			texture_unit
+			{
+				texture backgroundfield.png
+			}
+		}
+
+	}
+
+}
+
+
+
+material PillTree
+{
+	technique
+	{
+		pass
+		{
+			ambient 0.062 0.221 0.133 1
+			diffuse 0.168 0.416 0.265 1
+		}
+
+	}
+
+}
+
+
+
+material Wood
+{
+	technique
+	{
+		pass
+		{
+			ambient 0.3 0.106 0 1
+			diffuse 0.425 0.265 0.088 1
+		}
+
+	}
+
+}
+
+
+
+material TreeTop
+{
+	technique
+	{
+		pass
+		{
+			ambient 0.142 0.3 0 1
+			diffuse 0.451 0.743 0.15 1
+		}
+
+	}
+
+}
+
+
+
+material RedTree
+{
+	technique
+	{
+		pass
+		{
+			ambient 0.628 0.062 0.142 1
+			diffuse 0.867 0.115 0.053 1
+		}
+
+	}
+
+}
+
+
+
+material Tree2
+{
+	technique
+	{
+		pass
+		{
+			ambient 0 0 0 1
+
+			texture_unit
+			{
+				texture tree2_small.png
+			}
+		}
+
+	}
+
+}
+
+
+
+material Tree1
+{
+	technique
+	{
+		pass
+		{
+			ambient 0 0 0 1
+
+			texture_unit
+			{
+				texture tree3_small.png
+			}
+		}
+
+	}
+
+}
+
+
+
+material HighHills
+{
+	technique
+	{
+		pass
+		{
+			ambient 0.133 0.3 0.3 1
+			diffuse 0.195 0.496 0.345 1
+		}
+
+	}
+
+}
+
+
+
+material Castle1
+{
+	technique
+	{
+		pass
+		{
+			ambient 0 0 0 1
+
+			texture_unit
+			{
+				texture Castle1.png
+			}
+		}
+
+	}
+
+}
+
+
+
+material BurnedHill
+{
+	technique
+	{
+		pass
+		{
+			ambient 0 0 0 1
+
+			texture_unit
+			{
+				texture BurntHill.png
+			}
+		}
+
+	}
+
+}
+
+
+
+material BillboardTree1
+{
+	technique
+	{
+		pass
+		{
+			ambient 0 0 0 1
+
+			texture_unit
+			{
+				texture BillboardTree1.png
+			}
+		}
+
+	}
+
+}
+
+
+
+material SilhouetteTree2
+{
+	technique
+	{
+		pass
+		{
+			ambient 0 0 0 1
+
+			texture_unit
+			{
+				texture SilhouetteTree2.png
+			}
+		}
+
+	}
+
+}
+
+
+
+material SilhouetteTree1
+{
+	technique
+	{
+		pass
+		{
+			ambient 0 0 0 1
+
+			texture_unit
+			{
+				texture SilhouetteTree1.png
+			}
+		}
+
+	}
+
+}
+
+
+
+material Water
+{
+	technique
+	{
+		pass
+		{
+			ambient 0.062 0.3 0.841 1
+			diffuse 0.513 0.646 0.858 1
+		}
+
+	}
+
+}
+
+
+
+material WheatField
+{
+	technique
+	{
+		pass
+		{
+			ambient 0 0 0 1
+
+			texture_unit
+			{
+				texture wheat.png
+			}
+		}
+
+	}
+
+}
+
+
+
+material WoodHouse
+{
+	technique
+	{
+		pass
+		{
+			ambient 0.416 0.327 0 1
+			diffuse 0.7 0.69 0.177 1
+		}
+
+	}
+
+}
+
+
+
+material BigRock
+{
+	technique
+	{
+		pass
+		{
+			ambient 0.487 0 0 1
+			diffuse 0.124 0.124 0.124 1
+		}
+
+	}
+
+}
+
+
+
+material Volcano
+{
+	technique
+	{
+		pass
+		{
+			ambient 0 0 0 1
+
+			texture_unit
+			{
+				texture Vulcano.png
+			}
+		}
+
+	}
+
+}
+
+

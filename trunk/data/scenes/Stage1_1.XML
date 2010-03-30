@@ -1,50 +1,33 @@
 <scene>
 	<cameras>
-		<camera name="Camera1" id=0>
-			<position x="10" y="70" z="100"/>
-			<lookAt x="150" y="0" z="-25"/>
+		<camera name="Camera1" id="0" roll="0" yaw="0" pitch="-40">
+			<position x="0" y="5000" z="5000"/>			
 		</camera>
-		<camera name="Camera2" id=1>
-			<position x="400" y="90" z="150"/>
-			<lookAt x="400" y="-25" z="-50"/>
+		<camera name="Camera2" id="1" roll="0" yaw="180" pitch="-40">			
+			<position x="0" y="5000" z="-5000"/>
 		</camera>
-		<camera name="Camera3" id=2>
-			<position x="725" y="80" z="115"/>
-			<lookAt x="650" y="0" z="25"/>
+		<camera name="Camera3" id="2" roll="0" yaw="30" pitch="-30">			
+			<position x="5000" y="5000" z="5000"/>
 		</camera>
-		<camera name="Camera4" id=3>
-			<position x="-50" y="175" z="-45"/>
-			<lookAt x="250" y="0" z="-45"/>
-		</camera>
-		<camera name="Camera5" id=4>
-			<position x="850" y="175" z="-45"/>
-			<lookAt x="550" y="0" z="-45"/>
-		</camera>
-		<camera name="Camera6" id=5>
-			<position x="275" y="-35" z="-65"/>
-			<lookAt x="200" y="-40" z="-30"/>
-		</camera>
-		<camera name="Camera7" id=6>
-			<position x="474" y="-25" z="-40"/>
-			<lookAt x="400" y="-50" z="-60"/>
+		<camera name="Camera4" id="3" roll="0" yaw="-220" pitch="-40">
+			<position x="5000" y="5000" z="-5000"/>
 		</camera>
 	</cameras>
 	<lights>
 		<light name="Ambient" type="ambient">
-			<color r="0.8" g="0.8" b="0.7"/>
+			<color r="0.6" g="0.6" b="0.6"/>
 		</light>
 		<light name="Point1" type="point">
-			<position x="0" y="100" z="0"/>
-			<diffuse r="0.5" g="0.5" b="0.4"/>
-			<specular r="0.6" g="0.6" b="0.4"/>
+			<position x="1000" y="4000" z="0"/>
+			<diffuse r="0.7" g="0.7" b="0.6"/>
+			<specular r="0.6" g="0.6" b="0.55"/>
 		</light>
-		<light name="Directional1" type="directional">
+		<!--<light name="Directional1" type="directional">
 			<direction x="1" y="1" z="0"/>
 			<diffuse r="0.5" g="0.5" b="0.4"/>
 			<specular r="0.6" g="0.6" b="0.4"/>
-		</light>
-		
-		<light name="SpotEnemies1" type="spot">
+		</light>-->
+		<!--<light name="SpotEnemies1" type="spot">
 			<position x="235" y="10" z="-40"/>
 			<direction x="0" y="-1" z="0"/>
 			<diffuse r="0.9" g="0.1" b="0.1"/>
@@ -62,23 +45,23 @@
 			<diffuse r="0.9" g="0.1" b="0.1"/>
 			<specular r="0.9" g="0.1" b="0.1"/>
 		</light>		
-		
 		<light name="SpotWin" type="spot">
 			<position x="730" y="10" z="-45"/>
 			<direction x="0" y="-1" z="0"/>
 			<diffuse r="0.0" g="0.9" b="0.1"/>
 			<specular r="0.0" g="0.9" b="0.1"/>
-		</light>
+		</light>-->
 	</lights>
-	<!--<skyBox material="NoonSkyBox" distance="50"/>-->
-	<skyDome material="CloudySky" curvature="5" tiling="8" distance="3000"/>
+  
+	<skyDome material="CloudySky" curvature="5" tiling="8" distance="4000"/>
+  
 	<nodes>
 		<node>
-			<entity meshFile="L1.1.mesh" name="entity0"/>
-			<scale x="1" y="1" z="2.5"/>
-			<position x="0" y="0" z="80"/>
+			<entity meshFile="Level1_1.mesh" name="entity0"/>
+			<scale x="1" y="1" z="1"/>
+			<position x="0" y="0" z="0"/>
 		</node>
-		<node>
+		<!--<node>
 			<position x="20" y="0" z="-60"/>
 			<entity meshFile="background_plane1.mesh" name="entity1"/>
 		</node>
@@ -401,11 +384,12 @@
 		<node>
 			<position x="660.066" y="-36.46" z="-56.738"/>
 			<entity meshFile="tree_1.mesh" name="entity75"/>
-		</node>
+		</node>-->
 	</nodes>
+  
 	<enemys>
 		<!-- Soldiers -->
-		<enemy>
+		<!--<enemy>
 			<position x="230" y="-36" z="-45"/>
  			<entity meshFile="soldier.mesh" name="enemy0"/>
 		</enemy>
@@ -545,10 +529,10 @@
 		<enemy>
 			<position x="685" y="-38" z="-37"/>
  			<entity meshFile="soldier.mesh" name="enemy33"/>
-		</enemy>
+		</enemy>-->
 		
 		<!-- Peasants -->
-		<enemy>
+		<!--<enemy>
 			<position x="311" y="-38" z="-44"/>
 			<scale x="0.2" y="0.2" z="0.2"/>
  			<entity meshFile="peasant.mesh" name="peasant0"/>
@@ -640,10 +624,10 @@
 			<position x="697" y="-38" z="-40"/>
 			<scale x="0.2" y="0.2" z="0.2"/>
  			<entity meshFile="peasant.mesh" name="peasant17"/>
-		</enemy>
+		</enemy>-->
 		
 		<!-- Battering Rams-->
-		<enemy>
+		<!--<enemy>
 			<position x="350" y="-40" z="-30"/>
 			<scale x="0.2" y="0.2" z="0.2"/>
  			<entity meshFile="batteringRAM.mesh" name="ram1"/>
@@ -652,10 +636,10 @@
 			<position x="518" y="-40" z="-49"/>
 			<scale x="0.2" y="0.2" z="0.2"/>
  			<entity meshFile="batteringRAM.mesh" name="ram2"/>
-		</enemy>
+		</enemy>-->
 		
 		<!-- Wizards -->
-		<enemy>
+		<!--<enemy>
 			<position x="590" y="-38.5" z="-38"/>
  			<entity meshFile="wizard.mesh" name="wizard1"/>
 		</enemy>
@@ -667,7 +651,7 @@
 			<position x="655" y="-38.5" z="-20"/>
 			<yaw angle="0.10"/>
  			<entity meshFile="wizard.mesh" name="wizard3"/>
-		</enemy>
+		</enemy>-->
 		
 		<!-- Enemies list End -->
 	</enemys>

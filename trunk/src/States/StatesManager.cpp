@@ -3,7 +3,7 @@
 using namespace WyvernsAssault;
 
 StatesManager::StatesManager()
-: mCurrentStateId ( GameStateId::SplashScreen )
+: mCurrentStateId ( GameStateId::Play )
 {
 	//
 	// TODO Constructor

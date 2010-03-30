@@ -27,8 +27,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #include <Ogre.h>
 
 // Player default movement speed
-#define SPEED	0.5
-#define OFFSET	4
+#define SPEED	5
 
 using namespace Ogre;
 
@@ -46,8 +45,7 @@ namespace WyvernsAssault
 		void initialize(String name, String mesh, SceneManager* levelSceneManager, Vector3 position);
 		void finalize();
 
-		SceneNode* GetPlayerSceneNode() const {return mPlayerSceneNode;}
-		SceneNode* GetPlayerTargetNode() const {return mPlayerTargetNode;}
+		SceneNode* getPlayerSceneNode() const {return mPlayerSceneNode;}
 
 		Vector3 getPlayerPosition(){ return mPlayerSceneNode->getPosition(); }
 
@@ -60,10 +58,7 @@ namespace WyvernsAssault
 
 	private:
 		Entity*		mPlayerMesh;
-
 		SceneNode*	mPlayerSceneNode;
-		SceneNode*	mPlayerLookNode;
-		SceneNode*	mPlayerTargetNode;
 	};
 }
 
