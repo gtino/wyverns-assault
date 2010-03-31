@@ -1,0 +1,20 @@
+vertex_program ToonVP cg
+{
+	source Toon.cg
+	entry_point toon_vp
+	profiles vs_2_0 arbvp1
+
+	default_params
+	{
+		param_named_auto lightPosition light_position_object_space 0
+		param_named_auto eyePosition camera_position_object_space
+		param_named_auto worldViewProj worldviewproj_matrix
+	}
+}
+
+fragment_program ToonFP cg
+{
+	source Toon.cg
+	entry_point toon_fp
+	profiles ps_2_0 arbfp1 fp20
+}

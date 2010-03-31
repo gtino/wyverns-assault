@@ -1,44 +1,65 @@
-
 material RedWyvernBody
 {
-	technique
+	technique Toon
 	{
 		pass
 		{
-			diffuse 0.244 0.244 0.244 1
-			specular 0.7 0.7 0.7 1 10
-			emissive 0.244 0.244 0.244 1
-			cull_hardware none
-			cull_software none
+			vertex_program_ref ToonVP
+			{
+				param_named shininess float4 35.0 1.0 1.0 1.0
+			}
+			fragment_program_ref ToonFP
+			{
+        param_named diffuse float4 0.244 0.244 0.244 1
+        param_named specular float4 0.7 0.5 0.4 1
+			}
 
+      // Textures for shades
 			texture_unit
 			{
-				texture RedWyvernTextureBody.psd
+				texture toon.png 2d
+				tex_address_mode clamp
+				filtering none
+			}
+
+      // Real Texture
+			texture_unit
+			{
+				texture RedWyvernTextureBody.png
 			}
 		}
-
 	}
-
 }
 
 material RedWyvernHead
 {
-	technique
+	technique ToonShading
 	{
 		pass
 		{
-			diffuse 0.244 0.244 0.244 1
-			specular 0.7 0.7 0.7 1 10
-			emissive 0.244 0.244 0.244 1
-			cull_hardware none
-			cull_software none
+			vertex_program_ref ToonVP
+			{
+				param_named shininess float4 35.0 1.0 1.0 1.0
+			}
+			fragment_program_ref ToonFP
+			{
+        param_named diffuse float4 0.244 0.244 0.244 1
+        param_named specular float4 0.7 0.5 0.4 1
+			}
 
+      // Textures for shades
 			texture_unit
 			{
-				texture RedWyvernTextureHead.psd
+				texture toon.png 2d
+				tex_address_mode clamp
+				filtering none
+			}
+
+      // Real Texture
+			texture_unit
+			{
+				texture RedWyvernTextureHead.png
 			}
 		}
-
 	}
-
 }

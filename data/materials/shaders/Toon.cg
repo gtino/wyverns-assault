@@ -1,0 +1,74 @@
+
+/* Cel shading vertex program for single-pass rendering
+   In this program, we want to calculate the diffuse and specular
+   ramp components, and the edge factor (for doing simple outlining)
+   For the outlining to look good, we need a pretty well curved model.
+*/
+void toon_vp(float4 position	: POSITION,
+			 float3 normal		: NORMAL,
+			 float2 uv : TEXCOORD0,
+			 // outputs
+			 out float4 oPosition : POSITION,
+			 out float2  oUv : TEXCOORD0,
+			 out float  diffuse		 : TEXCOORD1,
+			 out float  specular	 : TEXCOORD2,
+			 out float  edge		 : TEXCOORD3,
+			 // parameters
+			 uniform float3 lightPosition, // object space
+			 uniform float3 eyePosition,   // object space
+			 uniform float4  shininess,
+			 uniform float4x4 worldViewProj)
+{
+	// calculate output position
+	oPosition = mul(worldViewProj, position);
+
+	// calculate light vector
+	float3 N = normalize(normal);
+	float3 L = normalize(lightPosition - position.xyz);
+	
+	// Calculate diffuse component
+	diffuse = max(dot(N, L) , 0);
+
+	// Calculate specular component
+	float3 E = normalize(eyePosition - position.xyz);
+	float3 H = normalize(L + E);
+	specular = pow(max(dot(N, H), 0), shininess);
+	// Mask off specular if diffuse is 0
+	if (diffuse == 0) specular = 0;
+
+	// Edge detection, dot eye and normal vectors
+	edge = max(dot(N, E), 0);
+	
+	// pass the main uvs straight through unchanged
+	oUv = uv;
+}
+
+void toon_fp(
+        float2 uv : TEXCOORD0,
+        float diffuseIn 	: TEXCOORD1,
+        float specularIn	: TEXCOORD2,
+        float edge		: TEXCOORD3,
+			 
+			 out float4 colour	: COLOR,
+			 
+			 uniform float4 diffuse,
+			 uniform float4 specular,
+			 
+			 uniform sampler2D celShadingRamps,
+			 uniform sampler2D textureColor)
+{
+  float2 diffuseInUv = float2(diffuseIn,0);
+  float2 specularInUv = float2(specularIn,1);
+  float2 edgeInUv = float2(edge,2);
+
+	// Step functions from textures
+	diffuseIn = tex2D(celShadingRamps, diffuseInUv).x;
+	specularIn = tex2D(celShadingRamps, specularInUv).x;
+	edge = tex2D(celShadingRamps, edgeInUv).x;
+
+	colour =  edge * ((diffuse * diffuseIn) +
+            (tex2D(textureColor,uv) * diffuseIn) + 
+            (specular * specularIn));
+}
+			 
+			 
