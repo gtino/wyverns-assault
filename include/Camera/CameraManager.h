@@ -95,6 +95,7 @@ namespace WyvernsAssault
 		CCS::FixedCameraMode*				mCamFixedMode;
 		CCS::FirstPersonCameraMode*			mCamFirstPersonMode;		
 		CCS::ChaseCameraMode*				mCamChaseMode;
+		CCS::ChaseFreeYawAxisCameraMode*	mCamChaseFreeMode;
 		CCS::AttachedCameraMode*			mCamAttachedMode;
 
 
