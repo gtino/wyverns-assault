@@ -36,7 +36,7 @@ void PlayState::initialize()
 
 	// Player manager constructor
 	mPlayerManager = new PlayerManager();
-	mPlayerManager->initialize("redWyvern","redwyvern.mesh",mGraphicsManager->getSceneManager(),Vector3(-200,750,2800));
+	mPlayerManager->initialize("redWyvern","redwyvern.mesh",mGraphicsManager->getSceneManager(),Vector3(-150,600,2700));
 
 	// Camera manager constructor
 	mCameraManager = new CameraManager(mGraphicsManager->getSceneManager(), mGraphicsManager->getRenderWindow(), mViewport);

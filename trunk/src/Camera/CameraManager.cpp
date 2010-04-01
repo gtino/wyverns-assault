@@ -40,8 +40,7 @@ void CameraManager::initialize(SceneNode* player)
 	/** Define camera modes **/
 	// Plane binded
 	Plane* mPlane = new Plane(Vector3(0, -1, -1), Vector3(0,0,4000));
-    mCamPlaneMode = new CCS::PlaneBindedCameraMode(mCameraCS, *mPlane);	 
-	mCamPlaneMode->setCameraTightness(0.1);
+    mCamPlaneMode = new CCS::PlaneBindedCameraMode(mCameraCS, *mPlane);
 	mCameraCS->registerCameraMode("Plane Binded", mCamPlaneMode);
 
 	// Fixed direction
@@ -55,14 +54,20 @@ void CameraManager::initialize(SceneNode* player)
 	mCameraCS->registerCameraMode("First Person", mCamFirstPersonMode);
 
 	// Chase 
-	mCamChaseMode = new CCS::ChaseCameraMode(mCameraCS, Ogre::Vector3(-30,30,-80));    
-    mCamChaseMode->setCameraTightness(0.05);
-	//mCameraCS->registerCameraMode("Chase(0.05 tightness)", mCamChaseMode);
+	mCamChaseMode = new CCS::ChaseCameraMode(mCameraCS, Ogre::Vector3(-200,70,20));    
+    mCamChaseMode->setCameraTightness(0.2);
+	mCameraCS->registerCameraMode("Chase", mCamChaseMode);
 
-	// Attached back/top
-	mCamAttachedMode = new CCS::AttachedCameraMode(mCameraCS,Ogre::Vector3(0,80,-300)
-            , Ogre::Radian(0),Ogre::Radian(Ogre::Degree(180)),Ogre::Radian(0));
-    //mCameraCS->registerCameraMode("Attached (back/top)",mCamAttachedMode);
+	// Chase free yaw axis
+	mCamChaseFreeMode = new CCS::ChaseFreeYawAxisCameraMode(mCameraCS,Ogre::Vector3(-600,50,0)
+            , Ogre::Radian(0),Ogre::Radian(Ogre::Degree(270)),Ogre::Radian(0));
+	mCamChaseFreeMode->setCameraTightness(0.1);
+    mCameraCS->registerCameraMode("ChaseFreeYawAxis",mCamChaseFreeMode);    
+
+	// Attached lateral
+	mCamAttachedMode = new CCS::AttachedCameraMode(mCameraCS,Ogre::Vector3(-200,50,0)
+            , Ogre::Radian(0),Ogre::Radian(Ogre::Degree(270)),Ogre::Radian(0));
+    mCameraCS->registerCameraMode("Attached (lateral)",mCamAttachedMode);
 
 	// Fixed scenario camera
 	mCamFixedMode = new CCS::FixedCameraMode(mCameraCS);    
