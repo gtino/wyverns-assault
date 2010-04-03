@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="Windows-1252"?>
 <VisualStudioProject
 	ProjectType="Visual C++"
-	Version="9,00"
+	Version="9.00"
 	Name="WyvernsAssault"
 	ProjectGUID="{DA8BACB6-E0B2-465D-84CE-60A33C2E795E}"
 	RootNamespace="WyvernsAssault"
@@ -416,6 +416,22 @@
 					</File>
 				</Filter>
 			</Filter>
+			<Filter
+				Name="Events"
+				>
+				<File
+					RelativePath="..\src\Events\Event.cpp"
+					>
+				</File>
+				<File
+					RelativePath="..\src\Events\EventsManager.cpp"
+					>
+				</File>
+				<File
+					RelativePath="..\src\Events\EventsProcessor.cpp"
+					>
+				</File>
+			</Filter>
 		</Filter>
 		<Filter
 			Name="Header Files"
@@ -635,6 +651,22 @@
 				>
 				<File
 					RelativePath="..\include\Data\DataManager.h"
+					>
+				</File>
+			</Filter>
+			<Filter
+				Name="Events"
+				>
+				<File
+					RelativePath="..\include\Events\Event.h"
+					>
+				</File>
+				<File
+					RelativePath="..\include\Events\EventsManager.h"
+					>
+				</File>
+				<File
+					RelativePath="..\include\Events\EventsProcessor.h"
 					>
 				</File>
 			</Filter>
