@@ -23,13 +23,60 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #ifndef __EVENT_H_
 #define __EVENT_H_
 
+#include <boost/shared_ptr.hpp>
+
 namespace WyvernsAssault
 {
+	/** Event types */
+	enum EventTypes
+	{
+		PlayerHit = 0,
+		ObjectHit
+	};
+
+	/** Event priority, used to put the event in the correct queue */
+	enum EventPriorities
+	{
+		Highest = 0,
+		High,
+		Normal,
+		Low,
+		Lower
+	};
+
+	typedef void* EventData;
+
 	class Event
 	{
 	public:
-		Event();
+		Event(EventTypes type, EventPriorities priority);
 		virtual ~Event() = 0;
+
+	public:
+		/** Returns the event type */
+		EventTypes getType();
+		/** Returns the event priority */
+		EventPriorities getPriority();
+		/** Returens the event data */
+		EventData getData();
+		/** Sets the event data */
+		void setData(EventData data);
+
+	private:
+		EventTypes mType;
+		EventPriorities mPriority;
+		EventData mData;
+	};
+
+	typedef boost::shared_ptr<Event> EventPtr;
+
+	/** Functor class used to compare two event pointers */
+	class EventComparator
+	{
+	public:
+		/** Compare two events checking their priorities:
+		    The event with the lower value will have higher priority */
+		bool operator()(EventPtr& evt1, EventPtr& evt2);
 	};
 }
 
