@@ -38,6 +38,10 @@ This pages is used to store all the intersting links realted to the project. Eve
 
  * [http://www.gamasutra.com/features/20050428/sang_01.shtml Improving the combat 'Impact' of action games (from Gamasutra)]
 
+== C++ Tips'n'Tricks ==
+
+ * [http://www.tutok.sk/fastgl/callback.html Callbacks In C++ Using Template Functors]
+
 == Bugs ==
 
  * [http://lostgarden.com/2008/05/improving-bug-triage-with-user-pain.html Improving Bug Triage with User Pain]
