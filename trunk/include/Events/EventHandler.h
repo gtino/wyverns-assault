@@ -25,6 +25,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
 #include <boost/shared_ptr.hpp>
 
+#include "Event.h"
+
 namespace WyvernsAssault
 {
 	class EventHandler
@@ -32,9 +34,52 @@ namespace WyvernsAssault
 	public:
 		virtual ~EventHandler() = 0;
 
+		/// Handle the given event by performing double dispatch
+		/// @param evt event to handle
+		void handleEvent(const EventPtr evt)
+		{
+			invoke(evt);
+		}
+		/// Equality operator: It'll return true if
+		/// their types are the same and they're deemed equal
+		/// @param other instance to compare
+		/// @return true if 'other' has the same type as this, 
+		///				 and their values are equal
+		bool operator== (const EventHandler& other) const
+		{
+			if (typeid(*this)!=typeid(other)) return false;
+			return equal(other);
+		}
+		/// Return true if other is the same object as this
+		/// @param other instance to compare
+		/// @return true if 'other' is the same object as this
+		virtual bool equal(const EventHandler& other) const=0;
+	protected:
+		/// Process the event
+		/// @param evt event to handle
+		virtual void invoke(const EventPtr evt)=0;
 	};
 
 	typedef boost::shared_ptr<EventHandler> EventHandlerPtr;
+
+	/// Compares two event handler shared pointers
+	class EventHandlerComparisonFunctor
+	{
+	private:
+		/// instance against which other handlers will be compared
+		EventHandlerPtr mInstance;
+	public:
+		/// Constructor
+		EventHandlerComparisonFunctor(EventHandlerPtr instance):mInstance(instance){}
+		/// Functor operator: it'll retrieve the raw pointers and then
+		/// will test their contents for equality
+		/// @param other handler to compare
+		/// @return true if this instance is equal as 'other'
+		bool operator()(EventHandlerPtr& other) const
+		{
+			return *(mInstance.get())==*(other.get());
+		}
+	};
 }
 
 #endif // __EVENT_HANDLER_H_
