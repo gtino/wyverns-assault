@@ -424,6 +424,10 @@
 					>
 				</File>
 				<File
+					RelativePath="..\src\Events\EventHandler.cpp"
+					>
+				</File>
+				<File
 					RelativePath="..\src\Events\EventsManager.cpp"
 					>
 				</File>
@@ -659,6 +663,10 @@
 				>
 				<File
 					RelativePath="..\include\Events\Event.h"
+					>
+				</File>
+				<File
+					RelativePath="..\include\Events\EventHandler.h"
 					>
 				</File>
 				<File

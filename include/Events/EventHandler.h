@@ -20,29 +20,21 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
 -----------------------------------------------------------------------------
 */
-#ifndef __EVENTS_MANAGER_H_
-#define __EVENTS_MANAGER_H_
+#ifndef __EVENT_HANDLER_H_
+#define __EVENT_HANDLER_H_
 
-#include <list>
-#include <queue>
-#include <vector>
-#include <map>
-
-#include "Event.h"
-#include "EventHandler.h"
+#include <boost/shared_ptr.hpp>
 
 namespace WyvernsAssault
 {
-	typedef std::priority_queue<EventPtr,std::vector<EventPtr>,EventComparator> EventQueue;
-	typedef std::list<EventHandlerPtr> EventHandlerList;
-	typedef std::map<EventTypes,EventHandlerList> EventHandlerMap;
-
-	class EventsManager
+	class EventHandler
 	{
 	public:
-		EventsManager();
-		~EventsManager();
+		virtual ~EventHandler() = 0;
+
 	};
+
+	typedef boost::shared_ptr<EventHandler> EventHandlerPtr;
 }
 
-#endif // __EVENTS_MANAGER_H_
+#endif // __EVENT_HANDLER_H_
