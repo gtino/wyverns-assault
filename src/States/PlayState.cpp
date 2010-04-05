@@ -36,7 +36,7 @@ void PlayState::initialize()
 
 	// Player manager constructor
 	mPlayerManager = new PlayerManager();
-	mPlayerManager->initialize("redWyvern","redwyvern.mesh",mGraphicsManager->getSceneManager(),Vector3(-150,600,2700));
+	mPlayerManager->initialize("redWyvern","redwyvern.mesh",mGraphicsManager->getSceneManager(),Vector3(-150,600,2340));
 
 	// Camera manager constructor
 	mCameraManager = new CameraManager(mGraphicsManager->getSceneManager(), mGraphicsManager->getRenderWindow(), mViewport);
@@ -106,7 +106,7 @@ void PlayState::update(const float elapsedSeconds)
 	// FREE DEBUG STUFF
 	//
 	mFpsDebugText.frameStarted();
-	String poly = mCameraManager->getPolygonMode();
+	mFpsDebugText.setColor(ColourValue(1.0f, 1.0f, 1.0f, 1.0f));
 	mFpsDebugText.print(0.01f,0.01f,
 		"MODE: %s     PLAYER: %4.0f, %4.0f, %4.0f     CAMERA: %4.0f, %3.0f, %4.0f     FPS : %4.0f     CAMERA MODE: %s",
 		mCameraManager->getPolygonMode().c_str(),
@@ -117,7 +117,7 @@ void PlayState::update(const float elapsedSeconds)
 		);
 	
 	// Movement
-	if(mCameraManager->getCameraType() == FPSCAMERA)
+	if(mCameraManager->getCameraMode() == "First Person")
 	{
 		// 8 directions move
 		if(this->mInputManager->getKeyboard()->isKeyDown(OIS::KeyCode::KC_RIGHT) && this->mInputManager->getKeyboard()->isKeyDown(OIS::KeyCode::KC_UP))
@@ -188,6 +188,17 @@ void PlayState::update(const float elapsedSeconds)
 		{
 			mPlayerManager->move(0,0,1);
 		}
+	}
+
+	if(this->mInputManager->getKeyboard()->isKeyDown(OIS::KeyCode::KC_M))
+	{
+		mCameraManager->zoom(-1);
+		mCameraManager->updateCamera(elapsedSeconds);
+	}
+	if(this->mInputManager->getKeyboard()->isKeyDown(OIS::KeyCode::KC_N))
+	{
+		mCameraManager->zoom(1);
+		mCameraManager->updateCamera(elapsedSeconds);
 	}
 }
 
@@ -289,7 +300,7 @@ bool PlayState::keyReleased(const OIS::KeyEvent& e)
 		break;
 	// Debug polygon mode
 	case OIS::KeyCode::KC_F1:		
-		mCameraManager->switchtPolygonMode();
+		mCameraManager->switchPolygonMode();
 		break;
 	// Debug text
 	case OIS::KeyCode::KC_F2:		
@@ -328,7 +339,16 @@ bool PlayState::keyReleased(const OIS::KeyEvent& e)
 		break;
 	case OIS::KeyCode::KC_SPACE:
 		mCameraManager->nextCamera();		
-		break;		
+		break;
+	/*case OIS::KeyCode::KC_M:
+		mCameraManager->zoom(-1);		
+		break;
+	case OIS::KeyCode::KC_N:
+		mCameraManager->zoom(1);		
+		break;*/
+	case OIS::KeyCode::KC_B:
+		mLightsManager->disable();	
+		break;
 	}
 	return true;
 }

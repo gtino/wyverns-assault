@@ -14,6 +14,8 @@ CameraManager::CameraManager(SceneManager* sceneManager, RenderWindow* renderWin
 	mCamPlaneMode = NULL;
 	mCamFixedDirMode = NULL;
 	mCamFixedMode = NULL;
+
+	distance = 500;
 }
 
 CameraManager::~CameraManager()
@@ -27,7 +29,7 @@ void CameraManager::initialize(SceneNode* player)
 	mCamera = mSceneManager->createCamera( "Camera" );
 
 	mCamera->setNearClipDistance(0.1);
-	mCamera->setFarClipDistance(50000);
+	mCamera->setFarClipDistance(20000);
 	mCamera->setAspectRatio(Real(mViewport->getActualWidth()) / Real(mViewport->getActualHeight()));
 	
 	mViewport->setCamera(mCamera);
@@ -44,7 +46,8 @@ void CameraManager::initialize(SceneNode* player)
 	mCameraCS->registerCameraMode("Plane Binded", mCamPlaneMode);
 
 	// Fixed direction
-	mCamFixedDirMode = new CCS::FixedDirectionCameraMode(mCameraCS, Ogre::Vector3(0,-0.5,-1), 1000);
+	mCamFixedDirMode = new CCS::FixedDirectionCameraMode(mCameraCS, Ogre::Vector3(0.0,-0.75,-1), distance);
+	mCamFixedDirMode->setCameraTightness(0.1);
 	mCameraCS->registerCameraMode("Fixed direction", mCamFixedDirMode);
 
 	// First person
@@ -62,7 +65,7 @@ void CameraManager::initialize(SceneNode* player)
 	mCamChaseFreeMode = new CCS::ChaseFreeYawAxisCameraMode(mCameraCS,Ogre::Vector3(-600,50,0)
             , Ogre::Radian(0),Ogre::Radian(Ogre::Degree(270)),Ogre::Radian(0));
 	mCamChaseFreeMode->setCameraTightness(0.1);
-    mCameraCS->registerCameraMode("ChaseFreeYawAxis",mCamChaseFreeMode);    
+    mCameraCS->registerCameraMode("Chase Free Yaw Axis",mCamChaseFreeMode);    
 
 	// Attached lateral
 	mCamAttachedMode = new CCS::AttachedCameraMode(mCameraCS,Ogre::Vector3(-200,50,0)
@@ -75,8 +78,6 @@ void CameraManager::initialize(SceneNode* player)
     mCamFixedMode->setCameraOrientation( Quaternion(Radian(Degree(0)),Vector3::UNIT_Z)
         * Quaternion(Radian(Degree(10)),Vector3::UNIT_Y)
         * Quaternion(Radian(Degree(-50)),Vector3::UNIT_X));
-
-	// Register in camera control system
 	mCameraCS->registerCameraMode("Scenario", mCamFixedMode);
 }
 
@@ -94,40 +95,49 @@ void CameraManager::finalize()
 
 /** Camera functions **/
 
-void CameraManager::updateCamera(SceneNode* node)
+void CameraManager::updateCamera(Real timeSinceLastFrame)
 {
+	mCameraCS->update(timeSinceLastFrame);
 
 }
+void CameraManager::zoom(Real zoom)
+{ 
+	distance += zoom * 20; 
+	mCamFixedDirMode->setDistance(distance);
+}
+
 
 /** Camera types **/
 
 void CameraManager::gameCamera()
 {
-	mCameraType = GAMECAMERA;
-	mCameraCS->setCurrentCameraMode(mCamPlaneMode);
+	mCameraCS->setCurrentCameraMode(mCamFixedDirMode);
+	mCamera->setFarClipDistance(5000);
 }
 
 void CameraManager::fpsCamera()
 {
-	mCameraType = FPSCAMERA;
 	mCameraCS->setCurrentCameraMode(mCamFirstPersonMode);
+	mCamera->setFarClipDistance(20000);
 }
 
 void CameraManager::fixedCamera(int id)
 {
-	mCameraType = FIXEDCAMERA;
-	mCameraCS->setCurrentCameraMode(mCameraCS->getCameraMode("Fixed_" + id));
+	char cameraName [30];
+	sprintf (cameraName, "Fixed %d", id);
+	mCameraCS->setCurrentCameraMode(mCameraCS->getCameraMode(cameraName));
+	mCamera->setFarClipDistance(50000);
 }
 
 void CameraManager::travelCamera(int id)
 {
-	mCameraType = TRAVELCAMERA;
+
 }
 
 void CameraManager::scenarioCamera()
 {
-	mCameraType = FIXEDCAMERA;
 	mCameraCS->setCurrentCameraMode(mCameraCS->getCameraMode("Scenario"));
+	mCamera->setFarClipDistance(50000);
 }
 
 /** Fixed cameras functions **/
@@ -147,7 +157,7 @@ void CameraManager::setFixedCamera(int camera, Vector3 position, Real roll, Real
 
 
 /** Debug camera functions **/
-void CameraManager::switchtPolygonMode()
+void CameraManager::switchPolygonMode()
 {
 	switch(mCamera->getPolygonMode())
 	{	

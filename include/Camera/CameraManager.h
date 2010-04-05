@@ -32,13 +32,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
 #define FIXEDCAMERAS	8
 
-// Camera types
-#define GAMECAMERA		0x00
-#define FPSCAMERA		0x01
-#define FIXEDCAMERA		0x02
-#define TRAVELCAMERA	0x03
-
-
 using namespace Ogre;
 
 namespace WyvernsAssault
@@ -60,13 +53,12 @@ namespace WyvernsAssault
 
 		/** Get camera position **/
 		Vector3 getCameraPosition(){ return mCameraCS->getCameraPosition(); }
-		/** Get camera type **/
-		int getCameraType(){ return mCameraType; }
 		/** Get camera mode**/
 		String getCameraMode(){ return mCameraCS->getCameraModeName(mCameraCS->getCurrentCameraMode()); }
 
 		/** Camera functions **/
-		void updateCamera(SceneNode* node);
+		void updateCamera(Real timeSinceLastFrame);
+		void zoom(Real zoom);
 
 		/** Camera types functions **/
 		void gameCamera();
@@ -80,12 +72,11 @@ namespace WyvernsAssault
 		void setFixedCamera(int camera, Vector3 position, Real roll, Real yaw, Real pitch);
 
 		/** Debug camera functions **/
-		void switchtPolygonMode();
+		void switchPolygonMode();
 		String getPolygonMode();
 	
 	public:
 		Camera*			mCamera;
-		int				mCameraType;
 
 		// Camera control system
 		CCS::CameraControlSystem*			mCameraCS;
@@ -103,6 +94,9 @@ namespace WyvernsAssault
 		SceneManager*	mSceneManager;
 		RenderWindow*	mRenderWindow;
 		Viewport*		mViewport;
+
+	protected:
+		Real			distance;
 	};
 }
 
