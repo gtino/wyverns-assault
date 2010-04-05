@@ -14,19 +14,16 @@
 		</camera>
 	</cameras>
 	<lights>
-		<light name="Ambient" type="ambient">
-			<color r="0.6" g="0.6" b="0.6"/>
-		</light>
-		<light name="Point1" type="point">
-			<position x="1000" y="4000" z="0"/>
-			<diffuse r="0.7" g="0.7" b="0.6"/>
-			<specular r="0.6" g="0.6" b="0.55"/>
-		</light>
-		<!--<light name="Directional1" type="directional">
-			<direction x="1" y="1" z="0"/>
-			<diffuse r="0.5" g="0.5" b="0.4"/>
-			<specular r="0.6" g="0.6" b="0.4"/>
-		</light>-->
+    <light name="Point1" type="point">
+      <position x="3000" y="5000" z="0"/>
+      <diffuse r="0.75" g="0.75" b="0.75"/>
+      <specular r="0.75" g="0.75" b="0.57"/>
+    </light>
+    <!--<light name="Directional1" type="directional">
+      <direction x="0" y="-1" z="-1"/>
+      <diffuse r="0.0" g="0.0" b="0.8"/>
+      <specular r="0.0" g="0.0" b="0.8"/>
+    </light>-->
 		<!--<light name="SpotEnemies1" type="spot">
 			<position x="235" y="10" z="-40"/>
 			<direction x="0" y="-1" z="0"/>

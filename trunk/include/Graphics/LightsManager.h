@@ -56,6 +56,9 @@ namespace WyvernsAssault
 		/** Modify scene ambient light **/
 		void setAmbientLight(ColourValue color);
 
+		/** Disable Light **/
+		void disable() { mSceneManager->destroyAllLights(); }
+
 	private:
 		Light* mLight;
 

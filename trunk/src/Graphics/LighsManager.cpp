@@ -5,6 +5,7 @@ using namespace WyvernsAssault;
 LightsManager::LightsManager(SceneManager* sceneManager)
 {
 	this->mSceneManager = sceneManager;
+	mLight = NULL;
 }
 
 LightsManager::~LightsManager()
@@ -17,10 +18,13 @@ void LightsManager::initialize()
 {
 	// Setting default ambient light value
 	setAmbientLight(ColourValue(0.5, 0.5, 0.5));
+	mLight = new Light();
+
 }
 /** Finalize the lights manager */
 void LightsManager::finalize()
 {
+	mLight = NULL;
 	mSceneManager->destroyAllLights();
 }
 
