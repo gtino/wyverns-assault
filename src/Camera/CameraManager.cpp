@@ -79,6 +79,13 @@ void CameraManager::initialize(SceneNode* player)
         * Quaternion(Radian(Degree(10)),Vector3::UNIT_Y)
         * Quaternion(Radian(Degree(-50)),Vector3::UNIT_X));
 	mCameraCS->registerCameraMode("Scenario", mCamFixedMode);
+
+	// Trough target
+	SceneNode* centerNode = mSceneManager->getRootSceneNode()->createChildSceneNode("CenterNode");
+	centerNode->setPosition(200.0f, 0.0f, 0.0f);
+	mCamThroughMode = new CCS::ThroughTargetCameraMode(mCameraCS, 500);
+	mCamThroughMode->setCameraFocusPosition(centerNode->_getDerivedPosition() - Ogre::Vector3(0, 400, 0));
+    mCameraCS->registerCameraMode("Through Target", mCamThroughMode);    
 }
 
 /** Finalize the camera manager */
@@ -111,7 +118,7 @@ void CameraManager::zoom(Real zoom)
 
 void CameraManager::gameCamera()
 {
-	mCameraCS->setCurrentCameraMode(mCamFixedDirMode);
+	mCameraCS->setCurrentCameraMode(mCamThroughMode);
 	mCamera->setFarClipDistance(5000);
 }
 

@@ -88,6 +88,7 @@ namespace WyvernsAssault
 		CCS::ChaseCameraMode*				mCamChaseMode;
 		CCS::ChaseFreeYawAxisCameraMode*	mCamChaseFreeMode;
 		CCS::AttachedCameraMode*			mCamAttachedMode;
+		CCS::ThroughTargetCameraMode*		mCamThroughMode;
 
 
 	private:
