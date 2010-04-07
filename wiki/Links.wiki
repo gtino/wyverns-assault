@@ -23,6 +23,11 @@ This pages is used to store all the intersting links realted to the project. Eve
  * [http://gamepipe.usc.edu/animation/Bake_Export/AniViewer.rar Ani Viewer]
 
 == Game Coding ==
+
+=== OpenGL & DirectX ===
+
+ * [http://www.sjbaker.org/steve/omniv/love_your_z_buffer.html Love Your Z Buffer]
+
 === MVC ===
 
  * [http://www.gamasutra.com/features/20050414/rouwe_01.shtml Implementing MVC]
