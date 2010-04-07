@@ -28,7 +28,7 @@ void CameraManager::initialize(SceneNode* player)
 {
 	mCamera = mSceneManager->createCamera( "Camera" );
 
-	mCamera->setNearClipDistance(0.1);
+	mCamera->setNearClipDistance(1);
 	mCamera->setFarClipDistance(20000);
 	mCamera->setAspectRatio(Real(mViewport->getActualWidth()) / Real(mViewport->getActualHeight()));
 	
@@ -119,13 +119,15 @@ void CameraManager::zoom(Real zoom)
 void CameraManager::gameCamera()
 {
 	mCameraCS->setCurrentCameraMode(mCamThroughMode);
+	mCamera->setNearClipDistance(1);
 	mCamera->setFarClipDistance(5000);
 }
 
 void CameraManager::fpsCamera()
 {
 	mCameraCS->setCurrentCameraMode(mCamFirstPersonMode);
-	mCamera->setFarClipDistance(20000);
+	mCamera->setNearClipDistance(1);
+	mCamera->setFarClipDistance(8000);
 }
 
 void CameraManager::fixedCamera(int id)
@@ -133,7 +135,8 @@ void CameraManager::fixedCamera(int id)
 	char cameraName [30];
 	sprintf (cameraName, "Fixed %d", id);
 	mCameraCS->setCurrentCameraMode(mCameraCS->getCameraMode(cameraName));
-	mCamera->setFarClipDistance(50000);
+	mCamera->setNearClipDistance(500);
+	mCamera->setFarClipDistance(20000);
 }
 
 void CameraManager::travelCamera(int id)
@@ -144,7 +147,8 @@ void CameraManager::travelCamera(int id)
 void CameraManager::scenarioCamera()
 {
 	mCameraCS->setCurrentCameraMode(mCameraCS->getCameraMode("Scenario"));
-	mCamera->setFarClipDistance(50000);
+	mCamera->setNearClipDistance(500);
+	mCamera->setFarClipDistance(20000);
 }
 
 /** Fixed cameras functions **/
