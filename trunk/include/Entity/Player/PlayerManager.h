@@ -27,7 +27,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #include <Ogre.h>
 
 // Player default movement speed
-#define SPEED	5
+#define SPEED	20
 
 using namespace Ogre;
 

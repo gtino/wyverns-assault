@@ -59,6 +59,7 @@ namespace WyvernsAssault
 		/** Camera functions **/
 		void updateCamera(Real timeSinceLastFrame);
 		void zoom(Real zoom);
+		SceneNode* getCameraNode(){ mCameraCS->getCameraSceneNode(); } 
 
 		/** Camera types functions **/
 		void gameCamera();

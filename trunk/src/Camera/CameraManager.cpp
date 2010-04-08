@@ -51,7 +51,7 @@ void CameraManager::initialize(SceneNode* player)
 	mCameraCS->registerCameraMode("Fixed direction", mCamFixedDirMode);
 
 	// First person
-	mCamFirstPersonMode = new CCS::FirstPersonCameraMode(mCameraCS,Ogre::Vector3(0,17,-16)
+	/*mCamFirstPersonMode = new CCS::FirstPersonCameraMode(mCameraCS,Ogre::Vector3(0,17,-16)
             , Ogre::Radian(0),Ogre::Radian(Ogre::Degree(180)),Ogre::Radian(0));
 	mCamFirstPersonMode->setCharacterVisible(false);
 	mCameraCS->registerCameraMode("First Person", mCamFirstPersonMode);
@@ -70,7 +70,7 @@ void CameraManager::initialize(SceneNode* player)
 	// Attached lateral
 	mCamAttachedMode = new CCS::AttachedCameraMode(mCameraCS,Ogre::Vector3(-200,50,0)
             , Ogre::Radian(0),Ogre::Radian(Ogre::Degree(270)),Ogre::Radian(0));
-    mCameraCS->registerCameraMode("Attached (lateral)",mCamAttachedMode);
+    mCameraCS->registerCameraMode("Attached (lateral)",mCamAttachedMode);*/
 
 	// Fixed scenario camera
 	mCamFixedMode = new CCS::FixedCameraMode(mCameraCS);    
@@ -82,10 +82,13 @@ void CameraManager::initialize(SceneNode* player)
 
 	// Trough target
 	SceneNode* centerNode = mSceneManager->getRootSceneNode()->createChildSceneNode("CenterNode");
-	centerNode->setPosition(200.0f, 0.0f, 0.0f);
-	mCamThroughMode = new CCS::ThroughTargetCameraMode(mCameraCS, 500);
+	Entity* cube = mSceneManager->createEntity("CenterCube", "Level1_1.mesh");
+	centerNode->attachObject(cube);
+	centerNode->setPosition(0.0f, 0.0f, 0.0f);	
+
+	mCamThroughMode = new CCS::ThroughTargetCameraMode(mCameraCS, distance);
 	mCamThroughMode->setCameraFocusPosition(centerNode->_getDerivedPosition() - Ogre::Vector3(0, 400, 0));
-    mCameraCS->registerCameraMode("Through Target", mCamThroughMode);    
+    mCameraCS->registerCameraMode("Through Target", mCamThroughMode);
 }
 
 /** Finalize the camera manager */
@@ -105,7 +108,6 @@ void CameraManager::finalize()
 void CameraManager::updateCamera(Real timeSinceLastFrame)
 {
 	mCameraCS->update(timeSinceLastFrame);
-
 }
 void CameraManager::zoom(Real zoom)
 { 
@@ -125,9 +127,9 @@ void CameraManager::gameCamera()
 
 void CameraManager::fpsCamera()
 {
-	mCameraCS->setCurrentCameraMode(mCamFirstPersonMode);
+	mCameraCS->setCurrentCameraMode(mCamFixedDirMode);
 	mCamera->setNearClipDistance(1);
-	mCamera->setFarClipDistance(8000);
+	mCamera->setFarClipDistance(10000);
 }
 
 void CameraManager::fixedCamera(int id)
@@ -179,7 +181,7 @@ void CameraManager::switchPolygonMode()
 			mCamera->setPolygonMode(PM_SOLID);
 			break;
 		case PM_SOLID:
-			mCamera->setPolygonMode(PM_POINTS);
+			mCamera->setPolygonMode(PM_WIREFRAME);
 			break;
 	}
 }
