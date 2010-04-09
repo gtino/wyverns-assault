@@ -84,18 +84,17 @@ namespace WyvernsAssault
 		// Camera control system
 		CCS::CameraControlSystem*			mCameraCS;
 		// Camera modes
-		CCS::PlaneBindedCameraMode*			mCamPlaneMode;
-		CCS::FixedDirectionCameraMode*		mCamFixedDirMode;
-		CCS::FixedCameraMode*				mCamFixedMode;
-
-		/*CCS::FirstPersonCameraMode*			mCamFirstPersonMode;		
-		CCS::ChaseCameraMode*				mCamChaseMode;
-		CCS::ChaseFreeYawAxisCameraMode*	mCamChaseFreeMode;
-		CCS::AttachedCameraMode*			mCamAttachedMode;*/
-
 		CCS::ThroughTargetCameraMode*		mCamThroughMode;
 		CCS::FreeCameraMode*				mCamFreeMode;
+		CCS::FixedCameraMode*				mCamFixedMode;
+		CCS::FixedDirectionCameraMode*		mCamFixedDirMode;
 
+		CCS::PlaneBindedCameraMode*			mCamPlaneMode;
+		CCS::ChaseCameraMode*				mCamChaseMode;
+
+		/*CCS::FirstPersonCameraMode*			mCamFirstPersonMode;		
+		CCS::ChaseFreeYawAxisCameraMode*	mCamChaseFreeMode;
+		CCS::AttachedCameraMode*			mCamAttachedMode;*/
 
 	private:
 		SceneManager*	mSceneManager;

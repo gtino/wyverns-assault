@@ -36,7 +36,7 @@ void PlayState::initialize()
 
 	// Player manager constructor
 	mPlayerManager = new PlayerManager();
-	mPlayerManager->initialize("redWyvern","redwyvern.mesh",mGraphicsManager->getSceneManager(),Vector3(0,1000,2000));
+	mPlayerManager->initialize("redWyvern","redwyvern.mesh",mGraphicsManager->getSceneManager(),Vector3(0,650,2700));
 
 	// Camera manager constructor
 	mCameraManager = new CameraManager(mGraphicsManager->getSceneManager(), mGraphicsManager->getRenderWindow(), mViewport);
@@ -330,13 +330,13 @@ bool PlayState::keyReleased(const OIS::KeyEvent& e)
 		mCameraManager->fixedCamera(3);
 		break;
 	case OIS::KeyCode::KC_7:
-		//mCameraManager->fixedCamera(4);
+
 		break;
 	case OIS::KeyCode::KC_8:
-		//mCameraManager->fixedCamera(5);
+
 		break;
 	case OIS::KeyCode::KC_9:
-		//mCameraManager->fixedCamera(6);
+		mCameraManager->travelCamera(0);
 		break;
 	case OIS::KeyCode::KC_0:
 		mCameraManager->scenarioCamera();
@@ -344,13 +344,7 @@ bool PlayState::keyReleased(const OIS::KeyEvent& e)
 	case OIS::KeyCode::KC_SPACE:
 		mCameraManager->nextCamera();		
 		break;
-	/*case OIS::KeyCode::KC_M:
-		mCameraManager->zoom(-1);		
-		break;
-	case OIS::KeyCode::KC_N:
-		mCameraManager->zoom(1);		
-		break;*/
-	case OIS::KeyCode::KC_B:
+	case OIS::KeyCode::KC_L:
 		mLightsManager->disable();	
 		break;
 	}
