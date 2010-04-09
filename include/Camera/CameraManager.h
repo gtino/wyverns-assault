@@ -28,7 +28,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #include <CCSCameraControlSystem.h>
 #include "CCSBasicCameraModes.h"
 #include "CCSFreeCameraMode.h"
-#include "CCSOrbitalCameraMode.h"
 
 #define FIXEDCAMERAS	8
 
@@ -53,13 +52,16 @@ namespace WyvernsAssault
 
 		/** Get camera position **/
 		Vector3 getCameraPosition(){ return mCameraCS->getCameraPosition(); }
-		/** Get camera mode**/
+		/** Get camera mode **/
 		String getCameraMode(){ return mCameraCS->getCameraModeName(mCameraCS->getCurrentCameraMode()); }
+		/** Get camera node **/
+		SceneNode* getCameraNode(){ mCameraCS->getCameraSceneNode(); }
+		/** Get camera controls system **/
+		CCS::CameraControlSystem* getCameraCS(){ return mCameraCS; }
 
 		/** Camera functions **/
 		void updateCamera(Real timeSinceLastFrame);
-		void zoom(Real zoom);
-		SceneNode* getCameraNode(){ mCameraCS->getCameraSceneNode(); } 
+		void zoom(Real zoom);		
 
 		/** Camera types functions **/
 		void gameCamera();
@@ -85,11 +87,14 @@ namespace WyvernsAssault
 		CCS::PlaneBindedCameraMode*			mCamPlaneMode;
 		CCS::FixedDirectionCameraMode*		mCamFixedDirMode;
 		CCS::FixedCameraMode*				mCamFixedMode;
-		CCS::FirstPersonCameraMode*			mCamFirstPersonMode;		
+
+		/*CCS::FirstPersonCameraMode*			mCamFirstPersonMode;		
 		CCS::ChaseCameraMode*				mCamChaseMode;
 		CCS::ChaseFreeYawAxisCameraMode*	mCamChaseFreeMode;
-		CCS::AttachedCameraMode*			mCamAttachedMode;
+		CCS::AttachedCameraMode*			mCamAttachedMode;*/
+
 		CCS::ThroughTargetCameraMode*		mCamThroughMode;
+		CCS::FreeCameraMode*				mCamFreeMode;
 
 
 	private:

@@ -28,8 +28,11 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #include "..\Graphics\LightsManager.h"
 #include "..\Entity\Player\PlayerManager.h"
 #include "..\Entity\Enemy\EnemysManager.h"
-
 #include "..\GUI\GuiDebugText.h"
+
+#include <CCSCameraControlSystem.h>
+#include "CCSBasicCameraModes.h"
+#include "CCSFreeCameraMode.h"
 
 namespace WyvernsAssault
 {
