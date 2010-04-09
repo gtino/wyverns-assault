@@ -48,7 +48,7 @@ void CameraManager::initialize(SceneNode* player)
 
 	// Fixed direction
 	mCamFixedDirMode = new CCS::FixedDirectionCameraMode(mCameraCS, Ogre::Vector3(0.0,-0.75,-1), distance);
-	mCamFixedDirMode->setCameraTightness(0.1);
+	mCamFixedDirMode->setCameraTightness(0.05);
 	mCameraCS->registerCameraMode("Fixed direction", mCamFixedDirMode);
 
 
@@ -56,15 +56,15 @@ void CameraManager::initialize(SceneNode* player)
 	/*mCamFirstPersonMode = new CCS::FirstPersonCameraMode(mCameraCS,Ogre::Vector3(0,17,-16)
             , Ogre::Radian(0),Ogre::Radian(Ogre::Degree(180)),Ogre::Radian(0));
 	mCamFirstPersonMode->setCharacterVisible(false);
-	mCameraCS->registerCameraMode("First Person", mCamFirstPersonMode);
+	mCameraCS->registerCameraMode("First Person", mCamFirstPersonMode);*/
 
 	// Chase 
-	mCamChaseMode = new CCS::ChaseCameraMode(mCameraCS, Ogre::Vector3(-200,70,20));    
-    mCamChaseMode->setCameraTightness(0.2);
+	mCamChaseMode = new CCS::ChaseCameraMode(mCameraCS, Ogre::Vector3(-400,70,20));    
+    mCamChaseMode->setCameraTightness(0.05);
 	mCameraCS->registerCameraMode("Chase", mCamChaseMode);
 
 	// Chase free yaw axis
-	mCamChaseFreeMode = new CCS::ChaseFreeYawAxisCameraMode(mCameraCS,Ogre::Vector3(-600,50,0)
+	/*mCamChaseFreeMode = new CCS::ChaseFreeYawAxisCameraMode(mCameraCS,Ogre::Vector3(-600,50,0)
             , Ogre::Radian(0),Ogre::Radian(Ogre::Degree(270)),Ogre::Radian(0));
 	mCamChaseFreeMode->setCameraTightness(0.1);
     mCameraCS->registerCameraMode("Chase Free Yaw Axis",mCamChaseFreeMode);    
@@ -76,14 +76,9 @@ void CameraManager::initialize(SceneNode* player)
 
 
 	// Trough target
-	SceneNode* centerNode = mSceneManager->getRootSceneNode()->createChildSceneNode("CenterNode");
-	Entity* cube = mSceneManager->createEntity("CenterCube", "cube.mesh");
-	centerNode->attachObject(cube);
-	centerNode->setPosition(0, -500, 0);
-
+	SceneNode* centerNode = mSceneManager->getSceneNode("Center");
 	mCamThroughMode = new CCS::ThroughTargetCameraMode(mCameraCS, distance);
-	//mCamThroughMode->setCameraFocusPosition(centerNode->_getDerivedPosition() - Ogre::Vector3(0, 500, 0));
-	mCamThroughMode->setCameraFocusPosition(centerNode->getPosition());
+	mCamThroughMode->setCameraFocusPosition(centerNode->_getDerivedPosition() - Ogre::Vector3(0, 1000, 0));
     mCameraCS->registerCameraMode("Through Target", mCamThroughMode);
 
 	// Free mode
@@ -144,14 +139,16 @@ void CameraManager::fixedCamera(int id)
 
 void CameraManager::travelCamera(int id)
 {
-
+	mCameraCS->setCurrentCameraMode(mCamChaseMode);
+	mCamera->setNearClipDistance(1);
+	mCamera->setFarClipDistance(5000);
 }
 
 void CameraManager::scenarioCamera()
 {
 	mCameraCS->setCurrentCameraMode(mCamFixedDirMode);
 	mCamera->setNearClipDistance(1);
-	mCamera->setFarClipDistance(10000);
+	mCamera->setFarClipDistance(10000);	
 }
 
 /** Fixed cameras functions **/
