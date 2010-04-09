@@ -36,7 +36,7 @@ void PlayState::initialize()
 
 	// Player manager constructor
 	mPlayerManager = new PlayerManager();
-	mPlayerManager->initialize("redWyvern","redwyvern.mesh",mGraphicsManager->getSceneManager(),Vector3(-150,620,2340));
+	mPlayerManager->initialize("redWyvern","redwyvern.mesh",mGraphicsManager->getSceneManager(),Vector3(0,1000,2000));
 
 	// Camera manager constructor
 	mCameraManager = new CameraManager(mGraphicsManager->getSceneManager(), mGraphicsManager->getRenderWindow(), mViewport);
@@ -117,41 +117,44 @@ void PlayState::update(const float elapsedSeconds)
 		);
 	
 	// Movement
-	if(mCameraManager->getCameraMode() == "First Person")
+	if(mCameraManager->getCameraMode() == "Free")
 	{
-		// 8 directions move
-		if(this->mInputManager->getKeyboard()->isKeyDown(OIS::KeyCode::KC_RIGHT) && this->mInputManager->getKeyboard()->isKeyDown(OIS::KeyCode::KC_UP))
+		// Free camera mode movement
+		CCS::CameraControlSystem* cameraCS = mCameraManager->getCameraCS();
+		CCS::FreeCameraMode* freeCameraMode = (CCS::FreeCameraMode*)cameraCS->getCameraMode("Free");
+
+		// Keyboard movement
+		if(this->mInputManager->getKeyboard()->isKeyDown(OIS::KeyCode::KC_RIGHT))
 		{
-			mPlayerManager->move(0.75,0,0.75);
+			freeCameraMode->goRight();
 		}
-		else if(this->mInputManager->getKeyboard()->isKeyDown(OIS::KeyCode::KC_RIGHT) && this->mInputManager->getKeyboard()->isKeyDown(OIS::KeyCode::KC_DOWN))
+		if(this->mInputManager->getKeyboard()->isKeyDown(OIS::KeyCode::KC_LEFT))
 		{
-			mPlayerManager->move(-0.75,0,0.75);
+			freeCameraMode->goLeft();
 		}
-		else if(this->mInputManager->getKeyboard()->isKeyDown(OIS::KeyCode::KC_LEFT) && this->mInputManager->getKeyboard()->isKeyDown(OIS::KeyCode::KC_UP))
+		if(this->mInputManager->getKeyboard()->isKeyDown(OIS::KeyCode::KC_UP))
 		{
-			mPlayerManager->move(0.75,0,-0.75);
+			freeCameraMode->goForward();
 		}
-		else if(this->mInputManager->getKeyboard()->isKeyDown(OIS::KeyCode::KC_LEFT) && this->mInputManager->getKeyboard()->isKeyDown(OIS::KeyCode::KC_DOWN))
+		if(this->mInputManager->getKeyboard()->isKeyDown(OIS::KeyCode::KC_DOWN))
 		{
-			mPlayerManager->move(-0.75,0,-0.75);
+			freeCameraMode->goBackward();
 		}
-		else if(this->mInputManager->getKeyboard()->isKeyDown(OIS::KeyCode::KC_RIGHT))
+		if(this->mInputManager->getKeyboard()->isKeyDown(OIS::KeyCode::KC_PGUP))
 		{
-			mPlayerManager->move(0,0,1);
+			freeCameraMode->goUp();
 		}
-		else if(this->mInputManager->getKeyboard()->isKeyDown(OIS::KeyCode::KC_LEFT))
+		if(this->mInputManager->getKeyboard()->isKeyDown(OIS::KeyCode::KC_PGDOWN))
 		{
-			mPlayerManager->move(0,0,-1);
+			freeCameraMode->goDown();
 		}
-		else if(this->mInputManager->getKeyboard()->isKeyDown(OIS::KeyCode::KC_UP))
-		{
-			mPlayerManager->move(1,0,0);
-		}
-		else if(this->mInputManager->getKeyboard()->isKeyDown(OIS::KeyCode::KC_DOWN))
-		{
-			mPlayerManager->move(-1,0,0);
-		}
+
+		// Mouse movement
+		const OIS::MouseState &ms = this->mInputManager->getMouse()->getMouseState();
+		freeCameraMode->yaw(ms.X.rel);
+        freeCameraMode->pitch(ms.Y.rel);
+
+		mCameraManager->updateCamera(elapsedSeconds);
 	}
 	else
 	{
@@ -190,6 +193,7 @@ void PlayState::update(const float elapsedSeconds)
 		}
 	}
 
+	// Zoom for Fixed Direction camera mode (DEBUG only)
 	if(this->mInputManager->getKeyboard()->isKeyDown(OIS::KeyCode::KC_M))
 	{
 		mCameraManager->zoom(-1);

@@ -40,6 +40,7 @@ void CameraManager::initialize(SceneNode* player)
 	mCameraCS->setCameraTarget(player);
 
 	/** Define camera modes **/
+
 	// Plane binded
 	Plane* mPlane = new Plane(Vector3(0, -1, -1), Vector3(0,0,4000));
     mCamPlaneMode = new CCS::PlaneBindedCameraMode(mCameraCS, *mPlane);
@@ -49,6 +50,7 @@ void CameraManager::initialize(SceneNode* player)
 	mCamFixedDirMode = new CCS::FixedDirectionCameraMode(mCameraCS, Ogre::Vector3(0.0,-0.75,-1), distance);
 	mCamFixedDirMode->setCameraTightness(0.1);
 	mCameraCS->registerCameraMode("Fixed direction", mCamFixedDirMode);
+
 
 	// First person
 	/*mCamFirstPersonMode = new CCS::FirstPersonCameraMode(mCameraCS,Ogre::Vector3(0,17,-16)
@@ -72,13 +74,6 @@ void CameraManager::initialize(SceneNode* player)
             , Ogre::Radian(0),Ogre::Radian(Ogre::Degree(270)),Ogre::Radian(0));
     mCameraCS->registerCameraMode("Attached (lateral)",mCamAttachedMode);*/
 
-	// Fixed scenario camera
-	mCamFixedMode = new CCS::FixedCameraMode(mCameraCS);    
-    mCamFixedMode->setCameraPosition(Vector3(1000, 6500, 4500));
-    mCamFixedMode->setCameraOrientation( Quaternion(Radian(Degree(0)),Vector3::UNIT_Z)
-        * Quaternion(Radian(Degree(10)),Vector3::UNIT_Y)
-        * Quaternion(Radian(Degree(-50)),Vector3::UNIT_X));
-	mCameraCS->registerCameraMode("Scenario", mCamFixedMode);
 
 	// Trough target
 	SceneNode* centerNode = mSceneManager->getRootSceneNode()->createChildSceneNode("CenterNode");
@@ -90,6 +85,11 @@ void CameraManager::initialize(SceneNode* player)
 	//mCamThroughMode->setCameraFocusPosition(centerNode->_getDerivedPosition() - Ogre::Vector3(0, 500, 0));
 	mCamThroughMode->setCameraFocusPosition(centerNode->getPosition());
     mCameraCS->registerCameraMode("Through Target", mCamThroughMode);
+
+	// Free mode
+	mCamFreeMode = new CCS::FreeCameraMode(mCameraCS);
+	mCamFreeMode ->setMoveFactor(50);
+	mCameraCS->registerCameraMode("Free", mCamFreeMode);
 }
 
 /** Finalize the camera manager */
@@ -128,7 +128,7 @@ void CameraManager::gameCamera()
 
 void CameraManager::fpsCamera()
 {
-	mCameraCS->setCurrentCameraMode(mCamFixedDirMode);
+	mCameraCS->setCurrentCameraMode(mCamFreeMode);
 	mCamera->setNearClipDistance(1);
 	mCamera->setFarClipDistance(10000);
 }
@@ -149,9 +149,9 @@ void CameraManager::travelCamera(int id)
 
 void CameraManager::scenarioCamera()
 {
-	mCameraCS->setCurrentCameraMode(mCameraCS->getCameraMode("Scenario"));
-	mCamera->setNearClipDistance(500);
-	mCamera->setFarClipDistance(20000);
+	mCameraCS->setCurrentCameraMode(mCamFixedDirMode);
+	mCamera->setNearClipDistance(1);
+	mCamera->setFarClipDistance(10000);
 }
 
 /** Fixed cameras functions **/
