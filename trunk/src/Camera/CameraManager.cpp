@@ -82,12 +82,13 @@ void CameraManager::initialize(SceneNode* player)
 
 	// Trough target
 	SceneNode* centerNode = mSceneManager->getRootSceneNode()->createChildSceneNode("CenterNode");
-	Entity* cube = mSceneManager->createEntity("CenterCube", "Level1_1.mesh");
+	Entity* cube = mSceneManager->createEntity("CenterCube", "cube.mesh");
 	centerNode->attachObject(cube);
-	centerNode->setPosition(0.0f, 0.0f, 0.0f);	
+	centerNode->setPosition(0, -500, 0);
 
 	mCamThroughMode = new CCS::ThroughTargetCameraMode(mCameraCS, distance);
-	mCamThroughMode->setCameraFocusPosition(centerNode->_getDerivedPosition() - Ogre::Vector3(0, 400, 0));
+	//mCamThroughMode->setCameraFocusPosition(centerNode->_getDerivedPosition() - Ogre::Vector3(0, 500, 0));
+	mCamThroughMode->setCameraFocusPosition(centerNode->getPosition());
     mCameraCS->registerCameraMode("Through Target", mCamThroughMode);
 }
 
