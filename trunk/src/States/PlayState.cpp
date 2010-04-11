@@ -41,7 +41,7 @@ void PlayState::initialize()
 
 	// Player manager constructor
 	mPlayerManager = new PlayerManager();
-	mPlayerManager->initialize("redWyvern","redwyvern.mesh",mGraphicsManager->getSceneManager(),Vector3(0,680,2700));
+	mPlayerManager->initialize("redWyvern","redwyvern.mesh",mGraphicsManager->getSceneManager(),Vector3(600,680,3400));
 
 	// Camera manager constructor
 	mCameraManager = new CameraManager(mGraphicsManager->getSceneManager(), mGraphicsManager->getRenderWindow(), mViewport);
@@ -404,7 +404,6 @@ bool PlayState::keyReleased(const OIS::KeyEvent& e)
 	case OIS::KeyCode::KC_F2:		
 		mFpsDebugText.toogle();
 		break;
-
 	// Toogle visibility of advanced stats frame
 	case OIS::KeyCode::KC_F:
 		mTrayMgr->toggleAdvancedFrameStats();

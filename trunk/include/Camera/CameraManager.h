@@ -54,8 +54,6 @@ namespace WyvernsAssault
 		Vector3 getCameraPosition(){ return mCameraCS->getCameraPosition(); }
 		/** Get camera mode **/
 		String getCameraMode(){ return mCameraCS->getCameraModeName(mCameraCS->getCurrentCameraMode()); }
-		/** Get camera node **/
-		SceneNode* getCameraNode(){ mCameraCS->getCameraSceneNode(); }
 		/** Get camera controls system **/
 		CCS::CameraControlSystem* getCameraCS(){ return mCameraCS; }
 
@@ -92,8 +90,7 @@ namespace WyvernsAssault
 		CCS::PlaneBindedCameraMode*			mCamPlaneMode;
 		CCS::ChaseCameraMode*				mCamChaseMode;
 
-		/*CCS::FirstPersonCameraMode*			mCamFirstPersonMode;		
-		CCS::ChaseFreeYawAxisCameraMode*	mCamChaseFreeMode;
+		/*CCS::ChaseFreeYawAxisCameraMode*	mCamChaseFreeMode;
 		CCS::AttachedCameraMode*			mCamAttachedMode;*/
 
 	private:
