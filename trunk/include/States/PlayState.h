@@ -34,6 +34,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #include "CCSBasicCameraModes.h"
 #include "CCSFreeCameraMode.h"
 
+#include "SdkTrays.h"
+
 namespace WyvernsAssault
 {
 	/**
@@ -52,6 +54,8 @@ namespace WyvernsAssault
 		void load();
 		/** Manage input - INPUT */
 		void input();
+		/**  Renderin queue */
+		bool frameRenderingQueued(const Ogre::FrameEvent& evt);
 		/** Update internal stuff - PROCESS */
 		void update(const float elapsedSeconds);
 		/** Render - OUTPUT */
@@ -81,6 +85,8 @@ namespace WyvernsAssault
 		// DEBUG Text
 		//
 		GuiDebugText mFpsDebugText;
+
+		OgreBites::SdkTrayManager* mTrayMgr;
 
 	};
 }
