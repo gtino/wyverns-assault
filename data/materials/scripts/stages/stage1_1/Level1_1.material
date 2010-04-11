@@ -1,5 +1,4 @@
-
-material Ground
+material Old\Ground
 {
 	technique Toon
 	{
@@ -48,9 +47,7 @@ material Ground
 
 }
 
-
-
-material Concrete
+material Old\Concrete
 {
 	technique Toon
 	{
@@ -92,7 +89,7 @@ material Concrete
 
 
 
-material Hill
+material Old\Hill
 {
 	technique Toon
 	{
@@ -105,8 +102,8 @@ material Hill
 			
 			fragment_program_ref ToonFP
 			{
-        param_named diffuse float4 0.7 0.7 0.7 1
-        param_named specular float4 0.89 0.89 0.89 1
+        param_named diffuse float4 0.4 0.4 0.4 1
+        param_named specular float4 0.59 0.59 0.59 1
 			}
 
       // Textures for shades
@@ -146,7 +143,7 @@ material Hill
 
 
 
-material PillTree
+material Old\PillTree
 {
 	technique Toon
 	{
@@ -188,7 +185,7 @@ material PillTree
 
 
 
-material Wood
+material Old\Wood
 {
 	technique Toon
 	{
@@ -230,7 +227,7 @@ material Wood
 
 
 
-material TreeTop
+material Old\TreeTop
 {
 	technique Toon
 	{
@@ -272,7 +269,7 @@ material TreeTop
 
 
 
-material RedTree
+material Old\RedTree
 {
 	technique Toon
 	{
@@ -314,7 +311,7 @@ material RedTree
 
 
 
-material Tree2
+material Old\Tree2
 {
 	technique Toon
 	{
@@ -366,7 +363,7 @@ material Tree2
 
 
 
-material Tree1
+material Old\Tree1
 {
 	technique Toon
 	{
@@ -418,7 +415,7 @@ material Tree1
 
 
 
-material HighHills
+material Old\HighHills
 {
 	technique Toon
 	{
@@ -460,7 +457,7 @@ material HighHills
 
 
 
-material Castle1
+material Old\Castle1
 {
 	technique
 	{
@@ -480,7 +477,7 @@ material Castle1
 
 
 
-material BurnedHill
+material Old\BurnedHill
 {
 	technique
 	{
@@ -500,7 +497,7 @@ material BurnedHill
 
 
 
-material BillboardTree1
+material Old\BillboardTree1
 {
 	technique
 	{
@@ -520,7 +517,7 @@ material BillboardTree1
 
 
 
-material SilhouetteTree2
+material Old\SilhouetteTree2
 {
 	technique
 	{
@@ -540,7 +537,7 @@ material SilhouetteTree2
 
 
 
-material SilhouetteTree1
+material Old\SilhouetteTree1
 {
 	technique
 	{
@@ -560,7 +557,7 @@ material SilhouetteTree1
 
 
 
-material Water
+material Old\Water
 {	
   technique Toon
 	{
@@ -602,7 +599,7 @@ material Water
 
 
 
-material WheatField
+material Old\WheatField
 {
 	technique Toon
 	{
@@ -654,7 +651,7 @@ material WheatField
 
 
 
-material WoodHouse
+material Old\WoodHouse
 {
 	technique
 	{
@@ -670,7 +667,7 @@ material WoodHouse
 
 
 
-material BigRock
+material Old\BigRock
 {
 	technique
 	{
@@ -686,7 +683,7 @@ material BigRock
 
 
 
-material Volcano
+material Old\Volcano
 {
 	technique Toon
 	{
