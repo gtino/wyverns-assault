@@ -1,6 +1,31 @@
 
 material Ground
 {
+	technique Toon
+	{
+		pass
+		{
+			vertex_program_ref ToonVP
+			{
+				param_named shininess float4 35.0 1.0 1.0 1.0
+			}
+			
+			fragment_program_ref ToonFP
+			{
+        param_named diffuse float4 0.611 0.478 0.248 1
+        param_named specular float4 0.4 0.4 0.4 1
+			}
+
+      // Textures for shades
+			texture_unit
+			{
+				texture toon.png 2d
+				tex_address_mode clamp
+				filtering none
+			}
+		}
+	}
+	
 	technique
 	{
 		pass
@@ -15,8 +40,34 @@ material Ground
 
 
 
-material _Color_F07_
+material Grass
 {
+
+	technique Toon
+	{
+		pass
+		{
+			vertex_program_ref ToonVP
+			{
+				param_named shininess float4 50.0 1.0 1.0 1.0
+			}
+			
+			fragment_program_ref ToonFP
+			{
+        param_named diffuse float4 0.478431 0.8 0.156863 1
+        param_named specular float4 0.33 0.33 0.33 1
+			}
+
+      // Textures for shades
+			texture_unit
+			{
+				texture toon.png 2d
+				tex_address_mode clamp
+				filtering none
+			}
+		}
+	}
+	
 	technique
 	{
 		pass
@@ -32,8 +83,34 @@ material _Color_F07_
 
 
 
-material FrontColor
+material Chalk
 {
+
+	technique Toon
+	{
+		pass
+		{
+			vertex_program_ref ToonVP
+			{
+				param_named shininess float4 50.0 1.0 1.0 1.0
+			}
+			
+			fragment_program_ref ToonFP
+			{
+        param_named diffuse float4 0.9 0.9 0.9 1
+        param_named specular float4 0.33 0.33 0.33 1
+			}
+
+      // Textures for shades
+			texture_unit
+			{
+				texture toon.png 2d
+				tex_address_mode clamp
+				filtering none
+			}
+		}
+	}
+	
 	technique
 	{
 		pass
@@ -50,6 +127,38 @@ material FrontColor
 
 material Tree2
 {
+
+	technique Toon
+	{
+		pass
+		{
+			vertex_program_ref ToonVP
+			{
+				param_named shininess float4 35.0 1.0 1.0 1.0
+			}
+			
+			fragment_program_ref ToonFP
+			{
+        param_named diffuse float4 0.244 0.244 0.244 1
+        param_named specular float4 0.4 0.4 0.4 1
+			}
+
+      // Textures for shades
+			texture_unit
+			{
+				texture toon.png 2d
+				tex_address_mode clamp
+				filtering none
+			}
+
+      // Real Texture
+			texture_unit
+			{
+				texture tree2_small.png
+			}
+		}
+	}
+	
 	technique
 	{
 		pass
@@ -70,6 +179,38 @@ material Tree2
 
 material Tree1
 {
+
+	technique Toon
+	{
+		pass
+		{
+			vertex_program_ref ToonVP
+			{
+				param_named shininess float4 35.0 1.0 1.0 1.0
+			}
+			
+			fragment_program_ref ToonFP
+			{
+        param_named diffuse float4 0.244 0.244 0.244 1
+        param_named specular float4 0.4 0.4 0.4 1
+			}
+
+      // Textures for shades
+			texture_unit
+			{
+				texture toon.png 2d
+				tex_address_mode clamp
+				filtering none
+			}
+
+      // Real Texture
+			texture_unit
+			{
+				texture tree3_small.png
+			}
+		}
+	}
+	
 	technique
 	{
 		pass
@@ -88,8 +229,34 @@ material Tree1
 
 
 
-material Material2
+material BonBonTree
 {
+
+	technique Toon
+	{
+		pass
+		{
+			vertex_program_ref ToonVP
+			{
+				param_named shininess float4 35.0 1.0 1.0 1.0
+			}
+			
+			fragment_program_ref ToonFP
+			{
+        param_named diffuse float4 0.566 0.743 0.381 1
+        param_named specular float4 0.4 0.4 0.4 1
+			}
+
+      // Textures for shades
+			texture_unit
+			{
+				texture toon.png 2d
+				tex_address_mode clamp
+				filtering none
+			}
+		}
+	}
+	
 	technique
 	{
 		pass
@@ -106,6 +273,32 @@ material Material2
 
 material PillTree
 {
+
+	technique Toon
+	{
+		pass
+		{
+			vertex_program_ref ToonVP
+			{
+				param_named shininess float4 35.0 1.0 1.0 1.0
+			}
+			
+			fragment_program_ref ToonFP
+			{
+        param_named diffuse float4 0.168 0.416 0.265 1
+        param_named specular float4 0.4 0.4 0.4 1
+			}
+
+      // Textures for shades
+			texture_unit
+			{
+				texture toon.png 2d
+				tex_address_mode clamp
+				filtering none
+			}
+		}
+	}
+	
 	technique
 	{
 		pass
@@ -122,6 +315,32 @@ material PillTree
 
 material VulcanicRock
 {
+
+	technique Toon
+	{
+		pass
+		{
+			vertex_program_ref ToonVP
+			{
+				param_named shininess float4 35.0 1.0 1.0 1.0
+			}
+			
+			fragment_program_ref ToonFP
+			{
+        param_named diffuse float4 0.407 0.407 0.407 1
+        param_named specular float4 0.4 0.4 0.4 1
+			}
+
+      // Textures for shades
+			texture_unit
+			{
+				texture toon.png 2d
+				tex_address_mode clamp
+				filtering none
+			}
+		}
+	}
+	
 	technique
 	{
 		pass
@@ -136,15 +355,41 @@ material VulcanicRock
 
 
 
-material _Water_Pool_Light_1_
+material WaterPool
 {
+
+	technique Toon
+	{
+		pass
+		{
+			vertex_program_ref ToonVP
+			{
+				param_named shininess float4 50.0 1.0 1.0 1.0
+			}
+			
+			fragment_program_ref ToonFP
+			{
+        param_named diffuse float4 0.435294 0.619608 0.654902 1
+        param_named specular float4 0.33 0.752 0.673 1
+			}
+
+      // Textures for shades
+			texture_unit
+			{
+				texture toon.png 2d
+				tex_address_mode clamp
+				filtering none
+			}
+		}
+	}
+	
 	technique
 	{
 		pass
 		{
-			ambient 0 0 0 1
+			ambient 0.139 0.188 0.396 1
 			diffuse 0.435294 0.619608 0.654902 1
-			specular 0.33 0.33 0.33 1 50
+			specular 0.33 0.752 0.673 1 50
 		}
 
 	}
@@ -153,8 +398,34 @@ material _Water_Pool_Light_1_
 
 
 
-material _Water_Pool_Light_
+material ToxicWater
 {
+
+	technique Toon
+	{
+		pass
+		{
+			vertex_program_ref ToonVP
+			{
+				param_named shininess float4 50.0 1.0 1.0 1.0
+			}
+			
+			fragment_program_ref ToonFP
+			{
+        param_named diffuse float4 0.509804 0.654902 0.047059 1
+        param_named specular float4 0.33 0.33 0.33 1
+			}
+
+      // Textures for shades
+			texture_unit
+			{
+				texture toon.png 2d
+				tex_address_mode clamp
+				filtering none
+			}
+		}
+	}
+	
 	technique
 	{
 		pass
@@ -170,24 +441,34 @@ material _Water_Pool_Light_
 
 
 
-material _Color_000_
+material SilverConcrete
 {
-	technique
+
+	technique Toon
 	{
 		pass
 		{
-			ambient 0 0 0 1
-			specular 0.33 0.33 0.33 1 50
+			vertex_program_ref ToonVP
+			{
+				param_named shininess float4 50.0 1.0 1.0 1.0
+			}
+			
+			fragment_program_ref ToonFP
+			{
+        param_named diffuse float4 0.862745 0.862745 0.862745 1
+        param_named specular float4 0.33 0.33 0.33 1
+			}
+
+      // Textures for shades
+			texture_unit
+			{
+				texture toon.png 2d
+				tex_address_mode clamp
+				filtering none
+			}
 		}
-
 	}
-
-}
-
-
-
-material Gainsboro
-{
+	
 	technique
 	{
 		pass
@@ -203,14 +484,38 @@ material Gainsboro
 
 
 
-material Yellow
+material ToxicWasteHouse
 {
+	technique Toon
+	{
+		pass
+		{
+			vertex_program_ref ToonVP
+			{
+				param_named shininess float4 50.0 1.0 1.0 1.0
+			}
+			
+			fragment_program_ref ToonFP
+			{
+        param_named diffuse float4 0.244 0.244 0.244 1
+        param_named specular float4 0.33 0.33 0.33 1
+			}
+
+      // Textures for shades
+			texture_unit
+			{
+				texture toon.png 2d
+				tex_address_mode clamp
+				filtering none
+			}
+		}
+	}
+	
 	technique
 	{
 		pass
 		{
 			ambient 0 0 0 1
-			diffuse 1 1 0 1
 			specular 0.33 0.33 0.33 1 50
 		}
 
@@ -220,8 +525,33 @@ material Yellow
 
 
 
-material OrangeRed
+material TubeOrangeRed
 {
+	technique Toon
+	{
+		pass
+		{
+			vertex_program_ref ToonVP
+			{
+				param_named shininess float4 50.0 1.0 1.0 1.0
+			}
+			
+			fragment_program_ref ToonFP
+			{
+        param_named diffuse float4 1 0.270588 0 1
+        param_named specular float4  0.33 0.33 0.33 1
+			}
+
+      // Textures for shades
+			texture_unit
+			{
+				texture toon.png 2d
+				tex_address_mode clamp
+				filtering none
+			}
+		}
+	}
+	
 	technique
 	{
 		pass
@@ -237,25 +567,33 @@ material OrangeRed
 
 
 
-material _Color_E06_
+material TubeYellow
 {
-	technique
+	technique Toon
 	{
 		pass
 		{
-			ambient 0 0 0 1
-			diffuse 0.8 0.8 0 1
-			specular 0.33 0.33 0.33 1 50
+			vertex_program_ref ToonVP
+			{
+				param_named shininess float4 50.0 1.0 1.0 1.0
+			}
+			
+			fragment_program_ref ToonFP
+			{
+        param_named diffuse float4 1 1 0 1
+        param_named specular float4 0.33 0.33 0.33 1
+			}
+
+      // Textures for shades
+			texture_unit
+			{
+				texture toon.png 2d
+				tex_address_mode clamp
+				filtering none
+			}
 		}
-
 	}
-
-}
-
-
-
-material _Color_E01_
-{
+	
 	technique
 	{
 		pass
@@ -271,8 +609,117 @@ material _Color_E01_
 
 
 
+material WheatLightGold
+{
+	technique Toon
+	{
+		pass
+		{
+			vertex_program_ref ToonVP
+			{
+				param_named shininess float4 5.0 1.0 1.0 1.0
+			}
+			
+			fragment_program_ref ToonFP
+			{
+        param_named diffuse float4 1 1 0 1
+        param_named specular float4 0.33 0.33 0.33 1
+			}
+
+      // Textures for shades
+			texture_unit
+			{
+				texture toon.png 2d
+				tex_address_mode clamp
+				filtering none
+			}
+		}
+	}
+	
+	technique
+	{
+		pass
+		{
+			ambient 0 0 0 1
+			diffuse 1 1 0 1
+			specular 0.33 0.33 0.33 1 50
+		}
+
+	}
+
+}
+
+
+
+material WheatDarkGold
+{
+	technique Toon
+	{
+		pass
+		{
+			vertex_program_ref ToonVP
+			{
+				param_named shininess float4 5.0 1.0 1.0 1.0
+			}
+			
+			fragment_program_ref ToonFP
+			{
+        param_named diffuse float4 0.8 0.8 0 1
+        param_named specular float4 0.33 0.33 0.33 1
+			}
+
+      // Textures for shades
+			texture_unit
+			{
+				texture toon.png 2d
+				tex_address_mode clamp
+				filtering none
+			}
+		}
+	}
+	
+	technique
+	{
+		pass
+		{
+			ambient 0 0 0 1
+			diffuse 0.8 0.8 0 1
+			specular 0.33 0.33 0.33 1 50
+		}
+
+	}
+
+}
+
+
+
 material WoodHouse
 {
+	technique Toon
+	{
+		pass
+		{
+			vertex_program_ref ToonVP
+			{
+				param_named shininess float4 35.0 1.0 1.0 1.0
+			}
+			
+			fragment_program_ref ToonFP
+			{
+        param_named diffuse float4 0.7 0.69 0.177 1
+        param_named specular float4 0.4 0.4 0.4 1
+			}
+
+      // Textures for shades
+			texture_unit
+			{
+				texture toon.png 2d
+				tex_address_mode clamp
+				filtering none
+			}
+		}
+	}
+	
 	technique
 	{
 		pass
@@ -289,6 +736,31 @@ material WoodHouse
 
 material Volcano
 {
+	technique Toon
+	{
+		pass
+		{
+			vertex_program_ref ToonVP
+			{
+				param_named shininess float4 2.0 1.0 1.0 1.0
+			}
+			
+			fragment_program_ref ToonFP
+			{
+        param_named diffuse float4 0.124 0.124 0.124 1
+        param_named specular float4 0.2 0.2 0.2 1
+			}
+
+      // Textures for shades
+			texture_unit
+			{
+				texture toon.png 2d
+				tex_address_mode clamp
+				filtering none
+			}
+		}
+	}
+	
 	technique
 	{
 		pass
@@ -305,6 +777,31 @@ material Volcano
 
 material _Color_002_
 {
+	technique Toon
+	{
+		pass
+		{
+			vertex_program_ref ToonVP
+			{
+				param_named shininess float4 5.0 1.0 1.0 1.0
+			}
+			
+			fragment_program_ref ToonFP
+			{
+        param_named diffuse float4 0.776471 0.776471 0.776471 1
+        param_named specular float4 0.33 0.33 0.33 1
+			}
+
+      // Textures for shades
+			texture_unit
+			{
+				texture toon.png 2d
+				tex_address_mode clamp
+				filtering none
+			}
+		}
+	}
+	
 	technique
 	{
 		pass
@@ -320,25 +817,33 @@ material _Color_002_
 
 
 
-material _Color_A01_
+material ChimneyCoal
 {
-	technique
+	technique Toon
 	{
 		pass
 		{
-			ambient 0 0 0 1
-			diffuse 1 0 0 1
-			specular 0.33 0.33 0.33 1 50
+			vertex_program_ref ToonVP
+			{
+				param_named shininess float4 50.0 1.0 1.0 1.0
+			}
+			
+			fragment_program_ref ToonFP
+			{
+        param_named diffuse float4 0 0 0 1
+        param_named specular float4 0.33 0.33 0.33 1
+			}
+
+      // Textures for shades
+			texture_unit
+			{
+				texture toon.png 2d
+				tex_address_mode clamp
+				filtering none
+			}
 		}
-
 	}
-
-}
-
-
-
-material _Color_009_
-{
+	
 	technique
 	{
 		pass
@@ -354,8 +859,75 @@ material _Color_009_
 
 
 
+material RedStripes
+{
+	technique Toon
+	{
+		pass
+		{
+			vertex_program_ref ToonVP
+			{
+				param_named shininess float4 50.0 1.0 1.0 1.0
+			}
+			
+			fragment_program_ref ToonFP
+			{
+        param_named diffuse float4 1 0 0 1
+        param_named specular float4 0.33 0.33 0.33 1
+			}
+
+      // Textures for shades
+			texture_unit
+			{
+				texture toon.png 2d
+				tex_address_mode clamp
+				filtering none
+			}
+		}
+	}
+	
+	technique
+	{
+		pass
+		{
+			ambient 0 0 0 1
+			diffuse 1 0 0 1
+			specular 0.33 0.33 0.33 1 50
+		}
+
+	}
+
+}
+
+
+
 material Concrete
 {
+	technique Toon
+	{
+		pass
+		{
+			vertex_program_ref ToonVP
+			{
+				param_named shininess float4 35.0 1.0 1.0 1.0
+			}
+			
+			fragment_program_ref ToonFP
+			{
+        param_named diffuse float4 0.7 0.7 0.7 1
+        param_named specular float4 0.4 0.4 0.4 1
+			}
+
+      // Textures for shades
+			texture_unit
+			{
+				texture toon.png 2d
+				tex_address_mode clamp
+				filtering none
+			}
+		}
+	}
+	
 	technique
 	{
 		pass
@@ -370,8 +942,39 @@ material Concrete
 
 
 
-material Material
+material SunHillMaterial
 {
+	technique Toon
+	{
+		pass
+		{
+			vertex_program_ref ToonVP
+			{
+				param_named shininess float4 35.0 1.0 1.0 1.0
+			}
+			
+			fragment_program_ref ToonFP
+			{
+        param_named diffuse float4 0.244 0.244 0.244 1
+        param_named specular float4 0.4 0.4 0.4 1
+			}
+
+      // Textures for shades
+			texture_unit
+			{
+				texture toon.png 2d
+				tex_address_mode clamp
+				filtering none
+			}
+
+      // Real Texture
+			texture_unit
+			{
+				texture wheat.PNG
+			}
+		}
+	}
+	
 	technique
 	{
 		pass
@@ -392,6 +995,31 @@ material Material
 
 material StoneHill
 {
+	technique Toon
+	{
+		pass
+		{
+			vertex_program_ref ToonVP
+			{
+				param_named shininess float4 20.0 1.0 1.0 1.0
+			}
+			
+			fragment_program_ref ToonFP
+			{
+        param_named diffuse float4 0.354 0.434 0.593 1
+        param_named specular float4 0.389 0.477 0.652 1
+			}
+
+      // Textures for shades
+			texture_unit
+			{
+				texture toon.png 2d
+				tex_address_mode clamp
+				filtering none
+			}
+		}
+	}
+	
 	technique
 	{
 		pass
@@ -408,6 +1036,31 @@ material StoneHill
 
 material PineTree
 {
+	technique Toon
+	{
+		pass
+		{
+			vertex_program_ref ToonVP
+			{
+				param_named shininess float4 35.0 1.0 1.0 1.0
+			}
+			
+			fragment_program_ref ToonFP
+			{
+        param_named diffuse float4 0.575 0.363 0.646 1
+        param_named specular float4 0.4 0.4 0.4 1
+			}
+
+      // Textures for shades
+			texture_unit
+			{
+				texture toon.png 2d
+				tex_address_mode clamp
+				filtering none
+			}
+		}
+	}
+	
 	technique
 	{
 		pass
@@ -424,6 +1077,31 @@ material PineTree
 
 material Wood
 {
+	technique Toon
+	{
+		pass
+		{
+			vertex_program_ref ToonVP
+			{
+				param_named shininess float4 35.0 1.0 1.0 1.0
+			}
+			
+			fragment_program_ref ToonFP
+			{
+        param_named diffuse float4 0.425 0.265 0.088 1
+        param_named specular float4 0.4 0.4 0.4 1
+			}
+
+      // Textures for shades
+			texture_unit
+			{
+				texture toon.png 2d
+				tex_address_mode clamp
+				filtering none
+			}
+		}
+	}
+	
 	technique
 	{
 		pass
@@ -440,6 +1118,31 @@ material Wood
 
 material TreeTop
 {
+	technique Toon
+	{
+		pass
+		{
+			vertex_program_ref ToonVP
+			{
+				param_named shininess float4 35.0 1.0 1.0 1.0
+			}
+			
+			fragment_program_ref ToonFP
+			{
+        param_named diffuse float4 0.451 0.743 0.15 1
+        param_named specular float4 0.4 0.4 0.4 1
+			}
+
+      // Textures for shades
+			texture_unit
+			{
+				texture toon.png 2d
+				tex_address_mode clamp
+				filtering none
+			}
+		}
+	}
+	
 	technique
 	{
 		pass
@@ -454,8 +1157,33 @@ material TreeTop
 
 
 
-material Material1
+material MuddyHill
 {
+	technique Toon
+	{
+		pass
+		{
+			vertex_program_ref ToonVP
+			{
+				param_named shininess float4 35.0 1.0 1.0 1.0
+			}
+			
+			fragment_program_ref ToonFP
+			{
+        param_named diffuse float4 0.398 0.195 0 1
+        param_named specular float4 0.4 0.4 0.4 1
+			}
+
+      // Textures for shades
+			texture_unit
+			{
+				texture toon.png 2d
+				tex_address_mode clamp
+				filtering none
+			}
+		}
+	}
+	
 	technique
 	{
 		pass
@@ -472,6 +1200,31 @@ material Material1
 
 material HighHills
 {
+	technique Toon
+	{
+		pass
+		{
+			vertex_program_ref ToonVP
+			{
+				param_named shininess float4 35.0 1.0 1.0 1.0
+			}
+			
+			fragment_program_ref ToonFP
+			{
+        param_named diffuse float4 0.195 0.496 0.345 1
+        param_named specular float4 0.4 0.4 0.4 1
+			}
+
+      // Textures for shades
+			texture_unit
+			{
+				texture toon.png 2d
+				tex_address_mode clamp
+				filtering none
+			}
+		}
+	}
+	
 	technique
 	{
 		pass
@@ -488,6 +1241,37 @@ material HighHills
 
 material SilhouetteTree1
 {
+	technique Toon
+	{
+		pass
+		{
+			vertex_program_ref ToonVP
+			{
+				param_named shininess float4 35.0 1.0 1.0 1.0
+			}
+			
+			fragment_program_ref ToonFP
+			{
+        param_named diffuse float4 0.244 0.244 0.244 1
+        param_named specular float4 0.4 0.4 0.4 1
+			}
+
+      // Textures for shades
+			texture_unit
+			{
+				texture toon.png 2d
+				tex_address_mode clamp
+				filtering none
+			}
+
+      // Real Texture
+			texture_unit
+			{
+				texture SilhouetteTree1.png
+			}
+		}
+	}
+	
 	technique
 	{
 		pass
@@ -496,7 +1280,7 @@ material SilhouetteTree1
 
 			texture_unit
 			{
-				texture SilhouetteTree1.psd
+				texture SilhouetteTree1.png
 			}
 		}
 
@@ -508,6 +1292,31 @@ material SilhouetteTree1
 
 material RedTree
 {
+	technique Toon
+	{
+		pass
+		{
+			vertex_program_ref ToonVP
+			{
+				param_named shininess float4 35.0 1.0 1.0 1.0
+			}
+			
+			fragment_program_ref ToonFP
+			{
+        param_named diffuse float4 0.867 0.115 0.053 1
+        param_named specular float4 0.4 0.4 0.4 1
+			}
+
+      // Textures for shades
+			texture_unit
+			{
+				texture toon.png 2d
+				tex_address_mode clamp
+				filtering none
+			}
+		}
+	}
+	
 	technique
 	{
 		pass
@@ -524,6 +1333,37 @@ material RedTree
 
 material Castle1
 {
+	technique Toon
+	{
+		pass
+		{
+			vertex_program_ref ToonVP
+			{
+				param_named shininess float4 35.0 1.0 1.0 1.0
+			}
+			
+			fragment_program_ref ToonFP
+			{
+        param_named diffuse float4 0.244 0.244 0.244 1
+        param_named specular float4 0.4 0.4 0.4 1
+			}
+
+      // Textures for shades
+			texture_unit
+			{
+				texture toon.png 2d
+				tex_address_mode clamp
+				filtering none
+			}
+
+      // Real Texture
+			texture_unit
+			{
+				texture Castle1.png
+			}
+		}
+	}
+	
 	technique
 	{
 		pass
@@ -544,6 +1384,37 @@ material Castle1
 
 material SilhouetteTree2
 {
+	technique Toon
+	{
+		pass
+		{
+			vertex_program_ref ToonVP
+			{
+				param_named shininess float4 35.0 1.0 1.0 1.0
+			}
+			
+			fragment_program_ref ToonFP
+			{
+        param_named diffuse float4 0.244 0.244 0.244 1
+        param_named specular float4 0.4 0.4 0.4 1
+			}
+
+      // Textures for shades
+			texture_unit
+			{
+				texture toon.png 2d
+				tex_address_mode clamp
+				filtering none
+			}
+
+      // Real Texture
+			texture_unit
+			{
+				texture SilhouetteTree2.png
+			}
+		}
+	}
+	
 	technique
 	{
 		pass
@@ -552,7 +1423,7 @@ material SilhouetteTree2
 
 			texture_unit
 			{
-				texture SilhouetteTree[1..3].psd
+				texture SilhouetteTree2.png
 			}
 		}
 
@@ -564,6 +1435,37 @@ material SilhouetteTree2
 
 material Hill
 {
+	technique Toon
+	{
+		pass
+		{
+			vertex_program_ref ToonVP
+			{
+				param_named shininess float4 15.0 1.0 1.0 1.0
+			}
+			
+			fragment_program_ref ToonFP
+			{
+        param_named diffuse float4 0.244 0.244 0.244 1
+        param_named specular float4 0.33 0.33 0.33 1
+			}
+
+      // Textures for shades
+			texture_unit
+			{
+				texture toon.png 2d
+				tex_address_mode clamp
+				filtering none
+			}
+
+      // Real Texture
+			texture_unit
+			{
+				texture backgroundfield.PNG
+			}
+		}
+	}
+	
 	technique
 	{
 		pass
@@ -584,6 +1486,37 @@ material Hill
 
 material MelonHill
 {
+	technique Toon
+	{
+		pass
+		{
+			vertex_program_ref ToonVP
+			{
+				param_named shininess float4 35.0 1.0 1.0 1.0
+			}
+			
+			fragment_program_ref ToonFP
+			{
+        param_named diffuse float4 0.244 0.244 0.244 1
+        param_named specular float4 0.4 0.4 0.4 1
+			}
+
+      // Textures for shades
+			texture_unit
+			{
+				texture toon.png 2d
+				tex_address_mode clamp
+				filtering none
+			}
+
+      // Real Texture
+			texture_unit
+			{
+				texture MelonStucco.png
+			}
+		}
+	}
+	
 	technique
 	{
 		pass
@@ -602,8 +1535,33 @@ material MelonHill
 
 
 
-material _Concrete_Block_8x8_Gray_
+material BridgeOfDeathStone
 {
+	technique Toon
+	{
+		pass
+		{
+			vertex_program_ref ToonVP
+			{
+				param_named shininess float4 50.0 1.0 1.0 1.0
+			}
+			
+			fragment_program_ref ToonFP
+			{
+        param_named diffuse float4 MelonStucco.png 1
+        param_named specular float4 0.33 0.33 0.33 1
+			}
+
+      // Textures for shades
+			texture_unit
+			{
+				texture toon.png 2d
+				tex_address_mode clamp
+				filtering none
+			}
+		}
+	}
+	
 	technique
 	{
 		pass
@@ -621,6 +1579,32 @@ material _Concrete_Block_8x8_Gray_
 
 material BigRock
 {
+	technique Toon
+	{
+		pass
+		{
+			vertex_program_ref ToonVP
+			{
+				param_named shininess float4 5.0 1.0 1.0 1.0
+			}
+			
+			fragment_program_ref ToonFP
+			{
+        param_named diffuse float4 0.124 0.124 0.124 1
+        param_named specular float4 0.2 0.2 0.2 1
+			}
+
+      // Textures for shades
+			texture_unit
+			{
+				texture toon.png 2d
+				tex_address_mode clamp
+				filtering none
+			}
+
+		}
+	}
+	
 	technique
 	{
 		pass
