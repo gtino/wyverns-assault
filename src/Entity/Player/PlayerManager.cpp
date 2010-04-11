@@ -30,6 +30,7 @@ void PlayerManager::initialize(String name, String mesh, SceneManager *levelScen
 
 	// Positioning
 	mPlayerSceneNode->setPosition(position);
+	mPlayerSceneNode->setScale(4, 4, 4);
 
 	// Center node for player movement and camera targeting
 	SceneNode* centerNode = mSceneManager->getRootSceneNode()->createChildSceneNode("Center");
