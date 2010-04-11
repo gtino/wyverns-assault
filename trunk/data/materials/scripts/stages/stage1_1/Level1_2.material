@@ -1,0 +1,636 @@
+
+material Ground
+{
+	technique
+	{
+		pass
+		{
+			ambient 0.3 0.239 0.195 1
+			diffuse 0.611 0.478 0.248 1
+		}
+
+	}
+
+}
+
+
+
+material _Color_F07_
+{
+	technique
+	{
+		pass
+		{
+			ambient 0 0 0 1
+			diffuse 0.478431 0.8 0.156863 1
+			specular 0.33 0.33 0.33 1 50
+		}
+
+	}
+
+}
+
+
+
+material FrontColor
+{
+	technique
+	{
+		pass
+		{
+			ambient 0 0 0 1
+			specular 0.33 0.33 0.33 1 50
+		}
+
+	}
+
+}
+
+
+
+material Tree2
+{
+	technique
+	{
+		pass
+		{
+			ambient 0 0 0 1
+
+			texture_unit
+			{
+				texture tree2_small.PNG
+			}
+		}
+
+	}
+
+}
+
+
+
+material Tree1
+{
+	technique
+	{
+		pass
+		{
+			ambient 0 0 0 1
+
+			texture_unit
+			{
+				texture tree3_small.PNG
+			}
+		}
+
+	}
+
+}
+
+
+
+material Material2
+{
+	technique
+	{
+		pass
+		{
+			ambient 0.31 0.478 0.3 1
+			diffuse 0.566 0.743 0.381 1
+		}
+
+	}
+
+}
+
+
+
+material PillTree
+{
+	technique
+	{
+		pass
+		{
+			ambient 0.062 0.221 0.133 1
+			diffuse 0.168 0.416 0.265 1
+		}
+
+	}
+
+}
+
+
+
+material VulcanicRock
+{
+	technique
+	{
+		pass
+		{
+			ambient 0.159 0.159 0.159 1
+			diffuse 0.407 0.407 0.407 1
+		}
+
+	}
+
+}
+
+
+
+material _Water_Pool_Light_1_
+{
+	technique
+	{
+		pass
+		{
+			ambient 0 0 0 1
+			diffuse 0.435294 0.619608 0.654902 1
+			specular 0.33 0.33 0.33 1 50
+		}
+
+	}
+
+}
+
+
+
+material _Water_Pool_Light_
+{
+	technique
+	{
+		pass
+		{
+			ambient 0 0 0 1
+			diffuse 0.509804 0.654902 0.047059 1
+			specular 0.33 0.33 0.33 1 50
+		}
+
+	}
+
+}
+
+
+
+material _Color_000_
+{
+	technique
+	{
+		pass
+		{
+			ambient 0 0 0 1
+			specular 0.33 0.33 0.33 1 50
+		}
+
+	}
+
+}
+
+
+
+material Gainsboro
+{
+	technique
+	{
+		pass
+		{
+			ambient 0 0 0 1
+			diffuse 0.862745 0.862745 0.862745 1
+			specular 0.33 0.33 0.33 1 50
+		}
+
+	}
+
+}
+
+
+
+material Yellow
+{
+	technique
+	{
+		pass
+		{
+			ambient 0 0 0 1
+			diffuse 1 1 0 1
+			specular 0.33 0.33 0.33 1 50
+		}
+
+	}
+
+}
+
+
+
+material OrangeRed
+{
+	technique
+	{
+		pass
+		{
+			ambient 0 0 0 1
+			diffuse 1 0.270588 0 1
+			specular 0.33 0.33 0.33 1 50
+		}
+
+	}
+
+}
+
+
+
+material _Color_E06_
+{
+	technique
+	{
+		pass
+		{
+			ambient 0 0 0 1
+			diffuse 0.8 0.8 0 1
+			specular 0.33 0.33 0.33 1 50
+		}
+
+	}
+
+}
+
+
+
+material _Color_E01_
+{
+	technique
+	{
+		pass
+		{
+			ambient 0 0 0 1
+			diffuse 1 1 0 1
+			specular 0.33 0.33 0.33 1 50
+		}
+
+	}
+
+}
+
+
+
+material WoodHouse
+{
+	technique
+	{
+		pass
+		{
+			ambient 0.416 0.327 0 1
+			diffuse 0.7 0.69 0.177 1
+		}
+
+	}
+
+}
+
+
+
+material Volcano
+{
+	technique
+	{
+		pass
+		{
+			ambient 0.097 0 0 1
+			diffuse 0.124 0.124 0.124 1
+		}
+
+	}
+
+}
+
+
+
+material _Color_002_
+{
+	technique
+	{
+		pass
+		{
+			ambient 0 0 0 1
+			diffuse 0.776471 0.776471 0.776471 1
+			specular 0.33 0.33 0.33 1 50
+		}
+
+	}
+
+}
+
+
+
+material _Color_A01_
+{
+	technique
+	{
+		pass
+		{
+			ambient 0 0 0 1
+			diffuse 1 0 0 1
+			specular 0.33 0.33 0.33 1 50
+		}
+
+	}
+
+}
+
+
+
+material _Color_009_
+{
+	technique
+	{
+		pass
+		{
+			ambient 0 0 0 1
+			diffuse 0 0 0 1
+			specular 0.33 0.33 0.33 1 50
+		}
+
+	}
+
+}
+
+
+
+material Concrete
+{
+	technique
+	{
+		pass
+		{
+			ambient 0.3 0.3 0.3 1
+			diffuse 0.7 0.7 0.7 1
+		}
+
+	}
+
+}
+
+
+
+material Material
+{
+	technique
+	{
+		pass
+		{
+			ambient 0 0 0 1
+
+			texture_unit
+			{
+				texture wheat.PNG
+			}
+		}
+
+	}
+
+}
+
+
+
+material StoneHill
+{
+	technique
+	{
+		pass
+		{
+			ambient 0.168 0.3 0.504 1
+			diffuse 0.354 0.434 0.593 1
+		}
+
+	}
+
+}
+
+
+
+material PineTree
+{
+	technique
+	{
+		pass
+		{
+			ambient 0.363 0.177 0.398 1
+			diffuse 0.575 0.363 0.646 1
+		}
+
+	}
+
+}
+
+
+
+material Wood
+{
+	technique
+	{
+		pass
+		{
+			ambient 0.3 0.106 0 1
+			diffuse 0.425 0.265 0.088 1
+		}
+
+	}
+
+}
+
+
+
+material TreeTop
+{
+	technique
+	{
+		pass
+		{
+			ambient 0.142 0.3 0 1
+			diffuse 0.451 0.743 0.15 1
+		}
+
+	}
+
+}
+
+
+
+material Material1
+{
+	technique
+	{
+		pass
+		{
+			ambient 0.159 0.097 0.009 1
+			diffuse 0.398 0.195 0 1
+		}
+
+	}
+
+}
+
+
+
+material HighHills
+{
+	technique
+	{
+		pass
+		{
+			ambient 0.133 0.3 0.3 1
+			diffuse 0.195 0.496 0.345 1
+		}
+
+	}
+
+}
+
+
+
+material SilhouetteTree1
+{
+	technique
+	{
+		pass
+		{
+			ambient 0 0 0 1
+
+			texture_unit
+			{
+				texture SilhouetteTree1.psd
+			}
+		}
+
+	}
+
+}
+
+
+
+material RedTree
+{
+	technique
+	{
+		pass
+		{
+			ambient 0.628 0.062 0.142 1
+			diffuse 0.867 0.115 0.053 1
+		}
+
+	}
+
+}
+
+
+
+material Castle1
+{
+	technique
+	{
+		pass
+		{
+			ambient 0 0 0 1
+
+			texture_unit
+			{
+				texture Castle1.png
+			}
+		}
+
+	}
+
+}
+
+
+
+material SilhouetteTree2
+{
+	technique
+	{
+		pass
+		{
+			ambient 0 0 0 1
+
+			texture_unit
+			{
+				texture SilhouetteTree[1..3].psd
+			}
+		}
+
+	}
+
+}
+
+
+
+material Hill
+{
+	technique
+	{
+		pass
+		{
+			ambient 0 0 0 1
+
+			texture_unit
+			{
+				texture backgroundfield.PNG
+			}
+		}
+
+	}
+
+}
+
+
+
+material MelonHill
+{
+	technique
+	{
+		pass
+		{
+			ambient 0 0 0 1
+
+			texture_unit
+			{
+				texture MelonStucco.png
+			}
+		}
+
+	}
+
+}
+
+
+
+material _Concrete_Block_8x8_Gray_
+{
+	technique
+	{
+		pass
+		{
+			ambient 0 0 0 1
+			diffuse 0.615686 0.619608 0.603922 1
+			specular 0.33 0.33 0.33 1 50
+		}
+
+	}
+
+}
+
+
+
+material BigRock
+{
+	technique
+	{
+		pass
+		{
+			ambient 0.487 0 0 1
+			diffuse 0.124 0.124 0.124 1
+		}
+
+	}
+
+}
+
+
