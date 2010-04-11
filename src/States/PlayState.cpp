@@ -9,6 +9,7 @@ PlayState::PlayState(GraphicsManager& graphicsManager, InputManager& inputManage
 , mLightsManager(NULL)
 , mCameraManager(NULL)
 , mEnemysManager(NULL)
+, mTrayMgr(NULL)
 {
 	//
 	// TODO Constructor logic HERE
@@ -33,6 +34,8 @@ void PlayState::initialize()
 	mInputManager->setJoyStickMode(true);
 
 	this->mNextGameStateId = this->getStateId();
+
+	mRoot->addFrameListener(this);
 
 	// Player manager constructor
 	mPlayerManager = new PlayerManager();
@@ -70,6 +73,9 @@ void PlayState::initialize()
 	mInputManager->addListener(mGuiScreen);
 
 	mCameraManager->gameCamera();
+
+	/** SdkTrays - PRUEBAS **/	
+	mTrayMgr = new OgreBites::SdkTrayManager("InterfaceName", mWindow, mInputManager->getMouse());
 }
 
 /** Load resources */
@@ -99,6 +105,14 @@ void PlayState::input()
 	mInputManager->capture();
 }
 
+/** Rendering queue */
+bool PlayState::frameRenderingQueued(const Ogre::FrameEvent& evt)
+{
+	mTrayMgr->frameRenderingQueued(evt);
+
+	return true;
+}
+
 /** Update internal stuff */
 void PlayState::update(const float elapsedSeconds)
 {
@@ -115,7 +129,7 @@ void PlayState::update(const float elapsedSeconds)
 		mWindow->getAverageFPS(),
 		mCameraManager->getCameraMode().c_str()
 		);
-	
+
 	// Movement
 	if(mCameraManager->getCameraMode() == "Free")
 	{
@@ -261,6 +275,12 @@ void PlayState::finalize()
 		delete mEnemysManager;
 		mEnemysManager = NULL;
 	}
+	
+	if(mTrayMgr)
+	{
+		delete mTrayMgr;
+		mTrayMgr = NULL;
+	}
 
 	/** Dispose of Debug text **/
 	mFpsDebugText.finalize();
@@ -309,6 +329,18 @@ bool PlayState::keyReleased(const OIS::KeyEvent& e)
 	// Debug text
 	case OIS::KeyCode::KC_F2:		
 		mFpsDebugText.toogle();
+		
+		if (mTrayMgr->areFrameStatsVisible())
+		{
+			mTrayMgr->hideFrameStats();
+			mTrayMgr->hideLogo();
+		}
+		else 
+		{
+			mTrayMgr->showFrameStats(OgreBites::TL_BOTTOMLEFT);
+			mTrayMgr->showLogo(OgreBites::TL_BOTTOMRIGHT);
+		}
+
 		break;
 	// Camera keys
 	case OIS::KeyCode::KC_1:		

@@ -59,7 +59,7 @@ void CameraManager::initialize(SceneNode* player)
 	mCameraCS->registerCameraMode("First Person", mCamFirstPersonMode);*/
 
 	// Chase 
-	mCamChaseMode = new CCS::ChaseCameraMode(mCameraCS, Ogre::Vector3(-400,70,20));    
+	mCamChaseMode = new CCS::ChaseCameraMode(mCameraCS, Ogre::Vector3(-500,80,0));    
     mCamChaseMode->setCameraTightness(0.05);
 	mCameraCS->registerCameraMode("Chase", mCamChaseMode);
 

@@ -66,7 +66,7 @@ namespace WyvernsAssault
 	/**
 		Base game state class
 	*/
-	class BaseState : public InputListener
+	class BaseState : public InputListener, public FrameListener
 	{
 	public:
 		BaseState();

@@ -39,6 +39,10 @@ void PlayerManager::initialize(String name, String mesh, SceneManager *levelScen
 	centerNode->setPosition(position * Vector3::UNIT_Y);
 
 	mPlayerSceneNode->setAutoTracking(true, centerNode, Vector3::UNIT_X);
+	
+	// Walk animation - TEMPORAL
+	/*mPlayerAnimation = mPlayerMesh->getAnimationState("Run");
+	mPlayerAnimation->setEnabled(true);*/
 }
 
 void PlayerManager::finalize()
