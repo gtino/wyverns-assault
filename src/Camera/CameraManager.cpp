@@ -15,7 +15,7 @@ CameraManager::CameraManager(SceneManager* sceneManager, RenderWindow* renderWin
 	mCamFixedDirMode = NULL;
 	mCamFixedMode = NULL;
 
-	distance = 500;
+	distance = 1200;
 }
 
 CameraManager::~CameraManager()
@@ -27,7 +27,6 @@ CameraManager::~CameraManager()
 void CameraManager::initialize(SceneNode* player)
 {
 	mCamera = mSceneManager->createCamera( "Camera" );
-
 	mCamera->setNearClipDistance(1);
 	mCamera->setFarClipDistance(20000);
 	mCamera->setAspectRatio(Real(mViewport->getActualWidth()) / Real(mViewport->getActualHeight()));
@@ -36,32 +35,35 @@ void CameraManager::initialize(SceneNode* player)
 
 	// Camera control system
 	mCameraCS = new CCS::CameraControlSystem(mSceneManager, "CCS", mCamera);
-
 	mCameraCS->setCameraTarget(player);
 
 	/** Define camera modes **/
 
-	// Plane binded
-	Plane* mPlane = new Plane(Vector3(0, -1, -1), Vector3(0,0,4000));
-    mCamPlaneMode = new CCS::PlaneBindedCameraMode(mCameraCS, *mPlane);
-	mCameraCS->registerCameraMode("Plane Binded", mCamPlaneMode);
+	// Trough target
+	SceneNode* centerNode = mSceneManager->getSceneNode("Center");
+	mCamThroughMode = new CCS::ThroughTargetCameraMode(mCameraCS, distance);
+	mCamThroughMode->setCameraFocusPosition(centerNode->_getDerivedPosition() - Ogre::Vector3(0, 1000, 0));
+    mCameraCS->registerCameraMode("Through Target", mCamThroughMode);
+
+	// Free mode
+	mCamFreeMode = new CCS::FreeCameraMode(mCameraCS);
+	mCamFreeMode->setMoveFactor(50);
+	mCameraCS->registerCameraMode("Free", mCamFreeMode);
 
 	// Fixed direction
 	mCamFixedDirMode = new CCS::FixedDirectionCameraMode(mCameraCS, Ogre::Vector3(0.0,-0.75,-1), distance);
 	mCamFixedDirMode->setCameraTightness(0.05);
 	mCameraCS->registerCameraMode("Fixed direction", mCamFixedDirMode);
 
-
-	// First person
-	/*mCamFirstPersonMode = new CCS::FirstPersonCameraMode(mCameraCS,Ogre::Vector3(0,17,-16)
-            , Ogre::Radian(0),Ogre::Radian(Ogre::Degree(180)),Ogre::Radian(0));
-	mCamFirstPersonMode->setCharacterVisible(false);
-	mCameraCS->registerCameraMode("First Person", mCamFirstPersonMode);*/
-
 	// Chase 
-	mCamChaseMode = new CCS::ChaseCameraMode(mCameraCS, Ogre::Vector3(-500,80,0));    
+	mCamChaseMode = new CCS::ChaseCameraMode(mCameraCS, Ogre::Vector3(-500,150,0));    
     mCamChaseMode->setCameraTightness(0.05);
 	mCameraCS->registerCameraMode("Chase", mCamChaseMode);
+
+	// Plane binded
+	Plane* mPlane = new Plane(Vector3(0, -1, -1), Vector3(0,0,4000));
+    mCamPlaneMode = new CCS::PlaneBindedCameraMode(mCameraCS, *mPlane);
+	mCameraCS->registerCameraMode("Plane Binded", mCamPlaneMode);
 
 	// Chase free yaw axis
 	/*mCamChaseFreeMode = new CCS::ChaseFreeYawAxisCameraMode(mCameraCS,Ogre::Vector3(-600,50,0)
@@ -73,18 +75,6 @@ void CameraManager::initialize(SceneNode* player)
 	mCamAttachedMode = new CCS::AttachedCameraMode(mCameraCS,Ogre::Vector3(-200,50,0)
             , Ogre::Radian(0),Ogre::Radian(Ogre::Degree(270)),Ogre::Radian(0));
     mCameraCS->registerCameraMode("Attached (lateral)",mCamAttachedMode);*/
-
-
-	// Trough target
-	SceneNode* centerNode = mSceneManager->getSceneNode("Center");
-	mCamThroughMode = new CCS::ThroughTargetCameraMode(mCameraCS, distance);
-	mCamThroughMode->setCameraFocusPosition(centerNode->_getDerivedPosition() - Ogre::Vector3(0, 1000, 0));
-    mCameraCS->registerCameraMode("Through Target", mCamThroughMode);
-
-	// Free mode
-	mCamFreeMode = new CCS::FreeCameraMode(mCameraCS);
-	mCamFreeMode ->setMoveFactor(50);
-	mCameraCS->registerCameraMode("Free", mCamFreeMode);
 }
 
 /** Finalize the camera manager */
@@ -110,7 +100,6 @@ void CameraManager::zoom(Real zoom)
 	distance += zoom * 20; 
 	mCamFixedDirMode->setDistance(distance);
 }
-
 
 /** Camera types **/
 

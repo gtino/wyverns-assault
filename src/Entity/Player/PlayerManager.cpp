@@ -34,14 +34,14 @@ void PlayerManager::initialize(String name, String mesh, SceneManager *levelScen
 
 	// Center node for player movement and camera targeting
 	SceneNode* centerNode = mSceneManager->getRootSceneNode()->createChildSceneNode("Center");
+	centerNode->setPosition(position * Vector3::UNIT_Y);
 	/*Entity* cube = mSceneManager->createEntity("CenterCube", "axes.mesh");
 	centerNode->attachObject(cube);	
 	centerNode->setScale(100, 100, 100);*/
-	centerNode->setPosition(position * Vector3::UNIT_Y);
 
 	mPlayerSceneNode->setAutoTracking(true, centerNode, Vector3::UNIT_X);
 	
-	// Walk animation - TEMPORAL
+	// Animations
 	/*mPlayerAnimation = mPlayerMesh->getAnimationState("Run");
 	mPlayerAnimation->setEnabled(true);*/
 }
