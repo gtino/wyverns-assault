@@ -27,7 +27,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #include <Ogre.h>
 
 // Player default movement speed
-#define SPEED	5
+#define SPEED	30
 
 using namespace Ogre;
 
@@ -57,8 +57,9 @@ namespace WyvernsAssault
 		SceneManager *mSceneManager;
 
 	private:
-		Entity*		mPlayerMesh;
-		SceneNode*	mPlayerSceneNode;
+		Entity*				mPlayerMesh;
+		SceneNode*			mPlayerSceneNode;
+		AnimationState*		mPlayerAnimation;
 	};
 }
 
