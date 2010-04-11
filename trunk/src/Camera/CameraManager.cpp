@@ -165,29 +165,3 @@ void CameraManager::setFixedCamera(int camera, Vector3 position, Real roll, Real
 	sprintf (cameraName, "Fixed %d", camera);
 	mCameraCS->registerCameraMode(cameraName, mCamFixedMode);
 }
-
-
-/** Debug camera functions **/
-void CameraManager::switchPolygonMode()
-{
-	switch(mCamera->getPolygonMode())
-	{	
-		case PM_POINTS:
-			mCamera->setPolygonMode(PM_WIREFRAME);
-			break;
-		case PM_WIREFRAME:
-			mCamera->setPolygonMode(PM_SOLID);
-			break;
-		case PM_SOLID:
-			mCamera->setPolygonMode(PM_WIREFRAME);
-			break;
-	}
-}
-
-String CameraManager::getPolygonMode()
-{
-	if(mCamera->getPolygonMode() == PM_POINTS) return "point";
-	else if(mCamera->getPolygonMode() == PM_WIREFRAME) return "wireframe";
-	else if(mCamera->getPolygonMode() == PM_SOLID) return "solid";
-	else return "unknown";
-};

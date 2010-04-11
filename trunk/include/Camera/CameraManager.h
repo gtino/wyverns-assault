@@ -75,8 +75,8 @@ namespace WyvernsAssault
 		void setFixedCamera(int camera, Vector3 position, Real roll, Real yaw, Real pitch);
 
 		/** Debug camera functions **/
-		void switchPolygonMode();
-		String getPolygonMode();
+		void setPolygonMode(PolygonMode pm){ mCamera->setPolygonMode(pm);}
+		PolygonMode getPolygonMode(){ return mCamera->getPolygonMode(); }
 	
 	public:
 		Camera*			mCamera;
