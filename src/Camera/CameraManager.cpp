@@ -118,14 +118,14 @@ void CameraManager::gameCamera()
 {
 	mCameraCS->setCurrentCameraMode(mCamThroughMode);
 	mCamera->setNearClipDistance(1);
-	mCamera->setFarClipDistance(5000);
+	mCamera->setFarClipDistance(35000);
 }
 
 void CameraManager::fpsCamera()
 {
 	mCameraCS->setCurrentCameraMode(mCamFreeMode);
 	mCamera->setNearClipDistance(1);
-	mCamera->setFarClipDistance(10000);
+	mCamera->setFarClipDistance(35000);
 }
 
 void CameraManager::fixedCamera(int id)
@@ -134,21 +134,21 @@ void CameraManager::fixedCamera(int id)
 	sprintf (cameraName, "Fixed %d", id);
 	mCameraCS->setCurrentCameraMode(mCameraCS->getCameraMode(cameraName));
 	mCamera->setNearClipDistance(500);
-	mCamera->setFarClipDistance(20000);
+	mCamera->setFarClipDistance(35000);
 }
 
 void CameraManager::travelCamera(int id)
 {
 	mCameraCS->setCurrentCameraMode(mCamChaseMode);
 	mCamera->setNearClipDistance(1);
-	mCamera->setFarClipDistance(5000);
+	mCamera->setFarClipDistance(35000);
 }
 
 void CameraManager::scenarioCamera()
 {
 	mCameraCS->setCurrentCameraMode(mCamFixedDirMode);
 	mCamera->setNearClipDistance(1);
-	mCamera->setFarClipDistance(10000);	
+	mCamera->setFarClipDistance(35000);	
 }
 
 /** Fixed cameras functions **/
