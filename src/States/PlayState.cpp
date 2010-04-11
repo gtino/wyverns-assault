@@ -10,6 +10,7 @@ PlayState::PlayState(GraphicsManager& graphicsManager, InputManager& inputManage
 , mCameraManager(NULL)
 , mEnemysManager(NULL)
 , mTrayMgr(NULL)
+, mDetailsPanel(NULL)
 {
 	//
 	// TODO Constructor logic HERE
@@ -129,7 +130,7 @@ void PlayState::input()
 
 /** Rendering queue */
 bool PlayState::frameRenderingQueued(const Ogre::FrameEvent& evt)
-{
+{ 
 	mTrayMgr->frameRenderingQueued(evt);
 	if (!mTrayMgr->isDialogVisible())
 	{
@@ -318,6 +319,8 @@ void PlayState::finalize()
 
 	/** Dispose of Debug text **/
 	mFpsDebugText.finalize();
+
+	mRoot->removeFrameListener(this);
 }
 
 /** Get state Id */
@@ -423,7 +426,6 @@ bool PlayState::keyReleased(const OIS::KeyEvent& e)
 			mTrayMgr->hideLogo();
 		}
 		break;
-
 	// Cycle filtering mode
 	case OIS::KeyCode::KC_T:
 		switch (mDetailsPanel->getParamValue(9).asUTF8()[0])
@@ -447,13 +449,11 @@ bool PlayState::keyReleased(const OIS::KeyEvent& e)
 			newVal = "Bilinear";
 			tfo = Ogre::TFO_BILINEAR;
 			aniso = 1;
-		}
- 
+		} 
 		MaterialManager::getSingleton().setDefaultTextureFiltering(tfo);
 		MaterialManager::getSingleton().setDefaultAnisotropy(aniso);
 		mDetailsPanel->setParamValue(9, newVal);	
 		break;
-
 	// Cycle polygon rendering mode
 	case OIS::KeyCode::KC_R: 
 		switch (mCameraManager->getPolygonMode())
@@ -469,12 +469,10 @@ bool PlayState::keyReleased(const OIS::KeyEvent& e)
 		default:
 			newVal = "Solid";
 			pm = Ogre::PM_SOLID;
-		}
- 
+		} 
 		mCameraManager->setPolygonMode(pm);
 		mDetailsPanel->setParamValue(10, newVal);
 		break;
-
 	// Reload all textures
 	case OIS::KeyCode::KC_F5:
 		TextureManager::getSingleton().reloadAll();
