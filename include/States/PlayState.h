@@ -87,6 +87,7 @@ namespace WyvernsAssault
 		GuiDebugText mFpsDebugText;
 
 		OgreBites::SdkTrayManager* mTrayMgr;
+		OgreBites::ParamsPanel* mDetailsPanel;
 
 	};
 }

@@ -35,6 +35,7 @@ void PlayState::initialize()
 
 	this->mNextGameStateId = this->getStateId();
 
+	// Add Playstate as frame listener
 	mRoot->addFrameListener(this);
 
 	// Player manager constructor
@@ -74,8 +75,29 @@ void PlayState::initialize()
 
 	mCameraManager->gameCamera();
 
-	/** SdkTrays - PRUEBAS **/	
+	// SdkTrays Manager
 	mTrayMgr = new OgreBites::SdkTrayManager("InterfaceName", mWindow, mInputManager->getMouse());
+	mTrayMgr->hideCursor();
+	
+	// Create a params panel for displaying sample details
+	StringVector items;
+	items.push_back("Player X");
+	items.push_back("Player Y");
+	items.push_back("Player Z");
+	items.push_back("");
+	items.push_back("Mode");
+	items.push_back("Camera X");
+	items.push_back("Camera Y");
+	items.push_back("Camera Z");
+	items.push_back("");	
+	items.push_back("Filtering");
+	items.push_back("Poly Mode");
+ 
+	mDetailsPanel = mTrayMgr->createParamsPanel(OgreBites::TL_NONE, "DetailsPanel", 200, items);
+	mDetailsPanel->setParamValue(9, "Bilinear");
+	mDetailsPanel->setParamValue(10, "Solid");
+	mDetailsPanel->hide();
+
 }
 
 /** Load resources */
@@ -109,6 +131,19 @@ void PlayState::input()
 bool PlayState::frameRenderingQueued(const Ogre::FrameEvent& evt)
 {
 	mTrayMgr->frameRenderingQueued(evt);
+	if (!mTrayMgr->isDialogVisible())
+	{
+		if (mDetailsPanel->isVisible())   // if details panel is visible, then update its contents
+		{
+			mDetailsPanel->setParamValue(0, StringConverter::toString(mPlayerManager->getPlayerPosition().x));
+			mDetailsPanel->setParamValue(1, StringConverter::toString(mPlayerManager->getPlayerPosition().y));
+			mDetailsPanel->setParamValue(2, StringConverter::toString(mPlayerManager->getPlayerPosition().z));
+			mDetailsPanel->setParamValue(4, mCameraManager->getCameraMode().c_str());
+			mDetailsPanel->setParamValue(5, StringConverter::toString(mCameraManager->getCameraPosition().x));
+			mDetailsPanel->setParamValue(6, StringConverter::toString(mCameraManager->getCameraPosition().y));
+			mDetailsPanel->setParamValue(7, StringConverter::toString(mCameraManager->getCameraPosition().z));
+		}
+	}
 
 	return true;
 }
@@ -122,8 +157,7 @@ void PlayState::update(const float elapsedSeconds)
 	mFpsDebugText.frameStarted();
 	mFpsDebugText.setColor(ColourValue(1.0f, 1.0f, 1.0f, 1.0f));
 	mFpsDebugText.print(0.01f,0.01f,
-		"MODE: %s     PLAYER: %4.0f, %4.0f, %4.0f     CAMERA: %4.0f, %3.0f, %4.0f     FPS : %4.0f     CAMERA MODE: %s",
-		mCameraManager->getPolygonMode().c_str(),
+		"PLAYER: %4.0f, %4.0f, %4.0f     CAMERA: %4.0f, %3.0f, %4.0f     FPS : %4.0f     CAMERA MODE: %s",
 		mPlayerManager->getPlayerPosition().x, mPlayerManager->getPlayerPosition().y, mPlayerManager->getPlayerPosition().z,
 		mCameraManager->getCameraPosition().x, mCameraManager->getCameraPosition().y, mCameraManager->getCameraPosition().z,		
 		mWindow->getAverageFPS(),
@@ -314,33 +348,18 @@ void PlayState::resume()
 /** Buffered input - keyboard key clicked */
 bool PlayState::keyReleased(const OIS::KeyEvent& e)
 {
+	String newVal;
+	PolygonMode pm;
+	TextureFilterOptions tfo;
+	unsigned int aniso;
+
 	switch(e.key)
 	{
 	case OIS::KeyCode::KC_W:
 		this->mNextGameStateId = GameStateId::Ending;
 		break;
-	case OIS::KeyCode::KC_G:
+	case OIS::KeyCode::KC_O:
 		this->mNextGameStateId = GameStateId::GameOver;
-		break;
-	// Debug polygon mode
-	case OIS::KeyCode::KC_F1:		
-		mCameraManager->switchPolygonMode();
-		break;
-	// Debug text
-	case OIS::KeyCode::KC_F2:		
-		mFpsDebugText.toogle();
-		
-		if (mTrayMgr->areFrameStatsVisible())
-		{
-			mTrayMgr->hideFrameStats();
-			mTrayMgr->hideLogo();
-		}
-		else 
-		{
-			mTrayMgr->showFrameStats(OgreBites::TL_BOTTOMLEFT);
-			mTrayMgr->showLogo(OgreBites::TL_BOTTOMRIGHT);
-		}
-
 		break;
 	// Camera keys
 	case OIS::KeyCode::KC_1:		
@@ -362,10 +381,8 @@ bool PlayState::keyReleased(const OIS::KeyEvent& e)
 		mCameraManager->fixedCamera(3);
 		break;
 	case OIS::KeyCode::KC_7:
-
 		break;
 	case OIS::KeyCode::KC_8:
-
 		break;
 	case OIS::KeyCode::KC_9:
 		mCameraManager->travelCamera(0);
@@ -376,9 +393,94 @@ bool PlayState::keyReleased(const OIS::KeyEvent& e)
 	case OIS::KeyCode::KC_SPACE:
 		mCameraManager->nextCamera();		
 		break;
+	// Disable lights
 	case OIS::KeyCode::KC_L:
 		mLightsManager->disable();	
 		break;
+	//Debug text
+	case OIS::KeyCode::KC_F2:		
+		mFpsDebugText.toogle();
+		break;
+
+	// Toogle visibility of advanced stats frame
+	case OIS::KeyCode::KC_F:
+		mTrayMgr->toggleAdvancedFrameStats();
+		break;
+	// Toogle visibility of debugging details
+	case OIS::KeyCode::KC_G:		
+		if (mDetailsPanel->getTrayLocation() == OgreBites::TL_NONE)
+		{
+			mTrayMgr->moveWidgetToTray(mDetailsPanel, OgreBites::TL_TOPRIGHT, 0);
+			mDetailsPanel->show();
+			mTrayMgr->showFrameStats(OgreBites::TL_BOTTOMLEFT);
+			mTrayMgr->showLogo(OgreBites::TL_BOTTOMRIGHT);
+		}
+		else
+		{
+			mTrayMgr->removeWidgetFromTray(mDetailsPanel);
+			mDetailsPanel->hide();
+			mTrayMgr->hideFrameStats();
+			mTrayMgr->hideLogo();
+		}
+		break;
+
+	// Cycle filtering mode
+	case OIS::KeyCode::KC_T:
+		switch (mDetailsPanel->getParamValue(9).asUTF8()[0])
+		{
+		case 'B':
+			newVal = "Trilinear";
+			tfo = Ogre::TFO_TRILINEAR;
+			aniso = 1;
+			break;
+		case 'T':
+			newVal = "Anisotropic";
+			tfo = Ogre::TFO_ANISOTROPIC;
+			aniso = 8;
+			break;
+		case 'A':
+			newVal = "None";
+			tfo = Ogre::TFO_NONE;
+			aniso = 1;
+			break;
+		default:
+			newVal = "Bilinear";
+			tfo = Ogre::TFO_BILINEAR;
+			aniso = 1;
+		}
+ 
+		MaterialManager::getSingleton().setDefaultTextureFiltering(tfo);
+		MaterialManager::getSingleton().setDefaultAnisotropy(aniso);
+		mDetailsPanel->setParamValue(9, newVal);	
+		break;
+
+	// Cycle polygon rendering mode
+	case OIS::KeyCode::KC_R: 
+		switch (mCameraManager->getPolygonMode())
+		{
+		case Ogre::PM_SOLID:
+			newVal = "Wireframe";
+			pm = Ogre::PM_WIREFRAME;
+			break;
+		case Ogre::PM_WIREFRAME:
+			newVal = "Points";
+			pm = Ogre::PM_POINTS;
+			break;
+		default:
+			newVal = "Solid";
+			pm = Ogre::PM_SOLID;
+		}
+ 
+		mCameraManager->setPolygonMode(pm);
+		mDetailsPanel->setParamValue(10, newVal);
+		break;
+
+	// Reload all textures
+	case OIS::KeyCode::KC_F5:
+		TextureManager::getSingleton().reloadAll();
+		break;
+
 	}
+
 	return true;
 }
