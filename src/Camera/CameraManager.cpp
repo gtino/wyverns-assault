@@ -15,7 +15,7 @@ CameraManager::CameraManager(SceneManager* sceneManager, RenderWindow* renderWin
 	mCamFixedDirMode = NULL;
 	mCamFixedMode = NULL;
 
-	distance = 1200;
+	distance = 300;
 }
 
 CameraManager::~CameraManager()
@@ -42,7 +42,7 @@ void CameraManager::initialize(SceneNode* player)
 	// Trough target
 	SceneNode* centerNode = mSceneManager->getSceneNode("Center");
 	mCamThroughMode = new CCS::ThroughTargetCameraMode(mCameraCS, distance);
-	mCamThroughMode->setCameraFocusPosition(centerNode->_getDerivedPosition() - Ogre::Vector3(0, 1000, 0));
+	mCamThroughMode->setCameraFocusPosition(centerNode->_getDerivedPosition() - Ogre::Vector3(0, 250, 0));
     mCameraCS->registerCameraMode("Through Target", mCamThroughMode);
 
 	// Free mode
@@ -61,7 +61,7 @@ void CameraManager::initialize(SceneNode* player)
 	mCameraCS->registerCameraMode("Chase", mCamChaseMode);
 
 	// Plane binded
-	Plane* mPlane = new Plane(Vector3(0, -1, -1), Vector3(0,0,4000));
+	Plane* mPlane = new Plane(Vector3(0, -1, -1), Vector3(0,0,1000));
     mCamPlaneMode = new CCS::PlaneBindedCameraMode(mCameraCS, *mPlane);
 	mCameraCS->registerCameraMode("Plane Binded", mCamPlaneMode);
 
@@ -107,14 +107,14 @@ void CameraManager::gameCamera()
 {
 	mCameraCS->setCurrentCameraMode(mCamThroughMode);
 	mCamera->setNearClipDistance(1);
-	mCamera->setFarClipDistance(35000);
+	mCamera->setFarClipDistance(15000);
 }
 
 void CameraManager::fpsCamera()
 {
 	mCameraCS->setCurrentCameraMode(mCamFreeMode);
 	mCamera->setNearClipDistance(1);
-	mCamera->setFarClipDistance(35000);
+	mCamera->setFarClipDistance(15000);
 }
 
 void CameraManager::fixedCamera(int id)
@@ -123,21 +123,21 @@ void CameraManager::fixedCamera(int id)
 	sprintf (cameraName, "Fixed %d", id);
 	mCameraCS->setCurrentCameraMode(mCameraCS->getCameraMode(cameraName));
 	mCamera->setNearClipDistance(500);
-	mCamera->setFarClipDistance(35000);
+	mCamera->setFarClipDistance(15000);
 }
 
 void CameraManager::travelCamera(int id)
 {
 	mCameraCS->setCurrentCameraMode(mCamChaseMode);
 	mCamera->setNearClipDistance(1);
-	mCamera->setFarClipDistance(35000);
+	mCamera->setFarClipDistance(15000);
 }
 
 void CameraManager::scenarioCamera()
 {
 	mCameraCS->setCurrentCameraMode(mCamFixedDirMode);
 	mCamera->setNearClipDistance(1);
-	mCamera->setFarClipDistance(35000);	
+	mCamera->setFarClipDistance(15000);	
 }
 
 /** Fixed cameras functions **/
