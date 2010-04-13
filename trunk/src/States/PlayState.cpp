@@ -41,7 +41,7 @@ void PlayState::initialize()
 
 	// Player manager constructor
 	mPlayerManager = new PlayerManager();
-	mPlayerManager->initialize("redWyvern","redwyvern.mesh",mGraphicsManager->getSceneManager(),Vector3(600,680,3400));
+	mPlayerManager->initialize("redWyvern","redwyvern.mesh",mGraphicsManager->getSceneManager(),Vector3(150,0,850));
 
 	// Camera manager constructor
 	mCameraManager = new CameraManager(mGraphicsManager->getSceneManager(), mGraphicsManager->getRenderWindow(), mViewport);
@@ -94,7 +94,6 @@ void PlayState::initialize()
 	mDetailsPanel->setParamValue(9, "Bilinear");
 	mDetailsPanel->setParamValue(10, "Solid");
 	mDetailsPanel->hide();
-
 }
 
 /** Load resources */
