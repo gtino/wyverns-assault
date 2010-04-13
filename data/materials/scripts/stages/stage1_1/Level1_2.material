@@ -1274,6 +1274,9 @@ material SilhouetteTree1
 	{
 		pass
 		{
+		  // Makes the pixel shader alpha output be used for alpha blending
+      scene_blend alpha_blend
+      
 			vertex_program_ref ToonVP
 			{
 				param_named shininess float4 35.0 1.0 1.0 1.0
@@ -1368,6 +1371,9 @@ material Castle1
 	{
 		pass
 		{
+      // Makes the pixel shader alpha output be used for alpha blending
+      scene_blend alpha_blend
+		
 			vertex_program_ref ToonVP
 			{
 				param_named shininess float4 35.0 1.0 1.0 1.0
@@ -1376,8 +1382,8 @@ material Castle1
 			fragment_program_ref ToonFP
 			{
 			  param_named ambient float4 0 0 0 1
-        param_named diffuse float4 0.244 0.244 0.244 1
-        param_named specular float4 0.4 0.4 0.4 1
+        param_named diffuse float4 1 1 1 1
+        param_named specular float4 0 0 0 1
 			}
 
       // Textures for shades
@@ -1392,6 +1398,8 @@ material Castle1
 			texture_unit
 			{
 				texture Castle1.png
+				tex_address_mode clamp
+				filtering none
 			}
 		}
 	}
@@ -1420,6 +1428,9 @@ material SilhouetteTree2
 	{
 		pass
 		{
+		  // Makes the pixel shader alpha output be used for alpha blending
+      scene_blend alpha_blend
+      
 			vertex_program_ref ToonVP
 			{
 				param_named shininess float4 35.0 1.0 1.0 1.0
