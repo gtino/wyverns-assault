@@ -12,6 +12,7 @@ material Ground
 			
 			fragment_program_ref ToonFP
 			{
+        param_named ambient float4 0.3 0.239 0.195 1
         param_named diffuse float4 0.611 0.478 0.248 1
         param_named specular float4 0.4 0.4 0.4 1
 			}
@@ -54,6 +55,7 @@ material Grass
 			
 			fragment_program_ref ToonFP
 			{
+        param_named ambient float4 0 0 0 1
         param_named diffuse float4 0.478431 0.8 0.156863 1
         param_named specular float4 0.33 0.33 0.33 1
 			}
@@ -97,6 +99,7 @@ material Chalk
 			
 			fragment_program_ref ToonFP
 			{
+        param_named ambient float4 0 0 0 1
         param_named diffuse float4 0.9 0.9 0.9 1
         param_named specular float4 0.33 0.33 0.33 1
 			}
@@ -139,6 +142,7 @@ material Tree2
 			
 			fragment_program_ref ToonFP
 			{
+        param_named ambient float4 0 0 0 1
         param_named diffuse float4 0.244 0.244 0.244 1
         param_named specular float4 0.4 0.4 0.4 1
 			}
@@ -191,6 +195,7 @@ material Tree1
 			
 			fragment_program_ref ToonFP
 			{
+        param_named ambient float4 0 0 0 1
         param_named diffuse float4 0.244 0.244 0.244 1
         param_named specular float4 0.4 0.4 0.4 1
 			}
@@ -243,6 +248,7 @@ material BonBonTree
 			
 			fragment_program_ref ToonFP
 			{
+        param_named ambient float4 0.31 0.478 0.3 1
         param_named diffuse float4 0.566 0.743 0.381 1
         param_named specular float4 0.4 0.4 0.4 1
 			}
@@ -285,6 +291,7 @@ material PillTree
 			
 			fragment_program_ref ToonFP
 			{
+        param_named ambient float4 0.062 0.221 0.133 1
         param_named diffuse float4 0.168 0.416 0.265 1
         param_named specular float4 0.4 0.4 0.4 1
 			}
@@ -327,6 +334,7 @@ material VulcanicRock
 			
 			fragment_program_ref ToonFP
 			{
+        param_named ambient float4 0.159 0.159 0.159 1
         param_named diffuse float4 0.407 0.407 0.407 1
         param_named specular float4 0.4 0.4 0.4 1
 			}
@@ -369,6 +377,7 @@ material WaterPool
 			
 			fragment_program_ref ToonFP
 			{
+        param_named ambient float4 0.139 0.188 0.396 1
         param_named diffuse float4 0.435294 0.619608 0.654902 1
         param_named specular float4 0.33 0.752 0.673 1
 			}
@@ -412,6 +421,7 @@ material ToxicWater
 			
 			fragment_program_ref ToonFP
 			{
+        param_named ambient float4 0 0 0 1
         param_named diffuse float4 0.509804 0.654902 0.047059 1
         param_named specular float4 0.33 0.33 0.33 1
 			}
@@ -455,6 +465,7 @@ material SilverConcrete
 			
 			fragment_program_ref ToonFP
 			{
+			  param_named ambient float4 0 0 0 1
         param_named diffuse float4 0.862745 0.862745 0.862745 1
         param_named specular float4 0.33 0.33 0.33 1
 			}
@@ -497,6 +508,7 @@ material ToxicWasteHouse
 			
 			fragment_program_ref ToonFP
 			{
+			  param_named ambient float4 0 0 0 1
         param_named diffuse float4 0.244 0.244 0.244 1
         param_named specular float4 0.33 0.33 0.33 1
 			}
@@ -538,6 +550,7 @@ material TubeOrangeRed
 			
 			fragment_program_ref ToonFP
 			{
+			  param_named ambient float4 0 0 0 1
         param_named diffuse float4 1 0.270588 0 1
         param_named specular float4  0.33 0.33 0.33 1
 			}
@@ -580,6 +593,7 @@ material TubeYellow
 			
 			fragment_program_ref ToonFP
 			{
+			  param_named ambient float4 0 0 0 1
         param_named diffuse float4 1 1 0 1
         param_named specular float4 0.33 0.33 0.33 1
 			}
@@ -622,6 +636,7 @@ material WheatLightGold
 			
 			fragment_program_ref ToonFP
 			{
+			  param_named ambient float4 0 0 0 1
         param_named diffuse float4 1 1 0 1
         param_named specular float4 0.33 0.33 0.33 1
 			}
@@ -664,6 +679,7 @@ material WheatDarkGold
 			
 			fragment_program_ref ToonFP
 			{
+			  param_named ambient float4 0 0 0 1
         param_named diffuse float4 0.8 0.8 0 1
         param_named specular float4 0.33 0.33 0.33 1
 			}
@@ -706,6 +722,7 @@ material WoodHouse
 			
 			fragment_program_ref ToonFP
 			{
+			  param_named ambient float4 0.416 0.327 0 1
         param_named diffuse float4 0.7 0.69 0.177 1
         param_named specular float4 0.4 0.4 0.4 1
 			}
@@ -747,6 +764,7 @@ material Volcano
 			
 			fragment_program_ref ToonFP
 			{
+			  param_named ambient float4 0.097 0 0 1
         param_named diffuse float4 0.124 0.124 0.124 1
         param_named specular float4 0.2 0.2 0.2 1
 			}
@@ -788,6 +806,7 @@ material _Color_002_
 			
 			fragment_program_ref ToonFP
 			{
+			  param_named ambient float4 0 0 0 1
         param_named diffuse float4 0.776471 0.776471 0.776471 1
         param_named specular float4 0.33 0.33 0.33 1
 			}
@@ -830,6 +849,7 @@ material ChimneyCoal
 			
 			fragment_program_ref ToonFP
 			{
+			  param_named ambient float4 0 0 0 1
         param_named diffuse float4 0 0 0 1
         param_named specular float4 0.33 0.33 0.33 1
 			}
@@ -872,6 +892,7 @@ material RedStripes
 			
 			fragment_program_ref ToonFP
 			{
+			  param_named ambient float4 0 0 0 1
         param_named diffuse float4 1 0 0 1
         param_named specular float4 0.33 0.33 0.33 1
 			}
@@ -914,6 +935,7 @@ material Concrete
 			
 			fragment_program_ref ToonFP
 			{
+			  param_named ambient float4 0.3 0.3 0.3 1
         param_named diffuse float4 0.7 0.7 0.7 1
         param_named specular float4 0.4 0.4 0.4 1
 			}
@@ -955,6 +977,7 @@ material SunHillMaterial
 			
 			fragment_program_ref ToonFP
 			{
+			  param_named ambient float4 0 0 0 1
         param_named diffuse float4 0.244 0.244 0.244 1
         param_named specular float4 0.4 0.4 0.4 1
 			}
@@ -1006,6 +1029,7 @@ material StoneHill
 			
 			fragment_program_ref ToonFP
 			{
+			  param_named ambient float4 0.168 0.3 0.504 1
         param_named diffuse float4 0.354 0.434 0.593 1
         param_named specular float4 0.389 0.477 0.652 1
 			}
@@ -1047,6 +1071,7 @@ material PineTree
 			
 			fragment_program_ref ToonFP
 			{
+			  param_named ambient float4 0.363 0.177 0.398 1
         param_named diffuse float4 0.575 0.363 0.646 1
         param_named specular float4 0.4 0.4 0.4 1
 			}
@@ -1088,6 +1113,7 @@ material Wood
 			
 			fragment_program_ref ToonFP
 			{
+			  param_named ambient float4 0.3 0.106 0 1
         param_named diffuse float4 0.425 0.265 0.088 1
         param_named specular float4 0.4 0.4 0.4 1
 			}
@@ -1129,6 +1155,7 @@ material TreeTop
 			
 			fragment_program_ref ToonFP
 			{
+			  param_named ambient float4 0.142 0.3 0 1
         param_named diffuse float4 0.451 0.743 0.15 1
         param_named specular float4 0.4 0.4 0.4 1
 			}
@@ -1170,6 +1197,7 @@ material MuddyHill
 			
 			fragment_program_ref ToonFP
 			{
+			  param_named ambient float4 0.159 0.097 0.009 1
         param_named diffuse float4 0.398 0.195 0 1
         param_named specular float4 0.4 0.4 0.4 1
 			}
@@ -1211,6 +1239,7 @@ material HighHills
 			
 			fragment_program_ref ToonFP
 			{
+			  param_named ambient float4 0.133 0.3 0.3 1
         param_named diffuse float4 0.195 0.496 0.345 1
         param_named specular float4 0.4 0.4 0.4 1
 			}
@@ -1252,6 +1281,7 @@ material SilhouetteTree1
 			
 			fragment_program_ref ToonFP
 			{
+			  param_named ambient float4 0 0 0 1
         param_named diffuse float4 0.244 0.244 0.244 1
         param_named specular float4 0.4 0.4 0.4 1
 			}
@@ -1303,6 +1333,7 @@ material RedTree
 			
 			fragment_program_ref ToonFP
 			{
+			  param_named ambient float4 0.628 0.062 0.142 1
         param_named diffuse float4 0.867 0.115 0.053 1
         param_named specular float4 0.4 0.4 0.4 1
 			}
@@ -1344,6 +1375,7 @@ material Castle1
 			
 			fragment_program_ref ToonFP
 			{
+			  param_named ambient float4 0 0 0 1
         param_named diffuse float4 0.244 0.244 0.244 1
         param_named specular float4 0.4 0.4 0.4 1
 			}
@@ -1395,6 +1427,7 @@ material SilhouetteTree2
 			
 			fragment_program_ref ToonFP
 			{
+			  param_named ambient float4 0 0 0 1
         param_named diffuse float4 0.244 0.244 0.244 1
         param_named specular float4 0.4 0.4 0.4 1
 			}
@@ -1446,6 +1479,7 @@ material Hill
 			
 			fragment_program_ref ToonFP
 			{
+			  param_named ambient float4 0 0 0 1
         param_named diffuse float4 0.244 0.244 0.244 1
         param_named specular float4 0.33 0.33 0.33 1
 			}
@@ -1497,6 +1531,7 @@ material MelonHill
 			
 			fragment_program_ref ToonFP
 			{
+			  param_named ambient float4 0 0 0 1
         param_named diffuse float4 0.244 0.244 0.244 1
         param_named specular float4 0.4 0.4 0.4 1
 			}
@@ -1548,6 +1583,7 @@ material BridgeOfDeathStone
 			
 			fragment_program_ref ToonFP
 			{
+			  param_named ambient float4 0 0 0 1
         param_named diffuse float4 MelonStucco.png 1
         param_named specular float4 0.33 0.33 0.33 1
 			}
@@ -1590,6 +1626,7 @@ material BigRock
 			
 			fragment_program_ref ToonFP
 			{
+			  param_named ambient float4 0.487 0 0 1
         param_named diffuse float4 0.124 0.124 0.124 1
         param_named specular float4 0.2 0.2 0.2 1
 			}
