@@ -17,4 +17,9 @@ fragment_program ToonFP cg
 	source Toon.cg
 	entry_point toon_fp
 	profiles ps_2_0 arbfp1 fp20
+	
+	default_params
+  {
+    param_named_auto ambientIn ambient_light_colour
+  }
 }

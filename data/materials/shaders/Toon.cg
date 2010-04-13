@@ -51,6 +51,8 @@ void toon_fp(
 			 
 			 out float4 colour	: COLOR,
 			 
+			 uniform float4 ambientIn,
+			 uniform float4 ambient,
 			 uniform float4 diffuse,
 			 uniform float4 specular,
 			 
@@ -68,7 +70,7 @@ void toon_fp(
 
 	colour =  edge * ((diffuse * diffuseIn) +
             (tex2D(textureColor,uv)) + 
-            (specular * specularIn));
+            (specular * specularIn) + (ambient*ambientIn));
 }
 			 
 			 
