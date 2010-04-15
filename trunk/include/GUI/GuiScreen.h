@@ -47,7 +47,8 @@ namespace WyvernsAssault
 		GameOverGui		= 4,
 		EndingGui		= 5,
 		OutroGui		= 6,
-		CreditsGui		= 7
+		CreditsGui		= 7,
+		PauseGui		= 8,
 	};
 
 	/** The widget map type */

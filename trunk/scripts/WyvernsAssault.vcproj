@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="Windows-1252"?>
 <VisualStudioProject
 	ProjectType="Visual C++"
-	Version="9.00"
+	Version="9,00"
 	Name="WyvernsAssault"
 	ProjectGUID="{DA8BACB6-E0B2-465D-84CE-60A33C2E795E}"
 	RootNamespace="WyvernsAssault"
@@ -241,6 +241,10 @@
 				</File>
 				<File
 					RelativePath="..\src\States\OutroState.cpp"
+					>
+				</File>
+				<File
+					RelativePath="..\src\States\PauseState.cpp"
 					>
 				</File>
 				<File
@@ -491,6 +495,10 @@
 				</File>
 				<File
 					RelativePath="..\include\States\OutroState.h"
+					>
+				</File>
+				<File
+					RelativePath="..\include\States\PauseState.h"
 					>
 				</File>
 				<File

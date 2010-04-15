@@ -25,7 +25,10 @@ void GuiScreen::addWidget(GuiWidget* widget, GuiWidgetId widgetId)
 	mWidgetMap[widgetId] = widget;
 
 	//// Attach background to the scene
-	SceneNode* n = mSceneManager->getRootSceneNode()->createChildSceneNode("Widget_"+widgetId);
+	char widgetNode[40];
+	sprintf(widgetNode, "Widget_%i_%i", mGuiScreenId, widgetId);
+
+	SceneNode* n = mSceneManager->getRootSceneNode()->createChildSceneNode(widgetNode);
 	n->attachObject(widget->getRectangle2D());
 }
 
