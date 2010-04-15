@@ -37,7 +37,7 @@ bool GraphicsManager::initialize()
 	bool carryOn = configure();
 	if (!carryOn) return false;
 
-	// Pcik a scene manager
+	// Pick a scene manager
 	chooseSceneManager();
 
 	// Set default mipmap level (NB some APIs ignore this)
@@ -165,7 +165,8 @@ void GraphicsManager::unloadResources()
 void GraphicsManager::chooseSceneManager(void)
 {
 	// Get the SceneManager, in this case a generic one
-	mSceneManager = mRoot->createSceneManager(ST_GENERIC);
+	mSceneManager = mRoot->createSceneManager(ST_GENERIC, "Default");
+	mSceneManager = mRoot->createSceneManager(ST_EXTERIOR_CLOSE, "Game");
 }
 
 Root* GraphicsManager::getRoot()

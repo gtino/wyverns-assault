@@ -21,7 +21,27 @@ PauseState::~PauseState()
 /** Initialize current state */
 void PauseState::initialize()
 {
-	BaseState::initialize();
+	this->mNextGameStateId = this->getStateId();
+
+	mGuiScreen = 0;
+
+	mRoot = mGraphicsManager->getRoot();
+
+	mWindow = mGraphicsManager->getRenderWindow();
+
+	mSceneManager = Root::getSingleton().getSceneManager("Default");
+
+	//mRoot->_pushCurrentSceneManager(mSceneManager);
+
+	if(mSceneManager->hasCamera( "DefaultCamera" ))
+		mCamera = mSceneManager->getCamera( "DefaultCamera" );
+	else
+	{
+		mCamera = mSceneManager->createCamera( "DefaultCamera" );
+		mViewport = mWindow->addViewport( mCamera );
+		mCamera->setAspectRatio(Real(mViewport->getActualWidth()) / Real(mViewport->getActualHeight()));
+		mViewport->setBackgroundColour( Ogre::ColourValue( 0.95, 0.95, 0.95 ) );
+	}
 }
 
 /** Load resources */
@@ -95,7 +115,20 @@ void PauseState::unload()
 /** Destroy the state */
 void PauseState::finalize()
 {
-	BaseState::finalize();
+	if(mSceneManager)
+	{
+		mSceneManager->clearScene();
+		mSceneManager->destroyAllCameras();		
+	}
+
+	if(mRoot)
+	{
+		mRoot->getAutoCreatedWindow()->removeAllViewports();
+	}
+
+	/*mSceneManager = mRoot->_getCurrentSceneManager();
+	mRoot->_popCurrentSceneManager(mSceneManager);*/
+	mSceneManager = mRoot->getSceneManager("Game");
 }
 
 /** Get state Id */
