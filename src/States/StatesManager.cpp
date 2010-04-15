@@ -3,7 +3,7 @@
 using namespace WyvernsAssault;
 
 StatesManager::StatesManager()
-: mCurrentStateId ( GameStateId::SplashScreen )
+: mCurrentStateId ( GameStateId::Play )
 {
 	//
 	// TODO Constructor
@@ -48,6 +48,7 @@ void StatesManager::initialize(GraphicsManager& graphicsManager, InputManager& i
 	this->mStates[GameStateId::Credits]			= new CreditsState(graphicsManager, inputManager, audioManager);
 	this->mStates[GameStateId::Outro]			= new OutroState(graphicsManager, inputManager, audioManager);
 	this->mStates[GameStateId::Options]			= new OptionsState(graphicsManager, inputManager, audioManager);
+	this->mStates[GameStateId::Pause]			= new PauseState(graphicsManager, inputManager, audioManager);
 
 	//
 	// Let's start with the first state!
@@ -92,11 +93,13 @@ bool StatesManager::loop(const float elapsedSeconds)
 		// 
 		GameStateId nextStateId = mCurrentState->getNextStateId();
 
+
 		//
 		// Special case, we just exit the application
 		//
 		if(nextStateId == GameStateId::Exit)
 			return false;
+
 
 		if(mCurrentStateId != nextStateId)
 		{
@@ -109,6 +112,15 @@ bool StatesManager::loop(const float elapsedSeconds)
 			// Perform the state change
 			//
 			this->changeState(newState);
+			/*if(nextStateId == GameStateId::Pause)
+				this->pushState(newState);
+			else
+			{
+				if(mCurrentStateId==Pause && nextStateId == Play)
+					this->popState();
+				else
+					this->changeState(newState);
+			}*/
 		}
 
 		//
