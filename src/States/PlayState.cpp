@@ -147,96 +147,93 @@ bool PlayState::frameRenderingQueued(const Ogre::FrameEvent& evt)
 /** Update internal stuff */
 void PlayState::update(const float elapsedSeconds)
 {
-	if (!mIsPaused)
+	// Movement
+	if(mCameraManager->getCameraMode() == "Free")
 	{
-		// Movement
-		if(mCameraManager->getCameraMode() == "Free")
+		// Free camera mode movement
+		CCS::CameraControlSystem* cameraCS = mCameraManager->getCameraCS();
+		CCS::FreeCameraMode* freeCameraMode = (CCS::FreeCameraMode*)cameraCS->getCameraMode("Free");
+
+		// Keyboard movement
+		if(this->mInputManager->getKeyboard()->isKeyDown(OIS::KeyCode::KC_RIGHT))
 		{
-			// Free camera mode movement
-			CCS::CameraControlSystem* cameraCS = mCameraManager->getCameraCS();
-			CCS::FreeCameraMode* freeCameraMode = (CCS::FreeCameraMode*)cameraCS->getCameraMode("Free");
-
-			// Keyboard movement
-			if(this->mInputManager->getKeyboard()->isKeyDown(OIS::KeyCode::KC_RIGHT))
-			{
-				freeCameraMode->goRight();
-			}
-			if(this->mInputManager->getKeyboard()->isKeyDown(OIS::KeyCode::KC_LEFT))
-			{
-				freeCameraMode->goLeft();
-			}
-			if(this->mInputManager->getKeyboard()->isKeyDown(OIS::KeyCode::KC_UP))
-			{
-				freeCameraMode->goForward();
-			}
-			if(this->mInputManager->getKeyboard()->isKeyDown(OIS::KeyCode::KC_DOWN))
-			{
-				freeCameraMode->goBackward();
-			}
-			if(this->mInputManager->getKeyboard()->isKeyDown(OIS::KeyCode::KC_PGUP))
-			{
-				freeCameraMode->goUp();
-			}
-			if(this->mInputManager->getKeyboard()->isKeyDown(OIS::KeyCode::KC_PGDOWN))
-			{
-				freeCameraMode->goDown();
-			}
-
-			// Mouse movement
-			const OIS::MouseState &ms = this->mInputManager->getMouse()->getMouseState();
-			freeCameraMode->yaw(ms.X.rel);
-			freeCameraMode->pitch(ms.Y.rel);
-
-			mCameraManager->updateCamera(elapsedSeconds);
+			freeCameraMode->goRight();
 		}
-		else
+		if(this->mInputManager->getKeyboard()->isKeyDown(OIS::KeyCode::KC_LEFT))
 		{
-			// 8 directions move
-			if(this->mInputManager->getKeyboard()->isKeyDown(OIS::KeyCode::KC_RIGHT) && this->mInputManager->getKeyboard()->isKeyDown(OIS::KeyCode::KC_UP))
-			{
-				mPlayerManager->move(0.75,0,-0.75);
-			}
-			else if(this->mInputManager->getKeyboard()->isKeyDown(OIS::KeyCode::KC_RIGHT) && this->mInputManager->getKeyboard()->isKeyDown(OIS::KeyCode::KC_DOWN))
-			{
-				mPlayerManager->move(0.75,0,0.75);
-			}
-			else if(this->mInputManager->getKeyboard()->isKeyDown(OIS::KeyCode::KC_LEFT) && this->mInputManager->getKeyboard()->isKeyDown(OIS::KeyCode::KC_UP))
-			{
-				mPlayerManager->move(-0.75,0,-0.75);
-			}
-			else if(this->mInputManager->getKeyboard()->isKeyDown(OIS::KeyCode::KC_LEFT) && this->mInputManager->getKeyboard()->isKeyDown(OIS::KeyCode::KC_DOWN))
-			{
-				mPlayerManager->move(-0.75,0,0.75);
-			}
-			else if(this->mInputManager->getKeyboard()->isKeyDown(OIS::KeyCode::KC_RIGHT))
-			{
-				mPlayerManager->move(1,0,0);
-			}
-			else if(this->mInputManager->getKeyboard()->isKeyDown(OIS::KeyCode::KC_LEFT))
-			{
-				mPlayerManager->move(-1,0,0);
-			}
-			else if(this->mInputManager->getKeyboard()->isKeyDown(OIS::KeyCode::KC_UP))
-			{
-				mPlayerManager->move(0,0,-1);
-			}
-			else if(this->mInputManager->getKeyboard()->isKeyDown(OIS::KeyCode::KC_DOWN))
-			{
-				mPlayerManager->move(0,0,1);
-			}
+			freeCameraMode->goLeft();
+		}
+		if(this->mInputManager->getKeyboard()->isKeyDown(OIS::KeyCode::KC_UP))
+		{
+			freeCameraMode->goForward();
+		}
+		if(this->mInputManager->getKeyboard()->isKeyDown(OIS::KeyCode::KC_DOWN))
+		{
+			freeCameraMode->goBackward();
+		}
+		if(this->mInputManager->getKeyboard()->isKeyDown(OIS::KeyCode::KC_PGUP))
+		{
+			freeCameraMode->goUp();
+		}
+		if(this->mInputManager->getKeyboard()->isKeyDown(OIS::KeyCode::KC_PGDOWN))
+		{
+			freeCameraMode->goDown();
 		}
 
-		// Zoom for Fixed Direction camera mode (DEBUG only)
-		if(this->mInputManager->getKeyboard()->isKeyDown(OIS::KeyCode::KC_M))
+		// Mouse movement
+		const OIS::MouseState &ms = this->mInputManager->getMouse()->getMouseState();
+		freeCameraMode->yaw(ms.X.rel);
+		freeCameraMode->pitch(ms.Y.rel);
+
+		mCameraManager->updateCamera(elapsedSeconds);
+	}
+	else
+	{
+		// 8 directions move
+		if(this->mInputManager->getKeyboard()->isKeyDown(OIS::KeyCode::KC_RIGHT) && this->mInputManager->getKeyboard()->isKeyDown(OIS::KeyCode::KC_UP))
 		{
-			mCameraManager->zoom(-1);
-			mCameraManager->updateCamera(elapsedSeconds);
+			mPlayerManager->move(0.75,0,-0.75);
 		}
-		if(this->mInputManager->getKeyboard()->isKeyDown(OIS::KeyCode::KC_N))
+		else if(this->mInputManager->getKeyboard()->isKeyDown(OIS::KeyCode::KC_RIGHT) && this->mInputManager->getKeyboard()->isKeyDown(OIS::KeyCode::KC_DOWN))
 		{
-			mCameraManager->zoom(1);
-			mCameraManager->updateCamera(elapsedSeconds);
+			mPlayerManager->move(0.75,0,0.75);
 		}
+		else if(this->mInputManager->getKeyboard()->isKeyDown(OIS::KeyCode::KC_LEFT) && this->mInputManager->getKeyboard()->isKeyDown(OIS::KeyCode::KC_UP))
+		{
+			mPlayerManager->move(-0.75,0,-0.75);
+		}
+		else if(this->mInputManager->getKeyboard()->isKeyDown(OIS::KeyCode::KC_LEFT) && this->mInputManager->getKeyboard()->isKeyDown(OIS::KeyCode::KC_DOWN))
+		{
+			mPlayerManager->move(-0.75,0,0.75);
+		}
+		else if(this->mInputManager->getKeyboard()->isKeyDown(OIS::KeyCode::KC_RIGHT))
+		{
+			mPlayerManager->move(1,0,0);
+		}
+		else if(this->mInputManager->getKeyboard()->isKeyDown(OIS::KeyCode::KC_LEFT))
+		{
+			mPlayerManager->move(-1,0,0);
+		}
+		else if(this->mInputManager->getKeyboard()->isKeyDown(OIS::KeyCode::KC_UP))
+		{
+			mPlayerManager->move(0,0,-1);
+		}
+		else if(this->mInputManager->getKeyboard()->isKeyDown(OIS::KeyCode::KC_DOWN))
+		{
+			mPlayerManager->move(0,0,1);
+		}
+	}
+
+	// Zoom for Fixed Direction camera mode (DEBUG only)
+	if(this->mInputManager->getKeyboard()->isKeyDown(OIS::KeyCode::KC_M))
+	{
+		mCameraManager->zoom(-1);
+		mCameraManager->updateCamera(elapsedSeconds);
+	}
+	if(this->mInputManager->getKeyboard()->isKeyDown(OIS::KeyCode::KC_N))
+	{
+		mCameraManager->zoom(1);
+		mCameraManager->updateCamera(elapsedSeconds);
 	}
 }
 
@@ -319,16 +316,15 @@ void PlayState::pause()
 	//
 	// TODO : Pause state
 	//
-	mIsPaused = true;
 }
 
 /** Called when the state has to be resumed (from pause) */
 void PlayState::resume()
 {
 	//
-	// TODO : Resume state
+	// TODO : Resume state	
 	//
-	mIsPaused = false;
+	this->mNextGameStateId = this->getStateId();
 }
 
 /** Buffered input - keyboard key clicked */
@@ -367,8 +363,10 @@ bool PlayState::keyReleased(const OIS::KeyEvent& e)
 		mCameraManager->fixedCamera(3);
 		break;
 	case OIS::KeyCode::KC_7:
+
 		break;
 	case OIS::KeyCode::KC_8:
+
 		break;
 	case OIS::KeyCode::KC_9:
 		mCameraManager->travelCamera(0);
@@ -383,22 +381,10 @@ bool PlayState::keyReleased(const OIS::KeyEvent& e)
 	case OIS::KeyCode::KC_L:
 		mLightsManager->disable();	
 		break;
-
 	// Pause menu
-	case OIS::KeyCode::KC_P:
-		if (!mTrayMgr->isDialogVisible()) 
-		{
-			pause();
-			mTrayMgr->showOkDialog("Pause", "Pause sample menu");
-			mTrayMgr->hideCursor();
-		}
-		else
-		{
-			mTrayMgr->closeDialog();
-			resume();
-		}
+	case OIS::KeyCode::KC_P:		
+		this->mNextGameStateId = GameStateId::Pause;
 		break;
-
 	// Toogle visibility of advanced stats frame
 	case OIS::KeyCode::KC_F:
 		mTrayMgr->toggleAdvancedFrameStats();

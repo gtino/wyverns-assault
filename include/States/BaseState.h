@@ -60,7 +60,9 @@ namespace WyvernsAssault
 		Outro			= 6,
 		Credits			= 7,
 		Options			= 8,
-		Exit			= 9 // Special state, it is just a flag to exit the application
+		Pause			= 9,
+		Exit			= 10 // Special state, it is just a flag to exit the application
+		
 	};
 
 	/**
@@ -103,9 +105,11 @@ namespace WyvernsAssault
 		/** Get NEXT state Id */
 		GameStateId getNextStateId() { return mNextGameStateId; };
 
+		bool mIsPaused;
+
 	protected:
 		/** State is paused */
-		bool mIsPaused;
+		//bool mIsPaused;
 		/** State is active */
 		bool mIsActive;
 		/** State is dead */
