@@ -21,27 +21,7 @@ PauseState::~PauseState()
 /** Initialize current state */
 void PauseState::initialize()
 {
-	this->mNextGameStateId = this->getStateId();
-
-	mGuiScreen = 0;
-
-	mRoot = mGraphicsManager->getRoot();
-
-	mWindow = mGraphicsManager->getRenderWindow();
-
-	mSceneManager = Root::getSingleton().getSceneManager("Default");
-
-	//mRoot->_pushCurrentSceneManager(mSceneManager);
-
-	if(mSceneManager->hasCamera( "DefaultCamera" ))
-		mCamera = mSceneManager->getCamera( "DefaultCamera" );
-	else
-	{
-		mCamera = mSceneManager->createCamera( "DefaultCamera" );
-		mViewport = mWindow->addViewport( mCamera );
-		mCamera->setAspectRatio(Real(mViewport->getActualWidth()) / Real(mViewport->getActualHeight()));
-		mViewport->setBackgroundColour( Ogre::ColourValue( 0.95, 0.95, 0.95 ) );
-	}
+	BaseState::initialize();
 }
 
 /** Load resources */
@@ -55,7 +35,7 @@ void PauseState::load()
 	GuiBackground* guiBackground = new GuiBackground();
 	guiBackground->setImage("Pause.png","PauseBackground","General");
 
-	mGuiScreen->setBackground(guiBackground);
+	//mGuiScreen->setBackground(guiBackground);
 
 	// Gui Widgets for this state
 	GuiButton* menuButton = new GuiButton();
@@ -103,9 +83,8 @@ void PauseState::unload()
 		// Register the screen as input event listener, so it can receive events
 		//
 		mInputManager->removeListener(mGuiScreen);
+		mGuiScreen->removeWidget(GuiWidgetPauseId::PlayGame);
 
-		delete mGuiScreen;
-		mGuiScreen = 0;
 	}
 	//
 	// TODO Unload
@@ -115,20 +94,14 @@ void PauseState::unload()
 /** Destroy the state */
 void PauseState::finalize()
 {
-	if(mSceneManager)
+	// Destroy gui
+	if(mGuiScreen)
 	{
-		mSceneManager->clearScene();
-		mSceneManager->destroyAllCameras();		
+		
+		
+		delete mGuiScreen;
+		mGuiScreen = 0;
 	}
-
-	if(mRoot)
-	{
-		mRoot->getAutoCreatedWindow()->removeAllViewports();
-	}
-
-	/*mSceneManager = mRoot->_getCurrentSceneManager();
-	mRoot->_popCurrentSceneManager(mSceneManager);*/
-	mSceneManager = mRoot->getSceneManager("Game");
 }
 
 /** Get state Id */

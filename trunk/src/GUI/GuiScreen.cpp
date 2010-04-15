@@ -42,6 +42,10 @@ void GuiScreen::removeWidget(GuiWidgetId widgetId)
 	//
 	// TODO
 	//
+	char widgetNode[40];
+	sprintf(widgetNode, "Widget_%i_%i", mGuiScreenId, widgetId);
+
+	mSceneManager->destroySceneNode(widgetNode);
 	mWidgetMap.erase(widgetId);
 }
 

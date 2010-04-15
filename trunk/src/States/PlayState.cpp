@@ -316,6 +316,7 @@ void PlayState::pause()
 	//
 	// TODO : Pause state
 	//
+	// hide GUI
 }
 
 /** Called when the state has to be resumed (from pause) */
@@ -325,6 +326,7 @@ void PlayState::resume()
 	// TODO : Resume state	
 	//
 	this->mNextGameStateId = this->getStateId();
+	// show GUI
 }
 
 /** Buffered input - keyboard key clicked */
