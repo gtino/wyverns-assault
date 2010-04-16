@@ -166,7 +166,6 @@ void GraphicsManager::chooseSceneManager(void)
 {
 	// Get the SceneManager, in this case a generic one
 	mSceneManager = mRoot->createSceneManager(ST_GENERIC, "Default");
-	mSceneManager = mRoot->createSceneManager(ST_EXTERIOR_CLOSE, "Game");
 }
 
 Root* GraphicsManager::getRoot()

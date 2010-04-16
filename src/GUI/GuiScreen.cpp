@@ -11,6 +11,7 @@ GuiScreen::GuiScreen(Ogre::SceneManager* sceneManager, GuiScreenId id, const Ogr
 	mSceneManager = sceneManager;
 	mGuiScreenId = id;
 	mGuiScreenName = name;
+	mBackgroundNode = NULL;
 }
 
 GuiScreen::~GuiScreen()
@@ -39,14 +40,29 @@ GuiWidget* GuiScreen::getWidget(GuiWidgetId widgetId)
 
 void GuiScreen::removeWidget(GuiWidgetId widgetId)
 {
-	//
-	// TODO
-	//
+
 	char widgetNode[40];
 	sprintf(widgetNode, "Widget_%i_%i", mGuiScreenId, widgetId);
 
 	mSceneManager->destroySceneNode(widgetNode);
 	mWidgetMap.erase(widgetId);
+}
+
+void GuiScreen::removeAllWidgets()
+{
+	GuiWidgetId widgetIndex = 0;
+	while(mWidgetMap[widgetIndex])
+	{
+		this->removeWidget(widgetIndex);
+		widgetIndex++;
+	}
+}
+
+void GuiScreen::removeGui()
+{
+	this->removeAllWidgets();
+	if(mBackgroundNode)
+		mSceneManager->destroySceneNode(mBackgroundNode);
 }
 
 GuiWidget* GuiScreen::nextWidget(GuiWidgetId widgetId)
@@ -72,6 +88,38 @@ void GuiScreen::setBackground(GuiBackground* background)
 	//// Attach background to the scene
 	mBackgroundNode = mSceneManager->getRootSceneNode()->createChildSceneNode(mGuiScreenName+"_Background");
 	mBackgroundNode->attachObject(background->getRectangle2D());
+}
+
+void GuiScreen::show()
+{
+	GuiWidgetId widgetIndex = 0;
+	char widgetNode[40];
+
+	while(mWidgetMap[widgetIndex])
+	{
+		sprintf(widgetNode, "Widget_%i_%i", mGuiScreenId, widgetIndex);
+		SceneNode* n = mSceneManager->getSceneNode(widgetNode);
+		n->setVisible(true);		
+		widgetIndex++;
+	}
+	if(mBackgroundNode)
+		mBackgroundNode->setVisible(true);
+}
+
+void GuiScreen::hide()
+{
+	GuiWidgetId widgetIndex = 0;	
+	char widgetNode[40];
+	
+	while(mWidgetMap[widgetIndex])
+	{
+		sprintf(widgetNode, "Widget_%i_%i", mGuiScreenId, widgetIndex);
+		SceneNode* n = mSceneManager->getSceneNode(widgetNode);
+		n->setVisible(false);
+		widgetIndex++;
+	}
+	if(mBackgroundNode)
+		mBackgroundNode->setVisible(false);
 }
 
 // -----------------------------------------

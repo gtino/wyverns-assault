@@ -82,10 +82,8 @@ namespace WyvernsAssault
 		EnemysManager* mEnemysManager;
 
 		//
-		// DEBUG Text
+		// SdkTrays manager
 		//
-		GuiDebugText mFpsDebugText;
-
 		OgreBites::SdkTrayManager* mTrayMgr;
 		OgreBites::ParamsPanel* mDetailsPanel;
 

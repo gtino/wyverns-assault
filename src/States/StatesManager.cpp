@@ -100,7 +100,6 @@ bool StatesManager::loop(const float elapsedSeconds)
 		if(nextStateId == GameStateId::Exit)
 			return false;
 
-
 		if(mCurrentStateId != nextStateId)
 		{
 			//
@@ -111,7 +110,6 @@ bool StatesManager::loop(const float elapsedSeconds)
 			//
 			// Perform the state change
 			//
-			//this->changeState(newState);
 			if(nextStateId == GameStateId::Pause)
 				this->pushState(newState);
 			else

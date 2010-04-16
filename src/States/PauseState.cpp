@@ -35,7 +35,7 @@ void PauseState::load()
 	GuiBackground* guiBackground = new GuiBackground();
 	guiBackground->setImage("Pause.png","PauseBackground","General");
 
-	//mGuiScreen->setBackground(guiBackground);
+	mGuiScreen->setBackground(guiBackground);
 
 	// Gui Widgets for this state
 	GuiButton* menuButton = new GuiButton();
@@ -80,15 +80,14 @@ void PauseState::unload()
 	if(mGuiScreen)
 	{
 		//
-		// Register the screen as input event listener, so it can receive events
+		// Remove gui listener
 		//
 		mInputManager->removeListener(mGuiScreen);
-		mGuiScreen->removeWidget(GuiWidgetPauseId::PlayGame);
-
+		//
+		// Remove gui
+		//
+		mGuiScreen->removeGui();
 	}
-	//
-	// TODO Unload
-	//
 }
 
 /** Destroy the state */
@@ -97,8 +96,6 @@ void PauseState::finalize()
 	// Destroy gui
 	if(mGuiScreen)
 	{
-		
-		
 		delete mGuiScreen;
 		mGuiScreen = 0;
 	}

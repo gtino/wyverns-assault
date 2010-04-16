@@ -56,20 +56,9 @@ void PlayState::initialize()
 
 	//Load scene XML file
 	std::auto_ptr<DotSceneLoader> sceneLoader(new DotSceneLoader());
-	sceneLoader->parseDotScene("Stage1_1.XML","General", mGraphicsManager->getSceneManager(), mCameraManager, mLightsManager, mEnemysManager);
+	sceneLoader->parseDotScene("Stage1_1.XML","General", mGraphicsManager->getSceneManager(), mCameraManager, mLightsManager, mEnemysManager);	
 
-	// Player UI
-	mGuiScreen = new GuiScreen(mSceneManager, GuiScreenId::PlayGui, "General");
-	GuiImage* mPlayerUI = new GuiImage();
-	mPlayerUI->setImage("UI.png", "PlayScreen", "General");
-	mPlayerUI->setPosition(-0.95, 0.95);
-	float width = 0.4f;
-	float height = 0.3f;
-	mPlayerUI->setSize(width, height);
-
-	mGuiScreen->addWidget(mPlayerUI,GuiWidgetPlayId::UserInterface1);	
-	mInputManager->addListener(mGuiScreen);
-
+	// Set game camera
 	mCameraManager->gameCamera();
 
 	// SdkTrays Manager
@@ -102,11 +91,20 @@ void PlayState::load()
 	//
 	// Gui Screen for this state
 	//
-	mGuiScreen = new GuiScreen(mSceneManager, GuiScreenId::IntroGui, "PlayScreen");
-	
+	mGuiScreen = new GuiScreen(mSceneManager, GuiScreenId::PlayGui, "General");
+
 	//
-	// TODO Add Gui Widgets
+	// Wigdets for this state
 	//
+	GuiImage* mPlayerUI = new GuiImage();
+	mPlayerUI->setImage("UI.png", "PlayScreen", "General");
+	mPlayerUI->setPosition(-0.95, 0.95);
+	float width = 0.4f;
+	float height = 0.3f;
+	mPlayerUI->setSize(width, height);
+
+	// Add Gui Widgets
+	mGuiScreen->addWidget(mPlayerUI,GuiWidgetPlayId::UserInterface1);
 	
 	//
 	// Register the screen as input event listener, so it can receive events
@@ -251,16 +249,29 @@ void PlayState::unload()
 	if(mGuiScreen)
 	{
 		//
-		// Register the screen as input event listener, so it can receive events
+		// Remove gui listener
 		//
 		mInputManager->removeListener(mGuiScreen);
-
-		delete mGuiScreen;
-		mGuiScreen = 0;
+		//
+		// Remove gui
+		//
+		mGuiScreen->removeGui();
 	}
-	//
-	// TODO Unload
-	//
+	if(mTrayMgr)
+	{
+		//
+		// Remove all sdktrays
+		//
+		mTrayMgr->hideAll();
+		mTrayMgr->clearAllTrays();
+	}
+	if(mRoot)
+	{
+		//
+		// Remove frame listener
+		//
+		mRoot->removeFrameListener(this);
+	}
 }
 
 /** Destroy the state */
@@ -298,7 +309,11 @@ void PlayState::finalize()
 		mTrayMgr = NULL;
 	}
 
-	mRoot->removeFrameListener(this);
+	if(mGuiScreen)
+	{
+		delete mGuiScreen;
+		mGuiScreen = NULL;
+	}
 }
 
 /** Get state Id */
@@ -314,19 +329,24 @@ GameStateId PlayState::getStateId()
 void PlayState::pause()
 {
 	//
-	// TODO : Pause state
+	// Hide gui without removing it
 	//
-	// hide GUI
+	mGuiScreen->hide();
+	mTrayMgr->hideAll();
 }
 
 /** Called when the state has to be resumed (from pause) */
 void PlayState::resume()
 {
 	//
-	// TODO : Resume state	
+	// Set next state to this state (Play)	
 	//
 	this->mNextGameStateId = this->getStateId();
-	// show GUI
+	//
+	// Show gui (hided when pause)
+	//
+	mGuiScreen->show();
+	mTrayMgr->showAll();
 }
 
 /** Buffered input - keyboard key clicked */

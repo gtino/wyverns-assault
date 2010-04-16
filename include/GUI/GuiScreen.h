@@ -70,8 +70,14 @@ namespace WyvernsAssault
 		void addWidget(GuiWidget* widget, GuiWidgetId widgetId);
 		GuiWidget* getWidget(GuiWidgetId widgetId);
 		void removeWidget(GuiWidgetId widgetId);
+		void removeAllWidgets();
+		// This will destroy whole Gui
+		void removeGui();
 		GuiWidget* nextWidget(GuiWidgetId widgetId);
 		GuiWidget* previousWidget(GuiWidgetId widgetId);
+		// Hide and show gui widgets
+		void show();
+		void hide();		
 
 	public:
 		//
