@@ -63,7 +63,7 @@ void PlayState::initialize()
 
 	// SdkTrays Manager
 	mTrayMgr = new OgreBites::SdkTrayManager("InterfaceName", mWindow, mInputManager->getMouse());
-	mTrayMgr->hideCursor();
+	if(mTrayMgr->isCursorVisible()) mTrayMgr->hideCursor();
 	
 	// Create a params panel for displaying sample details
 	StringVector items;
@@ -332,7 +332,9 @@ void PlayState::pause()
 	// Hide gui without removing it
 	//
 	mGuiScreen->hide();
+	// Hide sdktrays if visible
 	mTrayMgr->hideAll();
+	if(mTrayMgr->isCursorVisible()) mTrayMgr->hideCursor();
 }
 
 /** Called when the state has to be resumed (from pause) */
@@ -346,7 +348,9 @@ void PlayState::resume()
 	// Show gui (hided when pause)
 	//
 	mGuiScreen->show();
+	// Show sdktrays if was visible
 	mTrayMgr->showAll();
+	if(mTrayMgr->isCursorVisible()) mTrayMgr->hideCursor();
 }
 
 /** Buffered input - keyboard key clicked */
