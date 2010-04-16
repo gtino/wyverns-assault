@@ -32,6 +32,11 @@ This pages is used to store all the intersting links realted to the project. Eve
 
  * [http://www.gamasutra.com/features/20050414/rouwe_01.shtml Implementing MVC]
 
+=== Lua ===
+
+ * [http://lua-users.org/wiki/LuaStyleGuide Style Guidelines]
+ * [http://www.lua.org/pil/28.html User-Defined Types in C] 
+
 === Game States ===
 
  * [http://www.ogre3d.org/wiki/index.php/Managing_Game_States_with_OGRE Managing Game States with OGRE]
