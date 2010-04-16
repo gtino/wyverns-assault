@@ -45,17 +45,17 @@ void GuiScreen::removeWidget(GuiWidgetId widgetId)
 	sprintf(widgetNode, "Widget_%i_%i", mGuiScreenId, widgetId);
 
 	mSceneManager->destroySceneNode(widgetNode);
-	mWidgetMap.erase(widgetId);
+
 }
 
 void GuiScreen::removeAllWidgets()
 {
-	GuiWidgetId widgetIndex = 0;
-	while(mWidgetMap[widgetIndex])
+	WidgetMapIterator it;
+	for ( it=mWidgetMap.begin() ; it != mWidgetMap.end(); it++ )
 	{
-		this->removeWidget(widgetIndex);
-		widgetIndex++;
+		this->removeWidget((*it).first);
 	}
+	mWidgetMap.clear();
 }
 
 void GuiScreen::removeGui()
@@ -92,15 +92,13 @@ void GuiScreen::setBackground(GuiBackground* background)
 
 void GuiScreen::show()
 {
-	GuiWidgetId widgetIndex = 0;
+	WidgetMapIterator it;
 	char widgetNode[40];
-
-	while(mWidgetMap[widgetIndex])
+	for ( it=mWidgetMap.begin() ; it != mWidgetMap.end(); it++ )
 	{
-		sprintf(widgetNode, "Widget_%i_%i", mGuiScreenId, widgetIndex);
+		sprintf(widgetNode, "Widget_%i_%i", mGuiScreenId, (*it).first);
 		SceneNode* n = mSceneManager->getSceneNode(widgetNode);
-		n->setVisible(true);		
-		widgetIndex++;
+		n->setVisible(true);
 	}
 	if(mBackgroundNode)
 		mBackgroundNode->setVisible(true);
@@ -108,15 +106,13 @@ void GuiScreen::show()
 
 void GuiScreen::hide()
 {
-	GuiWidgetId widgetIndex = 0;	
+	WidgetMapIterator it;
 	char widgetNode[40];
-	
-	while(mWidgetMap[widgetIndex])
+	for ( it=mWidgetMap.begin() ; it != mWidgetMap.end(); it++ )
 	{
-		sprintf(widgetNode, "Widget_%i_%i", mGuiScreenId, widgetIndex);
+		sprintf(widgetNode, "Widget_%i_%i", mGuiScreenId, (*it).first);
 		SceneNode* n = mSceneManager->getSceneNode(widgetNode);
 		n->setVisible(false);
-		widgetIndex++;
 	}
 	if(mBackgroundNode)
 		mBackgroundNode->setVisible(false);
