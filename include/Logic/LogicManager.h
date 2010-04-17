@@ -23,6 +23,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #ifndef __LOGIC_MANAGER_H__
 #define __LOGIC_MANAGER_H__
 
+#include "LuaManager.h"
+
 namespace WyvernsAssault
 {
 	/**
@@ -33,6 +35,9 @@ namespace WyvernsAssault
 	public:
 		LogicManager();
 		~LogicManager();
+
+	private:
+		LuaManager* mLuaManager;
 	};
 }
 
