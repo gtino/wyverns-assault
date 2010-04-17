@@ -26,6 +26,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #include "BaseState.h"
 #include "..\Camera\CameraManager.h"
 #include "..\Graphics\LightsManager.h"
+#include "..\Logic\LogicManager.h"
+#include "..\Logic\LuaManager.h"
 #include "..\Entity\Player\PlayerManager.h"
 #include "..\Entity\Enemy\EnemysManager.h"
 #include "..\GUI\GuiDebugText.h"
@@ -80,6 +82,8 @@ namespace WyvernsAssault
 		LightsManager* mLightsManager;
 		PlayerManager* mPlayerManager;
 		EnemysManager* mEnemysManager;
+		LogicManager* mLogicManager;
+		LuaManager*	mLuaManager;	
 
 		//
 		// SdkTrays manager

@@ -53,8 +53,11 @@ namespace WyvernsAssault
 		/** Create light function **/		
 		void createLight(String name, Light::LightTypes type, ColourValue diffuse, ColourValue specular, Vector3 position = Vector3::ZERO, Vector3 direction = Vector3::ZERO);
 
+		Light* getLight(String name);
+
 		/** Modify scene ambient light **/
 		void setAmbientLight(ColourValue color);
+		ColourValue getAmbientLight();
 
 		/** Disable Light **/
 		void disable() { mSceneManager->destroyAllLights(); }

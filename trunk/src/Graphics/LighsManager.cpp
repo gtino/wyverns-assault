@@ -39,7 +39,18 @@ void LightsManager::createLight(String name, Light::LightTypes type, ColourValue
 	if(direction != Vector3::ZERO) mLight->setDirection(direction);
 }
 
+/** Get lights functions **/		
+Ogre::Light* LightsManager::getLight(String name)
+{
+	return mSceneManager->getLight(name);
+}
+
 void LightsManager::setAmbientLight(ColourValue color)
 {
 	mSceneManager->setAmbientLight(color);
+}
+
+Ogre::ColourValue LightsManager::getAmbientLight()
+{
+	return mSceneManager->getAmbientLight();
 }
