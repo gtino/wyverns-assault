@@ -51,11 +51,14 @@ void toon_fp(
 			 
 			 out float4 colour	: COLOR,
 			 
-			 uniform float4 ambientIn,
 			 uniform float4 ambient,
 			 uniform float4 diffuse,
 			 uniform float4 specular,
 			 uniform float4 emissive,
+			 
+			 uniform float4 ambientLightColour,
+			 uniform float4 diffuseLightColour,
+			 uniform float4 specularLightColour,
 			 
 			 uniform sampler2D celShadingRamps,
 			 uniform sampler2D textureColor)
@@ -70,10 +73,10 @@ void toon_fp(
 	edge = tex2D(celShadingRamps, edgeInUv).x;
 
 	colour =  edge * (
-            (diffuse * diffuseIn) +
+            (diffuse * diffuseIn * diffuseLightColour) +
             (tex2D(textureColor,uv)) + 
-            (specular * specularIn) + 
-            (ambient*ambientIn) + 
+            (specular * specularIn * specularLightColour) + 
+            (ambient*ambientLightColour) + 
             (emissive)
             );
             
