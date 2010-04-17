@@ -6,7 +6,8 @@ LightsManager* LuaManager::smLightsManager;
 float LuaManager::smElapsedSeconds;
 float LuaManager::smTotalSeconds;
 
-LuaManager::LuaManager(LightsManager* lightsManager)
+LuaManager::LuaManager(LightsManager* lightsManager) :
+mEnabled(true)
 {
 	//
 	// TODO Constructor logic HERE
@@ -61,12 +62,32 @@ void LuaManager::reload()
 }
 
 /** Runs all loaded scripts */
-void LuaManager::run(const float elapsedSeconds)
+bool LuaManager::run(const float elapsedSeconds)
 {
+	if(!mEnabled)
+		return false;
+
 	smElapsedSeconds = elapsedSeconds;
 	smTotalSeconds += elapsedSeconds;
 
 	bool result = runLightsLogic(smTotalSeconds);
+
+	return result;
+}
+
+void LuaManager::disable()
+{
+	mEnabled = false;
+}
+
+void LuaManager::enable()
+{
+	mEnabled = true;
+}
+
+bool LuaManager::isEnabled()
+{
+	return mEnabled;
 }
 
 //--------------------------------
