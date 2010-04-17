@@ -64,6 +64,14 @@ namespace WyvernsAssault
 
 		/** Game states (FSM) manager */
 		StatesManager mStatesManager;
+
+	private:
+		Ogre::Timer mLoopTimer;
+
+		// Total seconds since first loop (absolute gaming time)
+		float mTotalSeconds;
+		// Total seconds since last loop (relative loop time)
+		float mElapsedSeconds;
 	};
 }
 

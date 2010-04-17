@@ -2,7 +2,9 @@
 
 using namespace WyvernsAssault;
 
-Game::Game()
+Game::Game() :
+mElapsedSeconds(0.0f),
+mTotalSeconds(0.0f)
 {
 	//
 	// TODO Constructor
@@ -41,10 +43,6 @@ void Game::initialize()
 /** Main loop */
 void Game::go()
 {
-	//
-	// TODO Main game loop
-	//
-	Ogre::Timer loopTimer;
 
 	bool continueRunning = true;
 	while ( continueRunning )
@@ -52,12 +50,15 @@ void Game::go()
 		Ogre::WindowEventUtilities::messagePump();
 
 		// Get elaspes microseconds
-		float elapsedSeconds = loopTimer.getMicroseconds() * 1.0 / 1000000;
+		mElapsedSeconds = mLoopTimer.getMicroseconds() * 1.0 / 1000000;
+
+		// Updte total seconds
+		mTotalSeconds += mElapsedSeconds;
 
 		//
 		// Should we keep going? (Game input,logic,rendering)
 		//
-		continueRunning = mStatesManager.loop(elapsedSeconds);
+		continueRunning = mStatesManager.loop(mElapsedSeconds);
 
 		//
 		// Did the user close the application window?
@@ -65,7 +66,7 @@ void Game::go()
 		bool windowClosed = mGraphicsManager.getRenderWindow()->isClosed();
 		continueRunning &= ! windowClosed;
 
-		loopTimer.reset();
+		mLoopTimer.reset();
 
 		bool renderFrameSuccess = mGraphicsManager.renderOneFrame();
 		continueRunning &= renderFrameSuccess;
