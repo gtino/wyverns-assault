@@ -20,6 +20,8 @@ fragment_program ToonFP cg
 	
 	default_params
   {
-    param_named_auto ambientIn ambient_light_colour
+    param_named_auto ambientLightColour ambient_light_colour
+    param_named_auto diffuseLightColour light_diffuse_colour 0
+    param_named_auto specularLightColour light_specular_colour 0
   }
 }
