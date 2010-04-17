@@ -51,7 +51,13 @@ namespace WyvernsAssault
 		void reload();
 
 		/** Runs all loaded scripts */
-		void run(const float elapsedSeconds);
+		bool run(const float elapsedSeconds);
+		void enable();
+		void disable();
+		bool isEnabled();
+
+	private:
+		bool mEnabled;
 
 	private: // LightsManager
 		static LightsManager* smLightsManager;
