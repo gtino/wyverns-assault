@@ -83,6 +83,12 @@ void PlayState::initialize()
 	mDetailsPanel->setParamValue(9, "Bilinear");
 	mDetailsPanel->setParamValue(10, "Solid");
 	mDetailsPanel->hide();
+
+	//
+	// 
+	//
+	mLuaManager = new LuaManager(mLightsManager);
+	mLuaManager->initialize();
 }
 
 /** Load resources */
@@ -233,6 +239,11 @@ void PlayState::update(const float elapsedSeconds)
 		mCameraManager->zoom(1);
 		mCameraManager->updateCamera(elapsedSeconds);
 	}
+
+	//
+	// LUA MANAGER
+	// 
+	mLuaManager->run(elapsedSeconds);
 }
 
 /** Render */
@@ -314,6 +325,12 @@ void PlayState::finalize()
 		delete mGuiScreen;
 		mGuiScreen = NULL;
 	}
+
+	if(mLuaManager)
+	{
+		delete mLuaManager;
+		mLuaManager = NULL;
+	}
 }
 
 /** Get state Id */
@@ -363,6 +380,9 @@ bool PlayState::keyReleased(const OIS::KeyEvent& e)
 
 	switch(e.key)
 	{
+	case OIS::KeyCode::KC_ESCAPE:
+		this->mNextGameStateId = GameStateId::Exit;
+		break;
 	case OIS::KeyCode::KC_W:
 		this->mNextGameStateId = GameStateId::Ending;
 		break;
