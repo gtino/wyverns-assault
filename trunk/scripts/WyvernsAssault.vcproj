@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="Windows-1252"?>
 <VisualStudioProject
 	ProjectType="Visual C++"
-	Version="9,00"
+	Version="9.00"
 	Name="WyvernsAssault"
 	ProjectGUID="{DA8BACB6-E0B2-465D-84CE-60A33C2E795E}"
 	RootNamespace="WyvernsAssault"
@@ -65,10 +65,10 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="OgreMain_d.lib OIS_d.lib CameraControlSystem_d.lib"
+				AdditionalDependencies="OgreMain_d.lib OIS_d.lib CameraControlSystem_d.lib Lua+Lib.lib"
 				OutputFile="$(OutDir)\$(ProjectName).exe"
 				LinkIncremental="2"
-				AdditionalLibraryDirectories="..\externals\CameraControlSystem\lib;&quot;$(OGRE_HOME)\boost_1_42\lib&quot;;&quot;$(OGRE_HOME)\lib\$(ConfigurationName)&quot;"
+				AdditionalLibraryDirectories="..\externals\CameraControlSystem\lib;&quot;$(OGRE_HOME)\boost_1_42\lib&quot;;&quot;..\externals\Lua-5.0-SDK\lib&quot;;&quot;$(OGRE_HOME)\lib\$(ConfigurationName)&quot;"
 				GenerateDebugInformation="true"
 				ProgramDatabaseFile="$(OutDir)/WyvernsAssault.pdb"
 				SubSystem="2"
@@ -155,10 +155,10 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="OgreMain.lib OIS.lib CameraControlSystem.lib"
+				AdditionalDependencies="OgreMain.lib OIS.lib CameraControlSystem.lib Lua+Lib.lib"
 				OutputFile="$(OutDir)\$(ProjectName).exe"
 				LinkIncremental="1"
-				AdditionalLibraryDirectories="..\externals\CameraControlSystem\lib;&quot;$(OGRE_HOME)\boost_1_42\lib&quot;;&quot;$(OGRE_HOME)\lib\$(ConfigurationName)&quot;"
+				AdditionalLibraryDirectories="&quot;..\externals\Lua-5.0-SDK\lib&quot;;..\externals\CameraControlSystem\lib;&quot;$(OGRE_HOME)\boost_1_42\lib&quot;;&quot;$(OGRE_HOME)\lib\$(ConfigurationName)&quot;"
 				GenerateDebugInformation="false"
 				ProgramDatabaseFile=""
 				SubSystem="2"
@@ -373,6 +373,10 @@
 				>
 				<File
 					RelativePath="..\src\Logic\LogicManager.cpp"
+					>
+				</File>
+				<File
+					RelativePath="..\include\Logic\LuaManager.cpp"
 					>
 				</File>
 			</Filter>
@@ -619,6 +623,10 @@
 				>
 				<File
 					RelativePath="..\include\Logic\LogicManager.h"
+					>
+				</File>
+				<File
+					RelativePath="..\include\Logic\LuaManager.h"
 					>
 				</File>
 			</Filter>
