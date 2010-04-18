@@ -1,4 +1,4 @@
-material redwyvernbody
+material RedWyvernBody
 {
 	technique Toon
 	{
@@ -31,7 +31,7 @@ material redwyvernbody
 	}
 }
 
-material redwyvernhead
+material RedWyvernHead
 {
 	technique ToonShading
 	{
