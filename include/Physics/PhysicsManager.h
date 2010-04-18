@@ -33,6 +33,10 @@ namespace WyvernsAssault
 	public:
 		PhysicsManager();
 		~PhysicsManager();
+
+	public:
+		bool initialize();
+		void finalize();
 	};
 }
 

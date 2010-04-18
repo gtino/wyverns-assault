@@ -222,7 +222,7 @@ void DotSceneLoader::processEnemys(TiXmlElement *XMLNode)
 		}
 
 		// Add to EnemysManager
-		mEnemysManager->getList()->push_back(e);
+		mEnemysManager->getList().push_back(e);
 
 		pElement = pElement->NextSiblingElement("enemy");
 	}

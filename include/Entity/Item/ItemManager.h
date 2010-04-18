@@ -35,6 +35,10 @@ namespace WyvernsAssault
 	public:
 		ItemManager();
 		~ItemManager();
+
+	public:
+		bool initialize();
+		void finalize();
 	};
 }
 

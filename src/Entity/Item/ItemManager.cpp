@@ -15,3 +15,18 @@ ItemManager::~ItemManager()
 	// TODO Distructor logic HERE
 	//
 }
+
+bool ItemManager::initialize()
+{
+	//
+	// TODO
+	//
+	return true;
+}
+
+void ItemManager::finalize()
+{
+	//
+	// TODO
+	//
+}

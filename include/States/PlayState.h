@@ -26,10 +26,12 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #include "BaseState.h"
 #include "..\Camera\CameraManager.h"
 #include "..\Graphics\LightsManager.h"
+#include "..\Physics\PhysicsManager.h"
 #include "..\Logic\LogicManager.h"
 #include "..\Logic\LuaManager.h"
 #include "..\Entity\Player\PlayerManager.h"
 #include "..\Entity\Enemy\EnemysManager.h"
+#include "..\Entity\Item\ItemManager.h"
 
 #include <CCSCameraControlSystem.h>
 #include "CCSBasicCameraModes.h"
@@ -83,6 +85,8 @@ namespace WyvernsAssault
 		EnemysManager* mEnemysManager;
 		LogicManager* mLogicManager;
 		LuaManager*	mLuaManager;	
+		PhysicsManager* mPhysicsManager;
+		ItemManager* mItemManager;
 
 		//
 		// SdkTrays manager

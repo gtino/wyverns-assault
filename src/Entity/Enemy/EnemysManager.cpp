@@ -2,9 +2,10 @@
 
 using namespace WyvernsAssault;
 
-EnemysManager::EnemysManager()
+EnemysManager::EnemysManager(Ogre::SceneManager* sceneManager) :
+mCount(0)
 {
-
+	mSceneManager = sceneManager;
 }
 
 EnemysManager::~EnemysManager()
@@ -19,12 +20,57 @@ void EnemysManager::finalize()
 
 void EnemysManager::unLoad()
 {
-	this->list.clear();
+	mEnemyList.clear();
 }
 
-EnemyList* EnemysManager::getList()
+Enemy* EnemysManager::createEnemy(EnemyTypes type)
 {
-	return &this->list;
+	Enemy* pEnemy = new Enemy();
+
+	Ogre::StringStream typeStrStr;
+	typeStrStr << type;
+
+	Ogre::StringStream countStrStr;
+	countStrStr << mCount;
+
+	Ogre::String mesh = Ogre::String("EnemyNaked.mesh");
+
+	//switch(type)
+	//{
+	//case Naked:
+	//	mesh = String("EnemyNaked.mesh");
+	//	break;
+	//default:
+	//	break;
+	//}
+
+	Ogre::String name = "Enemy_" + typeStrStr.str() + "." + countStrStr.str();
+
+	pEnemy->initialize(name, mesh, mSceneManager, Ogre::Vector3(0,0,0));
+
+	mCount++;
+
+	mEnemyList.push_back(pEnemy);
+	mEnemyMap[name] = pEnemy;
+
+	return pEnemy;
+}
+
+Enemy* EnemysManager::getEnemy(Ogre::String name)
+{
+	return mEnemyMap[name];
+}
+
+bool EnemysManager::removeEnemy(Ogre::String name)
+{
+	mSceneManager->destroyEntity(name);//getRootSceneNode()->removeChild(name);
+
+	return true;
+}
+
+EnemyList& EnemysManager::getList()
+{
+	return mEnemyList;
 }
 
 /* TODO

@@ -1,6 +1,6 @@
--- Module : LightsLogic
+-- Module : Scenario
 -------------------------------------
--- Runs lights logic
+-- Runs scenario logic
 -- @param id Session identification.
 -------------------------------------
 
@@ -9,8 +9,8 @@ function runScenario()
 	local totalSeconds = Game.getTotalSeconds()
 	local elapsedSeconds = Game.getElapsedSeconds()
 	
-	local r,g,b = Lights.getLightDiffuseColor("Point1")
-	local ar,ag,ab = Lights.getAmbientLight();
+	local r,g,b = Light.getLightDiffuseColor("Point1")
+	local ar,ag,ab = Light.getAmbientLight();
 	
 	-- dayTime is 24 seconds
 	local dayDuration = 24 
@@ -44,10 +44,10 @@ function runScenario()
 		b = 0.0
 	end
   
-	Lights.setLightDiffuseColor("Point1",r,g,b)
-	Lights.setAmbientLight(ar,ag,ab)
+	Light.setLightDiffuseColor("Point1",r,g,b)
+	Light.setAmbientLight(ar,ag,ab)
   
-	local x,y,z = Lights.getLightPosition("Point1")
+	local x,y,z = Light.getLightPosition("Point1")
   
 	local degrees = (360.0 * dayTime) / dayDuration
 	local radians = math.rad(degrees)
@@ -57,7 +57,7 @@ function runScenario()
 	y = radius * math.sin(radians)
 	z = radius * math.cos(radians)
   
-	Lights.setLightPosition("Point1",x,y,z)
+	Light.setLightPosition("Point1",x,y,z)
   
 	return true 
 end
