@@ -29,6 +29,19 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
 namespace WyvernsAssault
 {
+	/** List of enemy types */
+	enum EnemyTypes
+	{
+		Naked	= 0,
+		Soldier	= 1,
+		Wizard	= 2,
+		Knight	= 3,
+		Pesant	= 4,
+		Woman	= 5
+	};
+
+	typedef std::map<Ogre::String,Enemy*> EnemyMap;
+	typedef std::map<Ogre::String,Enemy*>::iterator EnemyMapIterator;
 
 	typedef std::vector<Enemy*> EnemyList;
 	typedef std::vector<Enemy*>::iterator EnemyListIterator;
@@ -39,19 +52,30 @@ namespace WyvernsAssault
 	class EnemysManager : public EntityManager
 	{
 		public:
-		EnemysManager();
+		EnemysManager(Ogre::SceneManager* sceneManager);
 		~EnemysManager();
 
 		void finalize();
 
+		Enemy* createEnemy(EnemyTypes type);
+		Enemy* getEnemy(Ogre::String name);
+		bool removeEnemy(Ogre::String name);
+
 		/* TODO : Enemy IA
 		*/
 		void processEnemyIA();
-		EnemyList* getList();
+		EnemyList& getList();
 
 	private:
 		void unLoad();
-		EnemyList list;
+
+	private:
+		int mCount;
+
+		EnemyList mEnemyList;
+		EnemyMap mEnemyMap;
+
+		Ogre::SceneManager* mSceneManager;
 	};
 }
 

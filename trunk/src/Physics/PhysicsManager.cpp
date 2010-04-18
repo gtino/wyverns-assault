@@ -15,3 +15,18 @@ PhysicsManager::~PhysicsManager()
 	// TODO Distructor logic HERE
 	//
 }
+
+bool PhysicsManager::initialize()
+{
+	//
+	// TODO
+	//
+	return true;
+}
+
+void PhysicsManager::finalize()
+{
+	//
+	// TODO
+	//
+}

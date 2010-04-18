@@ -39,7 +39,8 @@ namespace WyvernsAssault
 		void initialize(Ogre::String name, Ogre::String mesh, Ogre::SceneManager* levelSceneManager, Ogre::Vector3 position);
 		void finalize();
 
-		Ogre::SceneNode* getEnemySceneNode() const {return enemySceneNode;}
+		Ogre::SceneNode* getSceneNode() const {return enemySceneNode;}
+		const Ogre::String& getName() {return enemySceneNode->getName();}
 
 		void setPosition(Ogre::Vector3 position){enemySceneNode->setPosition(position);}
 		Ogre::Vector3 getPosition(){return enemySceneNode->getPosition();} 

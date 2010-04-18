@@ -52,7 +52,7 @@ void PlayState::initialize()
 	mLightsManager->initialize();
 
 	//Enemys manager constructor
-	mEnemysManager = new EnemysManager();
+	mEnemysManager = new EnemysManager(mSceneManager);
 
 	//Load scene XML file
 	std::auto_ptr<DotSceneLoader> sceneLoader(new DotSceneLoader());
@@ -85,9 +85,21 @@ void PlayState::initialize()
 	mDetailsPanel->hide();
 
 	//
-	// 
+	// Item Manager
 	//
-	mLuaManager = new LuaManager(mLightsManager);
+	mItemManager = new ItemManager();
+	mItemManager->initialize();
+
+	//
+	// Physics Manager
+	// 
+	mPhysicsManager = new PhysicsManager();
+	mPhysicsManager->initialize();
+
+	//
+	// Lua Manager
+	//
+	mLuaManager = new LuaManager(mLightsManager,mPhysicsManager,mEnemysManager,mPlayerManager,mItemManager,mAudioManager);
 	mLuaManager->initialize();
 }
 
@@ -332,6 +344,18 @@ void PlayState::finalize()
 	{
 		delete mGuiScreen;
 		mGuiScreen = NULL;
+	}
+
+	if(mPhysicsManager)
+	{
+		delete mPhysicsManager;
+		mPhysicsManager = NULL;
+	}
+
+	if(mItemManager)
+	{
+		delete mItemManager;
+		mItemManager = NULL;
 	}
 
 	if(mLuaManager)

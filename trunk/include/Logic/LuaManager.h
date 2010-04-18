@@ -30,6 +30,12 @@ extern "C" {
 }
 
 #include "..\Graphics\LightsManager.h"
+#include "..\Camera\CameraManager.h"
+#include "..\Physics\PhysicsManager.h"
+#include "..\Entity\Enemy\EnemysManager.h"
+#include "..\Entity\Player\PlayerManager.h"
+#include "..\Entity\Item\ItemManager.h"
+#include "..\Audio\AudioManager.h"
 
 namespace WyvernsAssault
 {
@@ -39,7 +45,7 @@ namespace WyvernsAssault
 	class LuaManager
 	{
 	public:
-		LuaManager(LightsManager* lightsManager);
+		LuaManager(LightsManager* lightsManager, PhysicsManager* physicsManager, EnemysManager* enemysManager, PlayerManager* playerManager, ItemManager* itemManager, AudioManager* audioManager);
 		~LuaManager();
 
 	public:
@@ -67,7 +73,7 @@ namespace WyvernsAssault
 		static LightsManager* smLightsManager;
 
 		// Lights Lib (exported to Lua)
-		static const struct luaL_reg lightslib [];
+		static const struct luaL_reg lightlib [];
 
 		// From Lua to C++
 		static int getLightDiffuseColor(lua_State *L);
@@ -87,6 +93,53 @@ namespace WyvernsAssault
 		// From Lua to C++
 		static int getTotalSeconds(lua_State *L);
 		static int getElapsedSeconds(lua_State *L);
+
+	private: // PhysicsManager
+		static PhysicsManager* smPhysicsManager;
+
+		// Physics Lib (exported to Lua)
+		static const struct luaL_reg physicslib [];
+
+		static int getHOT(lua_State *L);
+
+	private: // EnemysManager
+		static EnemysManager* smEnemysManager;
+
+		// Enemys Lib (exported to Lua)
+		static const struct luaL_reg enemylib [];
+
+		static int createEnemy(lua_State *L);
+		static int getEnemyPosition(lua_State *L);
+		static int setEnemyPosition(lua_State *L);
+		static int setEnemyState(lua_State *L);
+		static int removeEnemy(lua_State *L);
+
+	private: // PlayerManager
+		static PlayerManager* smPlayerManager;
+
+		// Player Lib (exported to Lua)
+		static const struct luaL_reg playerlib [];
+
+		static int getPlayerPosition(lua_State *L);
+
+	private: // ItemManager
+		static ItemManager* smItemManager;
+
+		// Item Lib (exported to Lua)
+		static const struct luaL_reg itemlib [];
+
+		static int createItem(lua_State *L);
+		static int getItemPosition(lua_State *L);
+		static int setItemPosition(lua_State *L);
+		static int removeItem(lua_State *L);
+
+	private: // AudioManager
+		static AudioManager* smAudioManager;
+
+		// Audio Lib (exported to Lua)
+		static const struct luaL_reg audiolib [];
+
+		static int playSound(lua_State *L);
 
 	private:
 		/* the Lua interpreter */
