@@ -4,30 +4,33 @@
 -- @param id Session identification.
 -------------------------------------
 
-function runLightsLogic()
+function runScenario()
 	
 	local totalSeconds = Game.getTotalSeconds()
 	local elapsedSeconds = Game.getElapsedSeconds()
 	
 	local r,g,b = Lights.getLightDiffuseColor("Point1")
+	local ar,ag,ab = Lights.getAmbientLight();
 	
-	local dayTime = 20
-	local dayOrNight = totalSeconds - math.floor(totalSeconds/dayTime)*dayTime
-	--dayOrNight = totalSeconds % dayTime
+	-- dayTime is 24 seconds
+	local dayDuration = 24 
+	local halfDayDuration = dayDuration / 2
+	local dayTime = totalSeconds - math.floor(totalSeconds/dayDuration)*dayDuration
+	--dayTime = 6
 	
-	if dayOrNight > 10 then
-		r = 0.1
-		g = 0.1
-		b = 0.2
+	if dayTime > 12 then
+		ar = 0.05
+		ag = 0.05
+		ab = 0.1
 	else
-		r = 0.5
-		g = 0.5
-		b = 0.5
+		ar = 0.7
+		ag = 0.7
+		ab = 0.7
 	end
 	
-	r = r+elapsedSeconds/10.0
-	g = g+elapsedSeconds/10.0
-	b = b+elapsedSeconds/10.0
+	r = 0.5
+	g = 0.5
+	b = 0.5
 	
 	if r > 1.0 then
 		r = 0.0
@@ -42,14 +45,17 @@ function runLightsLogic()
 	end
   
 	Lights.setLightDiffuseColor("Point1",r,g,b)
+	Lights.setAmbientLight(ar,ag,ab)
   
 	local x,y,z = Lights.getLightPosition("Point1")
   
-	x = x + elapsedSeconds*50
-  
-	if x > 1000.0 then
-		x = 0.0
-	end
+	local degrees = (360.0 * dayTime) / dayDuration
+	local radians = math.rad(degrees)
+	local radius = 2000.0
+	
+	x = 0.0
+	y = radius * math.sin(radians)
+	z = radius * math.cos(radians)
   
 	Lights.setLightPosition("Point1",x,y,z)
   
