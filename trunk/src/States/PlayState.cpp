@@ -503,6 +503,10 @@ bool PlayState::keyReleased(const OIS::KeyEvent& e)
 	case OIS::KeyCode::KC_F5:
 		TextureManager::getSingleton().reloadAll();
 		break;
+	// Reload all Lua scripts
+	case OIS::KeyCode::KC_F6:
+		mLuaManager->reload();
+		break;
 	// Toggle Lua manager active state
 	case OIS::KeyCode::KC_U:
 		if(mLuaManager->isEnabled())
