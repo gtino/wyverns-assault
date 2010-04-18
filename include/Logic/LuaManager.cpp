@@ -2,9 +2,32 @@
 
 using namespace WyvernsAssault;
 
+// --------------------------------
+// Lua Lights Lib
+// --------------------------------
 LightsManager* LuaManager::smLightsManager;
+
+const struct luaL_reg LuaManager::lightslib[] = {
+		{"getLightDiffuseColor", LuaManager::getLightDiffuseColor},
+		{"setLightDiffuseColor", LuaManager::getElapsedSeconds},
+		{"getLightPosition", LuaManager::getLightPosition},
+		{"setLightPosition", LuaManager::setLightPosition},
+		{"getAmbientLight", LuaManager::getAmbientLight},
+		{"setAmbientLight", LuaManager::setAmbientLight},
+	  {NULL, NULL}
+	};
+
+// --------------------------------
+// Lua Game Lib
+// --------------------------------
 float LuaManager::smElapsedSeconds;
 float LuaManager::smTotalSeconds;
+
+const struct luaL_reg LuaManager::gamelib[] = {
+		{"getTotalSeconds", LuaManager::getTotalSeconds},
+		{"getElapsedSeconds", LuaManager::getElapsedSeconds},
+	  {NULL, NULL}
+	};
 
 LuaManager::LuaManager(LightsManager* lightsManager) :
 mEnabled(true)
@@ -35,16 +58,20 @@ bool LuaManager::initialize()
 	lua_baselibopen(L);
 	lua_mathlibopen(L);
 
+	// Register out libs
+	luaL_openlib(L, "Game", LuaManager::gamelib, 0);
+	luaL_openlib(L, "Lights", LuaManager::lightslib, 0);
+
 	/* register our functions */
-	lua_register(L,"getLightDiffuseColor",getLightDiffuseColor);
-	lua_register(L,"getLightPosition",getLightPosition);
-	lua_register(L,"setLightDiffuseColor",setLightDiffuseColor);
-	lua_register(L,"setLightPosition",setLightPosition);
-	lua_register(L,"getTotalSeconds",getTotalSeconds);
-	lua_register(L,"getElapsedSeconds",getElapsedSeconds);
+	//lua_register(L,"getLightDiffuseColor",getLightDiffuseColor);
+	//lua_register(L,"getLightPosition",getLightPosition);
+	//lua_register(L,"setLightDiffuseColor",setLightDiffuseColor);
+	//lua_register(L,"setLightPosition",setLightPosition);
+	//lua_register(L,"getTotalSeconds",getTotalSeconds);
+	//lua_register(L,"getElapsedSeconds",getElapsedSeconds);
 
 	/* run the script */
-	int retval = lua_dofile(L, ".\\data\\scripts\\lights.lua");
+	int retval = lua_dofile(L, ".\\data\\scripts\\Scenario.lua");
 
 	return (retval == 0);
 }
@@ -235,6 +262,64 @@ int LuaManager::setLightPosition(lua_State *L)
 	Ogre::Light* light = smLightsManager->getLight(lightName);
 
 	light->setPosition(x,y,z);
+
+	/* return the number of results */
+	return 0;
+}
+
+int LuaManager::getAmbientLight(lua_State *L)
+{
+	//
+	// Pass it to Lua script
+	//
+	/* get number of arguments */
+	int n = lua_gettop(L);
+
+	// n should be 0
+
+	//
+	// Retrieve light color
+	//
+	ColourValue color = smLightsManager->getAmbientLight();
+
+	/* push the Red */
+	lua_pushnumber(L, color.r);
+	/* push the Green */
+	lua_pushnumber(L, color.g);
+	/* push the Blue */
+	lua_pushnumber(L, color.b);
+
+	/* return the number of results */
+	return 3;
+}
+
+int LuaManager::setAmbientLight(lua_State *L)
+{
+	//
+	// Pass it to Lua script
+	//
+	/* get number of arguments */
+	int n = lua_gettop(L);
+
+	// n should be 3
+
+	/* get the color arguments */
+	//if(!lua_isnumber(L,0))
+	//{
+	//lua_pushstring(L,"Incorrect argument to 'red' component");
+	//lua_error(L);
+	//}
+
+	ColourValue color;
+
+	color.r = lua_tonumber(L, 1);
+	color.g = lua_tonumber(L, 2);
+	color.b = lua_tonumber(L, 3);
+
+	//
+	// Retrieve light color
+	//
+	smLightsManager->setAmbientLight(color);
 
 	/* return the number of results */
 	return 0;

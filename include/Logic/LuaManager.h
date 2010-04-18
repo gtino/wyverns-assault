@@ -62,6 +62,9 @@ namespace WyvernsAssault
 	private: // LightsManager
 		static LightsManager* smLightsManager;
 
+		// Lights Lib (exported to Lua)
+		static const struct luaL_reg lightslib [];
+
 		// From C++ to Lua
 		bool runLightsLogic(const float totalSeconds);
 
@@ -70,10 +73,15 @@ namespace WyvernsAssault
 		static int setLightDiffuseColor(lua_State *L);
 		static int getLightPosition(lua_State *L);
 		static int setLightPosition(lua_State *L);
+		static int getAmbientLight(lua_State *L);
+		static int setAmbientLight(lua_State *L);
 
 	private: // Game data
 		static float smTotalSeconds;
 		static float smElapsedSeconds;
+
+		// Game Lib (exported to Lua)
+		static const struct luaL_reg gamelib [];
 
 		// From Lua to C++
 		static int getTotalSeconds(lua_State *L);
