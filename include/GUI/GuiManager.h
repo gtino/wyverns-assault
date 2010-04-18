@@ -47,10 +47,8 @@ namespace WyvernsAssault
 		GuiManager(Ogre::Root* root, Ogre::SceneManager* sceneManager, Ogre::RenderWindow* window);
 		~GuiManager();
 
-	public:
-		/** Initialize CEGUI */
-		bool initialize();
-		/** Finalize CEGUI */
+	public:		
+		bool initialize();		
 		void finalize();
 
 	private: // InputListener

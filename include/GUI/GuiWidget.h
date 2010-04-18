@@ -69,10 +69,10 @@ namespace WyvernsAssault
 	
 	enum GuiWidgetPlayId
 	{	
-		UserInterface1 = 0,
-		UserInterface2 = 1,
-		UserInterface3 = 2,
-		UserInterface4 = 3
+		UserInterface1 = 1,
+		UserInterface2 = 2,
+		UserInterface3 = 3,
+		UserInterface4 = 4
 	};
 
 	enum GuiWidgetPlayScreenId
@@ -110,6 +110,8 @@ namespace WyvernsAssault
 		virtual void setPosition(float positionX, float positionY);
 		virtual void setSize(float sizeX, float sizeY);
 		virtual Ogre::Rectangle2D* getRectangle2D();
+		virtual void show();
+		virtual void hide();		
 
 	protected:
 		virtual void initialize();

@@ -58,3 +58,13 @@ Ogre::Rectangle2D* GuiWidget::getRectangle2D()
 {
 	return mRectangle2D;
 }
+
+void GuiWidget::show()
+{
+
+}
+
+void GuiWidget::hide()
+{
+
+}

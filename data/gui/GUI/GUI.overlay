@@ -1,0 +1,31 @@
+template container Panel(GUI/UI)
+{
+	metrics_mode relative
+	material GUI/UI
+	horz_align left
+	vert_align top
+	width 0.2
+	height 0.1
+	top 0.015
+	element TextArea(Kills)
+	{
+        font_name GUI/Value        
+		char_height 0.02
+        space_width 0.01
+        colour 0.98 0.76 0.55
+		colour_bottom 0.94 0.57 0.23
+		left 0.14
+		top 0.055
+	}
+	element TextArea(Points)
+	{
+        font_name GUI/Value
+		char_height 0.02
+        space_width 0.01
+        colour 0.98 0.76 0.55
+		colour_bottom 0.94 0.57 0.23
+		left 0.14
+		top 0.0725
+	}
+}
+	

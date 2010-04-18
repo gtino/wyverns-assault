@@ -1,0 +1,23 @@
+GUI/Text
+{
+	type 		truetype
+	source 		badabb.ttf
+	size 		15
+	resolution 	96
+}
+
+GUI/Caption
+{
+	type 		truetype
+	source 		badabb.ttf
+	size 		18
+	resolution 	96
+}
+
+GUI/Value
+{
+	type 		truetype
+	source 		badabb.ttf
+	size 		20
+	resolution 	96
+}

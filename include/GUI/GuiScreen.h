@@ -30,6 +30,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #include "GuiBackground.h"
 #include "GuiButton.h"
 #include "GuiImage.h"
+#include "GuiUserInterface.h"
 
 #include "..\Input\InputListener.h"
 
@@ -116,7 +117,6 @@ namespace WyvernsAssault
 		Ogre::SceneManager* mSceneManager;
 
 		WidgetMap mWidgetMap;
-		//WidgetList mWidgetList;
 
 		GuiScreenId mGuiScreenId;
 		Ogre::String mGuiScreenName;
