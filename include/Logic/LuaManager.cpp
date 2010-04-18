@@ -9,7 +9,7 @@ LightsManager* LuaManager::smLightsManager;
 
 const struct luaL_reg LuaManager::lightslib[] = {
 		{"getLightDiffuseColor", LuaManager::getLightDiffuseColor},
-		{"setLightDiffuseColor", LuaManager::getElapsedSeconds},
+		{"setLightDiffuseColor", LuaManager::setLightDiffuseColor},
 		{"getLightPosition", LuaManager::getLightPosition},
 		{"setLightPosition", LuaManager::setLightPosition},
 		{"getAmbientLight", LuaManager::getAmbientLight},
@@ -84,8 +84,10 @@ void LuaManager::finalize()
 }
 
 /** Reloads scripts */
-void LuaManager::reload()
+bool LuaManager::reload()
 {
+	finalize();
+	return initialize();
 }
 
 /** Runs all loaded scripts */
@@ -97,7 +99,7 @@ bool LuaManager::run(const float elapsedSeconds)
 	smElapsedSeconds = elapsedSeconds;
 	smTotalSeconds += elapsedSeconds;
 
-	bool result = runLightsLogic(smTotalSeconds);
+	bool result = runScenario(smTotalSeconds);
 
 	return result;
 }
@@ -120,10 +122,10 @@ bool LuaManager::isEnabled()
 //--------------------------------
 // Lua Methods called FROM C++
 //--------------------------------
-bool LuaManager::runLightsLogic(const float totalSeconds)
+bool LuaManager::runScenario(const float totalSeconds)
 {
 	///* the function name */
-	lua_getglobal(L,"runLightsLogic");
+	lua_getglobal(L,"runScenario");
 	///* push arguments */
 	lua_pushnumber(L, 1);
 	///* call the function with 1 argument, return 1 result */

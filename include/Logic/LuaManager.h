@@ -48,7 +48,7 @@ namespace WyvernsAssault
 		/** Finalize Lua and unload Lua libs */
 		void finalize();
 		/** Reloads scripts */
-		void reload();
+		bool reload();
 
 		/** Runs all loaded scripts */
 		bool run(const float elapsedSeconds);
@@ -59,14 +59,15 @@ namespace WyvernsAssault
 	private:
 		bool mEnabled;
 
+	private:
+		// From C++ to Lua
+		bool runScenario(const float totalSeconds);
+
 	private: // LightsManager
 		static LightsManager* smLightsManager;
 
 		// Lights Lib (exported to Lua)
 		static const struct luaL_reg lightslib [];
-
-		// From C++ to Lua
-		bool runLightsLogic(const float totalSeconds);
 
 		// From Lua to C++
 		static int getLightDiffuseColor(lua_State *L);
