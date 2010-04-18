@@ -356,6 +356,10 @@
 					>
 				</File>
 				<File
+					RelativePath="..\src\GUI\GuiUserInterface.cpp"
+					>
+				</File>
+				<File
 					RelativePath="..\src\GUI\GuiWidget.cpp"
 					>
 				</File>
@@ -547,6 +551,10 @@
 				</File>
 				<File
 					RelativePath="..\include\GUI\GuiText.h"
+					>
+				</File>
+				<File
+					RelativePath="..\include\GUI\GuiUserInterface.h"
 					>
 				</File>
 				<File

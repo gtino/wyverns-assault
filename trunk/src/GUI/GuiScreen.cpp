@@ -31,6 +31,8 @@ void GuiScreen::addWidget(GuiWidget* widget, GuiWidgetId widgetId)
 
 	SceneNode* n = mSceneManager->getRootSceneNode()->createChildSceneNode(widgetNode);
 	n->attachObject(widget->getRectangle2D());
+
+	widget->show();
 }
 
 GuiWidget* GuiScreen::getWidget(GuiWidgetId widgetId)
@@ -80,7 +82,6 @@ GuiWidget* GuiScreen::previousWidget(GuiWidgetId widgetId)
 	if (widgetId>0)
 		widgetId--;
 	return (mWidgetMap[widgetId]);
-
 }
 
 void GuiScreen::setBackground(GuiBackground* background)
@@ -92,27 +93,37 @@ void GuiScreen::setBackground(GuiBackground* background)
 
 void GuiScreen::show()
 {
+	OverlayManager& overlayManager = OverlayManager::getSingleton();
 	WidgetMapIterator it;
-	char widgetNode[40];
+	char name[40];
 	for ( it=mWidgetMap.begin() ; it != mWidgetMap.end(); it++ )
 	{
-		sprintf(widgetNode, "Widget_%i_%i", mGuiScreenId, (*it).first);
-		SceneNode* n = mSceneManager->getSceneNode(widgetNode);
+		sprintf(name, "Widget_%i_%i", mGuiScreenId, (*it).first);
+		SceneNode* n = mSceneManager->getSceneNode(name);
 		n->setVisible(true);
+
+		sprintf(name, "UI_%d", (*it).first);
+		if(overlayManager.getByName(name))
+			overlayManager.getByName(name)->show();
 	}
 	if(mBackgroundNode)
-		mBackgroundNode->setVisible(true);
+		mBackgroundNode->setVisible(true);	
 }
 
 void GuiScreen::hide()
 {
+	OverlayManager& overlayManager = OverlayManager::getSingleton();
 	WidgetMapIterator it;
-	char widgetNode[40];
+	char name[40];
 	for ( it=mWidgetMap.begin() ; it != mWidgetMap.end(); it++ )
 	{
-		sprintf(widgetNode, "Widget_%i_%i", mGuiScreenId, (*it).first);
-		SceneNode* n = mSceneManager->getSceneNode(widgetNode);
+		sprintf(name, "Widget_%i_%i", mGuiScreenId, (*it).first);
+		SceneNode* n = mSceneManager->getSceneNode(name);
 		n->setVisible(false);
+
+		sprintf(name, "UI_%d", (*it).first);
+		if(overlayManager.getByName(name))
+			overlayManager.getByName(name)->hide();
 	}
 	if(mBackgroundNode)
 		mBackgroundNode->setVisible(false);

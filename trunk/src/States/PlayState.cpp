@@ -101,16 +101,11 @@ void PlayState::load()
 
 	//
 	// Wigdets for this state
-	//
-	GuiImage* mPlayerUI = new GuiImage();
-	mPlayerUI->setImage("UI.png", "PlayScreen", "General");
-	mPlayerUI->setPosition(-0.95, 0.95);
-	float width = 0.4f;
-	float height = 0.3f;
-	mPlayerUI->setSize(width, height);
+	//	
+	mPlayerUI = new GuiUserInterface(mWindow->getViewport(0)->getCamera()->getAspectRatio(), GuiWidgetPlayId::UserInterface1);
 
-	// Add Gui Widgets
-	mGuiScreen->addWidget(mPlayerUI,GuiWidgetPlayId::UserInterface1);
+	// Add Gui Widgets to Manager
+	mGuiScreen->addWidget(mPlayerUI,GuiWidgetPlayId::UserInterface1);	
 	
 	//
 	// Register the screen as input event listener, so it can receive events
@@ -239,6 +234,19 @@ void PlayState::update(const float elapsedSeconds)
 		mCameraManager->zoom(1);
 		mCameraManager->updateCamera(elapsedSeconds);
 	}
+
+	// UI DEBUG KEYS - Increments kills and points
+	if(this->mInputManager->getKeyboard()->isKeyDown(OIS::KeyCode::KC_PGUP))	
+		mPlayerUI->setTextKills((mPlayerUI->getTextKills() + 1));
+
+	if(this->mInputManager->getKeyboard()->isKeyDown(OIS::KeyCode::KC_PGDOWN))
+		mPlayerUI->setTextKills((mPlayerUI->getTextKills() - 1));
+
+	if(this->mInputManager->getKeyboard()->isKeyDown(OIS::KeyCode::KC_HOME))	
+		mPlayerUI->setTextPoints((mPlayerUI->getTextPoints() + 1));
+
+	if(this->mInputManager->getKeyboard()->isKeyDown(OIS::KeyCode::KC_END))
+		mPlayerUI->setTextPoints((mPlayerUI->getTextPoints() - 1));
 
 	//
 	// LUA MANAGER

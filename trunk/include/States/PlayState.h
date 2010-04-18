@@ -30,7 +30,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #include "..\Logic\LuaManager.h"
 #include "..\Entity\Player\PlayerManager.h"
 #include "..\Entity\Enemy\EnemysManager.h"
-#include "..\GUI\GuiDebugText.h"
 
 #include <CCSCameraControlSystem.h>
 #include "CCSBasicCameraModes.h"
@@ -90,6 +89,9 @@ namespace WyvernsAssault
 		//
 		OgreBites::SdkTrayManager* mTrayMgr;
 		OgreBites::ParamsPanel* mDetailsPanel;
+
+		/** User interface */
+		GuiUserInterface* mPlayerUI;
 
 	};
 }
