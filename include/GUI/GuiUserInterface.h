@@ -48,19 +48,33 @@ namespace WyvernsAssault
 		void show();
 		void hide();
 
+		/** Life and special bars values function */
+		Real getLifeBar(){return mLifePercent; }
+		Real getSpecialBar(){return mSpecialPercent; }
+		void setLifeBar(Real value);		
+		void setSpecialBar(Real value);
+
 		/** Text area values function */
 		Real getTextKills(){return mKills; }
 		Real getTextPoints(){return mPoints; }
-		void setTextKills(int value);		
-		void setTextPoints(int value);
+		void setTextKills(Real value);		
+		void setTextPoints(Real value);
 
 	protected:
 		GuiWidgetId					mWidgetId;
 		Overlay*					mOverlay;
+		PanelOverlayElement*		mLifeBar;
+		PanelOverlayElement*		mSpecialBar;
 		TextAreaOverlayElement*		mTextKills;
-		TextAreaOverlayElement*		mTextPoints;
+		TextAreaOverlayElement*		mTextPoints;		
 
 	protected:
+		Real	mLifeWidth;
+		Real	mLifeHeight;
+		Real	mLifePercent;
+		Real	mSpecialWidth;
+		Real	mSpecialHeight;
+		Real	mSpecialPercent;
 		Real	mKills;
 		Real	mPoints;
 	};

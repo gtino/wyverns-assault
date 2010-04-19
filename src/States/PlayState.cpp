@@ -247,18 +247,31 @@ void PlayState::update(const float elapsedSeconds)
 		mCameraManager->updateCamera(elapsedSeconds);
 	}
 
-	// UI DEBUG KEYS - Increments kills and points
+	// UI DEBUG KEYS - Increments/Decrements kills and points
 	if(this->mInputManager->getKeyboard()->isKeyDown(OIS::KeyCode::KC_PGUP))	
-		mPlayerUI->setTextKills((mPlayerUI->getTextKills() + 1));
+		mPlayerUI->setTextKills(mPlayerUI->getTextKills() + 1);
 
 	if(this->mInputManager->getKeyboard()->isKeyDown(OIS::KeyCode::KC_PGDOWN))
-		mPlayerUI->setTextKills((mPlayerUI->getTextKills() - 1));
+		mPlayerUI->setTextKills(mPlayerUI->getTextKills() - 1);
 
 	if(this->mInputManager->getKeyboard()->isKeyDown(OIS::KeyCode::KC_HOME))	
-		mPlayerUI->setTextPoints((mPlayerUI->getTextPoints() + 1));
+		mPlayerUI->setTextPoints(mPlayerUI->getTextPoints() + 1);
 
 	if(this->mInputManager->getKeyboard()->isKeyDown(OIS::KeyCode::KC_END))
-		mPlayerUI->setTextPoints((mPlayerUI->getTextPoints() - 1));
+		mPlayerUI->setTextPoints(mPlayerUI->getTextPoints() - 1);
+
+	// UI DEBUG KEYS - Increments/Decrements life and special bars
+	if(this->mInputManager->getKeyboard()->isKeyDown(OIS::KeyCode::KC_F7))	
+		mPlayerUI->setLifeBar(mPlayerUI->getLifeBar() - 2);
+
+	if(this->mInputManager->getKeyboard()->isKeyDown(OIS::KeyCode::KC_F8))
+		mPlayerUI->setLifeBar(mPlayerUI->getLifeBar() + 2);
+
+	if(this->mInputManager->getKeyboard()->isKeyDown(OIS::KeyCode::KC_F9))	
+		mPlayerUI->setSpecialBar(mPlayerUI->getSpecialBar() - 2);
+
+	if(this->mInputManager->getKeyboard()->isKeyDown(OIS::KeyCode::KC_F10))
+		mPlayerUI->setSpecialBar(mPlayerUI->getSpecialBar() + 2);
 
 	//
 	// LUA MANAGER

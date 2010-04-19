@@ -31,3 +31,31 @@ material GUI/UI : GUI/Base
         }
     }
 }
+
+material GUI/LifeBar : GUI/Base
+{
+    technique
+    {
+        pass
+        {
+            texture_unit
+            {
+                texture LifeBar.png
+            }
+        }
+    }
+}
+
+material GUI/SpecialBar : GUI/Base
+{
+    technique
+    {
+        pass
+        {
+            texture_unit
+            {
+                texture SpecialBar.png
+            }
+        }
+    }
+}
