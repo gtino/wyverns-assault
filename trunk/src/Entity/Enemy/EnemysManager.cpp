@@ -3,7 +3,8 @@
 using namespace WyvernsAssault;
 
 EnemysManager::EnemysManager(Ogre::SceneManager* sceneManager) :
-mCount(0)
+mCount(0),
+mId(0)
 {
 	mSceneManager = sceneManager;
 }
@@ -23,59 +24,74 @@ void EnemysManager::unLoad()
 	mEnemyList.clear();
 }
 
-Enemy* EnemysManager::createEnemy(EnemyTypes type)
+EnemyPtr EnemysManager::createEnemy(EnemyTypes type)
 {
-	Enemy* pEnemy = new Enemy();
+	Ogre::String mesh;
 
-	Ogre::StringStream typeStrStr;
-	typeStrStr << type;
+	switch(type)
+	{
+	case Naked:
+		mesh = Ogre::String("EnemyNaked.mesh");
+		break;
+	default:
+		mesh = Ogre::String("EnemyNaked.mesh");
+		break;
+	}
 
-	Ogre::StringStream countStrStr;
-	countStrStr << mCount;
+	Ogre::String name = createUniqueId();
 
-	Ogre::String mesh = Ogre::String("EnemyNaked.mesh");
+	return createEnemy(name, mesh);
+}
 
-	//switch(type)
-	//{
-	//case Naked:
-	//	mesh = String("EnemyNaked.mesh");
-	//	break;
-	//default:
-	//	break;
-	//}
+EnemyPtr EnemysManager::createEnemy(Ogre::String name, Ogre::String mesh)
+{
+	Ogre::Entity* enemyMesh = mSceneManager->createEntity(name,mesh);
+	Ogre::SceneNode* enemySceneNode = mSceneManager->getRootSceneNode()->createChildSceneNode();
+	
+	enemySceneNode->attachObject(enemyMesh);
+	enemySceneNode->yaw(Ogre::Radian(Ogre::Degree(-90)));
 
-	Ogre::String name = "Enemy_" + typeStrStr.str() + "." + countStrStr.str();
+	EnemyPtr enemy = EnemyPtr(new Enemy(name));
+	enemy->initialize();
 
-	pEnemy->initialize(name, mesh, mSceneManager, Ogre::Vector3(0,0,0));
+	mEnemyList.push_back(enemy);
+	mEnemyMap[name] = enemy;
 
 	mCount++;
 
-	mEnemyList.push_back(pEnemy);
-	mEnemyMap[name] = pEnemy;
-
-	return pEnemy;
+	return enemy;
 }
 
-Enemy* EnemysManager::getEnemy(Ogre::String name)
+Ogre::String EnemysManager::createUniqueId()
+{
+	Ogre::StringStream countStrStr;
+	countStrStr << mId;
+
+	Ogre::String uniqueId = "Enemy_" + countStrStr.str();
+
+	mId++;
+
+	return uniqueId;
+}
+
+EnemyPtr EnemysManager::getEnemy(Ogre::String name)
 {
 	return mEnemyMap[name];
 }
 
 bool EnemysManager::removeEnemy(Ogre::String name)
 {
+	mEnemyMap.erase(name);
+
 	mSceneManager->destroyEntity(name);//getRootSceneNode()->removeChild(name);
 
 	return true;
 }
 
-EnemyList& EnemysManager::getList()
-{
-	return mEnemyList;
-}
-
-/* TODO
+/* 
+* TODO
 */
-void EnemysManager::processEnemyIA()
+void EnemysManager::update(const float elpasedSeconds)
 {
 	
 }

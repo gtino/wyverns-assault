@@ -457,9 +457,9 @@ int LuaManager::createEnemy(lua_State *L)
 
 	int type = luaL_checkint(L, 1);
 
-	Enemy* pEnemy = smEnemysManager->createEnemy((EnemyTypes)type);
+	EnemyPtr enemy = smEnemysManager->createEnemy((EnemyTypes)type);
 
-	lua_pushstring(L,pEnemy->getName().c_str());
+	lua_pushstring(L,enemy->getName().c_str());
 
 	/* return the number of results */
 	return 1;

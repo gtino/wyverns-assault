@@ -196,33 +196,36 @@ void DotSceneLoader::processEnemys(TiXmlElement *XMLNode)
 	pElement = XMLNode->FirstChildElement("enemy");
 	while(pElement)
 	{
-
-		WyvernsAssault::Enemy* e = new Enemy();
+		Ogre::String name;
+		Ogre::String mesh;
+		Ogre::Vector3 position;
+		Ogre::Vector3 scale;
 
 		// Process entity
 		pElementEntity = pElement->FirstChildElement("entity");
 		if(pElementEntity)
 		{
 			// Create Enemy
-			e->initialize(getAttrib(pElementEntity, "name"),getAttrib(pElementEntity, "meshFile"),mSceneMgr,Vector3(0,0,0));
+			name = getAttrib(pElementEntity, "name");
+			mesh = getAttrib(pElementEntity, "meshFile");
 		}
 
 		// Process position
 		pElementPosition = pElement->FirstChildElement("position");
 		if(pElementPosition)
 		{
-			e->setPosition(parseVector3(pElementPosition));
+			position = parseVector3(pElementPosition);
 		}
 
 		// Process scale
 		pElementScale = pElement->FirstChildElement("scale");
 		if(pElementScale)
 		{
-			e->setScale(parseVector3(pElementScale));
+			scale = parseVector3(pElementScale);
 		}
 
 		// Add to EnemysManager
-		mEnemysManager->getList().push_back(e);
+		mEnemysManager->createEnemy(name,mesh);
 
 		pElement = pElement->NextSiblingElement("enemy");
 	}
