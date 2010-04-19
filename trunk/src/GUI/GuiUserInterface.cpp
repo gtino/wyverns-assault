@@ -28,7 +28,6 @@ GuiWidget()
 	mLifeBar->setTop(mLifeBar->getTop()*aspectRatio);
 	// Save intial bar width and height values
 	this->mLifeWidth = mLifeBar->getWidth();
-	this->mLifeHeight = mLifeBar->getHeight();
 
 	sprintf(uiChild, "UI_%d/SpecialBar", mWidgetId);
 	mSpecialBar = (PanelOverlayElement*)ui->getChild(uiChild);
@@ -36,7 +35,6 @@ GuiWidget()
 	mSpecialBar->setTop(mSpecialBar->getTop()*aspectRatio);
 	// Save intial bar width and heigth values
 	this->mSpecialWidth = mSpecialBar->getWidth();
-	this->mSpecialHeight = mSpecialBar->getHeight();
 
 	// Initialize text areas
 	sprintf(uiChild, "UI_%d/Kills", mWidgetId);
