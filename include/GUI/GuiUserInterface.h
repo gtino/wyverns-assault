@@ -70,8 +70,10 @@ namespace WyvernsAssault
 
 	protected:
 		Real	mLifeWidth;
+		Real	mLifeU2;
 		Real	mLifePercent;
 		Real	mSpecialWidth;
+		Real	mSpecialU2;
 		Real	mSpecialPercent;
 		Real	mKills;
 		Real	mPoints;

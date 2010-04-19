@@ -26,15 +26,20 @@ GuiWidget()
 	mLifeBar = (PanelOverlayElement*)ui->getChild(uiChild);
 	mLifeBar->setHeight(mLifeBar->getHeight()*aspectRatio);
 	mLifeBar->setTop(mLifeBar->getTop()*aspectRatio);
-	// Save intial bar width and height values
+	// Save intial bar width and u2 values
 	this->mLifeWidth = mLifeBar->getWidth();
+	Real u1, v1, u2, v2;
+	mLifeBar->getUV(u1, v1, u2, v2);
+	this->mLifeU2 = u2;
 
 	sprintf(uiChild, "UI_%d/SpecialBar", mWidgetId);
 	mSpecialBar = (PanelOverlayElement*)ui->getChild(uiChild);
 	mSpecialBar->setHeight(mSpecialBar->getHeight()*aspectRatio);
 	mSpecialBar->setTop(mSpecialBar->getTop()*aspectRatio);
-	// Save intial bar width and heigth values
+	// Save intial bar width and u2 values
 	this->mSpecialWidth = mSpecialBar->getWidth();
+	mSpecialBar->getUV(u1, v1, u2, v2);
+	this->mSpecialU2 = u2;
 
 	// Initialize text areas
 	sprintf(uiChild, "UI_%d/Kills", mWidgetId);
@@ -85,8 +90,8 @@ void GuiUserInterface::setLifeBar(Real value)
 
 		mLifePercent = value;
 		mLifeBar->setWidth(mLifeWidth * factor);
-		mLifeBar->getUV(u1, v1, u2, v2);			
-		mLifeBar->setUV(u1, v1, factor, v2);
+		mLifeBar->getUV(u1, v1, u2, v2);		
+		mLifeBar->setUV(u1, v1, mLifeU2*factor, v2);
 	}
 }
 
@@ -99,8 +104,8 @@ void GuiUserInterface::setSpecialBar(Real value)
 
 		mSpecialPercent = value;
 		mSpecialBar->setWidth(mSpecialWidth * factor);
-		mLifeBar->getUV(u1, v1, u2, v2);
-		mSpecialBar->setUV(u1, v1, factor, v2);
+		mSpecialBar->getUV(u1, v1, u2, v2);
+		mSpecialBar->setUV(u1, v1, mSpecialU2*factor, v2);
 	}
 }
 

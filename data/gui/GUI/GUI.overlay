@@ -30,19 +30,19 @@ template container Panel(GUI/UI)
 	element Panel(LifeBar)
 	{
 		material GUI/LifeBar
-		uv_coords 0 0 1 1
+		uv_coords 0 0 0.87 0.65
 		left 0.1025
 		top 0.0115
-		height 0.0273
-		width 0.08275
+		height 0.028
+		width 0.08345
 	}
 	element Panel(SpecialBar)
 	{
 		material GUI/SpecialBar
-		uv_coords 0 0 1 1
+		uv_coords 0 0 0.83 0.9
 		left 0.1055
-		top 0.0338
-		height 0.0185
+		top 0.03375
+		height 0.0192
 		width 0.0775
 	}
 }
