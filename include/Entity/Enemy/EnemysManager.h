@@ -40,11 +40,11 @@ namespace WyvernsAssault
 		Woman	= 5
 	};
 
-	typedef std::map<Ogre::String,Enemy*> EnemyMap;
-	typedef std::map<Ogre::String,Enemy*>::iterator EnemyMapIterator;
+	typedef std::map<Ogre::String,EnemyPtr> EnemyMap;
+	typedef std::map<Ogre::String,EnemyPtr>::iterator EnemyMapIterator;
 
-	typedef std::vector<Enemy*> EnemyList;
-	typedef std::vector<Enemy*>::iterator EnemyListIterator;
+	typedef std::vector<EnemyPtr> EnemyList;
+	typedef std::vector<EnemyPtr>::iterator EnemyListIterator;
 
 	/**
 	Class used to manage all the enemies
@@ -57,20 +57,23 @@ namespace WyvernsAssault
 
 		void finalize();
 
-		Enemy* createEnemy(EnemyTypes type);
-		Enemy* getEnemy(Ogre::String name);
+		EnemyPtr createEnemy(EnemyTypes type);
+		EnemyPtr createEnemy(Ogre::String name, Ogre::String mesh);
+
+		EnemyPtr getEnemy(Ogre::String name);
 		bool removeEnemy(Ogre::String name);
 
 		/* TODO : Enemy IA
 		*/
-		void processEnemyIA();
-		EnemyList& getList();
+		void update(const float elpasedSeconds);
 
 	private:
 		void unLoad();
+		Ogre::String createUniqueId();
 
 	private:
 		int mCount;
+		int mId;
 
 		EnemyList mEnemyList;
 		EnemyMap mEnemyMap;

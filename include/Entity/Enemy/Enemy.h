@@ -32,28 +32,30 @@ namespace WyvernsAssault
 	*/
 	class Enemy
 	{
-		public:
-		Enemy();
+	public:
+		Enemy(Ogre::String name);
 		~Enemy();
-
-		void initialize(Ogre::String name, Ogre::String mesh, Ogre::SceneManager* levelSceneManager, Ogre::Vector3 position);
+	
+		void initialize();
 		void finalize();
 
-		Ogre::SceneNode* getSceneNode() const {return enemySceneNode;}
-		const Ogre::String& getName() {return enemySceneNode->getName();}
+		Ogre::SceneNode* getSceneNode() const { return mSceneNode; }
+		void setSceneNode(Ogre::SceneNode* sceneNode) { mSceneNode = sceneNode; }
 
-		void setPosition(Ogre::Vector3 position){enemySceneNode->setPosition(position);}
-		Ogre::Vector3 getPosition(){return enemySceneNode->getPosition();} 
+		const Ogre::String& getName() { return mSceneNode->getName(); }
 
-		void setScale(Ogre::Vector3 scale){enemySceneNode->setScale(scale);}
+		void setPosition(Ogre::Vector3 position) { mSceneNode->setPosition(position); }
+		Ogre::Vector3 getPosition() { return mSceneNode->getPosition(); } 
+
+		void setScale(Ogre::Vector3 scale) { mSceneNode->setScale(scale); }
+		Ogre::Vector3 getScale(){return mSceneNode->getScale(); }
 
 	private:
-		void initializeVariables();
-
-		Ogre::SceneManager *mSceneMgr;
-		Ogre::Entity* enemyMesh;
-		Ogre::SceneNode* enemySceneNode;
+		Ogre::Entity* mMesh;
+		Ogre::SceneNode* mSceneNode;
 	};
+
+	typedef boost::shared_ptr<Enemy> EnemyPtr;
 }
 
 #endif // __ENEMY_H__
