@@ -41,7 +41,7 @@ void PlayState::initialize()
 
 	// Player manager constructor
 	mPlayerManager = new PlayerManager();
-	mPlayerManager->initialize("redWyvern","redwyvern.mesh",mGraphicsManager->getSceneManager(),Vector3(150,0,850));
+	mPlayerManager->initialize("redWyvern","redwyvern.mesh",mGraphicsManager->getSceneManager(),Vector3(150,25,850));
 
 	// Camera manager constructor
 	mCameraManager = new CameraManager(mGraphicsManager->getSceneManager(), mGraphicsManager->getRenderWindow(), mViewport);
@@ -233,6 +233,11 @@ void PlayState::update(const float elapsedSeconds)
 		{
 			mPlayerManager->move(0,0,1);
 		}
+		else
+		{
+			// No movement, iddle animation
+			mPlayerManager->move(0,0,0);
+		}
 	}
 
 	// Zoom for Fixed Direction camera mode (DEBUG only)
@@ -277,6 +282,11 @@ void PlayState::update(const float elapsedSeconds)
 	// LUA MANAGER
 	// 
 	mLuaManager->run(elapsedSeconds);
+
+	//
+	// Update animation state
+	//
+	mPlayerManager->updateAnimation(elapsedSeconds);
 }
 
 /** Render */
