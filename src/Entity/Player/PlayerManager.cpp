@@ -42,8 +42,9 @@ void PlayerManager::initialize(String name, String mesh, SceneManager *levelScen
 	mPlayerSceneNode->setAutoTracking(true, centerNode, Vector3::UNIT_X);
 	
 	// Animations
-	/*mPlayerAnimation = mPlayerMesh->getAnimationState("Run");
-	mPlayerAnimation->setEnabled(true);*/
+	mPlayerAnimation = mPlayerMesh->getAnimationState("Iddle_01");
+	mPlayerAnimation->setEnabled(true);
+	mPlayerAnimation->setLoop(true);
 }
 
 void PlayerManager::finalize()
@@ -55,29 +56,29 @@ void PlayerManager::finalize()
 void PlayerManager::move(Real x, Real y, Real z)
 {
 	// Direction vector
-	Vector3 mDirection = Vector3(x, y, -z);
+	Vector3 direction = Vector3(x, y, -z);
 
-	// Change autotrack axis for facing movement direction
-	mPlayerSceneNode->setAutoTracking(true, mSceneManager->getSceneNode("Center"), mDirection);
-
-	// Translate forward (allways move forward into facing direction)
-	mPlayerSceneNode->translate(Vector3(0, 0, 1)*SPEED, Ogre::Node::TransformSpace::TS_LOCAL);
-
-	/*
-	// Player rotation to face current direction
-	Vector3 mDirection = Vector3(x, y, z);
-	Vector3 src = mPlayerSceneNode->getOrientation() * Vector3::UNIT_Z;
-	src.normalise();
-	if ((1.0f + src.dotProduct(mDirection)) < 0.0001f) 
+	if (direction != Vector3::ZERO)
 	{
-		mPlayerSceneNode->yaw(Degree(180));
+		// Change autotrack axis for facing movement direction
+		mPlayerSceneNode->setAutoTracking(true, mSceneManager->getSceneNode("Center"), direction);
+
+		// Translate forward (allways move forward into facing direction)
+		mPlayerSceneNode->translate(Vector3(0, 0, 1)*SPEED, Ogre::Node::TransformSpace::TS_LOCAL);
+
+		mPlayerAnimation = mPlayerMesh->getAnimationState("Run");
+		mPlayerAnimation->setEnabled(true);
+		mPlayerAnimation->setLoop(true);
 	}
 	else
 	{
-		Ogre::Quaternion quat = src.getRotationTo(mDirection);
-		mPlayerSceneNode->rotate(quat);
+		mPlayerAnimation = mPlayerMesh->getAnimationState("Iddle_01");
+		mPlayerAnimation->setEnabled(true);
+		mPlayerAnimation->setLoop(true);
 	}
-	// Player move
-	mPlayerSceneNode->translate((mDirection*SPEED)*src);
-	*/
+}
+
+void PlayerManager::updateAnimation(float elapsedSeconds)
+{
+	mPlayerAnimation->addTime(elapsedSeconds);
 }

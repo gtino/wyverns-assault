@@ -52,6 +52,9 @@ namespace WyvernsAssault
 		// Player movement functions
 		void move(Real x, Real y, Real z);
 
+		// Animation functions
+		void updateAnimation(float elapsedSeconds);
+
 	private:
 		void initializeVariables();
 		SceneManager *mSceneManager;
