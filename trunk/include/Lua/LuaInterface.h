@@ -20,22 +20,17 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
 -----------------------------------------------------------------------------
 */
-#ifndef __LOGIC_MANAGER_H__
-#define __LOGIC_MANAGER_H__
-
-#include "..\Lua\LuaInterface.h"
+#ifndef __LUA_INTERFACE_H__
+#define __LUA_INTERFACE_H__
 
 namespace WyvernsAssault
 {
 	/**
-	Class used to load/manage logic and AI scripts
+	Interface to export Lua scripting methods
 	*/
-	class LogicManager
+	class LuaInterface
 	{
-	public:
-		LogicManager();
-		~LogicManager();
 	};
 }
 
-#endif // __LOGIC_MANAGER_H__
+#endif // __LUA_INTERFACE_H__
