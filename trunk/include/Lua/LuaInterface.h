@@ -31,6 +31,8 @@ extern "C" {
 
 #define DECLARE_LUA_LIBRARY(x) static const struct luaL_reg x[];
 #define DECLARE_LUA_FUNCTION(x) static int x(lua_State *L);
+#define EXPORT_LUA_LIBRARY const struct luaL_reg*
+#define OPEN_LUA_LIBRARY(n,l) luaL_openlib(L, n, l, 0);
 
 namespace WyvernsAssault
 {
@@ -40,7 +42,9 @@ namespace WyvernsAssault
 	class LuaInterface
 	{
 	public:
-		virtual const struct luaL_reg* getLibrary(void) const = 0;
+		virtual EXPORT_LUA_LIBRARY luaGetLibrary() = 0;
+		virtual void luaInitialize() = 0;
+		virtual void luaFinalize() = 0;
 	};
 }
 

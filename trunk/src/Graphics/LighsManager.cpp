@@ -19,8 +19,10 @@ void LightsManager::initialize()
 	// Setting default ambient light value
 	setAmbientLight(ColourValue(0.5, 0.5, 0.5));
 	mLight = new Light();
-
 }
+
+
+
 /** Finalize the lights manager */
 void LightsManager::finalize()
 {
@@ -53,4 +55,208 @@ void LightsManager::setAmbientLight(ColourValue color)
 Ogre::ColourValue LightsManager::getAmbientLight()
 {
 	return mSceneManager->getAmbientLight();
+}
+
+// --------------------------------
+// Lua Light Lib
+// --------------------------------
+LightsManager* LightsManager::smLightsManager;
+
+const struct luaL_reg LightsManager::lightlib[] = {
+		{"getLightDiffuseColor", LightsManager::getLightDiffuseColor},
+		{"setLightDiffuseColor", LightsManager::setLightDiffuseColor},
+		{"getLightPosition", LightsManager::getLightPosition},
+		{"setLightPosition", LightsManager::setLightPosition},
+		{"getAmbientLight", LightsManager::getAmbientLight},
+		{"setAmbientLight", LightsManager::setAmbientLight},
+	  {NULL, NULL}
+	};
+
+//--------------------------------
+// C++ Methods called FROM Lua
+//--------------------------------
+int LightsManager::getLightDiffuseColor(lua_State *L)
+{
+	//
+	// Pass it to Lua script
+	//
+	/* get number of arguments */
+	int n = lua_gettop(L);
+
+	// n should be 1
+
+	/* get the first argument (the light name) */
+	Ogre::String lightName = lua_tostring(L, 1);
+
+	//
+	// Retrieve light color
+	//
+	Ogre::Light* light = smLightsManager->getLight(lightName);
+
+	ColourValue color = light->getDiffuseColour();
+
+	/* push the Red */
+	lua_pushnumber(L, color.r);
+	/* push the Green */
+	lua_pushnumber(L, color.g);
+	/* push the Blue */
+	lua_pushnumber(L, color.b);
+
+	/* return the number of results */
+	return 3;
+}
+
+int LightsManager::setLightDiffuseColor(lua_State *L)
+{
+	//
+	// Pass it to Lua script
+	//
+	/* get number of arguments */
+	int n = lua_gettop(L);
+
+	// n should be 4
+
+	/* get the color arguments */
+	//if(!lua_isnumber(L,0))
+	//{
+	//lua_pushstring(L,"Incorrect argument to 'red' component");
+	//lua_error(L);
+	//}
+
+	Ogre::String lightName = lua_tostring(L, 1);
+	Ogre::Real red = lua_tonumber(L, 2);
+	Ogre::Real green = lua_tonumber(L, 3);
+	Ogre::Real blue = lua_tonumber(L, 4);
+
+	//
+	// Retrieve light color
+	//
+	Ogre::Light* light = smLightsManager->getLight(lightName);
+
+	light->setDiffuseColour(red,green,blue);
+
+	/* return the number of results */
+	return 0;
+}
+
+int LightsManager::getLightPosition(lua_State *L)
+{
+	//
+	// Pass it to Lua script
+	//
+	/* get number of arguments */
+	int n = lua_gettop(L);
+
+	// n should be 1
+
+	/* get the first argument (the light name) */
+	Ogre::String lightName = lua_tostring(L, 1);
+
+	//
+	// Retrieve light color
+	//
+	Ogre::Light* light = smLightsManager->getLight(lightName);
+
+	Vector3 position = light->getPosition();
+
+	/* push the X */
+	lua_pushnumber(L, position.x);
+	/* push the Y */
+	lua_pushnumber(L, position.y);
+	/* push the Z */
+	lua_pushnumber(L, position.z);
+
+	/* return the number of results */
+	return 3;
+}
+
+int LightsManager::setLightPosition(lua_State *L)
+{
+	//
+	// Pass it to Lua script
+	//
+	/* get number of arguments */
+	int n = lua_gettop(L);
+
+	// n should be 4
+
+	/* get the color arguments */
+	//if(!lua_isnumber(L,0))
+	//{
+	//lua_pushstring(L,"Incorrect argument to 'red' component");
+	//lua_error(L);
+	//}
+
+	Ogre::String lightName = lua_tostring(L, 1);
+	Ogre::Real x = lua_tonumber(L, 2);
+	Ogre::Real y = lua_tonumber(L, 3);
+	Ogre::Real z = lua_tonumber(L, 4);
+
+	//
+	// Retrieve light color
+	//
+	Ogre::Light* light = smLightsManager->getLight(lightName);
+
+	light->setPosition(x,y,z);
+
+	/* return the number of results */
+	return 0;
+}
+
+int LightsManager::getAmbientLight(lua_State *L)
+{
+	//
+	// Pass it to Lua script
+	//
+	/* get number of arguments */
+	int n = lua_gettop(L);
+
+	// n should be 0
+
+	//
+	// Retrieve light color
+	//
+	ColourValue color = smLightsManager->getAmbientLight();
+
+	/* push the Red */
+	lua_pushnumber(L, color.r);
+	/* push the Green */
+	lua_pushnumber(L, color.g);
+	/* push the Blue */
+	lua_pushnumber(L, color.b);
+
+	/* return the number of results */
+	return 3;
+}
+
+int LightsManager::setAmbientLight(lua_State *L)
+{
+	//
+	// Pass it to Lua script
+	//
+	/* get number of arguments */
+	int n = lua_gettop(L);
+
+	// n should be 3
+
+	/* get the color arguments */
+	//if(!lua_isnumber(L,0))
+	//{
+	//lua_pushstring(L,"Incorrect argument to 'red' component");
+	//lua_error(L);
+	//}
+
+	ColourValue color;
+
+	color.r = lua_tonumber(L, 1);
+	color.g = lua_tonumber(L, 2);
+	color.b = lua_tonumber(L, 3);
+
+	//
+	// Retrieve light color
+	//
+	smLightsManager->setAmbientLight(color);
+
+	/* return the number of results */
+	return 0;
 }
