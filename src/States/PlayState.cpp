@@ -6,6 +6,7 @@ using namespace WyvernsAssault;
 PlayState::PlayState(GraphicsManager& graphicsManager, InputManager& inputManager, AudioManager& audioManager)
 : BaseState(graphicsManager,inputManager,audioManager)
 , mPlayerManager(NULL)
+, mLogicManager(NULL)
 , mLightsManager(NULL)
 , mCameraManager(NULL)
 , mEnemyManager(NULL)
@@ -97,10 +98,26 @@ void PlayState::initialize()
 	mPhysicsManager->initialize();
 
 	//
+	// Logic Manager
+	//
+	mLogicManager = new LogicManager();
+	mLogicManager->initialize();
+
+	//
 	// Lua Manager
 	//
-	mLuaManager = new LuaManager(mLightsManager,mPhysicsManager,mEnemyManager,mPlayerManager,mItemManager,mAudioManager);
+	mLuaManager = new LuaManager();
 	mLuaManager->initialize();
+
+	mLuaManager->addLibrary("Light",mLightsManager);
+	mLuaManager->addLibrary("Game",mLogicManager);
+	//mLuaManager->addLibrary("Physics",mPhysicsManager);
+	//mLuaManager->addLibrary("Player",mPlayerManager);
+	//mLuaManager->addLibrary("Enemy",mEnemyManager);
+	//mLuaManager->addLibrary("Item",mItemManager);
+	//mLuaManager->addLibrary("Audio",mAudioManager);
+
+	mLuaManager->loadScript(".\\data\\scripts\\Scenario.lua");
 }
 
 /** Load resources */
@@ -279,9 +296,14 @@ void PlayState::update(const float elapsedSeconds)
 		mPlayerUI->setSpecialBar(mPlayerUI->getSpecialBar() + 2);
 
 	//
+	// Logic manager
+	//
+	mLogicManager->update(elapsedSeconds);
+
+	//
 	// LUA MANAGER
 	// 
-	mLuaManager->run(elapsedSeconds);
+	mLuaManager->update(elapsedSeconds);
 
 	//
 	// Update animation state

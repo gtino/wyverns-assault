@@ -30,11 +30,31 @@ namespace WyvernsAssault
 	/**
 	Class used to load/manage logic and AI scripts
 	*/
-	class LogicManager
+	class LogicManager : public LuaInterface
 	{
 	public:
 		LogicManager();
 		~LogicManager();
+
+		bool initialize();
+		void finalize();
+		bool update(const float elapsedSeconds);
+
+	private: // Game data
+		static float smTotalSeconds;
+		static float smElapsedSeconds;
+
+		// Game Lib (exported to Lua)
+		DECLARE_LUA_LIBRARY(gamelib);
+
+		// From Lua to C++
+		DECLARE_LUA_FUNCTION(getTotalSeconds)
+		DECLARE_LUA_FUNCTION(getElapsedSeconds)
+
+		EXPORT_LUA_LIBRARY luaGetLibrary() {return gamelib;}
+
+		void luaInitialize() {LogicManager::smTotalSeconds = 0; LogicManager::smElapsedSeconds = 0;}
+		void luaFinalize() {LogicManager::smTotalSeconds = 0; LogicManager::smElapsedSeconds = 0;}
 	};
 }
 

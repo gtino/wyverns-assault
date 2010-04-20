@@ -25,6 +25,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
 #include <Ogre.h>
 
+#include "..\Lua\LuaInterface.h"
+
 // Light types
 #define AMBIENT		1
 #define POINT		2
@@ -38,7 +40,7 @@ namespace WyvernsAssault
 	/**
 	Class used to manage all the lights
 	*/
-	class LightsManager
+	class LightsManager : public LuaInterface
 	{
 	public:
 		LightsManager(SceneManager* sceneManager);
@@ -61,6 +63,25 @@ namespace WyvernsAssault
 
 		/** Disable Light **/
 		void disable() { mSceneManager->destroyAllLights(); }
+
+	public: // Lua Interface
+		static LightsManager* smLightsManager;
+
+		// Lights Lib (exported to Lua)
+		DECLARE_LUA_LIBRARY(lightlib)
+
+		// From Lua to C++
+		DECLARE_LUA_FUNCTION(getLightDiffuseColor)
+		DECLARE_LUA_FUNCTION(setLightDiffuseColor)
+		DECLARE_LUA_FUNCTION(getLightPosition)
+		DECLARE_LUA_FUNCTION(setLightPosition)
+		DECLARE_LUA_FUNCTION(getAmbientLight)
+		DECLARE_LUA_FUNCTION(setAmbientLight)
+
+		EXPORT_LUA_LIBRARY luaGetLibrary() {return lightlib;}
+
+		void luaInitialize() {LightsManager::smLightsManager = this;}
+		void luaFinalize() {LightsManager::smLightsManager = NULL;}
 
 	private:
 		Light* mLight;

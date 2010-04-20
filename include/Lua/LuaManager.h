@@ -40,19 +40,23 @@ namespace WyvernsAssault
 	class LuaManager
 	{
 	public:
-		LuaManager(LightsManager* lightsManager, PhysicsManager* physicsManager, EnemyManager* enemysManager, PlayerManager* playerManager, ItemManager* itemManager, AudioManager* audioManager);
+		LuaManager();
 		~LuaManager();
 
 	public:
-		/** Initialize Lua and load Lua libs */
+		/** Initialize Lua and load Lua default libs */
 		bool initialize();
-		/** Finalize Lua and unload Lua libs */
+		/** Add and open custom library */
+		bool addLibrary(const char* name, LuaInterface* luaInterface);
+		/** Do file */
+		bool loadScript(const char* name);
+		/** Finalize Lua and unload Lua libs */		
 		void finalize();
 		/** Reloads scripts */
 		bool reload();
 
 		/** Runs all loaded scripts */
-		bool run(const float elapsedSeconds);
+		bool update(const float elapsedSeconds);
 		void enable();
 		void disable();
 		bool isEnabled();
@@ -63,31 +67,6 @@ namespace WyvernsAssault
 	private:
 		// From C++ to Lua
 		bool runScenario(const float totalSeconds);
-
-	private: // LightsManager
-		static LightsManager* smLightsManager;
-
-		// Lights Lib (exported to Lua)
-		DECLARE_LUA_LIBRARY(lightlib)
-
-		// From Lua to C++
-		DECLARE_LUA_FUNCTION(getLightDiffuseColor)
-		DECLARE_LUA_FUNCTION(setLightDiffuseColor)
-		DECLARE_LUA_FUNCTION(getLightPosition)
-		DECLARE_LUA_FUNCTION(setLightPosition)
-		DECLARE_LUA_FUNCTION(getAmbientLight)
-		DECLARE_LUA_FUNCTION(setAmbientLight)
-
-	private: // Game data
-		static float smTotalSeconds;
-		static float smElapsedSeconds;
-
-		// Game Lib (exported to Lua)
-		DECLARE_LUA_LIBRARY(gamelib);
-
-		// From Lua to C++
-		DECLARE_LUA_FUNCTION(getTotalSeconds)
-		DECLARE_LUA_FUNCTION(getElapsedSeconds)
 
 	private: // PhysicsManager
 		static PhysicsManager* smPhysicsManager;
