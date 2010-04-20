@@ -30,7 +30,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #include "..\Logic\LogicManager.h"
 #include "..\Logic\LuaManager.h"
 #include "..\Entity\Player\PlayerManager.h"
-#include "..\Entity\Enemy\EnemysManager.h"
+#include "..\Entity\Enemy\EnemyManager.h"
 #include "..\Entity\Item\ItemManager.h"
 
 #include <CCSCameraControlSystem.h>
@@ -82,7 +82,7 @@ namespace WyvernsAssault
 		CameraManager* mCameraManager;
 		LightsManager* mLightsManager;
 		PlayerManager* mPlayerManager;
-		EnemysManager* mEnemysManager;
+		EnemyManager* mEnemysManager;
 		LogicManager* mLogicManager;
 		LuaManager*	mLuaManager;	
 		PhysicsManager* mPhysicsManager;

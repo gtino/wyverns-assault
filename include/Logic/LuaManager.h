@@ -32,7 +32,7 @@ extern "C" {
 #include "..\Graphics\LightsManager.h"
 #include "..\Camera\CameraManager.h"
 #include "..\Physics\PhysicsManager.h"
-#include "..\Entity\Enemy\EnemysManager.h"
+#include "..\Entity\Enemy\EnemyManager.h"
 #include "..\Entity\Player\PlayerManager.h"
 #include "..\Entity\Item\ItemManager.h"
 #include "..\Audio\AudioManager.h"
@@ -45,7 +45,7 @@ namespace WyvernsAssault
 	class LuaManager
 	{
 	public:
-		LuaManager(LightsManager* lightsManager, PhysicsManager* physicsManager, EnemysManager* enemysManager, PlayerManager* playerManager, ItemManager* itemManager, AudioManager* audioManager);
+		LuaManager(LightsManager* lightsManager, PhysicsManager* physicsManager, EnemyManager* enemysManager, PlayerManager* playerManager, ItemManager* itemManager, AudioManager* audioManager);
 		~LuaManager();
 
 	public:
@@ -102,8 +102,8 @@ namespace WyvernsAssault
 
 		static int getHOT(lua_State *L);
 
-	private: // EnemysManager
-		static EnemysManager* smEnemysManager;
+	private: // EnemyManager
+		static EnemyManager* smEnemysManager;
 
 		// Enemys Lib (exported to Lua)
 		static const struct luaL_reg enemylib [];

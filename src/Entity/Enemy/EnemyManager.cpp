@@ -1,30 +1,30 @@
-#include "..\..\..\include\Entity\Enemy\EnemysManager.h"
+#include "..\..\..\include\Entity\Enemy\EnemyManager.h"
 
 using namespace WyvernsAssault;
 
-EnemysManager::EnemysManager(Ogre::SceneManager* sceneManager) :
+EnemyManager::EnemyManager(Ogre::SceneManager* sceneManager) :
 mCount(0),
 mId(0)
 {
 	mSceneManager = sceneManager;
 }
 
-EnemysManager::~EnemysManager()
+EnemyManager::~EnemyManager()
 {
 
 }
 
-void EnemysManager::finalize()
+void EnemyManager::finalize()
 {
 	this->unLoad();
 }
 
-void EnemysManager::unLoad()
+void EnemyManager::unLoad()
 {
 	mEnemyList.clear();
 }
 
-EnemyPtr EnemysManager::createEnemy(EnemyTypes type)
+EnemyPtr EnemyManager::createEnemy(EnemyTypes type)
 {
 	Ogre::String mesh;
 
@@ -43,7 +43,7 @@ EnemyPtr EnemysManager::createEnemy(EnemyTypes type)
 	return createEnemy(name, mesh);
 }
 
-EnemyPtr EnemysManager::createEnemy(Ogre::String name, Ogre::String mesh)
+EnemyPtr EnemyManager::createEnemy(Ogre::String name, Ogre::String mesh)
 {
 	Ogre::Entity* enemyMesh = mSceneManager->createEntity(name,mesh);
 	Ogre::SceneNode* enemySceneNode = mSceneManager->getRootSceneNode()->createChildSceneNode();
@@ -62,7 +62,7 @@ EnemyPtr EnemysManager::createEnemy(Ogre::String name, Ogre::String mesh)
 	return enemy;
 }
 
-Ogre::String EnemysManager::createUniqueId()
+Ogre::String EnemyManager::createUniqueId()
 {
 	Ogre::StringStream countStrStr;
 	countStrStr << mId;
@@ -74,12 +74,12 @@ Ogre::String EnemysManager::createUniqueId()
 	return uniqueId;
 }
 
-EnemyPtr EnemysManager::getEnemy(Ogre::String name)
+EnemyPtr EnemyManager::getEnemy(Ogre::String name)
 {
 	return mEnemyMap[name];
 }
 
-bool EnemysManager::removeEnemy(Ogre::String name)
+bool EnemyManager::removeEnemy(Ogre::String name)
 {
 	mEnemyMap.erase(name);
 
@@ -91,7 +91,7 @@ bool EnemysManager::removeEnemy(Ogre::String name)
 /* 
 * TODO
 */
-void EnemysManager::update(const float elpasedSeconds)
+void EnemyManager::update(const float elpasedSeconds)
 {
 	
 }

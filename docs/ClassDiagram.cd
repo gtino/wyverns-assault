@@ -196,11 +196,11 @@
       <FileName>c:\svnroot\wyverns-assault\include\Entity\Enemy\Enemy.h</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="WyvernsAssault::EnemysManager" Collapsed="true">
+  <Class Name="WyvernsAssault::EnemyManager" Collapsed="true">
     <Position X="2.75" Y="5.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AIAAAgACAAAAAAAAIAAAAAAAAAAAAAAAAIABAgAAAAA=</HashCode>
-      <FileName>c:\svnroot\wyverns-assault\include\Entity\Enemy\EnemysManager.h</FileName>
+      <FileName>c:\svnroot\wyverns-assault\include\Entity\Enemy\EnemyManager.h</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="WyvernsAssault::ItemManager" Collapsed="true">
@@ -354,14 +354,14 @@
     <Position X="28.75" Y="7.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>c:\svnroot\wyverns-assault\include\Entity\Enemy\EnemysManager.h</FileName>
+      <FileName>c:\svnroot\wyverns-assault\include\Entity\Enemy\EnemyManager.h</FileName>
     </TypeIdentifier>
   </Typedef>
   <Typedef Name="WyvernsAssault::EnemyListIterator" Collapsed="true">
     <Position X="30.5" Y="7.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>c:\svnroot\wyverns-assault\include\Entity\Enemy\EnemysManager.h</FileName>
+      <FileName>c:\svnroot\wyverns-assault\include\Entity\Enemy\EnemyManager.h</FileName>
     </TypeIdentifier>
   </Typedef>
   <Enum Name="WyvernsAssault::GameStateId" Collapsed="true">

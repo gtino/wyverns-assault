@@ -7,7 +7,7 @@ using namespace std;
 using namespace Ogre;
 using namespace WyvernsAssault;
 
-void DotSceneLoader::parseDotScene(const String &SceneName, const String &groupName, SceneManager *levelSceneManager, WyvernsAssault::CameraManager* cameraManager, WyvernsAssault::LightsManager* lightsManager,WyvernsAssault::EnemysManager* enemysManager ,SceneNode *pAttachNode, const String &sPrependNode)
+void DotSceneLoader::parseDotScene(const String &SceneName, const String &groupName, SceneManager *levelSceneManager, WyvernsAssault::CameraManager* cameraManager, WyvernsAssault::LightsManager* lightsManager,WyvernsAssault::EnemyManager* enemysManager ,SceneNode *pAttachNode, const String &sPrependNode)
 {
 
 	//Set SceneManager
@@ -19,7 +19,7 @@ void DotSceneLoader::parseDotScene(const String &SceneName, const String &groupN
 	//Set LightsManager
 	mLightsManager = lightsManager;
 
-	//Set EnemysManager
+	//Set EnemyManager
 	mEnemysManager = enemysManager;
 
 	//Set up shared object values
@@ -224,7 +224,7 @@ void DotSceneLoader::processEnemys(TiXmlElement *XMLNode)
 			scale = parseVector3(pElementScale);
 		}
 
-		// Add to EnemysManager
+		// Add to EnemyManager
 		mEnemysManager->createEnemy(name,mesh);
 
 		pElement = pElement->NextSiblingElement("enemy");
