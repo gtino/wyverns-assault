@@ -82,7 +82,7 @@ namespace WyvernsAssault
 		CameraManager* mCameraManager;
 		LightsManager* mLightsManager;
 		PlayerManager* mPlayerManager;
-		EnemyManager* mEnemysManager;
+		EnemyManager* mEnemyManager;
 		LogicManager* mLogicManager;
 		LuaManager*	mLuaManager;	
 		PhysicsManager* mPhysicsManager;

@@ -23,12 +23,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #ifndef __LUA_MANAGER_H__
 #define __LUA_MANAGER_H__
 
-extern "C" {
-	#include "..\..\externals\Lua-5.0-SDK\include\lua.h"
-	#include "..\..\externals\Lua-5.0-SDK\include\lualib.h"
-	#include "..\..\externals\Lua-5.0-SDK\include\lauxlib.h"
-}
-
+#include "..\Lua\LuaInterface.h"
 #include "..\Graphics\LightsManager.h"
 #include "..\Camera\CameraManager.h"
 #include "..\Physics\PhysicsManager.h"
@@ -73,73 +68,73 @@ namespace WyvernsAssault
 		static LightsManager* smLightsManager;
 
 		// Lights Lib (exported to Lua)
-		static const struct luaL_reg lightlib [];
+		DECLARE_LUA_LIBRARY(lightlib)
 
 		// From Lua to C++
-		static int getLightDiffuseColor(lua_State *L);
-		static int setLightDiffuseColor(lua_State *L);
-		static int getLightPosition(lua_State *L);
-		static int setLightPosition(lua_State *L);
-		static int getAmbientLight(lua_State *L);
-		static int setAmbientLight(lua_State *L);
+		DECLARE_LUA_FUNCTION(getLightDiffuseColor)
+		DECLARE_LUA_FUNCTION(setLightDiffuseColor)
+		DECLARE_LUA_FUNCTION(getLightPosition)
+		DECLARE_LUA_FUNCTION(setLightPosition)
+		DECLARE_LUA_FUNCTION(getAmbientLight)
+		DECLARE_LUA_FUNCTION(setAmbientLight)
 
 	private: // Game data
 		static float smTotalSeconds;
 		static float smElapsedSeconds;
 
 		// Game Lib (exported to Lua)
-		static const struct luaL_reg gamelib [];
+		DECLARE_LUA_LIBRARY(gamelib);
 
 		// From Lua to C++
-		static int getTotalSeconds(lua_State *L);
-		static int getElapsedSeconds(lua_State *L);
+		DECLARE_LUA_FUNCTION(getTotalSeconds)
+		DECLARE_LUA_FUNCTION(getElapsedSeconds)
 
 	private: // PhysicsManager
 		static PhysicsManager* smPhysicsManager;
 
 		// Physics Lib (exported to Lua)
-		static const struct luaL_reg physicslib [];
+		DECLARE_LUA_LIBRARY(physicslib);
 
-		static int getHOT(lua_State *L);
+		DECLARE_LUA_FUNCTION(getHOT)
 
 	private: // EnemyManager
-		static EnemyManager* smEnemysManager;
+		static EnemyManager* smEnemyManager;
 
 		// Enemys Lib (exported to Lua)
-		static const struct luaL_reg enemylib [];
+		DECLARE_LUA_LIBRARY(enemylib);
 
-		static int createEnemy(lua_State *L);
-		static int getEnemyPosition(lua_State *L);
-		static int setEnemyPosition(lua_State *L);
-		static int setEnemyState(lua_State *L);
-		static int removeEnemy(lua_State *L);
+		DECLARE_LUA_FUNCTION(createEnemy)
+		DECLARE_LUA_FUNCTION(getEnemyPosition)
+		DECLARE_LUA_FUNCTION(setEnemyPosition)
+		DECLARE_LUA_FUNCTION(setEnemyState)
+		DECLARE_LUA_FUNCTION(removeEnemy)
 
 	private: // PlayerManager
 		static PlayerManager* smPlayerManager;
 
 		// Player Lib (exported to Lua)
-		static const struct luaL_reg playerlib [];
+		DECLARE_LUA_LIBRARY(playerlib);
 
-		static int getPlayerPosition(lua_State *L);
+		DECLARE_LUA_FUNCTION(getPlayerPosition)
 
 	private: // ItemManager
 		static ItemManager* smItemManager;
 
 		// Item Lib (exported to Lua)
-		static const struct luaL_reg itemlib [];
+		DECLARE_LUA_LIBRARY(itemlib);
 
-		static int createItem(lua_State *L);
-		static int getItemPosition(lua_State *L);
-		static int setItemPosition(lua_State *L);
-		static int removeItem(lua_State *L);
+		DECLARE_LUA_FUNCTION(createItem)
+		DECLARE_LUA_FUNCTION(getItemPosition)
+		DECLARE_LUA_FUNCTION(setItemPosition)
+		DECLARE_LUA_FUNCTION(removeItem)
 
 	private: // AudioManager
 		static AudioManager* smAudioManager;
 
 		// Audio Lib (exported to Lua)
-		static const struct luaL_reg audiolib [];
+		DECLARE_LUA_LIBRARY(audiolib);
 
-		static int playSound(lua_State *L);
+		DECLARE_LUA_FUNCTION(playSound)
 
 	private:
 		/* the Lua interpreter */

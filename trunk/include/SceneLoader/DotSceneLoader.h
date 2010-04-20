@@ -83,7 +83,7 @@ namespace Ogre
 		String m_sPrependNode;
 		WyvernsAssault::CameraManager* mCameraManager;
 		WyvernsAssault::LightsManager* mLightsManager;
-		WyvernsAssault::EnemyManager* mEnemysManager;
+		WyvernsAssault::EnemyManager* mEnemyManager;
 	};
 }
 

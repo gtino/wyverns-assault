@@ -20,7 +20,7 @@ void DotSceneLoader::parseDotScene(const String &SceneName, const String &groupN
 	mLightsManager = lightsManager;
 
 	//Set EnemyManager
-	mEnemysManager = enemysManager;
+	mEnemyManager = enemysManager;
 
 	//Set up shared object values
 	m_sGroupName = groupName;
@@ -225,7 +225,7 @@ void DotSceneLoader::processEnemys(TiXmlElement *XMLNode)
 		}
 
 		// Add to EnemyManager
-		mEnemysManager->createEnemy(name,mesh);
+		mEnemyManager->createEnemy(name,mesh);
 
 		pElement = pElement->NextSiblingElement("enemy");
 	}

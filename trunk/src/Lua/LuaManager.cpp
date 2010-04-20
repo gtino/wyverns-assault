@@ -1,4 +1,4 @@
-#include "..\..\include\Logic\LuaManager.h"
+#include "..\..\include\Lua\LuaManager.h"
 
 using namespace WyvernsAssault;
 
@@ -42,7 +42,7 @@ const struct luaL_reg LuaManager::physicslib[] = {
 // --------------------------------
 // Lua Enemys Lib
 // --------------------------------
-EnemysManager* LuaManager::smEnemysManager;
+EnemyManager* LuaManager::smEnemyManager;
 
 const struct luaL_reg LuaManager::enemylib[] = {
 	  {"create", LuaManager::createEnemy},
@@ -88,7 +88,7 @@ const struct luaL_reg LuaManager::audiolib[] = {
 
 LuaManager::LuaManager(LightsManager* lightsManager, 
 					   PhysicsManager* physicsManager, 
-					   EnemysManager* enemysManager, 
+					   EnemyManager* enemysManager, 
 					   PlayerManager* playerManager, 
 					   ItemManager* itemManager, 
 					   AudioManager* audioManager) :
@@ -99,7 +99,7 @@ mEnabled(true)
 	//
 	smLightsManager = lightsManager;
 	smPhysicsManager = physicsManager;
-	smEnemysManager = enemysManager;
+	smEnemyManager = enemysManager;
 	smPlayerManager = playerManager;
 	smItemManager = itemManager;
 	smAudioManager = audioManager;
@@ -457,7 +457,7 @@ int LuaManager::createEnemy(lua_State *L)
 
 	int type = luaL_checkint(L, 1);
 
-	EnemyPtr enemy = smEnemysManager->createEnemy((EnemyTypes)type);
+	EnemyPtr enemy = smEnemyManager->createEnemy((EnemyTypes)type);
 
 	lua_pushstring(L,enemy->getName().c_str());
 

@@ -8,7 +8,7 @@ PlayState::PlayState(GraphicsManager& graphicsManager, InputManager& inputManage
 , mPlayerManager(NULL)
 , mLightsManager(NULL)
 , mCameraManager(NULL)
-, mEnemysManager(NULL)
+, mEnemyManager(NULL)
 , mTrayMgr(NULL)
 , mDetailsPanel(NULL)
 {
@@ -52,11 +52,11 @@ void PlayState::initialize()
 	mLightsManager->initialize();
 
 	//Enemys manager constructor
-	mEnemysManager = new EnemyManager(mSceneManager);
+	mEnemyManager = new EnemyManager(mSceneManager);
 
 	//Load scene XML file
 	std::auto_ptr<DotSceneLoader> sceneLoader(new DotSceneLoader());
-	sceneLoader->parseDotScene("Stage1_1.XML","General", mGraphicsManager->getSceneManager(), mCameraManager, mLightsManager, mEnemysManager);	
+	sceneLoader->parseDotScene("Stage1_1.XML","General", mGraphicsManager->getSceneManager(), mCameraManager, mLightsManager, mEnemyManager);	
 
 	// Set game camera
 	mCameraManager->gameCamera();
@@ -99,7 +99,7 @@ void PlayState::initialize()
 	//
 	// Lua Manager
 	//
-	mLuaManager = new LuaManager(mLightsManager,mPhysicsManager,mEnemysManager,mPlayerManager,mItemManager,mAudioManager);
+	mLuaManager = new LuaManager(mLightsManager,mPhysicsManager,mEnemyManager,mPlayerManager,mItemManager,mAudioManager);
 	mLuaManager->initialize();
 }
 
@@ -351,10 +351,10 @@ void PlayState::finalize()
 		mLightsManager = NULL;
 	}
 
-	if(mEnemysManager)
+	if(mEnemyManager)
 	{
-		delete mEnemysManager;
-		mEnemysManager = NULL;
+		delete mEnemyManager;
+		mEnemyManager = NULL;
 	}
 	
 	if(mTrayMgr)
