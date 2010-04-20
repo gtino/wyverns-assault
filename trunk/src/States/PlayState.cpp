@@ -52,7 +52,7 @@ void PlayState::initialize()
 	mLightsManager->initialize();
 
 	//Enemys manager constructor
-	mEnemysManager = new EnemysManager(mSceneManager);
+	mEnemysManager = new EnemyManager(mSceneManager);
 
 	//Load scene XML file
 	std::auto_ptr<DotSceneLoader> sceneLoader(new DotSceneLoader());

@@ -49,11 +49,11 @@ namespace WyvernsAssault
 	/**
 	Class used to manage all the enemies
 	*/
-	class EnemysManager : public EntityManager
+	class EnemyManager : public EntityManager
 	{
 		public:
-		EnemysManager(Ogre::SceneManager* sceneManager);
-		~EnemysManager();
+		EnemyManager(Ogre::SceneManager* sceneManager);
+		~EnemyManager();
 
 		void finalize();
 

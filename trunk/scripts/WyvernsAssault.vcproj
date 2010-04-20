@@ -423,7 +423,7 @@
 						>
 					</File>
 					<File
-						RelativePath="..\src\Entity\Enemy\EnemysManager.cpp"
+						RelativePath="..\src\Entity\Enemy\EnemyManager.cpp"
 						>
 					</File>
 				</Filter>
@@ -661,7 +661,7 @@
 						>
 					</File>
 					<File
-						RelativePath="..\include\Entity\Enemy\EnemysManager.h"
+						RelativePath="..\include\Entity\Enemy\EnemyManager.h"
 						>
 					</File>
 				</Filter>
