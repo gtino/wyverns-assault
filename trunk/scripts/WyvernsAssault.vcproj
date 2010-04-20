@@ -448,6 +448,10 @@
 					>
 				</File>
 			</Filter>
+			<Filter
+				Name="Lua"
+				>
+			</Filter>
 		</Filter>
 		<Filter
 			Name="Header Files"
@@ -701,6 +705,10 @@
 					RelativePath="..\include\Events\EventsProcessor.h"
 					>
 				</File>
+			</Filter>
+			<Filter
+				Name="Lua"
+				>
 			</Filter>
 		</Filter>
 		<Filter
