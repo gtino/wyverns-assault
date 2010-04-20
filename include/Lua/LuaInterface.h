@@ -23,6 +23,15 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #ifndef __LUA_INTERFACE_H__
 #define __LUA_INTERFACE_H__
 
+extern "C" {
+	#include "..\..\externals\Lua-5.0-SDK\include\lua.h"
+	#include "..\..\externals\Lua-5.0-SDK\include\lualib.h"
+	#include "..\..\externals\Lua-5.0-SDK\include\lauxlib.h"
+}
+
+#define DECLARE_LUA_LIBRARY(x) static const struct luaL_reg x[];
+#define DECLARE_LUA_FUNCTION(x) static int x(lua_State *L);
+
 namespace WyvernsAssault
 {
 	/**
@@ -30,6 +39,8 @@ namespace WyvernsAssault
 	*/
 	class LuaInterface
 	{
+	public:
+		virtual const struct luaL_reg* getLibrary(void) const = 0;
 	};
 }
 

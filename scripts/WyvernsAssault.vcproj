@@ -379,10 +379,6 @@
 					RelativePath="..\src\Logic\LogicManager.cpp"
 					>
 				</File>
-				<File
-					RelativePath="..\include\Logic\LuaManager.cpp"
-					>
-				</File>
 			</Filter>
 			<Filter
 				Name="Data"
@@ -453,6 +449,10 @@
 				>
 				<File
 					RelativePath="..\scr\Lua\LuaInterface.cpp"
+					>
+				</File>
+				<File
+					RelativePath="..\src\Lua\LuaManager.cpp"
 					>
 				</File>
 			</Filter>
@@ -641,10 +641,6 @@
 					RelativePath="..\include\Logic\LogicManager.h"
 					>
 				</File>
-				<File
-					RelativePath="..\include\Logic\LuaManager.h"
-					>
-				</File>
 			</Filter>
 			<Filter
 				Name="Entity"
@@ -715,6 +711,10 @@
 				>
 				<File
 					RelativePath="..\include\Lua\LuaInterface.h"
+					>
+				</File>
+				<File
+					RelativePath="..\include\Lua\LuaManager.h"
 					>
 				</File>
 			</Filter>
