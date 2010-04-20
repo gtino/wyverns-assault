@@ -451,6 +451,10 @@
 			<Filter
 				Name="Lua"
 				>
+				<File
+					RelativePath="..\scr\Lua\LuaInterface.cpp"
+					>
+				</File>
 			</Filter>
 		</Filter>
 		<Filter
@@ -709,6 +713,10 @@
 			<Filter
 				Name="Lua"
 				>
+				<File
+					RelativePath="..\include\Lua\LuaInterface.h"
+					>
+				</File>
 			</Filter>
 		</Filter>
 		<Filter
