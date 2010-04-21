@@ -403,6 +403,12 @@ void PlayState::finalize()
 		mItemManager = NULL;
 	}
 
+	if(mLogicManager)
+	{
+		delete mLogicManager;
+		mLogicManager = NULL;
+	}
+
 	if(mLuaManager)
 	{
 		delete mLuaManager;
