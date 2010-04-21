@@ -23,9 +23,11 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #ifndef __ENEMY_MANAGER_H__
 #define __ENEMY_MANAGER_H__
 
+#include <vector>
+
+#include "..\..\..\include\Lua\LuaInterface.h"
 #include "..\..\..\include\Entity\EntityManager.h"
 #include "Enemy.h"
-#include <vector>
 
 namespace WyvernsAssault
 {
@@ -49,7 +51,7 @@ namespace WyvernsAssault
 	/**
 	Class used to manage all the enemies
 	*/
-	class EnemyManager : public EntityManager
+	class EnemyManager : public EntityManager, public LuaInterface
 	{
 		public:
 		EnemyManager(Ogre::SceneManager* sceneManager);
@@ -79,6 +81,31 @@ namespace WyvernsAssault
 		EnemyMap mEnemyMap;
 
 		Ogre::SceneManager* mSceneManager;
+
+	// --------------------------------
+	// BEGIN Lua Interface Declarations
+	// --------------------------------
+	public:
+		// Enemys Lib (exported to Lua)
+		LUA_LIBRARY("Enemy", enemylib);
+
+		LUA_FUNCTION(createEnemy)
+		LUA_FUNCTION(getEnemyPosition)
+		LUA_FUNCTION(setEnemyPosition)
+		LUA_FUNCTION(setEnemyState)
+		LUA_FUNCTION(removeEnemy)
+
+	public:
+		void luaLoadScripts(){};
+		void luaInitialize(lua_State* L) {LuaInterface::luaInitialize(L);EnemyManager::smEnemyManager = this;}
+		void luaFinalize() {EnemyManager::smEnemyManager = NULL;}
+		void luaReload(){};
+
+	private: // EnemyManager
+		static EnemyManager* smEnemyManager;
+	// ------------------------------
+	// END Lua Interface Declarations
+	// ------------------------------
 	};
 }
 

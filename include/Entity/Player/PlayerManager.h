@@ -23,8 +23,10 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #ifndef __PLAYER_MANAGER_H__
 #define __PLAYER_MANAGER_H__
 
-#include "..\..\..\include\Entity\EntityManager.h"
 #include <Ogre.h>
+
+#include "..\..\..\include\Lua\LuaInterface.h"
+#include "..\..\..\include\Entity\EntityManager.h"
 
 // Player default movement speed
 #define SPEED	5
@@ -36,7 +38,7 @@ namespace WyvernsAssault
 	/**
 	Class used to manage all the enemies
 	*/
-	class PlayerManager : public EntityManager
+	class PlayerManager : public EntityManager, public LuaInterface
 	{
 	public:
 		PlayerManager();
@@ -63,6 +65,28 @@ namespace WyvernsAssault
 		Entity*				mPlayerMesh;
 		SceneNode*			mPlayerSceneNode;
 		AnimationState*		mPlayerAnimation;
+
+	// --------------------------------
+	// BEGIN Lua Interface Declarations
+	// --------------------------------
+	public:
+		// Player Lib (exported to Lua)
+		LUA_LIBRARY("Player",playerlib);
+
+		LUA_FUNCTION(getPlayerPosition)
+
+	public:
+		void luaLoadScripts(){};
+		void luaInitialize(lua_State* L) {LuaInterface::luaInitialize(L);PlayerManager::smPlayerManager = this;}
+		void luaFinalize() {PlayerManager::smPlayerManager = NULL;}
+		void luaReload(){};
+
+	private: // PlayerManager
+		static PlayerManager* smPlayerManager;
+
+	// ------------------------------
+	// END Lua Interface Declarations
+	// ------------------------------
 	};
 }
 

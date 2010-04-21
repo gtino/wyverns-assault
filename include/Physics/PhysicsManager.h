@@ -23,12 +23,18 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #ifndef __PHYSICS_MANAGER_H__
 #define __PHYSICS_MANAGER_H__
 
+#include <Ogre.h>
+
+#include "..\Lua\LuaInterface.h"
+
+using namespace Ogre;
+
 namespace WyvernsAssault
 {
 	/**
 	Class used to manage entities/world physics
 	*/
-	class PhysicsManager
+	class PhysicsManager : public LuaInterface
 	{
 	public:
 		PhysicsManager();
@@ -37,6 +43,27 @@ namespace WyvernsAssault
 	public:
 		bool initialize();
 		void finalize();
+
+	// --------------------------------
+	// BEGIN Lua Interface Declarations
+	// --------------------------------
+	public:
+		// Physics Lib (exported to Lua)
+		LUA_LIBRARY("Physics",physicslib);
+
+		LUA_FUNCTION(getHOT)
+
+	public:
+		void luaLoadScripts(){};
+		void luaInitialize(lua_State* L) {LuaInterface::luaInitialize(L);PhysicsManager::smPhysicsManager = this;}
+		void luaFinalize() {PhysicsManager::smPhysicsManager = NULL;}
+		void luaReload(){};
+
+	private: // PhysicsManager
+		static PhysicsManager* smPhysicsManager;
+	// ------------------------------
+	// END Lua Interface Declarations
+	// ------------------------------
 	};
 }
 

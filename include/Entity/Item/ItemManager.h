@@ -23,6 +23,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #ifndef __ITEM_MANAGER_H__
 #define __ITEM_MANAGER_H__
 
+#include "..\..\..\include\Lua\LuaInterface.h"
+
 #include "..\..\..\include\Entity\EntityManager.h"
 
 namespace WyvernsAssault
@@ -30,7 +32,7 @@ namespace WyvernsAssault
 	/**
 	Class used to manage all the enemies
 	*/
-	class ItemManager : public EntityManager
+	class ItemManager : public EntityManager, public LuaInterface
 	{
 	public:
 		ItemManager();
@@ -39,6 +41,30 @@ namespace WyvernsAssault
 	public:
 		bool initialize();
 		void finalize();
+
+	// --------------------------------
+	// BEGIN Lua Interface Declarations
+	// --------------------------------
+	public:
+		// Item Lib (exported to Lua)
+		LUA_LIBRARY("Item",itemlib);
+
+		LUA_FUNCTION(createItem)
+		LUA_FUNCTION(getItemPosition)
+		LUA_FUNCTION(setItemPosition)
+		LUA_FUNCTION(removeItem)
+
+	public:
+		void luaLoadScripts(){};
+		void luaInitialize(lua_State* L) {LuaInterface::luaInitialize(L);ItemManager::smItemManager = this;}
+		void luaFinalize() {ItemManager::smItemManager = NULL;}
+		void luaReload(){};
+
+	private: // ItemManager
+		static ItemManager* smItemManager;
+	// ------------------------------
+	// END Lua Interface Declarations
+	// ------------------------------
 	};
 }
 

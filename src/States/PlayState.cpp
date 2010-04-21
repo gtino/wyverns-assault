@@ -103,14 +103,26 @@ void PlayState::initialize()
 	mLogicManager = new LogicManager();
 	mLogicManager->initialize();
 
-	//
+	// -----------
 	// Lua Manager
+	// -----------
+	// Create this manager after ALL other managers. Never alter
+	// the oreder of the operations!
 	//
+	// FIRST : Instatniate the Lua Manager
 	mLuaManager = new LuaManager();
 
+	//
+	// SECOND : Register all the LuaInterfaces you want. 
+	//
 	mLuaManager->registerInterface(mLightsManager);
 	mLuaManager->registerInterface(mLogicManager);
 
+	//
+	// THIRD :	This call to 'initialize' will initialize Lua,
+	//			open default Lua libs, add custom libs exported by
+	//			our registered LuaInterfaces, setup the environment.
+	//
 	mLuaManager->initialize();
 }
 
@@ -349,6 +361,13 @@ void PlayState::finalize()
 {
 	BaseState::finalize();
 
+	// FIRST!
+	if(mLuaManager)
+	{
+		delete mLuaManager;
+		mLuaManager = NULL;
+	}
+
 	if(mPlayerManager)
 	{
 		delete mPlayerManager;
@@ -401,12 +420,6 @@ void PlayState::finalize()
 	{
 		delete mLogicManager;
 		mLogicManager = NULL;
-	}
-
-	if(mLuaManager)
-	{
-		delete mLuaManager;
-		mLuaManager = NULL;
 	}
 }
 

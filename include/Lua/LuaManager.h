@@ -65,55 +65,11 @@ namespace WyvernsAssault
 	private:
 		bool mEnabled;
 
-	private: // PhysicsManager
-		static PhysicsManager* smPhysicsManager;
-
-		// Physics Lib (exported to Lua)
-		LUA_DECLARE_LIBRARY(physicslib);
-
-		LUA_DECLARE_FUNCTION(getHOT)
-
-	private: // EnemyManager
-		static EnemyManager* smEnemyManager;
-
-		// Enemys Lib (exported to Lua)
-		LUA_DECLARE_LIBRARY(enemylib);
-
-		LUA_DECLARE_FUNCTION(createEnemy)
-		LUA_DECLARE_FUNCTION(getEnemyPosition)
-		LUA_DECLARE_FUNCTION(setEnemyPosition)
-		LUA_DECLARE_FUNCTION(setEnemyState)
-		LUA_DECLARE_FUNCTION(removeEnemy)
-
-	private: // PlayerManager
-		static PlayerManager* smPlayerManager;
-
-		// Player Lib (exported to Lua)
-		LUA_DECLARE_LIBRARY(playerlib);
-
-		LUA_DECLARE_FUNCTION(getPlayerPosition)
-
-	private: // ItemManager
-		static ItemManager* smItemManager;
-
-		// Item Lib (exported to Lua)
-		LUA_DECLARE_LIBRARY(itemlib);
-
-		LUA_DECLARE_FUNCTION(createItem)
-		LUA_DECLARE_FUNCTION(getItemPosition)
-		LUA_DECLARE_FUNCTION(setItemPosition)
-		LUA_DECLARE_FUNCTION(removeItem)
-
-	private: // AudioManager
-		static AudioManager* smAudioManager;
-
-		// Audio Lib (exported to Lua)
-		LUA_DECLARE_LIBRARY(audiolib);
-
-		LUA_DECLARE_FUNCTION(playSound)
-
 	private:
-		/* the Lua interpreter */
+		//
+		// The Lua interpreter!
+		// BEWARE! This is THE ONLY ONE we create/use/destroy!
+		//
 		lua_State* L;
 
 		//
