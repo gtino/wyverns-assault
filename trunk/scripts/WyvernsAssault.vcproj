@@ -448,7 +448,7 @@
 				Name="Lua"
 				>
 				<File
-					RelativePath="..\scr\Lua\LuaInterface.cpp"
+					RelativePath="..\src\Lua\LuaInterface.cpp"
 					>
 				</File>
 				<File
