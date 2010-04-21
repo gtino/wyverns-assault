@@ -95,3 +95,69 @@ void EnemyManager::update(const float elpasedSeconds)
 {
 	
 }
+
+// --------------------------------
+// Lua Enemy Lib
+// --------------------------------
+EnemyManager* EnemyManager::smEnemyManager;
+
+LUA_BEGIN_BINDING(EnemyManager::enemylib)
+LUA_BIND("create", EnemyManager::createEnemy)
+LUA_BIND("getPosition", EnemyManager::getEnemyPosition)
+LUA_BIND("setPosition", EnemyManager::setEnemyPosition)
+LUA_BIND("setState", EnemyManager::setEnemyState)
+LUA_BIND("remove", EnemyManager::removeEnemy)
+LUA_END_BINDING()
+
+int EnemyManager::createEnemy(lua_State *L)
+{
+	/* get number of arguments */
+	int n = lua_gettop(L);
+
+	// n should be 1, the enemy type
+
+	int type = luaL_checkint(L, 1);
+
+	EnemyPtr enemy = smEnemyManager->createEnemy((EnemyTypes)type);
+
+	lua_pushstring(L,enemy->getName().c_str());
+
+	/* return the number of results */
+	return 1;
+}
+
+int EnemyManager::getEnemyPosition(lua_State *L)
+{
+	/* get number of arguments */
+	int n = lua_gettop(L);
+
+	/* return the number of results */
+	return 1;
+}
+
+int EnemyManager::setEnemyPosition(lua_State *L)
+{
+	/* get number of arguments */
+	int n = lua_gettop(L);
+
+	/* return the number of results */
+	return 1;
+}
+
+int EnemyManager::setEnemyState(lua_State *L)
+{
+	/* get number of arguments */
+	int n = lua_gettop(L);
+
+	/* return the number of results */
+	return 1;
+}
+
+int EnemyManager::removeEnemy(lua_State *L)
+{
+	/* get number of arguments */
+	int n = lua_gettop(L);
+
+	/* return the number of results */
+	return 1;
+}

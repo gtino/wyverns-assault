@@ -66,22 +66,26 @@ namespace WyvernsAssault
 		/** Disable Light **/
 		void disable() { mSceneManager->destroyAllLights(); }
 
-	public: // Lua Interface
-		static LightsManager* smLightsManager;
+	private:
+		Light* mLight;
+		SceneManager* mSceneManager;
 
-		// Lights Lib (exported to Lua)
-		LUA_DECLARE_LIBRARY(lightlib)
+	// --------------------------------
+	// BEGIN Lua Interface Declarations
+	// --------------------------------
+	public:
+		// Export library lib as "LibName" to be called from Lua scripts
+		LUA_LIBRARY("Light",lightlib)
 
 		// From Lua to C++
-		LUA_DECLARE_FUNCTION(getLightDiffuseColor)
-		LUA_DECLARE_FUNCTION(setLightDiffuseColor)
-		LUA_DECLARE_FUNCTION(getLightPosition)
-		LUA_DECLARE_FUNCTION(setLightPosition)
-		LUA_DECLARE_FUNCTION(getAmbientLight)
-		LUA_DECLARE_FUNCTION(setAmbientLight)
+		LUA_FUNCTION(getLightDiffuseColor)
+		LUA_FUNCTION(setLightDiffuseColor)
+		LUA_FUNCTION(getLightPosition)
+		LUA_FUNCTION(setLightPosition)
+		LUA_FUNCTION(getAmbientLight)
+		LUA_FUNCTION(setAmbientLight)
 
-		LUA_EXPORT_LIBRARY("Light",lightlib)
-
+	public:
 		void luaLoadScripts();
 		void luaInitialize(lua_State* L) {LuaInterface::luaInitialize(L);LightsManager::smLightsManager = this;}
 		void luaFinalize() {LightsManager::smLightsManager = NULL;}
@@ -91,11 +95,11 @@ namespace WyvernsAssault
 		// From C++ to Lua
 		bool runLights(const float totalSeconds);
 
-	private:
-		Light* mLight;
-
-	private:
-		SceneManager* mSceneManager;
+	public:
+		static LightsManager* smLightsManager;
+	// ------------------------------
+	// END Lua Interface Declarations
+	// ------------------------------
 	};
 }
 

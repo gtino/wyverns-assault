@@ -82,3 +82,21 @@ void PlayerManager::updateAnimation(float elapsedSeconds)
 {
 	mPlayerAnimation->addTime(elapsedSeconds);
 }
+
+// --------------------------------
+// Lua Player Lib
+// --------------------------------
+PlayerManager* PlayerManager::smPlayerManager;
+
+LUA_BEGIN_BINDING(PlayerManager::playerlib)
+LUA_BIND("getPosition", PlayerManager::getPlayerPosition)
+LUA_END_BINDING()
+
+int PlayerManager::getPlayerPosition(lua_State *L)
+{
+	/* get number of arguments */
+	int n = lua_gettop(L);
+
+	/* return the number of results */
+	return 1;
+}

@@ -31,11 +31,10 @@ extern "C" {
 
 #define LUA_SCRIPTS_FOLDER 
 
-#define LUA_DECLARE_LIBRARY(x) static const struct luaL_reg x[];
-#define LUA_DECLARE_FUNCTION(x) static int x(lua_State *L);
+#define LUA_LIBRARY(n,l) static const struct luaL_reg l[]; const char* luaGetLibraryName() const {return n;} ; const struct luaL_reg* luaGetLibrary() {return l;}
+#define LUA_FUNCTION(f) static int f(lua_State *L);
 
 #define LUA_OPEN_LIBRARY(n,l) luaL_openlib(L, n, l, 0);
-#define LUA_EXPORT_LIBRARY(n,l) const char* luaGetLibraryName() const {return n;} ; const struct luaL_reg* luaGetLibrary() {return l;}
 
 #define LUA_BEGIN_BINDING(x) const struct luaL_reg x[] = {
 #define LUA_BIND(x,y) {x, y},
@@ -52,14 +51,19 @@ namespace WyvernsAssault
 		virtual const char* luaGetLibraryName() const = 0;
 		virtual const struct luaL_reg* luaGetLibrary() = 0;
 		virtual void luaLoadScripts() = 0;
-		virtual bool luaLoadScript(const char* name);
-		virtual void luaInitialize(lua_State* L){this->L = L;};
 		virtual void luaFinalize() = 0;
 		virtual void luaReload() = 0;
+
+		virtual bool luaLoadScript(const char* name);
+		virtual void luaInitialize(lua_State* L){this->L = L;}
+		virtual void luaEnable(){mLuaEnabled = true;}
+		virtual void luaDisable(){mLuaEnabled = false;}
 
 	protected:
 		/* the Lua interpreter */
 		lua_State* L;
+
+		bool mLuaEnabled;
 	};
 }
 

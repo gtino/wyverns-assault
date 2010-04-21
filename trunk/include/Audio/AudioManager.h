@@ -23,12 +23,14 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #ifndef __AUDIO_MANAGER_H_
 #define __AUDIO_MANAGER_H_
 
+#include "..\Lua\LuaInterface.h"
+
 namespace WyvernsAssault
 {
 	/**
 		Class used to manager audio (sound track, sounds, fx)
 	*/
-	class AudioManager
+	class AudioManager : public LuaInterface
 	{
 	public:
 		AudioManager();
@@ -43,6 +45,27 @@ namespace WyvernsAssault
 		void loadResources();
 		/** Unload audio resources */
 		void unloadResources();
+
+	// --------------------------------
+	// BEGIN Lua Interface Declarations
+	// --------------------------------
+	public:
+		// Audio Lib (exported to Lua)
+		LUA_LIBRARY("Audio",audiolib);
+
+		LUA_FUNCTION(playSound)
+
+	public:
+		void luaLoadScripts(){};
+		void luaInitialize(lua_State* L) {LuaInterface::luaInitialize(L);AudioManager::smAudioManager = this;}
+		void luaFinalize() {AudioManager::smAudioManager = NULL;}
+		void luaReload(){};
+
+	private: // AudioManager
+		static AudioManager* smAudioManager;
+	// ------------------------------
+	// END Lua Interface Declarations
+	// ------------------------------
 	};
 }
 
