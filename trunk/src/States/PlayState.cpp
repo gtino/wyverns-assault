@@ -311,6 +311,8 @@ void PlayState::update(const float elapsedSeconds)
 	// 
 	mLuaManager->update(elapsedSeconds);
 
+	mLightsManager->update(elapsedSeconds);
+
 	//
 	// Update animation state
 	//

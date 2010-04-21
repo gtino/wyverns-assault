@@ -93,7 +93,7 @@ namespace WyvernsAssault
 
 	private:
 		// From C++ to Lua
-		bool runLights(const float totalSeconds);
+		bool runDayLight(const float totalSeconds);
 
 	public:
 		static LightsManager* smLightsManager;

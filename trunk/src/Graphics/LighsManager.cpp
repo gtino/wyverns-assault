@@ -32,7 +32,7 @@ void LightsManager::finalize()
 
 void LightsManager::update(const float elapsedSeconds)
 {
-	this->runLights(0);
+	this->runDayLight(0);
 }
 
 /** Create lights functions **/		
@@ -87,10 +87,10 @@ void LightsManager::luaLoadScripts()
 // ----------------------------
 // Lua Routines called from C++
 // ----------------------------
-bool LightsManager::runLights(const float totalSeconds)
+bool LightsManager::runDayLight(const float totalSeconds)
 {
 	///* the function name */
-	lua_getglobal(L,"runLights");
+	lua_getglobal(L,"runDayLight");
 	///* push arguments */
 	lua_pushnumber(L, 1);
 	///* call the function with 1 argument, return 1 result */
