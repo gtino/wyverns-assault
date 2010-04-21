@@ -399,6 +399,10 @@
 					Name="Player"
 					>
 					<File
+						RelativePath="..\src\Entity\Player\Player.cpp"
+						>
+					</File>
+					<File
 						RelativePath="..\src\Entity\Player\PlayerManager.cpp"
 						>
 					</File>
@@ -652,6 +656,10 @@
 				<Filter
 					Name="Player"
 					>
+					<File
+						RelativePath="..\include\Entity\Player\Player.h"
+						>
+					</File>
 					<File
 						RelativePath="..\include\Entity\Player\PlayerManager.h"
 						>

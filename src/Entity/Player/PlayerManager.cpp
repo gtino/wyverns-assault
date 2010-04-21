@@ -107,6 +107,22 @@ int PlayerManager::getPlayerPosition(lua_State *L)
 	/* get number of arguments */
 	int n = lua_gettop(L);
 
+	Ogre::String playerName = lua_tostring(L,1);
+
+	//Player player = PlayerManager::getSingleton().getPlayer(playerName);
+
+	//Vector3 position = player->getPosition();
+
+	Vector3 position = Vector3(1,2,3);
+
+	/* push the X */
+	lua_pushnumber(L, position.x);
+	/* push the Y */
+	lua_pushnumber(L, position.y);
+	/* push the Z */
+	lua_pushnumber(L, position.z);
+
 	/* return the number of results */
-	return 1;
+	return 3;
+
 }

@@ -28,6 +28,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
 #include "..\..\..\include\Lua\LuaInterface.h"
 #include "..\..\..\include\Entity\EntityManager.h"
+#include "Player.h"
 
 // Player default movement speed
 #define SPEED	5
