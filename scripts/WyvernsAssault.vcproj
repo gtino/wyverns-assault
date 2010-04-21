@@ -296,7 +296,7 @@
 					>
 				</File>
 				<File
-					RelativePath="..\src\Graphics\LighsManager.cpp"
+					RelativePath="..\src\Graphics\LightsManager.cpp"
 					>
 				</File>
 			</Filter>
