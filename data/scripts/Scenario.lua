@@ -1,10 +1,10 @@
 -- Module : Scenario
 -------------------------------------
--- Runs scenario logic
+-- Runs light changing during the day
 -- @param id Session identification.
 -------------------------------------
 
-function runScenario()
+function runDayLight(p)
 	
 	local totalSeconds = Game.getTotalSeconds()
 	local elapsedSeconds = Game.getElapsedSeconds()
