@@ -39,11 +39,18 @@ bool LogicManager::update(const float elapsedSeconds)
 float LogicManager::smElapsedSeconds;
 float LogicManager::smTotalSeconds;
 
-const struct luaL_reg LogicManager::gamelib[] = {
-		{"getTotalSeconds", LogicManager::getTotalSeconds},
-		{"getElapsedSeconds", LogicManager::getElapsedSeconds},
-	  {NULL, NULL}
-	};
+LUA_BEGIN_BINDING(LogicManager::gamelib)
+LUA_BIND("getTotalSeconds", LogicManager::getTotalSeconds)
+LUA_BIND("getElapsedSeconds", LogicManager::getElapsedSeconds)
+LUA_END_BINDING()
+
+//
+// Load lua scripts that will be used by this manager
+//
+void LogicManager::luaLoadScripts()
+{	
+	return;
+}
 
 int LogicManager::getTotalSeconds(lua_State *L)
 {

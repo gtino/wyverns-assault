@@ -30,6 +30,11 @@ void LightsManager::finalize()
 	mSceneManager->destroyAllLights();
 }
 
+void LightsManager::update(const float elapsedSeconds)
+{
+	this->runLights(0);
+}
+
 /** Create lights functions **/		
 void LightsManager::createLight(String name, Light::LightTypes type, ColourValue diffuse, ColourValue specular, Vector3 position, Vector3 direction)
 {
@@ -62,15 +67,41 @@ Ogre::ColourValue LightsManager::getAmbientLight()
 // --------------------------------
 LightsManager* LightsManager::smLightsManager;
 
-const struct luaL_reg LightsManager::lightlib[] = {
-		{"getLightDiffuseColor", LightsManager::getLightDiffuseColor},
-		{"setLightDiffuseColor", LightsManager::setLightDiffuseColor},
-		{"getLightPosition", LightsManager::getLightPosition},
-		{"setLightPosition", LightsManager::setLightPosition},
-		{"getAmbientLight", LightsManager::getAmbientLight},
-		{"setAmbientLight", LightsManager::setAmbientLight},
-	  {NULL, NULL}
-	};
+LUA_BEGIN_BINDING(LightsManager::lightlib)
+LUA_BIND("getLightDiffuseColor", LightsManager::getLightDiffuseColor)
+LUA_BIND("setLightDiffuseColor", LightsManager::setLightDiffuseColor)
+LUA_BIND("getLightPosition", LightsManager::getLightPosition)
+LUA_BIND("setLightPosition", LightsManager::setLightPosition)
+LUA_BIND("getAmbientLight", LightsManager::getAmbientLight)
+LUA_BIND("setAmbientLight", LightsManager::setAmbientLight)
+LUA_END_BINDING()
+
+//
+// Load lua scripts that will be used by this manager
+//
+void LightsManager::luaLoadScripts()
+{
+	luaLoadScript(".\\data\\scripts\\Scenario.lua");
+}
+
+// ----------------------------
+// Lua Routines called from C++
+// ----------------------------
+bool LightsManager::runLights(const float totalSeconds)
+{
+	///* the function name */
+	lua_getglobal(L,"runLights");
+	///* push arguments */
+	lua_pushnumber(L, 1);
+	///* call the function with 1 argument, return 1 result */
+	lua_call(L, 1, 1);
+	///* get the result */
+	bool result = (int)lua_toboolean(L, -1);
+	lua_pop(L, 1);
+
+	return result;
+	//return true;
+}
 
 //--------------------------------
 // C++ Methods called FROM Lua

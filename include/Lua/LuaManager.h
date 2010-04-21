@@ -34,6 +34,9 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
 namespace WyvernsAssault
 {
+	typedef std::vector<LuaInterface*> LuaInterfaceList;
+	typedef std::vector<LuaInterface*>::iterator LuaInterfaceListIterator;
+
 	/**
 	Class used to load/manage logic and AI scripts
 	*/
@@ -46,10 +49,8 @@ namespace WyvernsAssault
 	public:
 		/** Initialize Lua and load Lua default libs */
 		bool initialize();
-		/** Add and open custom library */
-		bool addLibrary(const char* name, LuaInterface* luaInterface);
-		/** Do file */
-		bool loadScript(const char* name);
+		// Register a new interface to this manager
+		bool registerInterface(LuaInterface* luaInterface);
 		/** Finalize Lua and unload Lua libs */		
 		void finalize();
 		/** Reloads scripts */
@@ -64,60 +65,61 @@ namespace WyvernsAssault
 	private:
 		bool mEnabled;
 
-	private:
-		// From C++ to Lua
-		bool runScenario(const float totalSeconds);
-
 	private: // PhysicsManager
 		static PhysicsManager* smPhysicsManager;
 
 		// Physics Lib (exported to Lua)
-		DECLARE_LUA_LIBRARY(physicslib);
+		LUA_DECLARE_LIBRARY(physicslib);
 
-		DECLARE_LUA_FUNCTION(getHOT)
+		LUA_DECLARE_FUNCTION(getHOT)
 
 	private: // EnemyManager
 		static EnemyManager* smEnemyManager;
 
 		// Enemys Lib (exported to Lua)
-		DECLARE_LUA_LIBRARY(enemylib);
+		LUA_DECLARE_LIBRARY(enemylib);
 
-		DECLARE_LUA_FUNCTION(createEnemy)
-		DECLARE_LUA_FUNCTION(getEnemyPosition)
-		DECLARE_LUA_FUNCTION(setEnemyPosition)
-		DECLARE_LUA_FUNCTION(setEnemyState)
-		DECLARE_LUA_FUNCTION(removeEnemy)
+		LUA_DECLARE_FUNCTION(createEnemy)
+		LUA_DECLARE_FUNCTION(getEnemyPosition)
+		LUA_DECLARE_FUNCTION(setEnemyPosition)
+		LUA_DECLARE_FUNCTION(setEnemyState)
+		LUA_DECLARE_FUNCTION(removeEnemy)
 
 	private: // PlayerManager
 		static PlayerManager* smPlayerManager;
 
 		// Player Lib (exported to Lua)
-		DECLARE_LUA_LIBRARY(playerlib);
+		LUA_DECLARE_LIBRARY(playerlib);
 
-		DECLARE_LUA_FUNCTION(getPlayerPosition)
+		LUA_DECLARE_FUNCTION(getPlayerPosition)
 
 	private: // ItemManager
 		static ItemManager* smItemManager;
 
 		// Item Lib (exported to Lua)
-		DECLARE_LUA_LIBRARY(itemlib);
+		LUA_DECLARE_LIBRARY(itemlib);
 
-		DECLARE_LUA_FUNCTION(createItem)
-		DECLARE_LUA_FUNCTION(getItemPosition)
-		DECLARE_LUA_FUNCTION(setItemPosition)
-		DECLARE_LUA_FUNCTION(removeItem)
+		LUA_DECLARE_FUNCTION(createItem)
+		LUA_DECLARE_FUNCTION(getItemPosition)
+		LUA_DECLARE_FUNCTION(setItemPosition)
+		LUA_DECLARE_FUNCTION(removeItem)
 
 	private: // AudioManager
 		static AudioManager* smAudioManager;
 
 		// Audio Lib (exported to Lua)
-		DECLARE_LUA_LIBRARY(audiolib);
+		LUA_DECLARE_LIBRARY(audiolib);
 
-		DECLARE_LUA_FUNCTION(playSound)
+		LUA_DECLARE_FUNCTION(playSound)
 
 	private:
 		/* the Lua interpreter */
 		lua_State* L;
+
+		//
+		// List of registered Lua interfaces
+		//
+		LuaInterfaceList mLuaInterfaceList;
 	};
 }
 

@@ -51,6 +51,8 @@ namespace WyvernsAssault
 		void initialize();
 		/** Finalize the lights manager */
 		void finalize();
+		/** Update and run lua scripts */
+		void update(const float elapsedSeconds);
 
 		/** Create light function **/		
 		void createLight(String name, Light::LightTypes type, ColourValue diffuse, ColourValue specular, Vector3 position = Vector3::ZERO, Vector3 direction = Vector3::ZERO);
@@ -68,20 +70,26 @@ namespace WyvernsAssault
 		static LightsManager* smLightsManager;
 
 		// Lights Lib (exported to Lua)
-		DECLARE_LUA_LIBRARY(lightlib)
+		LUA_DECLARE_LIBRARY(lightlib)
 
 		// From Lua to C++
-		DECLARE_LUA_FUNCTION(getLightDiffuseColor)
-		DECLARE_LUA_FUNCTION(setLightDiffuseColor)
-		DECLARE_LUA_FUNCTION(getLightPosition)
-		DECLARE_LUA_FUNCTION(setLightPosition)
-		DECLARE_LUA_FUNCTION(getAmbientLight)
-		DECLARE_LUA_FUNCTION(setAmbientLight)
+		LUA_DECLARE_FUNCTION(getLightDiffuseColor)
+		LUA_DECLARE_FUNCTION(setLightDiffuseColor)
+		LUA_DECLARE_FUNCTION(getLightPosition)
+		LUA_DECLARE_FUNCTION(setLightPosition)
+		LUA_DECLARE_FUNCTION(getAmbientLight)
+		LUA_DECLARE_FUNCTION(setAmbientLight)
 
-		EXPORT_LUA_LIBRARY luaGetLibrary() {return lightlib;}
+		LUA_EXPORT_LIBRARY("Light",lightlib)
 
-		void luaInitialize() {LightsManager::smLightsManager = this;}
+		void luaLoadScripts();
+		void luaInitialize(lua_State* L) {LuaInterface::luaInitialize(L);LightsManager::smLightsManager = this;}
 		void luaFinalize() {LightsManager::smLightsManager = NULL;}
+		void luaReload(){};
+
+	private:
+		// From C++ to Lua
+		bool runLights(const float totalSeconds);
 
 	private:
 		Light* mLight;
