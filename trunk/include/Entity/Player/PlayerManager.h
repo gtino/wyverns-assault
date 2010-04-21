@@ -24,6 +24,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #define __PLAYER_MANAGER_H__
 
 #include <Ogre.h>
+#include <OgreSingleton.h>
 
 #include "..\..\..\include\Lua\LuaInterface.h"
 #include "..\..\..\include\Entity\EntityManager.h"
@@ -38,11 +39,13 @@ namespace WyvernsAssault
 	/**
 	Class used to manage all the enemies
 	*/
-	class PlayerManager : public EntityManager, public LuaInterface
+	class PlayerManager : public Ogre::Singleton<PlayerManager>, public EntityManager, public LuaInterface
 	{
 	public:
 		PlayerManager();
 		~PlayerManager();
+		static PlayerManager& getSingleton(void);
+		static PlayerManager* getSingletonPtr(void);
 
 		void initialize(String name, String mesh, SceneManager* levelSceneManager, Vector3 position);
 		void finalize();
@@ -77,13 +80,6 @@ namespace WyvernsAssault
 
 	public:
 		void luaLoadScripts(){};
-		void luaInitialize(lua_State* L) {LuaInterface::luaInitialize(L);PlayerManager::smPlayerManager = this;}
-		void luaFinalize() {PlayerManager::smPlayerManager = NULL;}
-		void luaReload(){};
-
-	private: // PlayerManager
-		static PlayerManager* smPlayerManager;
-
 	// ------------------------------
 	// END Lua Interface Declarations
 	// ------------------------------

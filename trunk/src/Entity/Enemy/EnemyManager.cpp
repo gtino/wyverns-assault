@@ -2,6 +2,18 @@
 
 using namespace WyvernsAssault;
 
+// BEGIN SINGLETON
+template<> EnemyManager* Ogre::Singleton<EnemyManager>::ms_Singleton = 0;
+EnemyManager* EnemyManager::getSingletonPtr(void)
+{
+    return ms_Singleton;
+}
+EnemyManager& EnemyManager::getSingleton(void)
+{  
+    assert( ms_Singleton );  return ( *ms_Singleton );  
+}
+// END SINGLETON
+
 EnemyManager::EnemyManager(Ogre::SceneManager* sceneManager) :
 mCount(0),
 mId(0)
@@ -99,8 +111,6 @@ void EnemyManager::update(const float elpasedSeconds)
 // --------------------------------
 // Lua Enemy Lib
 // --------------------------------
-EnemyManager* EnemyManager::smEnemyManager;
-
 LUA_BEGIN_BINDING(EnemyManager::enemylib)
 LUA_BIND("create", EnemyManager::createEnemy)
 LUA_BIND("getPosition", EnemyManager::getEnemyPosition)
@@ -118,7 +128,7 @@ int EnemyManager::createEnemy(lua_State *L)
 
 	int type = luaL_checkint(L, 1);
 
-	EnemyPtr enemy = smEnemyManager->createEnemy((EnemyTypes)type);
+	EnemyPtr enemy = EnemyManager::getSingleton().createEnemy((EnemyTypes)type);
 
 	lua_pushstring(L,enemy->getName().c_str());
 

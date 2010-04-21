@@ -40,9 +40,9 @@ extern "C" {
 #define LUA_BIND(x,y) {x, y},
 #define LUA_END_BINDING() {NULL, NULL}};
 
-#define LUA_PROPERTY(n,t) 		private : t m##n; \
-								public : t n##_get(){return m##n;} \
-								public : void n##_set(const t n){m##n=n;}
+#define LUA_PROPERTY(n,t) 		private : t m_lua##n; \
+								public : t n##_get(){return m_lua##n;} \
+								public : void n##_set(const t n){m_lua##n=n;}
 
 #define LUA_PROPERTY_SET(c,p,v) c##::getSingleton().##p##_set(v)
 #define LUA_PROPERTY_GET(c,p) c##::getSingleton().##p##_get()

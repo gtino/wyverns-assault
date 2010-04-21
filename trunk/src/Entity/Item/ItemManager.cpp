@@ -2,6 +2,18 @@
 
 using namespace WyvernsAssault;
 
+// BEGIN SINGLETON
+template<> ItemManager* Ogre::Singleton<ItemManager>::ms_Singleton = 0;
+ItemManager* ItemManager::getSingletonPtr(void)
+{
+    return ms_Singleton;
+}
+ItemManager& ItemManager::getSingleton(void)
+{  
+    assert( ms_Singleton );  return ( *ms_Singleton );  
+}
+// END SINGLETON
+
 ItemManager::ItemManager()
 {
 	//
@@ -34,8 +46,6 @@ void ItemManager::finalize()
 // --------------------------------
 // Lua Item Lib
 // --------------------------------
-ItemManager* ItemManager::smItemManager;
-
 LUA_BEGIN_BINDING(ItemManager::itemlib)
 LUA_BIND("create", ItemManager::createItem)
 LUA_BIND("getPosition", ItemManager::getItemPosition)
