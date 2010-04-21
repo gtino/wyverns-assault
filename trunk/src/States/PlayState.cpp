@@ -107,17 +107,11 @@ void PlayState::initialize()
 	// Lua Manager
 	//
 	mLuaManager = new LuaManager();
+
+	mLuaManager->registerInterface(mLightsManager);
+	mLuaManager->registerInterface(mLogicManager);
+
 	mLuaManager->initialize();
-
-	mLuaManager->addLibrary("Light",mLightsManager);
-	mLuaManager->addLibrary("Game",mLogicManager);
-	//mLuaManager->addLibrary("Physics",mPhysicsManager);
-	//mLuaManager->addLibrary("Player",mPlayerManager);
-	//mLuaManager->addLibrary("Enemy",mEnemyManager);
-	//mLuaManager->addLibrary("Item",mItemManager);
-	//mLuaManager->addLibrary("Audio",mAudioManager);
-
-	mLuaManager->loadScript(".\\data\\scripts\\Scenario.lua");
 }
 
 /** Load resources */

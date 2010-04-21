@@ -44,17 +44,20 @@ namespace WyvernsAssault
 		static float smTotalSeconds;
 		static float smElapsedSeconds;
 
+	public:
 		// Game Lib (exported to Lua)
-		DECLARE_LUA_LIBRARY(gamelib);
+		LUA_DECLARE_LIBRARY(gamelib);
 
 		// From Lua to C++
-		DECLARE_LUA_FUNCTION(getTotalSeconds)
-		DECLARE_LUA_FUNCTION(getElapsedSeconds)
+		LUA_DECLARE_FUNCTION(getTotalSeconds)
+		LUA_DECLARE_FUNCTION(getElapsedSeconds)
 
-		EXPORT_LUA_LIBRARY luaGetLibrary() {return gamelib;}
+		LUA_EXPORT_LIBRARY("Game",gamelib)
 
-		void luaInitialize() {LogicManager::smTotalSeconds = 0; LogicManager::smElapsedSeconds = 0;}
+		void luaLoadScripts();
+		void luaInitialize(lua_State* L) {LuaInterface::luaInitialize(L);LogicManager::smTotalSeconds = 0; LogicManager::smElapsedSeconds = 0;}
 		void luaFinalize() {LogicManager::smTotalSeconds = 0; LogicManager::smElapsedSeconds = 0;}
+		void luaReload(){};
 	};
 }
 

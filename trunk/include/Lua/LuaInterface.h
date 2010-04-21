@@ -29,10 +29,17 @@ extern "C" {
 	#include "..\..\externals\Lua-5.0-SDK\include\lauxlib.h"
 }
 
-#define DECLARE_LUA_LIBRARY(x) static const struct luaL_reg x[];
-#define DECLARE_LUA_FUNCTION(x) static int x(lua_State *L);
-#define EXPORT_LUA_LIBRARY const struct luaL_reg*
-#define OPEN_LUA_LIBRARY(n,l) luaL_openlib(L, n, l, 0);
+#define LUA_SCRIPTS_FOLDER 
+
+#define LUA_DECLARE_LIBRARY(x) static const struct luaL_reg x[];
+#define LUA_DECLARE_FUNCTION(x) static int x(lua_State *L);
+
+#define LUA_OPEN_LIBRARY(n,l) luaL_openlib(L, n, l, 0);
+#define LUA_EXPORT_LIBRARY(n,l) const char* luaGetLibraryName() const {return n;} ; const struct luaL_reg* luaGetLibrary() {return l;}
+
+#define LUA_BEGIN_BINDING(x) const struct luaL_reg x[] = {
+#define LUA_BIND(x,y) {x, y},
+#define LUA_END_BINDING() {NULL, NULL}};
 
 namespace WyvernsAssault
 {
@@ -42,9 +49,17 @@ namespace WyvernsAssault
 	class LuaInterface
 	{
 	public:
-		virtual EXPORT_LUA_LIBRARY luaGetLibrary() = 0;
-		virtual void luaInitialize() = 0;
+		virtual const char* luaGetLibraryName() const = 0;
+		virtual const struct luaL_reg* luaGetLibrary() = 0;
+		virtual void luaLoadScripts() = 0;
+		virtual bool luaLoadScript(const char* name);
+		virtual void luaInitialize(lua_State* L){this->L = L;};
 		virtual void luaFinalize() = 0;
+		virtual void luaReload() = 0;
+
+	protected:
+		/* the Lua interpreter */
+		lua_State* L;
 	};
 }
 

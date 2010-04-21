@@ -82,25 +82,30 @@ bool LuaManager::initialize()
 	/* load Lua base libraries */ 
 	lua_baselibopen(L);
 	lua_mathlibopen(L);
+
+	// Load all custom libs from registered interfaces
+	for(int i=0; i <mLuaInterfaceList.size(); i++)
+	{
+		LuaInterface* luaInterface = mLuaInterfaceList[i];
+		luaInterface->luaInitialize(L);
+		LUA_OPEN_LIBRARY(luaInterface->luaGetLibraryName(),luaInterface->luaGetLibrary());
+	}
 	
-	return true;
-}
-
-bool LuaManager::addLibrary(const char* name, LuaInterface* luaInterface)
-{
-	luaInterface->luaInitialize();
-
-	OPEN_LUA_LIBRARY(name, luaInterface->luaGetLibrary());
+	// Load all Lua scripts that the interfaces will use
+	for(int i=0; i <mLuaInterfaceList.size(); i++)
+	{
+		LuaInterface* luaInterface = mLuaInterfaceList[i];
+		luaInterface->luaLoadScripts();
+	}
 
 	return true;
 }
 
-bool LuaManager::loadScript(const char* name)
+bool LuaManager::registerInterface(LuaInterface* luaInterface)
 {
-	/* run the script */
-	int retval = lua_dofile(L, name);
+	mLuaInterfaceList.push_back(luaInterface);
 
-	return (retval == 0);
+	return true;
 }
 
 /** Finalize Lua and unload Lua libs */
@@ -123,9 +128,7 @@ bool LuaManager::update(const float elapsedSeconds)
 	if(!mEnabled)
 		return false;
 
-	bool result = runScenario(elapsedSeconds);
-
-	return result;
+	return true;
 }
 
 void LuaManager::disable()
@@ -141,25 +144,6 @@ void LuaManager::enable()
 bool LuaManager::isEnabled()
 {
 	return mEnabled;
-}
-
-//--------------------------------
-// Lua Methods called FROM C++
-//--------------------------------
-bool LuaManager::runScenario(const float totalSeconds)
-{
-	///* the function name */
-	lua_getglobal(L,"runScenario");
-	///* push arguments */
-	lua_pushnumber(L, 1);
-	///* call the function with 1 argument, return 1 result */
-	lua_call(L, 1, 1);
-	///* get the result */
-	bool result = (int)lua_toboolean(L, -1);
-	lua_pop(L, 1);
-
-	return result;
-	//return true;
 }
 
 int LuaManager::getHOT(lua_State *L)
