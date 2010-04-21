@@ -24,6 +24,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #define __LIGHTS_MANAGER_H__
 
 #include <Ogre.h>
+#include <OgreSingleton.h>
 
 #include "..\Lua\LuaInterface.h"
 
@@ -35,16 +36,18 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
 using namespace Ogre;
 
-namespace WyvernsAssault
+namespace WyvernsAssault 
 {
 	/**
 	Class used to manage all the lights
 	*/
-	class LightsManager : public LuaInterface
+	class LightsManager : public Ogre::Singleton<LightsManager>, public LuaInterface
 	{
 	public:
 		LightsManager(SceneManager* sceneManager);
 		~LightsManager();
+		static LightsManager& getSingleton(void);
+		static LightsManager* getSingletonPtr(void);
 
 	public:
 		/** Initialize the lights manager */
@@ -87,16 +90,10 @@ namespace WyvernsAssault
 
 	public:
 		void luaLoadScripts();
-		void luaInitialize(lua_State* L) {LuaInterface::luaInitialize(L);LightsManager::smLightsManager = this;}
-		void luaFinalize() {LightsManager::smLightsManager = NULL;}
-		void luaReload(){};
 
 	private:
 		// From C++ to Lua
 		bool runDayLight(const float totalSeconds);
-
-	public:
-		static LightsManager* smLightsManager;
 	// ------------------------------
 	// END Lua Interface Declarations
 	// ------------------------------

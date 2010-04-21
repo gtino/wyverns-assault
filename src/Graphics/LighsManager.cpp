@@ -2,6 +2,18 @@
 
 using namespace WyvernsAssault;
 
+// BEGIN SINGLETON
+template<> LightsManager* Ogre::Singleton<LightsManager>::ms_Singleton = 0;
+LightsManager* LightsManager::getSingletonPtr(void)
+{
+    return ms_Singleton;
+}
+LightsManager& LightsManager::getSingleton(void)
+{  
+    assert( ms_Singleton );  return ( *ms_Singleton );  
+}
+// END SINGLETON
+
 LightsManager::LightsManager(SceneManager* sceneManager)
 {
 	this->mSceneManager = sceneManager;
@@ -65,8 +77,6 @@ Ogre::ColourValue LightsManager::getAmbientLight()
 // --------------------------------
 // Lua Light Lib
 // --------------------------------
-LightsManager* LightsManager::smLightsManager;
-
 LUA_BEGIN_BINDING(LightsManager::lightlib)
 LUA_BIND("getLightDiffuseColor", LightsManager::getLightDiffuseColor)
 LUA_BIND("setLightDiffuseColor", LightsManager::setLightDiffuseColor)
@@ -122,7 +132,7 @@ int LightsManager::getLightDiffuseColor(lua_State *L)
 	//
 	// Retrieve light color
 	//
-	Ogre::Light* light = smLightsManager->getLight(lightName);
+	Ogre::Light* light = LightsManager::getSingleton().getLight(lightName);
 
 	ColourValue color = light->getDiffuseColour();
 
@@ -162,7 +172,7 @@ int LightsManager::setLightDiffuseColor(lua_State *L)
 	//
 	// Retrieve light color
 	//
-	Ogre::Light* light = smLightsManager->getLight(lightName);
+	Ogre::Light* light = LightsManager::getSingleton().getLight(lightName);
 
 	light->setDiffuseColour(red,green,blue);
 
@@ -186,7 +196,7 @@ int LightsManager::getLightPosition(lua_State *L)
 	//
 	// Retrieve light color
 	//
-	Ogre::Light* light = smLightsManager->getLight(lightName);
+	Ogre::Light* light = LightsManager::getSingleton().getLight(lightName);
 
 	Vector3 position = light->getPosition();
 
@@ -226,7 +236,7 @@ int LightsManager::setLightPosition(lua_State *L)
 	//
 	// Retrieve light color
 	//
-	Ogre::Light* light = smLightsManager->getLight(lightName);
+	Ogre::Light* light = LightsManager::getSingleton().getLight(lightName);
 
 	light->setPosition(x,y,z);
 
@@ -247,7 +257,7 @@ int LightsManager::getAmbientLight(lua_State *L)
 	//
 	// Retrieve light color
 	//
-	ColourValue color = smLightsManager->getAmbientLight();
+	ColourValue color = LightsManager::getSingleton().getAmbientLight();
 
 	/* push the Red */
 	lua_pushnumber(L, color.r);
@@ -286,7 +296,7 @@ int LightsManager::setAmbientLight(lua_State *L)
 	//
 	// Retrieve light color
 	//
-	smLightsManager->setAmbientLight(color);
+	LightsManager::getSingleton().setAmbientLight(color);
 
 	/* return the number of results */
 	return 0;
