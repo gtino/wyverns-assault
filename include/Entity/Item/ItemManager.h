@@ -23,6 +23,9 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #ifndef __ITEM_MANAGER_H__
 #define __ITEM_MANAGER_H__
 
+#include <Ogre.h>
+#include <OgreSingleton.h>
+
 #include "..\..\..\include\Lua\LuaInterface.h"
 
 #include "..\..\..\include\Entity\EntityManager.h"
@@ -32,11 +35,13 @@ namespace WyvernsAssault
 	/**
 	Class used to manage all the enemies
 	*/
-	class ItemManager : public EntityManager, public LuaInterface
+	class ItemManager : public Ogre::Singleton<ItemManager>, public EntityManager, public LuaInterface
 	{
 	public:
 		ItemManager();
 		~ItemManager();
+		static ItemManager& getSingleton(void);
+		static ItemManager* getSingletonPtr(void);
 
 	public:
 		bool initialize();
@@ -56,12 +61,6 @@ namespace WyvernsAssault
 
 	public:
 		void luaLoadScripts(){};
-		void luaInitialize(lua_State* L) {LuaInterface::luaInitialize(L);ItemManager::smItemManager = this;}
-		void luaFinalize() {ItemManager::smItemManager = NULL;}
-		void luaReload(){};
-
-	private: // ItemManager
-		static ItemManager* smItemManager;
 	// ------------------------------
 	// END Lua Interface Declarations
 	// ------------------------------

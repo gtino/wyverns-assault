@@ -23,6 +23,9 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #ifndef __AUDIO_MANAGER_H_
 #define __AUDIO_MANAGER_H_
 
+#include <Ogre.h>
+#include <OgreSingleton.h>
+
 #include "..\Lua\LuaInterface.h"
 
 namespace WyvernsAssault
@@ -30,11 +33,13 @@ namespace WyvernsAssault
 	/**
 		Class used to manager audio (sound track, sounds, fx)
 	*/
-	class AudioManager : public LuaInterface
+	class AudioManager : public Ogre::Singleton<AudioManager>, public LuaInterface
 	{
 	public:
 		AudioManager();
 		~AudioManager();
+		static AudioManager& getSingleton(void);
+		static AudioManager* getSingletonPtr(void);
 
 	public: 
 		/** Initialize the audio manager */
@@ -57,12 +62,6 @@ namespace WyvernsAssault
 
 	public:
 		void luaLoadScripts(){};
-		void luaInitialize(lua_State* L) {LuaInterface::luaInitialize(L);AudioManager::smAudioManager = this;}
-		void luaFinalize() {AudioManager::smAudioManager = NULL;}
-		void luaReload(){};
-
-	private: // AudioManager
-		static AudioManager* smAudioManager;
 	// ------------------------------
 	// END Lua Interface Declarations
 	// ------------------------------

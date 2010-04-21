@@ -2,6 +2,18 @@
 
 using namespace WyvernsAssault;
 
+// BEGIN SINGLETON
+template<> PlayerManager* Ogre::Singleton<PlayerManager>::ms_Singleton = 0;
+PlayerManager* PlayerManager::getSingletonPtr(void)
+{
+    return ms_Singleton;
+}
+PlayerManager& PlayerManager::getSingleton(void)
+{  
+    assert( ms_Singleton );  return ( *ms_Singleton );  
+}
+// END SINGLETON
+
 PlayerManager::PlayerManager()
 {
 	initializeVariables();
@@ -86,8 +98,6 @@ void PlayerManager::updateAnimation(float elapsedSeconds)
 // --------------------------------
 // Lua Player Lib
 // --------------------------------
-PlayerManager* PlayerManager::smPlayerManager;
-
 LUA_BEGIN_BINDING(PlayerManager::playerlib)
 LUA_BIND("getPosition", PlayerManager::getPlayerPosition)
 LUA_END_BINDING()

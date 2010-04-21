@@ -23,6 +23,9 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #ifndef __ENEMY_MANAGER_H__
 #define __ENEMY_MANAGER_H__
 
+#include <Ogre.h>
+#include <OgreSingleton.h>
+
 #include <vector>
 
 #include "..\..\..\include\Lua\LuaInterface.h"
@@ -51,11 +54,13 @@ namespace WyvernsAssault
 	/**
 	Class used to manage all the enemies
 	*/
-	class EnemyManager : public EntityManager, public LuaInterface
+	class EnemyManager : public Ogre::Singleton<EnemyManager>, public EntityManager, public LuaInterface
 	{
 		public:
 		EnemyManager(Ogre::SceneManager* sceneManager);
 		~EnemyManager();
+		static EnemyManager& getSingleton(void);
+		static EnemyManager* getSingletonPtr(void);
 
 		void finalize();
 
@@ -97,12 +102,6 @@ namespace WyvernsAssault
 
 	public:
 		void luaLoadScripts(){};
-		void luaInitialize(lua_State* L) {LuaInterface::luaInitialize(L);EnemyManager::smEnemyManager = this;}
-		void luaFinalize() {EnemyManager::smEnemyManager = NULL;}
-		void luaReload(){};
-
-	private: // EnemyManager
-		static EnemyManager* smEnemyManager;
 	// ------------------------------
 	// END Lua Interface Declarations
 	// ------------------------------

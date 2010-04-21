@@ -2,6 +2,18 @@
 
 using namespace WyvernsAssault;
 
+// BEGIN SINGLETON
+template<> AudioManager* Ogre::Singleton<AudioManager>::ms_Singleton = 0;
+AudioManager* AudioManager::getSingletonPtr(void)
+{
+    return ms_Singleton;
+}
+AudioManager& AudioManager::getSingleton(void)
+{  
+    assert( ms_Singleton );  return ( *ms_Singleton );  
+}
+// END SINGLETON
+
 AudioManager::AudioManager()
 {
 	//
@@ -50,8 +62,6 @@ void AudioManager::unloadResources()
 // --------------------------------
 // Lua Audio Lib
 // --------------------------------
-AudioManager* AudioManager::smAudioManager;
-
 LUA_BEGIN_BINDING(AudioManager::audiolib)
 LUA_BIND("playSound", AudioManager::playSound)
 LUA_END_BINDING()

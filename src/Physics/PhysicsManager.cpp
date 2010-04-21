@@ -2,6 +2,18 @@
 
 using namespace WyvernsAssault;
 
+// BEGIN SINGLETON
+template<> PhysicsManager* Ogre::Singleton<PhysicsManager>::ms_Singleton = 0;
+PhysicsManager* PhysicsManager::getSingletonPtr(void)
+{
+    return ms_Singleton;
+}
+PhysicsManager& PhysicsManager::getSingleton(void)
+{  
+    assert( ms_Singleton );  return ( *ms_Singleton );  
+}
+// END SINGLETON
+
 PhysicsManager::PhysicsManager()
 {
 	//
@@ -34,8 +46,6 @@ void PhysicsManager::finalize()
 // --------------------------------
 // Lua Physics Lib
 // --------------------------------
-PhysicsManager* PhysicsManager::smPhysicsManager;
-
 LUA_BEGIN_BINDING(PhysicsManager::physicslib)
 LUA_BIND("getHOT", PhysicsManager::getHOT)
 LUA_END_BINDING()
