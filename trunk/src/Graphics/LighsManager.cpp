@@ -194,7 +194,7 @@ int LightsManager::getLightPosition(lua_State *L)
 	Ogre::String lightName = lua_tostring(L, 1);
 
 	//
-	// Retrieve light color
+	// Retrieve light position
 	//
 	Ogre::Light* light = LightsManager::getSingleton().getLight(lightName);
 
