@@ -40,6 +40,13 @@ extern "C" {
 #define LUA_BIND(x,y) {x, y},
 #define LUA_END_BINDING() {NULL, NULL}};
 
+#define LUA_PROPERTY(n,t) 		private : t m##n; \
+								public : t n##_get(){return m##n;} \
+								public : void n##_set(const t n){m##n=n;}
+
+#define LUA_PROPERTY_SET(c,p,v) c##::getSingleton().##p##_set(v)
+#define LUA_PROPERTY_GET(c,p) c##::getSingleton().##p##_get()
+
 namespace WyvernsAssault
 {
 	/**
@@ -51,9 +58,9 @@ namespace WyvernsAssault
 		virtual const char* luaGetLibraryName() const = 0;
 		virtual const struct luaL_reg* luaGetLibrary() = 0;
 		virtual void luaLoadScripts() = 0;
-		virtual void luaFinalize() = 0;
-		virtual void luaReload() = 0;
-
+		
+		virtual void luaFinalize(){};
+		virtual void luaReload(){};
 		virtual bool luaLoadScript(const char* name);
 		virtual void luaInitialize(lua_State* L){this->L = L;}
 		virtual void luaEnable(){mLuaEnabled = true;}

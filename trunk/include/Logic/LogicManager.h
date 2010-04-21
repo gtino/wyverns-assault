@@ -23,6 +23,9 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #ifndef __LOGIC_MANAGER_H__
 #define __LOGIC_MANAGER_H__
 
+#include <Ogre.h>
+#include <OgreSingleton.h>
+
 #include "..\Lua\LuaInterface.h"
 
 namespace WyvernsAssault
@@ -30,19 +33,21 @@ namespace WyvernsAssault
 	/**
 	Class used to load/manage logic and AI scripts
 	*/
-	class LogicManager : public LuaInterface
+	class LogicManager : public Ogre::Singleton<LogicManager>, public LuaInterface
 	{
 	public:
 		LogicManager();
 		~LogicManager();
+		static LogicManager& getSingleton(void);
+		static LogicManager* getSingletonPtr(void);
 
 		bool initialize();
 		void finalize();
 		bool update(const float elapsedSeconds);
 
 	private: // Game data
-		static float smTotalSeconds;
-		static float smElapsedSeconds;
+		LUA_PROPERTY(TotalSeconds,float);
+		LUA_PROPERTY(ElapsedSeconds,float);
 
 	public:
 		// Game Lib (exported to Lua)
@@ -53,9 +58,7 @@ namespace WyvernsAssault
 		LUA_FUNCTION(getElapsedSeconds)
 
 		void luaLoadScripts();
-		void luaInitialize(lua_State* L) {LuaInterface::luaInitialize(L);LogicManager::smTotalSeconds = 0; LogicManager::smElapsedSeconds = 0;}
-		void luaFinalize() {LogicManager::smTotalSeconds = 0; LogicManager::smElapsedSeconds = 0;}
-		void luaReload(){};
+		void luaInitialize(lua_State *L);
 	};
 }
 
