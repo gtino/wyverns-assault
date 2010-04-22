@@ -45,35 +45,12 @@ void MainMenuState::load()
 	guiBackground->setImage("MainMenu.png","MainMenuBackground","General");
 
 	mGuiScreen->setBackground(guiBackground);
-	
+
 	// Gui Widgets for this state
-	GuiButton* playButton = new GuiButton();
-	playButton->setSize(0.15, 0.15);
-	playButton->setPosition(0.20, 0.15);
-	//playButton->setImageNormal("PlayButton.png");
-	//playButton->setImageDown("PlayButtonDown.png");
-	mGuiScreen->addWidget(playButton,GuiWidgetMenuId::PlayMenu);
+	mMenu = new GuiMenu(mWindow->getViewport(0)->getCamera()->getAspectRatio(), GuiScreenId::MainMenuGui);
 	
-	GuiButton* optionsButton = new GuiButton();
-	optionsButton->setSize(0.15, 0.15);
-	optionsButton->setPosition(0.20, 0.40);
-	//optionsButton->setImageNormal("OptionsButton.png");
-	//optionsButton->setImageDown("OptionsDown.png");
-	mGuiScreen->addWidget(optionsButton,GuiWidgetMenuId::OptionsMenu);
-	
-	GuiButton* creditsButton = new GuiButton();
-	creditsButton->setSize(0.15, 0.15);
-	creditsButton->setPosition(0.20, 0.65);
-	//creditsButton->setImageNormal("CreditsButton.png");
-	//creditsButton->setImageDown("CreditsButtonDown.png");
-	mGuiScreen->addWidget(creditsButton,GuiWidgetMenuId::CreditsMenu);
-	
-	GuiButton* quitButton = new GuiButton();
-	quitButton->setSize(0.15, 0.15);
-	quitButton->setPosition(0.20, 0.80);
-	//quitButton->setImageNormal("QuitButton.png");
-	//quitButton->setImageDown("QuitButtonDown.png");
-	mGuiScreen->addWidget(quitButton,GuiWidgetMenuId::QuitMenu);
+	// Add menu to screen
+	mGuiScreen->addMenu(mMenu);
 
 	//
 	// Register the screen as input event listener, so it can receive events
@@ -103,22 +80,27 @@ void MainMenuState::unload()
 	if(mGuiScreen)
 	{
 		//
-		// Register the screen as input event listener, so it can receive events
+		// Remove gui listener
 		//
 		mInputManager->removeListener(mGuiScreen);
-
-		delete mGuiScreen;
-		mGuiScreen = 0;
+		//
+		// Remove gui
+		//
+		mGuiScreen->removeGui();
 	}
-	//
-	// TODO Unload
-	//
 }
 
 /** Destroy the state */
 void MainMenuState::finalize()
 {
 	BaseState::finalize();
+	
+	// Destroy gui
+	if(mGuiScreen)
+	{
+		delete mGuiScreen;
+		mGuiScreen = 0;
+	}
 }
 
 /** Get state Id */
@@ -136,43 +118,6 @@ void MainMenuState::pause()
 	//
 	// TODO : Pause state
 	//
-	//
-	// Gui Screen for this state
-	//
-	mGuiScreen = new GuiScreen(mSceneManager, GuiScreenId::IntroGui, "MainMenuScreen");
-	
-	GuiBackground* guiBackground = new GuiBackground();
-	guiBackground->setImage("PauseMenu.png","PauseMenuBackground","General");
-
-	mGuiScreen->setBackground(guiBackground);
-	
-	// Gui Widgets for this state
-	GuiButton* playButton = new GuiButton();
-	playButton->setSize(0.20, 0.20);
-	playButton->setPosition(0.25, 0.25);
-	//playButton->setImageNormal("PlayButton.png");
-	//playButton->setImageDown("PlayButtonDown.png");
-	mGuiScreen->addWidget(playButton,GuiWidgetMenuId::PlayMenu);
-	
-	GuiButton* optionsButton = new GuiButton();
-	optionsButton->setSize(0.20, 0.20);
-	optionsButton->setPosition(0.20, 0.50);
-	//optionsButton->setImageNormal("OptionsButton.png");
-	//optionsButton->setImageDown("OptionsDown.png");
-	mGuiScreen->addWidget(optionsButton,GuiWidgetMenuId::OptionsMenu);
-	
-	GuiButton* quitButton = new GuiButton();
-	quitButton->setSize(0.20, 0.20);
-	quitButton->setPosition(0.20, 0.75);
-	//quitButton->setImageNormal("QuitButton.png");
-	//quitButton->setImageDown("QuitButtonDown.png");
-	mGuiScreen->addWidget(quitButton,GuiWidgetMenuId::QuitMenu);
-
-	//
-	// Register the screen as input event listener, so it can receive events
-	//
-	mInputManager->addListener(mGuiScreen);
-
 }
 
 /** Called when the state has to be resumed (from pause) */
@@ -188,14 +133,28 @@ bool MainMenuState::keyReleased(const OIS::KeyEvent& e)
 {
 	switch(e.key)
 	{
-	case OIS::KC_P:
-		this->mNextGameStateId = GameStateId::Play;
+	case OIS::KC_UP:
+		mMenu->previousOption();
 		break;
-	case OIS::KC_O:
-		this->mNextGameStateId = GameStateId::Options;
+	case OIS::KC_DOWN:
+		mMenu->nextOption();
 		break;
-	case OIS::KC_C:
-		this->mNextGameStateId = GameStateId::Credits;
+	case OIS::KC_RETURN:
+		switch(mMenu->getCurrentOption())
+		{
+		case GuiWidgetMenuId::PlayMenu:
+			this->mNextGameStateId = GameStateId::Play;
+			break;
+		case GuiWidgetMenuId::OptionsMenu:
+			this->mNextGameStateId = GameStateId::Options;
+			break;
+		case GuiWidgetMenuId::CreditsMenu:
+			this->mNextGameStateId = GameStateId::Credits;
+			break;
+		case GuiWidgetMenuId::QuitMenu:
+			this->mNextGameStateId = GameStateId::Exit;
+			break;
+		}		
 		break;
 	case OIS::KC_ESCAPE:
 		this->mNextGameStateId = GameStateId::Exit;

@@ -12,13 +12,13 @@ GuiScreen::GuiScreen(Ogre::SceneManager* sceneManager, GuiScreenId id, const Ogr
 	mGuiScreenId = id;
 	mGuiScreenName = name;
 	mBackgroundNode = NULL;
+	mMenu = NULL;
 }
 
 GuiScreen::~GuiScreen()
 {
-	//
-	// TODO Distructor logic HERE
-	//
+	mBackgroundNode = NULL;
+	mMenu = NULL;
 }
 
 void GuiScreen::addWidget(GuiWidget* widget, GuiWidgetId widgetId)
@@ -42,12 +42,29 @@ GuiWidget* GuiScreen::getWidget(GuiWidgetId widgetId)
 
 void GuiScreen::removeWidget(GuiWidgetId widgetId)
 {
+	char widget[40];
+	sprintf(widget, "Widget_%i_%i", mGuiScreenId, widgetId);
 
-	char widgetNode[40];
-	sprintf(widgetNode, "Widget_%i_%i", mGuiScreenId, widgetId);
+	mSceneManager->destroySceneNode(widget);
 
-	mSceneManager->destroySceneNode(widgetNode);
+	OverlayManager& overlayManager = OverlayManager::getSingleton();	
+	Overlay* overlay = overlayManager.getByName(widget);	
+	Overlay::Overlay2DElementsIterator i = overlay->get2DElementsIterator();
+	OverlayContainer* container;
+	OverlayElement* element;
 
+	while(i.hasMoreElements())
+	{
+		container = i.getNext();
+		OverlayContainer::ChildIterator it = container->getChildIterator();		
+		while(it.hasMoreElements())
+		{
+			element = it.getNext();
+			overlayManager.destroyOverlayElement(element);
+		}		
+		overlayManager.destroyOverlayElement(container);
+	}	
+	overlayManager.destroy(overlay);
 }
 
 void GuiScreen::removeAllWidgets()
@@ -60,11 +77,25 @@ void GuiScreen::removeAllWidgets()
 	mWidgetMap.clear();
 }
 
+void GuiScreen::addMenu(GuiMenu* menu)
+{
+	this->mMenu = menu;
+	mMenu->show();
+}
+
+void GuiScreen::removeMenu()
+{
+	mMenu->hide();
+	mMenu->destroyMenu();
+}
+
 void GuiScreen::removeGui()
 {
 	this->removeAllWidgets();
 	if(mBackgroundNode)
 		mSceneManager->destroySceneNode(mBackgroundNode);
+	if(mMenu)
+		removeMenu();
 }
 
 GuiWidget* GuiScreen::nextWidget(GuiWidgetId widgetId)
@@ -101,8 +132,6 @@ void GuiScreen::show()
 		sprintf(name, "Widget_%i_%i", mGuiScreenId, (*it).first);
 		SceneNode* n = mSceneManager->getSceneNode(name);
 		n->setVisible(true);
-
-		sprintf(name, "UI_%d", (*it).first);
 		if(overlayManager.getByName(name))
 			overlayManager.getByName(name)->show();
 	}
@@ -119,9 +148,7 @@ void GuiScreen::hide()
 	{
 		sprintf(name, "Widget_%i_%i", mGuiScreenId, (*it).first);
 		SceneNode* n = mSceneManager->getSceneNode(name);
-		n->setVisible(false);
-
-		sprintf(name, "UI_%d", (*it).first);
+		n->setVisible(false);		
 		if(overlayManager.getByName(name))
 			overlayManager.getByName(name)->hide();
 	}

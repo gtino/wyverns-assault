@@ -47,12 +47,11 @@ void IntroState::load()
 	mGuiScreen->setBackground(guiBackground);
 
 	// Gui Widgets for this state
-	GuiButton* skipButton = new GuiButton();
-	skipButton->setSize(0.20, 0.20);
-	skipButton->setPosition(0.70, 0.50);
-	//playButton->setImageNormal("Skip.png");
-	//playButton->setImageDown("SkipDown.png");
-	mGuiScreen->addWidget(skipButton,GuiWidgetIntroId::SkipIntro);
+	mMenu = new GuiMenu(mWindow->getViewport(0)->getCamera()->getAspectRatio(), GuiScreenId::IntroGui);
+	
+	// Add menu to screen
+	mGuiScreen->addMenu(mMenu);
+
 	//
 	// Register the screen as input event listener, so it can receive events
 	//
@@ -81,16 +80,14 @@ void IntroState::unload()
 	if(mGuiScreen)
 	{
 		//
-		// Register the screen as input event listener, so it can receive events
+		// Remove gui listener
 		//
 		mInputManager->removeListener(mGuiScreen);
-
-		delete mGuiScreen;
-		mGuiScreen = 0;
+		//
+		// Remove gui
+		//
+		mGuiScreen->removeGui();
 	}
-	//
-	// TODO Unload
-	//
 }
 
 /** Destroy the state */
@@ -132,6 +129,9 @@ bool IntroState::keyReleased(const OIS::KeyEvent& e)
 	case OIS::KC_ESCAPE:
 		this->mNextGameStateId = GameStateId::Exit;
 		break;
+	case OIS::KC_RETURN:
+		this->mNextGameStateId = GameStateId::MainMenu;
+		break;
 	}
 
 	return true;
@@ -139,12 +139,12 @@ bool IntroState::keyReleased(const OIS::KeyEvent& e)
 
 bool IntroState::mousePressed(const OIS::MouseEvent &evt, OIS::MouseButtonID buttonId)
 {
-	switch(buttonId)
+	/*switch(buttonId)
 	{
 		case OIS::MouseButtonID::MB_Left:
 			this->mNextGameStateId = GameStateId::MainMenu;
 			break;
-	}
+	}*/
 
 	return true;
 }

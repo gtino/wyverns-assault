@@ -348,6 +348,10 @@
 					>
 				</File>
 				<File
+					RelativePath="..\src\GUI\GuiMenu.cpp"
+					>
+				</File>
+				<File
 					RelativePath="..\src\GUI\GuiScreen.cpp"
 					>
 				</File>
@@ -555,6 +559,10 @@
 				</File>
 				<File
 					RelativePath="..\include\GUI\GuiManager.h"
+					>
+				</File>
+				<File
+					RelativePath="..\include\GUI\GuiMenu.h"
 					>
 				</File>
 				<File

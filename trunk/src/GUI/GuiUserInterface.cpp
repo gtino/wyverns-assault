@@ -2,11 +2,12 @@
 
 using namespace WyvernsAssault;
 
-GuiUserInterface::GuiUserInterface(Real aspectRatio, GuiWidgetId widgetId) :
+GuiUserInterface::GuiUserInterface(Real aspectRatio, int screenId, GuiWidgetId widgetId) :
 GuiWidget()
 {
 	char uiName[20];
-	char uiChild[20];
+	char uiChild[40];
+
 	this->mWidgetId = widgetId;
 	this->mKills = 0;
 	this->mPoints = 0;
@@ -14,16 +15,16 @@ GuiWidget()
 	this->mSpecialPercent = 100;
 	
 	OverlayManager& overlayManager = OverlayManager::getSingleton();
-	
-	// Create overlay container from template
-	sprintf(uiName, "UI_%d", mWidgetId);
-	OverlayContainer* ui = static_cast<OverlayContainer*>(overlayManager.createOverlayElementFromTemplate("GUI/UI", "Panel", uiName));		
-	// Height depends on viewport aspect ratio
-	ui->setHeight(ui->getHeight()*aspectRatio);
 
+	// Create overlay container from template
+	sprintf(uiName, "Widget_%i_%i", screenId, mWidgetId);
+	mUi = static_cast<OverlayContainer*>(overlayManager.createOverlayElementFromTemplate("GUI/UI", "Panel", uiName));
+	// Height depends on viewport aspect ratio
+	mUi->setHeight(mUi->getHeight()*aspectRatio);
+	
 	// Initialize bars
-	sprintf(uiChild, "UI_%d/LifeBar", mWidgetId);
-	mLifeBar = (PanelOverlayElement*)ui->getChild(uiChild);
+	sprintf(uiChild, "Widget_%i_%i/GUI/UI/LifeBar", screenId, mWidgetId);
+	mLifeBar = (PanelOverlayElement*)mUi->getChild(uiChild);
 	mLifeBar->setHeight(mLifeBar->getHeight()*aspectRatio);
 	mLifeBar->setTop(mLifeBar->getTop()*aspectRatio);
 	// Save intial bar width and u2 values
@@ -32,8 +33,8 @@ GuiWidget()
 	mLifeBar->getUV(u1, v1, u2, v2);
 	this->mLifeU2 = u2;
 
-	sprintf(uiChild, "UI_%d/SpecialBar", mWidgetId);
-	mSpecialBar = (PanelOverlayElement*)ui->getChild(uiChild);
+	sprintf(uiChild, "Widget_%i_%i/GUI/UI/SpecialBar", screenId, mWidgetId);
+	mSpecialBar = (PanelOverlayElement*)mUi->getChild(uiChild);
 	mSpecialBar->setHeight(mSpecialBar->getHeight()*aspectRatio);
 	mSpecialBar->setTop(mSpecialBar->getTop()*aspectRatio);
 	// Save intial bar width and u2 values
@@ -42,16 +43,16 @@ GuiWidget()
 	this->mSpecialU2 = u2;
 
 	// Initialize text areas
-	sprintf(uiChild, "UI_%d/Kills", mWidgetId);
-	mTextKills = (TextAreaOverlayElement*)ui->getChild(uiChild);
+	sprintf(uiChild, "Widget_%i_%i/GUI/UI/Kills", screenId, mWidgetId);
+	mTextKills = (TextAreaOverlayElement*)mUi->getChild(uiChild);
 	mTextKills->setTop(mTextKills->getTop()*aspectRatio);
 	mTextKills->setCharHeight(mTextKills->getCharHeight()*aspectRatio);
 	// Set kills value
 	sprintf(uiChild, "%.0f", mKills);
 	mTextKills->setCaption(uiChild);
 
-	sprintf(uiChild, "UI_%d/Points", mWidgetId);
-	mTextPoints = (TextAreaOverlayElement*)ui->getChild(uiChild);
+	sprintf(uiChild, "Widget_%i_%i/GUI/UI/Points", screenId, mWidgetId);
+	mTextPoints = (TextAreaOverlayElement*)mUi->getChild(uiChild);
 	mTextPoints->setTop(mTextPoints->getTop()*aspectRatio);	
 	mTextPoints->setCharHeight(mTextPoints->getCharHeight()*aspectRatio);
 	// Set points value
@@ -60,7 +61,7 @@ GuiWidget()
 
 	// Create an overlay, and add the panel
 	mOverlay = overlayManager.create(uiName);
-	mOverlay->add2D(ui);
+	mOverlay->add2D(mUi);
 }
 
 GuiUserInterface::~GuiUserInterface()

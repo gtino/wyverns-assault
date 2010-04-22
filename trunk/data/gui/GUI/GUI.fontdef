@@ -1,16 +1,8 @@
-GUI/Text
+GUI/MenuText
 {
 	type 		truetype
 	source 		badabb.ttf
-	size 		15
-	resolution 	96
-}
-
-GUI/Caption
-{
-	type 		truetype
-	source 		badabb.ttf
-	size 		18
+	size 		50
 	resolution 	96
 }
 

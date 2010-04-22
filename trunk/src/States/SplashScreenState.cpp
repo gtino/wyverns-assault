@@ -30,21 +30,19 @@ void SplashScreenState::load()
 	//
 	// Gui Screen for this state
 	//
-	mGuiScreen = new GuiScreen(mSceneManager, GuiScreenId::IntroGui, "SplashScreenScreen");
+	mGuiScreen = new GuiScreen(mSceneManager, GuiScreenId::SplashScreenGui, "SplashScreen");
 	
 	GuiBackground* guiBackground = new GuiBackground();
-	guiBackground->setImage("SplashScreen.png","SplashScreenBackground","General");
+	guiBackground->setImage("SplashScreen.png","SplashBackground","General");
 
 	mGuiScreen->setBackground(guiBackground);
-	
+
 	// Gui Widgets for this state
-	GuiButton* goIntro = new GuiButton();
-	goIntro->setSize(0.20, 0.20);
-	goIntro->setPosition(0.70, 0.40);
-	//goIntro->setImageNormal("IntroButton.png");
-	//goIntro->setImageDown("IntroButtonDown.png");
-	mGuiScreen->addWidget(goIntro,GuiWidgetPlayScreenId::GoIntro);
+	mMenu = new GuiMenu(mWindow->getViewport(0)->getCamera()->getAspectRatio(), GuiScreenId::SplashScreenGui);
 	
+	// Add menu to screen
+	mGuiScreen->addMenu(mMenu);
+
 	//
 	// Register the screen as input event listener, so it can receive events
 	//
@@ -82,16 +80,14 @@ void SplashScreenState::unload()
 	if(mGuiScreen)
 	{
 		//
-		// Register the screen as input event listener, so it can receive events
+		// Remove gui listener
 		//
 		mInputManager->removeListener(mGuiScreen);
-
-		delete mGuiScreen;
-		mGuiScreen = 0;
+		//
+		// Remove gui
+		//
+		mGuiScreen->removeGui();
 	}
-	//
-	// TODO Unload
-	//
 }
 
 /** Destroy the state */
@@ -133,6 +129,9 @@ bool SplashScreenState::keyReleased(const OIS::KeyEvent& e)
 	case OIS::KC_ESCAPE:
 		this->mNextGameStateId = GameStateId::Exit;
 		break;
+	case OIS::KC_RETURN:
+		this->mNextGameStateId = GameStateId::Intro;
+		break;
 	}
 
 	return true;
@@ -140,12 +139,12 @@ bool SplashScreenState::keyReleased(const OIS::KeyEvent& e)
 
 bool SplashScreenState::mousePressed(const OIS::MouseEvent &evt, OIS::MouseButtonID buttonId)
 {
-	switch(buttonId)
+	/*switch(buttonId)
 	{
 		case OIS::MouseButtonID::MB_Left:
-			this->mNextGameStateId = GameStateId::Intro;
+			this->mNextGameStateId = GameStateId::MainMenu;
 			break;
-	}
+	}*/
 
 	return true;
 }

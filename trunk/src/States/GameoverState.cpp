@@ -39,26 +39,19 @@ void GameoverState::load()
 	//
 	// Gui Screen for this state
 	//
-	mGuiScreen = new GuiScreen(mSceneManager, GuiScreenId::IntroGui, "GameoverScreen");
+	mGuiScreen = new GuiScreen(mSceneManager, GuiScreenId::GameOverGui, "GameOverScreen");
 	
 	GuiBackground* guiBackground = new GuiBackground();
-	guiBackground->setImage("Gameover.png","GameoverBackground","General");
+	guiBackground->setImage("GameOver.png","GameOverBackground","General");
 
 	mGuiScreen->setBackground(guiBackground);
-	
+
 	// Gui Widgets for this state
-	GuiButton* menuButton = new GuiButton();
-	menuButton->setSize(0.20, 0.20);
-	menuButton->setPosition(0.20, 0.70);
-	//menuButton->setImageNormal("MenuButton.png");
-	//menuButton->setImageDown("MenuButtonDown.png");
-	mGuiScreen->addWidget(menuButton,GuiWidgetGameoverId::ReturnMenu);
-	GuiButton* quitButton = new GuiButton();
-	quitButton->setSize(0.20, 0.20);
-	quitButton->setPosition(0.50, 0.70);
-	//quitButton->setImageNormal("QuitButton.png");
-	//quitButton->setImageDown("QuitButtonDown.png");
-	mGuiScreen->addWidget(quitButton,GuiWidgetGameoverId::QuitGame);
+	mMenu = new GuiMenu(mWindow->getViewport(0)->getCamera()->getAspectRatio(), GuiScreenId::GameOverGui);
+	
+	// Add menu to screen
+	mGuiScreen->addMenu(mMenu);
+
 	//
 	// Register the screen as input event listener, so it can receive events
 	//
@@ -87,16 +80,14 @@ void GameoverState::unload()
 	if(mGuiScreen)
 	{
 		//
-		// Register the screen as input event listener, so it can receive events
+		// Remove gui listener
 		//
 		mInputManager->removeListener(mGuiScreen);
-
-		delete mGuiScreen;
-		mGuiScreen = 0;
+		//
+		// Remove gui
+		//
+		mGuiScreen->removeGui();
 	}
-	//
-	// TODO Unload
-	//
 }
 
 /** Destroy the state */
@@ -135,11 +126,22 @@ bool GameoverState::keyReleased(const OIS::KeyEvent& e)
 {
 	switch(e.key)
 	{
-	case OIS::KC_M:
-		this->mNextGameStateId = GameStateId::MainMenu;
+	case OIS::KC_LEFT:
+		mMenu->previousOption();
 		break;
-	case OIS::KC_ESCAPE:
-		this->mNextGameStateId = GameStateId::Exit;
+	case OIS::KC_RIGHT:
+		mMenu->nextOption();
+		break;
+	case OIS::KC_RETURN:
+		switch(mMenu->getCurrentOption())
+		{
+		case GuiWidgetGameoverId::ReturnMenu:
+			this->mNextGameStateId = GameStateId::MainMenu;
+			break;
+		case GuiWidgetGameoverId::QuitGame:
+			this->mNextGameStateId = GameStateId::Exit;
+			break;
+		}		
 		break;
 	}
 
