@@ -30,9 +30,8 @@ PhysicsManager::~PhysicsManager()
 
 bool PhysicsManager::initialize()
 {
-	//
-	// TODO
-	//
+	//Create OgreOde world
+
 	return true;
 }
 
