@@ -23,17 +23,17 @@ mId(0)
 
 EnemyManager::~EnemyManager()
 {
+	finalize();
+}
 
+void EnemyManager::initialize()
+{
 }
 
 void EnemyManager::finalize()
 {
-	this->unLoad();
-}
-
-void EnemyManager::unLoad()
-{
 	mEnemyList.clear();
+	mEnemyMap.clear();
 }
 
 EnemyPtr EnemyManager::createEnemy(EnemyTypes type)
@@ -64,7 +64,7 @@ EnemyPtr EnemyManager::createEnemy(Ogre::String name, Ogre::String mesh)
 	enemySceneNode->yaw(Ogre::Radian(Ogre::Degree(-90)));
 
 	EnemyPtr enemy = EnemyPtr(new Enemy(name));
-	enemy->initialize();
+	enemy->initialize(enemyMesh, enemySceneNode);
 
 	mEnemyList.push_back(enemy);
 	mEnemyMap[name] = enemy;
@@ -94,6 +94,7 @@ EnemyPtr EnemyManager::getEnemy(Ogre::String name)
 bool EnemyManager::removeEnemy(Ogre::String name)
 {
 	mEnemyMap.erase(name);
+	//mEnemyMap.erase();
 
 	mSceneManager->destroyEntity(name);//getRootSceneNode()->removeChild(name);
 
