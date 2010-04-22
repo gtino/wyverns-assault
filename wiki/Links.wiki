@@ -36,6 +36,7 @@ This pages is used to store all the intersting links realted to the project. Eve
 
  * [http://lua-users.org/wiki/LuaStyleGuide Style Guidelines]
  * [http://www.lua.org/pil/28.html User-Defined Types in C] 
+ * [http://lua-users.org/wiki/BindingEnumsToLua Binding Enums To Lua]
 
 === Game States ===
 
