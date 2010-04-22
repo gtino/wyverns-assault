@@ -31,6 +31,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #include "GuiButton.h"
 #include "GuiImage.h"
 #include "GuiUserInterface.h"
+#include "GuiMenu.h"
 
 #include "..\Input\InputListener.h"
 
@@ -50,6 +51,7 @@ namespace WyvernsAssault
 		OutroGui		= 6,
 		CreditsGui		= 7,
 		PauseGui		= 8,
+		OptionsGui		= 9,
 	};
 
 	/** The widget map type */
@@ -68,10 +70,12 @@ namespace WyvernsAssault
 
 		void setBackground(GuiBackground* background);
 
-		void addWidget(GuiWidget* widget, GuiWidgetId widgetId);
+		void addWidget(GuiWidget* widget, GuiWidgetId widgetId);		
 		GuiWidget* getWidget(GuiWidgetId widgetId);
 		void removeWidget(GuiWidgetId widgetId);
 		void removeAllWidgets();
+		void addMenu(GuiMenu* menu);
+		void removeMenu();
 		// This will destroy whole Gui
 		void removeGui();
 		GuiWidget* nextWidget(GuiWidgetId widgetId);
@@ -126,6 +130,7 @@ namespace WyvernsAssault
 
 		GuiButton* mButton;
 		GuiImage* mImage;
+		GuiMenu* mMenu;
 	};
 }
 

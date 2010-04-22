@@ -45,6 +45,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #include "..\GUI\GuiScreen.h"
 #include "..\GUI\GuiBackground.h"
 #include "..\GUI\GuiButton.h"
+#include "..\GUI\GuiMenu.h"
 
 namespace WyvernsAssault
 {
@@ -128,6 +129,9 @@ namespace WyvernsAssault
 
 		/** The GUI manager */
 		GuiScreen* mGuiScreen;
+
+		/** GUI options menu */
+		GuiMenu*	mMenu;
 
 	protected:
 		Ogre::Root* mRoot;

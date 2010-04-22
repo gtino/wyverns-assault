@@ -63,7 +63,7 @@ void PlayState::initialize()
 	mCameraManager->gameCamera();
 
 	// SdkTrays Manager
-	mTrayMgr = new OgreBites::SdkTrayManager("InterfaceName", mWindow, mInputManager->getMouse());
+	mTrayMgr = new OgreBites::SdkTrayManager("DebugInterface", mWindow, mInputManager->getMouse());
 	if(mTrayMgr->isCursorVisible()) mTrayMgr->hideCursor();
 	
 	// Create a params panel for displaying sample details
@@ -137,7 +137,7 @@ void PlayState::load()
 	//
 	// Wigdets for this state
 	//	
-	mPlayerUI = new GuiUserInterface(mWindow->getViewport(0)->getCamera()->getAspectRatio(), GuiWidgetPlayId::UserInterface1);
+	mPlayerUI = new GuiUserInterface(mWindow->getViewport(0)->getCamera()->getAspectRatio(), GuiScreenId::PlayGui, GuiWidgetPlayId::UserInterface1);
 
 	// Add Gui Widgets to Manager
 	mGuiScreen->addWidget(mPlayerUI,GuiWidgetPlayId::UserInterface1);	

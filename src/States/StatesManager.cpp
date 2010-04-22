@@ -3,7 +3,7 @@
 using namespace WyvernsAssault;
 
 StatesManager::StatesManager()
-: mCurrentStateId ( GameStateId::Play )
+: mCurrentStateId ( GameStateId::SplashScreen )
 {
 	//
 	// TODO Constructor
@@ -114,10 +114,29 @@ bool StatesManager::loop(const float elapsedSeconds)
 				this->pushState(newState);
 			else
 			{
-				if(mCurrentStateId==Pause && nextStateId == Play)
+				// Resume play
+				if(mCurrentStateId == GameStateId::Pause && nextStateId == GameStateId::Play)
+				{
 					this->popState();
-				else
+				}
+				// Exit to menu
+				else if(mCurrentStateId == GameStateId::Pause && nextStateId == GameStateId::MainMenu)
+				{
+					this->popState();
 					this->changeState(newState);
+				}
+				// Options from pause 
+				else if(mCurrentStateId == GameStateId::Pause && nextStateId == GameStateId::Options)
+				{
+					// 
+					// TODO
+					//
+					this->changeState(newState);
+				}
+				else
+				{
+					this->changeState(newState);
+				}
 			}
 		}
 

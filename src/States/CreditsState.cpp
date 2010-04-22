@@ -31,7 +31,6 @@ void CreditsState::load()
 	// Gui Screen for this state
 	//
 	mGuiScreen = new GuiScreen(mSceneManager, GuiScreenId::CreditsGui, "CreditsScreen");
-	//mGuiScreen = new GuiScreen(mSceneManager, GuiScreenId::IntroGui, "CreditsScreen");
 	
 	GuiBackground* guiBackground = new GuiBackground();
 	guiBackground->setImage("Credits.png","CreditsBackground","General");
@@ -39,12 +38,10 @@ void CreditsState::load()
 	mGuiScreen->setBackground(guiBackground);
 
 	// Gui Widgets for this state
-	GuiButton* menuButton = new GuiButton();
-	menuButton->setSize(0.20, 0.20);
-	menuButton->setPosition(0.80, 0.50);
-	//menuButton->setImageNormal("MenuButton.png");
-	//menuButton->setImageDown("MenuButtonDown.png");
-	mGuiScreen->addWidget(menuButton,GuiWidgetCreditsId::CreditsToMenu);
+	mMenu = new GuiMenu(mWindow->getViewport(0)->getCamera()->getAspectRatio(), GuiScreenId::CreditsGui);
+	
+	// Add menu to screen
+	mGuiScreen->addMenu(mMenu);
 
 	//
 	// Register the screen as input event listener, so it can receive events
@@ -83,16 +80,14 @@ void CreditsState::unload()
 	if(mGuiScreen)
 	{
 		//
-		// Register the screen as input event listener, so it can receive events
+		// Remove gui listener
 		//
 		mInputManager->removeListener(mGuiScreen);
-
-		delete mGuiScreen;
-		mGuiScreen = 0;
+		//
+		// Remove gui
+		//
+		mGuiScreen->removeGui();
 	}
-	//
-	// TODO Unload
-	//
 }
 
 /** Destroy the state */
@@ -131,11 +126,8 @@ bool CreditsState::keyReleased(const OIS::KeyEvent& e)
 {
 	switch(e.key)
 	{
-	case OIS::KC_M:
+	case OIS::KC_RETURN:
 		this->mNextGameStateId = GameStateId::MainMenu;
-		break;
-	case OIS::KC_ESCAPE:
-		this->mNextGameStateId = GameStateId::Exit;
 		break;
 	}
 

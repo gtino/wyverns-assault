@@ -39,12 +39,18 @@ void OptionsState::load()
 	//
 	// Gui Screen for this state
 	//
-	mGuiScreen = new GuiScreen(mSceneManager, GuiScreenId::IntroGui, "OptionsScreen");
+	mGuiScreen = new GuiScreen(mSceneManager, GuiScreenId::OptionsGui, "OptionsScreen");
 	
 	GuiBackground* guiBackground = new GuiBackground();
 	guiBackground->setImage("Options.png","OptionsBackground","General");
 
 	mGuiScreen->setBackground(guiBackground);
+
+	// Gui Widgets for this state
+	mMenu = new GuiMenu(mWindow->getViewport(0)->getCamera()->getAspectRatio(), GuiScreenId::OptionsGui);
+	
+	// Add menu to screen
+	mGuiScreen->addMenu(mMenu);
 
 	//
 	// Register the screen as input event listener, so it can receive events
@@ -74,16 +80,14 @@ void OptionsState::unload()
 	if(mGuiScreen)
 	{
 		//
-		// Register the screen as input event listener, so it can receive events
+		// Remove gui listener
 		//
 		mInputManager->removeListener(mGuiScreen);
-
-		delete mGuiScreen;
-		mGuiScreen = 0;
+		//
+		// Remove gui
+		//
+		mGuiScreen->removeGui();
 	}
-	//
-	// TODO Unload
-	//
 }
 
 /** Destroy the state */
@@ -122,7 +126,7 @@ bool OptionsState::keyReleased(const OIS::KeyEvent& e)
 {
 	switch(e.key)
 	{
-	case OIS::KC_B:
+	case OIS::KC_RETURN:
 		this->mNextGameStateId = GameStateId::MainMenu;
 		break;
 	}

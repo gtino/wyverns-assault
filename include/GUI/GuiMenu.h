@@ -20,64 +20,49 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
 -----------------------------------------------------------------------------
 */
-#ifndef __GUI_USERINTERFACE_H_
-#define __GUI_USERINTERFACE_H_
+#ifndef __GUI_MENU_H_
+#define __GUI_MENU_H_
 
 #include <Ogre.h>
 #include <OgreRenderWindow.h>
 
-#include "OgrePanelOverlayElement.h"
 #include "OgreTextAreaOverlayElement.h"
-
 #include "GuiWidget.h"
 
 using namespace Ogre;
 
 namespace WyvernsAssault
 {
-	class GuiUserInterface : public GuiWidget
+	class GuiMenu
 	{
 	public:
-		GuiUserInterface(Real aspectRatio, int screenId, GuiWidgetId widgetId);
-		~GuiUserInterface();
+		GuiMenu(Real aspectRatio, int screenId);
+		~GuiMenu();
 
-	public:
-		GuiWidgetId getPlayer(){ return mWidgetId; }
-		/** Hide and show interface */
+	public:		
+		/** Show/Hide functions */
 		void show();
 		void hide();
 
-		/** Life and special bars values function */
-		Real getLifeBar(){return mLifePercent; }
-		Real getSpecialBar(){return mSpecialPercent; }
-		void setLifeBar(Real value);		
-		void setSpecialBar(Real value);
+		/** Destroy menu function*/
+		void destroyMenu();
+	
+	public:
+		/** Selecting options */
+		void nextOption();
+		void previousOption();
+		/** Select current option */
+		GuiWidgetId getCurrentOption();
 
-		/** Text area values function */
-		Real getTextKills(){return mKills; }
-		Real getTextPoints(){return mPoints; }
-		void setTextKills(Real value);		
-		void setTextPoints(Real value);
-
-	protected:
-		GuiWidgetId					mWidgetId;
-		OverlayContainer*			mUi;
-		Overlay*					mOverlay;
-		PanelOverlayElement*		mLifeBar;
-		PanelOverlayElement*		mSpecialBar;
-		TextAreaOverlayElement*		mTextKills;
-		TextAreaOverlayElement*		mTextPoints;		
+	protected:		
+		Overlay*			mOverlay;
+		OverlayContainer*	mMenu;
+		OverlayElement*		mCurrent;
 
 	protected:
-		Real	mLifeWidth;
-		Real	mLifeU2;
-		Real	mLifePercent;
-		Real	mSpecialWidth;
-		Real	mSpecialU2;
-		Real	mSpecialPercent;
-		Real	mKills;
-		Real	mPoints;
+		int					mScreenId;
+		GuiWidgetId			mSelectedOption;
 	};
 }
 
-#endif // __GUI_USERINTERFACE_H_
+#endif // __GUI_MENU_H_

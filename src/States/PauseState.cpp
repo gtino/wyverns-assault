@@ -38,10 +38,10 @@ void PauseState::load()
 	mGuiScreen->setBackground(guiBackground);
 
 	// Gui Widgets for this state
-	GuiButton* menuButton = new GuiButton();
-	menuButton->setSize(0.20, 0.20);
-	menuButton->setPosition(0.80, 0.50);
-	mGuiScreen->addWidget(menuButton,GuiWidgetPauseId::PlayGame);
+	mMenu = new GuiMenu(mWindow->getViewport(0)->getCamera()->getAspectRatio(), GuiScreenId::PauseGui);
+	
+	// Add menu to screen
+	mGuiScreen->addMenu(mMenu);
 
 	//
 	// Register the screen as input event listener, so it can receive events
@@ -131,15 +131,25 @@ bool PauseState::keyReleased(const OIS::KeyEvent& e)
 {
 	switch(e.key)
 	{
-	case OIS::KC_M:
-		this->mNextGameStateId = GameStateId::MainMenu;
+	case OIS::KC_UP:
+		mMenu->previousOption();
 		break;
-	case OIS::KC_ESCAPE:
-		this->mNextGameStateId = GameStateId::Exit;
+	case OIS::KC_DOWN:
+		mMenu->nextOption();
 		break;
-	case OIS::KC_P:
-		// Resume
-		this->mNextGameStateId = GameStateId::Play;
+	case OIS::KC_RETURN:
+		switch(mMenu->getCurrentOption())
+		{
+		case GuiWidgetPauseId::PlayGame:
+			this->mNextGameStateId = GameStateId::Play;
+			break;
+		case GuiWidgetPauseId::OptionsGame:
+			this->mNextGameStateId = GameStateId::Options;
+			break;
+		case GuiWidgetPauseId::QuitToMenu:
+			this->mNextGameStateId = GameStateId::MainMenu;
+			break;
+		}		
 		break;
 	}
 

@@ -30,27 +30,19 @@ void EndingState::load()
 	//
 	// Gui Screen for this state
 	//
-	mGuiScreen = new GuiScreen(mSceneManager, GuiScreenId::IntroGui, "EndingScreen");
+	mGuiScreen = new GuiScreen(mSceneManager, GuiScreenId::EndingGui, "EndingScreen");
 	
 	GuiBackground* guiBackground = new GuiBackground();
 	guiBackground->setImage("Ending.png","EndingBackground","General");
 
 	mGuiScreen->setBackground(guiBackground);
-	
+
 	// Gui Widgets for this state
-	GuiButton* menuButton = new GuiButton();
-	menuButton->setSize(0.20, 0.20);
-	menuButton->setPosition(0.70, 0.20);
-	//menuButton->setImageNormal("MenuButton.png");
-	//menuButton->setImageDown("MenuButtonDown.png");
-	mGuiScreen->addWidget(menuButton,GuiWidgetEndingId::EndingToMenu);
+	mMenu = new GuiMenu(mWindow->getViewport(0)->getCamera()->getAspectRatio(), GuiScreenId::EndingGui);
 	
-	GuiButton* creditsButton = new GuiButton();
-	creditsButton->setSize(0.20, 0.20);
-	creditsButton->setPosition(0.70, 0.50);
-	//creditsButton->setImageNormal("CreditsButton.png");
-	//creditsButton->setImageDown("CreditsButtonDown.png");
-	mGuiScreen->addWidget(creditsButton,GuiWidgetEndingId::EndingToCredits);
+	// Add menu to screen
+	mGuiScreen->addMenu(mMenu);
+
 	//
 	// Register the screen as input event listener, so it can receive events
 	//
@@ -88,16 +80,14 @@ void EndingState::unload()
 	if(mGuiScreen)
 	{
 		//
-		// Register the screen as input event listener, so it can receive events
+		// Remove gui listener
 		//
 		mInputManager->removeListener(mGuiScreen);
-
-		delete mGuiScreen;
-		mGuiScreen = 0;
+		//
+		// Remove gui
+		//
+		mGuiScreen->removeGui();
 	}
-	//
-	// TODO Unload
-	//
 }
 
 /** Destroy the state */
@@ -136,11 +126,23 @@ bool EndingState::keyReleased(const OIS::KeyEvent& e)
 {
 	switch(e.key)
 	{
-	case OIS::KC_M:
-		this->mNextGameStateId = GameStateId::MainMenu;
+
+	case OIS::KC_LEFT:
+		mMenu->previousOption();
 		break;
-	case OIS::KC_C:
-		this->mNextGameStateId = GameStateId::Credits;
+	case OIS::KC_RIGHT:
+		mMenu->nextOption();
+		break;
+	case OIS::KC_RETURN:
+		switch(mMenu->getCurrentOption())
+		{
+		case GuiWidgetEndingId::EndingToMenu:
+			this->mNextGameStateId = GameStateId::MainMenu;
+			break;
+		case GuiWidgetEndingId::EndingToCredits:
+			this->mNextGameStateId = GameStateId::Credits;
+			break;
+		}		
 		break;
 	}
 
