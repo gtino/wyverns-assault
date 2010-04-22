@@ -61,7 +61,8 @@ namespace WyvernsAssault
 		~EnemyManager();
 		static EnemyManager& getSingleton(void);
 		static EnemyManager* getSingletonPtr(void);
-
+		
+		void initialize();
 		void finalize();
 
 		EnemyPtr createEnemy(EnemyTypes type);
@@ -75,7 +76,6 @@ namespace WyvernsAssault
 		void update(const float elpasedSeconds);
 
 	private:
-		void unLoad();
 		Ogre::String createUniqueId();
 
 	private:

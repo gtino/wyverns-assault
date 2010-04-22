@@ -41,12 +41,16 @@ void PlayState::initialize()
 	mRoot->addFrameListener(this);
 
 	// Player manager constructor
-	mPlayerManager = new PlayerManager();
-	mPlayerManager->initialize("redWyvern","redwyvern.mesh",mGraphicsManager->getSceneManager(),Vector3(150,25,850));
+	mPlayerManager = new PlayerManager(mSceneManager);
+	mPlayerManager->initialize();
+
+	// Create a single player (TEST!)
+	mPlayer1 = mPlayerManager->createPlayer("Player1","redwyvern.mesh");
+	mPlayer1->setPosition(Vector3(150,25,850));
 
 	// Camera manager constructor
 	mCameraManager = new CameraManager(mGraphicsManager->getSceneManager(), mGraphicsManager->getRenderWindow(), mViewport);
-	mCameraManager->initialize(mPlayerManager->getPlayerSceneNode());
+	mCameraManager->initialize(mPlayer1->getSceneNode());
 
 	// Lights manager constructor
 	mLightsManager = new LightsManager(mGraphicsManager->getSceneManager());
@@ -54,6 +58,7 @@ void PlayState::initialize()
 
 	//Enemys manager constructor
 	mEnemyManager = new EnemyManager(mSceneManager);
+	mEnemyManager->initialize();
 
 	//Load scene XML file
 	std::auto_ptr<DotSceneLoader> sceneLoader(new DotSceneLoader());
@@ -165,9 +170,9 @@ bool PlayState::frameRenderingQueued(const Ogre::FrameEvent& evt)
 	{
 		if (mDetailsPanel->isVisible())   // if details panel is visible, then update its contents
 		{
-			mDetailsPanel->setParamValue(0, StringConverter::toString(mPlayerManager->getPlayerPosition().x));
-			mDetailsPanel->setParamValue(1, StringConverter::toString(mPlayerManager->getPlayerPosition().y));
-			mDetailsPanel->setParamValue(2, StringConverter::toString(mPlayerManager->getPlayerPosition().z));
+			mDetailsPanel->setParamValue(0, StringConverter::toString(mPlayer1->getPosition().x));
+			mDetailsPanel->setParamValue(1, StringConverter::toString(mPlayer1->getPosition().y));
+			mDetailsPanel->setParamValue(2, StringConverter::toString(mPlayer1->getPosition().z));
 			mDetailsPanel->setParamValue(4, mCameraManager->getCameraMode().c_str());
 			mDetailsPanel->setParamValue(5, StringConverter::toString(mCameraManager->getCameraPosition().x));
 			mDetailsPanel->setParamValue(6, StringConverter::toString(mCameraManager->getCameraPosition().y));
@@ -226,40 +231,40 @@ void PlayState::update(const float elapsedSeconds)
 		// 8 directions move
 		if(this->mInputManager->getKeyboard()->isKeyDown(OIS::KeyCode::KC_RIGHT) && this->mInputManager->getKeyboard()->isKeyDown(OIS::KeyCode::KC_UP))
 		{
-			mPlayerManager->move(0.75,0,-0.75);
+			mPlayer1->move(0.75,0,-0.75);
 		}
 		else if(this->mInputManager->getKeyboard()->isKeyDown(OIS::KeyCode::KC_RIGHT) && this->mInputManager->getKeyboard()->isKeyDown(OIS::KeyCode::KC_DOWN))
 		{
-			mPlayerManager->move(0.75,0,0.75);
+			mPlayer1->move(0.75,0,0.75);
 		}
 		else if(this->mInputManager->getKeyboard()->isKeyDown(OIS::KeyCode::KC_LEFT) && this->mInputManager->getKeyboard()->isKeyDown(OIS::KeyCode::KC_UP))
 		{
-			mPlayerManager->move(-0.75,0,-0.75);
+			mPlayer1->move(-0.75,0,-0.75);
 		}
 		else if(this->mInputManager->getKeyboard()->isKeyDown(OIS::KeyCode::KC_LEFT) && this->mInputManager->getKeyboard()->isKeyDown(OIS::KeyCode::KC_DOWN))
 		{
-			mPlayerManager->move(-0.75,0,0.75);
+			mPlayer1->move(-0.75,0,0.75);
 		}
 		else if(this->mInputManager->getKeyboard()->isKeyDown(OIS::KeyCode::KC_RIGHT))
 		{
-			mPlayerManager->move(1,0,0);
+			mPlayer1->move(1,0,0);
 		}
 		else if(this->mInputManager->getKeyboard()->isKeyDown(OIS::KeyCode::KC_LEFT))
 		{
-			mPlayerManager->move(-1,0,0);
+			mPlayer1->move(-1,0,0);
 		}
 		else if(this->mInputManager->getKeyboard()->isKeyDown(OIS::KeyCode::KC_UP))
 		{
-			mPlayerManager->move(0,0,-1);
+			mPlayer1->move(0,0,-1);
 		}
 		else if(this->mInputManager->getKeyboard()->isKeyDown(OIS::KeyCode::KC_DOWN))
 		{
-			mPlayerManager->move(0,0,1);
+			mPlayer1->move(0,0,1);
 		}
 		else
 		{
 			// No movement, iddle animation
-			mPlayerManager->move(0,0,0);
+			mPlayer1->move(0,0,0);
 		}
 	}
 
@@ -316,7 +321,7 @@ void PlayState::update(const float elapsedSeconds)
 	//
 	// Update animation state
 	//
-	mPlayerManager->updateAnimation(elapsedSeconds);
+	mPlayer1->updateAnimation(elapsedSeconds);
 }
 
 /** Render */

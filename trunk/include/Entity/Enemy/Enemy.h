@@ -36,7 +36,7 @@ namespace WyvernsAssault
 		Enemy(Ogre::String name);
 		~Enemy();
 	
-		void initialize();
+		void initialize(Ogre::Entity* mesh, Ogre::SceneNode* sceneNode);
 		void finalize();
 
 		Ogre::SceneNode* getSceneNode() const { return mSceneNode; }

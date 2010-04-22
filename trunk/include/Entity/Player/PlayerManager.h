@@ -30,45 +30,40 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #include "..\..\..\include\Entity\EntityManager.h"
 #include "Player.h"
 
-// Player default movement speed
-#define SPEED	5
-
 using namespace Ogre;
 
 namespace WyvernsAssault
 {
+	typedef std::map<Ogre::String,PlayerPtr> PlayerMap;
+	typedef std::map<Ogre::String,PlayerPtr>::iterator PlayerMapIterator;
+
+	typedef std::vector<PlayerPtr> PlayerList;
+	typedef std::vector<PlayerPtr>::iterator PlayerListIterator;
+
 	/**
 	Class used to manage all the enemies
 	*/
 	class PlayerManager : public Ogre::Singleton<PlayerManager>, public EntityManager, public LuaInterface
 	{
 	public:
-		PlayerManager();
+		PlayerManager(Ogre::SceneManager* sceneManager);
 		~PlayerManager();
 		static PlayerManager& getSingleton(void);
 		static PlayerManager* getSingletonPtr(void);
 
-		void initialize(String name, String mesh, SceneManager* levelSceneManager, Vector3 position);
+		void initialize();
 		void finalize();
 
-		SceneNode* getPlayerSceneNode() const {return mPlayerSceneNode;}
+		PlayerPtr createPlayer(Ogre::String name, Ogre::String mesh);
 
-		Vector3 getPlayerPosition(){ return mPlayerSceneNode->getPosition(); }
-
-		// Player movement functions
-		void move(Real x, Real y, Real z);
-
-		// Animation functions
-		void updateAnimation(float elapsedSeconds);
+		PlayerPtr getPlayer(Ogre::String name);
+		bool removePlayer(Ogre::String name);
 
 	private:
-		void initializeVariables();
 		SceneManager *mSceneManager;
 
-	private:
-		Entity*				mPlayerMesh;
-		SceneNode*			mPlayerSceneNode;
-		AnimationState*		mPlayerAnimation;
+		PlayerList mPlayerList;
+		PlayerMap mPlayerMap;
 
 	// --------------------------------
 	// BEGIN Lua Interface Declarations

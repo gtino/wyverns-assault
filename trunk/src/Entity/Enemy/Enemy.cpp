@@ -12,9 +12,15 @@ Enemy::~Enemy()
 {
 }
 
-void Enemy::initialize()
+void Enemy::initialize(Ogre::Entity* mesh, Ogre::SceneNode* sceneNode)
 {
+	mSceneNode = sceneNode;
+	mMesh = mesh;
 
+	// Animations
+	//mAnimationState = mMesh->getAnimationState("Iddle_01");
+	//mAnimationState->setEnabled(true);
+	//mAnimationState->setLoop(true);
 }
 
 void Enemy::finalize()

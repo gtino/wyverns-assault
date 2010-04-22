@@ -89,6 +89,11 @@ namespace WyvernsAssault
 		ItemManager* mItemManager;
 
 		//
+		// Shortcut to player1 (TEST)
+		//
+		PlayerPtr mPlayer1;
+
+		//
 		// SdkTrays manager
 		//
 		OgreBites::SdkTrayManager* mTrayMgr;

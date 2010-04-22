@@ -25,6 +25,11 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
 #include <Ogre.h>
 
+// Player default movement speed
+#define SPEED	5
+
+using namespace Ogre;
+
 namespace WyvernsAssault
 {
 	/**
@@ -36,7 +41,7 @@ namespace WyvernsAssault
 		Player(Ogre::String name);
 		~Player();
 	
-		void initialize();
+		void initialize(Ogre::Entity* mesh, Ogre::SceneNode* sceneNode, Ogre::SceneNode* autoTrackingNode);
 		void finalize();
 
 		Ogre::SceneNode* getSceneNode() const { return mSceneNode; }
@@ -44,15 +49,23 @@ namespace WyvernsAssault
 
 		const Ogre::String& getName() { return mSceneNode->getName(); }
 
-		void setPosition(Ogre::Vector3 position) { mSceneNode->setPosition(position); }
+		void setPosition(Ogre::Vector3 position);
 		Ogre::Vector3 getPosition() { return mSceneNode->getPosition(); } 
 
 		void setScale(Ogre::Vector3 scale) { mSceneNode->setScale(scale); }
 		Ogre::Vector3 getScale(){return mSceneNode->getScale(); }
 
+		// Player movement functions
+		void move(Real x, Real y, Real z);
+
+		// Animation functions
+		void updateAnimation(float elapsedSeconds);
+
 	private:
 		Ogre::Entity* mMesh;
 		Ogre::SceneNode* mSceneNode;
+		Ogre::SceneNode* mAutoTrackingNode;
+		Ogre::AnimationState* mAnimationState;
 	};
 
 	typedef boost::shared_ptr<Player> PlayerPtr;
