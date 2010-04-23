@@ -24,9 +24,16 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #define __PLAYER_H__
 
 #include <Ogre.h>
+#include "OgreOde_Core.h"
 
 // Player default movement speed
 #define SPEED	5
+
+typedef struct{
+	OgreOde::RayGeometry* charRay;
+	Ogre::Real radius;
+	Ogre::Vector3 last_contact;
+}ODE_CHAR_INFO;
 
 using namespace Ogre;
 
@@ -41,11 +48,16 @@ namespace WyvernsAssault
 		Player(Ogre::String name);
 		~Player();
 	
-		void initialize(Ogre::Entity* mesh, Ogre::SceneNode* sceneNode, Ogre::SceneNode* autoTrackingNode);
+		void initialize(Ogre::Entity* mesh, Ogre::SceneNode* sceneNode, Ogre::SceneNode* sceneNode_model,Ogre::SceneNode* autoTrackingNode);
 		void finalize();
 
+		//Node
 		Ogre::SceneNode* getSceneNode() const { return mSceneNode; }
 		void setSceneNode(Ogre::SceneNode* sceneNode) { mSceneNode = sceneNode; }
+
+		//Model Node
+		Ogre::SceneNode* getSceneNodeModel() const { return mSceneNode_model; }
+		void setSceneNodeModel(Ogre::SceneNode* sceneNodeModel) { mSceneNode_model = sceneNodeModel; }
 
 		const Ogre::String& getName() { return mSceneNode->getName(); }
 
@@ -54,6 +66,19 @@ namespace WyvernsAssault
 
 		void setScale(Ogre::Vector3 scale) { mSceneNode->setScale(scale); }
 		Ogre::Vector3 getScale(){return mSceneNode->getScale(); }
+
+		void setUpdated(bool update) { ray_updated = update; }
+		bool getUpdated(){ return ray_updated; }
+
+		void setTorso(OgreOde::Body* body){torso = body;}
+		OgreOde::Body* getTorso(){ return torso; }
+
+		void setRay(OgreOde::RayGeometry* ray_geom, Real radius) { 
+			ray.charRay = ray_geom;
+			ray.radius = radius;
+			ray.last_contact = Vector3(0,0,0);
+		};
+		ODE_CHAR_INFO getRay(){return ray; }
 
 		// Player movement functions
 		void move(Real x, Real y, Real z);
@@ -64,8 +89,15 @@ namespace WyvernsAssault
 	private:
 		Ogre::Entity* mMesh;
 		Ogre::SceneNode* mSceneNode;
+		Ogre::SceneNode* mSceneNode_model;
 		Ogre::SceneNode* mAutoTrackingNode;
 		Ogre::AnimationState* mAnimationState;
+		
+		//Physic
+		ODE_CHAR_INFO ray;
+		OgreOde::Body* torso;
+		bool ray_updated;
+
 	};
 
 	typedef boost::shared_ptr<Player> PlayerPtr;

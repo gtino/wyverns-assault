@@ -28,18 +28,21 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #include "OgreOde_Core.h"
 
 #include "..\Lua\LuaInterface.h"
+#include "..\Entity\Player\PlayerManager.h"
+#include "..\Entity\Player\Player.h"
 
 using namespace Ogre;
 
 namespace WyvernsAssault
 {
+
 	/**
 	Class used to manage entities/world physics
 	*/
-	class PhysicsManager : public Ogre::Singleton<PhysicsManager>, public LuaInterface
+	class PhysicsManager : public Ogre::Singleton<PhysicsManager>, public LuaInterface, public OgreOde::CollisionListener
 	{
 	public:
-		PhysicsManager();
+		PhysicsManager(SceneManager* sceneManager);
 		~PhysicsManager();
 		static PhysicsManager& getSingleton(void);
 		static PhysicsManager* getSingletonPtr(void);
@@ -47,6 +50,26 @@ namespace WyvernsAssault
 	public:
 		bool initialize();
 		void finalize();
+
+		void synchronizeWorld(Real time);
+		void showDebuggObjects();
+
+		void createPhysicGround(Ogre::String mesh);
+		void createPhysicCharacter(Ogre::String name,PlayerPtr mPlayer);
+		void createPhysicEnemy(Ogre::String name,Ogre::String mesh);
+
+		//Update ray of one character
+		void updateRay(PlayerPtr mPlayer);
+
+		/*
+		Called by OgreOde whenever a collision occurs, so 
+		that we can modify the contact parameters
+		*/
+		bool collision(OgreOde::Contact* contact);
+
+		//Move one character
+		void move(PlayerPtr mPlayer, int rotate, int thrust);
+		
 
 	// --------------------------------
 	// BEGIN Lua Interface Declarations
@@ -62,6 +85,16 @@ namespace WyvernsAssault
 	// ------------------------------
 	// END Lua Interface Declarations
 	// ------------------------------
+
+	protected:
+		SceneManager* mSceneManager;
+		OgreOde::World* mWorld;
+		OgreOde::StepHandler* mStepper;
+		OgreOde::Space* mSpace;
+
+		OgreOde::TriangleMeshGeometry* geom_ground;
+		PlayerPtr mPlayer_temp;
+
 	};
 }
 
