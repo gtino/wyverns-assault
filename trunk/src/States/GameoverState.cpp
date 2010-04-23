@@ -140,6 +140,8 @@ bool GameoverState::keyReleased(const OIS::KeyEvent& e)
 			break;
 		case GuiWidgetGameoverId::QuitGame:
 			this->mNextGameStateId = GameStateId::Exit;
+			// Unload gui NOW!
+			unload();
 			break;
 		}		
 		break;
