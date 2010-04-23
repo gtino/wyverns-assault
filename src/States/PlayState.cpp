@@ -45,8 +45,8 @@ void PlayState::initialize()
 	mPlayerManager->initialize();
 
 	// Create a single player (TEST!)
-	mPlayer1 = mPlayerManager->createPlayer("Player1","redwyvern.mesh");
-	mPlayer1->setPosition(Vector3(150,25,850));
+	mPlayer1 = mPlayerManager->createPlayer("Player1","Player1_model","redwyvern.mesh");
+	mPlayer1->setPosition(Vector3(180,30,870));
 
 	// Camera manager constructor
 	mCameraManager = new CameraManager(mGraphicsManager->getSceneManager(), mGraphicsManager->getRenderWindow(), mViewport);
@@ -98,8 +98,11 @@ void PlayState::initialize()
 	//
 	// Physics Manager
 	// 
-	mPhysicsManager = new PhysicsManager();
+	mPhysicsManager = new PhysicsManager(mSceneManager);
 	mPhysicsManager->initialize();
+	// Physics Temporaly Calls (DotSceneLoader task)
+	mPhysicsManager->createPhysicGround("physic_ground.mesh");
+	mPhysicsManager->createPhysicCharacter("Player1",mPlayer1);
 
 	//
 	// Logic Manager
@@ -188,6 +191,9 @@ bool PlayState::frameRenderingQueued(const Ogre::FrameEvent& evt)
 /** Update internal stuff */
 void PlayState::update(const float elapsedSeconds)
 {
+
+	int rotate,thrust;
+
 	// Movement
 	if(mCameraManager->getCameraMode() == "Free")
 	{
@@ -230,8 +236,11 @@ void PlayState::update(const float elapsedSeconds)
 	}
 	else
 	{
+		rotate = 0;
+		thrust = 0;
+
 		// 8 directions move
-		if(this->mInputManager->getKeyboard()->isKeyDown(OIS::KeyCode::KC_RIGHT) && this->mInputManager->getKeyboard()->isKeyDown(OIS::KeyCode::KC_UP))
+		/*if(this->mInputManager->getKeyboard()->isKeyDown(OIS::KeyCode::KC_RIGHT) && this->mInputManager->getKeyboard()->isKeyDown(OIS::KeyCode::KC_UP))
 		{
 			mPlayer1->move(0.75,0,-0.75);
 		}
@@ -247,27 +256,38 @@ void PlayState::update(const float elapsedSeconds)
 		{
 			mPlayer1->move(-0.75,0,0.75);
 		}
-		else if(this->mInputManager->getKeyboard()->isKeyDown(OIS::KeyCode::KC_RIGHT))
+		*/
+		if(this->mInputManager->getKeyboard()->isKeyDown(OIS::KeyCode::KC_RIGHT))
 		{
-			mPlayer1->move(1,0,0);
+			rotate +=1;
+			mPhysicsManager->move(mPlayer1,rotate,thrust);
+			//mPlayer1->move(1,0,0);
 		}
 		else if(this->mInputManager->getKeyboard()->isKeyDown(OIS::KeyCode::KC_LEFT))
 		{
-			mPlayer1->move(-1,0,0);
+			rotate += -1;
+			mPhysicsManager->move(mPlayer1,rotate,thrust);
+			//mPlayer1->move(-1,0,0);
 		}
 		else if(this->mInputManager->getKeyboard()->isKeyDown(OIS::KeyCode::KC_UP))
 		{
-			mPlayer1->move(0,0,-1);
+			thrust += 1;
+			mPhysicsManager->move(mPlayer1,rotate,thrust);
+			//mPlayer1->move(0,0,-1);
 		}
 		else if(this->mInputManager->getKeyboard()->isKeyDown(OIS::KeyCode::KC_DOWN))
 		{
-			mPlayer1->move(0,0,1);
+			thrust += -1;
+			mPhysicsManager->move(mPlayer1,rotate,thrust);
+			//mPlayer1->move(0,0,1);
 		}
 		else
 		{
 			// No movement, iddle animation
-			mPlayer1->move(0,0,0);
+			//mPlayer1->move(0,0,0);
+			//mPhysicsManager->move(mPlayer1,rotate,thrust);
 		}
+
 	}
 
 	// Zoom for Fixed Direction camera mode (DEBUG only)
@@ -307,6 +327,14 @@ void PlayState::update(const float elapsedSeconds)
 
 	if(this->mInputManager->getKeyboard()->isKeyDown(OIS::KeyCode::KC_F10))
 		mPlayerUI->setSpecialBar(mPlayerUI->getSpecialBar() + 2);
+
+	// PGYSIC DEBUG KEYS
+	if(this->mInputManager->getKeyboard()->isKeyDown(OIS::KeyCode::KC_C))	
+		mPhysicsManager->showDebuggObjects();
+
+	//Update Physic
+	mPhysicsManager->synchronizeWorld(elapsedSeconds);
+	mPhysicsManager->updateRay(mPlayer1);
 
 	//
 	// Logic manager

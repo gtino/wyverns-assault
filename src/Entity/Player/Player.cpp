@@ -13,9 +13,10 @@ Player::~Player()
 	finalize();
 }
 
-void Player::initialize(Ogre::Entity* mesh, Ogre::SceneNode* sceneNode, Ogre::SceneNode* autoTrackingNode)
+void Player::initialize(Ogre::Entity* mesh, Ogre::SceneNode* sceneNode, Ogre::SceneNode* sceneNode_model,Ogre::SceneNode* autoTrackingNode)
 {
 	mSceneNode = sceneNode;
+	mSceneNode_model = sceneNode_model;
 	mMesh = mesh;
 	mAutoTrackingNode = autoTrackingNode;
 
