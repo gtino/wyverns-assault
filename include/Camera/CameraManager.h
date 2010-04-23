@@ -50,18 +50,20 @@ namespace WyvernsAssault
 		/** Finalize the camera manager */
 		void finalize();
 
-		/** Get camera position **/
+		/** Get camera position */
 		Vector3 getCameraPosition(){ return mCameraCS->getCameraPosition(); }
-		/** Get camera mode **/
+		/** Get camera look at*/
+		Vector3 getCameraLookAt(){ return mCameraCS->getCameraTargetPosition(); }
+		/** Get camera mode */
 		String getCameraMode(){ return mCameraCS->getCameraModeName(mCameraCS->getCurrentCameraMode()); }
-		/** Get camera controls system **/
+		/** Get camera controls system */
 		CCS::CameraControlSystem* getCameraCS(){ return mCameraCS; }
 
-		/** Camera functions **/
+		/** Camera functions */
 		void updateCamera(Real timeSinceLastFrame);
 		void zoom(Real zoom);		
 
-		/** Camera types functions **/
+		/** Camera types functions */
 		void gameCamera();
 		void fpsCamera();
 		void fixedCamera(int id);
@@ -69,10 +71,10 @@ namespace WyvernsAssault
 		void scenarioCamera();
 		void nextCamera() { mCameraCS->setCurrentCameraMode(mCameraCS->getNextCameraMode()); }
 
-		/** Fixed cameras functions **/
+		/** Fixed cameras functions */
 		void setFixedCamera(int camera, Vector3 position, Real roll, Real yaw, Real pitch);
 
-		/** Debug camera functions **/
+		/** Debug camera functions */
 		void setPolygonMode(PolygonMode pm){ mCamera->setPolygonMode(pm);}
 		PolygonMode getPolygonMode(){ return mCamera->getPolygonMode(); }
 	

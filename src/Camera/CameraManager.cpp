@@ -47,7 +47,7 @@ void CameraManager::initialize(SceneNode* player)
 
 	// Free mode
 	mCamFreeMode = new CCS::FreeCameraMode(mCameraCS);
-	mCamFreeMode->setMoveFactor(50);
+	mCamFreeMode->setMoveFactor(20);
 	mCameraCS->registerCameraMode("Free", mCamFreeMode);
 
 	// Fixed direction
