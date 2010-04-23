@@ -93,9 +93,15 @@ void GuiScreen::removeGui()
 {
 	this->removeAllWidgets();
 	if(mBackgroundNode)
+	{
 		mSceneManager->destroySceneNode(mBackgroundNode);
+		mBackgroundNode = NULL;
+	}
 	if(mMenu)
+	{
 		removeMenu();
+		mMenu = NULL;
+	}
 }
 
 GuiWidget* GuiScreen::nextWidget(GuiWidgetId widgetId)

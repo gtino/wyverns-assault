@@ -39,7 +39,10 @@ namespace WyvernsAssault
 		GuiMenu(Real aspectRatio, int screenId);
 		~GuiMenu();
 
-	public:		
+		void initialize(Real aspectRatio);
+		void finalize();
+
+	public:
 		/** Show/Hide functions */
 		void show();
 		void hide();

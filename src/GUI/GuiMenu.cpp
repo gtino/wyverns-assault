@@ -2,46 +2,56 @@
 
 using namespace WyvernsAssault;
 
-GuiMenu::GuiMenu(Real aspectRatio, int screenId) 
-: mSelectedOption(0)
-, mOverlay(0)
-, mMenu(0)
-, mScreenId(0)
+GuiMenu::GuiMenu(Real aspectRatio, int screenId)
+: mOverlay(NULL)
+, mMenu(NULL)
+, mCurrent(NULL)
+{
+	this->mScreenId = screenId;
+	this->mSelectedOption = 0;
+
+	initialize(aspectRatio);
+}
+
+GuiMenu::~GuiMenu()
+{
+	finalize();
+}
+
+void GuiMenu::initialize(Real aspectRatio)
 {
 	char uiName[20];	
-
-	this->mScreenId = screenId;
 
 	OverlayManager& overlayManager = OverlayManager::getSingleton();
 
 	// Create overlay container from template
 	sprintf(uiName, "Widget_%d", mScreenId);
 	// Splash screen
-	if (screenId == 0)		
+	if (mScreenId == 0)		
 		mMenu = static_cast<OverlayContainer*>(overlayManager.createOverlayElementFromTemplate("GUI/ContinueMenu", "Panel", uiName));
 	// Intro screen
-	else if (screenId == 1)	
+	else if (mScreenId == 1)	
 		mMenu = static_cast<OverlayContainer*>(overlayManager.createOverlayElementFromTemplate("GUI/ContinueMenu", "Panel", uiName));
 	// Main Menu screen
-	else if (screenId == 2)
+	else if (mScreenId == 2)
 		mMenu = static_cast<OverlayContainer*>(overlayManager.createOverlayElementFromTemplate("GUI/MainMenu", "Panel", uiName));
 	// Ending screen
-	else if (screenId == 4)
+	else if (mScreenId == 4)
 		mMenu = static_cast<OverlayContainer*>(overlayManager.createOverlayElementFromTemplate("GUI/GameOverMenu", "Panel", uiName));
 	// Game over screen
-	else if (screenId == 5)
+	else if (mScreenId == 5)
 		mMenu = static_cast<OverlayContainer*>(overlayManager.createOverlayElementFromTemplate("GUI/EndingMenu", "Panel", uiName));
 	// Outro screen
-	else if (screenId == 6)
+	else if (mScreenId == 6)
 		mMenu = static_cast<OverlayContainer*>(overlayManager.createOverlayElementFromTemplate("GUI/OutroMenu", "Panel", uiName));	
 	// Credits screen
-	else if (screenId == 7)
+	else if (mScreenId == 7)
 		mMenu = static_cast<OverlayContainer*>(overlayManager.createOverlayElementFromTemplate("GUI/CreditsMenu", "Panel", uiName));
 	// Pause screen
-	else if (screenId == 8)
+	else if (mScreenId == 8)
 		mMenu = static_cast<OverlayContainer*>(overlayManager.createOverlayElementFromTemplate("GUI/PauseMenu", "Panel", uiName));
 	// Options screen
-	else if (screenId == 9)
+	else if (mScreenId == 9)
 		mMenu = static_cast<OverlayContainer*>(overlayManager.createOverlayElementFromTemplate("GUI/OptionsMenu", "Panel", uiName));
 	// Others
 	else
@@ -60,12 +70,31 @@ GuiMenu::GuiMenu(Real aspectRatio, int screenId)
 	mOverlay->add2D(mMenu);
 }
 
-GuiMenu::~GuiMenu()
+void GuiMenu::finalize()
 {
-	mScreenId = NULL;
-	mOverlay = NULL;
-	mMenu = NULL;
-	mSelectedOption = NULL;
+	if(mOverlay)
+	{
+		delete mOverlay;
+		mOverlay = NULL;
+	}
+	if(mMenu)
+	{
+		delete mMenu;
+		mMenu = NULL;
+	}
+	if(mCurrent)
+	{
+		delete mCurrent;
+		mCurrent = NULL;
+	}
+	if(mScreenId)
+	{
+		mScreenId = 0;
+	}
+	if(mSelectedOption)
+	{
+		mSelectedOption = 0;
+	}
 }
 
 void GuiMenu::show()
