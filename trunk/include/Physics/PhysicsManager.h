@@ -100,7 +100,6 @@ namespace WyvernsAssault
 		OgreOde::Space* mSpace;
 
 		OgreOde::TriangleMeshGeometry* geom_ground;
-		PlayerPtr mPlayer_temp;
 		std::vector< ODE_CHAR_INFO > ode_characters;
 
 
