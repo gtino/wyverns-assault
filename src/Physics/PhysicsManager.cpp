@@ -91,7 +91,7 @@ void PhysicsManager::createPhysicGround(Ogre::String mesh)
 void PhysicsManager::createPhysicCharacter(Ogre::String name, PlayerPtr mPlayer)
 {
 
-	AxisAlignedBox aab = mPlayer->getSceneNodeModel()->getAttachedObject("rwyvern")->getBoundingBox(); 
+	AxisAlignedBox aab = mPlayer->getSceneNodeModel()->getAttachedObject(name)->getBoundingBox(); 
 	Ogre::Vector3 min = aab.getMinimum()*mPlayer->getScale();
 	Ogre::Vector3 max = aab.getMaximum()*mPlayer->getScale();
 	Ogre::Vector3 size(fabs(max.x-min.x),fabs(max.y-min.y),fabs(max.z-min.z));
@@ -140,9 +140,6 @@ void PhysicsManager::updateRay(PlayerPtr mPlayer)
 		it->charRay->collide(geom_ground,this);
 	}
 
-	//Temporal testing
-	mPlayer_temp = mPlayer;
-
 }
 
 bool PhysicsManager::collision(OgreOde::Contact* contact)
@@ -172,6 +169,10 @@ void PhysicsManager::move(PlayerPtr mPlayer, int rotate, int thrust){
 
 	if (rotate != 0)
 	{
+		//MOVEMENT UPDATE
+		// Change autotrack axis for facing movement direction
+		//mSceneNode->setAutoTracking(false, mAutoTrackingNode, mDirection);
+		
 		Quaternion q1 = act_torso->getOrientation();
 		Quaternion q2(Degree(-4*rotate),Ogre::Vector3::UNIT_Y);
 		act_torso->setOrientation(q1*q2);

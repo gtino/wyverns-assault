@@ -39,9 +39,9 @@ void PlayerManager::finalize()
 PlayerPtr PlayerManager::createPlayer(Ogre::String name, Ogre::String name_model, Ogre::String mesh)
 {
 	// Player node
-	Ogre::Entity* playerMesh = mSceneManager->createEntity("rwyvern", mesh);
-	Ogre::SceneNode* playerSceneNode = mSceneManager->getRootSceneNode()->createChildSceneNode("rwyvern");
-	Ogre::SceneNode* modelSceneNode = playerSceneNode->createChildSceneNode("rwyvern_model");
+	Ogre::Entity* playerMesh = mSceneManager->createEntity(name, mesh);
+	Ogre::SceneNode* playerSceneNode = mSceneManager->getRootSceneNode()->createChildSceneNode(name);
+	Ogre::SceneNode* modelSceneNode = playerSceneNode->createChildSceneNode(name_model);
 	modelSceneNode->attachObject(playerMesh);
 
 	// Center node for player movement and camera targeting
