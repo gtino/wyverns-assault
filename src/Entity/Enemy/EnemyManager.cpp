@@ -64,7 +64,7 @@ EnemyPtr EnemyManager::createEnemy(Ogre::String name, Ogre::String mesh)
 	enemySceneNode->yaw(Ogre::Radian(Ogre::Degree(-90)));
 
 	EnemyPtr enemy = EnemyPtr(new Enemy(name));
-	enemy->initialize(enemyMesh, enemySceneNode);
+	enemy->initializeEntity(enemyMesh, enemySceneNode);
 
 	mEnemyList.push_back(enemy);
 	mEnemyMap[name] = enemy;
@@ -104,9 +104,16 @@ bool EnemyManager::removeEnemy(Ogre::String name)
 /* 
 * TODO
 */
-void EnemyManager::update(const float elpasedSeconds)
+void EnemyManager::update(const float elapsedSeconds)
 {
-	
+	for(int i = 0; i < mEnemyList.size() ; i++)
+	{
+		EnemyPtr enemy =  mEnemyList[i];
+
+		enemy->updateLogic(L);
+		enemy->updatePhysics(elapsedSeconds);
+		enemy->updateEntity(elapsedSeconds);
+	}
 }
 
 // --------------------------------

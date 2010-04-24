@@ -20,28 +20,31 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
 -----------------------------------------------------------------------------
 */
-#ifndef __ENEMY_H__
-#define __ENEMY_H__
+#ifndef __LUA_DEFINES_H__
+#define __LUA_DEFINES_H__
 
-#include <Ogre.h>
-
-#include "..\EntityInterface.h"
-#include "..\..\Physics\PhysicsInterface.h"
-#include "..\..\Logic\LogicInterface.h"
-
-namespace WyvernsAssault
-{
-	/**
-	Class used to manage all the enemies
-	*/
-	class Enemy : public EntityInterface, public PhysicsInterface, public LogicInterface
-	{
-	public:
-		Enemy(Ogre::String name);
-		~Enemy();
-	};
-
-	typedef boost::shared_ptr<Enemy> EnemyPtr;
+extern "C" {
+	#include "..\..\externals\Lua-5.0-SDK\include\lua.h"
+	#include "..\..\externals\Lua-5.0-SDK\include\lualib.h"
+	#include "..\..\externals\Lua-5.0-SDK\include\lauxlib.h"
 }
 
-#endif // __ENEMY_H__
+#define LUA_SCRIPTS_FOLDER 
+
+#define LUA_LIBRARY(n,l) static const struct luaL_reg l[]; const char* luaGetLibraryName() const {return n;} ; const struct luaL_reg* luaGetLibrary() {return l;}
+#define LUA_FUNCTION(f) static int f(lua_State *L);
+
+#define LUA_OPEN_LIBRARY(n,l) luaL_openlib(L, n, l, 0);
+
+#define LUA_BEGIN_BINDING(x) const struct luaL_reg x[] = {
+#define LUA_BIND(x,y) {x, y},
+#define LUA_END_BINDING() {NULL, NULL}};
+
+#define LUA_PROPERTY(n,t) 		private : t m_lua##n; \
+								public : t n##_get(){return m_lua##n;} \
+								public : void n##_set(const t n){m_lua##n=n;}
+
+#define LUA_PROPERTY_SET(c,p,v) c##::getSingleton().##p##_set(v)
+#define LUA_PROPERTY_GET(c,p) c##::getSingleton().##p##_get()
+
+#endif // __LUA_DEFINES_H__

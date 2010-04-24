@@ -20,28 +20,28 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
 -----------------------------------------------------------------------------
 */
-#ifndef __ENEMY_H__
-#define __ENEMY_H__
+#ifndef __LOGIC_INTERFACE_H__
+#define __LOGIC_INTERFACE_H__
 
 #include <Ogre.h>
 
-#include "..\EntityInterface.h"
-#include "..\..\Physics\PhysicsInterface.h"
-#include "..\..\Logic\LogicInterface.h"
+#include "..\Lua\LuaDefines.h"
 
 namespace WyvernsAssault
 {
 	/**
-	Class used to manage all the enemies
+	Interface implemented by objects with logic
 	*/
-	class Enemy : public EntityInterface, public PhysicsInterface, public LogicInterface
+	class LogicInterface
 	{
 	public:
-		Enemy(Ogre::String name);
-		~Enemy();
-	};
+		// Initialize logic with callback to Lua scripting
+		virtual void initializeLogic(){return;}
 
-	typedef boost::shared_ptr<Enemy> EnemyPtr;
+		virtual void finalizeLogic(){return;}
+
+		virtual void updateLogic(lua_State *L){return;}
+	};
 }
 
-#endif // __ENEMY_H__
+#endif // __LOGIC_INTERFACE_H__

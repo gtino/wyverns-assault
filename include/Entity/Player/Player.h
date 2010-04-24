@@ -26,8 +26,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #include <Ogre.h>
 #include "OgreOde_Core.h"
 
-// Player default movement speed
-#define SPEED	5
+// Player default movement speed (10 = 1 m/s)
+#define SPEED	50
 
 typedef struct{
 	OgreOde::RayGeometry* charRay;
@@ -93,6 +93,8 @@ namespace WyvernsAssault
 		Ogre::SceneNode* mAutoTrackingNode;
 		Ogre::AnimationState* mAnimationState;
 		
+		Ogre::Vector3 mDirection;
+
 		//Physic
 		ODE_CHAR_INFO ray;
 		OgreOde::Body* torso;

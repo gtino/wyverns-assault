@@ -49,11 +49,11 @@ void PlayState::initialize()
 	mPlayer1->setPosition(Vector3(180,30,870));
 
 	// Camera manager constructor
-	mCameraManager = new CameraManager(mGraphicsManager->getSceneManager(), mGraphicsManager->getRenderWindow(), mViewport);
+	mCameraManager = new CameraManager(mSceneManager, mWindow, mViewport);
 	mCameraManager->initialize(mPlayer1->getSceneNode());
 
 	// Lights manager constructor
-	mLightsManager = new LightsManager(mGraphicsManager->getSceneManager());
+	mLightsManager = new LightsManager(mSceneManager);
 	mLightsManager->initialize();
 
 	//Enemys manager constructor
@@ -62,7 +62,8 @@ void PlayState::initialize()
 
 	//Load scene XML file
 	std::auto_ptr<DotSceneLoader> sceneLoader(new DotSceneLoader());
-	sceneLoader->parseDotScene("Stage1_1.XML","General", mGraphicsManager->getSceneManager(), mCameraManager, mLightsManager, mEnemyManager);	
+	sceneLoader->parseDotScene("Level1_1.scene","General", mSceneManager, mCameraManager, mLightsManager, mEnemyManager);
+	sceneLoader->parseDotScene("Stage1_1.XML","General", mSceneManager, mCameraManager, mLightsManager, mEnemyManager);
 
 	// Set game camera
 	mCameraManager->gameCamera();
