@@ -55,13 +55,13 @@
   
 	<skyDome material="CloudySky" curvature="5" tiling="8" distance="4000"/>
   
-	<nodes>
+	<!--nodes>
 		<node>
 			<entity meshFile="Level1_2.mesh" name="entity0"/>
 			<scale x="1" y="1" z="1"/>
 			<position x="0" y="0" z="0"/>
 		</node>
-		<!--<node>
+		<<node>
 			<position x="20" y="0" z="-60"/>
 			<entity meshFile="background_plane1.mesh" name="entity1"/>
 		</node>
@@ -384,8 +384,8 @@
 		<node>
 			<position x="660.066" y="-36.46" z="-56.738"/>
 			<entity meshFile="tree_1.mesh" name="entity75"/>
-		</node>-->
-	</nodes>
+		</node>
+	</nodes-->
   
 	<enemys>
 		<!-- Soldiers -->
