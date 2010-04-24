@@ -38,15 +38,14 @@ void PlayerManager::finalize()
 PlayerPtr PlayerManager::createPlayer(Ogre::String name, Ogre::String name_model, Ogre::String mesh)
 {
 	// Player node
-	Ogre::Entity* playerMesh = mSceneManager->createEntity(name, mesh);
-	Ogre::SceneNode* playerSceneNode = mSceneManager->getRootSceneNode()->createChildSceneNode();
-	Ogre::SceneNode* modelSceneNode = playerSceneNode->createChildSceneNode(name_model);
+	Ogre::Entity* playerMesh = mSceneManager->createEntity("rwyvern", mesh);
+	Ogre::SceneNode* playerSceneNode = mSceneManager->getRootSceneNode()->createChildSceneNode("rwyvern");
+	Ogre::SceneNode* modelSceneNode = playerSceneNode->createChildSceneNode("rwyvern_model");
 	modelSceneNode->attachObject(playerMesh);
-	playerSceneNode->setScale(0.5,0.5,0.5);
 
 	// Center node for player movement and camera targeting
 	SceneNode* autoTrackingNode = mSceneManager->getRootSceneNode()->createChildSceneNode("Center");
-	playerSceneNode->setAutoTracking(true, autoTrackingNode, Vector3::UNIT_X);
+	playerSceneNode->setAutoTracking(false, autoTrackingNode, Vector3::UNIT_X);
 
 	PlayerPtr player = PlayerPtr(new Player(name));
 	player->initialize( playerMesh, playerSceneNode, modelSceneNode ,autoTrackingNode );

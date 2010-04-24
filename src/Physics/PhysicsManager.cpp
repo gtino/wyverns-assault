@@ -89,7 +89,7 @@ void PhysicsManager::createPhysicGround(Ogre::String mesh)
 void PhysicsManager::createPhysicCharacter(Ogre::String name, PlayerPtr mPlayer)
 {
 
-	AxisAlignedBox aab = mPlayer->getSceneNodeModel()->getAttachedObject(name)->getBoundingBox(); 
+	AxisAlignedBox aab = mPlayer->getSceneNodeModel()->getAttachedObject("rwyvern")->getBoundingBox(); 
 	Ogre::Vector3 min = aab.getMinimum()*mPlayer->getScale();
 	Ogre::Vector3 max = aab.getMaximum()*mPlayer->getScale();
 	Ogre::Vector3 size(fabs(max.x-min.x),fabs(max.y-min.y),fabs(max.z-min.z));
@@ -108,7 +108,7 @@ void PhysicsManager::createPhysicCharacter(Ogre::String name, PlayerPtr mPlayer)
 	mPlayer->setTorso(dollTorsoBody);
 
 	//Ray
-	OgreOde::RayGeometry* charRay = new OgreOde::RayGeometry(Ogre::Real(20),mWorld,mSpace);
+	OgreOde::RayGeometry* charRay = new OgreOde::RayGeometry(Ogre::Real(30),mWorld,mSpace);
 	mPlayer->setRay(charRay,radius);
 
 }
@@ -125,12 +125,13 @@ void PhysicsManager::updateRay(PlayerPtr mPlayer)
 {
 	Vector3 position;
   	// raise desired ray position a little above character's scenenode
-	position = mPlayer->getPosition();//->getPosition();
+	position = mPlayer->getPosition();
 	// fire ray downward
 	mPlayer->getRay().charRay->setDefinition(position,Vector3::NEGATIVE_UNIT_Y);
 	// add ray to collisionListener
 	mPlayer->getRay().charRay->collide(geom_ground,this);
 
+	//Temporal testing
 	mPlayer_temp = mPlayer;
 
 }
@@ -139,7 +140,7 @@ bool PhysicsManager::collision(OgreOde::Contact* contact)
 {
 
 	if( contact->getFirstGeometry()->getID() == mPlayer_temp->getRay().charRay->getID() ||
-		contact->getSecondGeometry()->getID() == mPlayer_temp->getRay().charRay->getID() )
+		contact->getSecondGeometry()->getID() == mPlayer_temp->getRay().charRay->getID())
 	{
 		mPlayer_temp->getRay().last_contact = contact->getPosition();
 		mPlayer_temp->setUpdated(true);
@@ -151,7 +152,7 @@ bool PhysicsManager::collision(OgreOde::Contact* contact)
 
 void PhysicsManager::move(PlayerPtr mPlayer, int rotate, int thrust){
 
-	float const maxVel = 30;
+	float const maxVel = 70;
 	OgreOde::Body* act_torso = mPlayer->getTorso();
 	float actualVel = act_torso->getLinearVelocity().length();
 
@@ -186,8 +187,8 @@ void PhysicsManager::move(PlayerPtr mPlayer, int rotate, int thrust){
     act_torso->setLinearVelocity(Vector3(act_torso->getLinearVelocity().x,0,act_torso->getLinearVelocity().z));
 
 	//Ray position
-    if(mPlayer->getUpdated()){
-		act_torso->setPosition(Vector3(act_torso->getPosition().x,mPlayer->getRay().last_contact.y+15,act_torso->getPosition().z));
+	if(mPlayer->getUpdated()){
+		act_torso->setPosition(Vector3(act_torso->getPosition().x,mPlayer->getRay().last_contact.y+29,act_torso->getPosition().z));
 	    mPlayer->setUpdated(false);
     }
 	 

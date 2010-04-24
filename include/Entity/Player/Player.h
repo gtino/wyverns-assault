@@ -76,7 +76,7 @@ namespace WyvernsAssault
 		void setRay(OgreOde::RayGeometry* ray_geom, Real radius) { 
 			ray.charRay = ray_geom;
 			ray.radius = radius;
-			ray.last_contact = Vector3(0,0,0);
+			ray.last_contact = Ogre::Vector3(0,0,0);
 		};
 		ODE_CHAR_INFO getRay(){return ray; }
 
