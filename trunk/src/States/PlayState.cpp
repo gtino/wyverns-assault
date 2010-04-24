@@ -286,7 +286,7 @@ void PlayState::update(const float elapsedSeconds)
 		{
 			// No movement, iddle animation
 			//mPlayer1->move(0,0,0);
-			//mPhysicsManager->move(mPlayer1,rotate,thrust);
+			mPhysicsManager->move(mPlayer1,0,0);
 		}
 
 	}
