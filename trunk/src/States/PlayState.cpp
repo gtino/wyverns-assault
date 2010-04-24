@@ -45,7 +45,7 @@ void PlayState::initialize()
 	mPlayerManager->initialize();
 
 	// Create a single player (TEST!)
-	mPlayer1 = mPlayerManager->createPlayer("Player1","Player1_model","redwyvern.mesh");
+	mPlayer1 = mPlayerManager->createPlayer("Player1","Player1_model","redWyvern.mesh");
 	mPlayer1->setPosition(Vector3(180,30,870));
 
 	// Camera manager constructor
