@@ -29,12 +29,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 // Player default movement speed (10 = 1 m/s)
 #define SPEED	50
 
-typedef struct{
-	OgreOde::RayGeometry* charRay;
-	Ogre::Real radius;
-	Ogre::Vector3 last_contact;
-}ODE_CHAR_INFO;
-
 using namespace Ogre;
 
 namespace WyvernsAssault
@@ -67,18 +61,8 @@ namespace WyvernsAssault
 		void setScale(Ogre::Vector3 scale) { mSceneNode->setScale(scale); }
 		Ogre::Vector3 getScale(){return mSceneNode->getScale(); }
 
-		void setUpdated(bool update) { ray_updated = update; }
-		bool getUpdated(){ return ray_updated; }
-
 		void setTorso(OgreOde::Body* body){torso = body;}
 		OgreOde::Body* getTorso(){ return torso; }
-
-		void setRay(OgreOde::RayGeometry* ray_geom, Real radius) { 
-			ray.charRay = ray_geom;
-			ray.radius = radius;
-			ray.last_contact = Ogre::Vector3(0,0,0);
-		};
-		ODE_CHAR_INFO getRay(){return ray; }
 
 		// Player movement functions
 		void move(Real x, Real y, Real z);
@@ -95,10 +79,7 @@ namespace WyvernsAssault
 		
 		Ogre::Vector3 mDirection;
 
-		//Physic
-		ODE_CHAR_INFO ray;
 		OgreOde::Body* torso;
-		bool ray_updated;
 
 	};
 
