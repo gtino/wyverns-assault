@@ -1,5 +1,7 @@
 #include "..\..\include\Physics\PhysicsManager.h"
 
+
+
 using namespace WyvernsAssault;
 
 const Ogre::Real STEP_RATE = 0.01;
@@ -100,7 +102,7 @@ void PhysicsManager::createPhysicCharacter(Ogre::String name, PlayerPtr mPlayer)
 	dollTorsoBody->setMass(OgreOde::CapsuleMass(70,radius/2,Vector3::UNIT_Y,radius/2)); 
 	dollTorsoBody->setAffectedByGravity(true);
 	OgreOde::TransformGeometry* torsoTrans = new OgreOde::TransformGeometry(mWorld,mSpace); 
-	OgreOde::CapsuleGeometry* torsoGeom = new OgreOde::CapsuleGeometry(radius/2,size.y/2.6,mWorld); 
+	OgreOde::CapsuleGeometry* torsoGeom = new OgreOde::CapsuleGeometry(radius/2,size.y/5,mWorld); 
 	torsoGeom->setOrientation(Quaternion(Degree(90),Vector3::UNIT_X));
 	torsoTrans->setBody(dollTorsoBody); 
 	torsoTrans->setEncapsulatedGeometry(torsoGeom);
@@ -108,8 +110,12 @@ void PhysicsManager::createPhysicCharacter(Ogre::String name, PlayerPtr mPlayer)
 	mPlayer->setTorso(dollTorsoBody);
 
 	//Ray
-	OgreOde::RayGeometry* charRay = new OgreOde::RayGeometry(Ogre::Real(30),mWorld,mSpace);
-	mPlayer->setRay(charRay,radius);
+	ODE_CHAR_INFO ray;
+	ray.charRay = new OgreOde::RayGeometry(Ogre::Real(30),mWorld,mSpace);
+	ray.radius = radius;
+	ray.updated = false;
+	ray.last_contact = Vector3(0,0,0);
+	ode_characters.push_back(ray);
 
 }
 
@@ -124,12 +130,15 @@ void PhysicsManager::createPhysicEnemy(Ogre::String name, Ogre::String mesh)
 void PhysicsManager::updateRay(PlayerPtr mPlayer)
 {
 	Vector3 position;
-  	// raise desired ray position a little above character's scenenode
-	position = mPlayer->getPosition();
-	// fire ray downward
-	mPlayer->getRay().charRay->setDefinition(position,Vector3::NEGATIVE_UNIT_Y);
-	// add ray to collisionListener
-	mPlayer->getRay().charRay->collide(geom_ground,this);
+	for( std::vector< ODE_CHAR_INFO >::iterator it = ode_characters.begin(); it != ode_characters.end(); it++ )
+	{
+  		// raise desired ray position a little above character's scenenode
+		position = mPlayer->getPosition();
+		// fire ray downward
+		it->charRay->setDefinition(position,Vector3::NEGATIVE_UNIT_Y);
+		// add ray to collisionListener
+		it->charRay->collide(geom_ground,this);
+	}
 
 	//Temporal testing
 	mPlayer_temp = mPlayer;
@@ -139,11 +148,16 @@ void PhysicsManager::updateRay(PlayerPtr mPlayer)
 bool PhysicsManager::collision(OgreOde::Contact* contact)
 {
 
-	if( contact->getFirstGeometry()->getID() == mPlayer_temp->getRay().charRay->getID() ||
-		contact->getSecondGeometry()->getID() == mPlayer_temp->getRay().charRay->getID())
+	// search through ode_characters and adjust each charNode's height
+	for( std::vector< ODE_CHAR_INFO >::iterator it = ode_characters.begin(); it != ode_characters.end(); it++ )
 	{
-		mPlayer_temp->getRay().last_contact = contact->getPosition();
-		mPlayer_temp->setUpdated(true);
+		if( contact->getFirstGeometry()->getID() == it->charRay->getID() ||
+			contact->getSecondGeometry()->getID() == it->charRay->getID() )
+		{
+			it->updated = true;
+			it->last_contact = contact->getPosition();
+			break;
+		}
 	}
 
 	contact->setCoulombFriction(OgreOde::Utility::Infinity);
@@ -152,7 +166,7 @@ bool PhysicsManager::collision(OgreOde::Contact* contact)
 
 void PhysicsManager::move(PlayerPtr mPlayer, int rotate, int thrust){
 
-	float const maxVel = 70;
+	float const maxVel = 80;
 	OgreOde::Body* act_torso = mPlayer->getTorso();
 	float actualVel = act_torso->getLinearVelocity().length();
 
@@ -174,7 +188,7 @@ void PhysicsManager::move(PlayerPtr mPlayer, int rotate, int thrust){
 		if(actualVel > maxVel)
 			act_torso->setForce(Vector3(0,0,0));
 		else
-			act_torso->addForce(act_torso->getOrientation() * Vector3(0,0,thrust*(maxVel * 1000)));
+			act_torso->addForce(act_torso->getOrientation() * Vector3(0,0,thrust*(maxVel * 400)));
 	}
 
 	Quaternion q = act_torso->getOrientation();         
@@ -186,10 +200,10 @@ void PhysicsManager::move(PlayerPtr mPlayer, int rotate, int thrust){
     act_torso->setAngularVelocity(Vector3(0,0,0)); 
     act_torso->setLinearVelocity(Vector3(act_torso->getLinearVelocity().x,0,act_torso->getLinearVelocity().z));
 
-	//Ray position
-	if(mPlayer->getUpdated()){
-		act_torso->setPosition(Vector3(act_torso->getPosition().x,mPlayer->getRay().last_contact.y+29,act_torso->getPosition().z));
-	    mPlayer->setUpdated(false);
+	//Ray position of all characters
+	if(ode_characters[0].updated){
+		act_torso->setPosition(Vector3(act_torso->getPosition().x,ode_characters[0].last_contact.y+25,act_torso->getPosition().z));
+		ode_characters[0].updated = false;
     }
 	 
 }

@@ -19,7 +19,6 @@ void Player::initialize(Ogre::Entity* mesh, Ogre::SceneNode* sceneNode, Ogre::Sc
 	mSceneNode_model = sceneNode_model;
 	mMesh = mesh;
 	mAutoTrackingNode = autoTrackingNode;
-	ray_updated = false;
 
 	// Animations
 	mAnimationState = mesh->getAnimationState("Iddle_01");

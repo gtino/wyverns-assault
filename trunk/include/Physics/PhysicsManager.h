@@ -31,6 +31,13 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #include "..\Entity\Player\PlayerManager.h"
 #include "..\Entity\Player\Player.h"
 
+typedef struct{
+	OgreOde::RayGeometry* charRay;
+	Ogre::Real radius;
+	Ogre::Vector3 last_contact;
+	bool updated;
+}ODE_CHAR_INFO;
+
 using namespace Ogre;
 
 namespace WyvernsAssault
@@ -94,6 +101,8 @@ namespace WyvernsAssault
 
 		OgreOde::TriangleMeshGeometry* geom_ground;
 		PlayerPtr mPlayer_temp;
+		std::vector< ODE_CHAR_INFO > ode_characters;
+
 
 	};
 }
