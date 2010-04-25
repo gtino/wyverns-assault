@@ -43,28 +43,36 @@ EnemyPtr EnemyManager::createEnemy(EnemyTypes type)
 	switch(type)
 	{
 	case Naked:
-		mesh = Ogre::String("EnemyNaked.mesh");
+		mesh = Ogre::String("naked.mesh");
+		break;
+	case Wizard:
+		mesh = Ogre::String("wizard.mesh");
 		break;
 	default:
-		mesh = Ogre::String("EnemyNaked.mesh");
+		mesh = Ogre::String("naked.mesh");
 		break;
 	}
 
 	Ogre::String name = createUniqueId();
 
-	return createEnemy(name, mesh);
+	return createEnemy(type, name, mesh);
 }
 
-EnemyPtr EnemyManager::createEnemy(Ogre::String name, Ogre::String mesh)
+EnemyPtr EnemyManager::createEnemy(EnemyTypes type, Ogre::String name, Ogre::String mesh)
 {
-	Ogre::Entity* enemyMesh = mSceneManager->createEntity(name,mesh);
+	// Enemy name == Mesh Name!
+	Ogre::Entity* enemyMesh = mSceneManager->createEntity(name, mesh);
 	Ogre::SceneNode* enemySceneNode = mSceneManager->getRootSceneNode()->createChildSceneNode();
-	
-	enemySceneNode->attachObject(enemyMesh);
-	enemySceneNode->yaw(Ogre::Radian(Ogre::Degree(-90)));
 
-	EnemyPtr enemy = EnemyPtr(new Enemy(name));
+	enemySceneNode->attachObject(enemyMesh);
+	
+	// Balloon billboard
+	Ogre::BillboardSet* mBalloonSet = mSceneManager->createBillboardSet(name + "_BillboardSet");
+	enemySceneNode->attachObject(mBalloonSet);
+
+	EnemyPtr enemy = EnemyPtr(new Enemy(type));
 	enemy->initializeEntity(enemyMesh, enemySceneNode);
+	enemy->setBillboardSet(mBalloonSet);
 
 	mEnemyList.push_back(enemy);
 	mEnemyMap[name] = enemy;
@@ -86,6 +94,17 @@ Ogre::String EnemyManager::createUniqueId()
 	return uniqueId;
 }
 
+int EnemyManager::getCount()
+{
+	return mEnemyList.size();
+}
+
+EnemyPtr EnemyManager::getEnemy(int index)
+{
+	return mEnemyList[index];
+}
+
+
 EnemyPtr EnemyManager::getEnemy(Ogre::String name)
 {
 	return mEnemyMap[name];
@@ -93,8 +112,17 @@ EnemyPtr EnemyManager::getEnemy(Ogre::String name)
 
 bool EnemyManager::removeEnemy(Ogre::String name)
 {
+	//
+	// TODO : maybe we don't really need a list, and we can just use a map...
+	//
+	EnemyPtr enemyToErase = mEnemyMap[name];
+
 	mEnemyMap.erase(name);
-	//mEnemyMap.erase();
+	
+	EnemyListIterator it = find(mEnemyList.begin(), mEnemyList.end(), enemyToErase);
+	
+	if( it != mEnemyList.end() )
+		mEnemyList.erase(it);
 
 	mSceneManager->destroyEntity(name);//getRootSceneNode()->removeChild(name);
 
@@ -110,7 +138,7 @@ void EnemyManager::update(const float elapsedSeconds)
 	{
 		EnemyPtr enemy =  mEnemyList[i];
 
-		enemy->updateLogic(L);
+		enemy->updateLogic(L,elapsedSeconds);
 		enemy->updatePhysics(elapsedSeconds);
 		enemy->updateEntity(elapsedSeconds);
 	}
@@ -121,9 +149,12 @@ void EnemyManager::update(const float elapsedSeconds)
 // --------------------------------
 LUA_BEGIN_BINDING(EnemyManager::enemylib)
 LUA_BIND("create", EnemyManager::createEnemy)
+LUA_BIND("getCount", EnemyManager::getEnemyCount)
+LUA_BIND("getName",EnemyManager::getEnemyName)
 LUA_BIND("getPosition", EnemyManager::getEnemyPosition)
 LUA_BIND("setPosition", EnemyManager::setEnemyPosition)
 LUA_BIND("setState", EnemyManager::setEnemyState)
+LUA_BIND("getStateTimeout", EnemyManager::getEnemyStateTimeout)
 LUA_BIND("remove", EnemyManager::removeEnemy)
 LUA_END_BINDING()
 
@@ -137,6 +168,37 @@ int EnemyManager::createEnemy(lua_State *L)
 	int type = luaL_checkint(L, 1);
 
 	EnemyPtr enemy = EnemyManager::getSingleton().createEnemy((EnemyTypes)type);
+
+	lua_pushstring(L,enemy->getName().c_str());
+
+	/* return the number of results */
+	return 1;
+}
+
+int EnemyManager::getEnemyCount(lua_State *L)
+{
+	/* get number of arguments */
+	int n = lua_gettop(L);
+
+	// n should be 0
+
+	Ogre::Real count = EnemyManager::getSingleton().getCount();
+
+	lua_pushnumber(L,count);
+
+	/* return the number of results */
+	return 1;
+}
+
+int EnemyManager::getEnemyName(lua_State *L)
+{
+	/* get number of arguments */
+	int n = lua_gettop(L);
+
+	// n should be 1, the enemy idx
+	int index = luaL_checkint(L, 1);
+
+	EnemyPtr enemy = EnemyManager::getSingleton().getEnemy(index);
 
 	lua_pushstring(L,enemy->getName().c_str());
 
@@ -166,6 +228,49 @@ int EnemyManager::setEnemyState(lua_State *L)
 {
 	/* get number of arguments */
 	int n = lua_gettop(L);
+
+	// n should be 2, the enemy idx
+	Ogre::String name = luaL_checkstring(L, 1);
+	int state = luaL_checkint(L, 2);
+
+	EnemyPtr enemy = EnemyManager::getSingleton().getEnemy(name);
+
+	if(state == 1)
+	{
+		enemy->setMaterialName("Skin/Green");
+	}
+	else if(state == 2)
+	{
+		enemy->setMaterialName("Skin/Yellow");
+	}
+	else if(state == 3)
+	{
+		enemy->setMaterialName("Skin/Blue");
+	}
+	else if(state == 4)
+	{
+		enemy->setMaterialName("Skin/Red");
+	}
+	else
+	{
+		enemy->setMaterialName("Skin");
+	}
+
+	/* return the number of results */
+	return 1;
+}
+
+int EnemyManager::getEnemyStateTimeout(lua_State *L)
+{
+	/* get number of arguments */
+	int n = lua_gettop(L);
+
+	// n should be 1
+	Ogre::String name = luaL_checkstring(L, 1);
+
+	EnemyPtr enemy = EnemyManager::getSingleton().getEnemy(name);
+
+	lua_pushnumber(L,enemy->getStateTimeout());
 
 	/* return the number of results */
 	return 1;

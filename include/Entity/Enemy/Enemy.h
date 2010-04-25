@@ -29,16 +29,58 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #include "..\..\Physics\PhysicsInterface.h"
 #include "..\..\Logic\LogicInterface.h"
 
+#define ENEMY_BILLBOARD_SHOW_TIME 2.0f // seconds
+
 namespace WyvernsAssault
 {
+	/** List of enemy types */
+	enum EnemyTypes
+	{
+		Naked	= 0,
+		Soldier	= 1,
+		Wizard	= 2,
+		Knight	= 3,
+		Peasant	= 4,
+		Woman	= 5
+	};
+
+	enum EnemyStates
+	{
+		Idle = 0,
+		Sleeping = 1,
+		What = 2,
+		Alert = 3,
+		Rage = 4,
+		Love = 5,
+		Fear = 6,
+		Magic = 7
+	};
+
 	/**
 	Class used to manage all the enemies
 	*/
 	class Enemy : public EntityInterface, public PhysicsInterface, public LogicInterface
 	{
 	public:
-		Enemy(Ogre::String name);
+		Enemy(EnemyTypes type);
 		~Enemy();
+
+		virtual void updateLogic(lua_State *L, const float elapsedSeconds);
+
+		void setBillboardSet(BillboardSet* balloonSet);
+
+		float getStateTimeout(){return mStateTimeout;}
+
+	private:
+		EnemyTypes mType;
+		BillboardSet* mBalloonSet;
+		Billboard* mBalloon;
+
+		EnemyStates mState;
+		float mStateTimeout;
+
+	public:
+		static EnemyTypes StringToType(Ogre::String typeStr);
 	};
 
 	typedef boost::shared_ptr<Enemy> EnemyPtr;

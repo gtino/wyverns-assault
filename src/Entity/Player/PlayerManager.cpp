@@ -65,8 +65,17 @@ PlayerPtr PlayerManager::getPlayer(Ogre::String name)
 
 bool PlayerManager::removePlayer(Ogre::String name)
 {
+	//
+	// TODO : maybe we don't really need a list, and we can just use a map...
+	//
+	PlayerPtr playerToErase = mPlayerMap[name];
+
 	mPlayerMap.erase(name);
-	//mPlayerList.erase();
+	
+	PlayerListIterator it = find(mPlayerList.begin(), mPlayerList.end(), playerToErase);
+	
+	if( it != mPlayerList.end() )
+		mPlayerList.erase(it);
 
 	mSceneManager->destroyEntity(name);//getRootSceneNode()->removeChild(name);
 

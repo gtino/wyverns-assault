@@ -40,7 +40,7 @@ namespace WyvernsAssault
 
 		virtual void finalizeLogic(){return;}
 
-		virtual void updateLogic(lua_State *L){return;}
+		virtual void updateLogic(lua_State *L, const float elapsedSeconds){return;}
 	};
 }
 

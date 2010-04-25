@@ -34,17 +34,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
 namespace WyvernsAssault
 {
-	/** List of enemy types */
-	enum EnemyTypes
-	{
-		Naked	= 0,
-		Soldier	= 1,
-		Wizard	= 2,
-		Knight	= 3,
-		Pesant	= 4,
-		Woman	= 5
-	};
-
 	typedef std::map<Ogre::String,EnemyPtr> EnemyMap;
 	typedef std::map<Ogre::String,EnemyPtr>::iterator EnemyMapIterator;
 
@@ -66,9 +55,13 @@ namespace WyvernsAssault
 		void finalize();
 
 		EnemyPtr createEnemy(EnemyTypes type);
-		EnemyPtr createEnemy(Ogre::String name, Ogre::String mesh);
+		EnemyPtr createEnemy(EnemyTypes type, Ogre::String name, Ogre::String mesh);
 
+		int getCount();
+
+		EnemyPtr getEnemy(int index);
 		EnemyPtr getEnemy(Ogre::String name);
+
 		bool removeEnemy(Ogre::String name);
 
 		/* TODO : Enemy IA
@@ -95,13 +88,19 @@ namespace WyvernsAssault
 		LUA_LIBRARY("Enemy", enemylib);
 
 		LUA_FUNCTION(createEnemy)
+		LUA_FUNCTION(getEnemyCount)
+		LUA_FUNCTION(getEnemyName)
 		LUA_FUNCTION(getEnemyPosition)
 		LUA_FUNCTION(setEnemyPosition)
 		LUA_FUNCTION(setEnemyState)
+		LUA_FUNCTION(getEnemyStateTimeout)
 		LUA_FUNCTION(removeEnemy)
 
 	public:
-		void luaLoadScripts(){};
+		void luaLoadScripts(){luaLoadScript(".\\data\\scripts\\EnemyLogic.lua");}
+
+	private:
+		static const struct luaL_reg l[];
 	// ------------------------------
 	// END Lua Interface Declarations
 	// ------------------------------

@@ -57,6 +57,7 @@ namespace WyvernsAssault
 	public:
 		bool initialize();
 		void finalize();
+		SceneManager* getSceneManager(){return this->mSceneManager;}
 
 		void synchronizeWorld(Real time);
 		void showDebuggObjects();
@@ -85,7 +86,8 @@ namespace WyvernsAssault
 		// Physics Lib (exported to Lua)
 		LUA_LIBRARY("Physics",physicslib);
 
-		LUA_FUNCTION(getHOT)
+		LUA_FUNCTION(LuaGetHOT)
+		LUA_FUNCTION(LuaGetDistance)
 
 	public:
 		void luaLoadScripts(){};

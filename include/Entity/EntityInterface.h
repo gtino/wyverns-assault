@@ -51,13 +51,17 @@ namespace WyvernsAssault
 		virtual Ogre::SceneNode* getSceneNode() const { return mSceneNode; }
 		virtual void setSceneNode(Ogre::SceneNode* sceneNode) { mSceneNode = sceneNode; }
 
-		virtual const Ogre::String& getName() { return mSceneNode->getName(); }
+		virtual const Ogre::String& getName() { return mMesh->getName(); }
 
-		virtual void setPosition(Ogre::Vector3 position) { mSceneNode->setPosition(position); }
+		virtual void setPosition(const Ogre::Vector3 position) { mSceneNode->setPosition(position); }
 		virtual Ogre::Vector3 getPosition() { return mSceneNode->getPosition(); } 
 
-		virtual void setScale(Ogre::Vector3 scale) { mSceneNode->setScale(scale); }
+		virtual void setScale(const Ogre::Vector3 scale) { mSceneNode->setScale(scale); }
 		virtual Ogre::Vector3 getScale(){return mSceneNode->getScale(); }
+
+		//virtual void lookAt(const Ogre::Vector3 lookAt) { mSceneNode->lookAt(lookAt,Ogre::TraTransformSpace::); }
+
+		virtual void setMaterialName(const Ogre::String materialName) { mMesh->setMaterialName(materialName);}
 
 	protected:
 		Ogre::Entity* mMesh;
