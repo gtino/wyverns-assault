@@ -1,0 +1,143 @@
+material Balloons/Idle
+{
+  technique
+  {
+    pass
+    {
+      lighting off
+      scene_blend alpha_blend
+      depth_write off
+      texture_unit
+      {
+        texture balloon_idle.png
+        tex_address_mode clamp
+      }
+    }
+  }
+}
+
+material Balloons/Sleeping
+{
+  technique
+  {
+    pass
+    {
+      lighting off
+      scene_blend alpha_blend
+      depth_write off
+      texture_unit
+      {
+        texture balloon_sleeping.png
+        tex_address_mode clamp
+      }
+    }
+  }
+}
+
+material Balloons/What
+{
+  technique
+  {
+    pass
+    {
+      lighting off
+      scene_blend alpha_blend
+      depth_write off
+      texture_unit
+      {
+        texture balloon_what.png
+        tex_address_mode clamp
+      }
+    }
+  }
+}
+
+material Balloons/Alert
+{
+  technique
+  {
+    pass
+    {
+      lighting off
+      scene_blend alpha_blend
+      depth_write off
+      texture_unit
+      {
+        texture balloon_alert.png
+        tex_address_mode clamp
+      }
+    }
+  }
+}
+
+material Balloons/Rage
+{
+  technique
+  {
+    pass
+    {
+      lighting off
+      scene_blend alpha_blend
+      depth_write off
+      texture_unit
+      {
+        texture balloon_rage.png
+        tex_address_mode clamp
+      }
+    }
+  }
+}
+
+material Balloons/Love
+{
+  technique
+  {
+    pass
+    {
+      lighting off
+      scene_blend alpha_blend
+      depth_write off
+      texture_unit
+      {
+        texture balloon_love.png
+        tex_address_mode clamp
+      }
+    }
+  }
+}
+
+material Balloons/Magic
+{
+  technique
+  {
+    pass
+    {
+      lighting off
+      scene_blend alpha_blend
+      depth_write off
+      texture_unit
+      {
+        texture balloon_magic.png
+        tex_address_mode clamp
+      }
+    }
+  }
+}
+
+material Balloons/Fear
+{
+  technique
+  {
+    pass
+    {
+      lighting off
+      scene_blend alpha_blend
+      depth_write off
+      texture_unit
+      {
+        texture balloon_fear.png
+        tex_address_mode clamp
+      }
+    }
+  }
+}
