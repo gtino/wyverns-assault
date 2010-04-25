@@ -46,27 +46,13 @@ namespace WyvernsAssault
 		Player(Ogre::String name);
 		~Player();
 	
-		void initialize(Ogre::Entity* mesh, Ogre::SceneNode* sceneNode, Ogre::SceneNode* sceneNode_model,Ogre::SceneNode* autoTrackingNode);
+		void initialize(Ogre::Entity* mesh, Ogre::SceneNode* sceneNode, Ogre::SceneNode* autoTrackingNode);
 		void finalize();
-
-		//Node
-		Ogre::SceneNode* getSceneNode() const { return mSceneNode; }
-		void setSceneNode(Ogre::SceneNode* sceneNode) { mSceneNode = sceneNode; }
-
-		//Model Node
-		Ogre::SceneNode* getSceneNodeModel() const { return mSceneNode_model; }
-		void setSceneNodeModel(Ogre::SceneNode* sceneNodeModel) { mSceneNode_model = sceneNodeModel; }
-
-		const Ogre::String& getName() { return mSceneNode->getName(); }
-
-		void setPosition(Ogre::Vector3 position);
-		Ogre::Vector3 getPosition() { return mSceneNode->getPosition(); } 
-
-		void setScale(Ogre::Vector3 scale) { mSceneNode->setScale(scale); }
-		Ogre::Vector3 getScale(){return mSceneNode->getScale(); }
 
 		void setTorso(OgreOde::Body* body){torso = body;}
 		OgreOde::Body* getTorso(){ return torso; }
+
+		void setPosition(Ogre::Vector3 position);
 
 		// Player movement functions
 		void move(Real x, Real y, Real z);
@@ -75,11 +61,7 @@ namespace WyvernsAssault
 		void updateAnimation(float elapsedSeconds);
 
 	private:
-		Ogre::Entity* mMesh;
-		Ogre::SceneNode* mSceneNode;
-		Ogre::SceneNode* mSceneNode_model;
 		Ogre::SceneNode* mAutoTrackingNode;
-		Ogre::AnimationState* mAnimationState;
 		
 		Ogre::Vector3 mDirection;
 
