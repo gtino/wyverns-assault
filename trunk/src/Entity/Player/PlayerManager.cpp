@@ -43,16 +43,9 @@ PlayerPtr PlayerManager::createPlayer(Ogre::String name, Ogre::String mesh)
 	Ogre::SceneNode* playerSceneNode = mSceneManager->getRootSceneNode()->createChildSceneNode(name);
 	playerSceneNode->attachObject(playerMesh);
 
-	// Center node for player movement and camera targeting
-	SceneNode* autoTrackingNode = mSceneManager->getRootSceneNode()->createChildSceneNode("Center");
-	playerSceneNode->setAutoTracking(false, autoTrackingNode, Vector3::UNIT_X);
-
 	PlayerPtr player = PlayerPtr(new Player(name));
 
-	//
-	// The player requires the autotracking node, for camera chasing purposes
-	//
-	player->initialize( playerMesh, playerSceneNode ,autoTrackingNode );
+	player->initialize( playerMesh, playerSceneNode );
 
 	mPlayerList.push_back(player);
 	mPlayerMap[name] = player;
