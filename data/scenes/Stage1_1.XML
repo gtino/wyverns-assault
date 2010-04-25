@@ -389,35 +389,91 @@
   
 	<enemys>
 		<!-- Soldiers -->
-		<!--<enemy>
-			<position x="230" y="-36" z="-45"/>
- 			<entity meshFile="soldier.mesh" name="enemy0"/>
+		<enemy>
+			<position x="200" y="10" z="870"/>
+ 			<entity type="Naked" meshFile="naked.mesh" name="naked0"/>
 		</enemy>
 		<enemy>
-			<position x="230" y="-36" z="-41"/>
- 			<entity meshFile="soldier.mesh" name="enemy1"/>
+			<position x="200" y="10" z="900"/>
+ 			<entity type="Naked" meshFile="naked.mesh" name="naked1"/>
 		</enemy>
 		<enemy>
-			<position x="230" y="-36" z="-37"/>
- 			<entity meshFile="soldier.mesh" name="enemy2"/>
+			<position x="500" y="10" z="740"/>
+ 			<entity type="Naked" meshFile="naked.mesh" name="naked2"/>
 		</enemy>
 		<enemy>
-			<position x="230" y="-36" z="-33"/>
- 			<entity meshFile="soldier.mesh" name="enemy3"/>
+			<position x="520" y="10" z="730"/>
+ 			<entity type="Naked" meshFile="naked.mesh" name="naked3"/>
 		</enemy>
 		<enemy>
-			<position x="232" y="-36.2" z="-45"/>
- 			<entity meshFile="soldier.mesh" name="enemy4"/>
+			<position x="800" y="10" z="720"/>
+ 			<entity type="Naked" meshFile="naked.mesh" name="naked4"/>
 		</enemy>
 		<enemy>
-			<position x="232" y="-36.2" z="-41"/>
- 			<entity meshFile="soldier.mesh" name="enemy5"/>
+			<position x="800" y="10" z="700"/>
+ 			<entity type="Naked" meshFile="naked.mesh" name="naked5"/>
 		</enemy>
 		<enemy>
-			<position x="232" y="-36.2" z="-37"/>
- 			<entity meshFile="soldier.mesh" name="enemy6"/>
+			<position x="900" y="10" z="650"/>
+ 			<entity type="Naked" meshFile="naked.mesh" name="naked6"/>
 		</enemy>
 		<enemy>
+			<position x="930" y="10" z="650"/>
+ 			<entity type="Naked" meshFile="naked.mesh" name="naked7"/>
+		</enemy>
+		<enemy>
+			<position x="950" y="10" z="400"/>
+ 			<entity type="Peasant" meshFile="peasant.mesh" name="peasant0"/>
+		</enemy>
+		<enemy>
+			<position x="970" y="10" z="430"/>
+ 			<entity type="Peasant" meshFile="peasant.mesh" name="peasant1"/>
+		</enemy>
+		<enemy>
+			<position x="990" y="10" z="450"/>
+ 			<entity type="Peasant" meshFile="peasant.mesh" name="peasant2"/>
+		</enemy>
+		<enemy>
+			<position x="1020" y="10" z="450"/>
+ 			<entity type="Peasant" meshFile="peasant.mesh" name="peasant3"/>
+		</enemy>
+		<enemy>
+			<position x="960" y="10" z="500"/>
+ 			<entity type="Peasant" meshFile="peasant.mesh" name="peasant4"/>
+		</enemy>
+		<enemy>
+			<position x="980" y="10" z="550"/>
+ 			<entity type="Peasant" meshFile="peasant.mesh" name="peasant5"/>
+		</enemy>
+		<enemy>
+			<position x="1000" y="10" z="600"/>
+ 			<entity type="Peasant" meshFile="peasant.mesh" name="peasant6"/>
+		</enemy>
+		<enemy>
+			<position x="1000" y="10" z="350"/>
+ 			<entity type="Peasant" meshFile="peasant.mesh" name="peasant7"/>
+		</enemy>
+		<enemy>
+			<position x="1225" y="10" z="80"/>
+ 			<entity type="Wizard" meshFile="wizard.mesh" name="wizard0"/>
+		</enemy>
+		<enemy>
+			<position x="1200" y="10" z="120"/>
+ 			<entity type="Soldier" meshFile="soldier.mesh" name="soldier0"/>
+		</enemy>
+		<enemy>
+			<position x="1200" y="10" z="140"/>
+ 			<entity type="Soldier" meshFile="soldier.mesh" name="soldier1"/>
+		</enemy>
+		<enemy>
+			<position x="1250" y="10" z="120"/>
+ 			<entity type="Soldier" meshFile="soldier.mesh" name="soldier2"/>
+		</enemy>
+		<enemy>
+			<position x="1250" y="10" z="140"/>
+ 			<entity type="Soldier" meshFile="soldier.mesh" name="soldier3"/>
+		</enemy>
+		<!--enemy>
 			<position x="232" y="-36.2" z="-33"/>
  			<entity meshFile="soldier.mesh" name="enemy7"/>
 		</enemy>
