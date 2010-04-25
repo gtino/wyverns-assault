@@ -31,7 +31,9 @@ EnemyTypes Enemy::StringToType (Ogre::String string)
 
 Enemy::Enemy(EnemyTypes type) :
 mStateTimeout(0.0f),
-mState(EnemyStates::Idle)
+mState(EnemyStates::Idle),
+mMaxLife(100.0f),
+mLife(100.0f)
 {
 	mType = type;
 }
@@ -139,6 +141,11 @@ void Enemy::updateLogic(lua_State *L, const float elapsedSeconds)
 	{
 		mBalloonSet->setVisible(false);
 	}
+}
+
+bool Enemy::isHurt()
+{
+	return (mLife / mMaxLife * 100.0f) < 15.0f;
 }
 
 void Enemy::autoTrackTarget()

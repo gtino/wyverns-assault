@@ -76,6 +76,8 @@ namespace WyvernsAssault
 		void setTarget(SceneNode* target);
 		void autoTrackTarget();
 
+		bool isHurt();
+
 	private:
 		EnemyTypes mType;
 		BillboardSet* mBalloonSet;
@@ -85,7 +87,9 @@ namespace WyvernsAssault
 
 		EnemyStates mState;
 		float mStateTimeout;
-
+		
+		float mMaxLife;
+		float mLife;
 	public:
 		static EnemyTypes StringToType(Ogre::String typeStr);
 	};
