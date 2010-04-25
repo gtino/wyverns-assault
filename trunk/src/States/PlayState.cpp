@@ -331,10 +331,6 @@ void PlayState::update(const float elapsedSeconds)
 	if(this->mInputManager->getKeyboard()->isKeyDown(OIS::KeyCode::KC_F10))
 		mPlayerUI->setSpecialBar(mPlayerUI->getSpecialBar() + 2);
 
-	// PGYSIC DEBUG KEYS
-	if(this->mInputManager->getKeyboard()->isKeyDown(OIS::KeyCode::KC_C))	
-		mPhysicsManager->showDebuggObjects();
-
 	//Update Physic
 	mPhysicsManager->synchronizeWorld(elapsedSeconds);
 	mPhysicsManager->updateRay(mPlayer1);
@@ -645,6 +641,10 @@ bool PlayState::keyReleased(const OIS::KeyEvent& e)
 			mLuaManager->disable();
 		else
 			mLuaManager->enable();
+		break;
+	// Physics debug mode
+	case OIS::KeyCode::KC_C:
+		mPhysicsManager->showDebuggObjects();
 		break;
 	}
 
