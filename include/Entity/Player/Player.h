@@ -26,6 +26,10 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #include <Ogre.h>
 #include "OgreOde_Core.h"
 
+#include "..\EntityInterface.h"
+#include "..\..\Physics\PhysicsInterface.h"
+#include "..\..\Logic\LogicInterface.h"
+
 // Player default movement speed (10 = 1 m/s)
 #define SPEED	50
 
@@ -36,7 +40,7 @@ namespace WyvernsAssault
 	/**
 	Class used to manage all the players
 	*/
-	class Player
+	class Player : public EntityInterface
 	{
 	public:
 		Player(Ogre::String name);
