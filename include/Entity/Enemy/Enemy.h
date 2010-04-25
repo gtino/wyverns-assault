@@ -46,15 +46,16 @@ namespace WyvernsAssault
 
 	enum EnemyStates
 	{
-		Idle = 0,
-		Sleeping = 1,
-		What = 2,
-		Alert = 3,
-		Rage = 4,
-		Love = 5,
-		Fear = 6,
-		Magic = 7,
-		Patrol = 8
+		Initial = 0,
+		Idle = 1,
+		Sleeping = 2,
+		What = 3,
+		Alert = 4,
+		Rage = 5,
+		Love = 6,
+		Fear = 7,
+		Magic = 8,
+		Patrol = 9
 	};
 
 	/**
