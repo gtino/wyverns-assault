@@ -96,6 +96,7 @@ namespace WyvernsAssault
 		LUA_FUNCTION(setEnemyState)
 		LUA_FUNCTION(setEnemyTarget)
 		LUA_FUNCTION(getEnemyStateTimeout)
+		LUA_FUNCTION(isEnemyHurt)
 		LUA_FUNCTION(removeEnemy)
 
 	public:

@@ -156,6 +156,7 @@ LUA_BIND("setPosition", EnemyManager::setEnemyPosition)
 LUA_BIND("setState", EnemyManager::setEnemyState)
 LUA_BIND("setTarget", EnemyManager::setEnemyTarget)
 LUA_BIND("getStateTimeout", EnemyManager::getEnemyStateTimeout)
+LUA_BIND("isHurt", EnemyManager::isEnemyHurt)
 LUA_BIND("remove", EnemyManager::removeEnemy)
 LUA_END_BINDING()
 
@@ -304,4 +305,19 @@ int EnemyManager::setEnemyTarget(lua_State *L)
 
 	/* return the number of results */
 	return 0;
+}
+
+int EnemyManager::isEnemyHurt(lua_State *L)
+{
+	/* get number of arguments */
+	int n = lua_gettop(L);
+
+	Ogre::String enemyId = luaL_checkstring(L, 1);
+
+	EnemyPtr enemy = EnemyManager::getSingleton().getEnemy(enemyId);
+
+	lua_pushboolean(L,enemy->isHurt());
+
+	/* return the number of results */
+	return 1;
 }
