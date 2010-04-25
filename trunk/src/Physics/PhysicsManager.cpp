@@ -107,7 +107,7 @@ void PhysicsManager::createPhysicCharacter(Ogre::String name, PlayerPtr mPlayer)
 	torsoTrans->setBody(dollTorsoBody); 
 	torsoTrans->setEncapsulatedGeometry(torsoGeom);
 	mPlayer->getSceneNode()->attachObject(dollTorsoBody);
-	mPlayer->setTorso(dollTorsoBody);
+	mPlayer->setBody(dollTorsoBody);
 
 	//Ray
 	ODE_CHAR_INFO ray;
@@ -164,7 +164,7 @@ bool PhysicsManager::collision(OgreOde::Contact* contact)
 void PhysicsManager::move(PlayerPtr mPlayer, int rotate, int thrust){
 
 	float const maxVel = 80;
-	OgreOde::Body* act_torso = mPlayer->getTorso();
+	OgreOde::Body* act_torso = mPlayer->getBody();
 	float actualVel = act_torso->getLinearVelocity().length();
 
 	if (rotate != 0)
