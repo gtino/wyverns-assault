@@ -51,8 +51,8 @@ namespace WyvernsAssault
 
 		void setPosition(Ogre::Vector3 position);
 
-		void setLastDirection(Ogre::Quaternion dir){last_direction = dir;};
-		Ogre::Quaternion getLastDirection(){ return last_direction;};
+		void setLastDirection(Ogre::Vector3 dir){last_direction = dir;};
+		Ogre::Vector3 getLastDirection(){ return last_direction;};
 
 		// Player movement functions
 		void move(Real x, Real y, Real z);
@@ -63,7 +63,7 @@ namespace WyvernsAssault
 	private:
 		Ogre::SceneNode* mAutoTrackingNode;
 		Ogre::Vector3 mDirection;
-		Ogre::Quaternion last_direction;
+		Ogre::Vector3 last_direction;
 	};
 
 	typedef boost::shared_ptr<Player> PlayerPtr;

@@ -222,10 +222,10 @@ void PhysicsManager::move(PlayerPtr player, Vector3 direction){
 		body->setLinearVelocity(Vector3(0,0,0));
 	}else{
 
-		if(player->getLastDirection() != body->getOrientation()){
+		if(player->getLastDirection() != direction){
 			//If direction change, stop body
-			body->setForce(Vector3(0,0,0));
-			//body->setLinearVelocity(Vector3(0,0,0));
+			//body->setForce(Vector3(0,0,0));
+			body->setLinearVelocity(Vector3(0,0,0));
 		}
 
 		if(actualVel > maxVel)
@@ -234,7 +234,7 @@ void PhysicsManager::move(PlayerPtr player, Vector3 direction){
 			body->addForce(direction * Vector3((maxVel * 400),0,(maxVel * 400)));
 	}
 
-	player->setLastDirection(body->getOrientation());
+	player->setLastDirection(direction);
 
 /*
 	if (rotate != 0)
