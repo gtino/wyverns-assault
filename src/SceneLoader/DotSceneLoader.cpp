@@ -7,7 +7,7 @@ using namespace std;
 using namespace Ogre;
 using namespace WyvernsAssault;
 
-void DotSceneLoader::parseDotScene(const String &SceneName, const String &groupName, SceneManager *levelSceneManager, WyvernsAssault::CameraManager* cameraManager, WyvernsAssault::LightsManager* lightsManager,WyvernsAssault::EnemyManager* enemysManager ,SceneNode *pAttachNode, const String &sPrependNode)
+void DotSceneLoader::parseDotScene(const String &SceneName, const String &groupName, SceneManager *levelSceneManager, WyvernsAssault::CameraManager* cameraManager, WyvernsAssault::LightsManager* lightsManager,WyvernsAssault::EnemyManager* enemysManager , WyvernsAssault::PhysicsManager* physicsManager, SceneNode *pAttachNode, const String &sPrependNode)
 {
 
 	//Set SceneManager
@@ -21,6 +21,9 @@ void DotSceneLoader::parseDotScene(const String &SceneName, const String &groupN
 
 	//Set EnemyManager
 	mEnemyManager = enemysManager;
+
+	//Set PhysicsManager
+	mPhysicsManager = physicsManager;
 
 	//Set up shared object values
 	m_sGroupName = groupName;
@@ -230,6 +233,9 @@ void DotSceneLoader::processEnemys(TiXmlElement *XMLNode)
 		EnemyPtr enemy = mEnemyManager->createEnemy(Enemy::StringToType(type), name, mesh);
 		enemy->setPosition(position);
 		enemy->setScale(scale);
+		
+		// Add the enemy to the physics manager
+		mPhysicsManager->addEnemy(enemy);
 
 		pElement = pElement->NextSiblingElement("enemy");
 	}

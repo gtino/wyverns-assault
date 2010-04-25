@@ -60,11 +60,6 @@ void PlayState::initialize()
 	mEnemyManager = new EnemyManager(mSceneManager);
 	mEnemyManager->initialize();
 
-	//Load scene XML file
-	std::auto_ptr<DotSceneLoader> sceneLoader(new DotSceneLoader());
-	sceneLoader->parseDotScene("Level1_1.scene","General", mSceneManager, mCameraManager, mLightsManager, mEnemyManager);
-	sceneLoader->parseDotScene("Stage1_1.XML","General", mSceneManager, mCameraManager, mLightsManager, mEnemyManager);
-
 	// Set game camera
 	mCameraManager->gameCamera();
 
@@ -134,6 +129,11 @@ void PlayState::initialize()
 	//			our registered LuaInterfaces, setup the environment.
 	//
 	mLuaManager->initialize();
+
+	//Load scene XML file
+	std::auto_ptr<DotSceneLoader> sceneLoader(new DotSceneLoader());
+	sceneLoader->parseDotScene("Level1_1.scene","General", mSceneManager, mCameraManager, mLightsManager, mEnemyManager, mPhysicsManager);
+	sceneLoader->parseDotScene("Stage1_1.XML","General", mSceneManager, mCameraManager, mLightsManager, mEnemyManager, mPhysicsManager);
 }
 
 /** Load resources */
