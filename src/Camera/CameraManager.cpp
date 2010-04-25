@@ -40,7 +40,7 @@ void CameraManager::initialize(SceneNode* player)
 	/** Define camera modes **/
 
 	// Trough target
-	SceneNode* centerNode = mSceneManager->getSceneNode("Center");
+	SceneNode* centerNode = mSceneManager->getRootSceneNode()->createChildSceneNode("Center");
 	mCamThroughMode = new CCS::ThroughTargetCameraMode(mCameraCS, distance);
 	mCamThroughMode->setCameraFocusPosition(centerNode->_getDerivedPosition() - Ogre::Vector3(0, 250, 0));
     mCameraCS->registerCameraMode("Through Target", mCamThroughMode);
