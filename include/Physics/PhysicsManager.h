@@ -93,7 +93,9 @@ namespace WyvernsAssault
 		OgreOde::Space* mSpace;
 
 		OgreOde::TriangleMeshGeometry* geom_ground;
-		std::vector< PhysicsRayInfo > ode_characters;
+		
+		PlayerMap mPlayerMap;
+		EnemyMap mEnemyMap;
 
 	// --------------------------------
 	// BEGIN Lua Interface Declarations

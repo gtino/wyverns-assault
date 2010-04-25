@@ -118,7 +118,10 @@ void PhysicsManager::addPlayer(PlayerPtr player)
 
 	player->setRayInfo(rayInfo);
 
-	ode_characters.push_back(rayInfo);
+	//
+	// Store the player into an internal map
+	//
+	mPlayerMap[id] = player;
 }
 
 
@@ -153,49 +156,43 @@ void PhysicsManager::addEnemy(EnemyPtr enemy)
 
 	enemy->setRayInfo(rayInfo);
 
-	//ode_enemies.push_back(rayInfo);
+	//
+	// Store the enemy into an internal map
+	//
+	mEnemyMap[id] = enemy;
 }
 
-void PhysicsManager::updateRay(PlayerPtr mPlayer)
+void PhysicsManager::updateRay(PlayerPtr player)
 {
-	Vector3 position;
-	for( std::vector< PhysicsRayInfo >::iterator it = ode_characters.begin(); it != ode_characters.end(); it++ )
-	{
-  		// raise desired ray position a little above character's scenenode
-		position = mPlayer->getPosition();
-		// fire ray downward
-		it->geometry->setDefinition(position,Vector3::NEGATIVE_UNIT_Y);
-		// add ray to collisionListener
-		it->geometry->collide(geom_ground,this);
-	}
-
+	// raise desired ray position a little above player's scenenode
+	Vector3 position = player->getPosition();
+	// fire ray downward
+	player->getRayInfo()->geometry->setDefinition(position,Vector3::NEGATIVE_UNIT_Y);
+	// add ray to collisionListener
+	player->getRayInfo()->geometry->collide(geom_ground,this);
 }
 
 void PhysicsManager::updateRay(EnemyPtr enemy)
 {
-	//Vector3 position;
-	//for( std::vector< PhysicsRayInfo >::iterator it = ode_characters.begin(); it != ode_characters.end(); it++ )
-	//{
- // 		// raise desired ray position a little above character's scenenode
-	//	position = mPlayer->getPosition();
-	//	// fire ray downward
-	//	it->charRay->setDefinition(position,Vector3::NEGATIVE_UNIT_Y);
-	//	// add ray to collisionListener
-	//	it->charRay->collide(geom_ground,this);
-	//}
+	// raise desired ray position a little above enemy's scenenode
+	Vector3 position = enemy->getPosition();
+	// fire ray downward
+	enemy->getRayInfo()->geometry->setDefinition(position,Vector3::NEGATIVE_UNIT_Y);
+	// add ray to collisionListener
+	enemy->getRayInfo()->geometry->collide(geom_ground,this);
 }
 
 bool PhysicsManager::collision(OgreOde::Contact* contact)
 {
 
 	// search through ode_characters and adjust each charNode's height
-	for( std::vector< PhysicsRayInfo >::iterator it = ode_characters.begin(); it != ode_characters.end(); it++ )
+	for( PlayerMapIterator it = mPlayerMap.begin(); it != mPlayerMap.end(); it++ )
 	{
-		if( contact->getFirstGeometry()->getID() == it->geometry->getID() ||
-			contact->getSecondGeometry()->getID() == it->geometry->getID() )
+		if( contact->getFirstGeometry()->getID() == it->second->getGeometryId() ||
+			contact->getSecondGeometry()->getID() == it->second->getGeometryId() )
 		{
-			it->updated = true;
-			it->lastContact = contact->getPosition();
+			it->second->getRayInfo()->updated = true;
+			it->second->getRayInfo()->lastContact = contact->getPosition();
 			break;
 		}
 	}
@@ -244,12 +241,11 @@ void PhysicsManager::move(PlayerPtr player, int rotate, int thrust){
     body->setAngularVelocity(Vector3(0,0,0)); 
     body->setLinearVelocity(Vector3(body->getLinearVelocity().x,0,body->getLinearVelocity().z));
 
-	//Ray position of all characters
-	if(ode_characters[0].updated){
-		body->setPosition(Vector3(body->getPosition().x,ode_characters[0].lastContact.y+25,body->getPosition().z));
-		ode_characters[0].updated = false;
+	// update ray position
+	if(player->getRayInfo()->updated){
+		body->setPosition(Vector3(body->getPosition().x,player->getRayInfo()->lastContact.y+25,body->getPosition().z));
+		player->getRayInfo()->updated = false;
     }
-	 
 }
 
 void move(EnemyPtr enemy, int rotate, int thrust)
