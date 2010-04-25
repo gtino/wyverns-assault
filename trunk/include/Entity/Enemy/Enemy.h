@@ -31,6 +31,12 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
 #define ENEMY_BILLBOARD_SHOW_TIME 2.0f // seconds
 
+#define ENEMY_SPEED_SLOW 10.0f
+#define ENEMY_SPEED_MEDIUM 30.0f
+#define ENEMY_SPEED_FAST 50.0f
+
+#define ENEMY_ROTATION_SPEED 3.0f
+
 namespace WyvernsAssault
 {
 	/** List of enemy types */
@@ -77,6 +83,9 @@ namespace WyvernsAssault
 		void setTarget(SceneNode* target);
 		void autoTrackTarget();
 
+		void move(Real x, Real y, Real z);
+		void move(Vector3 to);
+
 		bool isHurt();
 
 	private:
@@ -89,8 +98,14 @@ namespace WyvernsAssault
 		EnemyStates mState;
 		float mStateTimeout;
 		
+		float mSpeed;
 		float mMaxLife;
 		float mLife;
+		Ogre::Vector3 mDirection;
+
+	private:
+		void chase();
+
 	public:
 		static EnemyTypes StringToType(Ogre::String typeStr);
 	};

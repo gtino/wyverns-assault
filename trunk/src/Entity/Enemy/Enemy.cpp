@@ -33,9 +33,11 @@ Enemy::Enemy(EnemyTypes type) :
 mStateTimeout(0.0f),
 mState(EnemyStates::Initial),
 mMaxLife(100.0f),
-mLife(100.0f)
+mLife(100.0f),
+mDirection(Vector3::ZERO)
 {
 	mType = type;
+	mAnimationState = 0;
 }
 
 Enemy::~Enemy()
@@ -63,7 +65,19 @@ void Enemy::setTarget(SceneNode* target)
 
 void Enemy::updateEntity(const float elapsedSeconds)
 {
+	return;
 	//autoTrackTarget();
+
+	if(mDirection != Vector3::ZERO)
+	{
+		// Translate forward (always move forward into facing direction)
+		mSceneNode->translate(mDirection * mSpeed * elapsedSeconds, Ogre::Node::TransformSpace::TS_LOCAL);
+	}
+
+	if(mAnimationState)
+	{
+		mAnimationState->addTime(elapsedSeconds);
+	}
 }
 
 void Enemy::updateLogic(lua_State *L, const float elapsedSeconds)
@@ -90,42 +104,65 @@ void Enemy::updateLogic(lua_State *L, const float elapsedSeconds)
 		case EnemyStates::Idle:
 			mBalloonSet->setVisible(false);
 			mBalloonSet->setMaterialName("Balloons/Idle");
+			mSpeed = 0.0f;
+			mDirection = Vector3::ZERO;
 			break;
 		case EnemyStates::Sleeping:
 			mBalloonSet->setVisible(true);
 			mBalloonSet->setMaterialName("Balloons/Sleeping");
+			mSpeed = 0.0f;
+			mDirection = Vector3::ZERO;
 			break;
 		case EnemyStates::What:
 			mBalloonSet->setVisible(true);
 			mBalloonSet->setMaterialName("Balloons/What");
+			mSpeed = ENEMY_SPEED_SLOW;
+			mTarget = 0;
+			mDirection = Vector3::ZERO;
 			break;
 		case EnemyStates::Alert:
 			mBalloonSet->setVisible(true);
 			mBalloonSet->setMaterialName("Balloons/Alert");
+			mSpeed = ENEMY_SPEED_FAST;
+			chase();
 			break;
 		case EnemyStates::Rage:
 			mBalloonSet->setVisible(true);
 			mBalloonSet->setMaterialName("Balloons/Rage");
+			mSpeed = 0.0f;
+			mDirection = Vector3::ZERO;
 			break;
 		case EnemyStates::Love:
 			mBalloonSet->setVisible(true);
 			mBalloonSet->setMaterialName("Balloons/Love");
+			mSpeed = 0.0f;
+			mDirection = Vector3::ZERO;
 			break;
 		case EnemyStates::Fear:
 			mBalloonSet->setVisible(true);
 			mBalloonSet->setMaterialName("Balloons/Fear");
+			mSpeed = ENEMY_SPEED_FAST;
+			mTarget = 0;
 			break;
 		case EnemyStates::Magic:
 			mBalloonSet->setVisible(true);
 			mBalloonSet->setMaterialName("Balloons/Magic");
+			mSpeed = 0.0f;
+			mDirection = Vector3::ZERO;
 			break;
 		case EnemyStates::Patrol:
 			mBalloonSet->setVisible(true);
 			mBalloonSet->setMaterialName("Balloons/Patrol");
+			mSpeed = ENEMY_SPEED_MEDIUM;
+			mDirection = Vector3::ZERO;
+			mTarget = 0;
 			break;
 		default:
 			mBalloonSet->setVisible(false);
 			mBalloonSet->setMaterialName("Balloons/Initial");
+			mSpeed = 0.0f;
+			mDirection = Vector3::ZERO;
+			mTarget = 0;
 			break;
 		}
 
@@ -148,7 +185,7 @@ bool Enemy::isHurt()
 	return (mLife / mMaxLife * 100.0f) < 15.0f;
 }
 
-void Enemy::autoTrackTarget()
+void Enemy::chase()
 {
 	if(mTarget)
 	{
@@ -156,6 +193,41 @@ void Enemy::autoTrackTarget()
 
 		direction.normalise();
 
-		mSceneNode->lookAt(mTarget->getPosition(),Ogre::Node::TransformSpace::TS_WORLD);
+		move(direction);
+	}
+}
+
+void Enemy::move(Real x, Real y, Real z)
+{
+	// Direction vector
+	Vector3 direction = Vector3(x, y, -z);
+
+	move(direction);
+}
+
+void Enemy::move(Vector3 to)
+{
+	mDirection = to;
+
+	if (mDirection != Vector3::ZERO)
+	{
+		// Change autotrack axis for facing movement direction
+		//mSceneNode->setAutoTracking(false, mAutoTrackingNode, mDirection);
+
+		if(mAnimationState)
+		{
+			mAnimationState = mMesh->getAnimationState("Run");
+			mAnimationState->setEnabled(true);
+			mAnimationState->setLoop(true);
+		}
+	}
+	else
+	{
+		if(mAnimationState)
+		{
+			mAnimationState = mMesh->getAnimationState("Iddle_01");
+			mAnimationState->setEnabled(true);
+			mAnimationState->setLoop(true);
+		}
 	}
 }
