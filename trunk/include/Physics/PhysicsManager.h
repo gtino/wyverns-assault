@@ -81,7 +81,7 @@ namespace WyvernsAssault
 		bool collision(OgreOde::Contact* contact);
 
 		//Move one character
-		void move(PlayerPtr player, int rotate, int thrust);
+		void move(PlayerPtr player, Vector3 direction);
 		void move(EnemyPtr enemy, int rotate, int thrust);
 		
 	protected:
