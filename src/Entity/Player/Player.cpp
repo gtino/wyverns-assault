@@ -41,9 +41,6 @@ void Player::move(Real x, Real y, Real z)
 
 	if (mDirection != Vector3::ZERO)
 	{
-		// Change autotrack axis for facing movement direction
-		mSceneNode->setAutoTracking(false, mAutoTrackingNode, mDirection);
-
 		mAnimationState = mMesh->getAnimationState("Run");
 		mAnimationState->setEnabled(true);
 		mAnimationState->setLoop(true);
@@ -58,11 +55,5 @@ void Player::move(Real x, Real y, Real z)
 
 void Player::updateAnimation(float elapsedSeconds)
 {
-	if(mDirection != Vector3::ZERO)
-	{
-		// Translate forward (allways move forward into facing direction)
-		mSceneNode->translate(Vector3(0, 0, 1) * SPEED * elapsedSeconds, Ogre::Node::TransformSpace::TS_LOCAL);
-	}
-
 	mAnimationState->addTime(elapsedSeconds);
 }
