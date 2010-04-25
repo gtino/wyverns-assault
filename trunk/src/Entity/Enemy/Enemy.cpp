@@ -145,10 +145,10 @@ void Enemy::autoTrackTarget()
 {
 	if(mTarget)
 	{
-		Vector3 direction = mTarget->_getDerivedPosition() - mSceneNode->getPosition();
+		Vector3 direction = mTarget->getPosition() - mSceneNode->getPosition();
 
 		direction.normalise();
 
-		mSceneNode->lookAt(mTarget->_getDerivedPosition(),Ogre::Node::TransformSpace::TS_WORLD);
+		mSceneNode->lookAt(mTarget->getPosition(),Ogre::Node::TransformSpace::TS_WORLD);
 	}
 }

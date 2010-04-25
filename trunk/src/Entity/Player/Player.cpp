@@ -2,9 +2,7 @@
 
 using namespace WyvernsAssault;
 
-Player::Player(Ogre::String name) :
-mMesh(NULL),
-mSceneNode(NULL)
+Player::Player(Ogre::String name)
 {
 }
 
@@ -13,10 +11,9 @@ Player::~Player()
 	finalize();
 }
 
-void Player::initialize(Ogre::Entity* mesh, Ogre::SceneNode* sceneNode, Ogre::SceneNode* sceneNode_model,Ogre::SceneNode* autoTrackingNode)
+void Player::initialize(Ogre::Entity* mesh, Ogre::SceneNode* sceneNode, Ogre::SceneNode* autoTrackingNode)
 {
 	mSceneNode = sceneNode;
-	mSceneNode_model = sceneNode_model;
 	mMesh = mesh;
 	mAutoTrackingNode = autoTrackingNode;
 
@@ -32,7 +29,7 @@ void Player::finalize()
 
 void Player::setPosition(Ogre::Vector3 position)
 {
-
+	
 	mSceneNode->setPosition(position);
 	mAutoTrackingNode->setPosition(position * Vector3::UNIT_Y);
 }

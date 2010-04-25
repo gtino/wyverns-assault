@@ -91,7 +91,7 @@ void PhysicsManager::createPhysicGround(Ogre::String mesh)
 void PhysicsManager::createPhysicCharacter(Ogre::String name, PlayerPtr mPlayer)
 {
 
-	AxisAlignedBox aab = mPlayer->getSceneNodeModel()->getAttachedObject(name)->getBoundingBox(); 
+	AxisAlignedBox aab = mPlayer->getSceneNode()->getAttachedObject(name)->getBoundingBox(); 
 	Ogre::Vector3 min = aab.getMinimum()*mPlayer->getScale();
 	Ogre::Vector3 max = aab.getMaximum()*mPlayer->getScale();
 	Ogre::Vector3 size(fabs(max.x-min.x),fabs(max.y-min.y),fabs(max.z-min.z));

@@ -36,20 +36,19 @@ void PlayerManager::finalize()
 	mPlayerMap.clear();
 }
 
-PlayerPtr PlayerManager::createPlayer(Ogre::String name, Ogre::String name_model, Ogre::String mesh)
+PlayerPtr PlayerManager::createPlayer(Ogre::String name, Ogre::String mesh)
 {
 	// Player node
 	Ogre::Entity* playerMesh = mSceneManager->createEntity(name, mesh);
 	Ogre::SceneNode* playerSceneNode = mSceneManager->getRootSceneNode()->createChildSceneNode(name);
-	Ogre::SceneNode* modelSceneNode = playerSceneNode->createChildSceneNode(name_model);
-	modelSceneNode->attachObject(playerMesh);
+	playerSceneNode->attachObject(playerMesh);
 
 	// Center node for player movement and camera targeting
 	SceneNode* autoTrackingNode = mSceneManager->getRootSceneNode()->createChildSceneNode("Center");
 	playerSceneNode->setAutoTracking(false, autoTrackingNode, Vector3::UNIT_X);
 
 	PlayerPtr player = PlayerPtr(new Player(name));
-	player->initialize( playerMesh, playerSceneNode, modelSceneNode ,autoTrackingNode );
+	player->initialize( playerMesh, playerSceneNode ,autoTrackingNode );
 
 	mPlayerList.push_back(player);
 	mPlayerMap[name] = player;

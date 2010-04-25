@@ -54,7 +54,7 @@ namespace WyvernsAssault
 		void initialize();
 		void finalize();
 
-		PlayerPtr createPlayer(Ogre::String name, Ogre::String name_model, Ogre::String mesh);
+		PlayerPtr createPlayer(Ogre::String name, Ogre::String mesh);
 
 		PlayerPtr getPlayer(Ogre::String name);
 		bool removePlayer(Ogre::String name);
