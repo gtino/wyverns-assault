@@ -46,7 +46,7 @@ namespace WyvernsAssault
 		Player(Ogre::String name);
 		~Player();
 	
-		void initialize(Ogre::Entity* mesh, Ogre::SceneNode* sceneNode, Ogre::SceneNode* autoTrackingNode);
+		void initialize(Ogre::Entity* mesh, Ogre::SceneNode* sceneNode);
 		void finalize();
 
 		void setPosition(Ogre::Vector3 position);
@@ -61,7 +61,6 @@ namespace WyvernsAssault
 		void updateAnimation(float elapsedSeconds);
 
 	private:
-		Ogre::SceneNode* mAutoTrackingNode;
 		Ogre::Vector3 mDirection;
 		Ogre::Vector3 mLastDirection;
 	};

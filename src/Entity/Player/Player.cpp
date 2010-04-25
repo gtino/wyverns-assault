@@ -11,11 +11,10 @@ Player::~Player()
 	finalize();
 }
 
-void Player::initialize(Ogre::Entity* mesh, Ogre::SceneNode* sceneNode, Ogre::SceneNode* autoTrackingNode)
+void Player::initialize(Ogre::Entity* mesh, Ogre::SceneNode* sceneNode)
 {
 	mSceneNode = sceneNode;
 	mMesh = mesh;
-	mAutoTrackingNode = autoTrackingNode;
 
 	// Animations
 	mAnimationState = mesh->getAnimationState("Iddle_01");
@@ -28,10 +27,8 @@ void Player::finalize()
 }
 
 void Player::setPosition(Ogre::Vector3 position)
-{
-	
+{	
 	mSceneNode->setPosition(position);
-	mAutoTrackingNode->setPosition(position * Vector3::UNIT_Y);
 }
 
 void Player::move(Real x, Real y, Real z)
