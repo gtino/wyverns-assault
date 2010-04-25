@@ -53,13 +53,15 @@ namespace WyvernsAssault
 		virtual void setBody( OgreOde::Body* body ){ mBody = body;}
 		virtual OgreOde::Body* getBody(){ return mBody; }
 
+		virtual size_t getGeometryId() const { return mRayInfo.geometry->getID(); }
+
 		virtual void setRayInfo(PhysicsRayInfo rayInfo) { 
 			mRayInfo.geometry = rayInfo.geometry;
 			mRayInfo.radius = rayInfo.radius;
 			mRayInfo.lastContact = Vector3(0,0,0);
 			mRayInfo.updated = rayInfo.updated; // TODO : Double check!
 		};
-		virtual PhysicsRayInfo getRayInfo(){ return mRayInfo; }
+		virtual PhysicsRayInfo* getRayInfo(){ return &mRayInfo; }
 
 	protected:
 		OgreOde::Body* mBody;
