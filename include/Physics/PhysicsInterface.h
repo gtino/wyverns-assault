@@ -57,9 +57,8 @@ namespace WyvernsAssault
 			mRayInfo.geometry = rayInfo.geometry;
 			mRayInfo.radius = rayInfo.radius;
 			mRayInfo.lastContact = Vector3(0,0,0);
-			//mRayInfo.updated = rayInfo.updated; // TODO : Double check!
+			mRayInfo.updated = rayInfo.updated; // TODO : Double check!
 		};
-
 		virtual PhysicsRayInfo getRayInfo(){ return mRayInfo; }
 
 	protected:

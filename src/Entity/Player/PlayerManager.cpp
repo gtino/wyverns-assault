@@ -48,6 +48,10 @@ PlayerPtr PlayerManager::createPlayer(Ogre::String name, Ogre::String mesh)
 	playerSceneNode->setAutoTracking(false, autoTrackingNode, Vector3::UNIT_X);
 
 	PlayerPtr player = PlayerPtr(new Player(name));
+
+	//
+	// The player requires the autotracking node, for camera chasing purposes
+	//
 	player->initialize( playerMesh, playerSceneNode ,autoTrackingNode );
 
 	mPlayerList.push_back(player);

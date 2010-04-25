@@ -75,7 +75,7 @@ void PhysicsManager::showDebugObjects()
 	mWorld->setShowDebugGeometries(!mWorld->getShowDebugGeometries());
 }
 
-void PhysicsManager::createPhysicGround(Ogre::String mesh)
+void PhysicsManager::createGround(Ogre::String mesh)
 {
 	SceneNode* node_ground = mSceneManager->getRootSceneNode()->createChildSceneNode("Physic_ground_node",Vector3(0,0,0));
 	Entity* ent_ground = mSceneManager->createEntity("Physic_ground",mesh);
@@ -87,72 +87,115 @@ void PhysicsManager::createPhysicGround(Ogre::String mesh)
 
 }
 
-
-void PhysicsManager::createPhysicCharacter(Ogre::String name, PlayerPtr mPlayer)
+void PhysicsManager::addPlayer(PlayerPtr player)
 {
+	Ogre::String id = player->getName();
 
-	AxisAlignedBox aab = mPlayer->getSceneNode()->getAttachedObject(name)->getBoundingBox(); 
-	Ogre::Vector3 min = aab.getMinimum()*mPlayer->getScale();
-	Ogre::Vector3 max = aab.getMaximum()*mPlayer->getScale();
+	AxisAlignedBox aab = player->getSceneNode()->getAttachedObject(id)->getBoundingBox(); 
+	Ogre::Vector3 min = aab.getMinimum()*player->getScale();
+	Ogre::Vector3 max = aab.getMaximum()*player->getScale();
 	Ogre::Vector3 size(fabs(max.x-min.x),fabs(max.y-min.y),fabs(max.z-min.z));
 	float radius = (size.x>size.z)?size.z/2.0f:size.x/2.0f;
 
 	//Geometry
-	OgreOde::Body* dollTorsoBody = new OgreOde::Body(mWorld,"torso"); 
-	dollTorsoBody->setMass(OgreOde::CapsuleMass(70,radius/2,Vector3::UNIT_Y,radius/2)); 
-	dollTorsoBody->setAffectedByGravity(true);
-	OgreOde::TransformGeometry* torsoTrans = new OgreOde::TransformGeometry(mWorld,mSpace); 
-	OgreOde::CapsuleGeometry* torsoGeom = new OgreOde::CapsuleGeometry(radius/2,size.y/5,mWorld); 
-	torsoGeom->setOrientation(Quaternion(Degree(90),Vector3::UNIT_X));
-	torsoTrans->setBody(dollTorsoBody); 
-	torsoTrans->setEncapsulatedGeometry(torsoGeom);
-	mPlayer->getSceneNode()->attachObject(dollTorsoBody);
-	mPlayer->setBody(dollTorsoBody);
+	OgreOde::Body* body = new OgreOde::Body(mWorld,id+"_Body"); 
+	body->setMass(OgreOde::CapsuleMass(70,radius/2,Vector3::UNIT_Y,radius/2)); 
+	body->setAffectedByGravity(true);
+	OgreOde::TransformGeometry* transform = new OgreOde::TransformGeometry(mWorld,mSpace); 
+	OgreOde::CapsuleGeometry* geometry = new OgreOde::CapsuleGeometry(radius/2,size.y/5,mWorld); 
+	geometry->setOrientation(Quaternion(Degree(90),Vector3::UNIT_X));
+	transform->setBody(body); 
+	transform->setEncapsulatedGeometry(geometry);
+	player->getSceneNode()->attachObject(body);
+	player->setBody(body);
 
-	//Ray
-	ODE_CHAR_INFO ray;
-	ray.charRay = new OgreOde::RayGeometry(Ogre::Real(30),mWorld,mSpace);
-	ray.radius = radius;
-	ray.updated = false;
-	ray.last_contact = Vector3(0,0,0);
-	ode_characters.push_back(ray);
+	//RayInfo
+	PhysicsRayInfo rayInfo;
+	rayInfo.geometry = new OgreOde::RayGeometry(Ogre::Real(30), mWorld, mSpace);
+	rayInfo.radius = radius;
+	rayInfo.updated = false;
+	rayInfo.lastContact = Vector3(0,0,0);
 
+	player->setRayInfo(rayInfo);
+
+	ode_characters.push_back(rayInfo);
 }
 
 
-void PhysicsManager::createPhysicEnemy(Ogre::String name, Ogre::String mesh)
+void PhysicsManager::addEnemy(EnemyPtr enemy)
 {
-	//
-	// TODO
-	//
+	Ogre::String id = enemy->getName();
+
+	AxisAlignedBox aab = enemy->getSceneNode()->getAttachedObject(id)->getBoundingBox(); 
+	Ogre::Vector3 min = aab.getMinimum()*enemy->getScale();
+	Ogre::Vector3 max = aab.getMaximum()*enemy->getScale();
+	Ogre::Vector3 size(fabs(max.x-min.x),fabs(max.y-min.y),fabs(max.z-min.z));
+	float radius = (size.x>size.z)?size.z/2.0f:size.x/2.0f;
+
+	//Geometry
+	OgreOde::Body* body = new OgreOde::Body(mWorld,id+"_Body"); 
+	body->setMass(OgreOde::CapsuleMass(70,radius/2,Vector3::UNIT_Y,radius/2)); 
+	body->setAffectedByGravity(true);
+	OgreOde::TransformGeometry* transform = new OgreOde::TransformGeometry(mWorld,mSpace); 
+	OgreOde::CapsuleGeometry* geometry = new OgreOde::CapsuleGeometry(radius/2,size.y/5,mWorld); 
+	geometry->setOrientation(Quaternion(Degree(90),Vector3::UNIT_X));
+	transform->setBody(body); 
+	transform->setEncapsulatedGeometry(geometry);
+	enemy->getSceneNode()->attachObject(body);
+	enemy->setBody(body);
+
+	//RayInfo
+	PhysicsRayInfo rayInfo;
+	rayInfo.geometry = new OgreOde::RayGeometry(Ogre::Real(30), mWorld, mSpace);
+	rayInfo.radius = radius;
+	rayInfo.updated = false;
+	rayInfo.lastContact = Vector3(0,0,0);
+
+	enemy->setRayInfo(rayInfo);
+
+	//ode_enemies.push_back(rayInfo);
 }
 
 void PhysicsManager::updateRay(PlayerPtr mPlayer)
 {
 	Vector3 position;
-	for( std::vector< ODE_CHAR_INFO >::iterator it = ode_characters.begin(); it != ode_characters.end(); it++ )
+	for( std::vector< PhysicsRayInfo >::iterator it = ode_characters.begin(); it != ode_characters.end(); it++ )
 	{
   		// raise desired ray position a little above character's scenenode
 		position = mPlayer->getPosition();
 		// fire ray downward
-		it->charRay->setDefinition(position,Vector3::NEGATIVE_UNIT_Y);
+		it->geometry->setDefinition(position,Vector3::NEGATIVE_UNIT_Y);
 		// add ray to collisionListener
-		it->charRay->collide(geom_ground,this);
+		it->geometry->collide(geom_ground,this);
 	}
 
+}
+
+void PhysicsManager::updateRay(EnemyPtr enemy)
+{
+	//Vector3 position;
+	//for( std::vector< PhysicsRayInfo >::iterator it = ode_characters.begin(); it != ode_characters.end(); it++ )
+	//{
+ // 		// raise desired ray position a little above character's scenenode
+	//	position = mPlayer->getPosition();
+	//	// fire ray downward
+	//	it->charRay->setDefinition(position,Vector3::NEGATIVE_UNIT_Y);
+	//	// add ray to collisionListener
+	//	it->charRay->collide(geom_ground,this);
+	//}
 }
 
 bool PhysicsManager::collision(OgreOde::Contact* contact)
 {
 
 	// search through ode_characters and adjust each charNode's height
-	for( std::vector< ODE_CHAR_INFO >::iterator it = ode_characters.begin(); it != ode_characters.end(); it++ )
+	for( std::vector< PhysicsRayInfo >::iterator it = ode_characters.begin(); it != ode_characters.end(); it++ )
 	{
-		if( contact->getFirstGeometry()->getID() == it->charRay->getID() ||
-			contact->getSecondGeometry()->getID() == it->charRay->getID() )
+		if( contact->getFirstGeometry()->getID() == it->geometry->getID() ||
+			contact->getSecondGeometry()->getID() == it->geometry->getID() )
 		{
 			it->updated = true;
-			it->last_contact = contact->getPosition();
+			it->lastContact = contact->getPosition();
 			break;
 		}
 	}
@@ -161,11 +204,11 @@ bool PhysicsManager::collision(OgreOde::Contact* contact)
 	return true;
 }
 
-void PhysicsManager::move(PlayerPtr mPlayer, int rotate, int thrust){
+void PhysicsManager::move(PlayerPtr player, int rotate, int thrust){
 
 	float const maxVel = 80;
-	OgreOde::Body* act_torso = mPlayer->getBody();
-	float actualVel = act_torso->getLinearVelocity().length();
+	OgreOde::Body* body = player->getBody();
+	float actualVel = body->getLinearVelocity().length();
 
 	if (rotate != 0)
 	{
@@ -173,40 +216,47 @@ void PhysicsManager::move(PlayerPtr mPlayer, int rotate, int thrust){
 		// Change autotrack axis for facing movement direction
 		//mSceneNode->setAutoTracking(false, mAutoTrackingNode, mDirection);
 		
-		Quaternion q1 = act_torso->getOrientation();
+		Quaternion q1 = body->getOrientation();
 		Quaternion q2(Degree(-4*rotate),Ogre::Vector3::UNIT_Y);
-		act_torso->setOrientation(q1*q2);
-		act_torso->setLinearVelocity(Vector3(0,act_torso->getLinearVelocity().y,0));
+		body->setOrientation(q1*q2);
+		body->setLinearVelocity(Vector3(0,body->getLinearVelocity().y,0));
 	}
 
 
 	if (thrust == 0)
 	{
-		act_torso->setLinearVelocity(Vector3(0,0,0));
+		body->setLinearVelocity(Vector3(0,0,0));
 	}
 	else
 	{
 		if(actualVel > maxVel)
-			act_torso->setForce(Vector3(0,0,0));
+			body->setForce(Vector3(0,0,0));
 		else
-			act_torso->addForce(act_torso->getOrientation() * Vector3(0,0,thrust*(maxVel * 400)));
+			body->addForce(body->getOrientation() * Vector3(0,0,thrust*(maxVel * 400)));
 	}
 
-	Quaternion q = act_torso->getOrientation();         
+	Quaternion q = body->getOrientation();         
     Vector3 x = q.xAxis();
     Vector3 y = q.yAxis();
     Vector3 z = q.zAxis();
-    act_torso->wake();
-    act_torso->setOrientation(Quaternion(x,Vector3::UNIT_Y,z));
-    act_torso->setAngularVelocity(Vector3(0,0,0)); 
-    act_torso->setLinearVelocity(Vector3(act_torso->getLinearVelocity().x,0,act_torso->getLinearVelocity().z));
+    body->wake();
+    body->setOrientation(Quaternion(x,Vector3::UNIT_Y,z));
+    body->setAngularVelocity(Vector3(0,0,0)); 
+    body->setLinearVelocity(Vector3(body->getLinearVelocity().x,0,body->getLinearVelocity().z));
 
 	//Ray position of all characters
 	if(ode_characters[0].updated){
-		act_torso->setPosition(Vector3(act_torso->getPosition().x,ode_characters[0].last_contact.y+25,act_torso->getPosition().z));
+		body->setPosition(Vector3(body->getPosition().x,ode_characters[0].lastContact.y+25,body->getPosition().z));
 		ode_characters[0].updated = false;
     }
 	 
+}
+
+void move(EnemyPtr enemy, int rotate, int thrust)
+{
+	//
+	// TODO
+	//
 }
 
 // --------------------------------

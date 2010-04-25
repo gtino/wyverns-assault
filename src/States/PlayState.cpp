@@ -102,8 +102,8 @@ void PlayState::initialize()
 	mPhysicsManager = new PhysicsManager(mSceneManager);
 	mPhysicsManager->initialize();
 	// Physics Temporaly Calls (DotSceneLoader task)
-	mPhysicsManager->createPhysicGround("physic_ground.mesh");
-	mPhysicsManager->createPhysicCharacter("Player1",mPlayer1);
+	mPhysicsManager->createGround("physic_ground.mesh");
+	mPhysicsManager->addPlayer(mPlayer1);
 
 	//
 	// Logic Manager
