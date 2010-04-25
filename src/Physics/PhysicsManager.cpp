@@ -203,12 +203,24 @@ bool PhysicsManager::collision(OgreOde::Contact* contact)
 	return true;
 }
 
-void PhysicsManager::move(PlayerPtr player, int rotate, int thrust){
+void PhysicsManager::move(PlayerPtr player, Vector3 direction){
 
 	float const maxVel = 80;
 	OgreOde::Body* body = player->getBody();
 	float actualVel = body->getLinearVelocity().length();
 
+
+	if(direction == Vector3(0,0,0)){
+		body->setLinearVelocity(Vector3(0,0,0));
+	}else{
+		if(actualVel > maxVel)
+			body->setForce(Vector3(0,0,0));
+		else
+			body->addForce(direction * Vector3((maxVel * 400),0,(maxVel * 400)));
+	}
+
+
+/*
 	if (rotate != 0)
 	{
 		//MOVEMENT UPDATE
@@ -233,7 +245,7 @@ void PhysicsManager::move(PlayerPtr player, int rotate, int thrust){
 		else
 			body->addForce(body->getOrientation() * Vector3(0,0,thrust*(maxVel * 400)));
 	}
-
+*/
 	Quaternion q = body->getOrientation();         
     Vector3 x = q.xAxis();
     Vector3 y = q.yAxis();
