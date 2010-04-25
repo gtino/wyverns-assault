@@ -1,8 +1,20 @@
--- Module : Scenario
+-- Module : EnemyLogic
 -------------------------------------
--- Runs light changing during the day
--- @param id Session identification.
+-- Runs enemy logic
+-- @param enemyId enemy id
+-- @param state current enemy state
 -------------------------------------
+
+-- EnemyStates
+Idle = 0
+Sleeping = 1
+What = 2
+Alert = 3
+Rage = 4
+Love = 5
+Fear = 6
+Magic = 7
+Patrol = 8
 
 function runNakedLogic(enemyId, state)
 	
@@ -11,27 +23,30 @@ function runNakedLogic(enemyId, state)
 	local totalSeconds = Game.getTotalSeconds()
 	local elapsedSeconds = Game.getElapsedSeconds()
 	
-	--local nStates = 6;
+	--local nStates = Fear;
 	--local nTimeInState = totalSeconds / 10;
 	--local newState = nTimeInState - math.floor(nTimeInState/nStates)*nStates
-		
-	local distance = Physics.getDistance(enemyId,"Player1");
+	
+	local player = Physics.getNearestPlayer(enemyId);
+	local distance = Physics.getDistance(enemyId,player);
+	
+	Enemy.setTarget(enemyId,player);
 	
 	if distance<100 then
-		newState = 5 -- Love
+		newState = Love -- Love
 	elseif distance<250 then
-		newState = 3 -- Alert
+		newState = Alert -- Alert
 	elseif distance<500 then
-		newState = 2 -- What
-	elseif newState ~= 1 then -- not in sleeping
-		newState = 0 -- Idle
+		newState = What -- What
+	elseif newState ~= Sleeping then -- not in sleeping
+		newState = Idle -- Idle
 	end
 	
 	local timeout = Enemy.getStateTimeout(enemyId)
 	
 	-- after 20 seconds of idle, just go to sleep
-	if (timeout > 20 and newState == 0) then
-		newState = 1 -- in sleeping
+	if (timeout > 20 and newState == Idle) then
+		newState = Sleeping -- in sleeping
 	end
   
 	return newState 
@@ -44,27 +59,30 @@ function runWizardLogic(enemyId)
 	local totalSeconds = Game.getTotalSeconds()
 	local elapsedSeconds = Game.getElapsedSeconds()
 	
-	--local nStates = 6;
+	--local nStates = Fear;
 	--local nTimeInState = totalSeconds / 10;
 	--local newState = nTimeInState - math.floor(nTimeInState/nStates)*nStates
 		
-	local distance = Physics.getDistance(enemyId,"Player1");
+	local player = Physics.getNearestPlayer(enemyId);
+	local distance = Physics.getDistance(enemyId,player);
+	
+	Enemy.setTarget(enemyId,player);
 	
 	if distance<200 then
-		newState = 7 -- Rage
+		newState = Magic -- Rage
 	elseif distance<250 then
-		newState = 3 -- Alert
+		newState = Alert -- Alert
 	elseif distance<500 then
-		newState = 2 -- What
-	elseif newState ~= 1 then -- not sleeping
-		newState = 0 -- Idle
+		newState = What -- What
+	elseif newState ~= Sleeping then -- not sleeping
+		newState = Idle -- Idle
 	end
 	
 	local timeout = Enemy.getStateTimeout(enemyId)
 	
 	-- after 20 seconds of idle, just go to sleep
-	if (timeout > 20 and newState == 0) then
-		newState = 1 -- Sleeping
+	if (timeout > 20 and newState == Idle) then
+		newState = Sleeping -- Sleeping
 	end
   
 	return newState  
@@ -77,27 +95,30 @@ function runPeasantLogic(enemyId)
 	local totalSeconds = Game.getTotalSeconds()
 	local elapsedSeconds = Game.getElapsedSeconds()
 	
-	--local nStates = 6;
+	--local nStates = Fear;
 	--local nTimeInState = totalSeconds / 10;
 	--local newState = nTimeInState - math.floor(nTimeInState/nStates)*nStates
 		
-	local distance = Physics.getDistance(enemyId,"Player1");
+	local player = Physics.getNearestPlayer(enemyId);
+	local distance = Physics.getDistance(enemyId,player);
+	
+	Enemy.setTarget(enemyId,player);
 	
 	if distance<100 then
-		newState = 6 -- Rage
+		newState = Fear -- Rage
 	elseif distance<250 then
-		newState = 6 -- Alert
+		newState = Fear -- Alert
 	elseif distance<500 then
-		newState = 2 -- What
-	elseif newState ~= 1 then -- not sleeping
-		newState = 0 -- Idle
+		newState = What -- What
+	elseif newState ~= Sleeping then -- not sleeping
+		newState = Idle -- Idle
 	end
 	
 	local timeout = Enemy.getStateTimeout(enemyId)
 	
 	-- after 20 seconds of idle, just go to sleep
-	if (timeout > 20 and newState == 0) then
-		newState = 1 -- Sleeping
+	if (timeout > 20 and newState == Idle) then
+		newState = Sleeping -- Sleeping
 	end
   
 	return newState  
@@ -110,27 +131,30 @@ function runSoldierLogic(enemyId)
 	local totalSeconds = Game.getTotalSeconds()
 	local elapsedSeconds = Game.getElapsedSeconds()
 	
-	--local nStates = 6;
+	--local nStates = Fear;
 	--local nTimeInState = totalSeconds / 10;
 	--local newState = nTimeInState - math.floor(nTimeInState/nStates)*nStates
 		
-	local distance = Physics.getDistance(enemyId,"Player1");
+	local player = Physics.getNearestPlayer(enemyId);
+	local distance = Physics.getDistance(enemyId,player);
+	
+	Enemy.setTarget(enemyId,player);
 	
 	if distance<100 then
-		newState = 4 -- Rage
+		newState = Rage -- Rage
 	elseif distance<250 then
-		newState = 3 -- Alert
+		newState = Alert -- Alert
 	elseif distance<500 then
-		newState = 2 -- What
-	elseif newState ~= 1 then -- not sleeping
-		newState = 0 -- Idle
+		newState = What -- What
+	elseif newState ~= Sleeping then -- not sleeping
+		newState = Idle -- Idle
 	end
 	
 	local timeout = Enemy.getStateTimeout(enemyId)
 	
 	-- after 20 seconds of idle, just go to sleep
-	if (timeout > 20 and newState == 0) then
-		newState = 1 -- Sleeping
+	if (timeout > 20 and newState == Idle) then
+		newState = Sleeping -- Sleeping
 	end
   
 	return newState 
@@ -146,7 +170,7 @@ function forEachEnemy()
 	 for i = 0, n, 1 do 
 		local enemyId = Enemy.getName(i) 
 		
-		local nStates = 5
+		local nStates = Love
 		
 		local state = totalSeconds - math.floor(totalSeconds/nStates)*nStates
 		

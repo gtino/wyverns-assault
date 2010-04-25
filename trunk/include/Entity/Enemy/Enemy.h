@@ -53,7 +53,8 @@ namespace WyvernsAssault
 		Rage = 4,
 		Love = 5,
 		Fear = 6,
-		Magic = 7
+		Magic = 7,
+		Patrol = 8
 	};
 
 	/**
@@ -65,16 +66,22 @@ namespace WyvernsAssault
 		Enemy(EnemyTypes type);
 		~Enemy();
 
+		virtual void updateEntity(const float elapsedSeconds);
 		virtual void updateLogic(lua_State *L, const float elapsedSeconds);
 
 		void setBillboardSet(BillboardSet* balloonSet);
 
 		float getStateTimeout(){return mStateTimeout;}
 
+		void setTarget(SceneNode* target);
+		void autoTrackTarget();
+
 	private:
 		EnemyTypes mType;
 		BillboardSet* mBalloonSet;
 		Billboard* mBalloon;
+
+		SceneNode* mTarget;
 
 		EnemyStates mState;
 		float mStateTimeout;

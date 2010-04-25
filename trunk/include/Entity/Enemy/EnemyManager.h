@@ -53,6 +53,7 @@ namespace WyvernsAssault
 		
 		void initialize();
 		void finalize();
+		SceneManager* getSceneManager(){return this->mSceneManager;}
 
 		EnemyPtr createEnemy(EnemyTypes type);
 		EnemyPtr createEnemy(EnemyTypes type, Ogre::String name, Ogre::String mesh);
@@ -93,6 +94,7 @@ namespace WyvernsAssault
 		LUA_FUNCTION(getEnemyPosition)
 		LUA_FUNCTION(setEnemyPosition)
 		LUA_FUNCTION(setEnemyState)
+		LUA_FUNCTION(setEnemyTarget)
 		LUA_FUNCTION(getEnemyStateTimeout)
 		LUA_FUNCTION(removeEnemy)
 

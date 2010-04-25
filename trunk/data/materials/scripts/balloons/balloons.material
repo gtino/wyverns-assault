@@ -141,3 +141,21 @@ material Balloons/Fear
     }
   }
 }
+
+material Balloons/Patrol
+{
+  technique
+  {
+    pass
+    {
+      lighting off
+      scene_blend alpha_blend
+      depth_write off
+      texture_unit
+      {
+        texture balloon_patrol.png
+        tex_address_mode clamp
+      }
+    }
+  }
+}

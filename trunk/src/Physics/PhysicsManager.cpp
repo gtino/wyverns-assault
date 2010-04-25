@@ -215,6 +215,7 @@ void PhysicsManager::move(PlayerPtr mPlayer, int rotate, int thrust){
 LUA_BEGIN_BINDING(PhysicsManager::physicslib)
 LUA_BIND("getHOT", PhysicsManager::LuaGetHOT)
 LUA_BIND("getDistance", PhysicsManager::LuaGetDistance)
+LUA_BIND("getNearestPlayer", PhysicsManager::LuaGetNearestPlayer)
 LUA_END_BINDING()
 
 int PhysicsManager::LuaGetHOT(lua_State *L)
@@ -253,8 +254,6 @@ int PhysicsManager::LuaGetDistance(lua_State *L)
 	SceneNode* node1 = sceneManager->getEntity(name1)->getParentSceneNode();
 	SceneNode* node2 = sceneManager->getEntity(name2)->getParentSceneNode();
 
-	//vessel type, as then can reuse to allign ships to each other
-    //as well as test range between sub and ship
     Vector3 pos1 = node1->_getDerivedPosition();
     Vector3 pos2 = node2->_getDerivedPosition();
       
@@ -262,8 +261,40 @@ int PhysicsManager::LuaGetDistance(lua_State *L)
     //as y is vertical in this coordinate system
     double range = sqrt( pow((pos1.x - pos2.x), 2) + pow((pos1.z - pos2.z), 2));
 
-	/* push the total seconds */
+	/* push the distance */
 	lua_pushnumber(L, range); // 
+
+	/* return the number of results */
+	return 1;
+}
+
+int PhysicsManager::LuaGetNearestPlayer(lua_State *L)
+{
+		/* get number of arguments */
+	int n = lua_gettop(L);
+
+	// n should be 2
+
+	Ogre::String enemyId = luaL_checkstring(L, 1);
+
+	 // TODO Retrieve the REAL nearest player!
+	//Ogre::SceneManager* sceneManager = PhysicsManager::getSingleton().getSceneManager();
+
+	//SceneNode* node1 = sceneManager->getEntity(name1)->getParentSceneNode();
+
+	//SceneNode* node2 = sceneManager->getEntity("Player1")->getParentSceneNode();
+
+ //   Vector3 pos1 = node1->_getDerivedPosition();
+ //   Vector3 pos2 = node2->_getDerivedPosition();
+ //     
+ //   //euclidian distance, using x and z, 
+ //   //as y is vertical in this coordinate system
+ //   double range = sqrt( pow((pos1.x - pos2.x), 2) + pow((pos1.z - pos2.z), 2));
+
+	Ogre::String playerId = "Player1"; // TODO Retrieve the REAL nearest player!
+
+	/* push the id of the closest player */
+	lua_pushstring(L, playerId.c_str()); // 
 
 	/* return the number of results */
 	return 1;

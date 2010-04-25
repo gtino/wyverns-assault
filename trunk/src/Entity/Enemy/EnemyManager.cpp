@@ -154,6 +154,7 @@ LUA_BIND("getName",EnemyManager::getEnemyName)
 LUA_BIND("getPosition", EnemyManager::getEnemyPosition)
 LUA_BIND("setPosition", EnemyManager::setEnemyPosition)
 LUA_BIND("setState", EnemyManager::setEnemyState)
+LUA_BIND("setTarget", EnemyManager::setEnemyTarget)
 LUA_BIND("getStateTimeout", EnemyManager::getEnemyStateTimeout)
 LUA_BIND("remove", EnemyManager::removeEnemy)
 LUA_END_BINDING()
@@ -283,4 +284,24 @@ int EnemyManager::removeEnemy(lua_State *L)
 
 	/* return the number of results */
 	return 1;
+}
+
+int EnemyManager::setEnemyTarget(lua_State *L)
+{
+	/* get number of arguments */
+	int n = lua_gettop(L);
+
+	// n should be 2
+	Ogre::String enemyId = luaL_checkstring(L, 1);
+	Ogre::String targetId = luaL_checkstring(L, 2);
+
+	SceneManager* sceneManager = EnemyManager::getSingleton().getSceneManager();
+
+	EnemyPtr enemy = EnemyManager::getSingleton().getEnemy(enemyId);
+	SceneNode* target = sceneManager->getEntity(targetId)->getParentSceneNode();
+
+	enemy->setTarget(target);
+
+	/* return the number of results */
+	return 0;
 }

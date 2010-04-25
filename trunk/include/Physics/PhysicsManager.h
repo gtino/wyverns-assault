@@ -88,6 +88,7 @@ namespace WyvernsAssault
 
 		LUA_FUNCTION(LuaGetHOT)
 		LUA_FUNCTION(LuaGetDistance)
+		LUA_FUNCTION(LuaGetNearestPlayer)
 
 	public:
 		void luaLoadScripts(){};

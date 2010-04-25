@@ -51,6 +51,19 @@ void Enemy::setBillboardSet(BillboardSet* balloonSet)
 	//mBalloon->setColour(ColourValue::White);
 }
 
+void Enemy::setTarget(SceneNode* target)
+{
+	//if(target)
+	//	mSceneNode->setAutoTracking(true,target);
+
+	mTarget = target;
+}
+
+void Enemy::updateEntity(const float elapsedSeconds)
+{
+	//autoTrackTarget();
+}
+
 void Enemy::updateLogic(lua_State *L, const float elapsedSeconds)
 {
 	///* the function name */
@@ -104,6 +117,10 @@ void Enemy::updateLogic(lua_State *L, const float elapsedSeconds)
 			mBalloonSet->setVisible(true);
 			mBalloonSet->setMaterialName("Balloons/Magic");
 			break;
+		case EnemyStates::Patrol:
+			mBalloonSet->setVisible(true);
+			mBalloonSet->setMaterialName("Balloons/Patrol");
+			break;
 		default:
 			mBalloonSet->setVisible(false);
 			mBalloonSet->setMaterialName("Balloons/Idle");
@@ -121,5 +138,17 @@ void Enemy::updateLogic(lua_State *L, const float elapsedSeconds)
 	if((mStateTimeout > ENEMY_BILLBOARD_SHOW_TIME) && (mState != EnemyStates::Sleeping))
 	{
 		mBalloonSet->setVisible(false);
+	}
+}
+
+void Enemy::autoTrackTarget()
+{
+	if(mTarget)
+	{
+		Vector3 direction = mTarget->_getDerivedPosition() - mSceneNode->getPosition();
+
+		direction.normalise();
+
+		mSceneNode->lookAt(mTarget->_getDerivedPosition(),Ogre::Node::TransformSpace::TS_WORLD);
 	}
 }
