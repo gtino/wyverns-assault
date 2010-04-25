@@ -245,54 +245,49 @@ void PlayState::update(const float elapsedSeconds)
 		// 8 directions move
 		if(this->mInputManager->getKeyboard()->isKeyDown(OIS::KeyCode::KC_RIGHT) && this->mInputManager->getKeyboard()->isKeyDown(OIS::KeyCode::KC_UP))
 		{
-			//mPlayer1->move(0.75,0,-0.75);
+			mPlayer1->move(0.75,0,-0.75);
 			mPhysicsManager->move(mPlayer1,Vector3(0.75,0,-0.75));
 		}
 		else if(this->mInputManager->getKeyboard()->isKeyDown(OIS::KeyCode::KC_RIGHT) && this->mInputManager->getKeyboard()->isKeyDown(OIS::KeyCode::KC_DOWN))
 		{
-			//mPlayer1->move(0.75,0,0.75);
+			mPlayer1->move(0.75,0,0.75);
 			mPhysicsManager->move(mPlayer1,Vector3(0.75,0,0.75));
 		}
 		else if(this->mInputManager->getKeyboard()->isKeyDown(OIS::KeyCode::KC_LEFT) && this->mInputManager->getKeyboard()->isKeyDown(OIS::KeyCode::KC_UP))
 		{
-			//mPlayer1->move(-0.75,0,-0.75);
+			mPlayer1->move(-0.75,0,-0.75);
 			mPhysicsManager->move(mPlayer1,Vector3(-0.75,0,-0.75));
 		}
 		else if(this->mInputManager->getKeyboard()->isKeyDown(OIS::KeyCode::KC_LEFT) && this->mInputManager->getKeyboard()->isKeyDown(OIS::KeyCode::KC_DOWN))
 		{
-			//mPlayer1->move(-0.75,0,0.75);
+			mPlayer1->move(-0.75,0,0.75);
 			mPhysicsManager->move(mPlayer1,Vector3(-0.75,0,0.75));
 		}
-
-		if(this->mInputManager->getKeyboard()->isKeyDown(OIS::KeyCode::KC_RIGHT))
+		else if(this->mInputManager->getKeyboard()->isKeyDown(OIS::KeyCode::KC_RIGHT))
 		{
-			//rotate +=1;
-			mPhysicsManager->move(mPlayer1,Vector3(1,0,0));
-			//mPlayer1->move(1,0,0);
+			mPlayer1->move(1,0,0);
+			mPhysicsManager->move(mPlayer1,Vector3(1,0,0));			
 		}
 		else if(this->mInputManager->getKeyboard()->isKeyDown(OIS::KeyCode::KC_LEFT))
 		{
-			//rotate += -1;
-			mPhysicsManager->move(mPlayer1,Vector3(-1,0,0));
-			//mPlayer1->move(-1,0,0);
+			mPlayer1->move(-1,0,0);
+			mPhysicsManager->move(mPlayer1,Vector3(-1,0,0));			
 		}
 		else if(this->mInputManager->getKeyboard()->isKeyDown(OIS::KeyCode::KC_UP))
 		{
-			//thrust += 1;
-			mPhysicsManager->move(mPlayer1,Vector3(0,0,-1));
-			//mPlayer1->move(0,0,-1);
+			mPlayer1->move(0,0,-1);
+			mPhysicsManager->move(mPlayer1,Vector3(0,0,-1));			
 		}
 		else if(this->mInputManager->getKeyboard()->isKeyDown(OIS::KeyCode::KC_DOWN))
 		{
-			//thrust += -1;
+			mPlayer1->move(0,0,1);
 			mPhysicsManager->move(mPlayer1,Vector3(0,0,1));
-			//mPlayer1->move(0,0,1);
 		}
 		else
 		{
 			// No movement, iddle animation
-			//mPlayer1->move(0,0,0);
-			mPhysicsManager->move(mPlayer1,Vector3(0,0,0));
+			mPlayer1->move(0,0,0);
+			//mPhysicsManager->move(mPlayer1,Vector3(0,0,0));
 		}
 
 	}
