@@ -37,17 +37,15 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #include "..\Entity\Enemy\EnemyManager.h"
 #include "..\Entity\Enemy\Enemy.h"
 
-typedef struct{
-	OgreOde::RayGeometry* charRay;
-	Ogre::Real radius;
-	Ogre::Vector3 last_contact;
-	bool updated;
-}ODE_CHAR_INFO;
-
 using namespace Ogre;
 
 namespace WyvernsAssault
 {
+	typedef std::map<size_t,PlayerPtr> OdePlayerMap;
+	typedef std::map<size_t,PlayerPtr>::iterator OdePlayerMapIterator;
+
+	typedef std::map<size_t,EnemyPtr> OdeEnemyMap;
+	typedef std::map<size_t,EnemyPtr>::iterator OdeEnemyMapIterator;
 
 	/**
 	Class used to manage entities/world physics
@@ -94,8 +92,8 @@ namespace WyvernsAssault
 
 		OgreOde::TriangleMeshGeometry* geom_ground;
 		
-		PlayerMap mPlayerMap;
-		EnemyMap mEnemyMap;
+		OdePlayerMap mPlayerMap;
+		OdeEnemyMap mEnemyMap;
 
 	// --------------------------------
 	// BEGIN Lua Interface Declarations

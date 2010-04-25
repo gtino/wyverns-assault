@@ -58,16 +58,14 @@ bool PhysicsManager::initialize()
 
 void PhysicsManager::finalize()
 {
-	//
-	// TODO
-	//
+	mPlayerMap.clear();
+	mEnemyMap.clear();
 }
 
 void PhysicsManager::synchronizeWorld(Real time)
 {
 	if(mStepper->step(time))
 		mWorld->synchronise();
-
 }
 
 void PhysicsManager::showDebugObjects()
@@ -121,7 +119,7 @@ void PhysicsManager::addPlayer(PlayerPtr player)
 	//
 	// Store the player into an internal map
 	//
-	mPlayerMap[id] = player;
+	mPlayerMap[player->getGeometryId()] = player;
 }
 
 
@@ -159,7 +157,7 @@ void PhysicsManager::addEnemy(EnemyPtr enemy)
 	//
 	// Store the enemy into an internal map
 	//
-	mEnemyMap[id] = enemy;
+	mEnemyMap[enemy->getGeometryId()] = enemy;
 }
 
 void PhysicsManager::updateRay(PlayerPtr player)
@@ -186,15 +184,19 @@ bool PhysicsManager::collision(OgreOde::Contact* contact)
 {
 
 	// search through ode_characters and adjust each charNode's height
-	for( PlayerMapIterator it = mPlayerMap.begin(); it != mPlayerMap.end(); it++ )
+	OdePlayerMapIterator it;
+	
+	// Check if the player is the first geometry
+	it = mPlayerMap.find(contact->getFirstGeometry()->getID());
+	
+	// ...or the second
+	if(it == mPlayerMap.end())
+		it = mPlayerMap.find(contact->getSecondGeometry()->getID());
+
+	if(it != mPlayerMap.end())
 	{
-		if( contact->getFirstGeometry()->getID() == it->second->getGeometryId() ||
-			contact->getSecondGeometry()->getID() == it->second->getGeometryId() )
-		{
-			it->second->getRayInfo()->updated = true;
-			it->second->getRayInfo()->lastContact = contact->getPosition();
-			break;
-		}
+		it->second->getRayInfo()->updated = true;
+		it->second->getRayInfo()->lastContact = contact->getPosition();
 	}
 
 	contact->setCoulombFriction(OgreOde::Utility::Infinity);
