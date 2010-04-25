@@ -40,7 +40,7 @@ namespace WyvernsAssault
 	/**
 	Class used to manage all the players
 	*/
-	class Player : public EntityInterface
+	class Player : public EntityInterface, public PhysicsInterface
 	{
 	public:
 		Player(Ogre::String name);
@@ -48,9 +48,6 @@ namespace WyvernsAssault
 	
 		void initialize(Ogre::Entity* mesh, Ogre::SceneNode* sceneNode, Ogre::SceneNode* autoTrackingNode);
 		void finalize();
-
-		void setTorso(OgreOde::Body* body){torso = body;}
-		OgreOde::Body* getTorso(){ return torso; }
 
 		void setPosition(Ogre::Vector3 position);
 
@@ -62,11 +59,7 @@ namespace WyvernsAssault
 
 	private:
 		Ogre::SceneNode* mAutoTrackingNode;
-		
 		Ogre::Vector3 mDirection;
-
-		OgreOde::Body* torso;
-
 	};
 
 	typedef boost::shared_ptr<Player> PlayerPtr;
