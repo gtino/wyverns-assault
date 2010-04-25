@@ -28,8 +28,14 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 //#include "OgreOde_Core.h"
 
 #include "..\Lua\LuaInterface.h"
+
+#include "PhysicsInterface.h"
+
 #include "..\Entity\Player\PlayerManager.h"
 #include "..\Entity\Player\Player.h"
+
+#include "..\Entity\Enemy\EnemyManager.h"
+#include "..\Entity\Enemy\Enemy.h"
 
 typedef struct{
 	OgreOde::RayGeometry* charRay;
@@ -62,12 +68,13 @@ namespace WyvernsAssault
 		void synchronizeWorld(Real time);
 		void showDebugObjects();
 
-		void createPhysicGround(Ogre::String mesh);
-		void createPhysicCharacter(Ogre::String name,PlayerPtr mPlayer);
-		void createPhysicEnemy(Ogre::String name,Ogre::String mesh);
+		void createGround(Ogre::String mesh);
+		void addPlayer(PlayerPtr player);
+		void addEnemy(EnemyPtr enemy);
 
 		//Update ray of one character
-		void updateRay(PlayerPtr mPlayer);
+		void updateRay(PlayerPtr player);
+		void updateRay(EnemyPtr enemy);
 
 		/*
 		Called by OgreOde whenever a collision occurs, so 
@@ -76,8 +83,17 @@ namespace WyvernsAssault
 		bool collision(OgreOde::Contact* contact);
 
 		//Move one character
-		void move(PlayerPtr mPlayer, int rotate, int thrust);
+		void move(PlayerPtr player, int rotate, int thrust);
+		void move(EnemyPtr enemy, int rotate, int thrust);
 		
+	protected:
+		SceneManager* mSceneManager;
+		OgreOde::World* mWorld;
+		OgreOde::StepHandler* mStepper;
+		OgreOde::Space* mSpace;
+
+		OgreOde::TriangleMeshGeometry* geom_ground;
+		std::vector< PhysicsRayInfo > ode_characters;
 
 	// --------------------------------
 	// BEGIN Lua Interface Declarations
@@ -95,17 +111,6 @@ namespace WyvernsAssault
 	// ------------------------------
 	// END Lua Interface Declarations
 	// ------------------------------
-
-	protected:
-		SceneManager* mSceneManager;
-		OgreOde::World* mWorld;
-		OgreOde::StepHandler* mStepper;
-		OgreOde::Space* mSpace;
-
-		OgreOde::TriangleMeshGeometry* geom_ground;
-		std::vector< ODE_CHAR_INFO > ode_characters;
-
-
 	};
 }
 
