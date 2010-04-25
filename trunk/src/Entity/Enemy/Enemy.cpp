@@ -31,7 +31,7 @@ EnemyTypes Enemy::StringToType (Ogre::String string)
 
 Enemy::Enemy(EnemyTypes type) :
 mStateTimeout(0.0f),
-mState(EnemyStates::Idle),
+mState(EnemyStates::Initial),
 mMaxLife(100.0f),
 mLife(100.0f)
 {
@@ -46,7 +46,7 @@ void Enemy::setBillboardSet(BillboardSet* balloonSet)
 {
 	mBalloonSet = balloonSet;
 	mBalloonSet->setDefaultDimensions(15.0,15.0);
-	mBalloonSet->setMaterialName("Balloons/Idle");
+	mBalloonSet->setMaterialName("Balloons/Initial");
 
 	Vector3 balloonPosition(0, 15, 0);
 	mBalloon = mBalloonSet->createBillboard(balloonPosition);
@@ -125,7 +125,7 @@ void Enemy::updateLogic(lua_State *L, const float elapsedSeconds)
 			break;
 		default:
 			mBalloonSet->setVisible(false);
-			mBalloonSet->setMaterialName("Balloons/Idle");
+			mBalloonSet->setMaterialName("Balloons/Initial");
 			break;
 		}
 
