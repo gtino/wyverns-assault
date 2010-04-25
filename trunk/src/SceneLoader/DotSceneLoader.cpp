@@ -606,6 +606,14 @@ void DotSceneLoader::processEntity(TiXmlElement *XMLNode, SceneNode *pParent)
 
 		if(!materialFile.empty())
 			pEntity->setMaterialName(materialFile);
+
+		// Process subentities
+		pElement = XMLNode->FirstChildElement("subentities");
+		while(pElement)
+		{
+			processSubEntities(pElement, pEntity);
+			pElement = pElement->NextSiblingElement("subentities");
+		}
 	}
 	catch(Ogre::Exception &/*e*/)
 	{
@@ -613,6 +621,41 @@ void DotSceneLoader::processEntity(TiXmlElement *XMLNode, SceneNode *pParent)
 	}
 
 }
+
+void DotSceneLoader::processSubEntities(TiXmlElement *XMLNode, Entity *pEntity)
+{
+		// Process subentities
+		TiXmlElement* pElement = XMLNode->FirstChildElement("subentity");
+		while(pElement)
+		{
+			processSubEntity(pElement, pEntity);
+			pElement = pElement->NextSiblingElement("subentity");
+		}
+}
+
+void DotSceneLoader::processSubEntity(TiXmlElement *XMLNode, Entity *pEntity)
+{
+	// Process attributes
+	int index = getAttribInt(XMLNode, "index");
+	String materialName = getAttrib(XMLNode, "materialName");
+
+	TiXmlElement *pElement;
+
+	// Create the entity
+	Ogre::SubEntity *pSubEntity = 0;
+	try
+	{
+		pSubEntity = pEntity->getSubEntity(index);
+
+		if(!materialName.empty())
+			pSubEntity->setMaterialName(materialName);
+	}
+	catch(Ogre::Exception &/*e*/)
+	{
+		LogManager::getSingleton().logMessage("[DotSceneLoader] Error setting a subentity!");
+	}
+}
+
 
 void DotSceneLoader::processSkyBox(TiXmlElement *XMLNode)
 {
