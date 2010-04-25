@@ -70,7 +70,7 @@ void PhysicsManager::synchronizeWorld(Real time)
 
 }
 
-void PhysicsManager::showDebuggObjects()
+void PhysicsManager::showDebugObjects()
 {
 	mWorld->setShowDebugGeometries(!mWorld->getShowDebugGeometries());
 }
