@@ -125,6 +125,8 @@ void PlayState::initialize()
 	//
 	mLuaManager->registerInterface(mLightsManager);
 	mLuaManager->registerInterface(mLogicManager);
+	mLuaManager->registerInterface(mEnemyManager);
+	mLuaManager->registerInterface(mPhysicsManager);
 
 	//
 	// THIRD :	This call to 'initialize' will initialize Lua,
@@ -348,6 +350,8 @@ void PlayState::update(const float elapsedSeconds)
 	mLuaManager->update(elapsedSeconds);
 
 	mLightsManager->update(elapsedSeconds);
+
+	mEnemyManager->update(elapsedSeconds);
 
 	//
 	// Update animation state

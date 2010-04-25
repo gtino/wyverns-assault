@@ -198,8 +198,9 @@ void DotSceneLoader::processEnemys(TiXmlElement *XMLNode)
 	{
 		Ogre::String name;
 		Ogre::String mesh;
-		Ogre::Vector3 position;
-		Ogre::Vector3 scale;
+		Ogre::String type;
+		Ogre::Vector3 position = Vector3::ZERO;
+		Ogre::Vector3 scale= Vector3::UNIT_SCALE;
 
 		// Process entity
 		pElementEntity = pElement->FirstChildElement("entity");
@@ -208,6 +209,7 @@ void DotSceneLoader::processEnemys(TiXmlElement *XMLNode)
 			// Create Enemy
 			name = getAttrib(pElementEntity, "name");
 			mesh = getAttrib(pElementEntity, "meshFile");
+			type = getAttrib(pElementEntity, "type");
 		}
 
 		// Process position
@@ -225,7 +227,9 @@ void DotSceneLoader::processEnemys(TiXmlElement *XMLNode)
 		}
 
 		// Add to EnemyManager
-		mEnemyManager->createEnemy(name,mesh);
+		EnemyPtr enemy = mEnemyManager->createEnemy(Enemy::StringToType(type), name, mesh);
+		enemy->setPosition(position);
+		enemy->setScale(scale);
 
 		pElement = pElement->NextSiblingElement("enemy");
 	}

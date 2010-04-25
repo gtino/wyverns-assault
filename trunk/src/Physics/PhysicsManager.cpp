@@ -213,10 +213,11 @@ void PhysicsManager::move(PlayerPtr mPlayer, int rotate, int thrust){
 // Lua Physics Lib
 // --------------------------------
 LUA_BEGIN_BINDING(PhysicsManager::physicslib)
-LUA_BIND("getHOT", PhysicsManager::getHOT)
+LUA_BIND("getHOT", PhysicsManager::LuaGetHOT)
+LUA_BIND("getDistance", PhysicsManager::LuaGetDistance)
 LUA_END_BINDING()
 
-int PhysicsManager::getHOT(lua_State *L)
+int PhysicsManager::LuaGetHOT(lua_State *L)
 {
 	/* get number of arguments */
 	int n = lua_gettop(L);
@@ -232,6 +233,37 @@ int PhysicsManager::getHOT(lua_State *L)
 
 	/* push the total seconds */
 	lua_pushnumber(L, 0); // 
+
+	/* return the number of results */
+	return 1;
+}
+
+int PhysicsManager::LuaGetDistance(lua_State *L)
+{
+	/* get number of arguments */
+	int n = lua_gettop(L);
+
+	// n should be 2
+
+	Ogre::String name1 = luaL_checkstring(L, 1);
+	Ogre::String name2 = luaL_checkstring(L, 2);
+
+	Ogre::SceneManager* sceneManager = PhysicsManager::getSingleton().getSceneManager();
+
+	SceneNode* node1 = sceneManager->getEntity(name1)->getParentSceneNode();
+	SceneNode* node2 = sceneManager->getEntity(name2)->getParentSceneNode();
+
+	//vessel type, as then can reuse to allign ships to each other
+    //as well as test range between sub and ship
+    Vector3 pos1 = node1->_getDerivedPosition();
+    Vector3 pos2 = node2->_getDerivedPosition();
+      
+    //euclidian distance, using x and z, 
+    //as y is vertical in this coordinate system
+    double range = sqrt( pow((pos1.x - pos2.x), 2) + pow((pos1.z - pos2.z), 2));
+
+	/* push the total seconds */
+	lua_pushnumber(L, range); // 
 
 	/* return the number of results */
 	return 1;
