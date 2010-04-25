@@ -139,7 +139,6 @@
                     <subentities>
                         <subentity index="0" materialName="WheatDarkGold" />
                         <subentity index="1" materialName="WheatLightGold" />
-                        <subentity index="2" materialName="Chalk" />
                     </subentities>
                 </entity>
             </node>
@@ -149,9 +148,9 @@
                 <rotation qx="-0.655795" qy="-0.280535" qz="-0.263139" qw="0.649609" />
                 <entity name="WheatField6" castShadows="true" receiveShadows="true" meshFile="WheatField3.mesh">
                     <subentities>
-                        <subentity index="0" materialName="Chalk" />
-                        <subentity index="1" materialName="WheatDarkGold" />
-                        <subentity index="2" materialName="WheatLightGold" />
+                        <subentity index="0" materialName="WheatLightGold" />
+                        <subentity index="1" materialName="Chalk" />
+                        <subentity index="2" materialName="WheatDarkGold" />
                     </subentities>
                 </entity>
             </node>
@@ -161,9 +160,8 @@
                 <rotation qx="-0.499777" qy="0.500223" qz="0.500223" qw="0.499777" />
                 <entity name="WheatField5" castShadows="true" receiveShadows="true" meshFile="WheatField2.mesh">
                     <subentities>
-                        <subentity index="0" materialName="Chalk" />
-                        <subentity index="1" materialName="WheatDarkGold" />
-                        <subentity index="2" materialName="WheatLightGold" />
+                        <subentity index="0" materialName="WheatDarkGold" />
+                        <subentity index="1" materialName="WheatLightGold" />
                     </subentities>
                 </entity>
             </node>
@@ -1937,10 +1935,10 @@
                         <rotation qx="-0.5" qy="-0.5" qz="-0.5" qw="0.5" />
                         <entity name="RightTubeMiddle" castShadows="true" receiveShadows="true" meshFile="RightTubeMiddle0.mesh">
                             <subentities>
-                                <subentity index="0" materialName="TubeYellow" />
-                                <subentity index="1" materialName="SilverConcrete" />
-                                <subentity index="2" materialName="TubeOrangeRed" />
-                                <subentity index="3" materialName="Chalk" />
+                                <subentity index="0" materialName="SilverConcrete" />
+                                <subentity index="1" materialName="TubeOrangeRed" />
+                                <subentity index="2" materialName="Chalk" />
+                                <subentity index="3" materialName="TubeYellow" />
                             </subentities>
                         </entity>
                     </node>
@@ -1995,9 +1993,9 @@
                         <rotation qx="-0.5" qy="-0.5" qz="-0.5" qw="0.5" />
                         <entity name="LeftTubeMiddle" castShadows="true" receiveShadows="true" meshFile="LeftTubeMiddle0.mesh">
                             <subentities>
-                                <subentity index="0" materialName="Chalk" />
-                                <subentity index="1" materialName="TubeYellow" />
-                                <subentity index="2" materialName="SilverConcrete" />
+                                <subentity index="0" materialName="SilverConcrete" />
+                                <subentity index="1" materialName="Chalk" />
+                                <subentity index="2" materialName="TubeYellow" />
                                 <subentity index="3" materialName="TubeOrangeRed" />
                             </subentities>
                         </entity>
@@ -2030,9 +2028,9 @@
                 <rotation qx="-0.5" qy="-0.5" qz="-0.5" qw="0.5" />
                 <entity name="WheatField" castShadows="true" receiveShadows="true" meshFile="WheatField0.mesh">
                     <subentities>
-                        <subentity index="0" materialName="WheatDarkGold" />
-                        <subentity index="1" materialName="WheatLightGold" />
-                        <subentity index="2" materialName="Chalk" />
+                        <subentity index="0" materialName="WheatLightGold" />
+                        <subentity index="1" materialName="Chalk" />
+                        <subentity index="2" materialName="WheatDarkGold" />
                     </subentities>
                 </entity>
             </node>
@@ -2123,9 +2121,9 @@
                     <rotation qx="1.11022e-016" qy="0" qz="1.38778e-016" qw="1" />
                     <entity name="ChimneyRight" castShadows="true" receiveShadows="true" meshFile="ChimneyRight0.mesh">
                         <subentities>
-                            <subentity index="0" materialName="Chalk" />
-                            <subentity index="1" materialName="RedStripes" />
-                            <subentity index="2" materialName="AnotherConcrete" />
+                            <subentity index="0" materialName="AnotherConcrete" />
+                            <subentity index="1" materialName="Chalk" />
+                            <subentity index="2" materialName="RedStripes" />
                             <subentity index="3" materialName="ChimneyCoal" />
                         </subentities>
                     </entity>
@@ -2136,10 +2134,10 @@
                     <rotation qx="1.11022e-016" qy="0" qz="1.38778e-016" qw="1" />
                     <entity name="ChimneyLeft" castShadows="true" receiveShadows="true" meshFile="ChimneyLeft0.mesh">
                         <subentities>
-                            <subentity index="0" materialName="Chalk" />
-                            <subentity index="1" materialName="RedStripes" />
-                            <subentity index="2" materialName="AnotherConcrete" />
-                            <subentity index="3" materialName="ChimneyCoal" />
+                            <subentity index="0" materialName="ChimneyCoal" />
+                            <subentity index="1" materialName="Chalk" />
+                            <subentity index="2" materialName="RedStripes" />
+                            <subentity index="3" materialName="AnotherConcrete" />
                         </subentities>
                     </entity>
                 </node>
@@ -5410,8 +5408,8 @@
                 <rotation qx="-0.5" qy="-0.5" qz="-0.5" qw="0.5" />
                 <entity name="BridgeOfDeath" castShadows="true" receiveShadows="true" meshFile="BridgeOfDeath0.mesh">
                     <subentities>
-                        <subentity index="0" materialName="Chalk" />
-                        <subentity index="1" materialName="BridgeOfDeathStone" />
+                        <subentity index="0" materialName="BridgeOfDeathStone" />
+                        <subentity index="1" materialName="Chalk" />
                     </subentities>
                 </entity>
             </node>
