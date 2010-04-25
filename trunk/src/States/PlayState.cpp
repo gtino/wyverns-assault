@@ -644,7 +644,7 @@ bool PlayState::keyReleased(const OIS::KeyEvent& e)
 		break;
 	// Physics debug mode
 	case OIS::KeyCode::KC_C:
-		mPhysicsManager->showDebuggObjects();
+		mPhysicsManager->showDebugObjects();
 		break;
 	}
 

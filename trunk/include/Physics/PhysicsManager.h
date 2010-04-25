@@ -60,7 +60,7 @@ namespace WyvernsAssault
 		SceneManager* getSceneManager(){return this->mSceneManager;}
 
 		void synchronizeWorld(Real time);
-		void showDebuggObjects();
+		void showDebugObjects();
 
 		void createPhysicGround(Ogre::String mesh);
 		void createPhysicCharacter(Ogre::String name,PlayerPtr mPlayer);
