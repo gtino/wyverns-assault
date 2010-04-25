@@ -209,22 +209,32 @@ void PhysicsManager::move(PlayerPtr player, Vector3 direction){
 	OgreOde::Body* body = player->getBody();
 	float actualVel = body->getLinearVelocity().length();
 
+	if(direction != Vector3::ZERO){
+		Quaternion q1 = body->getOrientation();
+		// Get current direction where player is facing
+		Vector3 currentDirection = q1 * Vector3::UNIT_Z;
+		Quaternion q2(currentDirection.angleBetween(direction) ,Ogre::Vector3::UNIT_Y);
+		body->setOrientation(q1*q2);
+		//body->setLinearVelocity(Vector3(0,body->getLinearVelocity().y,0));
+	}
 
 	if(direction == Vector3(0,0,0)){
 		body->setLinearVelocity(Vector3(0,0,0));
 	}else{
+
+		if(player->getLastDirection() != body->getOrientation()){
+			//If direction change, stop body
+			body->setForce(Vector3(0,0,0));
+			//body->setLinearVelocity(Vector3(0,0,0));
+		}
+
 		if(actualVel > maxVel)
 			body->setForce(Vector3(0,0,0));
 		else
 			body->addForce(direction * Vector3((maxVel * 400),0,(maxVel * 400)));
 	}
 
-	Quaternion q1 = body->getOrientation();
-	// Get current direction where player is facing
-	Vector3 currentDirection = q1 * Vector3::UNIT_Z;
-	Quaternion q2(currentDirection.angleBetween(direction) ,Ogre::Vector3::UNIT_Y);
-	body->setOrientation(q1*q2);
-	body->setLinearVelocity(Vector3(0,body->getLinearVelocity().y,0));
+	player->setLastDirection(body->getOrientation());
 
 /*
 	if (rotate != 0)
