@@ -235,7 +235,7 @@ void DotSceneLoader::processEnemys(TiXmlElement *XMLNode)
 		enemy->setScale(scale);
 		
 		// Add the enemy to the physics manager
-		mPhysicsManager->addEnemy(enemy);
+		//mPhysicsManager->addEnemy(enemy);
 
 		pElement = pElement->NextSiblingElement("enemy");
 	}
