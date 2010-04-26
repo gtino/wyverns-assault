@@ -209,7 +209,8 @@ void PhysicsManager::move(PlayerPtr player, Vector3 direction){
 	OgreOde::Body* body = player->getBody();
 	float actualVel = body->getLinearVelocity().length();
 
-	if(direction != Vector3::ZERO){
+	if(direction != Vector3::ZERO)
+	{
 		Quaternion q1 = body->getOrientation();
 		// Get current direction where player is facing
 		Vector3 currentDirection = q1 * Vector3::UNIT_Z;
@@ -218,16 +219,18 @@ void PhysicsManager::move(PlayerPtr player, Vector3 direction){
 		//body->setLinearVelocity(Vector3(0,body->getLinearVelocity().y,0));
 	}
 
-	if(direction == Vector3(0,0,0)){
+	if(direction == Vector3::ZERO)
+	{
 		body->setLinearVelocity(Vector3(0,0,0));
-	}else{
-
-		if(player->getLastDirection() != direction){
+	}
+	else
+	{
+		if(player->getLastDirection() != direction)
+		{
 			//If direction change, stop body
 			//body->setForce(Vector3(0,0,0));
 			body->setLinearVelocity(Vector3(0,0,0));
 		}
-
 		if(actualVel > maxVel)
 			body->setForce(Vector3(0,0,0));
 		else
@@ -236,32 +239,6 @@ void PhysicsManager::move(PlayerPtr player, Vector3 direction){
 
 	player->setLastDirection(direction);
 
-/*
-	if (rotate != 0)
-	{
-		//MOVEMENT UPDATE
-		// Change autotrack axis for facing movement direction
-		//mSceneNode->setAutoTracking(false, mAutoTrackingNode, mDirection);
-		
-		Quaternion q1 = body->getOrientation();
-		Quaternion q2(Degree(-4*rotate),Ogre::Vector3::UNIT_Y);
-		body->setOrientation(q1*q2);
-		body->setLinearVelocity(Vector3(0,body->getLinearVelocity().y,0));
-	}
-
-
-	if (thrust == 0)
-	{
-		body->setLinearVelocity(Vector3(0,0,0));
-	}
-	else
-	{
-		if(actualVel > maxVel)
-			body->setForce(Vector3(0,0,0));
-		else
-			body->addForce(body->getOrientation() * Vector3(0,0,thrust*(maxVel * 400)));
-	}
-*/
 	Quaternion q = body->getOrientation();         
     Vector3 x = q.xAxis();
     Vector3 y = q.yAxis();
