@@ -13,23 +13,23 @@ function runDayLight(p)
 	local ar,ag,ab = Light.getAmbientLight();
 	
 	-- dayTime is 24 seconds
-	local dayDuration = 24 
+	local dayDuration = 48 
 	local halfDayDuration = dayDuration / 2
 	local dayTime = totalSeconds - math.floor(totalSeconds/dayDuration)*dayDuration
 	--dayTime = 6
 	
-	if dayTime > 12 then
-		ar = 0.05
-		ag = 0.05
-		ab = 0.1
-	else
+	if dayTime > (dayDuration/2) then
 		ar = 0.7
 		ag = 0.7
 		ab = 0.7
+	else
+		ar = 0.9
+		ag = 0.9
+		ab = 0.7
 	end
 	
-	r = 0.5
-	g = 0.5
+	r = 0.8
+	g = 0.8
 	b = 0.5
 	
 	if r > 1.0 then
@@ -53,8 +53,8 @@ function runDayLight(p)
 	local radians = math.rad(degrees)
 	local radius = 2000.0
 	
-	x = 0.0
-	y = radius * math.sin(radians)
+	x = radius * math.sin(radians)
+	y = 500
 	z = radius * math.cos(radians)
   
 	Light.setLightPosition("Point1",x,y,z)
