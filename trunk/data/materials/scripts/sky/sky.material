@@ -27,8 +27,8 @@ material CloudySky
 
 			texture_unit
 			{
-				texture clouds.jpg
-				scroll_anim 0.15 0
+				texture cartoon_cloudy_sky.png
+				scroll_anim 0.05 0
 			}
 		}
 	}
