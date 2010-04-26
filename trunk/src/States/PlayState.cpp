@@ -46,7 +46,7 @@ void PlayState::initialize()
 
 	// Create a single player (TEST!)
 	mPlayer1 = mPlayerManager->createPlayer("Player1","redWyvern.mesh");
-	mPlayer1->setPosition(Vector3(180,30,870));
+	mPlayer1->setPosition(Vector3(50,30,870));
 
 	// Camera manager constructor
 	mCameraManager = new CameraManager(mSceneManager, mWindow, mViewport);
@@ -175,16 +175,16 @@ bool PlayState::frameRenderingQueued(const Ogre::FrameEvent& evt)
 	{
 		if (mDetailsPanel->isVisible())   // if details panel is visible, then update its contents
 		{
-			mDetailsPanel->setParamValue(0, StringConverter::toString(mPlayer1->getPosition().x, 4) + ", " + 
-											StringConverter::toString(mPlayer1->getPosition().y, 4) + ", " + 
-											StringConverter::toString(mPlayer1->getPosition().z, 4));
+			mDetailsPanel->setParamValue(0, StringConverter::toString(mPlayer1->getPosition().x, 3) + ", " + 
+											StringConverter::toString(mPlayer1->getPosition().y, 2) + ", " + 
+											StringConverter::toString(mPlayer1->getPosition().z, 3));
 			mDetailsPanel->setParamValue(2, mCameraManager->getCameraMode().c_str());
 			mDetailsPanel->setParamValue(3, StringConverter::toString(mCameraManager->getCameraPosition().x, 4));
 			mDetailsPanel->setParamValue(4, StringConverter::toString(mCameraManager->getCameraPosition().y, 4));
 			mDetailsPanel->setParamValue(5, StringConverter::toString(mCameraManager->getCameraPosition().z, 4));
-			mDetailsPanel->setParamValue(6, StringConverter::toString(mCameraManager->getCameraLookAt().x, 4) + ", " + 
-											StringConverter::toString(mCameraManager->getCameraLookAt().y, 4) + ", " + 
-											StringConverter::toString(mCameraManager->getCameraLookAt().z, 4));
+			mDetailsPanel->setParamValue(6, StringConverter::toString(mCameraManager->getCameraLookAt().x, 3) + ", " + 
+											StringConverter::toString(mCameraManager->getCameraLookAt().y, 3) + ", " + 
+											StringConverter::toString(mCameraManager->getCameraLookAt().z, 3));
 		}
 	}
 
@@ -194,9 +194,6 @@ bool PlayState::frameRenderingQueued(const Ogre::FrameEvent& evt)
 /** Update internal stuff */
 void PlayState::update(const float elapsedSeconds)
 {
-
-	int rotate,thrust;
-
 	// Movement
 	if(mCameraManager->getCameraMode() == "Free")
 	{
@@ -239,29 +236,26 @@ void PlayState::update(const float elapsedSeconds)
 	}
 	else
 	{
-		rotate = 0;
-		thrust = 0;
-
 		// 8 directions move
 		if(this->mInputManager->getKeyboard()->isKeyDown(OIS::KeyCode::KC_RIGHT) && this->mInputManager->getKeyboard()->isKeyDown(OIS::KeyCode::KC_UP))
 		{
-			mPlayer1->move(0.75,0,-0.75);
-			mPhysicsManager->move(mPlayer1,Vector3(0.75,0,-0.75));
+			mPlayer1->move(1,0,-1);
+			mPhysicsManager->move(mPlayer1,Vector3(1,0,-1));
 		}
 		else if(this->mInputManager->getKeyboard()->isKeyDown(OIS::KeyCode::KC_RIGHT) && this->mInputManager->getKeyboard()->isKeyDown(OIS::KeyCode::KC_DOWN))
 		{
-			mPlayer1->move(0.75,0,0.75);
-			mPhysicsManager->move(mPlayer1,Vector3(0.75,0,0.75));
+			mPlayer1->move(1,0,1);
+			mPhysicsManager->move(mPlayer1,Vector3(1,0,1));
 		}
 		else if(this->mInputManager->getKeyboard()->isKeyDown(OIS::KeyCode::KC_LEFT) && this->mInputManager->getKeyboard()->isKeyDown(OIS::KeyCode::KC_UP))
 		{
-			mPlayer1->move(-0.75,0,-0.75);
-			mPhysicsManager->move(mPlayer1,Vector3(-0.75,0,-0.75));
+			mPlayer1->move(-1,0,-1);
+			mPhysicsManager->move(mPlayer1,Vector3(-1,0,-1));
 		}
 		else if(this->mInputManager->getKeyboard()->isKeyDown(OIS::KeyCode::KC_LEFT) && this->mInputManager->getKeyboard()->isKeyDown(OIS::KeyCode::KC_DOWN))
 		{
-			mPlayer1->move(-0.75,0,0.75);
-			mPhysicsManager->move(mPlayer1,Vector3(-0.75,0,0.75));
+			mPlayer1->move(-1,0,1);
+			mPhysicsManager->move(mPlayer1,Vector3(-1,0,1));
 		}
 		else if(this->mInputManager->getKeyboard()->isKeyDown(OIS::KeyCode::KC_RIGHT))
 		{
@@ -287,21 +281,8 @@ void PlayState::update(const float elapsedSeconds)
 		{
 			// No movement, iddle animation
 			mPlayer1->move(0,0,0);
-			//mPhysicsManager->move(mPlayer1,Vector3(0,0,0));
+			mPhysicsManager->move(mPlayer1,Vector3(0,0,0));
 		}
-
-	}
-
-	// Zoom for Fixed Direction camera mode (DEBUG only)
-	if(this->mInputManager->getKeyboard()->isKeyDown(OIS::KeyCode::KC_M))
-	{
-		mCameraManager->zoom(-1);
-		mCameraManager->updateCamera(elapsedSeconds);
-	}
-	if(this->mInputManager->getKeyboard()->isKeyDown(OIS::KeyCode::KC_N))
-	{
-		mCameraManager->zoom(1);
-		mCameraManager->updateCamera(elapsedSeconds);
 	}
 
 	// UI DEBUG KEYS - Increments/Decrements kills and points
@@ -352,6 +333,11 @@ void PlayState::update(const float elapsedSeconds)
 	// Update animation state
 	//
 	mPlayer1->updateAnimation(elapsedSeconds);
+
+	//
+	// Update camera
+	//
+	mCameraManager->updateCamera(elapsedSeconds);
 }
 
 /** Render */
@@ -521,7 +507,7 @@ bool PlayState::keyReleased(const OIS::KeyEvent& e)
 		mCameraManager->gameCamera();
 		break;
 	case OIS::KeyCode::KC_2:
-		mCameraManager->fpsCamera();
+		mCameraManager->freeCamera();
 		break;
 	case OIS::KeyCode::KC_3:
 		mCameraManager->fixedCamera(0);
@@ -536,23 +522,10 @@ bool PlayState::keyReleased(const OIS::KeyEvent& e)
 		mCameraManager->fixedCamera(3);
 		break;
 	case OIS::KeyCode::KC_7:
-
-		break;
-	case OIS::KeyCode::KC_8:
-
-		break;
-	case OIS::KeyCode::KC_9:
-		mCameraManager->travelCamera(0);
+		mCameraManager->fixedCamera(4);
 		break;
 	case OIS::KeyCode::KC_0:
-		mCameraManager->scenarioCamera();
-		break;
-	case OIS::KeyCode::KC_SPACE:
-		mCameraManager->nextCamera();		
-		break;
-	// Disable lights
-	case OIS::KeyCode::KC_L:
-		mLightsManager->disable();	
+		mCameraManager->nextCamera();
 		break;
 	// Pause menu
 	case OIS::KeyCode::KC_P:		
