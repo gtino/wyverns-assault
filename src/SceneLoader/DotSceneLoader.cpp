@@ -591,7 +591,7 @@ void DotSceneLoader::processEntity(TiXmlElement *XMLNode, SceneNode *pParent)
 	String id = getAttrib(XMLNode, "id");
 	String meshFile = getAttrib(XMLNode, "meshFile");
 	String materialFile = getAttrib(XMLNode, "materialFile");
-	bool isStatic = getAttribBool(XMLNode, "static", false);;
+	bool isStatic = getAttribBool(XMLNode, "static", false);
 	bool castShadows = getAttribBool(XMLNode, "castShadows", true);
 
 	// TEMP: Maintain a list of static and dynamic objects
