@@ -175,7 +175,7 @@ bool PlayState::frameRenderingQueued(const Ogre::FrameEvent& evt)
 	{
 		if (mDetailsPanel->isVisible())   // if details panel is visible, then update its contents
 		{
-			mDetailsPanel->setParamValue(0, StringConverter::toString(mPlayer1->getPosition().x, 3) + ", " + 
+			mDetailsPanel->setParamValue(0, StringConverter::toString(mPlayer1->getPosition().x, 4) + ", " + 
 											StringConverter::toString(mPlayer1->getPosition().y, 2) + ", " + 
 											StringConverter::toString(mPlayer1->getPosition().z, 3));
 			mDetailsPanel->setParamValue(2, mCameraManager->getCameraMode().c_str());
@@ -276,12 +276,17 @@ void PlayState::update(const float elapsedSeconds)
 		{
 			mPlayer1->move(0,0,1);
 			mPhysicsManager->move(mPlayer1,Vector3(0,0,1));
-		}
+		}		
 		else
 		{
 			// No movement, iddle animation
 			mPlayer1->move(0,0,0);
 			mPhysicsManager->move(mPlayer1,Vector3(0,0,0));
+		}
+		// Attack A
+		if(this->mInputManager->getKeyboard()->isKeyDown(OIS::KeyCode::KC_SPACE))
+		{
+			mPlayer1->attackA();			
 		}
 	}
 
@@ -578,7 +583,7 @@ bool PlayState::keyReleased(const OIS::KeyEvent& e)
 		} 
 		MaterialManager::getSingleton().setDefaultTextureFiltering(tfo);
 		MaterialManager::getSingleton().setDefaultAnisotropy(aniso);
-		mDetailsPanel->setParamValue(9, newVal);	
+		mDetailsPanel->setParamValue(8, newVal);	
 		break;
 	// Cycle polygon rendering mode
 	case OIS::KeyCode::KC_R: 

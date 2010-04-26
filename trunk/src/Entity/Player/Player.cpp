@@ -17,9 +17,16 @@ void Player::initialize(Ogre::Entity* mesh, Ogre::SceneNode* sceneNode)
 	mMesh = mesh;
 
 	// Animations
-	mAnimationState = mesh->getAnimationState("Iddle_01");
-	mAnimationState->setEnabled(true);
-	mAnimationState->setLoop(true);
+	mIddle = mesh->getAnimationState("Iddle_01");
+	mIddle->setEnabled(true);
+	mRun = mesh->getAnimationState("Run");
+	mRun->setEnabled(true);
+	mAttackA = mesh->getAnimationState("Attack_A_01");
+	mAttackA->setEnabled(true);
+	//mAttackA->setLoop(false);
+
+	attacking = false;
+	mDirection = Vector3::ZERO;
 }
 
 void Player::finalize()
@@ -34,23 +41,53 @@ void Player::setPosition(Ogre::Vector3 position)
 void Player::move(Real x, Real y, Real z)
 {
 	// Direction vector
-	mDirection = Vector3(x, y, -z);
+	mDirection = Vector3(x, y, z);
 
-	if (mDirection != Vector3::ZERO)
+	if(attacking && mDirection != Vector3::ZERO)
 	{
-		mAnimationState = mMesh->getAnimationState("Run");
-		mAnimationState->setEnabled(true);
-		mAnimationState->setLoop(true);
+ 		mIddle->setWeight(0);
+		mAttackA->setWeight(1);
+		mRun->setWeight(0.1);
+	}
+	else if(attacking)
+	{
+		mIddle->setWeight(0);
+		mAttackA->setWeight(1);
+		mRun->setWeight(0);
+	}
+	else if(mDirection != Vector3::ZERO)
+	{
+		mIddle->setWeight(0);
+		mAttackA->setWeight(0);
+		mRun->setWeight(1);
 	}
 	else
 	{
-		mAnimationState = mMesh->getAnimationState("Iddle_01");
-		mAnimationState->setEnabled(true);
-		mAnimationState->setLoop(true);
+		mIddle->setWeight(1);
+		mAttackA->setWeight(0);
+		mRun->setWeight(0);
 	}
+}
+
+void Player::attackA()
+{
+	attacking = true;
+
+	mIddle->setWeight(0);
+	mAttackA->setWeight(1);
+	mRun->setWeight(0);	
 }
 
 void Player::updateAnimation(float elapsedSeconds)
 {
-	mAnimationState->addTime(elapsedSeconds);
+	mIddle->addTime(elapsedSeconds);
+	mRun->addTime(elapsedSeconds);
+	if(attacking)
+	{
+		mAttackA->addTime(elapsedSeconds);
+	}
+	if(mAttackA->getTimePosition() + elapsedSeconds > mAttackA->getLength())
+	{
+		attacking = false;
+	}
 }

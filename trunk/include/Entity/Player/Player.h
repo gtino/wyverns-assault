@@ -54,8 +54,11 @@ namespace WyvernsAssault
 		void setLastDirection(Ogre::Vector3 dir){mLastDirection = dir;};
 		Ogre::Vector3 getLastDirection(){ return mLastDirection;};
 
-		// Player movement functions
+		// Player actions functions
 		void move(Real x, Real y, Real z);
+		void attackA();
+		void attackB();
+		void attackSpecial();
 
 		// Animation functions
 		void updateAnimation(float elapsedSeconds);
@@ -63,6 +66,12 @@ namespace WyvernsAssault
 	private:
 		Ogre::Vector3 mDirection;
 		Ogre::Vector3 mLastDirection;
+
+		Ogre::AnimationState* mIddle;
+		Ogre::AnimationState* mRun;
+		Ogre::AnimationState* mAttackA;
+
+		bool attacking;
 	};
 
 	typedef boost::shared_ptr<Player> PlayerPtr;
