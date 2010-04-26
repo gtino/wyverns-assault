@@ -213,7 +213,7 @@ void PhysicsManager::move(PlayerPtr player, Vector3 direction){
 		Quaternion q1 = body->getOrientation();
 		// Get current direction where player is facing
 		Vector3 currentDirection = q1 * Vector3::UNIT_Z;
-		Quaternion q2(currentDirection.angleBetween(direction) ,Ogre::Vector3::UNIT_Y);
+		Quaternion q2 = currentDirection.getRotationTo(direction);
 		body->setOrientation(q1*q2);
 		//body->setLinearVelocity(Vector3(0,body->getLinearVelocity().y,0));
 	}
