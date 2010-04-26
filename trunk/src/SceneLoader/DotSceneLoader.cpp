@@ -694,7 +694,7 @@ void DotSceneLoader::processWaypoint(TiXmlElement *XMLNode, SceneNode *pParent)
 	{
 		lookAtWaypoint = parseVector3(pElement);
 	}
-	mCameraManager->addWaypoint(positionWaypoint, lookAtWaypoint);
+	//mCameraManager->addWaypoint(positionWaypoint, lookAtWaypoint);
 }
 
 void DotSceneLoader::processSkyBox(TiXmlElement *XMLNode)
