@@ -148,6 +148,13 @@ void DotSceneLoader::processScene(TiXmlElement *XMLRoot)
 
 	LogManager::getSingleton().logMessage("[DotSceneLoader] Enemys processed.");
 
+	// Process camera waypoints
+	pElement = XMLRoot->FirstChildElement("waypoints");
+	if(pElement)
+		processWaypoints(pElement);
+
+	LogManager::getSingleton().logMessage("[DotSceneLoader] Waypoints processed.");
+
 }
 
 void DotSceneLoader::processNodes(TiXmlElement *XMLNode)
@@ -656,6 +663,39 @@ void DotSceneLoader::processSubEntity(TiXmlElement *XMLNode, Entity *pEntity)
 	}
 }
 
+void DotSceneLoader::processWaypoints(TiXmlElement *XMLNode)
+{
+	TiXmlElement *pElement;
+
+	// Process waypoint
+	pElement = XMLNode->FirstChildElement("waypoint");
+	while(pElement)
+	{
+		processWaypoint(pElement);
+		pElement = pElement->NextSiblingElement("waypoint");
+	}
+}
+
+void DotSceneLoader::processWaypoint(TiXmlElement *XMLNode, SceneNode *pParent)
+{
+	Vector3 positionWaypoint;
+	Vector3 lookAtWaypoint;
+	TiXmlElement *pElement;
+
+	// Process position
+	pElement = XMLNode->FirstChildElement("position");
+	if(pElement)
+	{
+		positionWaypoint = parseVector3(pElement);
+	}
+	// Process look at
+	pElement = XMLNode->FirstChildElement("lookAt");
+	if(pElement)
+	{
+		lookAtWaypoint = parseVector3(pElement);
+	}
+	mCameraManager->addWaypoint(positionWaypoint, lookAtWaypoint);
+}
 
 void DotSceneLoader::processSkyBox(TiXmlElement *XMLNode)
 {
