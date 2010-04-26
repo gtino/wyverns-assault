@@ -57,6 +57,7 @@ namespace Ogre
 		void processSkyBox(TiXmlElement *XMLNode);
 		void processSkyDome(TiXmlElement *XMLNode);
 		void processSubEntities(TiXmlElement *XMLNode, Entity *pEntity);
+		void processWaypoints(TiXmlElement *XMLNode);
 
 		void processNode(TiXmlElement *XMLNode, SceneNode *pParent = 0);
 		void processCamera(TiXmlElement *XMLNode, SceneNode *pParent = 0);
@@ -66,6 +67,7 @@ namespace Ogre
 		void processTrackTarget(TiXmlElement *XMLNode, SceneNode *pParent);
 		void processEntity(TiXmlElement *XMLNode, SceneNode *pParent);
 		void processSubEntity(TiXmlElement *XMLNode, Entity *pEntity);
+		void processWaypoint(TiXmlElement *XMLNode, SceneNode *pParent = 0);
 
 		void processLightRange(TiXmlElement *XMLNode, Light *pLight);
 		void processLightAttenuation(TiXmlElement *XMLNode, Light *pLight);
