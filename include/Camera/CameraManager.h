@@ -61,14 +61,11 @@ namespace WyvernsAssault
 
 		/** Camera functions */
 		void updateCamera(Real timeSinceLastFrame);
-		void zoom(Real zoom);		
 
 		/** Camera types functions */
 		void gameCamera();
-		void fpsCamera();
+		void freeCamera();
 		void fixedCamera(int id);
-		void travelCamera(int id);
-		void scenarioCamera();
 		void nextCamera() { mCameraCS->setCurrentCameraMode(mCameraCS->getNextCameraMode()); }
 
 		/** Fixed cameras functions */
@@ -89,19 +86,12 @@ namespace WyvernsAssault
 		CCS::FixedCameraMode*				mCamFixedMode;
 		CCS::FixedDirectionCameraMode*		mCamFixedDirMode;
 
-		CCS::PlaneBindedCameraMode*			mCamPlaneMode;
 		CCS::ChaseCameraMode*				mCamChaseMode;
-
-		/*CCS::ChaseFreeYawAxisCameraMode*	mCamChaseFreeMode;
-		CCS::AttachedCameraMode*			mCamAttachedMode;*/
 
 	private:
 		SceneManager*	mSceneManager;
 		RenderWindow*	mRenderWindow;
 		Viewport*		mViewport;
-
-	protected:
-		Real			distance;
 	};
 }
 
