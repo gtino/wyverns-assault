@@ -116,7 +116,7 @@ function runWizardLogic(enemyId, state)
 		elseif (distance>SightDistance and timeout>15) then -- We cannot see the enemy anymore!
 			newState = What -- But still we are waiting to se what's going on
 		end
-	elseif state == Rage then -- ...we are attacking the player!
+	elseif state == Rage then -- ...we are attacking the player! Short Range Magic!
 		if distance>FightingDistance then -- The player is too far
 			newState = Magic -- ...fireballs
 		elseif distance>SightDistance then -- ...well the player really ran away
@@ -163,13 +163,13 @@ function runPeasantLogic(enemyId, state)
 			newState = Idle -- ...work again
 		end
 	elseif state == Fear then
-		if (distance<FightingDistance and not Enemy.isHurt(enemyId)) then -- Try to fight
+		if (distance<FightingDistance and Enemy.isHurt(enemyId)) then -- Try to fight
 			newState = Rage
 		else
 			newState = Fear -- Fear is just fear
 		end
 	elseif state == Rage then -- ...we are attacking the player!
-		if Enemy.isHurt(enemyId) then -- But we are now seriously hurt!
+		if distance<FightingDistance then -- But we are now seriously hurt!
 			newState = Fear -- Get the fuck outta here!
 		else
 			newState = Rage -- Kepp fighting your way otta here!
@@ -204,11 +204,15 @@ function runSoldierLogic(enemyId, state)
 		newState = Idle
 	elseif state == Love then -- A soldier is never in love!
 		newState = Patrol -- ..he just patrols!
-	elseif state == Idle then -- A soldier in never idle!
-		newState = Patrol -- ...he always patrols!
+	elseif state == Idle then -- A soldier should never be in idle!
+		if timeout>10 then
+			newState = Patrol -- ...after a while he patrols again!
+		end
 	elseif state == Patrol then -- Enemy is patrolling...
 		if distance<SoundDistance then -- And suddenly hears a noise..
 			newState = What -- What happened? 
+		elseif timeout>20 then -- Bored, goes to idle
+			newState = Idle 
 		end
 	elseif state == What then -- Something is happening here...
 		if distance<SightDistance then -- The enemy can see the player!
@@ -219,7 +223,7 @@ function runSoldierLogic(enemyId, state)
 	elseif state == Alert then -- ...we see the player and we are chasing him
 		if distance<FightingDistance then -- ...we reached the player
 			newState = Rage -- ...so let's attack him!
-		elseif (distance>SightDistance and timeout>10) then -- We cannot see the enemy anymore!
+		elseif distance>SightDistance then -- We cannot see the enemy anymore!
 			newState = What -- But still we are waiting to se what's going on
 		end
 	elseif state == Rage then -- ...we are attacking the player!
@@ -231,7 +235,11 @@ function runSoldierLogic(enemyId, state)
 			newState = What -- Caution for a little bit more...
 		end
 	elseif state == Fear then
-		newState = Fear -- Fear is just fear
+		if distance>SoundDistance then
+			newState = Idle -- Fear is just fear
+		else
+			newState = Fear
+		end
 	else
 		newState = state -- same as before
 	end
