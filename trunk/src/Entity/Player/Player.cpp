@@ -80,11 +80,14 @@ void Player::attackA()
 
 void Player::updateAnimation(float elapsedSeconds)
 {
-	mIddle->addTime(elapsedSeconds);
 	mRun->addTime(elapsedSeconds);
 	if(attacking)
 	{
 		mAttackA->addTime(elapsedSeconds);
+	}
+	else
+	{
+		mIddle->addTime(elapsedSeconds);
 	}
 	if(mAttackA->getTimePosition() + elapsedSeconds > mAttackA->getLength())
 	{

@@ -69,20 +69,24 @@ void PlayState::initialize()
 	
 	// Create a params panel for displaying sample details
 	StringVector items;
-	items.push_back("Player ");
+	items.push_back("Player X");
+	items.push_back("Player Y");
+	items.push_back("Player Z");
 	items.push_back("");
 	items.push_back("Mode");
 	items.push_back("Camera X");
 	items.push_back("Camera Y");
 	items.push_back("Camera Z");
-	items.push_back("Look At");
+	items.push_back("Look At X");
+	items.push_back("Look At Y");
+	items.push_back("Look At Z");
 	items.push_back("");	
 	items.push_back("Filtering");
 	items.push_back("Poly Mode");
  
 	mDetailsPanel = mTrayMgr->createParamsPanel(OgreBites::TL_NONE, "DetailsPanel", 200, items);
-	mDetailsPanel->setParamValue(8, "Bilinear");
-	mDetailsPanel->setParamValue(9, "Solid");
+	mDetailsPanel->setParamValue(12, "Bilinear");
+	mDetailsPanel->setParamValue(13, "Solid");
 	mDetailsPanel->hide();
 
 	//
@@ -170,21 +174,36 @@ void PlayState::input()
 /** Rendering queue */
 bool PlayState::frameRenderingQueued(const Ogre::FrameEvent& evt)
 { 
+	/*tems.push_back("Player X");
+	items.push_back("Player Y");
+	items.push_back("Player Z");
+	items.push_back("");
+	items.push_back("Mode");
+	items.push_back("Camera X");
+	items.push_back("Camera Y");
+	items.push_back("Camera Z");
+	items.push_back("Look At X");
+	items.push_back("Look At Y");
+	items.push_back("Look At Z");
+	items.push_back("");	
+	items.push_back("Filtering");
+	items.push_back("Poly Mode");*/
+
 	mTrayMgr->frameRenderingQueued(evt);
 	if (!mTrayMgr->isDialogVisible())
 	{
 		if (mDetailsPanel->isVisible())   // if details panel is visible, then update its contents
 		{
-			mDetailsPanel->setParamValue(0, StringConverter::toString(mPlayer1->getPosition().x, 4) + ", " + 
-											StringConverter::toString(mPlayer1->getPosition().y, 2) + ", " + 
-											StringConverter::toString(mPlayer1->getPosition().z, 3));
-			mDetailsPanel->setParamValue(2, mCameraManager->getCameraMode().c_str());
-			mDetailsPanel->setParamValue(3, StringConverter::toString(mCameraManager->getCameraPosition().x, 4));
-			mDetailsPanel->setParamValue(4, StringConverter::toString(mCameraManager->getCameraPosition().y, 4));
-			mDetailsPanel->setParamValue(5, StringConverter::toString(mCameraManager->getCameraPosition().z, 4));
-			mDetailsPanel->setParamValue(6, StringConverter::toString(mCameraManager->getCameraLookAt().x, 3) + ", " + 
-											StringConverter::toString(mCameraManager->getCameraLookAt().y, 3) + ", " + 
-											StringConverter::toString(mCameraManager->getCameraLookAt().z, 3));
+			mDetailsPanel->setParamValue(0, StringConverter::toString(mPlayer1->getPosition().x, 5));
+			mDetailsPanel->setParamValue(1, StringConverter::toString(mPlayer1->getPosition().y, 5));
+			mDetailsPanel->setParamValue(2, StringConverter::toString(mPlayer1->getPosition().z, 5));
+			mDetailsPanel->setParamValue(4, mCameraManager->getCameraMode().c_str());
+			mDetailsPanel->setParamValue(5, StringConverter::toString(mCameraManager->getCameraPosition().x, 5));
+			mDetailsPanel->setParamValue(6, StringConverter::toString(mCameraManager->getCameraPosition().y, 5));
+			mDetailsPanel->setParamValue(7, StringConverter::toString(mCameraManager->getCameraPosition().z, 5));
+			mDetailsPanel->setParamValue(8, StringConverter::toString(mCameraManager->getCameraLookAt().x, 5));
+			mDetailsPanel->setParamValue(9, StringConverter::toString(mCameraManager->getCameraLookAt().y, 5));
+			mDetailsPanel->setParamValue(10, StringConverter::toString(mCameraManager->getCameraLookAt().z, 5));
 		}
 	}
 
@@ -283,11 +302,11 @@ void PlayState::update(const float elapsedSeconds)
 			mPlayer1->move(0,0,0);
 			mPhysicsManager->move(mPlayer1,Vector3(0,0,0));
 		}
-		// Attack A
+		/*// Attack A
 		if(this->mInputManager->getKeyboard()->isKeyDown(OIS::KeyCode::KC_SPACE))
 		{
 			mPlayer1->attackA();			
-		}
+		}*/
 	}
 
 	// UI DEBUG KEYS - Increments/Decrements kills and points
@@ -559,7 +578,7 @@ bool PlayState::keyReleased(const OIS::KeyEvent& e)
 		break;
 	// Cycle filtering mode
 	case OIS::KeyCode::KC_T:
-		switch (mDetailsPanel->getParamValue(8).asUTF8()[0])
+		switch (mDetailsPanel->getParamValue(12).asUTF8()[0])
 		{
 		case 'B':
 			newVal = "Trilinear";
@@ -583,7 +602,7 @@ bool PlayState::keyReleased(const OIS::KeyEvent& e)
 		} 
 		MaterialManager::getSingleton().setDefaultTextureFiltering(tfo);
 		MaterialManager::getSingleton().setDefaultAnisotropy(aniso);
-		mDetailsPanel->setParamValue(8, newVal);	
+		mDetailsPanel->setParamValue(12, newVal);	
 		break;
 	// Cycle polygon rendering mode
 	case OIS::KeyCode::KC_R: 
@@ -602,7 +621,7 @@ bool PlayState::keyReleased(const OIS::KeyEvent& e)
 			pm = Ogre::PM_SOLID;
 		} 
 		mCameraManager->setPolygonMode(pm);
-		mDetailsPanel->setParamValue(9, newVal);
+		mDetailsPanel->setParamValue(13, newVal);
 		break;
 	// Reload all textures
 	case OIS::KeyCode::KC_F5:
@@ -623,6 +642,11 @@ bool PlayState::keyReleased(const OIS::KeyEvent& e)
 	case OIS::KeyCode::KC_C:
 		mPhysicsManager->showDebugObjects();
 		break;
+
+	// Attack A
+	case OIS::KeyCode::KC_SPACE:
+		mPlayer1->attackA();
+		break;		
 	}
 
 	return true;
