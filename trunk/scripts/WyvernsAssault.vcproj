@@ -96,7 +96,7 @@
 			<Tool
 				Name="VCPostBuildEventTool"
 				Description="Copying exe to samples bin directory ..."
-				CommandLine="xcopy &quot;$(OGRE_HOME)\Bin\$(ConfigurationName)\*.dll&quot; &quot;$(OutDir)&quot; /s/e/d/i/y&#x0D;&#x0A;xcopy &quot;$(SolutionDir)data&quot; &quot;$(OutDir)\data\&quot; /s/e/d/i/y&#x0D;&#x0A;xcopy &quot;$(SolutionDir)config&quot; &quot;$(OutDir)\config\&quot; /s/e/d/i/y&#x0D;&#x0A;xcopy &quot;$(SolutionDir)externals\Fmod\dll\*.dll&quot; &quot;$(OutDir)&quot; /s/e/d/i/y&#x0D;&#x0A;xcopy &quot;$(SolutionDir)externals\Lua-5.0-SDK\lib\*.dll&quot; &quot;$(OutDir)&quot; /s/e/d/i/y&#x0D;&#x0A;xcopy &quot;$(SolutionDir)externals\OgreOde\bin\$(ConfigurationName)\*.dll&quot; &quot;$(OutDir)&quot; /s/e/d/i/y&#x0D;&#x0A;xcopy &quot;$(SolutionDir)externals\CameraControlSystem\bin\$(ConfigurationName)\*.dll&quot; &quot;$(OutDir)&quot; /s/e/d/i/y"
+				CommandLine="xcopy &quot;$(OGRE_HOME)\Bin\$(ConfigurationName)\*.dll&quot; &quot;$(OutDir)&quot; /s/e/d/i/y&#x0D;&#x0A;xcopy &quot;$(SolutionDir)data&quot; &quot;$(OutDir)\data\&quot; /s/e/d/i/y&#x0D;&#x0A;xcopy &quot;$(SolutionDir)config&quot; &quot;$(OutDir)\config\&quot; /s/e/d/i/y&#x0D;&#x0A;xcopy &quot;$(SolutionDir)externals\Fmod\dll\*.dll&quot; &quot;$(OutDir)&quot; /s/e/d/i/y&#x0D;&#x0A;xcopy &quot;$(SolutionDir)externals\Lua-5.0-SDK\lib\*.dll&quot; &quot;$(OutDir)&quot; /s/e/d/i/y&#x0D;&#x0A;xcopy &quot;$(SolutionDir)externals\OgreOde\bin\$(ConfigurationName)\*.dll&quot; &quot;$(OutDir)&quot; /s/e/d/i/y&#x0D;&#x0A;xcopy &quot;$(SolutionDir)externals\CameraControlSystem\bin\$(ConfigurationName)\*.dll&quot; &quot;$(OutDir)&quot; /s/e/d/i/y&#x0D;&#x0A;"
 			/>
 		</Configuration>
 		<Configuration
@@ -188,7 +188,7 @@
 			<Tool
 				Name="VCPostBuildEventTool"
 				Description="Copying exe to samples bin directory ..."
-				CommandLine="xcopy &quot;$(OGRE_HOME)\Bin\$(ConfigurationName)\*.dll&quot; &quot;$(OutDir)&quot; /s/e/d/i/y&#x0D;&#x0A;xcopy &quot;$(SolutionDir)data&quot; &quot;$(OutDir)\data\&quot; /s/e/d/i/y&#x0D;&#x0A;xcopy &quot;$(SolutionDir)config&quot; &quot;$(OutDir)\config\&quot; /s/e/d/i/y&#x0D;&#x0A;xcopy &quot;$(SolutionDir)externals\Fmod\dll\*.dll&quot; &quot;$(OutDir)&quot; /s/e/d/i/y&#x0D;&#x0A;xcopy &quot;$(SolutionDir)externals\Lua-5.0-SDK\lib\*.dll&quot; &quot;$(OutDir)&quot; /s/e/d/i/y&#x0D;&#x0A;xcopy &quot;$(SolutionDir)externals\OgreOde\bin\$(ConfigurationName)\*.dll&quot; &quot;$(OutDir)&quot; /s/e/d/i/y&#x0D;&#x0A;xcopy &quot;$(SolutionDir)externals\CameraControlSystem\bin\$(ConfigurationName)\*.dll&quot; &quot;$(OutDir)&quot; /s/e/d/i/y"
+				CommandLine="xcopy &quot;$(OGRE_HOME)\Bin\$(ConfigurationName)\*.dll&quot; &quot;$(OutDir)&quot; /s/e/d/i/y&#x0D;&#x0A;xcopy &quot;$(SolutionDir)data&quot; &quot;$(OutDir)\data\&quot; /s/e/d/i/y&#x0D;&#x0A;xcopy &quot;$(SolutionDir)config&quot; &quot;$(OutDir)\config\&quot; /s/e/d/i/y&#x0D;&#x0A;xcopy &quot;$(SolutionDir)externals\Fmod\dll\*.dll&quot; &quot;$(OutDir)&quot; /s/e/d/i/y&#x0D;&#x0A;xcopy &quot;$(SolutionDir)externals\Lua-5.0-SDK\lib\*.dll&quot; &quot;$(OutDir)&quot; /s/e/d/i/y&#x0D;&#x0A;xcopy &quot;$(SolutionDir)externals\OgreOde\bin\$(ConfigurationName)\*.dll&quot; &quot;$(OutDir)&quot; /s/e/d/i/y&#x0D;&#x0A;xcopy &quot;$(SolutionDir)externals\CameraControlSystem\bin\$(ConfigurationName)\*.dll&quot; &quot;$(OutDir)&quot; /s/e/d/i/y&#x0D;&#x0A;"
 			/>
 		</Configuration>
 	</Configurations>
