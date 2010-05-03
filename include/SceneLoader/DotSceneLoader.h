@@ -11,6 +11,7 @@
 #include "..\Graphics\LightsManager.h"
 #include "..\Physics\PhysicsManager.h"
 #include "..\Entity\Enemy\EnemyManager.h"
+#include "..\Entity\Item\ItemManager.h"
 
 
 // Forward declarations
@@ -40,7 +41,7 @@ namespace Ogre
 		DotSceneLoader() : mSceneMgr(0) {}
 		virtual ~DotSceneLoader() {}
 
-		void parseDotScene(const String &SceneName, const String &groupName,SceneManager *levelSceneManager, WyvernsAssault::CameraManager* cameraManager, WyvernsAssault::LightsManager* lightsManager,WyvernsAssault::EnemyManager* enemysManager ,WyvernsAssault::PhysicsManager* physicsManager ,SceneNode *pAttachNode = NULL, const String &sPrependNode = "");
+		void parseDotScene(const String &SceneName, const String &groupName,SceneManager *levelSceneManager, WyvernsAssault::CameraManager* cameraManager, WyvernsAssault::LightsManager* lightsManager,WyvernsAssault::EnemyManager* enemysManager ,WyvernsAssault::PhysicsManager* physicsManager, WyvernsAssault::ItemManager* itemsManager ,SceneNode *pAttachNode = NULL, const String &sPrependNode = "");
 		String getProperty(const String &ndNm, const String &prop);
 
 		std::vector<nodeProperty> nodeProperties;
@@ -58,6 +59,7 @@ namespace Ogre
 		void processSkyDome(TiXmlElement *XMLNode);
 		void processSubEntities(TiXmlElement *XMLNode, Entity *pEntity);
 		void processWaypoints(TiXmlElement *XMLNode);
+		void processItems(TiXmlElement *XMLNode);
 
 		void processNode(TiXmlElement *XMLNode, SceneNode *pParent = 0);
 		void processCamera(TiXmlElement *XMLNode, SceneNode *pParent = 0);
@@ -90,6 +92,7 @@ namespace Ogre
 		WyvernsAssault::LightsManager* mLightsManager;
 		WyvernsAssault::EnemyManager* mEnemyManager;
 		WyvernsAssault::PhysicsManager* mPhysicsManager;
+		WyvernsAssault::ItemManager* mItemManager;
 	};
 }
 

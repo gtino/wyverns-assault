@@ -415,6 +415,10 @@
 					Name="Item"
 					>
 					<File
+						RelativePath="..\src\Entity\Item\Item.cpp"
+						>
+					</File>
+					<File
 						RelativePath="..\src\Entity\Item\ItemManager.cpp"
 						>
 					</File>
@@ -700,6 +704,10 @@
 				<Filter
 					Name="Item"
 					>
+					<File
+						RelativePath="..\include\Entity\Item\Item.h"
+						>
+					</File>
 					<File
 						RelativePath="..\include\Entity\Item\ItemManager.h"
 						>

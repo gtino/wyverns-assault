@@ -20,8 +20,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
 -----------------------------------------------------------------------------
 */
-#ifndef __ENEMY_H__
-#define __ENEMY_H__
+#ifndef __ITEM_H__
+#define __ITEM_H__
 
 #include <Ogre.h>
 
@@ -29,89 +29,56 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #include "..\..\Physics\PhysicsInterface.h"
 #include "..\..\Logic\LogicInterface.h"
 
-#define ENEMY_BILLBOARD_SHOW_TIME 2.0f // seconds
-
-#define ENEMY_SPEED_SLOW 10.0f
-#define ENEMY_SPEED_MEDIUM 30.0f
-#define ENEMY_SPEED_FAST 50.0f
-
-#define ENEMY_ROTATION_SPEED 3.0f
+#define ITEM_BILLBOARD_SHOW_TIME 2.0f // seconds
 
 namespace WyvernsAssault
 {
-	/** List of enemy types */
-	enum EnemyTypes
+	/** List of item types */
+	enum ItemTypes
 	{
-		Naked	= 0,
-		Soldier	= 1,
-		Wizard	= 2,
-		Knight	= 3,
-		Peasant	= 4,
-		Woman	= 5
+		LiveSmall	= 0,
+		LiveMedium	= 1,
+		LiveBig	    = 2,
+		PowerSmall	= 3,
+		PowerMedium	= 4,
+		PowerBig	= 5,
+		ScoreSmall  = 6,
+		ScoreBig    = 7
 	};
 
-	enum EnemyStates
+	enum ItemStates
 	{
-		Initial = 0,
-		Idle = 1,
-		Sleeping = 2,
-		What = 3,
-		Alert = 4,
-		Rage = 5,
-		Love = 6,
-		Fear = 7,
-		Magic = 8,
-		Patrol = 9
+		Modest = 0,
+		Attention = 1,
+		Catch = 2
 	};
 
 	/**
-	Class used to manage all the enemies
+	Class used to manage single item
 	*/
-	class Enemy : public EntityInterface, public PhysicsInterface, public LogicInterface
+	class Item : public EntityInterface, public LogicInterface
 	{
 	public:
-		Enemy(EnemyTypes type);
-		~Enemy();
+		Item(ItemTypes type);
+		~Item();
 
 		virtual void updateEntity(const float elapsedSeconds);
 		virtual void updateLogic(lua_State *L, const float elapsedSeconds);
 
 		void setBillboardSet(BillboardSet* balloonSet);
 
-		float getStateTimeout(){return mStateTimeout;}
-
-		void setTarget(SceneNode* target);
-		void autoTrackTarget();
-
-		void move(Real x, Real y, Real z);
-		void move(Vector3 to);
-
-		bool isHurt();
-
 	private:
-		EnemyTypes mType;
-
+		ItemTypes mType;
 		BillboardSet* mBalloonSet;
 		Billboard* mBalloon;
 
-		SceneNode* mTarget;
-
-		EnemyStates mState;
-		float mStateTimeout;
-		
-		float mSpeed;
-		float mMaxLife;
-		float mLife;
-		Ogre::Vector3 mDirection;
-
-	private:
-		void chase();
+		ItemStates mState;
 
 	public:
-		static EnemyTypes StringToType(Ogre::String typeStr);
+		static ItemTypes StringToType(Ogre::String typeStr);
 	};
 
-	typedef boost::shared_ptr<Enemy> EnemyPtr;
+	typedef boost::shared_ptr<Item> ItemPtr;
 }
 
-#endif // __ENEMY_H__
+#endif // __ITEM_H__

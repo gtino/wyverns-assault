@@ -1,25 +1,3 @@
-/*
------------------------------------------------------------------------------
-Wyverns' Assault 3D Videgame.
-Copyright (C) 2010  Giorgio Tino, Javier Soto Huesa, Jordi Carreras Ribot, 
-					Marc Serena, Elm Oliver Torres
-
-This program is free software; you can redistribute it and/or
-modify it under the terms of the GNU General Public License
-as published by the Free Software Foundation; either version 2
-of the License, or (at your option) any later version.
-
-This program is distributed in the hope that it will be useful,
-but WITHOUT ANY WARRANTY; without even the implied warranty of
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-GNU General Public License for more details.
-
-You should have received a copy of the GNU General Public License
-along with this program; if not, write to the Free Software
-Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
-
------------------------------------------------------------------------------
-*/
 #ifndef __ITEM_MANAGER_H__
 #define __ITEM_MANAGER_H__
 
@@ -27,40 +5,64 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #include <OgreSingleton.h>
 
 #include "..\..\..\include\Lua\LuaInterface.h"
-
 #include "..\..\..\include\Entity\EntityManager.h"
+#include "Item.h"
 
 namespace WyvernsAssault
 {
+
+	typedef std::map<Ogre::String,ItemPtr> ItemMap;
+	typedef std::map<Ogre::String,ItemPtr>::iterator ItemMapIterator;
+
+	typedef std::vector<ItemPtr> ItemList;
+	typedef std::vector<ItemPtr>::iterator ItemListIterator;
+
 	/**
-	Class used to manage all the enemies
+	Class used to manage all the items
 	*/
 	class ItemManager : public Ogre::Singleton<ItemManager>, public EntityManager, public LuaInterface
 	{
 	public:
-		ItemManager();
+		ItemManager(Ogre::SceneManager* sceneManager);
 		~ItemManager();
-		static ItemManager& getSingleton(void);
-		static ItemManager* getSingletonPtr(void);
 
-	public:
 		bool initialize();
 		void finalize();
 
+		static ItemManager& getSingleton(void);
+		static ItemManager* getSingletonPtr(void);
+
+		ItemPtr createItem(ItemTypes type);
+		ItemPtr createItem(ItemTypes type, Ogre::String name, Ogre::String mesh);
+
+		ItemPtr getItem(int index);
+		ItemPtr getItem(Ogre::String name);
+		
+		void update(const float elpasedSeconds);
+
+		bool removeItem(Ogre::String name);
+
+	private:
+		Ogre::String createUniqueId();
+
+	private:
+		Ogre::SceneManager* mSceneManager;
+		ItemList mItemList;
+		ItemMap mItemMap;
+		int mId;
+
 	// --------------------------------
 	// BEGIN Lua Interface Declarations
-	// --------------------------------
+	// -------------------------------- 
 	public:
 		// Item Lib (exported to Lua)
 		LUA_LIBRARY("Item",itemlib);
 
 		LUA_FUNCTION(createItem)
-		LUA_FUNCTION(getItemPosition)
-		LUA_FUNCTION(setItemPosition)
 		LUA_FUNCTION(removeItem)
 
 	public:
-		void luaLoadScripts(){};
+		void luaLoadScripts(){luaLoadScript(".\\data\\scripts\\ItemLogic.lua");};
 	// ------------------------------
 	// END Lua Interface Declarations
 	// ------------------------------

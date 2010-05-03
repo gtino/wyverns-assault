@@ -92,7 +92,7 @@ void PlayState::initialize()
 	//
 	// Item Manager
 	//
-	mItemManager = new ItemManager();
+	mItemManager = new ItemManager(mSceneManager);
 	mItemManager->initialize();
 
 	//
@@ -100,7 +100,9 @@ void PlayState::initialize()
 	// 
 	mPhysicsManager = new PhysicsManager(mSceneManager);
 	mPhysicsManager->initialize();
-	// Physics Temporaly Calls (DotSceneLoader task)
+	//
+	//DELETE: Physics Temporaly Calls (DotSceneLoader task)
+	//
 	mPhysicsManager->createGround("physic_ground.mesh");
 	mPhysicsManager->addPlayer(mPlayer1);
 
@@ -126,6 +128,7 @@ void PlayState::initialize()
 	mLuaManager->registerInterface(mLogicManager);
 	mLuaManager->registerInterface(mEnemyManager);
 	mLuaManager->registerInterface(mPhysicsManager);
+	mLuaManager->registerInterface(mItemManager);
 
 	//
 	// THIRD :	This call to 'initialize' will initialize Lua,
@@ -136,8 +139,8 @@ void PlayState::initialize()
 
 	//Load scene XML file
 	std::auto_ptr<DotSceneLoader> sceneLoader(new DotSceneLoader());
-	sceneLoader->parseDotScene("Level1_1.scene","General", mSceneManager, mCameraManager, mLightsManager, mEnemyManager, mPhysicsManager);
-	sceneLoader->parseDotScene("Stage1_1.XML","General", mSceneManager, mCameraManager, mLightsManager, mEnemyManager, mPhysicsManager);
+	sceneLoader->parseDotScene("Level1_1.scene","General", mSceneManager, mCameraManager, mLightsManager, mEnemyManager, mPhysicsManager, mItemManager);
+	sceneLoader->parseDotScene("Stage1_1.XML","General", mSceneManager, mCameraManager, mLightsManager, mEnemyManager, mPhysicsManager, mItemManager);
 }
 
 /** Load resources */
@@ -352,6 +355,8 @@ void PlayState::update(const float elapsedSeconds)
 	mLightsManager->update(elapsedSeconds);
 
 	mEnemyManager->update(elapsedSeconds);
+
+	mItemManager->update(elapsedSeconds);
 
 	//
 	// Update animation state

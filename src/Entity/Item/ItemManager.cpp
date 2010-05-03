@@ -14,18 +14,14 @@ ItemManager& ItemManager::getSingleton(void)
 }
 // END SINGLETON
 
-ItemManager::ItemManager()
+ItemManager::ItemManager(Ogre::SceneManager* sceneManager): mId(0)
 {
-	//
-	// TODO Constructor logic HERE
-	//
+	mSceneManager = sceneManager;
 }
 
 ItemManager::~ItemManager()
 {
-	//
-	// TODO Distructor logic HERE
-	//
+	finalize();
 }
 
 bool ItemManager::initialize()
@@ -43,13 +39,110 @@ void ItemManager::finalize()
 	//
 }
 
+ItemPtr ItemManager::createItem(ItemTypes type)
+{
+	Ogre::String mesh;
+
+	switch(type)
+	{
+	case LiveSmall:
+		mesh = Ogre::String("crown.mesh");
+		break;
+	case LiveMedium:
+		mesh = Ogre::String("beerGlass.mesh");
+		break;
+	default:
+		mesh = Ogre::String("beerTank.mesh");
+		break;
+	}
+
+	Ogre::String name = createUniqueId();
+
+	return createItem(type, name, mesh);
+}
+
+ItemPtr ItemManager::createItem(ItemTypes type, Ogre::String name, Ogre::String mesh)
+{
+	// Item name == Mesh Name!
+	Ogre::Entity* itemMesh = mSceneManager->createEntity(name, mesh);
+	Ogre::SceneNode* itemSceneNode = mSceneManager->getRootSceneNode()->createChildSceneNode();
+
+	itemSceneNode->attachObject(itemMesh);
+	
+	// Balloon billboard
+	Ogre::BillboardSet* mBalloonSet = mSceneManager->createBillboardSet(name + "_BillboardSet");
+	itemSceneNode->attachObject(mBalloonSet);
+
+	ItemPtr item = ItemPtr(new Item(type));
+	item->initializeEntity(itemMesh, itemSceneNode);
+	item->setBillboardSet(mBalloonSet);
+
+	mItemList.push_back(item);
+	mItemMap[name] = item;
+
+	//mCount++;
+
+	return item;
+}
+
+Ogre::String ItemManager::createUniqueId()
+{
+	Ogre::StringStream countStrStr;
+	countStrStr << mId;
+
+	Ogre::String uniqueId = "Item_" + countStrStr.str();
+
+	mId++;
+
+	return uniqueId;
+}
+
+ItemPtr ItemManager::getItem(int index)
+{
+	return mItemList[index];
+}
+
+
+ItemPtr ItemManager::getItem(Ogre::String name)
+{
+	return mItemMap[name];
+}
+
+bool ItemManager::removeItem(Ogre::String name)
+{
+	//
+	// TODO : maybe we don't really need a list, and we can just use a map...
+	//
+	ItemPtr itemToErase = mItemMap[name];
+
+	mItemMap.erase(name);
+	
+	ItemListIterator it = find(mItemList.begin(), mItemList.end(), itemToErase);
+	
+	if( it != mItemList.end() )
+		mItemList.erase(it);
+
+	mSceneManager->destroyEntity(name);
+
+	return true;
+}
+
+void ItemManager::update(const float elapsedSeconds)
+{
+	for(int i = 0; i < mItemList.size() ; i++)
+	{
+		ItemPtr item =  mItemList[i];
+
+		item->updateLogic(L,elapsedSeconds);
+		item->updateEntity(elapsedSeconds);
+	}
+}
+
 // --------------------------------
-// Lua Item Lib
+// Lua Enemy Lib
 // --------------------------------
 LUA_BEGIN_BINDING(ItemManager::itemlib)
 LUA_BIND("create", ItemManager::createItem)
-LUA_BIND("getPosition", ItemManager::getItemPosition)
-LUA_BIND("setPosition", ItemManager::setItemPosition)
 LUA_BIND("remove", ItemManager::removeItem)
 LUA_END_BINDING()
 
@@ -58,23 +151,13 @@ int ItemManager::createItem(lua_State *L)
 	/* get number of arguments */
 	int n = lua_gettop(L);
 
-	/* return the number of results */
-	return 1;
-}
+	// n should be 1, the enemy type
 
-int ItemManager::getItemPosition(lua_State *L)
-{
-	/* get number of arguments */
-	int n = lua_gettop(L);
+	int type = luaL_checkint(L, 1);
 
-	/* return the number of results */
-	return 1;
-}
+	ItemPtr item = ItemManager::getSingleton().createItem((ItemTypes)type);
 
-int ItemManager::setItemPosition(lua_State *L)
-{
-	/* get number of arguments */
-	int n = lua_gettop(L);
+	lua_pushstring(L,item->getName().c_str());
 
 	/* return the number of results */
 	return 1;
