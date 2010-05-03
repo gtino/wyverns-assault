@@ -748,25 +748,8 @@
 			<entity type="LiveBig" meshFile="beerTank.mesh" name="LiveBig1"/>
 		</item>
 		<item>
-			<position x="580" y="6" z="760"/>
-			<entity type="LiveBig" meshFile="chikenItem.mesh" name="LiveBig2"/>
-		</item>
-		<item>
-			<position x="880" y="6" z="700"/>
-			<entity type="LiveBig" meshFile="chikenItem.mesh" name="LiveBig3"/>
-		</item>
-		<item>
-			<position x="1178" y="25" z="-17"/>
-			<entity type="LiveSmall" meshFile="chikenLegItem.mesh" name="LiveSmall1"/>
-		</item>
-		<item>
 			<position x="937" y="6" z="-310"/>
 			<entity type="PowerBig" meshFile="crown.mesh" name="PowerBig1"/>
-		</item>
-	
-		<item>
-			<position x="77" y="15" z="-515"/>
-			<entity type="PowerMedium" meshFile="helm2.mesh" name="PowerMedium1"/>
 		</item>
 	
 	</items>

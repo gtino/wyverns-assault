@@ -49,9 +49,9 @@ void Item::setBillboardSet(BillboardSet* balloonSet)
 
 void Item::updateEntity(const float elapsedSeconds)
 {
-	//mAnimationState = mMesh->getAnimationState("Iddle");
-	//mAnimationState->setEnabled(true);
-	//mAnimationState->setLoop(true);
+	mAnimationState = mMesh->getAnimationState("Iddle");
+	mAnimationState->setEnabled(true);
+	mAnimationState->addTime(elapsedSeconds);
 	return;
 }
 
