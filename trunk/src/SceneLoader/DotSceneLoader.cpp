@@ -2,12 +2,13 @@
 #include "..\include\SceneLoader\tinyxml.h"
 #include "Ogre.h"
 #include "..\include\Entity\Enemy\Enemy.h"
+#include "..\include\Entity\Item\Item.h"
 
 using namespace std;
 using namespace Ogre;
 using namespace WyvernsAssault;
 
-void DotSceneLoader::parseDotScene(const String &SceneName, const String &groupName, SceneManager *levelSceneManager, WyvernsAssault::CameraManager* cameraManager, WyvernsAssault::LightsManager* lightsManager,WyvernsAssault::EnemyManager* enemysManager , WyvernsAssault::PhysicsManager* physicsManager, SceneNode *pAttachNode, const String &sPrependNode)
+void DotSceneLoader::parseDotScene(const String &SceneName, const String &groupName, SceneManager *levelSceneManager, WyvernsAssault::CameraManager* cameraManager, WyvernsAssault::LightsManager* lightsManager,WyvernsAssault::EnemyManager* enemysManager , WyvernsAssault::PhysicsManager* physicsManager, WyvernsAssault::ItemManager* itemsManager,SceneNode *pAttachNode, const String &sPrependNode)
 {
 
 	//Set SceneManager
@@ -24,6 +25,9 @@ void DotSceneLoader::parseDotScene(const String &SceneName, const String &groupN
 
 	//Set PhysicsManager
 	mPhysicsManager = physicsManager;
+
+	//Set ItemsManager
+	mItemManager = itemsManager;
 
 	//Set up shared object values
 	m_sGroupName = groupName;
@@ -155,6 +159,13 @@ void DotSceneLoader::processScene(TiXmlElement *XMLRoot)
 
 	LogManager::getSingleton().logMessage("[DotSceneLoader] Waypoints processed.");
 
+	// Process items
+	pElement = XMLRoot->FirstChildElement("items");
+	if(pElement)
+		processItems(pElement);
+
+	LogManager::getSingleton().logMessage("[DotSceneLoader] Items processed.");
+
 }
 
 void DotSceneLoader::processNodes(TiXmlElement *XMLNode)
@@ -260,6 +271,60 @@ void DotSceneLoader::processCameras(TiXmlElement *XMLNode)
 		processCamera(pElement);
 		pElement = pElement->NextSiblingElement("camera");
 	}
+}
+
+void DotSceneLoader::processItems(TiXmlElement *XMLNode)
+{
+	TiXmlElement *pElement;
+	TiXmlElement *pElementEntity;
+	TiXmlElement *pElementPosition;
+	TiXmlElement *pElementScale;
+
+	// Process item
+	pElement = XMLNode->FirstChildElement("item");
+	while(pElement)
+	{
+		Ogre::String name;
+		Ogre::String mesh;
+		Ogre::String type;
+		Ogre::Vector3 position = Vector3::ZERO;
+		Ogre::Vector3 scale= Vector3::UNIT_SCALE;
+
+		// Process entity
+		pElementEntity = pElement->FirstChildElement("entity");
+		if(pElementEntity)
+		{
+			// Create item
+			name = getAttrib(pElementEntity, "name");
+			mesh = getAttrib(pElementEntity, "meshFile");
+			type = getAttrib(pElementEntity, "type");
+		}
+
+		// Process position
+		pElementPosition = pElement->FirstChildElement("position");
+		if(pElementPosition)
+		{
+			position = parseVector3(pElementPosition);
+		}
+
+		// Process scale
+		pElementScale = pElement->FirstChildElement("scale");
+		if(pElementScale)
+		{
+			scale = parseVector3(pElementScale);
+		}
+
+		// Add to ItemManager
+		ItemPtr item = mItemManager->createItem(Item::StringToType(type), name, mesh);
+		item->setPosition(position);
+		item->setScale(scale);
+		
+		// Add the enemy to the physics manager
+		//mPhysicsManager->addEnemy(enemy);
+
+		pElement = pElement->NextSiblingElement("item");
+	}
+		
 }
 
 void DotSceneLoader::processLights(TiXmlElement *XMLNode)
