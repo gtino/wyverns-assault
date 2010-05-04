@@ -25,7 +25,7 @@ bool GraphicsManager::initialize()
 	// create an instance of LogManager prior to using LogManager::getSingleton()
 	Ogre::LogManager* logMgr = new Ogre::LogManager;
 	Ogre::Log *log = Ogre::LogManager::getSingleton().createLog(WYVERNS_ASSAULT_LOG_FILE, true, true, false);
-	log->setLogDetail(Ogre::LL_BOREME);
+	log->setLogDetail(Ogre::LL_NORMAL);
 
 	// Create the root
 	mRoot = new Ogre::Root( WYVERNS_ASSAULT_PLUGINS_FILE, WYVERNS_ASSAULT_CONFIG_FILE);
@@ -154,6 +154,9 @@ void GraphicsManager::loadResources()
 	bbFont->setParameter("resolution","96");
 	// load the ttf
 	bbFont->load();
+
+	// Locally store a pointer to the 
+	mCompositorManager = CompositorManager::getSingletonPtr();
 }
 
 void GraphicsManager::unloadResources()
@@ -188,4 +191,21 @@ SceneManager* GraphicsManager::getSceneManager()
 bool GraphicsManager::renderOneFrame()
 {
 	return mRoot->renderOneFrame();
+}
+
+Ogre::Viewport* GraphicsManager::createViewport(Ogre::Camera* camera)
+{
+	mViewport = mRenderWindow->addViewport(camera);
+
+	return mViewport;
+}
+
+void GraphicsManager::addCompositor(const Ogre::String compositor)
+{
+	mCompositorManager->addCompositor(mViewport,compositor);
+}
+
+void GraphicsManager::setCompositorEnabled(const Ogre::String compositor, const bool enabled)
+{
+	mCompositorManager->getSingleton().setCompositorEnabled(mViewport,compositor,enabled);
 }
