@@ -559,7 +559,7 @@ material WaterPool
 			texture_unit
 			{
 				texture clean_water.png
-				scroll_anim 0.05 0
+				scroll_anim 0.5 0
 			}
 
 		}
@@ -597,7 +597,7 @@ material ToxicWater
 			texture_unit
 			{
 				texture toxic_water.png
-				scroll_anim 0.5 0
+				scroll_anim 0.0 0.05
 			}
 
 		}
