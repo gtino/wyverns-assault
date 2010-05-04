@@ -1,0 +1,75 @@
+
+void outline_vs(
+	float4 position			: POSITION,
+	float2 uv				: TEXCOORD0,
+
+	out float4 oPosition		: POSITION,
+	out float2 oUv			: TEXCOORD0
+)
+{
+	oPosition = position;
+	float2 uv2 = sign(position);
+    	// convert to image space
+    	uv = (float2(uv2.x, -uv2.y) + 1.0) * 0.5;
+	oUv = uv;
+}
+
+
+float Thickness = 10.5f;
+float Threshold = 0.1f;
+
+float getGray(float4 c)
+{
+    return(dot(c.rgb,((0.33333).xxx)));
+}
+
+// Pixel shader applies the edge detection and/or sketch filter postprocessing.
+// It is compiled several times using different settings for the uniform boolean
+// parameters, producing different optimized versions of the shader depending on
+// which combination of processing effects is desired.
+void outline_ps(
+	float4 position			 	 : POSITION,
+	float2 texCoord 			 	 : TEXCOORD0,
+
+	out float4 oColour		       : COLOR, 
+
+	uniform sampler2D SceneSampler 	 : TEXUNIT0,
+	uniform sampler2D NormalDepthSampler : TEXUNIT1
+	//uniform sampler2D SketchSampler
+) 
+{
+ 	  float3 scene;
+	  float3 orig = tex2D(SceneSampler, texCoord);
+	  //float pixelSize = 0.0031;
+    	  //float scale = 1.0;
+
+	  float pixelSize = 0.00093;
+    	  float scale = 10.0;
+
+        float2 samples[4] = {
+        0, -1,
+       -1,  0,
+        1,  0,
+        0,  1
+        };
+        
+        float4 laplace = -4 * tex2D(NormalDepthSampler, texCoord);
+	  //float4 laplace = -4 * tex2D(SceneSampler, texCoord);
+
+
+   	  // Sample the neighbor pixels
+   	  for (int i = 0; i < 4; i++){
+      	laplace += tex2D(NormalDepthSampler, texCoord + pixelSize * samples[i]);
+   	  }
+
+	  //scene *= (0.5 + scale * laplace).rgb;
+	  scene = (scale * laplace).rgb;
+
+	  scene = dot(scene, float3(0.3, 0.59, 0.11)); 
+	  //oColour = tex2D(SceneSampler, texCoord);
+        oColour = 1 - float4(scene , 1);	
+}
+
+
+
+

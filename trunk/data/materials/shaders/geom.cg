@@ -1,0 +1,43 @@
+void geom_vs(
+    in float4 p : POSITION, in float3 n : NORMAL,
+    out float4 cp : POSITION,
+    out float4 vp : TEXCOORD0, // view-space position
+    out float4 vn : TEXCOORD1,
+    uniform float4x4 wvpMat, uniform float4x4 wvMat)
+{
+    cp = mul(wvpMat, p);
+    vp = mul(wvMat, p);
+    vn = mul(wvMat, float4(n, 0));
+}
+
+struct geomOut
+{
+    float4 c : COLOR0;
+};
+
+geomOut geom_ps(in float4 vp : TEXCOORD0, in float4 vn : TEXCOORD1, uniform float far)
+{
+    geomOut OUT;
+    OUT.c = float4(length(vp.xyz) / far, normalize(vn.xyz).xyz);
+    return OUT;
+}
+
+
+void DOF_vs(
+    float4 pos: POSITION,
+ 
+    out float4 oPos: POSITION,
+    out float depth: TEXCOORD0,
+ 
+    uniform float4x4 wvp,
+    uniform float maxDepth)
+{
+	oPos = mul(wvp, pos);
+      depth = (maxDepth - oPos.z) / maxDepth;
+}
+ 
+float4 DOF_ps(
+    float depth: TEXCOORD0) : COLOR
+{
+	return float4( depth, depth, depth, 1.0 );
+}

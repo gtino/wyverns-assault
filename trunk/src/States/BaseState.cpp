@@ -65,11 +65,13 @@ void BaseState::initialize()
 	mSceneManager = mGraphicsManager->getSceneManager();
 
 	if(mSceneManager->hasCamera( "GuiCamera" ))
+	{
 		mCamera = mSceneManager->getCamera( "GuiCamera" );
+	}
 	else
 	{
 		mCamera = mSceneManager->createCamera( "GuiCamera" );
-		mViewport = mWindow->addViewport( mCamera );
+		mViewport = mGraphicsManager->createViewport( mCamera );
 		mCamera->setAspectRatio(Real(mViewport->getActualWidth()) / Real(mViewport->getActualHeight()));
 		mViewport->setBackgroundColour( Ogre::ColourValue( 0.3, 0.6, 0.9 ) );
 	}

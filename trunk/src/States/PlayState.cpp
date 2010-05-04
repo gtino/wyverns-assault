@@ -12,6 +12,7 @@ PlayState::PlayState(GraphicsManager& graphicsManager, InputManager& inputManage
 , mEnemyManager(NULL)
 , mTrayMgr(NULL)
 , mDetailsPanel(NULL)
+, mCompositorsEnabled(false)
 {
 	//
 	// TODO Constructor logic HERE
@@ -141,6 +142,9 @@ void PlayState::initialize()
 	std::auto_ptr<DotSceneLoader> sceneLoader(new DotSceneLoader());
 	sceneLoader->parseDotScene("Level1_1.scene","General", mSceneManager, mCameraManager, mLightsManager, mEnemyManager, mPhysicsManager, mItemManager);
 	sceneLoader->parseDotScene("Stage1_1.XML","General", mSceneManager, mCameraManager, mLightsManager, mEnemyManager, mPhysicsManager, mItemManager);
+
+	mGraphicsManager->addCompositor(COMPOSITOR);
+	mGraphicsManager->setCompositorEnabled(COMPOSITOR, mCompositorsEnabled);
 }
 
 /** Load resources */
@@ -651,7 +655,14 @@ bool PlayState::keyReleased(const OIS::KeyEvent& e)
 	// Attack A
 	case OIS::KeyCode::KC_SPACE:
 		mPlayer1->attackA();
-		break;		
+		break;	
+
+	// Compositors On/Off
+	case OIS::KeyCode::KC_K:
+		mCompositorsEnabled = !mCompositorsEnabled;
+
+		mGraphicsManager->setCompositorEnabled(COMPOSITOR, mCompositorsEnabled);
+		break;	
 	}
 
 	return true;

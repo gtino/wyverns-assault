@@ -39,6 +39,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
 #include "SdkTrays.h"
 
+#define COMPOSITOR "Outline"
+
 namespace WyvernsAssault
 {
 	/**
@@ -101,7 +103,8 @@ namespace WyvernsAssault
 
 		/** User interface */
 		GuiUserInterface* mPlayerUI;
-
+		
+		bool mCompositorsEnabled;
 	};
 }
 #endif // __PLAY_STATE_H_
