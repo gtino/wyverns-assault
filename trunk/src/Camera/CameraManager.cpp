@@ -32,11 +32,18 @@ void CameraManager::initialize()
 	mViewport->setCamera(mCamera);
 
 	/** Camera Node and Look At Node */
-	mCameraNode = mSceneManager->getRootSceneNode()->createChildSceneNode();
-	mCameraLookAtNode = mSceneManager->getRootSceneNode()->createChildSceneNode();
+	mCameraNode = mSceneManager->getRootSceneNode()->createChildSceneNode("CameraNode");
+	mCameraLookAtNode = mSceneManager->getRootSceneNode()->createChildSceneNode("LookAtNode");
 	mCameraNode->attachObject(mCamera);
-	mCamera->setAutoTracking(true, mCameraLookAtNode, Vector3::UNIT_X);	
+	mCamera->setAutoTracking(true, mCameraLookAtNode, Vector3::UNIT_X);
 
+	/** Debug axis node */
+	Entity* axes = mSceneManager->createEntity("Axes", "axes.mesh");
+	mAxesNode = mSceneManager->getRootSceneNode()->createChildSceneNode("AxesNode");
+	mAxesNode->attachObject(axes);
+	mAxesNode->setScale(0.1, 0.1, 0.1);
+	mAxesNode->setVisible(false);
+	
 	/** Other variables initialization */
 	mCameraMode = "NoMode";
 	mGameArea = 0;
@@ -283,6 +290,12 @@ void CameraManager::createTransition(Vector3 begin, Vector3 end, Vector3 lbegin,
     mLookAtTransition->setEnabled(true);
 	mLookAtTransition->setWeight(1);
 	mLookAtTransition->setLoop(false);
+
+	// Positioning debug axes
+	Real x = end.x - ((end.x - lend.x)/50);
+	Real y = end.y - ((end.y - lend.y)/50);
+	Real z = end.z - ((end.z - lend.z)/50);
+	mAxesNode->setPosition(x, y, z);
 }
 
 /** Add game area to vector */
