@@ -90,6 +90,7 @@ namespace WyvernsAssault
 		/** Debug camera functions */
 		void setPolygonMode(PolygonMode pm){ mCamera->setPolygonMode(pm);}
 		PolygonMode getPolygonMode(){ return mCamera->getPolygonMode(); }
+		void toogleAxes(){ mAxesNode->flipVisibility(); }
 
 	protected:
 		SceneManager*			mSceneManager;
@@ -104,6 +105,8 @@ namespace WyvernsAssault
 		String					mCameraMode;
 		Real					mCameraZoom;
 		int						mGameArea;
+
+		SceneNode*				mAxesNode;
 
 		AnimationState*			mCameraTransition;
 		AnimationState*			mLookAtTransition;

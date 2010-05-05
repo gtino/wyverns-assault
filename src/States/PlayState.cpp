@@ -528,7 +528,7 @@ bool PlayState::keyPressed(const OIS::KeyEvent& e)
 			mTrayMgr->moveWidgetToTray(mDetailsPanel, OgreBites::TL_TOPRIGHT, 0);
 			mDetailsPanel->show();
 			mTrayMgr->showFrameStats(OgreBites::TL_BOTTOMLEFT);
-			mTrayMgr->showLogo(OgreBites::TL_BOTTOMRIGHT);
+			mTrayMgr->showLogo(OgreBites::TL_BOTTOMRIGHT);			
 		}
 		else
 		{
@@ -537,6 +537,7 @@ bool PlayState::keyPressed(const OIS::KeyEvent& e)
 			mTrayMgr->hideFrameStats();
 			mTrayMgr->hideLogo();
 		}
+		mCameraManager->toogleAxes();
 		break;
 	// Cycle filtering mode
 	case OIS::KeyCode::KC_T:
