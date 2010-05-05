@@ -152,12 +152,19 @@ void DotSceneLoader::processScene(TiXmlElement *XMLRoot)
 
 	LogManager::getSingleton().logMessage("[DotSceneLoader] Enemys processed.");
 
-	// Process camera waypoints
-	pElement = XMLRoot->FirstChildElement("waypoints");
+	// Process game areas
+	pElement = XMLRoot->FirstChildElement("gameAreas");
 	if(pElement)
-		processWaypoints(pElement);
+		processGameAreas(pElement);
 
-	LogManager::getSingleton().logMessage("[DotSceneLoader] Waypoints processed.");
+	LogManager::getSingleton().logMessage("[DotSceneLoader] Game areas processed.");
+
+	// Process camera segments
+	pElement = XMLRoot->FirstChildElement("cameraSegments");
+	if(pElement)
+		processCameraSegments(pElement);
+
+	LogManager::getSingleton().logMessage("[DotSceneLoader] Camera segments processed.");
 
 	// Process items
 	pElement = XMLRoot->FirstChildElement("items");
@@ -447,16 +454,11 @@ void DotSceneLoader::processNode(TiXmlElement *XMLNode, SceneNode *pParent)
 
 void DotSceneLoader::processCamera(TiXmlElement *XMLNode, SceneNode *pParent)
 {
-	int id;
-	Real roll, yaw, pitch;
-	Vector3 position;
-
+	Vector3 position = Vector3::ZERO;
+	Vector3 lookAt = Vector3::ZERO;
 	TiXmlElement *pElement;
-
-	id		= getAttribInt(XMLNode, "id");
-	roll	= getAttribReal(XMLNode, "roll");
-	yaw		= getAttribReal(XMLNode, "yaw");
-	pitch	= getAttribReal(XMLNode, "pitch");
+	
+	int id = getAttribInt(XMLNode, "id");
 
 	// Process position
 	pElement = XMLNode->FirstChildElement("position");
@@ -464,8 +466,14 @@ void DotSceneLoader::processCamera(TiXmlElement *XMLNode, SceneNode *pParent)
 	{
 		position = parseVector3(pElement);
 	}
+	
+	pElement = XMLNode->FirstChildElement("lookAt");
+	if(pElement)
+	{
+		lookAt = parseVector3(pElement);
+	}
 
-	mCameraManager->setFixedCamera(id, position, roll, yaw, pitch);
+	mCameraManager->setFixedCamera(id, position, lookAt);
 }
 
 void DotSceneLoader::processLight(TiXmlElement *XMLNode, SceneNode *pParent)
@@ -728,38 +736,102 @@ void DotSceneLoader::processSubEntity(TiXmlElement *XMLNode, Entity *pEntity)
 	}
 }
 
-void DotSceneLoader::processWaypoints(TiXmlElement *XMLNode)
+void DotSceneLoader::processGameAreas(TiXmlElement *XMLNode)
 {
 	TiXmlElement *pElement;
 
-	// Process waypoint
-	pElement = XMLNode->FirstChildElement("waypoint");
+	// Process game area
+	pElement = XMLNode->FirstChildElement("gameArea");
 	while(pElement)
 	{
-		processWaypoint(pElement);
-		pElement = pElement->NextSiblingElement("waypoint");
+		processGameArea(pElement);
+		pElement = pElement->NextSiblingElement("gameArea");
 	}
 }
 
-void DotSceneLoader::processWaypoint(TiXmlElement *XMLNode, SceneNode *pParent)
+void DotSceneLoader::processCameraSegments(TiXmlElement *XMLNode)
 {
-	Vector3 positionWaypoint;
-	Vector3 lookAtWaypoint;
 	TiXmlElement *pElement;
 
-	// Process position
-	pElement = XMLNode->FirstChildElement("position");
+	// Process camera segment
+	pElement = XMLNode->FirstChildElement("cameraSegment");
+	while(pElement)
+	{
+		processCameraSegment(pElement);
+		pElement = pElement->NextSiblingElement("cameraSegment");
+	}
+}
+
+void DotSceneLoader::processGameArea(TiXmlElement *XMLNode, SceneNode *pParent)
+{
+	Vector3 beginNear;
+	Vector3 endNear;
+	Vector3 beginFar;
+	Vector3 endFar;
+	TiXmlElement *pElement;
+
+	// Process begin near
+	pElement = XMLNode->FirstChildElement("beginNear");
 	if(pElement)
 	{
-		positionWaypoint = parseVector3(pElement);
+		beginNear = parseVector3(pElement);
 	}
-	// Process look at
-	pElement = XMLNode->FirstChildElement("lookAt");
+	// Process end near
+	pElement = XMLNode->FirstChildElement("endNear");
 	if(pElement)
 	{
-		lookAtWaypoint = parseVector3(pElement);
+		endNear = parseVector3(pElement);
 	}
-	//mCameraManager->addWaypoint(positionWaypoint, lookAtWaypoint);
+	// Process begin far
+	pElement = XMLNode->FirstChildElement("beginFar");
+	if(pElement)
+	{
+		beginFar = parseVector3(pElement);
+	}
+	// Process end far
+	pElement = XMLNode->FirstChildElement("endFar");
+	if(pElement)
+	{
+		endFar = parseVector3(pElement);
+	}
+
+	mCameraManager->addGameArea(beginNear, endNear, beginFar, endFar);
+}
+
+void DotSceneLoader::processCameraSegment(TiXmlElement *XMLNode, SceneNode *pParent)
+{
+	Vector3 positionBegin;
+	Vector3 positionEnd;
+	Vector3 lookAtBegin;
+	Vector3 lookAtEnd;
+	TiXmlElement *pElement;
+
+	// Process position begin
+	pElement = XMLNode->FirstChildElement("positionBegin");
+	if(pElement)
+	{
+		positionBegin = parseVector3(pElement);
+	}
+	// Process position end
+	pElement = XMLNode->FirstChildElement("positionEnd");
+	if(pElement)
+	{
+		positionEnd = parseVector3(pElement);
+	}
+	// Process look at begin
+	pElement = XMLNode->FirstChildElement("lookAtBegin");
+	if(pElement)
+	{
+		lookAtBegin = parseVector3(pElement);
+	}
+	// Process look at end
+	pElement = XMLNode->FirstChildElement("lookAtEnd");
+	if(pElement)
+	{
+		lookAtEnd = parseVector3(pElement);
+	}
+
+	mCameraManager->addCameraSegment(positionBegin, positionEnd, lookAtBegin, lookAtEnd);
 }
 
 void DotSceneLoader::processSkyBox(TiXmlElement *XMLNode)

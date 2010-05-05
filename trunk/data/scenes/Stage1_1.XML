@@ -1,415 +1,192 @@
 <scene>
 	<cameras>
-		<camera name="Camera1" id="0" roll="0" yaw="0" pitch="-50">
-			<position x="0" y="1250" z="1250"/>			
+		<camera name="Camera0" id="0">
+			<position x="0" y="1250" z="1250"/>	
+			<lookAt x="0" y="0" z="300"/>
 		</camera>
-		<camera name="Camera2" id="1" roll="0" yaw="190" pitch="-40">			
+		<camera name="Camera1" id="1">
 			<position x="0" y="1250" z="-1250"/>
+			<lookAt x="0" y="0" z="300"/>
 		</camera>
-		<camera name="Camera3" id="2" roll="0" yaw="-90" pitch="-45">
+		<camera name="Camera2" id="2">
 			<position x="-900" y="1100" z="400"/>
+			<lookAt x="0" y="0" z="300"/>
 		</camera>
-		<camera name="Camera4" id="3" roll="0" yaw="-220" pitch="-20">
-			<position x="1400" y="600" z="-1200"/>
+		<camera name="Camera3" id="3">
+			<position x="1400" y="900" z="-1200"/>
+			<lookAt x="0" y="0" z="300"/>
 		</camera>
-		<camera name="Camera5" id="4" roll="0" yaw="20" pitch="-90">
-			<position x="50" y="2200" z="200"/>
-		</camera>
+		<camera name="Camera4" id="4">
+			<position x="50" y="2500" z="200"/>
+			<lookAt x="0" y="0" z="200"/>
+		</camera> 
 	</cameras>
+	
+	<gameAreas>	
+		<gameArea id="0">
+			<beginNear x="-200" y="0" z="1000"/>
+			<endNear x="327" y="0" z="1000"/>
+			<beginFar x="-173" y="0" z="670"/>
+			<endFar x="257" y="0" z="690"/>			
+		</gameArea>
+		<gameArea id="1">
+			<beginNear x="327" y="0" z="1000"/>
+			<endNear x="553" y="0" z="992"/>
+			<beginFar x="257" y="0" z="690"/>
+			<endFar x="445" y="0" z="620"/>			
+		</gameArea>
+		<gameArea id="2">
+			<beginNear x="553" y="0" z="992"/>
+			<endNear x="815" y="0" z="876"/>
+			<beginFar x="445" y="0" z="620"/>
+			<endFar x="653" y="0" z="580"/>			
+		</gameArea>
+		<gameArea id="3">
+			<beginNear x="815" y="0" z="876"/>
+			<endNear x="1112" y="0" z="672"/>
+			<beginFar x="653" y="0" z="580"/>
+			<endFar x="855" y="0" z="440"/>			
+		</gameArea>
+		<gameArea id="4">
+			<beginNear x="1112" y="0" z="672"/>
+			<endNear x="1395" y="0" z="385"/>	
+			<beginFar x="855" y="0" z="440"/>
+			<endFar x="1047" y="0" z="260"/>
+		</gameArea>
+		<gameArea id="5">
+			<beginNear x="1395" y="0" z="385"/>
+			<endNear x="1372" y="0" z="7"/>	
+			<beginFar x="1047" y="0" z="260"/>
+			<endFar x="1020" y="0" z="116"/>
+		</gameArea>
+		<gameArea id="6">
+			<beginNear x="1372" y="0" z="7"/>
+			<endNear x="1265" y="0" z="-300"/>
+			<beginFar x="1020" y="0" z="116"/>
+			<endFar x="860" y="0" z="-100"/>
+		</gameArea>
+		<gameArea id="7">
+			<beginNear x="1265" y="0" z="-300"/>
+			<endNear x="923" y="0" z="-650"/>
+			<beginFar x="860" y="0" z="-100"/>
+			<endFar x="700" y="0" z="-250"/>
+		</gameArea>
+		<gameArea id="8">
+			<beginNear x="923" y="0" z="-650"/>
+			<endNear x="491" y="0" z="-814"/>
+			<beginFar x="700" y="0" z="-250"/>
+			<endFar x="423" y="0" z="-333"/>
+		</gameArea>
+		<gameArea id="9">
+			<beginNear x="491" y="0" z="-814"/>
+			<endNear x="-77" y="0" z="-616"/>
+			<beginFar x="423" y="0" z="-333"/>
+			<endFar x="305" y="0" z="-276"/>
+		</gameArea>
+		<gameArea id="10">
+			<beginNear x="-77" y="0" z="-616"/>
+			<endNear x="-151" y="0" z="-391"/>
+			<beginFar x="305" y="0" z="-276"/>
+			<endFar x="226" y="0" z="-28"/>
+		</gameArea>
+		<gameArea id="11">
+			<beginNear x="-151" y="0" z="-391"/>
+			<endNear x="-361" y="0" z="-202"/>
+			<beginFar x="226" y="0" z="-28"/>
+			<endFar x="-55" y="0" z="190"/>
+		</gameArea>		
+	</gameAreas>
+	
+	<cameraSegments>	
+		<cameraSegment id="0">
+			<positionBegin x="0" y="200" z="1150"/>
+			<positionEnd x="250" y="200" z="1150"/>
+			<lookAtBegin x="30" y="-100" z="575"/>
+			<lookAtEnd x="200" y="-100" z="575"/>			
+		</cameraSegment>
+		<cameraSegment id="1">
+			<positionBegin x="375" y="200" z="1100"/>
+			<positionEnd x="525" y="230" z="1000"/>
+			<lookAtBegin x="300" y="-100" z="600"/>
+			<lookAtEnd x="500" y="-100" z="500"/>			
+		</cameraSegment>
+		<cameraSegment id="2">
+			<positionBegin x="545" y="230" z="1000"/>
+			<positionEnd x="780" y="200" z="950"/>
+			<lookAtBegin x="600" y="-100" z="550"/>
+			<lookAtEnd x="610" y="-100" z="550"/>
+		</cameraSegment>
+		<cameraSegment id="3">
+			<positionBegin x="815" y="175" z="865"/>
+			<positionEnd x="1040" y="175" z="820"/>
+			<lookAtBegin x="690" y="-100" z="480"/>
+			<lookAtEnd x="865" y="-100" z="455"/>
+		</cameraSegment>
+		<cameraSegment id="4">
+			<positionBegin x="1320" y="150" z="605"/>
+			<positionEnd x="1380" y="150" z="330"/>
+			<lookAtBegin x="865" y="-100" z="445"/>
+			<lookAtEnd x="925" y="-100" z="260"/>
+		</cameraSegment>
+		<cameraSegment id="5">
+			<positionBegin x="1450" y="175" z="250"/>
+			<positionEnd x="1400" y="175" z="50"/>
+			<lookAtBegin x="940" y="-100" z="100"/>
+			<lookAtEnd x="925" y="-100" z="75"/>
+		</cameraSegment>
+		<cameraSegment id="6">
+			<positionBegin x="1420" y="200" z="-100"/>
+			<positionEnd x="1315" y="200" z="-290"/>
+			<lookAtBegin x="950" y="-100" z="65"/>
+			<lookAtEnd x="860" y="-100" z="-75"/>
+		</cameraSegment>
+		<cameraSegment id="7">
+			<positionBegin x="850" y="200" z="-675"/>
+			<positionEnd x="1000" y="200" z="-675"/>
+			<lookAtBegin x="710" y="-100" z="-320"/>
+			<lookAtEnd x="815" y="-100" z="-250"/>
+		</cameraSegment>
+		<cameraSegment id="8">
+			<positionBegin x="590" y="250" z="-890"/>
+			<positionEnd x="895" y="250" z="-775"/>
+			<lookAtBegin x="460" y="-100" z="-345"/>
+			<lookAtEnd x="640" y="-100" z="-295"/>
+		</cameraSegment>		
+		<cameraSegment id="9">
+			<positionBegin x="-25" y="300" z="-745"/>
+			<positionEnd x="415" y="300" z="-895"/>
+			<lookAtBegin x="170" y="-100" z="-340"/>
+			<lookAtEnd x="440" y="-100" z="-395"/>
+		</cameraSegment>
+		<cameraSegment id="10">
+			<positionBegin x="-240" y="250" z="-625"/>
+			<positionEnd x="-115" y="250" z="-725"/>
+			<lookAtBegin x="80" y="-100" z="-75"/>
+			<lookAtEnd x="295" y="-100" z="-255"/>
+		</cameraSegment>
+		<cameraSegment id="11">
+			<positionBegin x="-310" y="200" z="-415"/>
+			<positionEnd x="-25" y="200" z="-454"/>
+			<lookAtBegin x="-290" y="-100" z="125"/>
+			<lookAtEnd x="35" y="-100" z="120"/>
+		</cameraSegment>
+		
+	</cameraSegments>
+	
 	<lights>
-	<light name="Ambient1" type="ambient">
-		<color r="0.5" g="0.5" b="0.5"/>
-	</light>
-    <light name="Point1" type="point">
-      <position x="750" y="1250" z="0"/>
-      <diffuse r="0.2" g="0.2" b="0.1"/>
-      <specular r="0.2" g="0.2" b="0.1"/>
-    </light>
-    <!--<light name="Directional1" type="directional">
-      <direction x="0" y="-1" z="-1"/>
-      <diffuse r="0.4" g="0.4" b="0.3"/>
-      <specular r="0.5" g="0.5" b="0.4"/>
-    </light>-->
-		<!--<light name="SpotEnemies1" type="spot">
-			<position x="235" y="10" z="-40"/>
-			<direction x="0" y="-1" z="0"/>
-			<diffuse r="0.9" g="0.1" b="0.1"/>
-			<specular r="0.9" g="0.1" b="0.1"/>
+	
+		<light name="Ambient1" type="ambient">
+			<color r="0.5" g="0.5" b="0.5"/>
 		</light>
-		<light name="SpotEnemies2" type="spot">
-			<position x="408" y="5" z="-56"/>
-			<direction x="0" y="-1" z="0"/>
-			<diffuse r="0.9" g="0.1" b="0.1"/>
-			<specular r="0.9" g="0.1" b="0.1"/>
+		<light name="Point1" type="point">
+		  <position x="750" y="1250" z="0"/>
+		  <diffuse r="0.2" g="0.2" b="0.1"/>
+		  <specular r="0.2" g="0.2" b="0.1"/>
 		</light>
-		<light name="SpotEnemies3" type="spot">
-			<position x="532" y="3" z="-60"/>
-			<direction x="0" y="-1" z="0"/>
-			<diffuse r="0.9" g="0.1" b="0.1"/>
-			<specular r="0.9" g="0.1" b="0.1"/>
-		</light>		
-		<light name="SpotWin" type="spot">
-			<position x="730" y="10" z="-45"/>
-			<direction x="0" y="-1" z="0"/>
-			<diffuse r="0.0" g="0.9" b="0.1"/>
-			<specular r="0.0" g="0.9" b="0.1"/>
-		</light>-->
+		
 	</lights>
   
 	<skyDome material="CloudySky" curvature="5" tiling="8" distance="4000"/>
-	
-	<waypoints name="GameCameraWaypoints">
-	
-		<waypoint id="0">
-			<position x="-200" y="150" z="1100"/>
-			<lookAt x="-100" y="-10" z="800"/>
-		</waypoint>
-		<waypoint id="1">
-			<position x="300" y="150" z="1100"/>
-			<lookAt x="300" y="-10" z="800"/>
-		</waypoint>
-		<waypoint id="2">
-			<position x="500" y="180" z="1000"/>
-			<lookAt x="500" y="-10" z="700"/>
-		</waypoint>
-		<waypoint id="3">
-			<position x="1500" y="400" z="900"/>
-			<lookAt x="1000" y="-500" z="200"/>
-		</waypoint>
-		
-	</waypoints>
-  
-	<!--nodes>
-		<node>
-			<entity meshFile="Level1_2.mesh" name="entity0"/>
-			<scale x="1" y="1" z="1"/>
-			<position x="0" y="0" z="0"/>
-		</node>
-		<<node>
-			<position x="20" y="0" z="-60"/>
-			<entity meshFile="background_plane1.mesh" name="entity1"/>
-		</node>
-		<node>
-			<position x="180.567" y="-31.675" z="-31.726"/>
-			<entity meshFile="obstacle_rock.mesh" name="entity2"/>
-		</node>
-		<node>
-			<position x="313.96" y="-42.397" z="-18.637"/>
-			<entity meshFile="rock1.mesh" name="entity3"/>
-		</node>
-		<node>
-			<position x="368.305" y="-43.185" z="-25.686"/>
-			<entity meshFile="rock2.mesh" name="entity4"/>
-		</node>
-		<node>
-			<position x="379.505" y="-44.518" z="-53.816"/>
-			<entity meshFile="rock3.mesh" name="entity5"/>
-		</node>
-		<node>
-			<position x="556.092" y="-41.799" z="-68.425"/>
-			<entity meshFile="rock4.mesh" name="entity6"/>
-		</node>
-		<node>
-			<position x="611.788" y="-43.621" z="-30.284"/>
-			<entity meshFile="rock5.mesh" name="entity7"/>
-		</node>
-		<node>
-			<position x="620.141" y="-43.621" z="-77.297"/>
-			<entity meshFile="rock6.mesh" name="entity8"/>
-		</node>
-		<node>
-			<position x="635.358" y="-43.621" z="-18.182"/>
-			<entity meshFile="rock7.mesh" name="entity9"/>
-		</node>
-		<node>
-			<position x="474.844" y="-42.581" z="-45.942"/>
-			<entity meshFile="wheat.mesh" name="entity10"/>
-		</node>
-		<node>
-			<position x="328.057" y="-36.545" z="-29.16"/>
-			<yaw angle="0.75"/>
-			<entity meshFile="house.mesh" name="entity11"/>
-		</node>
-		<node>
-			<position x="335.057" y="-36.196" z="-62.322"/>
-			<entity meshFile="house.mesh" name="entity12"/>
-		</node>
-		<node>
-			<position x="421.31" y="-37.51" z="-61.074"/>
-			<yaw angle="0.95"/>
-			<entity meshFile="house.mesh" name="entity13"/>
-		</node>
-		<node>
-			<position x="425.963" y="-37.755" z="-30.615"/>
-			<entity meshFile="house.mesh" name="entity14"/>
-		</node>
-		<node>
-			<position x="568.335" y="-37.305" z="-25.372"/>
-			<yaw angle="0.95"/>
-			<entity meshFile="house.mesh" name="entity15"/>
-		</node>
-		<node>
-			<position x="575.748" y="-37.691" z="-69.178"/>
-			<entity meshFile="house.mesh" name="entity16"/>
-		</node>
-		<node>
-			<position x="667.364" y="-37.45" z="-49.728"/>
-			<yaw angle="0.50"/>
-			<entity meshFile="house.mesh" name="entity17"/>
-		</node>
-		<node>
-			<position x="686.918" y="-38.102" z="-54.687"/>
-			<yaw angle="0.80"/>
-			<entity meshFile="house.mesh" name="entity18"/>
-		</node>
-		<node>
-			<position x="699.088" y="-37.364" z="-21.071"/>
-			<yaw angle="0.40"/>
-			<entity meshFile="house.mesh" name="entity19"/>
-		</node>
-		<node>
-			<position x="707.306" y="-37.655" z="-44.25"/>
-			<entity meshFile="house.mesh" name="entity20"/>
-		</node>
-		<node>
-			<position x="726.127" y="-37.544" z="-55.279"/>
-			<yaw angle="0.90"/>
-			<entity meshFile="house.mesh" name="entity21"/>
-		</node>
-		<node>
-			<position x="731.431" y="-37.539" z="-68.203"/>
-			<entity meshFile="house.mesh" name="entity22"/>
-		</node>
-		<node>
-			<position x="742.071" y="-37.515" z="-21.8"/>
-			<yaw angle="0.135"/>
-			<entity meshFile="house.mesh" name="entity23"/>
-		</node>
-		<node>
-			<position x="280.996" y="-36.866" z="-57.179"/>
-			<entity meshFile="house_fence.mesh" name="entity24"/>
-		</node>
-		<node>
-			<position x="530.444" y="-37.832" z="-23.881"/>
-			<yaw angle="0.75"/>
-			<entity meshFile="house_fence.mesh" name="entity25"/>
-		</node>
-		<node>
-			<position x="594.131" y="-37.413" z="-68.166"/>
-			<yaw angle="0.140"/>
-			<entity meshFile="house_fence.mesh" name="entity26"/>
-		</node>
-		<node>
-			<position x="659.056" y="-37.71" z="-67.822"/>
-			<entity meshFile="house_fence.mesh" name="entity27"/>
-		</node>
-		<node>
-			<position x="664.127" y="-37.717" z="-19.581"/>
-			<yaw angle="0.95"/>
-			<entity meshFile="house_fence.mesh" name="entity28"/>
-		</node>
-		<node>
-			<position x="723.993" y="-37.188" z="-24.633"/>
-			<yaw angle="0.90"/>
-			<entity meshFile="house_fence.mesh" name="entity29"/>
-		</node>
-		<node>
-			<position x="200.015" y="-31.485" z="-54.826"/>
-			<entity meshFile="tree_1.mesh" name="entity30"/>
-		</node>
-		<node>
-			<position x="218.015" y="-33.399" z="-19.494"/>
-			<yaw angle="0.90"/>
-			<entity meshFile="tree_4.mesh" name="entity31"/>
-		</node>
-		<node>
-			<position x="224.863" y="-34.532" z="-17.337"/>
-			<yaw angle="0.75"/>
-			<entity meshFile="tree_2.mesh" name="entity32"/>
-		</node>
-		<node>
-			<position x="224.522" y="-33.942" z="-26.266"/>
-			<entity meshFile="tree_3.mesh" name="entity33"/>
-		</node>
-		<node>
-			<position x="228.698" y="-34.729" z="-19.422"/>
-			<entity meshFile="tree_1.mesh" name="entity34"/>
-		</node>
-		<node>
-			<position x="233.55" y="-34.112" z="-17.52"/>
-			<yaw angle="0.75"/>
-			<entity meshFile="tree_4.mesh" name="entity35"/>
-		</node>
-		<node>
-			<position x="238.374" y="-34.638" z="-17.951"/>
-			<yaw angle="0.90"/>
-			<entity meshFile="tree_1.mesh" name="entity36"/>
-		</node>
-		<node>
-			<position x="241.281" y="-35.358" z="-14.225"/>
-			<entity meshFile="tree_2.mesh" name="entity37"/>
-		</node>
-		<node>
-			<position x="242.92" y="-35.362" z="-23.291"/>
-			<yaw angle="0.80"/>
-			<entity meshFile="tree_4.mesh" name="entity38"/>
-		</node>
-		<node>
-			<position x="241.234" y="-34.861" z="-29.404"/>
-			<entity meshFile="tree_3.mesh" name="entity39"/>
-		</node>
-		<node>
-			<position x="244.379" y="-35.308" z="-18.053"/>
-			<entity meshFile="tree_1.mesh" name="entity40"/>
-		</node>
-		<node>
-			<position x="248.475" y="-35.653" z="-14.281"/>
-			<yaw angle="0.95"/>
-			<entity meshFile="tree_4.mesh" name="entity41"/>
-		</node>
-		<node>
-			<position x="251.027" y="-35.863" z="-18.497"/>
-			<yaw angle="0.45"/>
-			<entity meshFile="tree_3.mesh" name="entity42"/>
-		</node>
-		<node>
-			<position x="249.153" y="-34.938" z="-24.421"/>
-			<yaw angle="0.45"/>
-			<entity meshFile="tree_2.mesh" name="entity43"/>
-		</node>
-		<node>
-			<position x="251.627" y="-35.688" z="-27.355"/>
-			<yaw angle="0.45"/>
-			<entity meshFile="tree_1.mesh" name="entity44"/>
-		</node>
-		<node>
-			<position x="255.599" y="-36.263" z="-17.226"/>
-			<entity meshFile="tree_4.mesh" name="entity45"/>
-		</node>
-		<node>
-			<position x="255.599" y="-36.263" z="-17.226"/>
-			<entity meshFile="tree_1.mesh" name="entity46"/>
-		</node>
-		<node>
-			<position x="256.211" y="-36.479" z="-29.601"/>
-			<entity meshFile="tree_2.mesh" name="entity47"/>
-		</node>
-		<node>
-			<position x="260.762" y="-36.681" z="-17.522"/>
-			<yaw angle="0.90"/>
-			<entity meshFile="tree_3.mesh" name="entity48"/>
-		</node>
-		<node>
-			<position x="251.623" y="-36.249" z="-58.671"/>
-			<yaw angle="0.64"/>
-			<entity meshFile="tree_2.mesh" name="entity49"/>
-		</node>
-		<node>
-			<position x="257.623" y="-36.749" z="-49.158"/>
-			<yaw angle="0.20"/>
-			<entity meshFile="tree_4.mesh" name="entity50"/>
-		</node>
-		<node>
-			<position x="257.167" y="-36.5" z="-55.417"/>
-			<entity meshFile="tree_1.mesh" name="entity51"/>
-		</node>
-		<node>
-			<position x="257.742" y="-35.507" z="-62.918"/>
-			<entity meshFile="tree_3.mesh" name="entity52"/>
-		</node>	
-		<node>
-			<position x="261.885" y="-36.989" z="-53.879"/>
-			<entity meshFile="tree_3.mesh" name="entity53"/>
-		</node>
-		<node>
-			<position x="349.185" y="-36" z="-39.879"/>
-			<entity meshFile="tree_1.mesh" name="entity54"/>
-		</node>
-		<node>
-			<position x="346.82" y="-36.368" z="-44.879"/>
-			<entity meshFile="tree_2.mesh" name="entity55"/>
-		</node>
-		<node>
-			<position x="344.066" y="-36.544" z="-47.97"/>
-			<entity meshFile="tree_4.mesh" name="entity56"/>
-		</node>
-		<node>
-			<position x="337.674" y="-36.271" z="-54.432"/>
-			<entity meshFile="tree_3.mesh" name="entity57"/>
-		</node>
-		<node>
-			<position x="344.427" y="-35.923" z="-57.305"/>
-			<entity meshFile="tree_1.mesh" name="entity58"/>
-		</node>
-		<node>
-			<position x="340.066" y="-36.46" z="-60.738"/>
-			<entity meshFile="tree_4.mesh" name="entity59"/>
-		</node>
-		<node>
-			<position x="538.517" y="-37.048" z="-17.64"/>
-			<entity meshFile="tree_4.mesh" name="entity60"/>
-		</node>
-		<node>
-			<position x="552.674" y="-36.888" z="-31.432"/>
-			<entity meshFile="tree_3.mesh" name="entity61"/>
-		</node>
-		<node>
-			<position x="559.427" y="-36.923" z="-36.305"/>
-			<entity meshFile="tree_1.mesh" name="entity62"/>
-		</node>
-		<node>
-			<position x="575.066" y="-37.46" z="-48.738"/>
-			<entity meshFile="tree_4.mesh" name="entity63"/>
-		</node>
-		<node>
-			<position x="572.517" y="-37.048" z="-17.64"/>
-			<entity meshFile="tree_4.mesh" name="entity64"/>
-		</node>
-		<node>
-			<position x="574.674" y="-37.888" z="-25.432"/>
-			<entity meshFile="tree_3.mesh" name="entity65"/>
-		</node>
-		<node>
-			<position x="578.427" y="-37.923" z="-20.305"/>
-			<entity meshFile="tree_2.mesh" name="entity66"/>
-		</node>
-		<node>
-			<position x="582.066" y="-37.46" z="-23.738"/>
-			<entity meshFile="tree_3.mesh" name="entity67"/>
-		</node>
-		<node>
-			<position x="588.066" y="-36.46" z="-20.738"/>
-			<entity meshFile="tree_1.mesh" name="entity68"/>
-		</node>
-		<node>
-			<position x="645.427" y="-36.923" z="-32.305"/>
-			<entity meshFile="tree_1.mesh" name="entity69"/>
-		</node>
-		<node>
-			<position x="653.066" y="-37.46" z="-24.738"/>
-			<entity meshFile="tree_4.mesh" name="entity70"/>
-		</node>
-		<node>
-			<position x="658.517" y="-37.455" z="-28.64"/>
-			<entity meshFile="tree_4.mesh" name="entity71"/>
-		</node>
-		<node>
-			<position x="660.674" y="-36.888" z="-12.432"/>
-			<entity meshFile="tree_3.mesh" name="entity72"/>
-		</node>
-		<node>
-			<position x="687.427" y="-36.923" z="-16.305"/>
-			<entity meshFile="tree_2.mesh" name="entity73"/>
-		</node>
-		<node>
-			<position x="685.066" y="-37.46" z="-25.738"/>
-			<entity meshFile="tree_3.mesh" name="entity74"/>
-		</node>
-		<node>
-			<position x="660.066" y="-36.46" z="-56.738"/>
-			<entity meshFile="tree_1.mesh" name="entity75"/>
-		</node>
-	</nodes-->
   
 	<enemys>
 		<!-- Soldiers -->
@@ -496,243 +273,7 @@
 		<enemy>
 			<position x="1250" y="10" z="140"/>
  			<entity type="Soldier" meshFile="soldier.mesh" name="soldier3"/>
-		</enemy>
-		<!--enemy>
-			<position x="232" y="-36.2" z="-33"/>
- 			<entity meshFile="soldier.mesh" name="enemy7"/>
-		</enemy>
-		<enemy>
-			<position x="234" y="-36.4" z="-45"/>
- 			<entity meshFile="soldier.mesh" name="enemy8"/>
-		</enemy>
-		<enemy>
-			<position x="234" y="-36.4" z="-41"/>
- 			<entity meshFile="soldier.mesh" name="enemy9"/>
-		</enemy>
-		<enemy>
-			<position x="234" y="-36.4" z="-37"/>
- 			<entity meshFile="soldier.mesh" name="enemy10"/>
-		</enemy>
-		<enemy>
-			<position x="234" y="-36.4" z="-33"/>
- 			<entity meshFile="soldier.mesh" name="enemy11"/>
-		</enemy>
-		<enemy>
-			<position x="236" y="-36.4" z="-45"/>
- 			<entity meshFile="soldier.mesh" name="enemy12"/>
-		</enemy>
-		<enemy>
-			<position x="236" y="-36.4" z="-41"/>
- 			<entity meshFile="soldier.mesh" name="enemy13"/>
-		</enemy>
-		<enemy>
-			<position x="236" y="-36.4" z="-37"/>
- 			<entity meshFile="soldier.mesh" name="enemy14"/>
-		</enemy>
-		<enemy>
-			<position x="236" y="-36.4" z="-33"/>
- 			<entity meshFile="soldier.mesh" name="enemy15"/>
-		</enemy>
-		
-		<enemy>
-			<position x="408" y="-38" z="-58"/>
- 			<entity meshFile="soldier.mesh" name="enemy16"/>
-		</enemy>
-		<enemy>
-			<position x="400" y="-38" z="-55"/>
- 			<entity meshFile="soldier.mesh" name="enemy17"/>
-		</enemy>
-		<enemy>
-			<position x="412" y="-38" z="-60"/>
- 			<entity meshFile="soldier.mesh" name="enemy18"/>
-		</enemy>
-		<enemy>
-			<position x="403" y="-38" z="-65"/>
- 			<entity meshFile="soldier.mesh" name="enemy19"/>
-		</enemy>
-		<enemy>
-			<position x="398" y="-38" z="-54"/>
- 			<entity meshFile="soldier.mesh" name="enemy20"/>
-		</enemy>
-		<enemy>
-			<position x="412" y="-38" z="-52"/>
- 			<entity meshFile="soldier.mesh" name="enemy21"/>
-		</enemy>
-		
-		<enemy>
-			<position x="532" y="-38" z="-60"/>
- 			<entity meshFile="soldier.mesh" name="enemy22"/>
-		</enemy>
-		<enemy>
-			<position x="525" y="-38" z="-55"/>
- 			<entity meshFile="soldier.mesh" name="enemy23"/>
-		</enemy>
-		<enemy>
-			<position x="536" y="-38" z="-62"/>
- 			<entity meshFile="soldier.mesh" name="enemy24"/>
-		</enemy>
-		<enemy>
-			<position x="526" y="-38" z="-60"/>
- 			<entity meshFile="soldier.mesh" name="enemy25"/>
-		</enemy>
-		
-		<enemy>
-			<position x="704" y="-38" z="-58"/>
- 			<entity meshFile="soldier.mesh" name="enemy26"/>
-		</enemy>
-		<enemy>
-			<position x="701" y="-38" z="-55"/>
- 			<entity meshFile="soldier.mesh" name="enemy27"/>
-		</enemy>
-		<enemy>
-			<position x="698" y="-38" z="-60"/>
- 			<entity meshFile="soldier.mesh" name="enemy28"/>
-		</enemy>
-		<enemy>
-			<position x="707" y="-38" z="-58"/>
- 			<entity meshFile="soldier.mesh" name="enemy29"/>
-		</enemy>
-		
-		<enemy>
-			<position x="714" y="-38" z="-21"/>
- 			<entity meshFile="soldier.mesh" name="enemy30"/>
-		</enemy>
-		<enemy>
-			<position x="710" y="-38" z="-24"/>
- 			<entity meshFile="soldier.mesh" name="enemy31"/>
-		</enemy>
-		
-		<enemy>
-			<position x="680" y="-38" z="-45"/>
- 			<entity meshFile="soldier.mesh" name="enemy32"/>
-		</enemy>
-		<enemy>
-			<position x="685" y="-38" z="-37"/>
- 			<entity meshFile="soldier.mesh" name="enemy33"/>
-		</enemy>-->
-		
-		<!-- Peasants -->
-		<!--<enemy>
-			<position x="311" y="-38" z="-44"/>
-			<scale x="0.2" y="0.2" z="0.2"/>
- 			<entity meshFile="peasant.mesh" name="peasant0"/>
-		</enemy>
-		<enemy>
-			<position x="306" y="-38" z="-50"/>
-			<scale x="0.2" y="0.2" z="0.2"/>
- 			<entity meshFile="peasant.mesh" name="peasant1"/>
-		</enemy>
-		<enemy>
-			<position x="315" y="-38" z="-48"/>
-			<scale x="0.2" y="0.2" z="0.2"/>
- 			<entity meshFile="peasant.mesh" name="peasant2"/>
-		</enemy>
-		<enemy>
-			<position x="319" y="-38" z="-45"/>
-			<scale x="0.2" y="0.2" z="0.2"/>
- 			<entity meshFile="peasant.mesh" name="peasant3"/>
-		</enemy>
-		<enemy>
-			<position x="310" y="-38" z="-55"/>
-			<scale x="0.2" y="0.2" z="0.2"/>
- 			<entity meshFile="peasant.mesh" name="peasant4"/>
-		</enemy>
-		<enemy>
-			<position x="303" y="-38" z="-45"/>
-			<scale x="0.2" y="0.2" z="0.2"/>
- 			<entity meshFile="peasant.mesh" name="peasant5"/>
-		</enemy>
-		
-		<enemy>
-			<position x="434" y="-38" z="-44"/>
-			<scale x="0.2" y="0.2" z="0.2"/>
- 			<entity meshFile="peasant.mesh" name="peasant6"/>
-		</enemy>
-		<enemy>
-			<position x="430" y="-38" z="-40"/>
-			<scale x="0.2" y="0.2" z="0.2"/>
- 			<entity meshFile="peasant.mesh" name="peasant7"/>
-		</enemy>
-		<enemy>
-			<position x="428" y="-38" z="-44"/>
-			<scale x="0.2" y="0.2" z="0.2"/>
- 			<entity meshFile="peasant.mesh" name="peasant8"/>
-		</enemy>
-		<enemy>
-			<position x="437" y="-38" z="-38"/>
-			<scale x="0.2" y="0.2" z="0.2"/>
- 			<entity meshFile="peasant.mesh" name="peasant9"/>
-		</enemy>
-		
-		<enemy>
-			<position x="560" y="-38" z="-41"/>
-			<scale x="0.2" y="0.2" z="0.2"/>
- 			<entity meshFile="peasant.mesh" name="peasant10"/>
-		</enemy>
-		<enemy>
-			<position x="567" y="-38" z="-40"/>
-			<scale x="0.2" y="0.2" z="0.2"/>
- 			<entity meshFile="peasant.mesh" name="peasant11"/>
-		</enemy>
-		<enemy>
-			<position x="550" y="-38" z="-48"/>
-			<scale x="0.2" y="0.2" z="0.2"/>
- 			<entity meshFile="peasant.mesh" name="peasant12"/>
-		</enemy>
-		<enemy>
-			<position x="556" y="-38" z="-46"/>
-			<scale x="0.2" y="0.2" z="0.2"/>
- 			<entity meshFile="peasant.mesh" name="peasant13"/>
-		</enemy>
-		
-		<enemy>
-			<position x="690" y="-38" z="-35"/>
-			<scale x="0.2" y="0.2" z="0.2"/>
- 			<entity meshFile="peasant.mesh" name="peasant14"/>
-		</enemy>
-		<enemy>
-			<position x="695" y="-38" z="-39"/>
-			<scale x="0.2" y="0.2" z="0.2"/>
- 			<entity meshFile="peasant.mesh" name="peasant15"/>
-		</enemy>
-		<enemy>
-			<position x="693" y="-38" z="-33"/>
-			<scale x="0.2" y="0.2" z="0.2"/>
- 			<entity meshFile="peasant.mesh" name="peasant16"/>
-		</enemy>
-		<enemy>
-			<position x="697" y="-38" z="-40"/>
-			<scale x="0.2" y="0.2" z="0.2"/>
- 			<entity meshFile="peasant.mesh" name="peasant17"/>
-		</enemy>-->
-		
-		<!-- Battering Rams-->
-		<!--<enemy>
-			<position x="350" y="-40" z="-30"/>
-			<scale x="0.2" y="0.2" z="0.2"/>
- 			<entity meshFile="batteringRAM.mesh" name="ram1"/>
-		</enemy>
-		<enemy>
-			<position x="518" y="-40" z="-49"/>
-			<scale x="0.2" y="0.2" z="0.2"/>
- 			<entity meshFile="batteringRAM.mesh" name="ram2"/>
-		</enemy>-->
-		
-		<!-- Wizards -->
-		<!--<enemy>
-			<position x="590" y="-38.5" z="-38"/>
- 			<entity meshFile="wizard.mesh" name="wizard1"/>
-		</enemy>
-		<enemy>
-			<position x="655" y="-38.5" z="-17"/>
- 			<entity meshFile="wizard.mesh" name="wizard2"/>
-		</enemy>
-		<enemy>
-			<position x="655" y="-38.5" z="-20"/>
-			<yaw angle="0.10"/>
- 			<entity meshFile="wizard.mesh" name="wizard3"/>
-		</enemy>-->
-		
+		</enemy>		
 		<!-- Enemies list End -->
 	</enemys>
 

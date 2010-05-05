@@ -47,11 +47,11 @@ void PlayState::initialize()
 
 	// Create a single player (TEST!)
 	mPlayer1 = mPlayerManager->createPlayer("Player1","redWyvern.mesh");
-	mPlayer1->setPosition(Vector3(50,30,870));
+	mPlayer1->setPosition(Vector3(50, 28, 870));
 
 	// Camera manager constructor
 	mCameraManager = new CameraManager(mSceneManager, mWindow, mViewport);
-	mCameraManager->initialize(mPlayer1->getSceneNode());
+	mCameraManager->initialize();
 
 	// Lights manager constructor
 	mLightsManager = new LightsManager(mSceneManager);
@@ -60,9 +60,6 @@ void PlayState::initialize()
 	//Enemys manager constructor
 	mEnemyManager = new EnemyManager(mSceneManager);
 	mEnemyManager->initialize();
-
-	// Set game camera
-	mCameraManager->gameCamera();
 
 	// SdkTrays Manager
 	mTrayMgr = new OgreBites::SdkTrayManager("DebugInterface", mWindow, mInputManager->getMouse());
@@ -143,6 +140,11 @@ void PlayState::initialize()
 	sceneLoader->parseDotScene("Level1_1.scene","General", mSceneManager, mCameraManager, mLightsManager, mEnemyManager, mPhysicsManager, mItemManager);
 	sceneLoader->parseDotScene("Stage1_1.XML","General", mSceneManager, mCameraManager, mLightsManager, mEnemyManager, mPhysicsManager, mItemManager);
 
+	//
+	// Set game camera
+	//
+	mCameraManager->gameCamera(mPlayer1->getSceneNode()->getPosition());
+
 	mGraphicsManager->addCompositor(COMPOSITOR);
 	mGraphicsManager->setCompositorEnabled(COMPOSITOR, mCompositorsEnabled);
 }
@@ -180,22 +182,7 @@ void PlayState::input()
 
 /** Rendering queue */
 bool PlayState::frameRenderingQueued(const Ogre::FrameEvent& evt)
-{ 
-	/*tems.push_back("Player X");
-	items.push_back("Player Y");
-	items.push_back("Player Z");
-	items.push_back("");
-	items.push_back("Mode");
-	items.push_back("Camera X");
-	items.push_back("Camera Y");
-	items.push_back("Camera Z");
-	items.push_back("Look At X");
-	items.push_back("Look At Y");
-	items.push_back("Look At Z");
-	items.push_back("");	
-	items.push_back("Filtering");
-	items.push_back("Poly Mode");*/
-
+{
 	mTrayMgr->frameRenderingQueued(evt);
 	if (!mTrayMgr->isDialogVisible())
 	{
@@ -214,6 +201,11 @@ bool PlayState::frameRenderingQueued(const Ogre::FrameEvent& evt)
 		}
 	}
 
+	if(mCameraManager->getCameraMode() == "Free")
+	{
+		mCameraManager->frameRenderingQueued(evt);
+	}
+
 	return true;
 }
 
@@ -221,46 +213,7 @@ bool PlayState::frameRenderingQueued(const Ogre::FrameEvent& evt)
 void PlayState::update(const float elapsedSeconds)
 {
 	// Movement
-	if(mCameraManager->getCameraMode() == "Free")
-	{
-		// Free camera mode movement
-		CCS::CameraControlSystem* cameraCS = mCameraManager->getCameraCS();
-		CCS::FreeCameraMode* freeCameraMode = (CCS::FreeCameraMode*)cameraCS->getCameraMode("Free");
-
-		// Keyboard movement
-		if(this->mInputManager->getKeyboard()->isKeyDown(OIS::KeyCode::KC_RIGHT))
-		{
-			freeCameraMode->goRight();
-		}
-		if(this->mInputManager->getKeyboard()->isKeyDown(OIS::KeyCode::KC_LEFT))
-		{
-			freeCameraMode->goLeft();
-		}
-		if(this->mInputManager->getKeyboard()->isKeyDown(OIS::KeyCode::KC_UP))
-		{
-			freeCameraMode->goForward();
-		}
-		if(this->mInputManager->getKeyboard()->isKeyDown(OIS::KeyCode::KC_DOWN))
-		{
-			freeCameraMode->goBackward();
-		}
-		if(this->mInputManager->getKeyboard()->isKeyDown(OIS::KeyCode::KC_PGUP))
-		{
-			freeCameraMode->goUp();
-		}
-		if(this->mInputManager->getKeyboard()->isKeyDown(OIS::KeyCode::KC_PGDOWN))
-		{
-			freeCameraMode->goDown();
-		}
-
-		// Mouse movement
-		const OIS::MouseState &ms = this->mInputManager->getMouse()->getMouseState();
-		freeCameraMode->yaw(ms.X.rel);
-		freeCameraMode->pitch(ms.Y.rel);
-
-		mCameraManager->updateCamera(elapsedSeconds);
-	}
-	else
+	if(mCameraManager->getCameraMode() == "Game")
 	{
 		// 8 directions move
 		if(this->mInputManager->getKeyboard()->isKeyDown(OIS::KeyCode::KC_RIGHT) && this->mInputManager->getKeyboard()->isKeyDown(OIS::KeyCode::KC_UP))
@@ -309,11 +262,12 @@ void PlayState::update(const float elapsedSeconds)
 			mPlayer1->move(0,0,0);
 			mPhysicsManager->move(mPlayer1,Vector3(0,0,0));
 		}
-		/*// Attack A
-		if(this->mInputManager->getKeyboard()->isKeyDown(OIS::KeyCode::KC_SPACE))
-		{
-			mPlayer1->attackA();			
-		}*/
+	}
+	else
+	{
+		// No movement, iddle animation
+		mPlayer1->move(0,0,0);
+		mPhysicsManager->move(mPlayer1,Vector3(0,0,0));
 	}
 
 	// UI DEBUG KEYS - Increments/Decrements kills and points
@@ -342,7 +296,9 @@ void PlayState::update(const float elapsedSeconds)
 	if(this->mInputManager->getKeyboard()->isKeyDown(OIS::KeyCode::KC_F10))
 		mPlayerUI->setSpecialBar(mPlayerUI->getSpecialBar() + 2);
 
+	//
 	//Update Physic
+	//
 	mPhysicsManager->synchronizeWorld(elapsedSeconds);
 	mPhysicsManager->updateRay(mPlayer1);
 
@@ -370,14 +326,14 @@ void PlayState::update(const float elapsedSeconds)
 	//
 	// Update camera
 	//
-	mCameraManager->updateCamera(elapsedSeconds);
+	mCameraManager->updateCamera(mPlayer1->getSceneNode()->getPosition(), elapsedSeconds);
 }
 
 /** Render */
 void PlayState::render(const float elapsedSeconds)
 {
 	//
-	// FREE DEBUG STUFF
+	// TODO
 	//
 }
 
@@ -517,7 +473,7 @@ void PlayState::resume()
 }
 
 /** Buffered input - keyboard key clicked */
-bool PlayState::keyReleased(const OIS::KeyEvent& e)
+bool PlayState::keyPressed(const OIS::KeyEvent& e)
 {
 	String newVal;
 	PolygonMode pm;
@@ -529,15 +485,19 @@ bool PlayState::keyReleased(const OIS::KeyEvent& e)
 	case OIS::KeyCode::KC_ESCAPE:
 		this->mNextGameStateId = GameStateId::Exit;
 		break;
-	case OIS::KeyCode::KC_W:
+	case OIS::KeyCode::KC_I:
 		this->mNextGameStateId = GameStateId::Ending;
 		break;
 	case OIS::KeyCode::KC_O:
 		this->mNextGameStateId = GameStateId::GameOver;
 		break;
+	// Pause menu
+	case OIS::KeyCode::KC_P:		
+		this->mNextGameStateId = GameStateId::Pause;
+		break;
 	// Camera keys
 	case OIS::KeyCode::KC_1:		
-		mCameraManager->gameCamera();
+		mCameraManager->gameCamera(mPlayer1->getSceneNode()->getPosition());
 		break;
 	case OIS::KeyCode::KC_2:
 		mCameraManager->freeCamera();
@@ -556,13 +516,6 @@ bool PlayState::keyReleased(const OIS::KeyEvent& e)
 		break;
 	case OIS::KeyCode::KC_7:
 		mCameraManager->fixedCamera(4);
-		break;
-	case OIS::KeyCode::KC_0:
-		mCameraManager->nextCamera();
-		break;
-	// Pause menu
-	case OIS::KeyCode::KC_P:		
-		this->mNextGameStateId = GameStateId::Pause;
 		break;
 	// Toogle visibility of advanced stats frame
 	case OIS::KeyCode::KC_F:
@@ -663,7 +616,48 @@ bool PlayState::keyReleased(const OIS::KeyEvent& e)
 
 		mGraphicsManager->setCompositorEnabled(COMPOSITOR, mCompositorsEnabled);
 		break;	
+
+	// Camera rumble
+	case OIS::KeyCode::KC_B:
+		mCameraManager->rumble();
+		break;
+	// Camera tremor
+	case OIS::KeyCode::KC_V:
+		mCameraManager->tremor();
+		break;
+	// Camera zoom in
+	case OIS::KeyCode::KC_N:
+		mCameraManager->zoom(10);
+		break;
+	// Camera zoom out
+	case OIS::KeyCode::KC_M:
+		mCameraManager->zoom(-10);
+		break;
 	}
 
+	// Free camera mode move
+	if(mCameraManager->getCameraMode() == "Free")
+	{
+		mCameraManager->freeCameraKeyboardDown(e);
+	}
+
+	return true;
+}
+
+bool PlayState::keyReleased(const OIS::KeyEvent& e)
+{
+	// Free camera mode move
+	if(mCameraManager->getCameraMode() == "Free")
+	{
+		mCameraManager->freeCameraKeyboardUp(e);
+	}
+
+	return true;
+}
+
+/** Mouse input */
+bool PlayState::mouseMoved(const OIS::MouseEvent& e)
+{
+	mCameraManager->freeCameraMouse(e);
 	return true;
 }
