@@ -5,20 +5,20 @@
 			<lookAt x="0" y="0" z="300"/>
 		</camera>
 		<camera name="Camera1" id="1">
-			<position x="0" y="1250" z="-1250"/>
+			<position x="-100" y="1250" z="-1250"/>
 			<lookAt x="0" y="0" z="300"/>
 		</camera>
 		<camera name="Camera2" id="2">
-			<position x="-900" y="1100" z="400"/>
-			<lookAt x="0" y="0" z="300"/>
+			<position x="-1000" y="1100" z="400"/>
+			<lookAt x="200" y="0" z="300"/>
 		</camera>
 		<camera name="Camera3" id="3">
 			<position x="1400" y="900" z="-1200"/>
 			<lookAt x="0" y="0" z="300"/>
 		</camera>
 		<camera name="Camera4" id="4">
-			<position x="50" y="2500" z="200"/>
-			<lookAt x="0" y="0" z="200"/>
+			<position x="100" y="2750" z="200"/>
+			<lookAt x="100" y="0" z="200"/>
 		</camera> 
 	</cameras>
 	
