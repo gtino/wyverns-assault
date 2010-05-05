@@ -122,23 +122,58 @@ void PhysicsManager::addPlayer(PlayerPtr player)
 	mPlayerMap[player->getGeometryId()] = player;
 }
 
+void PhysicsManager::update(const float elapsedSeconds){
+	synchronizeWorld(elapsedSeconds);
+	
+	//update players ray
+	for(OdePlayerMapIterator it_player = mPlayerMap.begin(); it_player != mPlayerMap.end(); ++it_player){
+		PlayerPtr player = it_player->second;
+		updateRay(player);
+	}
+
+	//update enemys ray apply force to keep up
+	for(OdeEnemyMapIterator it_enemy = mEnemyMap.begin(); it_enemy != mEnemyMap.end(); ++it_enemy){
+		EnemyPtr enemy = it_enemy->second;
+		updateRay(enemy);
+
+		OgreOde::Body* enemy_body = enemy->getBody();
+		Quaternion q = enemy_body->getOrientation();         
+		Vector3 x = q.xAxis();
+		Vector3 y = q.yAxis();
+		Vector3 z = q.zAxis();
+		enemy_body->wake();
+		enemy_body->setOrientation(Quaternion(x,Vector3::UNIT_Y,z));
+		enemy_body->setAngularVelocity(Vector3(0,0,0)); 
+		enemy_body->setLinearVelocity(Vector3(enemy_body->getLinearVelocity().x,0,enemy_body->getLinearVelocity().z));
+
+		// update ray position
+		if(enemy->getRayInfo()->updated){
+			enemy_body->setPosition(Vector3(enemy_body->getPosition().x,enemy->getRayInfo()->lastContact.y+15,enemy->getPosition().z));
+			enemy->getRayInfo()->updated = false;
+		}
+
+	}
+
+	return;
+}
 
 void PhysicsManager::addEnemy(EnemyPtr enemy)
 {
+
 	Ogre::String id = enemy->getName();
 
 	AxisAlignedBox aab = enemy->getSceneNode()->getAttachedObject(id)->getBoundingBox(); 
 	Ogre::Vector3 min = aab.getMinimum()*enemy->getScale();
 	Ogre::Vector3 max = aab.getMaximum()*enemy->getScale();
 	Ogre::Vector3 size(fabs(max.x-min.x),fabs(max.y-min.y),fabs(max.z-min.z));
-	float radius = (size.x>size.z)?size.z/2.0f:size.x/2.0f;
+	float radius = (size.x>size.z)?size.z:size.x;
 
 	//Geometry
 	OgreOde::Body* body = new OgreOde::Body(mWorld,id+"_Body"); 
 	body->setMass(OgreOde::CapsuleMass(70,radius/2,Vector3::UNIT_Y,radius/2)); 
 	body->setAffectedByGravity(true);
 	OgreOde::TransformGeometry* transform = new OgreOde::TransformGeometry(mWorld,mSpace); 
-	OgreOde::CapsuleGeometry* geometry = new OgreOde::CapsuleGeometry(radius/2,size.y/5,mWorld); 
+	OgreOde::CapsuleGeometry* geometry = new OgreOde::CapsuleGeometry(radius,size.y/4,mWorld); 
 	geometry->setOrientation(Quaternion(Degree(90),Vector3::UNIT_X));
 	transform->setBody(body); 
 	transform->setEncapsulatedGeometry(geometry);
@@ -147,7 +182,7 @@ void PhysicsManager::addEnemy(EnemyPtr enemy)
 
 	//RayInfo
 	PhysicsRayInfo rayInfo;
-	rayInfo.geometry = new OgreOde::RayGeometry(Ogre::Real(30), mWorld, mSpace);
+	rayInfo.geometry = new OgreOde::RayGeometry(Ogre::Real(20), mWorld, mSpace);
 	rayInfo.radius = radius;
 	rayInfo.updated = false;
 	rayInfo.lastContact = Vector3(0,0,0);
@@ -197,6 +232,22 @@ bool PhysicsManager::collision(OgreOde::Contact* contact)
 	{
 		it->second->getRayInfo()->updated = true;
 		it->second->getRayInfo()->lastContact = contact->getPosition();
+	}
+
+	// search through ode_characters and adjust each charNode's height
+	OdeEnemyMapIterator it_e;
+	
+	// Check if the player is the first geometry
+	it_e = mEnemyMap.find(contact->getFirstGeometry()->getID());
+	
+	// ...or the second
+	if(it_e == mEnemyMap.end())
+		it_e = mEnemyMap.find(contact->getSecondGeometry()->getID());
+
+	if(it_e != mEnemyMap.end())
+	{
+		it_e->second->getRayInfo()->updated = true;
+		it_e->second->getRayInfo()->lastContact = contact->getPosition();
 	}
 
 	contact->setCoulombFriction(OgreOde::Utility::Infinity);

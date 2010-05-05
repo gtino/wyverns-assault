@@ -63,16 +63,13 @@ namespace WyvernsAssault
 		void finalize();
 		SceneManager* getSceneManager(){return this->mSceneManager;}
 
-		void synchronizeWorld(Real time);
 		void showDebugObjects();
+
+		void update(const float elapsedSeconds);
 
 		void createGround(Ogre::String mesh);
 		void addPlayer(PlayerPtr player);
 		void addEnemy(EnemyPtr enemy);
-
-		//Update ray of one character
-		void updateRay(PlayerPtr player);
-		void updateRay(EnemyPtr enemy);
 
 		/*
 		Called by OgreOde whenever a collision occurs, so 
@@ -83,7 +80,13 @@ namespace WyvernsAssault
 		//Move one character
 		void move(PlayerPtr player, Vector3 direction);
 		void move(EnemyPtr enemy, int rotate, int thrust);
-		
+
+	private:
+		void synchronizeWorld(Real time);
+		//Update ray of one character
+		void updateRay(PlayerPtr player);
+		void updateRay(EnemyPtr enemy);
+
 	protected:
 		SceneManager* mSceneManager;
 		OgreOde::World* mWorld;

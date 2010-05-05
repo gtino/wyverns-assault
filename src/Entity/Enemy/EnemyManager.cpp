@@ -139,7 +139,7 @@ void EnemyManager::update(const float elapsedSeconds)
 		EnemyPtr enemy =  mEnemyList[i];
 
 		enemy->updateLogic(L,elapsedSeconds);
-		enemy->updatePhysics(elapsedSeconds);
+		//enemy->updatePhysics(elapsedSeconds);
 		enemy->updateEntity(elapsedSeconds);
 	}
 }

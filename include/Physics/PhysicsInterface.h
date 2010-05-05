@@ -45,7 +45,7 @@ namespace WyvernsAssault
 	public:
 		virtual void initializePhysics(OgreOde::Body* body){mBody = body;}
 		virtual void finalizePhysics(){return;} 
-		virtual void updatePhysics(const float elapsedSeconds){return;};
+		virtual void updatePhysics(const float elapsedSeconds){};
 
 		virtual void setUpdated( bool updated ) { mRayInfo.updated = updated; }
 		virtual bool getUpdated(){ return mRayInfo.updated; }
