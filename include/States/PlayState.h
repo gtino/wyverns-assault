@@ -33,10 +33,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #include "..\Entity\Enemy\EnemyManager.h"
 #include "..\Entity\Item\ItemManager.h"
 
-#include <CCSCameraControlSystem.h>
-#include "CCSBasicCameraModes.h"
-#include "CCSFreeCameraMode.h"
-
 #include "SdkTrays.h"
 
 #define COMPOSITOR "Outline"
@@ -78,7 +74,11 @@ namespace WyvernsAssault
 		GameStateId getStateId();
 
 		/** Buffered input - keyboard key clicked */
+		bool keyPressed(const OIS::KeyEvent& e);
 		bool keyReleased(const OIS::KeyEvent& e);
+
+		/** Mouse input */
+		bool mouseMoved(const OIS::MouseEvent& e);
 
 	private:
 		CameraManager* mCameraManager;
@@ -101,7 +101,9 @@ namespace WyvernsAssault
 		OgreBites::SdkTrayManager* mTrayMgr;
 		OgreBites::ParamsPanel* mDetailsPanel;
 
-		/** User interface */
+		//
+		// User interface
+		//
 		GuiUserInterface* mPlayerUI;
 		
 		bool mCompositorsEnabled;
