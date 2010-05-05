@@ -234,7 +234,9 @@ void CameraManager::updateCamera(Vector3 player, Real elapsedSeconds)
 
 void CameraManager::createTransition(Vector3 begin, Vector3 end, Vector3 lbegin, Vector3 lend)
 {
-	Real dist = begin.distance(end) / 1000;
+	Real dist = begin.distance(end) / 100;
+	if(dist > 0.25) 
+		dist = 0.25;
 
 	/** Camera position translation animation */
 	// Set up spline animation of node
