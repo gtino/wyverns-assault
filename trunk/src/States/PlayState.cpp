@@ -57,6 +57,17 @@ void PlayState::initialize()
 	mLightsManager = new LightsManager(mSceneManager);
 	mLightsManager->initialize();
 
+	//
+	// Physics Manager
+	// 
+	mPhysicsManager = new PhysicsManager(mSceneManager);
+	mPhysicsManager->initialize();
+	//
+	//DELETE: Physics Temporaly Calls (DotSceneLoader task)
+	//
+	mPhysicsManager->createGround("physic_ground.mesh");
+	mPhysicsManager->addPlayer(mPlayer1);
+
 	//Enemys manager constructor
 	mEnemyManager = new EnemyManager(mSceneManager);
 	mEnemyManager->initialize();
@@ -92,17 +103,6 @@ void PlayState::initialize()
 	//
 	mItemManager = new ItemManager(mSceneManager);
 	mItemManager->initialize();
-
-	//
-	// Physics Manager
-	// 
-	mPhysicsManager = new PhysicsManager(mSceneManager);
-	mPhysicsManager->initialize();
-	//
-	//DELETE: Physics Temporaly Calls (DotSceneLoader task)
-	//
-	mPhysicsManager->createGround("physic_ground.mesh");
-	mPhysicsManager->addPlayer(mPlayer1);
 
 	//
 	// Logic Manager
@@ -299,8 +299,8 @@ void PlayState::update(const float elapsedSeconds)
 	//
 	//Update Physic
 	//
-	mPhysicsManager->synchronizeWorld(elapsedSeconds);
-	mPhysicsManager->updateRay(mPlayer1);
+	mPhysicsManager->update(elapsedSeconds);
+
 
 	//
 	// Logic manager

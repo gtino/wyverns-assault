@@ -254,10 +254,10 @@
 			<position x="1000" y="10" z="350"/>
  			<entity type="Peasant" meshFile="peasant.mesh" name="peasant7"/>
 		</enemy>
-		<enemy>
+		<!--<enemy>
 			<position x="1225" y="10" z="80"/>
  			<entity type="Wizard" meshFile="wizard.mesh" name="wizard0"/>
-		</enemy>
+		</enemy>-->
 		<enemy>
 			<position x="1200" y="10" z="120"/>
  			<entity type="Soldier" meshFile="soldier.mesh" name="soldier0"/>
