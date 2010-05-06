@@ -110,6 +110,7 @@ namespace WyvernsAssault
 
 		AnimationState*			mCameraTransition;
 		AnimationState*			mLookAtTransition;
+		AnimationState*			mAxesTransition;
 		AnimationState*			mCameraEffect;
 
 		// Sdk Camera Manager for free look camera
