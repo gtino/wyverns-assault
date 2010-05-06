@@ -37,7 +37,7 @@ void CameraManager::initialize()
 	mCameraNode->attachObject(mCamera);
 	mCamera->setAutoTracking(true, mCameraLookAtNode, Vector3::UNIT_X);
 
-	/** Debug axis node */
+	/** Debug axes node */
 	Entity* axes = mSceneManager->createEntity("Axes", "axes.mesh");
 	mAxesNode = mSceneManager->getRootSceneNode()->createChildSceneNode("AxesNode");
 	mAxesNode->attachObject(axes);
@@ -51,11 +51,14 @@ void CameraManager::initialize()
 
 	mSceneManager->createAnimation("CameraTrack", 1);
 	mSceneManager->createAnimation("LookAtTrack", 1);
-	mSceneManager->createAnimation("CameraEffect", 1);
+	mSceneManager->createAnimation("AxesTrack", 1);
+	mSceneManager->createAnimation("CameraEffect", 1);	
 	mCameraTransition = mSceneManager->createAnimationState("CameraTrack");
 	mCameraTransition->setEnabled(false);
 	mLookAtTransition = mSceneManager->createAnimationState("LookAtTrack");
 	mLookAtTransition->setEnabled(false);
+	mAxesTransition = mSceneManager->createAnimationState("AxesTrack");
+	mAxesTransition->setEnabled(false);
 	mCameraEffect = mSceneManager->createAnimationState("CameraEffect");
 	mCameraEffect->setEnabled(false);
 
@@ -122,44 +125,7 @@ int CameraManager::getGameArea(Vector3 position)
 
 void CameraManager::updateCamera(Vector3 player, Real elapsedSeconds)
 {
-	// Update camera effect animation
-	/*if(mCameraEffect->getEnabled())
-	{
-		if(!mCameraEffect->hasEnded())
-		{
-			mCameraEffect->addTime(elapsedSeconds);
-		}
-		else
-		{
-			mCameraEffect->setWeight(0);
-			mCameraEffect->setEnabled(false);
-		}
-	}
-	// Update transition animation
-	else if(mCameraAnimation && !mCameraEffect->getEnabled())
-	{
-		if(mCameraTransition->hasEnded() && mLookAtTransition->hasEnded())
-		{
-			mCameraAnimation = false;
-			mCameraTransition->setEnabled(false);
-			mLookAtTransition->setEnabled(false);
-		}
-		else if(mCameraTransition->hasEnded())
-		{		    
-			mCameraTransition->setWeight(0);			
-		}
-		else if(mLookAtTransition->hasEnded())
-		{		    
-			mLookAtTransition->setWeight(0);			
-		}
-		else
-		{
-			mCameraTransition->addTime(elapsedSeconds);
-			mLookAtTransition->addTime(elapsedSeconds);
-		}
-	}
-	// Update game camera position
-	else */
+	// Update camera camera
 	if(mCameraMode == "Game")
 	{
 		int areaId = getGameArea(player);
@@ -237,15 +203,16 @@ void CameraManager::updateCamera(Vector3 player, Real elapsedSeconds)
 	mCameraEffect->addTime(elapsedSeconds);
 	mCameraTransition->addTime(elapsedSeconds);
 	mLookAtTransition->addTime(elapsedSeconds);
+	mAxesTransition->addTime(elapsedSeconds);
 }
 
 void CameraManager::createTransition(Vector3 begin, Vector3 end, Vector3 lbegin, Vector3 lend)
 {
+	/** Camera positioning translation animation */
 	Real dist = begin.distance(end) / 100;
 	if(dist > 0.25) 
 		dist = 0.25;
-
-	/** Camera position translation animation */
+	
 	// Set up spline animation of node
 	if(mSceneManager->hasAnimation("CameraTrack"))
 		mSceneManager->destroyAnimation("CameraTrack");
@@ -272,17 +239,17 @@ void CameraManager::createTransition(Vector3 begin, Vector3 end, Vector3 lbegin,
 	mCameraTransition->setWeight(1);
 	mCameraTransition->setLoop(false);
 
-	/** Camera look at position translation animation */
+	/** Camera look at positioning translation animation */
 	if(mSceneManager->hasAnimation("LookAtTrack"))
 		mSceneManager->destroyAnimation("LookAtTrack");
-	anim = mSceneManager->createAnimation("LookAtTrack", 0.2);
+	anim = mSceneManager->createAnimation("LookAtTrack", dist);
     anim->setInterpolationMode(Animation::IM_SPLINE);
 	track = anim->createNodeTrack(0, mCameraLookAtNode);
     key = track->createNodeKeyFrame(0);
     key->setTranslate(lbegin);
-	key = track->createNodeKeyFrame(0.1);	
+	key = track->createNodeKeyFrame(dist/2);	
 	key->setTranslate(lbegin + ((lend - lbegin)/2));
-    key = track->createNodeKeyFrame(0.2);
+    key = track->createNodeKeyFrame(dist);
 	key->setTranslate(lend);
 	if(mSceneManager->hasAnimationState("LookAtTrack"))
 		mSceneManager->destroyAnimationState("LookAtTrack");
@@ -291,11 +258,30 @@ void CameraManager::createTransition(Vector3 begin, Vector3 end, Vector3 lbegin,
 	mLookAtTransition->setWeight(1);
 	mLookAtTransition->setLoop(false);
 
-	// Positioning debug axes
-	Real x = end.x - ((end.x - lend.x)/50);
-	Real y = end.y - ((end.y - lend.y)/50);
-	Real z = end.z - ((end.z - lend.z)/50);
-	mAxesNode->setPosition(x, y, z);
+	/** Debug axes positioning translation animation */
+	Real x = end.x - ((end.x - lend.x)/10);
+	Real y = end.y - ((end.y - lend.y)/10);
+	Real z = end.z - ((end.z - lend.z)/10);
+	Vector3 axesBegin = mAxesNode->getPosition();
+	Vector3 axesEnd = Vector3(x, y, z);
+
+	if(mSceneManager->hasAnimation("AxesTrack"))
+		mSceneManager->destroyAnimation("AxesTrack");
+	anim = mSceneManager->createAnimation("AxesTrack", dist);
+    anim->setInterpolationMode(Animation::IM_SPLINE);
+	track = anim->createNodeTrack(0, mAxesNode);
+    key = track->createNodeKeyFrame(0);
+    key->setTranslate(axesBegin);
+	key = track->createNodeKeyFrame(dist/2);	
+	key->setTranslate(axesBegin + ((axesEnd - axesBegin)/2));
+    key = track->createNodeKeyFrame(dist);
+	key->setTranslate(axesEnd);
+	if(mSceneManager->hasAnimationState("AxesTrack"))
+		mSceneManager->destroyAnimationState("AxesTrack");
+	mAxesTransition = mSceneManager->createAnimationState("AxesTrack");
+    mAxesTransition->setEnabled(true);
+	mAxesTransition->setWeight(1);
+	mAxesTransition->setLoop(false);
 }
 
 /** Add game area to vector */
