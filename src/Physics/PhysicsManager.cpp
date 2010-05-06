@@ -144,7 +144,7 @@ void PhysicsManager::update(const float elapsedSeconds){
 		enemy_body->wake();
 		enemy_body->setOrientation(Quaternion(x,Vector3::UNIT_Y,z));
 		enemy_body->setAngularVelocity(Vector3(0,0,0)); 
-		enemy_body->setLinearVelocity(Vector3(enemy_body->getLinearVelocity().x,0,enemy_body->getLinearVelocity().z));
+		enemy_body->setLinearVelocity(Vector3(0,0,0));
 
 		// update ray position
 		if(enemy->getRayInfo()->updated){
