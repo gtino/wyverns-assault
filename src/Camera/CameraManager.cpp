@@ -38,9 +38,8 @@ void CameraManager::initialize()
 	mCamera->setAutoTracking(true, mCameraLookAtNode, Vector3::UNIT_X);
 
 	/** Debug axes node */
-	Entity* axes = mSceneManager->createEntity("Axes", "axes.mesh");
+	mSceneManager->createEntity("Axes", "axes.mesh");
 	mAxesNode = mSceneManager->getRootSceneNode()->createChildSceneNode("AxesNode");
-	mAxesNode->attachObject(axes);
 	mAxesNode->setScale(0.1, 0.1, 0.1);
 	mAxesNode->setVisible(false);
 	
@@ -85,7 +84,7 @@ void CameraManager::finalize()
 Vector3 CameraManager::getCameraPosition()
 { 
 	if(mCameraMode == "Free")
-		return mCamera->getPosition() + mCamera->getDirection();
+		return mCamera->getRealPosition();
 	else
 		return mCameraNode->getPosition();
 }
@@ -93,7 +92,7 @@ Vector3 CameraManager::getCameraPosition()
 Vector3 CameraManager::getCameraLookAt()
 { 
 	if(mCameraMode == "Free")
-		return mCamera->getPosition();
+		return mCamera->getDirection();
 	else
 		return mCameraLookAtNode->getPosition();
 }
@@ -191,12 +190,13 @@ void CameraManager::updateCamera(Vector3 player, Real elapsedSeconds)
 		// Move camera to ZERO
 		mCamera->setPosition(Vector3::ZERO);
 		// Translate animation to camera scene node and look at node to current position
-		createTransition(getCameraPosition(), position, getCameraLookAt(), lookAt);
+		createTransition(getCameraPosition(), position, getCameraLookAt(), lookAt);		
 	}
 	// Other camera modes
 	else
 	{
 		// NO update needed in other modes
+
 	}
 
 	// Add elapsed seconds to animations
@@ -439,4 +439,16 @@ void CameraManager::freeCameraKeyboardUp(OIS::KeyEvent evt)
 bool CameraManager::frameRenderingQueued(FrameEvent evt)
 {
 	return mCameraMan->frameRenderingQueued(evt);
+}
+
+/** Debug axes visibility */
+void CameraManager::showAxes()
+{
+	mAxesNode->attachObject(mSceneManager->getEntity("Axes"));
+	mAxesNode->getAttachedObject("Axes")->setVisible(true);
+}
+void CameraManager::hideAxes()
+{
+	mAxesNode->getAttachedObject("Axes")->setVisible(false);
+	mAxesNode->detachObject("Axes");	
 }
