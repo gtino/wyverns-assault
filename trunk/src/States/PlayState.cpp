@@ -453,7 +453,10 @@ void PlayState::pause()
 	mGuiScreen->hide();
 	// Hide sdktrays if visible
 	mTrayMgr->hideAll();
-	if(mTrayMgr->isCursorVisible()) mTrayMgr->hideCursor();
+	if(mTrayMgr->isCursorVisible()) 
+		mTrayMgr->hideCursor();
+	// Hide axes if visible
+	mCameraManager->toogleAxes();
 }
 
 /** Called when the state has to be resumed (from pause) */
@@ -469,7 +472,10 @@ void PlayState::resume()
 	mGuiScreen->show();
 	// Show sdktrays if was visible
 	mTrayMgr->showAll();
-	if(mTrayMgr->isCursorVisible()) mTrayMgr->hideCursor();
+	if(mTrayMgr->isCursorVisible())
+		mTrayMgr->hideCursor();
+	// Show axes if visible
+	mCameraManager->toogleAxes();
 }
 
 /** Buffered input - keyboard key clicked */
@@ -528,7 +534,8 @@ bool PlayState::keyPressed(const OIS::KeyEvent& e)
 			mTrayMgr->moveWidgetToTray(mDetailsPanel, OgreBites::TL_TOPRIGHT, 0);
 			mDetailsPanel->show();
 			mTrayMgr->showFrameStats(OgreBites::TL_BOTTOMLEFT);
-			mTrayMgr->showLogo(OgreBites::TL_BOTTOMRIGHT);			
+			mTrayMgr->showLogo(OgreBites::TL_BOTTOMRIGHT);
+			mCameraManager->showAxes();
 		}
 		else
 		{
@@ -536,8 +543,8 @@ bool PlayState::keyPressed(const OIS::KeyEvent& e)
 			mDetailsPanel->hide();
 			mTrayMgr->hideFrameStats();
 			mTrayMgr->hideLogo();
-		}
-		mCameraManager->toogleAxes();
+			mCameraManager->hideAxes();
+		}		
 		break;
 	// Cycle filtering mode
 	case OIS::KeyCode::KC_T:

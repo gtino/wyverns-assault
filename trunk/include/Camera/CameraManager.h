@@ -91,6 +91,8 @@ namespace WyvernsAssault
 		void setPolygonMode(PolygonMode pm){ mCamera->setPolygonMode(pm);}
 		PolygonMode getPolygonMode(){ return mCamera->getPolygonMode(); }
 		void toogleAxes(){ mAxesNode->flipVisibility(); }
+		void showAxes();
+		void hideAxes();
 
 	protected:
 		SceneManager*			mSceneManager;
