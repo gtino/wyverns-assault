@@ -61,6 +61,7 @@ namespace Ogre
 		void processGameAreas(TiXmlElement *XMLNode);
 		void processCameraSegments(TiXmlElement *XMLNode);
 		void processItems(TiXmlElement *XMLNode);
+		void processPhysics(TiXmlElement *XMLNode);
 
 		void processNode(TiXmlElement *XMLNode, SceneNode *pParent = 0);
 		void processCamera(TiXmlElement *XMLNode, SceneNode *pParent = 0);

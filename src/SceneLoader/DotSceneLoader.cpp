@@ -173,6 +173,13 @@ void DotSceneLoader::processScene(TiXmlElement *XMLRoot)
 
 	LogManager::getSingleton().logMessage("[DotSceneLoader] Items processed.");
 
+	// Process items
+	pElement = XMLRoot->FirstChildElement("physics");
+	if(pElement)
+		processPhysics(pElement);
+
+	LogManager::getSingleton().logMessage("[DotSceneLoader] Physics processed.");
+
 }
 
 void DotSceneLoader::processNodes(TiXmlElement *XMLNode)
@@ -325,6 +332,56 @@ void DotSceneLoader::processItems(TiXmlElement *XMLNode)
 		ItemPtr item = mItemManager->createItem(Item::StringToType(type), name, mesh);
 		item->setPosition(position);
 		item->setScale(scale);
+		
+		// Add the enemy to the physics manager
+		//mPhysicsManager->addEnemy(enemy);
+
+		pElement = pElement->NextSiblingElement("item");
+	}
+		
+}
+
+void DotSceneLoader::processPhysics(TiXmlElement *XMLNode)
+{
+	TiXmlElement *pElement;
+	TiXmlElement *pElementEntity;
+	TiXmlElement *pElementPosition;
+	TiXmlElement *pElementScale;
+
+	// Process physics element
+	pElement = XMLNode->FirstChildElement("physic");
+	while(pElement)
+	{
+		Ogre::String name;
+		Ogre::String mesh;
+		Ogre::Vector3 position = Vector3::ZERO;
+		Ogre::Vector3 scale= Vector3::UNIT_SCALE;
+
+		// Process entity
+		pElementEntity = pElement->FirstChildElement("entity");
+		if(pElementEntity)
+		{
+			name = getAttrib(pElementEntity, "name");
+			mesh = getAttrib(pElementEntity, "meshFile");
+		}
+
+		// Process position
+		pElementPosition = pElement->FirstChildElement("position");
+		if(pElementPosition)
+		{
+			position = parseVector3(pElementPosition);
+		}
+
+		// Process scale
+		pElementScale = pElement->FirstChildElement("scale");
+		if(pElementScale)
+		{
+			scale = parseVector3(pElementScale);
+		}
+
+		// Create physic element
+		//
+		mPhysicsManager->createGround(mesh,name,position,scale);
 		
 		// Add the enemy to the physics manager
 		//mPhysicsManager->addEnemy(enemy);
