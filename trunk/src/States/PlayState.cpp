@@ -63,10 +63,6 @@ void PlayState::initialize()
 	mPhysicsManager = new PhysicsManager(mSceneManager);
 	mPhysicsManager->initialize();
 	mPhysicsManager->addPlayer(mPlayer1);
-	//
-	//DELETE: Physics Temporaly Calls (DotSceneLoader task)
-	//
-	mPhysicsManager->createGround("physic_ground.mesh");
 
 	//Enemys manager constructor
 	mEnemyManager = new EnemyManager(mSceneManager);

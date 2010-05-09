@@ -67,7 +67,7 @@ namespace WyvernsAssault
 
 		void update(const float elapsedSeconds);
 
-		void createGround(Ogre::String mesh);
+		void createGround(Ogre::String mesh,Ogre::String name,Ogre::Vector3 position,Ogre::Vector3 scale);
 		void addPlayer(PlayerPtr player);
 		void addEnemy(EnemyPtr enemy);
 

@@ -73,16 +73,16 @@ void PhysicsManager::showDebugObjects()
 	mWorld->setShowDebugGeometries(!mWorld->getShowDebugGeometries());
 }
 
-void PhysicsManager::createGround(Ogre::String mesh)
+void PhysicsManager::createGround(Ogre::String mesh,Ogre::String name,Ogre::Vector3 position,Ogre::Vector3 scale)
 {
-	SceneNode* node_ground = mSceneManager->getRootSceneNode()->createChildSceneNode("Physic_ground_node",Vector3(0,0,0));
-	Entity* ent_ground = mSceneManager->createEntity("Physic_ground",mesh);
+	SceneNode* node_ground = mSceneManager->getRootSceneNode()->createChildSceneNode(name,position);
+	Entity* ent_ground = mSceneManager->createEntity(name,mesh);
 	node_ground->attachObject(ent_ground);
 	OgreOde::EntityInformer ei_ground(ent_ground,node_ground->_getFullTransform());
 	geom_ground = ei_ground.createStaticTriangleMesh(mWorld,mSpace);
 	ent_ground->setUserAny(Ogre::Any(geom_ground));
 	node_ground->setVisible(false);
-
+	node_ground->setScale(scale);
 }
 
 void PhysicsManager::addPlayer(PlayerPtr player)
