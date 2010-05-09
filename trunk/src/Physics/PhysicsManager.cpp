@@ -267,7 +267,6 @@ void PhysicsManager::move(PlayerPtr player, Vector3 direction){
 		Vector3 currentDirection = q1 * Vector3::UNIT_Z;
 		Quaternion q2 = currentDirection.getRotationTo(direction);
 		body->setOrientation(q1*q2);
-		//body->setLinearVelocity(Vector3(0,body->getLinearVelocity().y,0));
 	}
 
 	if(direction == Vector3::ZERO)
@@ -278,9 +277,9 @@ void PhysicsManager::move(PlayerPtr player, Vector3 direction){
 	{
 		if(player->getLastDirection() != direction)
 		{
-			//If direction change, stop body
-			body->setLinearVelocity(Vector3(0,0,0));
-			//body->addForce((-1) * player->getLastDirection() * Vector3((maxVel*400),0,(maxVel*400)));
+			//If direction change, set new linear velocity
+			Quaternion q4 = body->getLinearVelocity().getRotationTo(direction);
+			body->setLinearVelocity(q4 * body->getLinearVelocity());
 		}
 		if(actualVel > maxVel)
 			body->setForce(Vector3(0,0,0));
