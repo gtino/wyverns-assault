@@ -215,55 +215,55 @@ void PlayState::update(const float elapsedSeconds)
 		if(this->mInputManager->getKeyboard()->isKeyDown(OIS::KeyCode::KC_RIGHT) && this->mInputManager->getKeyboard()->isKeyDown(OIS::KeyCode::KC_UP))
 		{
 			mPlayer1->move(1,0,-1);
-			mPhysicsManager->move(mPlayer1,Vector3(1,0,-1));
+			mPhysicsManager->move(mPlayer1, mCameraManager->getDirection(Vector3(1,0,-1)));
 		}
 		else if(this->mInputManager->getKeyboard()->isKeyDown(OIS::KeyCode::KC_RIGHT) && this->mInputManager->getKeyboard()->isKeyDown(OIS::KeyCode::KC_DOWN))
 		{
 			mPlayer1->move(1,0,1);
-			mPhysicsManager->move(mPlayer1,Vector3(1,0,1));
+			mPhysicsManager->move(mPlayer1, mCameraManager->getDirection(Vector3(1,0,1)));
 		}
 		else if(this->mInputManager->getKeyboard()->isKeyDown(OIS::KeyCode::KC_LEFT) && this->mInputManager->getKeyboard()->isKeyDown(OIS::KeyCode::KC_UP))
 		{
 			mPlayer1->move(-1,0,-1);
-			mPhysicsManager->move(mPlayer1,Vector3(-1,0,-1));
+			mPhysicsManager->move(mPlayer1, mCameraManager->getDirection(Vector3(-1,0,-1)));
 		}
 		else if(this->mInputManager->getKeyboard()->isKeyDown(OIS::KeyCode::KC_LEFT) && this->mInputManager->getKeyboard()->isKeyDown(OIS::KeyCode::KC_DOWN))
 		{
 			mPlayer1->move(-1,0,1);
-			mPhysicsManager->move(mPlayer1,Vector3(-1,0,1));
+			mPhysicsManager->move(mPlayer1, mCameraManager->getDirection(Vector3(-1,0,1)));
 		}
 		else if(this->mInputManager->getKeyboard()->isKeyDown(OIS::KeyCode::KC_RIGHT))
 		{
 			mPlayer1->move(1,0,0);
-			mPhysicsManager->move(mPlayer1,Vector3(1,0,0));			
+			mPhysicsManager->move(mPlayer1, mCameraManager->getDirection(Vector3(1,0,0)));
 		}
 		else if(this->mInputManager->getKeyboard()->isKeyDown(OIS::KeyCode::KC_LEFT))
 		{
 			mPlayer1->move(-1,0,0);
-			mPhysicsManager->move(mPlayer1,Vector3(-1,0,0));			
+			mPhysicsManager->move(mPlayer1, mCameraManager->getDirection(Vector3(-1,0,0)));
 		}
 		else if(this->mInputManager->getKeyboard()->isKeyDown(OIS::KeyCode::KC_UP))
 		{
 			mPlayer1->move(0,0,-1);
-			mPhysicsManager->move(mPlayer1,Vector3(0,0,-1));			
+			mPhysicsManager->move(mPlayer1, mCameraManager->getDirection(Vector3(0,0,-1)));
 		}
 		else if(this->mInputManager->getKeyboard()->isKeyDown(OIS::KeyCode::KC_DOWN))
 		{
 			mPlayer1->move(0,0,1);
-			mPhysicsManager->move(mPlayer1,Vector3(0,0,1));
+			mPhysicsManager->move(mPlayer1, mCameraManager->getDirection(Vector3(0,0,1)));
 		}		
 		else
 		{
 			// No movement, iddle animation
 			mPlayer1->move(0,0,0);
-			mPhysicsManager->move(mPlayer1,Vector3(0,0,0));
+			mPhysicsManager->move(mPlayer1, Vector3(0,0,0));
 		}
 	}
 	else
 	{
 		// No movement, iddle animation
 		mPlayer1->move(0,0,0);
-		mPhysicsManager->move(mPlayer1,Vector3(0,0,0));
+		mPhysicsManager->move(mPlayer1, Vector3(0,0,0));
 	}
 
 	// UI DEBUG KEYS - Increments/Decrements kills and points
