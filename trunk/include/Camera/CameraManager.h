@@ -54,16 +54,17 @@ namespace WyvernsAssault
 		String getCameraMode() { return mCameraMode ; }
 		int getGameArea(Vector3 position);
 		
+		/** Camera moving direction */
+		Vector3 getDirection(Vector3 direction);
+		
 		/** Update camera position in game mode */
 		void updateCamera(Vector3 player, Real elapsedSeconds);
 		
 		/** Create transition animation */
 		void createTransition(Vector3 begin, Vector3 end, Vector3 lbegin, Vector3 lend);
 
-		/** Add game area to vector */
+		/** Add game area  and camera segment */
 		void addGameArea(Vector3 beginNear, Vector3 endNear, Vector3 beginFar, Vector3 endFar);
-
-		/** Add camera segment to vector */
 		void addCameraSegment(Vector3 pbegin, Vector3 pend, Vector3 lbegin, Vector3 lend);
 
 		/** Fixed cameras functions */

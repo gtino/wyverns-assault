@@ -120,6 +120,79 @@ int CameraManager::getGameArea(Vector3 position)
 	return 0;
 }
 
+/** Camera moving direction */
+Vector3 CameraManager::getDirection(Vector3 direction)
+{
+	Vector3 finalDirection;
+
+	// Checking game area for x direction (begin-end camera segments problem). NEED IMPROVING!
+
+	if(direction == Vector3(1,0,0))
+	{
+		if(mGameArea < 7)
+			finalDirection = mCameraSegments[mGameArea].mPositionEnd - mCameraSegments[mGameArea].mPositionBegin;
+		else
+			finalDirection = mCameraSegments[mGameArea].mPositionBegin - mCameraSegments[mGameArea].mPositionEnd;
+	}
+	else if(direction == Vector3(-1,0,0))
+	{
+		if(mGameArea < 7)
+			finalDirection = mCameraSegments[mGameArea].mPositionBegin - mCameraSegments[mGameArea].mPositionEnd;
+		else
+			finalDirection = mCameraSegments[mGameArea].mPositionEnd - mCameraSegments[mGameArea].mPositionBegin;
+	}
+	else if(direction == Vector3(0,0,1))
+	{
+		finalDirection = getCameraPosition() - getCameraLookAt();
+	}
+	else if(direction == Vector3(0,0,-1))
+	{
+		finalDirection = getCameraLookAt() - getCameraPosition();
+	}
+	else if(direction == Vector3(1,0,1))
+	{
+		if(mGameArea < 7)
+			finalDirection = mCameraSegments[mGameArea].mPositionEnd - mCameraSegments[mGameArea].mPositionBegin;
+		else
+			finalDirection = mCameraSegments[mGameArea].mPositionBegin - mCameraSegments[mGameArea].mPositionEnd;
+
+		finalDirection = finalDirection + (getCameraPosition() - getCameraLookAt());
+	}
+	else if(direction == Vector3(1,0,-1))
+	{
+		if(mGameArea < 7)
+			finalDirection = mCameraSegments[mGameArea].mPositionEnd - mCameraSegments[mGameArea].mPositionBegin;
+		else
+			finalDirection = mCameraSegments[mGameArea].mPositionBegin - mCameraSegments[mGameArea].mPositionEnd;
+
+		finalDirection = finalDirection + (getCameraLookAt() - getCameraPosition());
+	}
+	else if(direction == Vector3(-1,0,1))
+	{
+		if(mGameArea < 7)
+			finalDirection = mCameraSegments[mGameArea].mPositionBegin - mCameraSegments[mGameArea].mPositionEnd;
+		else
+			finalDirection = mCameraSegments[mGameArea].mPositionEnd - mCameraSegments[mGameArea].mPositionBegin;
+
+		finalDirection = finalDirection + (getCameraPosition() - getCameraLookAt());
+	}		
+	else if(direction == Vector3(-1,0,-1))
+	{
+		if(mGameArea < 7)
+			finalDirection = mCameraSegments[mGameArea].mPositionBegin - mCameraSegments[mGameArea].mPositionEnd;
+		else
+			finalDirection = mCameraSegments[mGameArea].mPositionEnd - mCameraSegments[mGameArea].mPositionBegin;
+
+		finalDirection = finalDirection + (getCameraLookAt() - getCameraPosition());
+	}
+
+	// Don't use y component
+	finalDirection = finalDirection * Vector3(1,0,1);
+	// Normalize vector for constant speed
+	finalDirection.normalise();
+	return finalDirection;
+}
+
 /** Camera functions **/
 
 void CameraManager::updateCamera(Vector3 player, Real elapsedSeconds)
@@ -127,12 +200,12 @@ void CameraManager::updateCamera(Vector3 player, Real elapsedSeconds)
 	// Update camera camera
 	if(mCameraMode == "Game")
 	{
-		int areaId = getGameArea(player);
+		mGameArea = getGameArea(player);
 
-		Vector3 begin = mCameraSegments[areaId].mPositionBegin;
-		Vector3 end = mCameraSegments[areaId].mPositionEnd;
-		Vector3 lbegin = mCameraSegments[areaId].mLookAtBegin;
-		Vector3 lend = mCameraSegments[areaId].mLookAtEnd;
+		Vector3 begin = mCameraSegments[mGameArea].mPositionBegin;
+		Vector3 end = mCameraSegments[mGameArea].mPositionEnd;
+		Vector3 lbegin = mCameraSegments[mGameArea].mLookAtBegin;
+		Vector3 lend = mCameraSegments[mGameArea].mLookAtEnd;
 
 		Vector3 position;
 		Vector3 lookAt;
@@ -190,7 +263,7 @@ void CameraManager::updateCamera(Vector3 player, Real elapsedSeconds)
 		// Move camera to ZERO
 		mCamera->setPosition(Vector3::ZERO);
 		// Translate animation to camera scene node and look at node to current position
-		createTransition(getCameraPosition(), position, getCameraLookAt(), lookAt);		
+		createTransition(getCameraPosition(), position, getCameraLookAt(), lookAt);
 	}
 	// Other camera modes
 	else
