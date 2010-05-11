@@ -282,9 +282,9 @@ void CameraManager::updateCamera(Vector3 player, Real elapsedSeconds)
 void CameraManager::createTransition(Vector3 begin, Vector3 end, Vector3 lbegin, Vector3 lend)
 {
 	/** Camera positioning translation animation */
-	Real dist = begin.distance(end) / 100;
-	if(dist > 0.25) 
-		dist = 0.25;
+	Real dist = begin.distance(end) / 700;
+	if(dist > 1)
+		dist = 1;
 	
 	// Set up spline animation of node
 	if(mSceneManager->hasAnimation("CameraTrack"))
