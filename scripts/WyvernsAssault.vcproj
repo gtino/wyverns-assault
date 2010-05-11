@@ -40,7 +40,7 @@
 			<Tool
 				Name="VCCLCompilerTool"
 				Optimization="0"
-				AdditionalIncludeDirectories="..\include;..\externals\OgreOde\include;..\externals\CameraControlSystem\include;&quot;$(OGRE_HOME)\include&quot;;&quot;$(OGRE_HOME)\include\OGRE&quot;;&quot;$(OGRE_HOME)\include\OIS&quot;;&quot;$(OGRE_HOME)\include\CEGUI&quot;;&quot;$(OGRE_HOME)\boost_1_42&quot;"
+				AdditionalIncludeDirectories="..\include;..\externals\OgreOde\include;&quot;$(OGRE_HOME)\include&quot;;&quot;$(OGRE_HOME)\include\OGRE&quot;;&quot;$(OGRE_HOME)\include\OIS&quot;;&quot;$(OGRE_HOME)\include\CEGUI&quot;;&quot;$(OGRE_HOME)\boost_1_42&quot;"
 				PreprocessorDefinitions="WIN32;_DEBUG;_WINDOWS"
 				MinimalRebuild="true"
 				ExceptionHandling="1"
@@ -65,10 +65,10 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="OgreMain_d.lib OIS_d.lib CameraControlSystem_d.lib Lua+Lib.lib ode_d.lib OgreOde_Core_d.lib OgreOde_Prefab_d.lib OgreOde_Loader_d.lib"
+				AdditionalDependencies="OgreMain_d.lib OIS_d.lib ParticleUniverse_d.lib Lua+Lib.lib ode_d.lib OgreOde_Core_d.lib OgreOde_Prefab_d.lib OgreOde_Loader_d.lib"
 				OutputFile="$(OutDir)\$(ProjectName).exe"
 				LinkIncremental="2"
-				AdditionalLibraryDirectories="..\externals\CameraControlSystem\lib;&quot;$(OGRE_HOME)\boost_1_42\lib&quot;;..\externals\OgreOde\lib;&quot;..\externals\Lua-5.0-SDK\lib&quot;;&quot;$(OGRE_HOME)\lib\$(ConfigurationName)&quot;"
+				AdditionalLibraryDirectories="..\externals\ParticleUniverse\lib;..\externals\OgreOde\lib;&quot;..\externals\Lua-5.0-SDK\lib&quot;;&quot;$(OGRE_HOME)\boost_1_42\lib&quot;;&quot;$(OGRE_HOME)\lib\$(ConfigurationName)&quot;"
 				GenerateDebugInformation="true"
 				ProgramDatabaseFile="$(OutDir)/WyvernsAssault.pdb"
 				SubSystem="2"
@@ -96,7 +96,7 @@
 			<Tool
 				Name="VCPostBuildEventTool"
 				Description="Copying exe to samples bin directory ..."
-				CommandLine="xcopy &quot;$(OGRE_HOME)\Bin\$(ConfigurationName)\*.dll&quot; &quot;$(OutDir)&quot; /s/e/d/i/y&#x0D;&#x0A;xcopy &quot;$(SolutionDir)data&quot; &quot;$(OutDir)\data\&quot; /s/e/d/i/y&#x0D;&#x0A;xcopy &quot;$(SolutionDir)config&quot; &quot;$(OutDir)\config\&quot; /s/e/d/i/y&#x0D;&#x0A;xcopy &quot;$(SolutionDir)externals\Fmod\dll\*.dll&quot; &quot;$(OutDir)&quot; /s/e/d/i/y&#x0D;&#x0A;xcopy &quot;$(SolutionDir)externals\Lua-5.0-SDK\lib\*.dll&quot; &quot;$(OutDir)&quot; /s/e/d/i/y&#x0D;&#x0A;xcopy &quot;$(SolutionDir)externals\OgreOde\bin\$(ConfigurationName)\*.dll&quot; &quot;$(OutDir)&quot; /s/e/d/i/y&#x0D;&#x0A;xcopy &quot;$(SolutionDir)externals\CameraControlSystem\bin\$(ConfigurationName)\*.dll&quot; &quot;$(OutDir)&quot; /s/e/d/i/y&#x0D;&#x0A;"
+				CommandLine="xcopy &quot;$(OGRE_HOME)\Bin\$(ConfigurationName)\*.dll&quot; &quot;$(OutDir)&quot; /s/e/d/i/y&#x0D;&#x0A;xcopy &quot;$(SolutionDir)data&quot; &quot;$(OutDir)\data\&quot; /s/e/d/i/y&#x0D;&#x0A;xcopy &quot;$(SolutionDir)config&quot; &quot;$(OutDir)\config\&quot; /s/e/d/i/y&#x0D;&#x0A;xcopy &quot;$(SolutionDir)externals\Fmod\dll\*.dll&quot; &quot;$(OutDir)&quot; /s/e/d/i/y&#x0D;&#x0A;xcopy &quot;$(SolutionDir)externals\Lua-5.0-SDK\lib\*.dll&quot; &quot;$(OutDir)&quot; /s/e/d/i/y&#x0D;&#x0A;xcopy &quot;$(SolutionDir)externals\OgreOde\bin\$(ConfigurationName)\*.dll&quot; &quot;$(OutDir)&quot; /s/e/d/i/y&#x0D;&#x0A;xcopy &quot;$(SolutionDir)externals\ParticleUniverse\bin\$(ConfigurationName)\*.dll&quot; &quot;$(OutDir)&quot; /s/e/d/i/y&#x0D;&#x0A;"
 			/>
 		</Configuration>
 		<Configuration
@@ -129,7 +129,7 @@
 				EnableIntrinsicFunctions="true"
 				FavorSizeOrSpeed="1"
 				OmitFramePointers="true"
-				AdditionalIncludeDirectories="..\include;..\externals\OgreOde\include;..\externals\CameraControlSystem\include;&quot;$(OGRE_HOME)\include&quot;;&quot;$(OGRE_HOME)\include\OIS&quot;;&quot;$(OGRE_HOME)\include\OGRE&quot;;&quot;$(OGRE_HOME)\include\CEGUI&quot;;&quot;$(OGRE_HOME)\boost_1_42&quot;"
+				AdditionalIncludeDirectories="..\include;..\externals\OgreOde\include;&quot;$(OGRE_HOME)\include&quot;;&quot;$(OGRE_HOME)\include\OIS&quot;;&quot;$(OGRE_HOME)\include\OGRE&quot;;&quot;$(OGRE_HOME)\include\CEGUI&quot;;&quot;$(OGRE_HOME)\boost_1_42&quot;"
 				PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS"
 				StringPooling="true"
 				MinimalRebuild="true"
@@ -155,10 +155,10 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="OgreMain.lib OIS.lib CameraControlSystem.lib Lua+Lib.lib ode.lib OgreOde_Core.lib OgreOde_Prefab.lib OgreOde_Loader.lib"
+				AdditionalDependencies="OgreMain.lib OIS.lib ParticleUniverse.lib Lua+Lib.lib ode.lib OgreOde_Core.lib OgreOde_Prefab.lib OgreOde_Loader.lib"
 				OutputFile="$(OutDir)\$(ProjectName).exe"
 				LinkIncremental="1"
-				AdditionalLibraryDirectories="..\externals\CameraControlSystem\lib;..\externals\OgreOde\lib;&quot;..\externals\Lua-5.0-SDK\lib&quot;;&quot;$(OGRE_HOME)\boost_1_42\lib&quot;;&quot;$(OGRE_HOME)\lib\$(ConfigurationName)&quot;"
+				AdditionalLibraryDirectories="..\externals\ParticleUniverse\lib;..\externals\OgreOde\lib;&quot;..\externals\Lua-5.0-SDK\lib&quot;;&quot;$(OGRE_HOME)\boost_1_42\lib&quot;;&quot;$(OGRE_HOME)\lib\$(ConfigurationName)&quot;"
 				GenerateDebugInformation="false"
 				ProgramDatabaseFile=""
 				SubSystem="2"
@@ -188,7 +188,7 @@
 			<Tool
 				Name="VCPostBuildEventTool"
 				Description="Copying exe to samples bin directory ..."
-				CommandLine="xcopy &quot;$(OGRE_HOME)\Bin\$(ConfigurationName)\*.dll&quot; &quot;$(OutDir)&quot; /s/e/d/i/y&#x0D;&#x0A;xcopy &quot;$(SolutionDir)data&quot; &quot;$(OutDir)\data\&quot; /s/e/d/i/y&#x0D;&#x0A;xcopy &quot;$(SolutionDir)config&quot; &quot;$(OutDir)\config\&quot; /s/e/d/i/y&#x0D;&#x0A;xcopy &quot;$(SolutionDir)externals\Fmod\dll\*.dll&quot; &quot;$(OutDir)&quot; /s/e/d/i/y&#x0D;&#x0A;xcopy &quot;$(SolutionDir)externals\Lua-5.0-SDK\lib\*.dll&quot; &quot;$(OutDir)&quot; /s/e/d/i/y&#x0D;&#x0A;xcopy &quot;$(SolutionDir)externals\OgreOde\bin\$(ConfigurationName)\*.dll&quot; &quot;$(OutDir)&quot; /s/e/d/i/y&#x0D;&#x0A;xcopy &quot;$(SolutionDir)externals\CameraControlSystem\bin\$(ConfigurationName)\*.dll&quot; &quot;$(OutDir)&quot; /s/e/d/i/y&#x0D;&#x0A;"
+				CommandLine="xcopy &quot;$(OGRE_HOME)\Bin\$(ConfigurationName)\*.dll&quot; &quot;$(OutDir)&quot; /s/e/d/i/y&#x0D;&#x0A;xcopy &quot;$(SolutionDir)data&quot; &quot;$(OutDir)\data\&quot; /s/e/d/i/y&#x0D;&#x0A;xcopy &quot;$(SolutionDir)config&quot; &quot;$(OutDir)\config\&quot; /s/e/d/i/y&#x0D;&#x0A;xcopy &quot;$(SolutionDir)externals\Fmod\dll\*.dll&quot; &quot;$(OutDir)&quot; /s/e/d/i/y&#x0D;&#x0A;xcopy &quot;$(SolutionDir)externals\Lua-5.0-SDK\lib\*.dll&quot; &quot;$(OutDir)&quot; /s/e/d/i/y&#x0D;&#x0A;xcopy &quot;$(SolutionDir)externals\OgreOde\bin\$(ConfigurationName)\*.dll&quot; &quot;$(OutDir)&quot; /s/e/d/i/y&#x0D;&#x0A;xcopy &quot;$(SolutionDir)externals\ParticleUniverse\bin\$(ConfigurationName)\*.dll&quot; &quot;$(OutDir)&quot; /s/e/d/i/y&#x0D;&#x0A;"
 			/>
 		</Configuration>
 	</Configurations>
