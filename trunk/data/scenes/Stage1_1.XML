@@ -20,6 +20,10 @@
 			<position x="100" y="2750" z="200"/>
 			<lookAt x="100" y="0" z="200"/>
 		</camera> 
+		<camera name="Camera5" id="5">
+			<position x="405" y="180" z="-614"/>
+			<lookAt x="-585" y="500" z="455"/>
+		</camera> 
 	</cameras>
 	
 	<gameAreas>	
