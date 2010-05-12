@@ -143,6 +143,16 @@ void PlayState::initialize()
 
 	mGraphicsManager->addCompositor(COMPOSITOR);
 	mGraphicsManager->setCompositorEnabled(COMPOSITOR, mCompositorsEnabled);
+
+	/**** PARTICLE UNIVERSE - PRUEBAS!!! *****/
+	ParticleUniverse::ParticleSystemManager* pManager =	ParticleUniverse::ParticleSystemManager::getSingletonPtr();
+	ParticleUniverse::ParticleSystem* smokeA = pManager->createParticleSystem("somkeA", "WyvernsAssault/Smoke", mSceneManager);
+	ParticleUniverse::ParticleSystem* smokeB = pManager->createParticleSystem("smokeB", "WyvernsAssault/Smoke", mSceneManager);
+	mSceneManager->getRootSceneNode()->createChildSceneNode("smokeNodeA",Vector3(-545,690,490))->attachObject(smokeA);
+	mSceneManager->getRootSceneNode()->createChildSceneNode("smokeNodeB",Vector3(-615,690,450))->attachObject(smokeB);
+	smokeA->start();
+	smokeB->start();
+	/*****************************************/
 }
 
 /** Load resources */
@@ -518,6 +528,9 @@ bool PlayState::keyPressed(const OIS::KeyEvent& e)
 		break;
 	case OIS::KeyCode::KC_7:
 		mCameraManager->fixedCamera(4);
+		break;
+	case OIS::KeyCode::KC_8:
+		mCameraManager->fixedCamera(5);
 		break;
 	// Toogle visibility of advanced stats frame
 	case OIS::KeyCode::KC_F:

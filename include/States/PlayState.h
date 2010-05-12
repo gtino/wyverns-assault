@@ -33,7 +33,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #include "..\Entity\Enemy\EnemyManager.h"
 #include "..\Entity\Item\ItemManager.h"
 
-#include "SdkTrays.h"
+#include <SdkTrays.h>
+#include <ParticleUniversePlugin.h>
 
 #define COMPOSITOR "Outline"
 
