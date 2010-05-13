@@ -468,6 +468,14 @@
 					>
 				</File>
 			</Filter>
+			<Filter
+				Name="Particle"
+				>
+				<File
+					RelativePath="..\src\Particle\ParticleManager.cpp"
+					>
+				</File>
+			</Filter>
 		</Filter>
 		<Filter
 			Name="Header Files"
@@ -755,6 +763,14 @@
 				</File>
 				<File
 					RelativePath="..\include\Lua\LuaManager.h"
+					>
+				</File>
+			</Filter>
+			<Filter
+				Name="Particle"
+				>
+				<File
+					RelativePath="..\include\Particle\ParticleManager.h"
 					>
 				</File>
 			</Filter>

@@ -13,6 +13,7 @@ PlayState::PlayState(GraphicsManager& graphicsManager, InputManager& inputManage
 , mTrayMgr(NULL)
 , mDetailsPanel(NULL)
 , mCompositorsEnabled(false)
+, mParticleManager(NULL)
 {
 	//
 	// TODO Constructor logic HERE
@@ -106,6 +107,12 @@ void PlayState::initialize()
 	mLogicManager = new LogicManager();
 	mLogicManager->initialize();
 
+	//
+	// Particle Manager
+	//
+	mParticleManager = new ParticleManager(mSceneManager);
+	mParticleManager->initialize();
+
 	// -----------
 	// Lua Manager
 	// -----------
@@ -143,16 +150,6 @@ void PlayState::initialize()
 
 	mGraphicsManager->addCompositor(COMPOSITOR);
 	mGraphicsManager->setCompositorEnabled(COMPOSITOR, mCompositorsEnabled);
-
-	/**** PARTICLE UNIVERSE - PRUEBAS!!! *****/
-	ParticleUniverse::ParticleSystemManager* pManager =	ParticleUniverse::ParticleSystemManager::getSingletonPtr();
-	ParticleUniverse::ParticleSystem* smokeA = pManager->createParticleSystem("somkeA", "WyvernsAssault/Smoke", mSceneManager);
-	ParticleUniverse::ParticleSystem* smokeB = pManager->createParticleSystem("smokeB", "WyvernsAssault/Smoke", mSceneManager);
-	mSceneManager->getRootSceneNode()->createChildSceneNode("smokeNodeA",Vector3(-545,690,490))->attachObject(smokeA);
-	mSceneManager->getRootSceneNode()->createChildSceneNode("smokeNodeB",Vector3(-615,690,450))->attachObject(smokeB);
-	smokeA->start();
-	smokeB->start();
-	/*****************************************/
 }
 
 /** Load resources */
@@ -384,6 +381,12 @@ void PlayState::finalize()
 	{
 		delete mLuaManager;
 		mLuaManager = NULL;
+	}
+
+	if(mParticleManager)
+	{
+		delete mParticleManager;
+		mParticleManager = NULL;
 	}
 
 	if(mPlayerManager)
