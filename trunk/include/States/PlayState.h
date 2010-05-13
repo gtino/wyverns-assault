@@ -32,9 +32,9 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #include "..\Entity\Player\PlayerManager.h"
 #include "..\Entity\Enemy\EnemyManager.h"
 #include "..\Entity\Item\ItemManager.h"
+#include "..\Particle\ParticleManager.h"
 
 #include <SdkTrays.h>
-#include <ParticleUniversePlugin.h>
 
 #define COMPOSITOR "Outline"
 
@@ -90,6 +90,7 @@ namespace WyvernsAssault
 		LuaManager*	mLuaManager;	
 		PhysicsManager* mPhysicsManager;
 		ItemManager* mItemManager;
+		ParticleManager* mParticleManager;
 
 		//
 		// Shortcut to player1 (TEST)
