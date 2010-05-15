@@ -51,72 +51,40 @@
                     <subentity index="1" materialName="Grass" />
                 </subentities>
             </entity>
-            <node name="DefensiveTowerLeft">
-                <position x="1846.46" y="694.864" z="-1878.93" />
-                <scale x="4" y="4" z="4" />
-                <rotation qx="0" qy="0" qz="0" qw="1" />
-                <node name="DefensiveTower">
-                    <position x="0" y="0" z="0" />
-                    <scale x="1" y="1" z="1" />
-                    <rotation qx="0" qy="0" qz="0" qw="1" />
-                    <node name="Tower">
-                        <position x="0" y="-24.5644" z="0" />
-                        <scale x="1" y="1" z="1" />
-                        <rotation qx="0" qy="0" qz="0" qw="1" />
-                        <entity name="Tower" castShadows="true" receiveShadows="true" meshFile="Tower0.mesh">
-                            <subentities>
-                                <subentity index="0" materialName="Material1" />
-                                <subentity index="1" materialName="Material2" />
-                                <subentity index="2" materialName="Material3" />
-                                <subentity index="3" materialName="Material" />
-                            </subentities>
-                        </entity>
-                    </node>
-                    <node name="Stairs">
-                        <position x="0" y="-24.5644" z="0" />
-                        <scale x="1" y="1" z="1" />
-                        <rotation qx="0" qy="0" qz="0" qw="1" />
-                        <entity name="Stairs" castShadows="true" receiveShadows="true" meshFile="Stairs0.mesh">
-                            <subentities>
-                                <subentity index="0" materialName="Material1" />
-                                <subentity index="1" materialName="Material" />
-                            </subentities>
-                        </entity>
-                    </node>
-                </node>
-            </node>
             <node name="DefensiveTowerRight">
                 <position x="1839.53" y="694.864" z="-2347.43" />
                 <scale x="4" y="4" z="4" />
                 <rotation qx="0" qy="0" qz="0" qw="1" />
-                <node name="DefensiveTower_1">
-                    <position x="0" y="0" z="0" />
+                <node name="DefensiveWoodTower">
+                    <position x="0" y="-23.3346" z="0" />
                     <scale x="1" y="1" z="1" />
                     <rotation qx="0" qy="0" qz="0" qw="1" />
-                    <node name="Tower_1">
-                        <position x="0" y="-24.5644" z="0" />
-                        <scale x="1" y="1" z="1" />
-                        <rotation qx="0" qy="0" qz="0" qw="1" />
-                        <entity name="Tower_1" castShadows="true" receiveShadows="true" meshFile="Tower0.mesh">
-                            <subentities>
-                                <subentity index="0" materialName="Material1" />
-                                <subentity index="1" materialName="Material2" />
-                                <subentity index="2" materialName="Material3" />
-                                <subentity index="3" materialName="Material" />
-                            </subentities>
-                        </entity>
-                    </node>
-                    <node name="Stairs_1">
-                        <position x="0" y="-24.5644" z="0" />
-                        <scale x="1" y="1" z="1" />
-                        <rotation qx="0" qy="0" qz="0" qw="1" />
-                        <entity name="Stairs_1" castShadows="true" receiveShadows="true" meshFile="Stairs0.mesh">
-                            <subentities>
-                                <subentity index="0" materialName="Material1" />
-                                <subentity index="1" materialName="Material" />
-                            </subentities>
-                        </entity>
-                    </node>
+                    <entity name="DefensiveWoodTower" castShadows="true" receiveShadows="true" meshFile="DefensiveWoodTower0.mesh">
+                        <subentities>
+                            <subentity index="0" materialName="TowerBaseWood" />
+                            <subentity index="1" materialName="TowerRoofWood" />
+                            <subentity index="2" materialName="TowerStairWood" />
+                            <subentity index="3" materialName="TowerUpperWood" />
+                        </subentities>
+                    </entity>
+                </node>
+            </node>
+            <node name="CaveEntrance">
+                <position x="-1222.13" y="899.832" z="2800.03" />
+                <scale x="4" y="4" z="4" />
+                <rotation qx="0" qy="0.361761" qz="0" qw="0.932271" />
+                <node name="CaveEntrance_1">
+                    <position x="0" y="0" z="0" />
+                    <scale x="1" y="1" z="1" />
+                    <rotation qx="0" qy="-5.55112e-017" qz="0" qw="1" />
+                    <entity name="CaveEntrance_1" castShadows="true" receiveShadows="true" meshFile="CaveEntrance_0.mesh">
+                        <subentities>
+                            <subentity index="0" materialName="Volcano" />
+                            <subentity index="1" materialName="WyvernsRulez" />
+                            <subentity index="2" materialName="Chalk" />
+                            <subentity index="3" materialName="VulcanicRock" />
+                        </subentities>
+                    </entity>
                 </node>
             </node>
             <node name="CityPortal">
@@ -129,12 +97,40 @@
                     <rotation qx="0" qy="1.66533e-016" qz="0" qw="1" />
                     <entity name="CityPortal_Mesh" castShadows="true" receiveShadows="true" meshFile="CityPortal_Mesh0.mesh">
                         <subentities>
-                            <subentity index="0" materialName="BlackWood" />
-                            <subentity index="1" materialName="PortalWood" />
+                            <subentity index="0" materialName="PortalWood" />
+                            <subentity index="1" materialName="BlackWood" />
                             <subentity index="2" materialName="Iron" />
                         </subentities>
                     </entity>
                 </node>
+            </node>
+            <node name="DefensiveTowerLeft">
+                <position x="1846.46" y="694.864" z="-1878.93" />
+                <scale x="4" y="4" z="4" />
+                <rotation qx="0" qy="0" qz="0" qw="1" />
+                <node name="DefensiveWoodTower_1">
+                    <position x="0" y="-23.3346" z="0" />
+                    <scale x="1" y="1" z="1" />
+                    <rotation qx="0" qy="0" qz="0" qw="1" />
+                    <entity name="DefensiveWoodTower_1" castShadows="true" receiveShadows="true" meshFile="DefensiveWoodTower0.mesh">
+                        <subentities>
+                            <subentity index="0" materialName="TowerBaseWood" />
+                            <subentity index="1" materialName="TowerRoofWood" />
+                            <subentity index="2" materialName="TowerStairWood" />
+                            <subentity index="3" materialName="TowerUpperWood" />
+                        </subentities>
+                    </entity>
+                </node>
+            </node>
+            <node name="BigRock25">
+                <position x="-1253.26" y="1094.89" z="2535.39" />
+                <scale x="26.3667" y="65.4339" z="20.667" />
+                <rotation qx="-0.680572" qy="0.140918" qz="-0.608853" qw="0.382442" />
+                <entity name="BigRock25" castShadows="true" receiveShadows="true" meshFile="BigRock0.mesh">
+                    <subentities>
+                        <subentity index="0" materialName="VulcanicRock" />
+                    </subentities>
+                </entity>
             </node>
             <node name="Lava">
                 <position x="-140.649" y="594.753" z="2814.65" />
@@ -411,7 +407,7 @@
                 </node>
             </node>
             <node name="Man">
-                <position x="1605.77" y="616.909" z="-1913.4" />
+                <position x="-1131.7" y="935.318" z="2789.52" />
                 <scale x="40" y="40" z="40" />
                 <rotation qx="-0.5" qy="-0.5" qz="-0.5" qw="0.5" />
                 <entity name="Man" castShadows="true" receiveShadows="true" meshFile="Man0.mesh">
@@ -1091,14 +1087,24 @@
                 </entity>
             </node>
             <node name="BigRock13">
-                <position x="327.727" y="637.219" z="2835.47" />
+                <position x="-1366.89" y="1130.01" z="2815.33" />
                 <scale x="26.3667" y="65.4339" z="20.667" />
-                <rotation qx="-0.128439" qy="-0.164393" qz="-0.0913311" qw="0.973723" />
+                <rotation qx="-0.321665" qy="0.478941" qz="-0.201771" qw="0.791477" />
                 <entity name="BigRock13" castShadows="true" receiveShadows="true" meshFile="BigRock0.mesh">
                     <subentities>
                         <subentity index="0" materialName="VulcanicRock" />
                     </subentities>
                 </entity>
+                <node name="BigRock24">
+                    <position x="0" y="0" z="0" />
+                    <scale x="3.16611" y="1" z="0.315845" />
+                    <rotation qx="7.28584e-017" qy="4.16334e-017" qz="-1.66533e-016" qw="1" />
+                    <entity name="BigRock24" castShadows="true" receiveShadows="true" meshFile="BigRock0.mesh">
+                        <subentities>
+                            <subentity index="0" materialName="VulcanicRock" />
+                        </subentities>
+                    </entity>
+                </node>
             </node>
             <node name="BigRock12">
                 <position x="1119.39" y="592.283" z="3040.46" />
@@ -1736,8 +1742,8 @@
                 <rotation qx="-0.5" qy="-0.5" qz="-0.5" qw="0.5" />
                 <entity name="ToxicWasteHouse" castShadows="true" receiveShadows="true" meshFile="ToxicWasteHouse0.mesh">
                     <subentities>
-                        <subentity index="0" materialName="ToxicWasteHouse" />
-                        <subentity index="1" materialName="SilverConcrete" />
+                        <subentity index="0" materialName="SilverConcrete" />
+                        <subentity index="1" materialName="ToxicWasteHouse" />
                     </subentities>
                 </entity>
                 <node name="RightTube">
@@ -1770,10 +1776,10 @@
                         <rotation qx="-0.5" qy="-0.5" qz="-0.5" qw="0.5" />
                         <entity name="RightTubeMiddle" castShadows="true" receiveShadows="true" meshFile="RightTubeMiddle0.mesh">
                             <subentities>
-                                <subentity index="0" materialName="Chalk" />
-                                <subentity index="1" materialName="TubeOrangeRed" />
-                                <subentity index="2" materialName="TubeYellow" />
-                                <subentity index="3" materialName="SilverConcrete" />
+                                <subentity index="0" materialName="TubeYellow" />
+                                <subentity index="1" materialName="SilverConcrete" />
+                                <subentity index="2" materialName="TubeOrangeRed" />
+                                <subentity index="3" materialName="Chalk" />
                             </subentities>
                         </entity>
                     </node>
@@ -1828,9 +1834,9 @@
                         <rotation qx="-0.5" qy="-0.5" qz="-0.5" qw="0.5" />
                         <entity name="LeftTubeMiddle" castShadows="true" receiveShadows="true" meshFile="LeftTubeMiddle0.mesh">
                             <subentities>
-                                <subentity index="0" materialName="SilverConcrete" />
-                                <subentity index="1" materialName="Chalk" />
-                                <subentity index="2" materialName="TubeYellow" />
+                                <subentity index="0" materialName="Chalk" />
+                                <subentity index="1" materialName="TubeYellow" />
+                                <subentity index="2" materialName="SilverConcrete" />
                                 <subentity index="3" materialName="TubeOrangeRed" />
                             </subentities>
                         </entity>
@@ -1863,8 +1869,8 @@
                 <rotation qx="-0.5" qy="-0.5" qz="-0.5" qw="0.5" />
                 <entity name="WheatField" castShadows="true" receiveShadows="true" meshFile="WheatField0.mesh">
                     <subentities>
-                        <subentity index="0" materialName="WheatLightGold" />
-                        <subentity index="1" materialName="WheatDarkGold" />
+                        <subentity index="0" materialName="WheatDarkGold" />
+                        <subentity index="1" materialName="WheatLightGold" />
                         <subentity index="2" materialName="Chalk" />
                     </subentities>
                 </entity>
@@ -1956,10 +1962,10 @@
                     <rotation qx="1.11022e-016" qy="0" qz="1.38778e-016" qw="1" />
                     <entity name="ChimneyRight" castShadows="true" receiveShadows="true" meshFile="ChimneyRight0.mesh">
                         <subentities>
-                            <subentity index="0" materialName="ChimneyCoal" />
-                            <subentity index="1" materialName="Chalk" />
-                            <subentity index="2" materialName="RedStripes" />
-                            <subentity index="3" materialName="AnotherConcrete" />
+                            <subentity index="0" materialName="RedStripes" />
+                            <subentity index="1" materialName="AnotherConcrete" />
+                            <subentity index="2" materialName="ChimneyCoal" />
+                            <subentity index="3" materialName="Chalk" />
                         </subentities>
                     </entity>
                 </node>
@@ -1969,10 +1975,10 @@
                     <rotation qx="1.11022e-016" qy="0" qz="1.38778e-016" qw="1" />
                     <entity name="ChimneyLeft" castShadows="true" receiveShadows="true" meshFile="ChimneyLeft0.mesh">
                         <subentities>
-                            <subentity index="0" materialName="AnotherConcrete" />
-                            <subentity index="1" materialName="ChimneyCoal" />
-                            <subentity index="2" materialName="Chalk" />
-                            <subentity index="3" materialName="RedStripes" />
+                            <subentity index="0" materialName="Chalk" />
+                            <subentity index="1" materialName="RedStripes" />
+                            <subentity index="2" materialName="AnotherConcrete" />
+                            <subentity index="3" materialName="ChimneyCoal" />
                         </subentities>
                     </entity>
                 </node>
@@ -5243,8 +5249,8 @@
                 <rotation qx="-0.5" qy="-0.5" qz="-0.5" qw="0.5" />
                 <entity name="BridgeOfDeath" castShadows="true" receiveShadows="true" meshFile="BridgeOfDeath0.mesh">
                     <subentities>
-                        <subentity index="0" materialName="Chalk" />
-                        <subentity index="1" materialName="BridgeOfDeathStone" />
+                        <subentity index="0" materialName="BridgeOfDeathStone" />
+                        <subentity index="1" materialName="Chalk" />
                     </subentities>
                 </entity>
             </node>
