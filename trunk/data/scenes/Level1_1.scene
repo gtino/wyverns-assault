@@ -51,6 +51,91 @@
                     <subentity index="1" materialName="Grass" />
                 </subentities>
             </entity>
+            <node name="DefensiveTowerLeft">
+                <position x="1846.46" y="694.864" z="-1878.93" />
+                <scale x="4" y="4" z="4" />
+                <rotation qx="0" qy="0" qz="0" qw="1" />
+                <node name="DefensiveTower">
+                    <position x="0" y="0" z="0" />
+                    <scale x="1" y="1" z="1" />
+                    <rotation qx="0" qy="0" qz="0" qw="1" />
+                    <node name="Tower">
+                        <position x="0" y="-24.5644" z="0" />
+                        <scale x="1" y="1" z="1" />
+                        <rotation qx="0" qy="0" qz="0" qw="1" />
+                        <entity name="Tower" castShadows="true" receiveShadows="true" meshFile="Tower0.mesh">
+                            <subentities>
+                                <subentity index="0" materialName="Material1" />
+                                <subentity index="1" materialName="Material2" />
+                                <subentity index="2" materialName="Material3" />
+                                <subentity index="3" materialName="Material" />
+                            </subentities>
+                        </entity>
+                    </node>
+                    <node name="Stairs">
+                        <position x="0" y="-24.5644" z="0" />
+                        <scale x="1" y="1" z="1" />
+                        <rotation qx="0" qy="0" qz="0" qw="1" />
+                        <entity name="Stairs" castShadows="true" receiveShadows="true" meshFile="Stairs0.mesh">
+                            <subentities>
+                                <subentity index="0" materialName="Material1" />
+                                <subentity index="1" materialName="Material" />
+                            </subentities>
+                        </entity>
+                    </node>
+                </node>
+            </node>
+            <node name="DefensiveTowerRight">
+                <position x="1839.53" y="694.864" z="-2347.43" />
+                <scale x="4" y="4" z="4" />
+                <rotation qx="0" qy="0" qz="0" qw="1" />
+                <node name="DefensiveTower_1">
+                    <position x="0" y="0" z="0" />
+                    <scale x="1" y="1" z="1" />
+                    <rotation qx="0" qy="0" qz="0" qw="1" />
+                    <node name="Tower_1">
+                        <position x="0" y="-24.5644" z="0" />
+                        <scale x="1" y="1" z="1" />
+                        <rotation qx="0" qy="0" qz="0" qw="1" />
+                        <entity name="Tower_1" castShadows="true" receiveShadows="true" meshFile="Tower0.mesh">
+                            <subentities>
+                                <subentity index="0" materialName="Material1" />
+                                <subentity index="1" materialName="Material2" />
+                                <subentity index="2" materialName="Material3" />
+                                <subentity index="3" materialName="Material" />
+                            </subentities>
+                        </entity>
+                    </node>
+                    <node name="Stairs_1">
+                        <position x="0" y="-24.5644" z="0" />
+                        <scale x="1" y="1" z="1" />
+                        <rotation qx="0" qy="0" qz="0" qw="1" />
+                        <entity name="Stairs_1" castShadows="true" receiveShadows="true" meshFile="Stairs0.mesh">
+                            <subentities>
+                                <subentity index="0" materialName="Material1" />
+                                <subentity index="1" materialName="Material" />
+                            </subentities>
+                        </entity>
+                    </node>
+                </node>
+            </node>
+            <node name="CityPortal">
+                <position x="1757.39" y="602.898" z="-2139.73" />
+                <scale x="4" y="4" z="4" />
+                <rotation qx="0" qy="0.682024" qz="0" qw="0.73133" />
+                <node name="CityPortal_Mesh">
+                    <position x="0" y="0" z="-7.10543e-015" />
+                    <scale x="1" y="1" z="1" />
+                    <rotation qx="0" qy="1.66533e-016" qz="0" qw="1" />
+                    <entity name="CityPortal_Mesh" castShadows="true" receiveShadows="true" meshFile="CityPortal_Mesh0.mesh">
+                        <subentities>
+                            <subentity index="0" materialName="BlackWood" />
+                            <subentity index="1" materialName="PortalWood" />
+                            <subentity index="2" materialName="Iron" />
+                        </subentities>
+                    </entity>
+                </node>
+            </node>
             <node name="Lava">
                 <position x="-140.649" y="594.753" z="2814.65" />
                 <scale x="154.718" y="26.7841" z="154.718" />
@@ -137,8 +222,8 @@
                 <rotation qx="-0.499777" qy="0.500223" qz="0.500223" qw="0.499777" />
                 <entity name="WheatField4" castShadows="true" receiveShadows="true" meshFile="WheatField1.mesh">
                     <subentities>
-                        <subentity index="0" materialName="WheatDarkGold" />
-                        <subentity index="1" materialName="WheatLightGold" />
+                        <subentity index="0" materialName="WheatLightGold" />
+                        <subentity index="1" materialName="WheatDarkGold" />
                     </subentities>
                 </entity>
             </node>
@@ -148,9 +233,9 @@
                 <rotation qx="-0.655795" qy="-0.280535" qz="-0.263139" qw="0.649609" />
                 <entity name="WheatField6" castShadows="true" receiveShadows="true" meshFile="WheatField3.mesh">
                     <subentities>
-                        <subentity index="0" materialName="WheatLightGold" />
+                        <subentity index="0" materialName="WheatDarkGold" />
                         <subentity index="1" materialName="Chalk" />
-                        <subentity index="2" materialName="WheatDarkGold" />
+                        <subentity index="2" materialName="WheatLightGold" />
                     </subentities>
                 </entity>
             </node>
@@ -160,8 +245,8 @@
                 <rotation qx="-0.499777" qy="0.500223" qz="0.500223" qw="0.499777" />
                 <entity name="WheatField5" castShadows="true" receiveShadows="true" meshFile="WheatField2.mesh">
                     <subentities>
-                        <subentity index="0" materialName="WheatDarkGold" />
-                        <subentity index="1" materialName="WheatLightGold" />
+                        <subentity index="0" materialName="WheatLightGold" />
+                        <subentity index="1" materialName="WheatDarkGold" />
                     </subentities>
                 </entity>
             </node>
@@ -326,7 +411,7 @@
                 </node>
             </node>
             <node name="Man">
-                <position x="3756.5" y="1569.27" z="-1924.13" />
+                <position x="1605.77" y="616.909" z="-1913.4" />
                 <scale x="40" y="40" z="40" />
                 <rotation qx="-0.5" qy="-0.5" qz="-0.5" qw="0.5" />
                 <entity name="Man" castShadows="true" receiveShadows="true" meshFile="Man0.mesh">
@@ -343,9 +428,9 @@
                     <position x="3756.5" y="1569.27" z="-1924.13" />
                     <scale x="40" y="40" z="40" />
                     <rotation qx="-0.5" qy="-0.5" qz="-0.5" qw="0.5" />
-                    <entity name="ChickenYardFence18" castShadows="true" receiveShadows="true" meshFile="ChickenYardFence0.mesh">
+                    <entity name="ChickenYardFence18" castShadows="true" receiveShadows="true" meshFile="ChickenYardFence10.mesh">
                         <subentities>
-                            <subentity index="0" materialName="Wood" />
+                            <subentity index="0" materialName="Chalk" />
                         </subentities>
                     </entity>
                 </node>
@@ -353,9 +438,9 @@
                     <position x="3756.5" y="1569.27" z="-1924.13" />
                     <scale x="40" y="40" z="40" />
                     <rotation qx="-0.5" qy="-0.5" qz="-0.5" qw="0.5" />
-                    <entity name="ChickenYardFence21" castShadows="true" receiveShadows="true" meshFile="ChickenYardFence1.mesh">
+                    <entity name="ChickenYardFence21" castShadows="true" receiveShadows="true" meshFile="ChickenYardFence14.mesh">
                         <subentities>
-                            <subentity index="0" materialName="Wood" />
+                            <subentity index="0" materialName="Chalk" />
                         </subentities>
                     </entity>
                 </node>
@@ -363,9 +448,9 @@
                     <position x="3756.5" y="1569.27" z="-1924.13" />
                     <scale x="40" y="40" z="40" />
                     <rotation qx="-0.5" qy="-0.5" qz="-0.5" qw="0.5" />
-                    <entity name="ChickenYardFence20" castShadows="true" receiveShadows="true" meshFile="ChickenYardFence2.mesh">
+                    <entity name="ChickenYardFence20" castShadows="true" receiveShadows="true" meshFile="ChickenYardFence13.mesh">
                         <subentities>
-                            <subentity index="0" materialName="Wood" />
+                            <subentity index="0" materialName="Chalk" />
                         </subentities>
                     </entity>
                 </node>
@@ -373,9 +458,9 @@
                     <position x="3756.5" y="1569.27" z="-1924.13" />
                     <scale x="40" y="40" z="40" />
                     <rotation qx="-0.5" qy="-0.5" qz="-0.5" qw="0.5" />
-                    <entity name="ChickenYardFence19" castShadows="true" receiveShadows="true" meshFile="ChickenYardFence3.mesh">
+                    <entity name="ChickenYardFence19" castShadows="true" receiveShadows="true" meshFile="ChickenYardFence11.mesh">
                         <subentities>
-                            <subentity index="0" materialName="Wood" />
+                            <subentity index="0" materialName="Chalk" />
                         </subentities>
                     </entity>
                 </node>
@@ -383,9 +468,9 @@
                     <position x="3756.5" y="1569.27" z="-1924.13" />
                     <scale x="40" y="40" z="40" />
                     <rotation qx="-0.5" qy="-0.5" qz="-0.5" qw="0.5" />
-                    <entity name="ChickenYardFence6" castShadows="true" receiveShadows="true" meshFile="ChickenYardFence4.mesh">
+                    <entity name="ChickenYardFence6" castShadows="true" receiveShadows="true" meshFile="ChickenYardFence22.mesh">
                         <subentities>
-                            <subentity index="0" materialName="Wood" />
+                            <subentity index="0" materialName="Chalk" />
                         </subentities>
                     </entity>
                 </node>
@@ -393,9 +478,9 @@
                     <position x="3756.5" y="1569.27" z="-1924.13" />
                     <scale x="40" y="40" z="40" />
                     <rotation qx="-0.5" qy="-0.5" qz="-0.5" qw="0.5" />
-                    <entity name="ChickenYardFence5" castShadows="true" receiveShadows="true" meshFile="ChickenYardFence5.mesh">
+                    <entity name="ChickenYardFence5" castShadows="true" receiveShadows="true" meshFile="ChickenYardFence21.mesh">
                         <subentities>
-                            <subentity index="0" materialName="Wood" />
+                            <subentity index="0" materialName="Chalk" />
                         </subentities>
                     </entity>
                 </node>
@@ -403,9 +488,9 @@
                     <position x="3756.5" y="1569.27" z="-1924.13" />
                     <scale x="40" y="40" z="40" />
                     <rotation qx="-0.5" qy="-0.5" qz="-0.5" qw="0.5" />
-                    <entity name="ChickenYardFence4" castShadows="true" receiveShadows="true" meshFile="ChickenYardFence6.mesh">
+                    <entity name="ChickenYardFence4" castShadows="true" receiveShadows="true" meshFile="ChickenYardFence20.mesh">
                         <subentities>
-                            <subentity index="0" materialName="Wood" />
+                            <subentity index="0" materialName="Chalk" />
                         </subentities>
                     </entity>
                 </node>
@@ -413,9 +498,9 @@
                     <position x="3756.5" y="1569.27" z="-1924.13" />
                     <scale x="40" y="40" z="40" />
                     <rotation qx="-0.5" qy="-0.5" qz="-0.5" qw="0.5" />
-                    <entity name="ChickenYardFence3" castShadows="true" receiveShadows="true" meshFile="ChickenYardFence7.mesh">
+                    <entity name="ChickenYardFence3" castShadows="true" receiveShadows="true" meshFile="ChickenYardFence19.mesh">
                         <subentities>
-                            <subentity index="0" materialName="Wood" />
+                            <subentity index="0" materialName="Chalk" />
                         </subentities>
                     </entity>
                 </node>
@@ -423,9 +508,9 @@
                     <position x="3756.5" y="1569.27" z="-1924.13" />
                     <scale x="40" y="40" z="40" />
                     <rotation qx="-0.5" qy="-0.5" qz="-0.5" qw="0.5" />
-                    <entity name="ChickenYardFence25" castShadows="true" receiveShadows="true" meshFile="ChickenYardFence8.mesh">
+                    <entity name="ChickenYardFence25" castShadows="true" receiveShadows="true" meshFile="ChickenYardFence18.mesh">
                         <subentities>
-                            <subentity index="0" materialName="Wood" />
+                            <subentity index="0" materialName="Chalk" />
                         </subentities>
                     </entity>
                 </node>
@@ -433,9 +518,9 @@
                     <position x="3756.5" y="1569.27" z="-1924.13" />
                     <scale x="40" y="40" z="40" />
                     <rotation qx="-0.5" qy="-0.5" qz="-0.5" qw="0.5" />
-                    <entity name="ChickenYardFence24" castShadows="true" receiveShadows="true" meshFile="ChickenYardFence9.mesh">
+                    <entity name="ChickenYardFence24" castShadows="true" receiveShadows="true" meshFile="ChickenYardFence17.mesh">
                         <subentities>
-                            <subentity index="0" materialName="Wood" />
+                            <subentity index="0" materialName="Chalk" />
                         </subentities>
                     </entity>
                 </node>
@@ -443,9 +528,9 @@
                     <position x="3756.5" y="1569.27" z="-1924.13" />
                     <scale x="40" y="40" z="40" />
                     <rotation qx="-0.5" qy="-0.5" qz="-0.5" qw="0.5" />
-                    <entity name="ChickenYardFence23" castShadows="true" receiveShadows="true" meshFile="ChickenYardFence10.mesh">
+                    <entity name="ChickenYardFence23" castShadows="true" receiveShadows="true" meshFile="ChickenYardFence16.mesh">
                         <subentities>
-                            <subentity index="0" materialName="Wood" />
+                            <subentity index="0" materialName="Chalk" />
                         </subentities>
                     </entity>
                 </node>
@@ -453,9 +538,9 @@
                     <position x="3756.5" y="1569.27" z="-1924.13" />
                     <scale x="40" y="40" z="40" />
                     <rotation qx="-0.5" qy="-0.5" qz="-0.5" qw="0.5" />
-                    <entity name="ChickenYardFence22" castShadows="true" receiveShadows="true" meshFile="ChickenYardFence11.mesh">
+                    <entity name="ChickenYardFence22" castShadows="true" receiveShadows="true" meshFile="ChickenYardFence15.mesh">
                         <subentities>
-                            <subentity index="0" materialName="Wood" />
+                            <subentity index="0" materialName="Chalk" />
                         </subentities>
                     </entity>
                 </node>
@@ -465,7 +550,7 @@
                     <rotation qx="-0.5" qy="-0.5" qz="-0.5" qw="0.5" />
                     <entity name="ChickenYardFence10" castShadows="true" receiveShadows="true" meshFile="ChickenYardFence12.mesh">
                         <subentities>
-                            <subentity index="0" materialName="Wood" />
+                            <subentity index="0" materialName="Chalk" />
                         </subentities>
                     </entity>
                 </node>
@@ -473,9 +558,9 @@
                     <position x="3756.5" y="1569.27" z="-1924.13" />
                     <scale x="40" y="40" z="40" />
                     <rotation qx="-0.5" qy="-0.5" qz="-0.5" qw="0.5" />
-                    <entity name="ChickenYardFence9" castShadows="true" receiveShadows="true" meshFile="ChickenYardFence13.mesh">
+                    <entity name="ChickenYardFence9" castShadows="true" receiveShadows="true" meshFile="ChickenYardFence25.mesh">
                         <subentities>
-                            <subentity index="0" materialName="Wood" />
+                            <subentity index="0" materialName="Chalk" />
                         </subentities>
                     </entity>
                 </node>
@@ -483,9 +568,9 @@
                     <position x="3756.5" y="1569.27" z="-1924.13" />
                     <scale x="40" y="40" z="40" />
                     <rotation qx="-0.5" qy="-0.5" qz="-0.5" qw="0.5" />
-                    <entity name="ChickenYardFence8" castShadows="true" receiveShadows="true" meshFile="ChickenYardFence14.mesh">
+                    <entity name="ChickenYardFence8" castShadows="true" receiveShadows="true" meshFile="ChickenYardFence24.mesh">
                         <subentities>
-                            <subentity index="0" materialName="Wood" />
+                            <subentity index="0" materialName="Chalk" />
                         </subentities>
                     </entity>
                 </node>
@@ -493,9 +578,9 @@
                     <position x="3756.5" y="1569.27" z="-1924.13" />
                     <scale x="40" y="40" z="40" />
                     <rotation qx="-0.5" qy="-0.5" qz="-0.5" qw="0.5" />
-                    <entity name="ChickenYardFence7" castShadows="true" receiveShadows="true" meshFile="ChickenYardFence15.mesh">
+                    <entity name="ChickenYardFence7" castShadows="true" receiveShadows="true" meshFile="ChickenYardFence23.mesh">
                         <subentities>
-                            <subentity index="0" materialName="Wood" />
+                            <subentity index="0" materialName="Chalk" />
                         </subentities>
                     </entity>
                 </node>
@@ -503,9 +588,9 @@
                     <position x="3756.5" y="1569.27" z="-1924.13" />
                     <scale x="40" y="40" z="40" />
                     <rotation qx="-0.5" qy="-0.5" qz="-0.5" qw="0.5" />
-                    <entity name="ChickenYardFence2" castShadows="true" receiveShadows="true" meshFile="ChickenYardFence16.mesh">
+                    <entity name="ChickenYardFence2" castShadows="true" receiveShadows="true" meshFile="ChickenYardFence12.mesh">
                         <subentities>
-                            <subentity index="0" materialName="Wood" />
+                            <subentity index="0" materialName="Chalk" />
                         </subentities>
                     </entity>
                 </node>
@@ -513,9 +598,9 @@
                     <position x="3756.5" y="1569.27" z="-1924.13" />
                     <scale x="40" y="40" z="40" />
                     <rotation qx="-0.5" qy="-0.5" qz="-0.5" qw="0.5" />
-                    <entity name="ChickenYardFence1" castShadows="true" receiveShadows="true" meshFile="ChickenYardFence17.mesh">
+                    <entity name="ChickenYardFence1" castShadows="true" receiveShadows="true" meshFile="ChickenYardFence1.mesh">
                         <subentities>
-                            <subentity index="0" materialName="Wood" />
+                            <subentity index="0" materialName="Chalk" />
                         </subentities>
                     </entity>
                 </node>
@@ -523,9 +608,9 @@
                     <position x="3756.5" y="1569.27" z="-1924.13" />
                     <scale x="40" y="40" z="40" />
                     <rotation qx="-0.5" qy="-0.5" qz="-0.5" qw="0.5" />
-                    <entity name="ChickenYardFence" castShadows="true" receiveShadows="true" meshFile="ChickenYardFence18.mesh">
+                    <entity name="ChickenYardFence" castShadows="true" receiveShadows="true" meshFile="ChickenYardFence0.mesh">
                         <subentities>
-                            <subentity index="0" materialName="Wood" />
+                            <subentity index="0" materialName="Chalk" />
                         </subentities>
                     </entity>
                 </node>
@@ -533,9 +618,9 @@
                     <position x="3756.5" y="1569.27" z="-1924.13" />
                     <scale x="40" y="40" z="40" />
                     <rotation qx="-0.5" qy="-0.5" qz="-0.5" qw="0.5" />
-                    <entity name="ChickenYardFence14" castShadows="true" receiveShadows="true" meshFile="ChickenYardFence19.mesh">
+                    <entity name="ChickenYardFence14" castShadows="true" receiveShadows="true" meshFile="ChickenYardFence22.mesh">
                         <subentities>
-                            <subentity index="0" materialName="Wood" />
+                            <subentity index="0" materialName="Chalk" />
                         </subentities>
                     </entity>
                 </node>
@@ -543,9 +628,9 @@
                     <position x="3756.5" y="1569.27" z="-1924.13" />
                     <scale x="40" y="40" z="40" />
                     <rotation qx="-0.5" qy="-0.5" qz="-0.5" qw="0.5" />
-                    <entity name="ChickenYardFence13" castShadows="true" receiveShadows="true" meshFile="ChickenYardFence20.mesh">
+                    <entity name="ChickenYardFence13" castShadows="true" receiveShadows="true" meshFile="ChickenYardFence21.mesh">
                         <subentities>
-                            <subentity index="0" materialName="Wood" />
+                            <subentity index="0" materialName="Chalk" />
                         </subentities>
                     </entity>
                 </node>
@@ -553,9 +638,9 @@
                     <position x="3756.5" y="1569.27" z="-1924.13" />
                     <scale x="40" y="40" z="40" />
                     <rotation qx="-0.5" qy="-0.5" qz="-0.5" qw="0.5" />
-                    <entity name="ChickenYardFence12" castShadows="true" receiveShadows="true" meshFile="ChickenYardFence21.mesh">
+                    <entity name="ChickenYardFence12" castShadows="true" receiveShadows="true" meshFile="ChickenYardFence20.mesh">
                         <subentities>
-                            <subentity index="0" materialName="Wood" />
+                            <subentity index="0" materialName="Chalk" />
                         </subentities>
                     </entity>
                 </node>
@@ -563,9 +648,9 @@
                     <position x="3756.5" y="1569.27" z="-1924.13" />
                     <scale x="40" y="40" z="40" />
                     <rotation qx="-0.5" qy="-0.5" qz="-0.5" qw="0.5" />
-                    <entity name="ChickenYardFence11" castShadows="true" receiveShadows="true" meshFile="ChickenYardFence22.mesh">
+                    <entity name="ChickenYardFence11" castShadows="true" receiveShadows="true" meshFile="ChickenYardFence19.mesh">
                         <subentities>
-                            <subentity index="0" materialName="Wood" />
+                            <subentity index="0" materialName="Chalk" />
                         </subentities>
                     </entity>
                 </node>
@@ -573,9 +658,9 @@
                     <position x="3756.5" y="1569.27" z="-1924.13" />
                     <scale x="40" y="40" z="40" />
                     <rotation qx="-0.5" qy="-0.5" qz="-0.5" qw="0.5" />
-                    <entity name="ChickenYardFence17" castShadows="true" receiveShadows="true" meshFile="ChickenYardFence23.mesh">
+                    <entity name="ChickenYardFence17" castShadows="true" receiveShadows="true" meshFile="ChickenYardFence25.mesh">
                         <subentities>
-                            <subentity index="0" materialName="Wood" />
+                            <subentity index="0" materialName="Chalk" />
                         </subentities>
                     </entity>
                 </node>
@@ -585,7 +670,7 @@
                     <rotation qx="-0.5" qy="-0.5" qz="-0.5" qw="0.5" />
                     <entity name="ChickenYardFence16" castShadows="true" receiveShadows="true" meshFile="ChickenYardFence24.mesh">
                         <subentities>
-                            <subentity index="0" materialName="Wood" />
+                            <subentity index="0" materialName="Chalk" />
                         </subentities>
                     </entity>
                 </node>
@@ -593,9 +678,9 @@
                     <position x="3756.5" y="1569.27" z="-1924.13" />
                     <scale x="40" y="40" z="40" />
                     <rotation qx="-0.5" qy="-0.5" qz="-0.5" qw="0.5" />
-                    <entity name="ChickenYardFence15" castShadows="true" receiveShadows="true" meshFile="ChickenYardFence25.mesh">
+                    <entity name="ChickenYardFence15" castShadows="true" receiveShadows="true" meshFile="ChickenYardFence23.mesh">
                         <subentities>
-                            <subentity index="0" materialName="Wood" />
+                            <subentity index="0" materialName="Chalk" />
                         </subentities>
                     </entity>
                 </node>
@@ -1056,606 +1141,356 @@
                 </entity>
             </node>
             <node name="WoodenWall">
-                <position x="0" y="0" z="0" />
+                <position x="1894.63" y="0" z="-1747.99" />
                 <scale x="1" y="1" z="1" />
                 <rotation qx="0" qy="0" qz="0" qw="1" />
-                <node name="WoodenWallPole2">
-                    <position x="3756.5" y="1569.27" z="-1924.13" />
-                    <scale x="40" y="40" z="40" />
-                    <rotation qx="-0.5" qy="-0.5" qz="-0.5" qw="0.5" />
-                    <entity name="WoodenWallPole2" castShadows="true" receiveShadows="true" meshFile="WoodenWallPole0.mesh">
-                        <subentities>
-                            <subentity index="0" materialName="Wood" />
-                        </subentities>
-                    </entity>
-                </node>
-                <node name="WoodenWallPole43">
-                    <position x="3756.5" y="1569.27" z="-1924.13" />
-                    <scale x="40" y="40" z="40" />
-                    <rotation qx="-0.5" qy="-0.5" qz="-0.5" qw="0.5" />
-                    <entity name="WoodenWallPole43" castShadows="true" receiveShadows="true" meshFile="WoodenWallPole1.mesh">
-                        <subentities>
-                            <subentity index="0" materialName="Wood" />
-                        </subentities>
-                    </entity>
-                </node>
-                <node name="WoodenWallPole49">
-                    <position x="3756.5" y="1569.27" z="-1924.13" />
-                    <scale x="40" y="40" z="40" />
-                    <rotation qx="-0.5" qy="-0.5" qz="-0.5" qw="0.5" />
-                    <entity name="WoodenWallPole49" castShadows="true" receiveShadows="true" meshFile="WoodenWallPole2.mesh">
-                        <subentities>
-                            <subentity index="0" materialName="Wood" />
-                        </subentities>
-                    </entity>
-                </node>
-                <node name="WoodenWallPole55">
-                    <position x="3756.5" y="1569.27" z="-1924.13" />
-                    <scale x="40" y="40" z="40" />
-                    <rotation qx="-0.5" qy="-0.5" qz="-0.5" qw="0.5" />
-                    <entity name="WoodenWallPole55" castShadows="true" receiveShadows="true" meshFile="WoodenWallPole3.mesh">
-                        <subentities>
-                            <subentity index="0" materialName="Wood" />
-                        </subentities>
-                    </entity>
-                </node>
-                <node name="WoodenWallPole31">
-                    <position x="3756.5" y="1569.27" z="-1924.13" />
-                    <scale x="40" y="40" z="40" />
-                    <rotation qx="-0.5" qy="-0.5" qz="-0.5" qw="0.5" />
-                    <entity name="WoodenWallPole31" castShadows="true" receiveShadows="true" meshFile="WoodenWallPole4.mesh">
-                        <subentities>
-                            <subentity index="0" materialName="Wood" />
-                        </subentities>
-                    </entity>
-                </node>
-                <node name="WoodenWallPole36">
-                    <position x="3756.5" y="1569.27" z="-1924.13" />
-                    <scale x="40" y="40" z="40" />
-                    <rotation qx="-0.5" qy="-0.5" qz="-0.5" qw="0.5" />
-                    <entity name="WoodenWallPole36" castShadows="true" receiveShadows="true" meshFile="WoodenWallPole5.mesh">
-                        <subentities>
-                            <subentity index="0" materialName="Wood" />
-                        </subentities>
-                    </entity>
-                </node>
-                <node name="WoodenWallPole25">
-                    <position x="3756.5" y="1569.27" z="-1924.13" />
-                    <scale x="40" y="40" z="40" />
-                    <rotation qx="-0.5" qy="-0.5" qz="-0.5" qw="0.5" />
-                    <entity name="WoodenWallPole25" castShadows="true" receiveShadows="true" meshFile="WoodenWallPole6.mesh">
-                        <subentities>
-                            <subentity index="0" materialName="Wood" />
-                        </subentities>
-                    </entity>
-                </node>
-                <node name="WoodenWallPole19">
-                    <position x="3756.5" y="1569.27" z="-1924.13" />
-                    <scale x="40" y="40" z="40" />
-                    <rotation qx="-0.5" qy="-0.5" qz="-0.5" qw="0.5" />
-                    <entity name="WoodenWallPole19" castShadows="true" receiveShadows="true" meshFile="WoodenWallPole7.mesh">
-                        <subentities>
-                            <subentity index="0" materialName="Wood" />
-                        </subentities>
-                    </entity>
-                </node>
-                <node name="WoodenWallPole13">
-                    <position x="3756.5" y="1569.27" z="-1924.13" />
-                    <scale x="40" y="40" z="40" />
-                    <rotation qx="-0.5" qy="-0.5" qz="-0.5" qw="0.5" />
-                    <entity name="WoodenWallPole13" castShadows="true" receiveShadows="true" meshFile="WoodenWallPole8.mesh">
-                        <subentities>
-                            <subentity index="0" materialName="Wood" />
-                        </subentities>
-                    </entity>
-                </node>
-                <node name="WoodenWallPole58">
-                    <position x="3756.5" y="1569.27" z="-1924.13" />
-                    <scale x="40" y="40" z="40" />
-                    <rotation qx="-0.5" qy="-0.5" qz="-0.5" qw="0.5" />
-                    <entity name="WoodenWallPole58" castShadows="true" receiveShadows="true" meshFile="WoodenWallPole9.mesh">
-                        <subentities>
-                            <subentity index="0" materialName="Wood" />
-                        </subentities>
-                    </entity>
-                </node>
-                <node name="WoodenWallPole40">
-                    <position x="3756.5" y="1569.27" z="-1924.13" />
-                    <scale x="40" y="40" z="40" />
-                    <rotation qx="-0.5" qy="-0.5" qz="-0.5" qw="0.5" />
-                    <entity name="WoodenWallPole40" castShadows="true" receiveShadows="true" meshFile="WoodenWallPole10.mesh">
-                        <subentities>
-                            <subentity index="0" materialName="Wood" />
-                        </subentities>
-                    </entity>
-                </node>
-                <node name="WoodenWallPole46">
-                    <position x="3756.5" y="1569.27" z="-1924.13" />
-                    <scale x="40" y="40" z="40" />
-                    <rotation qx="-0.5" qy="-0.5" qz="-0.5" qw="0.5" />
-                    <entity name="WoodenWallPole46" castShadows="true" receiveShadows="true" meshFile="WoodenWallPole11.mesh">
-                        <subentities>
-                            <subentity index="0" materialName="Wood" />
-                        </subentities>
-                    </entity>
-                </node>
-                <node name="WoodenWallPole52">
-                    <position x="3756.5" y="1569.27" z="-1924.13" />
-                    <scale x="40" y="40" z="40" />
-                    <rotation qx="-0.5" qy="-0.5" qz="-0.5" qw="0.5" />
-                    <entity name="WoodenWallPole52" castShadows="true" receiveShadows="true" meshFile="WoodenWallPole12.mesh">
-                        <subentities>
-                            <subentity index="0" materialName="Wood" />
-                        </subentities>
-                    </entity>
-                </node>
-                <node name="WoodenWallPole28">
-                    <position x="3756.5" y="1569.27" z="-1924.13" />
-                    <scale x="40" y="40" z="40" />
-                    <rotation qx="-0.5" qy="-0.5" qz="-0.5" qw="0.5" />
-                    <entity name="WoodenWallPole28" castShadows="true" receiveShadows="true" meshFile="WoodenWallPole13.mesh">
-                        <subentities>
-                            <subentity index="0" materialName="Wood" />
-                        </subentities>
-                    </entity>
-                </node>
                 <node name="WoodenWallPole34">
-                    <position x="3756.5" y="1569.27" z="-1924.13" />
-                    <scale x="40" y="40" z="40" />
-                    <rotation qx="-0.5" qy="-0.5" qz="-0.5" qw="0.5" />
-                    <entity name="WoodenWallPole34" castShadows="true" receiveShadows="true" meshFile="WoodenWallPole14.mesh">
+                    <position x="-114.108" y="677.474" z="-474.211" />
+                    <scale x="4" y="4" z="4" />
+                    <rotation qx="0" qy="0.257824" qz="0" qw="0.966192" />
+                    <entity name="WoodenWallPole34" castShadows="true" receiveShadows="true" meshFile="WoodenWallPole0.mesh">
                         <subentities>
-                            <subentity index="0" materialName="Wood" />
-                        </subentities>
-                    </entity>
-                </node>
-                <node name="WoodenWallPole22">
-                    <position x="3756.5" y="1569.27" z="-1924.13" />
-                    <scale x="40" y="40" z="40" />
-                    <rotation qx="-0.5" qy="-0.5" qz="-0.5" qw="0.5" />
-                    <entity name="WoodenWallPole22" castShadows="true" receiveShadows="true" meshFile="WoodenWallPole15.mesh">
-                        <subentities>
-                            <subentity index="0" materialName="Wood" />
-                        </subentities>
-                    </entity>
-                </node>
-                <node name="WoodenWallPole16">
-                    <position x="3756.5" y="1569.27" z="-1924.13" />
-                    <scale x="40" y="40" z="40" />
-                    <rotation qx="-0.5" qy="-0.5" qz="-0.5" qw="0.5" />
-                    <entity name="WoodenWallPole16" castShadows="true" receiveShadows="true" meshFile="WoodenWallPole16.mesh">
-                        <subentities>
-                            <subentity index="0" materialName="Wood" />
-                        </subentities>
-                    </entity>
-                </node>
-                <node name="WoodenWallPole10">
-                    <position x="3756.5" y="1569.27" z="-1924.13" />
-                    <scale x="40" y="40" z="40" />
-                    <rotation qx="-0.5" qy="-0.5" qz="-0.5" qw="0.5" />
-                    <entity name="WoodenWallPole10" castShadows="true" receiveShadows="true" meshFile="WoodenWallPole17.mesh">
-                        <subentities>
-                            <subentity index="0" materialName="Wood" />
-                        </subentities>
-                    </entity>
-                </node>
-                <node name="WoodenWallPole57">
-                    <position x="3756.5" y="1569.27" z="-1924.13" />
-                    <scale x="40" y="40" z="40" />
-                    <rotation qx="-0.5" qy="-0.5" qz="-0.5" qw="0.5" />
-                    <entity name="WoodenWallPole57" castShadows="true" receiveShadows="true" meshFile="WoodenWallPole18.mesh">
-                        <subentities>
-                            <subentity index="0" materialName="Wood" />
-                        </subentities>
-                    </entity>
-                </node>
-                <node name="WoodenWallPole39">
-                    <position x="3756.5" y="1569.27" z="-1924.13" />
-                    <scale x="40" y="40" z="40" />
-                    <rotation qx="-0.5" qy="-0.5" qz="-0.5" qw="0.5" />
-                    <entity name="WoodenWallPole39" castShadows="true" receiveShadows="true" meshFile="WoodenWallPole19.mesh">
-                        <subentities>
-                            <subentity index="0" materialName="Wood" />
-                        </subentities>
-                    </entity>
-                </node>
-                <node name="WoodenWallPole45">
-                    <position x="3756.5" y="1569.27" z="-1924.13" />
-                    <scale x="40" y="40" z="40" />
-                    <rotation qx="-0.5" qy="-0.5" qz="-0.5" qw="0.5" />
-                    <entity name="WoodenWallPole45" castShadows="true" receiveShadows="true" meshFile="WoodenWallPole20.mesh">
-                        <subentities>
-                            <subentity index="0" materialName="Wood" />
-                        </subentities>
-                    </entity>
-                </node>
-                <node name="WoodenWallPole51">
-                    <position x="3756.5" y="1569.27" z="-1924.13" />
-                    <scale x="40" y="40" z="40" />
-                    <rotation qx="-0.5" qy="-0.5" qz="-0.5" qw="0.5" />
-                    <entity name="WoodenWallPole51" castShadows="true" receiveShadows="true" meshFile="WoodenWallPole21.mesh">
-                        <subentities>
-                            <subentity index="0" materialName="Wood" />
-                        </subentities>
-                    </entity>
-                </node>
-                <node name="WoodenWallPole27">
-                    <position x="3756.5" y="1569.27" z="-1924.13" />
-                    <scale x="40" y="40" z="40" />
-                    <rotation qx="-0.5" qy="-0.5" qz="-0.5" qw="0.5" />
-                    <entity name="WoodenWallPole27" castShadows="true" receiveShadows="true" meshFile="WoodenWallPole22.mesh">
-                        <subentities>
-                            <subentity index="0" materialName="Wood" />
+                            <subentity index="0" materialName="WoodenPole" />
                         </subentities>
                     </entity>
                 </node>
                 <node name="WoodenWallPole33">
-                    <position x="3756.5" y="1569.27" z="-1924.13" />
-                    <scale x="40" y="40" z="40" />
-                    <rotation qx="-0.5" qy="-0.5" qz="-0.5" qw="0.5" />
-                    <entity name="WoodenWallPole33" castShadows="true" receiveShadows="true" meshFile="WoodenWallPole23.mesh">
+                    <position x="-99.8123" y="677.474" z="-483.277" />
+                    <scale x="4" y="4" z="4" />
+                    <rotation qx="0" qy="0.18109" qz="0" qw="0.983467" />
+                    <entity name="WoodenWallPole33" castShadows="true" receiveShadows="true" meshFile="WoodenWallPole0.mesh">
                         <subentities>
-                            <subentity index="0" materialName="Wood" />
-                        </subentities>
-                    </entity>
-                </node>
-                <node name="WoodenWallPole21">
-                    <position x="3756.5" y="1569.27" z="-1924.13" />
-                    <scale x="40" y="40" z="40" />
-                    <rotation qx="-0.5" qy="-0.5" qz="-0.5" qw="0.5" />
-                    <entity name="WoodenWallPole21" castShadows="true" receiveShadows="true" meshFile="WoodenWallPole24.mesh">
-                        <subentities>
-                            <subentity index="0" materialName="Wood" />
-                        </subentities>
-                    </entity>
-                </node>
-                <node name="WoodenWallPole15">
-                    <position x="3756.5" y="1569.27" z="-1924.13" />
-                    <scale x="40" y="40" z="40" />
-                    <rotation qx="-0.5" qy="-0.5" qz="-0.5" qw="0.5" />
-                    <entity name="WoodenWallPole15" castShadows="true" receiveShadows="true" meshFile="WoodenWallPole25.mesh">
-                        <subentities>
-                            <subentity index="0" materialName="Wood" />
-                        </subentities>
-                    </entity>
-                </node>
-                <node name="WoodenWallPole9">
-                    <position x="3756.5" y="1569.27" z="-1924.13" />
-                    <scale x="40" y="40" z="40" />
-                    <rotation qx="-0.5" qy="-0.5" qz="-0.5" qw="0.5" />
-                    <entity name="WoodenWallPole9" castShadows="true" receiveShadows="true" meshFile="WoodenWallPole26.mesh">
-                        <subentities>
-                            <subentity index="0" materialName="Wood" />
-                        </subentities>
-                    </entity>
-                </node>
-                <node name="WoodenWallPole59">
-                    <position x="3756.5" y="1569.27" z="-1924.13" />
-                    <scale x="40" y="40" z="40" />
-                    <rotation qx="-0.5" qy="-0.5" qz="-0.5" qw="0.5" />
-                    <entity name="WoodenWallPole59" castShadows="true" receiveShadows="true" meshFile="WoodenWallPole27.mesh">
-                        <subentities>
-                            <subentity index="0" materialName="Wood" />
-                        </subentities>
-                    </entity>
-                </node>
-                <node name="WoodenWallPole41">
-                    <position x="3756.5" y="1569.27" z="-1924.13" />
-                    <scale x="40" y="40" z="40" />
-                    <rotation qx="-0.5" qy="-0.5" qz="-0.5" qw="0.5" />
-                    <entity name="WoodenWallPole41" castShadows="true" receiveShadows="true" meshFile="WoodenWallPole28.mesh">
-                        <subentities>
-                            <subentity index="0" materialName="Wood" />
-                        </subentities>
-                    </entity>
-                </node>
-                <node name="WoodenWallPole47">
-                    <position x="3756.5" y="1569.27" z="-1924.13" />
-                    <scale x="40" y="40" z="40" />
-                    <rotation qx="-0.5" qy="-0.5" qz="-0.5" qw="0.5" />
-                    <entity name="WoodenWallPole47" castShadows="true" receiveShadows="true" meshFile="WoodenWallPole29.mesh">
-                        <subentities>
-                            <subentity index="0" materialName="Wood" />
-                        </subentities>
-                    </entity>
-                </node>
-                <node name="WoodenWallPole53">
-                    <position x="3756.5" y="1569.27" z="-1924.13" />
-                    <scale x="40" y="40" z="40" />
-                    <rotation qx="-0.5" qy="-0.5" qz="-0.5" qw="0.5" />
-                    <entity name="WoodenWallPole53" castShadows="true" receiveShadows="true" meshFile="WoodenWallPole30.mesh">
-                        <subentities>
-                            <subentity index="0" materialName="Wood" />
-                        </subentities>
-                    </entity>
-                </node>
-                <node name="WoodenWallPole29">
-                    <position x="3756.5" y="1569.27" z="-1924.13" />
-                    <scale x="40" y="40" z="40" />
-                    <rotation qx="-0.5" qy="-0.5" qz="-0.5" qw="0.5" />
-                    <entity name="WoodenWallPole29" castShadows="true" receiveShadows="true" meshFile="WoodenWallPole31.mesh">
-                        <subentities>
-                            <subentity index="0" materialName="Wood" />
-                        </subentities>
-                    </entity>
-                </node>
-                <node name="WoodenWallPole35">
-                    <position x="3756.5" y="1569.27" z="-1924.13" />
-                    <scale x="40" y="40" z="40" />
-                    <rotation qx="-0.5" qy="-0.5" qz="-0.5" qw="0.5" />
-                    <entity name="WoodenWallPole35" castShadows="true" receiveShadows="true" meshFile="WoodenWallPole32.mesh">
-                        <subentities>
-                            <subentity index="0" materialName="Wood" />
-                        </subentities>
-                    </entity>
-                </node>
-                <node name="WoodenWallPole23">
-                    <position x="3756.5" y="1569.27" z="-1924.13" />
-                    <scale x="40" y="40" z="40" />
-                    <rotation qx="-0.5" qy="-0.5" qz="-0.5" qw="0.5" />
-                    <entity name="WoodenWallPole23" castShadows="true" receiveShadows="true" meshFile="WoodenWallPole33.mesh">
-                        <subentities>
-                            <subentity index="0" materialName="Wood" />
-                        </subentities>
-                    </entity>
-                </node>
-                <node name="WoodenWallPole17">
-                    <position x="3756.5" y="1569.27" z="-1924.13" />
-                    <scale x="40" y="40" z="40" />
-                    <rotation qx="-0.5" qy="-0.5" qz="-0.5" qw="0.5" />
-                    <entity name="WoodenWallPole17" castShadows="true" receiveShadows="true" meshFile="WoodenWallPole34.mesh">
-                        <subentities>
-                            <subentity index="0" materialName="Wood" />
-                        </subentities>
-                    </entity>
-                </node>
-                <node name="WoodenWallPole11">
-                    <position x="3756.5" y="1569.27" z="-1924.13" />
-                    <scale x="40" y="40" z="40" />
-                    <rotation qx="-0.5" qy="-0.5" qz="-0.5" qw="0.5" />
-                    <entity name="WoodenWallPole11" castShadows="true" receiveShadows="true" meshFile="WoodenWallPole35.mesh">
-                        <subentities>
-                            <subentity index="0" materialName="Wood" />
-                        </subentities>
-                    </entity>
-                </node>
-                <node name="WoodenWallPole1">
-                    <position x="3756.5" y="1569.27" z="-1924.13" />
-                    <scale x="40" y="40" z="40" />
-                    <rotation qx="-0.5" qy="-0.5" qz="-0.5" qw="0.5" />
-                    <entity name="WoodenWallPole1" castShadows="true" receiveShadows="true" meshFile="WoodenWallPole36.mesh">
-                        <subentities>
-                            <subentity index="0" materialName="Wood" />
-                        </subentities>
-                    </entity>
-                </node>
-                <node name="WoodenWallPole42">
-                    <position x="3756.5" y="1569.27" z="-1924.13" />
-                    <scale x="40" y="40" z="40" />
-                    <rotation qx="-0.5" qy="-0.5" qz="-0.5" qw="0.5" />
-                    <entity name="WoodenWallPole42" castShadows="true" receiveShadows="true" meshFile="WoodenWallPole37.mesh">
-                        <subentities>
-                            <subentity index="0" materialName="Wood" />
-                        </subentities>
-                    </entity>
-                </node>
-                <node name="WoodenWallPole48">
-                    <position x="3756.5" y="1569.27" z="-1924.13" />
-                    <scale x="40" y="40" z="40" />
-                    <rotation qx="-0.5" qy="-0.5" qz="-0.5" qw="0.5" />
-                    <entity name="WoodenWallPole48" castShadows="true" receiveShadows="true" meshFile="WoodenWallPole38.mesh">
-                        <subentities>
-                            <subentity index="0" materialName="Wood" />
-                        </subentities>
-                    </entity>
-                </node>
-                <node name="WoodenWallPole54">
-                    <position x="3756.5" y="1569.27" z="-1924.13" />
-                    <scale x="40" y="40" z="40" />
-                    <rotation qx="-0.5" qy="-0.5" qz="-0.5" qw="0.5" />
-                    <entity name="WoodenWallPole54" castShadows="true" receiveShadows="true" meshFile="WoodenWallPole39.mesh">
-                        <subentities>
-                            <subentity index="0" materialName="Wood" />
-                        </subentities>
-                    </entity>
-                </node>
-                <node name="WoodenWallPole30">
-                    <position x="3756.5" y="1569.27" z="-1924.13" />
-                    <scale x="40" y="40" z="40" />
-                    <rotation qx="-0.5" qy="-0.5" qz="-0.5" qw="0.5" />
-                    <entity name="WoodenWallPole30" castShadows="true" receiveShadows="true" meshFile="WoodenWallPole40.mesh">
-                        <subentities>
-                            <subentity index="0" materialName="Wood" />
-                        </subentities>
-                    </entity>
-                </node>
-                <node name="WoodenWallPole37">
-                    <position x="3756.5" y="1569.27" z="-1924.13" />
-                    <scale x="40" y="40" z="40" />
-                    <rotation qx="-0.5" qy="-0.5" qz="-0.5" qw="0.5" />
-                    <entity name="WoodenWallPole37" castShadows="true" receiveShadows="true" meshFile="WoodenWallPole41.mesh">
-                        <subentities>
-                            <subentity index="0" materialName="Wood" />
-                        </subentities>
-                    </entity>
-                </node>
-                <node name="WoodenWallPole24">
-                    <position x="3756.5" y="1569.27" z="-1924.13" />
-                    <scale x="40" y="40" z="40" />
-                    <rotation qx="-0.5" qy="-0.5" qz="-0.5" qw="0.5" />
-                    <entity name="WoodenWallPole24" castShadows="true" receiveShadows="true" meshFile="WoodenWallPole42.mesh">
-                        <subentities>
-                            <subentity index="0" materialName="Wood" />
-                        </subentities>
-                    </entity>
-                </node>
-                <node name="WoodenWallPole18">
-                    <position x="3756.5" y="1569.27" z="-1924.13" />
-                    <scale x="40" y="40" z="40" />
-                    <rotation qx="-0.5" qy="-0.5" qz="-0.5" qw="0.5" />
-                    <entity name="WoodenWallPole18" castShadows="true" receiveShadows="true" meshFile="WoodenWallPole43.mesh">
-                        <subentities>
-                            <subentity index="0" materialName="Wood" />
-                        </subentities>
-                    </entity>
-                </node>
-                <node name="WoodenWallPole12">
-                    <position x="3756.5" y="1569.27" z="-1924.13" />
-                    <scale x="40" y="40" z="40" />
-                    <rotation qx="-0.5" qy="-0.5" qz="-0.5" qw="0.5" />
-                    <entity name="WoodenWallPole12" castShadows="true" receiveShadows="true" meshFile="WoodenWallPole44.mesh">
-                        <subentities>
-                            <subentity index="0" materialName="Wood" />
-                        </subentities>
-                    </entity>
-                </node>
-                <node name="WoodenWallPole56">
-                    <position x="3756.5" y="1569.27" z="-1924.13" />
-                    <scale x="40" y="40" z="40" />
-                    <rotation qx="-0.5" qy="-0.5" qz="-0.5" qw="0.5" />
-                    <entity name="WoodenWallPole56" castShadows="true" receiveShadows="true" meshFile="WoodenWallPole45.mesh">
-                        <subentities>
-                            <subentity index="0" materialName="Wood" />
-                        </subentities>
-                    </entity>
-                </node>
-                <node name="WoodenWallPole38">
-                    <position x="3756.5" y="1569.27" z="-1924.13" />
-                    <scale x="40" y="40" z="40" />
-                    <rotation qx="-0.5" qy="-0.5" qz="-0.5" qw="0.5" />
-                    <entity name="WoodenWallPole38" castShadows="true" receiveShadows="true" meshFile="WoodenWallPole46.mesh">
-                        <subentities>
-                            <subentity index="0" materialName="Wood" />
-                        </subentities>
-                    </entity>
-                </node>
-                <node name="WoodenWallPole44">
-                    <position x="3756.5" y="1569.27" z="-1924.13" />
-                    <scale x="40" y="40" z="40" />
-                    <rotation qx="-0.5" qy="-0.5" qz="-0.5" qw="0.5" />
-                    <entity name="WoodenWallPole44" castShadows="true" receiveShadows="true" meshFile="WoodenWallPole47.mesh">
-                        <subentities>
-                            <subentity index="0" materialName="Wood" />
-                        </subentities>
-                    </entity>
-                </node>
-                <node name="WoodenWallPole50">
-                    <position x="3756.5" y="1569.27" z="-1924.13" />
-                    <scale x="40" y="40" z="40" />
-                    <rotation qx="-0.5" qy="-0.5" qz="-0.5" qw="0.5" />
-                    <entity name="WoodenWallPole50" castShadows="true" receiveShadows="true" meshFile="WoodenWallPole48.mesh">
-                        <subentities>
-                            <subentity index="0" materialName="Wood" />
-                        </subentities>
-                    </entity>
-                </node>
-                <node name="WoodenWallPole26">
-                    <position x="3756.5" y="1569.27" z="-1924.13" />
-                    <scale x="40" y="40" z="40" />
-                    <rotation qx="-0.5" qy="-0.5" qz="-0.5" qw="0.5" />
-                    <entity name="WoodenWallPole26" castShadows="true" receiveShadows="true" meshFile="WoodenWallPole49.mesh">
-                        <subentities>
-                            <subentity index="0" materialName="Wood" />
+                            <subentity index="0" materialName="WoodenPole" />
                         </subentities>
                     </entity>
                 </node>
                 <node name="WoodenWallPole32">
-                    <position x="3756.5" y="1569.27" z="-1924.13" />
-                    <scale x="40" y="40" z="40" />
-                    <rotation qx="-0.5" qy="-0.5" qz="-0.5" qw="0.5" />
-                    <entity name="WoodenWallPole32" castShadows="true" receiveShadows="true" meshFile="WoodenWallPole50.mesh">
+                    <position x="-46.9851" y="677.474" z="-204.777" />
+                    <scale x="4" y="4" z="4" />
+                    <rotation qx="0" qy="0" qz="0" qw="1" />
+                    <entity name="WoodenWallPole32" castShadows="true" receiveShadows="true" meshFile="WoodenWallPole0.mesh">
                         <subentities>
-                            <subentity index="0" materialName="Wood" />
+                            <subentity index="0" materialName="WoodenPole" />
+                        </subentities>
+                    </entity>
+                </node>
+                <node name="WoodenWallPole31">
+                    <position x="-55.7508" y="677.474" z="-216.989" />
+                    <scale x="4" y="4" z="4" />
+                    <rotation qx="0" qy="0" qz="0" qw="1" />
+                    <entity name="WoodenWallPole31" castShadows="true" receiveShadows="true" meshFile="WoodenWallPole0.mesh">
+                        <subentities>
+                            <subentity index="0" materialName="WoodenPole" />
+                        </subentities>
+                    </entity>
+                </node>
+                <node name="WoodenWallPole30">
+                    <position x="-62.9227" y="677.474" z="-229.998" />
+                    <scale x="4" y="4" z="4" />
+                    <rotation qx="0" qy="0" qz="0" qw="1" />
+                    <entity name="WoodenWallPole30" castShadows="true" receiveShadows="true" meshFile="WoodenWallPole0.mesh">
+                        <subentities>
+                            <subentity index="0" materialName="WoodenPole" />
+                        </subentities>
+                    </entity>
+                </node>
+                <node name="WoodenWallPole29">
+                    <position x="-71.6884" y="677.474" z="-243.008" />
+                    <scale x="4" y="4" z="4" />
+                    <rotation qx="0" qy="0" qz="0" qw="1" />
+                    <entity name="WoodenWallPole29" castShadows="true" receiveShadows="true" meshFile="WoodenWallPole0.mesh">
+                        <subentities>
+                            <subentity index="0" materialName="WoodenPole" />
+                        </subentities>
+                    </entity>
+                </node>
+                <node name="WoodenWallPole28">
+                    <position x="-80.9853" y="677.474" z="-255.352" />
+                    <scale x="4" y="4" z="4" />
+                    <rotation qx="0" qy="0" qz="0" qw="1" />
+                    <entity name="WoodenWallPole28" castShadows="true" receiveShadows="true" meshFile="WoodenWallPole0.mesh">
+                        <subentities>
+                            <subentity index="0" materialName="WoodenPole" />
+                        </subentities>
+                    </entity>
+                </node>
+                <node name="WoodenWallPole27">
+                    <position x="-92.1638" y="677.474" z="-268.472" />
+                    <scale x="4" y="4" z="4" />
+                    <rotation qx="0" qy="0" qz="0" qw="1" />
+                    <entity name="WoodenWallPole27" castShadows="true" receiveShadows="true" meshFile="WoodenWallPole0.mesh">
+                        <subentities>
+                            <subentity index="0" materialName="WoodenPole" />
+                        </subentities>
+                    </entity>
+                </node>
+                <node name="WoodenWallPole26">
+                    <position x="-101.926" y="677.474" z="-282.19" />
+                    <scale x="4" y="4" z="4" />
+                    <rotation qx="0" qy="0" qz="0" qw="1" />
+                    <entity name="WoodenWallPole26" castShadows="true" receiveShadows="true" meshFile="WoodenWallPole0.mesh">
+                        <subentities>
+                            <subentity index="0" materialName="WoodenPole" />
+                        </subentities>
+                    </entity>
+                </node>
+                <node name="WoodenWallPole25">
+                    <position x="-110.337" y="677.474" z="-295.576" />
+                    <scale x="4" y="4" z="4" />
+                    <rotation qx="0" qy="0" qz="0" qw="1" />
+                    <entity name="WoodenWallPole25" castShadows="true" receiveShadows="true" meshFile="WoodenWallPole0.mesh">
+                        <subentities>
+                            <subentity index="0" materialName="WoodenPole" />
+                        </subentities>
+                    </entity>
+                </node>
+                <node name="WoodenWallPole24">
+                    <position x="-121.626" y="677.474" z="-308.851" />
+                    <scale x="4" y="4" z="4" />
+                    <rotation qx="0" qy="0" qz="0" qw="1" />
+                    <entity name="WoodenWallPole24" castShadows="true" receiveShadows="true" meshFile="WoodenWallPole0.mesh">
+                        <subentities>
+                            <subentity index="0" materialName="WoodenPole" />
+                        </subentities>
+                    </entity>
+                </node>
+                <node name="WoodenWallPole23">
+                    <position x="-27.3287" y="677.474" z="-527.456" />
+                    <scale x="4" y="4" z="4" />
+                    <rotation qx="0" qy="0.29075" qz="0" qw="0.956799" />
+                    <entity name="WoodenWallPole23" castShadows="true" receiveShadows="true" meshFile="WoodenWallPole0.mesh">
+                        <subentities>
+                            <subentity index="0" materialName="WoodenPole" />
+                        </subentities>
+                    </entity>
+                </node>
+                <node name="WoodenWallPole22">
+                    <position x="-71.1571" y="677.474" z="-500.861" />
+                    <scale x="4" y="4" z="4" />
+                    <rotation qx="0" qy="0.28005" qz="0" qw="0.959985" />
+                    <entity name="WoodenWallPole22" castShadows="true" receiveShadows="true" meshFile="WoodenWallPole0.mesh">
+                        <subentities>
+                            <subentity index="0" materialName="WoodenPole" />
+                        </subentities>
+                    </entity>
+                </node>
+                <node name="WoodenWallPole21">
+                    <position x="-85.7666" y="677.474" z="-492.208" />
+                    <scale x="4" y="4" z="4" />
+                    <rotation qx="0" qy="0.281796" qz="0" qw="0.959474" />
+                    <entity name="WoodenWallPole21" castShadows="true" receiveShadows="true" meshFile="WoodenWallPole0.mesh">
+                        <subentities>
+                            <subentity index="0" materialName="WoodenPole" />
                         </subentities>
                     </entity>
                 </node>
                 <node name="WoodenWallPole20">
-                    <position x="3756.5" y="1569.27" z="-1924.13" />
-                    <scale x="40" y="40" z="40" />
-                    <rotation qx="-0.5" qy="-0.5" qz="-0.5" qw="0.5" />
-                    <entity name="WoodenWallPole20" castShadows="true" receiveShadows="true" meshFile="WoodenWallPole51.mesh">
+                    <position x="-55.8836" y="677.474" z="-509.47" />
+                    <scale x="4" y="4" z="4" />
+                    <rotation qx="0" qy="0.272826" qz="0" qw="0.962063" />
+                    <entity name="WoodenWallPole20" castShadows="true" receiveShadows="true" meshFile="WoodenWallPole0.mesh">
                         <subentities>
-                            <subentity index="0" materialName="Wood" />
+                            <subentity index="0" materialName="WoodenPole" />
+                        </subentities>
+                    </entity>
+                </node>
+                <node name="WoodenWallPole19">
+                    <position x="-41.9382" y="677.474" z="-519.422" />
+                    <scale x="4" y="4" z="4" />
+                    <rotation qx="0" qy="0.260863" qz="0" qw="0.965376" />
+                    <entity name="WoodenWallPole19" castShadows="true" receiveShadows="true" meshFile="WoodenWallPole0.mesh">
+                        <subentities>
+                            <subentity index="0" materialName="WoodenPole" />
+                        </subentities>
+                    </entity>
+                </node>
+                <node name="WoodenWallPole18">
+                    <position x="-1.84336" y="677.474" z="-669.604" />
+                    <scale x="4" y="4" z="4" />
+                    <rotation qx="0" qy="0" qz="0" qw="1" />
+                    <entity name="WoodenWallPole18" castShadows="true" receiveShadows="true" meshFile="WoodenWallPole0.mesh">
+                        <subentities>
+                            <subentity index="0" materialName="WoodenPole" />
+                        </subentities>
+                    </entity>
+                </node>
+                <node name="WoodenWallPole17">
+                    <position x="-1.84336" y="677.474" z="-684.208" />
+                    <scale x="4" y="4" z="4" />
+                    <rotation qx="0" qy="0" qz="0" qw="1" />
+                    <entity name="WoodenWallPole17" castShadows="true" receiveShadows="true" meshFile="WoodenWallPole0.mesh">
+                        <subentities>
+                            <subentity index="0" materialName="WoodenPole" />
+                        </subentities>
+                    </entity>
+                </node>
+                <node name="WoodenWallPole16">
+                    <position x="-1.84336" y="677.474" z="-698.812" />
+                    <scale x="4" y="4" z="4" />
+                    <rotation qx="0" qy="0" qz="0" qw="1" />
+                    <entity name="WoodenWallPole16" castShadows="true" receiveShadows="true" meshFile="WoodenWallPole0.mesh">
+                        <subentities>
+                            <subentity index="0" materialName="WoodenPole" />
+                        </subentities>
+                    </entity>
+                </node>
+                <node name="WoodenWallPole15">
+                    <position x="-1.84336" y="677.474" z="-713.416" />
+                    <scale x="4" y="4" z="4" />
+                    <rotation qx="0" qy="0" qz="0" qw="1" />
+                    <entity name="WoodenWallPole15" castShadows="true" receiveShadows="true" meshFile="WoodenWallPole0.mesh">
+                        <subentities>
+                            <subentity index="0" materialName="WoodenPole" />
                         </subentities>
                     </entity>
                 </node>
                 <node name="WoodenWallPole14">
-                    <position x="3756.5" y="1569.27" z="-1924.13" />
-                    <scale x="40" y="40" z="40" />
-                    <rotation qx="-0.5" qy="-0.5" qz="-0.5" qw="0.5" />
-                    <entity name="WoodenWallPole14" castShadows="true" receiveShadows="true" meshFile="WoodenWallPole52.mesh">
+                    <position x="-1.84336" y="677.474" z="-728.02" />
+                    <scale x="4" y="4" z="4" />
+                    <rotation qx="0" qy="0" qz="0" qw="1" />
+                    <entity name="WoodenWallPole14" castShadows="true" receiveShadows="true" meshFile="WoodenWallPole0.mesh">
                         <subentities>
-                            <subentity index="0" materialName="Wood" />
+                            <subentity index="0" materialName="WoodenPole" />
+                        </subentities>
+                    </entity>
+                </node>
+                <node name="WoodenWallPole13">
+                    <position x="-1.84336" y="677.474" z="-742.624" />
+                    <scale x="4" y="4" z="4" />
+                    <rotation qx="0" qy="0" qz="0" qw="1" />
+                    <entity name="WoodenWallPole13" castShadows="true" receiveShadows="true" meshFile="WoodenWallPole0.mesh">
+                        <subentities>
+                            <subentity index="0" materialName="WoodenPole" />
+                        </subentities>
+                    </entity>
+                </node>
+                <node name="WoodenWallPole12">
+                    <position x="-1.84336" y="677.474" z="-757.228" />
+                    <scale x="4" y="4" z="4" />
+                    <rotation qx="0" qy="0" qz="0" qw="1" />
+                    <entity name="WoodenWallPole12" castShadows="true" receiveShadows="true" meshFile="WoodenWallPole0.mesh">
+                        <subentities>
+                            <subentity index="0" materialName="WoodenPole" />
+                        </subentities>
+                    </entity>
+                </node>
+                <node name="WoodenWallPole11">
+                    <position x="-3.55781" y="677.474" z="-57.8165" />
+                    <scale x="4" y="4" z="4" />
+                    <rotation qx="0" qy="0" qz="0" qw="1" />
+                    <entity name="WoodenWallPole11" castShadows="true" receiveShadows="true" meshFile="WoodenWallPole0.mesh">
+                        <subentities>
+                            <subentity index="0" materialName="WoodenPole" />
+                        </subentities>
+                    </entity>
+                </node>
+                <node name="WoodenWallPole10">
+                    <position x="-1.84336" y="675.991" z="-43.574" />
+                    <scale x="4" y="4" z="4" />
+                    <rotation qx="0" qy="0" qz="0" qw="1" />
+                    <entity name="WoodenWallPole10" castShadows="true" receiveShadows="true" meshFile="WoodenWallPole0.mesh">
+                        <subentities>
+                            <subentity index="0" materialName="WoodenPole" />
+                        </subentities>
+                    </entity>
+                </node>
+                <node name="WoodenWallPole9">
+                    <position x="-3.55789" y="677.474" z="-29.3316" />
+                    <scale x="4" y="4" z="4" />
+                    <rotation qx="0" qy="0" qz="0" qw="1" />
+                    <entity name="WoodenWallPole9" castShadows="true" receiveShadows="true" meshFile="WoodenWallPole0.mesh">
+                        <subentities>
+                            <subentity index="0" materialName="WoodenPole" />
                         </subentities>
                     </entity>
                 </node>
                 <node name="WoodenWallPole8">
-                    <position x="3756.5" y="1569.27" z="-1924.13" />
-                    <scale x="40" y="40" z="40" />
-                    <rotation qx="-0.5" qy="-0.5" qz="-0.5" qw="0.5" />
-                    <entity name="WoodenWallPole8" castShadows="true" receiveShadows="true" meshFile="WoodenWallPole53.mesh">
+                    <position x="-1.84336" y="670.826" z="-15.0891" />
+                    <scale x="4" y="4" z="4" />
+                    <rotation qx="0" qy="0" qz="0" qw="1" />
+                    <entity name="WoodenWallPole8" castShadows="true" receiveShadows="true" meshFile="WoodenWallPole0.mesh">
                         <subentities>
-                            <subentity index="0" materialName="Wood" />
+                            <subentity index="0" materialName="WoodenPole" />
                         </subentities>
                     </entity>
                 </node>
                 <node name="WoodenWallPole7">
-                    <position x="3756.5" y="1569.27" z="-1924.13" />
-                    <scale x="40" y="40" z="40" />
-                    <rotation qx="-0.5" qy="-0.5" qz="-0.5" qw="0.5" />
-                    <entity name="WoodenWallPole7" castShadows="true" receiveShadows="true" meshFile="WoodenWallPole54.mesh">
+                    <position x="-1.84336" y="677.474" z="-0.846648" />
+                    <scale x="4" y="4" z="4" />
+                    <rotation qx="0" qy="0" qz="0" qw="1" />
+                    <entity name="WoodenWallPole7" castShadows="true" receiveShadows="true" meshFile="WoodenWallPole0.mesh">
                         <subentities>
-                            <subentity index="0" materialName="Wood" />
-                        </subentities>
-                    </entity>
-                </node>
-                <node name="WoodenWallPole4">
-                    <position x="3756.5" y="1569.27" z="-1924.13" />
-                    <scale x="40" y="40" z="40" />
-                    <rotation qx="-0.5" qy="-0.5" qz="-0.5" qw="0.5" />
-                    <entity name="WoodenWallPole4" castShadows="true" receiveShadows="true" meshFile="WoodenWallPole55.mesh">
-                        <subentities>
-                            <subentity index="0" materialName="Wood" />
-                        </subentities>
-                    </entity>
-                </node>
-                <node name="WoodenWallPole3">
-                    <position x="3756.5" y="1569.27" z="-1924.13" />
-                    <scale x="40" y="40" z="40" />
-                    <rotation qx="-0.5" qy="-0.5" qz="-0.5" qw="0.5" />
-                    <entity name="WoodenWallPole3" castShadows="true" receiveShadows="true" meshFile="WoodenWallPole56.mesh">
-                        <subentities>
-                            <subentity index="0" materialName="Wood" />
-                        </subentities>
-                    </entity>
-                </node>
-                <node name="WoodenWallPole5">
-                    <position x="3756.5" y="1569.27" z="-1924.13" />
-                    <scale x="40" y="40" z="40" />
-                    <rotation qx="-0.5" qy="-0.5" qz="-0.5" qw="0.5" />
-                    <entity name="WoodenWallPole5" castShadows="true" receiveShadows="true" meshFile="WoodenWallPole57.mesh">
-                        <subentities>
-                            <subentity index="0" materialName="Wood" />
+                            <subentity index="0" materialName="WoodenPole" />
                         </subentities>
                     </entity>
                 </node>
                 <node name="WoodenWallPole6">
-                    <position x="3756.5" y="1569.27" z="-1924.13" />
-                    <scale x="40" y="40" z="40" />
-                    <rotation qx="-0.5" qy="-0.5" qz="-0.5" qw="0.5" />
-                    <entity name="WoodenWallPole6" castShadows="true" receiveShadows="true" meshFile="WoodenWallPole58.mesh">
+                    <position x="-0.132775" y="678.002" z="13.3958" />
+                    <scale x="4" y="4" z="4" />
+                    <rotation qx="0" qy="0" qz="0" qw="1" />
+                    <entity name="WoodenWallPole6" castShadows="true" receiveShadows="true" meshFile="WoodenWallPole0.mesh">
                         <subentities>
-                            <subentity index="0" materialName="Wood" />
+                            <subentity index="0" materialName="WoodenPole" />
+                        </subentities>
+                    </entity>
+                </node>
+                <node name="WoodenWallPole5">
+                    <position x="-1.84336" y="674.548" z="27.6383" />
+                    <scale x="4" y="4" z="4" />
+                    <rotation qx="0" qy="0" qz="0" qw="1" />
+                    <entity name="WoodenWallPole5" castShadows="true" receiveShadows="true" meshFile="WoodenWallPole0.mesh">
+                        <subentities>
+                            <subentity index="0" materialName="WoodenPole" />
+                        </subentities>
+                    </entity>
+                </node>
+                <node name="WoodenWallPole4">
+                    <position x="-2.98666" y="677.474" z="41.8807" />
+                    <scale x="4" y="4" z="4" />
+                    <rotation qx="0" qy="0" qz="0" qw="1" />
+                    <entity name="WoodenWallPole4" castShadows="true" receiveShadows="true" meshFile="WoodenWallPole0.mesh">
+                        <subentities>
+                            <subentity index="0" materialName="WoodenPole" />
+                        </subentities>
+                    </entity>
+                </node>
+                <node name="WoodenWallPole3">
+                    <position x="-2.40641" y="673.107" z="56.1232" />
+                    <scale x="4" y="4" z="4" />
+                    <rotation qx="0" qy="0" qz="0" qw="1" />
+                    <entity name="WoodenWallPole3" castShadows="true" receiveShadows="true" meshFile="WoodenWallPole0.mesh">
+                        <subentities>
+                            <subentity index="0" materialName="WoodenPole" />
+                        </subentities>
+                    </entity>
+                </node>
+                <node name="WoodenWallPole2">
+                    <position x="-1.84336" y="668.752" z="70.3656" />
+                    <scale x="4" y="4" z="4" />
+                    <rotation qx="0" qy="0" qz="0" qw="1" />
+                    <entity name="WoodenWallPole2" castShadows="true" receiveShadows="true" meshFile="WoodenWallPole0.mesh">
+                        <subentities>
+                            <subentity index="0" materialName="WoodenPole" />
+                        </subentities>
+                    </entity>
+                </node>
+                <node name="WoodenWallPole1">
+                    <position x="-0.689934" y="673.857" z="84.6081" />
+                    <scale x="4" y="4" z="4" />
+                    <rotation qx="0" qy="0" qz="0" qw="1" />
+                    <entity name="WoodenWallPole1" castShadows="true" receiveShadows="true" meshFile="WoodenWallPole0.mesh">
+                        <subentities>
+                            <subentity index="0" materialName="WoodenPole" />
                         </subentities>
                     </entity>
                 </node>
                 <node name="WoodenWallPole">
-                    <position x="3756.5" y="1569.27" z="-1924.13" />
-                    <scale x="40" y="40" z="40" />
-                    <rotation qx="-0.5" qy="-0.5" qz="-0.5" qw="0.5" />
-                    <entity name="WoodenWallPole" castShadows="true" receiveShadows="true" meshFile="WoodenWallPole59.mesh">
+                    <position x="-1.84336" y="677.474" z="98.8505" />
+                    <scale x="4" y="4" z="4" />
+                    <rotation qx="0" qy="0" qz="0" qw="1" />
+                    <entity name="WoodenWallPole" castShadows="true" receiveShadows="true" meshFile="WoodenWallPole0.mesh">
                         <subentities>
-                            <subentity index="0" materialName="Wood" />
+                            <subentity index="0" materialName="WoodenPole" />
                         </subentities>
                     </entity>
                 </node>
@@ -1901,8 +1736,8 @@
                 <rotation qx="-0.5" qy="-0.5" qz="-0.5" qw="0.5" />
                 <entity name="ToxicWasteHouse" castShadows="true" receiveShadows="true" meshFile="ToxicWasteHouse0.mesh">
                     <subentities>
-                        <subentity index="0" materialName="SilverConcrete" />
-                        <subentity index="1" materialName="ToxicWasteHouse" />
+                        <subentity index="0" materialName="ToxicWasteHouse" />
+                        <subentity index="1" materialName="SilverConcrete" />
                     </subentities>
                 </entity>
                 <node name="RightTube">
@@ -1935,10 +1770,10 @@
                         <rotation qx="-0.5" qy="-0.5" qz="-0.5" qw="0.5" />
                         <entity name="RightTubeMiddle" castShadows="true" receiveShadows="true" meshFile="RightTubeMiddle0.mesh">
                             <subentities>
-                                <subentity index="0" materialName="SilverConcrete" />
+                                <subentity index="0" materialName="Chalk" />
                                 <subentity index="1" materialName="TubeOrangeRed" />
-                                <subentity index="2" materialName="Chalk" />
-                                <subentity index="3" materialName="TubeYellow" />
+                                <subentity index="2" materialName="TubeYellow" />
+                                <subentity index="3" materialName="SilverConcrete" />
                             </subentities>
                         </entity>
                     </node>
@@ -2029,8 +1864,8 @@
                 <entity name="WheatField" castShadows="true" receiveShadows="true" meshFile="WheatField0.mesh">
                     <subentities>
                         <subentity index="0" materialName="WheatLightGold" />
-                        <subentity index="1" materialName="Chalk" />
-                        <subentity index="2" materialName="WheatDarkGold" />
+                        <subentity index="1" materialName="WheatDarkGold" />
+                        <subentity index="2" materialName="Chalk" />
                     </subentities>
                 </entity>
             </node>
@@ -2121,10 +1956,10 @@
                     <rotation qx="1.11022e-016" qy="0" qz="1.38778e-016" qw="1" />
                     <entity name="ChimneyRight" castShadows="true" receiveShadows="true" meshFile="ChimneyRight0.mesh">
                         <subentities>
-                            <subentity index="0" materialName="AnotherConcrete" />
+                            <subentity index="0" materialName="ChimneyCoal" />
                             <subentity index="1" materialName="Chalk" />
                             <subentity index="2" materialName="RedStripes" />
-                            <subentity index="3" materialName="ChimneyCoal" />
+                            <subentity index="3" materialName="AnotherConcrete" />
                         </subentities>
                     </entity>
                 </node>
@@ -2134,29 +1969,29 @@
                     <rotation qx="1.11022e-016" qy="0" qz="1.38778e-016" qw="1" />
                     <entity name="ChimneyLeft" castShadows="true" receiveShadows="true" meshFile="ChimneyLeft0.mesh">
                         <subentities>
-                            <subentity index="0" materialName="ChimneyCoal" />
-                            <subentity index="1" materialName="Chalk" />
-                            <subentity index="2" materialName="RedStripes" />
-                            <subentity index="3" materialName="AnotherConcrete" />
+                            <subentity index="0" materialName="AnotherConcrete" />
+                            <subentity index="1" materialName="ChimneyCoal" />
+                            <subentity index="2" materialName="Chalk" />
+                            <subentity index="3" materialName="RedStripes" />
                         </subentities>
                     </entity>
                 </node>
             </node>
-            <node name="Tower1">
-                <position x="1145.5" y="740.242" z="-2015.23" />
+            <node name="RockTower1">
+                <position x="1145.5" y="691.857" z="-2015.23" />
                 <scale x="41.7801" y="49.1189" z="41.7801" />
                 <rotation qx="0" qy="-0.707107" qz="0" qw="0.707107" />
-                <entity name="Tower1" castShadows="true" receiveShadows="true" meshFile="Tower0.mesh">
+                <entity name="RockTower1" castShadows="true" receiveShadows="true" meshFile="RockTower0.mesh">
                     <subentities>
                         <subentity index="0" materialName="Concrete" />
                     </subentities>
                 </entity>
             </node>
-            <node name="Tower">
-                <position x="1034.99" y="740.242" z="-2411.26" />
+            <node name="RockTower">
+                <position x="1034.99" y="689.118" z="-2411.26" />
                 <scale x="41.7801" y="49.1189" z="41.7801" />
                 <rotation qx="0" qy="-0.707107" qz="0" qw="0.707107" />
-                <entity name="Tower" castShadows="true" receiveShadows="true" meshFile="Tower0.mesh">
+                <entity name="RockTower" castShadows="true" receiveShadows="true" meshFile="RockTower0.mesh">
                     <subentities>
                         <subentity index="0" materialName="Concrete" />
                     </subentities>
@@ -5317,7 +5152,7 @@
                     <rotation qx="3.33067e-016" qy="1.11022e-016" qz="1.38778e-016" qw="1" />
                     <entity name="WoodenPart" castShadows="true" receiveShadows="true" meshFile="WoodenPart0.mesh">
                         <subentities>
-                            <subentity index="0" materialName="Wood" />
+                            <subentity index="0" materialName="Chalk" />
                         </subentities>
                     </entity>
                 </node>
@@ -5337,7 +5172,7 @@
                     <rotation qx="3.33067e-016" qy="1.11022e-016" qz="1.38778e-016" qw="1" />
                     <entity name="WoodenPart2" castShadows="true" receiveShadows="true" meshFile="WoodenPart2.mesh">
                         <subentities>
-                            <subentity index="0" materialName="Wood" />
+                            <subentity index="0" materialName="Chalk" />
                         </subentities>
                     </entity>
                 </node>
@@ -5347,7 +5182,7 @@
                     <rotation qx="3.33067e-016" qy="1.11022e-016" qz="1.38778e-016" qw="1" />
                     <entity name="WoodenPart1" castShadows="true" receiveShadows="true" meshFile="WoodenPart1.mesh">
                         <subentities>
-                            <subentity index="0" materialName="Wood" />
+                            <subentity index="0" materialName="Chalk" />
                         </subentities>
                     </entity>
                 </node>
@@ -5408,8 +5243,8 @@
                 <rotation qx="-0.5" qy="-0.5" qz="-0.5" qw="0.5" />
                 <entity name="BridgeOfDeath" castShadows="true" receiveShadows="true" meshFile="BridgeOfDeath0.mesh">
                     <subentities>
-                        <subentity index="0" materialName="BridgeOfDeathStone" />
-                        <subentity index="1" materialName="Chalk" />
+                        <subentity index="0" materialName="Chalk" />
+                        <subentity index="1" materialName="BridgeOfDeathStone" />
                     </subentities>
                 </entity>
             </node>
