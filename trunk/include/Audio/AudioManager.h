@@ -27,6 +27,11 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #include <OgreSingleton.h>
 
 #include "..\Lua\LuaInterface.h"
+//#include "../../api/inc/fmod.hpp"
+//#include "../../api/inc/fmod_errors.h"
+//#include "../common/wincompat.h"
+//#include <stdio.h>
+
 
 namespace WyvernsAssault
 {
@@ -50,7 +55,11 @@ namespace WyvernsAssault
 		void loadResources();
 		/** Unload audio resources */
 		void unloadResources();
-
+		/** Play audio */
+		//void playAudio(String name);
+		/** Stop audio */
+		//void stopAudio();
+		
 	// --------------------------------
 	// BEGIN Lua Interface Declarations
 	// --------------------------------
