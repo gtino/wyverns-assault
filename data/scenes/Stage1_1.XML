@@ -109,70 +109,70 @@
 			<lookAtEnd x="204" y="-100" z="630"/>			
 		</cameraSegment>
 		<cameraSegment id="1">
-			<positionBegin x="370" y="180" z="1114"/>
-			<positionEnd x="495" y="230" z="1078"/>
-			<lookAtBegin x="247" y="-100" z="637"/>
-			<lookAtEnd x="358" y="-100" z="602"/>			
+			<positionBegin x="453" y="200" z="1077"/>
+			<positionEnd x="552" y="230" z="1023"/>
+			<lookAtBegin x="248" y="-100" z="644"/>
+			<lookAtEnd x="340" y="-100" z="591"/>			
 		</cameraSegment>
 		<cameraSegment id="2">
-			<positionBegin x="572" y="230" z="1063"/>
-			<positionEnd x="682" y="200" z="1054"/>
-			<lookAtBegin x="529" y="-100" z="544"/>
-			<lookAtEnd x="648" y="-100" z="539"/>
+			<positionBegin x="590" y="230" z="1020"/>
+			<positionEnd x="770" y="200" z="985"/>
+			<lookAtBegin x="524" y="-100" z="558"/>
+			<lookAtEnd x="698" y="-100" z="532"/>
 		</cameraSegment>
 		<cameraSegment id="3">
-			<positionBegin x="915" y="175" z="930"/>
-			<positionEnd x="1105" y="175" z="802"/>
-			<lookAtBegin x="669" y="-100" z="551"/>
-			<lookAtEnd x="799" y="-100" z="465"/>
+			<positionBegin x="905" y="175" z="856"/>
+			<positionEnd x="1022" y="175" z="769"/>
+			<lookAtBegin x="692" y="-100" z="537"/>
+			<lookAtEnd x="779" y="-100" z="480"/>
 		</cameraSegment>
 		<cameraSegment id="4">
-			<positionBegin x="1320" y="150" z="605"/>
-			<positionEnd x="1380" y="150" z="330"/>
-			<lookAtBegin x="865" y="-100" z="445"/>
-			<lookAtEnd x="925" y="-100" z="260"/>
+			<positionBegin x="1283" y="180" z="677"/>
+			<positionEnd x="1396" y="180" z="484"/>
+			<lookAtBegin x="907" y="-100" z="403"/>
+			<lookAtEnd x="989" y="-100" z="294"/>
 		</cameraSegment>
 		<cameraSegment id="5">
-			<positionBegin x="1450" y="175" z="250"/>
-			<positionEnd x="1400" y="175" z="50"/>
-			<lookAtBegin x="940" y="-100" z="100"/>
-			<lookAtEnd x="925" y="-100" z="75"/>
+			<positionBegin x="1464" y="175" z="308"/>
+			<positionEnd x="1474" y="175" z="138"/>
+			<lookAtBegin x="976" y="-100" z="200"/>
+			<lookAtEnd x="977" y="-100" z="107"/>
 		</cameraSegment>
 		<cameraSegment id="6">
-			<positionBegin x="1420" y="200" z="-100"/>
-			<positionEnd x="1315" y="200" z="-290"/>
-			<lookAtBegin x="950" y="-100" z="65"/>
-			<lookAtEnd x="860" y="-100" z="-75"/>
+			<positionBegin x="1446" y="200" z="-111"/>
+			<positionEnd x="1410" y="200" z="-225"/>
+			<lookAtBegin x="922" y="-100" z="53"/>
+			<lookAtEnd x="888" y="-100" z="-32"/>
 		</cameraSegment>
 		<cameraSegment id="7">
-			<positionBegin x="850" y="200" z="-675"/>
-			<positionEnd x="1000" y="200" z="-675"/>
-			<lookAtBegin x="710" y="-100" z="-320"/>
-			<lookAtEnd x="815" y="-100" z="-250"/>
+			<positionBegin x="1136" y="200" z="-541"/>
+			<positionEnd x="1243" y="200" z="-353"/>
+			<lookAtBegin x="705" y="-100" z="-241"/>
+			<lookAtEnd x="771" y="-100" z="-135"/>
 		</cameraSegment>
 		<cameraSegment id="8">
-			<positionBegin x="590" y="250" z="-890"/>
-			<positionEnd x="895" y="250" z="-775"/>
-			<lookAtBegin x="460" y="-100" z="-345"/>
-			<lookAtEnd x="640" y="-100" z="-295"/>
+			<positionBegin x="750" y="250" z="-642"/>
+			<positionEnd x="910" y="250" z="-570"/>
+			<lookAtBegin x="434" y="-100" z="-508"/>
+			<lookAtEnd x="473" y="-100" z="-405"/>
 		</cameraSegment>		
 		<cameraSegment id="9">
-			<positionBegin x="-25" y="300" z="-745"/>
-			<positionEnd x="415" y="300" z="-895"/>
-			<lookAtBegin x="170" y="-100" z="-340"/>
-			<lookAtEnd x="440" y="-100" z="-395"/>
+			<positionBegin x="299" y="300" z="-818"/>
+			<positionEnd x="414" y="300" z="-813"/>
+			<lookAtBegin x="246" y="-50" z="-290"/>
+			<lookAtEnd x="358" y="-50" z="-280"/>
 		</cameraSegment>
 		<cameraSegment id="10">
-			<positionBegin x="-240" y="250" z="-625"/>
-			<positionEnd x="-115" y="250" z="-725"/>
-			<lookAtBegin x="80" y="-100" z="-75"/>
-			<lookAtEnd x="295" y="-100" z="-255"/>
+			<positionBegin x="-33" y="225" z="-658"/>
+			<positionEnd x="192" y="225" z="-665"/>
+			<lookAtBegin x="1" y="-50" z="-100"/>
+			<lookAtEnd x="188" y="-50" z="-104"/>
 		</cameraSegment>
 		<cameraSegment id="11">
-			<positionBegin x="-310" y="200" z="-415"/>
-			<positionEnd x="-25" y="200" z="-454"/>
-			<lookAtBegin x="-290" y="-100" z="125"/>
-			<lookAtEnd x="35" y="-100" z="120"/>
+			<positionBegin x="-127" y="200" z="-534"/>
+			<positionEnd x="133" y="200" z="-393"/>
+			<lookAtBegin x="-430" y="0" z="-24"/>
+			<lookAtEnd x="-166" y="0" z="125"/>
 		</cameraSegment>
 		
 	</cameraSegments>
