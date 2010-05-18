@@ -210,42 +210,42 @@ void CameraManager::updateCamera(Vector3 player, Real elapsedSeconds)
 		Vector3 position;
 		Vector3 lookAt;
 
+		Real u = ((player.x - begin.x) * (end.x - begin.x)) + ((player.y - begin.y) * (end.y - begin.y)) + ((player.z - begin.z) * (end.z - begin.z));
+		Real dist = begin.distance(end);
+		u = u / (dist * dist);
+
+		position.x = begin.x + u * (end.x - begin.x);
+		position.y = begin.y + u * (end.y - begin.y);
+		position.z = begin.z + u * (end.z - begin.z);
+
 		// Movement in XZ (side scroll in X)
 		if((end.x - begin.x) > (begin.z - end.z))
 		{
 			// If player position not in camera segment, camera position = begin/end of current segment
-			if(player.x < begin.x)
+			if(player.x < begin.midPoint(lbegin).x)
 			{
 				position.x = begin.x;
 			}
-			else if(player.x > end.x)
+			else if(player.x > end.midPoint(lend).x)
 			{
 				position.x = end.x;
 			}
-			else
-			{
-				position.x = player.x;
-			}
 
 			Real gap = (position.x - begin.x) / (end.x - begin.x);
-			position.z = begin.z - (gap * (begin.z - end.z))  + mCameraZoom;
+			position.z = begin.z - (gap * (begin.z - end.z)) +  mCameraZoom;
 			position.y = begin.y + (gap * (end.y - begin.y));
 		}
 		// Movement in ZX (side scroll in Z). Be carefull with Z index!
 		else
 		{
 			// If player position not in camera segment, camera position = begin/end of current segment
-			if(player.z > begin.z)
+			if(player.z > begin.midPoint(lbegin).z)
 			{
 				position.z = begin.z;
 			}
-			else if(player.z < end.z)
+			else if(player.z < end.midPoint(lend).z)			
 			{
 				position.z = end.z;
-			}
-			else
-			{
-				position.z = player.z;
 			}
 
 			Real gap = (begin.z - position.z) / (begin.z - end.z);
@@ -282,10 +282,10 @@ void CameraManager::updateCamera(Vector3 player, Real elapsedSeconds)
 void CameraManager::createTransition(Vector3 begin, Vector3 end, Vector3 lbegin, Vector3 lend)
 {
 	/** Camera positioning translation animation */
-	Real dist = begin.distance(end) / 700;
-	if(dist > 1)
+	Real dist = 0.2;
+	if(mCameraMode != "Game")
 		dist = 1;
-	
+
 	// Set up spline animation of node
 	if(mSceneManager->hasAnimation("CameraTrack"))
 		mSceneManager->destroyAnimation("CameraTrack");
@@ -440,21 +440,21 @@ void CameraManager::tremor()
 	TransformKeyFrame* key = track->createNodeKeyFrame(0);
 	key->setTranslate(Vector3::ZERO);
 	key = track->createNodeKeyFrame(0.1);
-	key->setTranslate(Vector3(0, -30, 0));
-	key = track->createNodeKeyFrame(0.2);
-	key->setTranslate(Vector3(0, 30, 0));
-	key = track->createNodeKeyFrame(0.3);
-	key->setTranslate(Vector3(0, -20, 0));
-	key = track->createNodeKeyFrame(0.4);
-	key->setTranslate(Vector3(0, 20, 0));
-	key = track->createNodeKeyFrame(0.5);
 	key->setTranslate(Vector3(0, -15, 0));
-	key = track->createNodeKeyFrame(0.6);
+	key = track->createNodeKeyFrame(0.2);
 	key->setTranslate(Vector3(0, 15, 0));
-	key = track->createNodeKeyFrame(0.7);
+	key = track->createNodeKeyFrame(0.3);
 	key->setTranslate(Vector3(0, -10, 0));
-	key = track->createNodeKeyFrame(0.8);
+	key = track->createNodeKeyFrame(0.4);
 	key->setTranslate(Vector3(0, 10, 0));
+	key = track->createNodeKeyFrame(0.5);
+	key->setTranslate(Vector3(0, -7.5, 0));
+	key = track->createNodeKeyFrame(0.6);
+	key->setTranslate(Vector3(0, 7.5, 0));
+	key = track->createNodeKeyFrame(0.7);
+	key->setTranslate(Vector3(0, -5, 0));
+	key = track->createNodeKeyFrame(0.8);
+	key->setTranslate(Vector3(0, 5, 0));
 	key = track->createNodeKeyFrame(0.9);
 	key->setTranslate(Vector3(0, -5, 0));
 	key = track->createNodeKeyFrame(1);
