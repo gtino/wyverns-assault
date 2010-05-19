@@ -630,7 +630,7 @@ bool PlayState::keyPressed(const OIS::KeyEvent& e)
 		mPlayer1->attackA();
 		break;
 	// Special Attack
-	case OIS::KeyCode::KC_RCONTROL:
+	case OIS::KeyCode::KC_RSHIFT:
 		mPlayer1->attackSpecial();
 		break;	
 
