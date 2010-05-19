@@ -3,7 +3,7 @@ system WyvernsAssault/Smoke
     technique 
     {
         visual_particle_quota                   100
-        material                                PUMediaPack/Smoke_11
+        material                                Particle/Smoke
         renderer                                Billboard
         {
         }
@@ -15,7 +15,7 @@ system WyvernsAssault/Smoke
             velocity                            dyn_random
             {
                 min                             20
-                max                             40
+                max                             60
             }
             all_particle_dimensions             dyn_random
             {
@@ -30,8 +30,8 @@ system WyvernsAssault/Smoke
         }
         affector                                Colour 
         {
-            time_colour                         0    0.815686 0.815686 0.815686 0
-            time_colour                         0.2  0.690196 0.690196 0.690196 1
+            time_colour                         0    0.627451 0.627451 0.627451 0
+            time_colour                         0.2  0.439216 0.439216 0.439216 1
             time_colour                         1    0 0 0 0
         }
         affector                                LinearForce 
@@ -53,8 +53,4 @@ system WyvernsAssault/Smoke
             xyz_scale                           40
         }
     }
-}
-
-system WyvernsAssault/DragonBreath
-{
 }

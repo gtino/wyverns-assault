@@ -11,10 +11,11 @@ Player::~Player()
 	finalize();
 }
 
-void Player::initialize(Ogre::Entity* mesh, Ogre::SceneNode* sceneNode)
+void Player::initialize(String name, Ogre::Entity* mesh, Ogre::SceneNode* sceneNode, Ogre::SceneManager* sceneManager)
 {
 	mSceneNode = sceneNode;
 	mMesh = mesh;
+	mSceneManager = sceneManager;
 
 	// Animations
 	mIddle = mesh->getAnimationState("Iddle_01");
@@ -23,14 +24,26 @@ void Player::initialize(Ogre::Entity* mesh, Ogre::SceneNode* sceneNode)
 	mRun->setEnabled(true);
 	mAttackA = mesh->getAnimationState("Attack_A_01");
 	mAttackA->setEnabled(true);
-	//mAttackA->setLoop(false);
+	mSpecial = mesh->getAnimationState("Special");
+	mSpecial->setEnabled(true);
 
+	mesh->getSkeleton()->setBlendMode(SkeletonAnimationBlendMode::ANIMBLEND_CUMULATIVE);
+
+	moving = false;
 	attacking = false;
+	special = false;
 	mDirection = Vector3::ZERO;
+
+	// Special attack particle system (fire breath)
+	mFireBreath = ParticleUniverse::ParticleSystemManager::getSingletonPtr()->createParticleSystem("fireBreath", "WyvernsAssault/DragonBreath", mSceneManager);
+	// Attach to bone	
+	Entity* playerMesh = mSceneManager->getEntity(name);
+	mBreathPoint = playerMesh->attachObjectToBone("bone25", mFireBreath);
 }
 
 void Player::finalize()
 {
+
 }
 
 void Player::setPosition(Ogre::Vector3 position)
@@ -40,57 +53,97 @@ void Player::setPosition(Ogre::Vector3 position)
 
 void Player::move(Real x, Real y, Real z)
 {
-	// Direction vector
-	mDirection = Vector3(x, y, z);
-
-	if(attacking && mDirection != Vector3::ZERO)
+	// Moving
+	if(Vector3(x, y, z) != Vector3::ZERO)
 	{
- 		mIddle->setWeight(0);
-		mAttackA->setWeight(1);
-		mRun->setWeight(0.1);
+		moving = true;
 	}
-	else if(attacking)
-	{
-		mIddle->setWeight(0);
-		mAttackA->setWeight(1);
-		mRun->setWeight(0);
-	}
-	else if(mDirection != Vector3::ZERO)
-	{
-		mIddle->setWeight(0);
-		mAttackA->setWeight(0);
-		mRun->setWeight(1);
-	}
+	// Iddle
 	else
 	{
-		mIddle->setWeight(1);
-		mAttackA->setWeight(0);
-		mRun->setWeight(0);
+		moving = false;
 	}
 }
 
 void Player::attackA()
 {
 	attacking = true;
+}
 
-	mIddle->setWeight(0);
-	mAttackA->setWeight(1);
-	mRun->setWeight(0);	
+void Player::attackSpecial()
+{
+	special = true;
+	mFireBreath->startAndStopFade(mSpecial->getLength());
 }
 
 void Player::updateAnimation(float elapsedSeconds)
 {
-	mRun->addTime(elapsedSeconds);
-	if(attacking)
+	if(moving && attacking)
+	{
+		mRun->addTime(elapsedSeconds);
+		mAttackA->addTime(elapsedSeconds);
+
+		mRun->setWeight(0.2);
+		mAttackA->setWeight(1);
+		mSpecial->setWeight(0);
+		mIddle->setWeight(0);
+	}
+	else if(moving && special)
+	{
+		mRun->addTime(elapsedSeconds);
+		mSpecial->addTime(elapsedSeconds);
+
+		mRun->setWeight(0.2);
+		mAttackA->setWeight(0);
+		mSpecial->setWeight(0.9);		
+		mIddle->setWeight(0);
+	}
+	else if(moving)
+	{
+		mRun->addTime(elapsedSeconds);
+
+		mRun->setWeight(1);
+		mAttackA->setWeight(0);
+		mSpecial->setWeight(0);		
+		mIddle->setWeight(0);
+	}
+	else if(attacking)
 	{
 		mAttackA->addTime(elapsedSeconds);
+
+		mRun->setWeight(0);
+		mAttackA->setWeight(1);
+		mSpecial->setWeight(0);		
+		mIddle->setWeight(0);
+	}
+	else if(special)
+	{
+		mSpecial->addTime(elapsedSeconds);
+
+		mRun->setWeight(0);
+		mAttackA->setWeight(0);
+		mSpecial->setWeight(0.9);
+		mIddle->setWeight(0);
 	}
 	else
 	{
 		mIddle->addTime(elapsedSeconds);
+		
+		mRun->setWeight(0);
+		mAttackA->setWeight(0);
+		mSpecial->setWeight(0);
+		mIddle->setWeight(1);
 	}
+
+	// Attack animation finished
 	if(mAttackA->getTimePosition() + elapsedSeconds > mAttackA->getLength())
 	{
 		attacking = false;
+		
+	}
+	// Special attack animation finished
+	if(mSpecial->getTimePosition() + elapsedSeconds > mSpecial->getLength())
+	{
+		special = false;
 	}
 }
