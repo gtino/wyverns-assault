@@ -62,7 +62,7 @@ material Grass
 
 }
 
-material TowerBaseWood
+material Wood
 {
 	technique Toon
 	{
@@ -75,8 +75,8 @@ material TowerBaseWood
 
 			fragment_program_ref ToonFP
 			{
-				param_named ambient float4 0.239 0.133 0.044 1
-				param_named diffuse float4 0.46 0.327 0.195 1
+				param_named ambient float4 0.3 0.106 0 1
+				param_named diffuse float4 0.425 0.265 0.088 1
 				param_named specular float4 0.0 0.0 0.0 1.0
 				param_named emissive float4 0.0 0.0 0.0 1.0
 			}
@@ -84,6 +84,305 @@ material TowerBaseWood
 			texture_unit ToonShades
 			{
 				texture toon.png 2d
+				tex_address_mode clamp
+				filtering none
+			}
+
+		}
+
+	}
+
+}
+
+material TreeTop
+{
+	technique Toon
+	{
+		pass 
+		{
+			vertex_program_ref ToonVP
+			{
+				param_named shininess float4 0 1.0 1.0 1.0
+			}
+
+			fragment_program_ref ToonFP
+			{
+				param_named ambient float4 0.142 0.3 0 1
+				param_named diffuse float4 0.451 0.743 0.15 1
+				param_named specular float4 0.0 0.0 0.0 1.0
+				param_named emissive float4 0.0 0.0 0.0 1.0
+			}
+
+			texture_unit ToonShades
+			{
+				texture toon.png 2d
+				tex_address_mode clamp
+				filtering none
+			}
+
+		}
+
+	}
+
+}
+
+material RedWood
+{
+	technique Toon
+	{
+		pass 
+		{
+			vertex_program_ref ToonVP
+			{
+				param_named shininess float4 0 1.0 1.0 1.0
+			}
+
+			fragment_program_ref ToonFP
+			{
+				param_named ambient float4 0.363 0.142 0 1
+				param_named diffuse float4 0.566 0.319 0.186 1
+				param_named specular float4 0.0 0.0 0.0 1.0
+				param_named emissive float4 0.0 0.0 0.0 1.0
+			}
+
+			texture_unit ToonShades
+			{
+				texture toon.png 2d
+				tex_address_mode clamp
+				filtering none
+			}
+
+		}
+
+	}
+
+}
+
+material RedwoodLeaf
+{
+	technique Toon
+	{
+		pass 
+		{
+			vertex_program_ref ToonVP
+			{
+				param_named shininess float4 0 1.0 1.0 1.0
+			}
+
+			fragment_program_ref ToonFP
+			{
+				param_named ambient float4 0.159 0.3 0.3 1
+				param_named diffuse float4 0.292 0.381 0.257 1
+				param_named specular float4 0.0 0.0 0.0 1.0
+				param_named emissive float4 0.0 0.0 0.0 1.0
+			}
+
+			texture_unit ToonShades
+			{
+				texture toon.png 2d
+				tex_address_mode clamp
+				filtering none
+			}
+
+		}
+
+	}
+
+}
+
+material WyvernsRulez
+{
+	technique Toon
+	{
+		pass 
+		{
+			
+         lighting off
+         scene_blend alpha_blend
+         depth_check off
+
+
+			texture_unit 
+			{
+				anim_texture WyvernsRulez.png 2 2 
+			}
+
+		}
+
+	}
+
+}
+
+material Volcano
+{
+	technique Toon
+	{
+		pass 
+		{
+			vertex_program_ref ToonVP
+			{
+				param_named shininess float4 0 1.0 1.0 1.0
+			}
+
+			fragment_program_ref ToonFP
+			{
+				param_named ambient float4 0.097 0 0 1
+				param_named diffuse float4 0.124 0.124 0.124 1
+				param_named specular float4 0.0 0.0 0.0 1.0
+				param_named emissive float4 0.0 0.0 0.0 1.0
+			}
+
+			texture_unit ToonShades
+			{
+				texture toon.png 2d
+				tex_address_mode clamp
+				filtering none
+			}
+
+		}
+
+	}
+
+}
+
+material VulcanicRock
+{
+	technique Toon
+	{
+		pass 
+		{
+			vertex_program_ref ToonVP
+			{
+				param_named shininess float4 0 1.0 1.0 1.0
+			}
+
+			fragment_program_ref ToonFP
+			{
+				param_named ambient float4 0.159 0.159 0.159 1
+				param_named diffuse float4 0.407 0.407 0.407 1
+				param_named specular float4 0.0 0.0 0.0 1.0
+				param_named emissive float4 0.0 0.0 0.0 1.0
+			}
+
+			texture_unit ToonShades
+			{
+				texture toon.png 2d
+				tex_address_mode clamp
+				filtering none
+			}
+
+		}
+
+	}
+
+}
+
+material Chalk
+{
+	technique Toon
+	{
+		pass 
+		{
+			vertex_program_ref ToonVP
+			{
+				param_named shininess float4 50 1.0 1.0 1.0
+			}
+
+			fragment_program_ref ToonFP
+			{
+				param_named ambient float4 0 0 0 1
+				param_named diffuse float4 0.5 0.5 0.5 1.0
+				param_named specular float4 0.33 0.33 0.33 1
+				param_named emissive float4 0.0 0.0 0.0 1.0
+			}
+
+			texture_unit ToonShades
+			{
+				texture toon.png 2d
+				tex_address_mode clamp
+				filtering none
+			}
+
+		}
+
+	}
+
+}
+
+material House0_Roof_Material2
+{
+	technique Toon
+	{
+		pass 
+		{
+			
+			scene_blend alpha_blend
+			
+			vertex_program_ref ToonVP
+			{
+				param_named shininess float4 32 1.0 1.0 1.0
+			}
+
+			fragment_program_ref ToonFP
+			{
+				param_named ambient float4 0 0 0 1
+				param_named diffuse float4 0.5 0.5 0.5 1.0
+				param_named specular float4 0.35 0.35 0.35 1
+				param_named emissive float4 0.0 0.0 0.0 1.0
+			}
+
+			texture_unit ToonShades
+			{
+				texture toon.png 2d
+				tex_address_mode clamp
+				filtering none
+			}
+
+			texture_unit 
+			{
+				texture HouseRoof01Texture.png
+				tex_address_mode clamp
+				filtering none
+			}
+
+		}
+
+	}
+
+}
+
+material House0_Building_Material2
+{
+	technique Toon
+	{
+		pass 
+		{
+			
+			scene_blend alpha_blend
+			
+			vertex_program_ref ToonVP
+			{
+				param_named shininess float4 0 1.0 1.0 1.0
+			}
+
+			fragment_program_ref ToonFP
+			{
+				param_named ambient float4 0 0 0 1
+				param_named diffuse float4 0.5 0.5 0.5 1.0
+				param_named specular float4 0.0 0.0 0.0 1.0
+				param_named emissive float4 0.0 0.0 0.0 1.0
+			}
+
+			texture_unit ToonShades
+			{
+				texture toon.png 2d
+				tex_address_mode clamp
+				filtering none
+			}
+
+			texture_unit 
+			{
+				texture House01Texture.png
 				tex_address_mode clamp
 				filtering none
 			}
@@ -190,7 +489,7 @@ material TowerUpperWood
 
 }
 
-material Volcano
+material TowerBaseWood
 {
 	technique Toon
 	{
@@ -203,8 +502,8 @@ material Volcano
 
 			fragment_program_ref ToonFP
 			{
-				param_named ambient float4 0.097 0 0 1
-				param_named diffuse float4 0.124 0.124 0.124 1
+				param_named ambient float4 0.239 0.133 0.044 1
+				param_named diffuse float4 0.46 0.327 0.195 1
 				param_named specular float4 0.0 0.0 0.0 1.0
 				param_named emissive float4 0.0 0.0 0.0 1.0
 			}
@@ -222,45 +521,57 @@ material Volcano
 
 }
 
-material WyvernsRulez
+material Wood
+{
+	technique Toon
+	{
+		pass 
+		{
+			vertex_program_ref ToonVP
+			{
+				param_named shininess float4 0 1.0 1.0 1.0
+			}
+
+			fragment_program_ref ToonFP
+			{
+				param_named ambient float4 0.3 0.106 0 1
+				param_named diffuse float4 0.425 0.265 0.088 1
+				param_named specular float4 0.0 0.0 0.0 1.0
+				param_named emissive float4 0.0 0.0 0.0 1.0
+			}
+
+			texture_unit ToonShades
+			{
+				texture toon.png 2d
+				tex_address_mode clamp
+				filtering none
+			}
+
+		}
+
+	}
+
+}
+
+material House0_Roof_Material1
 {
 	technique Toon
 	{
 		pass 
 		{
 			
-         lighting off
-         scene_blend alpha_blend
-         depth_check off
-
-
-			texture_unit 
-			{
-				anim_texture WyvernsRulez.png 2 2 
-			}
-
-		}
-
-	}
-
-}
-
-material Chalk
-{
-	technique Toon
-	{
-		pass 
-		{
+			scene_blend alpha_blend
+			
 			vertex_program_ref ToonVP
 			{
-				param_named shininess float4 50 1.0 1.0 1.0
+				param_named shininess float4 32 1.0 1.0 1.0
 			}
 
 			fragment_program_ref ToonFP
 			{
 				param_named ambient float4 0 0 0 1
 				param_named diffuse float4 0.5 0.5 0.5 1.0
-				param_named specular float4 0.33 0.33 0.33 1
+				param_named specular float4 0.35 0.35 0.35 1
 				param_named emissive float4 0.0 0.0 0.0 1.0
 			}
 
@@ -271,18 +582,28 @@ material Chalk
 				filtering none
 			}
 
+			texture_unit 
+			{
+				texture HouseRoof01Texture.png
+				tex_address_mode clamp
+				filtering none
+			}
+
 		}
 
 	}
 
 }
 
-material VulcanicRock
+material House0_Building_Material1
 {
 	technique Toon
 	{
 		pass 
 		{
+			
+			scene_blend alpha_blend
+			
 			vertex_program_ref ToonVP
 			{
 				param_named shininess float4 0 1.0 1.0 1.0
@@ -290,8 +611,8 @@ material VulcanicRock
 
 			fragment_program_ref ToonFP
 			{
-				param_named ambient float4 0.159 0.159 0.159 1
-				param_named diffuse float4 0.407 0.407 0.407 1
+				param_named ambient float4 0 0 0 1
+				param_named diffuse float4 0.5 0.5 0.5 1.0
 				param_named specular float4 0.0 0.0 0.0 1.0
 				param_named emissive float4 0.0 0.0 0.0 1.0
 			}
@@ -299,6 +620,13 @@ material VulcanicRock
 			texture_unit ToonShades
 			{
 				texture toon.png 2d
+				tex_address_mode clamp
+				filtering none
+			}
+
+			texture_unit 
+			{
+				texture House01Texture.png
 				tex_address_mode clamp
 				filtering none
 			}
@@ -324,6 +652,38 @@ material PortalWood
 			{
 				param_named ambient float4 0.3 0.3 0 1
 				param_named diffuse float4 0.7 0.504 0.248 1
+				param_named specular float4 0.0 0.0 0.0 1.0
+				param_named emissive float4 0.0 0.0 0.0 1.0
+			}
+
+			texture_unit ToonShades
+			{
+				texture toon.png 2d
+				tex_address_mode clamp
+				filtering none
+			}
+
+		}
+
+	}
+
+}
+
+material Iron
+{
+	technique Toon
+	{
+		pass 
+		{
+			vertex_program_ref ToonVP
+			{
+				param_named shininess float4 0 1.0 1.0 1.0
+			}
+
+			fragment_program_ref ToonFP
+			{
+				param_named ambient float4 0.3 0.3 0.469 1
+				param_named diffuse float4 0.7 0.7 0.743 1
 				param_named specular float4 0.0 0.0 0.0 1.0
 				param_named emissive float4 0.0 0.0 0.0 1.0
 			}
@@ -373,12 +733,57 @@ material BlackWood
 
 }
 
-material Iron
+material House0_Roof_Material
 {
 	technique Toon
 	{
 		pass 
 		{
+			
+			scene_blend alpha_blend
+			
+			vertex_program_ref ToonVP
+			{
+				param_named shininess float4 32 1.0 1.0 1.0
+			}
+
+			fragment_program_ref ToonFP
+			{
+				param_named ambient float4 0 0 0 1
+				param_named diffuse float4 0.5 0.5 0.5 1.0
+				param_named specular float4 0.35 0.35 0.35 1
+				param_named emissive float4 0.0 0.0 0.0 1.0
+			}
+
+			texture_unit ToonShades
+			{
+				texture toon.png 2d
+				tex_address_mode clamp
+				filtering none
+			}
+
+			texture_unit 
+			{
+				texture HouseRoof01Texture.png
+				tex_address_mode clamp
+				filtering none
+			}
+
+		}
+
+	}
+
+}
+
+material House0_Building_Material
+{
+	technique Toon
+	{
+		pass 
+		{
+			
+			scene_blend alpha_blend
+			
 			vertex_program_ref ToonVP
 			{
 				param_named shininess float4 0 1.0 1.0 1.0
@@ -386,8 +791,8 @@ material Iron
 
 			fragment_program_ref ToonFP
 			{
-				param_named ambient float4 0.3 0.3 0.469 1
-				param_named diffuse float4 0.7 0.7 0.743 1
+				param_named ambient float4 0 0 0 1
+				param_named diffuse float4 0.5 0.5 0.5 1.0
 				param_named specular float4 0.0 0.0 0.0 1.0
 				param_named emissive float4 0.0 0.0 0.0 1.0
 			}
@@ -395,6 +800,55 @@ material Iron
 			texture_unit ToonShades
 			{
 				texture toon.png 2d
+				tex_address_mode clamp
+				filtering none
+			}
+
+			texture_unit 
+			{
+				texture House01Texture.png
+				tex_address_mode clamp
+				filtering none
+			}
+
+		}
+
+	}
+
+}
+
+material MuddyHill
+{
+	technique Toon
+	{
+		pass 
+		{
+			
+			scene_blend alpha_blend
+			
+			vertex_program_ref ToonVP
+			{
+				param_named shininess float4 0 1.0 1.0 1.0
+			}
+
+			fragment_program_ref ToonFP
+			{
+				param_named ambient float4 0 0 0 1
+				param_named diffuse float4 0.5 0.5 0.5 1.0
+				param_named specular float4 0.0 0.0 0.0 1.0
+				param_named emissive float4 0.0 0.0 0.0 1.0
+			}
+
+			texture_unit ToonShades
+			{
+				texture toon.png 2d
+				tex_address_mode clamp
+				filtering none
+			}
+
+			texture_unit 
+			{
+				texture MuddyHill.png
 				tex_address_mode clamp
 				filtering none
 			}
@@ -649,38 +1103,6 @@ material Chalk
 
 }
 
-material MuddyHill
-{
-	technique Toon
-	{
-		pass 
-		{
-			vertex_program_ref ToonVP
-			{
-				param_named shininess float4 0 1.0 1.0 1.0
-			}
-
-			fragment_program_ref ToonFP
-			{
-				param_named ambient float4 0.159 0.097 0.009 1
-				param_named diffuse float4 0.398 0.195 0 1
-				param_named specular float4 0.0 0.0 0.0 1.0
-				param_named emissive float4 0.0 0.0 0.0 1.0
-			}
-
-			texture_unit ToonShades
-			{
-				texture toon.png 2d
-				tex_address_mode clamp
-				filtering none
-			}
-
-		}
-
-	}
-
-}
-
 material Concrete
 {
 	technique Toon
@@ -728,70 +1150,6 @@ material WoodHouse
 			{
 				param_named ambient float4 0.416 0.327 0 1
 				param_named diffuse float4 0.7 0.69 0.177 1
-				param_named specular float4 0.0 0.0 0.0 1.0
-				param_named emissive float4 0.0 0.0 0.0 1.0
-			}
-
-			texture_unit ToonShades
-			{
-				texture toon.png 2d
-				tex_address_mode clamp
-				filtering none
-			}
-
-		}
-
-	}
-
-}
-
-material Wood
-{
-	technique Toon
-	{
-		pass 
-		{
-			vertex_program_ref ToonVP
-			{
-				param_named shininess float4 0 1.0 1.0 1.0
-			}
-
-			fragment_program_ref ToonFP
-			{
-				param_named ambient float4 0.3 0.106 0 1
-				param_named diffuse float4 0.425 0.265 0.088 1
-				param_named specular float4 0.0 0.0 0.0 1.0
-				param_named emissive float4 0.0 0.0 0.0 1.0
-			}
-
-			texture_unit ToonShades
-			{
-				texture toon.png 2d
-				tex_address_mode clamp
-				filtering none
-			}
-
-		}
-
-	}
-
-}
-
-material TreeTop
-{
-	technique Toon
-	{
-		pass 
-		{
-			vertex_program_ref ToonVP
-			{
-				param_named shininess float4 0 1.0 1.0 1.0
-			}
-
-			fragment_program_ref ToonFP
-			{
-				param_named ambient float4 0.142 0.3 0 1
-				param_named diffuse float4 0.451 0.743 0.15 1
 				param_named specular float4 0.0 0.0 0.0 1.0
 				param_named emissive float4 0.0 0.0 0.0 1.0
 			}
@@ -1380,33 +1738,14 @@ material SilhouetteTree1
 		pass 
 		{
 			
-			scene_blend alpha_blend
-			
-			vertex_program_ref ToonVP
-			{
-				param_named shininess float4 0 1.0 1.0 1.0
-			}
+     lighting off
+     scene_blend alpha_blend
+     depth_check off
 
-			fragment_program_ref ToonFP
-			{
-				param_named ambient float4 0 0 0 1
-				param_named diffuse float4 0.5 0.5 0.5 1.0
-				param_named specular float4 0.0 0.0 0.0 1.0
-				param_named emissive float4 0.0 0.0 0.0 1.0
-			}
-
-			texture_unit ToonShades
-			{
-				texture toon.png 2d
-				tex_address_mode clamp
-				filtering none
-			}
 
 			texture_unit 
 			{
 				texture SilhouetteTree1.png
-				tex_address_mode clamp
-				filtering none
 			}
 
 		}
@@ -1454,33 +1793,14 @@ material Castle1
 		pass 
 		{
 			
-			scene_blend alpha_blend
-			
-			vertex_program_ref ToonVP
-			{
-				param_named shininess float4 0 1.0 1.0 1.0
-			}
+     lighting off
+     scene_blend alpha_blend
+     depth_check off
 
-			fragment_program_ref ToonFP
-			{
-				param_named ambient float4 0 0 0 1
-				param_named diffuse float4 0.5 0.5 0.5 1.0
-				param_named specular float4 0.0 0.0 0.0 1.0
-				param_named emissive float4 0.0 0.0 0.0 1.0
-			}
-
-			texture_unit ToonShades
-			{
-				texture toon.png 2d
-				tex_address_mode clamp
-				filtering none
-			}
 
 			texture_unit 
 			{
 				texture Castle1.png
-				tex_address_mode clamp
-				filtering none
 			}
 
 		}
@@ -1496,33 +1816,14 @@ material SilhouetteTree2
 		pass 
 		{
 			
-			scene_blend alpha_blend
-			
-			vertex_program_ref ToonVP
-			{
-				param_named shininess float4 0 1.0 1.0 1.0
-			}
+     lighting off
+     scene_blend alpha_blend
+     depth_check off
 
-			fragment_program_ref ToonFP
-			{
-				param_named ambient float4 0 0 0 1
-				param_named diffuse float4 0.5 0.5 0.5 1.0
-				param_named specular float4 0.0 0.0 0.0 1.0
-				param_named emissive float4 0.0 0.0 0.0 1.0
-			}
-
-			texture_unit ToonShades
-			{
-				texture toon.png 2d
-				tex_address_mode clamp
-				filtering none
-			}
 
 			texture_unit 
 			{
-				texture SilhouetteTree[1..3].png
-				tex_address_mode clamp
-				filtering none
+				texture SilhouetteTree2.png
 			}
 
 		}
