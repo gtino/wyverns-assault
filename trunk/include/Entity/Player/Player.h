@@ -24,7 +24,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #define __PLAYER_H__
 
 #include <Ogre.h>
-#include "OgreOde_Core.h"
+#include <OgreTagPoint.h>
+#include <ParticleUniversePlugin.h>
 
 #include "..\EntityInterface.h"
 #include "..\..\Physics\PhysicsInterface.h"
@@ -46,7 +47,7 @@ namespace WyvernsAssault
 		Player(Ogre::String name);
 		~Player();
 	
-		void initialize(Ogre::Entity* mesh, Ogre::SceneNode* sceneNode);
+		void initialize(String name, Ogre::Entity* mesh, Ogre::SceneNode* sceneNode, Ogre::SceneManager* sceneManager);
 		void finalize();
 
 		void setPosition(Ogre::Vector3 position);
@@ -70,8 +71,15 @@ namespace WyvernsAssault
 		Ogre::AnimationState* mIddle;
 		Ogre::AnimationState* mRun;
 		Ogre::AnimationState* mAttackA;
+		Ogre::AnimationState* mSpecial;
 
+		Ogre::SceneManager*					mSceneManager;
+		ParticleUniverse::ParticleSystem*	mFireBreath;
+		TagPoint*							mBreathPoint;
+
+		bool moving;
 		bool attacking;
+		bool special;
 	};
 
 	typedef boost::shared_ptr<Player> PlayerPtr;

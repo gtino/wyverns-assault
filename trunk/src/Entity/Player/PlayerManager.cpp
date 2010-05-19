@@ -45,7 +45,7 @@ PlayerPtr PlayerManager::createPlayer(Ogre::String name, Ogre::String mesh)
 
 	PlayerPtr player = PlayerPtr(new Player(name));
 
-	player->initialize( playerMesh, playerSceneNode );
+	player->initialize( name, playerMesh, playerSceneNode, mSceneManager );
 
 	mPlayerList.push_back(player);
 	mPlayerMap[name] = player;

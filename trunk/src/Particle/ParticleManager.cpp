@@ -32,7 +32,7 @@ void ParticleManager::initialize()
 
 	// Get particle universe particle system manager
 	mParticleSystemManager = ParticleUniverse::ParticleSystemManager::getSingletonPtr();
-	
+
 	/** EJEMPLO **/
 	mParticleSystem = mParticleSystemManager->createParticleSystem("somkeA", "WyvernsAssault/Smoke", mSceneManager);
 	mSceneManager->getRootSceneNode()->createChildSceneNode("smokeNodeA",Vector3(-545,690,490))->attachObject(mParticleSystem);
@@ -42,6 +42,7 @@ void ParticleManager::initialize()
 	mSceneManager->getRootSceneNode()->createChildSceneNode("smokeNodeB",Vector3(-615,690,450))->attachObject(mParticleSystem);
 	mParticleSystem->start();
 	/*************/
+
 }
 
 

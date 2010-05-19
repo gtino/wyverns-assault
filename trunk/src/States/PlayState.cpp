@@ -263,7 +263,7 @@ void PlayState::update(const float elapsedSeconds)
 		{
 			// No movement, iddle animation
 			mPlayer1->move(0,0,0);
-			mPhysicsManager->move(mPlayer1, Vector3(0,0,0));
+			mPhysicsManager->move(mPlayer1, Vector3::ZERO);
 		}
 	}
 	else
@@ -628,6 +628,10 @@ bool PlayState::keyPressed(const OIS::KeyEvent& e)
 	// Attack A
 	case OIS::KeyCode::KC_SPACE:
 		mPlayer1->attackA();
+		break;
+	// Special Attack
+	case OIS::KeyCode::KC_RCONTROL:
+		mPlayer1->attackSpecial();
 		break;	
 
 	// Compositors On/Off
