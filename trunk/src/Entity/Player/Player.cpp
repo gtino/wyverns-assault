@@ -33,17 +33,17 @@ void Player::initialize(String name, Ogre::Entity* mesh, Ogre::SceneNode* sceneN
 	attacking = false;
 	special = false;
 	mDirection = Vector3::ZERO;
-
+	
 	// Special attack particle system (fire breath)
 	mFireBreath = ParticleUniverse::ParticleSystemManager::getSingletonPtr()->createParticleSystem("fireBreath", "WyvernsAssault/DragonBreath", mSceneManager);
+
 	// Attach to bone	
 	Entity* playerMesh = mSceneManager->getEntity(name);
 	mBreathPoint = playerMesh->attachObjectToBone("bone25", mFireBreath);
 }
 
 void Player::finalize()
-{
-
+{	
 }
 
 void Player::setPosition(Ogre::Vector3 position)
@@ -59,21 +59,24 @@ void Player::move(Real x, Real y, Real z)
 		moving = true;
 	}
 	// Iddle
-	else
+	else if(moving)
 	{
 		moving = false;
+		mIddle->setTimePosition(0);
 	}
 }
 
 void Player::attackA()
 {
 	attacking = true;
+	mAttackA->setEnabled(true);
 }
 
 void Player::attackSpecial()
 {
 	special = true;
-	mFireBreath->startAndStopFade(mSpecial->getLength());
+	mSpecial->setEnabled(true);
+	mFireBreath->startAndStopFade(mSpecial->getLength());	
 }
 
 void Player::updateAnimation(float elapsedSeconds)
@@ -126,7 +129,7 @@ void Player::updateAnimation(float elapsedSeconds)
 		mIddle->setWeight(0);
 	}
 	else
-	{
+	{		
 		mIddle->addTime(elapsedSeconds);
 		
 		mRun->setWeight(0);
@@ -139,11 +142,13 @@ void Player::updateAnimation(float elapsedSeconds)
 	if(mAttackA->getTimePosition() + elapsedSeconds > mAttackA->getLength())
 	{
 		attacking = false;
+		mAttackA->setEnabled(false);
 		
 	}
 	// Special attack animation finished
 	if(mSpecial->getTimePosition() + elapsedSeconds > mSpecial->getLength())
 	{
 		special = false;
+		mSpecial->setEnabled(false);
 	}
 }

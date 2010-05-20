@@ -73,9 +73,9 @@ namespace WyvernsAssault
 		Ogre::AnimationState* mAttackA;
 		Ogre::AnimationState* mSpecial;
 
-		Ogre::SceneManager*					mSceneManager;
-		ParticleUniverse::ParticleSystem*	mFireBreath;
+		Ogre::SceneManager*					mSceneManager;		
 		TagPoint*							mBreathPoint;
+		ParticleUniverse::ParticleSystem*	mFireBreath;
 
 		bool moving;
 		bool attacking;
