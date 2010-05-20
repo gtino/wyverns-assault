@@ -35,6 +35,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #include "..\Particle\ParticleManager.h"
 
 #include <SdkTrays.h>
+#include <ParticleUniversePlugin.h>
 
 #define COMPOSITOR "Outline"
 

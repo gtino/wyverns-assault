@@ -374,6 +374,12 @@ void PlayState::unload()
 /** Destroy the state */
 void PlayState::finalize()
 {
+	if(mParticleManager)
+	{
+		delete mParticleManager;
+		mParticleManager = NULL;
+	}
+
 	BaseState::finalize();
 
 	// FIRST!
@@ -382,13 +388,6 @@ void PlayState::finalize()
 		delete mLuaManager;
 		mLuaManager = NULL;
 	}
-
-	if(mParticleManager)
-	{
-		delete mParticleManager;
-		mParticleManager = NULL;
-	}
-
 	if(mPlayerManager)
 	{
 		delete mPlayerManager;
@@ -499,6 +498,11 @@ bool PlayState::keyPressed(const OIS::KeyEvent& e)
 	{
 	case OIS::KeyCode::KC_ESCAPE:
 		this->mNextGameStateId = GameStateId::Exit;
+		// Finalize particle manager required
+		if(mParticleManager)
+		{			
+			mParticleManager->finalize();
+		}
 		break;
 	case OIS::KeyCode::KC_I:
 		this->mNextGameStateId = GameStateId::Ending;

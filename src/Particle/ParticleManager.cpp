@@ -49,19 +49,7 @@ void ParticleManager::initialize()
 /** Finalize the particle manager */
 void ParticleManager::finalize()
 {
-	// Stop, detach and destroy particle systems
-
-	/** EJEMPLO - No funciona !! **/
-	/*mParticleSystem = mParticleSystemManager->getParticleSystem("somkeA");
-	mParticleSystem->stop();
-	mSceneManager->getSceneNode("smokeNodeA")->detachObject(mParticleSystem, mSceneManager);
-	mParticleSystemManager->destroyParticleSystem(mParticleSystem);
-
-	mParticleSystem = mParticleSystemManager->getParticleSystem("somkeB");
-	mParticleSystem->stop();
-	mSceneManager->getSceneNode("smokeNodeB")->detachObject(mParticleSystem, mSceneManager);
-	mParticleSystemManager->destroyParticleSystem(mParticleSystem);*/
-	/*************/
+	ParticleUniverse::ParticleSystemManager::getSingletonPtr()->destroyAllParticleSystems(mSceneManager);
 
 	mParticleSystem = NULL;
 	mParticleSystemManager = NULL;
