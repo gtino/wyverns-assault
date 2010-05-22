@@ -61,6 +61,9 @@ namespace WyvernsAssault
 		void attackB();
 		void attackSpecial();
 
+		bool isAttacking(){ return attacking ; }
+		bool isSpecial(){ return special ; }
+
 		// Animation functions
 		void updateAnimation(float elapsedSeconds);
 

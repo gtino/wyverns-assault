@@ -113,9 +113,12 @@ void GraphicsManager::createResourceListener(void)
 
 void GraphicsManager::finalize()
 {
-	//
-	// TODO finalize
-	//
+	if(mSceneManager)
+	{
+		mSceneManager->clearScene();
+		delete mSceneManager;
+		mSceneManager = NULL;
+	}
 }
 
 void GraphicsManager::loadResources()
