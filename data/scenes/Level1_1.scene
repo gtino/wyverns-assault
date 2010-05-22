@@ -51,12 +51,12 @@
                     <subentity index="1" materialName="Grass" />
                 </subentities>
             </entity>
-            <node name="UfoTree8">
-                <position x="2298.4" y="596.607" z="-2391.91" />
+            <node name="UfoTree_10">
+                <position x="3697.61" y="596.607" z="-1536.66" />
                 <scale x="4" y="4" z="4" />
-                <rotation qx="0" qy="-0.581367" qz="0" qw="0.813642" />
+                <rotation qx="0" qy="0.575145" qz="0" qw="0.818052" />
                 <node name="UfoTree_Mesh">
-                    <position x="0" y="0" z="0" />
+                    <position x="-5.68434e-014" y="0" z="-2.84217e-014" />
                     <scale x="1" y="1" z="1" />
                     <rotation qx="0" qy="0" qz="0" qw="1" />
                     <entity name="UfoTree_Mesh" castShadows="true" receiveShadows="true" meshFile="UfoTree_Mesh0.mesh">
@@ -67,12 +67,12 @@
                     </entity>
                 </node>
             </node>
-            <node name="UfoTree7">
-                <position x="3447.81" y="596.607" z="-2042.19" />
+            <node name="UfoTree_9">
+                <position x="4235.42" y="596.607" z="-1116.99" />
                 <scale x="4" y="4" z="4" />
-                <rotation qx="0" qy="0.584717" qz="0" qw="0.811237" />
+                <rotation qx="0" qy="0.575145" qz="0" qw="0.818052" />
                 <node name="UfoTree_Mesh_1">
-                    <position x="-5.68434e-014" y="0" z="0" />
+                    <position x="0" y="0" z="5.68434e-014" />
                     <scale x="1" y="1" z="1" />
                     <rotation qx="0" qy="0" qz="0" qw="1" />
                     <entity name="UfoTree_Mesh_1" castShadows="true" receiveShadows="true" meshFile="UfoTree_Mesh0.mesh">
@@ -83,10 +83,10 @@
                     </entity>
                 </node>
             </node>
-            <node name="UfoTree6">
-                <position x="3737.86" y="596.607" z="-1532" />
+            <node name="UfoTree_8">
+                <position x="3223.94" y="596.607" z="-1739.09" />
                 <scale x="4" y="4" z="4" />
-                <rotation qx="0" qy="0" qz="0" qw="1" />
+                <rotation qx="0" qy="0.986489" qz="0" qw="0.163828" />
                 <node name="UfoTree_Mesh_2">
                     <position x="0" y="0" z="0" />
                     <scale x="1" y="1" z="1" />
@@ -99,31 +99,15 @@
                     </entity>
                 </node>
             </node>
-            <node name="UfoTree5">
-                <position x="3941.57" y="596.607" z="-853.125" />
+            <node name="UfoTree_7">
+                <position x="2617.05" y="596.607" z="-2390.81" />
                 <scale x="4" y="4" z="4" />
-                <rotation qx="0" qy="0.464935" qz="0" qw="0.885345" />
+                <rotation qx="0" qy="0.848804" qz="0" qw="0.528708" />
                 <node name="UfoTree_Mesh_3">
-                    <position x="-5.68434e-014" y="0" z="2.84217e-014" />
-                    <scale x="1" y="1" z="1" />
-                    <rotation qx="0" qy="5.55112e-017" qz="0" qw="1" />
-                    <entity name="UfoTree_Mesh_3" castShadows="true" receiveShadows="true" meshFile="UfoTree_Mesh0.mesh">
-                        <subentities>
-                            <subentity index="0" materialName="Wood" />
-                            <subentity index="1" materialName="TreeTop" />
-                        </subentities>
-                    </entity>
-                </node>
-            </node>
-            <node name="UfoTree4">
-                <position x="3298.26" y="596.607" z="-1388" />
-                <scale x="4" y="4" z="4" />
-                <rotation qx="0" qy="0" qz="0" qw="1" />
-                <node name="UfoTree_Mesh_4">
                     <position x="0" y="0" z="0" />
                     <scale x="1" y="1" z="1" />
                     <rotation qx="0" qy="0" qz="0" qw="1" />
-                    <entity name="UfoTree_Mesh_4" castShadows="true" receiveShadows="true" meshFile="UfoTree_Mesh0.mesh">
+                    <entity name="UfoTree_Mesh_3" castShadows="true" receiveShadows="true" meshFile="UfoTree_Mesh_0.mesh">
                         <subentities>
                             <subentity index="0" materialName="TreeTop" />
                             <subentity index="1" materialName="Wood" />
@@ -131,14 +115,30 @@
                     </entity>
                 </node>
             </node>
-            <node name="UfoTree3">
-                <position x="3650" y="596.607" z="-861.354" />
+            <node name="UfoTree_6">
+                <position x="2279.56" y="596.607" z="-1839.81" />
                 <scale x="4" y="4" z="4" />
-                <rotation qx="-0" qy="-0.836441" qz="-0" qw="0.548056" />
-                <node name="UfoTree_Mesh_5">
-                    <position x="-2.84217e-014" y="0" z="4.26326e-014" />
+                <rotation qx="0" qy="0.981657" qz="0" qw="0.190655" />
+                <node name="UfoTree_Mesh_4">
+                    <position x="0" y="0" z="0" />
                     <scale x="1" y="1" z="1" />
-                    <rotation qx="0" qy="-5.55112e-017" qz="0" qw="1" />
+                    <rotation qx="0" qy="2.77556e-017" qz="0" qw="1" />
+                    <entity name="UfoTree_Mesh_4" castShadows="true" receiveShadows="true" meshFile="UfoTree_Mesh0.mesh">
+                        <subentities>
+                            <subentity index="0" materialName="Wood" />
+                            <subentity index="1" materialName="TreeTop" />
+                        </subentities>
+                    </entity>
+                </node>
+            </node>
+            <node name="UfoTree_5">
+                <position x="2913.09" y="596.607" z="-2687.05" />
+                <scale x="4" y="4" z="4" />
+                <rotation qx="0" qy="0.981657" qz="0" qw="0.190655" />
+                <node name="UfoTree_Mesh_5">
+                    <position x="0" y="0" z="0" />
+                    <scale x="1" y="1" z="1" />
+                    <rotation qx="0" qy="2.77556e-017" qz="0" qw="1" />
                     <entity name="UfoTree_Mesh_5" castShadows="true" receiveShadows="true" meshFile="UfoTree_Mesh0.mesh">
                         <subentities>
                             <subentity index="0" materialName="Wood" />
@@ -147,14 +147,14 @@
                     </entity>
                 </node>
             </node>
-            <node name="UfoTree2">
-                <position x="2431.05" y="596.607" z="-1811.78" />
+            <node name="UfoTree_4">
+                <position x="4151.55" y="596.607" z="-1827.96" />
                 <scale x="4" y="4" z="4" />
-                <rotation qx="0" qy="0.49998" qz="0" qw="0.866037" />
+                <rotation qx="-0" qy="-0.824987" qz="-0" qw="0.565152" />
                 <node name="UfoTree_Mesh_6">
-                    <position x="0" y="0" z="-2.84217e-014" />
+                    <position x="0" y="0" z="0" />
                     <scale x="1" y="1" z="1" />
-                    <rotation qx="0" qy="5.55112e-017" qz="0" qw="1" />
+                    <rotation qx="0" qy="-1.66533e-016" qz="0" qw="1" />
                     <entity name="UfoTree_Mesh_6" castShadows="true" receiveShadows="true" meshFile="UfoTree_Mesh0.mesh">
                         <subentities>
                             <subentity index="0" materialName="Wood" />
@@ -163,15 +163,31 @@
                     </entity>
                 </node>
             </node>
-            <node name="UfoTree1">
-                <position x="3152.83" y="596.607" z="-1655.43" />
+            <node name="UfoTree_3">
+                <position x="3515.05" y="596.607" z="-2055.08" />
                 <scale x="4" y="4" z="4" />
-                <rotation qx="0" qy="-0.27592" qz="0" qw="0.961181" />
+                <rotation qx="-0" qy="-0.973817" qz="-0" qw="0.227335" />
                 <node name="UfoTree_Mesh_7">
-                    <position x="2.84217e-014" y="0" z="0" />
+                    <position x="0" y="0" z="0" />
                     <scale x="1" y="1" z="1" />
-                    <rotation qx="0" qy="0" qz="0" qw="1" />
+                    <rotation qx="0" qy="-8.32667e-017" qz="0" qw="1" />
                     <entity name="UfoTree_Mesh_7" castShadows="true" receiveShadows="true" meshFile="UfoTree_Mesh0.mesh">
+                        <subentities>
+                            <subentity index="0" materialName="Wood" />
+                            <subentity index="1" materialName="TreeTop" />
+                        </subentities>
+                    </entity>
+                </node>
+            </node>
+            <node name="UfoTree_2">
+                <position x="3297.95" y="596.607" z="-1462.6" />
+                <scale x="4" y="4" z="4" />
+                <rotation qx="-0" qy="-0.973817" qz="-0" qw="0.227335" />
+                <node name="UfoTree_Mesh_8">
+                    <position x="-2.84217e-014" y="0" z="0" />
+                    <scale x="1" y="1" z="1" />
+                    <rotation qx="0" qy="-8.32667e-017" qz="0" qw="1" />
+                    <entity name="UfoTree_Mesh_8" castShadows="true" receiveShadows="true" meshFile="UfoTree_Mesh_0.mesh">
                         <subentities>
                             <subentity index="0" materialName="TreeTop" />
                             <subentity index="1" materialName="Wood" />
@@ -179,8 +195,183 @@
                     </entity>
                 </node>
             </node>
-            <node name="RedwoodTree7">
-                <position x="3768.15" y="596.607" z="-1900.03" />
+            <node name="UfoTree_1">
+                <position x="3598.93" y="596.607" z="-830.631" />
+                <scale x="4" y="4" z="4" />
+                <rotation qx="-0" qy="-0.790438" qz="-0" qw="0.612542" />
+                <node name="UfoTree_Mesh_9">
+                    <position x="0" y="0" z="1.42109e-014" />
+                    <scale x="1" y="1" z="1" />
+                    <rotation qx="0" qy="0" qz="0" qw="1" />
+                    <entity name="UfoTree_Mesh_9" castShadows="true" receiveShadows="true" meshFile="UfoTree_Mesh0.mesh">
+                        <subentities>
+                            <subentity index="0" materialName="Wood" />
+                            <subentity index="1" materialName="TreeTop" />
+                        </subentities>
+                    </entity>
+                </node>
+            </node>
+            <node name="UfoTree_0">
+                <position x="3968.98" y="596.607" z="-870.13" />
+                <scale x="4" y="4" z="4" />
+                <rotation qx="0" qy="-0.489558" qz="0" qw="0.871971" />
+                <node name="UfoTree_Mesh_10">
+                    <position x="0" y="0" z="-2.84217e-014" />
+                    <scale x="1" y="1" z="1" />
+                    <rotation qx="0" qy="-1.11022e-016" qz="0" qw="1" />
+                    <entity name="UfoTree_Mesh_10" castShadows="true" receiveShadows="true" meshFile="UfoTree_Mesh0.mesh">
+                        <subentities>
+                            <subentity index="0" materialName="Wood" />
+                            <subentity index="1" materialName="TreeTop" />
+                        </subentities>
+                    </entity>
+                </node>
+            </node>
+            <node name="House01_5">
+                <position x="4388.56" y="680" z="692.401" />
+                <scale x="4" y="4" z="4" />
+                <rotation qx="0" qy="-0.13553" qz="0" qw="0.990773" />
+                <node name="House01_Mesh">
+                    <position x="-2.13163e-014" y="0" z="0" />
+                    <scale x="1" y="1" z="1" />
+                    <rotation qx="0" qy="0" qz="0" qw="1" />
+                    <entity name="House01_Mesh" castShadows="true" receiveShadows="true" meshFile="House0.mesh">
+                        <subentities>
+                            <subentity index="0" materialName="House0_Building_Material5" />
+                            <subentity index="1" materialName="House0_Roof_Material5" />
+                        </subentities>
+                    </entity>
+                </node>
+            </node>
+            <node name="House01_4">
+                <position x="4712.17" y="680" z="425.726" />
+                <scale x="4" y="4" z="4" />
+                <rotation qx="-1.07297e-018" qy="-0.595363" qz="1.997e-018" qw="0.803457" />
+                <node name="House01_Mesh_1">
+                    <position x="0" y="-1.47911e-031" z="-9.9476e-014" />
+                    <scale x="1" y="1" z="1" />
+                    <rotation qx="0" qy="0" qz="0" qw="1" />
+                    <entity name="House01_Mesh_1" castShadows="true" receiveShadows="true" meshFile="House0.mesh">
+                        <subentities>
+                            <subentity index="0" materialName="House0_Building_Material4" />
+                            <subentity index="1" materialName="House0_Roof_Material4" />
+                        </subentities>
+                    </entity>
+                </node>
+            </node>
+            <node name="House01_3">
+                <position x="4607.47" y="680" z="947.17" />
+                <scale x="4" y="4" z="4" />
+                <rotation qx="2.05691e-019" qy="-0.0537991" qz="2.25764e-018" qw="0.998552" />
+                <node name="House01_Mesh_2">
+                    <position x="2.84217e-014" y="5.54668e-032" z="0" />
+                    <scale x="1" y="1" z="1" />
+                    <rotation qx="0" qy="-6.93889e-018" qz="0" qw="1" />
+                    <entity name="House01_Mesh_2" castShadows="true" receiveShadows="true" meshFile="House0.mesh">
+                        <subentities>
+                            <subentity index="0" materialName="House0_Building_Material3" />
+                            <subentity index="1" materialName="House0_Roof_Material3" />
+                        </subentities>
+                    </entity>
+                </node>
+            </node>
+            <node name="House01_2">
+                <position x="5199.96" y="680" z="380.487" />
+                <scale x="4" y="4" z="4" />
+                <rotation qx="0" qy="0.0259768" qz="0" qw="0.999663" />
+                <node name="House01_Mesh_3">
+                    <position x="6.75016e-014" y="0" z="0" />
+                    <scale x="1" y="1" z="1" />
+                    <rotation qx="0" qy="-3.46945e-018" qz="0" qw="1" />
+                    <entity name="House01_Mesh_3" castShadows="true" receiveShadows="true" meshFile="House0.mesh">
+                        <subentities>
+                            <subentity index="0" materialName="House0_Building_Material2" />
+                            <subentity index="1" materialName="House0_Roof_Material2" />
+                        </subentities>
+                    </entity>
+                </node>
+            </node>
+            <node name="House01_1">
+                <position x="5204.72" y="680" z="694.782" />
+                <scale x="4" y="4" z="4" />
+                <rotation qx="0" qy="-0.0273661" qz="0" qw="0.999626" />
+                <node name="House01_Mesh_4">
+                    <position x="-9.41469e-014" y="0" z="0" />
+                    <scale x="1" y="1" z="1" />
+                    <rotation qx="0" qy="3.46945e-018" qz="0" qw="1" />
+                    <entity name="House01_Mesh_4" castShadows="true" receiveShadows="true" meshFile="House0.mesh">
+                        <subentities>
+                            <subentity index="0" materialName="House0_Building_Material1" />
+                            <subentity index="1" materialName="House0_Roof_Material1" />
+                        </subentities>
+                    </entity>
+                </node>
+            </node>
+            <node name="House01_0">
+                <position x="5154.75" y="680" z="1011.46" />
+                <scale x="4" y="4" z="4" />
+                <rotation qx="0" qy="-0.102747" qz="0" qw="0.994708" />
+                <node name="House01_Mesh_5">
+                    <position x="-5.68434e-014" y="0" z="0" />
+                    <scale x="1" y="1" z="1" />
+                    <rotation qx="0" qy="0" qz="0" qw="1" />
+                    <entity name="House01_Mesh_5" castShadows="true" receiveShadows="true" meshFile="House0.mesh">
+                        <subentities>
+                            <subentity index="0" materialName="House0_Building_Material" />
+                            <subentity index="1" materialName="House0_Roof_Material" />
+                        </subentities>
+                    </entity>
+                </node>
+            </node>
+            <node name="House02_1">
+                <position x="3969.74" y="643.513" z="-1673.42" />
+                <scale x="4" y="4" z="4" />
+                <rotation qx="0" qy="0.29044" qz="0" qw="0.956893" />
+                <node name="House02_Mesh">
+                    <position x="0" y="0" z="0" />
+                    <scale x="1" y="1" z="1" />
+                    <rotation qx="0" qy="0" qz="0" qw="1" />
+                    <entity name="House02_Mesh" castShadows="true" receiveShadows="true" meshFile="House1.mesh">
+                        <subentities>
+                            <subentity index="0" materialName="House02_Top_Material" />
+                            <subentity index="1" materialName="House02_Bottom_Material" />
+                        </subentities>
+                    </entity>
+                </node>
+            </node>
+            <node name="House02_4">
+                <position x="2872.87" y="643.513" z="-2460.33" />
+                <scale x="4" y="4" z="4" />
+                <rotation qx="0" qy="0.694717" qz="0" qw="0.719284" />
+                <node name="House02_Mesh_1">
+                    <position x="0" y="0" z="-3.19744e-014" />
+                    <scale x="1" y="1" z="1" />
+                    <rotation qx="0" qy="-1.66533e-016" qz="0" qw="1" />
+                    <entity name="House02_Mesh_1" castShadows="true" receiveShadows="true" meshFile="House2.mesh">
+                        <subentities>
+                            <subentity index="0" materialName="House02_Bottom_Material" />
+                            <subentity index="1" materialName="House02_Top_Material" />
+                        </subentities>
+                    </entity>
+                </node>
+            </node>
+            <node name="ChickenYard">
+                <position x="-756.479" y="596.607" z="392.284" />
+                <scale x="4" y="4" z="4" />
+                <rotation qx="0" qy="0.38561" qz="0" qw="0.922662" />
+                <node name="ChickenYard_Mesh">
+                    <position x="0" y="0" z="0" />
+                    <scale x="1" y="1" z="1" />
+                    <rotation qx="0" qy="0" qz="0" qw="1" />
+                    <entity name="ChickenYard_Mesh" castShadows="true" receiveShadows="true" meshFile="ChickenYard_Mesh0.mesh">
+                        <subentities>
+                            <subentity index="0" materialName="Wood" />
+                        </subentities>
+                    </entity>
+                </node>
+            </node>
+            <node name="RedwoodTree5">
+                <position x="4027.55" y="596.607" z="-1480.36" />
                 <scale x="4" y="4" z="4" />
                 <rotation qx="0" qy="0" qz="0" qw="1" />
                 <node name="RedwoodTree_Mesh">
@@ -195,14 +386,14 @@
                     </entity>
                 </node>
             </node>
-            <node name="RedwoodTree6">
-                <position x="2763.01" y="596.607" z="-1690.19" />
+            <node name="RedwoodTree7">
+                <position x="3768.15" y="596.607" z="-1900.03" />
                 <scale x="4" y="4" z="4" />
-                <rotation qx="0" qy="0.184133" qz="0" qw="0.982901" />
+                <rotation qx="0" qy="0" qz="0" qw="1" />
                 <node name="RedwoodTree_Mesh_1">
-                    <position x="-2.84217e-014" y="0" z="0" />
+                    <position x="0" y="0" z="0" />
                     <scale x="1" y="1" z="1" />
-                    <rotation qx="0" qy="-2.77556e-017" qz="0" qw="1" />
+                    <rotation qx="0" qy="0" qz="0" qw="1" />
                     <entity name="RedwoodTree_Mesh_1" castShadows="true" receiveShadows="true" meshFile="RedwoodTree_Mesh0.mesh">
                         <subentities>
                             <subentity index="0" materialName="RedWood" />
@@ -211,18 +402,70 @@
                     </entity>
                 </node>
             </node>
-            <node name="RedwoodTree5">
-                <position x="4027.55" y="596.607" z="-1480.36" />
+            <node name="RedwoodTree1">
+                <position x="2351.98" y="592.97" z="-1497.81" />
                 <scale x="4" y="4" z="4" />
-                <rotation qx="0" qy="0" qz="0" qw="1" />
+                <rotation qx="1.61029e-015" qy="1.03969e-016" qz="-1.67421e-031" qw="1" />
                 <node name="RedwoodTree_Mesh_2">
-                    <position x="0" y="0" z="0" />
+                    <position x="-3.58236e-014" y="-3.27589e-017" z="0" />
                     <scale x="1" y="1" z="1" />
-                    <rotation qx="0" qy="0" qz="0" qw="1" />
+                    <rotation qx="-0" qy="0" qz="0" qw="1" />
                     <entity name="RedwoodTree_Mesh_2" castShadows="true" receiveShadows="true" meshFile="RedwoodTree_Mesh0.mesh">
                         <subentities>
                             <subentity index="0" materialName="RedWood" />
                             <subentity index="1" materialName="RedwoodLeaf" />
+                        </subentities>
+                    </entity>
+                </node>
+            </node>
+            <node name="House03_1">
+                <position x="2754.61" y="767.825" z="-1685.3" />
+                <scale x="4" y="4" z="4" />
+                <rotation qx="0" qy="0" qz="0" qw="1" />
+                <node name="House03_Mesh">
+                    <position x="0" y="0" z="0" />
+                    <scale x="1" y="1" z="1" />
+                    <rotation qx="0" qy="0" qz="0" qw="1" />
+                    <entity name="House03_Mesh" castShadows="true" receiveShadows="true" meshFile="House3.mesh">
+                        <subentities>
+                            <subentity index="0" materialName="wire_153228153" />
+                            <subentity index="1" materialName="wire_006134058" />
+                        </subentities>
+                    </entity>
+                </node>
+            </node>
+            <node name="DefensiveTowerRight">
+                <position x="1839.53" y="694.864" z="-2347.43" />
+                <scale x="4" y="4" z="4" />
+                <rotation qx="0" qy="0" qz="0" qw="1" />
+                <node name="DefensiveWoodTower">
+                    <position x="0" y="-23.3346" z="0" />
+                    <scale x="1" y="1" z="1" />
+                    <rotation qx="0" qy="0" qz="0" qw="1" />
+                    <entity name="DefensiveWoodTower" castShadows="true" receiveShadows="true" meshFile="DefensiveWoodTower0.mesh">
+                        <subentities>
+                            <subentity index="0" materialName="TowerStairWood" />
+                            <subentity index="1" materialName="TowerRoofWood" />
+                            <subentity index="2" materialName="TowerUpperWood" />
+                            <subentity index="3" materialName="TowerBaseWood" />
+                        </subentities>
+                    </entity>
+                </node>
+            </node>
+            <node name="DefensiveTowerLeft">
+                <position x="1846.46" y="694.864" z="-1878.93" />
+                <scale x="4" y="4" z="4" />
+                <rotation qx="0" qy="0" qz="0" qw="1" />
+                <node name="DefensiveWoodTower_1">
+                    <position x="0" y="-23.3346" z="0" />
+                    <scale x="1" y="1" z="1" />
+                    <rotation qx="0" qy="0" qz="0" qw="1" />
+                    <entity name="DefensiveWoodTower_1" castShadows="true" receiveShadows="true" meshFile="DefensiveWoodTower_0.mesh">
+                        <subentities>
+                            <subentity index="0" materialName="TowerRoofWood" />
+                            <subentity index="1" materialName="TowerStairWood" />
+                            <subentity index="2" materialName="TowerUpperWood" />
+                            <subentity index="3" materialName="TowerBaseWood" />
                         </subentities>
                     </entity>
                 </node>
@@ -243,18 +486,51 @@
                     </entity>
                 </node>
             </node>
-            <node name="RedwoodTree3">
-                <position x="3505.71" y="596.607" z="-1155.32" />
+            <node name="House02_3">
+                <position x="2578.88" y="643.513" z="-1500.45" />
+                <scale x="4" y="4" z="4" />
+                <rotation qx="0" qy="-0.0102758" qz="0" qw="0.999947" />
+                <node name="House02_Mesh_2">
+                    <position x="-5.15143e-014" y="0" z="0" />
+                    <scale x="1" y="1" z="1" />
+                    <rotation qx="0" qy="0" qz="0" qw="1" />
+                    <entity name="House02_Mesh_2" castShadows="true" receiveShadows="true" meshFile="House1.mesh">
+                        <subentities>
+                            <subentity index="0" materialName="House02_Top_Material" />
+                            <subentity index="1" materialName="House02_Bottom_Material" />
+                        </subentities>
+                    </entity>
+                </node>
+            </node>
+            <node name="RedwoodTree">
+                <position x="3090.79" y="596.607" z="-2257.98" />
                 <scale x="4" y="4" z="4" />
                 <rotation qx="0" qy="0" qz="0" qw="1" />
                 <node name="RedwoodTree_Mesh_4">
                     <position x="0" y="0" z="0" />
                     <scale x="1" y="1" z="1" />
                     <rotation qx="0" qy="0" qz="0" qw="1" />
-                    <entity name="RedwoodTree_Mesh_4" castShadows="true" receiveShadows="true" meshFile="RedwoodTree_Mesh0.mesh">
+                    <entity name="RedwoodTree_Mesh_4" castShadows="true" receiveShadows="true" meshFile="RedwoodTree_Mesh_0.mesh">
                         <subentities>
-                            <subentity index="0" materialName="RedWood" />
-                            <subentity index="1" materialName="RedwoodLeaf" />
+                            <subentity index="0" materialName="RedwoodLeaf" />
+                            <subentity index="1" materialName="RedWood" />
+                        </subentities>
+                    </entity>
+                </node>
+            </node>
+            <node name="CityPortal">
+                <position x="1757.39" y="602.898" z="-2139.73" />
+                <scale x="4" y="4" z="4" />
+                <rotation qx="0" qy="0.682024" qz="0" qw="0.73133" />
+                <node name="CityPortal_Mesh">
+                    <position x="0" y="0" z="-7.10543e-015" />
+                    <scale x="1" y="1" z="1" />
+                    <rotation qx="0" qy="1.66533e-016" qz="0" qw="1" />
+                    <entity name="CityPortal_Mesh" castShadows="true" receiveShadows="true" meshFile="CityPortal_Mesh0.mesh">
+                        <subentities>
+                            <subentity index="0" materialName="Iron" />
+                            <subentity index="1" materialName="BlackWood" />
+                            <subentity index="2" materialName="PortalWood" />
                         </subentities>
                     </entity>
                 </node>
@@ -275,18 +551,36 @@
                     </entity>
                 </node>
             </node>
-            <node name="RedwoodTree1">
-                <position x="2351.98" y="592.97" z="-1497.81" />
+            <node name="House02_0">
+                <position x="3730.58" y="643.513" z="-998.077" />
                 <scale x="4" y="4" z="4" />
-                <rotation qx="1.61029e-015" qy="1.03969e-016" qz="-1.67421e-031" qw="1" />
-                <node name="RedwoodTree_Mesh_6">
-                    <position x="-3.58236e-014" y="-3.27589e-017" z="0" />
+                <rotation qx="-0" qy="-0.882008" qz="-0" qw="0.471234" />
+                <node name="House02_Mesh_3">
+                    <position x="2.84217e-014" y="0" z="-2.84217e-014" />
                     <scale x="1" y="1" z="1" />
-                    <rotation qx="-0" qy="0" qz="0" qw="1" />
-                    <entity name="RedwoodTree_Mesh_6" castShadows="true" receiveShadows="true" meshFile="RedwoodTree_Mesh0.mesh">
+                    <rotation qx="0" qy="-1.66533e-016" qz="0" qw="1" />
+                    <entity name="House02_Mesh_3" castShadows="true" receiveShadows="true" meshFile="House2.mesh">
                         <subentities>
-                            <subentity index="0" materialName="RedWood" />
-                            <subentity index="1" materialName="RedwoodLeaf" />
+                            <subentity index="0" materialName="House02_Bottom_Material" />
+                            <subentity index="1" materialName="House02_Top_Material" />
+                        </subentities>
+                    </entity>
+                </node>
+            </node>
+            <node name="TownHouse02_0">
+                <position x="633.535" y="717.254" z="-2464.69" />
+                <scale x="12" y="12" z="12" />
+                <rotation qx="0" qy="0" qz="0" qw="1" />
+                <node name="Tower">
+                    <position x="0" y="0" z="0" />
+                    <scale x="1.37201" y="2.77926" z="1.37201" />
+                    <rotation qx="0" qy="0" qz="0" qw="1" />
+                    <entity name="Tower" castShadows="true" receiveShadows="true" meshFile="Tower0.mesh">
+                        <subentities>
+                            <subentity index="0" materialName="Scene_Material" />
+                            <subentity index="1" materialName="Material" />
+                            <subentity index="2" materialName="Material1" />
+                            <subentity index="3" materialName="Material2" />
                         </subentities>
                     </entity>
                 </node>
@@ -309,106 +603,56 @@
                     </entity>
                 </node>
             </node>
-            <node name="House01">
-                <position x="4717.8" y="685.654" z="889.496" />
+            <node name="RedwoodTree6">
+                <position x="2763.01" y="596.607" z="-1690.19" />
                 <scale x="4" y="4" z="4" />
-                <rotation qx="0" qy="0.993428" qz="0" qw="0.114463" />
-                <node name="House01_Mesh">
-                    <position x="7.7092" y="0" z="-22.4526" />
+                <rotation qx="0" qy="0.184133" qz="0" qw="0.982901" />
+                <node name="RedwoodTree_Mesh_6">
+                    <position x="-2.84217e-014" y="0" z="0" />
                     <scale x="1" y="1" z="1" />
-                    <rotation qx="0" qy="1.38778e-017" qz="0" qw="1" />
-                    <entity name="House01_Mesh" castShadows="true" receiveShadows="true" meshFile="House0.mesh">
+                    <rotation qx="0" qy="-2.77556e-017" qz="0" qw="1" />
+                    <entity name="RedwoodTree_Mesh_6" castShadows="true" receiveShadows="true" meshFile="RedwoodTree_Mesh_0.mesh">
                         <subentities>
-                            <subentity index="0" materialName="House0_Roof_Material2" />
-                            <subentity index="1" materialName="House0_Building_Material2" />
+                            <subentity index="0" materialName="RedwoodLeaf" />
+                            <subentity index="1" materialName="RedWood" />
                         </subentities>
                     </entity>
                 </node>
             </node>
-            <node name="DefensiveTowerLeft">
-                <position x="1846.46" y="694.864" z="-1878.93" />
+            <node name="House02_2">
+                <position x="3009.77" y="643.513" z="-1786.29" />
                 <scale x="4" y="4" z="4" />
-                <rotation qx="0" qy="0" qz="0" qw="1" />
-                <node name="DefensiveWoodTower">
-                    <position x="0" y="-23.3346" z="0" />
+                <rotation qx="-0" qy="-0.910617" qz="-0" qw="0.413251" />
+                <node name="House02_Mesh_4">
+                    <position x="5.68434e-014" y="0" z="0" />
                     <scale x="1" y="1" z="1" />
-                    <rotation qx="0" qy="0" qz="0" qw="1" />
-                    <entity name="DefensiveWoodTower" castShadows="true" receiveShadows="true" meshFile="DefensiveWoodTower0.mesh">
+                    <rotation qx="0" qy="-5.55112e-017" qz="0" qw="1" />
+                    <entity name="House02_Mesh_4" castShadows="true" receiveShadows="true" meshFile="House1.mesh">
                         <subentities>
-                            <subentity index="0" materialName="TowerRoofWood" />
-                            <subentity index="1" materialName="TowerStairWood" />
-                            <subentity index="2" materialName="TowerUpperWood" />
-                            <subentity index="3" materialName="TowerBaseWood" />
+                            <subentity index="0" materialName="House02_Top_Material" />
+                            <subentity index="1" materialName="House02_Bottom_Material" />
                         </subentities>
                     </entity>
                 </node>
             </node>
-            <node name="UfoTree">
-                <position x="2657.55" y="596.607" z="-2326.08" />
+            <node name="House03_0">
+                <position x="3760.86" y="767.825" z="-1897.69" />
                 <scale x="4" y="4" z="4" />
                 <rotation qx="0" qy="0" qz="0" qw="1" />
-                <node name="UfoTree_Mesh_8">
+                <node name="House03_Mesh_1">
                     <position x="0" y="0" z="0" />
                     <scale x="1" y="1" z="1" />
                     <rotation qx="0" qy="0" qz="0" qw="1" />
-                    <entity name="UfoTree_Mesh_8" castShadows="true" receiveShadows="true" meshFile="UfoTree_Mesh0.mesh">
+                    <entity name="House03_Mesh_1" castShadows="true" receiveShadows="true" meshFile="House3.mesh">
                         <subentities>
-                            <subentity index="0" materialName="Wood" />
-                            <subentity index="1" materialName="TreeTop" />
+                            <subentity index="0" materialName="wire_153228153" />
+                            <subentity index="1" materialName="wire_006134058" />
                         </subentities>
                     </entity>
                 </node>
             </node>
-            <node name="ChickenYard">
-                <position x="-756.479" y="596.607" z="392.284" />
-                <scale x="4" y="4" z="4" />
-                <rotation qx="0" qy="0.38561" qz="0" qw="0.922662" />
-                <node name="ChickenYard_Mesh">
-                    <position x="0" y="0" z="0" />
-                    <scale x="1" y="1" z="1" />
-                    <rotation qx="0" qy="0" qz="0" qw="1" />
-                    <entity name="ChickenYard_Mesh" castShadows="true" receiveShadows="true" meshFile="ChickenYard_Mesh0.mesh">
-                        <subentities>
-                            <subentity index="0" materialName="Wood" />
-                        </subentities>
-                    </entity>
-                </node>
-            </node>
-            <node name="House01_2">
-                <position x="5112.52" y="685.654" z="1126.49" />
-                <scale x="4" y="4" z="4" />
-                <rotation qx="0" qy="-0.0654454" qz="0" qw="0.997856" />
-                <node name="House01_Mesh_1">
-                    <position x="7.7092" y="0" z="-22.4526" />
-                    <scale x="1" y="1" z="1" />
-                    <rotation qx="0" qy="0" qz="0" qw="1" />
-                    <entity name="House01_Mesh_1" castShadows="true" receiveShadows="true" meshFile="House0.mesh">
-                        <subentities>
-                            <subentity index="0" materialName="House0_Roof_Material1" />
-                            <subentity index="1" materialName="House0_Building_Material1" />
-                        </subentities>
-                    </entity>
-                </node>
-            </node>
-            <node name="CityPortal">
-                <position x="1757.39" y="602.898" z="-2139.73" />
-                <scale x="4" y="4" z="4" />
-                <rotation qx="0" qy="0.682024" qz="0" qw="0.73133" />
-                <node name="CityPortal_Mesh">
-                    <position x="0" y="0" z="-7.10543e-015" />
-                    <scale x="1" y="1" z="1" />
-                    <rotation qx="0" qy="1.66533e-016" qz="0" qw="1" />
-                    <entity name="CityPortal_Mesh" castShadows="true" receiveShadows="true" meshFile="CityPortal_Mesh0.mesh">
-                        <subentities>
-                            <subentity index="0" materialName="PortalWood" />
-                            <subentity index="1" materialName="Iron" />
-                            <subentity index="2" materialName="BlackWood" />
-                        </subentities>
-                    </entity>
-                </node>
-            </node>
-            <node name="RedwoodTree">
-                <position x="3090.79" y="596.607" z="-2257.98" />
+            <node name="RedwoodTree3">
+                <position x="3505.71" y="596.607" z="-1155.32" />
                 <scale x="4" y="4" z="4" />
                 <rotation qx="0" qy="0" qz="0" qw="1" />
                 <node name="RedwoodTree_Mesh_7">
@@ -423,36 +667,282 @@
                     </entity>
                 </node>
             </node>
-            <node name="House01_3">
-                <position x="5183.58" y="685.654" z="759.152" />
-                <scale x="4" y="4" z="4" />
-                <rotation qx="0" qy="-0.0138763" qz="0" qw="0.999904" />
-                <node name="House01_Mesh_2">
-                    <position x="7.7092" y="0" z="-22.4526" />
-                    <scale x="1" y="1" z="1" />
-                    <rotation qx="0" qy="6.93889e-018" qz="0" qw="1" />
-                    <entity name="House01_Mesh_2" castShadows="true" receiveShadows="true" meshFile="House0.mesh">
+            <node name="TownHouse02_4">
+                <position x="124.611" y="717.254" z="-2162.53" />
+                <scale x="12" y="12" z="12" />
+                <rotation qx="0" qy="0" qz="0" qw="1" />
+                <node name="Tower_1">
+                    <position x="0" y="0" z="0" />
+                    <scale x="1.37201" y="2.77926" z="1.37201" />
+                    <rotation qx="0" qy="0" qz="0" qw="1" />
+                    <entity name="Tower_1" castShadows="true" receiveShadows="true" meshFile="Tower0.mesh">
                         <subentities>
-                            <subentity index="0" materialName="House0_Roof_Material" />
-                            <subentity index="1" materialName="House0_Building_Material" />
+                            <subentity index="0" materialName="Scene_Material" />
+                            <subentity index="1" materialName="Material" />
+                            <subentity index="2" materialName="Material1" />
+                            <subentity index="3" materialName="Material2" />
                         </subentities>
                     </entity>
                 </node>
             </node>
-            <node name="DefensiveTowerRight">
-                <position x="1839.53" y="694.864" z="-2347.43" />
+            <node name="TownHouse02_3">
+                <position x="453.152" y="717.254" z="-1783.35" />
+                <scale x="12" y="12" z="12" />
+                <rotation qx="0" qy="0" qz="0" qw="1" />
+                <node name="Tower_2">
+                    <position x="0" y="0" z="0" />
+                    <scale x="1.37201" y="2.77926" z="1.37201" />
+                    <rotation qx="0" qy="0" qz="0" qw="1" />
+                    <entity name="Tower_2" castShadows="true" receiveShadows="true" meshFile="Tower0.mesh">
+                        <subentities>
+                            <subentity index="0" materialName="Scene_Material" />
+                            <subentity index="1" materialName="Material" />
+                            <subentity index="2" materialName="Material1" />
+                            <subentity index="3" materialName="Material2" />
+                        </subentities>
+                    </entity>
+                </node>
+            </node>
+            <node name="TownHouse02_2">
+                <position x="-124.203" y="717.254" z="-1593.75" />
+                <scale x="12" y="12" z="12" />
+                <rotation qx="0" qy="0" qz="0" qw="1" />
+                <node name="Tower_3">
+                    <position x="0" y="0" z="0" />
+                    <scale x="1.37201" y="2.77926" z="1.37201" />
+                    <rotation qx="0" qy="0" qz="0" qw="1" />
+                    <entity name="Tower_3" castShadows="true" receiveShadows="true" meshFile="Tower0.mesh">
+                        <subentities>
+                            <subentity index="0" materialName="Scene_Material" />
+                            <subentity index="1" materialName="Material" />
+                            <subentity index="2" materialName="Material1" />
+                            <subentity index="3" materialName="Material2" />
+                        </subentities>
+                    </entity>
+                </node>
+            </node>
+            <node name="House03_2">
+                <position x="3897.64" y="767.825" z="-530.882" />
                 <scale x="4" y="4" z="4" />
                 <rotation qx="0" qy="0" qz="0" qw="1" />
-                <node name="DefensiveWoodTower_1">
-                    <position x="0" y="-23.3346" z="0" />
+                <node name="House03_Mesh_2">
+                    <position x="0" y="0" z="0" />
                     <scale x="1" y="1" z="1" />
                     <rotation qx="0" qy="0" qz="0" qw="1" />
-                    <entity name="DefensiveWoodTower_1" castShadows="true" receiveShadows="true" meshFile="DefensiveWoodTower_0.mesh">
+                    <entity name="House03_Mesh_2" castShadows="true" receiveShadows="true" meshFile="House4.mesh">
                         <subentities>
-                            <subentity index="0" materialName="TowerBaseWood" />
-                            <subentity index="1" materialName="TowerRoofWood" />
-                            <subentity index="2" materialName="TowerStairWood" />
-                            <subentity index="3" materialName="TowerUpperWood" />
+                            <subentity index="0" materialName="wire_006134058" />
+                            <subentity index="1" materialName="wire_153228153" />
+                        </subentities>
+                    </entity>
+                </node>
+            </node>
+            <node name="TownHouse02_1">
+                <position x="861.557" y="717.254" z="-1161.25" />
+                <scale x="12" y="12" z="12" />
+                <rotation qx="0" qy="0" qz="0" qw="1" />
+                <node name="Tower_4">
+                    <position x="0" y="0" z="0" />
+                    <scale x="1.37201" y="2.77926" z="1.37201" />
+                    <rotation qx="0" qy="0" qz="0" qw="1" />
+                    <entity name="Tower_4" castShadows="true" receiveShadows="true" meshFile="Tower0.mesh">
+                        <subentities>
+                            <subentity index="0" materialName="Scene_Material" />
+                            <subentity index="1" materialName="Material" />
+                            <subentity index="2" materialName="Material1" />
+                            <subentity index="3" materialName="Material2" />
+                        </subentities>
+                    </entity>
+                </node>
+            </node>
+            <node name="House02_5">
+                <position x="2571.07" y="643.513" z="-1926.29" />
+                <scale x="4" y="4" z="4" />
+                <rotation qx="-0" qy="-0.999913" qz="-0" qw="0.013199" />
+                <node name="House02_Mesh_5">
+                    <position x="3.37508e-014" y="0" z="0" />
+                    <scale x="1" y="1" z="1" />
+                    <rotation qx="0" qy="3.46945e-018" qz="0" qw="1" />
+                    <entity name="House02_Mesh_5" castShadows="true" receiveShadows="true" meshFile="House1.mesh">
+                        <subentities>
+                            <subentity index="0" materialName="House02_Top_Material" />
+                            <subentity index="1" materialName="House02_Bottom_Material" />
+                        </subentities>
+                    </entity>
+                </node>
+            </node>
+            <node name="TownHouse01_0">
+                <position x="407.555" y="676.607" z="-2460.74" />
+                <scale x="4" y="4" z="4" />
+                <rotation qx="0" qy="0.707107" qz="0" qw="0.707107" />
+                <node name="TownHouse">
+                    <position x="0" y="0" z="5.50995e-015" />
+                    <scale x="5" y="5" z="5" />
+                    <rotation qx="0" qy="0" qz="0" qw="1" />
+                    <entity name="TownHouse" castShadows="true" receiveShadows="true" meshFile="TownHouse0.mesh">
+                        <subentities>
+                            <subentity index="0" materialName="TownHouse00_Roof" />
+                            <subentity index="1" materialName="TownHouse00_Building" />
+                        </subentities>
+                    </entity>
+                </node>
+            </node>
+            <node name="TownHouse01_1">
+                <position x="122.433" y="676.607" z="-2378.78" />
+                <scale x="4" y="4" z="4" />
+                <rotation qx="0" qy="0" qz="0" qw="1" />
+                <node name="TownHouse_1">
+                    <position x="0" y="0" z="0" />
+                    <scale x="5" y="5" z="5" />
+                    <rotation qx="0" qy="0" qz="0" qw="1" />
+                    <entity name="TownHouse_1" castShadows="true" receiveShadows="true" meshFile="TownHouse_0.mesh">
+                        <subentities>
+                            <subentity index="0" materialName="TownHouse00_Building" />
+                            <subentity index="1" materialName="TownHouse00_Roof" />
+                        </subentities>
+                    </entity>
+                </node>
+            </node>
+            <node name="TownHouse01_2">
+                <position x="-117.295" y="676.607" z="-2189.19" />
+                <scale x="4" y="4" z="4" />
+                <rotation qx="0" qy="0" qz="0" qw="1" />
+                <node name="TownHouse_2">
+                    <position x="0" y="0" z="0" />
+                    <scale x="5" y="5" z="5" />
+                    <rotation qx="0" qy="0" qz="0" qw="1" />
+                    <entity name="TownHouse_2" castShadows="true" receiveShadows="true" meshFile="TownHouse_0.mesh">
+                        <subentities>
+                            <subentity index="0" materialName="TownHouse00_Building" />
+                            <subentity index="1" materialName="TownHouse00_Roof" />
+                        </subentities>
+                    </entity>
+                </node>
+            </node>
+            <node name="TownHouse01_3">
+                <position x="590.319" y="676.607" z="-2070.7" />
+                <scale x="4" y="4" z="4" />
+                <rotation qx="0" qy="0.707107" qz="0" qw="0.707107" />
+                <node name="TownHouse_3">
+                    <position x="0" y="0" z="-1.25989e-015" />
+                    <scale x="5" y="5" z="5" />
+                    <rotation qx="0" qy="0" qz="0" qw="1" />
+                    <entity name="TownHouse_3" castShadows="true" receiveShadows="true" meshFile="TownHouse0.mesh">
+                        <subentities>
+                            <subentity index="0" materialName="TownHouse00_Roof" />
+                            <subentity index="1" materialName="TownHouse00_Building" />
+                        </subentities>
+                    </entity>
+                </node>
+            </node>
+            <node name="TownHouse01_4">
+                <position x="812.421" y="676.607" z="-1821.86" />
+                <scale x="4" y="4" z="4" />
+                <rotation qx="0" qy="0" qz="0" qw="1" />
+                <node name="TownHouse_4">
+                    <position x="0" y="0" z="0" />
+                    <scale x="5" y="5" z="5" />
+                    <rotation qx="0" qy="0" qz="0" qw="1" />
+                    <entity name="TownHouse_4" castShadows="true" receiveShadows="true" meshFile="TownHouse_0.mesh">
+                        <subentities>
+                            <subentity index="0" materialName="TownHouse00_Building" />
+                            <subentity index="1" materialName="TownHouse00_Roof" />
+                        </subentities>
+                    </entity>
+                </node>
+            </node>
+            <node name="TownHouse01_5">
+                <position x="892.421" y="676.607" z="-1490.07" />
+                <scale x="4" y="4" z="4" />
+                <rotation qx="0" qy="0.707107" qz="0" qw="0.707107" />
+                <node name="TownHouse_5">
+                    <position x="0" y="0" z="2.54953e-015" />
+                    <scale x="5" y="5" z="5" />
+                    <rotation qx="0" qy="0" qz="0" qw="1" />
+                    <entity name="TownHouse_5" castShadows="true" receiveShadows="true" meshFile="TownHouse_0.mesh">
+                        <subentities>
+                            <subentity index="0" materialName="TownHouse00_Building" />
+                            <subentity index="1" materialName="TownHouse00_Roof" />
+                        </subentities>
+                    </entity>
+                </node>
+            </node>
+            <node name="TownHouse01_6">
+                <position x="-152.548" y="676.607" z="-1798.16" />
+                <scale x="4" y="4" z="4" />
+                <rotation qx="0" qy="0.707107" qz="0" qw="0.707107" />
+                <node name="TownHouse_6">
+                    <position x="0" y="0" z="-3.41852e-016" />
+                    <scale x="5" y="5" z="5" />
+                    <rotation qx="0" qy="0" qz="0" qw="1" />
+                    <entity name="TownHouse_6" castShadows="true" receiveShadows="true" meshFile="TownHouse_0.mesh">
+                        <subentities>
+                            <subentity index="0" materialName="TownHouse00_Building" />
+                            <subentity index="1" materialName="TownHouse00_Roof" />
+                        </subentities>
+                    </entity>
+                </node>
+            </node>
+            <node name="TownHouse01_7">
+                <position x="259.021" y="676.607" z="-1798.16" />
+                <scale x="4" y="4" z="4" />
+                <rotation qx="0" qy="0" qz="0" qw="1" />
+                <node name="TownHouse_7">
+                    <position x="0" y="0" z="0" />
+                    <scale x="5" y="5" z="5" />
+                    <rotation qx="0" qy="0" qz="0" qw="1" />
+                    <entity name="TownHouse_7" castShadows="true" receiveShadows="true" meshFile="TownHouse_0.mesh">
+                        <subentities>
+                            <subentity index="0" materialName="TownHouse00_Building" />
+                            <subentity index="1" materialName="TownHouse00_Roof" />
+                        </subentities>
+                    </entity>
+                </node>
+            </node>
+            <node name="TownHouse01_8">
+                <position x="256.129" y="676.607" z="-1418.97" />
+                <scale x="4" y="4" z="4" />
+                <rotation qx="0" qy="0.707107" qz="0" qw="0.707107" />
+                <node name="TownHouse_8">
+                    <position x="0" y="0" z="6.49619e-015" />
+                    <scale x="5" y="5" z="5" />
+                    <rotation qx="0" qy="0" qz="0" qw="1" />
+                    <entity name="TownHouse_8" castShadows="true" receiveShadows="true" meshFile="TownHouse_0.mesh">
+                        <subentities>
+                            <subentity index="0" materialName="TownHouse00_Building" />
+                            <subentity index="1" materialName="TownHouse00_Roof" />
+                        </subentities>
+                    </entity>
+                </node>
+            </node>
+            <node name="TownHouse01_9">
+                <position x="620.332" y="676.607" z="-1241.23" />
+                <scale x="4" y="4" z="4" />
+                <rotation qx="0" qy="0" qz="0" qw="1" />
+                <node name="TownHouse_9">
+                    <position x="0" y="0" z="0" />
+                    <scale x="5" y="5" z="5" />
+                    <rotation qx="0" qy="0" qz="0" qw="1" />
+                    <entity name="TownHouse_9" castShadows="true" receiveShadows="true" meshFile="TownHouse_0.mesh">
+                        <subentities>
+                            <subentity index="0" materialName="TownHouse00_Building" />
+                            <subentity index="1" materialName="TownHouse00_Roof" />
+                        </subentities>
+                    </entity>
+                </node>
+            </node>
+            <node name="TownHouse01_10">
+                <position x="860.196" y="676.607" z="-968.695" />
+                <scale x="4" y="4" z="4" />
+                <rotation qx="0" qy="0" qz="0" qw="1" />
+                <node name="TownHouse_10">
+                    <position x="0" y="0" z="0" />
+                    <scale x="5" y="5" z="5" />
+                    <rotation qx="0" qy="0" qz="0" qw="1" />
+                    <entity name="TownHouse_10" castShadows="true" receiveShadows="true" meshFile="TownHouse_0.mesh">
+                        <subentities>
+                            <subentity index="0" materialName="TownHouse00_Building" />
+                            <subentity index="1" materialName="TownHouse00_Roof" />
                         </subentities>
                     </entity>
                 </node>
@@ -548,7 +1038,7 @@
                 </entity>
             </node>
             <node name="CandySphereTree11">
-                <position x="4611.51" y="621.009" z="743.152" />
+                <position x="5063.8" y="621.009" z="142.449" />
                 <scale x="9.03096" y="10.7489" z="9.03096" />
                 <rotation qx="0" qy="-0.677178" qz="0" qw="0.73582" />
                 <entity name="CandySphereTree11" castShadows="true" receiveShadows="true" meshFile="CandySphereTree0.mesh">
@@ -558,7 +1048,7 @@
                 </entity>
             </node>
             <node name="CandyPillTree11">
-                <position x="4511.98" y="656.73" z="824.95" />
+                <position x="5219.19" y="656.73" z="870.209" />
                 <scale x="6.3783" y="20.7763" z="6.3783" />
                 <rotation qx="0" qy="-0.677178" qz="0" qw="0.73582" />
                 <entity name="CandyPillTree11" castShadows="true" receiveShadows="true" meshFile="CandyPillTree0.mesh">
@@ -604,9 +1094,9 @@
                 <rotation qx="-0.655795" qy="-0.280535" qz="-0.263139" qw="0.649609" />
                 <entity name="WheatField6" castShadows="true" receiveShadows="true" meshFile="WheatField3.mesh">
                     <subentities>
-                        <subentity index="0" materialName="Chalk" />
-                        <subentity index="1" materialName="WheatDarkGold" />
-                        <subentity index="2" materialName="WheatLightGold" />
+                        <subentity index="0" materialName="WheatDarkGold" />
+                        <subentity index="1" materialName="WheatLightGold" />
+                        <subentity index="2" materialName="Chalk" />
                     </subentities>
                 </entity>
             </node>
@@ -616,8 +1106,8 @@
                 <rotation qx="-0.499777" qy="0.500223" qz="0.500223" qw="0.499777" />
                 <entity name="WheatField5" castShadows="true" receiveShadows="true" meshFile="WheatField2.mesh">
                     <subentities>
-                        <subentity index="0" materialName="WheatLightGold" />
-                        <subentity index="1" materialName="WheatDarkGold" />
+                        <subentity index="0" materialName="WheatDarkGold" />
+                        <subentity index="1" materialName="WheatLightGold" />
                     </subentities>
                 </entity>
             </node>
@@ -628,46 +1118,6 @@
                 <entity name="BigRock23" castShadows="true" receiveShadows="true" meshFile="BigRock0.mesh">
                     <subentities>
                         <subentity index="0" materialName="VulcanicRock" />
-                    </subentities>
-                </entity>
-            </node>
-            <node name="StoneHouse13">
-                <position x="-257.558" y="618.865" z="-1762.79" />
-                <scale x="16.7697" y="16.7697" z="16.7697" />
-                <rotation qx="-0" qy="-0.896946" qz="-0" qw="0.442139" />
-                <entity name="StoneHouse13" castShadows="true" receiveShadows="true" meshFile="StoneHouse0.mesh">
-                    <subentities>
-                        <subentity index="0" materialName="Concrete" />
-                    </subentities>
-                </entity>
-            </node>
-            <node name="StoneHouse12">
-                <position x="48.3546" y="618.865" z="-2231.83" />
-                <scale x="16.7697" y="16.7697" z="16.7697" />
-                <rotation qx="-0" qy="-0.896946" qz="-0" qw="0.442139" />
-                <entity name="StoneHouse12" castShadows="true" receiveShadows="true" meshFile="StoneHouse0.mesh">
-                    <subentities>
-                        <subentity index="0" materialName="Concrete" />
-                    </subentities>
-                </entity>
-            </node>
-            <node name="StoneHouse11">
-                <position x="-25.6565" y="618.865" z="-2049.15" />
-                <scale x="16.7697" y="16.7697" z="16.7697" />
-                <rotation qx="-0" qy="-0.896946" qz="-0" qw="0.442139" />
-                <entity name="StoneHouse11" castShadows="true" receiveShadows="true" meshFile="StoneHouse0.mesh">
-                    <subentities>
-                        <subentity index="0" materialName="Concrete" />
-                    </subentities>
-                </entity>
-            </node>
-            <node name="WoodHouse5">
-                <position x="3727.64" y="623.543" z="-1091.97" />
-                <scale x="10.9059" y="10.9059" z="10.9059" />
-                <rotation qx="-0" qy="-0.865089" qz="-0" qw="0.501618" />
-                <entity name="WoodHouse5" castShadows="true" receiveShadows="true" meshFile="WoodHouse4.mesh">
-                    <subentities>
-                        <subentity index="0" materialName="WoodHouse" />
                     </subentities>
                 </entity>
             </node>
@@ -1502,7 +1952,7 @@
                 </node>
             </node>
             <node name="MileRock3">
-                <position x="3756.5" y="1569.27" z="-1924.13" />
+                <position x="2827.94" y="1569.27" z="-2006.42" />
                 <scale x="40" y="40" z="40" />
                 <rotation qx="-0.5" qy="-0.5" qz="-0.5" qw="0.5" />
                 <entity name="MileRock3" castShadows="true" receiveShadows="true" meshFile="MileRock3.mesh">
@@ -1512,7 +1962,7 @@
                 </entity>
             </node>
             <node name="MileRock2">
-                <position x="3756.5" y="1569.27" z="-1924.13" />
+                <position x="3434.42" y="1569.27" z="-1488.69" />
                 <scale x="40" y="40" z="40" />
                 <rotation qx="-0.5" qy="-0.5" qz="-0.5" qw="0.5" />
                 <entity name="MileRock2" castShadows="true" receiveShadows="true" meshFile="MileRock2.mesh">
@@ -1522,7 +1972,7 @@
                 </entity>
             </node>
             <node name="MileRock1">
-                <position x="3756.5" y="1569.27" z="-1924.13" />
+                <position x="3839.39" y="1569.27" z="-1124.29" />
                 <scale x="40" y="40" z="40" />
                 <rotation qx="-0.5" qy="-0.5" qz="-0.5" qw="0.5" />
                 <entity name="MileRock1" castShadows="true" receiveShadows="true" meshFile="MileRock1.mesh">
@@ -1532,7 +1982,7 @@
                 </entity>
             </node>
             <node name="MileRock">
-                <position x="3756.5" y="1569.27" z="-1924.13" />
+                <position x="4182.81" y="1569.27" z="-674.01" />
                 <scale x="40" y="40" z="40" />
                 <rotation qx="-0.5" qy="-0.5" qz="-0.5" qw="0.5" />
                 <entity name="MileRock" castShadows="true" receiveShadows="true" meshFile="MileRock0.mesh">
@@ -1869,9 +2319,9 @@
                 <rotation qx="-0.5" qy="-0.5" qz="-0.5" qw="0.5" />
                 <entity name="WheatField" castShadows="true" receiveShadows="true" meshFile="WheatField0.mesh">
                     <subentities>
-                        <subentity index="0" materialName="WheatDarkGold" />
-                        <subentity index="1" materialName="WheatLightGold" />
-                        <subentity index="2" materialName="Chalk" />
+                        <subentity index="0" materialName="Chalk" />
+                        <subentity index="1" materialName="WheatDarkGold" />
+                        <subentity index="2" materialName="WheatLightGold" />
                     </subentities>
                 </entity>
             </node>
@@ -1895,56 +2345,6 @@
                         </subentities>
                     </entity>
                 </node>
-            </node>
-            <node name="WoodHouse4">
-                <position x="3979.1" y="623.543" z="-1703.76" />
-                <scale x="11.3145" y="11.3145" z="11.3145" />
-                <rotation qx="0" qy="-0.476876" qz="0" qw="0.87897" />
-                <entity name="WoodHouse4" castShadows="true" receiveShadows="true" meshFile="WoodHouse3.mesh">
-                    <subentities>
-                        <subentity index="0" materialName="WoodHouse" />
-                    </subentities>
-                </entity>
-            </node>
-            <node name="WoodHouse3">
-                <position x="3026.91" y="623.543" z="-1845.89" />
-                <scale x="11.645" y="11.645" z="11.645" />
-                <rotation qx="0" qy="-0.213398" qz="0" qw="0.976965" />
-                <entity name="WoodHouse3" castShadows="true" receiveShadows="true" meshFile="WoodHouse2.mesh">
-                    <subentities>
-                        <subentity index="0" materialName="WoodHouse" />
-                    </subentities>
-                </entity>
-            </node>
-            <node name="WoodHouse2">
-                <position x="3368.54" y="623.543" z="-1504.26" />
-                <scale x="10.9059" y="10.9059" z="10.9059" />
-                <rotation qx="-0" qy="-0.960525" qz="-0" qw="0.278192" />
-                <entity name="WoodHouse2" castShadows="true" receiveShadows="true" meshFile="WoodHouse4.mesh">
-                    <subentities>
-                        <subentity index="0" materialName="WoodHouse" />
-                    </subentities>
-                </entity>
-            </node>
-            <node name="WoodHouse1">
-                <position x="2917" y="623.543" z="-2367.72" />
-                <scale x="12.28" y="12.28" z="12.28" />
-                <rotation qx="0" qy="-0.627414" qz="0" qw="0.778686" />
-                <entity name="WoodHouse1" castShadows="true" receiveShadows="true" meshFile="WoodHouse1.mesh">
-                    <subentities>
-                        <subentity index="0" materialName="WoodHouse" />
-                    </subentities>
-                </entity>
-            </node>
-            <node name="WoodHouse">
-                <position x="2626.22" y="623.543" z="-1965.2" />
-                <scale x="11.9458" y="11.9458" z="11.9458" />
-                <rotation qx="0" qy="-0.701222" qz="0" qw="0.712943" />
-                <entity name="WoodHouse" castShadows="true" receiveShadows="true" meshFile="WoodHouse0.mesh">
-                    <subentities>
-                        <subentity index="0" materialName="WoodHouse" />
-                    </subentities>
-                </entity>
             </node>
             <node name="Vulcano">
                 <position x="3756.5" y="1569.27" z="-1924.13" />
@@ -1983,26 +2383,6 @@
                     </entity>
                 </node>
             </node>
-            <node name="RockTower1">
-                <position x="1145.5" y="691.857" z="-2015.23" />
-                <scale x="41.7801" y="49.1189" z="41.7801" />
-                <rotation qx="0" qy="-0.707107" qz="0" qw="0.707107" />
-                <entity name="RockTower1" castShadows="true" receiveShadows="true" meshFile="RockTower0.mesh">
-                    <subentities>
-                        <subentity index="0" materialName="Concrete" />
-                    </subentities>
-                </entity>
-            </node>
-            <node name="RockTower">
-                <position x="1034.99" y="689.118" z="-2411.26" />
-                <scale x="41.7801" y="49.1189" z="41.7801" />
-                <rotation qx="0" qy="-0.707107" qz="0" qw="0.707107" />
-                <entity name="RockTower" castShadows="true" receiveShadows="true" meshFile="RockTower0.mesh">
-                    <subentities>
-                        <subentity index="0" materialName="Concrete" />
-                    </subentities>
-                </entity>
-            </node>
             <node name="WheatHill">
                 <position x="2927.84" y="528.861" z="1552.86" />
                 <scale x="82.1758" y="82.1758" z="82.1758" />
@@ -2020,106 +2400,6 @@
                 <entity name="WheatHill1" castShadows="true" receiveShadows="true" meshFile="WheatHill0.mesh">
                     <subentities>
                         <subentity index="0" materialName="SunHillMaterial" />
-                    </subentities>
-                </entity>
-            </node>
-            <node name="StoneHouse10">
-                <position x="819.665" y="618.865" z="-1690.09" />
-                <scale x="16.7697" y="16.7697" z="16.7697" />
-                <rotation qx="0" qy="-0.462744" qz="0" qw="0.886492" />
-                <entity name="StoneHouse10" castShadows="true" receiveShadows="true" meshFile="StoneHouse0.mesh">
-                    <subentities>
-                        <subentity index="0" materialName="Concrete" />
-                    </subentities>
-                </entity>
-            </node>
-            <node name="StoneHouse9">
-                <position x="449.356" y="618.865" z="-1184.85" />
-                <scale x="16.7697" y="16.7697" z="16.7697" />
-                <rotation qx="0" qy="-0.621256" qz="0" qw="0.783607" />
-                <entity name="StoneHouse9" castShadows="true" receiveShadows="true" meshFile="StoneHouse0.mesh">
-                    <subentities>
-                        <subentity index="0" materialName="Concrete" />
-                    </subentities>
-                </entity>
-            </node>
-            <node name="StoneHouse8">
-                <position x="633.303" y="618.865" z="-2413.97" />
-                <scale x="16.7697" y="16.7697" z="16.7697" />
-                <rotation qx="0" qy="-0.621256" qz="0" qw="0.783607" />
-                <entity name="StoneHouse8" castShadows="true" receiveShadows="true" meshFile="StoneHouse0.mesh">
-                    <subentities>
-                        <subentity index="0" materialName="Concrete" />
-                    </subentities>
-                </entity>
-            </node>
-            <node name="StoneHouse7">
-                <position x="406.321" y="618.865" z="-2257.97" />
-                <scale x="16.7697" y="16.7697" z="16.7697" />
-                <rotation qx="0" qy="-0.621256" qz="0" qw="0.783607" />
-                <entity name="StoneHouse7" castShadows="true" receiveShadows="true" meshFile="StoneHouse0.mesh">
-                    <subentities>
-                        <subentity index="0" materialName="Concrete" />
-                    </subentities>
-                </entity>
-            </node>
-            <node name="StoneHouse6">
-                <position x="477.655" y="618.865" z="-1718.78" />
-                <scale x="16.7697" y="16.7697" z="16.7697" />
-                <rotation qx="0" qy="-0.371298" qz="0" qw="0.928514" />
-                <entity name="StoneHouse6" castShadows="true" receiveShadows="true" meshFile="StoneHouse0.mesh">
-                    <subentities>
-                        <subentity index="0" materialName="Concrete" />
-                    </subentities>
-                </entity>
-            </node>
-            <node name="StoneHouse5">
-                <position x="-193.415" y="618.865" z="-1955.34" />
-                <scale x="16.7697" y="16.7697" z="16.7697" />
-                <rotation qx="-0" qy="-0.896946" qz="-0" qw="0.442139" />
-                <entity name="StoneHouse5" castShadows="true" receiveShadows="true" meshFile="StoneHouse0.mesh">
-                    <subentities>
-                        <subentity index="0" materialName="Concrete" />
-                    </subentities>
-                </entity>
-            </node>
-            <node name="StoneHouse4">
-                <position x="-5.76206" y="618.865" z="-1517.08" />
-                <scale x="16.7697" y="16.7697" z="16.7697" />
-                <rotation qx="-0" qy="-0.812895" qz="-0" qw="0.58241" />
-                <entity name="StoneHouse4" castShadows="true" receiveShadows="true" meshFile="StoneHouse0.mesh">
-                    <subentities>
-                        <subentity index="0" materialName="Concrete" />
-                    </subentities>
-                </entity>
-            </node>
-            <node name="StoneHouse3">
-                <position x="107.821" y="618.865" z="-1803.96" />
-                <scale x="16.7697" y="16.7697" z="16.7697" />
-                <rotation qx="0" qy="-0.707107" qz="0" qw="0.707107" />
-                <entity name="StoneHouse3" castShadows="true" receiveShadows="true" meshFile="StoneHouse0.mesh">
-                    <subentities>
-                        <subentity index="0" materialName="Concrete" />
-                    </subentities>
-                </entity>
-            </node>
-            <node name="StoneHouse2">
-                <position x="706.464" y="618.865" z="-891.325" />
-                <scale x="16.7697" y="16.7697" z="16.7697" />
-                <rotation qx="0" qy="-0.707107" qz="0" qw="0.707107" />
-                <entity name="StoneHouse2" castShadows="true" receiveShadows="true" meshFile="StoneHouse0.mesh">
-                    <subentities>
-                        <subentity index="0" materialName="Concrete" />
-                    </subentities>
-                </entity>
-            </node>
-            <node name="StoneHouse">
-                <position x="908.478" y="618.865" z="-1203.19" />
-                <scale x="16.7697" y="16.7697" z="16.7697" />
-                <rotation qx="0" qy="-0.707107" qz="0" qw="0.707107" />
-                <entity name="StoneHouse" castShadows="true" receiveShadows="true" meshFile="StoneHouse0.mesh">
-                    <subentities>
-                        <subentity index="0" materialName="Concrete" />
                     </subentities>
                 </entity>
             </node>
@@ -4119,8 +4399,8 @@
                 <rotation qx="-0.5" qy="-0.5" qz="-0.5" qw="0.5" />
                 <entity name="BridgeOfDeath" castShadows="true" receiveShadows="true" meshFile="BridgeOfDeath0.mesh">
                     <subentities>
-                        <subentity index="0" materialName="BridgeOfDeathStone" />
-                        <subentity index="1" materialName="Chalk" />
+                        <subentity index="0" materialName="Chalk" />
+                        <subentity index="1" materialName="BridgeOfDeathStone" />
                     </subentities>
                 </entity>
             </node>
