@@ -76,7 +76,7 @@ void Player::attackSpecial()
 {
 	special = true;
 	mSpecial->setEnabled(true);
-	mFireBreath->startAndStopFade(mSpecial->getLength());	
+	mFireBreath->startAndStopFade(mSpecial->getLength());
 }
 
 void Player::updateAnimation(float elapsedSeconds)
@@ -89,16 +89,6 @@ void Player::updateAnimation(float elapsedSeconds)
 		mRun->setWeight(0.2);
 		mAttackA->setWeight(1);
 		mSpecial->setWeight(0);
-		mIddle->setWeight(0);
-	}
-	else if(moving && special)
-	{
-		mRun->addTime(elapsedSeconds);
-		mSpecial->addTime(elapsedSeconds);
-
-		mRun->setWeight(0.2);
-		mAttackA->setWeight(0);
-		mSpecial->setWeight(0.9);		
 		mIddle->setWeight(0);
 	}
 	else if(moving)
@@ -120,7 +110,7 @@ void Player::updateAnimation(float elapsedSeconds)
 		mIddle->setWeight(0);
 	}
 	else if(special)
-	{
+	{	
 		mSpecial->addTime(elapsedSeconds);
 
 		mRun->setWeight(0);
@@ -129,7 +119,7 @@ void Player::updateAnimation(float elapsedSeconds)
 		mIddle->setWeight(0);
 	}
 	else
-	{		
+	{
 		mIddle->addTime(elapsedSeconds);
 		
 		mRun->setWeight(0);

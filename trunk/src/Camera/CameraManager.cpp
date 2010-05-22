@@ -51,7 +51,8 @@ void CameraManager::initialize()
 	mSceneManager->createAnimation("CameraTrack", 1);
 	mSceneManager->createAnimation("LookAtTrack", 1);
 	mSceneManager->createAnimation("AxesTrack", 1);
-	mSceneManager->createAnimation("CameraEffect", 1);	
+	mSceneManager->createAnimation("CameraEffect", 1);
+	mSceneManager->createAnimation("CameraEffectLook", 1);
 	mCameraTransition = mSceneManager->createAnimationState("CameraTrack");
 	mCameraTransition->setEnabled(false);
 	mLookAtTransition = mSceneManager->createAnimationState("LookAtTrack");
@@ -60,6 +61,8 @@ void CameraManager::initialize()
 	mAxesTransition->setEnabled(false);
 	mCameraEffect = mSceneManager->createAnimationState("CameraEffect");
 	mCameraEffect->setEnabled(false);
+	mCameraEffectLook = mSceneManager->createAnimationState("CameraEffectLook");
+	mCameraEffectLook->setEnabled(false);
 
 	/** Sdk Camera Manager for free look camera */
 	mCameraMan = new OgreBites::SdkCameraMan(mCamera);
@@ -274,6 +277,7 @@ void CameraManager::updateCamera(Vector3 player, Real elapsedSeconds)
 
 	// Add elapsed seconds to animations
 	mCameraEffect->addTime(elapsedSeconds);
+	mCameraEffectLook->addTime(elapsedSeconds);
 	mCameraTransition->addTime(elapsedSeconds);
 	mLookAtTransition->addTime(elapsedSeconds);
 	mAxesTransition->addTime(elapsedSeconds);
@@ -396,8 +400,9 @@ void CameraManager::zoom(Real zoom)
 	mCameraZoom += zoom;
 }
 
-void CameraManager::rumble()
+void CameraManager::rumble(Real scale)
 {
+	// Camera node
 	if(mSceneManager->hasAnimation("CameraEffect"))
 		mSceneManager->destroyAnimation("CameraEffect");
 	Animation* anim = mSceneManager->createAnimation("CameraEffect", 0.50);
@@ -409,13 +414,13 @@ void CameraManager::rumble()
 	TransformKeyFrame* key = track->createNodeKeyFrame(0);
 	key->setTranslate(Vector3::ZERO);
 	key = track->createNodeKeyFrame(0.10);
-	key->setTranslate(Vector3(-10, -10, 0));
+	key->setTranslate(Vector3(-scale, -scale, 0));
 	key = track->createNodeKeyFrame(0.20);
-	key->setTranslate(Vector3(10, 10, 0));
+	key->setTranslate(Vector3(scale, scale, 0));
 	key = track->createNodeKeyFrame(0.30);
-	key->setTranslate(Vector3(-6, -6, 0));
+	key->setTranslate(Vector3(-scale/2, -scale/2, 0));
 	key = track->createNodeKeyFrame(0.40);
-	key->setTranslate(Vector3(6, 6, 0));
+	key->setTranslate(Vector3(scale/2, scale/2, 0));
 	key = track->createNodeKeyFrame(0.50);
 	key->setTranslate(Vector3::ZERO);
     // Create a new animation state to track this
@@ -425,10 +430,40 @@ void CameraManager::rumble()
     mCameraEffect->setEnabled(true);
 	mCameraEffect->setWeight(1);
 	mCameraEffect->setLoop(false);
+
+	// Camera look at node
+	if(mSceneManager->hasAnimation("CameraEffectLook"))
+		mSceneManager->destroyAnimation("CameraEffectLook");
+	anim = mSceneManager->createAnimation("CameraEffectLook", 0.50);
+    // Spline it for nice curves
+    anim->setInterpolationMode(Animation::IM_SPLINE);
+    // Create a track to animate the camera's node
+	track = anim->createNodeTrack(0, mCameraLookAtNode);
+    // Setup keyframes
+	key = track->createNodeKeyFrame(0);
+	key->setTranslate(Vector3::ZERO);
+	key = track->createNodeKeyFrame(0.10);
+	key->setTranslate(Vector3(-scale, -scale, 0));
+	key = track->createNodeKeyFrame(0.20);
+	key->setTranslate(Vector3(scale, scale, 0));
+	key = track->createNodeKeyFrame(0.30);
+	key->setTranslate(Vector3(-scale/2, -scale/2, 0));
+	key = track->createNodeKeyFrame(0.40);
+	key->setTranslate(Vector3(scale/2, scale/2, 0));
+	key = track->createNodeKeyFrame(0.50);
+	key->setTranslate(Vector3::ZERO);
+    // Create a new animation state to track this
+	if(mSceneManager->hasAnimationState("CameraEffectLook"))
+		mSceneManager->destroyAnimationState("CameraEffectLook");
+	mCameraEffectLook = mSceneManager->createAnimationState("CameraEffectLook");
+    mCameraEffectLook->setEnabled(true);
+	mCameraEffectLook->setWeight(1);
+	mCameraEffectLook->setLoop(false);
 }
 
-void CameraManager::tremor()
+void CameraManager::tremor(Real scale)
 {
+	// Camera node
 	if(mSceneManager->hasAnimation("CameraEffect"))
 		mSceneManager->destroyAnimation("CameraEffect");
 	Animation* anim = mSceneManager->createAnimation("CameraEffect", 1);
@@ -440,23 +475,23 @@ void CameraManager::tremor()
 	TransformKeyFrame* key = track->createNodeKeyFrame(0);
 	key->setTranslate(Vector3::ZERO);
 	key = track->createNodeKeyFrame(0.1);
-	key->setTranslate(Vector3(0, -15, 0));
+	key->setTranslate(Vector3(0, -scale, 0));
 	key = track->createNodeKeyFrame(0.2);
-	key->setTranslate(Vector3(0, 15, 0));
+	key->setTranslate(Vector3(0, scale, 0));
 	key = track->createNodeKeyFrame(0.3);
-	key->setTranslate(Vector3(0, -10, 0));
+	key->setTranslate(Vector3(0, -scale*2/3, 0));
 	key = track->createNodeKeyFrame(0.4);
-	key->setTranslate(Vector3(0, 10, 0));
+	key->setTranslate(Vector3(0, scale*2/3, 0));
 	key = track->createNodeKeyFrame(0.5);
-	key->setTranslate(Vector3(0, -7.5, 0));
+	key->setTranslate(Vector3(0, -scale/2, 0));
 	key = track->createNodeKeyFrame(0.6);
-	key->setTranslate(Vector3(0, 7.5, 0));
+	key->setTranslate(Vector3(0, scale/2, 0));
 	key = track->createNodeKeyFrame(0.7);
-	key->setTranslate(Vector3(0, -5, 0));
+	key->setTranslate(Vector3(0, -scale/3, 0));
 	key = track->createNodeKeyFrame(0.8);
-	key->setTranslate(Vector3(0, 5, 0));
+	key->setTranslate(Vector3(0, scale/3, 0));
 	key = track->createNodeKeyFrame(0.9);
-	key->setTranslate(Vector3(0, -5, 0));
+	key->setTranslate(Vector3(0, -scale/3, 0));
 	key = track->createNodeKeyFrame(1);
 	key->setTranslate(Vector3::ZERO);
     // Create a new animation state to track this
@@ -466,6 +501,98 @@ void CameraManager::tremor()
     mCameraEffect->setEnabled(true);
 	mCameraEffect->setWeight(1);
 	mCameraEffect->setLoop(false);
+
+	// Camera look at node
+	if(mSceneManager->hasAnimation("CameraEffectLook"))
+		mSceneManager->destroyAnimation("CameraEffectLook");
+	anim = mSceneManager->createAnimation("CameraEffectLook", 1);
+    // Spline it for nice curves
+    anim->setInterpolationMode(Animation::IM_SPLINE);
+    // Create a track to animate the camera's node
+	track = anim->createNodeTrack(0, mCameraLookAtNode);
+    // Setup keyframes
+	key = track->createNodeKeyFrame(0);
+	key->setTranslate(Vector3::ZERO);
+	key = track->createNodeKeyFrame(0.1);
+	key->setTranslate(Vector3(0, -scale, 0));
+	key = track->createNodeKeyFrame(0.2);
+	key->setTranslate(Vector3(0, scale, 0));
+	key = track->createNodeKeyFrame(0.3);
+	key->setTranslate(Vector3(0, -scale*2/3, 0));
+	key = track->createNodeKeyFrame(0.4);
+	key->setTranslate(Vector3(0, scale*2/3, 0));
+	key = track->createNodeKeyFrame(0.5);
+	key->setTranslate(Vector3(0, -scale/2, 0));
+	key = track->createNodeKeyFrame(0.6);
+	key->setTranslate(Vector3(0, scale/2, 0));
+	key = track->createNodeKeyFrame(0.7);
+	key->setTranslate(Vector3(0, -scale/3, 0));
+	key = track->createNodeKeyFrame(0.8);
+	key->setTranslate(Vector3(0, scale/3, 0));
+	key = track->createNodeKeyFrame(0.9);
+	key->setTranslate(Vector3(0, -scale/3, 0));
+	key = track->createNodeKeyFrame(1);
+	key->setTranslate(Vector3::ZERO);
+    // Create a new animation state to track this
+	if(mSceneManager->hasAnimationState("CameraEffectLook"))
+		mSceneManager->destroyAnimationState("CameraEffectLook");
+	mCameraEffectLook = mSceneManager->createAnimationState("CameraEffectLook");
+    mCameraEffectLook->setEnabled(true);
+	mCameraEffectLook->setWeight(1);
+	mCameraEffectLook->setLoop(false);
+}
+
+void CameraManager::shake(Real scale)
+{
+	// Camera node translation animation
+	if(mSceneManager->hasAnimation("CameraEffect"))
+		mSceneManager->destroyAnimation("CameraEffect");
+	Animation* anim = mSceneManager->createAnimation("CameraEffect", 0.3);
+    // Spline it for nice curves
+    anim->setInterpolationMode(Animation::IM_SPLINE);
+    // Create a track to animate the camera's node
+	NodeAnimationTrack* track = anim->createNodeTrack(0, mCameraNode);
+    // Setup keyframes
+	TransformKeyFrame* key = track->createNodeKeyFrame(0);
+	key->setTranslate(Vector3::ZERO);
+	key = track->createNodeKeyFrame(0.1);
+	key->setTranslate(Vector3(0, -scale, 0));
+	key = track->createNodeKeyFrame(0.2);
+	key->setTranslate(Vector3(0, scale, 0));
+	key = track->createNodeKeyFrame(0.3);
+	key->setTranslate(Vector3::ZERO);
+    // Create a new animation state to track this
+	if(mSceneManager->hasAnimationState("CameraEffect"))
+		mSceneManager->destroyAnimationState("CameraEffect");
+	mCameraEffect = mSceneManager->createAnimationState("CameraEffect");
+    mCameraEffect->setEnabled(true);
+	mCameraEffect->setWeight(1);
+	mCameraEffect->setLoop(false);
+
+	// Camera look at node translation animation
+	if(mSceneManager->hasAnimation("CameraEffectLook"))
+		mSceneManager->destroyAnimation("CameraEffectLook");
+	anim = mSceneManager->createAnimation("CameraEffectLook", 0.3);
+    // Spline it for nice curves
+    anim->setInterpolationMode(Animation::IM_SPLINE);
+    // Create a track to animate the camera's node
+	track = anim->createNodeTrack(0, mCameraLookAtNode);
+    // Setup keyframes
+	key = track->createNodeKeyFrame(0);
+	key->setTranslate(Vector3::ZERO);
+	key = track->createNodeKeyFrame(0.1);
+	key->setTranslate(Vector3(0, scale, 0));
+	key = track->createNodeKeyFrame(0.2);
+	key->setTranslate(Vector3(0, -scale, 0));
+	key = track->createNodeKeyFrame(0.3);
+	key->setTranslate(Vector3::ZERO);
+    // Create a new animation state to track this
+	if(mSceneManager->hasAnimationState("CameraEffectLook"))
+		mSceneManager->destroyAnimationState("CameraEffectLook");
+	mCameraEffectLook = mSceneManager->createAnimationState("CameraEffectLook");
+    mCameraEffectLook->setEnabled(true);
+	mCameraEffectLook->setWeight(1);
+	mCameraEffectLook->setLoop(false);
 }
 
 /** Camera modes */

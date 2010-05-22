@@ -72,8 +72,9 @@ namespace WyvernsAssault
 		
 		/** Camera effects */
 		void zoom(Real zoom);
-		void rumble();
-		void tremor();
+		void rumble(Real scale);
+		void tremor(Real scale);
+		void shake(Real scale);
 
 		/** Camera modes */		
 		void gameCamera(Vector3 player);
@@ -115,6 +116,7 @@ namespace WyvernsAssault
 		AnimationState*			mLookAtTransition;
 		AnimationState*			mAxesTransition;
 		AnimationState*			mCameraEffect;
+		AnimationState*			mCameraEffectLook;
 
 		// Sdk Camera Manager for free look camera
 		OgreBites::SdkCameraMan*		mCameraMan;

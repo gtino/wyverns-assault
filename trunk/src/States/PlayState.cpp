@@ -218,51 +218,60 @@ void PlayState::update(const float elapsedSeconds)
 	// Movement
 	if(mCameraManager->getCameraMode() == "Game")
 	{
-		// 8 directions move
-		if(this->mInputManager->getKeyboard()->isKeyDown(OIS::KeyCode::KC_RIGHT) && this->mInputManager->getKeyboard()->isKeyDown(OIS::KeyCode::KC_UP))
+		// Move if not using special attack
+		if(!mPlayer1->isSpecial())
 		{
-			mPlayer1->move(1,0,-1);
-			mPhysicsManager->move(mPlayer1, mCameraManager->getDirection(Vector3(1,0,-1)));
+			// 8 directions move
+			if(this->mInputManager->getKeyboard()->isKeyDown(OIS::KeyCode::KC_RIGHT) && this->mInputManager->getKeyboard()->isKeyDown(OIS::KeyCode::KC_UP))
+			{
+				mPlayer1->move(1,0,-1);
+				mPhysicsManager->move(mPlayer1, mCameraManager->getDirection(Vector3(1,0,-1)));
+			}
+			else if(this->mInputManager->getKeyboard()->isKeyDown(OIS::KeyCode::KC_RIGHT) && this->mInputManager->getKeyboard()->isKeyDown(OIS::KeyCode::KC_DOWN))
+			{
+				mPlayer1->move(1,0,1);
+				mPhysicsManager->move(mPlayer1, mCameraManager->getDirection(Vector3(1,0,1)));
+			}
+			else if(this->mInputManager->getKeyboard()->isKeyDown(OIS::KeyCode::KC_LEFT) && this->mInputManager->getKeyboard()->isKeyDown(OIS::KeyCode::KC_UP))
+			{
+				mPlayer1->move(-1,0,-1);
+				mPhysicsManager->move(mPlayer1, mCameraManager->getDirection(Vector3(-1,0,-1)));
+			}
+			else if(this->mInputManager->getKeyboard()->isKeyDown(OIS::KeyCode::KC_LEFT) && this->mInputManager->getKeyboard()->isKeyDown(OIS::KeyCode::KC_DOWN))
+			{
+				mPlayer1->move(-1,0,1);
+				mPhysicsManager->move(mPlayer1, mCameraManager->getDirection(Vector3(-1,0,1)));
+			}
+			else if(this->mInputManager->getKeyboard()->isKeyDown(OIS::KeyCode::KC_RIGHT))
+			{
+				mPlayer1->move(1,0,0);
+				mPhysicsManager->move(mPlayer1, mCameraManager->getDirection(Vector3(1,0,0)));
+			}
+			else if(this->mInputManager->getKeyboard()->isKeyDown(OIS::KeyCode::KC_LEFT))
+			{
+				mPlayer1->move(-1,0,0);
+				mPhysicsManager->move(mPlayer1, mCameraManager->getDirection(Vector3(-1,0,0)));
+			}
+			else if(this->mInputManager->getKeyboard()->isKeyDown(OIS::KeyCode::KC_UP))
+			{
+				mPlayer1->move(0,0,-1);
+				mPhysicsManager->move(mPlayer1, mCameraManager->getDirection(Vector3(0,0,-1)));
+			}
+			else if(this->mInputManager->getKeyboard()->isKeyDown(OIS::KeyCode::KC_DOWN))
+			{
+				mPlayer1->move(0,0,1);
+				mPhysicsManager->move(mPlayer1, mCameraManager->getDirection(Vector3(0,0,1)));
+			}		
+			else
+			{
+				// No movement, iddle animation
+				mPlayer1->move(0,0,0);
+				mPhysicsManager->move(mPlayer1, Vector3::ZERO);
+			}
 		}
-		else if(this->mInputManager->getKeyboard()->isKeyDown(OIS::KeyCode::KC_RIGHT) && this->mInputManager->getKeyboard()->isKeyDown(OIS::KeyCode::KC_DOWN))
-		{
-			mPlayer1->move(1,0,1);
-			mPhysicsManager->move(mPlayer1, mCameraManager->getDirection(Vector3(1,0,1)));
-		}
-		else if(this->mInputManager->getKeyboard()->isKeyDown(OIS::KeyCode::KC_LEFT) && this->mInputManager->getKeyboard()->isKeyDown(OIS::KeyCode::KC_UP))
-		{
-			mPlayer1->move(-1,0,-1);
-			mPhysicsManager->move(mPlayer1, mCameraManager->getDirection(Vector3(-1,0,-1)));
-		}
-		else if(this->mInputManager->getKeyboard()->isKeyDown(OIS::KeyCode::KC_LEFT) && this->mInputManager->getKeyboard()->isKeyDown(OIS::KeyCode::KC_DOWN))
-		{
-			mPlayer1->move(-1,0,1);
-			mPhysicsManager->move(mPlayer1, mCameraManager->getDirection(Vector3(-1,0,1)));
-		}
-		else if(this->mInputManager->getKeyboard()->isKeyDown(OIS::KeyCode::KC_RIGHT))
-		{
-			mPlayer1->move(1,0,0);
-			mPhysicsManager->move(mPlayer1, mCameraManager->getDirection(Vector3(1,0,0)));
-		}
-		else if(this->mInputManager->getKeyboard()->isKeyDown(OIS::KeyCode::KC_LEFT))
-		{
-			mPlayer1->move(-1,0,0);
-			mPhysicsManager->move(mPlayer1, mCameraManager->getDirection(Vector3(-1,0,0)));
-		}
-		else if(this->mInputManager->getKeyboard()->isKeyDown(OIS::KeyCode::KC_UP))
-		{
-			mPlayer1->move(0,0,-1);
-			mPhysicsManager->move(mPlayer1, mCameraManager->getDirection(Vector3(0,0,-1)));
-		}
-		else if(this->mInputManager->getKeyboard()->isKeyDown(OIS::KeyCode::KC_DOWN))
-		{
-			mPlayer1->move(0,0,1);
-			mPhysicsManager->move(mPlayer1, mCameraManager->getDirection(Vector3(0,0,1)));
-		}		
 		else
 		{
-			// No movement, iddle animation
-			mPlayer1->move(0,0,0);
+			// No movement
 			mPhysicsManager->move(mPlayer1, Vector3::ZERO);
 		}
 	}
@@ -304,14 +313,13 @@ void PlayState::update(const float elapsedSeconds)
 	//
 	mPhysicsManager->update(elapsedSeconds);
 
-
 	//
 	// Logic manager
 	//
 	mLogicManager->update(elapsedSeconds);
 
 	//
-	// LUA MANAGER
+	// LUA manager
 	// 
 	mLuaManager->update(elapsedSeconds);
 
@@ -634,7 +642,7 @@ bool PlayState::keyPressed(const OIS::KeyEvent& e)
 		mPlayer1->attackA();
 		break;
 	// Special Attack
-	case OIS::KeyCode::KC_RSHIFT:
+	case OIS::KeyCode::KC_BACK:
 		mPlayer1->attackSpecial();
 		break;	
 
@@ -647,11 +655,15 @@ bool PlayState::keyPressed(const OIS::KeyEvent& e)
 
 	// Camera rumble
 	case OIS::KeyCode::KC_B:
-		mCameraManager->rumble();
+		mCameraManager->rumble(5);
 		break;
 	// Camera tremor
 	case OIS::KeyCode::KC_V:
-		mCameraManager->tremor();
+		mCameraManager->tremor(5);
+		break;
+	// Camera shake
+	case OIS::KeyCode::KC_H:
+		mCameraManager->shake(10);
 		break;
 	// Camera zoom in
 	case OIS::KeyCode::KC_N:
