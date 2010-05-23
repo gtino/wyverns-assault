@@ -2,13 +2,28 @@
 
 using namespace WyvernsAssault;
 
+void EventsInterface::initialize(EventsManager *em)
+{
+	mEventsManager = em;
+}
+
+void EventsInterface::registerHandler(EventHandlerPtr handler,EventTypes evtType)
+{
+	mEventsManager->registerHandler(handler, evtType);
+}
+
+void EventsInterface::unregisterHandler(EventHandlerPtr handler,EventTypes evtType)
+{
+	mEventsManager->unregisterHandler(handler, evtType);
+}
+
 // Raise an event
-void EventsInterface::raiseEvent(const EventPtr e)
+void EventsInterface::raiseEvent(EventPtr e)
 {
 	mEventsManager->addEvent(e);
 }
 
 // Handle an event
-void EventsInterface::handleEvent(const EventPtr e)
+void EventsInterface::handleEvent(EventPtr e)
 {
 }

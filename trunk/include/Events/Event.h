@@ -25,12 +25,16 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
 #include <boost/shared_ptr.hpp>
 
+#include "..\Entity\Enemy\Enemy.h"
+#include "..\Entity\Player\Player.h"
+
 namespace WyvernsAssault
 {
 	/** Event types */
 	enum EventTypes
 	{
 		PlayerHit = 0,
+		EnemyHit,
 		ObjectHit,
 		Collision
 	};
@@ -80,13 +84,30 @@ namespace WyvernsAssault
 		bool operator()(EventPtr& evt1, EventPtr& evt2);
 	};
 
+	// --------------------------------
 	class CollisionEvent: public Event
 	{
 	public:
-		CollisionEvent(EventTypes type, EventPriorities priority) : Event(type,priority){}
+		CollisionEvent();
 	};
 
 	typedef boost::shared_ptr<CollisionEvent> CollisionEventPtr;
+
+	// --------------------------------
+	class EnemyHitEvent : public Event
+	{
+	public:
+		EnemyHitEvent(EnemyPtr e, PlayerPtr p);
+		
+		EnemyPtr getEnemy(){return mEnemy;}
+		PlayerPtr getPlayer(){return mPlayer;}
+
+	private:
+		EnemyPtr mEnemy;
+		PlayerPtr mPlayer;
+	};
+
+	typedef boost::shared_ptr<EnemyHitEvent> EnemyHitEventPtr;
 }
 
 #endif // __EVENT_H_

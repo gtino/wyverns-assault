@@ -34,17 +34,17 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
 namespace WyvernsAssault
 {
-	class EventsInterface;
-
 	typedef std::priority_queue<EventPtr,std::vector<EventPtr>,EventComparator> EventQueue;
 	typedef std::list<EventHandlerPtr> EventHandlerList;
 	typedef std::map<EventTypes,EventHandlerList> EventHandlerMap;
+
+	class EventsInterface;
 
 	class EventsManager
 	{
 	public:
 		EventsManager();
-		~EventsManager();
+		virtual ~EventsManager();
 
 	public:
 		/// Delete all items from the event queue and

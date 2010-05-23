@@ -87,9 +87,6 @@ namespace WyvernsAssault
 		//
 		// Events interface
 		//
-				//
-		// Events interface
-		//
 		// Register event handlers
 		void registerHandlers(){};
 		// Unregister handlers
@@ -129,6 +126,8 @@ namespace WyvernsAssault
 	// END Lua Interface Declarations
 	// ------------------------------
 	};
+
+	typedef boost::shared_ptr<PhysicsManager> PhysicsManagerPtr;
 }
 
 #endif // __PHYSICS_MANAGER_H__

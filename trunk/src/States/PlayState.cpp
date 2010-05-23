@@ -9,7 +9,6 @@ PlayState::PlayState(GraphicsManager& graphicsManager, InputManager& inputManage
 , mLogicManager(NULL)
 , mLightsManager(NULL)
 , mCameraManager(NULL)
-, mEnemyManager(NULL)
 , mTrayMgr(NULL)
 , mDetailsPanel(NULL)
 , mCompositorsEnabled(false)
@@ -61,12 +60,12 @@ void PlayState::initialize()
 	//
 	// Physics Manager
 	// 
-	mPhysicsManager = new PhysicsManager(mSceneManager);
+	mPhysicsManager = PhysicsManagerPtr(new PhysicsManager(mSceneManager));
 	mPhysicsManager->initialize();
 	mPhysicsManager->addPlayer(mPlayer1);
 
 	//Enemys manager constructor
-	mEnemyManager = new EnemyManager(mSceneManager);
+	mEnemyManager = EnemyManagerPtr(new EnemyManager(mSceneManager));
 	mEnemyManager->initialize();
 
 	// SdkTrays Manager
@@ -127,8 +126,8 @@ void PlayState::initialize()
 	//
 	mLuaManager->registerInterface(mLightsManager);
 	mLuaManager->registerInterface(mLogicManager);
-	mLuaManager->registerInterface(mEnemyManager);
-	mLuaManager->registerInterface(mPhysicsManager);
+	mLuaManager->registerInterface(mEnemyManager.get());
+	mLuaManager->registerInterface(mPhysicsManager.get());
 	mLuaManager->registerInterface(mItemManager);
 
 	//
@@ -140,8 +139,8 @@ void PlayState::initialize()
 
 	//Load scene XML file
 	std::auto_ptr<DotSceneLoader> sceneLoader(new DotSceneLoader());
-	sceneLoader->parseDotScene("Level1_1.scene","General", mSceneManager, mCameraManager, mLightsManager, mEnemyManager, mPhysicsManager, mItemManager);
-	sceneLoader->parseDotScene("Stage1_1.XML","General", mSceneManager, mCameraManager, mLightsManager, mEnemyManager, mPhysicsManager, mItemManager);
+	sceneLoader->parseDotScene("Level1_1.scene","General", mSceneManager, mCameraManager, mLightsManager, mEnemyManager.get(), mPhysicsManager.get(), mItemManager);
+	sceneLoader->parseDotScene("Stage1_1.XML","General", mSceneManager, mCameraManager, mLightsManager, mEnemyManager.get(), mPhysicsManager.get(), mItemManager);
 
 	//
 	// Events Manager 
@@ -151,7 +150,8 @@ void PlayState::initialize()
 	//
 	// Register all events listeners/callers
 	//
-	mEventsManager->registerInterface(mEnemyManager);
+	mEventsManager->registerInterface(mEnemyManager.get());
+	mEventsManager->registerInterface(mPhysicsManager.get());
 
 	//
 	// Set game camera
@@ -431,11 +431,7 @@ void PlayState::finalize()
 		mLightsManager = NULL;
 	}
 
-	if(mEnemyManager)
-	{
-		delete mEnemyManager;
-		mEnemyManager = NULL;
-	}
+	mEnemyManager.reset();
 	
 	if(mTrayMgr)
 	{
@@ -449,11 +445,7 @@ void PlayState::finalize()
 		mGuiScreen = NULL;
 	}
 
-	if(mPhysicsManager)
-	{
-		delete mPhysicsManager;
-		mPhysicsManager = NULL;
-	}
+	mPhysicsManager.reset();
 
 	if(mItemManager)
 	{

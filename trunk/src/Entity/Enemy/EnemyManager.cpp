@@ -122,9 +122,10 @@ bool EnemyManager::removeEnemy(Ogre::String name)
 	EnemyListIterator it = find(mEnemyList.begin(), mEnemyList.end(), enemyToErase);
 	
 	if( it != mEnemyList.end() )
+	{
 		mEnemyList.erase(it);
-
-	mSceneManager->destroyEntity(name);//getRootSceneNode()->removeChild(name);
+		mSceneManager->destroyEntity(name);//getRootSceneNode()->removeChild(name);
+	}
 
 	return true;
 }
@@ -149,9 +150,10 @@ void EnemyManager::update(const float elapsedSeconds)
 // --------------
 void EnemyManager::registerHandlers()
 {
-	//boost::shared_ptr<EnemyManager> this_ = shared_from_this();
+	boost::shared_ptr<EnemyManager> this_ = shared_from_this();
 
-	//registerHandler(EventHandlerPtr(new EventHandler<EnemyManager,CollisionEvent>(this_,&EnemyManager::handleCollisionEvent)),EventTypes::Collision);
+	registerHandler(EventHandlerPtr(new EventHandler<EnemyManager,CollisionEvent>(this_,&EnemyManager::handleCollisionEvent)),EventTypes::Collision);
+	registerHandler(EventHandlerPtr(new EventHandler<EnemyManager,EnemyHitEvent>(this_,&EnemyManager::handleEnemyHitEvent)),EventTypes::EnemyHit);
 }
 
 void EnemyManager::unregisterHandlers()
@@ -160,7 +162,16 @@ void EnemyManager::unregisterHandlers()
 
 void EnemyManager::handleCollisionEvent(CollisionEventPtr evt)
 {
+// TODO
+}
 
+void EnemyManager::handleEnemyHitEvent(EnemyHitEventPtr evt)
+{
+	EnemyPtr enemy = evt->getEnemy();
+	PlayerPtr player = evt->getPlayer();
+
+	// The player has just hit the enemy
+	removeEnemy(enemy->getName());
 }
 
 // --------------------------------

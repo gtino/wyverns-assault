@@ -77,6 +77,8 @@ namespace WyvernsAssault
 		//
 		LuaInterfaceList mLuaInterfaceList;
 	};
+
+	typedef boost::shared_ptr<LuaInterface> LuaInterfacePtr;
 }
 
 #endif // __LUA_MANAGER_H__
