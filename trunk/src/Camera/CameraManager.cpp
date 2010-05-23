@@ -3,6 +3,18 @@
 using namespace Ogre;
 using namespace WyvernsAssault;
 
+// BEGIN SINGLETON
+template<> CameraManager* Ogre::Singleton<CameraManager>::ms_Singleton = 0;
+CameraManager* CameraManager::getSingletonPtr(void)
+{
+    return ms_Singleton;
+}
+CameraManager& CameraManager::getSingleton(void)
+{  
+    assert( ms_Singleton );  return ( *ms_Singleton );  
+}
+// END SINGLETON
+
 CameraManager::CameraManager(SceneManager* sceneManager, RenderWindow* window, Viewport* viewport)
 {
 	this->mSceneManager = sceneManager;
