@@ -24,6 +24,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #define __CAMERA_MANAGER_H_
 
 #include <Ogre.h>
+#include <OgreSingleton.h>
 #include <ois/OIS.h>
 
 #include "SdkCameraMan.h"
@@ -35,11 +36,13 @@ namespace WyvernsAssault
 	/**
 		Class used to manage differents cameras
 	*/
-	class CameraManager
+	class CameraManager : public Ogre::Singleton<CameraManager>
 	{
 	public:
 		CameraManager(SceneManager* sceneManager, RenderWindow* window, Viewport* viewport);
 		~CameraManager();
+		static CameraManager& getSingleton(void);
+		static CameraManager* getSingletonPtr(void);
 
 	public: 
 		/** Initialize the camera manager */
@@ -53,6 +56,8 @@ namespace WyvernsAssault
 		Vector3 getCameraLookAt();
 		String getCameraMode() { return mCameraMode ; }
 		int getGameArea(Vector3 position);
+
+		Camera* getCamera(){return mCamera;}
 		
 		/** Camera moving direction */
 		Vector3 getDirection(Vector3 direction);
