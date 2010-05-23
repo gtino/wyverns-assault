@@ -25,6 +25,9 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
 #include <Ogre.h>
 
+#include "..\GUI\GuiObjectTextDisplay.h"
+#include "..\Camera\CameraManager.h"
+
 namespace WyvernsAssault
 {
 	/**
@@ -37,16 +40,21 @@ namespace WyvernsAssault
 		{
 			mSceneNode = sceneNode;
 			mMesh = mesh;
-
+	
 			// Animations
 			//mAnimationState = mMesh->getAnimationState("Iddle_01");
 			//mAnimationState->setEnabled(true);
 			//mAnimationState->setLoop(true);
+
+			// DEBUG TEXT DISPLAY
+			/*mGuiObjectTextDisplay = new GuiObjectTextDisplay(mesh, CameraManager::getSingleton().getCamera());
+			mGuiObjectTextDisplay->enable(true);
+			mGuiObjectTextDisplay->setText(getName());*/
 		}
 
-		virtual void finalizeEntity(){}
+		virtual void finalizeEntity(){/*delete mGuiObjectTextDisplay;*/}
 
-		virtual void updateEntity(const float elapsedSeconds){};
+		virtual void updateEntity(const float elapsedSeconds){/*mGuiObjectTextDisplay->update();*/};
 
 		virtual Ogre::SceneNode* getSceneNode() const { return mSceneNode; }
 		virtual void setSceneNode(Ogre::SceneNode* sceneNode) { mSceneNode = sceneNode; }
@@ -67,6 +75,8 @@ namespace WyvernsAssault
 		Ogre::Entity* mMesh;
 		Ogre::SceneNode* mSceneNode;
 		Ogre::AnimationState* mAnimationState;
+
+		/*GuiObjectTextDisplay* mGuiObjectTextDisplay;*/
 	};
 }
 
