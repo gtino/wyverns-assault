@@ -24,6 +24,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #define __SOUND_H__
 
 #include <Ogre.h>
+#include "..\..\externals\Fmod\include\fmod.hpp"
 
 namespace WyvernsAssault
 {
@@ -66,14 +67,14 @@ namespace WyvernsAssault
 		SoundTypes mType;
 		//SoundStates mState;
 		
-		static bool mOn; //is sound on?
-	    static bool mPossible; //is it possible to play sound?
-		static char *mCurrentSound; //currently played sound
+		bool mOn; //is sound on?
+	    bool mPossible; //is it possible to play sound?
+		char *mCurrentSound; //currently played sound
 		
-		static FMOD_RESULT mResult;
-		//static FMOD_SYSTEM * mFmodsystem;
-		//static FMOD_SOUND * mSound;
-		//static FMOD_CHANNEL * mChannel;
+		FMOD_RESULT mResult;
+		FMOD_SYSTEM * mFmodsystem;
+		FMOD_SOUND * mSound;
+		FMOD_CHANNEL * mChannel;
 		
 	private:
 		void chase();
