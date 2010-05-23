@@ -31,7 +31,8 @@ namespace WyvernsAssault
 	enum EventTypes
 	{
 		PlayerHit = 0,
-		ObjectHit
+		ObjectHit,
+		Collision
 	};
 
 	/** Event priority, used to put the event in the correct queue */
@@ -78,6 +79,14 @@ namespace WyvernsAssault
 		    The event with the lower value will have higher priority */
 		bool operator()(EventPtr& evt1, EventPtr& evt2);
 	};
+
+	class CollisionEvent: public Event
+	{
+	public:
+		CollisionEvent(EventTypes type, EventPriorities priority) : Event(type,priority){}
+	};
+
+	typedef boost::shared_ptr<CollisionEvent> CollisionEventPtr;
 }
 
 #endif // __EVENT_H_

@@ -25,6 +25,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
 #include <Ogre.h>
 #include <OgreSingleton.h>
+#include <boost/enable_shared_from_this.hpp>
 //#include "OgreOde_Core.h"
 
 #include "..\Lua\LuaInterface.h"
@@ -36,6 +37,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
 #include "..\Entity\Enemy\EnemyManager.h"
 #include "..\Entity\Enemy\Enemy.h"
+
+#include "..\Events\EventsInterface.h"
 
 using namespace Ogre;
 
@@ -50,7 +53,7 @@ namespace WyvernsAssault
 	/**
 	Class used to manage entities/world physics
 	*/
-	class PhysicsManager : public Ogre::Singleton<PhysicsManager>, public LuaInterface, public OgreOde::CollisionListener
+	class PhysicsManager : public Ogre::Singleton<PhysicsManager>, public boost::enable_shared_from_this<PhysicsManager>, public LuaInterface, public OgreOde::CollisionListener, public EventsInterface
 	{
 	public:
 		PhysicsManager(SceneManager* sceneManager);
@@ -80,6 +83,17 @@ namespace WyvernsAssault
 		//Move one character
 		void move(PlayerPtr player, Vector3 direction);
 		void move(EnemyPtr enemy, int rotate, int thrust);
+
+		//
+		// Events interface
+		//
+				//
+		// Events interface
+		//
+		// Register event handlers
+		void registerHandlers(){};
+		// Unregister handlers
+		void unregisterHandlers(){};
 
 	private:
 		void synchronizeWorld(Real time);

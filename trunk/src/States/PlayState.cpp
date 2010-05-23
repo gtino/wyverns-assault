@@ -144,6 +144,16 @@ void PlayState::initialize()
 	sceneLoader->parseDotScene("Stage1_1.XML","General", mSceneManager, mCameraManager, mLightsManager, mEnemyManager, mPhysicsManager, mItemManager);
 
 	//
+	// Events Manager 
+	//
+	mEventsManager = new EventsManager();
+	
+	//
+	// Register all events listeners/callers
+	//
+	mEventsManager->registerInterface(mEnemyManager);
+
+	//
 	// Set game camera
 	//
 	mCameraManager->gameCamera(mPlayer1->getSceneNode()->getPosition());
@@ -338,6 +348,13 @@ void PlayState::update(const float elapsedSeconds)
 	// Update camera
 	//
 	mCameraManager->updateCamera(mPlayer1->getSceneNode()->getPosition(), elapsedSeconds);
+
+	//
+	// Dispatch events. Managers have probably raised events, that are now in the 
+	// EventsManager queue. The events manager will then dispatch them, calling
+	// for each of them the registered handler(s).
+	//
+	mEventsManager->dispatchEvents();
 }
 
 /** Render */
@@ -448,6 +465,12 @@ void PlayState::finalize()
 	{
 		delete mLogicManager;
 		mLogicManager = NULL;
+	}
+
+	if(mEventsManager)
+	{
+		delete mEventsManager;
+		mEventsManager = NULL;
 	}
 }
 

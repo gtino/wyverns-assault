@@ -217,6 +217,8 @@ void PhysicsManager::updateRay(EnemyPtr enemy)
 
 bool PhysicsManager::collision(OgreOde::Contact* contact)
 {
+	//CollisionEventPtr collisionEventPtr = CollisionEventPtr(new CollisionEvent(EventTypes::Collision,EventPriorities::Normal));
+	//raiseEvent(collisionEventPtr);
 
 	// search through ode_characters and adjust each charNode's height
 	OdePlayerMapIterator it;

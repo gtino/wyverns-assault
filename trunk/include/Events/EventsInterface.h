@@ -24,20 +24,42 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #define __EVENTS_INTERFACE_H_
 
 #include "Event.h"
+#include "EventHandler.h"
+#include "EventsManager.h"
 
 namespace WyvernsAssault
 {
+	class EventsManager;
+
 	class EventsInterface
 	{
 	public:
+		// Set the events processor
+		void initialize(EventsManager* em){/*mEventsManager = em;*/}
 		// Register event handlers
 		virtual void registerHandlers() = 0;
 		// Unregister handlers
 		virtual void unregisterHandlers() = 0;
 		// Raise an event
-		virtual void raiseEvent(const EventPtr e) = 0;
+		void raiseEvent(const EventPtr e);
 		// Handle an event
-		virtual void handleEvent(const EventPtr e) = 0;
+		void handleEvent(const EventPtr e);
+	protected:
+		/// Add a new event handler for the given event type
+		/// @param handler	functor object containing the instance that will handle the event 
+		///					and the callback method it'll invoke
+		/// @param evtType  type of the event that will be handled
+		void registerHandler(EventHandlerPtr handler,EventTypes evtType){/*mEventsManager->registerHandler(handler,evtType);*/}
+
+
+		/// Delete an event handler for the given event type
+		/// @param handler  functor object to remove
+		/// @param evtType  type of the event
+		void unregisterHandler(EventHandlerPtr handler,EventTypes evtType){/*mEventsManager->unregisterHandler(handler,evtType);*/}
+
+	private:
+		// The events manager used to deal with events (raise, handle)
+		EventsManager* mEventsManager;
 	};
 }
 
