@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="Windows-1252"?>
 <VisualStudioProject
 	ProjectType="Visual C++"
-	Version="9,00"
+	Version="9.00"
 	Name="WyvernsAssault"
 	ProjectGUID="{DA8BACB6-E0B2-465D-84CE-60A33C2E795E}"
 	RootNamespace="WyvernsAssault"
@@ -352,6 +352,10 @@
 					>
 				</File>
 				<File
+					RelativePath="..\src\GUI\GuiObjectTextDisplay.cpp"
+					>
+				</File>
+				<File
 					RelativePath="..\src\GUI\GuiScreen.cpp"
 					>
 				</File>
@@ -579,6 +583,10 @@
 				</File>
 				<File
 					RelativePath="..\include\GUI\GuiMenu.h"
+					>
+				</File>
+				<File
+					RelativePath="..\include\GUI\GuiObjectTextDisplay.h"
 					>
 				</File>
 				<File
