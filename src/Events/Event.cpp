@@ -56,3 +56,20 @@ bool EventComparator::operator() (EventPtr& evt1, EventPtr& evt2)
 	// gets reversed.
 	return evt1->getPriority()>evt2->getPriority();
 }
+
+//----------------------
+
+CollisionEvent::CollisionEvent()
+:Event(EventTypes::Collision,EventPriorities::Normal)
+{
+	
+};
+
+//----------------------
+
+EnemyHitEvent::EnemyHitEvent(EnemyPtr e, PlayerPtr p)
+:Event(EventTypes::EnemyHit, EventPriorities::Normal)
+{
+	mEnemy = e;
+	mPlayer = p;
+};

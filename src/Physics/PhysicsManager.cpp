@@ -217,23 +217,23 @@ void PhysicsManager::updateRay(EnemyPtr enemy)
 
 bool PhysicsManager::collision(OgreOde::Contact* contact)
 {
-	//CollisionEventPtr collisionEventPtr = CollisionEventPtr(new CollisionEvent(EventTypes::Collision,EventPriorities::Normal));
-	//raiseEvent(collisionEventPtr);
+	CollisionEventPtr collisionEventPtr = CollisionEventPtr(new CollisionEvent());
+	raiseEvent(collisionEventPtr);
 
 	// search through ode_characters and adjust each charNode's height
-	OdePlayerMapIterator it;
+	OdePlayerMapIterator it_p;
 	
 	// Check if the player is the first geometry
-	it = mPlayerMap.find(contact->getFirstGeometry()->getID());
+	it_p = mPlayerMap.find(contact->getFirstGeometry()->getID());
 	
 	// ...or the second
-	if(it == mPlayerMap.end())
-		it = mPlayerMap.find(contact->getSecondGeometry()->getID());
+	if(it_p == mPlayerMap.end())
+		it_p = mPlayerMap.find(contact->getSecondGeometry()->getID());
 
-	if(it != mPlayerMap.end())
+	if(it_p != mPlayerMap.end())
 	{
-		it->second->getRayInfo()->updated = true;
-		it->second->getRayInfo()->lastContact = contact->getPosition();
+		it_p->second->getRayInfo()->updated = true;
+		it_p->second->getRayInfo()->lastContact = contact->getPosition();
 	}
 
 	// search through ode_characters and adjust each charNode's height
@@ -250,6 +250,13 @@ bool PhysicsManager::collision(OgreOde::Contact* contact)
 	{
 		it_e->second->getRayInfo()->updated = true;
 		it_e->second->getRayInfo()->lastContact = contact->getPosition();
+	}
+	
+	// if one is an enemy and the other one is a player...
+	if(it_e != mEnemyMap.end() && it_p != mPlayerMap.end())
+	{
+		EnemyHitEventPtr enemyHitEventPtr = EnemyHitEventPtr(new EnemyHitEvent(it_e->second, it_p->second));
+		raiseEvent(enemyHitEventPtr);
 	}
 
 	contact->setCoulombFriction(OgreOde::Utility::Infinity);

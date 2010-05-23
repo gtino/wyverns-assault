@@ -80,6 +80,7 @@ namespace WyvernsAssault
 		void unregisterHandlers();
 
 		void handleCollisionEvent(CollisionEventPtr evt);
+		void handleEnemyHitEvent(EnemyHitEventPtr evt);
 
 	private:
 		Ogre::String createUniqueId();
@@ -120,6 +121,8 @@ namespace WyvernsAssault
 	// END Lua Interface Declarations
 	// ------------------------------
 	};
+
+	typedef boost::shared_ptr<EnemyManager> EnemyManagerPtr;
 }
 
 #endif // __ENEMY_MANAGER_H__

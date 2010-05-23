@@ -35,27 +35,27 @@ namespace WyvernsAssault
 	{
 	public:
 		// Set the events processor
-		void initialize(EventsManager* em){/*mEventsManager = em;*/}
+		void initialize(EventsManager* em);
 		// Register event handlers
 		virtual void registerHandlers() = 0;
 		// Unregister handlers
 		virtual void unregisterHandlers() = 0;
 		// Raise an event
-		void raiseEvent(const EventPtr e);
+		void raiseEvent(EventPtr e);
 		// Handle an event
-		void handleEvent(const EventPtr e);
+		void handleEvent(EventPtr e);
 	protected:
 		/// Add a new event handler for the given event type
 		/// @param handler	functor object containing the instance that will handle the event 
 		///					and the callback method it'll invoke
 		/// @param evtType  type of the event that will be handled
-		void registerHandler(EventHandlerPtr handler,EventTypes evtType){/*mEventsManager->registerHandler(handler,evtType);*/}
+		void registerHandler(EventHandlerPtr handler,EventTypes evtType);
 
 
 		/// Delete an event handler for the given event type
 		/// @param handler  functor object to remove
 		/// @param evtType  type of the event
-		void unregisterHandler(EventHandlerPtr handler,EventTypes evtType){/*mEventsManager->unregisterHandler(handler,evtType);*/}
+		void unregisterHandler(EventHandlerPtr handler,EventTypes evtType);
 
 	private:
 		// The events manager used to deal with events (raise, handle)
