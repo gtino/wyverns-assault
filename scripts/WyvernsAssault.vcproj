@@ -459,10 +459,6 @@
 					RelativePath="..\src\Events\EventsManager.cpp"
 					>
 				</File>
-				<File
-					RelativePath="..\src\Events\EventsProcessor.cpp"
-					>
-				</File>
 			</Filter>
 			<Filter
 				Name="Lua"
@@ -754,15 +750,15 @@
 					>
 				</File>
 				<File
+					RelativePath="..\include\Events\EventsDefines.h"
+					>
+				</File>
+				<File
 					RelativePath="..\include\Events\EventsInterface.h"
 					>
 				</File>
 				<File
 					RelativePath="..\include\Events\EventsManager.h"
-					>
-				</File>
-				<File
-					RelativePath="..\include\Events\EventsProcessor.h"
 					>
 				</File>
 			</Filter>

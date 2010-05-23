@@ -23,6 +23,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #ifndef __ENTITY_MANAGER_H__
 #define __ENTITY_MANAGER_H__
 
+#include <Ogre.h>
+
 namespace WyvernsAssault
 {
 	/**

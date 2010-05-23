@@ -33,6 +33,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #include "..\Entity\Enemy\EnemyManager.h"
 #include "..\Entity\Item\ItemManager.h"
 #include "..\Particle\ParticleManager.h"
+#include "..\Events\EventsManager.h"
 
 #include <SdkTrays.h>
 #include <ParticleUniversePlugin.h>
@@ -92,6 +93,7 @@ namespace WyvernsAssault
 		PhysicsManager* mPhysicsManager;
 		ItemManager* mItemManager;
 		ParticleManager* mParticleManager;
+		EventsManager* mEventsManager;
 
 		//
 		// Shortcut to player1 (TEST)

@@ -89,3 +89,14 @@ void EventsManager::clear()
 
 	mEventHandlers.clear();
 }
+
+void EventsManager::registerInterface(EventsInterface* eventsInterface)
+{
+	eventsInterface->initialize(this);
+	eventsInterface->registerHandlers();
+}
+
+void EventsManager::unregisterInterface(EventsInterface* eventsInterface)
+{
+	eventsInterface->unregisterHandlers();
+}

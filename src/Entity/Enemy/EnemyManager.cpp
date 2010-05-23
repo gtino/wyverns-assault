@@ -144,6 +144,25 @@ void EnemyManager::update(const float elapsedSeconds)
 	}
 }
 
+// --------------
+// Event handlers
+// --------------
+void EnemyManager::registerHandlers()
+{
+	//boost::shared_ptr<EnemyManager> this_ = shared_from_this();
+
+	//registerHandler(EventHandlerPtr(new EventHandler<EnemyManager,CollisionEvent>(this_,&EnemyManager::handleCollisionEvent)),EventTypes::Collision);
+}
+
+void EnemyManager::unregisterHandlers()
+{
+}
+
+void EnemyManager::handleCollisionEvent(CollisionEventPtr evt)
+{
+
+}
+
 // --------------------------------
 // Lua Enemy Lib
 // --------------------------------

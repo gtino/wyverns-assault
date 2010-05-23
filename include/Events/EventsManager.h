@@ -30,9 +30,12 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
 #include "Event.h"
 #include "EventHandler.h"
+#include "EventsInterface.h"
 
 namespace WyvernsAssault
 {
+	class EventsInterface;
+
 	typedef std::priority_queue<EventPtr,std::vector<EventPtr>,EventComparator> EventQueue;
 	typedef std::list<EventHandlerPtr> EventHandlerList;
 	typedef std::map<EventTypes,EventHandlerList> EventHandlerMap;
@@ -60,6 +63,13 @@ namespace WyvernsAssault
 		/// @return removed event
 		EventPtr removeEvent();
 
+		//
+		// Register an interface (handlers and events)
+		//
+		void registerInterface(EventsInterface* eventsInterface);
+		void unregisterInterface(EventsInterface* eventsInterface);
+
+	public:
 		/// Add a new event handler for the given event type
 		/// @param handler	functor object containing the instance that will handle the event 
 		///					and the callback method it'll invoke

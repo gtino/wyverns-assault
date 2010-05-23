@@ -25,11 +25,13 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
 #include <Ogre.h>
 #include <OgreSingleton.h>
+#include <boost/enable_shared_from_this.hpp>
 
 #include <vector>
 
-#include "..\..\..\include\Lua\LuaInterface.h"
-#include "..\..\..\include\Entity\EntityManager.h"
+#include "..\..\Lua\LuaInterface.h"
+#include "..\..\Entity\EntityManager.h"
+#include "..\..\Events\EventsInterface.h"
 #include "Enemy.h"
 
 namespace WyvernsAssault
@@ -43,7 +45,7 @@ namespace WyvernsAssault
 	/**
 	Class used to manage all the enemies
 	*/
-	class EnemyManager : public Ogre::Singleton<EnemyManager>, public EntityManager, public LuaInterface
+	class EnemyManager : public Ogre::Singleton<EnemyManager>, public boost::enable_shared_from_this<EnemyManager>, public EntityManager, public LuaInterface, public EventsInterface
 	{
 		public:
 		EnemyManager(Ogre::SceneManager* sceneManager);
@@ -68,6 +70,16 @@ namespace WyvernsAssault
 		/* TODO : Enemy IA
 		*/
 		void update(const float elpasedSeconds);
+
+		//
+		// Events interface
+		//
+		// Register event handlers
+		void registerHandlers();
+		// Unregister handlers
+		void unregisterHandlers();
+
+		void handleCollisionEvent(CollisionEventPtr evt);
 
 	private:
 		Ogre::String createUniqueId();

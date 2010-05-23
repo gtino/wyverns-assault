@@ -20,21 +20,17 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
 -----------------------------------------------------------------------------
 */
-#ifndef __EVENTS_PROCESSOR_H_
-#define __EVENTS_PROCESSOR_H_
+#ifndef __EVENTS_DEFINES_H__
+#define __EVENTS_DEFINES_H__
 
-#include <Ogre.h>
+#define EVENTS_BEGIN_REGISTER_HANDLERS(c)	void c##::registerHandlers() \
+											{
+#define EVENTS_REGISTER_HANDLER(h,t)		mEventsManager->registerHandler(h,t);
+#define EVENTS_END_REGISTER_HANDLERS();		}
 
-namespace WyvernsAssault
-{
-	class EventsProcessor
-	{
-	public:
-		EventsProcessor();
-		~EventsProcessor();
-	};
+#define EVENTS_BEGIN_UNREGISTER_HANDLERS(c)	void c##::registerHandlers() \
+											{
+#define EVENTS_UNREGISTER_HANDLER(h,t)		mEventsManager->unregisterHandler(h,t);
+#define EVENTS_END_UNREGISTER_HANDLERS();	}
 
-	typedef boost::shared_ptr<EventsProcessor> EventsProcessorPtr;
-}
-
-#endif // __EVENTS_PROCESSOR_H_
+#endif // __EVENTS_DEFINES_H__
