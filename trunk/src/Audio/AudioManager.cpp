@@ -37,11 +37,9 @@ void AudioManager::initialize()
 	//
 	
 	/* ETAPA DE INICIALIZACION */
-    //FMOD::System     *system;
-    //FMOD::Sound      *sound1;
-    //FMOD::Channel    *channel = 0;
-    //FMOD_RESULT       result;
-    //unsigned int      version;
+    //mSystem=null;
+    //mSound=null;
+    //mChannel= 0;
 
 
 }
@@ -55,11 +53,11 @@ void AudioManager::finalize()
 	/*
        ETAPA DE FINALIZACION
     */
-    //result = sound1->release();
+    //mResult = mSound->release();
+    //ERRCHECK(mResult);
+    //mResult = mSystem->close();
     //ERRCHECK(result);
-    //result = system->close();
-    //ERRCHECK(result);
-    //result = system->release();
+    //mResult = mSystem->release();
     //ERRCHECK(result);
 }
 
@@ -68,33 +66,27 @@ void AudioManager::loadResources()
 	//
 	// TODO Load resources
 	//
-	    /*
-        Create a System object and initialize.
-    */
-    //result = FMOD::System_Create(&system);
+	
+	/*
+    Create a System object and initialize.
+	*/
+    //mResult = FMOD::System_Create(&mSystem);
     //ERRCHECK(result);
 
-    //result = system->getVersion(&version);
-    //ERRCHECK(result);
+    //mResult = mSystem->getVersion(&version);
+    //ERRCHECK(mResult);
 
-    //if (version < FMOD_VERSION)
-    //{
-    //    printf("Error!  You are using an old version of FMOD %08x.  This program requires %08x\n", version, FMOD_VERSION);
-    //    getch();
-    //    return 0;
-    //}
+    //mResult = mSystem->setOutput(FMOD_OUTPUTTYPE_ALSA);
+    //ERRCHECK(mResult);
 
-    //result = system->setOutput(FMOD_OUTPUTTYPE_ALSA);
-    //ERRCHECK(result);
+    //mResult = mSystem->init(32, FMOD_INIT_NORMAL, 0);
+    //ERRCHECK(mResult);
 
-    //result = system->init(32, FMOD_INIT_NORMAL, 0);
-    //ERRCHECK(result);
-
-    //result = system->createSound("test.mp3", FMOD_SOFTWARE, 0, &sound1);
-    //ERRCHECK(result);
-    //result = sound1->setMode(FMOD_LOOP_OFF);
-    //ERRCHECK(result);
-
+    //mResult = mSystem->createSound("test.mp3", FMOD_SOFTWARE, 0, &mSound);
+    //ERRCHECK(mResult);
+    //mResult = mSound->setMode(FMOD_LOOP_OFF);
+    //ERRCHECK(mResult);
+	
 }
 
 void AudioManager::unloadResources()
@@ -105,34 +97,77 @@ void AudioManager::unloadResources()
 
 }
 
-//void AudioManager::playAudio(String name){}
-
-//void AudioManager::stopAudio(){}
-
-// --------------------------------
-// Lua Audio Lib
-// --------------------------------
-LUA_BEGIN_BINDING(AudioManager::audiolib)
-LUA_BIND("playSound", AudioManager::playSound)
-LUA_END_BINDING()
-
-int AudioManager::playSound(lua_State *L)
+void AudioManager::playSound(int SoundId)
 {
 	/*
         ETAPA DE REPRODUCCION
     */
-    //result = system->playSound(FMOD_CHANNEL_FREE, sound1, 0, &channel);
-    //ERRCHECK(result);
+    //mResult = mSystem->playSound(FMOD_CHANNEL_FREE, mSound, 0, &mChannel);
+    //ERRCHECK(mResult);
     //bool keep_looping = true;
     /*EL BUCLE ES NECESARIO PARA INCREMENTAR EL APUNTADOR SOBRE EL ARCHIVO Y CONTINUAR LA REPRODUCCION */
     //do
     //{
-    //    system->update();
-    //    channel->isPlaying(&keep_looping);
+    //    mSystem->update();
+    //    mChannel->isPlaying(&keep_looping);
     //} while (keep_looping);
 
     //printf("\n");
 
+}
+
+void AudioManager::stopSound(int SoundId)
+{
+}
+
+
+SoundPtr AudioManager::createSound(SoundTypes type)
+{
+	Ogre::String audio;
+
+	/*switch(type)
+	{
+	case Naked:
+		mesh = Ogre::String("naked.mesh");
+		break;
+	case Wizard:
+		mesh = Ogre::String("wizard.mesh");
+		break;
+	default:
+		mesh = Ogre::String("naked.mesh");
+		break;
+	}*/
+
+	Ogre::String name = createUniqueId();
+
+	return createSound(type, name);
+}
+
+SoundPtr AudioManager::createSound(SoundTypes type, Ogre::String name)
+{
+	// Sound name == Effect Name!
+	SoundPtr sound = SoundPtr(new Sound(type));
+	mSoundList.push_back(sound);
+	mSoundMap[name] = sound;
+
+	//mSound++;
+
+	return sound;
+}
+
+Ogre::String AudioManager::createUniqueId(){
+	Ogre::String name;
+	return name;
+}
+// --------------------------------
+// Lua Audio Lib
+// --------------------------------
+LUA_BEGIN_BINDING(AudioManager::audiolib)
+LUA_BIND("playSound", AudioManager::luaPlaySound)
+LUA_END_BINDING()
+
+int AudioManager::luaPlaySound(lua_State *L)
+{
 	/* get number of arguments */
 	int n = lua_gettop(L);
 

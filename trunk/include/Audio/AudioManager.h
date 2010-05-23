@@ -26,15 +26,27 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #include <Ogre.h>
 #include <OgreSingleton.h>
 
-#include "..\Lua\LuaInterface.h"
-//#include "../../api/inc/fmod.hpp"
-//#include "../../api/inc/fmod_errors.h"
-//#include "../common/wincompat.h"
-//#include <stdio.h>
+#include "..\..\externals\Fmod\include\fmod.h"
+#include "..\..\externals\Fmod\include\fmod_codec.h"
+#include "..\..\externals\Fmod\include\fmod_dsp.h"
+#include "..\..\externals\Fmod\include\fmod_errors.h"
+#include "..\..\externals\Fmod\include\fmod_memoryinfo.h"
+#include "..\..\externals\Fmod\include\fmod_output.h"
 
+#include <stdio.h>
+#include "..\..\..\include\Lua\LuaInterface.h"
+#include "Sound.h"
+#include <vector>
+#include <map>
 
 namespace WyvernsAssault
 {
+	typedef std::map<Ogre::String, SoundPtr> SoundsMap;
+	typedef std::map<Ogre::String, SoundPtr>::iterator SoundsMapIterator;
+	
+	typedef std::vector<SoundPtr> SoundsList;
+	typedef std::vector<SoundPtr>::iterator SoundsListIterator;
+
 	/**
 		Class used to manager audio (sound track, sounds, fx)
 	*/
@@ -56,18 +68,39 @@ namespace WyvernsAssault
 		/** Unload audio resources */
 		void unloadResources();
 		/** Play audio */
-		//void playAudio(String name);
+		void playSound(int SoundId);
 		/** Stop audio */
-		//void stopAudio();
+		void stopSound(int SoundId);
 		
+		SoundPtr createSound(SoundTypes type);
+		SoundPtr createSound(SoundTypes type, Ogre::String name/*, Ogre::String audio*/);
+
+
+		//FMOD::System* mSystem;
+		//FMOD::Sound* mSound;
+		int mChannel;
+		unsigned int version;	
+
+		typedef boost::shared_ptr<Sound> SoundPtr;
+
+	private:
+		Ogre::String createUniqueId();
+
+		//int mSound;
+		//String mSoundId;
+
+		SoundsList mSoundList;
+		SoundsMap  mSoundMap;
 	// --------------------------------
 	// BEGIN Lua Interface Declarations
 	// --------------------------------
 	public:
-		// Audio Lib (exported to Lua)
+
+		
+		//Audio Lib (exported to Lua)
 		LUA_LIBRARY("Audio",audiolib);
 
-		LUA_FUNCTION(playSound)
+		LUA_FUNCTION(luaPlaySound);
 
 	public:
 		void luaLoadScripts(){};
@@ -75,6 +108,8 @@ namespace WyvernsAssault
 	// END Lua Interface Declarations
 	// ------------------------------
 	};
+
 }
 
 #endif // __AUDIO_MANAGER_H_
+
