@@ -82,7 +82,7 @@ material Particle/BloodHit
 			depth_write off
             texture_unit
             {
-                texture particle_bloodHit.dds
+                texture particle_bloodHit.png
 				tex_address_mode clamp
             }
         }
