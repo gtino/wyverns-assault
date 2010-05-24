@@ -1,0 +1,53 @@
+system WyvernsAssault/BloodLens
+{
+    technique Technique7
+    {
+        material                                Particle/BloodSplash
+        renderer                                Billboard
+        {
+        }
+        emitter                                 Point Emitter8
+        {
+            emission_rate                       1
+            angle                               0
+            time_to_live                        dyn_random
+            {
+                min                             1
+                max                             1.2
+            }
+            velocity                            0
+            all_particle_dimensions             300
+            force_emission                      true
+        }
+        affector                                Colour Affector19
+        {
+            time_colour                         0    1 1 1 0
+            time_colour                         0.05 1 1 1 0.72
+            time_colour                         0.7  1 1 1 0.686275
+            time_colour                         1    1 1 1 0
+        }
+        affector                                TextureRotator Affector20
+        {
+            rotation                            dyn_random
+            {
+                min                             0
+                max                             360
+            }
+            rotation_speed                      0
+        }
+        affector                                Scale Affector11
+        {
+            xyz_scale                           dyn_random
+            {
+                min                             1
+                max                             2
+            }
+        }
+        observer                                OnClear Observer4
+        {
+            handler                             DoStopSystem Handler5
+            {
+            }
+        }
+    }
+}

@@ -33,7 +33,6 @@ void ParticleManager::initialize()
 	// Get particle universe particle system manager
 	mParticleSystemManager = ParticleUniverse::ParticleSystemManager::getSingletonPtr();
 
-	/** EJEMPLO **/
 	mParticleSystem = mParticleSystemManager->createParticleSystem("somkeA", "WyvernsAssault/Smoke", mSceneManager);
 	mSceneManager->getRootSceneNode()->createChildSceneNode("smokeNodeA",Vector3(-545,690,490))->attachObject(mParticleSystem);
 	mParticleSystem->start();
@@ -45,10 +44,11 @@ void ParticleManager::initialize()
 	mParticleSystem = mParticleSystemManager->createParticleSystem("bloodHit", "WyvernsAssault/BloodHit", mSceneManager);	
 	mSceneManager->getRootSceneNode()->createChildSceneNode("bloodHitNode", Vector3::ZERO)->attachObject(mParticleSystem);	
 
-	mParticleSystem = mParticleSystemManager->createParticleSystem("bloodKill", "WyvernsAssault/BloodKill", mSceneManager);	
+	mParticleSystem = mParticleSystemManager->createParticleSystem("bloodKill", "WyvernsAssault/BloodKill", mSceneManager);
 	mSceneManager->getRootSceneNode()->createChildSceneNode("bloodKillNode", Vector3::ZERO)->attachObject(mParticleSystem);	
-	/*************/
 
+	mParticleSystem = mParticleSystemManager->createParticleSystem("bloodLens", "WyvernsAssault/BloodLens", mSceneManager);
+	mSceneManager->getRootSceneNode()->createChildSceneNode("bloodLensNode", Vector3::ZERO)->attachObject(mParticleSystem);	
 }
 
 
@@ -86,6 +86,16 @@ void ParticleManager::bloodKill(Vector3 position)
 	SceneNode* bloodNode = mSceneManager->getSceneNode("bloodKillNode");
 	bloodNode->setPosition(position);
 	ParticleUniverse::ParticleSystem* blood = mParticleSystemManager->getParticleSystem("bloodKill");
+	blood->startAndStopFade(1);
+}
+
+void ParticleManager::bloodLens()
+{
+	Vector3 position = mSceneManager->getCamera("GameCamera")->getParentSceneNode()->getPosition();
+	Vector3 direction = mSceneManager->getCamera("GameCamera")->getDirection();
+	SceneNode* bloodNode = mSceneManager->getSceneNode("bloodLensNode");
+	bloodNode->setPosition(position + direction * 200);	
+	ParticleUniverse::ParticleSystem* blood = mParticleSystemManager->getParticleSystem("bloodLens");
 	blood->startAndStopFade(1);
 }
 
