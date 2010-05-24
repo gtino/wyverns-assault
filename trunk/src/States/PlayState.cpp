@@ -688,6 +688,11 @@ bool PlayState::keyPressed(const OIS::KeyEvent& e)
 	case OIS::KeyCode::KC_M:
 		mCameraManager->zoom(-10);
 		break;
+
+	// Blood particle system - Debug
+	case OIS::KeyCode::KC_L:
+		mParticleManager->blood(mPlayer1->getPosition() + Vector3(50, 0, 0));
+		break;
 	}
 
 	// Free camera mode move
