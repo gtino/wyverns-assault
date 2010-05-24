@@ -95,7 +95,8 @@ void ParticleManager::unregisterHandlers()
 void ParticleManager::handleEnemyHitEvent(EnemyHitEventPtr evt)
 {
 	EnemyPtr enemy = evt->getEnemy();
-	PlayerPtr player = evt->getPlayer();
+	PlayerPtr player = evt->getPlayer();	
 
-	// The player has just hit the enemy
+	// The player has just hit the enemy	
+	this->blood(enemy->getPosition());
 }
