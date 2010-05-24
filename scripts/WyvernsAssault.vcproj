@@ -155,10 +155,10 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="OgreMain.lib OIS.lib ParticleUniverse.lib Lua+Lib.lib ode.lib OgreOde_Core.lib OgreOde_Prefab.lib OgreOde_Loader.lib"
+				AdditionalDependencies="OgreMain.lib OIS.lib ParticleUniverse.lib Lua+Lib.lib ode.lib fmodex_vc.lib OgreOde_Core.lib OgreOde_Prefab.lib OgreOde_Loader.lib"
 				OutputFile="$(OutDir)\$(ProjectName).exe"
 				LinkIncremental="1"
-				AdditionalLibraryDirectories="..\externals\ParticleUniverse\lib;..\externals\OgreOde\lib;&quot;..\externals\Lua-5.0-SDK\lib&quot;;&quot;$(OGRE_HOME)\boost_1_42\lib&quot;;&quot;$(OGRE_HOME)\lib\$(ConfigurationName)&quot;"
+				AdditionalLibraryDirectories="..\externals\ParticleUniverse\lib;..\externals\OgreOde\lib;..\externals\Fmod\lib;&quot;..\externals\Lua-5.0-SDK\lib&quot;;&quot;$(OGRE_HOME)\boost_1_42\lib&quot;;&quot;$(OGRE_HOME)\lib\$(ConfigurationName)&quot;"
 				GenerateDebugInformation="false"
 				ProgramDatabaseFile=""
 				SubSystem="2"
