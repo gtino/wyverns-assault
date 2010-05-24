@@ -2367,7 +2367,8 @@ material Castle_Billboard
 			
 			lighting off
 			scene_blend alpha_blend
-			depth_check off
+			depth_check on
+			depth_write off
 			
 			texture_unit 
 			{
@@ -2382,6 +2383,55 @@ material Castle_Billboard
 
 }
 
+material _2DTree2_Billboard
+{
+	technique Toon
+	{
+		pass 
+		{
+			
+			lighting off
+			scene_blend alpha_blend
+			depth_check on
+			depth_write off
+			
+			texture_unit 
+			{
+				texture BillboardTree2.png
+				text_address_mode clamp
+				filtering none
+			}
+
+		}
+
+	}
+
+}
+
+material _2DTree3_Billboard
+{
+	technique Toon
+	{
+		pass 
+		{
+			
+			lighting off
+			scene_blend alpha_blend
+			depth_check on
+			depth_write off
+			
+			texture_unit 
+			{
+				texture BillboardTree3.png
+				text_address_mode clamp
+				filtering none
+			}
+
+		}
+
+	}
+
+}
 material Tree2_Billboard
 {
 	technique Toon
@@ -2391,7 +2441,8 @@ material Tree2_Billboard
 			
 			lighting off
 			scene_blend alpha_blend
-			depth_check off
+			depth_check on
+			depth_write off
 
 			texture_unit 
 			{

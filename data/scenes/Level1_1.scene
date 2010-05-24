@@ -5,6 +5,306 @@
         <clipping near="0" far="100000" />
     </environment>
     <nodes>
+        <node name="CastleBillboard">
+            <position x="495.397" y="90.9432" z="558.034" />
+            <scale x="4.95052" y="40.5771" z="4.95052" />
+            <rotation qx="0.707107" qy="-5.55112e-017" qz="8.71576e-033" qw="0.707107" />
+            <entity name="CastleBillboard" castShadows="true" receiveShadows="true" meshFile="2DBillboard0.mesh">
+                <subentities>
+                    <subentity index="0" materialName="Castle_Billboard" />
+                </subentities>
+            </entity>
+        </node>
+        <node name="Tree2_Billboard">
+            <position x="879.295" y="11.5394" z="497.243" />
+            <scale x="3.32831" y="41.7461" z="3.32831" />
+            <rotation qx="0.6534" qy="0.270313" qz="-0.270313" qw="0.6534" />
+            <entity name="Tree2_Billboard" castShadows="true" receiveShadows="true" meshFile="2DBillboard0.mesh">
+                <subentities>
+                    <subentity index="0" materialName="_2DTree2_Billboard" />
+                </subentities>
+            </entity>
+        </node>
+        <node name="Tree2_Billboard1">
+            <position x="886.43" y="11.5394" z="471.361" />
+            <scale x="3.32831" y="41.7461" z="3.32831" />
+            <rotation qx="0.6534" qy="0.270313" qz="-0.270313" qw="0.6534" />
+            <entity name="Tree2_Billboard1" castShadows="true" receiveShadows="true" meshFile="2DBillboard0.mesh">
+                <subentities>
+                    <subentity index="0" materialName="_2DTree2_Billboard" />
+                </subentities>
+            </entity>
+        </node>
+        <node name="Tree2_Billboard2">
+            <position x="908.672" y="11.5394" z="460.613" />
+            <scale x="3.32831" y="41.7461" z="3.32831" />
+            <rotation qx="0.6534" qy="0.270313" qz="-0.270313" qw="0.6534" />
+            <entity name="Tree2_Billboard2" castShadows="true" receiveShadows="true" meshFile="2DBillboard0.mesh">
+                <subentities>
+                    <subentity index="0" materialName="_2DTree2_Billboard" />
+                </subentities>
+            </entity>
+        </node>
+        <node name="Tree2_Billboard3">
+            <position x="913.343" y="11.5394" z="343.986" />
+            <scale x="3.32831" y="41.7461" z="3.32831" />
+            <rotation qx="0.6534" qy="0.270313" qz="-0.270313" qw="0.6534" />
+            <entity name="Tree2_Billboard3" castShadows="true" receiveShadows="true" meshFile="2DBillboard0.mesh">
+                <subentities>
+                    <subentity index="0" materialName="_2DTree2_Billboard" />
+                </subentities>
+            </entity>
+        </node>
+        <node name="Tree2_Billboard4">
+            <position x="938.466" y="11.5394" z="345.355" />
+            <scale x="3.32831" y="41.7461" z="3.32831" />
+            <rotation qx="0.6534" qy="0.270313" qz="-0.270313" qw="0.6534" />
+            <entity name="Tree2_Billboard4" castShadows="true" receiveShadows="true" meshFile="2DBillboard0.mesh">
+                <subentities>
+                    <subentity index="0" materialName="_2DTree2_Billboard" />
+                </subentities>
+            </entity>
+        </node>
+        <node name="Tree2_Billboard5">
+            <position x="928.476" y="11.5394" z="432.855" />
+            <scale x="3.32831" y="41.7461" z="3.32831" />
+            <rotation qx="0.603715" qy="0.368142" qz="-0.368142" qw="0.603715" />
+            <entity name="Tree2_Billboard5" castShadows="true" receiveShadows="true" meshFile="2DBillboard0.mesh">
+                <subentities>
+                    <subentity index="0" materialName="_2DTree2_Billboard" />
+                </subentities>
+            </entity>
+        </node>
+        <node name="Tree2_Billboard6">
+            <position x="933.822" y="12.1239" z="399.267" />
+            <scale x="3.32831" y="41.7461" z="3.32831" />
+            <rotation qx="0.504399" qy="0.495562" qz="-0.495562" qw="0.504399" />
+            <entity name="Tree2_Billboard6" castShadows="true" receiveShadows="true" meshFile="2DBillboard0.mesh">
+                <subentities>
+                    <subentity index="0" materialName="_2DTree2_Billboard" />
+                </subentities>
+            </entity>
+        </node>
+        <node name="Tree2_Billboard7">
+            <position x="924.689" y="9.09993" z="451.572" />
+            <scale x="3.32831" y="41.7461" z="3.32831" />
+            <rotation qx="0.6534" qy="0.270313" qz="-0.270313" qw="0.6534" />
+            <entity name="Tree2_Billboard7" castShadows="true" receiveShadows="true" meshFile="2DBillboard0.mesh">
+                <subentities>
+                    <subentity index="0" materialName="_2DTree2_Billboard" />
+                </subentities>
+            </entity>
+        </node>
+        <node name="Tree2_Billboard8">
+            <position x="869.065" y="67.4293" z="409.867" />
+            <scale x="3.32831" y="41.7461" z="3.32831" />
+            <rotation qx="0.6534" qy="0.270313" qz="-0.270313" qw="0.6534" />
+            <entity name="Tree2_Billboard8" castShadows="true" receiveShadows="true" meshFile="2DBillboard0.mesh">
+                <subentities>
+                    <subentity index="0" materialName="_2DTree2_Billboard" />
+                </subentities>
+            </entity>
+        </node>
+        <node name="Tree2_Billboard9">
+            <position x="1016.15" y="11.5394" z="351.454" />
+            <scale x="3.32831" y="41.7461" z="3.32831" />
+            <rotation qx="0.6534" qy="0.270313" qz="-0.270313" qw="0.6534" />
+            <entity name="Tree2_Billboard9" castShadows="true" receiveShadows="true" meshFile="2DBillboard0.mesh">
+                <subentities>
+                    <subentity index="0" materialName="_2DTree2_Billboard" />
+                </subentities>
+            </entity>
+        </node>
+        <node name="Tree2_Billboard10">
+            <position x="1054.41" y="9.09993" z="331.665" />
+            <scale x="3.32831" y="41.7461" z="3.32831" />
+            <rotation qx="0.6534" qy="0.270313" qz="-0.270313" qw="0.6534" />
+            <entity name="Tree2_Billboard10" castShadows="true" receiveShadows="true" meshFile="2DBillboard0.mesh">
+                <subentities>
+                    <subentity index="0" materialName="_2DTree2_Billboard" />
+                </subentities>
+            </entity>
+        </node>
+        <node name="Tree2_Billboard11">
+            <position x="1038.39" y="11.5394" z="340.706" />
+            <scale x="3.32831" y="41.7461" z="3.32831" />
+            <rotation qx="0.6534" qy="0.270313" qz="-0.270313" qw="0.6534" />
+            <entity name="Tree2_Billboard11" castShadows="true" receiveShadows="true" meshFile="2DBillboard0.mesh">
+                <subentities>
+                    <subentity index="0" materialName="_2DTree2_Billboard" />
+                </subentities>
+            </entity>
+        </node>
+        <node name="Tree2_Billboard12">
+            <position x="1058.2" y="11.5394" z="312.948" />
+            <scale x="3.32831" y="41.7461" z="3.32831" />
+            <rotation qx="0.603715" qy="0.368142" qz="-0.368142" qw="0.603715" />
+            <entity name="Tree2_Billboard12" castShadows="true" receiveShadows="true" meshFile="2DBillboard0.mesh">
+                <subentities>
+                    <subentity index="0" materialName="_2DTree2_Billboard" />
+                </subentities>
+            </entity>
+        </node>
+        <node name="Tree2_Billboard13">
+            <position x="1063.54" y="12.1239" z="279.361" />
+            <scale x="3.32831" y="41.7461" z="3.32831" />
+            <rotation qx="0.504399" qy="0.495562" qz="-0.495562" qw="0.504399" />
+            <entity name="Tree2_Billboard13" castShadows="true" receiveShadows="true" meshFile="2DBillboard0.mesh">
+                <subentities>
+                    <subentity index="0" materialName="_2DTree2_Billboard" />
+                </subentities>
+            </entity>
+        </node>
+        <node name="Tree2_Billboard14">
+            <position x="1021.35" y="66.225" z="160.987" />
+            <scale x="3.32831" y="41.7461" z="3.32831" />
+            <rotation qx="0.578664" qy="0.406384" qz="-0.406384" qw="0.578664" />
+            <entity name="Tree2_Billboard14" castShadows="true" receiveShadows="true" meshFile="2DBillboard0.mesh">
+                <subentities>
+                    <subentity index="0" materialName="_2DTree2_Billboard" />
+                </subentities>
+            </entity>
+        </node>
+        <node name="Tree3_Billboard">
+            <position x="327.264" y="16.9563" z="667.261" />
+            <scale x="4.25" y="4.25" z="4.25" />
+            <rotation qx="0.700991" qy="-0.0927974" qz="0.0927974" qw="0.700991" />
+            <entity name="Tree3_Billboard" castShadows="true" receiveShadows="true" meshFile="2DBillboard0.mesh">
+                <subentities>
+                    <subentity index="0" materialName="_2DTree3_Billboard" />
+                </subentities>
+            </entity>
+        </node>
+        <node name="Tree3_Billboard1">
+            <position x="378.2" y="14.6962" z="670.92" />
+            <scale x="4.25" y="4.25" z="4.25" />
+            <rotation qx="0.707107" qy="0" qz="0" qw="0.707107" />
+            <entity name="Tree3_Billboard1" castShadows="true" receiveShadows="true" meshFile="2DBillboard0.mesh">
+                <subentities>
+                    <subentity index="0" materialName="_2DTree3_Billboard" />
+                </subentities>
+            </entity>
+        </node>
+        <node name="Tree3_Billboard2">
+            <position x="359.533" y="15.1615" z="646.983" />
+            <scale x="4.25" y="4.25" z="4.25" />
+            <rotation qx="0.707107" qy="0" qz="0" qw="0.707107" />
+            <entity name="Tree3_Billboard2" castShadows="true" receiveShadows="true" meshFile="2DBillboard0.mesh">
+                <subentities>
+                    <subentity index="0" materialName="_2DTree3_Billboard" />
+                </subentities>
+            </entity>
+        </node>
+        <node name="Tree3_Billboard3">
+            <position x="443.328" y="14.1261" z="601.374" />
+            <scale x="4.25" y="4.25" z="4.25" />
+            <rotation qx="0.707107" qy="0" qz="0" qw="0.707107" />
+            <entity name="Tree3_Billboard3" castShadows="true" receiveShadows="true" meshFile="2DBillboard0.mesh">
+                <subentities>
+                    <subentity index="0" materialName="_2DTree3_Billboard" />
+                </subentities>
+            </entity>
+        </node>
+        <node name="Tree3_Billboard4">
+            <position x="471.743" y="12.6254" z="615.3" />
+            <scale x="4.25" y="4.25" z="4.25" />
+            <rotation qx="0.69036" qy="-0.152982" qz="0.152982" qw="0.69036" />
+            <entity name="Tree3_Billboard4" castShadows="true" receiveShadows="true" meshFile="2DBillboard0.mesh">
+                <subentities>
+                    <subentity index="0" materialName="_2DTree3_Billboard" />
+                </subentities>
+            </entity>
+        </node>
+        <node name="Tree3_Billboard5">
+            <position x="420.981" y="12.6254" z="624.591" />
+            <scale x="4.25" y="4.25" z="4.25" />
+            <rotation qx="0.685711" qy="0.172628" qz="-0.172628" qw="0.685711" />
+            <entity name="Tree3_Billboard5" castShadows="true" receiveShadows="true" meshFile="2DBillboard0.mesh">
+                <subentities>
+                    <subentity index="0" materialName="_2DTree3_Billboard" />
+                </subentities>
+            </entity>
+        </node>
+        <node name="Tree3_Billboard6">
+            <position x="613.533" y="12.6254" z="615.3" />
+            <scale x="4.25" y="4.25" z="4.25" />
+            <rotation qx="0.706882" qy="0.0178101" qz="-0.0178101" qw="0.706882" />
+            <entity name="Tree3_Billboard6" castShadows="true" receiveShadows="true" meshFile="2DBillboard0.mesh">
+                <subentities>
+                    <subentity index="0" materialName="_2DTree3_Billboard" />
+                </subentities>
+            </entity>
+        </node>
+        <node name="Tree3_Billboard7">
+            <position x="755.323" y="44.3974" z="573.102" />
+            <scale x="4.25" y="4.25" z="4.25" />
+            <rotation qx="0.707107" qy="0" qz="0" qw="0.707107" />
+            <entity name="Tree3_Billboard7" castShadows="true" receiveShadows="true" meshFile="2DBillboard0.mesh">
+                <subentities>
+                    <subentity index="0" materialName="_2DTree3_Billboard" />
+                </subentities>
+            </entity>
+        </node>
+        <node name="Tree3_Billboard8">
+            <position x="658.308" y="57.228" z="594.148" />
+            <scale x="4.25" y="4.25" z="4.25" />
+            <rotation qx="0.694504" qy="0.132905" qz="-0.132905" qw="0.694504" />
+            <entity name="Tree3_Billboard8" castShadows="true" receiveShadows="true" meshFile="2DBillboard0.mesh">
+                <subentities>
+                    <subentity index="0" materialName="_2DTree3_Billboard" />
+                </subentities>
+            </entity>
+        </node>
+        <node name="Tree3_Billboard9">
+            <position x="681.047" y="14.6408" z="607.578" />
+            <scale x="4.25" y="4.25" z="4.25" />
+            <rotation qx="0.685957" qy="0.171646" qz="-0.171646" qw="0.685957" />
+            <entity name="Tree3_Billboard9" castShadows="true" receiveShadows="true" meshFile="2DBillboard0.mesh">
+                <subentities>
+                    <subentity index="0" materialName="_2DTree3_Billboard" />
+                </subentities>
+            </entity>
+        </node>
+        <node name="Tree3_Billboard10">
+            <position x="823.332" y="14.6408" z="577.943" />
+            <scale x="4.25" y="4.25" z="4.25" />
+            <rotation qx="0.655004" qy="0.266401" qz="-0.266401" qw="0.655004" />
+            <entity name="Tree3_Billboard10" castShadows="true" receiveShadows="true" meshFile="2DBillboard0.mesh">
+                <subentities>
+                    <subentity index="0" materialName="_2DTree3_Billboard" />
+                </subentities>
+            </entity>
+        </node>
+        <node name="Tree3_Billboard11">
+            <position x="810.94" y="14.6408" z="591.763" />
+            <scale x="4.25" y="4.25" z="4.25" />
+            <rotation qx="0.685957" qy="0.171646" qz="-0.171646" qw="0.685957" />
+            <entity name="Tree3_Billboard11" castShadows="true" receiveShadows="true" meshFile="2DBillboard0.mesh">
+                <subentities>
+                    <subentity index="0" materialName="_2DTree3_Billboard" />
+                </subentities>
+            </entity>
+        </node>
+        <node name="Tree3_Billboard12">
+            <position x="790.436" y="14.6408" z="605.254" />
+            <scale x="4.25" y="4.25" z="4.25" />
+            <rotation qx="0.705458" qy="0.0482547" qz="-0.0482547" qw="0.705458" />
+            <entity name="Tree3_Billboard12" castShadows="true" receiveShadows="true" meshFile="2DBillboard0.mesh">
+                <subentities>
+                    <subentity index="0" materialName="_2DTree3_Billboard" />
+                </subentities>
+            </entity>
+        </node>
+        <node name="Tree3_Billboard13">
+            <position x="852.428" y="14.6408" z="567.035" />
+            <scale x="4.25" y="4.25" z="4.25" />
+            <rotation qx="0.679263" qy="0.196473" qz="-0.196473" qw="0.679263" />
+            <entity name="Tree3_Billboard13" castShadows="true" receiveShadows="true" meshFile="2DBillboard0.mesh">
+                <subentities>
+                    <subentity index="0" materialName="_2DTree3_Billboard" />
+                </subentities>
+            </entity>
+        </node>
         <node name="Camera_Interest">
             <position x="-3729.8" y="2136.27" z="1066.31" />
             <scale x="1" y="1" z="1" />
@@ -2682,16 +2982,6 @@
                         <subentity index="0" materialName="HighHills" />
                     </subentities>
                 </entity>
-                <node name="TreeBillboardB7">
-                    <position x="0.397751" y="4.1241" z="-0.00362498" />
-                    <scale x="0.169209" y="0.677346" z="0.169209" />
-                    <rotation qx="0.5" qy="0.5" qz="-0.5" qw="0.5" />
-                    <entity name="TreeBillboardB7" castShadows="true" receiveShadows="true" meshFile="TreeBillboardB0.mesh">
-                        <subentities>
-                            <subentity index="0" materialName="Tree1_Billboard" />
-                        </subentities>
-                    </entity>
-                </node>
                 <node name="RedSphereTree26">
                     <position x="2.13711" y="3.23045" z="1.21005" />
                     <scale x="0.111717" y="0.030654" z="0.111717" />
@@ -2862,16 +3152,6 @@
                         <subentity index="0" materialName="HighHills" />
                     </subentities>
                 </entity>
-                <node name="TreeBillboardB6">
-                    <position x="0.397751" y="4.1241" z="-0.00362498" />
-                    <scale x="0.169209" y="0.677346" z="0.169209" />
-                    <rotation qx="0.5" qy="0.5" qz="-0.5" qw="0.5" />
-                    <entity name="TreeBillboardB6" castShadows="true" receiveShadows="true" meshFile="TreeBillboardB0.mesh">
-                        <subentities>
-                            <subentity index="0" materialName="Tree1_Billboard" />
-                        </subentities>
-                    </entity>
-                </node>
                 <node name="RedSphereTree15">
                     <position x="2.13711" y="3.23045" z="1.21005" />
                     <scale x="0.111717" y="0.030654" z="0.111717" />
@@ -2912,16 +3192,6 @@
                         <subentity index="0" materialName="HighHills" />
                     </subentities>
                 </entity>
-                <node name="TreeBillboardB5">
-                    <position x="0.397751" y="4.1241" z="-0.00362498" />
-                    <scale x="0.169209" y="0.677346" z="0.169209" />
-                    <rotation qx="0.5" qy="0.5" qz="-0.5" qw="0.5" />
-                    <entity name="TreeBillboardB5" castShadows="true" receiveShadows="true" meshFile="TreeBillboardB0.mesh">
-                        <subentities>
-                            <subentity index="0" materialName="Tree1_Billboard" />
-                        </subentities>
-                    </entity>
-                </node>
                 <node name="RedSphereTree12">
                     <position x="2.13711" y="3.23045" z="1.21005" />
                     <scale x="0.111717" y="0.030654" z="0.111717" />
@@ -3012,16 +3282,6 @@
                         </subentities>
                     </entity>
                 </node>
-                <node name="CastleBillboard2">
-                    <position x="0.357295" y="4.21674" z="-0.0124397" />
-                    <scale x="0.30117" y="0.677346" z="0.30117" />
-                    <rotation qx="0.5" qy="0.5" qz="-0.5" qw="0.5" />
-                    <entity name="CastleBillboard2" castShadows="true" receiveShadows="true" meshFile="TreeBillboardB0.mesh">
-                        <subentities>
-                            <subentity index="0" materialName="Castle_Billboard" />
-                        </subentities>
-                    </entity>
-                </node>
             </node>
             <node name="GreenMountain13">
                 <position x="2945.59" y="204.208" z="-387.573" />
@@ -3042,56 +3302,6 @@
                         <subentity index="0" materialName="HighHills" />
                     </subentities>
                 </entity>
-                <node name="TreeBillboardC5">
-                    <position x="0.587048" y="4.08476" z="-0.107616" />
-                    <scale x="0.146097" y="0.677346" z="0.146097" />
-                    <rotation qx="0.353553" qy="0.612372" qz="-0.612372" qw="0.353553" />
-                    <entity name="TreeBillboardC5" castShadows="true" receiveShadows="true" meshFile="TreeBillboardB0.mesh">
-                        <subentities>
-                            <subentity index="0" materialName="Tree2_Billboard" />
-                        </subentities>
-                    </entity>
-                </node>
-                <node name="TreeBillboardC4">
-                    <position x="0.587048" y="4.08476" z="-0.107616" />
-                    <scale x="0.146097" y="0.677346" z="0.146097" />
-                    <rotation qx="0.612372" qy="0.353553" qz="-0.353553" qw="0.612372" />
-                    <entity name="TreeBillboardC4" castShadows="true" receiveShadows="true" meshFile="TreeBillboardB0.mesh">
-                        <subentities>
-                            <subentity index="0" materialName="Tree2_Billboard" />
-                        </subentities>
-                    </entity>
-                </node>
-                <node name="TreeBillboardC3">
-                    <position x="0.526901" y="3.95743" z="1.18711" />
-                    <scale x="0.146097" y="0.677346" z="0.146097" />
-                    <rotation qx="0.604357" qy="0.604357" qz="-0.367086" qw="0.367086" />
-                    <entity name="TreeBillboardC3" castShadows="true" receiveShadows="true" meshFile="TreeBillboardB0.mesh">
-                        <subentities>
-                            <subentity index="0" materialName="Tree2_Billboard" />
-                        </subentities>
-                    </entity>
-                </node>
-                <node name="TreeBillboardC2">
-                    <position x="0.526901" y="3.95743" z="1.18711" />
-                    <scale x="0.146097" y="0.677346" z="0.146097" />
-                    <rotation qx="0.604357" qy="0.604357" qz="-0.367086" qw="0.367086" />
-                    <entity name="TreeBillboardC2" castShadows="true" receiveShadows="true" meshFile="TreeBillboardB0.mesh">
-                        <subentities>
-                            <subentity index="0" materialName="Tree2_Billboard" />
-                        </subentities>
-                    </entity>
-                </node>
-                <node name="TreeBillboardC">
-                    <position x="0.587048" y="4.08476" z="-0.107616" />
-                    <scale x="0.146097" y="0.677346" z="0.146097" />
-                    <rotation qx="0.707107" qy="0" qz="0" qw="0.707107" />
-                    <entity name="TreeBillboardC" castShadows="true" receiveShadows="true" meshFile="TreeBillboardB0.mesh">
-                        <subentities>
-                            <subentity index="0" materialName="Tree2_Billboard" />
-                        </subentities>
-                    </entity>
-                </node>
                 <node name="RedSphereTree6">
                     <position x="1.60144" y="3.61045" z="-0.394443" />
                     <scale x="0.111717" y="0.030654" z="0.111717" />
@@ -3132,16 +3342,6 @@
                         <subentity index="0" materialName="HighHills" />
                     </subentities>
                 </entity>
-                <node name="TreeBillboardB">
-                    <position x="0.397751" y="4.1241" z="-0.00362498" />
-                    <scale x="0.169209" y="0.677346" z="0.169209" />
-                    <rotation qx="0.5" qy="0.5" qz="-0.5" qw="0.5" />
-                    <entity name="TreeBillboardB" castShadows="true" receiveShadows="true" meshFile="TreeBillboardB0.mesh">
-                        <subentities>
-                            <subentity index="0" materialName="Tree1_Billboard" />
-                        </subentities>
-                    </entity>
-                </node>
                 <node name="RedSphereTree">
                     <position x="2.13711" y="3.23045" z="1.21005" />
                     <scale x="0.111717" y="0.030654" z="0.111717" />
@@ -3182,16 +3382,6 @@
                         <subentity index="0" materialName="HighHills" />
                     </subentities>
                 </entity>
-                <node name="TreeBillboardB2">
-                    <position x="0.397751" y="4.14952" z="-0.044322" />
-                    <scale x="0.219464" y="0.677346" z="0.219464" />
-                    <rotation qx="0.5" qy="0.5" qz="-0.5" qw="0.5" />
-                    <entity name="TreeBillboardB2" castShadows="true" receiveShadows="true" meshFile="TreeBillboardB0.mesh">
-                        <subentities>
-                            <subentity index="0" materialName="Tree1_Billboard" />
-                        </subentities>
-                    </entity>
-                </node>
             </node>
             <node name="GreenMountain7">
                 <position x="1372.76" y="344.496" z="481.595" />
@@ -3202,26 +3392,6 @@
                         <subentity index="0" materialName="HighHills" />
                     </subentities>
                 </entity>
-                <node name="TreeBillboardB4">
-                    <position x="0.38027" y="3.8137" z="-1.6943" />
-                    <scale x="0.146303" y="0.677346" z="0.146303" />
-                    <rotation qx="0.349846" qy="-0.349846" qz="0.614498" qw="0.614498" />
-                    <entity name="TreeBillboardB4" castShadows="true" receiveShadows="true" meshFile="TreeBillboardB0.mesh">
-                        <subentities>
-                            <subentity index="0" materialName="Tree1_Billboard" />
-                        </subentities>
-                    </entity>
-                </node>
-                <node name="TreeBillboardB3">
-                    <position x="0.754434" y="3.96979" z="1.46277" />
-                    <scale x="0.219464" y="0.677346" z="0.219464" />
-                    <rotation qx="0.610453" qy="0.610453" qz="-0.356857" qw="0.356857" />
-                    <entity name="TreeBillboardB3" castShadows="true" receiveShadows="true" meshFile="TreeBillboardB0.mesh">
-                        <subentities>
-                            <subentity index="0" materialName="Tree1_Billboard" />
-                        </subentities>
-                    </entity>
-                </node>
                 <node name="RedSphereTree9">
                     <position x="-1.57293" y="3.38473" z="1.39919" />
                     <scale x="0.111717" y="0.030654" z="0.111717" />
@@ -3739,16 +3909,6 @@
                     <entity name="PillTree2" castShadows="true" receiveShadows="true" meshFile="BonBonTree0.mesh">
                         <subentities>
                             <subentity index="0" materialName="PillTree" />
-                        </subentities>
-                    </entity>
-                </node>
-                <node name="CastleBillboard">
-                    <position x="1.30335" y="4.6091" z="-0.108147" />
-                    <scale x="0.240972" y="1.97513" z="0.240972" />
-                    <rotation qx="0.5" qy="0.5" qz="-0.5" qw="0.5" />
-                    <entity name="CastleBillboard" castShadows="true" receiveShadows="true" meshFile="TreeBillboardB0.mesh">
-                        <subentities>
-                            <subentity index="0" materialName="Castle_Billboard" />
                         </subentities>
                     </entity>
                 </node>
