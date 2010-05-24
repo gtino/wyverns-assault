@@ -116,7 +116,7 @@ system WyvernsAssault/BloodKill
                 max                             0
             }
             position                            0 -10 0
-            auto_direction                      true
+            auto_direction                      false
             force_emission                      true
         }
         affector                                Scale Affector104

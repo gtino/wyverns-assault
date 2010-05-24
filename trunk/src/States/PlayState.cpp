@@ -690,8 +690,15 @@ bool PlayState::keyPressed(const OIS::KeyEvent& e)
 		break;
 
 	// Blood particle system - Debug
+	case OIS::KeyCode::KC_Z:
+		mParticleManager->bloodKill(mPlayer1->getPosition() + Vector3(50, 0, 0));
+		break;
+	case OIS::KeyCode::KC_X:
+		mParticleManager->bloodHit(mPlayer1->getPosition() + Vector3(50, 0, 0));
+		break;
 	case OIS::KeyCode::KC_L:
-		mParticleManager->blood(mPlayer1->getPosition() + Vector3(50, 0, 0));
+		mParticleManager->bloodHit(mPlayer1->getPosition() + Vector3(50, 0, 0));
+		mParticleManager->bloodKill(mPlayer1->getPosition() + Vector3(50, 0, 0));
 		break;
 	}
 

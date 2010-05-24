@@ -34,7 +34,7 @@ system WyvernsAssault/BloodSpray
                 max                             60
             }
             all_particle_dimensions             25
-            position                            0 1 0
+            position                            0 0 0
             end_texture_coords_range            3
             texture_coords                      3
             start_colour_range                  1 1 1 1
