@@ -77,3 +77,25 @@ void ParticleManager::blood(Vector3 position)
 	ParticleUniverse::ParticleSystem* blood = mParticleSystemManager->getParticleSystem("blood");
 	blood->startAndStopFade(1);
 }
+
+// --------------
+// Event handlers
+// --------------
+void ParticleManager::registerHandlers()
+{
+	boost::shared_ptr<ParticleManager> this_ = shared_from_this();
+
+	registerHandler(EventHandlerPtr(new EventHandler<ParticleManager,EnemyHitEvent>(this_,&ParticleManager::handleEnemyHitEvent)),EventTypes::EnemyHit);
+}
+
+void ParticleManager::unregisterHandlers()
+{
+}
+
+void ParticleManager::handleEnemyHitEvent(EnemyHitEventPtr evt)
+{
+	EnemyPtr enemy = evt->getEnemy();
+	PlayerPtr player = evt->getPlayer();
+
+	// The player has just hit the enemy
+}
