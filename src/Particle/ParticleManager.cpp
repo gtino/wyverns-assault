@@ -42,8 +42,11 @@ void ParticleManager::initialize()
 	mSceneManager->getRootSceneNode()->createChildSceneNode("smokeNodeB",Vector3(-615,690,450))->attachObject(mParticleSystem);
 	mParticleSystem->start();
 
-	mParticleSystem = mParticleSystemManager->createParticleSystem("blood", "WyvernsAssault/BloodKill", mSceneManager);	
-	mSceneManager->getRootSceneNode()->createChildSceneNode("bloodNode", Vector3::ZERO)->attachObject(mParticleSystem);	
+	mParticleSystem = mParticleSystemManager->createParticleSystem("bloodHit", "WyvernsAssault/BloodHit", mSceneManager);	
+	mSceneManager->getRootSceneNode()->createChildSceneNode("bloodHitNode", Vector3::ZERO)->attachObject(mParticleSystem);	
+
+	mParticleSystem = mParticleSystemManager->createParticleSystem("bloodKill", "WyvernsAssault/BloodKill", mSceneManager);	
+	mSceneManager->getRootSceneNode()->createChildSceneNode("bloodKillNode", Vector3::ZERO)->attachObject(mParticleSystem);	
 	/*************/
 
 }
@@ -70,11 +73,19 @@ void ParticleManager::createParticle(String name)
 }
 
 /** Blood particles */
-void ParticleManager::blood(Vector3 position)
+void ParticleManager::bloodHit(Vector3 position)
 {
-	SceneNode* bloodNode = mSceneManager->getSceneNode("bloodNode");
+	SceneNode* bloodNode = mSceneManager->getSceneNode("bloodHitNode");
 	bloodNode->setPosition(position);
-	ParticleUniverse::ParticleSystem* blood = mParticleSystemManager->getParticleSystem("blood");
+	ParticleUniverse::ParticleSystem* blood = mParticleSystemManager->getParticleSystem("bloodHit");
+	blood->startAndStopFade(1);
+}
+
+void ParticleManager::bloodKill(Vector3 position)
+{
+	SceneNode* bloodNode = mSceneManager->getSceneNode("bloodKillNode");
+	bloodNode->setPosition(position);
+	ParticleUniverse::ParticleSystem* blood = mParticleSystemManager->getParticleSystem("bloodKill");
 	blood->startAndStopFade(1);
 }
 
@@ -98,5 +109,5 @@ void ParticleManager::handleEnemyHitEvent(EnemyHitEventPtr evt)
 	PlayerPtr player = evt->getPlayer();	
 
 	// The player has just hit the enemy	
-	this->blood(enemy->getPosition());
+	this->bloodHit(enemy->getPosition());
 }

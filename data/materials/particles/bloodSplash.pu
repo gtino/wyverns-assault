@@ -36,7 +36,8 @@ system WyvernsAssault/BloodSplash
                 min                             0
                 max                             0
             }
-            auto_direction                      true
+			position                            0 -10 0
+            auto_direction                      false
             force_emission                      true
         }
         affector                                Scale Affector104

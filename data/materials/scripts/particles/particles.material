@@ -70,3 +70,21 @@ material Particle/BloodSplash
         }
     }
 }
+
+material Particle/BloodHit
+{
+    technique
+    {
+        pass
+        {
+			lighting off
+            scene_blend alpha_blend
+			depth_write off
+            texture_unit
+            {
+                texture particle_bloodHit.dds
+				tex_address_mode clamp
+            }
+        }
+    }
+}

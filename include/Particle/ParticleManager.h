@@ -59,7 +59,8 @@ namespace WyvernsAssault
 		void createParticle(String name);
 
 		/** Blood particles */
-		void blood(Vector3 position);
+		void bloodHit(Vector3 position);
+		void bloodKill(Vector3 position);
 
 		// ----------------
 		// Events interface
