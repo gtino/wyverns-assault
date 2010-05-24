@@ -61,6 +61,7 @@ namespace WyvernsAssault
 		/** Blood particles */
 		void bloodHit(Vector3 position);
 		void bloodKill(Vector3 position);
+		void bloodLens();
 
 		// ----------------
 		// Events interface

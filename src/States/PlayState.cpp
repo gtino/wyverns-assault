@@ -696,10 +696,14 @@ bool PlayState::keyPressed(const OIS::KeyEvent& e)
 	case OIS::KeyCode::KC_X:
 		mParticleManager->bloodHit(mPlayer1->getPosition() + Vector3(50, 0, 0));
 		break;
+	case OIS::KeyCode::KC_Y:
+		mParticleManager->bloodLens();
+		break;
 	case OIS::KeyCode::KC_L:
 		mParticleManager->bloodHit(mPlayer1->getPosition() + Vector3(50, 0, 0));
 		mParticleManager->bloodKill(mPlayer1->getPosition() + Vector3(50, 0, 0));
-		break;
+		mParticleManager->bloodLens();
+		break;	
 	}
 
 	// Free camera mode move
