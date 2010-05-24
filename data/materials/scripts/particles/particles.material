@@ -8,7 +8,6 @@ material Particle/Smoke
             lighting off
             scene_blend alpha_blend
             depth_write off
-
             texture_unit
             {
                 texture particle_smoke.png
@@ -31,7 +30,44 @@ material Particle/Fire
             {
                 texture particle_flame.png
                 tex_address_mode clamp
-                wave_xform scroll_x sine 0 0.3 0 0.15
+            }
+        }
+    }
+}
+
+material Particle/BloodSpray
+{
+    technique
+    {
+        pass
+        {
+			lighting off
+			scene_blend alpha_blend
+			depth_write off
+			depth_check on
+            texture_unit
+            {
+                texture particle_bloodSpray.dds
+				tex_address_mode clamp
+            }
+        }
+    }
+}
+
+material Particle/BloodSplash
+{
+    technique
+    {
+        pass
+        {
+			lighting off
+			scene_blend alpha_blend
+			depth_write off
+			depth_check on
+            texture_unit
+            {
+                texture particle_bloodSplash.dds
+				tex_address_mode clamp
             }
         }
     }

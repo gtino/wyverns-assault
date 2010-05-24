@@ -1,0 +1,88 @@
+system WyvernsAssault/BloodSpray
+{
+    technique Technique4
+    {
+        visual_particle_quota                   10
+        emitted_emitter_quota                   10
+        material                                Particle/BloodSpray
+        renderer                                Billboard
+        {
+            texture_coords_rows                 2
+            texture_coords_columns              2
+            billboard_type                      oriented_self
+        }
+        emitter                                 SphereSurface Emitter7
+        {
+            emission_rate                       dyn_random
+            {
+                min                             8
+                max                             10
+            }
+            angle                               dyn_random
+            {
+                min                             10
+                max                             50
+            }
+            time_to_live                        dyn_random
+            {
+                min                             0.4
+                max                             0.5
+            }
+            velocity                            dyn_random
+            {
+                min                             40
+                max                             60
+            }
+            all_particle_dimensions             25
+            position                            0 1 0
+            end_texture_coords_range            3
+            texture_coords                      3
+            start_colour_range                  1 1 1 1
+            force_emission                      true
+            radius                              0.7
+        }
+        affector                                Scale Affector4
+        {
+            x_scale                             dyn_curved_linear
+            {
+                control_point                   0 0.922
+                control_point                   1 2.282
+            }
+            y_scale                             dyn_curved_spline
+            {
+                control_point                   0 0.95
+                control_point                   0.745 1.311
+                control_point                   1 2.604
+            }
+        }
+        affector                                Gravity Affector5
+        {
+            position                            0 -0.1 0
+            gravity                             -0.5
+        }
+        affector                                Jet Affector6
+        {
+            acceleration                        dyn_curved_linear
+            {
+                control_point                   0 2.475
+                control_point                   0.107 0.204
+                control_point                   1 0
+            }
+        }
+        affector                                Colour Affector8
+        {
+            time_colour                         0    1 1 1 1
+            time_colour                         0.378  1 1 1 1
+            time_colour                         0.47 1 0.788235 0.72549 1
+            time_colour                         0.683  0.858824 0.647059 0.607843 0.839216
+            time_colour                         0.754  0.807843 0.529412 0.45098 0.811765
+            time_colour                         1    1 1 1 0
+        }
+        observer                                OnClear Observer19
+        {
+            handler                             DoStopSystem Handler24
+            {
+            }
+        }
+    }
+}

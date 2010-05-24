@@ -2,14 +2,14 @@ system WyvernsAssault/DragonBreath
 {
     technique 
     {
-        visual_particle_quota                   1500
-        emitted_emitter_quota                   500
+        visual_particle_quota                   1700
+        emitted_emitter_quota                   800
         emitted_technique_quota                 500
         emitted_affector_quota                  1500
         emitted_system_quota                    500
         material                                Particle/Fire
-        default_particle_width                  15
-        default_particle_height                 10
+        default_particle_width                  30
+        default_particle_height                 15
         default_particle_depth                  10
         renderer                                Billboard
         {
@@ -32,8 +32,8 @@ system WyvernsAssault/DragonBreath
             }
             all_particle_dimensions             dyn_random
             {
-                min                             10
-                max                             20
+                min                             5
+                max                             10
             }
             direction                           1 0 0
             end_colour_range                    0.941176 0.941176 0.941176 1
