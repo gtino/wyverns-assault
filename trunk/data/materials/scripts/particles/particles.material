@@ -44,7 +44,6 @@ material Particle/BloodSpray
 			lighting off
 			scene_blend alpha_blend
 			depth_write off
-			depth_check on
             texture_unit
             {
                 texture particle_bloodSpray.dds
@@ -63,7 +62,6 @@ material Particle/BloodSplash
 			lighting off
 			scene_blend alpha_blend
 			depth_write off
-			depth_check on
             texture_unit
             {
                 texture particle_bloodSplash.dds
