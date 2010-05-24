@@ -1,0 +1,80 @@
+system WyvernsAssault/BloodSplash
+{
+    technique Technique4
+    {
+        visual_particle_quota                   15
+        emitted_emitter_quota                   10
+        material                                Particle/BloodSplash
+        renderer                                Billboard
+        {
+            billboard_type                      perpendicular_common
+            common_direction                    0 1 0
+            common_up_vector                    0 0 1
+        }
+        emitter                                 Point Emitter5
+        {
+            emission_rate                       2
+            angle                               dyn_random
+            {
+                min                             45
+                max                             90
+            }
+            time_to_live                        dyn_random
+            {
+                min                             3
+                max                             4
+            }
+            velocity                            0
+            duration                            20
+            all_particle_dimensions             dyn_random
+            {
+                min                             80
+                max                             100
+            }
+            particle_width                      dyn_random
+            {
+                min                             0
+                max                             0
+            }
+            auto_direction                      true
+            force_emission                      true
+        }
+        affector                                Scale Affector104
+        {
+            x_scale                             dyn_curved_linear
+            {
+                control_point                   0 10
+                control_point                   0.2 1
+                control_point                   0.3 0.2
+                control_point                   1 0
+            }
+        }
+        affector                                TextureRotator Affector102
+        {
+            use_own_rotation                    true
+            rotation                            dyn_random
+            {
+                min                             0
+                max                             360
+            }
+            rotation_speed                      dyn_random
+            {
+                min                             0
+                max                             0
+            }
+        }
+        affector                                Colour Affector103
+        {
+            time_colour                         0    0 0 0 1
+            time_colour                         0.04 0.831373 0.792157 0.74902 1
+            time_colour                         0.08 0.556863 0.513726 0.556863 1
+            time_colour                         1    0 0 0 1
+        }
+        observer                                OnClear Observer21
+        {
+            handler                             DoStopSystem Handler26
+            {
+            }
+        }
+    }
+}

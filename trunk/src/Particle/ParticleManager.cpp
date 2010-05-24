@@ -41,6 +41,9 @@ void ParticleManager::initialize()
 	mParticleSystem = mParticleSystemManager->createParticleSystem("smokeB", "WyvernsAssault/Smoke", mSceneManager);	
 	mSceneManager->getRootSceneNode()->createChildSceneNode("smokeNodeB",Vector3(-615,690,450))->attachObject(mParticleSystem);
 	mParticleSystem->start();
+
+	mParticleSystem = mParticleSystemManager->createParticleSystem("blood", "WyvernsAssault/BloodKill", mSceneManager);	
+	mSceneManager->getRootSceneNode()->createChildSceneNode("bloodNode", Vector3::ZERO)->attachObject(mParticleSystem);	
 	/*************/
 
 }
@@ -64,4 +67,13 @@ void ParticleManager::update(const float elapsedSeconds)
 void ParticleManager::createParticle(String name)
 {
 
+}
+
+/** Blood particles */
+void ParticleManager::blood(Vector3 position)
+{
+	SceneNode* bloodNode = mSceneManager->getSceneNode("bloodNode");
+	bloodNode->setPosition(position);
+	ParticleUniverse::ParticleSystem* blood = mParticleSystemManager->getParticleSystem("blood");
+	blood->startAndStopFade(1);
 }

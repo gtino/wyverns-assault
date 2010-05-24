@@ -54,6 +54,9 @@ namespace WyvernsAssault
 		/** Create particle system function */		
 		void createParticle(String name);
 
+		/** Blood particles */
+		void blood(Vector3 position);
+
 	private:
 		ParticleUniverse::ParticleSystemManager*	mParticleSystemManager;
 		ParticleUniverse::ParticleSystem*			mParticleSystem;
