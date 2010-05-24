@@ -158,6 +158,7 @@ void EnemyManager::registerHandlers()
 
 void EnemyManager::unregisterHandlers()
 {
+
 }
 
 void EnemyManager::handleCollisionEvent(CollisionEventPtr evt)

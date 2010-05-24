@@ -71,9 +71,9 @@ namespace WyvernsAssault
 		*/
 		void update(const float elpasedSeconds);
 
-		//
+		// ----------------
 		// Events interface
-		//
+		// ----------------
 		// Register event handlers
 		void registerHandlers();
 		// Unregister handlers

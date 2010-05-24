@@ -27,6 +27,10 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #include <OgreSingleton.h>
 #include <ParticleUniversePlugin.h>
 
+#include <boost/enable_shared_from_this.hpp>
+
+#include "..\Events\EventsInterface.h"
+
 using namespace Ogre;
 
 namespace WyvernsAssault 
@@ -34,7 +38,7 @@ namespace WyvernsAssault
 	/**
 	Class used to manage all the particle systems
 	*/
-	class ParticleManager : public Ogre::Singleton<ParticleManager>
+	class ParticleManager : public Ogre::Singleton<ParticleManager>, public boost::enable_shared_from_this<ParticleManager>, public EventsInterface
 	{
 	public:
 		ParticleManager(SceneManager* sceneManager);
@@ -57,6 +61,16 @@ namespace WyvernsAssault
 		/** Blood particles */
 		void blood(Vector3 position);
 
+		// ----------------
+		// Events interface
+		// ----------------
+		// Register event handlers
+		void registerHandlers();
+		// Unregister handlers
+		void unregisterHandlers();
+
+		void handleEnemyHitEvent(EnemyHitEventPtr evt);
+
 	private:
 		ParticleUniverse::ParticleSystemManager*	mParticleSystemManager;
 		ParticleUniverse::ParticleSystem*			mParticleSystem;
@@ -65,6 +79,8 @@ namespace WyvernsAssault
 		SceneManager*			mSceneManager;
 
 	};
+
+	typedef boost::shared_ptr<ParticleManager> ParticleManagerPtr;
 }
 	
 #endif // __PARTICLE_MANAGER_H__
