@@ -19,11 +19,11 @@ void Player::initializeEntity(Ogre::Entity* mesh, Ogre::SceneNode* sceneNode)
 	mMesh = mesh;
 
 	// Animations
-	mIddle = mMesh->getAnimationState("Iddle_01");
+	mIddle = mMesh->getAnimationState("Iddle_02");
 	mIddle->setEnabled(true);
 	mRun = mMesh->getAnimationState("Run");
 	mRun->setEnabled(true);
-	mAttackA = mMesh->getAnimationState("Attack_A_01");
+	mAttackA = mMesh->getAnimationState("AttackA_01");
 	mAttackA->setEnabled(true);
 	mSpecial = mMesh->getAnimationState("Special");
 	mSpecial->setEnabled(true);
@@ -58,7 +58,7 @@ void Player::setFireBreath(ParticleUniverse::ParticleSystem* fireBreath)
 	mFireBreath = fireBreath;
 
 	// Attach to bone	
-	mBreathPoint = mMesh->attachObjectToBone("bone25", mFireBreath);
+	mBreathPoint = mMesh->attachObjectToBone("llengua1", mFireBreath);
 }
 
 void Player::setPosition(Ogre::Vector3 position)
