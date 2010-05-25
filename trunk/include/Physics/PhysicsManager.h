@@ -84,6 +84,9 @@ namespace WyvernsAssault
 		void move(PlayerPtr player, Vector3 direction);
 		void move(EnemyPtr enemy, int rotate, int thrust);
 
+		// TEST!
+		void checkForCollisions();
+
 		//
 		// Events interface
 		//

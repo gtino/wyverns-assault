@@ -70,6 +70,9 @@ namespace WyvernsAssault
 		//virtual void lookAt(const Ogre::Vector3 lookAt) { mSceneNode->lookAt(lookAt,Ogre::TraTransformSpace::); }
 
 		virtual void setMaterialName(const Ogre::String materialName) { mMesh->setMaterialName(materialName);}
+		
+		Ogre::Entity* getEntity(){return mMesh;};
+		const Ogre::AxisAlignedBox& getBoundingBox(){return mMesh->getBoundingBox();}
 
 	protected:
 		Ogre::Entity* mMesh;

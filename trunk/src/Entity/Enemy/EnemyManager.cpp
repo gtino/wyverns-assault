@@ -187,7 +187,7 @@ void EnemyManager::handleEnemyHitEvent(EnemyHitEventPtr evt)
 	PlayerPtr player = evt->getPlayer();
 
 	// The player has just hit the enemy
-	removeEnemy(enemy->getName());
+	//removeEnemy(enemy->getName());
 }
 
 // --------------------------------
