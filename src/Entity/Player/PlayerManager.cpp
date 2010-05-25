@@ -15,8 +15,9 @@ PlayerManager& PlayerManager::getSingleton(void)
 }
 // END SINGLETON
 
-PlayerManager::PlayerManager(Ogre::SceneManager* sceneManager) :
-mSceneManager(0)
+PlayerManager::PlayerManager(Ogre::SceneManager* sceneManager):
+mSceneManager(0),
+mIsDebugEnabled(false)
 {
 	mSceneManager = sceneManager;
 }
@@ -45,7 +46,7 @@ PlayerPtr PlayerManager::createPlayer(Ogre::String name, Ogre::String mesh)
 
 	PlayerPtr player = PlayerPtr(new Player(name));
 
-	player->initialize( name, playerMesh, playerSceneNode, mSceneManager );
+	player->initializeEntity( playerMesh, playerSceneNode );
 
 	mPlayerList.push_back(player);
 	mPlayerMap[name] = player;
@@ -76,6 +77,20 @@ bool PlayerManager::removePlayer(Ogre::String name)
 	mSceneManager->destroyEntity(name);//getRootSceneNode()->removeChild(name);
 
 	return true;
+}
+
+void PlayerManager::setDebugEnabled(bool isDebugEnabled)
+{
+	if(mIsDebugEnabled != isDebugEnabled)
+	{
+		mIsDebugEnabled = isDebugEnabled;
+
+		for(int i = 0; i < mPlayerList.size() ; i++)
+		{
+			PlayerPtr player =  mPlayerList[i];
+			player->setDebugEnabled(mIsDebugEnabled);
+		}
+	}
 }
 
 // --------------------------------

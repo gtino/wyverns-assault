@@ -41,6 +41,12 @@ void PlayState::initialize()
 	// Add Playstate as frame listener
 	mRoot->addFrameListener(this);
 
+	//
+	// Particle Manager
+	//
+	mParticleManager = new ParticleManager(mSceneManager);
+	mParticleManager->initialize();
+
 	// Player manager constructor
 	mPlayerManager = new PlayerManager(mSceneManager);
 	mPlayerManager->initialize();
@@ -48,6 +54,8 @@ void PlayState::initialize()
 	// Create a single player (TEST!)
 	mPlayer1 = mPlayerManager->createPlayer("Player1","redWyvern.mesh");
 	mPlayer1->setPosition(Vector3(50, 20, 870));
+	// Add fire breath (TEST!)
+	mPlayer1->setFireBreath(mParticleManager->create("firebreath","WyvernsAssault/DragonBreath"));
 
 	// Camera manager constructor
 	mCameraManager = new CameraManager(mSceneManager, mWindow, mViewport);
@@ -105,12 +113,6 @@ void PlayState::initialize()
 	//
 	mLogicManager = new LogicManager();
 	mLogicManager->initialize();
-
-	//
-	// Particle Manager
-	//
-	mParticleManager = new ParticleManager(mSceneManager);
-	mParticleManager->initialize();
 
 	// -----------
 	// Lua Manager
@@ -575,6 +577,9 @@ bool PlayState::keyPressed(const OIS::KeyEvent& e)
 			mTrayMgr->showFrameStats(OgreBites::TL_BOTTOMLEFT);
 			mTrayMgr->showLogo(OgreBites::TL_BOTTOMRIGHT);
 			mCameraManager->showAxes();
+
+			mEnemyManager->setDebugEnabled(true);
+			mPlayerManager->setDebugEnabled(true);
 		}
 		else
 		{
@@ -583,6 +588,9 @@ bool PlayState::keyPressed(const OIS::KeyEvent& e)
 			mTrayMgr->hideFrameStats();
 			mTrayMgr->hideLogo();
 			mCameraManager->hideAxes();
+
+			mEnemyManager->setDebugEnabled(false);
+			mPlayerManager->setDebugEnabled(false);
 		}		
 		break;
 	// Cycle filtering mode

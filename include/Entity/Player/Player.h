@@ -31,6 +31,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #include "..\..\Physics\PhysicsInterface.h"
 #include "..\..\Logic\LogicInterface.h"
 
+#include "..\OBBoxRenderable.h"
+
 // Player default movement speed (10 = 1 m/s)
 #define SPEED	50
 
@@ -46,9 +48,13 @@ namespace WyvernsAssault
 	public:
 		Player(Ogre::String name);
 		~Player();
-	
-		void initialize(String name, Ogre::Entity* mesh, Ogre::SceneNode* sceneNode, Ogre::SceneManager* sceneManager);
-		void finalize();
+
+		// EntityInterface
+		void initializeEntity(Ogre::Entity* mesh, Ogre::SceneNode* sceneNode);
+		void finalizeEntity();
+
+		// Particle systems
+		void setFireBreath(ParticleUniverse::ParticleSystem* fireBreath);
 
 		void setPosition(Ogre::Vector3 position);
 
@@ -67,6 +73,10 @@ namespace WyvernsAssault
 		// Animation functions
 		void updateAnimation(float elapsedSeconds);
 
+		// Enable Debug Stuff
+		void setDebugEnabled(bool isDebugEnabled);
+		bool getDebugEnabled(){return mIsDebugEnabled;};
+
 	private:
 		Ogre::Vector3 mDirection;
 		Ogre::Vector3 mLastDirection;
@@ -75,14 +85,16 @@ namespace WyvernsAssault
 		Ogre::AnimationState* mRun;
 		Ogre::AnimationState* mAttackA;
 		Ogre::AnimationState* mSpecial;
-
-		Ogre::SceneManager*					mSceneManager;		
+				
 		TagPoint*							mBreathPoint;
 		ParticleUniverse::ParticleSystem*	mFireBreath;
 
 		bool moving;
 		bool attacking;
 		bool special;
+
+		OBBoxRenderable* mOBBoxRenderable;
+		bool mIsDebugEnabled;
 	};
 
 	typedef boost::shared_ptr<Player> PlayerPtr;
