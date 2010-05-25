@@ -92,7 +92,7 @@ namespace WyvernsAssault
 		LuaManager*	mLuaManager;	
 		PhysicsManagerPtr mPhysicsManager;
 		ItemManager* mItemManager;
-		ParticleManager* mParticleManager;
+		ParticleManagerPtr mParticleManager;
 		EventsManager* mEventsManager;
 
 		//

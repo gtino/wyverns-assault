@@ -12,7 +12,6 @@ PlayState::PlayState(GraphicsManager& graphicsManager, InputManager& inputManage
 , mTrayMgr(NULL)
 , mDetailsPanel(NULL)
 , mCompositorsEnabled(false)
-, mParticleManager(NULL)
 {
 	//
 	// TODO Constructor logic HERE
@@ -44,7 +43,7 @@ void PlayState::initialize()
 	//
 	// Particle Manager
 	//
-	mParticleManager = new ParticleManager(mSceneManager);
+	mParticleManager = ParticleManagerPtr(new ParticleManager(mSceneManager));
 	mParticleManager->initialize();
 
 	// Player manager constructor
@@ -154,6 +153,7 @@ void PlayState::initialize()
 	//
 	mEventsManager->registerInterface(mEnemyManager.get());
 	mEventsManager->registerInterface(mPhysicsManager.get());
+	mEventsManager->registerInterface(mParticleManager.get());
 
 	//
 	// Set game camera
@@ -401,14 +401,6 @@ void PlayState::unload()
 /** Destroy the state */
 void PlayState::finalize()
 {
-	if(mParticleManager)
-	{
-		delete mParticleManager;
-		mParticleManager = NULL;
-	}
-
-	BaseState::finalize();
-
 	// FIRST!
 	if(mLuaManager)
 	{
@@ -466,6 +458,10 @@ void PlayState::finalize()
 		delete mEventsManager;
 		mEventsManager = NULL;
 	}
+
+	mParticleManager.reset();
+
+	BaseState::finalize();
 }
 
 /** Get state Id */
@@ -523,11 +519,6 @@ bool PlayState::keyPressed(const OIS::KeyEvent& e)
 	{
 	case OIS::KeyCode::KC_ESCAPE:
 		this->mNextGameStateId = GameStateId::Exit;
-		// Finalize particle manager required
-		if(mParticleManager)
-		{			
-			mParticleManager->finalize();
-		}
 		break;
 	case OIS::KeyCode::KC_I:
 		this->mNextGameStateId = GameStateId::Ending;

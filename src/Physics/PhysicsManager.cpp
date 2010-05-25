@@ -154,7 +154,33 @@ void PhysicsManager::update(const float elapsedSeconds){
 
 	}
 
+	checkForCollisions();
+
 	return;
+}
+
+// TEST!
+void PhysicsManager::checkForCollisions()
+{
+	for(OdePlayerMapIterator it_player = mPlayerMap.begin(); it_player != mPlayerMap.end(); ++it_player)
+	{
+		PlayerPtr player = it_player->second;
+		AxisAlignedBox player_box = player->getSceneNode()->_getWorldAABB();
+
+		for(OdeEnemyMapIterator it_enemy = mEnemyMap.begin(); it_enemy != mEnemyMap.end(); ++it_enemy)
+		{
+			EnemyPtr enemy = it_enemy->second;
+
+			AxisAlignedBox enemy_box = enemy->getSceneNode()->_getWorldAABB();
+			
+			AxisAlignedBox aab = enemy_box.intersection(player_box);
+			if(!aab.isNull())
+			{
+				EnemyHitEventPtr enemyHitEventPtr = EnemyHitEventPtr(new EnemyHitEvent(enemy, player));
+				raiseEvent(enemyHitEventPtr);
+			}
+		}
+	}
 }
 
 void PhysicsManager::addEnemy(EnemyPtr enemy)
