@@ -1,4 +1,5 @@
-// Particle Systems Materials
+// Wyverns Assault - Particle Systems Materials
+
 material Particle/Smoke
 {
     technique
@@ -16,7 +17,7 @@ material Particle/Smoke
         }
     }
 }
-
+//-----------------------------------------------------------------------------------------------------------------------------------------------
 material Particle/Fire
 {
     technique
@@ -34,7 +35,7 @@ material Particle/Fire
         }
     }
 }
-
+//-----------------------------------------------------------------------------------------------------------------------------------------------
 material Particle/BloodSpray
 {
     technique
@@ -52,7 +53,7 @@ material Particle/BloodSpray
         }
     }
 }
-
+//-----------------------------------------------------------------------------------------------------------------------------------------------
 material Particle/BloodSplash
 {
     technique
@@ -70,7 +71,7 @@ material Particle/BloodSplash
         }
     }
 }
-
+//-----------------------------------------------------------------------------------------------------------------------------------------------
 material Particle/BloodHit
 {
     technique
@@ -88,3 +89,59 @@ material Particle/BloodHit
         }
     }
 }
+//-----------------------------------------------------------------------------------------------------------------------------------------------
+material Particle/Flare
+{
+    technique
+    {
+        pass
+        {
+            lighting off
+            scene_blend add
+            depth_write off
+
+            texture_unit
+            {
+                texture particle_flare.png
+            }
+        }
+    }
+}
+//-----------------------------------------------------------------------------------------------------------------------------------------------
+material Particle/RibbonTrail
+{
+    technique
+    {
+        pass
+        {
+            lighting off
+            scene_blend add
+            depth_write off
+
+            texture_unit
+            {
+                texture particle_ribbontrail.png 1d
+                tex_address_mode clamp
+                filtering none
+            }
+        }
+    }
+}
+//-----------------------------------------------------------------------------------------------------------------------------------------------
+material Particle/Rain
+{
+    technique
+    {
+        pass
+        {
+            scene_blend colour_blend
+            depth_write off
+
+            texture_unit
+            {
+                texture particle_rain.png
+            }
+        }
+    }
+}
+//-----------------------------------------------------------------------------------------------------------------------------------------------

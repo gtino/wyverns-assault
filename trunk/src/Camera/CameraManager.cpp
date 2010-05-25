@@ -107,7 +107,7 @@ Vector3 CameraManager::getCameraPosition()
 Vector3 CameraManager::getCameraLookAt()
 { 
 	if(mCameraMode == "Free")
-		return mCamera->getDirection();
+		return mCamera->getRealPosition() + mCamera->getDirection() * 50;
 	else
 		return mCameraLookAtNode->getPosition();
 }
@@ -140,72 +140,40 @@ Vector3 CameraManager::getDirection(Vector3 direction)
 {
 	Vector3 finalDirection;
 
-	// Checking game area for x direction (begin-end camera segments problem). NEED IMPROVING!
-
 	if(direction == Vector3(1,0,0))
 	{
-		if(mGameArea < 7)
-			finalDirection = mCameraSegments[mGameArea].mPositionEnd - mCameraSegments[mGameArea].mPositionBegin;
-		else
-			finalDirection = mCameraSegments[mGameArea].mPositionBegin - mCameraSegments[mGameArea].mPositionEnd;
+		finalDirection = Quaternion(Degree(270), Vector3::UNIT_Y) * mCamera->getDirection();
 	}
 	else if(direction == Vector3(-1,0,0))
 	{
-		if(mGameArea < 7)
-			finalDirection = mCameraSegments[mGameArea].mPositionBegin - mCameraSegments[mGameArea].mPositionEnd;
-		else
-			finalDirection = mCameraSegments[mGameArea].mPositionEnd - mCameraSegments[mGameArea].mPositionBegin;
+		finalDirection = Quaternion(Degree(90), Vector3::UNIT_Y) * mCamera->getDirection();
 	}
 	else if(direction == Vector3(0,0,1))
 	{
-		finalDirection = getCameraPosition() - getCameraLookAt();
+		finalDirection = Quaternion(Degree(180), Vector3::UNIT_Y) * mCamera->getDirection();
 	}
 	else if(direction == Vector3(0,0,-1))
 	{
-		finalDirection = getCameraLookAt() - getCameraPosition();
+		finalDirection = mCamera->getDirection();
 	}
 	else if(direction == Vector3(1,0,1))
 	{
-		if(mGameArea < 7)
-			finalDirection = mCameraSegments[mGameArea].mPositionEnd - mCameraSegments[mGameArea].mPositionBegin;
-		else
-			finalDirection = mCameraSegments[mGameArea].mPositionBegin - mCameraSegments[mGameArea].mPositionEnd;
-
-		finalDirection = finalDirection + (getCameraPosition() - getCameraLookAt());
+		finalDirection = Quaternion(Degree(225), Vector3::UNIT_Y) * mCamera->getDirection();
 	}
 	else if(direction == Vector3(1,0,-1))
 	{
-		if(mGameArea < 7)
-			finalDirection = mCameraSegments[mGameArea].mPositionEnd - mCameraSegments[mGameArea].mPositionBegin;
-		else
-			finalDirection = mCameraSegments[mGameArea].mPositionBegin - mCameraSegments[mGameArea].mPositionEnd;
-
-		finalDirection = finalDirection + (getCameraLookAt() - getCameraPosition());
+		finalDirection = Quaternion(Degree(315), Vector3::UNIT_Y) * mCamera->getDirection();
 	}
 	else if(direction == Vector3(-1,0,1))
 	{
-		if(mGameArea < 7)
-			finalDirection = mCameraSegments[mGameArea].mPositionBegin - mCameraSegments[mGameArea].mPositionEnd;
-		else
-			finalDirection = mCameraSegments[mGameArea].mPositionEnd - mCameraSegments[mGameArea].mPositionBegin;
-
-		finalDirection = finalDirection + (getCameraPosition() - getCameraLookAt());
+		finalDirection = Quaternion(Degree(135), Vector3::UNIT_Y) * mCamera->getDirection();
 	}		
 	else if(direction == Vector3(-1,0,-1))
 	{
-		if(mGameArea < 7)
-			finalDirection = mCameraSegments[mGameArea].mPositionBegin - mCameraSegments[mGameArea].mPositionEnd;
-		else
-			finalDirection = mCameraSegments[mGameArea].mPositionEnd - mCameraSegments[mGameArea].mPositionBegin;
-
-		finalDirection = finalDirection + (getCameraLookAt() - getCameraPosition());
+		finalDirection = Quaternion(Degree(45), Vector3::UNIT_Y) * mCamera->getDirection();
 	}
 
-	// Don't use y component
-	finalDirection = finalDirection * Vector3(1,0,1);
-	// Normalize vector for constant speed
-	finalDirection.normalise();
-	return finalDirection;
+	return finalDirection * Vector3(1,0,1);
 }
 
 /** Camera functions **/
