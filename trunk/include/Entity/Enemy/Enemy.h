@@ -29,6 +29,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #include "..\..\Physics\PhysicsInterface.h"
 #include "..\..\Logic\LogicInterface.h"
 
+#include "..\OBBoxRenderable.h"
+
 #define ENEMY_BILLBOARD_SHOW_TIME 2.0f // seconds
 
 #define ENEMY_SPEED_SLOW 10.0f
@@ -73,6 +75,9 @@ namespace WyvernsAssault
 		Enemy(EnemyTypes type);
 		~Enemy();
 
+		void initializeEntity(Ogre::Entity* mesh, Ogre::SceneNode* sceneNode);
+		void finalizeEntity();
+
 		virtual void updateEntity(const float elapsedSeconds);
 		virtual void updateLogic(lua_State *L, const float elapsedSeconds);
 
@@ -87,6 +92,10 @@ namespace WyvernsAssault
 		void move(Vector3 to);
 
 		bool isHurt();
+
+		// Enable Debug Stuff
+		void setDebugEnabled(bool isDebugEnabled);
+		bool getDebugEnabled(){return mIsDebugEnabled;};
 
 	private:
 		EnemyTypes mType;
@@ -103,6 +112,9 @@ namespace WyvernsAssault
 		float mMaxLife;
 		float mLife;
 		Ogre::Vector3 mDirection;
+
+		OBBoxRenderable* mOBBoxRenderable;
+		bool mIsDebugEnabled;
 
 	private:
 		void chase();

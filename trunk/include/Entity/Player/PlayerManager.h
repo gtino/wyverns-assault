@@ -59,11 +59,17 @@ namespace WyvernsAssault
 		PlayerPtr getPlayer(Ogre::String name);
 		bool removePlayer(Ogre::String name);
 
+		// Enable Debug Stuff
+		void setDebugEnabled(bool isDebugEnabled);
+		bool getDebugEnabled(){return mIsDebugEnabled;};
+
 	private:
 		SceneManager *mSceneManager;
 
 		PlayerList mPlayerList;
 		PlayerMap mPlayerMap;
+
+		bool mIsDebugEnabled;
 
 	// --------------------------------
 	// BEGIN Lua Interface Declarations

@@ -34,7 +34,9 @@ mStateTimeout(0.0f),
 mState(EnemyStates::Initial),
 mMaxLife(100.0f),
 mLife(100.0f),
-mDirection(Vector3::ZERO)
+mDirection(Vector3::ZERO),
+mOBBoxRenderable(0),
+mIsDebugEnabled(false)
 {
 	mType = type;
 	mAnimationState = 0;
@@ -42,6 +44,29 @@ mDirection(Vector3::ZERO)
 
 Enemy::~Enemy()
 {
+	finalizeEntity();
+}
+
+void Enemy::initializeEntity(Ogre::Entity* mesh, Ogre::SceneNode* sceneNode)
+{
+	mSceneNode = sceneNode;
+	mMesh = mesh;
+
+	// Bounding Box
+	mOBBoxRenderable = new OBBoxRenderable("OBBoxManualMaterial_Enemy");
+
+	mOBBoxRenderable->setupVertices(mMesh->getBoundingBox());
+	mOBBoxRenderable->setVisible(mIsDebugEnabled);
+	mSceneNode->attachObject(mOBBoxRenderable);
+}
+
+void Enemy::finalizeEntity()
+{	
+	if(mOBBoxRenderable)
+	{
+	delete mOBBoxRenderable;
+	mOBBoxRenderable = NULL;
+	}
 }
 
 void Enemy::setBillboardSet(BillboardSet* balloonSet)
@@ -229,5 +254,16 @@ void Enemy::move(Vector3 to)
 			mAnimationState->setEnabled(true);
 			mAnimationState->setLoop(true);
 		}
+	}
+}
+
+void Enemy::setDebugEnabled(bool isDebugEnabled)
+{
+	if(mIsDebugEnabled != isDebugEnabled)
+	{
+		mIsDebugEnabled = isDebugEnabled;
+
+		if(mOBBoxRenderable)
+			mOBBoxRenderable->setVisible(mIsDebugEnabled);
 	}
 }

@@ -56,7 +56,7 @@ namespace WyvernsAssault
 		void update(const float elapsedSeconds);
 
 		/** Create particle system function */		
-		void createParticle(String name);
+		ParticleUniverse::ParticleSystem* create(String id, String material);
 
 		/** Blood particles */
 		void bloodHit(Vector3 position);

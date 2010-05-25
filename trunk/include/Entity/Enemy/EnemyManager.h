@@ -71,6 +71,10 @@ namespace WyvernsAssault
 		*/
 		void update(const float elpasedSeconds);
 
+		// Enable Debug Stuff
+		void setDebugEnabled(bool isDebugEnabled);
+		bool getDebugEnabled(){return mIsDebugEnabled;};
+
 		// ----------------
 		// Events interface
 		// ----------------
@@ -88,6 +92,8 @@ namespace WyvernsAssault
 	private:
 		int mCount;
 		int mId;
+
+		bool mIsDebugEnabled;
 
 		EnemyList mEnemyList;
 		EnemyMap mEnemyMap;

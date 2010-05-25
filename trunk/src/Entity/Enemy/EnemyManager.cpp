@@ -16,7 +16,8 @@ EnemyManager& EnemyManager::getSingleton(void)
 
 EnemyManager::EnemyManager(Ogre::SceneManager* sceneManager) :
 mCount(0),
-mId(0)
+mId(0),
+mIsDebugEnabled(false)
 {
 	mSceneManager = sceneManager;
 }
@@ -142,6 +143,20 @@ void EnemyManager::update(const float elapsedSeconds)
 		enemy->updateLogic(L,elapsedSeconds);
 		//enemy->updatePhysics(elapsedSeconds);
 		enemy->updateEntity(elapsedSeconds);
+	}
+}
+
+void EnemyManager::setDebugEnabled(bool isDebugEnabled)
+{
+	if(mIsDebugEnabled != isDebugEnabled)
+	{
+		mIsDebugEnabled = isDebugEnabled;
+
+		for(int i = 0; i < mEnemyList.size() ; i++)
+		{
+			EnemyPtr enemy =  mEnemyList[i];
+			enemy->setDebugEnabled(mIsDebugEnabled);
+		}
 	}
 }
 

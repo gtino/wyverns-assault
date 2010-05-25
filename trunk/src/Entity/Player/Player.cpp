@@ -2,29 +2,30 @@
 
 using namespace WyvernsAssault;
 
-Player::Player(Ogre::String name)
+Player::Player(Ogre::String name) :
+mOBBoxRenderable(0),
+mIsDebugEnabled(false)
 {
 }
 
 Player::~Player()
 {
-	finalize();
+	finalizeEntity();
 }
 
-void Player::initialize(String name, Ogre::Entity* mesh, Ogre::SceneNode* sceneNode, Ogre::SceneManager* sceneManager)
+void Player::initializeEntity(Ogre::Entity* mesh, Ogre::SceneNode* sceneNode)
 {
 	mSceneNode = sceneNode;
 	mMesh = mesh;
-	mSceneManager = sceneManager;
 
 	// Animations
-	mIddle = mesh->getAnimationState("Iddle_01");
+	mIddle = mMesh->getAnimationState("Iddle_01");
 	mIddle->setEnabled(true);
-	mRun = mesh->getAnimationState("Run");
+	mRun = mMesh->getAnimationState("Run");
 	mRun->setEnabled(true);
-	mAttackA = mesh->getAnimationState("Attack_A_01");
+	mAttackA = mMesh->getAnimationState("Attack_A_01");
 	mAttackA->setEnabled(true);
-	mSpecial = mesh->getAnimationState("Special");
+	mSpecial = mMesh->getAnimationState("Special");
 	mSpecial->setEnabled(true);
 
 	mesh->getSkeleton()->setBlendMode(SkeletonAnimationBlendMode::ANIMBLEND_CUMULATIVE);
@@ -34,16 +35,30 @@ void Player::initialize(String name, Ogre::Entity* mesh, Ogre::SceneNode* sceneN
 	special = false;
 	mDirection = Vector3::ZERO;
 	
-	// Special attack particle system (fire breath)
-	mFireBreath = ParticleUniverse::ParticleSystemManager::getSingletonPtr()->createParticleSystem("fireBreath", "WyvernsAssault/DragonBreath", mSceneManager);
+	// Bounding Box
+	mOBBoxRenderable = new OBBoxRenderable("OBBoxManualMaterial_Player");
 
-	// Attach to bone	
-	Entity* playerMesh = mSceneManager->getEntity(name);
-	mBreathPoint = playerMesh->attachObjectToBone("bone25", mFireBreath);
+	mOBBoxRenderable->setupVertices(mMesh->getBoundingBox());
+	mOBBoxRenderable->setVisible(mIsDebugEnabled);
+	mSceneNode->attachObject(mOBBoxRenderable);
 }
 
-void Player::finalize()
+void Player::finalizeEntity()
 {	
+	if(mOBBoxRenderable)
+	{
+	delete mOBBoxRenderable;
+	mOBBoxRenderable = NULL;
+	}
+}
+
+void Player::setFireBreath(ParticleUniverse::ParticleSystem* fireBreath)
+{
+	// Special attack particle system (fire breath)
+	mFireBreath = fireBreath;
+
+	// Attach to bone	
+	mBreathPoint = mMesh->attachObjectToBone("bone25", mFireBreath);
 }
 
 void Player::setPosition(Ogre::Vector3 position)
@@ -140,5 +155,16 @@ void Player::updateAnimation(float elapsedSeconds)
 	{
 		special = false;
 		mSpecial->setEnabled(false);
+	}
+}
+
+void Player::setDebugEnabled(bool isDebugEnabled)
+{
+	if(mIsDebugEnabled != isDebugEnabled)
+	{
+		mIsDebugEnabled = isDebugEnabled;
+		
+		if(mOBBoxRenderable)
+			mOBBoxRenderable->setVisible(mIsDebugEnabled);
 	}
 }

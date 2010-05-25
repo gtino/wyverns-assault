@@ -67,9 +67,9 @@ void ParticleManager::update(const float elapsedSeconds)
 }
 
 /** Create particle system function */		
-void ParticleManager::createParticle(String name)
+ParticleUniverse::ParticleSystem* ParticleManager::create(String id, String material)
 {
-
+	return ParticleUniverse::ParticleSystemManager::getSingletonPtr()->createParticleSystem(id, material, mSceneManager);
 }
 
 /** Blood particles */

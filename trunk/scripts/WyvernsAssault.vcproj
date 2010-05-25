@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="Windows-1252"?>
 <VisualStudioProject
 	ProjectType="Visual C++"
-	Version="9.00"
+	Version="9,00"
 	Name="WyvernsAssault"
 	ProjectGUID="{DA8BACB6-E0B2-465D-84CE-60A33C2E795E}"
 	RootNamespace="WyvernsAssault"
@@ -407,6 +407,10 @@
 					RelativePath="..\src\Entity\EntityManager.cpp"
 					>
 				</File>
+				<File
+					RelativePath="..\src\Entity\OBBoxRenderable.cpp"
+					>
+				</File>
 				<Filter
 					Name="Player"
 					>
@@ -699,6 +703,10 @@
 				</File>
 				<File
 					RelativePath="..\include\Entity\EntityManager.h"
+					>
+				</File>
+				<File
+					RelativePath="..\include\Entity\OBBoxRenderable.h"
 					>
 				</File>
 				<Filter
