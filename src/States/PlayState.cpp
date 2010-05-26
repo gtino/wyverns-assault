@@ -653,7 +653,7 @@ bool PlayState::keyPressed(const OIS::KeyEvent& e)
 
 	// Attack A
 	case OIS::KeyCode::KC_SPACE:
-		mPlayer1->attackA();
+		mPlayer1->attackA1();
 		break;
 	// Special Attack
 	case OIS::KeyCode::KC_BACK:
