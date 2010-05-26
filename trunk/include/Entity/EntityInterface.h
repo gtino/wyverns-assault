@@ -59,6 +59,8 @@ namespace WyvernsAssault
 		virtual Ogre::SceneNode* getSceneNode() const { return mSceneNode; }
 		virtual void setSceneNode(Ogre::SceneNode* sceneNode) { mSceneNode = sceneNode; }
 
+		virtual Ogre::Entity* getEntity() const { return mMesh; }
+
 		virtual const Ogre::String& getName() { return mMesh->getName(); }
 
 		virtual void setPosition(const Ogre::Vector3 position) { mSceneNode->setPosition(position); }
