@@ -63,13 +63,18 @@ namespace WyvernsAssault
 
 		// Player actions functions
 		void move(Real x, Real y, Real z);
+		// Main attack combo
+		void attackA();
+		// Main attack chains
 		void attackA1();
 		void attackA2();
 		void attackA3();
+		// Secondary Attack
 		void attackB();
+		// Special Attack
 		void attackSpecial();
 
-		bool isAttacking(){ return attacking ; }
+		bool isAttacking(){ return attacking != 0 ; }
 		bool isSpecial(){ return special ; }
 
 		// Animation functions
@@ -96,9 +101,9 @@ namespace WyvernsAssault
 		TagPoint*							mBreathPoint;
 		ParticleUniverse::ParticleSystem*	mFireBreath;
 
-		bool moving;
-		bool attacking;
+		bool moving;		
 		bool special;
+		Real attacking;
 
 		OBBoxRenderable* mOBBoxRenderable;
 		bool mIsDebugEnabled;

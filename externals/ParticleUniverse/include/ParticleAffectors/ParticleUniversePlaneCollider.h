@@ -2,7 +2,7 @@
 -----------------------------------------------------------------------------------------------
 This source file is part of the Particle Universe product.
 
-Copyright (c) 2009 Henry van Merode
+Copyright (c) 2010 Henry van Merode
 
 Usage of this program is licensed under the terms of the Particle Universe Commercial License.
 You can find a copy of the Commercial License in the Particle Universe package.
@@ -13,7 +13,7 @@ You can find a copy of the Commercial License in the Particle Universe package.
 #define __PU_PLANE_COLLIDER_H__
 
 #include "ParticleUniversePrerequisites.h"
-#include "ParticleUniverseCollider.h"
+#include "ParticleUniverseBaseCollider.h"
 #include "OgrePlane.h"
 
 namespace ParticleUniverse
@@ -21,7 +21,7 @@ namespace ParticleUniverse
 	/** The PlaneCollider is a plane shape that collides with the particles. The PlaneCollider can only collide 
 		with particles that are created within the same ParticleTechnique as where the PlaneCollider is registered.
     */
-	class _ParticleUniverseExport PlaneCollider : public Collider
+	class _ParticleUniverseExport PlaneCollider : public BaseCollider
 	{
 		public:
 			// Constants

@@ -2,7 +2,7 @@
 -----------------------------------------------------------------------------------------------
 This source file is part of the Particle Universe product.
 
-Copyright (c) 2009 Henry van Merode
+Copyright (c) 2010 Henry van Merode
 
 Usage of this program is licensed under the terms of the Particle Universe Commercial License.
 You can find a copy of the Commercial License in the Particle Universe package.
@@ -28,7 +28,7 @@ namespace ParticleUniverse
 			Ogre::String mComponentName;
 
 			// Identifies the type of component
-			ParticleSystem::ComponentType mComponentType;
+			ComponentType mComponentType;
 
 			/** Determines whether the Component must be enabled or disabled.
 	        */
@@ -56,11 +56,11 @@ namespace ParticleUniverse
 
 			/** Get the value that identifies whether the component must be enabled or disabled.
 	        */
-			ParticleSystem::ComponentType getComponentType(void) const {return mComponentType;};
+			ComponentType getComponentType(void) const {return mComponentType;};
 
 			/** Set the value that identifies whether the component must be enabled or disabled.
 	        */
-			void setComponentType(ParticleSystem::ComponentType componentType){mComponentType = componentType;};
+			void setComponentType(ComponentType componentType){mComponentType = componentType;};
 
 			/** If the _handle() function of this class is invoked (by an Observer), it searches the 
 				ParticleEmitter, ParticleAffector or ParticleTechnique defined by the its name. 

@@ -2,7 +2,7 @@
 -----------------------------------------------------------------------------------------------
 This source file is part of the Particle Universe product.
 
-Copyright (c) 2009 Henry van Merode
+Copyright (c) 2010 Henry van Merode
 
 Usage of this program is licensed under the terms of the Particle Universe Commercial License.
 You can find a copy of the Commercial License in the Particle Universe package.
@@ -49,15 +49,6 @@ namespace ParticleUniverse
 				PSS_STARTED,
 				PSS_STOPPED,
 				PSS_PAUSED
-			};
-
-			enum ComponentType
-			{
-				CT_VISUAL_PARTICLE,
-				CT_TECHNIQUE,
-				CT_EMITTER,
-				CT_AFFECTOR,
-				CT_OBSERVER
 			};
 
 			/** Distance list used to specify LOD
@@ -243,44 +234,48 @@ namespace ParticleUniverse
 			*/
 			void start (void);
 
+			/** Starts the particle system and stops after a period of time.
+			*/
+			void start(Ogre::Real stopTime);
+
 			/** Convenient function to start and stop (gradually) in one step.
 			@remarks
 				This function uses the stopFade(void) funtion; see stopFade(void).
 			*/
-			void startAndStopFade (Ogre::Real stopTime);
+			void startAndStopFade(Ogre::Real stopTime);
 
 			/** Stops the particle system.
 			@remarks
 				Only if a particle system has been attached to a SceneNode and started it can be stopped.
 			*/
-			void stop (void);
+			void stop(void);
 
 			/** Stops the particle system after a period of time.
 			@remarks
 				This is basicly the same as calling setFixedTimeout().
 			*/
-			void stop (Ogre::Real stopTime);
+			void stop(Ogre::Real stopTime);
 
 			/** Stops emission of all particle and really stops the particle system when all particles are expired.
 
 			*/
-			void stopFade (void);
+			void stopFade(void);
 
 			/** Stops emission of all particle after a period of time and really stops the particle system when all particles are expired.
 			*/
-			void stopFade (Ogre::Real stopTime);
+			void stopFade(Ogre::Real stopTime);
 
 			/** Pauses the particle system.
 			*/
-			void pause (void);
+			void pause(void);
 
 			/** Pauses the particle system for a period of time. After this time, the Particle System automatically resumes.
 			*/
-			void pause (Ogre::Real pauseTime);
+			void pause(Ogre::Real pauseTime);
 
 			/** Resumes the particle system.
 			*/
-			void resume (void);
+			void resume(void);
 
 			/** Returns the state of the particle system.
 			*/
@@ -467,6 +462,10 @@ namespace ParticleUniverse
 			*/
 			void removeParticleSystemListener (ParticleSystemListener* particleSystemListener);
 
+			/** This function is called as soon as an event withing the Particle System occurs.
+			*/
+			void pushEvent(ParticleUniverseEvent& particleUniverseEvent);
+
 			/** @see MovableObject
 		    */
 			virtual void visitRenderables (Ogre::Renderable::Visitor* visitor,
@@ -510,6 +509,14 @@ namespace ParticleUniverse
 	        */
 			bool hasExternType(const Ogre::String& externType) const;
 
+			/** Return number of all emitted particles
+			*/
+			inline size_t getNumberOfEmittedParticles(void);
+
+			/** Return number of emitted particles of a certain type
+			*/
+			inline size_t getNumberOfEmittedParticles(Particle::ParticleType particleType);
+
 		protected:
 			/** Gets the LOD index to use at the given distance.
 			*/
@@ -522,6 +529,12 @@ namespace ParticleUniverse
             /** Calculate rotation of the node.
 			*/
 			inline void calulateRotationOffset(void);
+
+			/** Convenient function to generate events.
+			@remarks
+				This is only for internal use and may not be used outside the particle system.
+			*/
+			void _pushSystemEvent(EventType eventType);
 
 			/** State of the particle system.
 			@remarks
@@ -701,6 +714,14 @@ namespace ParticleUniverse
 			/** Set the mUseController to false if you want to call the _update() function yourself.
 			*/
 			bool mUseController;
+
+			/** Flag, used to determine whether a particle has been emitted.
+			*/
+			bool mAtLeastOneParticleEmitted;
+
+			/** Used to determine whether a LOD transition occured.
+			*/
+			unsigned short mLastLodIndex;
 	};
 
 }

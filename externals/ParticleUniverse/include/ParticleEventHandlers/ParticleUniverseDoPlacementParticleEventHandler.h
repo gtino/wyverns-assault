@@ -2,7 +2,7 @@
 -----------------------------------------------------------------------------------------------
 This source file is part of the Particle Universe product.
 
-Copyright (c) 2009 Henry van Merode
+Copyright (c) 2010 Henry van Merode
 
 Usage of this program is licensed under the terms of the Particle Universe Commercial License.
 You can find a copy of the Commercial License in the Particle Universe package.
@@ -36,7 +36,7 @@ namespace ParticleUniverse
 			Ogre::String mForceEmitterName;
 
 			// The number of particles to emit
-			Ogre::Real mNumberOfParticles;
+			unsigned int mNumberOfParticles;
 
 			// The position of the particle to be processed
 			Ogre::Vector3 mPosition;
@@ -67,7 +67,7 @@ namespace ParticleUniverse
 
 		public:
 			// Constants
-			static const Ogre::Real DEFAULT_NUMBER_OF_PARTICLES;
+			static const unsigned int DEFAULT_NUMBER_OF_PARTICLES;
 
 			DoPlacementParticleEventHandler(void);
 	        virtual ~DoPlacementParticleEventHandler(void);
@@ -95,11 +95,11 @@ namespace ParticleUniverse
 
 			/** Get the number of particles to emit.
 	        */
-			Ogre::Real getNumberOfParticles(void) const {return mNumberOfParticles;};
+			unsigned int getNumberOfParticles(void) const {return mNumberOfParticles;};
 
 			/** Set the number of particles to emit.
 	        */
-			void setNumberOfParticles(Ogre::Real numberOfParticles){mNumberOfParticles = numberOfParticles;};
+			void setNumberOfParticles(unsigned int numberOfParticles){mNumberOfParticles = numberOfParticles;};
 
 			/** Boolean that determines whether always the position of the particle that is handled must be used for emission of 
 				the new particle.

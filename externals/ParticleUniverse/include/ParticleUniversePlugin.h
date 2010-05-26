@@ -2,7 +2,7 @@
 -----------------------------------------------------------------------------------------------
 This source file is part of the Particle Universe product.
 
-Copyright (c) 2009 Henry van Merode
+Copyright (c) 2010 Henry van Merode
 
 Usage of this program is licensed under the terms of the Particle Universe Commercial License.
 You can find a copy of the Commercial License in the Particle Universe package.
@@ -53,7 +53,7 @@ You can find a copy of the Commercial License in the Particle Universe package.
 #include "ParticleEmitters/ParticleUniversePositionEmitterFactory.h"
 #include "ParticleEmitters/ParticleUniverseSlaveEmitterFactory.h"
 
-#include "ParticleAffectors/ParticleUniverseForceAffectorFactory.h"
+#include "ParticleAffectors/ParticleUniverseBaseForceAffectorFactory.h"
 #include "ParticleAffectors/ParticleUniverseLinearForceAffectorFactory.h"
 #include "ParticleAffectors/ParticleUniverseVortexAffectorFactory.h"
 #include "ParticleAffectors/ParticleUniverseGravityAffectorFactory.h"
@@ -76,7 +76,8 @@ You can find a copy of the Commercial License in the Particle Universe package.
 #include "ParticleAffectors/ParticleUniverseBoxColliderFactory.h"
 #include "ParticleAffectors/ParticleUniverseInterParticleColliderFactory.h"
 #include "ParticleAffectors/ParticleUniversePathFollowerFactory.h"
-#include "ParticleAffectors/ParticleUniverseColliderFactory.h"
+#include "ParticleAffectors/ParticleUniverseForceFieldAffectorFactory.h"
+#include "ParticleAffectors/ParticleUniverseBaseColliderFactory.h"
 
 #include "ParticleObservers/ParticleUniverseOnExpireObserverFactory.h"
 #include "ParticleObservers/ParticleUniverseOnEmissionObserverFactory.h"

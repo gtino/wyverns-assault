@@ -24,19 +24,19 @@ void Player::initializeEntity(Ogre::Entity* mesh, Ogre::SceneNode* sceneNode)
 	mRun = mMesh->getAnimationState("Run");
 	mRun->setEnabled(true);
 	mAttackA1 = mMesh->getAnimationState("AttackA_01");
-	mAttackA1->setEnabled(true);
+	mAttackA1->setEnabled(false);
 	mAttackA2 = mMesh->getAnimationState("AttackA_02");
 	mAttackA2->setEnabled(false);
 	mAttackA3 = mMesh->getAnimationState("AttackA_03");
 	mAttackA3->setEnabled(false);
 	mSpecial = mMesh->getAnimationState("Special");
-	mSpecial->setEnabled(true);
+	mSpecial->setEnabled(false);
 
-	mesh->getSkeleton()->setBlendMode(SkeletonAnimationBlendMode::ANIMBLEND_CUMULATIVE);
+	mMesh->getSkeleton()->setBlendMode(SkeletonAnimationBlendMode::ANIMBLEND_AVERAGE);
 
-	moving = false;
-	attacking = false;
+	moving = false;	
 	special = false;
+	attacking = 0;
 	mDirection = Vector3::ZERO;
 	
 	// Bounding Box
@@ -88,9 +88,25 @@ void Player::move(Real x, Real y, Real z)
 	}
 }
 
+void Player::attackA()
+{
+	if(mAttackA1->getTimePosition() <= mAttackA1->getLength() && mAttackA1->getTimePosition() != 0)
+	{
+  		attacking = 2;
+	}
+	else if(mAttackA2->getTimePosition() <= mAttackA2->getLength() && mAttackA2->getTimePosition() != 0)
+	{
+ 		attacking = 3;
+	}
+	else
+	{
+		attacking = 1;
+	}
+}
+
 void Player::attackA1()
 {
-	attacking = true;
+	mAttackA1->setWeight(1);
 	mAttackA1->setEnabled(true);
 
 	// Show current attack's grids
@@ -101,7 +117,7 @@ void Player::attackA1()
 
 void Player::attackA2()
 {
-	attacking = true;
+	mAttackA2->setWeight(1);
 	mAttackA2->setEnabled(true);
 
 	// Show current attack's grids
@@ -112,7 +128,7 @@ void Player::attackA2()
 
 void Player::attackA3()
 {
-	attacking = true;
+	mAttackA3->setWeight(1);
 	mAttackA3->setEnabled(true);
 
 	// Show current attack's grids
@@ -129,14 +145,26 @@ void Player::attackSpecial()
 
 void Player::updateAnimation(float elapsedSeconds)
 {
-	if(moving && attacking)
+	if(attacking != 0)
 	{
-		mRun->addTime(elapsedSeconds);
-		mAttackA1->addTime(elapsedSeconds);
+		if(attacking == 1 || mAttackA1->getEnabled())
+		{
+			attackA1();
+			mAttackA1->addTime(elapsedSeconds);
+		}
+		if((attacking == 2 && !mAttackA1->getEnabled()) || mAttackA2->getEnabled())
+		{
+			attackA2();
+			mAttackA2->addTime(elapsedSeconds);
+		}
+		if((attacking == 3 && !mAttackA1->getEnabled() && !mAttackA2->getEnabled()) || mAttackA3->getEnabled())
+		{
+			attackA3();
+			mAttackA3->addTime(elapsedSeconds);
+		}		
 
-		mRun->setWeight(0.2);
-		mAttackA1->setWeight(1);
-		mSpecial->setWeight(0);
+		mRun->setWeight(0);		
+		mSpecial->setWeight(0);		
 		mIddle->setWeight(0);
 	}
 	else if(moving)
@@ -145,15 +173,6 @@ void Player::updateAnimation(float elapsedSeconds)
 
 		mRun->setWeight(1);
 		mAttackA1->setWeight(0);
-		mSpecial->setWeight(0);		
-		mIddle->setWeight(0);
-	}
-	else if(attacking)
-	{
-		mAttackA1->addTime(elapsedSeconds);
-
-		mRun->setWeight(0);
-		mAttackA1->setWeight(1);
 		mSpecial->setWeight(0);		
 		mIddle->setWeight(0);
 	}
@@ -177,13 +196,34 @@ void Player::updateAnimation(float elapsedSeconds)
 	}
 
 	// Attack animation finished
-	if(mAttackA1->getTimePosition() + elapsedSeconds > mAttackA1->getLength())
+	if(attacking != 0)
 	{
-		attacking = false;
-		mAttackA1->setEnabled(false);
-		hideGrids();
-		
+		if(mAttackA1->getEnabled() && mAttackA1->getTimePosition() + elapsedSeconds > mAttackA1->getLength())
+		{
+			mAttackA1->setEnabled(false);
+			mAttackA1->setWeight(0);
+			mAttackA1->setTimePosition(0);
+			if(attacking == 1) attacking = 0;
+			hideGrids();
+		}
+		else if(mAttackA2->getEnabled() && mAttackA2->getTimePosition() + elapsedSeconds > mAttackA2->getLength())
+		{
+			mAttackA2->setEnabled(false);
+			mAttackA2->setWeight(0);
+			mAttackA2->setTimePosition(0);
+			if(attacking == 2) attacking = 0;
+			hideGrids();
+		}
+		else if(mAttackA3->getEnabled() && mAttackA3->getTimePosition() + elapsedSeconds > mAttackA3->getLength())
+		{
+ 			mAttackA3->setEnabled(false);
+			mAttackA3->setWeight(0);
+			mAttackA3->setTimePosition(0);
+			if(attacking == 3) attacking = 0;
+			hideGrids();
+		}
 	}
+
 	// Special attack animation finished
 	if(mSpecial->getTimePosition() + elapsedSeconds > mSpecial->getLength())
 	{

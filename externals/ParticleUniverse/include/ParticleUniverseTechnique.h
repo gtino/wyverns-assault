@@ -2,7 +2,7 @@
 -----------------------------------------------------------------------------------------------
 This source file is part of the Particle Universe product.
 
-Copyright (c) 2009 Henry van Merode
+Copyright (c) 2010 Henry van Merode
 
 Usage of this program is licensed under the terms of the Particle Universe Commercial License.
 You can find a copy of the Commercial License in the Particle Universe package.
@@ -63,20 +63,21 @@ namespace ParticleUniverse
 			static const Ogre::Real DEFAULT_SPATIAL_HASHING_INTERVAL;
 			static const Ogre::Real DEFAULT_MAX_VELOCITY;
 
-			typedef std::vector<ParticleEmitter*, Ogre::STLAllocator<ParticleEmitter, Ogre::GeneralAllocPolicy>>::iterator ParticleEmitterIterator;
+			// Have to use the expanded version because the Hook class can also only use the expanded version
 			typedef std::vector<ParticleEmitter*, Ogre::STLAllocator<ParticleEmitter, Ogre::GeneralAllocPolicy>> ParticleEmitterList;
+			typedef ParticleEmitterList::const_iterator ParticleEmitterIterator;
 
-			typedef std::vector<ParticleAffector*, Ogre::STLAllocator<ParticleAffector, Ogre::GeneralAllocPolicy>>::iterator ParticleAffectorIterator;
 			typedef std::vector<ParticleAffector*, Ogre::STLAllocator<ParticleAffector, Ogre::GeneralAllocPolicy>> ParticleAffectorList;
+			typedef ParticleAffectorList::const_iterator ParticleAffectorIterator;
 
-			typedef std::vector<ParticleObserver*, Ogre::STLAllocator<ParticleObserver, Ogre::GeneralAllocPolicy>>::iterator ParticleObserverIterator;
 			typedef std::vector<ParticleObserver*, Ogre::STLAllocator<ParticleObserver, Ogre::GeneralAllocPolicy>> ParticleObserverList;
+			typedef ParticleObserverList::const_iterator ParticleObserverIterator;
 
-			typedef std::vector<Extern*, Ogre::STLAllocator<Extern, Ogre::GeneralAllocPolicy>>::iterator ExternIterator;
 			typedef std::vector<Extern*, Ogre::STLAllocator<Extern, Ogre::GeneralAllocPolicy>> ExternList;
+			typedef ExternList::const_iterator ExternIterator;
 
-			typedef Ogre::vector<TechniqueListener*>::type::iterator TechniqueListenerIterator;
 			typedef Ogre::vector<TechniqueListener*>::type TechniqueListenerList;
+			typedef TechniqueListenerList::const_iterator TechniqueListenerIterator;
 
 			ParticleTechnique(void);
 	        virtual ~ParticleTechnique(void);
@@ -774,7 +775,15 @@ namespace ParticleUniverse
 	        */
 			Ogre::Real getParticleSystemScaleVelocity(void) const;
 
+			/** Forwards an event to the parent particle system.
+	        */
+			void pushEvent(ParticleUniverseEvent& particleUniverseEvent);
+
 		protected:
+
+			/** Convenient function to push an event.
+			*/
+			void _pushTechniqueEvent(EventType eventType);
 
 			/** Functor to sort by direction.
 			*/

@@ -2,7 +2,7 @@
 -----------------------------------------------------------------------------------------------
 This source file is part of the Particle Universe product.
 
-Copyright (c) 2009 Henry van Merode
+Copyright (c) 2010 Henry van Merode
 
 Usage of this program is licensed under the terms of the Particle Universe Commercial License.
 You can find a copy of the Commercial License in the Particle Universe package.
@@ -230,7 +230,6 @@ namespace ParticleUniverse
 		// LightRenderer
 		TOKEN_LIGHT_TYPE,
 		TOKEN_LIGHT_RENDER_QUEUE,
-		TOKEN_LIGHT_DIFFUSE,
 		TOKEN_LIGHT_SPECULAR,
 		TOKEN_LIGHT_ATT_RANGE,
 		TOKEN_LIGHT_ATT_CONSTANT,
@@ -241,6 +240,9 @@ namespace ParticleUniverse
 		TOKEN_LIGHT_FALLOFF,
 		TOKEN_LIGHT_POWERSCALE,
 		TOKEN_LIGHT_SPOT,
+		TOKEN_FLASH_FREQUENCY,
+		TOKEN_FLASH_LENGTH,
+		TOKEN_FLASH_RANDOM,
 
 		// RibbonTrailRenderer
 		TOKEN_RIBBONTRAIL_VERTEX_COLOURS,
@@ -305,7 +307,7 @@ namespace ParticleUniverse
 		TOKEN_BOXCOLL_HEIGHT,
 		TOKEN_BOXCOLL_DEPTH,
 
-		// Collider
+		// BaseCollider
 		TOKEN_FRICTION,
 		TOKEN_BOUNCYNESS,
 		TOKEN_INTERSECTION,
@@ -330,13 +332,31 @@ namespace ParticleUniverse
 		TOKEN_COLOUR_MULTIPLY,
 		TOKEN_COLOUR_SET,
 
-		// ForceAffector
+		// BaseForceAffector
 		TOKEN_FORCE_VECTOR,
 		TOKEN_FORCE_APPLICATION,
 		TOKEN_FORCE_AFF_VECTOR,
 		TOKEN_FORCE_AFF_APPLICATION,
 		TOKEN_FORCE_ADD,
 		TOKEN_FORCE_AVERAGE,
+
+		// ForceFieldAffector
+		TOKEN_FORCEFIELD_TYPE,
+		TOKEN_REALTIME,
+		TOKEN_MATRIX,
+		TOKEN_DELTA,
+		TOKEN_FORCE,
+		TOKEN_OCTAVES,
+		TOKEN_FREQUENCY,
+		TOKEN_AMPLITUDE,
+		TOKEN_PERSISTENCE,
+		TOKEN_FORCEFIELDSIZE,
+		TOKEN_WORLDSIZE,
+		TOKEN_IGNORE_NEGATIVE_X,
+		TOKEN_IGNORE_NEGATIVE_Y,
+		TOKEN_IGNORE_NEGATIVE_Z,
+		TOKEN_MOVEMENT,
+		TOKEN_MOVEMENT_FREQUENCY,
 
 		// GeometryRotator
 		TOKEN_GEOMROT_USE_OWN_ROTATION,
@@ -750,7 +770,6 @@ namespace ParticleUniverse
 	// LightRenderer
 	"light_renderer_light_type",
 	"light_renderer_queue_group",
-	"light_renderer_diffuse",
 	"light_renderer_specular",
 	"light_renderer_att_range",
 	"light_renderer_att_constant",
@@ -761,6 +780,9 @@ namespace ParticleUniverse
 	"light_renderer_falloff",
 	"light_renderer_powerscale",
 	"spot",
+	"flash_frequency",
+	"flash_length",
+	"flash_random",
 
 	// RibbonTrailRenderer
 	"ribbontrail_vertex_colours",
@@ -831,7 +853,7 @@ namespace ParticleUniverse
 	"box_collider_height",
 	"box_collider_depth",
 
-	// Collider
+	// BaseCollider
 	"friction",
 	"bouncyness",
 	"intersection",
@@ -858,13 +880,31 @@ namespace ParticleUniverse
 
 	// FlockCenteringAffector: No properties itself
 
-	// ForceAffector
+	// BaseForceAffector
 	"force_vector",
 	"force_application",
 	"force_aff_vector",
 	"force_aff_application",
 	"add",
 	"average",
+
+	// ForceFieldAffector
+	"forcefield_type",
+	"realtime",
+	"matrix",
+	"delta",
+	"force",
+	"octaves",
+	"frequency",
+	"amplitude",
+	"persistence",
+	"forcefield_size",
+	"worldsize",
+	"ignore_negative_x",
+	"ignore_negative_y",
+	"ignore_negative_z",
+	"movement",
+	"movement_frequency",
 
 	// GeometryRotator
 	"geom_rot_use_own_rotation",

@@ -2,7 +2,7 @@
 -----------------------------------------------------------------------------------------------
 This source file is part of the Particle Universe product.
 
-Copyright (c) 2009 Henry van Merode
+Copyright (c) 2010 Henry van Merode
 Special thanks to: M. Geissler
 
 Usage of this program is licensed under the terms of the Particle Universe Commercial License.

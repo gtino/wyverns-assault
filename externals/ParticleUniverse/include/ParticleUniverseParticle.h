@@ -2,7 +2,7 @@
 -----------------------------------------------------------------------------------------------
 This source file is part of the Particle Universe product.
 
-Copyright (c) 2009 Henry van Merode
+Copyright (c) 2010 Henry van Merode
 
 Usage of this program is licensed under the terms of the Particle Universe Commercial License.
 You can find a copy of the Commercial License in the Particle Universe package.
@@ -29,8 +29,9 @@ namespace ParticleUniverse
 	class _ParticleUniverseExport Particle
 	{
 		public:
-			typedef std::vector<ParticleBehaviour*, Ogre::STLAllocator<ParticleBehaviour, Ogre::GeneralAllocPolicy>>::iterator ParticleBehaviourIterator;
+
 			typedef std::vector<ParticleBehaviour*, Ogre::STLAllocator<ParticleBehaviour, Ogre::GeneralAllocPolicy>> ParticleBehaviourList;
+			typedef ParticleBehaviourList::const_iterator ParticleBehaviourIterator;
 
 			static Ogre::Real DEFAULT_TTL;
 			static Ogre::Real DEFAULT_MASS;

@@ -2,7 +2,7 @@
 -----------------------------------------------------------------------------------------------
 This source file is part of the Particle Universe product.
 
-Copyright (c) 2009 Henry van Merode
+Copyright (c) 2010 Henry van Merode
 
 Usage of this program is licensed under the terms of the Particle Universe Commercial License.
 You can find a copy of the Commercial License in the Particle Universe package.
@@ -13,13 +13,13 @@ You can find a copy of the Commercial License in the Particle Universe package.
 #define __PU_SINE_FORCE_AFFECTOR_H__
 
 #include "ParticleUniversePrerequisites.h"
-#include "ParticleUniverseForceAffector.h"
+#include "ParticleUniverseBaseForceAffector.h"
 
 namespace ParticleUniverse
 {
 	/** Applies a sine force to a particle.
     */
-	class _ParticleUniverseExport SineForceAffector : public ForceAffector
+	class _ParticleUniverseExport SineForceAffector : public BaseForceAffector
 	{
 		public:
 			// Constants

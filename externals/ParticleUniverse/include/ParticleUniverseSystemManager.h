@@ -2,7 +2,7 @@
 -----------------------------------------------------------------------------------------------
 This source file is part of the Particle Universe product.
 
-Copyright (c) 2009 Henry van Merode
+Copyright (c) 2010 Henry van Merode
 
 Usage of this program is licensed under the terms of the Particle Universe Commercial License.
 You can find a copy of the Commercial License in the Particle Universe package.
@@ -151,7 +151,7 @@ namespace ParticleUniverse
 			typedef Ogre::map<Ogre::String, ParticleSystem*>::type ParticleSystemTemplateMap;
 			ParticleSystemTemplateMap mParticleSystemTemplates;
 
-			/*	The template map contains a list with all particle systems that are created by the manager.
+			/*	The ParticleSystems map contains a list with all particle systems that are created by the manager.
 			*/
 			typedef Ogre::map<Ogre::String, ParticleSystem*>::type ParticleSystemMap;
 			ParticleSystemMap mParticleSystems;
@@ -200,6 +200,13 @@ namespace ParticleUniverse
 
 			// Destructor
 			~ParticleSystemManager (void);
+
+			/** Removes and deletes any SceneNode was created by a Particle System
+			@remarks
+				SceneNodes are created for certain situations (i.e. EntityRenderer), but just deleting them in the destructor of the 
+				Particle System gives unpredictable results.
+	        */
+			void removeAndDestroyDanglingSceneNodes(Ogre::SceneNode* scenNode);
 
 			/** Remove all registered templates 
 			*/ 
