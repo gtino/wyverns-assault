@@ -69,6 +69,8 @@ namespace WyvernsAssault
 		virtual void setScale(const Ogre::Vector3 scale) { mSceneNode->setScale(scale); }
 		virtual Ogre::Vector3 getScale(){return mSceneNode->getScale(); }
 
+		//virtual Ogre::Entity* getEntity(){return mMesh;}
+
 		//virtual void lookAt(const Ogre::Vector3 lookAt) { mSceneNode->lookAt(lookAt,Ogre::TraTransformSpace::); }
 
 		virtual void setMaterialName(const Ogre::String materialName) { mMesh->setMaterialName(materialName);}

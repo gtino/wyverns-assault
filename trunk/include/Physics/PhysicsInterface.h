@@ -55,6 +55,9 @@ namespace WyvernsAssault
 
 		virtual size_t getGeometryId() const { return mRayInfo.geometry->getID(); }
 
+		//virtual size_t getGeometryId() const { return mRayInfo.geometry->getID(); }
+		//virtual size_t getGeometryId() const { return mRayInfo.geometry->getID(); }
+		
 		virtual void setRayInfo(PhysicsRayInfo rayInfo) { 
 			mRayInfo.geometry = rayInfo.geometry;
 			mRayInfo.radius = rayInfo.radius;
