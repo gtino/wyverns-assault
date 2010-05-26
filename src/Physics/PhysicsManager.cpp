@@ -41,6 +41,7 @@ bool PhysicsManager::initialize()
 	mWorld->setAutoSleep(false);
     mWorld->setAutoSleepAverageSamplesCount(10);
 	mWorld->setContactCorrectionVelocity(1.0);
+	//mWorld->setCollisionListener(this);
 
 	// Set collision space
 	mSpace = mWorld->getDefaultSpace();
@@ -83,6 +84,7 @@ void PhysicsManager::createGround(Ogre::String mesh,Ogre::String name,Ogre::Vect
 	ent_ground->setUserAny(Ogre::Any(geom_ground));
 	node_ground->setVisible(false);
 	node_ground->setScale(scale);
+
 }
 
 void PhysicsManager::addPlayer(PlayerPtr player)
@@ -120,6 +122,8 @@ void PhysicsManager::addPlayer(PlayerPtr player)
 	// Store the player into an internal map
 	//
 	mPlayerMap[player->getGeometryId()] = player;
+	mPlayerGeomMap[body->getGeometry(0)->getID()] = player;
+	
 }
 
 void PhysicsManager::update(const float elapsedSeconds){
@@ -154,7 +158,26 @@ void PhysicsManager::update(const float elapsedSeconds){
 
 	}
 
-	checkForCollisions();
+	//update player-enemy collision
+	OgreOde::Body* player_body;
+	OgreOde::Geometry* player_geom;
+	for(OdePlayerMapIterator it_player = mPlayerMap.begin(); it_player != mPlayerMap.end(); ++it_player){
+		PlayerPtr player = it_player->second;
+		player_body = player->getBody();
+		player_geom = player_body->getGeometry(0);
+		size_t gg_pp = player_body->getGeometry(0)->getID();
+	}
+	for(OdeEnemyMapIterator it_enemy = mEnemyMap.begin(); it_enemy != mEnemyMap.end(); ++it_enemy){
+		EnemyPtr enemy = it_enemy->second;
+		OgreOde::Body* enemy_body = enemy->getBody();
+		OgreOde::Geometry* enemy_geom = enemy_body->getGeometry(0);
+		player_geom->collide(enemy_geom,this);
+	}
+
+	//--
+	//Giorgio TEST
+	//--
+	//checkForCollisions();
 
 	return;
 }
@@ -219,6 +242,7 @@ void PhysicsManager::addEnemy(EnemyPtr enemy)
 	// Store the enemy into an internal map
 	//
 	mEnemyMap[enemy->getGeometryId()] = enemy;
+	mEnemyGeomMap[body->getGeometry(0)->getID()] = enemy;
 }
 
 void PhysicsManager::updateRay(PlayerPtr player)
@@ -241,8 +265,10 @@ void PhysicsManager::updateRay(EnemyPtr enemy)
 	enemy->getRayInfo()->geometry->collide(geom_ground,this);
 }
 
+
 bool PhysicsManager::collision(OgreOde::Contact* contact)
 {
+
 	CollisionEventPtr collisionEventPtr = CollisionEventPtr(new CollisionEvent());
 	raiseEvent(collisionEventPtr);
 
@@ -279,15 +305,46 @@ bool PhysicsManager::collision(OgreOde::Contact* contact)
 	}
 	
 	// if one is an enemy and the other one is a player...
-	if(it_e != mEnemyMap.end() && it_p != mPlayerMap.end())
+	//if(it_e != mEnemyMap.end() && it_p != mPlayerMap.end())
+	//{
+	//	EnemyHitEventPtr enemyHitEventPtr = EnemyHitEventPtr(new EnemyHitEvent(it_e->second, it_p->second));
+	//	raiseEvent(enemyHitEventPtr);
+	//}
+
+	//Player - Enemy Collision
+	OdePlayerMapIterator it_pp;
+	OdeEnemyMapIterator it_ee;
+	it_pp = mPlayerGeomMap.find(contact->getFirstGeometry()->getID());
+	if(it_pp == mPlayerGeomMap.end()){
+		it_pp = mPlayerGeomMap.find(contact->getSecondGeometry()->getID());
+	}else{
+		//Player is first - check if enemy is second
+		it_ee = mEnemyGeomMap.find(contact->getSecondGeometry()->getID());
+		if(it_ee != mEnemyGeomMap.end())
+		{
+			//Enemy is second
+			EnemyHitEventPtr enemyHitEventPtr = EnemyHitEventPtr(new EnemyHitEvent(it_ee->second, it_pp->second));
+			raiseEvent(enemyHitEventPtr);
+		}
+	}
+	if(it_pp != mPlayerGeomMap.end())
 	{
-		EnemyHitEventPtr enemyHitEventPtr = EnemyHitEventPtr(new EnemyHitEvent(it_e->second, it_p->second));
-		raiseEvent(enemyHitEventPtr);
+		//Player is second - check if enemy is first
+		it_ee = mEnemyGeomMap.find(contact->getFirstGeometry()->getID());
+		if(it_ee != mEnemyGeomMap.end())
+		{
+			//Enemy is first
+			EnemyHitEventPtr enemyHitEventPtr = EnemyHitEventPtr(new EnemyHitEvent(it_ee->second, it_pp->second));
+			raiseEvent(enemyHitEventPtr);
+		}
 	}
 
 	contact->setCoulombFriction(OgreOde::Utility::Infinity);
+
 	return true;
 }
+
+
 
 void PhysicsManager::move(PlayerPtr player, Vector3 direction){
 
@@ -341,6 +398,7 @@ void PhysicsManager::move(PlayerPtr player, Vector3 direction){
 		player->getRayInfo()->updated = false;
     }
 }
+
 
 void move(EnemyPtr enemy, int rotate, int thrust)
 {

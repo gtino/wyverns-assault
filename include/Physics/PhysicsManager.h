@@ -111,6 +111,8 @@ namespace WyvernsAssault
 		
 		OdePlayerMap mPlayerMap;
 		OdeEnemyMap mEnemyMap;
+		OdePlayerMap mPlayerGeomMap;
+		OdeEnemyMap mEnemyGeomMap;
 
 	// --------------------------------
 	// BEGIN Lua Interface Declarations
