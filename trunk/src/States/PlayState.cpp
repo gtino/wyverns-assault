@@ -52,7 +52,7 @@ void PlayState::initialize()
 
 	// Create a single player (TEST!)
 	mPlayer1 = mPlayerManager->createPlayer("Player1","redWyvern.mesh");
-	mPlayer1->setPosition(Vector3(50, 20, 870));
+	mPlayer1->setPosition(Vector3(80, 20, 870));
 	// Add fire breath (TEST!)
 	mPlayer1->setFireBreath(mParticleManager->create("firebreath","WyvernsAssault/DragonBreath"));
 
@@ -230,8 +230,12 @@ void PlayState::update(const float elapsedSeconds)
 	// Movement
 	if(mCameraManager->getCameraMode() == "Game")
 	{
-		// Move if not using special attack
-		if(!mPlayer1->isSpecial())
+		/*if(this->mInputManager->getKeyboard()->isKeyDown(OIS::KeyCode::KC_SPACE))
+		{
+			mPlayer1->attackA();
+		}*/
+		// Move if not using special attack or attacking
+		if(!mPlayer1->isSpecial() && !mPlayer1->isAttacking())
 		{
 			// 8 directions move
 			if(this->mInputManager->getKeyboard()->isKeyDown(OIS::KeyCode::KC_RIGHT) && this->mInputManager->getKeyboard()->isKeyDown(OIS::KeyCode::KC_UP))
@@ -653,7 +657,7 @@ bool PlayState::keyPressed(const OIS::KeyEvent& e)
 
 	// Attack A
 	case OIS::KeyCode::KC_SPACE:
-		mPlayer1->attackA1();
+		mPlayer1->attackA();
 		break;
 	// Special Attack
 	case OIS::KeyCode::KC_BACK:

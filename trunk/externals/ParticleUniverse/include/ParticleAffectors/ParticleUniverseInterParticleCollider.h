@@ -2,7 +2,7 @@
 -----------------------------------------------------------------------------------------------
 This source file is part of the Particle Universe product.
 
-Copyright (c) 2009 Henry van Merode
+Copyright (c) 2010 Henry van Merode
 
 Usage of this program is licensed under the terms of the Particle Universe Commercial License.
 You can find a copy of the Commercial License in the Particle Universe package.
@@ -13,13 +13,13 @@ You can find a copy of the Commercial License in the Particle Universe package.
 #define __PU_INTERPARTICLE_COLLIDER_H__
 
 #include "ParticleUniversePrerequisites.h"
-#include "ParticleUniverseCollider.h"
+#include "ParticleUniverseBaseCollider.h"
 
 namespace ParticleUniverse
 {
-	/** The InterParticleCollider ....
+	/** The InterParticleCollider is used to perform particle-particle collision.
     */
-	class _ParticleUniverseExport InterParticleCollider : public Collider
+	class _ParticleUniverseExport InterParticleCollider : public BaseCollider
 	{
 		public:
 			enum InterParticleCollisionResponse

@@ -2,7 +2,7 @@
 -----------------------------------------------------------------------------------------------
 This source file is part of the Particle Universe product.
 
-Copyright (c) 2009 Henry van Merode
+Copyright (c) 2010 Henry van Merode
 
 Usage of this program is licensed under the terms of the Particle Universe Commercial License.
 You can find a copy of the Commercial License in the Particle Universe package.
@@ -22,16 +22,13 @@ namespace ParticleUniverse
 	class _ParticleUniverseExport ParticleSystemListener
 	{
 		public:
+
 			ParticleSystemListener(void) {};
 			virtual ~ParticleSystemListener(void) {};
 
-			/*  Callback function, which is called as soon as a particle system is started.
+			/*  Callback function, called for all event types.
 			*/
-			virtual void started(void) = 0;
-
-			/*  Callback function, which is called as soon as a particle system is stopped.
-			*/
-			virtual void stopped(void) = 0;
+			virtual void handleParticleSystemEvent(ParticleSystem* particleSystem, ParticleUniverseEvent& particleUniverseEvent) = 0;
 
 	};
 

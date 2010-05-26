@@ -2,7 +2,7 @@
 -----------------------------------------------------------------------------------------------
 This source file is part of the Particle Universe product.
 
-Copyright (c) 2009 Henry van Merode
+Copyright (c) 2010 Henry van Merode
 
 Usage of this program is licensed under the terms of the Particle Universe Commercial License.
 You can find a copy of the Commercial License in the Particle Universe package.
@@ -25,9 +25,16 @@ namespace ParticleUniverse
 	class _ParticleUniverseExport LightRendererVisualData : public IVisualData
 	{
 		public:
-			LightRendererVisualData (Ogre::SceneNode* sceneNode) : IVisualData(), node(sceneNode){};
+			LightRendererVisualData (Ogre::SceneNode* sceneNode) : 
+				IVisualData(), 
+				node(sceneNode), 
+				light(0),
+				flashFrequencyCount(0.0f),
+				flashLengthCount(0.0f){};
 			Ogre::SceneNode* node;
 			Ogre::Light* light;
+			Ogre::Real flashFrequencyCount;
+			Ogre::Real flashLengthCount;
 			virtual void setVisible(bool visible)
 			{
 				if (node)
@@ -38,6 +45,9 @@ namespace ParticleUniverse
 	};
 
 	/** The LightRenderer class is responsible to render particles as a light.
+	@remarks
+		Note, that the diffuse colour cannot be set. This is, because the light inherits its diffuse colour from the particle. This makes
+		it possible to manipulate the colour (for instance, using a Colour Affector).
     */
 	class _ParticleUniverseExport LightRenderer : public ParticleRenderer
 	{
@@ -49,7 +59,6 @@ namespace ParticleUniverse
 			Ogre::vector<Ogre::Light*>::type mLights;
 			size_t mQuota;
 			Ogre::Light::LightTypes mLightType;
-			Ogre::ColourValue mDiffuseColour;
 			Ogre::ColourValue mSpecularColour;
 			Ogre::Real mAttenuationRange;
 			Ogre::Real mAttenuationConstant;
@@ -59,6 +68,9 @@ namespace ParticleUniverse
 			Ogre::Radian mSpotlightOuterAngle;
 			Ogre::Real mSpotlightFalloff;
 			Ogre::Real mPowerScale;
+			Ogre::Real mFlashFrequency;
+			Ogre::Real mFlashLength;
+			bool mFlashRandom;
 
 			/** Make all nodes to which the entities are attached visible or invisible.
 			*/
@@ -88,11 +100,6 @@ namespace ParticleUniverse
 			/** Set the type of light that is emitted.
 			*/
 			void setLightType(Ogre::Light::LightTypes lightType);
-
-			/** 
-			*/
-			const Ogre::ColourValue& getDiffuseColour(void) const;
-			void setDiffuseColour(const Ogre::ColourValue& diffuseColour);
 
 			/** 
 			*/
@@ -139,16 +146,27 @@ namespace ParticleUniverse
 			Ogre::Real getPowerScale(void) const;
 			void setPowerScale(Ogre::Real powerScale);
 
+			/** 
+			*/
+			Ogre::Real getFlashFrequency(void) const;
+			void setFlashFrequency(Ogre::Real flashFrequency);
+
+			/** 
+			*/
+			Ogre::Real getFlashLength(void) const;
+			void setFlashLength(Ogre::Real flashLength);
+
+			/** 
+			*/
+			bool isFlashRandom(void) const;
+			void setFlashRandom(bool flashRandom);
+
 			/** Deletes all ChildSceneNodes en Lights.
 			*/
 			void _destroyAll(void);
 
-			/** Disable all ChildSceneNodes.
-			*/
-//			virtual void _notifyStop(void);
-
 			/** @copydoc ParticleRenderer::setVisible */
-			virtual void setVisible(bool visible = true);
+			//virtual void setVisible(bool visible = true);
 
 			/** @copydoc ParticleRenderer::_prepare */
 			virtual void _prepare(ParticleTechnique* technique);
@@ -157,7 +175,13 @@ namespace ParticleUniverse
 			virtual void _unprepare(ParticleTechnique* technique);
 
 			/** @copydoc ParticleRenderer::_updateRenderQueue */
-			inline virtual void _updateRenderQueue(Ogre::RenderQueue* queue, ParticlePool* pool);
+			//inline virtual void _updateRenderQueue(Ogre::RenderQueue* queue, ParticlePool* pool);
+
+			/** @copydoc ParticleRenderer::_processParticle */
+			inline virtual void _processParticle(ParticleTechnique* particleTechnique, 
+				Particle* particle, 
+				Ogre::Real timeElapsed, 
+				bool firstParticle);
 
 			/** @copydoc ParticleRenderer::_setMaterialName */
 			virtual void _setMaterialName(const Ogre::String& materialName);

@@ -2,7 +2,7 @@
 -----------------------------------------------------------------------------------------------
 This source file is part of the Particle Universe product.
 
-Copyright (c) 2009 Henry van Merode
+Copyright (c) 2010 Henry van Merode
 
 Usage of this program is licensed under the terms of the Particle Universe Commercial License.
 You can find a copy of the Commercial License in the Particle Universe package.
@@ -13,7 +13,7 @@ You can find a copy of the Commercial License in the Particle Universe package.
 #define __PU_BOX_COLLIDER_H__
 
 #include "ParticleUniversePrerequisites.h"
-#include "ParticleUniverseCollider.h"
+#include "ParticleUniverseBaseCollider.h"
 #include "OgreAxisAlignedBox.h"
 
 namespace ParticleUniverse
@@ -21,7 +21,7 @@ namespace ParticleUniverse
 	/** The BoxCollider is a box shape that collides with the particles. The BoxCollider can only collide with
 		particles that are created within the same ParticleTechnique as where the BoxCollider is registered.
     */
-	class _ParticleUniverseExport BoxCollider : public Collider
+	class _ParticleUniverseExport BoxCollider : public BaseCollider
 	{
 		public:
 			static const Ogre::Real DEFAULT_WIDTH;

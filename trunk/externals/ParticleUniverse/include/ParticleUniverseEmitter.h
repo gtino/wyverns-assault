@@ -2,7 +2,7 @@
 -----------------------------------------------------------------------------------------------
 This source file is part of the Particle Universe product.
 
-Copyright (c) 2009 Henry van Merode
+Copyright (c) 2010 Henry van Merode
 
 Usage of this program is licensed under the terms of the Particle Universe Commercial License.
 You can find a copy of the Commercial License in the Particle Universe package.
@@ -321,7 +321,7 @@ namespace ParticleUniverse
 
 			/** Perform activities when a ParticleEmitter is stopped.
 			*/
-			virtual void _notifyStop (void){/* Do nothing */};
+			virtual void _notifyStop (void);
 
 			/** Perform activities when a ParticleEmitter is paused.
 			*/
@@ -403,8 +403,18 @@ namespace ParticleUniverse
 			*/
 			inline bool makeParticleLocal(Particle* particle);
 
+			/** Forwards an event to the parent technique.
+	        */
+			void pushEvent(ParticleUniverseEvent& particleUniverseEvent);
+
 		protected:
 
+			/** Convenient function to generate events.
+			*/
+			void _pushEmitterEvent(EventType eventType);
+
+			/** Technique to which this emitter belongs.
+			*/
 			ParticleTechnique* mParentTechnique;
 
 			/** Although the scale is on a Particle System level, the emitter can also be scaled.
