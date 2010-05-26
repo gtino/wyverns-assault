@@ -63,7 +63,9 @@ namespace WyvernsAssault
 
 		// Player actions functions
 		void move(Real x, Real y, Real z);
-		void attackA();
+		void attackA1();
+		void attackA2();
+		void attackA3();
 		void attackB();
 		void attackSpecial();
 
@@ -77,13 +79,18 @@ namespace WyvernsAssault
 		void setDebugEnabled(bool isDebugEnabled);
 		bool getDebugEnabled(){return mIsDebugEnabled;};
 
+		// Attack's grids
+		void hideGrids();
+
 	private:
 		Ogre::Vector3 mDirection;
 		Ogre::Vector3 mLastDirection;
 
 		Ogre::AnimationState* mIddle;
 		Ogre::AnimationState* mRun;
-		Ogre::AnimationState* mAttackA;
+		Ogre::AnimationState* mAttackA1;
+		Ogre::AnimationState* mAttackA2;
+		Ogre::AnimationState* mAttackA3;
 		Ogre::AnimationState* mSpecial;
 				
 		TagPoint*							mBreathPoint;

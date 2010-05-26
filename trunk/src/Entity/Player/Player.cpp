@@ -23,8 +23,12 @@ void Player::initializeEntity(Ogre::Entity* mesh, Ogre::SceneNode* sceneNode)
 	mIddle->setEnabled(true);
 	mRun = mMesh->getAnimationState("Run");
 	mRun->setEnabled(true);
-	mAttackA = mMesh->getAnimationState("AttackA_01");
-	mAttackA->setEnabled(true);
+	mAttackA1 = mMesh->getAnimationState("AttackA_01");
+	mAttackA1->setEnabled(true);
+	mAttackA2 = mMesh->getAnimationState("AttackA_02");
+	mAttackA2->setEnabled(false);
+	mAttackA3 = mMesh->getAnimationState("AttackA_03");
+	mAttackA3->setEnabled(false);
 	mSpecial = mMesh->getAnimationState("Special");
 	mSpecial->setEnabled(true);
 
@@ -41,6 +45,9 @@ void Player::initializeEntity(Ogre::Entity* mesh, Ogre::SceneNode* sceneNode)
 	mOBBoxRenderable->setupVertices(mMesh->getBoundingBox());
 	mOBBoxRenderable->setVisible(mIsDebugEnabled);
 	mSceneNode->attachObject(mOBBoxRenderable);
+
+	// Hide attack's grids
+	hideGrids();
 }
 
 void Player::finalizeEntity()
@@ -81,10 +88,36 @@ void Player::move(Real x, Real y, Real z)
 	}
 }
 
-void Player::attackA()
+void Player::attackA1()
 {
 	attacking = true;
-	mAttackA->setEnabled(true);
+	mAttackA1->setEnabled(true);
+
+	// Show current attack's grids
+	mMesh->getSubEntity("grid1")->setVisible(true);
+	mMesh->getSubEntity("grid2")->setVisible(true);
+	mMesh->getSubEntity("grid3")->setVisible(true);
+}
+
+void Player::attackA2()
+{
+	attacking = true;
+	mAttackA2->setEnabled(true);
+
+	// Show current attack's grids
+	mMesh->getSubEntity("grid4")->setVisible(true);
+	mMesh->getSubEntity("grid5")->setVisible(true);
+	mMesh->getSubEntity("grid6")->setVisible(true);
+}
+
+void Player::attackA3()
+{
+	attacking = true;
+	mAttackA3->setEnabled(true);
+
+	// Show current attack's grids
+	mMesh->getSubEntity("grid7")->setVisible(true);
+	mMesh->getSubEntity("grid8")->setVisible(true);
 }
 
 void Player::attackSpecial()
@@ -99,10 +132,10 @@ void Player::updateAnimation(float elapsedSeconds)
 	if(moving && attacking)
 	{
 		mRun->addTime(elapsedSeconds);
-		mAttackA->addTime(elapsedSeconds);
+		mAttackA1->addTime(elapsedSeconds);
 
 		mRun->setWeight(0.2);
-		mAttackA->setWeight(1);
+		mAttackA1->setWeight(1);
 		mSpecial->setWeight(0);
 		mIddle->setWeight(0);
 	}
@@ -111,16 +144,16 @@ void Player::updateAnimation(float elapsedSeconds)
 		mRun->addTime(elapsedSeconds);
 
 		mRun->setWeight(1);
-		mAttackA->setWeight(0);
+		mAttackA1->setWeight(0);
 		mSpecial->setWeight(0);		
 		mIddle->setWeight(0);
 	}
 	else if(attacking)
 	{
-		mAttackA->addTime(elapsedSeconds);
+		mAttackA1->addTime(elapsedSeconds);
 
 		mRun->setWeight(0);
-		mAttackA->setWeight(1);
+		mAttackA1->setWeight(1);
 		mSpecial->setWeight(0);		
 		mIddle->setWeight(0);
 	}
@@ -129,7 +162,7 @@ void Player::updateAnimation(float elapsedSeconds)
 		mSpecial->addTime(elapsedSeconds);
 
 		mRun->setWeight(0);
-		mAttackA->setWeight(0);
+		mAttackA1->setWeight(0);
 		mSpecial->setWeight(0.9);
 		mIddle->setWeight(0);
 	}
@@ -138,16 +171,17 @@ void Player::updateAnimation(float elapsedSeconds)
 		mIddle->addTime(elapsedSeconds);
 		
 		mRun->setWeight(0);
-		mAttackA->setWeight(0);
+		mAttackA1->setWeight(0);
 		mSpecial->setWeight(0);
 		mIddle->setWeight(1);
 	}
 
 	// Attack animation finished
-	if(mAttackA->getTimePosition() + elapsedSeconds > mAttackA->getLength())
+	if(mAttackA1->getTimePosition() + elapsedSeconds > mAttackA1->getLength())
 	{
 		attacking = false;
-		mAttackA->setEnabled(false);
+		mAttackA1->setEnabled(false);
+		hideGrids();
 		
 	}
 	// Special attack animation finished
@@ -167,4 +201,16 @@ void Player::setDebugEnabled(bool isDebugEnabled)
 		if(mOBBoxRenderable)
 			mOBBoxRenderable->setVisible(mIsDebugEnabled);
 	}
+}
+
+void Player::hideGrids()
+{
+	mMesh->getSubEntity("grid1")->setVisible(false);
+	mMesh->getSubEntity("grid2")->setVisible(false);
+	mMesh->getSubEntity("grid3")->setVisible(false);
+	mMesh->getSubEntity("grid4")->setVisible(false);
+	mMesh->getSubEntity("grid5")->setVisible(false);
+	mMesh->getSubEntity("grid6")->setVisible(false);
+	mMesh->getSubEntity("grid7")->setVisible(false);
+	mMesh->getSubEntity("grid8")->setVisible(false);
 }
