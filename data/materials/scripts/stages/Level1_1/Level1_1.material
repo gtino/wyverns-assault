@@ -728,23 +728,14 @@ material ToxicWater
 	{
 		pass 
 		{
-			vertex_program_ref ToonVP
-			{
-				param_named shininess float4 50 1.0 1.0 1.0
-			}
-
-			fragment_program_ref ToonFP
-			{
-				param_named ambient float4 0 0 0 1
-				param_named diffuse float4 0.509804 0.654902 0.047059 1
-				param_named specular float4 0.33 0.33 0.33 1
-				param_named emissive float4 0.0 0.0 0.0 1.0
-			}
+      //scene_blend alpha_blend
 
 			texture_unit ToonShades
 			{
-				texture toon.png 2d
-				tex_address_mode clamp
+				texture toxic_water.png
+				//alpha_op_ex source1 src_manual src_texture 0.9
+				scroll_anim 0 0.3
+				tex_address_mode wrap
 				filtering none
 			}
 
