@@ -1,6 +1,8 @@
 #include "..\include\SceneLoader\DotSceneLoader.h"
-#include "..\include\SceneLoader\tinyxml.h"
-#include "Ogre.h"
+
+#include <Ogre.h>
+#include <tinyxml.h>
+
 #include "..\include\Entity\Enemy\Enemy.h"
 #include "..\include\Entity\Item\Item.h"
 
