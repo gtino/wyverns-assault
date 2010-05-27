@@ -230,10 +230,6 @@ void PlayState::update(const float elapsedSeconds)
 	// Movement
 	if(mCameraManager->getCameraMode() == "Game")
 	{
-		/*if(this->mInputManager->getKeyboard()->isKeyDown(OIS::KeyCode::KC_SPACE))
-		{
-			mPlayer1->attackA();
-		}*/
 		// Move if not using special attack or attacking
 		if(!mPlayer1->isSpecial() && !mPlayer1->isAttacking())
 		{
