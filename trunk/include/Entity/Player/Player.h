@@ -111,6 +111,7 @@ namespace WyvernsAssault
 		bool moving;		
 		bool special;
 		Real attacking;
+		bool continueAttacking;
 
 		// Animation system
 		tecnofreak::IAnimationSystem*		mAnimationSystem;

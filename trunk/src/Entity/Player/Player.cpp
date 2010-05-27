@@ -26,6 +26,7 @@ void Player::initializeEntity(Ogre::Entity* mesh, Ogre::SceneNode* sceneNode)
 	moving = false;	
 	special = false;
 	attacking = 0;
+	continueAttacking = false;
 	
 	// Bounding Box
 	mOBBoxRenderable = new OBBoxRenderable("OBBoxManualMaterial_Player");
@@ -42,8 +43,13 @@ void Player::finalizeEntity()
 {	
 	if(mOBBoxRenderable)
 	{
-	delete mOBBoxRenderable;
-	mOBBoxRenderable = NULL;
+		delete mOBBoxRenderable;
+		mOBBoxRenderable = NULL;
+	}
+	if ( mAnimationSystem )
+	{
+		delete mAnimationSystem;
+		mAnimationSystem = NULL;
 	}
 }
 
@@ -80,7 +86,22 @@ void Player::attackA()
 {
 	if (!special)
 	{
-  		attacking = 1;
+		if ( attacking == 0 )
+		{
+  			attacking = 1;
+		}
+		else if ( attacking == 1 )
+		{
+			continueAttacking = true;
+		}
+		else if ( attacking == 2 )
+		{
+			continueAttacking = true;
+		}
+		else if ( attacking == 3 )
+		{
+			continueAttacking = true;
+		}
 	}
 }
 
@@ -96,7 +117,7 @@ void Player::attackA1()
 
 void Player::attackA2()
 {
-	attacking = 2;
+	mCurrentAnimation->setValue( ATTACKA2 );
 
 	// Show current attack's grids
 	mMesh->getSubEntity("grid4")->setVisible(true);
@@ -106,7 +127,7 @@ void Player::attackA2()
 
 void Player::attackA3()
 {
-	attacking = 3;
+	mCurrentAnimation->setValue( ATTACKA3 );
 
 	// Show current attack's grids
 	mMesh->getSubEntity("grid7")->setVisible(true);
@@ -132,8 +153,36 @@ void Player::updateAnimation(float elapsedSeconds)
 	// Check if attack animation is finish
 	if( mCurrentAnimation->getFloatValue() == ATTACKA1 && mMesh->getAnimationState("AttackA_01")->getTimePosition() +  elapsedSeconds > mMesh->getAnimationState("AttackA_01")->getLength() )
 	{
-		attacking = 0;
 		hideGrids();
+		if ( continueAttacking )
+		{
+			attacking = 2;
+			continueAttacking = false;
+		}
+		else
+			attacking = 0;
+	}
+	if( mCurrentAnimation->getFloatValue() == ATTACKA2 && mMesh->getAnimationState("AttackA_02")->getTimePosition() +  elapsedSeconds > mMesh->getAnimationState("AttackA_02")->getLength() )
+	{
+		hideGrids();
+		if ( continueAttacking )
+		{
+			attacking = 3;
+			continueAttacking = false;
+		}
+		else
+			attacking = 0;
+	}
+	if( mCurrentAnimation->getFloatValue() == ATTACKA3 && mMesh->getAnimationState("AttackA_03")->getTimePosition() +  elapsedSeconds > mMesh->getAnimationState("AttackA_03")->getLength() )
+	{
+		hideGrids();
+		if ( continueAttacking )
+		{
+			attacking = 1;
+			continueAttacking = false;
+		}
+		else
+			attacking = 0;
 	}
 
 	// Activate current animation
@@ -144,6 +193,14 @@ void Player::updateAnimation(float elapsedSeconds)
 	else if( attacking  == 1 )
 	{
 		attackA1();
+	}
+	else if( attacking  == 2 )
+	{
+		attackA2();
+	}
+	else if( attacking  == 3 )
+	{
+		attackA3();
 	}
 	else if( moving )
 	{
