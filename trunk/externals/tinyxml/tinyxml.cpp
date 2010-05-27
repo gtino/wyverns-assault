@@ -29,7 +29,7 @@ distribution.
 #include <iostream>
 #endif
 
-#include "..\include\SceneLoader\tinyxml.h"
+#include "tinyxml.h"
 
 
 bool TiXmlBase::condenseWhiteSpace = true;
@@ -1885,3 +1885,4 @@ bool TiXmlPrinter::Visit( const TiXmlUnknown& unknown )
 	DoLineBreak();
 	return true;
 }
+

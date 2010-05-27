@@ -18,26 +18,14 @@ void Player::initializeEntity(Ogre::Entity* mesh, Ogre::SceneNode* sceneNode)
 	mSceneNode = sceneNode;
 	mMesh = mesh;
 
-	// Animations
-	mIddle = mMesh->getAnimationState("Iddle_02");
-	mIddle->setEnabled(true);
-	mRun = mMesh->getAnimationState("Run");
-	mRun->setEnabled(true);
-	mAttackA1 = mMesh->getAnimationState("AttackA_01");
-	mAttackA1->setEnabled(false);
-	mAttackA2 = mMesh->getAnimationState("AttackA_02");
-	mAttackA2->setEnabled(false);
-	mAttackA3 = mMesh->getAnimationState("AttackA_03");
-	mAttackA3->setEnabled(false);
-	mSpecial = mMesh->getAnimationState("Special");
-	mSpecial->setEnabled(false);
-
-	mMesh->getSkeleton()->setBlendMode(SkeletonAnimationBlendMode::ANIMBLEND_AVERAGE);
+	// Animation system
+	mAnimationSystem = new tecnofreak::ogre::AnimationSystem( mMesh );
+	mAnimationSystem->loadAnimationTree( "data/animations/wyvern.xml" );
+	mCurrentAnimation = mAnimationSystem->getParameter( "CurrentAnimation" );
 
 	moving = false;	
 	special = false;
 	attacking = 0;
-	mDirection = Vector3::ZERO;
 	
 	// Bounding Box
 	mOBBoxRenderable = new OBBoxRenderable("OBBoxManualMaterial_Player");
@@ -81,22 +69,26 @@ void Player::move(Real x, Real y, Real z)
 		moving = true;
 	}
 	// Iddle
-	else if(moving)
+	else
 	{
 		moving = false;
-		mIddle->setTimePosition(0);
+		attacking = 0;
 	}
 }
 
 void Player::attackA()
 {
-	if(mAttackA1->getTimePosition() <= mAttackA1->getLength() && mAttackA1->getTimePosition() != 0)
+	if( attacking == 0)
+	{
+  		attacking = 1;
+	}
+	else if( attacking == 1)
 	{
   		attacking = 2;
 	}
-	else if(mAttackA2->getTimePosition() <= mAttackA2->getLength() && mAttackA2->getTimePosition() != 0)
+	else if( attacking == 2)
 	{
- 		attacking = 3;
+  		attacking = 3;
 	}
 	else
 	{
@@ -106,46 +98,45 @@ void Player::attackA()
 
 void Player::attackA1()
 {
-	mAttackA1->setWeight(1);
+	/*mAttackA1->setWeight(1);
 	mAttackA1->setEnabled(true);
 
 	// Show current attack's grids
 	mMesh->getSubEntity("grid1")->setVisible(true);
 	mMesh->getSubEntity("grid2")->setVisible(true);
-	mMesh->getSubEntity("grid3")->setVisible(true);
+	mMesh->getSubEntity("grid3")->setVisible(true);*/
 }
 
 void Player::attackA2()
 {
-	mAttackA2->setWeight(1);
+	/*mAttackA2->setWeight(1);
 	mAttackA2->setEnabled(true);
 
 	// Show current attack's grids
 	mMesh->getSubEntity("grid4")->setVisible(true);
 	mMesh->getSubEntity("grid5")->setVisible(true);
-	mMesh->getSubEntity("grid6")->setVisible(true);
+	mMesh->getSubEntity("grid6")->setVisible(true);*/
 }
 
 void Player::attackA3()
 {
-	mAttackA3->setWeight(1);
+	/*mAttackA3->setWeight(1);
 	mAttackA3->setEnabled(true);
 
 	// Show current attack's grids
 	mMesh->getSubEntity("grid7")->setVisible(true);
-	mMesh->getSubEntity("grid8")->setVisible(true);
+	mMesh->getSubEntity("grid8")->setVisible(true);*/
 }
 
 void Player::attackSpecial()
 {
-	special = true;
-	mSpecial->setEnabled(true);
-	mFireBreath->startAndStopFade(mSpecial->getLength());
+	special = true;	
+	mFireBreath->startAndStopFade(mMesh->getAnimationState("Special")->getLength() + 0.2);
 }
 
 void Player::updateAnimation(float elapsedSeconds)
 {
-	if(attacking != 0)
+	/*if(attacking != 0)
 	{
 		if(attacking == 1 || mAttackA1->getEnabled())
 		{
@@ -229,7 +220,68 @@ void Player::updateAnimation(float elapsedSeconds)
 	{
 		special = false;
 		mSpecial->setEnabled(false);
+	}*/
+
+	if( mMesh->getAnimationState("Special")->getTimePosition() +  elapsedSeconds > mMesh->getAnimationState("Special")->getLength())
+	{
+		special = false;
 	}
+	if(mMesh->getAnimationState("AttackA_01")->getTimePosition() +  elapsedSeconds > mMesh->getAnimationState("AttackA_01")->getLength()
+		&& attacking == 1)
+	{
+		attacking = 0;
+		hideGrids();
+	}
+	else if(mMesh->getAnimationState("AttackA_02")->getTimePosition() +  elapsedSeconds > mMesh->getAnimationState("AttackA_02")->getLength()
+		&& attacking == 2)
+	{
+		attacking = 0;
+		hideGrids();
+	}
+	else if(mMesh->getAnimationState("AttackA_03")->getTimePosition() +  elapsedSeconds > mMesh->getAnimationState("AttackA_03")->getLength()
+		&& attacking == 3)
+	{
+		attacking = 0;
+		hideGrids();
+	}
+
+	if( moving )
+	{
+		mCurrentAnimation->setValue( RUN );
+	}
+	else if( special )
+	{
+		mCurrentAnimation->setValue( SPECIAL );
+	}
+	else if( attacking  == 1 )
+	{
+		mCurrentAnimation->setValue( ATTACKA1 );
+
+		mMesh->getSubEntity("grid1")->setVisible(true);
+		mMesh->getSubEntity("grid2")->setVisible(true);
+		mMesh->getSubEntity("grid3")->setVisible(true);
+	}
+	else if( attacking  == 2 )
+	{
+		mCurrentAnimation->setValue( ATTACKA2 );
+		mMesh->getSubEntity("grid4")->setVisible(true);
+		mMesh->getSubEntity("grid5")->setVisible(true);
+		mMesh->getSubEntity("grid6")->setVisible(true);
+
+	}
+	else if( attacking  == 3 )
+	{
+		mCurrentAnimation->setValue( ATTACKA3 );
+
+		mMesh->getSubEntity("grid7")->setVisible(true);
+		mMesh->getSubEntity("grid8")->setVisible(true);
+	}
+	else
+	{
+		mCurrentAnimation->setValue( IDDLE );
+	}
+	
+	mAnimationSystem->update( elapsedSeconds );	
 }
 
 void Player::setDebugEnabled(bool isDebugEnabled)

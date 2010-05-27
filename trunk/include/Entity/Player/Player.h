@@ -27,14 +27,21 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #include <OgreTagPoint.h>
 #include <ParticleUniversePlugin.h>
 
+#include "Ogre/AnimationSystem.h"
+
 #include "..\EntityInterface.h"
 #include "..\..\Physics\PhysicsInterface.h"
 #include "..\..\Logic\LogicInterface.h"
 
 #include "..\OBBoxRenderable.h"
 
-// Player default movement speed (10 = 1 m/s)
-#define SPEED	50
+// Player animations number in tree
+#define IDDLE		0
+#define RUN			1
+#define SPECIAL		2
+#define ATTACKA1	3
+#define ATTACKA2	4
+#define ATTACKA3	5
 
 using namespace Ogre;
 
@@ -88,25 +95,27 @@ namespace WyvernsAssault
 		void hideGrids();
 
 	private:
-		Ogre::Vector3 mDirection;
 		Ogre::Vector3 mLastDirection;
 
-		Ogre::AnimationState* mIddle;
-		Ogre::AnimationState* mRun;
-		Ogre::AnimationState* mAttackA1;
-		Ogre::AnimationState* mAttackA2;
-		Ogre::AnimationState* mAttackA3;
-		Ogre::AnimationState* mSpecial;
-				
+		// Fire breath particle system and attach point
 		TagPoint*							mBreathPoint;
 		ParticleUniverse::ParticleSystem*	mFireBreath;
+		
+		// Debug bounding box
+		OBBoxRenderable* mOBBoxRenderable;
+		bool mIsDebugEnabled;
 
+	private:
+		
+		// Animation control variables
 		bool moving;		
 		bool special;
 		Real attacking;
 
-		OBBoxRenderable* mOBBoxRenderable;
-		bool mIsDebugEnabled;
+		// Animation system
+		tecnofreak::IAnimationSystem*		mAnimationSystem;
+		tecnofreak::IParameter*				mCurrentAnimation;
+
 	};
 
 	typedef boost::shared_ptr<Player> PlayerPtr;
