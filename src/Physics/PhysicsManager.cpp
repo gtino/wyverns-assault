@@ -102,7 +102,8 @@ void PhysicsManager::addPlayer(PlayerPtr player)
 	body->setMass(OgreOde::CapsuleMass(70,radius/2,Vector3::UNIT_Y,radius/2)); 
 	body->setAffectedByGravity(true);
 	OgreOde::TransformGeometry* transform = new OgreOde::TransformGeometry(mWorld,mSpace); 
-	OgreOde::CapsuleGeometry* geometry = new OgreOde::CapsuleGeometry(radius/2,size.y/5,mWorld); 
+	//OgreOde::CapsuleGeometry* geometry = new OgreOde::CapsuleGeometry(radius/2,size.y/5,mWorld); 
+	OgreOde::CapsuleGeometry* geometry = new OgreOde::CapsuleGeometry(radius/4,size.y/10,mWorld);
 	geometry->setOrientation(Quaternion(Degree(90),Vector3::UNIT_X));
 	transform->setBody(body); 
 	transform->setEncapsulatedGeometry(geometry);
