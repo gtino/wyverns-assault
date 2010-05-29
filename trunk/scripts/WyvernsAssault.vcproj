@@ -431,6 +431,18 @@
 						>
 					</File>
 				</Filter>
+				<Filter
+					Name="Animal"
+					>
+					<File
+						RelativePath="..\src\Entity\Animal\Animal.cpp"
+						>
+					</File>
+					<File
+						RelativePath="..\src\Entity\Animal\AnimalManager.cpp"
+						>
+					</File>
+				</Filter>
 			</Filter>
 			<Filter
 				Name="Events"
@@ -718,6 +730,18 @@
 					</File>
 					<File
 						RelativePath="..\include\Entity\Item\ItemManager.h"
+						>
+					</File>
+				</Filter>
+				<Filter
+					Name="Animal"
+					>
+					<File
+						RelativePath="..\include\Entity\Animal\Animal.h"
+						>
+					</File>
+					<File
+						RelativePath="..\include\Entity\Animal\AnimalManager.h"
 						>
 					</File>
 				</Filter>

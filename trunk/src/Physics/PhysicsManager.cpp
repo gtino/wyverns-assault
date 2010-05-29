@@ -84,7 +84,7 @@ void PhysicsManager::createGround(Ogre::String mesh,Ogre::String name,Ogre::Vect
 	ent_ground->setUserAny(Ogre::Any(geom_ground));
 	node_ground->setVisible(false);
 	node_ground->setScale(scale);
-
+  
 }
 
 void PhysicsManager::addPlayer(PlayerPtr player)

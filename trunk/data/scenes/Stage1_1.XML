@@ -290,33 +290,121 @@
 
 	<!-- Items -->
 	<items>
+		<!-- Live Items -->
 		<item>
-			<position x="170" y="6" z="900"/>
+			<position x="360" y="4" z="795"/>
+			<entity type="LiveSmall" meshFile="beerHorn.mesh" name="LiveSmall1"/>
+			<scale x="0.7" y="0.7" z="0.7"/>
+		</item>
+
+		<item>
+			<position x="712" y="6" z="735"/>
 			<entity type="LiveMedium" meshFile="beerGlass.mesh" name="LiveMedium1"/>
-		</item>
-		<item>
-			<position x="180" y="6" z="850"/>
-			<entity type="LiveMedium" meshFile="beerHorn.mesh" name="LiveMedium2"/>
 			<scale x="0.7" y="0.7" z="0.7"/>
 		</item>
 		<item>
-			<position x="470" y="6" z="900"/>
-			<entity type="LiveMedium" meshFile="beerTank.mesh" name="LiveMedium3"/>
+			<position x="875" y="4" z="710"/>
+			<entity type="LiveSmall" meshFile="beerHorn.mesh" name="LiveSmall2"/>
 			<scale x="0.7" y="0.7" z="0.7"/>
 		</item>
 		<item>
-			<position x="407" y="8" z="800"/>
-			<entity type="LiveBig" meshFile="chickenItem.mesh" name="LiveBig1"/>
+			<position x="1142" y="4" z="460"/>
+			<entity type="LiveSmall" meshFile="beerHorn.mesh" name="LiveSmall3"/>
+			<scale x="0.7" y="0.7" z="0.7"/>
 		</item>
 		<item>
-			<position x="615" y="8" z="800"/>
-			<entity type="LiveBig" meshFile="chickenLegItem.mesh" name="LiveBig2"/>
+			<position x="1275" y="6" z="215"/>
+			<entity type="LiveBig" meshFile="beerTank.mesh" name="LiveBig1"/>
 		</item>
 		<item>
-			<position x="700" y="6" z="750"/>
+			<position x="1277" y="6" z="136"/>
+			<entity type="LiveBig" meshFile="beerTank.mesh" name="LiveBig2"/>
+		</item>
+		<item>
+			<position x="1007" y="6" z="-315"/>
+			<entity type="LiveMedium" meshFile="beerGlass.mesh" name="LiveMedium2"/>
+			<scale x="0.7" y="0.7" z="0.7"/>
+		</item>
+		<item>
+			<position x="905" y="6" z="-315"/>
+			<entity type="LiveBig" meshFile="beerTank.mesh" name="LiveBig3"/>
+		</item>
+		<item>
+			<position x="532" y="6" z="-595"/>
+			<entity type="LiveMedium" meshFile="beerGlass.mesh" name="LiveMedium3"/>
+			<scale x="0.7" y="0.7" z="0.7"/>
+		</item>
+		<item>
+			<position x="75" y="5" z="-247"/>
+			<entity type="LiveSmall" meshFile="beerHorn.mesh" name="LiveSmall4"/>
+			<scale x="0.7" y="0.7" z="0.7"/>
+		</item>
+		<item>
+			<position x="1182" y="25" z="-28"/>
+			<entity type="LiveBig" meshFile="chickenItem.mesh" name="LiveBig4"/>
+		</item>
+		<item>
+			<position x="-59" y="8" z="-127"/>
+			<entity type="LiveBig" meshFile="chickenItem.mesh" name="LiveBig5"/>
+		</item>
+		<item>
+			<position x="580" y="8" z="773"/>
+			<entity type="LiveBig" meshFile="chickenLegItem.mesh" name="LiveMedium4"/>
+		</item>
+		<item>
+			<position x="531" y="8" z="-485"/>
+			<entity type="LiveBig" meshFile="chickenLegItem.mesh" name="LiveMedium5"/>
+		</item>
+
+		<!-- Power Items -->
+		<item>
+			<position x="1189" y="6" z="242"/>
 			<entity type="PowerBig" meshFile="crown.mesh" name="PowerBig1"/>
 		</item>
+		<item>
+			<position x="482" y="6" z="-528"/>
+			<entity type="PowerBig" meshFile="crown.mesh" name="PowerBig2"/>
+		</item>
+		<!--<item>
+			<position x="700" y="6" z="-467"/>
+			<entity type="PowerSmall" meshFile="helm1.mesh" name="PowerSmall1"/>
+		</item>
+		<item>
+			<position x="1202" y="6" z="423"/>
+			<entity type="PowerSmall" meshFile="helm2.mesh" name="PowerSmall2"/>
+		</item>	
+		<item>
+			<position x="963" y="6" z="621"/>
+			<entity type="PowerMedium" meshFile="helm3.mesh" name="PowerMedium1"/>
+		</item>	-->
+
+		<!-- Puntuation Items -->
+		<!-- <item>
+			<position x="380" y="6" z="-546"/>
+			<entity type="ScoreBig" meshFile="ruby1.mesh" name="ScoreBig1"/>
+		</item>
+		<item>
+			<position x="355" y="6" z="-549"/>
+			<entity type="ScoreBig" meshFile="ruby2.mesh" name="ScoreBig2"/>
+		</item>
+		<item>
+			<position x="328" y="6" z="-551"/>
+			<entity type="ScoreBig" meshFile="ruby3.mesh" name="ScoreBig3"/>
+		</item>	
+		<item>
+			<position x="293" y="6" z="-555"/>
+			<entity type="ScoreBig" meshFile="ruby4.mesh" name="ScoreBig4"/>
+		</item>-->	
 	
 	</items>
+
+	<!-- Animals -->
+	<animals>
+		<animal>
+			<position x="170" y="6" z="900"/>
+			<entity type="Chicken" meshFile="chicken.mesh" name="Chicken1"/>
+			<scale x="0.7" y="0.7" z="0.7"/>
+		</animal>
+	</animals>
 
 </scene>
