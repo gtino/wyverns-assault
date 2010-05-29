@@ -401,9 +401,54 @@
 	<!-- Animals -->
 	<animals>
 		<animal>
-			<position x="170" y="6" z="900"/>
+			<position x="170" y="-3" z="900"/>
 			<entity type="Chicken" meshFile="chicken.mesh" name="Chicken1"/>
-			<scale x="0.7" y="0.7" z="0.7"/>
+			<scale x="1" y="1" z="1"/>
+		</animal>
+		<animal>
+			<position x="387" y="-3" z="755"/>
+			<entity type="Chicken" meshFile="chicken.mesh" name="Chicken2"/>
+			<scale x="1" y="1" z="1"/>
+		</animal>
+		<animal>
+			<position x="416" y="-3" z="761"/>
+			<entity type="Chicken" meshFile="chicken.mesh" name="Chicken3"/>
+			<scale x="1" y="1" z="1"/>
+		</animal>
+		<animal>
+			<position x="398" y="-3" z="702"/>
+			<entity type="Chicken" meshFile="chicken.mesh" name="Chicken4"/>
+			<scale x="1" y="1" z="1"/>
+		</animal>
+		<animal>
+			<position x="1141" y="-3" z="415"/>
+			<entity type="Chicken" meshFile="chicken.mesh" name="Chicken5"/>
+			<scale x="1" y="1" z="1"/>
+		</animal>
+		<animal>
+			<position x="1189" y="-3" z="412"/>
+			<entity type="Chicken" meshFile="chicken.mesh" name="Chicken6"/>
+			<scale x="1" y="1" z="1"/>
+		</animal>
+		<animal>
+			<position x="1215" y="-3" z="358"/>
+			<entity type="Chicken" meshFile="chicken.mesh" name="Chicken7"/>
+			<scale x="1" y="1" z="1"/>
+		</animal>
+		<animal>
+			<position x="1210" y="-3" z="196"/>
+			<entity type="Chicken" meshFile="chicken.mesh" name="Chicken8"/>
+			<scale x="1" y="1" z="1"/>
+		</animal>
+		<animal>
+			<position x="946" y="-3" z="-295"/>
+			<entity type="Chicken" meshFile="chicken.mesh" name="Chicken9"/>
+			<scale x="1" y="1" z="1"/>
+		</animal>
+		<animal>
+			<position x="250" y="-2" z="-547"/>
+			<entity type="Chicken" meshFile="chicken.mesh" name="Chicken10"/>
+			<scale x="5" y="5" z="5"/>
 		</animal>
 	</animals>
 

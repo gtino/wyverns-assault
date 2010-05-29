@@ -29,8 +29,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #include "..\..\Physics\PhysicsInterface.h"
 #include "..\..\Logic\LogicInterface.h"
 
-#define ANIMAL_BILLBOARD_SHOW_TIME 2.0f // seconds
-
 #define ANIMAL_SPEED_SLOW 10.0f
 #define ANIMAL_SPEED_MEDIUM 30.0f
 #define ANIMAL_SPEED_FAST 50.0f
@@ -68,8 +66,6 @@ namespace WyvernsAssault
 		virtual void updateEntity(const float elapsedSeconds);
 		virtual void updateLogic(lua_State *L, const float elapsedSeconds);
 
-		void setBillboardSet(BillboardSet* balloonSet);
-
 		float getStateTimeout(){return mStateTimeout;}
 
 		void setTarget(SceneNode* target);
@@ -83,10 +79,7 @@ namespace WyvernsAssault
 	private:
 		AnimalTypes mType;
 
-		BillboardSet* mBalloonSet;
-		Billboard* mBalloon;
-
-		SceneNode* mTarget;
+		SceneNode* mTarget; 
 
 		AnimalStates mState;
 		float mStateTimeout;

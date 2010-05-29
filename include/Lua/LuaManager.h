@@ -30,6 +30,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #include "..\Entity\Enemy\EnemyManager.h"
 #include "..\Entity\Player\PlayerManager.h"
 #include "..\Entity\Item\ItemManager.h"
+#include "..\Entity\Animal\AnimalManager.h"
 #include "..\Audio\AudioManager.h"
 
 namespace WyvernsAssault
