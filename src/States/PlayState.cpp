@@ -136,6 +136,7 @@ void PlayState::initialize()
 	mLuaManager->registerInterface(mEnemyManager.get());
 	mLuaManager->registerInterface(mPhysicsManager.get());
 	mLuaManager->registerInterface(mItemManager);
+	mLuaManager->registerInterface(mAnimalManager);
 
 	//
 	// THIRD :	This call to 'initialize' will initialize Lua,

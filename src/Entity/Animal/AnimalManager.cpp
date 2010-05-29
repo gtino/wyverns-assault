@@ -133,8 +133,8 @@ void AnimalManager::update(const float elapsedSeconds)
 	for(int i = 0; i < mAnimalList.size() ; i++)
 	{
 		AnimalPtr animal =  mAnimalList[i];
-		//animal->updateLogic(L,elapsedSeconds);
-		//Animal->updatePhysics(elapsedSeconds);
+		animal->updateLogic(L,elapsedSeconds);
+		//animal->updatePhysics(elapsedSeconds);
 		animal->updateEntity(elapsedSeconds);
 	}
 }
