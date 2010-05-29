@@ -139,7 +139,7 @@ void Player::attackSpecial()
 	if( attacking == 0)
 	{
 		special = true;	
-		mFireBreath->startAndStopFade(mMesh->getAnimationState("Special")->getLength() + 0.2);
+		mFireBreath->startAndStopFade(mMesh->getAnimationState("Special")->getLength());
 	}
 }
 

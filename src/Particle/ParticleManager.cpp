@@ -81,7 +81,7 @@ void ParticleManager::bloodHit(Vector3 position)
 	SceneNode* node = mSceneManager->getSceneNode("bloodHitNode");
 	node->setPosition(position);
 	ParticleUniverse::ParticleSystem* particles = mParticleSystemManager->getParticleSystem("bloodHit");
-	particles->startAndStopFade(1);
+	particles->startAndStopFade(5);
 }
 
 void ParticleManager::bloodKill(Vector3 position)
@@ -89,7 +89,7 @@ void ParticleManager::bloodKill(Vector3 position)
 	SceneNode* node = mSceneManager->getSceneNode("bloodKillNode");
 	node->setPosition(position);
 	ParticleUniverse::ParticleSystem* particles = mParticleSystemManager->getParticleSystem("bloodKill");
-	particles->startAndStopFade(1);
+	particles->startAndStopFade(5);
 }
 
 void ParticleManager::bloodLens()
@@ -99,7 +99,7 @@ void ParticleManager::bloodLens()
 	SceneNode* node = mSceneManager->getSceneNode("bloodLensNode");
 	node->setPosition(position + direction * 200);	
 	ParticleUniverse::ParticleSystem* particles = mParticleSystemManager->getParticleSystem("bloodLens");
-	particles->startAndStopFade(1);
+	particles->startAndStopFade(5);
 }
 
 /** Hit particle */
@@ -109,7 +109,7 @@ void ParticleManager::hit(Vector3 position)
 	SceneNode* node = mSceneManager->getSceneNode("hitNode");
 	node->setPosition(position);
 	ParticleUniverse::ParticleSystem* particles = mParticleSystemManager->getParticleSystem("hit");
-	particles->startAndStopFade(1);
+	particles->startAndStopFade(5);
 }
 
 // --------------
@@ -131,9 +131,12 @@ void ParticleManager::handleEnemyHitEvent(EnemyHitEventPtr evt)
 	EnemyPtr enemy = evt->getEnemy();
 	PlayerPtr player = evt->getPlayer();	
 
-	// The player has just hit the enemy	
-	this->bloodHit(enemy->getPosition());
-	this->hit(player->getPosition());
+	// The player has just hit the enemy
+	if(player->isAttacking())
+	{
+		this->bloodHit(enemy->getPosition());
+		this->hit(player->getPosition());
+	}
 }
 
 void ParticleManager::handlePlayerHitEvent(PlayerHitEventPtr evt)

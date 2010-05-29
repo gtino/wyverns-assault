@@ -28,10 +28,10 @@ system WyvernsAssault/Hit
             }
             velocity                            dyn_random
             {
-                min                             20
+                min                             15
                 max                             25
             }
-            position                            0 0 20
+            position                            0 10 30
             end_texture_coords_range            15
             force_emission                      true
         }
