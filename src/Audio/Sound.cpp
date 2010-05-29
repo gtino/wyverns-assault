@@ -39,14 +39,14 @@ Sound::~Sound()
 }
 
 void Sound::initialise () {
-	FMOD::System * mSystem;
-	FMOD_RESULT result = FMOD::System_Create(&mSystem);
-	FMOD::Sound * mSound;
-	mSystem->init(32, FMOD_INIT_NORMAL, 0);
-	result = mSystem->createSound("../media/mp3/Greensleeves.mp3",FMOD_LOOP_NORMAL,NULL,&mSound);
-	FMOD::Channel * mChannel = 0;
-	result = mSystem->playSound(FMOD_CHANNEL_FREE, mSound, false, &mChannel);
-	mSystem->update();
+	FMOD::System * system;
+	FMOD_RESULT result = FMOD::System_Create(&system);
+	FMOD::Sound * sound;
+	system->init(32, FMOD_INIT_NORMAL, 0);
+	result = system->createSound("../media/mp3/Greensleeves.mp3",FMOD_LOOP_NORMAL,NULL,&sound);
+	FMOD::Channel * channel = 0;
+	result = system->playSound(FMOD_CHANNEL_FREE, sound, false, &channel);
+	system->update();
 	//create the sound system. If fails, sound is set to impossible
     //mResult = FMOD_System_Create(&mFmodsystem);
     //if (mResult != FMOD_OK) mPossible = false;
