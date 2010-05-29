@@ -37,16 +37,6 @@ Item::~Item()
 {
 }
 
-void Item::setBillboardSet(BillboardSet* balloonSet)
-{
-	mBalloonSet = balloonSet;
-	mBalloonSet->setDefaultDimensions(15.0,15.0);
-	mBalloonSet->setMaterialName("Balloons/Initial");
-
-	Vector3 balloonPosition(0, 15, 0);
-	mBalloon = mBalloonSet->createBillboard(balloonPosition);
-}
-
 void Item::updateEntity(const float elapsedSeconds)
 {
 	mAnimationState = mMesh->getAnimationState("Iddle");
@@ -70,32 +60,8 @@ void Item::updateLogic(lua_State *L, const float elapsedSeconds)
 	ItemStates newState = (ItemStates)luaL_checkint(L, -1);
 	lua_pop(L, 1);
 
-	// state is the new state for the player
-	// Do something if and only if the state has changed!
-	if(newState != mState)
-	{
-		switch(newState)
-		{
-		case ItemStates::Modest:
-			mBalloonSet->setVisible(false);
-			mBalloonSet->setMaterialName("Balloons/Idle");
-			break;
-		case ItemStates::Attention:
-			mBalloonSet->setVisible(true);
-			mBalloonSet->setMaterialName("Balloons/Sleeping");
-			break;
-		case ItemStates::Catch:
-			mBalloonSet->setVisible(true);
-			mBalloonSet->setMaterialName("Balloons/What");
-			break;
-		default:
-			mBalloonSet->setVisible(false);
-			mBalloonSet->setMaterialName("Balloons/Initial");
-			break;
-		}
-
+	if(newState == ItemStates::Catch){
+		//Remove Item
 		mState = newState;
 	}
-
-
 }
