@@ -32,6 +32,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #include "..\EntityInterface.h"
 #include "..\..\Physics\PhysicsInterface.h"
 #include "..\..\Logic\LogicInterface.h"
+#include "..\..\Camera\CameraManager.h"
 
 #include "..\OBBoxRenderable.h"
 

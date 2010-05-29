@@ -63,6 +63,9 @@ namespace WyvernsAssault
 		void bloodKill(Vector3 position);
 		void bloodLens();
 
+		/** Hit particles */
+		void hit(Vector3 position);
+
 		// ----------------
 		// Events interface
 		// ----------------
@@ -72,6 +75,7 @@ namespace WyvernsAssault
 		void unregisterHandlers();
 
 		void handleEnemyHitEvent(EnemyHitEventPtr evt);
+		void handlePlayerHitEvent(PlayerHitEventPtr evt);
 
 	private:
 		ParticleUniverse::ParticleSystemManager*	mParticleSystemManager;

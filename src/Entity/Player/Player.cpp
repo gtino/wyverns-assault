@@ -169,6 +169,9 @@ void Player::updateAnimation(float elapsedSeconds)
 		{
 			attacking = 3;
 			continueAttacking = false;
+
+			// Camera effect on third attack for bigger impact
+			CameraManager::getSingletonPtr()->shake(1);
 		}
 		else
 			attacking = 0;

@@ -1,0 +1,60 @@
+system WyvernsAssault/Hit
+{
+    technique Technique3
+    {
+        visual_particle_quota                   2
+        emitted_emitter_quota                   2
+        material                                Particle/Hit
+        default_particle_width                  20
+        default_particle_height                 20
+        default_particle_depth                  10
+        renderer                                Billboard
+        {
+            texture_coords_rows                 4
+            texture_coords_columns              4
+        }
+        emitter                                 Point Emitter4
+        {
+            emission_rate                       1
+            angle                               dyn_random
+            {
+                min                             0
+                max                             45
+            }
+            time_to_live                        dyn_random
+            {
+                min                             0.4
+                max                             0.5
+            }
+            velocity                            dyn_random
+            {
+                min                             20
+                max                             25
+            }
+            position                            0 0 20
+            end_texture_coords_range            15
+            force_emission                      true
+        }
+        affector                                Colour Affector3
+        {
+            time_colour                         0    1 1 1 0
+            time_colour                         0.2  1 1 1 1
+            time_colour                         0.8  1 1 1 1
+            time_colour                         1    1 1 1 0
+        }
+        affector                                Scale Affector4
+        {
+            xyz_scale                           20
+        }
+        affector                                Jet Affector5
+        {
+            acceleration                        0.5
+        }
+        observer                                OnClear Observer1
+        {
+            handler                             DoStopSystem Handler2
+            {
+            }
+        }
+    }
+}

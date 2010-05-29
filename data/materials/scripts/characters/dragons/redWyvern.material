@@ -66,139 +66,139 @@ material RedWyvernHead
 
 // Materials for attacks grids
 
-material Material_grid1
+material Grid1_Material
 {
 	technique
 	{
 		pass
 		{
-			ambient 0.935 0.935 0.374 1
-			diffuse 0.862 0.862 0.862 1
-			specular 0.854 0.837 0.634 1 27.864
-			emissive 0.707 0.707 0.707 1
-			depth_check on
+			diffuse 0.5 0.5 0.5 1
+			specular 0.7 0.7 0.7 1 10
+			emissive 0.228 0.228 0.228 1
 			cull_hardware none
 			cull_software none
 		}
+
 	}
+
 }
 
-material Material_grid2
+material Grid2_Material
 {
 	technique
 	{
 		pass
 		{
-			ambient 0.935 0.935 0.374 1
-			diffuse 0.862 0.862 0.862 1
-			specular 0.854 0.837 0.634 1 27.864
-			emissive 0.707 0.707 0.707 1
-			depth_check on
+			diffuse 0.5 0.5 0.5 1
+			specular 0.7 0.7 0.7 1 10
+			emissive 0.228 0.228 0.228 1
 			cull_hardware none
 			cull_software none
 		}
+
 	}
+
 }
 
-material Material_grid3
+material Grid3_Material
 {
 	technique
 	{
 		pass
 		{
-			ambient 0.935 0.935 0.374 1
-			diffuse 0.862 0.862 0.862 1
-			specular 0.854 0.837 0.634 1 27.864
-			emissive 0.707 0.707 0.707 1
-			depth_check on
+			diffuse 0.5 0.5 0.5 1
+			specular 0.7 0.7 0.7 1 10
+			emissive 0.228 0.228 0.228 1
 			cull_hardware none
 			cull_software none
 		}
+
 	}
+
 }
 
-material Material_grid4
+material Grid4_Material
 {
 	technique
 	{
 		pass
 		{
-			ambient 0.935 0.935 0.374 1
-			diffuse 0.862 0.862 0.862 1
-			specular 0.854 0.837 0.634 1 27.864
-			emissive 0.707 0.707 0.707 1
-			depth_check on
+			diffuse 0.5 0.5 0.5 1
+			specular 0.7 0.7 0.7 1 10
+			emissive 0.228 0.228 0.228 1
 			cull_hardware none
 			cull_software none
+
 		}
+
 	}
+
 }
 
-material Material_grid5
+material Grid5_Material
 {
 	technique
 	{
 		pass
 		{
-			ambient 0.935 0.935 0.374 1
-			diffuse 0.862 0.862 0.862 1
-			specular 0.854 0.837 0.634 1 27.864
-			emissive 0.707 0.707 0.707 1
-			depth_check on
+			diffuse 0.5 0.5 0.5 1
+			specular 0.7 0.7 0.7 1 10
+			emissive 0.228 0.228 0.228 1
 			cull_hardware none
 			cull_software none
 		}
+
 	}
+
 }
 
-material Material_grid6
+material Grid6_Material
 {
 	technique
 	{
 		pass
 		{
-			ambient 0.935 0.935 0.374 1
-			diffuse 0.862 0.862 0.862 1
-			specular 0.854 0.837 0.634 1 27.864
-			emissive 0.707 0.707 0.707 1
-			depth_check on
+			diffuse 0.5 0.5 0.5 1
+			specular 0.7 0.7 0.7 1 10
+			emissive 0.228 0.228 0.228 1
 			cull_hardware none
 			cull_software none
 		}
+
 	}
+
 }
 
-material Material_grid7
+material Grid7_Material
 {
 	technique
 	{
 		pass
 		{
-			ambient 0.935 0.935 0.374 1
-			diffuse 0.862 0.862 0.862 1
-			specular 0.854 0.837 0.634 1 27.864
-			emissive 0.707 0.707 0.707 1
-			depth_check on
+			diffuse 0.5 0.5 0.5 1
+			specular 0.7 0.7 0.7 1 10
+			emissive 0.228 0.228 0.228 1
 			cull_hardware none
 			cull_software none
 		}
+
 	}
+
 }
 
-material Material_grid8
+material Grid8_Material
 {
 	technique
 	{
 		pass
 		{
-			ambient 0.935 0.935 0.374 1
-			diffuse 0.862 0.862 0.862 1
-			specular 0.854 0.837 0.634 1 27.864
-			emissive 0.707 0.707 0.707 1
-			depth_check on
+			diffuse 0.5 0.5 0.5 1
+			specular 0.7 0.7 0.7 1 10
+			emissive 0.228 0.228 0.228 1
 			cull_hardware none
 			cull_software none
 		}
-	}
-}
 
+	}
+
+}

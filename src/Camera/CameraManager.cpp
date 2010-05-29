@@ -49,6 +49,10 @@ void CameraManager::initialize()
 	mCameraNode->attachObject(mCamera);
 	mCamera->setAutoTracking(true, mCameraLookAtNode, Vector3::UNIT_X);
 
+	// Initial Camera Position
+	mCameraMode = "Start";
+	mCameraNode->setPosition(2000, 1500, -2000);
+
 	/** Debug axes node */
 	mSceneManager->createEntity("Axes", "axes.mesh");
 	mAxesNode = mSceneManager->getRootSceneNode()->createChildSceneNode("AxesNode");
@@ -56,7 +60,6 @@ void CameraManager::initialize()
 	mAxesNode->setVisible(false);
 	
 	/** Other variables initialization */
-	mCameraMode = "NoMode";
 	mGameArea = 0;
 	mCameraZoom = 0;
 
@@ -78,7 +81,7 @@ void CameraManager::initialize()
 
 	/** Sdk Camera Manager for free look camera */
 	mCameraMan = new OgreBites::SdkCameraMan(mCamera);
-	mCameraMan->setStyle(OgreBites::CS_FREELOOK);
+	mCameraMan->setStyle(OgreBites::CS_MANUAL);
 }
 
 /** Finalize the camera manager */
