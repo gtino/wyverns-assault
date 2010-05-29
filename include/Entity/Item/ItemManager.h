@@ -4,8 +4,9 @@
 #include <Ogre.h>
 #include <OgreSingleton.h>
 
-#include "..\..\..\include\Lua\LuaInterface.h"
-#include "..\..\..\include\Entity\EntityManager.h"
+#include "..\include\Lua\LuaInterface.h"
+#include "..\include\Entity\EntityManager.h"
+#include "..\include\Particle\ParticleManager.h"
 #include "Item.h"
 
 namespace WyvernsAssault
