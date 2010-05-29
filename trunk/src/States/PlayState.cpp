@@ -154,6 +154,7 @@ void PlayState::initialize()
 	mEventsManager->registerInterface(mEnemyManager.get());
 	mEventsManager->registerInterface(mPhysicsManager.get());
 	mEventsManager->registerInterface(mParticleManager.get());
+	mEventsManager->registerInterface(mAudioManager);
 
 	//
 	// Set game camera

@@ -58,7 +58,7 @@ namespace WyvernsAssault
 		/** Graphics manager */
 		GraphicsManager mGraphicsManager;
 		/** Audio manager */
-		AudioManager mAudioManager;
+		AudioManagerPtr mAudioManager;
 		/** Input manager */
 		InputManager mInputManager;
 

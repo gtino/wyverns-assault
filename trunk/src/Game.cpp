@@ -9,6 +9,7 @@ mTotalSeconds(0.0f)
 	//
 	// TODO Constructor
 	//
+	mAudioManager = AudioManagerPtr(new AudioManager());
 }
 
 Game::~Game()
@@ -25,19 +26,19 @@ void Game::initialize()
 	mGraphicsManager.initialize();
 
 	// Initialize Audio Layer
-	mAudioManager.initialize();
+	mAudioManager->initialize();
 
 	// Initialize input manager. A render window is needed in order to setup mouse coords and boundaries.
 	mInputManager.initialize(mGraphicsManager.getRenderWindow(), true);
 
 	// Initialize Game states (FSM) manager
-	mStatesManager.initialize(mGraphicsManager, mInputManager, mAudioManager);
+	mStatesManager.initialize(mGraphicsManager, mInputManager, *(mAudioManager.get()));
 	
 	// Load graphic resourcrs
 	mGraphicsManager.loadResources();
 
 	// Then we load audio
-	mAudioManager.loadResources();
+	mAudioManager->loadResources();
 }
 
 /** Main loop */
@@ -89,7 +90,9 @@ void Game::finalize()
 	// Finalize all
 	mInputManager.finalize();
 	// Unload audio/fx
-	mAudioManager.unloadResources();
+	mAudioManager->unloadResources();
 	// Finalize all
-	mAudioManager.finalize();
+	mAudioManager->finalize();
+	// Release Audio Manager
+	mAudioManager.reset();
 }
