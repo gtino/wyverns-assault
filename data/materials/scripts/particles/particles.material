@@ -235,7 +235,7 @@ material Particle/TrailSpear
     }
 }
 //-----------------------------------------------------------------------------------------------------------------------------------------------
-material Particle/Star
+material Particle/Star_01
 {
     technique
     {
@@ -248,7 +248,26 @@ material Particle/Star
 
             texture_unit
             {
-                texture particle_star.png
+                texture particle_star01.png
+                tex_address_mode clamp
+            }
+        }
+    }
+}
+//-----------------------------------------------------------------------------------------------------------------------------------------------
+material Particle/Star_02
+{
+    technique
+    {
+        pass
+        {
+            lighting off
+            scene_blend add
+            depth_write off
+
+            texture_unit
+            {
+                texture particle_star02.png
                 tex_address_mode clamp
             }
         }
