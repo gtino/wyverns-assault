@@ -135,7 +135,7 @@ void ParticleManager::handleEnemyHitEvent(EnemyHitEventPtr evt)
 	if(player->isAttacking())
 	{
 		this->bloodHit(enemy->getPosition());
-		this->hit(player->getPosition());
+		this->hit(enemy->getPosition());
 	}
 }
 
