@@ -83,6 +83,7 @@ namespace WyvernsAssault
 		void attackSpecial();
 
 		bool isAttacking(){ return attacking != 0 ; }
+		Real wichAttack(){ return attacking; }
 		bool isSpecial(){ return special ; }
 
 		// Animation functions

@@ -132,9 +132,16 @@ void ParticleManager::handleEnemyHitEvent(EnemyHitEventPtr evt)
 	PlayerPtr player = evt->getPlayer();	
 
 	// The player has just hit the enemy
-	if(player->isAttacking())
+	if( player->isAttacking() )
 	{
-		this->bloodHit(enemy->getPosition());
+		if( player->wichAttack() == 3 )
+		{
+			this->bloodKill(enemy->getPosition());
+		}
+		else
+		{
+			this->bloodHit(enemy->getPosition());
+		}		
 		this->hit(enemy->getPosition());
 	}
 }
