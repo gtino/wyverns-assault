@@ -68,14 +68,9 @@ ItemPtr ItemManager::createItem(ItemTypes type, Ogre::String name, Ogre::String 
 	Ogre::SceneNode* itemSceneNode = mSceneManager->getRootSceneNode()->createChildSceneNode();
 
 	itemSceneNode->attachObject(itemMesh);
-	
-	// Balloon billboard
-	Ogre::BillboardSet* mBalloonSet = mSceneManager->createBillboardSet(name + "_BillboardSet");
-	itemSceneNode->attachObject(mBalloonSet);
 
 	ItemPtr item = ItemPtr(new Item(type));
 	item->initializeEntity(itemMesh, itemSceneNode);
-	item->setBillboardSet(mBalloonSet);
 
 	mItemList.push_back(item);
 	mItemMap[name] = item;
@@ -133,8 +128,12 @@ void ItemManager::update(const float elapsedSeconds)
 	{
 		ItemPtr item =  mItemList[i];
 
-		item->updateLogic(L,elapsedSeconds);
-		item->updateEntity(elapsedSeconds);
+		if(item->getItemState() == ItemStates::Catch){
+			removeItem(item->getName());
+		}else{
+			item->updateLogic(L,elapsedSeconds);
+			item->updateEntity(elapsedSeconds);
+		}
 	}
 }
 

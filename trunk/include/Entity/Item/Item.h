@@ -29,8 +29,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #include "..\..\Physics\PhysicsInterface.h"
 #include "..\..\Logic\LogicInterface.h"
 
-#define ITEM_BILLBOARD_SHOW_TIME 2.0f // seconds
-
 namespace WyvernsAssault
 {
 	/** List of item types */
@@ -49,8 +47,7 @@ namespace WyvernsAssault
 	enum ItemStates
 	{
 		Modest = 0,
-		Attention = 1,
-		Catch = 2
+		Catch = 1
 	};
 
 	/**
@@ -65,13 +62,10 @@ namespace WyvernsAssault
 		virtual void updateEntity(const float elapsedSeconds);
 		virtual void updateLogic(lua_State *L, const float elapsedSeconds);
 
-		void setBillboardSet(BillboardSet* balloonSet);
+		ItemStates getItemState(){return mState;}
 
 	private:
 		ItemTypes mType;
-		BillboardSet* mBalloonSet;
-		Billboard* mBalloon;
-
 		ItemStates mState;
 
 	public:
