@@ -12,6 +12,7 @@
 #include "..\Physics\PhysicsManager.h"
 #include "..\Entity\Enemy\EnemyManager.h"
 #include "..\Entity\Item\ItemManager.h"
+#include "..\Particle\ParticleManager.h"
 
 
 // Forward declarations
@@ -41,7 +42,11 @@ namespace Ogre
 		DotSceneLoader() : mSceneMgr(0) {}
 		virtual ~DotSceneLoader() {}
 
-		void parseDotScene(const String &SceneName, const String &groupName,SceneManager *levelSceneManager, WyvernsAssault::CameraManager* cameraManager, WyvernsAssault::LightsManager* lightsManager,WyvernsAssault::EnemyManager* enemysManager ,WyvernsAssault::PhysicsManager* physicsManager, WyvernsAssault::ItemManager* itemsManager ,SceneNode *pAttachNode = NULL, const String &sPrependNode = "");
+		void parseDotScene(const String &SceneName, const String &groupName,SceneManager *levelSceneManager, WyvernsAssault::CameraManager* cameraManager, 
+			WyvernsAssault::LightsManager* lightsManager,WyvernsAssault::EnemyManager* enemysManager ,WyvernsAssault::PhysicsManager* physicsManager, 
+			WyvernsAssault::ItemManager* itemsManager, WyvernsAssault::ParticleManager* particleManager, 
+			SceneNode *pAttachNode = NULL, const String &sPrependNode = "");
+
 		String getProperty(const String &ndNm, const String &prop);
 
 		std::vector<nodeProperty> nodeProperties;
@@ -96,6 +101,7 @@ namespace Ogre
 		WyvernsAssault::EnemyManager* mEnemyManager;
 		WyvernsAssault::PhysicsManager* mPhysicsManager;
 		WyvernsAssault::ItemManager* mItemManager;
+		WyvernsAssault::ParticleManager* mParticleManager;
 	};
 }
 

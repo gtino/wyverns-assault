@@ -10,6 +10,7 @@ system WyvernsAssault/BloodHit
             sorting                             true
             texture_coords_rows                 4
             texture_coords_columns              4
+            billboard_rotation_type             vertex
             accurate_facing                     true
         }
         emitter                                 SphereSurface Emitter11
@@ -30,7 +31,7 @@ system WyvernsAssault/BloodHit
                 max                             0.9
             }
             velocity                            80
-            all_particle_dimensions             15
+            all_particle_dimensions             30
             position                            0 -5 0
             end_texture_coords_range            15
             texture_coords                      15
@@ -55,11 +56,20 @@ system WyvernsAssault/BloodHit
         }
         affector                                Scale Affector7
         {
-            xyz_scale                           20
+            xyz_scale                           -5
         }
         affector                                Randomiser Affector8
         {
             max_deviation_y                     0.5
+        }
+        affector                                TextureRotator Affector16
+        {
+            rotation                            dyn_random
+            {
+                min                             -0.5
+                max                             0.5
+            }
+            rotation_speed                      0
         }
         observer                                OnClear Observer6
         {

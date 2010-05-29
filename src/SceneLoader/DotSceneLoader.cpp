@@ -10,7 +10,10 @@ using namespace std;
 using namespace Ogre;
 using namespace WyvernsAssault;
 
-void DotSceneLoader::parseDotScene(const String &SceneName, const String &groupName, SceneManager *levelSceneManager, WyvernsAssault::CameraManager* cameraManager, WyvernsAssault::LightsManager* lightsManager,WyvernsAssault::EnemyManager* enemysManager , WyvernsAssault::PhysicsManager* physicsManager, WyvernsAssault::ItemManager* itemsManager,SceneNode *pAttachNode, const String &sPrependNode)
+void DotSceneLoader::parseDotScene(const String &SceneName, const String &groupName, SceneManager *levelSceneManager, WyvernsAssault::CameraManager* cameraManager, 
+								   WyvernsAssault::LightsManager* lightsManager,WyvernsAssault::EnemyManager* enemysManager , WyvernsAssault::PhysicsManager* physicsManager, 
+								   WyvernsAssault::ItemManager* itemsManager, WyvernsAssault::ParticleManager* particleManager, 
+								   SceneNode *pAttachNode, const String &sPrependNode)
 {
 
 	//Set SceneManager
@@ -30,6 +33,9 @@ void DotSceneLoader::parseDotScene(const String &SceneName, const String &groupN
 
 	//Set ItemsManager
 	mItemManager = itemsManager;
+
+	//Set ParticleManager
+	mParticleManager = particleManager;
 
 	//Set up shared object values
 	m_sGroupName = groupName;
@@ -332,11 +338,10 @@ void DotSceneLoader::processItems(TiXmlElement *XMLNode)
 
 		// Add to ItemManager
 		ItemPtr item = mItemManager->createItem(Item::StringToType(type), name, mesh);
+		// Attach particle system
+		mParticleManager->add(item->getSceneNode(), name, "WyvernsAssault/ItemGlow");
 		item->setPosition(position);
-		item->setScale(scale);
-		
-		// Add the enemy to the physics manager
-		//mPhysicsManager->addEnemy(enemy);
+		item->setScale(scale);		
 
 		pElement = pElement->NextSiblingElement("item");
 	}

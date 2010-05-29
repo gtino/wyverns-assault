@@ -5,6 +5,7 @@ system WyvernsAssault/BloodLens
         material                                Particle/BloodSplash
         renderer                                Billboard
         {
+            billboard_rotation_type             vertex
         }
         emitter                                 Point Emitter8
         {
@@ -17,6 +18,8 @@ system WyvernsAssault/BloodLens
             }
             velocity                            0
             all_particle_dimensions             300
+            end_texture_coords_range            1
+            texture_coords                      1
             force_emission                      true
         }
         affector                                Colour Affector19

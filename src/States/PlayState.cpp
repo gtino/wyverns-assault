@@ -140,8 +140,8 @@ void PlayState::initialize()
 
 	//Load scene XML file
 	std::auto_ptr<DotSceneLoader> sceneLoader(new DotSceneLoader());
-	sceneLoader->parseDotScene("Level1_1.scene","General", mSceneManager, mCameraManager, mLightsManager, mEnemyManager.get(), mPhysicsManager.get(), mItemManager);
-	sceneLoader->parseDotScene("Stage1_1.XML","General", mSceneManager, mCameraManager, mLightsManager, mEnemyManager.get(), mPhysicsManager.get(), mItemManager);
+	sceneLoader->parseDotScene("Level1_1.scene","General", mSceneManager, mCameraManager, mLightsManager, mEnemyManager.get(), mPhysicsManager.get(), mItemManager, mParticleManager.get());
+	sceneLoader->parseDotScene("Stage1_1.XML","General", mSceneManager, mCameraManager, mLightsManager, mEnemyManager.get(), mPhysicsManager.get(), mItemManager, mParticleManager.get());
 
 	//
 	// Events Manager 

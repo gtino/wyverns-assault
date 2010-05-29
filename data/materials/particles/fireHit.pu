@@ -1,0 +1,13 @@
+system WyvernsAssault/FireHit
+{
+    technique Technique3
+    {
+        material                                Particle/FlameLick
+        renderer                                Billboard
+        {
+        }
+        emitter                                 Box Emitter4
+        {
+        }
+    }
+}

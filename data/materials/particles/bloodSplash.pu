@@ -8,6 +8,7 @@ system WyvernsAssault/BloodSplash
         renderer                                Billboard
         {
             billboard_type                      perpendicular_common
+            billboard_rotation_type             vertex
             common_direction                    0 1 0
             common_up_vector                    0 0 1
         }
@@ -28,16 +29,17 @@ system WyvernsAssault/BloodSplash
             duration                            20
             all_particle_dimensions             dyn_random
             {
-                min                             80
-                max                             100
+                min                             60
+                max                             70
             }
             particle_width                      dyn_random
             {
                 min                             0
                 max                             0
             }
-			position                            0 -10 0
-            auto_direction                      false
+            position                            0 -10 0
+            end_texture_coords_range            1
+            texture_coords                      1
             force_emission                      true
         }
         affector                                Scale Affector104
@@ -66,10 +68,10 @@ system WyvernsAssault/BloodSplash
         }
         affector                                Colour Affector103
         {
-            time_colour                         0    0 0 0 1
+            time_colour                         0    1 1 1 0
             time_colour                         0.04 0.831373 0.792157 0.74902 1
             time_colour                         0.08 0.556863 0.513726 0.556863 1
-            time_colour                         1    0 0 0 1
+            time_colour                         1    1 1 1 0
         }
         observer                                OnClear Observer21
         {

@@ -58,7 +58,7 @@ void ParticleManager::initialize()
 /** Finalize the particle manager */
 void ParticleManager::finalize()
 {
-	ParticleUniverse::ParticleSystemManager::getSingletonPtr()->destroyAllParticleSystems(mSceneManager);
+	mParticleSystemManager->destroyAllParticleSystems(mSceneManager);
 
 	mParticleSystem = NULL;
 	mParticleSystemManager = NULL;
@@ -70,9 +70,26 @@ void ParticleManager::update(const float elapsedSeconds)
 }
 
 /** Create particle system function */		
-ParticleUniverse::ParticleSystem* ParticleManager::create(String id, String material)
+ParticleUniverse::ParticleSystem* ParticleManager::create(String id, String script)
 {
-	return ParticleUniverse::ParticleSystemManager::getSingletonPtr()->createParticleSystem(id, material, mSceneManager);
+	return mParticleSystemManager->createParticleSystem(id, script, mSceneManager);
+}
+
+/** Add particle system to node and start it */
+void ParticleManager::add(SceneNode* node, String id, String script)
+{
+	ParticleUniverse::ParticleSystem* pSystem = mParticleSystemManager->createParticleSystem(id + "_particle", script, mSceneManager);
+	node->attachObject( pSystem );
+	pSystem->start();
+}
+
+/** Remove particle system from node and stop it */
+void ParticleManager::remove(SceneNode* node, String id)
+{
+	ParticleUniverse::ParticleSystem* pSystem = mParticleSystemManager->getParticleSystem(id + "_particle");
+	pSystem->stop();
+	pSystem->detachFromParent();
+	mParticleSystemManager->destroyParticleSystem(pSystem, mSceneManager);
 }
 
 /** Blood particles */
