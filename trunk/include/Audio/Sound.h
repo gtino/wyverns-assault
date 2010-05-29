@@ -32,7 +32,7 @@ namespace WyvernsAssault
 	{
 		Intro01  = 0,
 		Intro02  = 1,
-		Menu03	 = 2,
+		Menu01	 = 2,
 		Attack01 = 3,
 		Attack02 = 4,
 		Attack03 = 5
@@ -41,10 +41,11 @@ namespace WyvernsAssault
 	class Sound
 	{
 	public:
+		Sound();
 		Sound(SoundTypes type);
 		~Sound();
 		
-		void initialise (void);//initialises sound
+		void initialise ();//initialises sound
 
 		//sound control
 		void setVolume (float v); //sets the actual playing sound's volume
@@ -54,7 +55,7 @@ namespace WyvernsAssault
 
     //getters
 		bool getSound (void); //checks whether the sound is on
-
+		char * getSoundId();
     //setters
 		void setPause (bool pause); //pause or unpause the sound
 		void setSound (bool sound); //set the sound on or off
@@ -69,7 +70,7 @@ namespace WyvernsAssault
 		
 		bool mOn; //is sound on?
 	    bool mPossible; //is it possible to play sound?
-		char *mCurrentSound; //currently played sound
+		char * mCurrentSound; //currently played sound
 		
 		FMOD_RESULT mResult;
 		FMOD_SYSTEM * mFmodsystem;

@@ -1,5 +1,6 @@
 #include "..\..\..\include\Audio\Sound.h"
 
+
 using namespace WyvernsAssault;
 
 static struct SoundLogic 
@@ -11,11 +12,21 @@ static struct SoundLogic
 };
 
 
+Sound::Sound(){
+	//mOn=false; //is sound on?
+	//mPossible=false; //is it possible to play sound?
+	//mCurrentSound;//currently played sound
+		
+	//mResult;
+	//mFmodsystem;
+	//mSound;
+	//mChannel;
 
+}
 Sound::Sound(SoundTypes type){
-	//mOn; //is sound on?
-	//mPossible; //is it possible to play sound?
-	//mCurrentSound; //currently played sound
+	mOn=false; //is sound on?
+	mPossible=false; //is it possible to play sound?
+	//mCurrentSound=null; //currently played sound
 		
 	//mResult;
 	//mFmodsystem;
@@ -27,15 +38,23 @@ Sound::~Sound()
 {
 }
 
-void Sound::initialise (void) {
-    //create the sound system. If fails, sound is set to impossible
-    mResult = FMOD_System_Create(&mFmodsystem);
-    if (mResult != FMOD_OK) mPossible = false;
+void Sound::initialise () {
+	FMOD::System * mSystem;
+	FMOD_RESULT result = FMOD::System_Create(&mSystem);
+	FMOD::Sound * mSound;
+	mSystem->init(32, FMOD_INIT_NORMAL, 0);
+	result = mSystem->createSound("../media/mp3/Greensleeves.mp3",FMOD_LOOP_NORMAL,NULL,&mSound);
+	FMOD::Channel * mChannel = 0;
+	result = mSystem->playSound(FMOD_CHANNEL_FREE, mSound, false, &mChannel);
+	mSystem->update();
+	//create the sound system. If fails, sound is set to impossible
+    //mResult = FMOD_System_Create(&mFmodsystem);
+    //if (mResult != FMOD_OK) mPossible = false;
     //if initialise the sound system. If fails, sound is set to impossible
-    if (mPossible) mResult = FMOD_System_Init(mFmodsystem,2, FMOD_INIT_NORMAL, 0);
-    if (mResult != FMOD_OK) mPossible = false;
+    //if (mPossible) mResult = FMOD_System_Init(mFmodsystem,2, FMOD_INIT_NORMAL, 0);
+    //if (mResult != FMOD_OK) mPossible = false;
     //sets initial sound volume (mute)
-    if (mPossible) FMOD_Channel_SetVolume(mChannel,0.0f);
+    //if (mPossible) FMOD_Channel_SetVolume(mChannel,0.0f);
 }
 
 void Sound::setVolume (float v) {
@@ -90,6 +109,8 @@ bool Sound::getSound (void) {
     return mOn;
 }
 
-
+char * Sound::getSoundId(){
+	return mCurrentSound;
+}
 
 
