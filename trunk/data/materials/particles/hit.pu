@@ -12,6 +12,7 @@ system WyvernsAssault/Hit
         {
             texture_coords_rows                 4
             texture_coords_columns              4
+            billboard_rotation_type             vertex
         }
         emitter                                 Point Emitter4
         {
@@ -19,7 +20,7 @@ system WyvernsAssault/Hit
             angle                               dyn_random
             {
                 min                             0
-                max                             45
+                max                             360
             }
             time_to_live                        dyn_random
             {
@@ -31,7 +32,7 @@ system WyvernsAssault/Hit
                 min                             15
                 max                             25
             }
-            position                            0 10 30
+            position                            0 30 30
             end_texture_coords_range            15
             force_emission                      true
         }
@@ -49,6 +50,19 @@ system WyvernsAssault/Hit
         affector                                Jet Affector5
         {
             acceleration                        0.5
+        }
+        affector                                TextureRotator Affector6
+        {
+            rotation                            dyn_random
+            {
+                min                             -0.25
+                max                             0.25
+            }
+            rotation_speed                      dyn_random
+            {
+                min                             0.3
+                max                             0.5
+            }
         }
         observer                                OnClear Observer1
         {

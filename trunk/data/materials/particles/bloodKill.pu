@@ -1,6 +1,6 @@
 system WyvernsAssault/BloodKill
 {
-    technique Technique1
+    technique Technique4
     {
         visual_particle_quota                   10
         emitted_emitter_quota                   10
@@ -10,6 +10,7 @@ system WyvernsAssault/BloodKill
             texture_coords_rows                 2
             texture_coords_columns              2
             billboard_type                      oriented_self
+            billboard_rotation_type             vertex
         }
         emitter                                 SphereSurface Emitter7
         {
@@ -34,7 +35,6 @@ system WyvernsAssault/BloodKill
                 max                             60
             }
             all_particle_dimensions             25
-            position                            0 -5 0
             end_texture_coords_range            3
             texture_coords                      3
             start_colour_range                  1 1 1 1
@@ -78,8 +78,21 @@ system WyvernsAssault/BloodKill
             time_colour                         0.754  0.807843 0.529412 0.45098 0.811765
             time_colour                         1    1 1 1 0
         }
+        affector                                TextureRotator Affector40
+        {
+            rotation                            dyn_random
+            {
+                min                             0
+                max                             360
+            }
+            rotation_speed                      dyn_random
+            {
+                min                             0.4
+                max                             0.5
+            }
+        }
     }
-    technique Technique2
+    technique Technique4
     {
         visual_particle_quota                   15
         emitted_emitter_quota                   10
@@ -87,6 +100,7 @@ system WyvernsAssault/BloodKill
         renderer                                Billboard
         {
             billboard_type                      perpendicular_common
+            billboard_rotation_type             vertex
             common_direction                    0 1 0
             common_up_vector                    0 0 1
         }
@@ -107,8 +121,8 @@ system WyvernsAssault/BloodKill
             duration                            20
             all_particle_dimensions             dyn_random
             {
-                min                             40
-                max                             50
+                min                             60
+                max                             70
             }
             particle_width                      dyn_random
             {
@@ -116,7 +130,8 @@ system WyvernsAssault/BloodKill
                 max                             0
             }
             position                            0 -10 0
-            auto_direction                      false
+            end_texture_coords_range            1
+            texture_coords                      1
             force_emission                      true
         }
         affector                                Scale Affector104
@@ -145,9 +160,11 @@ system WyvernsAssault/BloodKill
         }
         affector                                Colour Affector103
         {
-            time_colour                         0    1 1 1 0
-            time_colour                         0.04 0.831373 0.792157 0.74902 1
-            time_colour                         0.08 0.556863 0.513726 0.556863 1
+            time_colour                         0    1 1 1 1
+            time_colour                         0.378  1 1 1 1
+            time_colour                         0.47 1 0.788235 0.72549 1
+            time_colour                         0.683  0.858824 0.647059 0.607843 0.839216
+            time_colour                         0.754  0.807843 0.529412 0.45098 0.811765
             time_colour                         1    1 1 1 0
         }
         observer                                OnClear Observer21

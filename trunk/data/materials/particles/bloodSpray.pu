@@ -10,6 +10,7 @@ system WyvernsAssault/BloodSpray
             texture_coords_rows                 2
             texture_coords_columns              2
             billboard_type                      oriented_self
+            billboard_rotation_type             vertex
         }
         emitter                                 SphereSurface Emitter7
         {
@@ -34,7 +35,6 @@ system WyvernsAssault/BloodSpray
                 max                             60
             }
             all_particle_dimensions             25
-            position                            0 0 0
             end_texture_coords_range            3
             texture_coords                      3
             start_colour_range                  1 1 1 1
@@ -77,6 +77,19 @@ system WyvernsAssault/BloodSpray
             time_colour                         0.683  0.858824 0.647059 0.607843 0.839216
             time_colour                         0.754  0.807843 0.529412 0.45098 0.811765
             time_colour                         1    1 1 1 0
+        }
+        affector                                TextureRotator Affector40
+        {
+            rotation                            dyn_random
+            {
+                min                             0
+                max                             360
+            }
+            rotation_speed                      dyn_random
+            {
+                min                             0.4
+                max                             0.5
+            }
         }
         observer                                OnClear Observer19
         {

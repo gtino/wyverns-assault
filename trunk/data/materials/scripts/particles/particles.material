@@ -163,3 +163,95 @@ material Particle/Hit
     }
 }
 //-----------------------------------------------------------------------------------------------------------------------------------------------
+material Particle/FireFlash
+{
+    technique
+    {
+        pass
+        {
+            lighting off
+            scene_blend add
+            depth_write off
+
+            texture_unit
+            {
+                texture particle_fireFlash.png
+            }
+        }
+    }
+}
+//-----------------------------------------------------------------------------------------------------------------------------------------------
+material Particle/FlameLick
+{
+    technique
+    {
+        pass
+        {
+            lighting off
+            scene_blend add
+            depth_write off
+
+            texture_unit
+            {
+                texture particle_flameLick.png
+            }
+        }
+    }
+}
+//-----------------------------------------------------------------------------------------------------------------------------------------------
+material Particle/GlowAura
+{
+    technique
+    {
+        pass
+        {
+            lighting off
+            scene_blend add
+            depth_write off
+
+            texture_unit
+            {
+                texture particle_glowAura.png
+            }
+        }
+    }
+}
+//-----------------------------------------------------------------------------------------------------------------------------------------------
+material Particle/TrailSpear
+{
+    technique
+    {
+        pass
+        {
+            lighting off
+            scene_blend add
+            depth_write off
+
+            texture_unit
+            {
+                texture particle_trailSpear.png
+            }
+        }
+    }
+}
+//-----------------------------------------------------------------------------------------------------------------------------------------------
+material Particle/Star
+{
+    technique
+    {
+        pass
+        {
+            lighting off
+            depth_write off
+            scene_blend add
+            fog_override true
+
+            texture_unit
+            {
+                texture particle_star.png
+                tex_address_mode clamp
+            }
+        }
+    }
+}
+//-----------------------------------------------------------------------------------------------------------------------------------------------
