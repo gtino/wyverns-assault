@@ -37,6 +37,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #include "..\..\externals\Fmod\include\fmod_memoryinfo.h"
 #include "..\..\externals\Fmod\include\fmod_output.h"
 
+#include <stdio.h>
 #include "..\..\include\Lua\LuaInterface.h"
 #include "..\..\include\Events\EventsInterface.h"
 
@@ -71,17 +72,11 @@ namespace WyvernsAssault
 		/** Unload audio resources */
 		void unloadResources();
 		/** Play audio */
-		void playSound(int SoundId);
+		void playSound(Ogre::String sound);
 		/** Stop audio */
-		void stopSound(int SoundId);
-		
-		SoundPtr createSound(SoundTypes type);
-		SoundPtr createSound(SoundTypes type, Ogre::String name/*, Ogre::String audio*/);
-
-		//FMOD::System* mSystem;
-		//FMOD::Sound* mSound;
-		int mChannel;
-		unsigned int version;
+		void stopSound(Ogre::String sound);
+		/** Add sound in map */
+		void addSound(Sound* sound);
 
 		// ----------------
 		// Events interface
@@ -96,8 +91,7 @@ namespace WyvernsAssault
 	private:
 		Ogre::String createUniqueId();
 
-		//int mSound;
-		//String mSoundId;
+		int mId;
 
 		SoundsList mSoundList;
 		SoundsMap  mSoundMap;

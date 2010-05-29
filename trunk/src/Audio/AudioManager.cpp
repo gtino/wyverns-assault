@@ -1,5 +1,5 @@
 #include "..\include\Audio\AudioManager.h"
-
+#include "..\include\Audio\Sound.h"
 using namespace WyvernsAssault;
 
 // BEGIN SINGLETON
@@ -35,13 +35,7 @@ void AudioManager::initialize()
 	//
 	// TODO Initialize
 	//
-	
-	/* ETAPA DE INICIALIZACION */
-    //mSystem=null;
-    //mSound=null;
-    //mChannel= 0;
-
-
+	mId=0;
 }
 
 /** Finalize the audio manager */
@@ -50,15 +44,6 @@ void AudioManager::finalize()
 	//
 	// TODO Finalize
 	//
-	/*
-       ETAPA DE FINALIZACION
-    */
-    //mResult = mSound->release();
-    //ERRCHECK(mResult);
-    //mResult = mSystem->close();
-    //ERRCHECK(result);
-    //mResult = mSystem->release();
-    //ERRCHECK(result);
 }
 
 void AudioManager::loadResources()
@@ -66,26 +51,26 @@ void AudioManager::loadResources()
 	//
 	// TODO Load resources
 	//
+	//Sound s1, s2, s3;
+	//s1.initialise();
+	//s1.load("..\data\sound\Music\sound.mp3");
+	//s1.play();
+	//this->addSound(&s1);
+
+	//s2.initialise();
+	//s2.load("..\data\sound\Music\sound2.mp3");
+
+	//this->addSound(&s2);
 	
-	/*
-    Create a System object and initialize.
-	*/
-    //mResult = FMOD::System_Create(&mSystem);
-    //ERRCHECK(result);
-
-    //mResult = mSystem->getVersion(&version);
-    //ERRCHECK(mResult);
-
-    //mResult = mSystem->setOutput(FMOD_OUTPUTTYPE_ALSA);
-    //ERRCHECK(mResult);
-
-    //mResult = mSystem->init(32, FMOD_INIT_NORMAL, 0);
-    //ERRCHECK(mResult);
-
-    //mResult = mSystem->createSound("test.mp3", FMOD_SOFTWARE, 0, &mSound);
-    //ERRCHECK(mResult);
-    //mResult = mSound->setMode(FMOD_LOOP_OFF);
-    //ERRCHECK(mResult);
+	//s3.initialise();
+	//s3.load("..\data\sound\Music\sound3.mp3");
+	
+	//this->addSound(&s3);
+	
+	Sound s1;
+	s1.initialise();
+	//s1.load("..\..\data\sound\Music\sound2.mp3");
+	//s1.play();
 	
 }
 
@@ -97,67 +82,37 @@ void AudioManager::unloadResources()
 
 }
 
-void AudioManager::playSound(int SoundId)
+void AudioManager::addSound(Sound* s)
 {
-	/*
-        ETAPA DE REPRODUCCION
-    */
-    //mResult = mSystem->playSound(FMOD_CHANNEL_FREE, mSound, 0, &mChannel);
-    //ERRCHECK(mResult);
-    //bool keep_looping = true;
-    /*EL BUCLE ES NECESARIO PARA INCREMENTAR EL APUNTADOR SOBRE EL ARCHIVO Y CONTINUAR LA REPRODUCCION */
-    //do
-    //{
-    //    mSystem->update();
-    //    mChannel->isPlaying(&keep_looping);
-    //} while (keep_looping);
-
-    //printf("\n");
-
-}
-
-void AudioManager::stopSound(int SoundId)
-{
-}
-
-
-SoundPtr AudioManager::createSound(SoundTypes type)
-{
-	Ogre::String audio;
-
-	/*switch(type)
-	{
-	case Naked:
-		mesh = Ogre::String("naked.mesh");
-		break;
-	case Wizard:
-		mesh = Ogre::String("wizard.mesh");
-		break;
-	default:
-		mesh = Ogre::String("naked.mesh");
-		break;
-	}*/
-
 	Ogre::String name = createUniqueId();
-
-	return createSound(type, name);
-}
-
-SoundPtr AudioManager::createSound(SoundTypes type, Ogre::String name)
-{
-	// Sound name == Effect Name!
-	SoundPtr sound = SoundPtr(new Sound(type));
+	
+	SoundPtr sound = SoundPtr(s);
 	mSoundList.push_back(sound);
 	mSoundMap[name] = sound;
 
-	//mSound++;
+}
+Ogre::String AudioManager::createUniqueId()
+{
+	Ogre::StringStream countStrStr;
+	countStrStr << mId;
 
-	return sound;
+	Ogre::String uniqueId = "Audio_" + countStrStr.str();
+
+	mId++;
+
+	return uniqueId;
+}
+void AudioManager::playSound(Ogre::String sound)
+{
+	SoundPtr s = mSoundMap[sound];
+	if (s->getSound()==false) s->setSound(true);
+	s->play();
 }
 
-Ogre::String AudioManager::createUniqueId(){
-	Ogre::String name;
-	return name;
+void AudioManager::stopSound(Ogre::String sound)
+{
+	SoundPtr s = mSoundMap[sound];
+	s->unload();
 }
 
 // --------------
