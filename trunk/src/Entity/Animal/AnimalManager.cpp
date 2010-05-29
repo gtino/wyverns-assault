@@ -66,13 +66,8 @@ AnimalPtr AnimalManager::createAnimal(AnimalTypes type, Ogre::String name, Ogre:
 
 	animalSceneNode->attachObject(animalMesh);
 	
-	// Balloon billboard
-	Ogre::BillboardSet* mBalloonSet = mSceneManager->createBillboardSet(name + "_BillboardSet");
-	animalSceneNode->attachObject(mBalloonSet);
-
 	AnimalPtr animal = AnimalPtr(new Animal(type));
 	animal->initializeEntity(animalMesh, animalSceneNode);
-	animal->setBillboardSet(mBalloonSet);
 
 	mAnimalList.push_back(animal);
 	mAnimalMap[name] = animal;
@@ -138,8 +133,7 @@ void AnimalManager::update(const float elapsedSeconds)
 	for(int i = 0; i < mAnimalList.size() ; i++)
 	{
 		AnimalPtr animal =  mAnimalList[i];
-
-		animal->updateLogic(L,elapsedSeconds);
+		//animal->updateLogic(L,elapsedSeconds);
 		//Animal->updatePhysics(elapsedSeconds);
 		animal->updateEntity(elapsedSeconds);
 	}

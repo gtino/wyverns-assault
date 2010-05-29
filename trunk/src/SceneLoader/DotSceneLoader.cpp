@@ -5,6 +5,7 @@
 
 #include "..\include\Entity\Enemy\Enemy.h"
 #include "..\include\Entity\Item\Item.h"
+#include "..\include\Entity\Animal\Animal.h"
 
 using namespace std;
 using namespace Ogre;
@@ -12,7 +13,7 @@ using namespace WyvernsAssault;
 
 void DotSceneLoader::parseDotScene(const String &SceneName, const String &groupName, SceneManager *levelSceneManager, WyvernsAssault::CameraManager* cameraManager, 
 								   WyvernsAssault::LightsManager* lightsManager,WyvernsAssault::EnemyManager* enemysManager , WyvernsAssault::PhysicsManager* physicsManager, 
-								   WyvernsAssault::ItemManager* itemsManager, WyvernsAssault::ParticleManager* particleManager, 
+								   WyvernsAssault::ItemManager* itemsManager, WyvernsAssault::ParticleManager* particleManager, WyvernsAssault::AnimalManager* animalManager, 
 								   SceneNode *pAttachNode, const String &sPrependNode)
 {
 
@@ -36,6 +37,9 @@ void DotSceneLoader::parseDotScene(const String &SceneName, const String &groupN
 
 	//Set ParticleManager
 	mParticleManager = particleManager;
+
+	//Set AnimalManager
+	mAnimalManager = animalManager;
 
 	//Set up shared object values
 	m_sGroupName = groupName;
@@ -181,12 +185,19 @@ void DotSceneLoader::processScene(TiXmlElement *XMLRoot)
 
 	LogManager::getSingleton().logMessage("[DotSceneLoader] Items processed.");
 
-	// Process items
+	// Process phyics
 	pElement = XMLRoot->FirstChildElement("physics");
 	if(pElement)
 		processPhysics(pElement);
 
 	LogManager::getSingleton().logMessage("[DotSceneLoader] Physics processed.");
+
+	// Process animals
+	pElement = XMLRoot->FirstChildElement("animals");
+	if(pElement)
+		processAnimals(pElement);
+
+	LogManager::getSingleton().logMessage("[DotSceneLoader] Animals processed.");
 
 }
 
@@ -278,6 +289,60 @@ void DotSceneLoader::processEnemys(TiXmlElement *XMLNode)
 		mPhysicsManager->addEnemy(enemy);
 
 		pElement = pElement->NextSiblingElement("enemy");
+	}
+		
+}
+
+void DotSceneLoader::processAnimals(TiXmlElement *XMLNode)
+{
+	TiXmlElement *pElement;
+	TiXmlElement *pElementEntity;
+	TiXmlElement *pElementPosition;
+	TiXmlElement *pElementScale;
+
+	// Process animal
+	pElement = XMLNode->FirstChildElement("animal");
+	while(pElement)
+	{
+		Ogre::String name;
+		Ogre::String mesh;
+		Ogre::String type;
+		Ogre::Vector3 position = Vector3::ZERO;
+		Ogre::Vector3 scale= Vector3::UNIT_SCALE;
+
+		// Process entity
+		pElementEntity = pElement->FirstChildElement("entity");
+		if(pElementEntity)
+		{
+			// Create Enemy
+			name = getAttrib(pElementEntity, "name");
+			mesh = getAttrib(pElementEntity, "meshFile");
+			type = getAttrib(pElementEntity, "type");
+		}
+
+		// Process position
+		pElementPosition = pElement->FirstChildElement("position");
+		if(pElementPosition)
+		{
+			position = parseVector3(pElementPosition);
+		}
+
+		// Process scale
+		pElementScale = pElement->FirstChildElement("scale");
+		if(pElementScale)
+		{
+			scale = parseVector3(pElementScale);
+		}
+
+		// Add to AnimalManager
+		AnimalPtr animal = mAnimalManager->createAnimal(Animal::StringToType(type), name, mesh);
+		animal->setPosition(position);
+		animal->setScale(scale);
+		
+		// Add the enemy to the physics manager
+		//mPhysicsManager->addAnimal(enemy);
+
+		pElement = pElement->NextSiblingElement("animal");
 	}
 		
 }

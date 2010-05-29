@@ -108,6 +108,12 @@ void PlayState::initialize()
 	mItemManager->initialize();
 
 	//
+	// Animal Manager
+	//
+	mAnimalManager = new AnimalManager(mSceneManager);
+	mAnimalManager->initialize();
+
+	//
 	// Logic Manager
 	//
 	mLogicManager = new LogicManager();
@@ -140,8 +146,8 @@ void PlayState::initialize()
 
 	//Load scene XML file
 	std::auto_ptr<DotSceneLoader> sceneLoader(new DotSceneLoader());
-	sceneLoader->parseDotScene("Level1_1.scene","General", mSceneManager, mCameraManager, mLightsManager, mEnemyManager.get(), mPhysicsManager.get(), mItemManager, mParticleManager.get());
-	sceneLoader->parseDotScene("Stage1_1.XML","General", mSceneManager, mCameraManager, mLightsManager, mEnemyManager.get(), mPhysicsManager.get(), mItemManager, mParticleManager.get());
+	sceneLoader->parseDotScene("Level1_1.scene","General", mSceneManager, mCameraManager, mLightsManager, mEnemyManager.get(), mPhysicsManager.get(), mItemManager, mParticleManager.get(), mAnimalManager);
+	sceneLoader->parseDotScene("Stage1_1.XML","General", mSceneManager, mCameraManager, mLightsManager, mEnemyManager.get(), mPhysicsManager.get(), mItemManager, mParticleManager.get(), mAnimalManager);
 
 	//
 	// Events Manager 
@@ -341,6 +347,8 @@ void PlayState::update(const float elapsedSeconds)
 	mEnemyManager->update(elapsedSeconds);
 
 	mItemManager->update(elapsedSeconds);
+
+	mAnimalManager->update(elapsedSeconds);
 
 	//
 	// Update animation state

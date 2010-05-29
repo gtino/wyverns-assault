@@ -47,17 +47,6 @@ void Animal::finalizeEntity()
 {	
 }
 
-void Animal::setBillboardSet(BillboardSet* balloonSet)
-{
-	mBalloonSet = balloonSet;
-	mBalloonSet->setDefaultDimensions(15.0,15.0);
-	mBalloonSet->setMaterialName("Balloons/Initial");
-
-	Vector3 balloonPosition(0, 15, 0);
-	mBalloon = mBalloonSet->createBillboard(balloonPosition);
-	//mBalloon->setColour(ColourValue::White);
-}
-
 void Animal::setTarget(SceneNode* target)
 {
 	//if(target)
@@ -68,19 +57,10 @@ void Animal::setTarget(SceneNode* target)
 
 void Animal::updateEntity(const float elapsedSeconds)
 {
+	mAnimationState = mMesh->getAnimationState("Iddle");
+	mAnimationState->setEnabled(true);
+	mAnimationState->addTime(elapsedSeconds);
 	return;
-	//autoTrackTarget();
-
-	if(mDirection != Vector3::ZERO)
-	{
-		// Translate forward (always move forward into facing direction)
-		mSceneNode->translate(mDirection * mSpeed * elapsedSeconds, Ogre::Node::TransformSpace::TS_LOCAL);
-	}
-
-	if(mAnimationState)
-	{
-		mAnimationState->addTime(elapsedSeconds);
-	}
 }
 
 void Animal::updateLogic(lua_State *L, const float elapsedSeconds)
@@ -105,20 +85,14 @@ void Animal::updateLogic(lua_State *L, const float elapsedSeconds)
 		switch(newState)
 		{
 		case AnimalStates::Idle_animal:
-			mBalloonSet->setVisible(false);
-			mBalloonSet->setMaterialName("Balloons/Idle");
 			mSpeed = 0.0f;
 			mDirection = Vector3::ZERO;
 			break;
 		case AnimalStates::Alert_animal:
-			mBalloonSet->setVisible(true);
-			mBalloonSet->setMaterialName("Balloons/Alert");
 			mSpeed = ANIMAL_SPEED_FAST;
 			chase();
 			break;
 		default:
-			mBalloonSet->setVisible(false);
-			mBalloonSet->setMaterialName("Balloons/Initial");
 			mSpeed = 0.0f;
 			mDirection = Vector3::ZERO;
 			mTarget = 0;
@@ -133,10 +107,6 @@ void Animal::updateLogic(lua_State *L, const float elapsedSeconds)
 		mStateTimeout += elapsedSeconds;
 	}
 
-	if((mStateTimeout > ANIMAL_BILLBOARD_SHOW_TIME) && (mState != AnimalStates::Idle_animal))
-	{
-		mBalloonSet->setVisible(false);
-	}
 }
 
 bool Animal::isHurt()
