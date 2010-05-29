@@ -3,7 +3,7 @@ system WyvernsAssault/ItemGlow
     technique 
     {
         visual_particle_quota                   50
-        material                                Particle/Star
+        material                                Particle/Star_01
         default_particle_width                  10
         default_particle_height                 10
         default_particle_depth                  10
@@ -66,7 +66,7 @@ system WyvernsAssault/ItemGlow
     technique 
     {
         visual_particle_quota                   50
-        material                                PUMediaPack/Star_01
+        material                                Particle/Star_02
         default_particle_width                  10
         default_particle_height                 10
         default_particle_depth                  10
