@@ -293,14 +293,27 @@
 		<item>
 			<position x="170" y="6" z="900"/>
 			<entity type="LiveMedium" meshFile="beerGlass.mesh" name="LiveMedium1"/>
+		</item>
+		<item>
+			<position x="180" y="6" z="850"/>
+			<entity type="LiveMedium" meshFile="beerHorn.mesh" name="LiveMedium2"/>
+			<scale x="0.7" y="0.7" z="0.7"/>
+		</item>
+		<item>
+			<position x="470" y="6" z="900"/>
+			<entity type="LiveMedium" meshFile="beerTank.mesh" name="LiveMedium3"/>
 			<scale x="0.7" y="0.7" z="0.7"/>
 		</item>
 		<item>
 			<position x="407" y="8" z="800"/>
-			<entity type="LiveBig" meshFile="beerTank.mesh" name="LiveBig1"/>
+			<entity type="LiveBig" meshFile="chickenItem.mesh" name="LiveBig1"/>
 		</item>
 		<item>
-			<position x="937" y="6" z="-310"/>
+			<position x="615" y="8" z="800"/>
+			<entity type="LiveBig" meshFile="chickenLegItem.mesh" name="LiveBig2"/>
+		</item>
+		<item>
+			<position x="700" y="6" z="750"/>
 			<entity type="PowerBig" meshFile="crown.mesh" name="PowerBig1"/>
 		</item>
 	

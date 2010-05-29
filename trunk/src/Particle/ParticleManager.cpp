@@ -48,7 +48,10 @@ void ParticleManager::initialize()
 	mSceneManager->getRootSceneNode()->createChildSceneNode("bloodKillNode", Vector3::ZERO)->attachObject(mParticleSystem);	
 
 	mParticleSystem = mParticleSystemManager->createParticleSystem("bloodLens", "WyvernsAssault/BloodLens", mSceneManager);
-	mSceneManager->getRootSceneNode()->createChildSceneNode("bloodLensNode", Vector3::ZERO)->attachObject(mParticleSystem);	
+	mSceneManager->getRootSceneNode()->createChildSceneNode("bloodLensNode", Vector3::ZERO)->attachObject(mParticleSystem);
+
+	mParticleSystem = mParticleSystemManager->createParticleSystem("hit", "WyvernsAssault/Hit", mSceneManager);
+	mSceneManager->getRootSceneNode()->createChildSceneNode("hitNode", Vector3::ZERO)->attachObject(mParticleSystem);
 }
 
 
@@ -75,28 +78,38 @@ ParticleUniverse::ParticleSystem* ParticleManager::create(String id, String mate
 /** Blood particles */
 void ParticleManager::bloodHit(Vector3 position)
 {
-	SceneNode* bloodNode = mSceneManager->getSceneNode("bloodHitNode");
-	bloodNode->setPosition(position);
-	ParticleUniverse::ParticleSystem* blood = mParticleSystemManager->getParticleSystem("bloodHit");
-	blood->startAndStopFade(1);
+	SceneNode* node = mSceneManager->getSceneNode("bloodHitNode");
+	node->setPosition(position);
+	ParticleUniverse::ParticleSystem* particles = mParticleSystemManager->getParticleSystem("bloodHit");
+	particles->startAndStopFade(1);
 }
 
 void ParticleManager::bloodKill(Vector3 position)
 {
-	SceneNode* bloodNode = mSceneManager->getSceneNode("bloodKillNode");
-	bloodNode->setPosition(position);
-	ParticleUniverse::ParticleSystem* blood = mParticleSystemManager->getParticleSystem("bloodKill");
-	blood->startAndStopFade(1);
+	SceneNode* node = mSceneManager->getSceneNode("bloodKillNode");
+	node->setPosition(position);
+	ParticleUniverse::ParticleSystem* particles = mParticleSystemManager->getParticleSystem("bloodKill");
+	particles->startAndStopFade(1);
 }
 
 void ParticleManager::bloodLens()
 {
 	Vector3 position = mSceneManager->getCamera("GameCamera")->getParentSceneNode()->getPosition();
 	Vector3 direction = mSceneManager->getCamera("GameCamera")->getDirection();
-	SceneNode* bloodNode = mSceneManager->getSceneNode("bloodLensNode");
-	bloodNode->setPosition(position + direction * 200);	
-	ParticleUniverse::ParticleSystem* blood = mParticleSystemManager->getParticleSystem("bloodLens");
-	blood->startAndStopFade(1);
+	SceneNode* node = mSceneManager->getSceneNode("bloodLensNode");
+	node->setPosition(position + direction * 200);	
+	ParticleUniverse::ParticleSystem* particles = mParticleSystemManager->getParticleSystem("bloodLens");
+	particles->startAndStopFade(1);
+}
+
+/** Hit particle */
+
+void ParticleManager::hit(Vector3 position)
+{
+	SceneNode* node = mSceneManager->getSceneNode("hitNode");
+	node->setPosition(position);
+	ParticleUniverse::ParticleSystem* particles = mParticleSystemManager->getParticleSystem("hit");
+	particles->startAndStopFade(1);
 }
 
 // --------------
@@ -120,4 +133,14 @@ void ParticleManager::handleEnemyHitEvent(EnemyHitEventPtr evt)
 
 	// The player has just hit the enemy	
 	this->bloodHit(enemy->getPosition());
+	this->hit(player->getPosition());
+}
+
+void ParticleManager::handlePlayerHitEvent(PlayerHitEventPtr evt)
+{
+	EnemyPtr enemy = evt->getEnemy();
+	PlayerPtr player = evt->getPlayer();	
+
+	// The player has just hit the enemy	
+	this->hit(player->getPosition());
 }

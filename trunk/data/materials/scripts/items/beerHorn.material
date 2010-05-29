@@ -1,5 +1,5 @@
 
-material chickenItem_material
+material beerHorn_material
 {
 	technique
 	{
@@ -13,7 +13,7 @@ material chickenItem_material
 
 			texture_unit
 			{
-				texture ChickenItemTexture.psd
+				texture BeerHornTexture.png
 			}
 		}
 

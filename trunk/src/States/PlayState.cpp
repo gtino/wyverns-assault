@@ -459,7 +459,11 @@ void PlayState::finalize()
 		mEventsManager = NULL;
 	}
 
-	mParticleManager.reset();
+	if(mParticleManager)
+	{
+		mParticleManager->finalize();
+		mParticleManager.reset();
+	}
 
 	BaseState::finalize();
 }
@@ -519,6 +523,8 @@ bool PlayState::keyPressed(const OIS::KeyEvent& e)
 	{
 	case OIS::KeyCode::KC_ESCAPE:
 		this->mNextGameStateId = GameStateId::Exit;
+		mParticleManager->finalize();
+		mParticleManager.reset();
 		break;
 	case OIS::KeyCode::KC_I:
 		this->mNextGameStateId = GameStateId::Ending;
@@ -693,7 +699,7 @@ bool PlayState::keyPressed(const OIS::KeyEvent& e)
 		mParticleManager->bloodKill(mPlayer1->getPosition() + (mPlayer1->getSceneNode()->getOrientation() * Quaternion(Degree(-90), Vector3::UNIT_Y)) * Vector3(50, 0, 0));
 		break;
 	case OIS::KeyCode::KC_X:
-		mParticleManager->bloodHit(mPlayer1->getPosition() + (mPlayer1->getSceneNode()->getOrientation() * Quaternion(Degree(-90), Vector3::UNIT_Y)) * Vector3(50, 0, 0));
+		mParticleManager->hit(mPlayer1->getPosition() + (mPlayer1->getSceneNode()->getOrientation() * Quaternion(Degree(-90), Vector3::UNIT_Y)) * Vector3(50, 0, 0));
 		break;
 	case OIS::KeyCode::KC_Y:
 		mParticleManager->bloodLens();

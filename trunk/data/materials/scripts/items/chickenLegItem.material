@@ -13,7 +13,7 @@ material Material5
 
 			texture_unit
 			{
-				texture ChickenLegTexture.psd
+				texture ChickenItemTexture.png
 			}
 		}
 
