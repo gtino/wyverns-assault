@@ -25,6 +25,10 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
 #include <Ogre.h>
 #include <OgreSingleton.h>
+#include <boost/enable_shared_from_this.hpp>
+
+#include <vector>
+#include <map>
 
 #include "..\..\externals\Fmod\include\fmod.h"
 #include "..\..\externals\Fmod\include\fmod_codec.h"
@@ -33,11 +37,10 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #include "..\..\externals\Fmod\include\fmod_memoryinfo.h"
 #include "..\..\externals\Fmod\include\fmod_output.h"
 
-#include <stdio.h>
-#include "..\..\..\include\Lua\LuaInterface.h"
+#include "..\..\include\Lua\LuaInterface.h"
+#include "..\..\include\Events\EventsInterface.h"
+
 #include "Sound.h"
-#include <vector>
-#include <map>
 
 namespace WyvernsAssault
 {
@@ -50,7 +53,7 @@ namespace WyvernsAssault
 	/**
 		Class used to manager audio (sound track, sounds, fx)
 	*/
-	class AudioManager : public Ogre::Singleton<AudioManager>, public LuaInterface
+	class AudioManager : public Ogre::Singleton<AudioManager>, public boost::enable_shared_from_this<AudioManager>, public LuaInterface, public EventsInterface
 	{
 	public:
 		AudioManager();
@@ -75,13 +78,20 @@ namespace WyvernsAssault
 		SoundPtr createSound(SoundTypes type);
 		SoundPtr createSound(SoundTypes type, Ogre::String name/*, Ogre::String audio*/);
 
-
 		//FMOD::System* mSystem;
 		//FMOD::Sound* mSound;
 		int mChannel;
-		unsigned int version;	
+		unsigned int version;
 
-		typedef boost::shared_ptr<Sound> SoundPtr;
+		// ----------------
+		// Events interface
+		// ----------------
+		// Register event handlers
+		void registerHandlers();
+		// Unregister handlers
+		void unregisterHandlers();
+
+		void handleEnemyHitEvent(EnemyHitEventPtr evt);
 
 	private:
 		Ogre::String createUniqueId();
@@ -109,6 +119,7 @@ namespace WyvernsAssault
 	// ------------------------------
 	};
 
+	typedef boost::shared_ptr<AudioManager> AudioManagerPtr;
 }
 
 #endif // __AUDIO_MANAGER_H_

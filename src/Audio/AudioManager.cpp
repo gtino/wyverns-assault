@@ -159,6 +159,31 @@ Ogre::String AudioManager::createUniqueId(){
 	Ogre::String name;
 	return name;
 }
+
+// --------------
+// Event handlers
+// --------------
+void AudioManager::registerHandlers()
+{
+	boost::shared_ptr<AudioManager> this_ = shared_from_this();
+
+	registerHandler(EventHandlerPtr(new EventHandler<AudioManager,EnemyHitEvent>(this_,&AudioManager::handleEnemyHitEvent)),EventTypes::EnemyHit);
+}
+
+void AudioManager::unregisterHandlers()
+{
+
+}
+
+void AudioManager::handleEnemyHitEvent(EnemyHitEventPtr evt)
+{
+	EnemyPtr enemy = evt->getEnemy();
+	PlayerPtr player = evt->getPlayer();
+
+	// The player has just hit the enemy
+	// TODO : play sound
+}
+
 // --------------------------------
 // Lua Audio Lib
 // --------------------------------
