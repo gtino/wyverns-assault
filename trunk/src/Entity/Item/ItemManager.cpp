@@ -138,8 +138,31 @@ void ItemManager::update(const float elapsedSeconds)
 	}
 }
 
+/*
+// --------------
+// Event handlers
+// --------------
+void ItemManager::registerHandlers()
+{
+	boost::shared_ptr<ItemManager> this_ = shared_from_this();
+
+	registerHandler(EventHandlerPtr(new EventHandler<ItemManager,ItemCatchEvent>(this_,&ItemManager::handleItemCatchEvent)),EventTypes::ObjectHit);
+
+}
+
+void ItemManager::unregisterHandlers()
+{
+	//TODO
+}
+
+void ItemManager::handleItemCatchEvent(ItemCatchEventPtr evt)
+{
+	//TODO
+}
+*/
+
 // --------------------------------
-// Lua Enemy Lib
+// Lua Item Lib
 // --------------------------------
 LUA_BEGIN_BINDING(ItemManager::itemlib)
 LUA_BIND("create", ItemManager::createItem)

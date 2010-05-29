@@ -98,7 +98,7 @@ namespace WyvernsAssault
 	private:
 		void synchronizeWorld(Real time);
 		//Update ray of one character
-		void updateRay(PlayerPtr player);
+		void updateRay(PlayerPtr player); 
 		void updateRay(EnemyPtr enemy);
 
 	protected:
