@@ -59,18 +59,21 @@ namespace WyvernsAssault
 		ParticleUniverse::ParticleSystem* create(String id, String script);
 		
 		/** Add particle system to node and start it */
-		void add(SceneNode* node, String id, String script);
+		void add(SceneNode* node, String id, String script);		
 
 		/** Remove particle system from node and stop it */
 		void remove(SceneNode* node, String id);
 
 		/** Blood particles */
-		void bloodHit(Vector3 position);
-		void bloodKill(Vector3 position);
+		void bloodHit(SceneNode* node);
+		void bloodKill(SceneNode* node);
 		void bloodLens();
 
 		/** Hit particles */
-		void hit(Vector3 position);
+		void hit(SceneNode* node);
+
+		/** Glow particles */
+		void glow(SceneNode* node);
 
 		// ----------------
 		// Events interface

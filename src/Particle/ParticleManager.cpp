@@ -33,6 +33,7 @@ void ParticleManager::initialize()
 	// Get particle universe particle system manager
 	mParticleSystemManager = ParticleUniverse::ParticleSystemManager::getSingletonPtr();
 
+	// Create "all-time" particle systems
 	mParticleSystem = mParticleSystemManager->createParticleSystem("somkeA", "WyvernsAssault/Smoke", mSceneManager);
 	mSceneManager->getRootSceneNode()->createChildSceneNode("smokeNodeA",Vector3(-545,690,490))->attachObject(mParticleSystem);
 	mParticleSystem->start();
@@ -41,17 +42,8 @@ void ParticleManager::initialize()
 	mSceneManager->getRootSceneNode()->createChildSceneNode("smokeNodeB",Vector3(-615,690,450))->attachObject(mParticleSystem);
 	mParticleSystem->start();
 
-	mParticleSystem = mParticleSystemManager->createParticleSystem("bloodHit", "WyvernsAssault/BloodHit", mSceneManager);	
-	mSceneManager->getRootSceneNode()->createChildSceneNode("bloodHitNode", Vector3::ZERO)->attachObject(mParticleSystem);	
-
-	mParticleSystem = mParticleSystemManager->createParticleSystem("bloodKill", "WyvernsAssault/BloodKill", mSceneManager);
-	mSceneManager->getRootSceneNode()->createChildSceneNode("bloodKillNode", Vector3::ZERO)->attachObject(mParticleSystem);	
-
 	mParticleSystem = mParticleSystemManager->createParticleSystem("bloodLens", "WyvernsAssault/BloodLens", mSceneManager);
 	mSceneManager->getRootSceneNode()->createChildSceneNode("bloodLensNode", Vector3::ZERO)->attachObject(mParticleSystem);
-
-	mParticleSystem = mParticleSystemManager->createParticleSystem("hit", "WyvernsAssault/Hit", mSceneManager);
-	mSceneManager->getRootSceneNode()->createChildSceneNode("hitNode", Vector3::ZERO)->attachObject(mParticleSystem);
 }
 
 
@@ -93,20 +85,36 @@ void ParticleManager::remove(SceneNode* node, String id)
 }
 
 /** Blood particles */
-void ParticleManager::bloodHit(Vector3 position)
+void ParticleManager::bloodHit(SceneNode* node)
 {
-	SceneNode* node = mSceneManager->getSceneNode("bloodHitNode");
-	node->setPosition(position);
-	ParticleUniverse::ParticleSystem* particles = mParticleSystemManager->getParticleSystem("bloodHit");
-	particles->startAndStopFade(5);
+	String name = node->getName();
+	ParticleUniverse::ParticleSystem* particles;
+	if( mParticleSystemManager->getParticleSystem(name + "_bloodHit") == NULL)
+	{
+		particles = mParticleSystemManager->createParticleSystem( name + "_bloodHit", "WyvernsAssault/BloodHit", mSceneManager);
+		node->attachObject( particles );
+	}
+	else
+	{
+		particles = mParticleSystemManager->getParticleSystem( name + "_bloodHit");
+	}	
+	particles->startAndStopFade(1);
 }
 
-void ParticleManager::bloodKill(Vector3 position)
+void ParticleManager::bloodKill(SceneNode* node)
 {
-	SceneNode* node = mSceneManager->getSceneNode("bloodKillNode");
-	node->setPosition(position);
-	ParticleUniverse::ParticleSystem* particles = mParticleSystemManager->getParticleSystem("bloodKill");
-	particles->startAndStopFade(5);
+	String name = node->getName();
+	ParticleUniverse::ParticleSystem* particles;
+	if( mParticleSystemManager->getParticleSystem(name + "_bloodKill") == NULL)
+	{
+		particles = mParticleSystemManager->createParticleSystem( name + "_bloodKill", "WyvernsAssault/BloodKill", mSceneManager);
+		node->attachObject( particles );
+	}
+	else
+	{
+		particles = mParticleSystemManager->getParticleSystem( name + "_bloodKill");
+	}	
+	particles->startAndStopFade(1);
 }
 
 void ParticleManager::bloodLens()
@@ -120,14 +128,39 @@ void ParticleManager::bloodLens()
 }
 
 /** Hit particle */
-
-void ParticleManager::hit(Vector3 position)
+void ParticleManager::hit(SceneNode* node)
 {
-	SceneNode* node = mSceneManager->getSceneNode("hitNode");
-	node->setPosition(position);
-	ParticleUniverse::ParticleSystem* particles = mParticleSystemManager->getParticleSystem("hit");
-	particles->startAndStopFade(5);
+	String name = node->getName();
+	ParticleUniverse::ParticleSystem* particles;
+	if( mParticleSystemManager->getParticleSystem(name + "_hit") == NULL)
+	{
+		particles = mParticleSystemManager->createParticleSystem( name + "_hit", "WyvernsAssault/Hit", mSceneManager);
+		node->attachObject( particles );
+	}
+	else
+	{
+		particles = mParticleSystemManager->getParticleSystem( name + "_hit");
+	}	
+	particles->startAndStopFade(1);
 }
+
+/** Glow particle */
+void ParticleManager::glow(SceneNode* node)
+{
+	String name = node->getName();
+	ParticleUniverse::ParticleSystem* particles;
+	if( mParticleSystemManager->getParticleSystem(name + "_glow") == NULL)
+	{
+		particles = mParticleSystemManager->createParticleSystem( name + "_glow", "WyvernsAssault/GlowShort", mSceneManager);
+		node->attachObject( particles );
+	}
+	else
+	{
+		particles = mParticleSystemManager->getParticleSystem( name + "_glow");
+	}	
+	particles->startAndStopFade(1);
+}
+
 
 // --------------
 // Event handlers
@@ -153,13 +186,13 @@ void ParticleManager::handleEnemyHitEvent(EnemyHitEventPtr evt)
 	{
 		if( player->wichAttack() == 3 )
 		{
-			this->bloodKill(enemy->getPosition());
+			this->bloodKill(enemy->getSceneNode());
 		}
 		else
 		{
-			this->bloodHit(enemy->getPosition());
+			this->bloodHit(enemy->getSceneNode());
 		}		
-		this->hit(enemy->getPosition());
+		this->hit(enemy->getSceneNode());
 	}
 }
 
@@ -169,5 +202,5 @@ void ParticleManager::handlePlayerHitEvent(PlayerHitEventPtr evt)
 	PlayerPtr player = evt->getPlayer();	
 
 	// The player has just hit the enemy	
-	this->hit(player->getPosition());
+	this->hit(player->getSceneNode());
 }

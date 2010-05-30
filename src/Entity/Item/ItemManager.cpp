@@ -128,10 +128,14 @@ void ItemManager::update(const float elapsedSeconds)
 	{
 		ItemPtr item =  mItemList[i];
 
-		if(item->getItemState() == ItemStates::Catch){			
+		if(item->getItemState() == ItemStates::Catch)
+		{			
 			ParticleManager::getSingletonPtr()->remove(item->getSceneNode(), item->getName());
+			ParticleManager::getSingletonPtr()->glow(item->getSceneNode());
 			removeItem(item->getName());
-		}else{
+		}
+		else
+		{
 			item->updateLogic(L,elapsedSeconds);
 			item->updateEntity(elapsedSeconds);
 		}

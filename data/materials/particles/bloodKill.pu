@@ -121,8 +121,8 @@ system WyvernsAssault/BloodKill
             duration                            20
             all_particle_dimensions             dyn_random
             {
-                min                             60
-                max                             70
+                min                             40
+                max                             50
             }
             particle_width                      dyn_random
             {
