@@ -456,7 +456,7 @@ void PlayState::finalize()
 
 	if(mEventsManager)
 	{
-		delete mEventsManager;
+		//delete mEventsManager;
 		mEventsManager = NULL;
 	}
 

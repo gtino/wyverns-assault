@@ -35,6 +35,7 @@ namespace WyvernsAssault
 	{
 		PlayerHit = 0,
 		EnemyHit,
+		EnemySpecialHit,
 		ObjectHit,
 		Collision
 	};
@@ -110,6 +111,22 @@ namespace WyvernsAssault
 	typedef boost::shared_ptr<EnemyHitEvent> EnemyHitEventPtr;
 
 	// --------------------------------
+	class EnemySpecialHitEvent : public Event
+	{
+	public:
+		EnemySpecialHitEvent(EnemyPtr e, PlayerPtr p);
+		
+		EnemyPtr getEnemy(){return mEnemy;}
+		PlayerPtr getPlayer(){return mPlayer;}
+
+	private:
+		EnemyPtr mEnemy;
+		PlayerPtr mPlayer;
+	};
+
+	typedef boost::shared_ptr<EnemySpecialHitEvent> EnemySpecialHitEventPtr;
+
+	// --------------------------------
 	class PlayerHitEvent : public Event
 	{
 	public:
@@ -123,7 +140,7 @@ namespace WyvernsAssault
 		EnemyPtr mEnemy;
 	};
 
-	typedef boost::shared_ptr<EnemyHitEvent> PlayerHitEventPtr;
+	typedef boost::shared_ptr<PlayerHitEvent> PlayerHitEventPtr;
 }
 
 #endif // __EVENT_H_

@@ -178,7 +178,7 @@ void PhysicsManager::update(const float elapsedSeconds){
 	//--
 	//Giorgio TEST
 	//--
-	//checkForCollisions();
+	checkForCollisions();
 
 	return;
 }
@@ -189,19 +189,20 @@ void PhysicsManager::checkForCollisions()
 	for(OdePlayerMapIterator it_player = mPlayerMap.begin(); it_player != mPlayerMap.end(); ++it_player)
 	{
 		PlayerPtr player = it_player->second;
-		AxisAlignedBox player_box = player->getSceneNode()->_getWorldAABB();
+		AxisAlignedBox player_firebox = player->getFireBox();
 
-		for(OdeEnemyMapIterator it_enemy = mEnemyMap.begin(); it_enemy != mEnemyMap.end(); ++it_enemy)
+		if( player->isSpecial() )
 		{
-			EnemyPtr enemy = it_enemy->second;
-
-			AxisAlignedBox enemy_box = enemy->getSceneNode()->_getWorldAABB();
-			
-			AxisAlignedBox aab = enemy_box.intersection(player_box);
-			if(!aab.isNull())
+			for(OdeEnemyMapIterator it_enemy = mEnemyMap.begin(); it_enemy != mEnemyMap.end(); ++it_enemy)
 			{
-				EnemyHitEventPtr enemyHitEventPtr = EnemyHitEventPtr(new EnemyHitEvent(enemy, player));
-				raiseEvent(enemyHitEventPtr);
+				EnemyPtr enemy = it_enemy->second;
+				AxisAlignedBox enemy_box = enemy->getSceneNode()->_getWorldAABB();
+				
+				if(player_firebox.intersects(enemy_box))
+				{
+					EnemySpecialHitEventPtr enemySpecialHitEventPtr = EnemySpecialHitEventPtr(new EnemySpecialHitEvent(enemy, player));
+					raiseEvent(enemySpecialHitEventPtr);
+				}
 			}
 		}
 	}

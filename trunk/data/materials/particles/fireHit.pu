@@ -2,12 +2,48 @@ system WyvernsAssault/FireHit
 {
     technique Technique3
     {
-        material                                Particle/FlameLick
+        material                                Particle/Fire_01
         renderer                                Billboard
         {
+            billboard_rotation_type             vertex
         }
-        emitter                                 Box Emitter4
+        emitter                                 SphereSurface Emitter4
         {
+            emission_rate                       30
+            angle                               dyn_random
+            {
+                min                             0
+                max                             90
+            }
+            time_to_live                        dyn_random
+            {
+                min                             0.4
+                max                             0.5
+            }
+            velocity                            dyn_random
+            {
+                min                             5
+                max                             20
+            }
+            all_particle_dimensions             dyn_random
+            {
+                min                             15
+                max                             20
+            }
+            auto_direction                      true
+            force_emission                      true
+            radius                              1
+        }
+        affector                                Colour Affector7
+        {
+            time_colour                         0    1 1 1 1
+            time_colour                         1    0.439216 0.439216 0.439216 1
+        }
+        observer                                OnClear Observer1
+        {
+            handler                             DoStopSystem Handler2
+            {
+            }
         }
     }
 }

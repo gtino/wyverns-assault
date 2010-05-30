@@ -13,16 +13,21 @@ Player::~Player()
 	finalizeEntity();
 }
 
-void Player::initializeEntity(Ogre::Entity* mesh, Ogre::SceneNode* sceneNode)
+void Player::initializeEntity(Ogre::Entity* mesh, Ogre::SceneNode* sceneNode, SceneManager* sceneManager)
 {
+	mSceneManager = sceneManager;
 	mSceneNode = sceneNode;
 	mMesh = mesh;
+
+	mFireMesh = mSceneManager->createEntity("fireMesh", "redWyvernFireCone.mesh");
+	mFireMesh->setVisible(mIsDebugEnabled);
 
 	// Animation system
 	mAnimationSystem = new tecnofreak::ogre::AnimationSystem( mMesh );
 	mAnimationSystem->loadAnimationTree( "data/animations/wyvern.xml" );
 	mCurrentAnimation = mAnimationSystem->getParameter( "CurrentAnimation" );
 
+	// Control variables
 	moving = false;	
 	special = false;
 	attacking = 0;
@@ -30,10 +35,14 @@ void Player::initializeEntity(Ogre::Entity* mesh, Ogre::SceneNode* sceneNode)
 	
 	// Bounding Box
 	mOBBoxRenderable = new OBBoxRenderable("OBBoxManualMaterial_Player");
-
 	mOBBoxRenderable->setupVertices(mMesh->getBoundingBox());
 	mOBBoxRenderable->setVisible(mIsDebugEnabled);
 	mSceneNode->attachObject(mOBBoxRenderable);
+	
+	// Fire bounding box
+	mFireOBBoxRenderable = new OBBoxRenderable("OBBoxManualMaterial_Player");
+	mFireOBBoxRenderable->setupVertices(mFireMesh->getBoundingBox());
+	mFireOBBoxRenderable->setVisible(mIsDebugEnabled);
 
 	// Hide attack's grids
 	hideGrids();
@@ -60,6 +69,9 @@ void Player::setFireBreath(ParticleUniverse::ParticleSystem* fireBreath)
 
 	// Attach to bone	
 	mBreathPoint = mMesh->attachObjectToBone("llengua1", mFireBreath);
+	
+	mMesh->attachObjectToBone("llengua1", mFireMesh);
+	mMesh->attachObjectToBone("llengua1", mFireOBBoxRenderable);	
 }
 
 void Player::setPosition(Ogre::Vector3 position)
@@ -225,6 +237,12 @@ void Player::setDebugEnabled(bool isDebugEnabled)
 		
 		if(mOBBoxRenderable)
 			mOBBoxRenderable->setVisible(mIsDebugEnabled);
+
+		if(mFireOBBoxRenderable)
+			mFireOBBoxRenderable->setVisible(mIsDebugEnabled);
+		
+		if(mFireMesh)
+			mFireMesh->setVisible(mIsDebugEnabled);
 	}
 }
 

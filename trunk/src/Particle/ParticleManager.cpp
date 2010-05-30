@@ -144,6 +144,23 @@ void ParticleManager::hit(SceneNode* node)
 	particles->startAndStopFade(1);
 }
 
+/** Hit particle */
+void ParticleManager::hitSpecial(SceneNode* node)
+{
+	String name = node->getName();
+	ParticleUniverse::ParticleSystem* particles;
+	if( mParticleSystemManager->getParticleSystem(name + "_hitSpecial") == NULL)
+	{
+		particles = mParticleSystemManager->createParticleSystem( name + "_hitSpecial", "WyvernsAssault/FireHit", mSceneManager);
+		node->attachObject( particles );
+	}
+	else
+	{
+		particles = mParticleSystemManager->getParticleSystem( name + "_hitSpecial");
+	}	
+	particles->startAndStopFade(1);
+}
+
 /** Glow particle */
 void ParticleManager::glow(SceneNode* node)
 {
@@ -170,6 +187,7 @@ void ParticleManager::registerHandlers()
 	boost::shared_ptr<ParticleManager> this_ = shared_from_this();
 
 	registerHandler(EventHandlerPtr(new EventHandler<ParticleManager,EnemyHitEvent>(this_,&ParticleManager::handleEnemyHitEvent)),EventTypes::EnemyHit);
+	registerHandler(EventHandlerPtr(new EventHandler<ParticleManager,EnemySpecialHitEvent>(this_,&ParticleManager::handleEnemySpecialHitEvent)),EventTypes::EnemySpecialHit);
 }
 
 void ParticleManager::unregisterHandlers()
@@ -194,6 +212,15 @@ void ParticleManager::handleEnemyHitEvent(EnemyHitEventPtr evt)
 		}		
 		this->hit(enemy->getSceneNode());
 	}
+}
+
+void ParticleManager::handleEnemySpecialHitEvent(EnemySpecialHitEventPtr evt)
+{
+	EnemyPtr enemy = evt->getEnemy();
+	PlayerPtr player = evt->getPlayer();	
+	
+	// The player has just hit the enemy with special attack
+	this->hitSpecial(enemy->getSceneNode());
 }
 
 void ParticleManager::handlePlayerHitEvent(PlayerHitEventPtr evt)

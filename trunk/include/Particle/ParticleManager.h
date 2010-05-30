@@ -71,6 +71,7 @@ namespace WyvernsAssault
 
 		/** Hit particles */
 		void hit(SceneNode* node);
+		void hitSpecial(SceneNode* node);
 
 		/** Glow particles */
 		void glow(SceneNode* node);
@@ -84,6 +85,7 @@ namespace WyvernsAssault
 		void unregisterHandlers();
 
 		void handleEnemyHitEvent(EnemyHitEventPtr evt);
+		void handleEnemySpecialHitEvent(EnemySpecialHitEventPtr evt);
 		void handlePlayerHitEvent(PlayerHitEventPtr evt);
 
 	private:
