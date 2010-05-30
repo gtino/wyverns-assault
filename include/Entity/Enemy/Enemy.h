@@ -36,8 +36,12 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #define ENEMY_SPEED_SLOW 10.0f
 #define ENEMY_SPEED_MEDIUM 30.0f
 #define ENEMY_SPEED_FAST 50.0f
-
 #define ENEMY_ROTATION_SPEED 3.0f
+
+#define ANIMAL_SPEED_SLOW 10.0f
+#define ANIMAL_SPEED_MEDIUM 30.0f
+#define ANIMAL_SPEED_FAST 50.0f
+#define ANIMAL_ROTATION_SPEED 3.0f
 
 namespace WyvernsAssault
 {
@@ -49,7 +53,9 @@ namespace WyvernsAssault
 		Wizard	= 2,
 		Knight	= 3,
 		Peasant	= 4,
-		Woman	= 5
+		Woman	= 5,
+		Chicken = 6,
+		Cow = 7
 	};
 
 	enum EnemyStates

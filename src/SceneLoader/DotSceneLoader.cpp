@@ -5,7 +5,6 @@
 
 #include "..\include\Entity\Enemy\Enemy.h"
 #include "..\include\Entity\Item\Item.h"
-#include "..\include\Entity\Animal\Animal.h"
 
 using namespace std;
 using namespace Ogre;
@@ -13,7 +12,7 @@ using namespace WyvernsAssault;
 
 void DotSceneLoader::parseDotScene(const String &SceneName, const String &groupName, SceneManager *levelSceneManager, WyvernsAssault::CameraManager* cameraManager, 
 								   WyvernsAssault::LightsManager* lightsManager,WyvernsAssault::EnemyManager* enemysManager , WyvernsAssault::PhysicsManager* physicsManager, 
-								   WyvernsAssault::ItemManager* itemsManager, WyvernsAssault::ParticleManager* particleManager, WyvernsAssault::AnimalManager* animalManager, 
+								   WyvernsAssault::ItemManager* itemsManager, WyvernsAssault::ParticleManager* particleManager, 
 								   SceneNode *pAttachNode, const String &sPrependNode)
 {
 
@@ -37,9 +36,6 @@ void DotSceneLoader::parseDotScene(const String &SceneName, const String &groupN
 
 	//Set ParticleManager
 	mParticleManager = particleManager;
-
-	//Set AnimalManager
-	mAnimalManager = animalManager;
 
 	//Set up shared object values
 	m_sGroupName = groupName;
@@ -334,13 +330,13 @@ void DotSceneLoader::processAnimals(TiXmlElement *XMLNode)
 			scale = parseVector3(pElementScale);
 		}
 
-		// Add to AnimalManager
-		AnimalPtr animal = mAnimalManager->createAnimal(Animal::StringToType(type), name, mesh);
+		// Add to EnemyManager
+		EnemyPtr animal = mEnemyManager->createEnemy(Enemy::StringToType(type), name, mesh);
 		animal->setPosition(position);
 		animal->setScale(scale);
 		
-		// Add the enemy to the physics manager
-		//mPhysicsManager->addAnimal(enemy);
+		// Add the animal to the physics manager
+		//mPhysicsManager->addEnemy(animal);
 
 		pElement = pElement->NextSiblingElement("animal");
 	}

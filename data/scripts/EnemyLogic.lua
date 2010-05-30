@@ -22,6 +22,31 @@ FightingDistance = 100
 MagicDistance = 250
 SightDistance = 250
 SoundDistance = 500
+AlertDistance = 50
+
+function runChickenLogic(enemyId, state)
+	
+	local newState = state
+		
+	local player = Physics.getNearestPlayer(enemyId);
+	local distance = Physics.getDistance(enemyId,player);
+	
+	if state == Initial then 
+		newState = Idle
+	elseif state == Idle then
+		if distance<AlertDistance then -- The Animal can see the player!
+			newState = Fear
+		end
+	elseif state == Fear then
+		if distance>AlertDistance then
+			newState = Idle 
+		end
+	else
+		newState = state
+	end
+  
+	return newState 
+end
 
 function runNakedLogic(enemyId, state)
 	
@@ -242,6 +267,31 @@ function runSoldierLogic(enemyId, state)
 		end
 	else
 		newState = state -- same as before
+	end
+  
+	return newState 
+end
+
+
+function runChickenLogic(enemyId, state)
+	
+	local newState = state
+		
+	local player = Physics.getNearestPlayer(animalId);
+	local distance = Physics.getDistance(animalId,player);
+	
+	if state == Initial then 
+		newState = Idle
+	elseif state == Idle then
+		if distance<AlertDistance then -- The Animal can see the player!
+			newState = Fear
+		end
+	elseif state == Fear then
+		if distance>AlertDistance then
+			newState = Idle 
+		end
+	else
+		newState = state
 	end
   
 	return newState 

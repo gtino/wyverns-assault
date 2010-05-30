@@ -12,7 +12,8 @@ static struct EnemyLogic
 	{EnemyTypes::Wizard, "runWizardLogic"},
 	{EnemyTypes::Knight, "runKnightLogic"},
 	{EnemyTypes::Peasant, "runPeasantLogic"},
-	{EnemyTypes::Woman,	"runWomanLogic"}
+	{EnemyTypes::Woman,	"runWomanLogic"},
+	{EnemyTypes::Chicken, "runChickenLogic"}
 };
 
 EnemyTypes Enemy::StringToType (Ogre::String string)
@@ -25,6 +26,7 @@ EnemyTypes Enemy::StringToType (Ogre::String string)
 	if(strcmp ( "Knight", str ) == 0) return EnemyTypes::Knight;
 	if(strcmp ( "Peasant", str ) == 0) return EnemyTypes::Peasant;
 	if(strcmp ( "Woman", str ) == 0) return EnemyTypes::Woman;
+	if(strcmp ( "Chicken", str) == 0) return EnemyTypes::Chicken;
 
 	return EnemyTypes::Naked;
 }
@@ -90,19 +92,12 @@ void Enemy::setTarget(SceneNode* target)
 
 void Enemy::updateEntity(const float elapsedSeconds)
 {
-	return;
-	//autoTrackTarget();
-
-	if(mDirection != Vector3::ZERO)
-	{
-		// Translate forward (always move forward into facing direction)
-		mSceneNode->translate(mDirection * mSpeed * elapsedSeconds, Ogre::Node::TransformSpace::TS_LOCAL);
-	}
-
-	if(mAnimationState)
-	{
+	if(mType == EnemyTypes::Chicken){
+		mAnimationState = mMesh->getAnimationState("Iddle");
+		mAnimationState->setEnabled(true);
 		mAnimationState->addTime(elapsedSeconds);
 	}
+	return;
 }
 
 void Enemy::updateLogic(lua_State *L, const float elapsedSeconds)

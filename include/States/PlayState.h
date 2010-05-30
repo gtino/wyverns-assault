@@ -32,7 +32,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #include "..\Entity\Player\PlayerManager.h"
 #include "..\Entity\Enemy\EnemyManager.h"
 #include "..\Entity\Item\ItemManager.h"
-#include "..\Entity\Animal\AnimalManager.h"
 #include "..\Particle\ParticleManager.h"
 #include "..\Events\EventsManager.h"
 
@@ -95,7 +94,6 @@ namespace WyvernsAssault
 		ItemManager* mItemManager;
 		ParticleManagerPtr mParticleManager;
 		EventsManager* mEventsManager;
-		AnimalManager* mAnimalManager;
 
 		//
 		// Shortcut to player1 (TEST)
