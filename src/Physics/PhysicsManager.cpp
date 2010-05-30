@@ -159,12 +159,10 @@ void PhysicsManager::update(const float elapsedSeconds){
 
 	}
 
-	/*
-	//update animals ray apply force to keep up
-	for(OdeEnemyMapIterator it_animal = mAnimalMap.begin(); it_animal != mAnimalMap.end(); ++it_animal){
+	
+	//update animals: apply force to keep up
+	for(OdeEnemyMapIterator it_animal = mAnimalGeomMap.begin(); it_animal != mAnimalGeomMap.end(); ++it_animal){
 		EnemyPtr animal = it_animal->second;
-		updateRay(animal);
-
 		OgreOde::Body* animal_body = animal->getBody();
 		Quaternion q = animal_body->getOrientation();         
 		Vector3 x = q.xAxis();
@@ -174,15 +172,8 @@ void PhysicsManager::update(const float elapsedSeconds){
 		animal_body->setOrientation(Quaternion(x,Vector3::UNIT_Y,z));
 		animal_body->setAngularVelocity(Vector3(0,0,0)); 
 		animal_body->setLinearVelocity(Vector3(0,0,0));
-
-		// update ray position
-		if(animal->getRayInfo()->updated){
-			animal_body->setPosition(Vector3(animal_body->getPosition().x,animal->getRayInfo()->lastContact.y+10,animal->getPosition().z));
-			animal->getRayInfo()->updated = false;
-		}
-
 	}
-	*/
+
 
 	//update player-enemy collision
 	OgreOde::Body* player_body;
@@ -306,24 +297,13 @@ void PhysicsManager::addAnimal(EnemyPtr animal)
 	torsoTrans->setBody(dollTorsoBody); 
 	torsoTrans->setEncapsulatedGeometry(torsoGeom);
 	animal->getSceneNode()->attachObject(dollTorsoBody);
+	animal->setBody(dollTorsoBody);
 
 	OgreOde::HingeJoint* joint = new OgreOde::HingeJoint(mWorld);
 	joint->attach(dollTorsoBody,dollFeetBody);
 	joint->setAxis(Ogre::Vector3::UNIT_X);	//set the rotation axis
 
-
-/*
-	OgreOde::Body* body = new OgreOde::Body(mWorld,id+"_Body"); 
-	body->setMass(OgreOde::BoxMass(1.0,size)); 
-	body->setAffectedByGravity(true);
-	OgreOde::TransformGeometry* transform = new OgreOde::TransformGeometry(mWorld,mSpace); 
-	OgreOde::BoxGeometry* geometry = new OgreOde::BoxGeometry(size/2,mWorld); 
-	geometry->setOrientation(Quaternion(Degree(90),Vector3::UNIT_X));
-	transform->setBody(body); 
-	transform->setEncapsulatedGeometry(geometry);
-	animal->getSceneNode()->attachObject(body);
-	animal->setBody(body);
-
+	/*
 	//RayInfo
 	PhysicsRayInfo rayInfo;
 	rayInfo.geometry = new OgreOde::RayGeometry(Ogre::Real(15), mWorld, mSpace);
@@ -332,13 +312,14 @@ void PhysicsManager::addAnimal(EnemyPtr animal)
 	rayInfo.lastContact = Vector3(0,0,0);
 
 	animal->setRayInfo(rayInfo);
+	*/
 
 	//
 	// Store the animal into an internal map
 	//
-	mAnimalMap[animal->getGeometryId()] = animal;
-	mAnimalGeomMap[body->getGeometry(0)->getID()] = animal;
-*/
+	//mAnimalMap[animal->getGeometryId()] = animal;
+	mAnimalGeomMap[dollTorsoBody->getGeometry(0)->getID()] = animal;
+
 }
 
 void PhysicsManager::updateRay(PlayerPtr player)
