@@ -54,6 +54,8 @@ bool PhysicsManager::initialize()
 	OgreOde::StepHandler::StepModeType stepModeType = OgreOde::StepHandler::QuickStep;
 	mStepper = new OgreOde::ForwardFixedStepHandler(mWorld, stepModeType, STEP_RATE, max_frame_time, time_scale);
 
+	mLastState = false;
+
 	return true;
 }
 
@@ -131,13 +133,15 @@ void PhysicsManager::update(const float elapsedSeconds){
 	synchronizeWorld(elapsedSeconds);
 	
 	//update players ray
-	for(OdePlayerMapIterator it_player = mPlayerMap.begin(); it_player != mPlayerMap.end(); ++it_player){
+	for(OdePlayerMapIterator it_player = mPlayerMap.begin(); it_player != mPlayerMap.end(); ++it_player)
+	{
 		PlayerPtr player = it_player->second;
 		updateRay(player);
 	}
 
 	//update enemys ray apply force to keep up
-	for(OdeEnemyMapIterator it_enemy = mEnemyMap.begin(); it_enemy != mEnemyMap.end(); ++it_enemy){
+	for(OdeEnemyMapIterator it_enemy = mEnemyMap.begin(); it_enemy != mEnemyMap.end(); ++it_enemy)
+	{
 		EnemyPtr enemy = it_enemy->second;
 		updateRay(enemy);
 
@@ -152,14 +156,13 @@ void PhysicsManager::update(const float elapsedSeconds){
 		enemy_body->setLinearVelocity(Vector3(0,0,0));
 
 		// update ray position
-		if(enemy->getRayInfo()->updated){
+		if(enemy->getRayInfo()->updated)
+		{
 			enemy_body->setPosition(Vector3(enemy_body->getPosition().x,enemy->getRayInfo()->lastContact.y+15,enemy->getPosition().z));
 			enemy->getRayInfo()->updated = false;
 		}
-
 	}
 
-	
 	//update animals: apply force to keep up
 	for(OdeEnemyMapIterator it_animal = mAnimalGeomMap.begin(); it_animal != mAnimalGeomMap.end(); ++it_animal){
 		EnemyPtr animal = it_animal->second;
@@ -174,32 +177,32 @@ void PhysicsManager::update(const float elapsedSeconds){
 		animal_body->setLinearVelocity(Vector3(0,0,0));
 	}
 
-
-	//update player-enemy collision
 	OgreOde::Body* player_body;
 	OgreOde::Geometry* player_geom;
-	for(OdePlayerMapIterator it_player = mPlayerMap.begin(); it_player != mPlayerMap.end(); ++it_player){
+	for(OdePlayerMapIterator it_player = mPlayerMap.begin(); it_player != mPlayerMap.end(); ++it_player)
+	{
 		PlayerPtr player = it_player->second;
 		player_body = player->getBody();
 		player_geom = player_body->getGeometry(0);
 		size_t gg_pp = player_body->getGeometry(0)->getID();
 	}
-	for(OdeEnemyMapIterator it_enemy = mEnemyMap.begin(); it_enemy != mEnemyMap.end(); ++it_enemy){
+	for(OdeEnemyMapIterator it_enemy = mEnemyMap.begin(); it_enemy != mEnemyMap.end(); ++it_enemy)
+	{
 		EnemyPtr enemy = it_enemy->second;
 		OgreOde::Body* enemy_body = enemy->getBody();
 		OgreOde::Geometry* enemy_geom = enemy_body->getGeometry(0);
 		player_geom->collide(enemy_geom,this);
 	}
 
-	//--
-	//Giorgio TEST
-	//--
+	//
+	// Non physics collisions
+	// 
 	checkForCollisions();
 
 	return;
 }
 
-// TEST!
+// Special attack collisions
 void PhysicsManager::checkForCollisions()
 {
 	for(OdePlayerMapIterator it_player = mPlayerMap.begin(); it_player != mPlayerMap.end(); ++it_player)
@@ -207,7 +210,8 @@ void PhysicsManager::checkForCollisions()
 		PlayerPtr player = it_player->second;
 		AxisAlignedBox player_firebox = player->getFireBox();
 
-		if( player->isSpecial() )
+		// Only check if player is using special and last check was not using it
+		if ( mLastState != player->isSpecial() && player->isSpecial() == true)
 		{
 			for(OdeEnemyMapIterator it_enemy = mEnemyMap.begin(); it_enemy != mEnemyMap.end(); ++it_enemy)
 			{
@@ -221,6 +225,8 @@ void PhysicsManager::checkForCollisions()
 				}
 			}
 		}
+		// Save last state
+		mLastState = player->isSpecial();
 	}
 }
 
