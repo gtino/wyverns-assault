@@ -12,7 +12,6 @@
 #include "..\Physics\PhysicsManager.h"
 #include "..\Entity\Enemy\EnemyManager.h"
 #include "..\Entity\Item\ItemManager.h"
-#include "..\Entity\Animal\AnimalManager.h"
 #include "..\Particle\ParticleManager.h"
 
 
@@ -45,7 +44,7 @@ namespace Ogre
 
 		void parseDotScene(const String &SceneName, const String &groupName,SceneManager *levelSceneManager, WyvernsAssault::CameraManager* cameraManager, 
 			WyvernsAssault::LightsManager* lightsManager,WyvernsAssault::EnemyManager* enemysManager ,WyvernsAssault::PhysicsManager* physicsManager, 
-			WyvernsAssault::ItemManager* itemsManager, WyvernsAssault::ParticleManager* particleManager, WyvernsAssault::AnimalManager* animalManager, 
+			WyvernsAssault::ItemManager* itemsManager, WyvernsAssault::ParticleManager* particleManager, 
 			SceneNode *pAttachNode = NULL, const String &sPrependNode = "");
 
 		String getProperty(const String &ndNm, const String &prop);
@@ -104,7 +103,6 @@ namespace Ogre
 		WyvernsAssault::PhysicsManager* mPhysicsManager;
 		WyvernsAssault::ItemManager* mItemManager;
 		WyvernsAssault::ParticleManager* mParticleManager;
-		WyvernsAssault::AnimalManager* mAnimalManager;
 	};
 }
 
