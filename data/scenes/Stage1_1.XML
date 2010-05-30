@@ -199,7 +199,7 @@
 		</physic>
 	</physics>
 
-	<enemys>
+	<enemys> 
 		<!-- Soldiers -->
 		<enemy>
 			<position x="200" y="10" z="870"/>
@@ -284,7 +284,7 @@
 		<enemy>
 			<position x="1250" y="10" z="140"/>
  			<entity type="Soldier" meshFile="soldier.mesh" name="soldier3"/>
-		</enemy>		
+		</enemy>	
 		<!-- Enemies list End -->
 	</enemys>
 

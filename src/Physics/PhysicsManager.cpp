@@ -159,6 +159,31 @@ void PhysicsManager::update(const float elapsedSeconds){
 
 	}
 
+	/*
+	//update animals ray apply force to keep up
+	for(OdeEnemyMapIterator it_animal = mAnimalMap.begin(); it_animal != mAnimalMap.end(); ++it_animal){
+		EnemyPtr animal = it_animal->second;
+		updateRay(animal);
+
+		OgreOde::Body* animal_body = animal->getBody();
+		Quaternion q = animal_body->getOrientation();         
+		Vector3 x = q.xAxis();
+		Vector3 y = q.yAxis();
+		Vector3 z = q.zAxis();
+		animal_body->wake();
+		animal_body->setOrientation(Quaternion(x,Vector3::UNIT_Y,z));
+		animal_body->setAngularVelocity(Vector3(0,0,0)); 
+		animal_body->setLinearVelocity(Vector3(0,0,0));
+
+		// update ray position
+		if(animal->getRayInfo()->updated){
+			animal_body->setPosition(Vector3(animal_body->getPosition().x,animal->getRayInfo()->lastContact.y+10,animal->getPosition().z));
+			animal->getRayInfo()->updated = false;
+		}
+
+	}
+	*/
+
 	//update player-enemy collision
 	OgreOde::Body* player_body;
 	OgreOde::Geometry* player_geom;
@@ -245,6 +270,75 @@ void PhysicsManager::addEnemy(EnemyPtr enemy)
 	//
 	mEnemyMap[enemy->getGeometryId()] = enemy;
 	mEnemyGeomMap[body->getGeometry(0)->getID()] = enemy;
+}
+
+void PhysicsManager::addAnimal(EnemyPtr animal)
+{
+
+	Ogre::String id = animal->getName();
+
+	AxisAlignedBox aab = animal->getSceneNode()->getAttachedObject(id)->getBoundingBox(); 
+	Ogre::Vector3 min = aab.getMinimum()*animal->getScale();
+	Ogre::Vector3 max = aab.getMaximum()*animal->getScale();
+	Ogre::Vector3 size(fabs(max.x-min.x),fabs(max.y-min.y),fabs(max.z-min.z));
+	float radius = (size.x>size.z)?size.z:size.x;
+
+	OgreOde::SimpleSpace* dollSpace = new OgreOde::SimpleSpace(mWorld,mSpace);
+	dollSpace->setInternalCollisions(false);
+
+	//Geometry
+	OgreOde::Body* dollFeetBody = new OgreOde::Body(mWorld,id+"_Body");
+	dollFeetBody->setMass(OgreOde::SphereMass(70,radius)); 
+	OgreOde::SphereGeometry* feetGeom = new OgreOde::SphereGeometry(radius/4,mWorld);
+	OgreOde::TransformGeometry* feetTrans = new OgreOde::TransformGeometry(mWorld,mSpace); 
+	feetTrans->setBody(dollFeetBody); 
+	feetTrans->setEncapsulatedGeometry(feetGeom);
+	animal->getSceneNode()->attachObject(dollFeetBody);
+
+	OgreOde::Body* dollTorsoBody = new OgreOde::Body(mWorld,id+"_Body_Torso"); 
+	dollTorsoBody->setMass(OgreOde::CapsuleMass(70*2.5,radius,Vector3::UNIT_Y,radius)); 
+	dollTorsoBody->setAffectedByGravity(false);
+	dollTorsoBody->setDamping(0,50000);
+	OgreOde::TransformGeometry* torsoTrans = new OgreOde::TransformGeometry(mWorld,mSpace); 
+	OgreOde::CapsuleGeometry* torsoGeom = new OgreOde::CapsuleGeometry(radius/4,size.y/10,mWorld); 
+	torsoGeom->setPosition(Ogre::Vector3(0,size.y-((size.y-4*radius)/2+2*radius),0)); //can't find a good way to explain this
+	torsoGeom->setOrientation(Quaternion(Degree(90),Vector3::UNIT_X));
+	torsoTrans->setBody(dollTorsoBody); 
+	torsoTrans->setEncapsulatedGeometry(torsoGeom);
+	animal->getSceneNode()->attachObject(dollTorsoBody);
+
+	OgreOde::HingeJoint* joint = new OgreOde::HingeJoint(mWorld);
+	joint->attach(dollTorsoBody,dollFeetBody);
+	joint->setAxis(Ogre::Vector3::UNIT_X);	//set the rotation axis
+
+
+/*
+	OgreOde::Body* body = new OgreOde::Body(mWorld,id+"_Body"); 
+	body->setMass(OgreOde::BoxMass(1.0,size)); 
+	body->setAffectedByGravity(true);
+	OgreOde::TransformGeometry* transform = new OgreOde::TransformGeometry(mWorld,mSpace); 
+	OgreOde::BoxGeometry* geometry = new OgreOde::BoxGeometry(size/2,mWorld); 
+	geometry->setOrientation(Quaternion(Degree(90),Vector3::UNIT_X));
+	transform->setBody(body); 
+	transform->setEncapsulatedGeometry(geometry);
+	animal->getSceneNode()->attachObject(body);
+	animal->setBody(body);
+
+	//RayInfo
+	PhysicsRayInfo rayInfo;
+	rayInfo.geometry = new OgreOde::RayGeometry(Ogre::Real(15), mWorld, mSpace);
+	rayInfo.radius = radius;
+	rayInfo.updated = false;
+	rayInfo.lastContact = Vector3(0,0,0);
+
+	animal->setRayInfo(rayInfo);
+
+	//
+	// Store the animal into an internal map
+	//
+	mAnimalMap[animal->getGeometryId()] = animal;
+	mAnimalGeomMap[body->getGeometry(0)->getID()] = animal;
+*/
 }
 
 void PhysicsManager::updateRay(PlayerPtr player)
