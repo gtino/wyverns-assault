@@ -7,7 +7,7 @@ system WyvernsAssault/DragonBreath
         emitted_technique_quota                 500
         emitted_affector_quota                  1500
         emitted_system_quota                    500
-        material                                Particle/Fire
+        material                                Particle/Fire_01
         default_particle_width                  30
         default_particle_height                 15
         default_particle_depth                  10

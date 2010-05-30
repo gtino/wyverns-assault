@@ -58,16 +58,22 @@ namespace WyvernsAssault
 		~Player();
 
 		// EntityInterface
-		void initializeEntity(Ogre::Entity* mesh, Ogre::SceneNode* sceneNode);
+		void initializeEntity(Ogre::Entity* mesh, Ogre::SceneNode* sceneNode, SceneManager* sceneManager);
 		void finalizeEntity();
+
+		// Player functions
+		void setPosition(Ogre::Vector3 position);
+		void setLastDirection(Ogre::Vector3 dir){mLastDirection = dir;};
+		Ogre::Vector3 getLastDirection(){ return mLastDirection;};		
+		bool isAttacking(){ return attacking != 0 ; }
+		Real wichAttack(){ return attacking; }
+		bool isSpecial(){ return special ; }
+
+		// Fire attack bounding box
+		AxisAlignedBox getFireBox(){  return mFireMesh->getWorldBoundingBox(); }
 
 		// Particle systems
 		void setFireBreath(ParticleUniverse::ParticleSystem* fireBreath);
-
-		void setPosition(Ogre::Vector3 position);
-
-		void setLastDirection(Ogre::Vector3 dir){mLastDirection = dir;};
-		Ogre::Vector3 getLastDirection(){ return mLastDirection;};
 
 		// Player actions functions
 		void move(Real x, Real y, Real z);
@@ -82,10 +88,6 @@ namespace WyvernsAssault
 		// Special Attack
 		void attackSpecial();
 
-		bool isAttacking(){ return attacking != 0 ; }
-		Real wichAttack(){ return attacking; }
-		bool isSpecial(){ return special ; }
-
 		// Animation functions
 		void updateAnimation(float elapsedSeconds);
 
@@ -97,14 +99,18 @@ namespace WyvernsAssault
 		void hideGrids();
 
 	private:
+		SceneManager*	mSceneManager;
+
 		Ogre::Vector3 mLastDirection;
 
 		// Fire breath particle system and attach point
 		TagPoint*							mBreathPoint;
 		ParticleUniverse::ParticleSystem*	mFireBreath;
+		Entity*								mFireMesh;
 		
 		// Debug bounding box
 		OBBoxRenderable* mOBBoxRenderable;
+		OBBoxRenderable* mFireOBBoxRenderable;
 		bool mIsDebugEnabled;
 
 	private:

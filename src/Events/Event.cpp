@@ -73,3 +73,21 @@ EnemyHitEvent::EnemyHitEvent(EnemyPtr e, PlayerPtr p)
 	mEnemy = e;
 	mPlayer = p;
 };
+
+//----------------------
+
+EnemySpecialHitEvent::EnemySpecialHitEvent(EnemyPtr e, PlayerPtr p)
+:Event(EventTypes::EnemySpecialHit, EventPriorities::Normal)
+{
+	mEnemy = e;
+	mPlayer = p;
+};
+
+//----------------------
+
+PlayerHitEvent::PlayerHitEvent(EnemyPtr e, PlayerPtr p)
+:Event(EventTypes::PlayerHit, EventPriorities::Normal)
+{
+	mPlayer = p;
+	mEnemy = e;	
+};

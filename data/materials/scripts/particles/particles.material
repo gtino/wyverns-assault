@@ -18,7 +18,7 @@ material Particle/Smoke
     }
 }
 //-----------------------------------------------------------------------------------------------------------------------------------------------
-material Particle/Fire
+material Particle/Fire_01
 {
     technique
     {
@@ -29,7 +29,26 @@ material Particle/Fire
             depth_write off
             texture_unit
             {
-                texture particle_flame.png
+                texture particle_flame01.png
+                tex_address_mode clamp
+            }
+        }
+    }
+}
+//---------------------------------------------------------------------
+material Particle/Fire_02
+{
+    technique
+    {
+        pass
+        {
+            lighting off
+            scene_blend add
+            depth_write off
+
+            texture_unit
+            {
+                texture particle_flame02.png
                 tex_address_mode clamp
             }
         }
@@ -158,24 +177,6 @@ material Particle/Hit
             {
                 texture particle_hit.png
 				tex_address_mode clamp
-            }
-        }
-    }
-}
-//-----------------------------------------------------------------------------------------------------------------------------------------------
-material Particle/FireFlash
-{
-    technique
-    {
-        pass
-        {
-            lighting off
-            scene_blend add
-            depth_write off
-
-            texture_unit
-            {
-                texture particle_fireFlash.png
             }
         }
     }
