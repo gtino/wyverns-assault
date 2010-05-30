@@ -73,6 +73,7 @@ namespace WyvernsAssault
 		void createGround(Ogre::String mesh,Ogre::String name,Ogre::Vector3 position,Ogre::Vector3 scale);
 		void addPlayer(PlayerPtr player);
 		void addEnemy(EnemyPtr enemy);
+		void addAnimal(EnemyPtr animal);
 
 		/*
 		Called by OgreOde whenever a collision occurs, so 
@@ -111,8 +112,11 @@ namespace WyvernsAssault
 		
 		OdePlayerMap mPlayerMap;
 		OdeEnemyMap mEnemyMap;
+		OdeEnemyMap mAnimalMap;
 		OdePlayerMap mPlayerGeomMap;
 		OdeEnemyMap mEnemyGeomMap;
+		OdeEnemyMap mAnimalGeomMap;
+
 
 	// --------------------------------
 	// BEGIN Lua Interface Declarations

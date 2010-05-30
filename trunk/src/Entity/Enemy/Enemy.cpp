@@ -13,7 +13,7 @@ static struct EnemyLogic
 	{EnemyTypes::Knight, "runKnightLogic"},
 	{EnemyTypes::Peasant, "runPeasantLogic"},
 	{EnemyTypes::Woman,	"runWomanLogic"},
-	{EnemyTypes::Chicken, "runChickenLogic"}
+	{EnemyTypes::Chicken, "runAnimalLogic"}
 };
 
 EnemyTypes Enemy::StringToType (Ogre::String string)

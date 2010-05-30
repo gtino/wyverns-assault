@@ -14,9 +14,9 @@
 #include "..\Entity\Item\ItemManager.h"
 #include "..\Particle\ParticleManager.h"
 
-
+ 
 // Forward declarations
-class TiXmlElement;
+class TiXmlElement; 
 
 namespace Ogre
 {
