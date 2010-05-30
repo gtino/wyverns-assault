@@ -9,26 +9,26 @@ system WyvernsAssault/FireHit
         }
         emitter                                 SphereSurface Emitter4
         {
-            emission_rate                       30
+            emission_rate                       40
             angle                               dyn_random
             {
                 min                             0
-                max                             90
+                max                             120
             }
             time_to_live                        dyn_random
             {
-                min                             0.4
-                max                             0.5
+                min                             1
+                max                             1.2
             }
             velocity                            dyn_random
             {
-                min                             5
-                max                             20
+                min                             1
+                max                             5
             }
             all_particle_dimensions             dyn_random
             {
-                min                             15
-                max                             20
+                min                             25
+                max                             30
             }
             auto_direction                      true
             force_emission                      true
@@ -44,6 +44,54 @@ system WyvernsAssault/FireHit
             handler                             DoStopSystem Handler2
             {
             }
+        }
+    }
+    technique Technique3
+    {
+        material                                Particle/Star_01
+        renderer                                Billboard
+        {
+            billboard_rotation_type             vertex
+        }
+        emitter                                 Box Emitter4
+        {
+            emission_rate                       dyn_random
+            {
+                min                             20
+                max                             25
+            }
+            angle                               120
+            time_to_live                        dyn_random
+            {
+                min                             0.35
+                max                             0.4
+            }
+            velocity                            dyn_random
+            {
+                min                             50
+                max                             55
+            }
+            all_particle_dimensions             dyn_random
+            {
+                min                             3
+                max                             3.5
+            }
+            colour                              1 0.501961 0 1
+            force_emission                      true
+            box_width                           5
+            box_height                          5
+            box_depth                           5
+        }
+        affector                                Colour Affector7
+        {
+            time_colour                         0    0 0 0 0
+            time_colour                         0.01 0.996078 0.65098 0.00392157 1
+            time_colour                         0.8  0.92549 0.529412 0.0901961 1
+            time_colour                         1    0 0 0 0
+        }
+        affector                                Scale Affector6
+        {
+            xyz_scale                           5
         }
     }
 }

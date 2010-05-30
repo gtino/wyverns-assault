@@ -117,6 +117,8 @@ namespace WyvernsAssault
 		OdeEnemyMap mEnemyGeomMap;
 		OdeEnemyMap mAnimalGeomMap;
 
+		// Control variable for states changing (from attacking to non attacking). Need for skiping multiple calling to same event.
+		bool mLastState;
 
 	// --------------------------------
 	// BEGIN Lua Interface Declarations
