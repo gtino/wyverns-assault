@@ -331,9 +331,9 @@ void DotSceneLoader::processAnimals(TiXmlElement *XMLNode)
 		}
 
 		// Add to EnemyManager
-		EnemyPtr animal = mEnemyManager->createEnemy(Enemy::StringToType(type), name, mesh);
-		animal->setPosition(position);
-		animal->setScale(scale);
+		//EnemyPtr animal = mEnemyManager->createEnemy(Enemy::StringToType(type), name, mesh);
+		//animal->setPosition(position);
+		//animal->setScale(scale);
 		
 		// Add the animal to the physics manager
 		//mPhysicsManager->addEnemy(animal);
