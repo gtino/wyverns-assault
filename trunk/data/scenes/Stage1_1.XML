@@ -448,7 +448,7 @@
 		<animal>
 			<position x="250" y="-2" z="-547"/>
 			<entity type="Chicken" meshFile="chicken.mesh" name="Chicken10"/>
-			<scale x="5" y="5" z="5"/>
+			<scale x="10" y="10" z="10"/>
 		</animal>
 	</animals>
 
