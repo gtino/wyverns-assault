@@ -706,17 +706,17 @@ bool PlayState::keyPressed(const OIS::KeyEvent& e)
 
 	// Blood particle system - Debug
 	case OIS::KeyCode::KC_Z:		
-		mParticleManager->bloodKill(mPlayer1->getPosition() + (mPlayer1->getSceneNode()->getOrientation() * Quaternion(Degree(-90), Vector3::UNIT_Y)) * Vector3(50, 0, 0));
+		mParticleManager->bloodKill(mPlayer1->getSceneNode());
 		break;
 	case OIS::KeyCode::KC_X:
-		mParticleManager->hit(mPlayer1->getPosition() + (mPlayer1->getSceneNode()->getOrientation() * Quaternion(Degree(-90), Vector3::UNIT_Y)) * Vector3(50, 0, 0));
+		mParticleManager->hit(mPlayer1->getSceneNode());
 		break;
 	case OIS::KeyCode::KC_Y:
-		mParticleManager->bloodLens();
+		mParticleManager->bloodHit(mPlayer1->getSceneNode());
 		break;
 	case OIS::KeyCode::KC_L:
-		mParticleManager->bloodHit(mPlayer1->getPosition() + (mPlayer1->getSceneNode()->getOrientation() * Quaternion(Degree(-90), Vector3::UNIT_Y)) * Vector3(50, 0, 0));
-		mParticleManager->bloodKill(mPlayer1->getPosition() + (mPlayer1->getSceneNode()->getOrientation() * Quaternion(Degree(-90), Vector3::UNIT_Y)) * Vector3(50, 0, 0));
+		mParticleManager->bloodHit(mPlayer1->getSceneNode());
+		mParticleManager->bloodKill(mPlayer1->getSceneNode());
 		mParticleManager->bloodLens();
 		break;	
 	}

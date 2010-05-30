@@ -1,0 +1,72 @@
+system WyvernsAssault/GlowShort
+{
+    technique 
+    {
+        visual_particle_quota                   50
+        material                                Particle/Star_01
+        default_particle_width                  10
+        default_particle_height                 10
+        default_particle_depth                  10
+        renderer                                Billboard
+        {
+        }
+        emitter                                 SphereSurface 
+        {
+            emission_rate                       dyn_random
+            {
+                min                             80
+                max                             100
+            }
+            angle                               dyn_random
+            {
+                min                             0
+                max                             20
+            }
+            time_to_live                        dyn_random
+            {
+                min                             0.4
+                max                             0.8
+            }
+            velocity                            dyn_random
+            {
+                min                             1
+                max                             30
+            }
+            all_particle_dimensions             dyn_random
+            {
+                min                             5
+                max                             10
+            }
+            force_emission                      true
+            radius                              5
+        }
+        affector                                Colour Affector29
+        {
+            time_colour                         0    0 0 0 0
+            time_colour                         0.05 0.92549 0.909804 0.290196 0.858824
+            time_colour                         0.7  0.901961 0.882353 0.576471 0.858824
+            time_colour                         1    0 0 0 0
+        }
+        affector                                LinearForce Affector43
+        {
+            enabled                             false
+            position                            0 1.5 0
+            force_vector                        0 -15 0
+        }
+        affector                                TextureRotator Affector13
+        {
+            rotation                            dyn_random
+            {
+                min                             0
+                max                             360
+            }
+            rotation_speed                      0.5
+        }
+        observer                                OnClear Observer9
+        {
+            handler                             DoStopSystem Handler2
+            {
+            }
+        }
+    }
+}
