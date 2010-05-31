@@ -54,7 +54,8 @@ bool PhysicsManager::initialize()
 	OgreOde::StepHandler::StepModeType stepModeType = OgreOde::StepHandler::QuickStep;
 	mStepper = new OgreOde::ForwardFixedStepHandler(mWorld, stepModeType, STEP_RATE, max_frame_time, time_scale);
 
-	mLastState = false;
+	mPlayerSpecialState = false;
+	mPlayerAttackState = false;
 
 	return true;
 }
@@ -202,7 +203,7 @@ void PhysicsManager::update(const float elapsedSeconds){
 	return;
 }
 
-// Special attack collisions
+// Non physics collisions. Now only player special attack collision
 void PhysicsManager::checkForCollisions()
 {
 	for(OdePlayerMapIterator it_player = mPlayerMap.begin(); it_player != mPlayerMap.end(); ++it_player)
@@ -211,7 +212,7 @@ void PhysicsManager::checkForCollisions()
 		AxisAlignedBox player_firebox = player->getFireBox();
 
 		// Only check if player is using special and last check was not using it
-		if ( mLastState != player->isSpecial() && player->isSpecial() == true)
+		if ( mPlayerSpecialState != player->isSpecial() && player->isSpecial() == true)
 		{
 			for(OdeEnemyMapIterator it_enemy = mEnemyMap.begin(); it_enemy != mEnemyMap.end(); ++it_enemy)
 			{
@@ -226,7 +227,7 @@ void PhysicsManager::checkForCollisions()
 			}
 		}
 		// Save last state
-		mLastState = player->isSpecial();
+		mPlayerSpecialState = player->isSpecial();
 	}
 }
 
