@@ -129,7 +129,7 @@ system WyvernsAssault/BloodKill
                 min                             0
                 max                             0
             }
-            position                            0 -12 0
+            position                            0 -10 0
             end_texture_coords_range            1
             texture_coords                      1
             force_emission                      true
