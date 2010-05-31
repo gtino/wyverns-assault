@@ -200,18 +200,15 @@ void ParticleManager::handleEnemyHitEvent(EnemyHitEventPtr evt)
 	PlayerPtr player = evt->getPlayer();	
 
 	// The player has just hit the enemy
-	if( player->isAttacking() )
+	if( player->wichAttack() == 3 )
 	{
-		if( player->wichAttack() == 3 )
-		{
-			this->bloodKill(enemy->getSceneNode());
-		}
-		else
-		{
-			this->bloodHit(enemy->getSceneNode());
-		}		
-		this->hit(enemy->getSceneNode());
+		this->bloodKill(enemy->getSceneNode());
 	}
+	else
+	{
+		this->bloodHit(enemy->getSceneNode());
+	}		
+	this->hit(enemy->getSceneNode());
 }
 
 void ParticleManager::handleEnemySpecialHitEvent(EnemySpecialHitEventPtr evt)

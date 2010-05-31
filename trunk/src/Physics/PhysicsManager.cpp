@@ -54,8 +54,9 @@ bool PhysicsManager::initialize()
 	OgreOde::StepHandler::StepModeType stepModeType = OgreOde::StepHandler::QuickStep;
 	mStepper = new OgreOde::ForwardFixedStepHandler(mWorld, stepModeType, STEP_RATE, max_frame_time, time_scale);
 
+	// State control variables
 	mPlayerSpecialState = false;
-	mPlayerAttackState = false;
+	mPlayerAttackLast = 0;
 
 	return true;
 }
@@ -212,7 +213,7 @@ void PhysicsManager::checkForCollisions()
 		AxisAlignedBox player_firebox = player->getFireBox();
 
 		// Only check if player is using special and last check was not using it
-		if ( mPlayerSpecialState != player->isSpecial() && player->isSpecial() == true)
+		if ( mPlayerSpecialState != player->isSpecial() && player->isSpecial())
 		{
 			for(OdeEnemyMapIterator it_enemy = mEnemyMap.begin(); it_enemy != mEnemyMap.end(); ++it_enemy)
 			{
@@ -395,31 +396,48 @@ bool PhysicsManager::collision(OgreOde::Contact* contact)
 	//	raiseEvent(enemyHitEventPtr);
 	//}
 
-	//Player - Enemy Collision
+	// Player - Enemy Collision
 	OdePlayerMapIterator it_pp;
 	OdeEnemyMapIterator it_ee;
 	it_pp = mPlayerGeomMap.find(contact->getFirstGeometry()->getID());
-	if(it_pp == mPlayerGeomMap.end()){
+	if(it_pp == mPlayerGeomMap.end())
+	{
 		it_pp = mPlayerGeomMap.find(contact->getSecondGeometry()->getID());
-	}else{
+	}
+	else
+	{
 		//Player is first - check if enemy is second
 		it_ee = mEnemyGeomMap.find(contact->getSecondGeometry()->getID());
 		if(it_ee != mEnemyGeomMap.end())
 		{
-			//Enemy is second
-			EnemyHitEventPtr enemyHitEventPtr = EnemyHitEventPtr(new EnemyHitEvent(it_ee->second, it_pp->second));
-			raiseEvent(enemyHitEventPtr);
+			// Enemy is second
+
+			// Check if player is attacking and has changed state
+			if( mPlayerAttackLast != it_pp->second->wichAttack() && it_pp->second->isAttacking() )
+			{
+				EnemyHitEventPtr enemyHitEventPtr = EnemyHitEventPtr(new EnemyHitEvent(it_ee->second, it_pp->second));
+				raiseEvent(enemyHitEventPtr);
+			}
+			// Save last attack
+			mPlayerAttackLast = it_pp->second->wichAttack();
 		}
 	}
 	if(it_pp != mPlayerGeomMap.end())
 	{
-		//Player is second - check if enemy is first
+		// Player is second - check if enemy is first
 		it_ee = mEnemyGeomMap.find(contact->getFirstGeometry()->getID());
 		if(it_ee != mEnemyGeomMap.end())
 		{
-			//Enemy is first
-			EnemyHitEventPtr enemyHitEventPtr = EnemyHitEventPtr(new EnemyHitEvent(it_ee->second, it_pp->second));
-			raiseEvent(enemyHitEventPtr);
+			// Enemy is first
+
+			// Check if player is attacking and has changed state
+			if( mPlayerAttackLast != it_pp->second->wichAttack() && it_pp->second->isAttacking() )
+			{
+				EnemyHitEventPtr enemyHitEventPtr = EnemyHitEventPtr(new EnemyHitEvent(it_ee->second, it_pp->second));
+				raiseEvent(enemyHitEventPtr);
+			}
+			// Save last attack
+			mPlayerAttackLast = it_pp->second->wichAttack();
 		}
 	}
 

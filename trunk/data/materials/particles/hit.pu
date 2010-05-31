@@ -2,8 +2,8 @@ system WyvernsAssault/Hit
 {
     technique Technique3
     {
-        visual_particle_quota                   2
-        emitted_emitter_quota                   2
+        visual_particle_quota                   20
+        emitted_emitter_quota                   20
         material                                Particle/Hit
         default_particle_width                  20
         default_particle_height                 20
@@ -16,14 +16,10 @@ system WyvernsAssault/Hit
             billboard_origin                    bottom_center
             billboard_rotation_type             vertex
         }
-        emitter                                 Point Emitter4
+        emitter                                 Box Emitter4
         {
-            emission_rate                       1
-            angle                               dyn_random
-            {
-                min                             0
-                max                             90
-            }
+            emission_rate                       2
+            angle                               360
             time_to_live                        dyn_random
             {
                 min                             0.4
@@ -31,12 +27,16 @@ system WyvernsAssault/Hit
             }
             velocity                            dyn_random
             {
-                min                             45
+                min                             20
                 max                             50
             }
             position                            0 20 0
             end_texture_coords_range            15
+            auto_direction                      true
             force_emission                      true
+            box_width                           50
+            box_height                          20
+            box_depth                           10
         }
         affector                                Colour Affector3
         {
@@ -50,8 +50,8 @@ system WyvernsAssault/Hit
             xyz_scale                           dyn_curved_linear
             {
                 control_point                   0 0
-                control_point                   0.8 40
-                control_point                   1 40
+                control_point                   0.8 60
+                control_point                   1 60
             }
         }
         affector                                TextureRotator Affector6
