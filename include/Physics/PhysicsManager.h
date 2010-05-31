@@ -120,7 +120,7 @@ namespace WyvernsAssault
 	private:
 		// Control variable for states changing (from attacking to non attacking). Need for skiping multiple calling to same event.
 		bool mPlayerSpecialState;
-		bool mPlayerAttackState;
+		int mPlayerAttackLast;
 
 	// --------------------------------
 	// BEGIN Lua Interface Declarations
