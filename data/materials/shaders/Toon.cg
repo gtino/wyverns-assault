@@ -73,11 +73,11 @@ void toon_fp(
 	edge = tex2D(celShadingRamps, edgeInUv).x;
 
 	colour =  edge * (
-            (diffuse * diffuseIn * diffuseLightColour) +
-            (tex2D(textureColor,uv) * 0.5f) + 
-            (specular * specularIn * specularLightColour) + 
+            (diffuse * diffuseIn * diffuseLightColour) * 0.9 +
+            (tex2D(textureColor,uv) * 0.8) + 
+            (specular * specularIn * specularLightColour) * 0.8 + 
             (ambient*ambientLightColour) + 
-            (emissive)
+            (emissive * 0.5)
             );
            
   colour.a = tex2D(textureColor,uv).a;

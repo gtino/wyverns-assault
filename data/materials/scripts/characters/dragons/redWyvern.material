@@ -10,19 +10,17 @@ material RedWyvernBody
 			}
 			fragment_program_ref ToonFP
 			{
-        param_named diffuse float4 0.244 0.244 0.244 1
-        param_named specular float4 0.7 0.5 0.4 1
+				param_named diffuse float4 0.244 0.244 0.244 1
+				param_named specular float4 0.7 0.5 0.4 1
 			}
-
-      // Textures for shades
+			// Textures for shades
 			texture_unit
 			{
 				texture toon.png 2d
 				tex_address_mode clamp
 				filtering none
 			}
-
-      // Real Texture
+			// Real Texture
 			texture_unit
 			{
 				texture RedWyvernTextureBody.png
@@ -43,19 +41,17 @@ material RedWyvernHead
 			}
 			fragment_program_ref ToonFP
 			{
-        param_named diffuse float4 0.244 0.244 0.244 1
-        param_named specular float4 0.7 0.5 0.4 1
+				param_named diffuse float4 0.244 0.244 0.244 1
+				param_named specular float4 0.7 0.5 0.4 1
 			}
-
-      // Textures for shades
+			// Textures for shades
 			texture_unit
 			{
 				texture toon.png 2d
 				tex_address_mode clamp
 				filtering none
 			}
-
-      // Real Texture
+			// Real Texture
 			texture_unit
 			{
 				texture RedWyvernTextureHead.png
@@ -74,13 +70,10 @@ material Grid1_Material
 		{
 			diffuse 0.5 0.5 0.5 1
 			specular 0.7 0.7 0.7 1 10
-			emissive 0.228 0.228 0.228 1
 			cull_hardware none
 			cull_software none
 		}
-
 	}
-
 }
 
 material Grid2_Material
@@ -91,13 +84,10 @@ material Grid2_Material
 		{
 			diffuse 0.5 0.5 0.5 1
 			specular 0.7 0.7 0.7 1 10
-			emissive 0.228 0.228 0.228 1
 			cull_hardware none
 			cull_software none
 		}
-
 	}
-
 }
 
 material Grid3_Material
@@ -108,13 +98,10 @@ material Grid3_Material
 		{
 			diffuse 0.5 0.5 0.5 1
 			specular 0.7 0.7 0.7 1 10
-			emissive 0.228 0.228 0.228 1
 			cull_hardware none
 			cull_software none
 		}
-
 	}
-
 }
 
 material Grid4_Material
@@ -125,14 +112,10 @@ material Grid4_Material
 		{
 			diffuse 0.5 0.5 0.5 1
 			specular 0.7 0.7 0.7 1 10
-			emissive 0.228 0.228 0.228 1
 			cull_hardware none
 			cull_software none
-
 		}
-
 	}
-
 }
 
 material Grid5_Material
@@ -143,13 +126,10 @@ material Grid5_Material
 		{
 			diffuse 0.5 0.5 0.5 1
 			specular 0.7 0.7 0.7 1 10
-			emissive 0.228 0.228 0.228 1
 			cull_hardware none
 			cull_software none
 		}
-
 	}
-
 }
 
 material Grid6_Material
@@ -160,13 +140,10 @@ material Grid6_Material
 		{
 			diffuse 0.5 0.5 0.5 1
 			specular 0.7 0.7 0.7 1 10
-			emissive 0.228 0.228 0.228 1
 			cull_hardware none
 			cull_software none
 		}
-
 	}
-
 }
 
 material Grid7_Material
@@ -177,13 +154,10 @@ material Grid7_Material
 		{
 			diffuse 0.5 0.5 0.5 1
 			specular 0.7 0.7 0.7 1 10
-			emissive 0.228 0.228 0.228 1
 			cull_hardware none
 			cull_software none
 		}
-
 	}
-
 }
 
 material Grid8_Material
@@ -194,11 +168,8 @@ material Grid8_Material
 		{
 			diffuse 0.5 0.5 0.5 1
 			specular 0.7 0.7 0.7 1 10
-			emissive 0.228 0.228 0.228 1
 			cull_hardware none
 			cull_software none
 		}
-
 	}
-
 }
