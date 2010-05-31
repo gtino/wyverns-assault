@@ -74,12 +74,12 @@ void toon_fp(
 
 	colour =  edge * (
             (diffuse * diffuseIn * diffuseLightColour) +
-            (tex2D(textureColor,uv)) + 
+            (tex2D(textureColor,uv) * 0.5f) + 
             (specular * specularIn * specularLightColour) + 
             (ambient*ambientLightColour) + 
             (emissive)
             );
-            
+           
   colour.a = tex2D(textureColor,uv).a;
 }
 			 
