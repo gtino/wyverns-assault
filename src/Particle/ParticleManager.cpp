@@ -122,7 +122,7 @@ void ParticleManager::bloodLens()
 	Vector3 position = mSceneManager->getCamera("GameCamera")->getParentSceneNode()->getPosition();
 	Vector3 direction = mSceneManager->getCamera("GameCamera")->getDirection();
 	SceneNode* node = mSceneManager->getSceneNode("bloodLensNode");
-	node->setPosition(position + direction * 200);	
+	node->setPosition(position + direction * 170);	
 	ParticleUniverse::ParticleSystem* particles = mParticleSystemManager->getParticleSystem("bloodLens");
 	particles->startAndStopFade(5);
 }

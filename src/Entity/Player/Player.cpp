@@ -32,6 +32,8 @@ void Player::initializeEntity(Ogre::Entity* mesh, Ogre::SceneNode* sceneNode, Sc
 	special = false;
 	attacking = 0;
 	continueAttacking = false;
+	live = true;
+	timeDeath = 0;
 	
 	// Bounding Box
 	mOBBoxRenderable = new OBBoxRenderable("OBBoxManualMaterial_Player");
@@ -155,6 +157,12 @@ void Player::attackSpecial()
 	}
 }
 
+void Player::Die()
+{
+	// Kill player
+	live = false;
+}
+
 void Player::updateAnimation(float elapsedSeconds)
 {
 	// Check if special attack animation is finish
@@ -199,9 +207,19 @@ void Player::updateAnimation(float elapsedSeconds)
 		else
 			attacking = 0;
 	}
+	// Check if death animation is finish (plus 1 second)
+	if( mCurrentAnimation->getFloatValue() == DIE && mMesh->getAnimationState("Die")->getTimePosition() +  elapsedSeconds > mMesh->getAnimationState("Die")->getLength() )
+	{
+		special = false;
+	}
 
 	// Activate current animation
-	if( special )
+	if ( !live ) 
+	{
+		mCurrentAnimation->setValue( DIE );
+		timeDeath += elapsedSeconds;
+	}
+	else if( special )
 	{
 		mCurrentAnimation->setValue( SPECIAL );
 	}
@@ -224,9 +242,13 @@ void Player::updateAnimation(float elapsedSeconds)
 	else
 	{
 		mCurrentAnimation->setValue( IDDLE );
+	}	
+
+	// If player death time is bigger than its animations, dont add time
+	if( timeDeath <= mMesh->getAnimationState("Die")->getLength())
+	{
+		mAnimationSystem->update( elapsedSeconds );
 	}
-	
-	mAnimationSystem->update( elapsedSeconds );	
 }
 
 void Player::setDebugEnabled(bool isDebugEnabled)
