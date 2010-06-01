@@ -68,7 +68,8 @@ namespace WyvernsAssault
 		bool isAttacking(){ return attacking != 0 ; }
 		Real wichAttack(){ return attacking; }
 		bool isSpecial(){ return special ; }
-		bool isDeath() { return (!live && timeDeath > 3); }
+		bool isDeath() { return !live; }
+		bool isDying() { return timeDeath <= 3; }
 
 		// Fire attack bounding box
 		AxisAlignedBox getFireBox(){  return mFireMesh->getWorldBoundingBox(); }

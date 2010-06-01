@@ -306,7 +306,8 @@ void PlayState::update(const float elapsedSeconds)
 	}
 	else
 	{
-		this->mNextGameStateId = GameStateId::GameOver;
+		if( !mPlayer1->isDying() )
+			this->mNextGameStateId = GameStateId::GameOver;
 	}
 
 	// UI DEBUG KEYS - Increments/Decrements kills and points
