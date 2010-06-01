@@ -119,13 +119,13 @@ namespace WyvernsAssault
 		FMOD::Channel*       getFMODChannel(int channelIndex);
 
 	private:
-		int                  mNextSoundInstanceIndex;
-		FMOD::System*        mSystem;
-		Ogre::Vector3        mPrevListenerPosition;
-		SoundInstanceVector* mSoundInstanceVector;
-		SceneNodeToChannelMap mSceneNodeToChannelMap;
-		ChannelInstance      mChannelArray[MAX_SOUND_CHANNELS];
-		int					 mSoundTrackChannelIndex; // HACK! Remove this shit, use an entity based channel
+		int						mNextSoundInstanceIndex;
+		FMOD::System*			mSystem;
+		Ogre::Vector3			mPrevListenerPosition;
+		SoundInstanceVector*	mSoundInstanceVector;
+		SceneNodeToChannelMap	mSceneNodeToChannelMap;
+		ChannelInstance			mChannelArray[MAX_SOUND_CHANNELS];
+		int						mSoundTrackChannelIndex; // HACK! Remove this shit, use an entity based channel
 
 		SoundNameToIdMap	 mSoundNameToIdMap;
 
@@ -147,7 +147,7 @@ namespace WyvernsAssault
 		// Unregister handlers
 		void unregisterHandlers();
 
-		void handleEnemyHitEvent(EnemyHitEventPtr evt);
+		void handleEnemyKillEvent(EnemyKillEventPtr evt);
 		void handlePlayerAttackEvent(PlayerAttackEventPtr evt);
 		void handlePlayerAttackSpecialEvent(PlayerAttackSpecialEventPtr evt);
 		void handleItemCatchEvent(ItemCatchEventPtr evt);

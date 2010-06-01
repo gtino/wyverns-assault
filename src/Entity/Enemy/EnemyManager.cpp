@@ -168,7 +168,7 @@ void EnemyManager::registerHandlers()
 	boost::shared_ptr<EnemyManager> this_ = shared_from_this();
 
 	registerHandler(EventHandlerPtr(new EventHandler<EnemyManager,CollisionEvent>(this_,&EnemyManager::handleCollisionEvent)),EventTypes::Collision);
-	registerHandler(EventHandlerPtr(new EventHandler<EnemyManager,EnemyHitEvent>(this_,&EnemyManager::handleEnemyHitEvent)),EventTypes::EnemyHit);
+	registerHandler(EventHandlerPtr(new EventHandler<EnemyManager,EnemyKillEvent>(this_,&EnemyManager::handleEnemyKillEvent)),EventTypes::EnemyKill);
 }
 
 void EnemyManager::unregisterHandlers()
@@ -181,7 +181,7 @@ void EnemyManager::handleCollisionEvent(CollisionEventPtr evt)
 // TODO
 }
 
-void EnemyManager::handleEnemyHitEvent(EnemyHitEventPtr evt)
+void EnemyManager::handleEnemyKillEvent(EnemyKillEventPtr evt)
 {
 	EnemyPtr enemy = evt->getEnemy();
 	PlayerPtr player = evt->getPlayer();

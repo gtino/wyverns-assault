@@ -96,11 +96,11 @@ void MainMenuState::finalize()
 	BaseState::finalize();
 	
 	// Destroy gui
-	if(mGuiScreen)
+	/*if(mGuiScreen)
 	{
 		delete mGuiScreen;
 		mGuiScreen = 0;
-	}
+	}*/
 }
 
 /** Get state Id */

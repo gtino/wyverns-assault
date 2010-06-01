@@ -131,9 +131,6 @@ bool SplashScreenState::keyReleased(const OIS::KeyEvent& e)
 {
 	switch(e.key)
 	{
-	case OIS::KC_ESCAPE:
-		this->mNextGameStateId = GameStateId::Exit;
-		break;
 	case OIS::KC_RETURN:
 		this->mNextGameStateId = GameStateId::Intro;
 		break;

@@ -459,8 +459,17 @@ bool PhysicsManager::collision(OgreOde::Contact* contact)
 			// Check if player is attacking and has changed state
 			if( mPlayerAttackLast != it_pp->second->wichAttack() && it_pp->second->isAttacking() )
 			{
-				EnemyHitEventPtr enemyHitEventPtr = EnemyHitEventPtr(new EnemyHitEvent(it_ee->second, it_pp->second));
-				raiseEvent(enemyHitEventPtr);
+				// Erease enemy if player is using third attack
+				if(it_pp->second->wichAttack() == 3)
+				{
+					EnemyKillEventPtr enemyKillEventPtr = EnemyKillEventPtr(new EnemyKillEvent(it_ee->second, it_pp->second));
+					raiseEvent(enemyKillEventPtr);
+				}
+				else
+				{
+					EnemyHitEventPtr enemyHitEventPtr = EnemyHitEventPtr(new EnemyHitEvent(it_ee->second, it_pp->second));
+					raiseEvent(enemyHitEventPtr);
+				}
 			}
 			// Save last attack
 			mPlayerAttackLast = it_pp->second->wichAttack();
@@ -477,13 +486,19 @@ bool PhysicsManager::collision(OgreOde::Contact* contact)
 			// Check if player is attacking and has changed state
 			if( mPlayerAttackLast != it_pp->second->wichAttack() && it_pp->second->isAttacking() )
 			{
-				EnemyHitEventPtr enemyHitEventPtr = EnemyHitEventPtr(new EnemyHitEvent(it_ee->second, it_pp->second));
-				raiseEvent(enemyHitEventPtr);
-
+				// Erease enemy if player is using third attack
+				if(it_pp->second->wichAttack() == 3)
+				{
+					EnemyKillEventPtr enemyKillEventPtr = EnemyKillEventPtr(new EnemyKillEvent(it_ee->second, it_pp->second));
+					raiseEvent(enemyKillEventPtr);
+				}
+				else
+				{
+					EnemyHitEventPtr enemyHitEventPtr = EnemyHitEventPtr(new EnemyHitEvent(it_ee->second, it_pp->second));
+					raiseEvent(enemyHitEventPtr);
+				}				
 				if(it_e != mEnemyMap.end())
 					mEnemyMap.erase(it_e);
-
-				mEnemyGeomMap.erase(it_ee);
 			}
 			// Save last attack
 			mPlayerAttackLast = it_pp->second->wichAttack();
@@ -494,8 +509,6 @@ bool PhysicsManager::collision(OgreOde::Contact* contact)
 
 	return true;
 }
-
-
 
 void PhysicsManager::move(PlayerPtr player, Vector3 direction){
 

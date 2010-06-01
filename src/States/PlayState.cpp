@@ -473,7 +473,11 @@ void PlayState::finalize()
 		mEventsManager = NULL;
 	}
 
-	mParticleManager.reset();
+	if(mParticleManager)
+	{	
+		mParticleManager->finalize();
+		mParticleManager.reset();
+	}
 
 	BaseState::finalize();
 }
@@ -531,11 +535,6 @@ bool PlayState::keyPressed(const OIS::KeyEvent& e)
 
 	switch(e.key)
 	{
-	case OIS::KeyCode::KC_ESCAPE:
-		this->mNextGameStateId = GameStateId::Exit;
-		mParticleManager->finalize();
-		mParticleManager.reset();
-		break;
 	case OIS::KeyCode::KC_I:
 		this->mNextGameStateId = GameStateId::Ending;
 		break;

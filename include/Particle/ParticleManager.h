@@ -86,7 +86,7 @@ namespace WyvernsAssault
 
 		void handleEnemyHitEvent(EnemyHitEventPtr evt);
 		void handleEnemySpecialHitEvent(EnemySpecialHitEventPtr evt);
-		void handlePlayerHitEvent(PlayerHitEventPtr evt);
+		void handleEnemyKillEvent(EnemyKillEventPtr evt);
 
 	private:
 		ParticleUniverse::ParticleSystemManager*	mParticleSystemManager;

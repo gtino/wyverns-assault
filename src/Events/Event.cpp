@@ -85,6 +85,15 @@ EnemySpecialHitEvent::EnemySpecialHitEvent(EnemyPtr e, PlayerPtr p)
 
 //----------------------
 
+EnemyKillEvent::EnemyKillEvent(EnemyPtr e, PlayerPtr p)
+:Event(EventTypes::EnemyKill, EventPriorities::Normal)
+{
+	mEnemy = e;
+	mPlayer = p;
+};
+
+//----------------------
+
 PlayerHitEvent::PlayerHitEvent(EnemyPtr e, PlayerPtr p)
 :Event(EventTypes::PlayerHit, EventPriorities::Normal)
 {
