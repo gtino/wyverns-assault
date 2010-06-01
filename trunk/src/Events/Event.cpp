@@ -90,4 +90,31 @@ PlayerHitEvent::PlayerHitEvent(EnemyPtr e, PlayerPtr p)
 {
 	mPlayer = p;
 	mEnemy = e;	
+}
+
+//----------------------
+
+PlayerAttackEvent::PlayerAttackEvent(PlayerPtr p)
+:Event(EventTypes::PlayerAttack, EventPriorities::Normal)
+{
+	mPlayer = p;
 };
+
+//----------------------
+
+PlayerAttackSpecialEvent::PlayerAttackSpecialEvent(PlayerPtr p)
+:Event(EventTypes::PlayerAttackSpecial, EventPriorities::Normal)
+{
+	mPlayer = p;
+};
+
+
+//----------------------
+
+ItemCatchEvent::ItemCatchEvent(/*PlayerPtr p,*/ ItemPtr i)
+:Event(EventTypes::ItemCatch, EventPriorities::Normal)
+{
+	/*mPlayer = p;*/
+	mItem = i;
+};
+

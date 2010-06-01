@@ -79,6 +79,28 @@ bool PlayerManager::removePlayer(Ogre::String name)
 	return true;
 }
 
+void PlayerManager::attack(Ogre::String name)
+{
+	PlayerPtr player = getPlayer(name);
+
+	player->attackA();
+
+	PlayerAttackEventPtr evt = PlayerAttackEventPtr(new PlayerAttackEvent(player));
+
+	raiseEvent(evt);
+}
+
+void PlayerManager::attackSpecial(Ogre::String name)
+{
+	PlayerPtr player = getPlayer(name);
+
+	player->attackSpecial();
+
+	PlayerAttackSpecialEventPtr evt = PlayerAttackSpecialEventPtr(new PlayerAttackSpecialEvent(player));
+
+	raiseEvent(evt);
+}
+
 void PlayerManager::setDebugEnabled(bool isDebugEnabled)
 {
 	if(mIsDebugEnabled != isDebugEnabled)
@@ -91,6 +113,25 @@ void PlayerManager::setDebugEnabled(bool isDebugEnabled)
 			player->setDebugEnabled(mIsDebugEnabled);
 		}
 	}
+}
+
+// --------------
+// Event handlers
+// --------------
+void PlayerManager::registerHandlers()
+{
+	boost::shared_ptr<PlayerManager> this_ = shared_from_this();
+
+	registerHandler(EventHandlerPtr(new EventHandler<PlayerManager,PlayerHitEvent>(this_,&PlayerManager::handlePlayerHitEvent)),EventTypes::PlayerHit);
+}
+
+void PlayerManager::unregisterHandlers()
+{
+
+}
+
+void PlayerManager::handlePlayerHitEvent(PlayerHitEventPtr evt)
+{
 }
 
 // --------------------------------

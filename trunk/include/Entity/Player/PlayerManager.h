@@ -26,8 +26,13 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #include <Ogre.h>
 #include <OgreSingleton.h>
 
+#include <boost/enable_shared_from_this.hpp>
+
+#include "..\..\..\include\Events\EventsInterface.h"
+
 #include "..\..\..\include\Lua\LuaInterface.h"
 #include "..\..\..\include\Entity\EntityManager.h"
+
 #include "Player.h"
 
 using namespace Ogre;
@@ -43,7 +48,7 @@ namespace WyvernsAssault
 	/**
 	Class used to manage all the enemies
 	*/
-	class PlayerManager : public Ogre::Singleton<PlayerManager>, public EntityManager, public LuaInterface
+	class PlayerManager : public Ogre::Singleton<PlayerManager>, public boost::enable_shared_from_this<PlayerManager>, public EntityManager, public LuaInterface, public EventsInterface
 	{
 	public:
 		PlayerManager(Ogre::SceneManager* sceneManager);
@@ -59,9 +64,22 @@ namespace WyvernsAssault
 		PlayerPtr getPlayer(Ogre::String name);
 		bool removePlayer(Ogre::String name);
 
+		void attack(Ogre::String name);
+		void attackSpecial(Ogre::String name);
+
 		// Enable Debug Stuff
 		void setDebugEnabled(bool isDebugEnabled);
 		bool getDebugEnabled(){return mIsDebugEnabled;};
+
+		// ----------------
+		// Events interface
+		// ----------------
+		// Register event handlers
+		void registerHandlers();
+		// Unregister handlers
+		void unregisterHandlers();
+
+		void handlePlayerHitEvent(PlayerHitEventPtr evt);
 
 	private:
 		SceneManager *mSceneManager;
@@ -86,6 +104,8 @@ namespace WyvernsAssault
 	// END Lua Interface Declarations
 	// ------------------------------
 	};
+
+	typedef boost::shared_ptr<PlayerManager> PlayerManagerPtr;
 }
 
 #endif // __PLAYER_MANAGER_H__

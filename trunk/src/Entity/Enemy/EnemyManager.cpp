@@ -125,7 +125,7 @@ bool EnemyManager::removeEnemy(Ogre::String name)
 	if( it != mEnemyList.end() )
 	{
 		mEnemyList.erase(it);
-		mSceneManager->destroyEntity(name);//getRootSceneNode()->removeChild(name);
+		mSceneManager->destroyEntity(enemyToErase->getEntity());//getRootSceneNode()->removeChild(name);
 	}
 
 	return true;
@@ -187,7 +187,7 @@ void EnemyManager::handleEnemyHitEvent(EnemyHitEventPtr evt)
 	PlayerPtr player = evt->getPlayer();
 
 	// The player has just hit the enemy
-	//removeEnemy(enemy->getName());
+	removeEnemy(enemy->getName());
 }
 
 // --------------------------------

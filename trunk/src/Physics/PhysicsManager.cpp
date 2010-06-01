@@ -433,6 +433,11 @@ bool PhysicsManager::collision(OgreOde::Contact* contact)
 			{
 				EnemyHitEventPtr enemyHitEventPtr = EnemyHitEventPtr(new EnemyHitEvent(it_ee->second, it_pp->second));
 				raiseEvent(enemyHitEventPtr);
+
+				if(it_e != mEnemyMap.end())
+					mEnemyMap.erase(it_e);
+
+				mEnemyGeomMap.erase(it_ee);
 			}
 			// Save last attack
 			mPlayerAttackLast = it_pp->second->wichAttack();

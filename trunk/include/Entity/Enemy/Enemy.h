@@ -99,6 +99,10 @@ namespace WyvernsAssault
 
 		bool isHurt();
 
+		int mChannel;
+		int getChannel(){return mChannel;}
+		void setChannel(int channel){mChannel = channel;}
+
 		// Enable Debug Stuff
 		void setDebugEnabled(bool isDebugEnabled);
 		bool getDebugEnabled(){return mIsDebugEnabled;};

@@ -2,7 +2,7 @@
 -----------------------------------------------------------------------------
 Wyverns' Assault 3D Videgame.
 Copyright (C) 2010  Giorgio Tino, Javier Soto Huesa, Jordi Carreras Ribot, 
-					Marc Serena, Elm Oliver Torres
+Marc Serena, Elm Oliver Torres
 
 This program is free software; you can redistribute it and/or
 modify it under the terms of the GNU General Public License
@@ -23,6 +23,18 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #ifndef __AUDIO_MANAGER_H_
 #define __AUDIO_MANAGER_H_
 
+#define MAX_SOUND_CHANNELS       200
+
+#define INVALID_SOUND_INDEX      0
+#define INVALID_SOUND_CHANNEL    -1
+
+#define INITIAL_VECTOR_SIZE   100
+#define INCREASE_VECTOR_SIZE  20
+
+#define DOPPLER_SCALE         1.0
+#define DISTANCE_FACTOR       1.0
+#define ROLLOFF_SCALE         0.5
+
 #include <Ogre.h>
 #include <OgreSingleton.h>
 #include <boost/enable_shared_from_this.hpp>
@@ -37,22 +49,31 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #include "..\..\externals\Fmod\include\fmod_memoryinfo.h"
 #include "..\..\externals\Fmod\include\fmod_output.h"
 
-#include <stdio.h>
+#include "..\..\include\Debug\Debug.h"
+
 #include "..\..\include\Lua\LuaInterface.h"
 #include "..\..\include\Events\EventsInterface.h"
 
 #include "Sound.h"
+#include "Channel.h"
+#include "FileLocator.h"
 
 namespace WyvernsAssault
 {
-	typedef std::map<Ogre::String, SoundPtr> SoundsMap;
-	typedef std::map<Ogre::String, SoundPtr>::iterator SoundsMapIterator;
-	
-	typedef std::vector<SoundPtr> SoundsList;
-	typedef std::vector<SoundPtr>::iterator SoundsListIterator;
+	typedef std::map<Ogre::String, int> SoundNameToIdMap;
+	typedef std::map<Ogre::String, int>::iterator SoundNameToIdMapIterator;
+
+	typedef std::map<Ogre::SceneNode*, int> SceneNodeToChannelMap;
+	typedef std::map<Ogre::SceneNode*, int>::iterator SceneNodeToChannelMapIterator;
+
+	//typedef std::vector<SoundPtr> SoundsList;
+	//typedef std::vector<SoundPtr>::iterator SoundsListIterator;
+
+	typedef std::vector<SoundInstance *>   SoundInstanceVector;
+	typedef SoundInstanceVector::iterator  SoundInstanceVectorItr;
 
 	/**
-		Class used to manager audio (sound track, sounds, fx)
+	Class used to manager audio (sound track, sounds, fx)
 	*/
 	class AudioManager : public Ogre::Singleton<AudioManager>, public boost::enable_shared_from_this<AudioManager>, public LuaInterface, public EventsInterface
 	{
@@ -71,12 +92,52 @@ namespace WyvernsAssault
 		void loadResources();
 		/** Unload audio resources */
 		void unloadResources();
-		/** Play audio */
-		void playSound(Ogre::String sound);
-		/** Stop audio */
-		void stopSound(Ogre::String sound);
-		/** Add sound in map */
-		void addSound(Sound* sound);
+
+		// -------------
+		// Sound Manager
+		// -------------
+		void                 stopAllSounds(void);
+		void                 update(Ogre::SceneNode *listenerNode, Ogre::Real timeElapsed);
+
+		int                  createSound(String &fileName);         // single-shot 3D sound.  returns soundIndex
+		int                  createStream(String &fileName);        // single-shot 2D stream.  returns soundIndex
+		int                  createLoopedSound(String &fileName);   // looping 3D sound.  returns soundIndex
+		int                  createLoopedStream(String &fileName);  // looping 2D stream.  returns soundIndex
+
+		int                  createSound(String &fileName, SOUND_TYPE soundType);
+
+		void				 playSound(String soundName, SceneNode *soundNode, int *channelIndex);
+		void                 playSound(int soundIndex, SceneNode *soundNode, int *channelIndex);
+		void				 playSoundTrack(String name);
+		void                 stopSound(int *channelIndex);
+		int                  findSound(String &fileName, SOUND_TYPE soundType);    // returns soundIndex;
+
+		void                 set3DMinMaxDistance(int channelIndex, float minDistance, float maxDistance);
+
+		float                getSoundLength(int soundIndex);        // returns seconds
+		SoundInstance*   	 getSoundInstance(int soundIndex);
+		FMOD::Channel*       getFMODChannel(int channelIndex);
+
+	private:
+		int                  mNextSoundInstanceIndex;
+		FMOD::System*        mSystem;
+		Ogre::Vector3        mPrevListenerPosition;
+		SoundInstanceVector* mSoundInstanceVector;
+		SceneNodeToChannelMap mSceneNodeToChannelMap;
+		ChannelInstance      mChannelArray[MAX_SOUND_CHANNELS];
+		int					 mSoundTrackChannelIndex; // HACK! Remove this shit, use an entity based channel
+
+		SoundNameToIdMap	 mSoundNameToIdMap;
+
+		void                 incrementNextSoundInstanceIndex(void);
+
+		// --------------
+		// FMOD Callbacks
+		// --------------
+		static FMOD_RESULT F_CALLBACK  fmodFileOpenCallback(const char *fileName, int unicode, unsigned int *filesize, void **handle, void **userdata);
+		static FMOD_RESULT F_CALLBACK  fmodFileCloseCallback(void *handle, void *userdata);
+		static FMOD_RESULT F_CALLBACK  fmodFileReadCallback(void *handle, void *buffer, unsigned int sizebytes, unsigned int *bytesread, void *userdata);
+		static FMOD_RESULT F_CALLBACK  fmodFileSeekCallback(void *handle, unsigned int pos, void *userdata);
 
 		// ----------------
 		// Events interface
@@ -87,20 +148,16 @@ namespace WyvernsAssault
 		void unregisterHandlers();
 
 		void handleEnemyHitEvent(EnemyHitEventPtr evt);
+		void handlePlayerAttackEvent(PlayerAttackEventPtr evt);
+		void handlePlayerAttackSpecialEvent(PlayerAttackSpecialEventPtr evt);
+		void handleItemCatchEvent(ItemCatchEventPtr evt);
 
-	private:
-		Ogre::String createUniqueId();
-
-		int mId;
-
-		SoundsList mSoundList;
-		SoundsMap  mSoundMap;
-	// --------------------------------
-	// BEGIN Lua Interface Declarations
-	// --------------------------------
+		// --------------------------------
+		// BEGIN Lua Interface Declarations
+		// --------------------------------
 	public:
 
-		
+
 		//Audio Lib (exported to Lua)
 		LUA_LIBRARY("Audio",audiolib);
 
@@ -108,9 +165,9 @@ namespace WyvernsAssault
 
 	public:
 		void luaLoadScripts(){};
-	// ------------------------------
-	// END Lua Interface Declarations
-	// ------------------------------
+		// ------------------------------
+		// END Lua Interface Declarations
+		// ------------------------------
 	};
 
 	typedef boost::shared_ptr<AudioManager> AudioManagerPtr;

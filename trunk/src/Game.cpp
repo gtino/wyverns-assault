@@ -30,15 +30,15 @@ void Game::initialize()
 
 	// Initialize input manager. A render window is needed in order to setup mouse coords and boundaries.
 	mInputManager.initialize(mGraphicsManager.getRenderWindow(), true);
-
-	// Initialize Game states (FSM) manager
-	mStatesManager.initialize(mGraphicsManager, mInputManager, *(mAudioManager.get()));
 	
 	// Load graphic resourcrs
 	mGraphicsManager.loadResources();
 
 	// Then we load audio
 	mAudioManager->loadResources();
+
+	// Initialize Game states (FSM) manager
+	mStatesManager.initialize(mGraphicsManager, mInputManager, *(mAudioManager.get()));
 }
 
 /** Main loop */

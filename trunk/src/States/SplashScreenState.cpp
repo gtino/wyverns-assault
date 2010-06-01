@@ -47,6 +47,11 @@ void SplashScreenState::load()
 	// Register the screen as input event listener, so it can receive events
 	//
 	mInputManager->addListener(mGuiScreen);
+
+	//
+	// Play soft soundtrack
+	//
+	mAudioManager->playSoundTrack("hard_track.mp3");
 }
 
 /** Manage input */

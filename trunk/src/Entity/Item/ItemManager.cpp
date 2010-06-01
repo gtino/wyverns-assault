@@ -132,6 +132,10 @@ void ItemManager::update(const float elapsedSeconds)
 		{			
 			ParticleManager::getSingletonPtr()->remove(item->getSceneNode(), item->getName());
 			ParticleManager::getSingletonPtr()->glow(item->getSceneNode());
+
+			ItemCatchEventPtr evt = ItemCatchEventPtr(new ItemCatchEvent(item));
+			raiseEvent(evt);
+
 			removeItem(item->getName());
 		}
 		else
@@ -142,16 +146,13 @@ void ItemManager::update(const float elapsedSeconds)
 	}
 }
 
-/*
+
 // --------------
 // Event handlers
 // --------------
 void ItemManager::registerHandlers()
 {
 	boost::shared_ptr<ItemManager> this_ = shared_from_this();
-
-	registerHandler(EventHandlerPtr(new EventHandler<ItemManager,ItemCatchEvent>(this_,&ItemManager::handleItemCatchEvent)),EventTypes::ObjectHit);
-
 }
 
 void ItemManager::unregisterHandlers()
@@ -163,7 +164,6 @@ void ItemManager::handleItemCatchEvent(ItemCatchEventPtr evt)
 {
 	//TODO
 }
-*/
 
 // --------------------------------
 // Lua Item Lib

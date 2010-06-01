@@ -86,12 +86,12 @@ namespace WyvernsAssault
 	private:
 		CameraManager* mCameraManager;
 		LightsManager* mLightsManager;
-		PlayerManager* mPlayerManager;
+		PlayerManagerPtr mPlayerManager;
 		EnemyManagerPtr mEnemyManager;
 		LogicManager* mLogicManager;
 		LuaManager*	mLuaManager;	
 		PhysicsManagerPtr mPhysicsManager;
-		ItemManager* mItemManager;
+		ItemManagerPtr mItemManager;
 		ParticleManagerPtr mParticleManager;
 		EventsManager* mEventsManager;
 

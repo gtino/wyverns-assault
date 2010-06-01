@@ -27,6 +27,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
 #include "..\Entity\Enemy\Enemy.h"
 #include "..\Entity\Player\Player.h"
+#include "..\Entity\Item\Item.h"
 
 namespace WyvernsAssault
 {
@@ -37,7 +38,10 @@ namespace WyvernsAssault
 		EnemyHit,
 		EnemySpecialHit,
 		ObjectHit,
-		Collision
+		Collision,
+		PlayerAttack,
+		PlayerAttackSpecial,
+		ItemCatch
 	};
 
 	/** Event priority, used to put the event in the correct queue */
@@ -106,6 +110,8 @@ namespace WyvernsAssault
 	private:
 		EnemyPtr mEnemy;
 		PlayerPtr mPlayer;
+
+		Ogre::Real damage;
 	};
 
 	typedef boost::shared_ptr<EnemyHitEvent> EnemyHitEventPtr;
@@ -122,6 +128,8 @@ namespace WyvernsAssault
 	private:
 		EnemyPtr mEnemy;
 		PlayerPtr mPlayer;
+
+		Ogre::Real damage;
 	};
 
 	typedef boost::shared_ptr<EnemySpecialHitEvent> EnemySpecialHitEventPtr;
@@ -138,9 +146,55 @@ namespace WyvernsAssault
 	private:		
 		PlayerPtr mPlayer;
 		EnemyPtr mEnemy;
+
+		Ogre::Real damage;
 	};
 
 	typedef boost::shared_ptr<PlayerHitEvent> PlayerHitEventPtr;
+
+	// --------------------------------
+	class PlayerAttackEvent : public Event
+	{
+	public:
+		PlayerAttackEvent(PlayerPtr p);
+		
+		PlayerPtr getPlayer(){return mPlayer;}
+
+	private:		
+		PlayerPtr mPlayer;
+	};
+
+	typedef boost::shared_ptr<PlayerAttackEvent> PlayerAttackEventPtr;
+
+	// --------------------------------
+	class PlayerAttackSpecialEvent : public Event
+	{
+	public:
+		PlayerAttackSpecialEvent(PlayerPtr p);
+		
+		PlayerPtr getPlayer(){return mPlayer;}
+
+	private:		
+		PlayerPtr mPlayer;
+	};
+
+	typedef boost::shared_ptr<PlayerAttackSpecialEvent> PlayerAttackSpecialEventPtr;
+
+	// --------------------------------
+	class ItemCatchEvent : public Event
+	{
+	public:
+		ItemCatchEvent(/*PlayerPtr p,*/ ItemPtr item);
+		
+		/*PlayerPtr getPlayer(){return mPlayer;}*/
+		ItemPtr getItem(){return mItem;}
+
+	private:		
+		/*PlayerPtr mPlayer;*/
+		ItemPtr mItem;
+	};
+
+	typedef boost::shared_ptr<ItemCatchEvent> ItemCatchEventPtr;
 }
 
 #endif // __EVENT_H_
