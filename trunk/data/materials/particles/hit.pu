@@ -16,14 +16,14 @@ system WyvernsAssault/Hit
             billboard_origin                    bottom_center
             billboard_rotation_type             vertex
         }
-        emitter                                 Box Emitter4
+        emitter                                 Circle Emitter4
         {
             emission_rate                       2
-            angle                               360
+            angle                               180
             time_to_live                        dyn_random
             {
-                min                             0.4
-                max                             0.5
+                min                             0.2
+                max                             0.6
             }
             velocity                            dyn_random
             {
@@ -34,9 +34,7 @@ system WyvernsAssault/Hit
             end_texture_coords_range            15
             auto_direction                      true
             force_emission                      true
-            box_width                           50
-            box_height                          20
-            box_depth                           10
+            radius                              10
         }
         affector                                Colour Affector3
         {

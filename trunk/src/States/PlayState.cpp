@@ -228,71 +228,78 @@ bool PlayState::frameRenderingQueued(const Ogre::FrameEvent& evt)
 /** Update internal stuff */
 void PlayState::update(const float elapsedSeconds)
 {
-	// Movement
-	if(mCameraManager->getCameraMode() == "Game")
+	if ( !mPlayer1->isDeath() )
 	{
-		// Move if not using special attack or attacking
-		if(!mPlayer1->isSpecial() && !mPlayer1->isAttacking())
+		// Movement
+		if(mCameraManager->getCameraMode() == "Game")
 		{
-			// 8 directions move
-			if(this->mInputManager->getKeyboard()->isKeyDown(OIS::KeyCode::KC_RIGHT) && this->mInputManager->getKeyboard()->isKeyDown(OIS::KeyCode::KC_UP))
+			// Move if not using special attack or attacking
+			if(!mPlayer1->isSpecial() && !mPlayer1->isAttacking())
 			{
-				mPlayer1->move(1,0,-1);
-				mPhysicsManager->move(mPlayer1, mCameraManager->getDirection(Vector3(1,0,-1)));
+				// 8 directions move
+				if(this->mInputManager->getKeyboard()->isKeyDown(OIS::KeyCode::KC_RIGHT) && this->mInputManager->getKeyboard()->isKeyDown(OIS::KeyCode::KC_UP))
+				{
+					mPlayer1->move(1,0,-1);
+					mPhysicsManager->move(mPlayer1, mCameraManager->getDirection(Vector3(1,0,-1)));
+				}
+				else if(this->mInputManager->getKeyboard()->isKeyDown(OIS::KeyCode::KC_RIGHT) && this->mInputManager->getKeyboard()->isKeyDown(OIS::KeyCode::KC_DOWN))
+				{
+					mPlayer1->move(1,0,1);
+					mPhysicsManager->move(mPlayer1, mCameraManager->getDirection(Vector3(1,0,1)));
+				}
+				else if(this->mInputManager->getKeyboard()->isKeyDown(OIS::KeyCode::KC_LEFT) && this->mInputManager->getKeyboard()->isKeyDown(OIS::KeyCode::KC_UP))
+				{
+					mPlayer1->move(-1,0,-1);
+					mPhysicsManager->move(mPlayer1, mCameraManager->getDirection(Vector3(-1,0,-1)));
+				}
+				else if(this->mInputManager->getKeyboard()->isKeyDown(OIS::KeyCode::KC_LEFT) && this->mInputManager->getKeyboard()->isKeyDown(OIS::KeyCode::KC_DOWN))
+				{
+					mPlayer1->move(-1,0,1);
+					mPhysicsManager->move(mPlayer1, mCameraManager->getDirection(Vector3(-1,0,1)));
+				}
+				else if(this->mInputManager->getKeyboard()->isKeyDown(OIS::KeyCode::KC_RIGHT))
+				{
+					mPlayer1->move(1,0,0);
+					mPhysicsManager->move(mPlayer1, mCameraManager->getDirection(Vector3(1,0,0)));
+				}
+				else if(this->mInputManager->getKeyboard()->isKeyDown(OIS::KeyCode::KC_LEFT))
+				{
+					mPlayer1->move(-1,0,0);
+					mPhysicsManager->move(mPlayer1, mCameraManager->getDirection(Vector3(-1,0,0)));
+				}
+				else if(this->mInputManager->getKeyboard()->isKeyDown(OIS::KeyCode::KC_UP))
+				{
+					mPlayer1->move(0,0,-1);
+					mPhysicsManager->move(mPlayer1, mCameraManager->getDirection(Vector3(0,0,-1)));
+				}
+				else if(this->mInputManager->getKeyboard()->isKeyDown(OIS::KeyCode::KC_DOWN))
+				{
+					mPlayer1->move(0,0,1);
+					mPhysicsManager->move(mPlayer1, mCameraManager->getDirection(Vector3(0,0,1)));
+				}		
+				else
+				{
+					// No movement, iddle animation
+					mPlayer1->move(0,0,0);
+					mPhysicsManager->move(mPlayer1, Vector3::ZERO);
+				}
 			}
-			else if(this->mInputManager->getKeyboard()->isKeyDown(OIS::KeyCode::KC_RIGHT) && this->mInputManager->getKeyboard()->isKeyDown(OIS::KeyCode::KC_DOWN))
-			{
-				mPlayer1->move(1,0,1);
-				mPhysicsManager->move(mPlayer1, mCameraManager->getDirection(Vector3(1,0,1)));
-			}
-			else if(this->mInputManager->getKeyboard()->isKeyDown(OIS::KeyCode::KC_LEFT) && this->mInputManager->getKeyboard()->isKeyDown(OIS::KeyCode::KC_UP))
-			{
-				mPlayer1->move(-1,0,-1);
-				mPhysicsManager->move(mPlayer1, mCameraManager->getDirection(Vector3(-1,0,-1)));
-			}
-			else if(this->mInputManager->getKeyboard()->isKeyDown(OIS::KeyCode::KC_LEFT) && this->mInputManager->getKeyboard()->isKeyDown(OIS::KeyCode::KC_DOWN))
-			{
-				mPlayer1->move(-1,0,1);
-				mPhysicsManager->move(mPlayer1, mCameraManager->getDirection(Vector3(-1,0,1)));
-			}
-			else if(this->mInputManager->getKeyboard()->isKeyDown(OIS::KeyCode::KC_RIGHT))
-			{
-				mPlayer1->move(1,0,0);
-				mPhysicsManager->move(mPlayer1, mCameraManager->getDirection(Vector3(1,0,0)));
-			}
-			else if(this->mInputManager->getKeyboard()->isKeyDown(OIS::KeyCode::KC_LEFT))
-			{
-				mPlayer1->move(-1,0,0);
-				mPhysicsManager->move(mPlayer1, mCameraManager->getDirection(Vector3(-1,0,0)));
-			}
-			else if(this->mInputManager->getKeyboard()->isKeyDown(OIS::KeyCode::KC_UP))
-			{
-				mPlayer1->move(0,0,-1);
-				mPhysicsManager->move(mPlayer1, mCameraManager->getDirection(Vector3(0,0,-1)));
-			}
-			else if(this->mInputManager->getKeyboard()->isKeyDown(OIS::KeyCode::KC_DOWN))
-			{
-				mPlayer1->move(0,0,1);
-				mPhysicsManager->move(mPlayer1, mCameraManager->getDirection(Vector3(0,0,1)));
-			}		
 			else
 			{
-				// No movement, iddle animation
-				mPlayer1->move(0,0,0);
+				// No movement
 				mPhysicsManager->move(mPlayer1, Vector3::ZERO);
 			}
 		}
 		else
 		{
-			// No movement
-			mPhysicsManager->move(mPlayer1, Vector3::ZERO);
+			// No movement, iddle animation
+			mPlayer1->move(0,0,0);
+			mPhysicsManager->move(mPlayer1, Vector3(0,0,0));
 		}
 	}
 	else
 	{
-		// No movement, iddle animation
-		mPlayer1->move(0,0,0);
-		mPhysicsManager->move(mPlayer1, Vector3(0,0,0));
+		this->mNextGameStateId = GameStateId::GameOver;
 	}
 
 	// UI DEBUG KEYS - Increments/Decrements kills and points
@@ -530,8 +537,8 @@ bool PlayState::keyPressed(const OIS::KeyEvent& e)
 	case OIS::KeyCode::KC_I:
 		this->mNextGameStateId = GameStateId::Ending;
 		break;
-	case OIS::KeyCode::KC_O:
-		this->mNextGameStateId = GameStateId::GameOver;
+	case OIS::KeyCode::KC_D:
+		mPlayer1->Die();		
 		break;
 	// Pause menu
 	case OIS::KeyCode::KC_P:		
@@ -674,25 +681,13 @@ bool PlayState::keyPressed(const OIS::KeyEvent& e)
 		mGraphicsManager->setCompositorEnabled(COMPOSITOR, mCompositorsEnabled);
 		break;	
 
-	// Camera rumble
+	// Camera rumble - Debug
 	case OIS::KeyCode::KC_B:
 		mCameraManager->rumble(5);
 		break;
-	// Camera tremor
+	// Camera tremor - Debug
 	case OIS::KeyCode::KC_V:
 		mCameraManager->tremor(5);
-		break;
-	// Camera shake
-	case OIS::KeyCode::KC_H:
-		mCameraManager->shake(10);
-		break;
-	// Camera zoom in
-	case OIS::KeyCode::KC_N:
-		mCameraManager->zoom(10);
-		break;
-	// Camera zoom out
-	case OIS::KeyCode::KC_M:
-		mCameraManager->zoom(-10);
 		break;
 
 	// Blood particle system - Debug

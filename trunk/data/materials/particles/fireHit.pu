@@ -2,6 +2,7 @@ system WyvernsAssault/FireHit
 {
     technique Technique3
     {
+        visual_particle_quota                   60
         material                                Particle/Fire_01
         renderer                                Billboard
         {
@@ -9,7 +10,7 @@ system WyvernsAssault/FireHit
         }
         emitter                                 SphereSurface Emitter4
         {
-            emission_rate                       40
+            emission_rate                       50
             angle                               dyn_random
             {
                 min                             0
@@ -32,7 +33,7 @@ system WyvernsAssault/FireHit
             }
             auto_direction                      true
             force_emission                      true
-            radius                              1
+            radius                              6
         }
         affector                                Colour Affector7
         {
@@ -48,6 +49,7 @@ system WyvernsAssault/FireHit
     }
     technique Technique3
     {
+        visual_particle_quota                   60
         material                                Particle/Star_01
         renderer                                Billboard
         {

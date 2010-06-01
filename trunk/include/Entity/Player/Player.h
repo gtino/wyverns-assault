@@ -43,6 +43,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #define ATTACKA1	3
 #define ATTACKA2	4
 #define ATTACKA3	5
+#define DIE			6
 
 using namespace Ogre;
 
@@ -68,6 +69,7 @@ namespace WyvernsAssault
 		bool isAttacking(){ return attacking != 0 ; }
 		Real wichAttack(){ return attacking; }
 		bool isSpecial(){ return special ; }
+		bool isDeath() { return (!live && timeDeath > 3); }
 
 		// Fire attack bounding box
 		AxisAlignedBox getFireBox(){  return mFireMesh->getWorldBoundingBox(); }
@@ -87,6 +89,8 @@ namespace WyvernsAssault
 		void attackB();
 		// Special Attack
 		void attackSpecial();
+		// Die
+		void Die();
 
 		// Animation functions
 		void updateAnimation(float elapsedSeconds);
@@ -120,6 +124,8 @@ namespace WyvernsAssault
 		bool special;
 		Real attacking;
 		bool continueAttacking;
+		bool live;
+		Real timeDeath;
 
 		// Animation system
 		tecnofreak::IAnimationSystem*		mAnimationSystem;
