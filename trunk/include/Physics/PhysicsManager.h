@@ -118,6 +118,12 @@ namespace WyvernsAssault
 		OdeEnemyMap mEnemyGeomMap;
 		OdeEnemyMap mAnimalGeomMap;
 
+		// Keep track of the things we create so we can 
+		// delete them automatically when we switch scenes
+		std::vector<OgreOde::Body*>		_bodies;
+		std::vector<OgreOde::Geometry*> _geoms;
+		std::vector<OgreOde::Joint*>	_joints;
+
 	private:
 		// Control variable for states changing (from attacking to non attacking). Need for skiping multiple calling to same event.
 		bool mPlayerSpecialState;
