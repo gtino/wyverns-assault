@@ -47,6 +47,11 @@ void EndingState::load()
 	// Register the screen as input event listener, so it can receive events
 	//
 	mInputManager->addListener(mGuiScreen);
+	
+	//
+	// Audio manager
+	//
+	mAudioManager->playSoundTrack("soft_track.mp3");
 }
 
 /** Manage input */
@@ -137,7 +142,7 @@ bool EndingState::keyReleased(const OIS::KeyEvent& e)
 		switch(mMenu->getCurrentOption())
 		{
 		case GuiWidgetEndingId::EndingToMenu:
-			this->mNextGameStateId = GameStateId::MainMenu;
+			this->mNextGameStateId = GameStateId::SplashScreen;
 			break;
 		case GuiWidgetEndingId::EndingToCredits:
 			this->mNextGameStateId = GameStateId::Credits;

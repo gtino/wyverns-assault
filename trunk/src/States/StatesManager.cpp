@@ -120,7 +120,7 @@ bool StatesManager::loop(const float elapsedSeconds)
 					this->popState();
 				}
 				// Exit to menu
-				else if(mCurrentStateId == GameStateId::Pause && nextStateId == GameStateId::MainMenu)
+				else if(mCurrentStateId == GameStateId::Pause && nextStateId == GameStateId::SplashScreen)
 				{
 					this->popState();
 					this->changeState(newState);

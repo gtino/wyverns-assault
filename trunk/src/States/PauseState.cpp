@@ -147,7 +147,7 @@ bool PauseState::keyReleased(const OIS::KeyEvent& e)
 			this->mNextGameStateId = GameStateId::Options;
 			break;
 		case GuiWidgetPauseId::QuitToMenu:
-			this->mNextGameStateId = GameStateId::MainMenu;
+			this->mNextGameStateId = GameStateId::SplashScreen;
 			break;
 		}		
 		break;

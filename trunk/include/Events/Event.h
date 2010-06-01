@@ -37,6 +37,7 @@ namespace WyvernsAssault
 		PlayerHit = 0,
 		EnemyHit,
 		EnemySpecialHit,
+		EnemyKill,
 		ObjectHit,
 		Collision,
 		PlayerAttack,
@@ -133,6 +134,24 @@ namespace WyvernsAssault
 	};
 
 	typedef boost::shared_ptr<EnemySpecialHitEvent> EnemySpecialHitEventPtr;
+
+	// --------------------------------
+	class EnemyKillEvent : public Event
+	{
+	public:
+		EnemyKillEvent(EnemyPtr e, PlayerPtr p);
+		
+		EnemyPtr getEnemy(){return mEnemy;}
+		PlayerPtr getPlayer(){return mPlayer;}
+
+	private:
+		EnemyPtr mEnemy;
+		PlayerPtr mPlayer;
+
+		Ogre::Real damage;
+	};
+
+	typedef boost::shared_ptr<EnemyKillEvent> EnemyKillEventPtr;
 
 	// --------------------------------
 	class PlayerHitEvent : public Event

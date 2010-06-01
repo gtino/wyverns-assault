@@ -56,6 +56,11 @@ void GameoverState::load()
 	// Register the screen as input event listener, so it can receive events
 	//
 	mInputManager->addListener(mGuiScreen);
+
+	//
+	// Audio manager
+	//
+	mAudioManager->playSoundTrack("soft_track.mp3");
 }
 
 /** Update internal stuff */
@@ -136,7 +141,7 @@ bool GameoverState::keyReleased(const OIS::KeyEvent& e)
 		switch(mMenu->getCurrentOption())
 		{
 		case GuiWidgetGameoverId::ReturnMenu:
-			this->mNextGameStateId = GameStateId::MainMenu;
+			this->mNextGameStateId = GameStateId::SplashScreen;
 			break;
 		case GuiWidgetGameoverId::QuitGame:
 			this->mNextGameStateId = GameStateId::Exit;

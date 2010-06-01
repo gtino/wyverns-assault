@@ -86,10 +86,12 @@ void AudioManager::loadResources()
 	//
 	// TODO Load resources
 	//
-	int enemyHit0 = createStream( String("man_scream.mp3"));
-	int itemCatch = createStream( String("knife.mp3"));
-	int playerAttack = createStream(String("hit_blood_spat.wav"));
-	int playerAttackSpecial = createStream(String("creature_hit.wav"));
+	int enemyKill = createStream( String("EnemyDie01.wav"));
+	int itemCatch = createStream( String("Item01.wav"));
+	int playerAttack01 = createStream(String("PlayerHit01.wav"));
+	int playerAttack02 = createStream(String("PlayerHit02.wav"));
+	int playerAttack03 = createStream(String("PlayerHit03.wav"));
+	int playerAttackSpecial = createStream(String("Flame02.wav"));
 
 	int softSoundTrack = createLoopedStream(String("soft_track.mp3"));
 	int hardSoundTrack = createLoopedStream(String("hard_track.mp3"));
@@ -574,7 +576,7 @@ void AudioManager::registerHandlers()
 {
 	boost::shared_ptr<AudioManager> this_ = shared_from_this();
 
-	registerHandler(EventHandlerPtr(new EventHandler<AudioManager,EnemyHitEvent>(this_,&AudioManager::handleEnemyHitEvent)),EventTypes::EnemyHit);
+	registerHandler(EventHandlerPtr(new EventHandler<AudioManager,EnemyKillEvent>(this_,&AudioManager::handleEnemyKillEvent)),EventTypes::EnemyKill);
 	registerHandler(EventHandlerPtr(new EventHandler<AudioManager,PlayerAttackEvent>(this_,&AudioManager::handlePlayerAttackEvent)),EventTypes::PlayerAttack);
 	registerHandler(EventHandlerPtr(new EventHandler<AudioManager,PlayerAttackSpecialEvent>(this_,&AudioManager::handlePlayerAttackSpecialEvent)),EventTypes::PlayerAttackSpecial);
 	registerHandler(EventHandlerPtr(new EventHandler<AudioManager,ItemCatchEvent>(this_,&AudioManager::handleItemCatchEvent)),EventTypes::ItemCatch);
@@ -585,9 +587,9 @@ void AudioManager::unregisterHandlers()
 
 }
 
-void AudioManager::handleEnemyHitEvent(EnemyHitEventPtr evt)
+void AudioManager::handleEnemyKillEvent(EnemyKillEventPtr evt)
 {
-	Debug::Out("AudioManager : handleEnemyHitEvent");
+	Debug::Out("AudioManager : handleEnemyKillEvent");
 
 	EnemyPtr enemy = evt->getEnemy();
 	PlayerPtr player = evt->getPlayer();
@@ -603,7 +605,7 @@ void AudioManager::handleEnemyHitEvent(EnemyHitEventPtr evt)
 			channelIndex = mSceneNodeToChannelMap[sceneNode];
 
 		// The player has just hit the enemy
-		playSound("man_scream.mp3",sceneNode,&channelIndex);
+		playSound("EnemyDie01.wav",sceneNode,&channelIndex);
 	}
 }
 
@@ -622,7 +624,12 @@ void AudioManager::handlePlayerAttackEvent(PlayerAttackEventPtr evt)
 		channelIndex = mSceneNodeToChannelMap[sceneNode];
 
 	// The player has just hit the enemy
-	playSound("hit_blood_spat.wav",sceneNode,&channelIndex);
+	if( player->wichAttack() == 1 )
+		playSound("PlayerHit01.wav",sceneNode,&channelIndex);
+	else if( player->wichAttack() == 2 )
+ 		playSound("PlayerHit02.wav",sceneNode,&channelIndex);
+	else if( player->wichAttack() == 3 )
+		playSound("PlayerHit03.wav",sceneNode,&channelIndex);
 }
 
 void AudioManager::handlePlayerAttackSpecialEvent(PlayerAttackSpecialEventPtr evt)
@@ -640,7 +647,7 @@ void AudioManager::handlePlayerAttackSpecialEvent(PlayerAttackSpecialEventPtr ev
 		channelIndex = mSceneNodeToChannelMap[sceneNode];
 
 	// The player has just hit the enemy
-	playSound("creature_hit.wav",sceneNode,&channelIndex);
+	playSound("Flame02.wav",sceneNode,&channelIndex);
 }
 
 void AudioManager::handleItemCatchEvent(ItemCatchEventPtr evt)
@@ -659,7 +666,7 @@ void AudioManager::handleItemCatchEvent(ItemCatchEventPtr evt)
 		channelIndex = mSceneNodeToChannelMap[sceneNode];
 
 	// The player has just hit the enemy
-	playSound("knife.mp3",sceneNode,&channelIndex);
+	playSound("Item01.wav",sceneNode,&channelIndex);
 }
 
 // --------------------------------
