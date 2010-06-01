@@ -130,8 +130,8 @@ void ItemManager::update(const float elapsedSeconds)
 
 		if(item->getItemState() == ItemStates::Catch)
 		{			
-			ParticleManager::getSingletonPtr()->remove(item->getSceneNode(), item->getName());
-			ParticleManager::getSingletonPtr()->glow(item->getSceneNode());
+			ParticleManager::getSingleton().remove(item->getSceneNode(), item->getName());
+			ParticleManager::getSingleton().glow(item->getSceneNode());
 
 			ItemCatchEventPtr evt = ItemCatchEventPtr(new ItemCatchEvent(item));
 			raiseEvent(evt);
