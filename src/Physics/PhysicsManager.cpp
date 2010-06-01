@@ -26,9 +26,28 @@ PhysicsManager::PhysicsManager(SceneManager* sceneManager)
 
 PhysicsManager::~PhysicsManager()
 {
-	//
-	// TODO Distructor logic HERE
-	//
+	// Stop listening for collisions
+	if (mWorld->getCollisionListener() == this) 
+        mWorld->setCollisionListener(0);
+
+	// Delete all the joints
+	for (std::vector<OgreOde::Joint*>::iterator i = _joints.begin();i != _joints.end();++i)
+	{
+		delete (*i);
+	}
+
+	// Run through the list of bodies we're monitoring
+	for (std::vector<OgreOde::Body*>::iterator i = _bodies.begin();i != _bodies.end();++i)
+	{
+		// Delete the body
+		delete (*i);
+	}
+
+	// Delete all the collision geometries
+	for (std::vector<OgreOde::Geometry*>::iterator i = _geoms.begin();i != _geoms.end();++i)
+	{
+		delete (*i);
+	}
 }
 
 bool PhysicsManager::initialize()
@@ -88,7 +107,7 @@ void PhysicsManager::createGround(Ogre::String mesh,Ogre::String name,Ogre::Vect
 	ent_ground->setUserAny(Ogre::Any(geom_ground));
 	node_ground->setVisible(false);
 	node_ground->setScale(scale);
-  
+	_geoms.push_back(geom_ground);
 }
 
 void PhysicsManager::addPlayer(PlayerPtr player)
@@ -107,7 +126,7 @@ void PhysicsManager::addPlayer(PlayerPtr player)
 	body->setAffectedByGravity(true);
 	OgreOde::TransformGeometry* transform = new OgreOde::TransformGeometry(mWorld,mSpace); 
 	//OgreOde::CapsuleGeometry* geometry = new OgreOde::CapsuleGeometry(radius/2,size.y/5,mWorld); 
-	OgreOde::CapsuleGeometry* geometry = new OgreOde::CapsuleGeometry(radius/4,size.y/10,mWorld);
+	OgreOde::CapsuleGeometry* geometry = new OgreOde::CapsuleGeometry(radius/4,size.y/3,mWorld);
 	geometry->setOrientation(Quaternion(Degree(90),Vector3::UNIT_X));
 	transform->setBody(body); 
 	transform->setEncapsulatedGeometry(geometry);
@@ -128,6 +147,9 @@ void PhysicsManager::addPlayer(PlayerPtr player)
 	//
 	mPlayerMap[player->getGeometryId()] = player;
 	mPlayerGeomMap[body->getGeometry(0)->getID()] = player;
+
+	_bodies.push_back(body);
+	_geoms.push_back(geometry);
 	
 }
 
@@ -189,12 +211,27 @@ void PhysicsManager::update(const float elapsedSeconds){
 		//Verify type of animal and state
 		if(animal->getEnemyType() == EnemyTypes::Chicken){
 			if(animal->getEnemyState() == EnemyStates::Fear){
+				
+				/*
+				 * Movement based on player and enemy position
+				 
+				Vector3 player_position = player->getPosition();
+				Vector3 animal_position = animal->getPosition();
+
+				Vector3 direction = animal_position - player_position;
+				moveAnimal(animal,direction);
+				*/
+				
+				/*
+				 * Movement based on last direction of player
+				 */
 				Vector3 playerDirection = player->getLastDirection();
 				if(playerDirection == Vector3::ZERO){
 					moveAnimal(animal,animal->getLastDirection());
 				}else{
 					moveAnimal(animal,playerDirection);
 				}
+
 			}else{
 				moveAnimal(animal,Vector3(0,0,0));
 			}
@@ -275,6 +312,9 @@ void PhysicsManager::addEnemy(EnemyPtr enemy)
 	//
 	mEnemyMap[enemy->getGeometryId()] = enemy;
 	mEnemyGeomMap[body->getGeometry(0)->getID()] = enemy;
+
+	_bodies.push_back(body);
+	_geoms.push_back(geometry);
 }
 
 void PhysicsManager::addAnimal(EnemyPtr animal)
@@ -325,6 +365,12 @@ void PhysicsManager::addAnimal(EnemyPtr animal)
 	// Store the animal into an internal map by torso geom
 	//
 	mAnimalGeomMap[dollTorsoBody->getGeometry(0)->getID()] = animal;
+
+	_bodies.push_back(dollFeetBody);
+	_bodies.push_back(dollTorsoBody);
+	_geoms.push_back(feetGeom);
+	_geoms.push_back(torsoGeom);
+	_joints.push_back(joint);
 
 }
 
