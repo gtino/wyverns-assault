@@ -64,8 +64,7 @@ namespace WyvernsAssault
 
 		// Player functions
 		void setPosition(Ogre::Vector3 position);
-		void setLastDirection(Ogre::Vector3 dir){mLastDirection = dir;};
-		Ogre::Vector3 getLastDirection(){ return mLastDirection;};		
+
 		bool isAttacking(){ return attacking != 0 ; }
 		Real wichAttack(){ return attacking; }
 		bool isSpecial(){ return special ; }
@@ -104,8 +103,6 @@ namespace WyvernsAssault
 
 	private:
 		SceneManager*	mSceneManager;
-
-		Ogre::Vector3 mLastDirection;
 
 		// Fire breath particle system and attach point
 		TagPoint*							mBreathPoint;

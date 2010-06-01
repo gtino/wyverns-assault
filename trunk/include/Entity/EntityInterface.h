@@ -69,6 +69,9 @@ namespace WyvernsAssault
 		virtual void setScale(const Ogre::Vector3 scale) { mSceneNode->setScale(scale); }
 		virtual Ogre::Vector3 getScale(){return mSceneNode->getScale(); }
 
+		void setLastDirection(Ogre::Vector3 dir){mLastDirection = dir;};
+		Ogre::Vector3 getLastDirection(){ return mLastDirection;};
+
 		//virtual Ogre::Entity* getEntity(){return mMesh;}
 
 		//virtual void lookAt(const Ogre::Vector3 lookAt) { mSceneNode->lookAt(lookAt,Ogre::TraTransformSpace::); }
@@ -82,6 +85,7 @@ namespace WyvernsAssault
 		Ogre::Entity* mMesh;
 		Ogre::SceneNode* mSceneNode;
 		Ogre::AnimationState* mAnimationState;
+		Ogre::Vector3 mLastDirection;
 
 		/*GuiObjectTextDisplay* mGuiObjectTextDisplay;*/
 	};
