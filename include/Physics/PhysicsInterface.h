@@ -37,6 +37,8 @@ namespace WyvernsAssault
 		bool updated;
 	}PhysicsRayInfo;
 
+	typedef std::vector<OgreOde::Body*> BodyList;
+
 	/**
 	Interface implemented by objects with physics
 	*/
@@ -53,10 +55,9 @@ namespace WyvernsAssault
 		virtual void setBody( OgreOde::Body* body ){ mBody = body;}
 		virtual OgreOde::Body* getBody(){ return mBody; }
 
-		virtual size_t getGeometryId() const { return mRayInfo.geometry->getID(); }
+		virtual BodyList* getBodyList() { return &bodys; }
 
-		//virtual size_t getGeometryId() const { return mRayInfo.geometry->getID(); }
-		//virtual size_t getGeometryId() const { return mRayInfo.geometry->getID(); }
+		virtual size_t getGeometryId() const { return mRayInfo.geometry->getID(); }
 		
 		virtual void setRayInfo(PhysicsRayInfo rayInfo) { 
 			mRayInfo.geometry = rayInfo.geometry;
@@ -69,6 +70,8 @@ namespace WyvernsAssault
 	protected:
 		OgreOde::Body* mBody;
 		PhysicsRayInfo mRayInfo;
+		BodyList bodys;
+
 	};
 }
 

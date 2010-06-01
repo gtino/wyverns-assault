@@ -91,11 +91,11 @@ namespace WyvernsAssault
 
 		float getStateTimeout(){return mStateTimeout;}
 
+		EnemyTypes getEnemyType(){return mType;}
+		EnemyStates getEnemyState(){return mState;}
+
 		void setTarget(SceneNode* target);
 		void autoTrackTarget();
-
-		void move(Real x, Real y, Real z);
-		void move(Vector3 to);
 
 		bool isHurt();
 

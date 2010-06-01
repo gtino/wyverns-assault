@@ -84,6 +84,7 @@ namespace WyvernsAssault
 		//Move one character
 		void move(PlayerPtr player, Vector3 direction);
 		void move(EnemyPtr enemy, int rotate, int thrust);
+		void moveAnimal(EnemyPtr animal, Vector3 direction);
 
 		// TEST!
 		void checkForCollisions();

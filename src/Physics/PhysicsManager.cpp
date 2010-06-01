@@ -41,7 +41,7 @@ bool PhysicsManager::initialize()
 	mWorld->setAutoSleep(false);
     mWorld->setAutoSleepAverageSamplesCount(10);
 	mWorld->setContactCorrectionVelocity(1.0);
-	//mWorld->setCollisionListener(this);
+	mWorld->setCollisionListener(this);
 
 	// Set collision space
 	mSpace = mWorld->getDefaultSpace();
@@ -165,28 +165,15 @@ void PhysicsManager::update(const float elapsedSeconds){
 		}
 	}
 
-	//update animals: apply force to keep up
-	for(OdeEnemyMapIterator it_animal = mAnimalGeomMap.begin(); it_animal != mAnimalGeomMap.end(); ++it_animal){
-		EnemyPtr animal = it_animal->second;
-		OgreOde::Body* animal_body = animal->getBody();
-		Quaternion q = animal_body->getOrientation();         
-		Vector3 x = q.xAxis();
-		Vector3 y = q.yAxis();
-		Vector3 z = q.zAxis();
-		animal_body->wake();
-		animal_body->setOrientation(Quaternion(x,Vector3::UNIT_Y,z));
-		animal_body->setAngularVelocity(Vector3(0,0,0)); 
-		animal_body->setLinearVelocity(Vector3(0,0,0));
-	}
-
+	//Enemy - Player collide
 	OgreOde::Body* player_body;
 	OgreOde::Geometry* player_geom;
+	PlayerPtr player;
 	for(OdePlayerMapIterator it_player = mPlayerMap.begin(); it_player != mPlayerMap.end(); ++it_player)
 	{
-		PlayerPtr player = it_player->second;
+		player = it_player->second;
 		player_body = player->getBody();
 		player_geom = player_body->getGeometry(0);
-		size_t gg_pp = player_body->getGeometry(0)->getID();
 	}
 	for(OdeEnemyMapIterator it_enemy = mEnemyMap.begin(); it_enemy != mEnemyMap.end(); ++it_enemy)
 	{
@@ -194,6 +181,25 @@ void PhysicsManager::update(const float elapsedSeconds){
 		OgreOde::Body* enemy_body = enemy->getBody();
 		OgreOde::Geometry* enemy_geom = enemy_body->getGeometry(0);
 		player_geom->collide(enemy_geom,this);
+	}
+
+	// Update animals:  move animals - Animals movement IA
+	for(OdeEnemyMapIterator it_animal = mAnimalGeomMap.begin(); it_animal != mAnimalGeomMap.end(); ++it_animal){
+		EnemyPtr animal = it_animal->second;
+		//Verify type of animal and state
+		if(animal->getEnemyType() == EnemyTypes::Chicken){
+			if(animal->getEnemyState() == EnemyStates::Fear){
+				Vector3 playerDirection = player->getLastDirection();
+				if(playerDirection == Vector3::ZERO){
+					moveAnimal(animal,animal->getLastDirection());
+				}else{
+					moveAnimal(animal,playerDirection);
+				}
+			}else{
+				moveAnimal(animal,Vector3(0,0,0));
+			}
+		}
+
 	}
 
 	//
@@ -296,36 +302,28 @@ void PhysicsManager::addAnimal(EnemyPtr animal)
 
 	OgreOde::Body* dollTorsoBody = new OgreOde::Body(mWorld,id+"_Body_Torso"); 
 	dollTorsoBody->setMass(OgreOde::CapsuleMass(70*2.5,radius,Vector3::UNIT_Y,radius)); 
-	dollTorsoBody->setAffectedByGravity(false);
+	dollTorsoBody->setAffectedByGravity(true);
 	dollTorsoBody->setDamping(0,50000);
 	OgreOde::TransformGeometry* torsoTrans = new OgreOde::TransformGeometry(mWorld,mSpace); 
 	OgreOde::CapsuleGeometry* torsoGeom = new OgreOde::CapsuleGeometry(radius/4,size.y/10,mWorld); 
-	torsoGeom->setPosition(Ogre::Vector3(0,size.y-((size.y-4*radius)/2+2*radius),0)); //can't find a good way to explain this
+	torsoGeom->setPosition(Ogre::Vector3(0,size.y-((size.y-4*radius)/2+2*radius),0));
 	torsoGeom->setOrientation(Quaternion(Degree(90),Vector3::UNIT_X));
 	torsoTrans->setBody(dollTorsoBody); 
 	torsoTrans->setEncapsulatedGeometry(torsoGeom);
 	animal->getSceneNode()->attachObject(dollTorsoBody);
-	animal->setBody(dollTorsoBody);
 
 	OgreOde::HingeJoint* joint = new OgreOde::HingeJoint(mWorld);
 	joint->attach(dollTorsoBody,dollFeetBody);
 	joint->setAxis(Ogre::Vector3::UNIT_X);	//set the rotation axis
 
-	/*
-	//RayInfo
-	PhysicsRayInfo rayInfo;
-	rayInfo.geometry = new OgreOde::RayGeometry(Ogre::Real(15), mWorld, mSpace);
-	rayInfo.radius = radius;
-	rayInfo.updated = false;
-	rayInfo.lastContact = Vector3(0,0,0);
-
-	animal->setRayInfo(rayInfo);
-	*/
+	//Set Bodys to BodyList
+	animal->setBody(dollTorsoBody);
+	animal->getBodyList()->push_back(dollFeetBody);
+	animal->getBodyList()->push_back(dollTorsoBody);
 
 	//
-	// Store the animal into an internal map
+	// Store the animal into an internal map by torso geom
 	//
-	//mAnimalMap[animal->getGeometryId()] = animal;
 	mAnimalGeomMap[dollTorsoBody->getGeometry(0)->getID()] = animal;
 
 }
@@ -508,6 +506,48 @@ void move(EnemyPtr enemy, int rotate, int thrust)
 	// TODO
 	//
 }
+
+void PhysicsManager::moveAnimal(EnemyPtr animal, Ogre::Vector3 direction)
+{
+	
+	float const maxVel = 80;
+	OgreOde::Body* body_feet = animal->getBodyList()[0][0];
+	OgreOde::Body* body_torso = animal->getBodyList()[0][1];
+
+	if(direction == Vector3::ZERO){
+		//Stop animal
+		body_feet->wake();
+		body_feet->setAngularVelocity(Vector3(0,0,0));
+	}else{
+		//Move animal
+		Quaternion q1 = body_torso->getOrientation();
+		Vector3 currentDirection = q1 * Vector3::UNIT_Z;
+		Quaternion q2 = currentDirection.getRotationTo(direction);
+		body_torso->setOrientation(q1*q2);
+		
+		if(animal->getLastDirection() != direction)
+		{
+			Quaternion q4 = body_torso->getLinearVelocity().getRotationTo(direction);
+			body_feet->wake();
+			body_feet->setAngularVelocity(q4*Ogre::Vector3(maxVel*cos(1.0),body_feet->getAngularVelocity().y,0));
+		}else{
+			body_feet->wake();
+			body_feet->setAngularVelocity(direction*Ogre::Vector3(maxVel*cos(1.0),body_feet->getAngularVelocity().y,0));
+		}
+
+	}
+
+	Quaternion q = body_torso->getOrientation();         
+	Vector3 x = q.xAxis();
+	Vector3 y = q.yAxis();
+	Vector3 z = q.zAxis();
+	body_torso->wake();
+	body_torso->setOrientation(Quaternion(x,Vector3::UNIT_Y,z));
+	body_torso->setAngularVelocity(Vector3(0,0,0)); 
+	body_torso->setLinearVelocity(Vector3(0,0,0));
+	animal->setLastDirection(direction);	
+}
+
 
 // --------------------------------
 // Lua Physics Lib

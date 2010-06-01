@@ -53,6 +53,7 @@ void Enemy::initializeEntity(Ogre::Entity* mesh, Ogre::SceneNode* sceneNode)
 {
 	mSceneNode = sceneNode;
 	mMesh = mesh;
+	mLastDirection = Vector3(0,0,0);
 
 	// Bounding Box
 	mOBBoxRenderable = new OBBoxRenderable("OBBoxManualMaterial_Enemy");
@@ -93,9 +94,19 @@ void Enemy::setTarget(SceneNode* target)
 void Enemy::updateEntity(const float elapsedSeconds)
 {
 	if(mType == EnemyTypes::Chicken){
-		mAnimationState = mMesh->getAnimationState("Iddle");
-		mAnimationState->setEnabled(true);
-		mAnimationState->addTime(elapsedSeconds);
+		Vector3 mDirection = this->getLastDirection();
+		if (mDirection != Vector3::ZERO)
+		{
+			mAnimationState = mMesh->getAnimationState("Run");
+			mAnimationState->setEnabled(true);
+			mAnimationState->addTime(elapsedSeconds);
+		}
+		else
+		{
+			mAnimationState = mMesh->getAnimationState("Iddle");
+			mAnimationState->setEnabled(true);
+			mAnimationState->addTime(elapsedSeconds);
+		}
 	}
 	return;
 }
@@ -150,7 +161,6 @@ void Enemy::updateLogic(lua_State *L, const float elapsedSeconds)
 			mBalloonSet->setVisible(true);
 			mBalloonSet->setMaterialName("Balloons/Rage");
 			mSpeed = 0.0f;
-			mDirection = Vector3::ZERO;
 			break;
 		case EnemyStates::Love:
 			mBalloonSet->setVisible(true);
@@ -207,49 +217,14 @@ bool Enemy::isHurt()
 
 void Enemy::chase()
 {
-	if(mTarget)
+	/*if(mTarget)
 	{
 		Vector3 direction = mTarget->getPosition() - mSceneNode->getPosition();
 
 		direction.normalise();
 
 		move(direction);
-	}
-}
-
-void Enemy::move(Real x, Real y, Real z)
-{
-	// Direction vector
-	Vector3 direction = Vector3(x, y, -z);
-
-	move(direction);
-}
-
-void Enemy::move(Vector3 to)
-{
-	mDirection = to;
-
-	if (mDirection != Vector3::ZERO)
-	{
-		// Change autotrack axis for facing movement direction
-		//mSceneNode->setAutoTracking(false, mAutoTrackingNode, mDirection);
-
-		if(mAnimationState)
-		{
-			mAnimationState = mMesh->getAnimationState("Run");
-			mAnimationState->setEnabled(true);
-			mAnimationState->setLoop(true);
-		}
-	}
-	else
-	{
-		if(mAnimationState)
-		{
-			mAnimationState = mMesh->getAnimationState("Iddle_01");
-			mAnimationState->setEnabled(true);
-			mAnimationState->setLoop(true);
-		}
-	}
+	}*/
 }
 
 void Enemy::setDebugEnabled(bool isDebugEnabled)
