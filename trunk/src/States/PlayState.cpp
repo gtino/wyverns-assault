@@ -470,13 +470,13 @@ void PlayState::finalize()
 
 	if(mEventsManager)
 	{
-		//delete mEventsManager;
+		delete mEventsManager;
 		mEventsManager = NULL;
 	}
 
 	if(mParticleManager)
 	{	
-		mParticleManager->finalize();
+		//mParticleManager->finalize();
 		mParticleManager.reset();
 	}
 
