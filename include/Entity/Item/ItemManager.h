@@ -4,12 +4,13 @@
 #include <Ogre.h>
 #include <OgreSingleton.h>
 
-/*#include <boost/enable_shared_from_this.hpp>*/
+#include <boost/enable_shared_from_this.hpp>
 
 #include "..\include\Lua\LuaInterface.h"
 #include "..\include\Entity\EntityManager.h"
 #include "..\include\Particle\ParticleManager.h"
-/*#include "..\..\Events\EventsInterface.h"*/
+#include "..\..\Events\EventsInterface.h"
+
 #include "Item.h"
 
 namespace WyvernsAssault
@@ -24,7 +25,7 @@ namespace WyvernsAssault
 	/**
 	Class used to manage all the items
 	*/
-	class ItemManager : public Ogre::Singleton<ItemManager>, /*public boost::enable_shared_from_this<ItemManager>,*/ public EntityManager, public LuaInterface/*, public EventsInterface*/
+	class ItemManager : public Ogre::Singleton<ItemManager>, public boost::enable_shared_from_this<ItemManager>, public EntityManager, public LuaInterface, public EventsInterface
 	{
 	public:
 		ItemManager(Ogre::SceneManager* sceneManager);
@@ -46,7 +47,7 @@ namespace WyvernsAssault
 
 		bool removeItem(Ogre::String name);
 
-/*
+
 		// ----------------
 		// Events interface
 		// ----------------
@@ -56,7 +57,6 @@ namespace WyvernsAssault
 		void unregisterHandlers();
 
 		void handleItemCatchEvent(ItemCatchEventPtr evt);
-*/
 
 	private:
 		Ogre::String createUniqueId();
@@ -83,6 +83,8 @@ namespace WyvernsAssault
 	// END Lua Interface Declarations
 	// ------------------------------
 	};
+
+	typedef boost::shared_ptr<ItemManager> ItemManagerPtr;
 }
 
 #endif // __ITEM_MANAGER_H__

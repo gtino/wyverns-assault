@@ -20,55 +20,26 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
 -----------------------------------------------------------------------------
 */
-#ifndef __SOUND_H__
-#define __SOUND_H__
+#ifndef __DEBUG_H_
+#define __DEBUG_H_
+
+#include <Windows.h>
+#include <ostream>
+#include <sstream>
+#include <string>
 
 #include <Ogre.h>
-#include "..\..\externals\Fmod\include\fmod.hpp"
-
-using namespace Ogre;
 
 namespace WyvernsAssault
 {
-	typedef enum
-	{
-		SOUND_TYPE_INVALID = 0,
-		SOUND_TYPE_3D_SOUND,
-		SOUND_TYPE_3D_SOUND_LOOPED,
-		SOUND_TYPE_2D_SOUND,
-		SOUND_TYPE_2D_SOUND_LOOPED,
-	} SOUND_TYPE;
-
-	enum SoundTypes
-	{
-		Intro01  = 0,
-		Intro02  = 1,
-		Menu01	 = 2,
-		Attack01 = 3,
-		Attack02 = 4,
-		Attack03 = 5
-	};
-
-	class SoundInstance
+	class Debug
 	{
 	public:
-		SoundInstance(){};
-		virtual ~SoundInstance(){};
-		
-		void           clear(void);
-
-	public:		
-		String         fileName;
-		Archive*       fileArchive;
-		DataStreamPtr  streamPtr;
-		SOUND_TYPE     soundType;
-		FMOD::Sound*   fmodSound;
-
-	public:
-		static SoundTypes StringToType(Ogre::String typeStr);
+		static void Out(Ogre::String msg);
+		static void Out(const char *text);
+		static void Out(const wchar_t *text);
 	};
-
-	typedef boost::shared_ptr<SoundInstance> SoundInstancePtr;
 }
 
-#endif // __SOUND_H__
+
+#endif // __DEBUG_H_

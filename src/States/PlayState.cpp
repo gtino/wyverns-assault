@@ -5,7 +5,6 @@ using namespace WyvernsAssault;
 
 PlayState::PlayState(GraphicsManager& graphicsManager, InputManager& inputManager, AudioManager& audioManager)
 : BaseState(graphicsManager,inputManager,audioManager)
-, mPlayerManager(NULL)
 , mLogicManager(NULL)
 , mLightsManager(NULL)
 , mCameraManager(NULL)
@@ -47,7 +46,7 @@ void PlayState::initialize()
 	mParticleManager->initialize();
 
 	// Player manager constructor
-	mPlayerManager = new PlayerManager(mSceneManager);
+	mPlayerManager = PlayerManagerPtr(new PlayerManager(mSceneManager));
 	mPlayerManager->initialize();
 
 	// Create a single player (TEST!)
@@ -104,7 +103,7 @@ void PlayState::initialize()
 	//
 	// Item Manager
 	//
-	mItemManager = new ItemManager(mSceneManager);
+	mItemManager = ItemManagerPtr(new ItemManager(mSceneManager));
 	mItemManager->initialize();
 
 	//
@@ -129,7 +128,8 @@ void PlayState::initialize()
 	mLuaManager->registerInterface(mLogicManager);
 	mLuaManager->registerInterface(mEnemyManager.get());
 	mLuaManager->registerInterface(mPhysicsManager.get());
-	mLuaManager->registerInterface(mItemManager);
+	mLuaManager->registerInterface(mItemManager.get());
+	mLuaManager->registerInterface(mPlayerManager.get());
 
 	//
 	// THIRD :	This call to 'initialize' will initialize Lua,
@@ -140,8 +140,8 @@ void PlayState::initialize()
 
 	//Load scene XML file
 	std::auto_ptr<DotSceneLoader> sceneLoader(new DotSceneLoader());
-	sceneLoader->parseDotScene("Level1_1.scene","General", mSceneManager, mCameraManager, mLightsManager, mEnemyManager.get(), mPhysicsManager.get(), mItemManager, mParticleManager.get());
-	sceneLoader->parseDotScene("Stage1_1.XML","General", mSceneManager, mCameraManager, mLightsManager, mEnemyManager.get(), mPhysicsManager.get(), mItemManager, mParticleManager.get());
+	sceneLoader->parseDotScene("Level1_1.scene","General", mSceneManager, mCameraManager, mLightsManager, mEnemyManager.get(), mPhysicsManager.get(), mItemManager.get(), mParticleManager.get());
+	sceneLoader->parseDotScene("Stage1_1.XML","General", mSceneManager, mCameraManager, mLightsManager, mEnemyManager.get(), mPhysicsManager.get(), mItemManager.get(), mParticleManager.get());
 
 	//
 	// Events Manager 
@@ -155,6 +155,8 @@ void PlayState::initialize()
 	mEventsManager->registerInterface(mPhysicsManager.get());
 	mEventsManager->registerInterface(mParticleManager.get());
 	mEventsManager->registerInterface(mAudioManager);
+	mEventsManager->registerInterface(mItemManager.get());
+	mEventsManager->registerInterface(mPlayerManager.get());
 
 	//
 	// Set game camera
@@ -163,6 +165,11 @@ void PlayState::initialize()
 
 	mGraphicsManager->addCompositor(COMPOSITOR);
 	mGraphicsManager->setCompositorEnabled(COMPOSITOR, mCompositorsEnabled);
+
+	//
+	// Audio manager
+	//
+	mAudioManager->playSoundTrack("main_track.mp3");
 }
 
 /** Load resources */
@@ -360,6 +367,11 @@ void PlayState::update(const float elapsedSeconds)
 	mCameraManager->updateCamera(mPlayer1->getSceneNode()->getPosition(), elapsedSeconds);
 
 	//
+	// Update sounds
+	//
+	mAudioManager->update(mCameraManager->getCamera()->getParentSceneNode(), elapsedSeconds);
+
+	//
 	// Dispatch events. Managers have probably raised events, that are now in the 
 	// EventsManager queue. The events manager will then dispatch them, calling
 	// for each of them the registered handler(s).
@@ -415,11 +427,9 @@ void PlayState::finalize()
 		delete mLuaManager;
 		mLuaManager = NULL;
 	}
-	if(mPlayerManager)
-	{
-		delete mPlayerManager;
-		mPlayerManager = NULL;
-	}
+
+	mPlayerManager.reset();
+
 	
 	if(mCameraManager)
 	{
@@ -449,11 +459,7 @@ void PlayState::finalize()
 
 	mPhysicsManager.reset();
 
-	if(mItemManager)
-	{
-		delete mItemManager;
-		mItemManager = NULL;
-	}
+	mItemManager.reset();
 
 	if(mLogicManager)
 	{
@@ -467,11 +473,7 @@ void PlayState::finalize()
 		mEventsManager = NULL;
 	}
 
-	if(mParticleManager)
-	{
-		mParticleManager->finalize();
-		mParticleManager.reset();
-	}
+	mParticleManager.reset();
 
 	BaseState::finalize();
 }
@@ -667,11 +669,11 @@ bool PlayState::keyPressed(const OIS::KeyEvent& e)
 
 	// Attack A
 	case OIS::KeyCode::KC_SPACE:
-		mPlayer1->attackA();
+		mPlayerManager->attack("Player1");
 		break;
 	// Special Attack
 	case OIS::KeyCode::KC_BACK:
-		mPlayer1->attackSpecial();
+		mPlayerManager->attackSpecial("Player1");
 		break;	
 
 	// Compositors On/Off
