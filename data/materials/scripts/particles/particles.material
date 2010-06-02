@@ -55,6 +55,25 @@ material Particle/Fire_02
     }
 }
 //-----------------------------------------------------------------------------------------------------------------------------------------------
+material Particle/FireFlash
+{
+    technique
+    {
+        pass
+        {
+            lighting off
+            scene_blend add
+            depth_write off
+
+            texture_unit
+            {
+                texture particle_fireFlash.png
+                tex_address_mode clamp
+            }
+        }
+    }
+}
+//-----------------------------------------------------------------------------------------------------------------------------------------------
 material Particle/BloodSpray
 {
     technique
@@ -109,7 +128,7 @@ material Particle/BloodHit
     }
 }
 //-----------------------------------------------------------------------------------------------------------------------------------------------
-material Particle/Flare
+material Particle/Flare_01
 {
     technique
     {
@@ -121,7 +140,26 @@ material Particle/Flare
 
             texture_unit
             {
-                texture particle_flare.png
+                texture particle_flare01.png
+            }
+        }
+    }
+}
+//-----------------------------------------------------------------------------------------------------------------------
+material Particle/Flare_02
+{
+    technique
+    {
+        pass
+        {
+            lighting off
+            scene_blend add
+            depth_write off
+
+            texture_unit
+            {
+                texture particle_flare02.png
+                tex_address_mode clamp
             }
         }
     }
