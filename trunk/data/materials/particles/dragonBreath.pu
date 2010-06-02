@@ -15,6 +15,7 @@ system WyvernsAssault/DragonBreath
         {
             render_queue_group                  80
             soft_particles_contrast_power       0.9
+            billboard_rotation_type             vertex
         }
         emitter                                 Point 
         {
@@ -52,6 +53,112 @@ system WyvernsAssault/DragonBreath
             mass_affector                       2
             min_distance                        5
             max_distance                        10
+        }
+    }
+    technique Technique9
+    {
+        material                                Particle/Flare_01
+        renderer                                Billboard
+        {
+        }
+        emitter                                 Point Emitter10
+        {
+            emission_rate                       30
+            angle                               dyn_random
+            {
+                min                             15
+                max                             35
+            }
+            time_to_live                        dyn_random
+            {
+                min                             0.2
+                max                             0.25
+            }
+            velocity                            dyn_random
+            {
+                min                             175
+                max                             200
+            }
+            all_particle_dimensions             dyn_random
+            {
+                min                             2
+                max                             5
+            }
+            position                            10 0 0
+            direction                           1 0 0
+            auto_direction                      true
+        }
+        affector                                Colour Affector7
+        {
+            time_colour                         0    0 0 0 0
+            time_colour                         0.01 0.8 0.415686 0.0352941 1
+            time_colour                         0.8  0.784314 0.443137 0.0666667 1
+            time_colour                         1    0 0 0 0
+        }
+        affector                                Scale Affector6
+        {
+            xyz_scale                           10
+        }
+        affector                                ParticleFollower Affector16
+        {
+            mass_affector                       2
+            min_distance                        50
+            max_distance                        75
+        }
+    }
+    technique Technique9
+    {
+        keep_local                              true
+        material                                Particle/Flare_02
+        renderer                                Billboard
+        {
+        }
+        emitter                                 Box Emitter10
+        {
+            emission_rate                       20
+            angle                               dyn_random
+            {
+                min                             30
+                max                             40
+            }
+            time_to_live                        dyn_random
+            {
+                min                             0.25
+                max                             0.35
+            }
+            velocity                            dyn_random
+            {
+                min                             165
+                max                             190
+            }
+            all_particle_dimensions             dyn_random
+            {
+                min                             8
+                max                             12
+            }
+            position                            10 0 0
+            direction                           1 0 0
+            auto_direction                      true
+            box_width                           20
+            box_height                          10
+            box_depth                           2
+        }
+        affector                                Colour Affector7
+        {
+            time_colour                         0    0 0 0 0
+            time_colour                         0.01 0.8 0.415686 0.0352941 1
+            time_colour                         0.8  0.784314 0.443137 0.0666667 1
+            time_colour                         1    0 0 0 0
+        }
+        affector                                Scale Affector6
+        {
+            xyz_scale                           8
+        }
+        affector                                ParticleFollower Affector16
+        {
+            mass_affector                       2
+            min_distance                        50
+            max_distance                        75
         }
     }
 }
