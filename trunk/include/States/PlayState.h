@@ -38,7 +38,9 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #include <SdkTrays.h>
 #include <ParticleUniversePlugin.h>
 
-#define COMPOSITOR "Outline"
+#define COMPOSITOR_1 "Black&White"
+#define COMPOSITOR_2 "SharpenEdges"
+#define COMPOSITOR_3 "OldMovie"
 
 namespace WyvernsAssault
 {

@@ -163,8 +163,12 @@ void PlayState::initialize()
 	//
 	mCameraManager->gameCamera(mPlayer1->getSceneNode()->getPosition());
 
-	mGraphicsManager->addCompositor(COMPOSITOR);
-	mGraphicsManager->setCompositorEnabled(COMPOSITOR, mCompositorsEnabled);
+	mGraphicsManager->addCompositor(COMPOSITOR_1);
+	mGraphicsManager->setCompositorEnabled(COMPOSITOR_1, mCompositorsEnabled);
+	mGraphicsManager->addCompositor(COMPOSITOR_2);
+	mGraphicsManager->setCompositorEnabled(COMPOSITOR_2, mCompositorsEnabled);
+	mGraphicsManager->addCompositor(COMPOSITOR_3);
+	mGraphicsManager->setCompositorEnabled(COMPOSITOR_3, mCompositorsEnabled);
 
 	//
 	// Audio manager
@@ -539,7 +543,7 @@ bool PlayState::keyPressed(const OIS::KeyEvent& e)
 	case OIS::KeyCode::KC_I:
 		this->mNextGameStateId = GameStateId::Ending;
 		break;
-	case OIS::KeyCode::KC_D:
+	case OIS::KeyCode::KC_O:
 		mPlayer1->Die();		
 		break;
 	// Pause menu
@@ -570,10 +574,6 @@ bool PlayState::keyPressed(const OIS::KeyEvent& e)
 		break;
 	case OIS::KeyCode::KC_8:
 		mCameraManager->fixedCamera(5);
-		break;
-	// Toogle visibility of advanced stats frame
-	case OIS::KeyCode::KC_F:
-		mTrayMgr->toggleAdvancedFrameStats();
 		break;
 	// Toogle visibility of debugging details
 	case OIS::KeyCode::KC_G:		
@@ -663,7 +663,7 @@ bool PlayState::keyPressed(const OIS::KeyEvent& e)
 			mLuaManager->enable();
 		break;
 	// Physics debug mode
-	case OIS::KeyCode::KC_C:
+	case OIS::KeyCode::KC_F:
 		mPhysicsManager->showDebugObjects();
 		break;
 
@@ -676,19 +676,30 @@ bool PlayState::keyPressed(const OIS::KeyEvent& e)
 		mPlayerManager->attackSpecial("Player1");
 		break;	
 
-	// Compositors On/Off
+	// Black&White On/Off
 	case OIS::KeyCode::KC_K:
 		mCompositorsEnabled = !mCompositorsEnabled;
+		mGraphicsManager->setCompositorEnabled(COMPOSITOR_1, mCompositorsEnabled);
+		break;
 
-		mGraphicsManager->setCompositorEnabled(COMPOSITOR, mCompositorsEnabled);
+	// SharpenEdges On/Off
+	case OIS::KeyCode::KC_J:
+		mCompositorsEnabled = !mCompositorsEnabled;
+		mGraphicsManager->setCompositorEnabled(COMPOSITOR_2, mCompositorsEnabled);
+		break;	
+
+	// OldMovie On/Off
+	case OIS::KeyCode::KC_L:
+		mCompositorsEnabled = !mCompositorsEnabled;
+		mGraphicsManager->setCompositorEnabled(COMPOSITOR_3, mCompositorsEnabled);
 		break;	
 
 	// Camera rumble - Debug
-	case OIS::KeyCode::KC_B:
+	case OIS::KeyCode::KC_N:
 		mCameraManager->rumble(5);
 		break;
 	// Camera tremor - Debug
-	case OIS::KeyCode::KC_V:
+	case OIS::KeyCode::KC_M:
 		mCameraManager->tremor(5);
 		break;
 
@@ -699,12 +710,10 @@ bool PlayState::keyPressed(const OIS::KeyEvent& e)
 	case OIS::KeyCode::KC_X:
 		mParticleManager->hit(mPlayer1->getSceneNode());
 		break;
-	case OIS::KeyCode::KC_Y:
+	case OIS::KeyCode::KC_C:
 		mParticleManager->bloodHit(mPlayer1->getSceneNode());
 		break;
-	case OIS::KeyCode::KC_L:
-		mParticleManager->bloodHit(mPlayer1->getSceneNode());
-		mParticleManager->bloodKill(mPlayer1->getSceneNode());
+	case OIS::KeyCode::KC_V:
 		mParticleManager->bloodLens();
 		break;	
 	}
