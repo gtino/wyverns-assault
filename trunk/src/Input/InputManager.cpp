@@ -2,6 +2,18 @@
 
 using namespace WyvernsAssault;
 
+// BEGIN SINGLETON
+template<> InputManager* Ogre::Singleton<InputManager>::ms_Singleton = 0;
+InputManager* InputManager::getSingletonPtr(void)
+{
+    return ms_Singleton;
+}
+InputManager& InputManager::getSingleton(void)
+{  
+    assert( ms_Singleton );  return ( *ms_Singleton );  
+}
+// END SINGLETON
+
 InputManager::InputManager()
 : mInputManager( NULL )
 , mKeyboard( NULL )
@@ -11,6 +23,7 @@ InputManager::InputManager()
 , mUseBufferedInputMouse(false)
 , mUseBufferedInputJoyStick(false)
 , mInputTypeSwitchingOn(false)
+, mInitialized(false)
 {
 	//
 	// TODO Constructor
@@ -22,11 +35,14 @@ InputManager::~InputManager()
 	//
 	// TODO Destructor
 	//
-	finalize();
+	if(mInitialized)
+	{
+		finalize();
+	}
 }
 
 /** Initialize the input manager */
-void InputManager::initialize( Ogre::RenderWindow* window, bool showDefaultMousePointer )
+bool InputManager::initialize( Ogre::RenderWindow* window, bool showDefaultMousePointer )
 {	
 	size_t windowHandle = 0;
 	window->getCustomAttribute( "WINDOW", &windowHandle );
@@ -62,6 +78,10 @@ void InputManager::initialize( Ogre::RenderWindow* window, bool showDefaultMouse
 	mMouse->setEventCallback( this );
 	mKeyboard->setEventCallback( this );
 	//mJoyStick->setEventCallback( this );
+
+	mInitialized = true;
+
+	return mInitialized;
 }
 
 void InputManager::finalize()
@@ -89,6 +109,8 @@ void InputManager::finalize()
 		OIS::InputManager::destroyInputSystem( mInputManager );
 		mInputManager = 0;
 	}
+
+	mInitialized = false;
 }
 
 /** Add input listener */

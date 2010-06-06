@@ -37,6 +37,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
 #include <Ogre.h>
 #include <OgreSingleton.h>
+
 #include <boost/enable_shared_from_this.hpp>
 
 #include <vector>
@@ -75,7 +76,9 @@ namespace WyvernsAssault
 	/**
 	Class used to manager audio (sound track, sounds, fx)
 	*/
-	class AudioManager : public Ogre::Singleton<AudioManager>, public boost::enable_shared_from_this<AudioManager>, public LuaInterface, public EventsInterface
+	class AudioManager	: public Ogre::Singleton<AudioManager>
+						, public boost::enable_shared_from_this<AudioManager>
+						, public LuaInterface, public EventsInterface
 	{
 	public:
 		AudioManager();
@@ -85,7 +88,7 @@ namespace WyvernsAssault
 
 	public: 
 		/** Initialize the audio manager */
-		void initialize();
+		bool initialize();
 		/** Finalize the audio manager */
 		void finalize();
 		/** Load audio resources */
@@ -119,6 +122,8 @@ namespace WyvernsAssault
 		FMOD::Channel*       getFMODChannel(int channelIndex);
 
 	private:
+		bool mInitialized;
+
 		int						mNextSoundInstanceIndex;
 		FMOD::System*			mSystem;
 		Ogre::Vector3			mPrevListenerPosition;

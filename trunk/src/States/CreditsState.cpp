@@ -2,7 +2,7 @@
 
 using namespace WyvernsAssault;
 
-CreditsState::CreditsState(GraphicsManager& graphicsManager, InputManager& inputManager, AudioManager& audioManager)
+CreditsState::CreditsState(GraphicsManagerPtr graphicsManager, InputManagerPtr inputManager, AudioManagerPtr audioManager)
 : BaseState(graphicsManager,inputManager,audioManager)
 {
 	//

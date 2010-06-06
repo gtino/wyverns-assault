@@ -33,7 +33,7 @@ namespace WyvernsAssault
 	class GameoverState : public BaseState
 	{
 	public:
-		GameoverState(GraphicsManager& graphicsManager, InputManager& inputManager, AudioManager& audioManager);
+		GameoverState(GraphicsManagerPtr graphicsManager, InputManagerPtr inputManager, AudioManagerPtr audioManager);
 		~GameoverState();
 
 	public:

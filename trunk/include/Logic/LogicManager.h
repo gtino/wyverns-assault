@@ -25,6 +25,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
 #include <Ogre.h>
 #include <OgreSingleton.h>
+#include <boost/enable_shared_from_this.hpp>
 
 #include "..\Lua\LuaInterface.h"
 
@@ -33,7 +34,7 @@ namespace WyvernsAssault
 	/**
 	Class used to load/manage logic and AI scripts
 	*/
-	class LogicManager : public Ogre::Singleton<LogicManager>, public LuaInterface
+	class LogicManager : public Ogre::Singleton<LogicManager>, public boost::enable_shared_from_this<LogicManager>, public LuaInterface
 	{
 	public:
 		LogicManager();
@@ -60,6 +61,8 @@ namespace WyvernsAssault
 		void luaLoadScripts();
 		void luaInitialize(lua_State *L);
 	};
+
+	typedef boost::shared_ptr<LogicManager> LogicManagerPtr;
 }
 
 #endif // __LOGIC_MANAGER_H__

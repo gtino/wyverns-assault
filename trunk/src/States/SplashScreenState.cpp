@@ -2,7 +2,7 @@
 
 using namespace WyvernsAssault;
 
-SplashScreenState::SplashScreenState(GraphicsManager& graphicsManager, InputManager& inputManager, AudioManager& audioManager)
+SplashScreenState::SplashScreenState(GraphicsManagerPtr graphicsManager, InputManagerPtr inputManager, AudioManagerPtr audioManager)
 : BaseState(graphicsManager,inputManager,audioManager)
 {	
 	//

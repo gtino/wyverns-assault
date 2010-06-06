@@ -29,12 +29,16 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
 #include <boost/enable_shared_from_this.hpp>
 
+#include "ParticleSystem.h"
 #include "..\Events\EventsInterface.h"
 
 using namespace Ogre;
 
 namespace WyvernsAssault 
 {
+	typedef std::map<Ogre::String,ParticleSystemPtr> ParticleSystemMap;
+	typedef std::map<Ogre::String,ParticleSystemPtr>::iterator ParticleSystemMapIterator;
+
 	/**
 	Class used to manage all the particle systems
 	*/
@@ -90,11 +94,12 @@ namespace WyvernsAssault
 
 	private:
 		ParticleUniverse::ParticleSystemManager*	mParticleSystemManager;
-		ParticleUniverse::ParticleSystem*			mParticleSystem;
+		ParticleUniverse::ParticleSystem* mParticleSystem;
+
+		ParticleSystemMap mParticleSystemMap;
 
 	private:
 		SceneManager*			mSceneManager;
-
 	};
 
 	typedef boost::shared_ptr<ParticleManager> ParticleManagerPtr;

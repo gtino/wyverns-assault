@@ -2,7 +2,7 @@
 
 using namespace WyvernsAssault;
 
-OutroState::OutroState(GraphicsManager& graphicsManager, InputManager& inputManager, AudioManager& audioManager)
+OutroState::OutroState(GraphicsManagerPtr graphicsManager, InputManagerPtr inputManager, AudioManagerPtr audioManager)
 : BaseState(graphicsManager,inputManager,audioManager)
 {
 	//
@@ -15,6 +15,7 @@ OutroState::~OutroState()
 	//
 	// TODO Distructor logic HERE
 	//
+	finalize();
 }
 
 /** Initialize current state */

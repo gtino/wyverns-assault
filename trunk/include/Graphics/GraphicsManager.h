@@ -30,6 +30,9 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #include <Ogre.h>
 #include <OgreRenderWindow.h>
 #include <OgreFontManager.h> 
+#include <OgreSingleton.h>
+
+#include <boost/enable_shared_from_this.hpp>
 
 //
 // Defines
@@ -50,12 +53,13 @@ namespace WyvernsAssault
 	/**
 		Class used to deal with the graphics layer
 	*/
-	class GraphicsManager :  public FrameListener, public WindowEventListener
+	class GraphicsManager :  public Ogre::Singleton<GraphicsManager>, public boost::enable_shared_from_this<GraphicsManager>, public FrameListener, public WindowEventListener
 	{
 	public:
 		GraphicsManager();
-
 		~GraphicsManager();
+		static GraphicsManager& getSingleton(void);
+		static GraphicsManager* getSingletonPtr(void);
 
 	public:
 		/** Initialize graphics */
@@ -80,6 +84,7 @@ namespace WyvernsAssault
 		Root*			getRoot(void);
 		RenderWindow*	getRenderWindow(void);
 		SceneManager*	getSceneManager(void);
+		Viewport*		getViewport(void){return mViewport;}
 
 	private: 
 		bool configure(void);
@@ -95,7 +100,11 @@ namespace WyvernsAssault
 		Viewport*		mViewport;
 
 		CompositorManager* mCompositorManager;
+
+		bool mInitialized;
 	};
+
+	typedef boost::shared_ptr<GraphicsManager> GraphicsManagerPtr;
 }
 
 #endif // __GRAPHICS_MANAGER_H_

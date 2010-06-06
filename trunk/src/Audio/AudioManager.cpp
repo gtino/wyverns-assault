@@ -14,8 +14,9 @@ AudioManager& AudioManager::getSingleton(void)
 }
 // END SINGLETON
 
-AudioManager::AudioManager() :
-mSoundTrackChannelIndex(INVALID_SOUND_CHANNEL)
+AudioManager::AudioManager()
+: mSoundTrackChannelIndex(INVALID_SOUND_CHANNEL)
+, mInitialized(false)
 {
 	mSystem = NULL;
 	mPrevListenerPosition = Vector3(0, 0, 0);
@@ -40,11 +41,14 @@ mSoundTrackChannelIndex(INVALID_SOUND_CHANNEL)
 
 AudioManager::~AudioManager()
 {
-	finalize();
+	if(mInitialized)
+	{
+		finalize();
+	}
 }
 
 /** Initialize the audio manager */
-void AudioManager::initialize()
+bool AudioManager::initialize()
 {
 	FMOD_RESULT result;
 
@@ -64,6 +68,10 @@ void AudioManager::initialize()
 		OGRE_EXCEPT(Exception::ERR_INTERNAL_ERROR, "FMOD error! (" + StringConverter::toString(result) + "): " + FMOD_ErrorString(result), "AudioManager::Initialize");
 
 	Ogre::LogManager::getSingleton().logMessage("AudioManager Initialized");
+
+	mInitialized = true;
+
+	return mInitialized;
 }
 
 /** Finalize the audio manager */
@@ -79,6 +87,8 @@ void AudioManager::finalize()
 
 	if (mSystem)
 		mSystem->release();
+
+	mInitialized = false;
 }
 
 void AudioManager::loadResources()

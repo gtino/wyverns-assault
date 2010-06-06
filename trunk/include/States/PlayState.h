@@ -50,7 +50,7 @@ namespace WyvernsAssault
 	class PlayState : public BaseState
 	{
 	public:
-		PlayState(GraphicsManager& graphicsManager, InputManager& inputManager, AudioManager& audioManager);
+		PlayState(GraphicsManagerPtr graphicsManager, InputManagerPtr inputManager, AudioManagerPtr audioManager);
 		~PlayState();
 
 	public:
@@ -86,21 +86,18 @@ namespace WyvernsAssault
 		bool mouseMoved(const OIS::MouseEvent& e);
 
 	private:
-		CameraManager* mCameraManager;
-		LightsManager* mLightsManager;
+		CameraManagerPtr mCameraManager;
+		LightsManagerPtr mLightsManager;
 		PlayerManagerPtr mPlayerManager;
 		EnemyManagerPtr mEnemyManager;
-		LogicManager* mLogicManager;
-		LuaManager*	mLuaManager;	
+		LogicManagerPtr mLogicManager;
+		LuaManagerPtr	mLuaManager;	
 		PhysicsManagerPtr mPhysicsManager;
 		ItemManagerPtr mItemManager;
 		ParticleManagerPtr mParticleManager;
-		EventsManager* mEventsManager;
+		EventsManagerPtr mEventsManager;
 
-		//
-		// Shortcut to player1 (TEST)
-		//
-		PlayerPtr mPlayer1;
+		SceneNode* mRootSceneNode;
 
 		//
 		// SdkTrays manager

@@ -1,7 +1,7 @@
 #include "..\include\States\MainMenuState.h"
 using namespace WyvernsAssault;
 
-MainMenuState::MainMenuState(GraphicsManager& graphicsManager, InputManager& inputManager, AudioManager& audioManager)
+MainMenuState::MainMenuState(GraphicsManagerPtr graphicsManager, InputManagerPtr inputManager, AudioManagerPtr audioManager)
 : BaseState(graphicsManager,inputManager,audioManager)
 {
 	//
@@ -94,13 +94,6 @@ void MainMenuState::unload()
 void MainMenuState::finalize()
 {
 	BaseState::finalize();
-	
-	// Destroy gui
-	/*if(mGuiScreen)
-	{
-		delete mGuiScreen;
-		mGuiScreen = 0;
-	}*/
 }
 
 /** Get state Id */
@@ -115,17 +108,18 @@ GameStateId MainMenuState::getStateId()
 /** Called when the state has to be paused */
 void MainMenuState::pause()
 {
-	//
-	// TODO : Pause state
-	//
+	mGuiScreen->hide();
 }
 
 /** Called when the state has to be resumed (from pause) */
 void MainMenuState::resume()
 {
 	//
-	// TODO : Resume state
+	// Set next state to this state	
 	//
+	this->mNextGameStateId = this->getStateId();
+
+	mGuiScreen->show();
 }
 
 /** Buffered input - keyboard key clicked */

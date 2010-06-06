@@ -3,6 +3,18 @@
 using namespace Ogre;
 using namespace WyvernsAssault;
 
+// BEGIN SINGLETON
+template<> GuiManager* Ogre::Singleton<GuiManager>::ms_Singleton = 0;
+GuiManager* GuiManager::getSingletonPtr(void)
+{
+	return ms_Singleton;
+}
+GuiManager& GuiManager::getSingleton(void)
+{  
+	assert( ms_Singleton );  return ( *ms_Singleton );  
+}
+// END SINGLETON
+
 GuiManager::GuiManager(Ogre::Root* root, Ogre::SceneManager* sceneManager, Ogre::RenderWindow* window)
 {
 	mRoot = root;

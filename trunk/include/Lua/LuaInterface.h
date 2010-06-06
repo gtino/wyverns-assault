@@ -23,6 +23,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #ifndef __LUA_INTERFACE_H__
 #define __LUA_INTERFACE_H__
 
+#include <Ogre.h>
+
 #include "LuaDefines.h"
 
 namespace WyvernsAssault
@@ -50,6 +52,8 @@ namespace WyvernsAssault
 
 		bool mLuaEnabled;
 	};
+
+	typedef boost::shared_ptr<LuaInterface> LuaInterfacePtr;
 }
 
 #endif // __LUA_INTERFACE_H__

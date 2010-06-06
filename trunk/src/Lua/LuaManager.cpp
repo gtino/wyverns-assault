@@ -28,7 +28,7 @@ bool LuaManager::initialize()
 	// Load all custom libs from registered interfaces
 	for(int i=0; i <mLuaInterfaceList.size(); i++)
 	{
-		LuaInterface* luaInterface = mLuaInterfaceList[i];
+		LuaInterfacePtr luaInterface = mLuaInterfaceList[i];
 		//
 		// VERY IMPORTANT! The Lua state is shared between all the interfaces!
 		// This si to avoid weird problems with shared static objects if
@@ -43,7 +43,7 @@ bool LuaManager::initialize()
 	// Load all Lua scripts that the interfaces will use
 	for(int i=0; i <mLuaInterfaceList.size(); i++)
 	{
-		LuaInterface* luaInterface = mLuaInterfaceList[i];
+		LuaInterfacePtr luaInterface = mLuaInterfaceList[i];
 		// load scripts
 		luaInterface->luaLoadScripts();
 		// and enable them
@@ -53,7 +53,7 @@ bool LuaManager::initialize()
 	return true;
 }
 
-bool LuaManager::registerInterface(LuaInterface* luaInterface)
+bool LuaManager::registerInterface(LuaInterfacePtr luaInterface)
 {
 	mLuaInterfaceList.push_back(luaInterface);
 
@@ -66,7 +66,7 @@ void LuaManager::finalize()
 	// Finalize all registered interfaces
 	for(int i=0; i <mLuaInterfaceList.size(); i++)
 	{
-		LuaInterface* luaInterface = mLuaInterfaceList[i];
+		LuaInterfacePtr luaInterface = mLuaInterfaceList[i];
 		luaInterface->luaFinalize();
 	}
 

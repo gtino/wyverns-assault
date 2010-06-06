@@ -396,6 +396,10 @@
 				Name="Entity"
 				>
 				<File
+					RelativePath="..\src\Entity\EntityInterface.cpp"
+					>
+				</File>
+				<File
 					RelativePath="..\src\Entity\EntityManager.cpp"
 					>
 				</File>
@@ -477,6 +481,10 @@
 				>
 				<File
 					RelativePath="..\src\Particle\ParticleManager.cpp"
+					>
+				</File>
+				<File
+					RelativePath="..\src\Particle\ParticleSystem.cpp"
 					>
 				</File>
 			</Filter>
@@ -799,6 +807,10 @@
 				>
 				<File
 					RelativePath="..\include\Particle\ParticleManager.h"
+					>
+				</File>
+				<File
+					RelativePath="..\include\Particle\ParticleSystem.h"
 					>
 				</File>
 			</Filter>

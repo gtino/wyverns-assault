@@ -16,12 +16,26 @@ CameraManager& CameraManager::getSingleton(void)
 // END SINGLETON
 
 CameraManager::CameraManager(SceneManager* sceneManager, RenderWindow* window, Viewport* viewport)
+: mCamera(0)
+, mCameraNode(0)
+, mCameraLookAtNode(0)
+, mCameraMan(0)
+, mAxes(0)
+, mAxesNode(0)
+, mCameraTransition(0)
+, mLookAtTransition(0)
+, mAxesTransition(0)
+, mCameraEffect(0)
+, mCameraEffectLook(0)
+, mCameraAnimation(0)
+, mLookAtAnimation(0)
+, mAxesAnimation(0)
+, mCameraEffectAnimation(0)
+, mCameraEffectLookAnimation(0)
 {
 	this->mSceneManager = sceneManager;
 	this->mWindow = window;
 	this->mViewport = viewport;
-
-	mCamera = NULL;
 }
 
 CameraManager::~CameraManager()
@@ -54,7 +68,7 @@ void CameraManager::initialize()
 	mCameraNode->setPosition(2000, 1500, -2000);
 
 	/** Debug axes node */
-	mSceneManager->createEntity("Axes", "axes.mesh");
+	mAxes = mSceneManager->createEntity("Axes", "axes.mesh");
 	mAxesNode = mSceneManager->getRootSceneNode()->createChildSceneNode("AxesNode");
 	mAxesNode->setScale(0.1, 0.1, 0.1);
 	mAxesNode->setVisible(false);
@@ -63,11 +77,11 @@ void CameraManager::initialize()
 	mGameArea = 0;
 	mCameraZoom = 0;
 
-	mSceneManager->createAnimation("CameraTrack", 1);
-	mSceneManager->createAnimation("LookAtTrack", 1);
-	mSceneManager->createAnimation("AxesTrack", 1);
-	mSceneManager->createAnimation("CameraEffect", 1);
-	mSceneManager->createAnimation("CameraEffectLook", 1);
+	mCameraAnimation = mSceneManager->createAnimation("CameraTrack", 1);
+	mLookAtAnimation = mSceneManager->createAnimation("LookAtTrack", 1);
+	mAxesAnimation = mSceneManager->createAnimation("AxesTrack", 1);
+	mCameraEffectAnimation = mSceneManager->createAnimation("CameraEffect", 1);
+	mCameraEffectLookAnimation = mSceneManager->createAnimation("CameraEffectLook", 1);
 	mCameraTransition = mSceneManager->createAnimationState("CameraTrack");
 	mCameraTransition->setEnabled(false);
 	mLookAtTransition = mSceneManager->createAnimationState("LookAtTrack");
@@ -92,10 +106,95 @@ void CameraManager::finalize()
 		mSceneManager->destroyCamera( "GameCamera" );
 		mCamera = NULL;
 	}
+
 	if(mCameraMan)
 	{
 		delete mCameraMan;
 		mCameraMan = 0;
+	}
+
+	if(mCameraNode)
+	{
+		mSceneManager->destroySceneNode(mCameraNode);
+		mCameraNode = NULL;
+	}
+
+	if(mCameraLookAtNode)
+	{
+		mSceneManager->destroySceneNode(mCameraLookAtNode);
+		mCameraLookAtNode = NULL;
+	}
+
+	if(mAxes)
+	{
+		mSceneManager->destroyEntity(mAxes);
+		mAxes = NULL;
+	}
+
+	if(mAxesNode)
+	{
+		mSceneManager->destroySceneNode(mAxesNode);
+		mAxesNode = NULL;
+	}
+
+	if(mCameraAnimation)
+	{
+		mSceneManager->destroyAnimation("CameraTrack");
+		mCameraAnimation = NULL;
+	}
+
+	if(mCameraTransition)
+	{
+		mSceneManager->destroyAnimationState("CameraTrack");
+		mCameraTransition = NULL;
+	}
+
+	if(mLookAtAnimation)
+	{
+	mSceneManager->destroyAnimation("LookAtTrack");
+	mLookAtAnimation = NULL;
+	}
+
+	if(mLookAtTransition)
+	{
+		mSceneManager->destroyAnimationState("LookAtTrack");
+		mLookAtTransition = NULL;
+	}
+
+	if(mAxesAnimation)
+	{
+		mSceneManager->destroyAnimation("AxesTrack");
+		mAxesAnimation = NULL;
+	}
+
+	if(mAxesTransition)
+	{
+		mSceneManager->destroyAnimationState("AxesTrack");
+		mAxesTransition = NULL;
+	}
+
+	if(mCameraEffectAnimation)
+	{
+		mSceneManager->destroyAnimation("CameraEffect");
+		mCameraEffectAnimation = NULL;
+	}
+
+	if( mCameraEffect)
+	{
+		mSceneManager->destroyAnimationState("CameraEffect");
+		mCameraEffect = NULL;
+	}
+
+	if(mCameraEffectLookAnimation)
+	{
+		mSceneManager->destroyAnimation("CameraEffectLook");
+		mCameraEffectLookAnimation = NULL;
+	}
+
+	if(mCameraEffectLook)
+	{
+		mSceneManager->destroyAnimationState("CameraEffectLook");
+		mCameraEffectLook = NULL;
 	}
 }
 
@@ -590,6 +689,7 @@ void CameraManager::freeCamera()
 	mCameraMode = "Free";
 	mCameraMan->setStyle(OgreBites::CS_FREELOOK);
 	mCamera->setAutoTracking(false);
+	mViewport->setCamera(mCamera);
 }
 void CameraManager::fixedCamera(int camera)
 {
@@ -599,6 +699,7 @@ void CameraManager::fixedCamera(int camera)
 	mCameraMan->setStyle(OgreBites::CS_MANUAL);
 	mCamera->setAutoTracking(true, mCameraLookAtNode, Vector3::UNIT_X);
 	mCamera->setPosition(Vector3::ZERO);
+	mViewport->setCamera(mCamera);
 
 	// Translate animation to camera scene node and look at node to current position
 	createTransition(getCameraPosition(), mFixedCameras[camera].mPosition, getCameraLookAt(), mFixedCameras[camera].mLookAt);

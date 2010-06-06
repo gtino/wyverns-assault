@@ -3,10 +3,23 @@
 using namespace Ogre;
 using namespace WyvernsAssault;
 
+// BEGIN SINGLETON
+template<> GraphicsManager* Ogre::Singleton<GraphicsManager>::ms_Singleton = 0;
+GraphicsManager* GraphicsManager::getSingletonPtr(void)
+{
+    return ms_Singleton;
+}
+GraphicsManager& GraphicsManager::getSingleton(void)
+{  
+    assert( ms_Singleton );  return ( *ms_Singleton );  
+}
+// END SINGLETON
+
 GraphicsManager::GraphicsManager()
 : mRenderWindow(0)
 , mRoot(0)
 , mSceneManager(0)
+, mInitialized(false)
 {
 	//
 	// TODO Constructor
@@ -15,9 +28,10 @@ GraphicsManager::GraphicsManager()
 
 GraphicsManager::~GraphicsManager()
 {
-	//
-	// TODO Destructor
-	//
+	if(mInitialized)
+	{
+		finalize();
+	}
 }
 
 bool GraphicsManager::initialize()
@@ -25,7 +39,7 @@ bool GraphicsManager::initialize()
 	// create an instance of LogManager prior to using LogManager::getSingleton()
 	Ogre::LogManager* logMgr = new Ogre::LogManager;
 	Ogre::Log *log = Ogre::LogManager::getSingleton().createLog(WYVERNS_ASSAULT_LOG_FILE, true, true, false);
-	log->setLogDetail(Ogre::LL_NORMAL);
+	log->setLogDetail(Ogre::LL_BOREME);
 
 	// Create the root
 	mRoot = new Ogre::Root( WYVERNS_ASSAULT_PLUGINS_FILE, WYVERNS_ASSAULT_CONFIG_FILE);
@@ -49,7 +63,9 @@ bool GraphicsManager::initialize()
 	// Load resources
 	loadResources();
 
-	return true;
+	mInitialized = true;
+
+	return mInitialized;
 }
 
 void GraphicsManager::setupResources()
@@ -116,9 +132,20 @@ void GraphicsManager::finalize()
 	if(mSceneManager)
 	{
 		mSceneManager->clearScene();
+		mSceneManager->destroyAllCameras();
 		delete mSceneManager;
 		mSceneManager = NULL;
 	}
+
+	if(mRoot)
+	{
+		RenderWindow* window = mRoot->getAutoCreatedWindow();
+		
+		if(window)
+			window->removeAllViewports();
+	}
+
+	mInitialized = false;
 }
 
 void GraphicsManager::loadResources()
@@ -193,12 +220,34 @@ SceneManager* GraphicsManager::getSceneManager()
 /** Render one frame */
 bool GraphicsManager::renderOneFrame()
 {
-	return mRoot->renderOneFrame();
+	bool result = false;
+
+	try
+	{
+	result =  mRoot->renderOneFrame();
+	}
+	catch (Ogre::Exception& e)
+	{
+		Ogre::LogManager::getSingleton().logMessage(e.getFullDescription());
+	}
+
+	return result;
 }
 
 Ogre::Viewport* GraphicsManager::createViewport(Ogre::Camera* camera)
 {
-	mViewport = mRenderWindow->addViewport(camera);
+	assert(camera);
+
+	unsigned short nViewports = mRenderWindow->getNumViewports();
+
+	if(nViewports != 0)
+	{
+		mRenderWindow->getViewport(0)->setCamera(camera);
+	}
+	else
+	{
+		mViewport = mRenderWindow->addViewport(camera);
+	}
 
 	return mViewport;
 }

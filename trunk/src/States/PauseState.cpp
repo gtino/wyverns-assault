@@ -2,7 +2,7 @@
 
 using namespace WyvernsAssault;
 
-PauseState::PauseState(GraphicsManager& graphicsManager, InputManager& inputManager, AudioManager& audioManager)
+PauseState::PauseState(GraphicsManagerPtr graphicsManager, InputManagerPtr inputManager, AudioManagerPtr audioManager)
 : BaseState(graphicsManager,inputManager,audioManager)
 {
 	//
@@ -15,7 +15,7 @@ PauseState::~PauseState()
 	//
 	// TODO Destructor
 	//
-	exit();
+	finalize();
 }
 
 /** Initialize current state */
@@ -99,6 +99,8 @@ void PauseState::finalize()
 		delete mGuiScreen;
 		mGuiScreen = 0;
 	}
+
+	BaseState::finalize();
 }
 
 /** Get state Id */
@@ -114,16 +116,20 @@ GameStateId PauseState::getStateId()
 void PauseState::pause()
 {
 	//
-	// TODO : Pause state
+	// Hide gui without removing it
 	//
+	mGuiScreen->hide();
 }
 
 /** Called when the state has to be resumed (from pause) */
 void PauseState::resume()
 {
 	//
-	// TODO : Resume state
+	// Set next state to this state (Play)	
 	//
+	this->mNextGameStateId = this->getStateId();
+
+	mGuiScreen->show();
 }
 
 /** Buffered input - keyboard key clicked */
@@ -147,7 +153,7 @@ bool PauseState::keyReleased(const OIS::KeyEvent& e)
 			this->mNextGameStateId = GameStateId::Options;
 			break;
 		case GuiWidgetPauseId::QuitToMenu:
-			this->mNextGameStateId = GameStateId::SplashScreen;
+			this->mNextGameStateId = GameStateId::MainMenu;
 			break;
 		}		
 		break;

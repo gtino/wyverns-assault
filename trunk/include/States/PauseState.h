@@ -33,7 +33,7 @@ namespace WyvernsAssault
 	class PauseState : public BaseState
 	{
 	public:
-		PauseState(GraphicsManager& graphicsManager, InputManager& inputManager, AudioManager& audioManager);
+		PauseState(GraphicsManagerPtr graphicsManager, InputManagerPtr inputManager, AudioManagerPtr audioManager);
 		~PauseState();
 
 	public:

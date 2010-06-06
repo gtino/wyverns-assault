@@ -25,6 +25,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
 #include <Ogre.h>
 
+#include <boost/enable_shared_from_this.hpp>
+
 #include "OISEvents.h"
 #include "OISInputManager.h"
 #include "OISMouse.h"
@@ -92,14 +94,18 @@ namespace WyvernsAssault
 		Class used to manage the game states
 	*/
 	class StatesManager : public InputListener
+						, public Ogre::Singleton<StatesManager>
+						, public boost::enable_shared_from_this<StatesManager>
 	{
 	public:
 		StatesManager();
 		~StatesManager();
+		static StatesManager& getSingleton(void);
+		static StatesManager* getSingletonPtr(void);
 
 	public:
 		/** Initialize the manager */
-		void initialize(GraphicsManager& graphicsManager, InputManager& gameInputManager, AudioManager& audioManager);
+		void initialize(GraphicsManagerPtr graphicsManager, InputManagerPtr gameInputManager, AudioManagerPtr audioManager);
 		/** Destroy and release all resources used by the manager */
 		void finalize();
 		/** Run the current state (main loop)*/
@@ -159,10 +165,16 @@ namespace WyvernsAssault
 		GameStateId mCurrentStateId;
 
 		/** Graphics Manager */
-		GraphicsManager* mGraphicsManager;
-		InputManager* mInputManager;
-		AudioManager* mAudioManager;
+		GraphicsManagerPtr mGraphicsManager;
+		/** Input Manager */
+		InputManagerPtr mInputManager;
+		/** Audio Manager */
+		AudioManagerPtr mAudioManager;
+
+		bool mInitialized;
 	};
+
+	typedef boost::shared_ptr<StatesManager> StatesManagerPtr;
 }
 
 #endif // __GAME_STATES_MANAGER_H_

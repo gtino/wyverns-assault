@@ -15,9 +15,9 @@ LightsManager& LightsManager::getSingleton(void)
 // END SINGLETON
 
 LightsManager::LightsManager(SceneManager* sceneManager)
+: mLight(0)
 {
 	this->mSceneManager = sceneManager;
-	mLight = NULL;
 }
 
 LightsManager::~LightsManager()
@@ -28,18 +28,17 @@ LightsManager::~LightsManager()
 /** Initialize the lights manager */
 void LightsManager::initialize()
 {
-	// Setting default ambient light value
-	setAmbientLight(ColourValue(0.5, 0.5, 0.5));
-	mLight = new Light();
 }
-
 
 
 /** Finalize the lights manager */
 void LightsManager::finalize()
 {
-	mLight = NULL;
-	mSceneManager->destroyAllLights();
+	if(mLight != NULL)
+	{
+		mSceneManager->destroyLight(mLight);
+		mLight = NULL;
+	}
 }
 
 void LightsManager::update(const float elapsedSeconds)
@@ -50,7 +49,12 @@ void LightsManager::update(const float elapsedSeconds)
 /** Create lights functions **/		
 void LightsManager::createLight(String name, Light::LightTypes type, ColourValue diffuse, ColourValue specular, Vector3 position, Vector3 direction)
 {
-	mLight = mSceneManager->createLight(name);
+	// HACK!
+	/*if(mSceneManager->hasLight(name))
+		mLight = mSceneManager->getLight(name);
+	else*/
+		mLight = mSceneManager->createLight(name);
+
 	mLight->setType(type);
 	mLight->setDiffuseColour(diffuse);
 	mLight->setSpecularColour(specular);
@@ -61,7 +65,10 @@ void LightsManager::createLight(String name, Light::LightTypes type, ColourValue
 /** Get lights functions **/		
 Ogre::Light* LightsManager::getLight(String name)
 {
-	return mSceneManager->getLight(name);
+	if(mSceneManager->hasLight(name))
+		return mSceneManager->getLight(name);
+	else
+		return NULL;
 }
 
 void LightsManager::setAmbientLight(ColourValue color)
