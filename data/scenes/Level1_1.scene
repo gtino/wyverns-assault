@@ -3,11 +3,11 @@
   <resourceLocations />
   <environment />
   <nodes>
-    <node name="light" id="840205056">
+    <!--node name="light" id="840205056">
       <rotation qw="0.324461" qx="0.906123" qy="-0.0196778" qz="-0.270701" />
       <position x="-1705.53" y="905.216" z="-3087.19" />
       <scale x="1" y="1" z="1" />
-    </node>
+    </node-->
     <node name="Tree2_Billboard1" id="796929856">
       <rotation qw="0.6534" qx="0.6534" qy="0.270313" qz="-0.270313" />
       <position x="886.43" y="11.5394" z="471.361" />
