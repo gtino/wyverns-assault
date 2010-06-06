@@ -62,18 +62,19 @@ namespace WyvernsAssault
 		Credits			= 7,
 		Options			= 8,
 		Pause			= 9,
-		Exit			= 10 // Special state, it is just a flag to exit the application
-		
+		Previous		= 10,// Special state, it is just a flag to return back to whatever the previous state was.
+		Exit			= 11 // Special state, it is just a flag to exit the application
 	};
 
 	/**
 		Base game state class
 	*/
-	class BaseState : public InputListener, public FrameListener
+	class BaseState : public InputListener
+					, public FrameListener
 	{
 	public:
 		BaseState();
-		BaseState(GraphicsManager& graphicsManager, InputManager& inputManager, AudioManager& audioManager);
+		BaseState(GraphicsManagerPtr graphicsManager, InputManagerPtr inputManager, AudioManagerPtr audioManager);
 		virtual ~BaseState() = 0;
 
 	public:
@@ -118,11 +119,11 @@ namespace WyvernsAssault
 
 	protected:
 		/** Graphics manager */
-		GraphicsManager* mGraphicsManager;
+		GraphicsManagerPtr mGraphicsManager;
 		/** Input manager */
-		InputManager* mInputManager;
+		InputManagerPtr mInputManager;
 		/** Audio manager */
-		AudioManager* mAudioManager;
+		AudioManagerPtr mAudioManager;
 
 		/** Next Game State Id */
 		GameStateId mNextGameStateId;

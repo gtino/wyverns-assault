@@ -3,14 +3,12 @@
 
 using namespace WyvernsAssault;
 
-PlayState::PlayState(GraphicsManager& graphicsManager, InputManager& inputManager, AudioManager& audioManager)
+PlayState::PlayState(GraphicsManagerPtr graphicsManager, InputManagerPtr inputManager, AudioManagerPtr audioManager)
 : BaseState(graphicsManager,inputManager,audioManager)
-, mLogicManager(NULL)
-, mLightsManager(NULL)
-, mCameraManager(NULL)
 , mTrayMgr(NULL)
 , mDetailsPanel(NULL)
 , mCompositorsEnabled(false)
+, mRootSceneNode(0)
 {
 	//
 	// TODO Constructor logic HERE
@@ -50,17 +48,17 @@ void PlayState::initialize()
 	mPlayerManager->initialize();
 
 	// Create a single player (TEST!)
-	mPlayer1 = mPlayerManager->createPlayer("Player1","redWyvern.mesh");
-	mPlayer1->setPosition(Vector3(80, 20, 870));
+	PlayerPtr player1 = mPlayerManager->createPlayer("Player1","redWyvern.mesh");
+	player1->setPosition(Vector3(80, 20, 870));
 	// Add fire breath (TEST!)
-	mPlayer1->setFireBreath(mParticleManager->create("firebreath","WyvernsAssault/DragonBreath"));
+	player1->setFireBreath(mParticleManager->create("firebreath","WyvernsAssault/DragonBreath"));
 
 	// Camera manager constructor
-	mCameraManager = new CameraManager(mSceneManager, mWindow, mViewport);
+	mCameraManager = CameraManagerPtr(new CameraManager(mSceneManager, mWindow, mViewport));
 	mCameraManager->initialize();
 
 	// Lights manager constructor
-	mLightsManager = new LightsManager(mSceneManager);
+	mLightsManager = LightsManagerPtr(new LightsManager(mSceneManager));
 	mLightsManager->initialize();
 
 	//
@@ -68,7 +66,7 @@ void PlayState::initialize()
 	// 
 	mPhysicsManager = PhysicsManagerPtr(new PhysicsManager(mSceneManager));
 	mPhysicsManager->initialize();
-	mPhysicsManager->addPlayer(mPlayer1);
+	mPhysicsManager->addPlayer(player1);
 
 	//Enemys manager constructor
 	mEnemyManager = EnemyManagerPtr(new EnemyManager(mSceneManager));
@@ -109,7 +107,7 @@ void PlayState::initialize()
 	//
 	// Logic Manager
 	//
-	mLogicManager = new LogicManager();
+	mLogicManager = LogicManagerPtr(new LogicManager());
 	mLogicManager->initialize();
 
 	// -----------
@@ -119,17 +117,17 @@ void PlayState::initialize()
 	// the oreder of the operations!
 	//
 	// FIRST : Instatniate the Lua Manager
-	mLuaManager = new LuaManager();
+	mLuaManager = LuaManagerPtr(new LuaManager());
 
 	//
 	// SECOND : Register all the LuaInterfaces you want. 
 	//
 	mLuaManager->registerInterface(mLightsManager);
 	mLuaManager->registerInterface(mLogicManager);
-	mLuaManager->registerInterface(mEnemyManager.get());
-	mLuaManager->registerInterface(mPhysicsManager.get());
-	mLuaManager->registerInterface(mItemManager.get());
-	mLuaManager->registerInterface(mPlayerManager.get());
+	mLuaManager->registerInterface(mEnemyManager);
+	mLuaManager->registerInterface(mPhysicsManager);
+	mLuaManager->registerInterface(mItemManager);
+	mLuaManager->registerInterface(mPlayerManager);
 
 	//
 	// THIRD :	This call to 'initialize' will initialize Lua,
@@ -139,14 +137,15 @@ void PlayState::initialize()
 	mLuaManager->initialize();
 
 	//Load scene XML file
+	mRootSceneNode = mSceneManager->getRootSceneNode()->createChildSceneNode("RootSceneNode", Vector3::ZERO);
 	std::auto_ptr<DotSceneLoader> sceneLoader(new DotSceneLoader());
-	sceneLoader->parseDotScene("Level1_1.scene","General", mSceneManager, mCameraManager, mLightsManager, mEnemyManager.get(), mPhysicsManager.get(), mItemManager.get(), mParticleManager.get());
-	sceneLoader->parseDotScene("Stage1_1.XML","General", mSceneManager, mCameraManager, mLightsManager, mEnemyManager.get(), mPhysicsManager.get(), mItemManager.get(), mParticleManager.get());
+	sceneLoader->parseDotScene("Level1_1.scene","General", mSceneManager, mCameraManager, mLightsManager, mEnemyManager, mPhysicsManager, mItemManager, mParticleManager, mRootSceneNode);
+	sceneLoader->parseDotScene("Stage1_1.XML","General", mSceneManager, mCameraManager, mLightsManager, mEnemyManager, mPhysicsManager, mItemManager, mParticleManager, mRootSceneNode);
 
 	//
 	// Events Manager 
 	//
-	mEventsManager = new EventsManager();
+	mEventsManager = EventsManagerPtr(new EventsManager());
 	
 	//
 	// Register all events listeners/callers
@@ -154,14 +153,14 @@ void PlayState::initialize()
 	mEventsManager->registerInterface(mEnemyManager.get());
 	mEventsManager->registerInterface(mPhysicsManager.get());
 	mEventsManager->registerInterface(mParticleManager.get());
-	mEventsManager->registerInterface(mAudioManager);
+	mEventsManager->registerInterface(mAudioManager.get());
 	mEventsManager->registerInterface(mItemManager.get());
 	mEventsManager->registerInterface(mPlayerManager.get());
 
 	//
 	// Set game camera
 	//
-	mCameraManager->gameCamera(mPlayer1->getSceneNode()->getPosition());
+	mCameraManager->gameCamera(player1->getSceneNode()->getPosition());
 
 	mGraphicsManager->addCompositor(COMPOSITOR_1);
 	mGraphicsManager->setCompositorEnabled(COMPOSITOR_1, mCompositorsEnabled);
@@ -215,9 +214,10 @@ bool PlayState::frameRenderingQueued(const Ogre::FrameEvent& evt)
 	{
 		if (mDetailsPanel->isVisible())   // if details panel is visible, then update its contents
 		{
-			mDetailsPanel->setParamValue(0, StringConverter::toString(mPlayer1->getPosition().x, 5));
-			mDetailsPanel->setParamValue(1, StringConverter::toString(mPlayer1->getPosition().y, 5));
-			mDetailsPanel->setParamValue(2, StringConverter::toString(mPlayer1->getPosition().z, 5));
+			PlayerPtr player1 = mPlayerManager->getPlayer(PLAYER1);
+			mDetailsPanel->setParamValue(0, StringConverter::toString(player1->getPosition().x, 5));
+			mDetailsPanel->setParamValue(1, StringConverter::toString(player1->getPosition().y, 5));
+			mDetailsPanel->setParamValue(2, StringConverter::toString(player1->getPosition().z, 5));
 			mDetailsPanel->setParamValue(4, mCameraManager->getCameraMode().c_str());
 			mDetailsPanel->setParamValue(5, StringConverter::toString(mCameraManager->getCameraPosition().x, 5));
 			mDetailsPanel->setParamValue(6, StringConverter::toString(mCameraManager->getCameraPosition().y, 5));
@@ -239,78 +239,80 @@ bool PlayState::frameRenderingQueued(const Ogre::FrameEvent& evt)
 /** Update internal stuff */
 void PlayState::update(const float elapsedSeconds)
 {
-	if ( !mPlayer1->isDeath() )
+	PlayerPtr player1 = mPlayerManager->getPlayer(PLAYER1);
+
+	if ( !player1->isDeath() )
 	{
 		// Movement
 		if(mCameraManager->getCameraMode() == "Game")
 		{
 			// Move if not using special attack or attacking
-			if(!mPlayer1->isSpecial() && !mPlayer1->isAttacking())
+			if(!player1->isSpecial() && !player1->isAttacking())
 			{
 				// 8 directions move
 				if(this->mInputManager->getKeyboard()->isKeyDown(OIS::KeyCode::KC_RIGHT) && this->mInputManager->getKeyboard()->isKeyDown(OIS::KeyCode::KC_UP))
 				{
-					mPlayer1->move(1,0,-1);
-					mPhysicsManager->move(mPlayer1, mCameraManager->getDirection(Vector3(1,0,-1)));
+					player1->move(1,0,-1);
+					mPhysicsManager->move(player1, mCameraManager->getDirection(Vector3(1,0,-1)));
 				}
 				else if(this->mInputManager->getKeyboard()->isKeyDown(OIS::KeyCode::KC_RIGHT) && this->mInputManager->getKeyboard()->isKeyDown(OIS::KeyCode::KC_DOWN))
 				{
-					mPlayer1->move(1,0,1);
-					mPhysicsManager->move(mPlayer1, mCameraManager->getDirection(Vector3(1,0,1)));
+					player1->move(1,0,1);
+					mPhysicsManager->move(player1, mCameraManager->getDirection(Vector3(1,0,1)));
 				}
 				else if(this->mInputManager->getKeyboard()->isKeyDown(OIS::KeyCode::KC_LEFT) && this->mInputManager->getKeyboard()->isKeyDown(OIS::KeyCode::KC_UP))
 				{
-					mPlayer1->move(-1,0,-1);
-					mPhysicsManager->move(mPlayer1, mCameraManager->getDirection(Vector3(-1,0,-1)));
+					player1->move(-1,0,-1);
+					mPhysicsManager->move(player1, mCameraManager->getDirection(Vector3(-1,0,-1)));
 				}
 				else if(this->mInputManager->getKeyboard()->isKeyDown(OIS::KeyCode::KC_LEFT) && this->mInputManager->getKeyboard()->isKeyDown(OIS::KeyCode::KC_DOWN))
 				{
-					mPlayer1->move(-1,0,1);
-					mPhysicsManager->move(mPlayer1, mCameraManager->getDirection(Vector3(-1,0,1)));
+					player1->move(-1,0,1);
+					mPhysicsManager->move(player1, mCameraManager->getDirection(Vector3(-1,0,1)));
 				}
 				else if(this->mInputManager->getKeyboard()->isKeyDown(OIS::KeyCode::KC_RIGHT))
 				{
-					mPlayer1->move(1,0,0);
-					mPhysicsManager->move(mPlayer1, mCameraManager->getDirection(Vector3(1,0,0)));
+					player1->move(1,0,0);
+					mPhysicsManager->move(player1, mCameraManager->getDirection(Vector3(1,0,0)));
 				}
 				else if(this->mInputManager->getKeyboard()->isKeyDown(OIS::KeyCode::KC_LEFT))
 				{
-					mPlayer1->move(-1,0,0);
-					mPhysicsManager->move(mPlayer1, mCameraManager->getDirection(Vector3(-1,0,0)));
+					player1->move(-1,0,0);
+					mPhysicsManager->move(player1, mCameraManager->getDirection(Vector3(-1,0,0)));
 				}
 				else if(this->mInputManager->getKeyboard()->isKeyDown(OIS::KeyCode::KC_UP))
 				{
-					mPlayer1->move(0,0,-1);
-					mPhysicsManager->move(mPlayer1, mCameraManager->getDirection(Vector3(0,0,-1)));
+					player1->move(0,0,-1);
+					mPhysicsManager->move(player1, mCameraManager->getDirection(Vector3(0,0,-1)));
 				}
 				else if(this->mInputManager->getKeyboard()->isKeyDown(OIS::KeyCode::KC_DOWN))
 				{
-					mPlayer1->move(0,0,1);
-					mPhysicsManager->move(mPlayer1, mCameraManager->getDirection(Vector3(0,0,1)));
+					player1->move(0,0,1);
+					mPhysicsManager->move(player1, mCameraManager->getDirection(Vector3(0,0,1)));
 				}		
 				else
 				{
 					// No movement, iddle animation
-					mPlayer1->move(0,0,0);
-					mPhysicsManager->move(mPlayer1, Vector3::ZERO);
+					player1->move(0,0,0);
+					mPhysicsManager->move(player1, Vector3::ZERO);
 				}
 			}
 			else
 			{
 				// No movement
-				mPhysicsManager->move(mPlayer1, Vector3::ZERO);
+				mPhysicsManager->move(player1, Vector3::ZERO);
 			}
 		}
 		else
 		{
 			// No movement, iddle animation
-			mPlayer1->move(0,0,0);
-			mPhysicsManager->move(mPlayer1, Vector3(0,0,0));
+			player1->move(0,0,0);
+			mPhysicsManager->move(player1, Vector3(0,0,0));
 		}
 	}
 	else
 	{
-		if( !mPlayer1->isDying() )
+		if( !player1->isDying() )
 			this->mNextGameStateId = GameStateId::GameOver;
 	}
 
@@ -364,12 +366,12 @@ void PlayState::update(const float elapsedSeconds)
 	//
 	// Update animation state
 	//
-	mPlayer1->updateAnimation(elapsedSeconds);
+	player1->updateAnimation(elapsedSeconds);
 
 	//
 	// Update camera
 	//
-	mCameraManager->updateCamera(mPlayer1->getSceneNode()->getPosition(), elapsedSeconds);
+	mCameraManager->updateCamera(player1->getSceneNode()->getPosition(), elapsedSeconds);
 
 	//
 	// Update sounds
@@ -395,6 +397,11 @@ void PlayState::render(const float elapsedSeconds)
 /** Unload resources */
 void PlayState::unload() 
 {
+	//
+	// Audio manager
+	//
+	mAudioManager->playSoundTrack("hard_track.mp3");
+
 	if(mGuiScreen)
 	{
 		//
@@ -425,28 +432,27 @@ void PlayState::unload()
 
 /** Destroy the state */
 void PlayState::finalize()
-{
-	// FIRST!
-	if(mLuaManager)
-	{
-		delete mLuaManager;
-		mLuaManager = NULL;
-	}
+{	
+	long lm = mLuaManager.use_count();
+	long pm = mPlayerManager.use_count();
+	long cm = 	mCameraManager.use_count();
+	long llm = 	mLightsManager.use_count();
+	long em = 	mEnemyManager.use_count();
+	long ppm = 	mPhysicsManager.use_count();
+	long im = 	mItemManager.use_count();
+	long lllm = 	mLogicManager.use_count();
+	long eem = 	mEventsManager.use_count();
+	long pppm = 	mParticleManager.use_count();
+
+
+	////// FIRST!
+	mLightsManager.reset();
+
+	mLuaManager.reset();
 
 	mPlayerManager.reset();
 
-	
-	if(mCameraManager)
-	{
-		delete mCameraManager;
-		mCameraManager = NULL;
-	}
-
-	if(mLightsManager)
-	{
-		delete mLightsManager;
-		mLightsManager = NULL;
-	}
+	mCameraManager.reset();
 
 	mEnemyManager.reset();
 	
@@ -466,25 +472,29 @@ void PlayState::finalize()
 
 	mItemManager.reset();
 
-	if(mLogicManager)
-	{
-		delete mLogicManager;
-		mLogicManager = NULL;
-	}
+	mLogicManager.reset();
 
-	if(mEventsManager)
-	{
-		delete mEventsManager;
-		mEventsManager = NULL;
-	}
+	mEventsManager.reset();
 
-	if(mParticleManager)
-	{	
-		//mParticleManager->finalize();
-		mParticleManager.reset();
-	}
+	mParticleManager.reset();
 
-	BaseState::finalize();
+	 lm = mLuaManager.use_count();
+	 pm = mPlayerManager.use_count();
+	 cm = 	mCameraManager.use_count();
+	 llm = 	mLightsManager.use_count();
+	 em = 	mEnemyManager.use_count();
+	 ppm = 	mPhysicsManager.use_count();
+	 im = 	mItemManager.use_count();
+	 lllm = 	mLogicManager.use_count();
+	 eem = 	mEventsManager.use_count();
+	 pppm = 	mParticleManager.use_count();
+
+	 if(mRootSceneNode)
+	 {
+		 mSceneManager->clearScene();
+	 }
+
+	 BaseState::finalize();
 }
 
 /** Get state Id */
@@ -528,6 +538,7 @@ void PlayState::resume()
 		mTrayMgr->hideCursor();
 	// Show axes if visible
 	mCameraManager->toogleAxes();
+	mCameraManager->freeCamera();
 }
 
 /** Buffered input - keyboard key clicked */
@@ -537,6 +548,7 @@ bool PlayState::keyPressed(const OIS::KeyEvent& e)
 	PolygonMode pm;
 	TextureFilterOptions tfo;
 	unsigned int aniso;
+	PlayerPtr player1 = mPlayerManager->getPlayer(PLAYER1);
 
 	switch(e.key)
 	{
@@ -544,7 +556,7 @@ bool PlayState::keyPressed(const OIS::KeyEvent& e)
 		this->mNextGameStateId = GameStateId::Ending;
 		break;
 	case OIS::KeyCode::KC_O:
-		mPlayer1->Die();		
+		player1->Die();		
 		break;
 	// Pause menu
 	case OIS::KeyCode::KC_P:		
@@ -552,7 +564,7 @@ bool PlayState::keyPressed(const OIS::KeyEvent& e)
 		break;
 	// Camera keys
 	case OIS::KeyCode::KC_1:		
-		mCameraManager->gameCamera(mPlayer1->getSceneNode()->getPosition());
+		mCameraManager->gameCamera(player1->getSceneNode()->getPosition());
 		break;
 	case OIS::KeyCode::KC_2:
 		mCameraManager->freeCamera();
@@ -705,13 +717,13 @@ bool PlayState::keyPressed(const OIS::KeyEvent& e)
 
 	// Blood particle system - Debug
 	case OIS::KeyCode::KC_Z:		
-		mParticleManager->bloodKill(mPlayer1->getSceneNode());
+		mParticleManager->bloodKill(player1->getSceneNode());
 		break;
 	case OIS::KeyCode::KC_X:
-		mParticleManager->hit(mPlayer1->getSceneNode());
+		mParticleManager->hit(player1->getSceneNode());
 		break;
 	case OIS::KeyCode::KC_C:
-		mParticleManager->bloodHit(mPlayer1->getSceneNode());
+		mParticleManager->bloodHit(player1->getSceneNode());
 		break;
 	case OIS::KeyCode::KC_V:
 		mParticleManager->bloodLens();

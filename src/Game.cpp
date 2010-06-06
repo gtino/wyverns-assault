@@ -6,10 +6,10 @@ Game::Game() :
 mElapsedSeconds(0.0f),
 mTotalSeconds(0.0f)
 {
-	//
-	// TODO Constructor
-	//
+	mGraphicsManager = GraphicsManagerPtr(new GraphicsManager());
 	mAudioManager = AudioManagerPtr(new AudioManager());
+	mInputManager = InputManagerPtr(new InputManager());
+	mStatesManager = StatesManagerPtr(new StatesManager());
 }
 
 Game::~Game()
@@ -20,25 +20,30 @@ Game::~Game()
 }
 
 /** Initialize */ 
-void Game::initialize()
+bool Game::initialize()
 {
 	// Initialize graphic manager
-	mGraphicsManager.initialize();
+	bool carryOn = mGraphicsManager->initialize();
 
+	if(carryOn)
+	{
 	// Initialize Audio Layer
 	mAudioManager->initialize();
 
 	// Initialize input manager. A render window is needed in order to setup mouse coords and boundaries.
-	mInputManager.initialize(mGraphicsManager.getRenderWindow(), true);
+	mInputManager->initialize(mGraphicsManager->getRenderWindow(), true);
 	
 	// Load graphic resourcrs
-	mGraphicsManager.loadResources();
+	mGraphicsManager->loadResources();
 
 	// Then we load audio
 	mAudioManager->loadResources();
 
 	// Initialize Game states (FSM) manager
-	mStatesManager.initialize(mGraphicsManager, mInputManager, *(mAudioManager.get()));
+	mStatesManager->initialize(mGraphicsManager, mInputManager, mAudioManager);
+	}
+
+	return carryOn;
 }
 
 /** Main loop */
@@ -59,17 +64,17 @@ void Game::go()
 		//
 		// Should we keep going? (Game input,logic,rendering)
 		//
-		continueRunning = mStatesManager.loop(mElapsedSeconds);
+		continueRunning = mStatesManager->loop(mElapsedSeconds);
 
 		//
 		// Did the user close the application window?
 		//
-		bool windowClosed = mGraphicsManager.getRenderWindow()->isClosed();
+		bool windowClosed = mGraphicsManager->getRenderWindow()->isClosed();
 		continueRunning &= ! windowClosed;
 
 		mLoopTimer.reset();
 
-		bool renderFrameSuccess = mGraphicsManager.renderOneFrame();
+		bool renderFrameSuccess = mGraphicsManager->renderOneFrame();
 		continueRunning &= renderFrameSuccess;
 
 		//continueRunning &= ! m_exitRequested;	
@@ -80,19 +85,17 @@ void Game::go()
 void Game::finalize()
 {
 	// Unregister and dispose of the StatesManager
-	mStatesManager.finalize();
+	mStatesManager.reset();
 	// Unload all graphics data
-	mGraphicsManager.unloadResources();
+	mGraphicsManager->unloadResources();
 	// Finalize all
-	mGraphicsManager.finalize();
+	mGraphicsManager.reset();
 	// Unacquire all inputs
-	mInputManager.unacquireAll();
+	mInputManager->unacquireAll();
 	// Finalize all
-	mInputManager.finalize();
+	mInputManager.reset();
 	// Unload audio/fx
 	mAudioManager->unloadResources();
-	// Finalize all
-	mAudioManager->finalize();
 	// Release Audio Manager
 	mAudioManager.reset();
 }

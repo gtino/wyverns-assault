@@ -42,10 +42,17 @@ namespace Ogre
 		DotSceneLoader() : mSceneMgr(0) {}
 		virtual ~DotSceneLoader() {}
 
-		void parseDotScene(const String &SceneName, const String &groupName,SceneManager *levelSceneManager, WyvernsAssault::CameraManager* cameraManager, 
-			WyvernsAssault::LightsManager* lightsManager,WyvernsAssault::EnemyManager* enemysManager ,WyvernsAssault::PhysicsManager* physicsManager, 
-			WyvernsAssault::ItemManager* itemsManager, WyvernsAssault::ParticleManager* particleManager, 
-			SceneNode *pAttachNode = NULL, const String &sPrependNode = "");
+		void parseDotScene(const String &SceneName, 
+			const String &groupName,
+			SceneManager *levelSceneManager,
+			WyvernsAssault::CameraManagerPtr cameraManager, 
+			WyvernsAssault::LightsManagerPtr lightsManager,
+			WyvernsAssault::EnemyManagerPtr enemysManager,
+			WyvernsAssault::PhysicsManagerPtr physicsManager, 
+			WyvernsAssault::ItemManagerPtr itemsManager, 
+			WyvernsAssault::ParticleManagerPtr particleManager, 
+			SceneNode *pAttachNode = NULL, 
+			const String &sPrependNode = "");
 
 		String getProperty(const String &ndNm, const String &prop);
 
@@ -97,12 +104,13 @@ namespace Ogre
 		SceneNode *mAttachNode;
 		String m_sGroupName;
 		String m_sPrependNode;
-		WyvernsAssault::CameraManager* mCameraManager;
-		WyvernsAssault::LightsManager* mLightsManager;
-		WyvernsAssault::EnemyManager* mEnemyManager;
-		WyvernsAssault::PhysicsManager* mPhysicsManager;
-		WyvernsAssault::ItemManager* mItemManager;
-		WyvernsAssault::ParticleManager* mParticleManager;
+
+		WyvernsAssault::CameraManagerPtr mCameraManager;
+		WyvernsAssault::LightsManagerPtr mLightsManager;
+		WyvernsAssault::EnemyManagerPtr mEnemyManager;
+		WyvernsAssault::PhysicsManagerPtr mPhysicsManager;
+		WyvernsAssault::ItemManagerPtr mItemManager;
+		WyvernsAssault::ParticleManagerPtr mParticleManager;
 	};
 }
 

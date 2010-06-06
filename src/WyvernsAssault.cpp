@@ -41,22 +41,26 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 			// Create game object
 			WyvernsAssault::Game theGame;
 
-			// Initialize it
-			theGame.initialize();
+			// Initialize it (will return false if user closed Ogre setup window!)
+			bool carryOn = theGame.initialize();
 
-			try {
-				// Run the game!
-				theGame.go();
-			} catch( Ogre::Exception& e ) {
-#if OGRE_PLATFORM == OGRE_PLATFORM_WIN32
-				MessageBox( NULL, e.getFullDescription().c_str(), "An exception has occured!", MB_OK | MB_ICONERROR | MB_TASKMODAL);
-#else
-				std::cerr << "An exception has occured: " <<
-					e.getFullDescription().c_str() << std::endl;
-#endif
-			}
-
+			if(carryOn)
+			{
+				try {
+					// Run the game!
+					theGame.go();
+				} catch( Ogre::Exception& e ) {
+	#if OGRE_PLATFORM == OGRE_PLATFORM_WIN32
+					MessageBox( NULL, e.getFullDescription().c_str(), "An exception has occured!", MB_OK | MB_ICONERROR | MB_TASKMODAL);
+	#else
+					std::cerr << "An exception has occured: " <<
+						e.getFullDescription().c_str() << std::endl;
+	#endif
+				}
+				
 			theGame.finalize();
+
+			}
 
 			return 0;
 		}

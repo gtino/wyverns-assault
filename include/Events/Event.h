@@ -95,6 +95,7 @@ namespace WyvernsAssault
 	{
 	public:
 		CollisionEvent();
+		~CollisionEvent(){};
 	};
 
 	typedef boost::shared_ptr<CollisionEvent> CollisionEventPtr;
@@ -104,6 +105,7 @@ namespace WyvernsAssault
 	{
 	public:
 		EnemyHitEvent(EnemyPtr e, PlayerPtr p);
+		~EnemyHitEvent(){};
 		
 		EnemyPtr getEnemy(){return mEnemy;}
 		PlayerPtr getPlayer(){return mPlayer;}
@@ -122,6 +124,7 @@ namespace WyvernsAssault
 	{
 	public:
 		EnemySpecialHitEvent(EnemyPtr e, PlayerPtr p);
+		~EnemySpecialHitEvent(){};
 		
 		EnemyPtr getEnemy(){return mEnemy;}
 		PlayerPtr getPlayer(){return mPlayer;}
@@ -140,6 +143,7 @@ namespace WyvernsAssault
 	{
 	public:
 		EnemyKillEvent(EnemyPtr e, PlayerPtr p);
+		~EnemyKillEvent(){};
 		
 		EnemyPtr getEnemy(){return mEnemy;}
 		PlayerPtr getPlayer(){return mPlayer;}
@@ -158,6 +162,7 @@ namespace WyvernsAssault
 	{
 	public:
 		PlayerHitEvent(EnemyPtr e, PlayerPtr p);
+		~PlayerHitEvent(){};
 		
 		PlayerPtr getPlayer(){return mPlayer;}
 		EnemyPtr getEnemy(){return mEnemy;}		
@@ -190,6 +195,7 @@ namespace WyvernsAssault
 	{
 	public:
 		PlayerAttackSpecialEvent(PlayerPtr p);
+		~PlayerAttackSpecialEvent(){};
 		
 		PlayerPtr getPlayer(){return mPlayer;}
 
@@ -204,6 +210,7 @@ namespace WyvernsAssault
 	{
 	public:
 		ItemCatchEvent(/*PlayerPtr p,*/ ItemPtr item);
+		~ItemCatchEvent(){};
 		
 		/*PlayerPtr getPlayer(){return mPlayer;}*/
 		ItemPtr getItem(){return mItem;}

@@ -2,7 +2,7 @@
 
 using namespace WyvernsAssault;
 
-OptionsState::OptionsState(GraphicsManager& graphicsManager, InputManager& inputManager, AudioManager& audioManager)
+OptionsState::OptionsState(GraphicsManagerPtr graphicsManager, InputManagerPtr inputManager, AudioManagerPtr audioManager)
 : BaseState(graphicsManager,inputManager,audioManager)
 {
 	//
@@ -15,7 +15,7 @@ OptionsState::~OptionsState()
 	//
 	// TODO Distructor logic HERE
 	//
-	exit();
+	finalize();
 }
 
 /** Initialize current state */
@@ -127,7 +127,9 @@ bool OptionsState::keyReleased(const OIS::KeyEvent& e)
 	switch(e.key)
 	{
 	case OIS::KC_RETURN:
-		this->mNextGameStateId = GameStateId::MainMenu;
+		// We can reach the Options state from different states. So we just tell the manager to 
+		// switch back to previous one. NOTE: we should always enter this state via POP! 
+		this->mNextGameStateId = GameStateId::Previous;
 		break;
 	}
 

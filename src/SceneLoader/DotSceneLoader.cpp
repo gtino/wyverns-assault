@@ -10,10 +10,17 @@ using namespace std;
 using namespace Ogre;
 using namespace WyvernsAssault;
 
-void DotSceneLoader::parseDotScene(const String &SceneName, const String &groupName, SceneManager *levelSceneManager, WyvernsAssault::CameraManager* cameraManager, 
-								   WyvernsAssault::LightsManager* lightsManager,WyvernsAssault::EnemyManager* enemysManager , WyvernsAssault::PhysicsManager* physicsManager, 
-								   WyvernsAssault::ItemManager* itemsManager, WyvernsAssault::ParticleManager* particleManager, 
-								   SceneNode *pAttachNode, const String &sPrependNode)
+void DotSceneLoader::parseDotScene(const String &SceneName, 
+								   const String &groupName, 
+								   SceneManager *levelSceneManager, 
+								   WyvernsAssault::CameraManagerPtr cameraManager, 
+								   WyvernsAssault::LightsManagerPtr lightsManager,
+								   WyvernsAssault::EnemyManagerPtr enemysManager, 
+								   WyvernsAssault::PhysicsManagerPtr physicsManager, 
+								   WyvernsAssault::ItemManagerPtr itemsManager, 
+								   WyvernsAssault::ParticleManagerPtr particleManager, 
+								   SceneNode *pAttachNode, 
+								   const String &sPrependNode)
 {
 
 	//Set SceneManager

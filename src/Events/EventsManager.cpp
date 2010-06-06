@@ -2,6 +2,18 @@
 
 using namespace WyvernsAssault;
 
+// BEGIN SINGLETON
+template<> EventsManager* Ogre::Singleton<EventsManager>::ms_Singleton = 0;
+EventsManager* EventsManager::getSingletonPtr(void)
+{
+    return ms_Singleton;
+}
+EventsManager& EventsManager::getSingleton(void)
+{  
+    assert( ms_Singleton );  return ( *ms_Singleton );  
+}
+// END SINGLETON
+
 EventsManager::EventsManager()
 {
 	//
@@ -11,9 +23,7 @@ EventsManager::EventsManager()
 
 EventsManager::~EventsManager()
 {
-	//
-	// TODO Destructor
-	//
+	clear();
 }
 
 void EventsManager::addEvent(EventPtr evt)

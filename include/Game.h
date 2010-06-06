@@ -38,7 +38,9 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
 namespace WyvernsAssault
 {
-	class Game : public Ogre::Singleton<Game>, public FrameListener, public WindowEventListener
+	class Game	: public Ogre::Singleton<Game>
+				, public FrameListener
+				, public WindowEventListener
 	{
 	public:
 		//Constructor
@@ -47,7 +49,7 @@ namespace WyvernsAssault
 		virtual ~Game();
 
 		/** Initialize */ 
-		void initialize();
+		bool initialize();
 		/** Main loop */
 		void go(); 
 		/** Finalize the game */
@@ -56,14 +58,15 @@ namespace WyvernsAssault
 	private:
 
 		/** Graphics manager */
-		GraphicsManager mGraphicsManager;
+		GraphicsManagerPtr mGraphicsManager;
 		/** Audio manager */
 		AudioManagerPtr mAudioManager;
 		/** Input manager */
-		InputManager mInputManager;
-
+		InputManagerPtr mInputManager;
+		/** Gui Manager */
+		GuiManagerPtr mGuiManager;
 		/** Game states (FSM) manager */
-		StatesManager mStatesManager;
+		StatesManagerPtr mStatesManager;
 
 	private:
 		Ogre::Timer mLoopTimer;

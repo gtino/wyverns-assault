@@ -2,7 +2,7 @@
 -----------------------------------------------------------------------------
 Wyverns' Assault 3D Videgame.
 Copyright (C) 2010  Giorgio Tino, Javier Soto Huesa, Jordi Carreras Ribot, 
-					Marc Serena, Elm Oliver Torres
+Marc Serena, Elm Oliver Torres
 
 This program is free software; you can redistribute it and/or
 modify it under the terms of the GNU General Public License
@@ -45,14 +45,19 @@ namespace WyvernsAssault
 	/**
 	Class used to manage all the enemies
 	*/
-	class EnemyManager : public Ogre::Singleton<EnemyManager>, public boost::enable_shared_from_this<EnemyManager>, public EntityManager, public LuaInterface, public EventsInterface
+	class EnemyManager	: public Ogre::Singleton<EnemyManager>
+						, public boost::enable_shared_from_this<EnemyManager>
+						, public EntityManager
+						, public LuaInterface
+						, public EventsInterface
 	{
-		public:
+	public:
 		EnemyManager(Ogre::SceneManager* sceneManager);
 		~EnemyManager();
 		static EnemyManager& getSingleton(void);
 		static EnemyManager* getSingletonPtr(void);
-		
+
+	public:
 		void initialize();
 		void finalize();
 		SceneManager* getSceneManager(){return this->mSceneManager;}
@@ -100,9 +105,9 @@ namespace WyvernsAssault
 
 		Ogre::SceneManager* mSceneManager;
 
-	// --------------------------------
-	// BEGIN Lua Interface Declarations
-	// --------------------------------
+		// --------------------------------
+		// BEGIN Lua Interface Declarations
+		// --------------------------------
 	public:
 		// Enemys Lib (exported to Lua)
 		LUA_LIBRARY("Enemy", enemylib);
@@ -123,9 +128,9 @@ namespace WyvernsAssault
 
 	private:
 		static const struct luaL_reg l[];
-	// ------------------------------
-	// END Lua Interface Declarations
-	// ------------------------------
+		// ------------------------------
+		// END Lua Interface Declarations
+		// ------------------------------
 	};
 
 	typedef boost::shared_ptr<EnemyManager> EnemyManagerPtr;

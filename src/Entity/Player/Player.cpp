@@ -2,9 +2,12 @@
 
 using namespace WyvernsAssault;
 
-Player::Player(Ogre::String name) :
-mOBBoxRenderable(0),
-mIsDebugEnabled(false)
+Player::Player(Ogre::String name) 
+: EntityInterface()
+, mOBBoxRenderable(0)
+, mFireOBBoxRenderable(0)
+, mIsDebugEnabled(false)
+, mFireMesh(0)
 {
 }
 
@@ -57,10 +60,27 @@ void Player::finalizeEntity()
 		delete mOBBoxRenderable;
 		mOBBoxRenderable = NULL;
 	}
+	if(mFireOBBoxRenderable)
+	{
+		delete mFireOBBoxRenderable;
+		mFireOBBoxRenderable = NULL;
+	}
 	if ( mAnimationSystem )
 	{
 		delete mAnimationSystem;
 		mAnimationSystem = NULL;
+	}
+	if(mSceneNode)
+	{
+		mSceneManager->destroySceneNode(mSceneNode);
+	}
+	if(mMesh)
+	{
+		mSceneManager->destroyEntity(mMesh);
+	}
+	if(mFireMesh)
+	{
+		mSceneManager->destroyEntity(mFireMesh);
 	}
 }
 

@@ -143,6 +143,9 @@ void GuiScreen::show()
 	}
 	if(mBackgroundNode)
 		mBackgroundNode->setVisible(true);	
+
+	if(mMenu)
+		this->mMenu->show();
 }
 
 void GuiScreen::hide()
@@ -160,6 +163,9 @@ void GuiScreen::hide()
 	}
 	if(mBackgroundNode)
 		mBackgroundNode->setVisible(false);
+
+	if(mMenu)
+		this->mMenu->hide();
 }
 
 // -----------------------------------------

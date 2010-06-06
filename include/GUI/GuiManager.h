@@ -25,6 +25,9 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
 #include <Ogre.h>
 #include <OgreRenderWindow.h>
+#include <OgreSingleton.h>
+
+#include <boost/enable_shared_from_this.hpp>
 
 #include "..\Input\InputListener.h"
 
@@ -41,11 +44,15 @@ namespace WyvernsAssault
 	/**
 		Class used to deal with the graphics layer
 	*/
-	class GuiManager :  public InputListener
+	class GuiManager    : public Ogre::Singleton<GuiManager>
+						, public boost::enable_shared_from_this<GuiManager>
+						, public InputListener
 	{
 	public:
 		GuiManager(Ogre::Root* root, Ogre::SceneManager* sceneManager, Ogre::RenderWindow* window);
 		~GuiManager();
+		static GuiManager& getSingleton(void);
+		static GuiManager* getSingletonPtr(void);
 
 	public:		
 		bool initialize();		
@@ -63,6 +70,8 @@ namespace WyvernsAssault
 		RenderWindow*   mWindow;
 		SceneManager*	mSceneManager;
 	};
+
+	typedef boost::shared_ptr<GuiManager> GuiManagerPtr;
 }
 
 #endif // __GUI_MANAGER_H_

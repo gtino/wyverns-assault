@@ -54,6 +54,10 @@ void ParticleManager::finalize()
 
 	mParticleSystem = NULL;
 	mParticleSystemManager = NULL;
+
+	mSceneManager->destroySceneNode("smokeNodeA");
+	mSceneManager->destroySceneNode("smokeNodeB");
+	mSceneManager->destroySceneNode("bloodLensNode");
 }
 
 void ParticleManager::update(const float elapsedSeconds)

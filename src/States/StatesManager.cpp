@@ -2,8 +2,21 @@
 
 using namespace WyvernsAssault;
 
+// BEGIN SINGLETON
+template<> StatesManager* Ogre::Singleton<StatesManager>::ms_Singleton = 0;
+StatesManager* StatesManager::getSingletonPtr(void)
+{
+    return ms_Singleton;
+}
+StatesManager& StatesManager::getSingleton(void)
+{  
+    assert( ms_Singleton );  return ( *ms_Singleton );  
+}
+// END SINGLETON
+
 StatesManager::StatesManager()
 : mCurrentStateId ( GameStateId::SplashScreen )
+, mInitialized(false)
 {
 	//
 	// TODO Constructor
@@ -15,17 +28,20 @@ StatesManager::~StatesManager()
 	//
 	// TODO Destructor
 	//
-	finalize();
+	if(mInitialized)
+	{
+		finalize();
+	}
 }
 
-void StatesManager::initialize(GraphicsManager& graphicsManager, InputManager& inputManager, AudioManager& audioManager)
+void StatesManager::initialize(GraphicsManagerPtr graphicsManager, InputManagerPtr inputManager, AudioManagerPtr audioManager)
 {
 	//
 	// Keep a reference to the managers
 	//
-	this->mGraphicsManager = &graphicsManager;
-	this->mInputManager = &inputManager;
-	this->mAudioManager = &audioManager;
+	this->mGraphicsManager = graphicsManager;
+	this->mInputManager = inputManager;
+	this->mAudioManager = audioManager;
 
 	//
 	// Register this class as listerer for the input manager (buffered input!)
@@ -54,11 +70,12 @@ void StatesManager::initialize(GraphicsManager& graphicsManager, InputManager& i
 	// Let's start with the first state!
 	//
 	changeState(getGameStateById(mCurrentStateId));
+
+	mInitialized = true;
 }
 
 void StatesManager::finalize()
 {
-
 	StatesMapIterator it;
 	for(it = mStates.begin(); it != mStates.end(); it++)
 	{
@@ -69,6 +86,8 @@ void StatesManager::finalize()
 	mStates.clear();
 
 	this->mInputManager->removeListener(this);
+
+	mInitialized = false;
 }
 
 bool StatesManager::loop(const float elapsedSeconds)
@@ -110,34 +129,46 @@ bool StatesManager::loop(const float elapsedSeconds)
 			//
 			// Perform the state change
 			//
-			if(nextStateId == GameStateId::Pause)
+			if(mCurrentStateId == GameStateId::Play && nextStateId == GameStateId::Pause)
+			{
 				this->pushState(newState);
+			}
+			else if(mCurrentStateId == GameStateId::Pause && nextStateId == GameStateId::Play)
+			{
+				this->popState();
+			}
+			else if(mCurrentStateId == GameStateId::MainMenu && nextStateId == GameStateId::Options)
+			{
+				this->pushState(newState);
+			}
+			// Exit to menu
+			else if(mCurrentStateId == GameStateId::Pause && nextStateId == GameStateId::MainMenu)
+			{
+				this->popState();
+				this->changeState(newState);
+
+				Root*			r = mGraphicsManager->getRoot();
+				RenderWindow*	rw = mGraphicsManager->getRenderWindow();
+				SceneManager*	sm = mGraphicsManager->getSceneManager();
+				Viewport*		v = mGraphicsManager->getViewport();
+			}
+			// Options from pause 
+			else if(mCurrentStateId == GameStateId::Pause && nextStateId == GameStateId::Options)
+			{
+				// 
+				// TODO
+				//
+				this->pushState(newState);
+			}
+			else if(nextStateId == GameStateId::Previous)
+			{
+				this->popState();
+			}
 			else
 			{
-				// Resume play
-				if(mCurrentStateId == GameStateId::Pause && nextStateId == GameStateId::Play)
-				{
-					this->popState();
-				}
-				// Exit to menu
-				else if(mCurrentStateId == GameStateId::Pause && nextStateId == GameStateId::SplashScreen)
-				{
-					this->popState();
-					this->changeState(newState);
-				}
-				// Options from pause 
-				else if(mCurrentStateId == GameStateId::Pause && nextStateId == GameStateId::Options)
-				{
-					// 
-					// TODO
-					//
-					this->changeState(newState);
-				}
-				else
-				{
-					this->changeState(newState);
-				}
+				this->changeState(newState);
 			}
+			
 		}
 
 		//

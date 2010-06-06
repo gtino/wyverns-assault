@@ -25,6 +25,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
 #include <Ogre.h>
 #include <OgreSingleton.h>
+#include <boost/enable_shared_from_this.hpp>
 
 #include "..\Lua\LuaInterface.h"
 
@@ -41,7 +42,7 @@ namespace WyvernsAssault
 	/**
 	Class used to manage all the lights
 	*/
-	class LightsManager : public Ogre::Singleton<LightsManager>, public LuaInterface
+	class LightsManager : public Ogre::Singleton<LightsManager>, public boost::enable_shared_from_this<LightsManager>, public LuaInterface
 	{
 	public:
 		LightsManager(SceneManager* sceneManager);
@@ -68,6 +69,7 @@ namespace WyvernsAssault
 
 	private:
 		Light* mLight;
+
 		SceneManager* mSceneManager;
 
 	// --------------------------------
@@ -95,6 +97,8 @@ namespace WyvernsAssault
 	// END Lua Interface Declarations
 	// ------------------------------
 	};
+
+	typedef boost::shared_ptr<LightsManager> LightsManagerPtr;
 }
 
 #endif // __LIGHTS_MANAGER_H__

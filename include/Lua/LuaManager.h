@@ -23,6 +23,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #ifndef __LUA_MANAGER_H__
 #define __LUA_MANAGER_H__
 
+#include <boost/enable_shared_from_this.hpp>
+
 #include "..\Lua\LuaInterface.h"
 #include "..\Graphics\LightsManager.h"
 #include "..\Camera\CameraManager.h"
@@ -34,13 +36,13 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
 namespace WyvernsAssault
 {
-	typedef std::vector<LuaInterface*> LuaInterfaceList;
-	typedef std::vector<LuaInterface*>::iterator LuaInterfaceListIterator;
+	typedef std::vector<LuaInterfacePtr> LuaInterfaceList;
+	typedef std::vector<LuaInterfacePtr>::iterator LuaInterfaceListIterator;
 
 	/**
 	Class used to load/manage logic and AI scripts
 	*/
-	class LuaManager
+	class LuaManager : public boost::enable_shared_from_this<LuaManager>
 	{
 	public:
 		LuaManager();
@@ -50,7 +52,7 @@ namespace WyvernsAssault
 		/** Initialize Lua and load Lua default libs */
 		bool initialize();
 		// Register a new interface to this manager
-		bool registerInterface(LuaInterface* luaInterface);
+		bool registerInterface(LuaInterfacePtr luaInterface);
 		/** Finalize Lua and unload Lua libs */		
 		void finalize();
 		/** Reloads scripts */
@@ -78,7 +80,7 @@ namespace WyvernsAssault
 		LuaInterfaceList mLuaInterfaceList;
 	};
 
-	typedef boost::shared_ptr<LuaInterface> LuaInterfacePtr;
+	typedef boost::shared_ptr<LuaManager> LuaManagerPtr;
 }
 
 #endif // __LUA_MANAGER_H__

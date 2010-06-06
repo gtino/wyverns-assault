@@ -20,30 +20,41 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
 -----------------------------------------------------------------------------
 */
-#ifndef __LOGIC_INTERFACE_H__
-#define __LOGIC_INTERFACE_H__
+#ifndef __PARTICLE_SYSTEM_H__
+#define __PARTICLE_SYSTEM_H__
 
 #include <Ogre.h>
+#include <OgreSingleton.h>
+#include <ParticleUniversePlugin.h>
 
-#include "..\Lua\LuaDefines.h"
+using namespace Ogre;
 
-namespace WyvernsAssault
+namespace WyvernsAssault 
 {
 	/**
-	Interface implemented by objects with logic
+	Class used to manage all the particle systems
 	*/
-	class LogicInterface
+	class ParticleSystem
 	{
 	public:
-		// Initialize logic with callback to Lua scripting
-		virtual void initializeLogic(){return;}
+		ParticleSystem(Ogre::String id, Ogre::String script);
+		~ParticleSystem();
+		
+		void start(void);
+		void startAndStopFade(Ogre::Real stopTime);
+		void stop(void);
+		void update(const float elapsedSeconds);
+	
+		void attachTo(SceneNode* node);
+		void detachFrom(SceneNode* node);
 
-		virtual void finalizeLogic(){return;}
+	private:
+		ParticleUniverse::ParticleSystem* mParticleSystem;
 
-		virtual void updateLogic(lua_State *L, const float elapsedSeconds){return;}
+		Ogre::SceneNode* mSceneNode;
 	};
 
-	typedef boost::shared_ptr<LogicInterface> LogicInterfacePtr;
+	typedef boost::shared_ptr<ParticleSystem> ParticleSystemPtr;
 }
 
-#endif // __LOGIC_INTERFACE_H__
+#endif // __PARTICLE_SYSTEM_H__

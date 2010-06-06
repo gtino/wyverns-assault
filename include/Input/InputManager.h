@@ -30,6 +30,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #include <Ogre.h>
 #include <OgreRenderWindow.h>
 
+#include <boost/enable_shared_from_this.hpp>
+
 #include "InputListener.h"
 
 #define WA_CALL_LISTENERS(method) for ( InputListenersIterator it=mRegisteredListeners.begin() ; it < mRegisteredListeners.end(); it++ ) {(*it)->method;}
@@ -48,17 +50,21 @@ namespace WyvernsAssault
 	/**
 		Class used to manager user input, from keyboard, mouse, joystick and so on...
 	*/
-	class InputManager	: public OIS::MouseListener
+	class InputManager	: public Ogre::Singleton<InputManager>
+						, public boost::enable_shared_from_this<InputManager>
+						, public OIS::MouseListener
 						, public OIS::KeyListener
 						, public OIS::JoyStickListener
 	{
 	public:
 		InputManager();
 		~InputManager();
+		static InputManager& getSingleton(void);
+		static InputManager* getSingletonPtr(void);
 
 	public:
 		/** Initialize the input manager */
-		void initialize( Ogre::RenderWindow* window, bool showDefaultMousePointer );
+		bool initialize( Ogre::RenderWindow* window, bool showDefaultMousePointer );
 		/** Finalize the input manager */
 		void finalize();
 		/** Add input listener */
@@ -138,7 +144,11 @@ namespace WyvernsAssault
 		bool mInputTypeSwitchingOn;
 
 		InputListenersList mRegisteredListeners;
+
+		bool mInitialized;
 	};
+
+	typedef boost::shared_ptr<InputManager> InputManagerPtr;
 }
 
 #endif // __INPUT_MANAGER_H_

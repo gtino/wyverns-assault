@@ -36,6 +36,10 @@ namespace WyvernsAssault
 	class EntityInterface
 	{
 	public:
+		EntityInterface();
+		virtual ~EntityInterface() = 0;
+
+	public:
 		virtual void initializeEntity(Ogre::Entity* mesh, Ogre::SceneNode* sceneNode)
 		{
 			mSceneNode = sceneNode;

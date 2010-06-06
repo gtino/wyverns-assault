@@ -26,28 +26,7 @@ PhysicsManager::PhysicsManager(SceneManager* sceneManager)
 
 PhysicsManager::~PhysicsManager()
 {
-	// Stop listening for collisions
-	if (mWorld->getCollisionListener() == this) 
-        mWorld->setCollisionListener(0);
-
-	// Delete all the joints
-	for (std::vector<OgreOde::Joint*>::iterator i = _joints.begin();i != _joints.end();++i)
-	{
-		delete (*i);
-	}
-
-	// Run through the list of bodies we're monitoring
-	for (std::vector<OgreOde::Body*>::iterator i = _bodies.begin();i != _bodies.end();++i)
-	{
-		// Delete the body
-		delete (*i);
-	}
-
-	// Delete all the collision geometries
-	for (std::vector<OgreOde::Geometry*>::iterator i = _geoms.begin();i != _geoms.end();++i)
-	{
-		delete (*i);
-	}
+	finalize();
 }
 
 bool PhysicsManager::initialize()
@@ -83,7 +62,32 @@ bool PhysicsManager::initialize()
 void PhysicsManager::finalize()
 {
 	mPlayerMap.clear();
+	mPlayerGeomMap.clear();
 	mEnemyMap.clear();
+	mEnemyGeomMap.clear();
+
+		// Stop listening for collisions
+	if (mWorld->getCollisionListener() == this) 
+        mWorld->setCollisionListener(0);
+
+	// Delete all the joints
+	for (std::vector<OgreOde::Joint*>::iterator i = _joints.begin();i != _joints.end();++i)
+	{
+		delete (*i);
+	}
+
+	// Run through the list of bodies we're monitoring
+	for (std::vector<OgreOde::Body*>::iterator i = _bodies.begin();i != _bodies.end();++i)
+	{
+		// Delete the body
+		delete (*i);
+	}
+
+	// Delete all the collision geometries
+	for (std::vector<OgreOde::Geometry*>::iterator i = _geoms.begin();i != _geoms.end();++i)
+	{
+		delete (*i);
+	}
 }
 
 void PhysicsManager::synchronizeWorld(Real time)

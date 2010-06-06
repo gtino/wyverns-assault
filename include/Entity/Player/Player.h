@@ -36,6 +36,11 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
 #include "..\OBBoxRenderable.h"
 
+#define PLAYER1 "Player1"
+#define PLAYER2 "Player2"
+#define PLAYER3 "Player3"
+#define PLAYER4 "Player4"
+
 // Player animations number in tree
 #define IDDLE		0
 #define RUN			1
@@ -56,7 +61,7 @@ namespace WyvernsAssault
 	{
 	public:
 		Player(Ogre::String name);
-		~Player();
+		virtual ~Player();
 
 		// EntityInterface
 		void initializeEntity(Ogre::Entity* mesh, Ogre::SceneNode* sceneNode, SceneManager* sceneManager);

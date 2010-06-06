@@ -28,6 +28,10 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #include <vector>
 #include <map>
 
+#include <Ogre.h>
+#include <OgreSingleton.h>
+#include <boost/enable_shared_from_this.hpp>
+
 #include "Event.h"
 #include "EventHandler.h"
 #include "EventsInterface.h"
@@ -40,11 +44,13 @@ namespace WyvernsAssault
 
 	class EventsInterface;
 
-	class EventsManager
+	class EventsManager : public Ogre::Singleton<EventsManager>, public boost::enable_shared_from_this<EventsManager>
 	{
 	public:
 		EventsManager();
 		virtual ~EventsManager();
+		static EventsManager& getSingleton(void);
+		static EventsManager* getSingletonPtr(void);
 
 	public:
 		/// Delete all items from the event queue and
@@ -93,6 +99,8 @@ namespace WyvernsAssault
 		/// that will react to the event and the callback method (the function onCauseDamage).		
 		EventHandlerMap mEventHandlers;
 	};
+
+	typedef boost::shared_ptr<EventsManager> EventsManagerPtr;
 }
 
 #endif // __EVENTS_MANAGER_H_

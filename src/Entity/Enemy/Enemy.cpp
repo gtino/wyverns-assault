@@ -71,8 +71,8 @@ void Enemy::finalizeEntity()
 	mOBBoxRenderable = NULL;
 	}
 
-	mBalloonSet->removeBillboard(mBalloon);
-	mBalloonSet->detachFromParent();
+	//mBalloonSet->removeBillboard(mBalloon);
+	//mBalloonSet->detachFromParent();
 }
 
 void Enemy::setBillboardSet(BillboardSet* balloonSet)

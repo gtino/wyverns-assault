@@ -26,6 +26,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #include <Ogre.h>
 #include <OgreSingleton.h>
 #include <ois/OIS.h>
+#include <boost/enable_shared_from_this.hpp>
 
 #include "SdkCameraMan.h"
 
@@ -36,7 +37,7 @@ namespace WyvernsAssault
 	/**
 		Class used to manage differents cameras
 	*/
-	class CameraManager : public Ogre::Singleton<CameraManager>
+	class CameraManager : public Ogre::Singleton<CameraManager>, public boost::enable_shared_from_this<CameraManager>
 	{
 	public:
 		CameraManager(SceneManager* sceneManager, RenderWindow* window, Viewport* viewport);
@@ -115,7 +116,14 @@ namespace WyvernsAssault
 		Real					mCameraZoom;
 		int						mGameArea;
 
+		Entity*					mAxes;
 		SceneNode*				mAxesNode;
+
+		Animation*				mCameraAnimation;
+		Animation*				mLookAtAnimation;
+		Animation*				mAxesAnimation;
+		Animation*				mCameraEffectAnimation;
+		Animation*				mCameraEffectLookAnimation;
 
 		AnimationState*			mCameraTransition;
 		AnimationState*			mLookAtTransition;
@@ -159,6 +167,8 @@ namespace WyvernsAssault
 		std::vector<CameraSegment>		mCameraSegments;
 
 	};
+
+	typedef boost::shared_ptr<CameraManager> CameraManagerPtr;
 }
 
 #endif // __CAMERA_MANAGER_H_
