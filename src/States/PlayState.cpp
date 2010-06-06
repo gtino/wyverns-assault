@@ -136,10 +136,10 @@ void PlayState::initialize()
 	mLuaManager->initialize();
 
 	//Load scene XML file
-	mRootSceneNode = mSceneManager->getRootSceneNode()->createChildSceneNode("RootSceneNode", Vector3::ZERO);
-	std::auto_ptr<DotSceneLoader> sceneLoader(new DotSceneLoader());
-	sceneLoader->parseDotScene("Level1_1.scene","General", mSceneManager, mCameraManager, mLightsManager, mEnemyManager, mPhysicsManager, mItemManager, mParticleManager, mRootSceneNode);
-	sceneLoader->parseDotScene("Stage1_1.XML","General", mSceneManager, mCameraManager, mLightsManager, mEnemyManager, mPhysicsManager, mItemManager, mParticleManager, mRootSceneNode);
+	mScenarioManager = ScenarioManagerPtr(new ScenarioManager(mSceneManager));
+	mScenarioManager->initialize(mCameraManager, mLightsManager, mEnemyManager, mPhysicsManager, mItemManager, mParticleManager);
+	mScenarioManager->load("Level1_1.scene");
+	mScenarioManager->load("Stage1_1.XML");
 
 	//
 	// Events Manager 
@@ -432,18 +432,6 @@ void PlayState::unload()
 /** Destroy the state */
 void PlayState::finalize()
 {	
-	long lm = mLuaManager.use_count();
-	long pm = mPlayerManager.use_count();
-	long cm = 	mCameraManager.use_count();
-	long llm = 	mLightsManager.use_count();
-	long em = 	mEnemyManager.use_count();
-	long ppm = 	mPhysicsManager.use_count();
-	long im = 	mItemManager.use_count();
-	long lllm = 	mLogicManager.use_count();
-	long eem = 	mEventsManager.use_count();
-	long pppm = 	mParticleManager.use_count();
-
-
 	////// FIRST!
 	mLightsManager.reset();
 
@@ -454,7 +442,7 @@ void PlayState::finalize()
 	mCameraManager.reset();
 
 	mEnemyManager.reset();
-	
+
 	if(mTrayMgr)
 	{
 		delete mTrayMgr;
@@ -477,23 +465,11 @@ void PlayState::finalize()
 
 	mParticleManager.reset();
 
-	 lm = mLuaManager.use_count();
-	 pm = mPlayerManager.use_count();
-	 cm = 	mCameraManager.use_count();
-	 llm = 	mLightsManager.use_count();
-	 em = 	mEnemyManager.use_count();
-	 ppm = 	mPhysicsManager.use_count();
-	 im = 	mItemManager.use_count();
-	 lllm = 	mLogicManager.use_count();
-	 eem = 	mEventsManager.use_count();
-	 pppm = 	mParticleManager.use_count();
+	mScenarioManager.reset();
 
-	 if(mRootSceneNode)
-	 {
-		 mSceneManager->clearScene();
-	 }
+	mGraphicsManager->clearScene();
 
-	 BaseState::finalize();
+	BaseState::finalize();
 }
 
 /** Get state Id */

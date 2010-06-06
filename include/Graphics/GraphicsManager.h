@@ -74,6 +74,7 @@ namespace WyvernsAssault
 
 		/** Render one frame */
 		bool renderOneFrame();
+		void clearScene();
 
 		Ogre::Viewport* createViewport(Ogre::Camera* camera);
 

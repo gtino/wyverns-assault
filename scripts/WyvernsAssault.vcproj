@@ -319,6 +319,10 @@
 					RelativePath="..\src\Scenario\DotSceneLoader.cpp"
 					>
 				</File>
+				<File
+					RelativePath="..\src\Scenario\ScenarioManager.cpp"
+					>
+				</File>
 			</Filter>
 			<Filter
 				Name="GUI"
@@ -675,6 +679,10 @@
 				>
 				<File
 					RelativePath="..\include\Scenario\DotSceneLoader.h"
+					>
+				</File>
+				<File
+					RelativePath="..\include\Scenario\ScenarioManager.h"
 					>
 				</File>
 			</Filter>

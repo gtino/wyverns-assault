@@ -261,3 +261,11 @@ void GraphicsManager::setCompositorEnabled(const Ogre::String compositor, const 
 {
 	mCompositorManager->getSingleton().setCompositorEnabled(mViewport,compositor,enabled);
 }
+
+void GraphicsManager::clearScene()
+{
+	if(mSceneManager)
+	{
+		mSceneManager->clearScene();
+	}
+}
