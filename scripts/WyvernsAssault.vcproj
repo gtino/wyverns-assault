@@ -313,10 +313,10 @@
 				</File>
 			</Filter>
 			<Filter
-				Name="SceneLoader"
+				Name="Scenario"
 				>
 				<File
-					RelativePath="..\src\SceneLoader\DotSceneLoader.cpp"
+					RelativePath="..\src\Scenario\DotSceneLoader.cpp"
 					>
 				</File>
 			</Filter>
@@ -671,10 +671,10 @@
 				</File>
 			</Filter>
 			<Filter
-				Name="SceneLoader"
+				Name="Scenario"
 				>
 				<File
-					RelativePath="..\include\SceneLoader\DotSceneLoader.h"
+					RelativePath="..\include\Scenario\DotSceneLoader.h"
 					>
 				</File>
 			</Filter>

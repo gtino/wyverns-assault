@@ -34,6 +34,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #include "..\Entity\Item\ItemManager.h"
 #include "..\Particle\ParticleManager.h"
 #include "..\Events\EventsManager.h"
+#include "..\include\Scenario\DotSceneLoader.h"
 
 #include <SdkTrays.h>
 #include <ParticleUniversePlugin.h>
