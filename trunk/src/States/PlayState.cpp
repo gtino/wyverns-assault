@@ -1,5 +1,4 @@
 #include "..\include\States\PlayState.h"
-#include "..\include\SceneLoader\DotSceneLoader.h"
 
 using namespace WyvernsAssault;
 

@@ -1,4 +1,4 @@
-#include "..\include\SceneLoader\DotSceneLoader.h"
+#include "..\include\Scenario\DotSceneLoader.h"
 
 #include <Ogre.h>
 #include <tinyxml.h>
