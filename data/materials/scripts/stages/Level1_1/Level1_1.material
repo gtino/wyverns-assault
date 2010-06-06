@@ -606,7 +606,7 @@ material House0_Building_Material5
 			texture_unit 
 			{
 				texture House01Texture.png
-				text_address_mode clamp
+				tex_address_mode clamp
 				filtering none
 			}
 
@@ -648,7 +648,7 @@ material House0_Roof_Material5
 			texture_unit 
 			{
 				texture HouseRoof01Texture.png
-				text_address_mode clamp
+				tex_address_mode clamp
 				filtering none
 			}
 
@@ -1001,7 +1001,7 @@ material House0_Building_Material4
 			texture_unit 
 			{
 				texture House01Texture.png
-				text_address_mode clamp
+				tex_address_mode clamp
 				filtering none
 			}
 
@@ -1043,7 +1043,7 @@ material House0_Roof_Material4
 			texture_unit 
 			{
 				texture HouseRoof01Texture.png
-				text_address_mode clamp
+				tex_address_mode clamp
 				filtering none
 			}
 
@@ -1085,7 +1085,7 @@ material House0_Building_Material3
 			texture_unit 
 			{
 				texture House01Texture.png
-				text_address_mode clamp
+				tex_address_mode clamp
 				filtering none
 			}
 
@@ -1127,7 +1127,7 @@ material House0_Roof_Material3
 			texture_unit 
 			{
 				texture HouseRoof01Texture.png
-				text_address_mode clamp
+				tex_address_mode clamp
 				filtering none
 			}
 
@@ -1233,7 +1233,7 @@ material House0_Building_Material2
 			texture_unit 
 			{
 				texture House01Texture.png
-				text_address_mode clamp
+				tex_address_mode clamp
 				filtering none
 			}
 
@@ -1275,7 +1275,7 @@ material House0_Roof_Material2
 			texture_unit 
 			{
 				texture HouseRoof01Texture.png
-				text_address_mode clamp
+				tex_address_mode clamp
 				filtering none
 			}
 
@@ -1509,7 +1509,7 @@ material House0_Roof_Material1
 			texture_unit 
 			{
 				texture HouseRoof01Texture.png
-				text_address_mode clamp
+				tex_address_mode clamp
 				filtering none
 			}
 
@@ -1551,7 +1551,7 @@ material House0_Building_Material1
 			texture_unit 
 			{
 				texture House01Texture.png
-				text_address_mode clamp
+				tex_address_mode clamp
 				filtering none
 			}
 
@@ -1575,7 +1575,7 @@ material WyvernsRulez_Animation
 			texture_unit 
 			{
 				anim_texture WyvernsRulez.png 2 2
-				text_address_mode clamp
+				tex_address_mode clamp
 				filtering none
 			}
 
@@ -1649,7 +1649,7 @@ material House0_Building_Material
 			texture_unit 
 			{
 				texture House01Texture.png
-				text_address_mode clamp
+				tex_address_mode clamp
 				filtering none
 			}
 
@@ -1691,7 +1691,7 @@ material House0_Roof_Material
 			texture_unit 
 			{
 				texture HouseRoof01Texture.png
-				text_address_mode clamp
+				tex_address_mode clamp
 				filtering none
 			}
 
@@ -1829,7 +1829,7 @@ material MuddyHill
 			texture_unit 
 			{
 				texture MuddyHill.png
-				text_address_mode clamp
+				tex_address_mode clamp
 				filtering none
 			}
 
@@ -1903,7 +1903,7 @@ material Tree1
 			texture_unit 
 			{
 				texture TreeBig03Texture.png
-				text_address_mode clamp
+				tex_address_mode clamp
 				filtering none
 			}
 
@@ -1945,7 +1945,7 @@ material Tree2
 			texture_unit 
 			{
 				texture TreeSmall04Texture.png
-				text_address_mode clamp
+				tex_address_mode clamp
 				filtering none
 			}
 
@@ -2147,7 +2147,7 @@ material WoodenPole
 			texture_unit 
 			{
 				texture WoodenPole.png
-				text_address_mode clamp
+				tex_address_mode clamp
 				filtering none
 			}
 
@@ -2189,7 +2189,7 @@ material SunHillMaterial
 			texture_unit 
 			{
 				texture wheat.PNG
-				text_address_mode clamp
+				tex_address_mode clamp
 				filtering none
 			}
 
@@ -2308,7 +2308,7 @@ material Tree1_Billboard
 			texture_unit 
 			{
 				texture SilhouetteTree1.png
-				text_address_mode clamp
+				tex_address_mode clamp
 			}
 
 		}
@@ -2364,7 +2364,7 @@ material Castle_Billboard
 			texture_unit 
 			{
 				texture Castle1.png
-				text_address_mode clamp
+				tex_address_mode clamp
 				filtering none
 			}
 
@@ -2389,7 +2389,7 @@ material _2DTree2_Billboard
 			texture_unit 
 			{
 				texture BillboardTree2.png
-				text_address_mode clamp
+				tex_address_mode clamp
 				filtering none
 			}
 
@@ -2414,7 +2414,7 @@ material _2DTree3_Billboard
 			texture_unit 
 			{
 				texture BillboardTree3.png
-				text_address_mode clamp
+				tex_address_mode clamp
 				filtering none
 			}
 
@@ -2438,7 +2438,7 @@ material Tree2_Billboard
 			texture_unit 
 			{
 				texture SilhouetteTree2.png
-				text_address_mode clamp
+				tex_address_mode clamp
 			}
 
 		}
@@ -2479,7 +2479,7 @@ material Hill
 			texture_unit 
 			{
 				texture backgroundfield.PNG
-				text_address_mode clamp
+				tex_address_mode clamp
 				filtering none
 			}
 
@@ -2521,7 +2521,7 @@ material MelonHill
 			texture_unit 
 			{
 				texture MelonStucco.png
-				text_address_mode clamp
+				tex_address_mode clamp
 				filtering none
 			}
 
