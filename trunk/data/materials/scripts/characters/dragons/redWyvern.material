@@ -26,6 +26,20 @@ material RedWyvernBody
 				texture RedWyvernTextureBody.png
 			}
 		}
+		// Black outline
+		pass
+		{
+			cull_hardware anticlockwise
+			
+			vertex_program_ref Outline
+			{				
+				param_named offset float 0.35
+			}
+			
+			fragment_program_ref Black
+			{
+			}		
+		}
 	}
 }
 
@@ -56,6 +70,20 @@ material RedWyvernHead
 			{
 				texture RedWyvernTextureHead.png
 			}
+		}
+		// Black outline
+		pass
+		{
+			cull_hardware anticlockwise
+			
+			vertex_program_ref Outline
+			{			
+				param_named offset float 0.35
+			}
+			
+			fragment_program_ref Black
+			{
+			}		
 		}
 	}
 }

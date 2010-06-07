@@ -1,0 +1,23 @@
+// Outline vertex shader
+vertex_program Outline hlsl
+{
+	source Outline.hlsl
+	target vs_2_0
+	entry_point outline_vp
+	
+	default_params
+	{
+		param_named_auto WorldViewProjection worldviewproj_matrix		
+	}
+}
+
+fragment_program Black hlsl
+{
+	source Outline.hlsl
+	target ps_2_0
+	entry_point black_fp
+	
+	default_params
+	{
+	}
+}
