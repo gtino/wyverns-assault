@@ -376,6 +376,10 @@
 				Name="Physics"
 				>
 				<File
+					RelativePath="..\src\Physics\Physics.cpp"
+					>
+				</File>
+				<File
 					RelativePath="..\src\Physics\PhysicsManager.cpp"
 					>
 				</File>
@@ -689,6 +693,10 @@
 			<Filter
 				Name="Physics"
 				>
+				<File
+					RelativePath="..\include\Physics\Physics.h"
+					>
+				</File>
 				<File
 					RelativePath="..\include\Physics\PhysicsInterface.h"
 					>
