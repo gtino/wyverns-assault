@@ -29,20 +29,14 @@ using namespace Ogre;
 
 namespace WyvernsAssault
 {
-	enum PhysicsTypes
+	class Geometry
 	{
-		Ground,
-		Border,
-		Static,
-		Dynamic,
-		Fake
+		//
+		// TODO : an array or hierarchical structure of bounding geometry
+		//
 	};
 
-	class Physics
-	{
-	};
-
-	typedef boost::shared_ptr<Physics> PhysicsPtr;
+	typedef boost::shared_ptr<Geometry> GeometryPtr;
 }
 
 #endif //__PHYSICS_H__
