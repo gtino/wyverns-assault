@@ -50,10 +50,19 @@ namespace WyvernsAssault
 	typedef std::map<size_t,EnemyPtr> OdeEnemyMap;
 	typedef std::map<size_t,EnemyPtr>::iterator OdeEnemyMapIterator;
 
+	// ------------------------
+	// NEW PHYSICS!
+	// ------------------------
+	// ------------------------
+
 	/**
 	Class used to manage entities/world physics
 	*/
-	class PhysicsManager : public Ogre::Singleton<PhysicsManager>, public boost::enable_shared_from_this<PhysicsManager>, public LuaInterface, public OgreOde::CollisionListener, public EventsInterface
+	class PhysicsManager	: public Ogre::Singleton<PhysicsManager>
+							, public boost::enable_shared_from_this<PhysicsManager>
+							, public LuaInterface
+							, public OgreOde::CollisionListener
+							, public EventsInterface
 	{
 	public:
 		PhysicsManager(SceneManager* sceneManager);
@@ -125,9 +134,24 @@ namespace WyvernsAssault
 		std::vector<OgreOde::Joint*>	_joints;
 
 	private:
-		// Control variable for states changing (from attacking to non attacking). Need for skiping multiple calling to same event.
+		// Control variable for states changing (from attacking to non attacking). Need for skipping multiple calling to same event.
 		bool mPlayerSpecialState;
 		int mPlayerAttackLast;
+
+	// ------------------------
+	// NEW PHYSICS!
+	// ------------------------
+	public:
+
+	private:
+		//PlayerMap mPlayerMap;
+		//EnemyMap mEnemyMap;
+		//ItemMap mItemMap;
+		//ObjectMap mObjectMap;
+
+		// 
+
+	// ------------------------
 
 	// --------------------------------
 	// BEGIN Lua Interface Declarations

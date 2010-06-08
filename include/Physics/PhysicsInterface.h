@@ -32,6 +32,15 @@ using namespace Ogre;
 
 namespace WyvernsAssault
 {
+	enum PhysicsTypes
+	{
+		Ground,
+		Border,
+		Static,
+		Dynamic,
+		Fake
+	};
+
 	typedef struct{
 		OgreOde::RayGeometry* geometry;
 		Ogre::Real radius;
@@ -78,7 +87,6 @@ namespace WyvernsAssault
 		// NEW PHYSICS INTERFACE!
 		// ----------------------
 	public:
-		virtual void initializePhysics(PhysicsPtr physics) {mPhysics = physics;}
 		//virtual void finalizePhysics(){return;} 
 		//virtual void updatePhysics(const float elapsedSeconds){};
 
@@ -91,14 +99,14 @@ namespace WyvernsAssault
 		Ogre::Quaternion getDirection(){return mDirection;}
 		void setDirection(Ogre::Quaternion direction){mDirection = direction;}
 
-		PhysicsPtr getPhysics(){return mPhysics;}
-		void setPhysics(PhysicsPtr physics){mPhysics = physics;}
+		virtual GeometryPtr getGeometry(){return mGeometry;}
+		virtual void setGeometry(GeometryPtr geometry) {mGeometry = geometry;}
 
 	private:
 		Ogre::Real mSpeed;
 		Ogre::Vector3 mPosition;
 		Ogre::Quaternion mDirection; 
-		PhysicsPtr mPhysics;
+		GeometryPtr mGeometry;
 	};
 }
 
