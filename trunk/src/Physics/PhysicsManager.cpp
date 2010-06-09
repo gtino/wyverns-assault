@@ -620,6 +620,30 @@ void PhysicsManager::moveAnimal(EnemyPtr animal, Ogre::Vector3 direction)
 // NEW PHYSICS
 // ----------------------
 
+/* Load a mesh as ground type
+*/
+void PhysicsManager::loadPhysicGround(Ogre::String mesh, Ogre::String name, Ogre::String type, Ogre::Vector3 position, Ogre::Vector3 scale)
+{
+	
+	SceneNode* nodeGround = mSceneManager->getRootSceneNode()->createChildSceneNode(name,position);
+	Entity* entityGround = mSceneManager->createEntity(name,mesh);
+	
+	// Set ground mask
+	if(type == "road")
+		entityGround->setQueryFlags(ROAD_GROUND_MASK);
+	else if(type == "water")
+		entityGround->setQueryFlags(WATER_GROUND_MASK);
+	else if(type == "wheat")
+		entityGround->setQueryFlags(WHEAT_GROUND_MASK);
+	else
+		entityGround->setQueryFlags(BASIC_GROUND_MASK);
+
+	nodeGround->attachObject(entityGround);
+	nodeGround->setVisible(false);
+	nodeGround->setScale(scale);
+
+}
+
 /* Calculate heigth of terrain and translate node to adjust them
 */
 void PhysicsManager::calculateY(SceneNode *node, const float heightAdjust, const Ogre::uint32 queryMask)
