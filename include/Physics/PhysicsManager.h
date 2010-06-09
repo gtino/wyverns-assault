@@ -154,6 +154,13 @@ namespace WyvernsAssault
 	// ------------------------
 	public:
 
+		void loadPhysicGround(Ogre::String mesh, Ogre::String name, Ogre::String type, Ogre::Vector3 position, Ogre::Vector3 scale);
+		//void loadPhysicEnemy();
+		//void loadPhysicItem();
+		//void loadPhysicObject();
+
+		//void update(const float elapsedSeconds);
+	
 	private:
 
 		void calculateY(SceneNode *node, const float heightAdjust, const Ogre::uint32 queryMask = 0xFFFFFFFF);
