@@ -53,6 +53,17 @@ namespace WyvernsAssault
 	// ------------------------
 	// NEW PHYSICS!
 	// ------------------------
+
+	/* Ground types
+	*/
+	enum GroundQueryFlags
+	{
+		BASIC_GROUND_MASK = 1<<7,
+		ROAD_GROUND_MASK = 1<<8,
+		WATER_GROUND_MASK = 1<<9,
+		WHEAT_GROUND_MASK = 1<<10
+	};
+
 	// ------------------------
 
 	/**
@@ -144,12 +155,17 @@ namespace WyvernsAssault
 	public:
 
 	private:
+
+		void calculateY(SceneNode *node, const float heightAdjust, const Ogre::uint32 queryMask = 0xFFFFFFFF);
+		bool raycast(const Vector3 &point, const Vector3 &normal, Vector3 &result, const Ogre::uint32 queryMask);
+	
+	protected:
+		Ogre::RaySceneQuery *mRaySceneQuery;
+
 		//PlayerMap mPlayerMap;
 		//EnemyMap mEnemyMap;
 		//ItemMap mItemMap;
 		//ObjectMap mObjectMap;
-
-		// 
 
 	// ------------------------
 

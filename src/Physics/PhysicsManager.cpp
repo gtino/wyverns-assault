@@ -616,6 +616,76 @@ void PhysicsManager::moveAnimal(EnemyPtr animal, Ogre::Vector3 direction)
 	animal->setLastDirection(direction);	
 }
 
+// ----------------------
+// NEW PHYSICS
+// ----------------------
+
+/* Calculate heigth of terrain and translate node to adjust them
+*/
+void PhysicsManager::calculateY(SceneNode *node, const float heightAdjust, const Ogre::uint32 queryMask)
+{
+
+	Vector3 position = node->getPosition();
+	float x = position.x;
+	float z = position.z;
+	Vector3 yPosition(0,0,0);
+
+	if(raycast(position,Vector3::NEGATIVE_UNIT_Y,yPosition,queryMask)){
+		node->setPosition(x,yPosition.y+heightAdjust,z);
+	}
+
+}
+
+/* Raycast from a point in to the scene. returns success or failure.
+ * on success the point is returned in the result.
+ */
+bool PhysicsManager::raycast(const Vector3 &point, const Vector3 &normal, 
+							 Vector3 &result, const Ogre::uint32 queryMask)
+{
+
+    // Create the ray to test
+    static Ogre::Ray ray;
+	ray.setOrigin(point);
+	ray.setDirection(normal);
+
+    if (mRaySceneQuery != NULL)
+    {
+        mRaySceneQuery->setRay(ray);
+		mRaySceneQuery->setSortByDistance(true);
+		mRaySceneQuery->setQueryMask(queryMask);
+        // Execute the query, returns a vector of hits
+        if (mRaySceneQuery->execute().size() <= 0)
+        {
+            // Raycast did not hit an objects bounding box
+            return (false);
+        }
+    }
+    else
+    {
+		//raycast failed
+        return (false);
+    }   
+
+    Ogre::RaySceneQueryResult &query_result = mRaySceneQuery->getLastResults();
+    // Only check this result if its a hit against an entity
+    if ((query_result[0].movable != NULL)  &&
+       (query_result[0].movable->getMovableType().compare("Entity") == 0)) 
+    {
+		//raycast success
+		result = ray.getPoint(query_result[0].distance);
+		return (true);
+    }
+	else
+	{
+		//raycast failed
+		return (false);
+	} 
+
+}
+
+
+// ----------------------
+
 
 // --------------------------------
 // Lua Physics Lib
