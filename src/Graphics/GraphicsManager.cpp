@@ -63,6 +63,16 @@ bool GraphicsManager::initialize()
 	// Load resources
 	loadResources();
 
+	//
+	// Register gaussian blur compositor logic
+	//
+	CompositorManager::getSingleton().registerCompositorLogic("GaussianBlur", new GaussianBlurLogic);
+
+	//
+	// G-Buffer for normal/depth compositor
+	//
+	MaterialManager::getSingleton().addListener(new GBufferSchemeHandler, "GBuffer");
+
 	mInitialized = true;
 
 	return mInitialized;

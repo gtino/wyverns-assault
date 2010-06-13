@@ -1,0 +1,49 @@
+// Bloom an area using gaussian distribution
+fragment_program Compositor/bloomHLSL_fp hlsl
+{
+	source gaussianBlur_FP.hlsl
+	entry_point bloom
+	target ps_2_0
+}
+fragment_program Compositor/bloomGLSL_fp glsl
+{
+	source gaussianBlur_FP.glsl
+	default_params
+	{
+		param_named inRTT int 0
+	}
+}
+fragment_program Compositor/bloom_fp unified
+{
+	delegate Compositor/bloomGLSL_fp
+	delegate Compositor/bloomHLSL_fp
+}
+
+
+material Compositor/GaussianBloom
+{
+	technique
+	{
+		pass
+		{
+			cull_hardware none
+			cull_software none
+			depth_check off
+
+			vertex_program_ref Compositor/StdQuad_vp
+			{
+			}
+			fragment_program_ref Compositor/bloom_fp
+			{
+			}
+
+			// Input 
+			texture_unit
+			{
+                tex_coord_set 0
+				tex_address_mode clamp
+				filtering none 
+			}
+		}
+	}
+}

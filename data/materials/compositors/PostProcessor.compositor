@@ -52,18 +52,20 @@ compositor MotionBlur
 	}
 }
 
-// Blur + Depth field based on depth map
+// Gaussian Blur + Depth field based on depth map
 compositor DOF
 {
 	technique 
 	{
+		compositor_logic GaussianBlur
+	
 		// Temporary textures
 		texture mrt_output target_width target_height PF_FLOAT16_RGBA PF_FLOAT16_RGBA
-		texture scene target_width target_height PF_FLOAT16_RGBA
-		// Depth map scaled to 25%, no need accuracy
-		texture depthMap target_width_scaled 0.25 target_height_scaled 0.25 PF_FLOAT16_RGBA
-		// Blur scaled to 50% for create effect
-		texture blur target_width_scaled 0.5 target_height_scaled 0.5 PF_R8G8B8
+		// Depth map 
+		texture depthMap target_width target_height PF_A8R8G8B8
+		texture scene target_width target_height PF_A8R8G8B8		
+		// Blur scaled
+		texture blur target_width target_height PF_A8R8G8B8
 		
 		target scene
 		{
@@ -98,29 +100,30 @@ compositor DOF
 				input 0 mrt_output 1
 			}
         }
-		// Blur scene first time
+		// Blur horizontally
 		target blur
 		{
-		   input none
-		   
-		   pass render_quad
-		   {
-			   // Renders a fullscreen quad with a material
-			   material Compositor/DOF_Blur0
-			   input 0 scene
-		   }
+			input none
+            
+			pass render_quad
+			{
+				material Compositor/GaussianBloom
+				input 0 scene
+				identifier 700
+			}
 		}
-		// Blur scene second time
-		target blur
+		// Blur vertically
+		target blur		
 		{
-		   input none
-		   
-		   pass render_quad
-		   {
-			   // Renders a fullscreen quad with a material
-			   material Compositor/DOF_Blur1
-			   input 0 blur
-		   }
+            input none
+            
+            pass render_quad
+            {
+                // Renders a fullscreen quad with a material
+				material Compositor/GaussianBloom
+                input 0 blur
+				identifier 701
+            }
 		}
 		// Blend original scene with Blur using Depth as mask
 		target_output

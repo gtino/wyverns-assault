@@ -1315,6 +1315,10 @@
 						>
 					</File>
 					<File
+						RelativePath="..\externals\G-Buffer\include\HelperLogics.h"
+						>
+					</File>
+					<File
 						RelativePath="..\externals\G-Buffer\include\MaterialGenerator.h"
 						>
 					</File>
@@ -1328,6 +1332,10 @@
 					</File>
 					<File
 						RelativePath="..\externals\G-Buffer\src\GBufferSchemeHandler.cpp"
+						>
+					</File>
+					<File
+						RelativePath="..\externals\G-Buffer\src\HelperLogics.cpp"
 						>
 					</File>
 					<File

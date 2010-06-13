@@ -167,11 +167,6 @@ void PlayState::initialize()
 	mCameraManager->gameCamera(player1->getSceneNode()->getPosition());
 
 	//
-	// G-Buffer for normal/depth compositor
-	//
-	MaterialManager::getSingleton().addListener(new GBufferSchemeHandler, "GBuffer");
-
-	//
 	// Audio: playState track
 	//
 	mAudioManager->playSoundTrack("main_track.mp3");

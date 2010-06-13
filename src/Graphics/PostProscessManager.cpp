@@ -38,7 +38,7 @@ void PostProcessManager::initialize()
 	//
 	// Save compositor manager pointer locally
 	//
-	mCompositorManager = CompositorManager::getSingletonPtr();
+	mCompositorManager = CompositorManager::getSingletonPtr();	
 
 	//
 	// Add compositors to viewport one by one. Names from compositor script "PostProcess.compositor"
@@ -59,6 +59,7 @@ void PostProcessManager::initialize()
 void PostProcessManager::finalize()
 {
 	disableAll();
+
 	//
 	// Remove compositors from viewport one by one
 	//

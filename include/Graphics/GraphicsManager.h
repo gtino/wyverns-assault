@@ -34,6 +34,9 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
 #include <boost/enable_shared_from_this.hpp>
 
+#include <HelperLogics.h>
+#include <GBufferSchemeHandler.h>
+
 //
 // Defines
 //
