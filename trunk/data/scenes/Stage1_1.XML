@@ -293,8 +293,8 @@
 		<!-- Live Items -->
 		<item>
 			<position x="360" y="4" z="795"/>
-			<entity type="LiveSmall" meshFile="beerHorn.mesh" name="LiveSmall1"/>
-			<scale x="0.7" y="0.7" z="0.7"/>
+			<entity type="LiveSmall" meshFile="ruby.mesh" name="LiveSmall1"/>
+			<scale x="0.45" y="0.45" z="0.45"/>
 		</item>
 
 		<item>
