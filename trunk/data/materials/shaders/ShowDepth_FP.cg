@@ -1,0 +1,16 @@
+// Show depth in rgba channel fragment program
+
+uniform float MaxDepth;
+
+float4 ShowDepth(
+	float2 texCoord: TEXCOORD0, 
+	float2 projCoord: TEXCOORD1,
+
+	uniform sampler Tex: register(s0)	
+	) : COLOR 
+{
+	float4 a1 = tex2D(Tex, texCoord); // Attribute 1: Normal+depth
+
+	//Get the 3rd root of the depth to show up-close differences
+	return float4(a1.w * MaxDepth, a1.w * MaxDepth, a1.w * MaxDepth, a1.w * MaxDepth);	
+}

@@ -1,9 +1,9 @@
 material RedWyvernBody
 {
 	technique Toon
-	{
+	{	
 		pass
-		{
+		{		
 			vertex_program_ref ToonVP
 			{
 				param_named shininess float4 35.0 1.0 1.0 1.0
@@ -32,10 +32,8 @@ material RedWyvernBody
 			cull_hardware anticlockwise
 			
 			vertex_program_ref Outline
-			{				
-				param_named offset float 0.35
-			}
-			
+			{
+			}			
 			fragment_program_ref Black
 			{
 			}		
@@ -77,10 +75,8 @@ material RedWyvernHead
 			cull_hardware anticlockwise
 			
 			vertex_program_ref Outline
-			{			
-				param_named offset float 0.35
-			}
-			
+			{
+			}			
 			fragment_program_ref Black
 			{
 			}		

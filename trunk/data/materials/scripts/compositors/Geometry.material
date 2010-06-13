@@ -1,0 +1,87 @@
+vertex_program vs cg
+{
+	source vs.cg
+	profiles vs_1_1 arbvp1
+	entry_point main
+	default_params
+	{
+		param_named_auto flip render_target_flipping
+		param_named farCorner float3 1 1 1
+	}
+}
+
+fragment_program ShowNormal_ps cg
+{
+	source ShowNormal_FP.cg
+	profiles ps_2_0 arbfp1
+	entry_point ShowNormal
+}
+
+fragment_program ShowDepth_FP cg
+{
+	source ShowDepth_FP.cg
+	profiles ps_2_0 arbfp1
+	entry_point ShowDepth
+	default_params
+	{
+		// Controls where white starts. Bigger values = more white zone.
+		// DOF material depends on this value. 
+		param_named MaxDepth float 45
+	}
+}
+
+// Show Normals in rgb channel
+material ShowNormal
+{
+    technique
+    {
+    	pass
+		{
+			cull_hardware none
+			cull_software none
+			depth_func always_pass
+			
+			vertex_program_ref vs
+			{
+			}
+			
+			fragment_program_ref ShowNormal_ps
+			{
+			}
+			
+			texture_unit
+			{
+				tex_address_mode clamp
+				filtering trilinear
+			}
+		}
+	}
+}
+
+// Show Depth in rgba channel
+material ShowDepth
+{
+    technique
+    {
+    	pass
+		{
+			cull_hardware none
+			cull_software none
+			depth_func always_pass
+			
+			vertex_program_ref vs
+			{
+			}
+			
+			fragment_program_ref ShowDepth_FP
+			{
+			}
+			
+			texture_unit
+			{
+				tex_address_mode clamp
+				filtering bilinear
+			}
+		}
+	}
+}

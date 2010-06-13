@@ -184,9 +184,6 @@ void GraphicsManager::loadResources()
 	bbFont->setParameter("resolution","96");
 	// load the ttf
 	bbFont->load();
-
-	// Locally store a pointer to the 
-	mCompositorManager = CompositorManager::getSingletonPtr();
 }
 
 void GraphicsManager::unloadResources()
@@ -250,16 +247,6 @@ Ogre::Viewport* GraphicsManager::createViewport(Ogre::Camera* camera)
 	}
 
 	return mViewport;
-}
-
-void GraphicsManager::addCompositor(const Ogre::String compositor)
-{
-	mCompositorManager->addCompositor(mViewport,compositor);
-}
-
-void GraphicsManager::setCompositorEnabled(const Ogre::String compositor, const bool enabled)
-{
-	mCompositorManager->getSingleton().setCompositorEnabled(mViewport,compositor,enabled);
 }
 
 void GraphicsManager::clearScene()

@@ -34,14 +34,13 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #include "..\Entity\Item\ItemManager.h"
 #include "..\Particle\ParticleManager.h"
 #include "..\Events\EventsManager.h"
-#include "..\include\Scenario\ScenarioManager.h"
+#include "..\Scenario\ScenarioManager.h"
+#include "..\include\Graphics\PostProcessManager.h"
 
 #include <SdkTrays.h>
 #include <ParticleUniversePlugin.h>
 
-#define COMPOSITOR_1 "Black&White"
-#define COMPOSITOR_2 "SharpenEdges"
-#define COMPOSITOR_3 "OldMovie"
+#include <GBufferSchemeHandler.h>
 
 namespace WyvernsAssault
 {
@@ -98,6 +97,7 @@ namespace WyvernsAssault
 		ParticleManagerPtr mParticleManager;
 		EventsManagerPtr mEventsManager;
 		ScenarioManagerPtr mScenarioManager;
+		PostProcessManagerPtr mPostProcessManager;
 
 		SceneNode* mRootSceneNode;
 
@@ -112,7 +112,6 @@ namespace WyvernsAssault
 		//
 		GuiUserInterface* mPlayerUI;
 		
-		bool mCompositorsEnabled;
 	};
 }
 #endif // __PLAY_STATE_H_

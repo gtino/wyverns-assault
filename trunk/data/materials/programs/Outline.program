@@ -9,6 +9,7 @@ vertex_program Outline cg
 	{
 		param_named_auto WorldViewProjection worldviewproj_matrix
 		param_named_auto World world_matrix
+		param_named_auto Camera camera_position
 	}
 }
 

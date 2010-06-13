@@ -1,0 +1,14 @@
+// Show pixel normal in rgb channel fragment program
+
+float4 ShowNormal(
+	float2 texCoord: TEXCOORD0, 
+	float2 projCoord: TEXCOORD1,
+
+	uniform sampler Tex: register(s0)	
+	) : COLOR 
+{
+	float4 a1 = tex2D(Tex, texCoord); // Attribute 1: Normal+depth
+
+	// Normal in rgb. Depth in alpha
+	return float4((a1.xyz+1)/2, a1.z/a1.w);
+}

@@ -1,11 +1,9 @@
-material Material
+material Crown_material
 {
 	technique Toon
 	{
 		pass 
 		{
-			
-			scene_blend alpha_blend
 			
 			vertex_program_ref ToonVP
 			{
@@ -33,7 +31,6 @@ material Material
 				tex_address_mode clamp
 				filtering none
 			}
-
 		}
 		// Black outline
 		pass
@@ -41,16 +38,11 @@ material Material
 			cull_hardware anticlockwise
 			
 			vertex_program_ref Outline
-			{				
-				param_named offset float 0.5
-			}
-			
+			{
+			}			
 			fragment_program_ref Black
 			{
 			}		
 		}
-
 	}
-
 }
-

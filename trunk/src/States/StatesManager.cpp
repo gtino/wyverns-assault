@@ -15,7 +15,7 @@ StatesManager& StatesManager::getSingleton(void)
 // END SINGLETON
 
 StatesManager::StatesManager()
-: mCurrentStateId ( GameStateId::SplashScreen )
+: mCurrentStateId ( GameStateId::Play )
 , mInitialized(false)
 {
 	//

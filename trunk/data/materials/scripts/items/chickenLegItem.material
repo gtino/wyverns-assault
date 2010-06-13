@@ -3,10 +3,7 @@ material Material5
 	technique Toon
 	{
 		pass 
-		{
-			
-			scene_blend alpha_blend
-			
+		{			
 			vertex_program_ref ToonVP
 			{
 				param_named shininess float4 10 1.0 1.0 1.0
@@ -33,7 +30,6 @@ material Material5
 				tex_address_mode clamp
 				filtering none
 			}
-
 		}
 		// Black outline
 		pass
@@ -41,15 +37,12 @@ material Material5
 			cull_hardware anticlockwise
 			
 			vertex_program_ref Outline
-			{				
-				param_named offset float 0.5
-			}
-			
+			{
+			}			
 			fragment_program_ref Black
 			{
 			}		
 		}
-
 	}
 
 }

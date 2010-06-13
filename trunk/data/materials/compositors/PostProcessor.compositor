@@ -1,0 +1,249 @@
+// Motion blur
+compositor MotionBlur
+{
+    technique
+    {
+		// Temporary textures
+		texture scene target_width target_height PF_R8G8B8
+		texture sum target_width target_height PF_R8G8B8
+		texture temp target_width target_height PF_R8G8B8
+		
+		// Original scene
+		target scene
+		{
+			input previous
+		}
+		target sum
+		{
+			input previous
+			only_initial on
+		}
+		target temp
+		{
+			input none
+			
+			pass render_quad
+			{
+				material Compositor/Combine
+				input 0 scene
+				input 1 sum
+			}
+		}
+		target sum
+		{
+			input none
+			
+			pass render_quad
+			{
+				material Compositor/Copyback
+				input 0 temp
+			}
+		}
+		target_output
+		{
+			input none
+			
+			pass render_quad
+			{
+				material Compositor/MotionBlur
+				input 0 sum
+			}
+		}
+	}
+}
+
+// Blur + Depth field based on depth map
+compositor DOF
+{
+	technique 
+	{
+		// Temporary textures
+		texture mrt_output target_width target_height PF_FLOAT16_RGBA PF_FLOAT16_RGBA
+		texture scene target_width target_height PF_FLOAT16_RGBA
+		// Depth map scaled to 25%, no need accuracy
+		texture depthMap target_width_scaled 0.25 target_height_scaled 0.25 PF_FLOAT16_RGBA
+		// Blur scaled to 50% for create effect
+		texture blur target_width_scaled 0.5 target_height_scaled 0.5 PF_R8G8B8
+		
+		target scene
+		{
+			input previous
+		}
+		// Create RTT
+		target mrt_output
+		{
+			input none
+			pass clear
+			{
+			}
+			
+			shadows off
+			material_scheme GBuffer
+			
+			pass render_scene
+			{
+				//These values are synchronized with the code
+				first_render_queue 10
+				last_render_queue  79	
+			}
+		}
+		// Depth map from RTT
+		target depthMap
+        {
+			input none
+			
+			pass render_quad
+			{
+				material ShowDepth				
+				input 0 mrt_output 1
+			}
+        }
+		// Blur scene first time
+		target blur
+		{
+		   input none
+		   
+		   pass render_quad
+		   {
+			   // Renders a fullscreen quad with a material
+			   material Compositor/DOF_Blur0
+			   input 0 scene
+		   }
+		}
+		// Blur scene second time
+		target blur
+		{
+		   input none
+		   
+		   pass render_quad
+		   {
+			   // Renders a fullscreen quad with a material
+			   material Compositor/DOF_Blur1
+			   input 0 blur
+		   }
+		}
+		// Blend original scene with Blur using Depth as mask
+		target_output
+		{
+			input none
+			
+			pass render_quad
+			{			   
+			   material Compositor/DOF_Blend
+			   input 0 scene
+			   input 1 depthMap
+			   input 2 blur
+			}
+		}
+	}
+}
+
+// Radial blur effect
+compositor RadialBlur
+{
+    technique
+    {
+        // Temporary textures
+        texture scene target_width target_height PF_A8R8G8B8
+
+        target scene
+        {
+            input previous
+        }
+
+		target_output
+        {
+            // Start with clear output
+            input none
+            // Blur vertically
+            pass render_quad
+            {
+                // Renders a fullscreen quad with a material
+				material Compositor/Radial_Blur
+                input 0 scene
+            }
+        }
+    }
+}
+
+// Show Depth map
+compositor ShowDepth
+{
+	technique 
+	{
+		// Temporary textures
+		texture mrt_output target_width target_height PF_FLOAT16_RGBA PF_FLOAT16_RGBA
+		
+		// Create RTT
+		target mrt_output
+		{
+			input none
+			pass clear
+			{
+			}
+			
+			shadows off
+			material_scheme GBuffer
+			
+			pass render_scene
+			{
+				//These values are synchronized with the code
+				first_render_queue 10
+				last_render_queue  79	
+			}
+		}
+
+		// Depth map from RTT
+		target_output
+        {
+			input none
+			
+			pass render_quad
+			{
+				material ShowDepth				
+				input 0 mrt_output 1
+			}
+        }
+	}
+}
+
+// Show Normal map
+compositor ShowNormal
+{
+	technique 
+	{
+		// Temporary textures
+		texture mrt_output target_width target_height PF_FLOAT16_RGBA PF_FLOAT16_RGBA
+		
+		// Create RTT
+		target mrt_output
+		{
+			input none
+			pass clear
+			{
+			}
+			
+			shadows off
+			material_scheme GBuffer
+			
+			pass render_scene
+			{
+				//These values are synchronized with the code
+				first_render_queue 10
+				last_render_queue  79	
+			}
+		}
+
+		// Depth map from RTT
+		target_output
+        {
+			input none
+			
+			pass render_quad
+			{
+				material ShowNormal				
+				input 0 mrt_output 1
+			}
+        }
+	}
+}

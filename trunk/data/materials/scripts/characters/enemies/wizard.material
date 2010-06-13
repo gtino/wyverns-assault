@@ -3,10 +3,7 @@ material wizard_material
 	technique Toon
 	{
 		pass 
-		{
-			
-			scene_blend alpha_blend
-			
+		{			
 			vertex_program_ref ToonVP
 			{
 				param_named shininess float4 10 1.0 1.0 1.0

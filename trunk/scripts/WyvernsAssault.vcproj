@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="Windows-1252"?>
 <VisualStudioProject
 	ProjectType="Visual C++"
-	Version="9.00"
+	Version="9,00"
 	Name="WyvernsAssault"
 	ProjectGUID="{DA8BACB6-E0B2-465D-84CE-60A33C2E795E}"
 	RootNamespace="WyvernsAssault"
@@ -40,7 +40,7 @@
 			<Tool
 				Name="VCCLCompilerTool"
 				Optimization="0"
-				AdditionalIncludeDirectories="..\include;..\externals\tinyxml;..\externals\tecnofreakanima\include;..\externals\ParticleUniverse\include;..\externals\Fmod\include;..\externals\OgreOde\include;&quot;$(OGRE_HOME)\include&quot;;&quot;$(OGRE_HOME)\include\OGRE&quot;;&quot;$(OGRE_HOME)\include\OIS&quot;;&quot;$(OGRE_HOME)\include\CEGUI&quot;;&quot;$(OGRE_HOME)\boost_1_42&quot;"
+				AdditionalIncludeDirectories="..\include;..\externals\tinyxml;&quot;..\externals\G-Buffer\include&quot;;..\externals\tecnofreakanima\include;..\externals\ParticleUniverse\include;..\externals\Fmod\include;..\externals\OgreOde\include;&quot;$(OGRE_HOME)\include&quot;;&quot;$(OGRE_HOME)\include\OGRE&quot;;&quot;$(OGRE_HOME)\include\OIS&quot;;&quot;$(OGRE_HOME)\include\CEGUI&quot;;&quot;$(OGRE_HOME)\boost_1_42&quot;"
 				PreprocessorDefinitions="WIN32;_DEBUG;_WINDOWS"
 				MinimalRebuild="true"
 				ExceptionHandling="1"
@@ -129,7 +129,7 @@
 				EnableIntrinsicFunctions="true"
 				FavorSizeOrSpeed="1"
 				OmitFramePointers="true"
-				AdditionalIncludeDirectories="..\include;..\externals\tinyxml;..\externals\tecnofreakanima\include;..\externals\ParticleUniverse\include;..\externals\Fmod\include;..\externals\OgreOde\include;&quot;$(OGRE_HOME)\include&quot;;&quot;$(OGRE_HOME)\include\OIS&quot;;&quot;$(OGRE_HOME)\include\OGRE&quot;;&quot;$(OGRE_HOME)\include\CEGUI&quot;;&quot;$(OGRE_HOME)\boost_1_42&quot;"
+				AdditionalIncludeDirectories="..\include;..\externals\tinyxml;&quot;..\externals\G-Buffer\include&quot;;..\externals\tecnofreakanima\include;..\externals\ParticleUniverse\include;..\externals\Fmod\include;..\externals\OgreOde\include;&quot;$(OGRE_HOME)\include&quot;;&quot;$(OGRE_HOME)\include\OIS&quot;;&quot;$(OGRE_HOME)\include\OGRE&quot;;&quot;$(OGRE_HOME)\include\CEGUI&quot;;&quot;$(OGRE_HOME)\boost_1_42&quot;"
 				PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS"
 				StringPooling="true"
 				MinimalRebuild="true"
@@ -309,6 +309,10 @@
 				</File>
 				<File
 					RelativePath="..\src\Graphics\LightsManager.cpp"
+					>
+				</File>
+				<File
+					RelativePath="..\src\Graphics\PostProscessManager.cpp"
 					>
 				</File>
 			</Filter>
@@ -675,6 +679,10 @@
 				</File>
 				<File
 					RelativePath="..\include\Graphics\LightsManager.h"
+					>
+				</File>
+				<File
+					RelativePath="..\include\Graphics\PostProcessManager.h"
 					>
 				</File>
 			</Filter>
@@ -1291,6 +1299,42 @@
 					RelativePath="..\externals\tinyxml\tinyxmlparser.cpp"
 					>
 				</File>
+			</Filter>
+			<Filter
+				Name="G-Buffer"
+				>
+				<Filter
+					Name="Header Files"
+					>
+					<File
+						RelativePath="..\externals\G-Buffer\include\GBufferMaterialGenerator.h"
+						>
+					</File>
+					<File
+						RelativePath="..\externals\G-Buffer\include\GBufferSchemeHandler.h"
+						>
+					</File>
+					<File
+						RelativePath="..\externals\G-Buffer\include\MaterialGenerator.h"
+						>
+					</File>
+				</Filter>
+				<Filter
+					Name="Source Files"
+					>
+					<File
+						RelativePath="..\externals\G-Buffer\src\GBufferMaterialGenerator.cpp"
+						>
+					</File>
+					<File
+						RelativePath="..\externals\G-Buffer\src\GBufferSchemeHandler.cpp"
+						>
+					</File>
+					<File
+						RelativePath="..\externals\G-Buffer\src\MaterialGenerator.cpp"
+						>
+					</File>
+				</Filter>
 			</Filter>
 		</Filter>
 		<File
