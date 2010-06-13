@@ -100,8 +100,6 @@ namespace WyvernsAssault
 		SceneManager*	mSceneManager;
 		Viewport*		mViewport;
 
-		CompositorManager* mCompositorManager;
-
 		bool mInitialized;
 	};
 

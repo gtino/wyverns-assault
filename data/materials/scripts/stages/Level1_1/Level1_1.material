@@ -579,10 +579,7 @@ material House0_Building_Material5
 	technique Toon
 	{
 		pass 
-		{
-			
-			scene_blend alpha_blend
-			
+		{			
 			vertex_program_ref ToonVP
 			{
 				param_named shininess float4 0 1.0 1.0 1.0
@@ -621,10 +618,7 @@ material House0_Roof_Material5
 	technique Toon
 	{
 		pass 
-		{
-			
-			scene_blend alpha_blend
-			
+		{			
 			vertex_program_ref ToonVP
 			{
 				param_named shininess float4 32 1.0 1.0 1.0
@@ -728,8 +722,6 @@ material ToxicWater
 	{
 		pass 
 		{
-      //scene_blend alpha_blend
-
 			texture_unit ToonShades
 			{
 				texture toxic_water.png
@@ -975,9 +967,6 @@ material House0_Building_Material4
 	{
 		pass 
 		{
-			
-			scene_blend alpha_blend
-			
 			vertex_program_ref ToonVP
 			{
 				param_named shininess float4 0 1.0 1.0 1.0
@@ -1017,8 +1006,6 @@ material House0_Roof_Material4
 	{
 		pass 
 		{
-			
-			scene_blend alpha_blend
 			
 			vertex_program_ref ToonVP
 			{
@@ -1060,8 +1047,6 @@ material House0_Building_Material3
 		pass 
 		{
 			
-			scene_blend alpha_blend
-			
 			vertex_program_ref ToonVP
 			{
 				param_named shininess float4 0 1.0 1.0 1.0
@@ -1101,8 +1086,6 @@ material House0_Roof_Material3
 	{
 		pass 
 		{
-			
-			scene_blend alpha_blend
 			
 			vertex_program_ref ToonVP
 			{
@@ -1208,7 +1191,7 @@ material House0_Building_Material2
 		pass 
 		{
 			
-			scene_blend alpha_blend
+			
 			
 			vertex_program_ref ToonVP
 			{
@@ -1250,7 +1233,7 @@ material House0_Roof_Material2
 		pass 
 		{
 			
-			scene_blend alpha_blend
+			
 			
 			vertex_program_ref ToonVP
 			{
@@ -1484,7 +1467,7 @@ material House0_Roof_Material1
 		pass 
 		{
 			
-			scene_blend alpha_blend
+			
 			
 			vertex_program_ref ToonVP
 			{
@@ -1526,7 +1509,7 @@ material House0_Building_Material1
 		pass 
 		{
 			
-			scene_blend alpha_blend
+			
 			
 			vertex_program_ref ToonVP
 			{
@@ -1624,7 +1607,7 @@ material House0_Building_Material
 		pass 
 		{
 			
-			scene_blend alpha_blend
+			
 			
 			vertex_program_ref ToonVP
 			{
@@ -1666,7 +1649,7 @@ material House0_Roof_Material
 		pass 
 		{
 			
-			scene_blend alpha_blend
+			
 			
 			vertex_program_ref ToonVP
 			{
@@ -1804,7 +1787,7 @@ material MuddyHill
 		pass 
 		{
 			
-			scene_blend alpha_blend
+			
 			
 			vertex_program_ref ToonVP
 			{
@@ -1878,7 +1861,7 @@ material Tree1
 		pass 
 		{
 			
-			scene_blend alpha_blend
+			
 			
 			vertex_program_ref ToonVP
 			{
@@ -1920,7 +1903,7 @@ material Tree2
 		pass 
 		{
 			
-			scene_blend alpha_blend
+			
 			
 			vertex_program_ref ToonVP
 			{
@@ -2122,7 +2105,7 @@ material WoodenPole
 		pass 
 		{
 			
-			scene_blend alpha_blend
+			
 			
 			vertex_program_ref ToonVP
 			{
@@ -2164,7 +2147,7 @@ material SunHillMaterial
 		pass 
 		{
 			
-			scene_blend alpha_blend
+			
 			
 			vertex_program_ref ToonVP
 			{
@@ -2454,7 +2437,7 @@ material Hill
 		pass 
 		{
 			
-			scene_blend alpha_blend
+			
 			
 			vertex_program_ref ToonVP
 			{
@@ -2496,7 +2479,7 @@ material MelonHill
 		pass 
 		{
 			
-			scene_blend alpha_blend
+			
 			
 			vertex_program_ref ToonVP
 			{

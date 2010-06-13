@@ -3,10 +3,7 @@ material peasant_material
 	technique Toon
 	{
 		pass 
-		{
-			
-			scene_blend alpha_blend
-			
+		{			
 			vertex_program_ref ToonVP
 			{
 				param_named shininess float4 10 1.0 1.0 1.0
@@ -33,10 +30,18 @@ material peasant_material
 				tex_address_mode clamp
 				filtering none
 			}
-
 		}
-
+		// Black outline
+		pass
+		{
+			cull_hardware anticlockwise
+			
+			vertex_program_ref Outline
+			{
+			}			
+			fragment_program_ref Black
+			{
+			}		
+		}
 	}
-
 }
-

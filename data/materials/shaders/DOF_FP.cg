@@ -1,0 +1,48 @@
+// Simple blur filter
+const float2 samples[8] = {
+    {-1, 1},
+    {-1, 0},
+    {-1, -1},
+    {0, -1},
+    {1, -1},
+    {1, 0},
+    {1, 1},
+    {0, 1}
+};
+
+// Blur pixel shader
+float4 blur(
+
+    in float2 texCoord: TEXCOORD0,
+    uniform float sampleDistance: register(c0),
+    uniform sampler Blur0: register(s0)
+
+) : COLOR
+{
+   float4 sum = tex2D(Blur0, texCoord);
+   for (int i = 0; i < 8; ++i){
+      sum += tex2D(Blur0, texCoord + sampleDistance * samples[i]);
+   }
+   return sum / 9;
+}
+
+// Blend original + depth + blur
+float4 blend
+(
+    in float2 texCoord: TEXCOORD0,
+
+    uniform sampler Scene : register(s0),
+    uniform sampler Depth : register(s1),
+	uniform sampler Blur : register(s2),
+
+    uniform float focus: register(c0),
+    uniform float range: register(c1)
+) : COLOR
+{
+   float4 sharp = tex2D(Scene, texCoord);
+   float4 depth = tex2D(Depth, texCoord);
+   float4 blur  = tex2D(Blur, texCoord);
+
+   // Depth RT has depth info in all chanels
+   return lerp(sharp, blur, saturate(range * abs(focus - depth.x)));
+}

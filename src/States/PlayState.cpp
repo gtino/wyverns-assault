@@ -6,7 +6,6 @@ PlayState::PlayState(GraphicsManagerPtr graphicsManager, InputManagerPtr inputMa
 : BaseState(graphicsManager,inputManager,audioManager)
 , mTrayMgr(NULL)
 , mDetailsPanel(NULL)
-, mCompositorsEnabled(false)
 , mRootSceneNode(0)
 {
 	//
@@ -41,6 +40,12 @@ void PlayState::initialize()
 	//
 	mParticleManager = ParticleManagerPtr(new ParticleManager(mSceneManager));
 	mParticleManager->initialize();
+
+	//
+	// Post Processing manager
+	//
+	mPostProcessManager = PostProcessManagerPtr(new PostProcessManager(mViewport));
+	mPostProcessManager->initialize();
 
 	// Player manager constructor
 	mPlayerManager = PlayerManagerPtr(new PlayerManager(mSceneManager));
@@ -161,15 +166,13 @@ void PlayState::initialize()
 	//
 	mCameraManager->gameCamera(player1->getSceneNode()->getPosition());
 
-	mGraphicsManager->addCompositor(COMPOSITOR_1);
-	mGraphicsManager->setCompositorEnabled(COMPOSITOR_1, mCompositorsEnabled);
-	mGraphicsManager->addCompositor(COMPOSITOR_2);
-	mGraphicsManager->setCompositorEnabled(COMPOSITOR_2, mCompositorsEnabled);
-	mGraphicsManager->addCompositor(COMPOSITOR_3);
-	mGraphicsManager->setCompositorEnabled(COMPOSITOR_3, mCompositorsEnabled);
+	//
+	// G-Buffer for normal/depth compositor
+	//
+	MaterialManager::getSingleton().addListener(new GBufferSchemeHandler, "GBuffer");
 
 	//
-	// Audio manager
+	// Audio: playState track
 	//
 	mAudioManager->playSoundTrack("main_track.mp3");
 }
@@ -314,7 +317,7 @@ void PlayState::update(const float elapsedSeconds)
 		if( !player1->isDying() )
 			this->mNextGameStateId = GameStateId::GameOver;
 	}
-
+/*
 	// UI DEBUG KEYS - Increments/Decrements kills and points
 	if(this->mInputManager->getKeyboard()->isKeyDown(OIS::KeyCode::KC_PGUP))	
 		mPlayerUI->setTextKills(mPlayerUI->getTextKills() + 1);
@@ -340,7 +343,7 @@ void PlayState::update(const float elapsedSeconds)
 
 	if(this->mInputManager->getKeyboard()->isKeyDown(OIS::KeyCode::KC_F10))
 		mPlayerUI->setSpecialBar(mPlayerUI->getSpecialBar() + 2);
-
+*/
 	//
 	//Update Physic
 	//
@@ -376,6 +379,11 @@ void PlayState::update(const float elapsedSeconds)
 	// Update sounds
 	//
 	mAudioManager->update(mCameraManager->getCamera()->getParentSceneNode(), elapsedSeconds);
+
+	//
+	// Update post processing compositors
+	//
+	mPostProcessManager->update(elapsedSeconds);
 
 	//
 	// Dispatch events. Managers have probably raised events, that are now in the 
@@ -466,6 +474,8 @@ void PlayState::finalize()
 	mParticleManager.reset();
 
 	mScenarioManager.reset();
+
+	mPostProcessManager.reset();
 
 	mGraphicsManager->clearScene();
 
@@ -663,22 +673,29 @@ bool PlayState::keyPressed(const OIS::KeyEvent& e)
 		mPlayerManager->attackSpecial("Player1");
 		break;	
 
-	// Black&White On/Off
-	case OIS::KeyCode::KC_K:
-		mCompositorsEnabled = !mCompositorsEnabled;
-		mGraphicsManager->setCompositorEnabled(COMPOSITOR_1, mCompositorsEnabled);
+	// Motion Blur
+	case OIS::KeyCode::KC_J:
+		mPostProcessManager->motionBlur(2);	
 		break;
 
-	// SharpenEdges On/Off
-	case OIS::KeyCode::KC_J:
-		mCompositorsEnabled = !mCompositorsEnabled;
-		mGraphicsManager->setCompositorEnabled(COMPOSITOR_2, mCompositorsEnabled);
+	// Depth of Field
+	case OIS::KeyCode::KC_K:
+		mPostProcessManager->depthOfField();
 		break;	
 
-	// OldMovie On/Off
+	// Radial Blur
 	case OIS::KeyCode::KC_L:
-		mCompositorsEnabled = !mCompositorsEnabled;
-		mGraphicsManager->setCompositorEnabled(COMPOSITOR_3, mCompositorsEnabled);
+		mPostProcessManager->radialBlur(2);
+		break;
+
+	// Normals On/Off
+	case OIS::KeyCode::KC_HOME:
+		mPostProcessManager->showNormal();
+		break;	
+
+	// Depth On/Off
+	case OIS::KeyCode::KC_END:
+		mPostProcessManager->showDepth();
 		break;	
 
 	// Camera rumble - Debug

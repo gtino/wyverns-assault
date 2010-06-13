@@ -3,10 +3,7 @@ material Chicken
 	technique Toon
 	{
 		pass 
-		{
-			
-			scene_blend alpha_blend
-			
+		{			
 			vertex_program_ref ToonVP
 			{
 				param_named shininess float4 10 1.0 1.0 1.0
@@ -41,16 +38,11 @@ material Chicken
 			cull_hardware anticlockwise
 			
 			vertex_program_ref Outline
-			{				
-				param_named offset float 0.45
-			}
-			
+			{
+			}			
 			fragment_program_ref Black
 			{
 			}		
 		}
-
 	}
-
 }
-

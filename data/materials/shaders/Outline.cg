@@ -1,8 +1,11 @@
 uniform float4x4 World;
 uniform float4x4 WorldViewProjection;
 
+uniform float3 Camera;
+uniform float Distance;
+
 // Edge width
-uniform float offset;
+//uniform float offset;
 
 //Input for the vertex Shader
 //There are two vertex shaders both take the same input
@@ -27,6 +30,11 @@ struct VS_OUTPUT2
 //"peaks" the surface (scales it out on it's normal) 
 VS_OUTPUT2 outline_vp(VS_INPUT Input)
 {
+
+	//Calculate it based on the distance
+	//between your camera and your model.
+	float offset = normalize(distance(Camera, Input.Position)) / 2;
+		
 	VS_OUTPUT2 Output;	
 	float4 normal = float4(Input.Normal, 0);
 	
