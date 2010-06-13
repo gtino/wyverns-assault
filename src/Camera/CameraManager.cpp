@@ -76,6 +76,7 @@ void CameraManager::initialize()
 	/** Other variables initialization */
 	mGameArea = 0;
 	mCameraZoom = 0;
+	mFixedCamera = 0;
 
 	mCameraAnimation = mSceneManager->createAnimation("CameraTrack", 1);
 	mLookAtAnimation = mSceneManager->createAnimation("LookAtTrack", 1);
@@ -678,7 +679,7 @@ void CameraManager::shake(Real scale)
 }
 
 /** Camera modes */
-void CameraManager::gameCamera(Vector3 player)
+void CameraManager::gameCamera()
 {
 	mCameraMode = "Game";
 	mCameraMan->setStyle(OgreBites::CS_MANUAL);
@@ -692,7 +693,7 @@ void CameraManager::freeCamera()
 	mViewport->setCamera(mCamera);
 }
 void CameraManager::fixedCamera(int camera)
-{
+{	
 	char camName[20];
 	sprintf(camName, "Fixed %d", camera);
 	mCameraMode = camName;
@@ -703,6 +704,22 @@ void CameraManager::fixedCamera(int camera)
 
 	// Translate animation to camera scene node and look at node to current position
 	createTransition(getCameraPosition(), mFixedCameras[camera].mPosition, getCameraLookAt(), mFixedCameras[camera].mLookAt);
+
+	// Save fixed camera index
+	mFixedCamera = camera;
+}
+
+void CameraManager::resumeCamera()
+{
+	if( mCameraMode == "Game" )
+	{
+		freeCamera();
+		gameCamera();
+	}
+	else if ( mCameraMode == "Free" )
+		freeCamera();
+	else
+		fixedCamera(mFixedCamera);
 }
 
 /** Free camera functions */

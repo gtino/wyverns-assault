@@ -83,9 +83,10 @@ namespace WyvernsAssault
 		void shake(Real scale);
 
 		/** Camera modes */		
-		void gameCamera(Vector3 player);
+		void gameCamera();
 		void freeCamera();
 		void fixedCamera(int camera);
+		void resumeCamera();
 
 		/** Free camera functions */
 		void freeCameraMouse(OIS::MouseEvent evt);
@@ -143,6 +144,8 @@ namespace WyvernsAssault
 		};
 
 		std::vector<FixedCamera>		mFixedCameras;
+
+		int								mFixedCamera;
 
 	private:
 		struct GameArea
