@@ -90,6 +90,31 @@ void PostProcessManager::disableAll()
 	mCompositorManager->setCompositorEnabled(mViewport, "ShowNormal", false);
 }
 
+void PostProcessManager::pause()
+{
+	//
+	// Disable all compositors
+	//
+	mCompositorManager->setCompositorEnabled(mViewport, "DOF", false);
+	mCompositorManager->setCompositorEnabled(mViewport, "MotionBlur", false);
+	mCompositorManager->setCompositorEnabled(mViewport, "RadialBlur", false);
+	/** Debug compositors */
+	mCompositorManager->setCompositorEnabled(mViewport, "ShowDepth", false);
+	mCompositorManager->setCompositorEnabled(mViewport, "ShowNormal", false);
+}
+
+void PostProcessManager::resume()
+{
+	//
+	// Resume all compositors last state
+	//
+	mCompositorManager->setCompositorEnabled(mViewport, "DOF", mDOF);
+	motionBlur(mMotionBlur);
+	radialBlur(mRadialBlur);	
+	/** Debug compositors */
+	mCompositorManager->setCompositorEnabled(mViewport, "ShowDepth", mShowDepth);
+	mCompositorManager->setCompositorEnabled(mViewport, "ShowNormal", mShowNormal);
+}
 
 // Depth of field compositor enable function
 void PostProcessManager::depthOfField()

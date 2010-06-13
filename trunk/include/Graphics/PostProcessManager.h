@@ -52,6 +52,9 @@ namespace WyvernsAssault
 
 		// Disable all compositors
 		void disableAll();
+		// Pause/Resume compositors
+		void pause();
+		void resume();
 
 		// Compositor toogle
 		void depthOfField();		

@@ -164,7 +164,7 @@ void PlayState::initialize()
 	//
 	// Set game camera
 	//
-	mCameraManager->gameCamera(player1->getSceneNode()->getPosition());
+	mCameraManager->gameCamera();
 
 	//
 	// Audio: playState track
@@ -493,12 +493,17 @@ void PlayState::pause()
 	// Hide gui without removing it
 	//
 	mGuiScreen->hide();
+
 	// Hide sdktrays if visible
 	mTrayMgr->hideAll();
 	if(mTrayMgr->isCursorVisible()) 
 		mTrayMgr->hideCursor();
+
 	// Hide axes if visible
 	mCameraManager->toogleAxes();
+
+	// Disable all post process
+	mPostProcessManager->pause();
 }
 
 /** Called when the state has to be resumed (from pause) */
@@ -512,13 +517,20 @@ void PlayState::resume()
 	// Show gui (hided when pause)
 	//
 	mGuiScreen->show();
+
 	// Show sdktrays if was visible
 	mTrayMgr->showAll();
 	if(mTrayMgr->isCursorVisible())
 		mTrayMgr->hideCursor();
+
 	// Show axes if visible
 	mCameraManager->toogleAxes();
-	mCameraManager->freeCamera();
+
+	// Resume previous camera
+	mCameraManager->resumeCamera();
+
+	// Resume all post process previous state
+	mPostProcessManager->resume();
 }
 
 /** Buffered input - keyboard key clicked */
@@ -544,7 +556,7 @@ bool PlayState::keyPressed(const OIS::KeyEvent& e)
 		break;
 	// Camera keys
 	case OIS::KeyCode::KC_1:		
-		mCameraManager->gameCamera(player1->getSceneNode()->getPosition());
+		mCameraManager->gameCamera();
 		break;
 	case OIS::KeyCode::KC_2:
 		mCameraManager->freeCamera();
