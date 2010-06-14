@@ -25,7 +25,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
 #define REDWYVERN_RAY_HEIGHT	25
 #define REDWYVERN_SLOW_VELOCITY	1
-#define REDWYVERN_FAST_VELOCITY	4hago un commi
+#define REDWYVERN_FAST_VELOCITY	4
 
 #include <Ogre.h>
 #include <OgreSingleton.h>
