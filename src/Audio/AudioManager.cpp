@@ -119,7 +119,7 @@ void AudioManager::unloadResources()
 
 
 // Frame started! (EACH)
-void AudioManager::update(Ogre::SceneNode *listenerNode, Ogre::Real timeElapsed)
+void AudioManager::update(Ogre::Vector3 position, Ogre::Quaternion orientation, Ogre::Real timeElapsed)
 {
 	int            channelIndex;
 	FMOD::Channel *nextChannel;
@@ -132,19 +132,19 @@ void AudioManager::update(Ogre::SceneNode *listenerNode, Ogre::Real timeElapsed)
 	Ogre::Vector3  vectorUp;
 
 	if (timeElapsed > 0)
-		vectorVelocity = (listenerNode->_getDerivedPosition() - mPrevListenerPosition) / timeElapsed;
+		vectorVelocity = (position - mPrevListenerPosition) / timeElapsed;
 	else
 		vectorVelocity = Vector3(0, 0, 0);
 
-	vectorForward = listenerNode->_getDerivedOrientation().zAxis();
+	vectorForward = orientation.zAxis();
 	vectorForward.normalise();
 
-	vectorUp = listenerNode->_getDerivedOrientation().yAxis();
+	vectorUp = orientation.yAxis();
 	vectorUp.normalise();
 
-	listenerPosition.x = listenerNode->_getDerivedPosition().x;
-	listenerPosition.y = listenerNode->_getDerivedPosition().y;
-	listenerPosition.z = listenerNode->_getDerivedPosition().z;
+	listenerPosition.x = position.x;
+	listenerPosition.y = position.y;
+	listenerPosition.z = position.z;
 
 	listenerForward.x = vectorForward.x;
 	listenerForward.y = vectorForward.y;
@@ -162,29 +162,26 @@ void AudioManager::update(Ogre::SceneNode *listenerNode, Ogre::Real timeElapsed)
 	mSystem->set3DListenerAttributes(0, &listenerPosition, &listenerVelocity, &listenerForward, &listenerUp);
 	mSystem->update();
 
-	mPrevListenerPosition = listenerNode->_getDerivedPosition();
+	mPrevListenerPosition = position;
 
 	for (channelIndex = 0; channelIndex < MAX_SOUND_CHANNELS; channelIndex++)
 	{
-		if (mChannelArray[channelIndex].sceneNode != NULL)
-		{
-			mSystem->getChannel(channelIndex, &nextChannel);
-			if (timeElapsed > 0)
-				vectorVelocity = (mChannelArray[channelIndex].sceneNode->_getDerivedPosition() - mChannelArray[channelIndex].prevPosition) / timeElapsed;
-			else
-				vectorVelocity = Vector3(0, 0, 0);
+		mSystem->getChannel(channelIndex, &nextChannel);
+		if (timeElapsed > 0)
+			vectorVelocity = (mChannelArray[channelIndex].position - mChannelArray[channelIndex].prevPosition) / timeElapsed;
+		else
+			vectorVelocity = Vector3(0, 0, 0);
 
-			listenerPosition.x = mChannelArray[channelIndex].sceneNode->_getDerivedPosition().x;
-			listenerPosition.y = mChannelArray[channelIndex].sceneNode->_getDerivedPosition().y;
-			listenerPosition.z = mChannelArray[channelIndex].sceneNode->_getDerivedPosition().z;
+		listenerPosition.x = mChannelArray[channelIndex].position.x;
+		listenerPosition.y = mChannelArray[channelIndex].position.y;
+		listenerPosition.z = mChannelArray[channelIndex].position.z;
 
-			listenerVelocity.x = vectorVelocity.x;
-			listenerVelocity.y = vectorVelocity.y;
-			listenerVelocity.z = vectorVelocity.z;
+		listenerVelocity.x = vectorVelocity.x;
+		listenerVelocity.y = vectorVelocity.y;
+		listenerVelocity.z = vectorVelocity.z;
 
-			nextChannel->set3DAttributes(&listenerPosition, &listenerVelocity);
-			mChannelArray[channelIndex].prevPosition = mChannelArray[channelIndex].sceneNode->_getDerivedPosition();
-		}
+		nextChannel->set3DAttributes(&listenerPosition, &listenerVelocity);
+		mChannelArray[channelIndex].prevPosition = mChannelArray[channelIndex].position;
 	}
 }
 
@@ -379,12 +376,12 @@ void AudioManager::incrementNextSoundInstanceIndex(void)
 	mSoundInstanceVector = newSoundInstanceVector;
 }
 
-void AudioManager::playSound(String soundName, SceneNode *soundNode, int *channelIndex)
+void AudioManager::playSound(String soundName, Ogre::Vector3 soundPosition, int *channelIndex)
 {
-	playSound(mSoundNameToIdMap[soundName], soundNode, channelIndex);
+	playSound(mSoundNameToIdMap[soundName], soundPosition, channelIndex);
 }
 
-void AudioManager::playSound(int soundIndex, SceneNode *soundNode, int *channelIndex)
+void AudioManager::playSound(int soundIndex, Ogre::Vector3 soundPosition, int *channelIndex)
 {
 	int            channelIndexTemp;
 	FMOD_RESULT    result;
@@ -403,7 +400,7 @@ void AudioManager::playSound(int soundIndex, SceneNode *soundNode, int *channelI
 	assert((soundIndex > 0) && (soundIndex < (int)mSoundInstanceVector->capacity()));
 
 	// If the channelIndex already has a sound assigned to it, test if it's the same sceneNode.
-	if ((channelIndexTemp != INVALID_SOUND_CHANNEL) && (mChannelArray[channelIndexTemp].sceneNode != NULL))
+	if ((channelIndexTemp != INVALID_SOUND_CHANNEL))
 	{
 		result = mSystem->getChannel(channelIndexTemp, &channel);
 		if (result == FMOD_OK)
@@ -411,7 +408,7 @@ void AudioManager::playSound(int soundIndex, SceneNode *soundNode, int *channelI
 			bool isPlaying;
 
 			result = channel->isPlaying(&isPlaying);
-			if ((result == FMOD_OK) && (isPlaying == true) && (mChannelArray[channelIndexTemp].sceneNode == soundNode))
+			if ((result == FMOD_OK) && (isPlaying == true))
 				return;  // Already playing this sound attached to this node.
 		}
 	}
@@ -428,18 +425,18 @@ void AudioManager::playSound(int soundIndex, SceneNode *soundNode, int *channelI
 	}
 
 	channel->getIndex(&channelIndexTemp);
-	mChannelArray[channelIndexTemp].sceneNode = soundNode;
-	mSceneNodeToChannelMap[soundNode] = channelIndexTemp;
+	mChannelArray[channelIndexTemp].position = soundPosition;
+	//mSceneNodeToChannelMap[soundNode] = channelIndexTemp;
 
-	if (soundNode)
-	{
-		mChannelArray[channelIndexTemp].prevPosition = soundNode->_getDerivedPosition();
+	//if (soundNode)
+	//{
+		mChannelArray[channelIndexTemp].prevPosition = soundPosition;
 
-		initialPosition.x = soundNode->_getDerivedPosition().x;
-		initialPosition.y = soundNode->_getDerivedPosition().y;
-		initialPosition.z = soundNode->_getDerivedPosition().z;
+		initialPosition.x = soundPosition.x;
+		initialPosition.y = soundPosition.y;
+		initialPosition.z = soundPosition.z;
 		channel->set3DAttributes(&initialPosition, NULL);
-	}
+	//}
 
 	result = channel->setVolume(1.0);
 	// This is where the sound really starts.
@@ -452,7 +449,7 @@ void AudioManager::playSound(int soundIndex, SceneNode *soundNode, int *channelI
 void AudioManager::playSoundTrack(String name)
 {
 	stopSound(&mSoundTrackChannelIndex);
-	playSound(name,0,&mSoundTrackChannelIndex);
+	playSound(name,Vector3::ZERO,&mSoundTrackChannelIndex);
 
 	FMOD::Channel *channel = 0;
 	mSystem->getChannel(mSoundTrackChannelIndex, &channel);
@@ -608,14 +605,14 @@ void AudioManager::handleEnemyKillEvent(EnemyKillEventPtr evt)
 	{
 		int channelIndex = -1;
 
-		SceneNode* sceneNode = enemy->getSceneNode();
-		bool channelFound = mSceneNodeToChannelMap.find(sceneNode) != mSceneNodeToChannelMap.end();
+		SceneNode* sceneNode = enemy->_getSceneNode();
+		//bool channelFound = mSceneNodeToChannelMap.find(sceneNode) != mSceneNodeToChannelMap.end();
 
-		if(channelFound)
-			channelIndex = mSceneNodeToChannelMap[sceneNode];
+		//if(channelFound)
+			//channelIndex = mSceneNodeToChannelMap[sceneNode];
 
 		// The player has just hit the enemy
-		playSound("EnemyDie01.wav",sceneNode,&channelIndex);
+		playSound("EnemyDie01.wav",sceneNode->_getDerivedPosition(),&channelIndex);
 	}
 }
 
@@ -627,19 +624,19 @@ void AudioManager::handlePlayerAttackEvent(PlayerAttackEventPtr evt)
 
 	int channelIndex = -1;
 
-	SceneNode* sceneNode = player->getSceneNode();
-	bool channelFound = mSceneNodeToChannelMap.find(sceneNode) != mSceneNodeToChannelMap.end();
+	SceneNode* sceneNode = player->_getSceneNode();
+	//bool channelFound = mSceneNodeToChannelMap.find(sceneNode) != mSceneNodeToChannelMap.end();
 
-	if(channelFound)
-		channelIndex = mSceneNodeToChannelMap[sceneNode];
+	//if(channelFound)
+		//channelIndex = mSceneNodeToChannelMap[sceneNode];
 
 	// The player has just hit the enemy
 	if( player->wichAttack() == 1 )
-		playSound("PlayerHit01.wav",sceneNode,&channelIndex);
+		playSound("PlayerHit01.wav",sceneNode->_getDerivedPosition(),&channelIndex);
 	else if( player->wichAttack() == 2 )
- 		playSound("PlayerHit02.wav",sceneNode,&channelIndex);
+ 		playSound("PlayerHit02.wav",sceneNode->_getDerivedPosition(),&channelIndex);
 	else if( player->wichAttack() == 3 )
-		playSound("PlayerHit03.wav",sceneNode,&channelIndex);
+		playSound("PlayerHit03.wav",sceneNode->_getDerivedPosition(),&channelIndex);
 }
 
 void AudioManager::handlePlayerAttackSpecialEvent(PlayerAttackSpecialEventPtr evt)
@@ -650,14 +647,14 @@ void AudioManager::handlePlayerAttackSpecialEvent(PlayerAttackSpecialEventPtr ev
 
 	int channelIndex = -1;
 
-	SceneNode* sceneNode = player->getSceneNode();
-	bool channelFound = mSceneNodeToChannelMap.find(sceneNode) != mSceneNodeToChannelMap.end();
+	SceneNode* sceneNode = player->_getSceneNode();
+	//bool channelFound = mSceneNodeToChannelMap.find(sceneNode) != mSceneNodeToChannelMap.end();
 
-	if(channelFound)
-		channelIndex = mSceneNodeToChannelMap[sceneNode];
+	//if(channelFound)
+		//channelIndex = mSceneNodeToChannelMap[sceneNode];
 
 	// The player has just hit the enemy
-	playSound("Flame02.wav",sceneNode,&channelIndex);
+	playSound("Flame02.wav",sceneNode->_getDerivedPosition(),&channelIndex);
 }
 
 void AudioManager::handleItemCatchEvent(ItemCatchEventPtr evt)
@@ -669,14 +666,14 @@ void AudioManager::handleItemCatchEvent(ItemCatchEventPtr evt)
 
 	int channelIndex = -1;
 
-	SceneNode* sceneNode = item->getSceneNode();
-	bool channelFound = mSceneNodeToChannelMap.find(sceneNode) != mSceneNodeToChannelMap.end();
+	SceneNode* sceneNode = item->_getSceneNode();
+	//bool channelFound = mSceneNodeToChannelMap.find(sceneNode) != mSceneNodeToChannelMap.end();
 
-	if(channelFound)
-		channelIndex = mSceneNodeToChannelMap[sceneNode];
+	//if(channelFound)
+		//channelIndex = mSceneNodeToChannelMap[sceneNode];
 
 	// The player has just hit the enemy
-	playSound("Item01.wav",sceneNode,&channelIndex);
+	playSound("Item01.wav",sceneNode->_getDerivedPosition(),&channelIndex);
 }
 
 // --------------------------------

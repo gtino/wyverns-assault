@@ -23,6 +23,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #ifndef __DEBUG_H_
 #define __DEBUG_H_
 
+//#define OGRE_LOG_DEBUG_OUT
+
 #include <Windows.h>
 #include <ostream>
 #include <sstream>
@@ -37,7 +39,8 @@ namespace WyvernsAssault
 	public:
 		static void Out(Ogre::String msg);
 		static void Out(const char *text);
-		static void Out(const wchar_t *text);
+		static void Out(Ogre::SceneNode* sceneNode);
+		static void Out(Ogre::SceneNode* sceneNode, int level);
 	};
 }
 

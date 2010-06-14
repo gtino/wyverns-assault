@@ -10,6 +10,8 @@ mTotalSeconds(0.0f)
 	mAudioManager = AudioManagerPtr(new AudioManager());
 	mInputManager = InputManagerPtr(new InputManager());
 	mStatesManager = StatesManagerPtr(new StatesManager());
+	mGuiManager = GuiManagerPtr(new GuiManager());
+	mCameraManager = CameraManagerPtr(new CameraManager());
 }
 
 Game::~Game()
@@ -27,20 +29,24 @@ bool Game::initialize()
 
 	if(carryOn)
 	{
-	// Initialize Audio Layer
-	mAudioManager->initialize();
+		// Initialize Audio Layer
+		mAudioManager->initialize();
 
-	// Initialize input manager. A render window is needed in order to setup mouse coords and boundaries.
-	mInputManager->initialize(mGraphicsManager->getRenderWindow(), true);
-	
-	// Load graphic resourcrs
-	mGraphicsManager->loadResources();
+		// Initialize input manager. A render window is needed in order to setup mouse coords and boundaries.
+		mInputManager->initialize(mGraphicsManager->getRenderWindow(), true);
+		
+		// Load graphic resourcrs
+		mGraphicsManager->loadResources();
 
-	// Then we load audio
-	mAudioManager->loadResources();
+		// Then we load audio
+		mAudioManager->loadResources();
 
-	// Initialize Game states (FSM) manager
-	mStatesManager->initialize(mGraphicsManager, mInputManager, mAudioManager);
+		mCameraManager->initialize(mGraphicsManager->getSceneManager(), mGraphicsManager->getRenderWindow());		
+
+		mGuiManager->initialize(mGraphicsManager->getRoot(), mGraphicsManager->getSceneManager(), mGraphicsManager->getRenderWindow());
+
+		// Initialize Game states (FSM) manager
+		mStatesManager->initialize(mGraphicsManager, mInputManager, mAudioManager, mGuiManager, mCameraManager);
 	}
 
 	return carryOn;
@@ -84,12 +90,12 @@ void Game::go()
 /** Finalize the game */
 void Game::finalize()
 {
+	// GUI
+	mGuiManager.reset();
+	// Cameras
+	mCameraManager.reset();
 	// Unregister and dispose of the StatesManager
 	mStatesManager.reset();
-	// Unload all graphics data
-	mGraphicsManager->unloadResources();
-	// Finalize all
-	mGraphicsManager.reset();
 	// Unacquire all inputs
 	mInputManager->unacquireAll();
 	// Finalize all
@@ -98,4 +104,8 @@ void Game::finalize()
 	mAudioManager->unloadResources();
 	// Release Audio Manager
 	mAudioManager.reset();
+	// Unload all graphics data
+	mGraphicsManager->unloadResources();
+	// Finalize all
+	mGraphicsManager.reset();
 }

@@ -64,8 +64,9 @@ namespace WyvernsAssault
 		virtual ~Player();
 
 		// EntityInterface
-		void initializeEntity(Ogre::Entity* mesh, Ogre::SceneNode* sceneNode, SceneManager* sceneManager);
+		void initializeEntity(Ogre::Entity* entity, Ogre::SceneNode* sceneNode, SceneManager* sceneManager);
 		void finalizeEntity();
+		void updateEntity(const float elapsedSeconds);
 
 		// Player functions
 		void setPosition(Ogre::Vector3 position);
@@ -75,6 +76,9 @@ namespace WyvernsAssault
 		bool isSpecial(){ return special ; }
 		bool isDeath() { return !live; }
 		bool isDying() { return timeDeath <= 3; }
+
+		Ogre::Real getHitDamage(){return 30.0f;} // TODO : This shoul be a config parameter!
+		Ogre::Real getSpecialHitDamage(){return 100.0f;} // TODO : This shoul be a config parameter!
 
 		// Fire attack bounding box
 		AxisAlignedBox getFireBox(){  return mFireMesh->getWorldBoundingBox(); }
@@ -97,9 +101,6 @@ namespace WyvernsAssault
 		// Die
 		void Die();
 
-		// Animation functions
-		void updateAnimation(float elapsedSeconds);
-
 		// Enable Debug Stuff
 		void setDebugEnabled(bool isDebugEnabled);
 		bool getDebugEnabled(){return mIsDebugEnabled;};
@@ -108,8 +109,6 @@ namespace WyvernsAssault
 		void hideGrids();
 
 	private:
-		SceneManager*	mSceneManager;
-
 		// Fire breath particle system and attach point
 		TagPoint*							mBreathPoint;
 		ParticleUniverse::ParticleSystem*	mFireBreath;

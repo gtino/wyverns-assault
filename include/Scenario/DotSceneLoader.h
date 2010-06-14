@@ -7,6 +7,7 @@
 #include "OgreQuaternion.h"
 #include "vector"
 
+#include "..\Scenario\ScenarioManager.h"
 #include "..\Camera\CameraManager.h"
 #include "..\Graphics\LightsManager.h"
 #include "..\Physics\PhysicsManager.h"
@@ -45,6 +46,7 @@ namespace Ogre
 		void parseDotScene(const String &SceneName, 
 			const String &groupName,
 			SceneManager *levelSceneManager,
+			WyvernsAssault::ScenarioManagerPtr scenarioManager,
 			WyvernsAssault::CameraManagerPtr cameraManager, 
 			WyvernsAssault::LightsManagerPtr lightsManager,
 			WyvernsAssault::EnemyManagerPtr enemysManager,
@@ -66,7 +68,7 @@ namespace Ogre
 		void processNodes(TiXmlElement *XMLNode);
 		void processCameras(TiXmlElement *XMLNode);
 		void processLights(TiXmlElement *XMLNode);		
-		void processEnemys(TiXmlElement *XMLNode);	
+		void processEnemies(TiXmlElement *XMLNode);	
 		void processSkyBox(TiXmlElement *XMLNode);
 		void processSkyDome(TiXmlElement *XMLNode);
 		void processSubEntities(TiXmlElement *XMLNode, Entity *pEntity);
@@ -105,6 +107,7 @@ namespace Ogre
 		String m_sGroupName;
 		String m_sPrependNode;
 
+		WyvernsAssault::ScenarioManagerPtr mScenarioManager;
 		WyvernsAssault::CameraManagerPtr mCameraManager;
 		WyvernsAssault::LightsManagerPtr mLightsManager;
 		WyvernsAssault::EnemyManagerPtr mEnemyManager;

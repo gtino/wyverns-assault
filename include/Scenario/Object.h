@@ -20,48 +20,62 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
 -----------------------------------------------------------------------------
 */
-#ifndef __PHYSICS_INTERFACE_H__
-#define __PHYSICS_INTERFACE_H__
+#ifndef __OBJECT_H__
+#define __OBJECT_H__
 
 #include <Ogre.h>
 
-#include "Physics.h"
-
-using namespace Ogre;
+#include "..\Physics\PhysicsInterface.h"
+#include "..\Entity\EntityInterface.h"
+#include "..\Entity\OBBoxRenderable.h"
 
 namespace WyvernsAssault
 {
-	enum PhysicsTypes
+	/** List of enemy types */
+	enum ObjectTypes
 	{
-		Ground,
-		Border,
-		Static,
-		Dynamic,
-		Fake
+		Default,
 	};
 
 	/**
-	Interface implemented by objects with physics
+	Class used to manage all the enemies
 	*/
-	class PhysicsInterface
+	class Object : public PhysicsInterface, public EntityInterface
 	{
-
 	public:
-		
-		virtual void initializePhysics(){}
-		virtual void finalizePhysics(){return;} 
-		virtual void updatePhysics(const float elapsedSeconds){};
+		Object(Ogre::String name, ObjectTypes type);
+		~Object();
 
-		Ogre::Real getSpeed(){return mSpeed;}
-		void setSpeed(Ogre::Real speed){mSpeed = speed;}
+		void _attachTo(Ogre::SceneNode* sceneNode);
+		void _detach();
 
-		virtual GeometryPtr getGeometry(){return mGeometry;}
-		virtual void setGeometry(GeometryPtr geometry) {mGeometry = geometry;}
+		ObjectTypes getObjectType(){return mType;}
+
+		// Enable Debug Stuff
+		void setDebugEnabled(bool isDebugEnabled);
+		bool getDebugEnabled(){return mIsDebugEnabled;}
+
+		//
+		// Entity Interface
+		//
+		void initializeEntity(Ogre::Entity* mesh, Ogre::SceneNode* sceneNode, Ogre::SceneManager* sceneManager);
+		void finalizeEntity();
+		void updateEntity(const float elapsedSeconds);
 
 	private:
-		Ogre::Real mSpeed;
-		GeometryPtr mGeometry;
+		ObjectTypes mType;
+
+		OBBoxRenderable* mOBBoxRenderable;
+		bool mIsDebugEnabled;
+
+	private:
+		void chase();
+
+	public:
+		static ObjectTypes StringToType(Ogre::String typeStr);
 	};
+
+	typedef boost::shared_ptr<Object> ObjectPtr;
 }
 
-#endif // __PHYSICS_INTERFACE_H__
+#endif // __OBJECT_H__

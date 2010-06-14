@@ -68,7 +68,8 @@ CollisionEvent::CollisionEvent()
 //----------------------
 
 EnemyHitEvent::EnemyHitEvent(EnemyPtr e, PlayerPtr p)
-:Event(EventTypes::EnemyHit, EventPriorities::Normal)
+: Event(EventTypes::EnemyHit, EventPriorities::Normal)
+, mDamage(0)
 {
 	mEnemy = e;
 	mPlayer = p;
@@ -77,7 +78,8 @@ EnemyHitEvent::EnemyHitEvent(EnemyPtr e, PlayerPtr p)
 //----------------------
 
 EnemySpecialHitEvent::EnemySpecialHitEvent(EnemyPtr e, PlayerPtr p)
-:Event(EventTypes::EnemySpecialHit, EventPriorities::Normal)
+: Event(EventTypes::EnemySpecialHit, EventPriorities::Normal)
+, mDamage(0)
 {
 	mEnemy = e;
 	mPlayer = p;
@@ -90,6 +92,14 @@ EnemyKillEvent::EnemyKillEvent(EnemyPtr e, PlayerPtr p)
 {
 	mEnemy = e;
 	mPlayer = p;
+};
+
+//----------------------
+
+EnemyRemovedEvent::EnemyRemovedEvent(EnemyPtr e)
+:Event(EventTypes::EnemyRemoved, EventPriorities::Normal)
+{
+	mEnemy = e;
 };
 
 //----------------------
@@ -126,4 +136,14 @@ ItemCatchEvent::ItemCatchEvent(/*PlayerPtr p,*/ ItemPtr i)
 	/*mPlayer = p;*/
 	mItem = i;
 };
+
+//----------------------
+
+ItemRemovedEvent::ItemRemovedEvent(/*PlayerPtr p,*/ ItemPtr i)
+:Event(EventTypes::ItemRemoved, EventPriorities::Normal)
+{
+	/*mPlayer = p;*/
+	mItem = i;
+};
+
 

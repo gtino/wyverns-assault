@@ -15,7 +15,7 @@ StatesManager& StatesManager::getSingleton(void)
 // END SINGLETON
 
 StatesManager::StatesManager()
-: mCurrentStateId ( GameStateId::Play )
+: mCurrentStateId ( GameStateId::SplashScreen )
 , mInitialized(false)
 {
 	//
@@ -34,7 +34,7 @@ StatesManager::~StatesManager()
 	}
 }
 
-void StatesManager::initialize(GraphicsManagerPtr graphicsManager, InputManagerPtr inputManager, AudioManagerPtr audioManager)
+void StatesManager::initialize(GraphicsManagerPtr graphicsManager, InputManagerPtr inputManager, AudioManagerPtr audioManager, GuiManagerPtr guiManager, CameraManagerPtr cameraManager)
 {
 	//
 	// Keep a reference to the managers
@@ -42,6 +42,8 @@ void StatesManager::initialize(GraphicsManagerPtr graphicsManager, InputManagerP
 	this->mGraphicsManager = graphicsManager;
 	this->mInputManager = inputManager;
 	this->mAudioManager = audioManager;
+	this->mGuiManager = guiManager;
+	this->mCameraManager = cameraManager;
 
 	//
 	// Register this class as listerer for the input manager (buffered input!)
@@ -55,16 +57,16 @@ void StatesManager::initialize(GraphicsManagerPtr graphicsManager, InputManagerP
 	//		Maybe it is better to provide some kind of way to load it
 	//		'on the fly', reading it from a .cfg file?
 	//
-	this->mStates[GameStateId::SplashScreen]	= new SplashScreenState(graphicsManager, inputManager, audioManager);
-	this->mStates[GameStateId::Intro]			= new IntroState(graphicsManager, inputManager, audioManager);
-	this->mStates[GameStateId::MainMenu]		= new MainMenuState(graphicsManager, inputManager, audioManager);
-	this->mStates[GameStateId::Ending]			= new EndingState(graphicsManager, inputManager, audioManager);
-	this->mStates[GameStateId::GameOver]		= new GameoverState(graphicsManager, inputManager, audioManager);
-	this->mStates[GameStateId::Play]			= new PlayState(graphicsManager, inputManager, audioManager);
-	this->mStates[GameStateId::Credits]			= new CreditsState(graphicsManager, inputManager, audioManager);
-	this->mStates[GameStateId::Outro]			= new OutroState(graphicsManager, inputManager, audioManager);
-	this->mStates[GameStateId::Options]			= new OptionsState(graphicsManager, inputManager, audioManager);
-	this->mStates[GameStateId::Pause]			= new PauseState(graphicsManager, inputManager, audioManager);
+	this->mStates[GameStateId::SplashScreen]	= new SplashScreenState(graphicsManager, inputManager, audioManager, cameraManager, guiManager);
+	this->mStates[GameStateId::Intro]			= new IntroState(graphicsManager, inputManager, audioManager, cameraManager, guiManager);
+	this->mStates[GameStateId::MainMenu]		= new MainMenuState(graphicsManager, inputManager, audioManager, cameraManager, guiManager);
+	this->mStates[GameStateId::Ending]			= new EndingState(graphicsManager, inputManager, audioManager, cameraManager, guiManager);
+	this->mStates[GameStateId::GameOver]		= new GameoverState(graphicsManager, inputManager, audioManager, cameraManager, guiManager);
+	this->mStates[GameStateId::Play]			= new PlayState(graphicsManager, inputManager, audioManager, cameraManager, guiManager);
+	this->mStates[GameStateId::Credits]			= new CreditsState(graphicsManager, inputManager, audioManager, cameraManager, guiManager);
+	this->mStates[GameStateId::Outro]			= new OutroState(graphicsManager, inputManager, audioManager, cameraManager, guiManager);
+	this->mStates[GameStateId::Options]			= new OptionsState(graphicsManager, inputManager, audioManager, cameraManager, guiManager);
+	this->mStates[GameStateId::Pause]			= new PauseState(graphicsManager, inputManager, audioManager, cameraManager, guiManager);
 
 	//
 	// Let's start with the first state!
@@ -146,11 +148,6 @@ bool StatesManager::loop(const float elapsedSeconds)
 			{
 				this->popState();
 				this->changeState(newState);
-
-				Root*			r = mGraphicsManager->getRoot();
-				RenderWindow*	rw = mGraphicsManager->getRenderWindow();
-				SceneManager*	sm = mGraphicsManager->getSceneManager();
-				Viewport*		v = mGraphicsManager->getViewport();
 			}
 			// Options from pause 
 			else if(mCurrentStateId == GameStateId::Pause && nextStateId == GameStateId::Options)

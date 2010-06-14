@@ -15,15 +15,17 @@ PlayerManager& PlayerManager::getSingleton(void)
 }
 // END SINGLETON
 
-PlayerManager::PlayerManager(Ogre::SceneManager* sceneManager):
-mSceneManager(0),
-mIsDebugEnabled(false)
+PlayerManager::PlayerManager(Ogre::SceneManager* sceneManager)
+: mSceneManager(0)
+, mIsDebugEnabled(false)
+, mPlayerNode(0)
 {
 	mSceneManager = sceneManager;
 }
 
 void PlayerManager::initialize()
 {
+	mPlayerNode = mSceneManager->getRootSceneNode()->createChildSceneNode(PLAYER_NODE_NAME);
 }
 
 PlayerManager::~PlayerManager()
@@ -35,6 +37,18 @@ void PlayerManager::finalize()
 {
 	mPlayerList.clear();
 	mPlayerMap.clear();
+
+	Utils::Destroy(mSceneManager, PLAYER_NODE_NAME);
+	mPlayerNode = NULL;
+}
+
+void PlayerManager::update(const float elapsedSeconds)
+{
+	for(int i = 0; i < mPlayerList.size() ; i++)
+	{
+		PlayerPtr player =  mPlayerList[i];
+		player->updateEntity(elapsedSeconds);
+	}
 }
 
 PlayerPtr PlayerManager::createPlayer(Ogre::String name, Ogre::String mesh)
@@ -42,7 +56,7 @@ PlayerPtr PlayerManager::createPlayer(Ogre::String name, Ogre::String mesh)
 	// Player node
 	Ogre::Entity* playerMesh = mSceneManager->createEntity(name, mesh);
 	playerMesh->setQueryFlags(SceneManager::ENTITY_TYPE_MASK);
-	Ogre::SceneNode* playerSceneNode = mSceneManager->getRootSceneNode()->createChildSceneNode(name);
+	Ogre::SceneNode* playerSceneNode = mPlayerNode->createChildSceneNode(name);
 	playerSceneNode->attachObject(playerMesh);
 
 	PlayerPtr player = PlayerPtr(new Player(name));

@@ -1,0 +1,62 @@
+<scene>
+	<!-- Items -->
+	<items>
+		<!-- Live Items -->
+		<item>
+			<position x="360" y="4" z="795"/>
+			<entity type="LiveSmall" meshFile="ruby.mesh" name="LiveSmall1"/>
+		</item>
+		<item>
+			<position x="712" y="6" z="735"/>
+			<entity type="LiveMedium" meshFile="beerGlass.mesh" name="LiveMedium1"/>
+		</item>
+		<item>
+			<position x="875" y="4" z="710"/>
+			<entity type="LiveSmall" meshFile="beerHorn.mesh" name="LiveSmall2"/>
+		</item>
+		<item>
+			<position x="1142" y="4" z="460"/>
+			<entity type="LiveSmall" meshFile="beerHorn.mesh" name="LiveSmall3"/>
+		</item>
+		<item>
+			<position x="1275" y="6" z="215"/>
+			<entity type="LiveBig" meshFile="beerTank.mesh" name="LiveBig1"/>
+		</item>
+		<item>
+			<position x="1277" y="6" z="136"/>
+			<entity type="LiveBig" meshFile="beerTank.mesh" name="LiveBig2"/>
+		</item>
+		<item>
+			<position x="1007" y="6" z="-315"/>
+			<entity type="LiveMedium" meshFile="beerGlass.mesh" name="LiveMedium2"/>
+		</item>
+		<item>
+			<position x="905" y="6" z="-315"/>
+			<entity type="LiveBig" meshFile="beerTank.mesh" name="LiveBig3"/>
+		</item>
+		<item>
+			<position x="532" y="6" z="-595"/>
+			<entity type="LiveMedium" meshFile="beerGlass.mesh" name="LiveMedium3"/>
+		</item>
+		<item>
+			<position x="75" y="5" z="-247"/>
+			<entity type="LiveSmall" meshFile="beerHorn.mesh" name="LiveSmall4"/>
+		</item>
+		<item>
+			<position x="1182" y="25" z="-28"/>
+			<entity type="LiveBig" meshFile="chickenItem.mesh" name="LiveBig4"/>
+		</item>
+		<item>
+			<position x="-59" y="8" z="-127"/>
+			<entity type="LiveBig" meshFile="chickenItem.mesh" name="LiveBig5"/>
+		</item>
+		<item>
+			<position x="580" y="8" z="773"/>
+			<entity type="LiveBig" meshFile="chickenLegItem.mesh" name="LiveMedium4"/>
+		</item>
+		<item>
+			<position x="531" y="8" z="-485"/>
+			<entity type="LiveBig" meshFile="chickenLegItem.mesh" name="LiveMedium5"/>
+		</item>
+	</items>
+</scene>

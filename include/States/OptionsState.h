@@ -33,7 +33,7 @@ namespace WyvernsAssault
 	class OptionsState : public BaseState
 	{
 	public:
-		OptionsState(GraphicsManagerPtr graphicsManager, InputManagerPtr inputManager, AudioManagerPtr audioManager);
+		OptionsState(GraphicsManagerPtr graphicsManager, InputManagerPtr inputManager, AudioManagerPtr audioManager, CameraManagerPtr cameraManager, GuiManagerPtr guiManager);
 		~OptionsState();
 
 	public:

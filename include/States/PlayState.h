@@ -36,6 +36,9 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #include "..\Events\EventsManager.h"
 #include "..\Scenario\ScenarioManager.h"
 #include "..\include\Graphics\PostProcessManager.h"
+#include "..\include\Scenario\DotSceneLoader.h"
+
+#include <boost/scoped_ptr.hpp>
 
 #include <SdkTrays.h>
 #include <ParticleUniversePlugin.h>
@@ -48,7 +51,7 @@ namespace WyvernsAssault
 	class PlayState : public BaseState
 	{
 	public:
-		PlayState(GraphicsManagerPtr graphicsManager, InputManagerPtr inputManager, AudioManagerPtr audioManager);
+		PlayState(GraphicsManagerPtr graphicsManager, InputManagerPtr inputManager, AudioManagerPtr audioManager, CameraManagerPtr cameraManager, GuiManagerPtr guiManager);
 		~PlayState();
 
 	public:
@@ -84,7 +87,6 @@ namespace WyvernsAssault
 		bool mouseMoved(const OIS::MouseEvent& e);
 
 	private:
-		CameraManagerPtr mCameraManager;
 		LightsManagerPtr mLightsManager;
 		PlayerManagerPtr mPlayerManager;
 		EnemyManagerPtr mEnemyManager;

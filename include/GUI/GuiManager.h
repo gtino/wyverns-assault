@@ -31,7 +31,10 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
 #include "..\Input\InputListener.h"
 
-#include "GuiScreen.h"
+#include "..\GUI\GuiScreen.h"
+#include "..\GUI\GuiBackground.h"
+#include "..\GUI\GuiButton.h"
+#include "..\GUI\GuiMenu.h"
 
 using namespace Ogre;
 
@@ -49,13 +52,13 @@ namespace WyvernsAssault
 						, public InputListener
 	{
 	public:
-		GuiManager(Ogre::Root* root, Ogre::SceneManager* sceneManager, Ogre::RenderWindow* window);
+		GuiManager();
 		~GuiManager();
 		static GuiManager& getSingleton(void);
 		static GuiManager* getSingletonPtr(void);
 
 	public:		
-		bool initialize();		
+		bool initialize(Ogre::Root* root, Ogre::SceneManager* sceneManager, Ogre::RenderWindow* window);		
 		void finalize();
 
 	private: // InputListener

@@ -3,7 +3,8 @@
 using namespace WyvernsAssault;
 
 Player::Player(Ogre::String name) 
-: EntityInterface()
+: EntityInterface(name)
+, PhysicsInterface()
 , mOBBoxRenderable(0)
 , mFireOBBoxRenderable(0)
 , mIsDebugEnabled(false)
@@ -16,18 +17,17 @@ Player::~Player()
 	finalizeEntity();
 }
 
-void Player::initializeEntity(Ogre::Entity* mesh, Ogre::SceneNode* sceneNode, SceneManager* sceneManager)
+void Player::initializeEntity(Ogre::Entity* entity, Ogre::SceneNode* sceneNode, SceneManager* sceneManager)
 {
-	mSceneManager = sceneManager;
-	mSceneNode = sceneNode;
-	mMesh = mesh;
+	// Always call base method before!
+	EntityInterface::initializeEntity(entity, sceneNode, sceneManager);
 
 	mFireMesh = mSceneManager->createEntity("fireMesh", "redWyvernFireCone.mesh");
 
 	mFireMesh->setVisible(mIsDebugEnabled);
 
 	// Animation system
-	mAnimationSystem = new tecnofreak::ogre::AnimationSystem( mMesh );
+	mAnimationSystem = new tecnofreak::ogre::AnimationSystem( mEntity );
 	mAnimationSystem->loadAnimationTree( "data/animations/wyvern.xml" );
 	mCurrentAnimation = mAnimationSystem->getParameter( "CurrentAnimation" );
 
@@ -41,7 +41,7 @@ void Player::initializeEntity(Ogre::Entity* mesh, Ogre::SceneNode* sceneNode, Sc
 	
 	// Bounding Box
 	mOBBoxRenderable = new OBBoxRenderable("OBBoxManualMaterial_Player");
-	mOBBoxRenderable->setupVertices(mMesh->getBoundingBox());
+	mOBBoxRenderable->setupVertices(mEntity->getBoundingBox());
 	mOBBoxRenderable->setVisible(mIsDebugEnabled);
 	mSceneNode->attachObject(mOBBoxRenderable);
 	
@@ -55,33 +55,102 @@ void Player::initializeEntity(Ogre::Entity* mesh, Ogre::SceneNode* sceneNode, Sc
 }
 
 void Player::finalizeEntity()
-{	
-	if(mOBBoxRenderable)
+{
+	if(mSceneManager)
 	{
-		delete mOBBoxRenderable;
-		mOBBoxRenderable = NULL;
+		if(mSceneManager->hasEntity("fireMesh"))
+			mSceneManager->destroyEntity("fireMesh");
 	}
-	if(mFireOBBoxRenderable)
+
+	// Always call base method before!
+	EntityInterface::finalizeEntity();
+}
+
+void Player::updateEntity(const float elapsedSeconds)
+{
+	// Check if special attack animation is finish
+	if( mCurrentAnimation->getFloatValue() == SPECIAL && mEntity->getAnimationState("Special")->getTimePosition() +  elapsedSeconds > mEntity->getAnimationState("Special")->getLength() )
 	{
-		delete mFireOBBoxRenderable;
-		mFireOBBoxRenderable = NULL;
+		special = false;
 	}
-	if ( mAnimationSystem )
+	// Check if attack animation is finish
+	if( mCurrentAnimation->getFloatValue() == ATTACKA1 && mEntity->getAnimationState("AttackA_01")->getTimePosition() +  elapsedSeconds > mEntity->getAnimationState("AttackA_01")->getLength() )
 	{
-		delete mAnimationSystem;
-		mAnimationSystem = NULL;
+		hideGrids();
+		if ( continueAttacking )
+		{
+			attacking = 2;
+			continueAttacking = false;
+		}
+		else
+			attacking = 0;
 	}
-	if(mSceneNode)
+	if( mCurrentAnimation->getFloatValue() == ATTACKA2 && mEntity->getAnimationState("AttackA_02")->getTimePosition() +  elapsedSeconds > mEntity->getAnimationState("AttackA_02")->getLength() )
 	{
-		mSceneManager->destroySceneNode(mSceneNode);
+		hideGrids();
+		if ( continueAttacking )
+		{
+			attacking = 3;
+			continueAttacking = false;
+
+			// Camera effect on third attack for bigger impact
+			CameraManager::getSingletonPtr()->shake(1);
+		}
+		else
+			attacking = 0;
 	}
-	if(mMesh)
+	if( mCurrentAnimation->getFloatValue() == ATTACKA3 && mEntity->getAnimationState("AttackA_03")->getTimePosition() +  elapsedSeconds > mEntity->getAnimationState("AttackA_03")->getLength() )
 	{
-		mSceneManager->destroyEntity(mMesh);
+		hideGrids();
+		if ( continueAttacking )
+		{
+			attacking = 1;
+			continueAttacking = false;
+		}
+		else
+			attacking = 0;
 	}
-	if(mFireMesh)
+	// Check if death animation is finish (plus 1 second)
+	if( mCurrentAnimation->getFloatValue() == DIE && mEntity->getAnimationState("Die")->getTimePosition() +  elapsedSeconds > mEntity->getAnimationState("Die")->getLength() )
 	{
-		mSceneManager->destroyEntity(mFireMesh);
+		special = false;
+	}
+
+	// Activate current animation
+	if ( !live ) 
+	{
+		mCurrentAnimation->setValue( DIE );
+		timeDeath += elapsedSeconds;
+	}
+	else if( special )
+	{
+		mCurrentAnimation->setValue( SPECIAL );
+	}
+	else if( attacking  == 1 )
+	{
+		attackA1();
+	}
+	else if( attacking  == 2 )
+	{
+		attackA2();
+	}
+	else if( attacking  == 3 )
+	{
+		attackA3();
+	}
+	else if( moving )
+	{
+		mCurrentAnimation->setValue( RUN );
+	}
+	else
+	{
+		mCurrentAnimation->setValue( IDDLE );
+	}	
+
+	// If player death time is bigger than its animations, dont add time
+	if( timeDeath <= mEntity->getAnimationState("Die")->getLength())
+	{
+		mAnimationSystem->update( elapsedSeconds );
 	}
 }
 
@@ -91,10 +160,10 @@ void Player::setFireBreath(ParticleUniverse::ParticleSystem* fireBreath)
 	mFireBreath = fireBreath;
 
 	// Attach to bone	
-	mBreathPoint = mMesh->attachObjectToBone("llengua1", mFireBreath);
+	mBreathPoint = mEntity->attachObjectToBone("llengua1", mFireBreath);
 	
-	mMesh->attachObjectToBone("llengua1", mFireMesh);
-	mMesh->attachObjectToBone("llengua1", mFireOBBoxRenderable);	
+	mEntity->attachObjectToBone("llengua1", mFireMesh);
+	mEntity->attachObjectToBone("llengua1", mFireOBBoxRenderable);	
 }
 
 void Player::setPosition(Ogre::Vector3 position)
@@ -145,9 +214,9 @@ void Player::attackA1()
 	mCurrentAnimation->setValue( ATTACKA1 );
 
 	// Show current attack's grids
-	mMesh->getSubEntity("grid1")->setVisible(true);
-	mMesh->getSubEntity("grid2")->setVisible(true);
-	mMesh->getSubEntity("grid3")->setVisible(true);
+	mEntity->getSubEntity("grid1")->setVisible(true);
+	mEntity->getSubEntity("grid2")->setVisible(true);
+	mEntity->getSubEntity("grid3")->setVisible(true);
 }
 
 void Player::attackA2()
@@ -155,9 +224,9 @@ void Player::attackA2()
 	mCurrentAnimation->setValue( ATTACKA2 );
 
 	// Show current attack's grids
-	mMesh->getSubEntity("grid4")->setVisible(true);
-	mMesh->getSubEntity("grid5")->setVisible(true);
-	mMesh->getSubEntity("grid6")->setVisible(true);
+	mEntity->getSubEntity("grid4")->setVisible(true);
+	mEntity->getSubEntity("grid5")->setVisible(true);
+	mEntity->getSubEntity("grid6")->setVisible(true);
 }
 
 void Player::attackA3()
@@ -165,8 +234,8 @@ void Player::attackA3()
 	mCurrentAnimation->setValue( ATTACKA3 );
 
 	// Show current attack's grids
-	mMesh->getSubEntity("grid7")->setVisible(true);
-	mMesh->getSubEntity("grid8")->setVisible(true);
+	mEntity->getSubEntity("grid7")->setVisible(true);
+	mEntity->getSubEntity("grid8")->setVisible(true);
 }
 
 void Player::attackSpecial()
@@ -174,7 +243,7 @@ void Player::attackSpecial()
 	if( attacking == 0)
 	{
 		special = true;	
-		mFireBreath->startAndStopFade(mMesh->getAnimationState("Special")->getLength());
+		mFireBreath->startAndStopFade(mEntity->getAnimationState("Special")->getLength());
 	}
 }
 
@@ -182,94 +251,6 @@ void Player::Die()
 {
 	// Kill player
 	live = false;
-}
-
-void Player::updateAnimation(float elapsedSeconds)
-{
-	// Check if special attack animation is finish
-	if( mCurrentAnimation->getFloatValue() == SPECIAL && mMesh->getAnimationState("Special")->getTimePosition() +  elapsedSeconds > mMesh->getAnimationState("Special")->getLength() )
-	{
-		special = false;
-	}
-	// Check if attack animation is finish
-	if( mCurrentAnimation->getFloatValue() == ATTACKA1 && mMesh->getAnimationState("AttackA_01")->getTimePosition() +  elapsedSeconds > mMesh->getAnimationState("AttackA_01")->getLength() )
-	{
-		hideGrids();
-		if ( continueAttacking )
-		{
-			attacking = 2;
-			continueAttacking = false;
-		}
-		else
-			attacking = 0;
-	}
-	if( mCurrentAnimation->getFloatValue() == ATTACKA2 && mMesh->getAnimationState("AttackA_02")->getTimePosition() +  elapsedSeconds > mMesh->getAnimationState("AttackA_02")->getLength() )
-	{
-		hideGrids();
-		if ( continueAttacking )
-		{
-			attacking = 3;
-			continueAttacking = false;
-
-			// Camera effect on third attack for bigger impact
-			CameraManager::getSingletonPtr()->shake(1);
-		}
-		else
-			attacking = 0;
-	}
-	if( mCurrentAnimation->getFloatValue() == ATTACKA3 && mMesh->getAnimationState("AttackA_03")->getTimePosition() +  elapsedSeconds > mMesh->getAnimationState("AttackA_03")->getLength() )
-	{
-		hideGrids();
-		if ( continueAttacking )
-		{
-			attacking = 1;
-			continueAttacking = false;
-		}
-		else
-			attacking = 0;
-	}
-	// Check if death animation is finish (plus 1 second)
-	if( mCurrentAnimation->getFloatValue() == DIE && mMesh->getAnimationState("Die")->getTimePosition() +  elapsedSeconds > mMesh->getAnimationState("Die")->getLength() )
-	{
-		special = false;
-	}
-
-	// Activate current animation
-	if ( !live ) 
-	{
-		mCurrentAnimation->setValue( DIE );
-		timeDeath += elapsedSeconds;
-	}
-	else if( special )
-	{
-		mCurrentAnimation->setValue( SPECIAL );
-	}
-	else if( attacking  == 1 )
-	{
-		attackA1();
-	}
-	else if( attacking  == 2 )
-	{
-		attackA2();
-	}
-	else if( attacking  == 3 )
-	{
-		attackA3();
-	}
-	else if( moving )
-	{
-		mCurrentAnimation->setValue( RUN );
-	}
-	else
-	{
-		mCurrentAnimation->setValue( IDDLE );
-	}	
-
-	// If player death time is bigger than its animations, dont add time
-	if( timeDeath <= mMesh->getAnimationState("Die")->getLength())
-	{
-		mAnimationSystem->update( elapsedSeconds );
-	}
 }
 
 void Player::setDebugEnabled(bool isDebugEnabled)
@@ -291,12 +272,12 @@ void Player::setDebugEnabled(bool isDebugEnabled)
 
 void Player::hideGrids()
 {
-	mMesh->getSubEntity("grid1")->setVisible(false);
-	mMesh->getSubEntity("grid2")->setVisible(false);
-	mMesh->getSubEntity("grid3")->setVisible(false);
-	mMesh->getSubEntity("grid4")->setVisible(false);
-	mMesh->getSubEntity("grid5")->setVisible(false);
-	mMesh->getSubEntity("grid6")->setVisible(false);
-	mMesh->getSubEntity("grid7")->setVisible(false);
-	mMesh->getSubEntity("grid8")->setVisible(false);
+	mEntity->getSubEntity("grid1")->setVisible(false);
+	mEntity->getSubEntity("grid2")->setVisible(false);
+	mEntity->getSubEntity("grid3")->setVisible(false);
+	mEntity->getSubEntity("grid4")->setVisible(false);
+	mEntity->getSubEntity("grid5")->setVisible(false);
+	mEntity->getSubEntity("grid6")->setVisible(false);
+	mEntity->getSubEntity("grid7")->setVisible(false);
+	mEntity->getSubEntity("grid8")->setVisible(false);
 }

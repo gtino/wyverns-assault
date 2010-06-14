@@ -15,10 +15,13 @@ CameraManager& CameraManager::getSingleton(void)
 }
 // END SINGLETON
 
-CameraManager::CameraManager(SceneManager* sceneManager, RenderWindow* window, Viewport* viewport)
-: mCamera(0)
+CameraManager::CameraManager()
+: mGameCamera(0)
+, mSceneManager(0)
+, mGuiCamera(0)
 , mCameraNode(0)
-, mCameraLookAtNode(0)
+, mGameCameraNode(0)
+, mGameCameraLookAtNode(0)
 , mCameraMan(0)
 , mAxes(0)
 , mAxesNode(0)
@@ -32,10 +35,9 @@ CameraManager::CameraManager(SceneManager* sceneManager, RenderWindow* window, V
 , mAxesAnimation(0)
 , mCameraEffectAnimation(0)
 , mCameraEffectLookAnimation(0)
+, mGameViewport(0)
+, mGuiViewport(0)
 {
-	this->mSceneManager = sceneManager;
-	this->mWindow = window;
-	this->mViewport = viewport;
 }
 
 CameraManager::~CameraManager()
@@ -44,38 +46,60 @@ CameraManager::~CameraManager()
 }
 
 /** Initialize the camera manager */
-void CameraManager::initialize()
+void CameraManager::initialize(SceneManager* sceneManager, RenderWindow* window)
 {
-	if(mSceneManager->hasCamera( "GameCamera" ))
-		mCamera = mSceneManager->getCamera( "GameCamera" );
+	this->mSceneManager = sceneManager;
+	this->mWindow = window;
+	this->mCameraNode = mSceneManager->getRootSceneNode()->createChildSceneNode(CAMERA_NODE_NAME);
+
+	// -----------------------
+	// Gui Camera and Viewport
+	// -----------------------
+	if(mSceneManager->hasCamera( GUI_CAMERA ))
+		mGuiCamera = mSceneManager->getCamera( GUI_CAMERA );
 	else
-		mCamera = mSceneManager->createCamera( "GameCamera" );
+		mGuiCamera = mSceneManager->createCamera( GUI_CAMERA );
+
+	mGuiViewport = window->addViewport(mGuiCamera,0);
+	mGuiViewport->setBackgroundColour( Ogre::ColourValue( 0, 0, 0 ) );
+
+	mGuiCamera->setAspectRatio(Real(mGuiViewport->getActualWidth()) / Real(mGuiViewport->getActualHeight()));	
+
+	// ------------------------
+	// Game Camera and Viewport
+	// ------------------------
+	if(mSceneManager->hasCamera( GAME_CAMERA ))
+		mGameCamera = mSceneManager->getCamera( GAME_CAMERA );
+	else
+		mGameCamera = mSceneManager->createCamera( GAME_CAMERA );
+
+	mGameViewport = window->addViewport(mGameCamera,1);
+	mGameViewport->setBackgroundColour( Ogre::ColourValue( 0.3, 0.6, 0.9 ) );
 
 	/** Game camera cofiguration */
-	mCamera->setNearClipDistance(1);
-	mCamera->setFarClipDistance(20000);
-	mCamera->setAspectRatio(Real(mViewport->getActualWidth()) / Real(mViewport->getActualHeight()));	
-	mViewport->setCamera(mCamera);
+	mGameCamera->setNearClipDistance(1);
+	mGameCamera->setFarClipDistance(20000);
+	mGameCamera->setAspectRatio(Real(mGameViewport->getActualWidth()) / Real(mGameViewport->getActualHeight()));	
 
 	/** Camera Node and Look At Node */
-	mCameraNode = mSceneManager->getRootSceneNode()->createChildSceneNode("CameraNode");
-	mCameraLookAtNode = mSceneManager->getRootSceneNode()->createChildSceneNode("LookAtNode");
-	mCameraNode->attachObject(mCamera);
-	mCamera->setAutoTracking(true, mCameraLookAtNode, Vector3::UNIT_X);
+	mGameCameraNode = mCameraNode->createChildSceneNode("GameCameraNode");
+	mGameCameraLookAtNode = mCameraNode->createChildSceneNode("LookAtNode");
+	mGameCameraNode->attachObject(mGameCamera);
+	mGameCamera->setAutoTracking(true, mGameCameraLookAtNode, Vector3::UNIT_X);
 
 	// Initial Camera Position
-	mCameraMode = "Start";
-	mCameraNode->setPosition(2000, 1500, -2000);
+	mGameCameraMode = "Start";
+	mGameCameraNode->setPosition(2000, 1500, -2000);
 
 	/** Debug axes node */
 	mAxes = mSceneManager->createEntity("Axes", "axes.mesh");
-	mAxesNode = mSceneManager->getRootSceneNode()->createChildSceneNode("AxesNode");
+	mAxesNode = mCameraNode->createChildSceneNode("AxesNode");
 	mAxesNode->setScale(0.1, 0.1, 0.1);
 	mAxesNode->setVisible(false);
 	
 	/** Other variables initialization */
 	mGameArea = 0;
-	mCameraZoom = 0;
+	mGameCameraZoom = 0;
 	mFixedCamera = 0;
 
 	mCameraAnimation = mSceneManager->createAnimation("CameraTrack", 1);
@@ -95,17 +119,23 @@ void CameraManager::initialize()
 	mCameraEffectLook->setEnabled(false);
 
 	/** Sdk Camera Manager for free look camera */
-	mCameraMan = new OgreBites::SdkCameraMan(mCamera);
+	mCameraMan = new OgreBites::SdkCameraMan(mGameCamera);
 	mCameraMan->setStyle(OgreBites::CS_MANUAL);
 }
 
 /** Finalize the camera manager */
 void CameraManager::finalize()
 {	
-	if(mCamera)
+	if(mSceneManager->hasCamera(GUI_CAMERA))
 	{
-		mSceneManager->destroyCamera( "GameCamera" );
-		mCamera = NULL;
+		mSceneManager->destroyCamera( GUI_CAMERA );
+		mGuiCamera = NULL;
+	}
+
+	if(mSceneManager->hasCamera(GAME_CAMERA))
+	{
+		mSceneManager->destroyCamera( GAME_CAMERA );
+		mGameCamera = NULL;
 	}
 
 	if(mCameraMan)
@@ -114,16 +144,16 @@ void CameraManager::finalize()
 		mCameraMan = 0;
 	}
 
-	if(mCameraNode)
+	if(mGameCameraNode)
 	{
-		mSceneManager->destroySceneNode(mCameraNode);
-		mCameraNode = NULL;
+		mSceneManager->destroySceneNode(mGameCameraNode);
+		mGameCameraNode = NULL;
 	}
 
-	if(mCameraLookAtNode)
+	if(mGameCameraLookAtNode)
 	{
-		mSceneManager->destroySceneNode(mCameraLookAtNode);
-		mCameraLookAtNode = NULL;
+		mSceneManager->destroySceneNode(mGameCameraLookAtNode);
+		mGameCameraLookAtNode = NULL;
 	}
 
 	if(mAxes)
@@ -197,22 +227,35 @@ void CameraManager::finalize()
 		mSceneManager->destroyAnimationState("CameraEffectLook");
 		mCameraEffectLook = NULL;
 	}
+
+	if(mSceneManager)
+	{
+		Utils::Destroy(mSceneManager, CAMERA_NODE_NAME);
+		this->mCameraNode = NULL;
+		mSceneManager->destroyAllCameras();
+		mSceneManager = NULL;
+	}
+
+	if(mWindow)
+	{
+		mWindow->removeAllViewports();
+	}
 }
 
 Vector3 CameraManager::getCameraPosition()
 { 
-	if(mCameraMode == "Free")
-		return mCamera->getRealPosition();
+	if(mGameCameraMode == "Free")
+		return mGameCamera->getRealPosition();
 	else
-		return mCameraNode->getPosition();
+		return mGameCameraNode->getPosition();
 }
 
 Vector3 CameraManager::getCameraLookAt()
 { 
-	if(mCameraMode == "Free")
-		return mCamera->getRealPosition() + mCamera->getDirection() * 50;
+	if(mGameCameraMode == "Free")
+		return mGameCamera->getRealPosition() + mGameCamera->getDirection() * 50;
 	else
-		return mCameraLookAtNode->getPosition();
+		return mGameCameraLookAtNode->getPosition();
 }
 
 int CameraManager::getGameArea(Vector3 position)
@@ -245,35 +288,35 @@ Vector3 CameraManager::getDirection(Vector3 direction)
 
 	if(direction == Vector3(1,0,0))
 	{
-		finalDirection = Quaternion(Degree(270), Vector3::UNIT_Y) * mCamera->getDirection();
+		finalDirection = Quaternion(Degree(270), Vector3::UNIT_Y) * mGameCamera->getDirection();
 	}
 	else if(direction == Vector3(-1,0,0))
 	{
-		finalDirection = Quaternion(Degree(90), Vector3::UNIT_Y) * mCamera->getDirection();
+		finalDirection = Quaternion(Degree(90), Vector3::UNIT_Y) * mGameCamera->getDirection();
 	}
 	else if(direction == Vector3(0,0,1))
 	{
-		finalDirection = Quaternion(Degree(180), Vector3::UNIT_Y) * mCamera->getDirection();
+		finalDirection = Quaternion(Degree(180), Vector3::UNIT_Y) * mGameCamera->getDirection();
 	}
 	else if(direction == Vector3(0,0,-1))
 	{
-		finalDirection = mCamera->getDirection();
+		finalDirection = mGameCamera->getDirection();
 	}
 	else if(direction == Vector3(1,0,1))
 	{
-		finalDirection = Quaternion(Degree(225), Vector3::UNIT_Y) * mCamera->getDirection();
+		finalDirection = Quaternion(Degree(225), Vector3::UNIT_Y) * mGameCamera->getDirection();
 	}
 	else if(direction == Vector3(1,0,-1))
 	{
-		finalDirection = Quaternion(Degree(315), Vector3::UNIT_Y) * mCamera->getDirection();
+		finalDirection = Quaternion(Degree(315), Vector3::UNIT_Y) * mGameCamera->getDirection();
 	}
 	else if(direction == Vector3(-1,0,1))
 	{
-		finalDirection = Quaternion(Degree(135), Vector3::UNIT_Y) * mCamera->getDirection();
+		finalDirection = Quaternion(Degree(135), Vector3::UNIT_Y) * mGameCamera->getDirection();
 	}		
 	else if(direction == Vector3(-1,0,-1))
 	{
-		finalDirection = Quaternion(Degree(45), Vector3::UNIT_Y) * mCamera->getDirection();
+		finalDirection = Quaternion(Degree(45), Vector3::UNIT_Y) * mGameCamera->getDirection();
 	}
 
 	return finalDirection * Vector3(1,0,1);
@@ -284,7 +327,7 @@ Vector3 CameraManager::getDirection(Vector3 direction)
 void CameraManager::updateCamera(Vector3 player, Real elapsedSeconds)
 {
 	// Update camera camera
-	if(mCameraMode == "Game")
+	if(mGameCameraMode == "Game")
 	{
 		mGameArea = getGameArea(player);
 
@@ -318,7 +361,7 @@ void CameraManager::updateCamera(Vector3 player, Real elapsedSeconds)
 			}
 
 			Real gap = (position.x - begin.x) / (end.x - begin.x);
-			position.z = begin.z - (gap * (begin.z - end.z)) +  mCameraZoom;
+			position.z = begin.z - (gap * (begin.z - end.z)) +  mGameCameraZoom;
 			position.y = begin.y + (gap * (end.y - begin.y));
 		}
 		// Movement in ZX (side scroll in Z). Be carefull with Z index!
@@ -335,7 +378,7 @@ void CameraManager::updateCamera(Vector3 player, Real elapsedSeconds)
 			}
 
 			Real gap = (begin.z - position.z) / (begin.z - end.z);
-			position.x = begin.x + (gap * (end.x - begin.x)) + mCameraZoom;
+			position.x = begin.x + (gap * (end.x - begin.x)) + mGameCameraZoom;
 			position.y = begin.y + (gap * (end.y - begin.y));
 		}		
 		
@@ -347,7 +390,7 @@ void CameraManager::updateCamera(Vector3 player, Real elapsedSeconds)
 		lookAt.z = lbegin.z + ((lend.z - lbegin.z) * percent);
 
 		// Move camera to ZERO
-		mCamera->setPosition(Vector3::ZERO);
+		mGameCamera->setPosition(Vector3::ZERO);
 		// Translate animation to camera scene node and look at node to current position
 		createTransition(getCameraPosition(), position, getCameraLookAt(), lookAt);
 	}
@@ -370,7 +413,7 @@ void CameraManager::createTransition(Vector3 begin, Vector3 end, Vector3 lbegin,
 {
 	/** Camera positioning translation animation */
 	Real dist = 0.2;
-	if(mCameraMode != "Game")
+	if(mGameCameraMode != "Game")
 		dist = 1;
 
 	// Set up spline animation of node
@@ -380,7 +423,7 @@ void CameraManager::createTransition(Vector3 begin, Vector3 end, Vector3 lbegin,
     // Spline it for nice curves
     anim->setInterpolationMode(Animation::IM_SPLINE);
     // Create a track to animate the camera's node
-	NodeAnimationTrack* track = anim->createNodeTrack(0, mCameraNode);
+	NodeAnimationTrack* track = anim->createNodeTrack(0, mGameCameraNode);
     // Setup keyframes
 	// Start position
     TransformKeyFrame* key = track->createNodeKeyFrame(0);
@@ -404,7 +447,7 @@ void CameraManager::createTransition(Vector3 begin, Vector3 end, Vector3 lbegin,
 		mSceneManager->destroyAnimation("LookAtTrack");
 	anim = mSceneManager->createAnimation("LookAtTrack", dist);
     anim->setInterpolationMode(Animation::IM_SPLINE);
-	track = anim->createNodeTrack(0, mCameraLookAtNode);
+	track = anim->createNodeTrack(0, mGameCameraLookAtNode);
     key = track->createNodeKeyFrame(0);
     key->setTranslate(lbegin);
 	key = track->createNodeKeyFrame(dist/2);	
@@ -480,7 +523,7 @@ void CameraManager::setFixedCamera(int camera, Vector3 position, Vector3 lookAt)
 /** Camera effects */
 void CameraManager::zoom(Real zoom)
 {
-	mCameraZoom += zoom;
+	mGameCameraZoom += zoom;
 }
 
 void CameraManager::rumble(Real scale)
@@ -492,7 +535,7 @@ void CameraManager::rumble(Real scale)
     // Spline it for nice curves
     anim->setInterpolationMode(Animation::IM_SPLINE);
     // Create a track to animate the camera's node
-	NodeAnimationTrack* track = anim->createNodeTrack(0, mCameraNode);
+	NodeAnimationTrack* track = anim->createNodeTrack(0, mGameCameraNode);
     // Setup keyframes
 	TransformKeyFrame* key = track->createNodeKeyFrame(0);
 	key->setTranslate(Vector3::ZERO);
@@ -521,7 +564,7 @@ void CameraManager::rumble(Real scale)
     // Spline it for nice curves
     anim->setInterpolationMode(Animation::IM_SPLINE);
     // Create a track to animate the camera's node
-	track = anim->createNodeTrack(0, mCameraLookAtNode);
+	track = anim->createNodeTrack(0, mGameCameraLookAtNode);
     // Setup keyframes
 	key = track->createNodeKeyFrame(0);
 	key->setTranslate(Vector3::ZERO);
@@ -553,7 +596,7 @@ void CameraManager::tremor(Real scale)
     // Spline it for nice curves
     anim->setInterpolationMode(Animation::IM_SPLINE);
     // Create a track to animate the camera's node
-	NodeAnimationTrack* track = anim->createNodeTrack(0, mCameraNode);
+	NodeAnimationTrack* track = anim->createNodeTrack(0, mGameCameraNode);
     // Setup keyframes
 	TransformKeyFrame* key = track->createNodeKeyFrame(0);
 	key->setTranslate(Vector3::ZERO);
@@ -592,7 +635,7 @@ void CameraManager::tremor(Real scale)
     // Spline it for nice curves
     anim->setInterpolationMode(Animation::IM_SPLINE);
     // Create a track to animate the camera's node
-	track = anim->createNodeTrack(0, mCameraLookAtNode);
+	track = anim->createNodeTrack(0, mGameCameraLookAtNode);
     // Setup keyframes
 	key = track->createNodeKeyFrame(0);
 	key->setTranslate(Vector3::ZERO);
@@ -634,7 +677,7 @@ void CameraManager::shake(Real scale)
     // Spline it for nice curves
     anim->setInterpolationMode(Animation::IM_SPLINE);
     // Create a track to animate the camera's node
-	NodeAnimationTrack* track = anim->createNodeTrack(0, mCameraNode);
+	NodeAnimationTrack* track = anim->createNodeTrack(0, mGameCameraNode);
     // Setup keyframes
 	TransformKeyFrame* key = track->createNodeKeyFrame(0);
 	key->setTranslate(Vector3::ZERO);
@@ -659,7 +702,7 @@ void CameraManager::shake(Real scale)
     // Spline it for nice curves
     anim->setInterpolationMode(Animation::IM_SPLINE);
     // Create a track to animate the camera's node
-	track = anim->createNodeTrack(0, mCameraLookAtNode);
+	track = anim->createNodeTrack(0, mGameCameraLookAtNode);
     // Setup keyframes
 	key = track->createNodeKeyFrame(0);
 	key->setTranslate(Vector3::ZERO);
@@ -681,26 +724,26 @@ void CameraManager::shake(Real scale)
 /** Camera modes */
 void CameraManager::gameCamera()
 {
-	mCameraMode = "Game";
+	mGameCameraMode = "Game";
 	mCameraMan->setStyle(OgreBites::CS_MANUAL);
-	mCamera->setAutoTracking(true, mCameraLookAtNode, Vector3::UNIT_X);
+	mGameCamera->setAutoTracking(true, mGameCameraLookAtNode, Vector3::UNIT_X);
 }
 void CameraManager::freeCamera()
 {
-	mCameraMode = "Free";
+	mGameCameraMode = "Free";
 	mCameraMan->setStyle(OgreBites::CS_FREELOOK);
-	mCamera->setAutoTracking(false);
-	mViewport->setCamera(mCamera);
+	mGameCamera->setAutoTracking(false);
+	mGameViewport->setCamera(mGameCamera);
 }
 void CameraManager::fixedCamera(int camera)
 {	
 	char camName[20];
 	sprintf(camName, "Fixed %d", camera);
-	mCameraMode = camName;
+	mGameCameraMode = camName;
 	mCameraMan->setStyle(OgreBites::CS_MANUAL);
-	mCamera->setAutoTracking(true, mCameraLookAtNode, Vector3::UNIT_X);
-	mCamera->setPosition(Vector3::ZERO);
-	mViewport->setCamera(mCamera);
+	mGameCamera->setAutoTracking(true, mGameCameraLookAtNode, Vector3::UNIT_X);
+	mGameCamera->setPosition(Vector3::ZERO);
+	mGameViewport->setCamera(mGameCamera);
 
 	// Translate animation to camera scene node and look at node to current position
 	createTransition(getCameraPosition(), mFixedCameras[camera].mPosition, getCameraLookAt(), mFixedCameras[camera].mLookAt);
@@ -711,12 +754,12 @@ void CameraManager::fixedCamera(int camera)
 
 void CameraManager::resumeCamera()
 {
-	if( mCameraMode == "Game" )
+	if( mGameCameraMode == "Game" )
 	{
 		freeCamera();
 		gameCamera();
 	}
-	else if ( mCameraMode == "Free" )
+	else if ( mGameCameraMode == "Free" )
 		freeCamera();
 	else
 		fixedCamera(mFixedCamera);

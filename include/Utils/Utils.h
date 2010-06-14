@@ -20,47 +20,24 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
 -----------------------------------------------------------------------------
 */
-#ifndef __ENDING_STATE_H_
-#define __ENDING_STATE_H_
+#ifndef __UTILS_H_
+#define __UTILS_H_
 
-#include "BaseState.h"
+#include <Ogre.h>
+
+using namespace Ogre;
 
 namespace WyvernsAssault
 {
 	/**
-		Ending game state class
+		Class used to manage differents cameras
 	*/
-	class EndingState : public BaseState
+	class Utils
 	{
 	public:
-		EndingState(GraphicsManagerPtr graphicsManager, InputManagerPtr inputManager, AudioManagerPtr audioManager, CameraManagerPtr cameraManager, GuiManagerPtr guiManager);
-		~EndingState();
-
-	public:
-		/** Initialize current state */
-		void initialize();
-		/** Load resources */
-		void load();
-		/** Manage input - INPUT */
-		void input();
-		/** Update internal stuff - PROCESS */
-		void update(const float elapsedSeconds);
-		/** Render - OUTPUT */
-		void render(const float elapsedSeconds);
-		/** Unload resources */
-		void unload();
-		/** Destroy the state */
-		void finalize();
-		/** Called when the state has to be paused */
-		void pause();
-		/** Called when the state has to be resumed (from pause) */
-		void resume();
-
-		/** Get state Id */
-		GameStateId getStateId();
-
-		/** Buffered input - keyboard key clicked */
-		bool keyReleased(const OIS::KeyEvent& e);
+		// Detaches and destroys all objects and nodes recursively, starting from the given node
+		static void Destroy(SceneManager* sceneManager, Ogre::String sceneNodeName);
 	};
 }
-#endif // __ENDING_STATE_H_
+
+#endif //__UTILS_H_

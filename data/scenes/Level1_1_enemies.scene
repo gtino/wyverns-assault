@@ -1,0 +1,143 @@
+<scene>
+<!-- Animals -->
+<animals>
+	<animal>
+		<position x="170" y="-2.5" z="880"/>
+		<entity type="Chicken" meshFile="chicken.mesh" name="Chicken1"/>
+		<scale x="1" y="1" z="1"/>
+	</animal>
+	<!--<animal>
+		<position x="387" y="10" z="755"/>
+		<entity type="Chicken" meshFile="chicken.mesh" name="Chicken2"/>
+		<scale x="1" y="1" z="1"/>
+	</animal>
+	<animal>
+		<position x="416" y="10" z="761"/>
+		<entity type="Chicken" meshFile="chicken.mesh" name="Chicken3"/>
+		<scale x="1" y="1" z="1"/>
+	</animal>-->
+	<animal>
+		<position x="398" y="-3" z="702"/>
+		<entity type="Chicken" meshFile="chicken.mesh" name="Chicken4"/>
+		<scale x="1" y="1" z="1"/>
+	</animal>
+	<animal>
+		<position x="1141" y="-3" z="415"/>
+		<entity type="Chicken" meshFile="chicken.mesh" name="Chicken5"/>
+		<scale x="1" y="1" z="1"/>
+	</animal>
+	<animal>
+		<position x="1189" y="-3" z="412"/>
+		<entity type="Chicken" meshFile="chicken.mesh" name="Chicken6"/>
+		<scale x="1" y="1" z="1"/>
+	</animal>
+	<animal>
+		<position x="1215" y="-3" z="358"/>
+		<entity type="Chicken" meshFile="chicken.mesh" name="Chicken7"/>
+		<scale x="1" y="1" z="1"/>
+	</animal>
+	<animal>
+		<position x="1210" y="-3" z="196"/>
+		<entity type="Chicken" meshFile="chicken.mesh" name="Chicken8"/>
+		<scale x="1" y="1" z="1"/>
+	</animal>
+	<animal>
+		<position x="946" y="1" z="-295"/>
+		<entity type="Chicken" meshFile="chicken.mesh" name="Chicken9"/>
+		<scale x="1" y="1" z="1"/>
+	</animal>
+	<animal>
+		<position x="250" y="1" z="-547"/>
+		<entity type="Chicken" meshFile="chicken.mesh" name="Chicken10"/>
+		<scale x="1" y="1" z="1"/>
+	</animal>
+</animals>
+<enemies> 
+		<!-- Soldiers -->
+		<enemy>
+			<position x="200" y="10" z="870"/>
+ 			<entity type="Naked" meshFile="naked.mesh" name="naked0"/>
+		</enemy>
+		<enemy>
+			<position x="200" y="10" z="900"/>
+ 			<entity type="Naked" meshFile="naked.mesh" name="naked1"/>
+		</enemy>
+		<enemy>
+			<position x="500" y="10" z="740"/>
+ 			<entity type="Naked" meshFile="naked.mesh" name="naked2"/>
+		</enemy>
+		<enemy>
+			<position x="520" y="10" z="730"/>
+ 			<entity type="Naked" meshFile="naked.mesh" name="naked3"/>
+		</enemy>
+		<enemy>
+			<position x="800" y="10" z="720"/>
+ 			<entity type="Naked" meshFile="naked.mesh" name="naked4"/>
+		</enemy>
+		<enemy>
+			<position x="800" y="10" z="700"/>
+ 			<entity type="Naked" meshFile="naked.mesh" name="naked5"/>
+		</enemy>
+		<enemy>
+			<position x="900" y="10" z="650"/>
+ 			<entity type="Naked" meshFile="naked.mesh" name="naked6"/>
+		</enemy>
+		<enemy>
+			<position x="930" y="10" z="650"/>
+ 			<entity type="Naked" meshFile="naked.mesh" name="naked7"/>
+		</enemy>
+		<enemy>
+			<position x="950" y="10" z="400"/>
+ 			<entity type="Peasant" meshFile="peasant.mesh" name="peasant0"/>
+		</enemy>
+		<enemy>
+			<position x="970" y="10" z="430"/>
+ 			<entity type="Peasant" meshFile="peasant.mesh" name="peasant1"/>
+		</enemy>
+		<enemy>
+			<position x="990" y="10" z="450"/>
+ 			<entity type="Peasant" meshFile="peasant.mesh" name="peasant2"/>
+		</enemy>
+		<enemy>
+			<position x="1020" y="10" z="450"/>
+ 			<entity type="Peasant" meshFile="peasant.mesh" name="peasant3"/>
+		</enemy>
+		<enemy>
+			<position x="960" y="10" z="500"/>
+ 			<entity type="Peasant" meshFile="peasant.mesh" name="peasant4"/>
+		</enemy>
+		<enemy>
+			<position x="980" y="10" z="550"/>
+ 			<entity type="Peasant" meshFile="peasant.mesh" name="peasant5"/>
+		</enemy>
+		<enemy>
+			<position x="1000" y="10" z="600"/>
+ 			<entity type="Peasant" meshFile="peasant.mesh" name="peasant6"/>
+		</enemy>
+		<enemy>
+			<position x="1000" y="10" z="350"/>
+ 			<entity type="Peasant" meshFile="peasant.mesh" name="peasant7"/>
+		</enemy>
+		<!--<enemy>
+			<position x="1225" y="10" z="80"/>
+ 			<entity type="Wizard" meshFile="wizard.mesh" name="wizard0"/>
+		</enemy>-->
+		<enemy>
+			<position x="1200" y="10" z="120"/>
+ 			<entity type="Soldier" meshFile="soldier.mesh" name="soldier0"/>
+		</enemy>
+		<enemy>
+			<position x="1200" y="10" z="140"/>
+ 			<entity type="Soldier" meshFile="soldier.mesh" name="soldier1"/>
+		</enemy>
+		<enemy>
+			<position x="1250" y="10" z="120"/>
+ 			<entity type="Soldier" meshFile="soldier.mesh" name="soldier2"/>
+		</enemy>
+		<enemy>
+			<position x="1250" y="10" z="140"/>
+ 			<entity type="Soldier" meshFile="soldier.mesh" name="soldier3"/>
+		</enemy>	
+		<!-- Enemies list End -->
+	</enemies>
+</scene>

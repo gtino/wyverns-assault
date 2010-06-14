@@ -23,11 +23,17 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #ifndef __CAMERA_MANAGER_H_
 #define __CAMERA_MANAGER_H_
 
+#define GUI_CAMERA "GuiCamera"
+#define GAME_CAMERA "GameCamera"
+
+#define CAMERA_NODE_NAME "CameraNode"
+
 #include <Ogre.h>
 #include <OgreSingleton.h>
 #include <ois/OIS.h>
 #include <boost/enable_shared_from_this.hpp>
 
+#include "..\Utils\Utils.h"
 #include "SdkCameraMan.h"
 
 using namespace Ogre;
@@ -40,14 +46,14 @@ namespace WyvernsAssault
 	class CameraManager : public Ogre::Singleton<CameraManager>, public boost::enable_shared_from_this<CameraManager>
 	{
 	public:
-		CameraManager(SceneManager* sceneManager, RenderWindow* window, Viewport* viewport);
+		CameraManager();
 		~CameraManager();
 		static CameraManager& getSingleton(void);
 		static CameraManager* getSingletonPtr(void);
 
 	public: 
 		/** Initialize the camera manager */
-		void initialize();
+		void initialize(SceneManager* sceneManager, RenderWindow* window);
 		/** Finalize the camera manager */
 		void finalize();
 
@@ -55,10 +61,14 @@ namespace WyvernsAssault
 		/** Camera functions */
 		Vector3 getCameraPosition();
 		Vector3 getCameraLookAt();
-		String getCameraMode() { return mCameraMode ; }
+		String getCameraMode() { return mGameCameraMode ; }
 		int getGameArea(Vector3 position);
 
-		Camera* getCamera(){return mCamera;}
+		Camera* getGameCamera(){return mGameCamera;}
+		Camera* getGuiCamera(){return mGuiCamera;}
+
+		Viewport* getGameViewport(){return mGameViewport;}
+		Viewport* getGuiViewport(){return mGuiViewport;}
 		
 		/** Camera moving direction */
 		Vector3 getDirection(Vector3 direction);
@@ -97,24 +107,30 @@ namespace WyvernsAssault
 		bool frameRenderingQueued(FrameEvent evt);		
 
 		/** Debug camera functions */
-		void setPolygonMode(PolygonMode pm){ mCamera->setPolygonMode(pm);}
-		PolygonMode getPolygonMode(){ return mCamera->getPolygonMode(); }
+		void setPolygonMode(PolygonMode pm){ mGameCamera->setPolygonMode(pm);}
+		PolygonMode getPolygonMode(){ return mGameCamera->getPolygonMode(); }
 		void toogleAxes(){ mAxesNode->flipVisibility(); }
 		void showAxes();
 		void hideAxes();
 
+		Ogre::SceneNode* _getSceneNode() const { return mCameraNode; }
+
 	protected:
 		SceneManager*			mSceneManager;
 		RenderWindow*			mWindow;
-		Viewport*				mViewport;
+		Viewport*				mGameViewport;
+		Viewport*				mGuiViewport;
 
 	protected:
-		Camera*					mCamera;
 		SceneNode*				mCameraNode;
-		SceneNode*				mCameraLookAtNode;
 
-		String					mCameraMode;
-		Real					mCameraZoom;
+		Camera*					mGameCamera;
+		Camera*					mGuiCamera;
+		SceneNode*				mGameCameraNode;
+		SceneNode*				mGameCameraLookAtNode;
+
+		String					mGameCameraMode;
+		Real					mGameCameraZoom;
 		int						mGameArea;
 
 		Entity*					mAxes;

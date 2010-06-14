@@ -13,6 +13,7 @@ using namespace WyvernsAssault;
 void DotSceneLoader::parseDotScene(const String &SceneName, 
 								   const String &groupName, 
 								   SceneManager *levelSceneManager, 
+								   WyvernsAssault::ScenarioManagerPtr scenarioManager,
 								   WyvernsAssault::CameraManagerPtr cameraManager, 
 								   WyvernsAssault::LightsManagerPtr lightsManager,
 								   WyvernsAssault::EnemyManagerPtr enemysManager, 
@@ -25,6 +26,9 @@ void DotSceneLoader::parseDotScene(const String &SceneName,
 
 	//Set SceneManager
 	mSceneMgr = levelSceneManager;
+
+	// Set ScenarioManager
+	mScenarioManager = scenarioManager;
 
 	//Set CameraManager
 	mCameraManager = cameraManager;
@@ -160,12 +164,12 @@ void DotSceneLoader::processScene(TiXmlElement *XMLRoot)
 
 	LogManager::getSingleton().logMessage("[DotSceneLoader] SkyDome processed.");
 
-	//Process enemys
-	pElement = XMLRoot->FirstChildElement("enemys");
+	//Process enemies
+	pElement = XMLRoot->FirstChildElement("enemies");
 	if(pElement)
-		processEnemys(pElement);
+		processEnemies(pElement);
 
-	LogManager::getSingleton().logMessage("[DotSceneLoader] Enemys processed.");
+	LogManager::getSingleton().logMessage("[DotSceneLoader] Enemies processed.");
 
 	// Process game areas
 	pElement = XMLRoot->FirstChildElement("gameAreas");
@@ -242,7 +246,7 @@ void DotSceneLoader::processNodes(TiXmlElement *XMLNode)
 
 }
 
-void DotSceneLoader::processEnemys(TiXmlElement *XMLNode)
+void DotSceneLoader::processEnemies(TiXmlElement *XMLNode)
 {
 	TiXmlElement *pElement;
 	TiXmlElement *pElementEntity;
@@ -407,7 +411,7 @@ void DotSceneLoader::processItems(TiXmlElement *XMLNode)
 		// Add to ItemManager
 		ItemPtr item = mItemManager->createItem(Item::StringToType(type), name, mesh);
 		// Attach particle system
-		mParticleManager->add(item->getSceneNode(), name, "WyvernsAssault/ItemGlow");
+		mParticleManager->add(item->_getSceneNode(), name, "WyvernsAssault/ItemGlow");
 		item->setPosition(position);
 		item->setScale(scale);		
 
@@ -820,11 +824,18 @@ void DotSceneLoader::processEntity(TiXmlElement *XMLNode, SceneNode *pParent)
 	Entity *pEntity = 0;
 	try
 	{
+		//
+		// Create entity
+		//
 		MeshManager::getSingleton().load(meshFile, m_sGroupName);
 		pEntity = mSceneMgr->createEntity(name, meshFile);
 		pEntity->setCastShadows(castShadows);
 		pEntity->setQueryFlags(SceneManager::ENTITY_TYPE_MASK);
-		pParent->attachObject(pEntity);
+
+		//
+		// Use the Object Manager to create an instance for the new Object
+		//
+		ObjectPtr object = mScenarioManager->createObject(ObjectTypes::Default, name, pEntity, pParent);
 
 		if(!materialFile.empty())
 			pEntity->setMaterialName(materialFile);

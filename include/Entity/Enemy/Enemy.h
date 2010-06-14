@@ -45,59 +45,71 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
 namespace WyvernsAssault
 {
-	/** List of enemy types */
-	enum EnemyTypes
-	{
-		Naked	= 0,
-		Soldier	= 1,
-		Wizard	= 2,
-		Knight	= 3,
-		Peasant	= 4,
-		Woman	= 5,
-		Chicken = 6,
-		Cow = 7
-	};
-
-	enum EnemyStates
-	{
-		Initial = 0,
-		Idle = 1,
-		Sleeping = 2,
-		What = 3,
-		Alert = 4,
-		Rage = 5,
-		Love = 6,
-		Fear = 7,
-		Magic = 8,
-		Patrol = 9
-	};
-
 	/**
 	Class used to manage all the enemies
 	*/
 	class Enemy : public EntityInterface, public PhysicsInterface, public LogicInterface
 	{
 	public:
-		Enemy(EnemyTypes type);
+		/** List of enemy types */
+		enum EnemyTypes
+		{
+			Naked	= 0,
+			Soldier	= 1,
+			Wizard	= 2,
+			Knight	= 3,
+			Peasant	= 4,
+			Woman	= 5,
+			Chicken = 6,
+			Cow = 7
+		};
+
+		enum EnemyStates
+		{
+			Initial = 0,
+			Idle = 1,
+			Sleeping = 2,
+			What = 3,
+			Alert = 4,
+			Rage = 5,
+			Love = 6,
+			Fear = 7,
+			Magic = 8,
+			Patrol = 9,
+			// This is when it has been killed, but is still there spilling bool and crying!
+			Dying = 10,
+			// This is when the enemy has to been removed from the scene!
+			Dead = 11
+		};
+
+	public:
+		Enemy(Ogre::String name, Enemy::EnemyTypes type);
 		~Enemy();
 
-		void initializeEntity(Ogre::Entity* mesh, Ogre::SceneNode* sceneNode);
+		//
+		// Entity Interface
+		//
+		void initializeEntity(Ogre::Entity* mesh, Ogre::SceneNode* sceneNode, Ogre::SceneManager* sceneManager);
 		void finalizeEntity();
-
-		virtual void updateEntity(const float elapsedSeconds);
-		virtual void updateLogic(lua_State *L, const float elapsedSeconds);
-
-		void setBillboardSet(BillboardSet* balloonSet);
+		void updateEntity(const float elapsedSeconds);
+		
+		//
+		// Logic Interface
+		//
+		void updateLogic(lua_State *L, const float elapsedSeconds);
 
 		float getStateTimeout(){return mStateTimeout;}
 
-		EnemyTypes getEnemyType(){return mType;}
-		EnemyStates getEnemyState(){return mState;}
+		Enemy::EnemyTypes getEnemyType(){return mType;}
+		Enemy::EnemyStates getEnemyState(){return mState;}
 
 		void setTarget(SceneNode* target);
 		void autoTrackTarget();
+		
+		void hit(float damage);
 
 		bool isHurt();
+		bool isDying();
 
 		int mChannel;
 		int getChannel(){return mChannel;}
@@ -108,20 +120,19 @@ namespace WyvernsAssault
 		bool getDebugEnabled(){return mIsDebugEnabled;};
 
 	private:
-		EnemyTypes mType;
+		Enemy::EnemyTypes mType;
 
 		BillboardSet* mBalloonSet;
 		Billboard* mBalloon;
 
 		SceneNode* mTarget;
 
-		EnemyStates mState;
+		Enemy::EnemyStates mState;
 		float mStateTimeout;
 		
 		float mSpeed;
 		float mMaxLife;
 		float mLife;
-		Ogre::Vector3 mDirection;
 
 		OBBoxRenderable* mOBBoxRenderable;
 		bool mIsDebugEnabled;
@@ -130,7 +141,7 @@ namespace WyvernsAssault
 		void chase();
 
 	public:
-		static EnemyTypes StringToType(Ogre::String typeStr);
+		static Enemy::EnemyTypes StringToType(Ogre::String typeStr);
 	};
 
 	typedef boost::shared_ptr<Enemy> EnemyPtr;

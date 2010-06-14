@@ -1,0 +1,178 @@
+<scene>
+	<cameras>
+		<camera name="Camera0" id="0">
+			<position x="0" y="1250" z="1250"/>	
+			<lookAt x="0" y="0" z="300"/>
+		</camera>
+		<camera name="Camera1" id="1">
+			<position x="-100" y="1250" z="-1250"/>
+			<lookAt x="0" y="0" z="300"/>
+		</camera>
+		<camera name="Camera2" id="2">
+			<position x="-1000" y="1100" z="400"/>
+			<lookAt x="200" y="0" z="300"/>
+		</camera>
+		<camera name="Camera3" id="3">
+			<position x="1400" y="900" z="-1200"/>
+			<lookAt x="0" y="0" z="300"/>
+		</camera>
+		<camera name="Camera4" id="4">
+			<position x="100" y="2750" z="200"/>
+			<lookAt x="100" y="0" z="200"/>
+		</camera> 
+		<camera name="Camera5" id="5">
+			<position x="405" y="180" z="-614"/>
+			<lookAt x="-585" y="500" z="455"/>
+		</camera> 
+	</cameras>
+	
+	<gameAreas>	
+		<gameArea id="0">
+			<beginNear x="-200" y="0" z="1000"/>
+			<endNear x="327" y="0" z="1000"/>
+			<beginFar x="-173" y="0" z="670"/>
+			<endFar x="257" y="0" z="690"/>			
+		</gameArea>
+		<gameArea id="1">
+			<beginNear x="327" y="0" z="1000"/>
+			<endNear x="553" y="0" z="992"/>
+			<beginFar x="257" y="0" z="690"/>
+			<endFar x="445" y="0" z="620"/>			
+		</gameArea>
+		<gameArea id="2">
+			<beginNear x="553" y="0" z="992"/>
+			<endNear x="815" y="0" z="876"/>
+			<beginFar x="445" y="0" z="620"/>
+			<endFar x="653" y="0" z="580"/>			
+		</gameArea>
+		<gameArea id="3">
+			<beginNear x="815" y="0" z="876"/>
+			<endNear x="1112" y="0" z="672"/>
+			<beginFar x="653" y="0" z="580"/>
+			<endFar x="855" y="0" z="440"/>			
+		</gameArea>
+		<gameArea id="4">
+			<beginNear x="1112" y="0" z="672"/>
+			<endNear x="1395" y="0" z="385"/>	
+			<beginFar x="855" y="0" z="440"/>
+			<endFar x="1047" y="0" z="260"/>
+		</gameArea>
+		<gameArea id="5">
+			<beginNear x="1395" y="0" z="385"/>
+			<endNear x="1372" y="0" z="7"/>	
+			<beginFar x="1047" y="0" z="260"/>
+			<endFar x="1020" y="0" z="116"/>
+		</gameArea>
+		<gameArea id="6">
+			<beginNear x="1372" y="0" z="7"/>
+			<endNear x="1265" y="0" z="-300"/>
+			<beginFar x="1020" y="0" z="116"/>
+			<endFar x="860" y="0" z="-100"/>
+		</gameArea>
+		<gameArea id="7">
+			<beginNear x="1265" y="0" z="-300"/>
+			<endNear x="923" y="0" z="-650"/>
+			<beginFar x="860" y="0" z="-100"/>
+			<endFar x="700" y="0" z="-250"/>
+		</gameArea>
+		<gameArea id="8">
+			<beginNear x="923" y="0" z="-650"/>
+			<endNear x="491" y="0" z="-814"/>
+			<beginFar x="700" y="0" z="-250"/>
+			<endFar x="423" y="0" z="-333"/>
+		</gameArea>
+		<gameArea id="9">
+			<beginNear x="491" y="0" z="-814"/>
+			<endNear x="-77" y="0" z="-616"/>
+			<beginFar x="423" y="0" z="-333"/>
+			<endFar x="305" y="0" z="-276"/>
+		</gameArea>
+		<gameArea id="10">
+			<beginNear x="-77" y="0" z="-616"/>
+			<endNear x="-151" y="0" z="-391"/>
+			<beginFar x="305" y="0" z="-276"/>
+			<endFar x="226" y="0" z="-28"/>
+		</gameArea>
+		<gameArea id="11">
+			<beginNear x="-151" y="0" z="-391"/>
+			<endNear x="-361" y="0" z="-202"/>
+			<beginFar x="226" y="0" z="-28"/>
+			<endFar x="-55" y="0" z="190"/>
+		</gameArea>		
+	</gameAreas>
+	
+	<cameraSegments>	
+		<cameraSegment id="0">
+			<positionBegin x="-20" y="180" z="1140"/>
+			<positionEnd x="230" y="180" z="1140"/>
+			<lookAtBegin x="-8" y="-100" z="630"/>
+			<lookAtEnd x="204" y="-100" z="630"/>			
+		</cameraSegment>
+		<cameraSegment id="1">
+			<positionBegin x="453" y="200" z="1077"/>
+			<positionEnd x="552" y="230" z="1023"/>
+			<lookAtBegin x="248" y="-100" z="644"/>
+			<lookAtEnd x="340" y="-100" z="591"/>			
+		</cameraSegment>
+		<cameraSegment id="2">
+			<positionBegin x="590" y="230" z="1020"/>
+			<positionEnd x="770" y="200" z="985"/>
+			<lookAtBegin x="524" y="-100" z="558"/>
+			<lookAtEnd x="698" y="-100" z="532"/>
+		</cameraSegment>
+		<cameraSegment id="3">
+			<positionBegin x="905" y="175" z="856"/>
+			<positionEnd x="1022" y="175" z="769"/>
+			<lookAtBegin x="692" y="-100" z="537"/>
+			<lookAtEnd x="779" y="-100" z="480"/>
+		</cameraSegment>
+		<cameraSegment id="4">
+			<positionBegin x="1283" y="180" z="677"/>
+			<positionEnd x="1396" y="180" z="484"/>
+			<lookAtBegin x="907" y="-100" z="403"/>
+			<lookAtEnd x="989" y="-100" z="294"/>
+		</cameraSegment>
+		<cameraSegment id="5">
+			<positionBegin x="1464" y="175" z="308"/>
+			<positionEnd x="1474" y="175" z="138"/>
+			<lookAtBegin x="976" y="-100" z="200"/>
+			<lookAtEnd x="977" y="-100" z="107"/>
+		</cameraSegment>
+		<cameraSegment id="6">
+			<positionBegin x="1446" y="200" z="-111"/>
+			<positionEnd x="1410" y="200" z="-225"/>
+			<lookAtBegin x="922" y="-100" z="53"/>
+			<lookAtEnd x="888" y="-100" z="-32"/>
+		</cameraSegment>
+		<cameraSegment id="7">
+			<positionBegin x="1136" y="200" z="-541"/>
+			<positionEnd x="1243" y="200" z="-353"/>
+			<lookAtBegin x="705" y="-100" z="-241"/>
+			<lookAtEnd x="771" y="-100" z="-135"/>
+		</cameraSegment>
+		<cameraSegment id="8">
+			<positionBegin x="750" y="250" z="-642"/>
+			<positionEnd x="910" y="250" z="-570"/>
+			<lookAtBegin x="434" y="-100" z="-508"/>
+			<lookAtEnd x="473" y="-100" z="-405"/>
+		</cameraSegment>		
+		<cameraSegment id="9">
+			<positionBegin x="299" y="300" z="-818"/>
+			<positionEnd x="414" y="300" z="-813"/>
+			<lookAtBegin x="246" y="-50" z="-290"/>
+			<lookAtEnd x="358" y="-50" z="-280"/>
+		</cameraSegment>
+		<cameraSegment id="10">
+			<positionBegin x="-33" y="225" z="-658"/>
+			<positionEnd x="192" y="225" z="-665"/>
+			<lookAtBegin x="1" y="-50" z="-100"/>
+			<lookAtEnd x="188" y="-50" z="-104"/>
+		</cameraSegment>
+		<cameraSegment id="11">
+			<positionBegin x="-127" y="200" z="-534"/>
+			<positionEnd x="133" y="200" z="-393"/>
+			<lookAtBegin x="-430" y="0" z="-24"/>
+			<lookAtEnd x="-166" y="0" z="125"/>
+		</cameraSegment>
+	</cameraSegments>
+</scene>

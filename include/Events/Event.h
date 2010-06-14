@@ -35,14 +35,18 @@ namespace WyvernsAssault
 	enum EventTypes
 	{
 		PlayerHit = 0,
+		PlayerKill,
+		PlayerRemoved,
 		EnemyHit,
 		EnemySpecialHit,
 		EnemyKill,
+		EnemyRemoved,
 		ObjectHit,
 		Collision,
 		PlayerAttack,
 		PlayerAttackSpecial,
-		ItemCatch
+		ItemCatch,
+		ItemRemoved
 	};
 
 	/** Event priority, used to put the event in the correct queue */
@@ -109,12 +113,15 @@ namespace WyvernsAssault
 		
 		EnemyPtr getEnemy(){return mEnemy;}
 		PlayerPtr getPlayer(){return mPlayer;}
+		
+		void setDamage(Ogre::Real damage){mDamage = damage;}
+		Ogre::Real getDamage(){return mDamage;}
 
 	private:
 		EnemyPtr mEnemy;
 		PlayerPtr mPlayer;
 
-		Ogre::Real damage;
+		Ogre::Real mDamage;
 	};
 
 	typedef boost::shared_ptr<EnemyHitEvent> EnemyHitEventPtr;
@@ -129,11 +136,14 @@ namespace WyvernsAssault
 		EnemyPtr getEnemy(){return mEnemy;}
 		PlayerPtr getPlayer(){return mPlayer;}
 
+		void setDamage(Ogre::Real damage){mDamage = damage;}
+		Ogre::Real getDamage(){return mDamage;}
+
 	private:
 		EnemyPtr mEnemy;
 		PlayerPtr mPlayer;
 
-		Ogre::Real damage;
+		Ogre::Real mDamage;
 	};
 
 	typedef boost::shared_ptr<EnemySpecialHitEvent> EnemySpecialHitEventPtr;
@@ -151,11 +161,24 @@ namespace WyvernsAssault
 	private:
 		EnemyPtr mEnemy;
 		PlayerPtr mPlayer;
-
-		Ogre::Real damage;
 	};
 
 	typedef boost::shared_ptr<EnemyKillEvent> EnemyKillEventPtr;
+
+	// --------------------------------
+	class EnemyRemovedEvent : public Event
+	{
+	public:
+		EnemyRemovedEvent(EnemyPtr e);
+		~EnemyRemovedEvent(){};
+		
+		EnemyPtr getEnemy(){return mEnemy;}
+
+	private:
+		EnemyPtr mEnemy;
+	};
+
+	typedef boost::shared_ptr<EnemyRemovedEvent> EnemyRemovedEventPtr;
 
 	// --------------------------------
 	class PlayerHitEvent : public Event
@@ -221,6 +244,23 @@ namespace WyvernsAssault
 	};
 
 	typedef boost::shared_ptr<ItemCatchEvent> ItemCatchEventPtr;
+
+	// --------------------------------
+	class ItemRemovedEvent : public Event
+	{
+	public:
+		ItemRemovedEvent(/*PlayerPtr p,*/ ItemPtr item);
+		~ItemRemovedEvent(){};
+		
+		/*PlayerPtr getPlayer(){return mPlayer;}*/
+		ItemPtr getItem(){return mItem;}
+
+	private:		
+		/*PlayerPtr mPlayer;*/
+		ItemPtr mItem;
+	};
+
+	typedef boost::shared_ptr<ItemRemovedEvent> ItemRemovedEventPtr;
 }
 
 #endif // __EVENT_H_

@@ -33,7 +33,7 @@ namespace WyvernsAssault
 	class MainMenuState : public BaseState
 	{
 	public:
-		MainMenuState(GraphicsManagerPtr graphicsManager, InputManagerPtr inputManager, AudioManagerPtr audioManager);
+		MainMenuState(GraphicsManagerPtr graphicsManager, InputManagerPtr inputManager, AudioManagerPtr audioManager, CameraManagerPtr cameraManager, GuiManagerPtr guiManager);
 		~MainMenuState();
 
 	public:

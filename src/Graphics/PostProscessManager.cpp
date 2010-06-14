@@ -17,6 +17,8 @@ PostProcessManager& PostProcessManager::getSingleton(void)
 PostProcessManager::PostProcessManager(Viewport* viewport)
 : mCompositorManager(0)
 {
+	assert(viewport);
+
 	//
 	// Save viewport pointer
 	//

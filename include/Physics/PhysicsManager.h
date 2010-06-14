@@ -27,6 +27,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #define REDWYVERN_SLOW_VELOCITY	1
 #define REDWYVERN_FAST_VELOCITY	4
 
+#define PHYSICS_NODE_NAME "PhysicsNode"
+
 #include <Ogre.h>
 #include <OgreSingleton.h>
 #include <boost/enable_shared_from_this.hpp>
@@ -35,6 +37,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
 #include "PhysicsInterface.h"
 
+#include "..\Utils\Utils.h"
 #include "..\Entity\Player\PlayerManager.h"
 #include "..\Entity\Player\Player.h"
 
@@ -93,6 +96,8 @@ namespace WyvernsAssault
 		//void addPhysicItem();
 		//void addPhysicObject();
 
+		void removeEnemy(EnemyPtr enemy);
+
 		void update(const float elapsedSeconds);
 
 		//Move one character
@@ -102,13 +107,17 @@ namespace WyvernsAssault
 		// Collision check
 		void checkForCollisions();
 
+		Ogre::SceneNode* _getSceneNode() const { return mPhysicsNode; }
+
 		//
 		// Events interface
 		//
 		// Register event handlers
-		void registerHandlers(){};
+		void registerHandlers();
 		// Unregister handlers
-		void unregisterHandlers(){};
+		void unregisterHandlers();
+
+		void handleEnemyKillEvent(EnemyKillEventPtr evt);
 
 	private:
 
@@ -127,6 +136,7 @@ namespace WyvernsAssault
 	protected:
 
 		SceneManager* mSceneManager;
+		SceneNode* mPhysicsNode;
 		Ogre::RaySceneQuery *mRaySceneQuery;
 
 		PlayerMap mPlayerMap;
