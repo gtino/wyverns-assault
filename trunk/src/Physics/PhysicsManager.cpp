@@ -1,7 +1,5 @@
 #include "..\..\include\Physics\PhysicsManager.h"
 
-
-
 using namespace WyvernsAssault;
 
 const Ogre::Real STEP_RATE = 0.01;
@@ -31,238 +29,67 @@ PhysicsManager::~PhysicsManager()
 
 bool PhysicsManager::initialize()
 {
-	// Create Ode world
-	mWorld = new OgreOde::World(mSceneManager);
-	mWorld->setGravity(Vector3(0,-9.80665,0));
-	mWorld->setCFM(10e-5);
-	mWorld->setERP(0.8);
-	mWorld->setAutoSleep(false);
-    mWorld->setAutoSleepAverageSamplesCount(10);
-	mWorld->setContactCorrectionVelocity(1.0);
-	mWorld->setCollisionListener(this);
-
-	// Set collision space
-	mSpace = mWorld->getDefaultSpace();
-
-	// Create stepper
-	const Ogre::Real time_scale = Ogre::Real(1.0); 
-    const Ogre::Real max_frame_time = Ogre::Real(1.0 / 4);
-    const Ogre::Real frame_rate = Ogre::Real(1.0 / 60);
-
-	OgreOde::StepHandler::StepModeType stepModeType = OgreOde::StepHandler::QuickStep;
-	mStepper = new OgreOde::ForwardFixedStepHandler(mWorld, stepModeType, STEP_RATE, max_frame_time, time_scale);
 
 	// State control variables
 	mPlayerSpecialState = false;
 	mPlayerAttackLast = 0;
 
-	return true;
+	// Initialize RaySceneQuery
+	mRaySceneQuery = mSceneManager->createRayQuery(Ogre::Ray());
+    if (NULL == mRaySceneQuery)
+    {
+      return (false);
+    }
+    mRaySceneQuery->setSortByDistance(true);
+
+	return (true);
 }
 
 void PhysicsManager::finalize()
 {
-	mPlayerMap.clear();
-	mPlayerGeomMap.clear();
-	mEnemyMap.clear();
-	mEnemyGeomMap.clear();
-
-		// Stop listening for collisions
-	if (mWorld->getCollisionListener() == this) 
-        mWorld->setCollisionListener(0);
-
-	// Delete all the joints
-	for (std::vector<OgreOde::Joint*>::iterator i = _joints.begin();i != _joints.end();++i)
-	{
-		delete (*i);
-	}
-
-	// Run through the list of bodies we're monitoring
-	for (std::vector<OgreOde::Body*>::iterator i = _bodies.begin();i != _bodies.end();++i)
-	{
-		// Delete the body
-		delete (*i);
-	}
-
-	// Delete all the collision geometries
-	for (std::vector<OgreOde::Geometry*>::iterator i = _geoms.begin();i != _geoms.end();++i)
-	{
-		delete (*i);
-	}
+	/* TODO
+	*/
 }
 
-void PhysicsManager::synchronizeWorld(Real time)
-{
-	if(mStepper->step(time))
-		mWorld->synchronise();
-}
 
 void PhysicsManager::showDebugObjects()
 {
-	mWorld->setShowDebugGeometries(!mWorld->getShowDebugGeometries());
-}
-
-void PhysicsManager::createGround(Ogre::String mesh,Ogre::String name,Ogre::Vector3 position,Ogre::Vector3 scale)
-{
-	SceneNode* node_ground = mSceneManager->getRootSceneNode()->createChildSceneNode(name,position);
-	Entity* ent_ground = mSceneManager->createEntity(name,mesh);
-	node_ground->attachObject(ent_ground);
-	OgreOde::EntityInformer ei_ground(ent_ground,node_ground->_getFullTransform());
-	geom_ground = ei_ground.createStaticTriangleMesh(mWorld,mSpace);
-	ent_ground->setUserAny(Ogre::Any(geom_ground));
-	node_ground->setVisible(false);
-	node_ground->setScale(scale);
-	_geoms.push_back(geom_ground);
-}
-
-void PhysicsManager::addPlayer(PlayerPtr player)
-{
-	Ogre::String id = player->getName();
-
-	AxisAlignedBox aab = player->getSceneNode()->getAttachedObject(id)->getBoundingBox(); 
-	Ogre::Vector3 min = aab.getMinimum()*player->getScale();
-	Ogre::Vector3 max = aab.getMaximum()*player->getScale();
-	Ogre::Vector3 size(fabs(max.x-min.x),fabs(max.y-min.y),fabs(max.z-min.z));
-	float radius = (size.x>size.z)?size.z/2.0f:size.x/2.0f;
-
-	//Geometry
-	OgreOde::Body* body = new OgreOde::Body(mWorld,id+"_Body"); 
-	body->setMass(OgreOde::CapsuleMass(70,radius/2,Vector3::UNIT_Y,radius/2)); 
-	body->setAffectedByGravity(true);
-	OgreOde::TransformGeometry* transform = new OgreOde::TransformGeometry(mWorld,mSpace); 
-	//OgreOde::CapsuleGeometry* geometry = new OgreOde::CapsuleGeometry(radius/2,size.y/5,mWorld); 
-	OgreOde::CapsuleGeometry* geometry = new OgreOde::CapsuleGeometry(radius/4,size.y/3,mWorld);
-	geometry->setOrientation(Quaternion(Degree(90),Vector3::UNIT_X));
-	transform->setBody(body); 
-	transform->setEncapsulatedGeometry(geometry);
-	player->getSceneNode()->attachObject(body);
-	player->setBody(body);
-
-	//RayInfo
-	PhysicsRayInfo rayInfo;
-	rayInfo.geometry = new OgreOde::RayGeometry(Ogre::Real(30), mWorld, mSpace);
-	rayInfo.radius = radius;
-	rayInfo.updated = false;
-	rayInfo.lastContact = Vector3(0,0,0);
-
-	player->setRayInfo(rayInfo);
-
-	//
-	// Store the player into an internal map
-	//
-	mPlayerMap[player->getGeometryId()] = player;
-	mPlayerGeomMap[body->getGeometry(0)->getID()] = player;
-
-	_bodies.push_back(body);
-	_geoms.push_back(geometry);
-	
+	/*TODO
+	*/
 }
 
 void PhysicsManager::update(const float elapsedSeconds){
-	synchronizeWorld(elapsedSeconds);
 	
-	//update players ray
-	for(OdePlayerMapIterator it_player = mPlayerMap.begin(); it_player != mPlayerMap.end(); ++it_player)
+	// Update players ray
+	for(PlayerMapIterator it_player = mPlayerMap.begin(); it_player != mPlayerMap.end(); ++it_player)
 	{
 		PlayerPtr player = it_player->second;
-		updateRay(player);
-	}
+		
+		// Check basic ground collision
+		if(calculateY(player->getSceneNode(),BASIC_GROUND_MASK)){
+			// Basic ground collision event
 
-	//update enemys ray apply force to keep up
-	for(OdeEnemyMapIterator it_enemy = mEnemyMap.begin(); it_enemy != mEnemyMap.end(); ++it_enemy)
-	{
-		EnemyPtr enemy = it_enemy->second;
-		updateRay(enemy);
-
-		OgreOde::Body* enemy_body = enemy->getBody();
-		Quaternion q = enemy_body->getOrientation();         
-		Vector3 x = q.xAxis();
-		Vector3 y = q.yAxis();
-		Vector3 z = q.zAxis();
-		enemy_body->wake();
-		enemy_body->setOrientation(Quaternion(x,Vector3::UNIT_Y,z));
-		enemy_body->setAngularVelocity(Vector3(0,0,0)); 
-		enemy_body->setLinearVelocity(Vector3(0,0,0));
-
-		// update ray position
-		if(enemy->getRayInfo()->updated)
-		{
-			enemy_body->setPosition(Vector3(enemy_body->getPosition().x,enemy->getRayInfo()->lastContact.y+15,enemy->getPosition().z));
-			enemy->getRayInfo()->updated = false;
 		}
 	}
 
-	//Enemy - Player collide
-	OgreOde::Body* player_body;
-	OgreOde::Geometry* player_geom;
-	PlayerPtr player;
-	for(OdePlayerMapIterator it_player = mPlayerMap.begin(); it_player != mPlayerMap.end(); ++it_player)
-	{
-		player = it_player->second;
-		player_body = player->getBody();
-		player_geom = player_body->getGeometry(0);
-	}
-	for(OdeEnemyMapIterator it_enemy = mEnemyMap.begin(); it_enemy != mEnemyMap.end(); ++it_enemy)
-	{
-		EnemyPtr enemy = it_enemy->second;
-		OgreOde::Body* enemy_body = enemy->getBody();
-		OgreOde::Geometry* enemy_geom = enemy_body->getGeometry(0);
-		player_geom->collide(enemy_geom,this);
-	}
-
-	// Update animals:  move animals - Animals movement IA
-	for(OdeEnemyMapIterator it_animal = mAnimalGeomMap.begin(); it_animal != mAnimalGeomMap.end(); ++it_animal){
-		EnemyPtr animal = it_animal->second;
-		//Verify type of animal and state
-		if(animal->getEnemyType() == EnemyTypes::Chicken){
-			if(animal->getEnemyState() == EnemyStates::Fear){
-				
-				/*
-				 * Movement based on player and enemy position
-				 
-				Vector3 player_position = player->getPosition();
-				Vector3 animal_position = animal->getPosition();
-
-				Vector3 direction = animal_position - player_position;
-				moveAnimal(animal,direction);
-				*/
-				
-				/*
-				 * Movement based on last direction of player
-				 */
-				Vector3 playerDirection = player->getLastDirection();
-				if(playerDirection == Vector3::ZERO){
-					moveAnimal(animal,animal->getLastDirection());
-				}else{
-					moveAnimal(animal,playerDirection);
-				}
-
-			}else{
-				moveAnimal(animal,Vector3(0,0,0));
-			}
-		}
-
-	}
-
-	//
-	// Non physics collisions
-	// 
+	// Call bounding box collision
 	checkForCollisions();
 
 	return;
 }
 
-// Non physics collisions. Now only player special attack collision
+// Bounding-Box collision
 void PhysicsManager::checkForCollisions()
 {
-	for(OdePlayerMapIterator it_player = mPlayerMap.begin(); it_player != mPlayerMap.end(); ++it_player)
+	for(PlayerMapIterator it_player = mPlayerMap.begin(); it_player != mPlayerMap.end(); ++it_player)
 	{
 		PlayerPtr player = it_player->second;
 		AxisAlignedBox player_firebox = player->getFireBox();
 
-		// Only check if player is using special and last check was not using it
+		// Only check if player is using special (fire) and last check was not using it
 		if ( mPlayerSpecialState != player->isSpecial() && player->isSpecial())
 		{
-			for(OdeEnemyMapIterator it_enemy = mEnemyMap.begin(); it_enemy != mEnemyMap.end(); ++it_enemy)
+			for(EnemyMapIterator it_enemy = mEnemyMap.begin(); it_enemy != mEnemyMap.end(); ++it_enemy)
 			{
 				EnemyPtr enemy = it_enemy->second;
 				AxisAlignedBox enemy_box = enemy->getSceneNode()->_getWorldAABB();
@@ -276,396 +103,154 @@ void PhysicsManager::checkForCollisions()
 		}
 		// Save last state
 		mPlayerSpecialState = player->isSpecial();
-	}
-}
 
-void PhysicsManager::addEnemy(EnemyPtr enemy)
-{
-
-	Ogre::String id = enemy->getName();
-
-	AxisAlignedBox aab = enemy->getSceneNode()->getAttachedObject(id)->getBoundingBox(); 
-	Ogre::Vector3 min = aab.getMinimum()*enemy->getScale();
-	Ogre::Vector3 max = aab.getMaximum()*enemy->getScale();
-	Ogre::Vector3 size(fabs(max.x-min.x),fabs(max.y-min.y),fabs(max.z-min.z));
-	float radius = (size.x>size.z)?size.z:size.x;
-
-	//Geometry
-	OgreOde::Body* body = new OgreOde::Body(mWorld,id+"_Body"); 
-	body->setMass(OgreOde::CapsuleMass(70,radius/2,Vector3::UNIT_Y,radius/2)); 
-	body->setAffectedByGravity(true);
-	OgreOde::TransformGeometry* transform = new OgreOde::TransformGeometry(mWorld,mSpace); 
-	OgreOde::CapsuleGeometry* geometry = new OgreOde::CapsuleGeometry(radius,size.y/4,mWorld); 
-	geometry->setOrientation(Quaternion(Degree(90),Vector3::UNIT_X));
-	transform->setBody(body); 
-	transform->setEncapsulatedGeometry(geometry);
-	enemy->getSceneNode()->attachObject(body);
-	enemy->setBody(body);
-
-	//RayInfo
-	PhysicsRayInfo rayInfo;
-	rayInfo.geometry = new OgreOde::RayGeometry(Ogre::Real(20), mWorld, mSpace);
-	rayInfo.radius = radius;
-	rayInfo.updated = false;
-	rayInfo.lastContact = Vector3(0,0,0);
-
-	enemy->setRayInfo(rayInfo);
-
-	//
-	// Store the enemy into an internal map
-	//
-	mEnemyMap[enemy->getGeometryId()] = enemy;
-	mEnemyGeomMap[body->getGeometry(0)->getID()] = enemy;
-
-	_bodies.push_back(body);
-	_geoms.push_back(geometry);
-}
-
-void PhysicsManager::addAnimal(EnemyPtr animal)
-{
-
-	Ogre::String id = animal->getName();
-
-	AxisAlignedBox aab = animal->getSceneNode()->getAttachedObject(id)->getBoundingBox(); 
-	Ogre::Vector3 min = aab.getMinimum()*animal->getScale();
-	Ogre::Vector3 max = aab.getMaximum()*animal->getScale();
-	Ogre::Vector3 size(fabs(max.x-min.x),fabs(max.y-min.y),fabs(max.z-min.z));
-	float radius = (size.x>size.z)?size.z:size.x;
-
-	OgreOde::SimpleSpace* dollSpace = new OgreOde::SimpleSpace(mWorld,mSpace);
-	dollSpace->setInternalCollisions(false);
-
-	//Geometry
-	OgreOde::Body* dollFeetBody = new OgreOde::Body(mWorld,id+"_Body");
-	dollFeetBody->setMass(OgreOde::SphereMass(70,radius)); 
-	OgreOde::SphereGeometry* feetGeom = new OgreOde::SphereGeometry(radius/4,mWorld);
-	OgreOde::TransformGeometry* feetTrans = new OgreOde::TransformGeometry(mWorld,mSpace); 
-	feetTrans->setBody(dollFeetBody); 
-	feetTrans->setEncapsulatedGeometry(feetGeom);
-	animal->getSceneNode()->attachObject(dollFeetBody);
-
-	OgreOde::Body* dollTorsoBody = new OgreOde::Body(mWorld,id+"_Body_Torso"); 
-	dollTorsoBody->setMass(OgreOde::CapsuleMass(70*2.5,radius,Vector3::UNIT_Y,radius)); 
-	dollTorsoBody->setAffectedByGravity(true);
-	dollTorsoBody->setDamping(0,50000);
-	OgreOde::TransformGeometry* torsoTrans = new OgreOde::TransformGeometry(mWorld,mSpace); 
-	OgreOde::CapsuleGeometry* torsoGeom = new OgreOde::CapsuleGeometry(radius/4,size.y/10,mWorld); 
-	torsoGeom->setPosition(Ogre::Vector3(0,size.y-((size.y-4*radius)/2+2*radius),0));
-	torsoGeom->setOrientation(Quaternion(Degree(90),Vector3::UNIT_X));
-	torsoTrans->setBody(dollTorsoBody); 
-	torsoTrans->setEncapsulatedGeometry(torsoGeom);
-	animal->getSceneNode()->attachObject(dollTorsoBody);
-
-	OgreOde::HingeJoint* joint = new OgreOde::HingeJoint(mWorld);
-	joint->attach(dollTorsoBody,dollFeetBody);
-	joint->setAxis(Ogre::Vector3::UNIT_X);	//set the rotation axis
-
-	//Set Bodys to BodyList
-	animal->setBody(dollTorsoBody);
-	animal->getBodyList()->push_back(dollFeetBody);
-	animal->getBodyList()->push_back(dollTorsoBody);
-
-	//
-	// Store the animal into an internal map by torso geom
-	//
-	mAnimalGeomMap[dollTorsoBody->getGeometry(0)->getID()] = animal;
-
-	_bodies.push_back(dollFeetBody);
-	_bodies.push_back(dollTorsoBody);
-	_geoms.push_back(feetGeom);
-	_geoms.push_back(torsoGeom);
-	_joints.push_back(joint);
-
-}
-
-void PhysicsManager::updateRay(PlayerPtr player)
-{
-	// raise desired ray position a little above player's scenenode
-	Vector3 position = player->getPosition();
-	// fire ray downward
-	player->getRayInfo()->geometry->setDefinition(position,Vector3::NEGATIVE_UNIT_Y);
-	// add ray to collisionListener
-	player->getRayInfo()->geometry->collide(geom_ground,this);
-}
-
-void PhysicsManager::updateRay(EnemyPtr enemy)
-{
-	// raise desired ray position a little above enemy's scenenode
-	Vector3 position = enemy->getPosition();
-	// fire ray downward
-	enemy->getRayInfo()->geometry->setDefinition(position,Vector3::NEGATIVE_UNIT_Y);
-	// add ray to collisionListener
-	enemy->getRayInfo()->geometry->collide(geom_ground,this);
-}
-
-
-bool PhysicsManager::collision(OgreOde::Contact* contact)
-{
-
-	CollisionEventPtr collisionEventPtr = CollisionEventPtr(new CollisionEvent());
-	raiseEvent(collisionEventPtr);
-
-	// search through ode_characters and adjust each charNode's height
-	OdePlayerMapIterator it_p;
-	
-	// Check if the player is the first geometry
-	it_p = mPlayerMap.find(contact->getFirstGeometry()->getID());
-	
-	// ...or the second
-	if(it_p == mPlayerMap.end())
-		it_p = mPlayerMap.find(contact->getSecondGeometry()->getID());
-
-	if(it_p != mPlayerMap.end())
-	{
-		it_p->second->getRayInfo()->updated = true;
-		it_p->second->getRayInfo()->lastContact = contact->getPosition();
-	}
-
-	// search through ode_characters and adjust each charNode's height
-	OdeEnemyMapIterator it_e;
-	
-	// Check if the player is the first geometry
-	it_e = mEnemyMap.find(contact->getFirstGeometry()->getID());
-	
-	// ...or the second
-	if(it_e == mEnemyMap.end())
-		it_e = mEnemyMap.find(contact->getSecondGeometry()->getID());
-
-	if(it_e != mEnemyMap.end())
-	{
-		it_e->second->getRayInfo()->updated = true;
-		it_e->second->getRayInfo()->lastContact = contact->getPosition();
-	}
-	
-	// if one is an enemy and the other one is a player...
-	//if(it_e != mEnemyMap.end() && it_p != mPlayerMap.end())
-	//{
-	//	EnemyHitEventPtr enemyHitEventPtr = EnemyHitEventPtr(new EnemyHitEvent(it_e->second, it_p->second));
-	//	raiseEvent(enemyHitEventPtr);
-	//}
-
-	// Player - Enemy Collision
-	OdePlayerMapIterator it_pp;
-	OdeEnemyMapIterator it_ee;
-	it_pp = mPlayerGeomMap.find(contact->getFirstGeometry()->getID());
-	if(it_pp == mPlayerGeomMap.end())
-	{
-		it_pp = mPlayerGeomMap.find(contact->getSecondGeometry()->getID());
-	}
-	else
-	{
-		//Player is first - check if enemy is second
-		it_ee = mEnemyGeomMap.find(contact->getSecondGeometry()->getID());
-		if(it_ee != mEnemyGeomMap.end())
+		// Only check if player is attacking and has changed state
+		if( mPlayerAttackLast != player->wichAttack() && player->isAttacking() )
 		{
-			// Enemy is second
 
-			// Check if player is attacking and has changed state
-			if( mPlayerAttackLast != it_pp->second->wichAttack() && it_pp->second->isAttacking() )
+			AxisAlignedBox player_box = player->getSceneNode()->_getWorldAABB();
+
+			for(EnemyMapIterator it_enemy = mEnemyMap.begin(); it_enemy != mEnemyMap.end(); ++it_enemy)
 			{
-				// Erease enemy if player is using third attack
-				if(it_pp->second->wichAttack() == 3)
+				EnemyPtr enemy = it_enemy->second;
+				AxisAlignedBox enemy_box = enemy->getSceneNode()->_getWorldAABB();
+
+				if(player_box.intersects(enemy_box))
 				{
-					EnemyKillEventPtr enemyKillEventPtr = EnemyKillEventPtr(new EnemyKillEvent(it_ee->second, it_pp->second));
-					raiseEvent(enemyKillEventPtr);
-				}
-				else
-				{
-					EnemyHitEventPtr enemyHitEventPtr = EnemyHitEventPtr(new EnemyHitEvent(it_ee->second, it_pp->second));
-					raiseEvent(enemyHitEventPtr);
+					// Erease enemy if player is using third attack
+					if(player->wichAttack() == 3)
+					{
+						EnemyKillEventPtr enemyKillEventPtr = EnemyKillEventPtr(new EnemyKillEvent(enemy, player));
+						raiseEvent(enemyKillEventPtr);
+					}
+					else
+					{
+						EnemyHitEventPtr enemyHitEventPtr = EnemyHitEventPtr(new EnemyHitEvent(enemy, player));
+  						raiseEvent(enemyHitEventPtr);
+					}
 				}
 			}
-			// Save last attack
-			mPlayerAttackLast = it_pp->second->wichAttack();
 		}
-	}
-	if(it_pp != mPlayerGeomMap.end())
-	{
-		// Player is second - check if enemy is first
-		it_ee = mEnemyGeomMap.find(contact->getFirstGeometry()->getID());
-		if(it_ee != mEnemyGeomMap.end())
-		{
-			// Enemy is first
-
-			// Check if player is attacking and has changed state
-			if( mPlayerAttackLast != it_pp->second->wichAttack() && it_pp->second->isAttacking() )
-			{
-				// Erease enemy if player is using third attack
-				if(it_pp->second->wichAttack() == 3)
-				{
-					EnemyKillEventPtr enemyKillEventPtr = EnemyKillEventPtr(new EnemyKillEvent(it_ee->second, it_pp->second));
-					raiseEvent(enemyKillEventPtr);
-				}
-				else
-				{
-					EnemyHitEventPtr enemyHitEventPtr = EnemyHitEventPtr(new EnemyHitEvent(it_ee->second, it_pp->second));
-					raiseEvent(enemyHitEventPtr);
-				}				
-				if(it_e != mEnemyMap.end())
-					mEnemyMap.erase(it_e);
-			}
-			// Save last attack
-			mPlayerAttackLast = it_pp->second->wichAttack();
-		}
+		// Save last attack
+		mPlayerAttackLast = player->wichAttack();
 	}
 
-	contact->setCoulombFriction(OgreOde::Utility::Infinity);
-
-	return true;
 }
 
-void PhysicsManager::move(PlayerPtr player, Vector3 direction){
-
-	float const maxVel = 80;
-	OgreOde::Body* body = player->getBody();
-	float actualVel = body->getLinearVelocity().length();
-
+void PhysicsManager::move(PlayerPtr player, Vector3 direction, bool fastMode){
+	
 	if(direction != Vector3::ZERO)
 	{
-		Quaternion q1 = body->getOrientation();
+		Quaternion q1 = player->getSceneNode()->getOrientation();
 		// Get current direction where player is facing
 		Vector3 currentDirection = q1 * Vector3::UNIT_Z;
 		Quaternion q2 = currentDirection.getRotationTo(direction);
-		body->setOrientation(q1*q2);
+		player->getSceneNode()->setOrientation(q1*q2);
 	}
 
-	if(direction == Vector3::ZERO)
-	{
-		body->setLinearVelocity(Vector3(0,0,0));
-	}
+	Vector3 old_position = player->getPosition();
+	
+	if(fastMode)
+		player->setPosition((direction*REDWYVERN_FAST_VELOCITY) + old_position);
 	else
-	{
-		if(player->getLastDirection() != direction)
-		{
-			//If direction change, set new linear velocity
-			Quaternion q4 = body->getLinearVelocity().getRotationTo(direction);
-			body->setLinearVelocity(q4 * body->getLinearVelocity());
-		}
-		if(actualVel > maxVel)
-			body->setForce(Vector3(0,0,0));
-		else
-			body->addForce(direction * Vector3((maxVel * 400),0,(maxVel * 400)));
+		player->setPosition((direction*REDWYVERN_SLOW_VELOCITY) + old_position);
+
+	if(collidesWithBorders(old_position,player->getPosition(),0.5f,0,BORDER_GROUND_MASK))
+		player->setPosition(old_position);
 
 
-	}
-
-	player->setLastDirection(direction);
-
-	Quaternion q = body->getOrientation();         
-    Vector3 x = q.xAxis();
-    Vector3 y = q.yAxis();
-    Vector3 z = q.zAxis();
-    body->wake();
-    body->setOrientation(Quaternion(x,Vector3::UNIT_Y,z));
-    body->setAngularVelocity(Vector3(0,0,0)); 
-    body->setLinearVelocity(Vector3(body->getLinearVelocity().x,0,body->getLinearVelocity().z));
-
-	// update ray position
-	if(player->getRayInfo()->updated){
-		body->setPosition(Vector3(body->getPosition().x,player->getRayInfo()->lastContact.y+25,body->getPosition().z));
-		player->getRayInfo()->updated = false;
-    }
 }
 
 
 void move(EnemyPtr enemy, int rotate, int thrust)
 {
-	//
-	// TODO
-	//
+	/* TODO
+	*/
 }
-
-void PhysicsManager::moveAnimal(EnemyPtr animal, Ogre::Vector3 direction)
-{
-	
-	float const maxVel = 80;
-	OgreOde::Body* body_feet = animal->getBodyList()[0][0];
-	OgreOde::Body* body_torso = animal->getBodyList()[0][1];
-
-	if(direction == Vector3::ZERO){
-		//Stop animal
-		body_feet->wake();
-		body_feet->setAngularVelocity(Vector3(0,0,0));
-	}else{
-		//Move animal
-		Quaternion q1 = body_torso->getOrientation();
-		Vector3 currentDirection = q1 * Vector3::UNIT_Z;
-		Quaternion q2 = currentDirection.getRotationTo(direction);
-		body_torso->setOrientation(q1*q2);
-		
-		if(animal->getLastDirection() != direction)
-		{
-			Quaternion q4 = body_torso->getLinearVelocity().getRotationTo(direction);
-			body_feet->wake();
-			body_feet->setAngularVelocity(q4*Ogre::Vector3(maxVel*cos(1.0),body_feet->getAngularVelocity().y,0));
-		}else{
-			body_feet->wake();
-			body_feet->setAngularVelocity(direction*Ogre::Vector3(maxVel*cos(1.0),body_feet->getAngularVelocity().y,0));
-		}
-
-	}
-
-	Quaternion q = body_torso->getOrientation();         
-	Vector3 x = q.xAxis();
-	Vector3 y = q.yAxis();
-	Vector3 z = q.zAxis();
-	body_torso->wake();
-	body_torso->setOrientation(Quaternion(x,Vector3::UNIT_Y,z));
-	body_torso->setAngularVelocity(Vector3(0,0,0)); 
-	body_torso->setLinearVelocity(Vector3(0,0,0));
-	animal->setLastDirection(direction);	
-}
-
-// ----------------------
-// NEW PHYSICS
-// ----------------------
 
 /* Load a mesh as ground type
 */
-void PhysicsManager::loadPhysicGround(Ogre::String mesh, Ogre::String name, Ogre::String type, Ogre::Vector3 position, Ogre::Vector3 scale)
+void PhysicsManager::addPhysicGround(Ogre::String mesh, Ogre::String name, WyvernsAssault::GroundQueryFlags type, Ogre::Vector3 position, Ogre::Vector3 scale)
 {
 	
 	SceneNode* nodeGround = mSceneManager->getRootSceneNode()->createChildSceneNode(name,position);
 	Entity* entityGround = mSceneManager->createEntity(name,mesh);
-	
-	// Set ground mask
-	if(type == "road")
-		entityGround->setQueryFlags(ROAD_GROUND_MASK);
-	else if(type == "water")
-		entityGround->setQueryFlags(WATER_GROUND_MASK);
-	else if(type == "wheat")
-		entityGround->setQueryFlags(WHEAT_GROUND_MASK);
-	else
-		entityGround->setQueryFlags(BASIC_GROUND_MASK);
-
+	entityGround->setQueryFlags(type);
 	nodeGround->attachObject(entityGround);
-	nodeGround->setVisible(false);
+	nodeGround->setVisible(true);
 	nodeGround->setScale(scale);
+
+}
+
+/* Load player physics
+*/
+void PhysicsManager::addPhysicPlayer(PlayerPtr player)
+{
+
+	mPlayerMap[player->getName()] = player;
+
+}
+
+/* Load enemy physics
+*/
+void PhysicsManager::addPhysicEnemy(EnemyPtr enemy)
+{
+
+	mEnemyMap[enemy->getName()] = enemy;
 
 }
 
 /* Calculate heigth of terrain and translate node to adjust them
 */
-void PhysicsManager::calculateY(SceneNode *node, const float heightAdjust, const Ogre::uint32 queryMask)
+bool PhysicsManager::calculateY(SceneNode *node, const Ogre::uint32 queryMask)
 {
 
 	Vector3 position = node->getPosition();
 	float x = position.x;
+	float y = position.y;
 	float z = position.z;
 	Vector3 yPosition(0,0,0);
+	float distToColl = 0.0f;
 
-	if(raycast(position,Vector3::NEGATIVE_UNIT_Y,yPosition,queryMask)){
-		node->setPosition(x,yPosition.y+heightAdjust,z);
+	if(raycast(Vector3(position.x,position.y,position.z),Vector3::NEGATIVE_UNIT_Y,yPosition, distToColl ,queryMask)){
+		node->setPosition(x,yPosition.y+REDWYVERN_RAY_HEIGHT,z);
+		return (true);
 	}
 
+	return (false);
+
+}
+
+/* Control border ground collision
+*/
+bool PhysicsManager::collidesWithBorders(const Vector3& fromPoint, const Vector3& toPoint, const float collisionRadius, const float rayHeightLevel, const uint32 queryMask)
+{
+	Vector3 fromPointAdj(fromPoint.x, fromPoint.y + rayHeightLevel, fromPoint.z);
+	Vector3 toPointAdj(toPoint.x, toPoint.y + rayHeightLevel, toPoint.z);	
+	Vector3 normal = toPointAdj - fromPointAdj;
+	float distToDest = normal.normalise();
+
+	float distToColl = 0.0f;
+	Vector3 myResult(0, 0, 0);
+
+	if (raycast(fromPointAdj, normal, myResult, distToColl ,queryMask))
+	{
+		distToColl -= collisionRadius; 
+		return (distToColl <= distToDest);
+	}
+	else
+	{
+		return false;
+	}
 }
 
 /* Raycast from a point in to the scene. returns success or failure.
  * on success the point is returned in the result.
  */
 bool PhysicsManager::raycast(const Vector3 &point, const Vector3 &normal, 
-							 Vector3 &result, const Ogre::uint32 queryMask)
+							 Vector3 &result,float &closest_distance, const Ogre::uint32 queryMask)
 {
+
 
     // Create the ray to test
     static Ogre::Ray ray;
@@ -690,25 +275,200 @@ bool PhysicsManager::raycast(const Vector3 &point, const Vector3 &normal,
         return (false);
     }   
 
+	closest_distance = -1.0f;
+    Ogre::Vector3 closest_result;
+	ulong target = NULL;
     Ogre::RaySceneQueryResult &query_result = mRaySceneQuery->getLastResults();
-    // Only check this result if its a hit against an entity
-    if ((query_result[0].movable != NULL)  &&
-       (query_result[0].movable->getMovableType().compare("Entity") == 0)) 
-    {
-		//raycast success
-		result = ray.getPoint(query_result[0].distance);
-		return (true);
-    }
-	else
+	for (size_t qr_idx = 0; qr_idx < query_result.size(); qr_idx++)
 	{
-		//raycast failed
-		return (false);
-	} 
+		
+		// Only check this result if its a hit against an physic entity
+		if (query_result[qr_idx].movable->getQueryFlags() == queryMask) 
+		{
+
+			 // Get the entity to check
+			Ogre::Entity *pentity = static_cast<Ogre::Entity*>(query_result[qr_idx].movable); 			
+						      
+            size_t vertex_count;
+            size_t index_count;
+            Ogre::Vector3 *vertices;
+            unsigned long *indices;
+
+            // get the mesh information
+			GetMeshInformation(pentity->getMesh(), vertex_count, vertices, index_count, indices,             
+                              pentity->getParentNode()->getPosition(),
+                              pentity->getParentNode()->getOrientation(),
+                              pentity->getParentNode()->getScale());
+
+            // test for hitting individual triangles on the mesh
+            bool new_closest_found = false;
+            for (int i = 0; i < static_cast<int>(index_count); i += 3)
+            {
+                // check for a hit against this triangle
+                std::pair<bool, Ogre::Real> hit = Ogre::Math::intersects(ray, vertices[indices[i]],
+                    vertices[indices[i+1]], vertices[indices[i+2]], true, false);
+
+                // if it was a hit check if its the closest
+                if (hit.first)
+                {
+                    if ((closest_distance < 0.0f) ||
+                        (hit.second < closest_distance))
+                    {
+                        // this is the closest so far, save it off
+                        closest_distance = hit.second;
+                        new_closest_found = true;
+                    }
+                }
+            }
+
+            delete[] vertices;
+            delete[] indices;
+
+            // if we found a new closest raycast for this object, update the
+            // closest_result before moving on to the next object.
+            if (new_closest_found)
+            {
+				target = (ulong)pentity;
+                closest_result = ray.getPoint(closest_distance);               
+            }
+		}
+	}
+
+    if (closest_distance >= 0.0f)
+    {
+        // raycast success
+		result = closest_result;
+        return (true);
+    }
+    else
+    {
+        // raycast failed
+        return (false);
+    } 
 
 }
 
+/* Get the mesh information for the given mesh.
+*/
+void PhysicsManager::GetMeshInformation(const Ogre::MeshPtr mesh,
+                                size_t &vertex_count,
+                                Ogre::Vector3* &vertices,
+                                size_t &index_count,
+                                unsigned long* &indices,
+                                const Ogre::Vector3 &position,
+                                const Ogre::Quaternion &orient,
+                                const Ogre::Vector3 &scale)
+{
+    bool added_shared = false;
+    size_t current_offset = 0;
+    size_t shared_offset = 0;
+    size_t next_offset = 0;
+    size_t index_offset = 0;
 
-// ----------------------
+    vertex_count = index_count = 0;
+
+    // Calculate how many vertices and indices we're going to need
+    for (unsigned short i = 0; i < mesh->getNumSubMeshes(); ++i)
+    {
+        Ogre::SubMesh* submesh = mesh->getSubMesh( i );
+
+        // We only need to add the shared vertices once
+        if(submesh->useSharedVertices)
+        {
+            if( !added_shared )
+            {
+                vertex_count += mesh->sharedVertexData->vertexCount;
+                added_shared = true;
+            }
+        }
+        else
+        {
+            vertex_count += submesh->vertexData->vertexCount;
+        }
+
+        // Add the indices
+        index_count += submesh->indexData->indexCount;
+    }
+
+
+    // Allocate space for the vertices and indices
+    vertices = new Ogre::Vector3[vertex_count];
+    indices = new unsigned long[index_count];
+
+    added_shared = false;
+
+    // Run through the submeshes again, adding the data into the arrays
+    for ( unsigned short i = 0; i < mesh->getNumSubMeshes(); ++i)
+    {
+        Ogre::SubMesh* submesh = mesh->getSubMesh(i);
+
+        Ogre::VertexData* vertex_data = submesh->useSharedVertices ? mesh->sharedVertexData : submesh->vertexData;
+
+        if((!submesh->useSharedVertices)||(submesh->useSharedVertices && !added_shared))
+        {
+            if(submesh->useSharedVertices)
+            {
+                added_shared = true;
+                shared_offset = current_offset;
+            }
+
+            const Ogre::VertexElement* posElem =
+                vertex_data->vertexDeclaration->findElementBySemantic(Ogre::VES_POSITION);
+
+            Ogre::HardwareVertexBufferSharedPtr vbuf =
+                vertex_data->vertexBufferBinding->getBuffer(posElem->getSource());
+
+            unsigned char* vertex =
+                static_cast<unsigned char*>(vbuf->lock(Ogre::HardwareBuffer::HBL_READ_ONLY));
+
+            float* pReal;
+
+            for( size_t j = 0; j < vertex_data->vertexCount; ++j, vertex += vbuf->getVertexSize())
+            {
+                posElem->baseVertexPointerToElement(vertex, &pReal);
+
+                Ogre::Vector3 pt(pReal[0], pReal[1], pReal[2]);
+
+                vertices[current_offset + j] = (orient * (pt * scale)) + position;
+            }
+
+            vbuf->unlock();
+            next_offset += vertex_data->vertexCount;
+        }
+
+
+        Ogre::IndexData* index_data = submesh->indexData;
+        size_t numTris = index_data->indexCount / 3;
+        Ogre::HardwareIndexBufferSharedPtr ibuf = index_data->indexBuffer;
+
+        bool use32bitindexes = (ibuf->getType() == Ogre::HardwareIndexBuffer::IT_32BIT);
+
+        unsigned long*  pLong = static_cast<unsigned long*>(ibuf->lock(Ogre::HardwareBuffer::HBL_READ_ONLY));
+        unsigned short* pShort = reinterpret_cast<unsigned short*>(pLong);
+
+
+        size_t offset = (submesh->useSharedVertices)? shared_offset : current_offset;
+
+        if ( use32bitindexes )
+        {
+            for ( size_t k = 0; k < numTris*3; ++k)
+            {
+                indices[index_offset++] = pLong[k] + static_cast<unsigned long>(offset);
+            }
+        }
+        else
+        {
+            for ( size_t k = 0; k < numTris*3; ++k)
+            {
+                indices[index_offset++] = static_cast<unsigned long>(pShort[k]) +
+                    static_cast<unsigned long>(offset);
+            }
+        }
+
+        ibuf->unlock();
+        current_offset = next_offset;
+    }
+}
 
 
 // --------------------------------

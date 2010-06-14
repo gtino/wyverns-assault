@@ -70,7 +70,7 @@ void PlayState::initialize()
 	// 
 	mPhysicsManager = PhysicsManagerPtr(new PhysicsManager(mSceneManager));
 	mPhysicsManager->initialize();
-	mPhysicsManager->addPlayer(player1);
+	mPhysicsManager->addPhysicPlayer(player1);
 
 	//Enemys manager constructor
 	mEnemyManager = EnemyManagerPtr(new EnemyManager(mSceneManager));
@@ -237,6 +237,10 @@ bool PlayState::frameRenderingQueued(const Ogre::FrameEvent& evt)
 void PlayState::update(const float elapsedSeconds)
 {
 	PlayerPtr player1 = mPlayerManager->getPlayer(PLAYER1);
+	bool fastPlayerMove = false;
+
+	if(this->mInputManager->getKeyboard()->isKeyDown(OIS::KeyCode::KC_A))	
+		fastPlayerMove = true;
 
 	if ( !player1->isDeath() )
 	{
@@ -250,42 +254,42 @@ void PlayState::update(const float elapsedSeconds)
 				if(this->mInputManager->getKeyboard()->isKeyDown(OIS::KeyCode::KC_RIGHT) && this->mInputManager->getKeyboard()->isKeyDown(OIS::KeyCode::KC_UP))
 				{
 					player1->move(1,0,-1);
-					mPhysicsManager->move(player1, mCameraManager->getDirection(Vector3(1,0,-1)));
+					mPhysicsManager->move(player1, mCameraManager->getDirection(Vector3(1,0,-1)), fastPlayerMove);
 				}
 				else if(this->mInputManager->getKeyboard()->isKeyDown(OIS::KeyCode::KC_RIGHT) && this->mInputManager->getKeyboard()->isKeyDown(OIS::KeyCode::KC_DOWN))
 				{
 					player1->move(1,0,1);
-					mPhysicsManager->move(player1, mCameraManager->getDirection(Vector3(1,0,1)));
+					mPhysicsManager->move(player1, mCameraManager->getDirection(Vector3(1,0,1)), fastPlayerMove);
 				}
 				else if(this->mInputManager->getKeyboard()->isKeyDown(OIS::KeyCode::KC_LEFT) && this->mInputManager->getKeyboard()->isKeyDown(OIS::KeyCode::KC_UP))
 				{
 					player1->move(-1,0,-1);
-					mPhysicsManager->move(player1, mCameraManager->getDirection(Vector3(-1,0,-1)));
+					mPhysicsManager->move(player1, mCameraManager->getDirection(Vector3(-1,0,-1)), fastPlayerMove);
 				}
 				else if(this->mInputManager->getKeyboard()->isKeyDown(OIS::KeyCode::KC_LEFT) && this->mInputManager->getKeyboard()->isKeyDown(OIS::KeyCode::KC_DOWN))
 				{
 					player1->move(-1,0,1);
-					mPhysicsManager->move(player1, mCameraManager->getDirection(Vector3(-1,0,1)));
+					mPhysicsManager->move(player1, mCameraManager->getDirection(Vector3(-1,0,1)), fastPlayerMove);
 				}
 				else if(this->mInputManager->getKeyboard()->isKeyDown(OIS::KeyCode::KC_RIGHT))
 				{
 					player1->move(1,0,0);
-					mPhysicsManager->move(player1, mCameraManager->getDirection(Vector3(1,0,0)));
+					mPhysicsManager->move(player1, mCameraManager->getDirection(Vector3(1,0,0)), fastPlayerMove);
 				}
 				else if(this->mInputManager->getKeyboard()->isKeyDown(OIS::KeyCode::KC_LEFT))
 				{
 					player1->move(-1,0,0);
-					mPhysicsManager->move(player1, mCameraManager->getDirection(Vector3(-1,0,0)));
+					mPhysicsManager->move(player1, mCameraManager->getDirection(Vector3(-1,0,0)), fastPlayerMove);
 				}
 				else if(this->mInputManager->getKeyboard()->isKeyDown(OIS::KeyCode::KC_UP))
 				{
 					player1->move(0,0,-1);
-					mPhysicsManager->move(player1, mCameraManager->getDirection(Vector3(0,0,-1)));
+					mPhysicsManager->move(player1, mCameraManager->getDirection(Vector3(0,0,-1)), fastPlayerMove);
 				}
 				else if(this->mInputManager->getKeyboard()->isKeyDown(OIS::KeyCode::KC_DOWN))
 				{
 					player1->move(0,0,1);
-					mPhysicsManager->move(player1, mCameraManager->getDirection(Vector3(0,0,1)));
+					mPhysicsManager->move(player1, mCameraManager->getDirection(Vector3(0,0,1)), fastPlayerMove);
 				}		
 				else
 				{

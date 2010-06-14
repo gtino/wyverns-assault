@@ -65,6 +65,7 @@ ItemPtr ItemManager::createItem(ItemTypes type, Ogre::String name, Ogre::String 
 {
 	// Item name == Mesh Name!
 	Ogre::Entity* itemMesh = mSceneManager->createEntity(name, mesh);
+	itemMesh->setQueryFlags(SceneManager::ENTITY_TYPE_MASK);
 	Ogre::SceneNode* itemSceneNode = mSceneManager->getRootSceneNode()->createChildSceneNode();
 
 	itemSceneNode->attachObject(itemMesh);

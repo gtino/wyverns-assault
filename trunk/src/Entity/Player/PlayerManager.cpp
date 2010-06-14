@@ -41,6 +41,7 @@ PlayerPtr PlayerManager::createPlayer(Ogre::String name, Ogre::String mesh)
 {
 	// Player node
 	Ogre::Entity* playerMesh = mSceneManager->createEntity(name, mesh);
+	playerMesh->setQueryFlags(SceneManager::ENTITY_TYPE_MASK);
 	Ogre::SceneNode* playerSceneNode = mSceneManager->getRootSceneNode()->createChildSceneNode(name);
 	playerSceneNode->attachObject(playerMesh);
 

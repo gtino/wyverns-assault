@@ -63,6 +63,7 @@ EnemyPtr EnemyManager::createEnemy(EnemyTypes type, Ogre::String name, Ogre::Str
 {
 	// Enemy name == Mesh Name!
 	Ogre::Entity* enemyMesh = mSceneManager->createEntity(name, mesh);
+	enemyMesh->setQueryFlags(SceneManager::ENTITY_TYPE_MASK);
 	Ogre::SceneNode* enemySceneNode = mSceneManager->getRootSceneNode()->createChildSceneNode();
 
 	enemySceneNode->attachObject(enemyMesh);
