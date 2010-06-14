@@ -40,12 +40,14 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #include "..\Audio\AudioManager.h"
 
 //
+// Cameras
+//
+#include "..\Camera\CameraManager.h"
+
+//
 // Gui
 //
-#include "..\GUI\GuiScreen.h"
-#include "..\GUI\GuiBackground.h"
-#include "..\GUI\GuiButton.h"
-#include "..\GUI\GuiMenu.h"
+#include "..\GUI\GuiManager.h"
 
 namespace WyvernsAssault
 {
@@ -74,7 +76,11 @@ namespace WyvernsAssault
 	{
 	public:
 		BaseState();
-		BaseState(GraphicsManagerPtr graphicsManager, InputManagerPtr inputManager, AudioManagerPtr audioManager);
+		BaseState(	GraphicsManagerPtr graphicsManager, 
+					InputManagerPtr inputManager, 
+					AudioManagerPtr audioManager, 
+					CameraManagerPtr cameraManager, 
+					GuiManagerPtr guiManager);
 		virtual ~BaseState() = 0;
 
 	public:
@@ -124,6 +130,10 @@ namespace WyvernsAssault
 		InputManagerPtr mInputManager;
 		/** Audio manager */
 		AudioManagerPtr mAudioManager;
+		/** Gui manager */
+		GuiManagerPtr mGuiManager;
+		/** Camera manager*/
+		CameraManagerPtr mCameraManager;
 
 		/** Next Game State Id */
 		GameStateId mNextGameStateId;

@@ -23,18 +23,28 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #ifndef __SCENARIO_MANAGER_H_
 #define __SCENARIO_MANAGER_H_
 
+#define SCENARIO_NODE_NAME "ScenarioNode"
+
 #include <Ogre.h>
 #include <OgreSingleton.h>
 
 #include <boost/enable_shared_from_this.hpp>
 
+#include "..\Utils\Utils.h"
 #include "..\Events\EventsInterface.h"
-#include "DotSceneLoader.h"
+
+#include "Object.h"
 
 using namespace Ogre;
 
 namespace WyvernsAssault 
 {
+	typedef std::map<Ogre::String,ObjectPtr> ObjectMap;
+	typedef std::map<Ogre::String,ObjectPtr>::iterator ObjectMapIterator;
+
+	typedef std::vector<ObjectPtr> ObjectList;
+	typedef std::vector<ObjectPtr>::iterator ObjectListIterator;
+
 	/**
 	Class used to manage all the scenarios
 	*/
@@ -48,8 +58,20 @@ namespace WyvernsAssault
 		static ScenarioManager& getSingleton(void);
 		static ScenarioManager* getSingletonPtr(void);
 
-		void initialize(CameraManagerPtr cameraManager, LightsManagerPtr lightsManager, EnemyManagerPtr enemyManager, PhysicsManagerPtr physicsManager, ItemManagerPtr itemManager, ParticleManagerPtr particleManager);
+		void initialize();
 		void load(Ogre::String file);
+
+		ObjectPtr createObject(WyvernsAssault::ObjectTypes type, Ogre::String name, Ogre::String meshFile);
+		ObjectPtr createObject(WyvernsAssault::ObjectTypes type, Ogre::String name, Ogre::Entity* entity, Ogre::SceneNode* sceneNode);
+
+		int getCount();
+
+		ObjectPtr getObject(int index);
+		ObjectPtr getObject(Ogre::String name);
+
+		bool removeObject(Ogre::String name);
+
+		Ogre::SceneNode* _getSceneNode() const { return mScenarioNode; }
 
 	public:
 		// ----------------
@@ -61,17 +83,11 @@ namespace WyvernsAssault
 		void unregisterHandlers(){};
 
 	private:
-		SceneManager*			mSceneManager;
-		SceneNode*				mScenarioNode; // Base node for the scenario
-		DotSceneLoader*			mDotSceneLoader;
+		ObjectList mObjectList;
+		ObjectMap mObjectMap;
 
-	private: // Managers shamt pointers
-		CameraManagerPtr mCameraManager;
-		LightsManagerPtr mLightsManager;
-		EnemyManagerPtr mEnemyManager;
-		PhysicsManagerPtr mPhysicsManager;
-		ItemManagerPtr mItemManager;
-		ParticleManagerPtr mParticleManager;
+		Ogre::SceneManager*		mSceneManager;		
+		SceneNode*				mScenarioNode; // Base node for the scenario
 
 	private:
 		bool mInitialized;

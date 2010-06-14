@@ -16,6 +16,7 @@ LightsManager& LightsManager::getSingleton(void)
 
 LightsManager::LightsManager(SceneManager* sceneManager)
 : mLight(0)
+, mLightNode(0)
 {
 	this->mSceneManager = sceneManager;
 }
@@ -28,6 +29,7 @@ LightsManager::~LightsManager()
 /** Initialize the lights manager */
 void LightsManager::initialize()
 {
+	mLightNode = mSceneManager->getRootSceneNode()->createChildSceneNode(LIGHT_NODE_NAME);
 }
 
 
@@ -39,6 +41,9 @@ void LightsManager::finalize()
 		mSceneManager->destroyLight(mLight);
 		mLight = NULL;
 	}
+
+	Utils::Destroy(mSceneManager,LIGHT_NODE_NAME);
+	mLightNode = NULL;
 }
 
 void LightsManager::update(const float elapsedSeconds)

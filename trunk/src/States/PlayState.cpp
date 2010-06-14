@@ -2,8 +2,8 @@
 
 using namespace WyvernsAssault;
 
-PlayState::PlayState(GraphicsManagerPtr graphicsManager, InputManagerPtr inputManager, AudioManagerPtr audioManager)
-: BaseState(graphicsManager,inputManager,audioManager)
+PlayState::PlayState(GraphicsManagerPtr graphicsManager, InputManagerPtr inputManager, AudioManagerPtr audioManager, CameraManagerPtr cameraManager, GuiManagerPtr guiManager)
+: BaseState(graphicsManager,inputManager,audioManager, cameraManager, guiManager)
 , mTrayMgr(NULL)
 , mDetailsPanel(NULL)
 , mRootSceneNode(0)
@@ -25,6 +25,12 @@ PlayState::~PlayState()
 void PlayState::initialize()
 {
 	BaseState::initialize();
+
+	//
+	// Use Game camera and viewport (by default Gui ones are used!)
+	//
+	mCamera = mCameraManager->getGameCamera();
+	mViewport = mCameraManager->getGameViewport();
 
 	mInputManager->setKeyMode(true);
 	mInputManager->setMouseMode(true);
@@ -57,10 +63,6 @@ void PlayState::initialize()
 	// Add fire breath (TEST!)
 	player1->setFireBreath(mParticleManager->create("firebreath","WyvernsAssault/DragonBreath"));
 
-	// Camera manager constructor
-	mCameraManager = CameraManagerPtr(new CameraManager(mSceneManager, mWindow, mViewport));
-	mCameraManager->initialize();
-
 	// Lights manager constructor
 	mLightsManager = LightsManagerPtr(new LightsManager(mSceneManager));
 	mLightsManager->initialize();
@@ -72,7 +74,7 @@ void PlayState::initialize()
 	mPhysicsManager->initialize();
 	mPhysicsManager->addPhysicPlayer(player1);
 
-	//Enemys manager constructor
+	//Enemies manager constructor
 	mEnemyManager = EnemyManagerPtr(new EnemyManager(mSceneManager));
 	mEnemyManager->initialize();
 
@@ -140,11 +142,24 @@ void PlayState::initialize()
 	//
 	mLuaManager->initialize();
 
-	//Load scene XML file
+	//
+	// Create ScenarioManager
+	//
 	mScenarioManager = ScenarioManagerPtr(new ScenarioManager(mSceneManager));
-	mScenarioManager->initialize(mCameraManager, mLightsManager, mEnemyManager, mPhysicsManager, mItemManager, mParticleManager);
-	mScenarioManager->load("Level1_1.scene");
-	mScenarioManager->load("Stage1_1.XML");
+	mScenarioManager->initialize();
+
+	//
+	// Load scene!
+	//
+	boost::scoped_ptr<DotSceneLoader> dotSceneLoader ( new DotSceneLoader );
+	dotSceneLoader->parseDotScene("Level1_1_scenario.scene","General", mSceneManager, mScenarioManager, mCameraManager, mLightsManager, mEnemyManager, mPhysicsManager, mItemManager, mParticleManager, mScenarioManager->_getSceneNode());
+	dotSceneLoader->parseDotScene("Level1_1_enemies.scene","General", mSceneManager, mScenarioManager, mCameraManager, mLightsManager, mEnemyManager, mPhysicsManager, mItemManager, mParticleManager, mEnemyManager->_getSceneNode());
+	dotSceneLoader->parseDotScene("Level1_1_cameras.scene","General", mSceneManager, mScenarioManager, mCameraManager, mLightsManager, mEnemyManager, mPhysicsManager, mItemManager, mParticleManager, mCameraManager->_getSceneNode());
+	dotSceneLoader->parseDotScene("Level1_1_lights.scene","General", mSceneManager, mScenarioManager, mCameraManager, mLightsManager, mEnemyManager, mPhysicsManager, mItemManager, mParticleManager, mLightsManager->_getSceneNode());
+	dotSceneLoader->parseDotScene("Level1_1_items.scene","General", mSceneManager, mScenarioManager, mCameraManager, mLightsManager, mEnemyManager, mPhysicsManager, mItemManager, mParticleManager, mItemManager->_getSceneNode());
+	dotSceneLoader->parseDotScene("Level1_1_physics.scene","General", mSceneManager, mScenarioManager, mCameraManager, mLightsManager, mEnemyManager, mPhysicsManager, mItemManager, mParticleManager, mPhysicsManager->_getSceneNode());
+
+	Debug::Out(mSceneManager->getRootSceneNode());
 
 	//
 	// Events Manager 
@@ -166,6 +181,7 @@ void PlayState::initialize()
 	//
 	mCameraManager->gameCamera();
 
+	Viewport* gameViewport = mCameraManager->getGameViewport();
 	//
 	// Audio: playState track
 	//
@@ -367,17 +383,17 @@ void PlayState::update(const float elapsedSeconds)
 	//
 	// Update animation state
 	//
-	player1->updateAnimation(elapsedSeconds);
+	mPlayerManager->update(elapsedSeconds);
 
 	//
 	// Update camera
 	//
-	mCameraManager->updateCamera(player1->getSceneNode()->getPosition(), elapsedSeconds);
+	mCameraManager->updateCamera(player1->getPosition(), elapsedSeconds);
 
 	//
 	// Update sounds
 	//
-	mAudioManager->update(mCameraManager->getCamera()->getParentSceneNode(), elapsedSeconds);
+	mAudioManager->update(Vector3::ZERO, Quaternion::ZERO, elapsedSeconds);
 
 	//
 	// Update post processing compositors
@@ -440,13 +456,13 @@ void PlayState::unload()
 void PlayState::finalize()
 {	
 	////// FIRST!
+	mScenarioManager.reset();
+
 	mLightsManager.reset();
 
 	mLuaManager.reset();
 
 	mPlayerManager.reset();
-
-	mCameraManager.reset();
 
 	mEnemyManager.reset();
 
@@ -472,13 +488,15 @@ void PlayState::finalize()
 
 	mParticleManager.reset();
 
-	mScenarioManager.reset();
-
 	mPostProcessManager.reset();
 
-	mGraphicsManager->clearScene();
+	//mGraphicsManager->clearScene();
 
 	BaseState::finalize();
+
+	Debug::Out("**************************");
+
+	Debug::Out(mSceneManager->getRootSceneNode());
 }
 
 /** Get state Id */
@@ -720,13 +738,13 @@ bool PlayState::keyPressed(const OIS::KeyEvent& e)
 
 	// Blood particle system - Debug
 	case OIS::KeyCode::KC_Z:		
-		mParticleManager->bloodKill(player1->getSceneNode());
+		mParticleManager->bloodKill(player1->_getSceneNode());
 		break;
 	case OIS::KeyCode::KC_X:
-		mParticleManager->hit(player1->getSceneNode());
+		mParticleManager->hit(player1->_getSceneNode());
 		break;
 	case OIS::KeyCode::KC_C:
-		mParticleManager->bloodHit(player1->getSceneNode());
+		mParticleManager->bloodHit(player1->_getSceneNode());
 		break;
 	case OIS::KeyCode::KC_V:
 		mParticleManager->bloodLens();

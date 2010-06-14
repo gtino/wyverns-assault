@@ -1,0 +1,12 @@
+<scene>
+	<lights>
+		<light name="Ambient1" type="ambient">
+			<color r="0.5" g="0.5" b="0.5"/>
+		</light>
+		<light name="Point1" type="point">
+		  <position x="750" y="1250" z="0"/>
+		  <diffuse r="0.2" g="0.2" b="0.1"/>
+		  <specular r="0.2" g="0.2" b="0.1"/>
+		</light>
+	</lights>
+</scene>

@@ -79,16 +79,10 @@ namespace WyvernsAssault
 		bool renderOneFrame();
 		void clearScene();
 
-		Ogre::Viewport* createViewport(Ogre::Camera* camera);
-
-		void addCompositor(const Ogre::String compositor);
-		void setCompositorEnabled(const Ogre::String compositor, const bool enabled);
-
 		/** Retrieve the render window */
 		Root*			getRoot(void);
 		RenderWindow*	getRenderWindow(void);
 		SceneManager*	getSceneManager(void);
-		Viewport*		getViewport(void){return mViewport;}
 
 	private: 
 		bool configure(void);
@@ -101,7 +95,6 @@ namespace WyvernsAssault
 		Root*			mRoot;
 		RenderWindow*	mRenderWindow;
 		SceneManager*	mSceneManager;
-		Viewport*		mViewport;
 
 		bool mInitialized;
 	};

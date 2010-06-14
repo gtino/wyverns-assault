@@ -35,6 +35,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #include ".\Audio\AudioManager.h"
 #include ".\States\StatesManager.h"
 #include ".\GUI\GuiManager.h"
+#include ".\Camera\CameraManager.h"
 
 namespace WyvernsAssault
 {
@@ -65,6 +66,8 @@ namespace WyvernsAssault
 		InputManagerPtr mInputManager;
 		/** Gui Manager */
 		GuiManagerPtr mGuiManager;
+		/** Camera Manager */
+		CameraManagerPtr mCameraManager;
 		/** Game states (FSM) manager */
 		StatesManagerPtr mStatesManager;
 

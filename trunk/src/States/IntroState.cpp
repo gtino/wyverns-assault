@@ -2,8 +2,8 @@
 
 using namespace WyvernsAssault;
 
-IntroState::IntroState(GraphicsManagerPtr graphicsManager, InputManagerPtr inputManager, AudioManagerPtr audioManager)
-: BaseState(graphicsManager,inputManager,audioManager)
+IntroState::IntroState(GraphicsManagerPtr graphicsManager, InputManagerPtr inputManager, AudioManagerPtr audioManager, CameraManagerPtr cameraManager, GuiManagerPtr guiManager)
+: BaseState(graphicsManager,inputManager,audioManager, cameraManager, guiManager)
 {
 	//
 	// TODO Constructor

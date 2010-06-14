@@ -23,13 +23,15 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #ifndef __PLAYER_MANAGER_H__
 #define __PLAYER_MANAGER_H__
 
+#define PLAYER_NODE_NAME "PlayerNode"
+
 #include <Ogre.h>
 #include <OgreSingleton.h>
 
 #include <boost/enable_shared_from_this.hpp>
 
+#include "..\..\Utils\Utils.h"
 #include "..\..\..\include\Events\EventsInterface.h"
-
 #include "..\..\..\include\Lua\LuaInterface.h"
 #include "..\..\..\include\Entity\EntityManager.h"
 
@@ -58,6 +60,8 @@ namespace WyvernsAssault
 
 		void initialize();
 		void finalize();
+		/** Update and run lua scripts, animations... */
+		void update(const float elapsedSeconds);
 
 		PlayerPtr createPlayer(Ogre::String name, Ogre::String mesh);
 
@@ -71,6 +75,8 @@ namespace WyvernsAssault
 		void setDebugEnabled(bool isDebugEnabled);
 		bool getDebugEnabled(){return mIsDebugEnabled;};
 
+		Ogre::SceneNode* _getSceneNode() const { return mPlayerNode; }
+
 		// ----------------
 		// Events interface
 		// ----------------
@@ -83,6 +89,7 @@ namespace WyvernsAssault
 
 	private:
 		SceneManager *mSceneManager;
+		SceneNode *mPlayerNode;
 
 		PlayerList mPlayerList;
 		PlayerMap mPlayerMap;

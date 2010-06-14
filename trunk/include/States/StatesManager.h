@@ -105,7 +105,7 @@ namespace WyvernsAssault
 
 	public:
 		/** Initialize the manager */
-		void initialize(GraphicsManagerPtr graphicsManager, InputManagerPtr gameInputManager, AudioManagerPtr audioManager);
+		void initialize(GraphicsManagerPtr graphicsManager, InputManagerPtr gameInputManager, AudioManagerPtr audioManager, GuiManagerPtr guiManager, CameraManagerPtr cameraManager);
 		/** Destroy and release all resources used by the manager */
 		void finalize();
 		/** Run the current state (main loop)*/
@@ -170,6 +170,10 @@ namespace WyvernsAssault
 		InputManagerPtr mInputManager;
 		/** Audio Manager */
 		AudioManagerPtr mAudioManager;
+		/** Gui Manager */
+		GuiManagerPtr mGuiManager;
+		/** Camera Manager */
+		CameraManagerPtr mCameraManager;
 
 		bool mInitialized;
 	};

@@ -1,8 +1,8 @@
 #include "..\include\States\MainMenuState.h"
 using namespace WyvernsAssault;
 
-MainMenuState::MainMenuState(GraphicsManagerPtr graphicsManager, InputManagerPtr inputManager, AudioManagerPtr audioManager)
-: BaseState(graphicsManager,inputManager,audioManager)
+MainMenuState::MainMenuState(GraphicsManagerPtr graphicsManager, InputManagerPtr inputManager, AudioManagerPtr audioManager, CameraManagerPtr cameraManager, GuiManagerPtr guiManager)
+: BaseState(graphicsManager,inputManager,audioManager, cameraManager, guiManager)
 {
 	//
 	// TODO Constructor logic HERE

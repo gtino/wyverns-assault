@@ -4,44 +4,47 @@ using namespace WyvernsAssault;
 
 static struct EnemyLogic 
 {
-	EnemyTypes type;
+	Enemy::EnemyTypes type;
 	const char* function;
 } EnemyLogicList[] = {
-	{EnemyTypes::Naked, "runNakedLogic"},
-	{EnemyTypes::Soldier, "runSoldierLogic"},
-	{EnemyTypes::Wizard, "runWizardLogic"},
-	{EnemyTypes::Knight, "runKnightLogic"},
-	{EnemyTypes::Peasant, "runPeasantLogic"},
-	{EnemyTypes::Woman,	"runWomanLogic"},
-	{EnemyTypes::Chicken, "runAnimalLogic"}
+	{Enemy::EnemyTypes::Naked, "runNakedLogic"},
+	{Enemy::EnemyTypes::Soldier, "runSoldierLogic"},
+	{Enemy::EnemyTypes::Wizard, "runWizardLogic"},
+	{Enemy::EnemyTypes::Knight, "runKnightLogic"},
+	{Enemy::EnemyTypes::Peasant, "runPeasantLogic"},
+	{Enemy::EnemyTypes::Woman,	"runWomanLogic"},
+	{Enemy::EnemyTypes::Chicken, "runAnimalLogic"}
 };
 
-EnemyTypes Enemy::StringToType (Ogre::String string)
+Enemy::EnemyTypes Enemy::StringToType (Ogre::String string)
 {
 	const char* str = string.c_str();
 
-	if(strcmp ( "Naked", str ) == 0) return EnemyTypes::Naked;
-	if(strcmp ( "Soldier", str ) == 0) return EnemyTypes::Soldier;
-	if(strcmp ( "Wizard", str ) == 0) return EnemyTypes::Wizard;
-	if(strcmp ( "Knight", str ) == 0) return EnemyTypes::Knight;
-	if(strcmp ( "Peasant", str ) == 0) return EnemyTypes::Peasant;
-	if(strcmp ( "Woman", str ) == 0) return EnemyTypes::Woman;
-	if(strcmp ( "Chicken", str) == 0) return EnemyTypes::Chicken;
+	if(strcmp ( "Naked", str ) == 0) return Enemy::EnemyTypes::Naked;
+	if(strcmp ( "Soldier", str ) == 0) return Enemy::EnemyTypes::Soldier;
+	if(strcmp ( "Wizard", str ) == 0) return Enemy::EnemyTypes::Wizard;
+	if(strcmp ( "Knight", str ) == 0) return Enemy::EnemyTypes::Knight;
+	if(strcmp ( "Peasant", str ) == 0) return Enemy::EnemyTypes::Peasant;
+	if(strcmp ( "Woman", str ) == 0) return Enemy::EnemyTypes::Woman;
+	if(strcmp ( "Chicken", str) == 0) return Enemy::EnemyTypes::Chicken;
 
-	return EnemyTypes::Naked;
+	return Enemy::EnemyTypes::Naked;
 }
 
-Enemy::Enemy(EnemyTypes type) :
-mStateTimeout(0.0f),
-mState(EnemyStates::Initial),
-mMaxLife(100.0f),
-mLife(100.0f),
-mDirection(Vector3::ZERO),
-mOBBoxRenderable(0),
-mIsDebugEnabled(false)
+Enemy::Enemy(Ogre::String name, Enemy::EnemyTypes type)
+: EntityInterface(name)
+, PhysicsInterface()
+, LogicInterface()
+, mStateTimeout(0.0f)
+, mState(Enemy::EnemyStates::Initial)
+, mMaxLife(100.0f)
+, mLife(100.0f)
+, mOBBoxRenderable(0)
+, mIsDebugEnabled(false)
+, mBalloonSet(0)
+, mBalloon(0)
 {
 	mType = type;
-	mAnimationState = 0;
 }
 
 Enemy::~Enemy()
@@ -49,64 +52,54 @@ Enemy::~Enemy()
 	finalizeEntity();
 }
 
-void Enemy::initializeEntity(Ogre::Entity* mesh, Ogre::SceneNode* sceneNode)
+void Enemy::initializeEntity(Ogre::Entity* entity, Ogre::SceneNode* sceneNode, Ogre::SceneManager* sceneManager)
 {
-	mSceneNode = sceneNode;
-	mMesh = mesh;
-	mLastDirection = Vector3(0,0,0);
+	// Always call base method before!
+	EntityInterface::initializeEntity(entity, sceneNode, sceneManager);
+
+	// Ballon Set
+	mBalloonSet = mSceneManager->createBillboardSet(mName + "_BillboardSet");
+	mBalloonSet->setDefaultDimensions(15.0,15.0);
+	mBalloonSet->setMaterialName("Balloons/Initial");
+	mSceneNode->attachObject(mBalloonSet);
+
+	Vector3 balloonPosition(0, 15, 0);
+	mBalloon = mBalloonSet->createBillboard(balloonPosition);
+	//mBalloon->setColour(ColourValue::White);
 
 	// Bounding Box
 	mOBBoxRenderable = new OBBoxRenderable("OBBoxManualMaterial_Enemy");
 
-	mOBBoxRenderable->setupVertices(mMesh->getBoundingBox());
+	mOBBoxRenderable->setupVertices(mEntity->getBoundingBox());
 	mOBBoxRenderable->setVisible(mIsDebugEnabled);
 	mSceneNode->attachObject(mOBBoxRenderable);
 }
 
 void Enemy::finalizeEntity()
-{	
-	if(mOBBoxRenderable)
+{
+	if(mBalloonSet)
 	{
-	delete mOBBoxRenderable;
-	mOBBoxRenderable = NULL;
+		mSceneManager->destroyBillboardSet(mBalloonSet);
+		mBalloonSet = NULL;
 	}
 
-	//mBalloonSet->removeBillboard(mBalloon);
-	//mBalloonSet->detachFromParent();
-}
-
-void Enemy::setBillboardSet(BillboardSet* balloonSet)
-{
-	mBalloonSet = balloonSet;
-	mBalloonSet->setDefaultDimensions(15.0,15.0);
-	mBalloonSet->setMaterialName("Balloons/Initial");
-
-	Vector3 balloonPosition(0, 15, 0);
-	mBalloon = mBalloonSet->createBillboard(balloonPosition);
-	//mBalloon->setColour(ColourValue::White);
-}
-
-void Enemy::setTarget(SceneNode* target)
-{
-	//if(target)
-	//	mSceneNode->setAutoTracking(true,target);
-
-	mTarget = target;
+	// Always call base method before!
+	EntityInterface::finalizeEntity();
 }
 
 void Enemy::updateEntity(const float elapsedSeconds)
 {
-	if(mType == EnemyTypes::Chicken){
-		Vector3 mDirection = this->getLastDirection();
+	if(mType == Enemy::EnemyTypes::Chicken){
+		Vector3 mDirection = this->getDirection();
 		if (mDirection != Vector3::ZERO)
 		{
-			mAnimationState = mMesh->getAnimationState("Run");
+			mAnimationState = mEntity->getAnimationState("Run");
 			mAnimationState->setEnabled(true);
 			mAnimationState->addTime(elapsedSeconds);
 		}
 		else
 		{
-			mAnimationState = mMesh->getAnimationState("Iddle");
+			mAnimationState = mEntity->getAnimationState("Iddle");
 			mAnimationState->setEnabled(true);
 			mAnimationState->addTime(elapsedSeconds);
 		}
@@ -126,7 +119,7 @@ void Enemy::updateLogic(lua_State *L, const float elapsedSeconds)
 	lua_call(L, 2, 1);
 
 	///* get the result */
-	EnemyStates newState = (EnemyStates)luaL_checkint(L, -1);
+	Enemy::EnemyStates newState = (Enemy::EnemyStates)luaL_checkint(L, -1);
 	lua_pop(L, 1);
 
 	// state is the new state for the player
@@ -135,60 +128,76 @@ void Enemy::updateLogic(lua_State *L, const float elapsedSeconds)
 	{
 		switch(newState)
 		{
-		case EnemyStates::Idle:
+		case Enemy::EnemyStates::Idle:
 			mBalloonSet->setVisible(false);
 			mBalloonSet->setMaterialName("Balloons/Idle");
 			mSpeed = 0.0f;
 			mDirection = Vector3::ZERO;
 			break;
-		case EnemyStates::Sleeping:
+		case Enemy::EnemyStates::Sleeping:
 			mBalloonSet->setVisible(true);
 			mBalloonSet->setMaterialName("Balloons/Sleeping");
 			mSpeed = 0.0f;
 			mDirection = Vector3::ZERO;
 			break;
-		case EnemyStates::What:
+		case Enemy::EnemyStates::What:
 			mBalloonSet->setVisible(true);
 			mBalloonSet->setMaterialName("Balloons/What");
 			mSpeed = ENEMY_SPEED_SLOW;
 			mTarget = 0;
 			mDirection = Vector3::ZERO;
 			break;
-		case EnemyStates::Alert:
+		case Enemy::EnemyStates::Alert:
 			mBalloonSet->setVisible(true);
 			mBalloonSet->setMaterialName("Balloons/Alert");
 			mSpeed = ENEMY_SPEED_FAST;
 			chase();
 			break;
-		case EnemyStates::Rage:
+		case Enemy::EnemyStates::Rage:
 			mBalloonSet->setVisible(true);
 			mBalloonSet->setMaterialName("Balloons/Rage");
 			mSpeed = 0.0f;
 			break;
-		case EnemyStates::Love:
+		case Enemy::EnemyStates::Love:
 			mBalloonSet->setVisible(true);
 			mBalloonSet->setMaterialName("Balloons/Love");
 			mSpeed = 0.0f;
 			mDirection = Vector3::ZERO;
 			break;
-		case EnemyStates::Fear:
+		case Enemy::EnemyStates::Fear:
 			mBalloonSet->setVisible(true);
 			mBalloonSet->setMaterialName("Balloons/Fear");
 			mSpeed = ENEMY_SPEED_FAST;
 			mTarget = 0;
 			break;
-		case EnemyStates::Magic:
+		case Enemy::EnemyStates::Magic:
 			mBalloonSet->setVisible(true);
 			mBalloonSet->setMaterialName("Balloons/Magic");
 			mSpeed = 0.0f;
 			mDirection = Vector3::ZERO;
 			break;
-		case EnemyStates::Patrol:
+		case Enemy::EnemyStates::Patrol:
 			mBalloonSet->setVisible(true);
 			mBalloonSet->setMaterialName("Balloons/Patrol");
 			mSpeed = ENEMY_SPEED_MEDIUM;
 			mDirection = Vector3::ZERO;
 			mTarget = 0;
+			break;
+		case Enemy::EnemyStates::Dying:
+  			mBalloonSet->setVisible(true);
+			mBalloonSet->setMaterialName("Balloons/Dying");
+			mSpeed = 0;
+			mDirection = Vector3::ZERO;
+			mTarget = 0;
+			setMaterialName("Skin/Red"); // DEBUG : Make him red so it is obvious he is going to die
+			break;
+		case Enemy::EnemyStates::Dead:
+			mBalloonSet->setVisible(false);
+			mBalloonSet->setMaterialName("Balloons/Initial");
+			mSpeed = 0.0f;
+			mDirection = Vector3::ZERO;
+			mTarget = 0;
+			setMaterialName("Skin/Blue"); // DEBUG : Make him blue so it is obvious he is dead
 			break;
 		default:
 			mBalloonSet->setVisible(false);
@@ -207,15 +216,33 @@ void Enemy::updateLogic(lua_State *L, const float elapsedSeconds)
 		mStateTimeout += elapsedSeconds;
 	}
 
-	if((mStateTimeout > ENEMY_BILLBOARD_SHOW_TIME) && (mState != EnemyStates::Sleeping))
+	if((mStateTimeout > ENEMY_BILLBOARD_SHOW_TIME) && (mState != Enemy::EnemyStates::Sleeping))
 	{
 		mBalloonSet->setVisible(false);
 	}
 }
 
+void Enemy::setTarget(SceneNode* target)
+{
+	//if(target)
+	//	mSceneNode->setAutoTracking(true,target);
+
+	mTarget = target;
+}
+
+void Enemy::hit(float damage)
+{
+	mLife -= damage;
+}
+
 bool Enemy::isHurt()
 {
 	return (mLife / mMaxLife * 100.0f) < 15.0f;
+}
+
+bool Enemy::isDying()
+{
+	return (mLife <= 0.0f);
 }
 
 void Enemy::chase()

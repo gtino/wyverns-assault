@@ -1,11 +1,14 @@
 #ifndef __ITEM_MANAGER_H__
 #define __ITEM_MANAGER_H__
 
+#define ITEM_NODE_NAME "ItemNode"
+
 #include <Ogre.h>
 #include <OgreSingleton.h>
 
 #include <boost/enable_shared_from_this.hpp>
 
+#include "..\..\Utils\Utils.h"
 #include "..\include\Lua\LuaInterface.h"
 #include "..\include\Entity\EntityManager.h"
 #include "..\include\Particle\ParticleManager.h"
@@ -37,8 +40,8 @@ namespace WyvernsAssault
 		static ItemManager& getSingleton(void);
 		static ItemManager* getSingletonPtr(void);
 
-		ItemPtr createItem(ItemTypes type);
-		ItemPtr createItem(ItemTypes type, Ogre::String name, Ogre::String mesh);
+		ItemPtr createItem(Item::ItemTypes type);
+		ItemPtr createItem(Item::ItemTypes type, Ogre::String name, Ogre::String mesh);
 
 		ItemPtr getItem(int index);
 		ItemPtr getItem(Ogre::String name);
@@ -47,6 +50,7 @@ namespace WyvernsAssault
 
 		bool removeItem(Ogre::String name);
 
+		Ogre::SceneNode* _getSceneNode() const { return mItemNode; }
 
 		// ----------------
 		// Events interface
@@ -63,6 +67,8 @@ namespace WyvernsAssault
 
 	private:
 		Ogre::SceneManager* mSceneManager;
+		Ogre::SceneNode* mItemNode;
+
 		ItemList mItemList;
 		ItemMap mItemMap;
 		int mId;
@@ -76,6 +82,7 @@ namespace WyvernsAssault
 
 		LUA_FUNCTION(createItem)
 		LUA_FUNCTION(removeItem)
+		LUA_FUNCTION(getItemStateTimeout)
 
 	public:
 		void luaLoadScripts(){luaLoadScript(".\\data\\scripts\\ItemLogic.lua");};

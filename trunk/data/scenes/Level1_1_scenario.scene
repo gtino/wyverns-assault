@@ -2,6 +2,7 @@
 <scene>
   <resourceLocations />
   <environment />
+  <skyDome material="CloudySky" curvature="5" tiling="8" distance="4000"/>
   <nodes>
     <!--node name="light" id="840205056">
       <rotation qw="0.324461" qx="0.906123" qy="-0.0196778" qz="-0.270701" />

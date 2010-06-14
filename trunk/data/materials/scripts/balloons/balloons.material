@@ -177,3 +177,21 @@ material Balloons/Patrol
     }
   }
 }
+
+material Balloons/Dying
+{
+  technique
+  {
+    pass
+    {
+      lighting off
+      scene_blend alpha_blend
+      depth_write off
+      texture_unit
+      {
+        texture balloon_dying.png
+        tex_address_mode clamp
+      }
+    }
+  }
+}

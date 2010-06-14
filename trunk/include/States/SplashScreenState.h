@@ -33,7 +33,7 @@ namespace WyvernsAssault
 	class SplashScreenState : public BaseState
 	{
 	public:
-		SplashScreenState(GraphicsManagerPtr graphicsManager, InputManagerPtr inputManager, AudioManagerPtr audioManager);
+		SplashScreenState(GraphicsManagerPtr graphicsManager, InputManagerPtr inputManager, AudioManagerPtr audioManager, CameraManagerPtr cameraManager, GuiManagerPtr guiManager);
 		~SplashScreenState();
 
 	public:

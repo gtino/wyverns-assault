@@ -32,7 +32,7 @@ namespace WyvernsAssault
 	{
 	public:
 		void              clear(void);
-		Ogre::SceneNode * sceneNode;
+		Ogre::Vector3	  position;
 		Ogre::Vector3     prevPosition;
 	};
 

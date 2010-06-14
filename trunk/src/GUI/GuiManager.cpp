@@ -15,11 +15,8 @@ GuiManager& GuiManager::getSingleton(void)
 }
 // END SINGLETON
 
-GuiManager::GuiManager(Ogre::Root* root, Ogre::SceneManager* sceneManager, Ogre::RenderWindow* window)
+GuiManager::GuiManager()
 {
-	mRoot = root;
-	mSceneManager = sceneManager;
-	mWindow = window;
 }
 
 GuiManager::~GuiManager()
@@ -30,11 +27,12 @@ GuiManager::~GuiManager()
 	finalize();
 }
 
-bool GuiManager::initialize()
+bool GuiManager::initialize(Ogre::Root* root, Ogre::SceneManager* sceneManager, Ogre::RenderWindow* window)
 {
-	//
-	// TODO initialize
-	//
+	mRoot = root;
+	mSceneManager = sceneManager;
+	mWindow = window;
+
 	return true;
 }
 

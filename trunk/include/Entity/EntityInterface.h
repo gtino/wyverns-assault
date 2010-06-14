@@ -25,6 +25,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
 #include <Ogre.h>
 
+#include "..\Utils\Utils.h"
 #include "..\GUI\GuiObjectTextDisplay.h"
 #include "..\Camera\CameraManager.h"
 
@@ -36,36 +37,16 @@ namespace WyvernsAssault
 	class EntityInterface
 	{
 	public:
-		EntityInterface();
+		EntityInterface(Ogre::String name);
 		virtual ~EntityInterface() = 0;
 
 	public:
-		virtual void initializeEntity(Ogre::Entity* mesh, Ogre::SceneNode* sceneNode)
-		{
-			mSceneNode = sceneNode;
-			mMesh = mesh;
-	
-			// Animations
-			//mAnimationState = mMesh->getAnimationState("Iddle_01");
-			//mAnimationState->setEnabled(true);
-			//mAnimationState->setLoop(true);
+		virtual void initializeEntity(Ogre::Entity* entity, Ogre::SceneNode* sceneNode, Ogre::SceneManager* sceneManager) = 0;
+		virtual void finalizeEntity();
 
-			// DEBUG TEXT DISPLAY
-			/*mGuiObjectTextDisplay = new GuiObjectTextDisplay(mesh, CameraManager::getSingleton().getCamera());
-			mGuiObjectTextDisplay->enable(true);
-			mGuiObjectTextDisplay->setText(getName());*/
-		}
-
-		virtual void finalizeEntity(){/*delete mGuiObjectTextDisplay;*/}
-
-		virtual void updateEntity(const float elapsedSeconds){/*mGuiObjectTextDisplay->update();*/};
-
-		virtual Ogre::SceneNode* getSceneNode() const { return mSceneNode; }
-		virtual void setSceneNode(Ogre::SceneNode* sceneNode) { mSceneNode = sceneNode; }
-
-		virtual Ogre::Entity* getEntity() const { return mMesh; }
-
-		virtual const Ogre::String& getName() { return mMesh->getName(); }
+		virtual Ogre::SceneNode* _getSceneNode() const { return mSceneNode; }
+		
+		virtual const Ogre::String& getName() { return mName; }
 
 		virtual void setPosition(const Ogre::Vector3 position) { mSceneNode->setPosition(position); }
 		virtual Ogre::Vector3 getPosition() { return mSceneNode->getPosition(); } 
@@ -73,25 +54,26 @@ namespace WyvernsAssault
 		virtual void setScale(const Ogre::Vector3 scale) { mSceneNode->setScale(scale); }
 		virtual Ogre::Vector3 getScale(){return mSceneNode->getScale(); }
 
-		void setLastDirection(Ogre::Vector3 dir){mLastDirection = dir;};
-		Ogre::Vector3 getLastDirection(){ return mLastDirection;};
+		virtual void setDirection(const Ogre::Vector3 direction) { mDirection = direction; }
+		virtual Ogre::Vector3 getDirection(){return mDirection; }
 
-		//virtual Ogre::Entity* getEntity(){return mMesh;}
+		virtual void setOrientation(const Ogre::Quaternion orientation) { mSceneNode->setOrientation(orientation); }
+		virtual Ogre::Quaternion getOrientation(){return mSceneNode->getOrientation(); }
 
-		//virtual void lookAt(const Ogre::Vector3 lookAt) { mSceneNode->lookAt(lookAt,Ogre::TraTransformSpace::); }
-
-		virtual void setMaterialName(const Ogre::String materialName) { mMesh->setMaterialName(materialName);}
+		virtual void setMaterialName(const Ogre::String materialName) { mEntity->setMaterialName(materialName);}
 		
-		Ogre::Entity* getEntity(){return mMesh;};
-		const Ogre::AxisAlignedBox& getBoundingBox(){return mMesh->getBoundingBox();}
+		const Ogre::AxisAlignedBox& getBoundingBox(){return mEntity->getBoundingBox();}
 
 	protected:
-		Ogre::Entity* mMesh;
-		Ogre::SceneNode* mSceneNode;
-		Ogre::AnimationState* mAnimationState;
-		Ogre::Vector3 mLastDirection;
+		void _destroy(SceneNode* sceneNode);
 
-		/*GuiObjectTextDisplay* mGuiObjectTextDisplay;*/
+	protected:
+		Ogre::Entity* mEntity;
+		Ogre::SceneNode* mSceneNode;
+		Ogre::SceneManager* mSceneManager;
+		Ogre::AnimationState* mAnimationState;
+		Ogre::String mName;
+		Ogre::Vector3 mDirection;
 	};
 }
 

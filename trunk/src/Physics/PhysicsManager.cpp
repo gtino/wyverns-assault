@@ -4,7 +4,6 @@ using namespace WyvernsAssault;
 
 const Ogre::Real STEP_RATE = 0.01;
 
-
 // BEGIN SINGLETON
 template<> PhysicsManager* Ogre::Singleton<PhysicsManager>::ms_Singleton = 0;
 PhysicsManager* PhysicsManager::getSingletonPtr(void)
@@ -18,6 +17,7 @@ PhysicsManager& PhysicsManager::getSingleton(void)
 // END SINGLETON
 
 PhysicsManager::PhysicsManager(SceneManager* sceneManager)
+: mPhysicsNode(0)
 {
 	mSceneManager = sceneManager;
 }
@@ -29,6 +29,7 @@ PhysicsManager::~PhysicsManager()
 
 bool PhysicsManager::initialize()
 {
+	mPhysicsNode = mSceneManager->getRootSceneNode()->createChildSceneNode(PHYSICS_NODE_NAME);
 
 	// State control variables
 	mPlayerSpecialState = false;
@@ -47,8 +48,11 @@ bool PhysicsManager::initialize()
 
 void PhysicsManager::finalize()
 {
-	/* TODO
-	*/
+	mPlayerMap.clear();
+	mEnemyMap.clear();
+
+	Utils::Destroy(mSceneManager, PHYSICS_NODE_NAME);
+	mPhysicsNode = NULL;
 }
 
 
@@ -66,7 +70,7 @@ void PhysicsManager::update(const float elapsedSeconds){
 		PlayerPtr player = it_player->second;
 		
 		// Check basic ground collision
-		if(calculateY(player->getSceneNode(),BASIC_GROUND_MASK)){
+		if(calculateY(player->_getSceneNode(),BASIC_GROUND_MASK)){
 			// Basic ground collision event
 
 		}
@@ -92,11 +96,12 @@ void PhysicsManager::checkForCollisions()
 			for(EnemyMapIterator it_enemy = mEnemyMap.begin(); it_enemy != mEnemyMap.end(); ++it_enemy)
 			{
 				EnemyPtr enemy = it_enemy->second;
-				AxisAlignedBox enemy_box = enemy->getSceneNode()->_getWorldAABB();
+				AxisAlignedBox enemy_box = enemy->_getSceneNode()->_getWorldAABB();
 				
 				if(player_firebox.intersects(enemy_box))
 				{
 					EnemySpecialHitEventPtr enemySpecialHitEventPtr = EnemySpecialHitEventPtr(new EnemySpecialHitEvent(enemy, player));
+					enemySpecialHitEventPtr->setDamage(player->getSpecialHitDamage());
 					raiseEvent(enemySpecialHitEventPtr);
 				}
 			}
@@ -108,25 +113,27 @@ void PhysicsManager::checkForCollisions()
 		if( mPlayerAttackLast != player->wichAttack() && player->isAttacking() )
 		{
 
-			AxisAlignedBox player_box = player->getSceneNode()->_getWorldAABB();
+			AxisAlignedBox player_box = player->_getSceneNode()->_getWorldAABB();
 
 			for(EnemyMapIterator it_enemy = mEnemyMap.begin(); it_enemy != mEnemyMap.end(); ++it_enemy)
 			{
 				EnemyPtr enemy = it_enemy->second;
-				AxisAlignedBox enemy_box = enemy->getSceneNode()->_getWorldAABB();
+				AxisAlignedBox enemy_box = enemy->_getSceneNode()->_getWorldAABB();
 
 				if(player_box.intersects(enemy_box))
 				{
-					// Erease enemy if player is using third attack
+					// More damage if player is doing combo!
 					if(player->wichAttack() == 3)
 					{
-						EnemyKillEventPtr enemyKillEventPtr = EnemyKillEventPtr(new EnemyKillEvent(enemy, player));
-						raiseEvent(enemyKillEventPtr);
+						EnemyHitEventPtr enemyHitEventPtr = EnemyHitEventPtr(new EnemyHitEvent(enemy, player));
+						enemyHitEventPtr->setDamage(player->getHitDamage() * 3.0f);
+						raiseEvent(enemyHitEventPtr);
 					}
 					else
 					{
 						EnemyHitEventPtr enemyHitEventPtr = EnemyHitEventPtr(new EnemyHitEvent(enemy, player));
-  						raiseEvent(enemyHitEventPtr);
+						enemyHitEventPtr->setDamage(player->getHitDamage());
+						raiseEvent(enemyHitEventPtr);
 					}
 				}
 			}
@@ -141,11 +148,11 @@ void PhysicsManager::move(PlayerPtr player, Vector3 direction, bool fastMode){
 	
 	if(direction != Vector3::ZERO)
 	{
-		Quaternion q1 = player->getSceneNode()->getOrientation();
+		Quaternion q1 = player->_getSceneNode()->getOrientation();
 		// Get current direction where player is facing
 		Vector3 currentDirection = q1 * Vector3::UNIT_Z;
 		Quaternion q2 = currentDirection.getRotationTo(direction);
-		player->getSceneNode()->setOrientation(q1*q2);
+		player->_getSceneNode()->setOrientation(q1*q2);
 	}
 
 	Vector3 old_position = player->getPosition();
@@ -173,7 +180,7 @@ void move(EnemyPtr enemy, int rotate, int thrust)
 void PhysicsManager::addPhysicGround(Ogre::String mesh, Ogre::String name, WyvernsAssault::GroundQueryFlags type, Ogre::Vector3 position, Ogre::Vector3 scale)
 {
 	
-	SceneNode* nodeGround = mSceneManager->getRootSceneNode()->createChildSceneNode(name,position);
+	SceneNode* nodeGround = mPhysicsNode->createChildSceneNode(name,position);
 	Entity* entityGround = mSceneManager->createEntity(name,mesh);
 	entityGround->setQueryFlags(type);
 	nodeGround->attachObject(entityGround);
@@ -195,9 +202,7 @@ void PhysicsManager::addPhysicPlayer(PlayerPtr player)
 */
 void PhysicsManager::addPhysicEnemy(EnemyPtr enemy)
 {
-
 	mEnemyMap[enemy->getName()] = enemy;
-
 }
 
 /* Calculate heigth of terrain and translate node to adjust them
@@ -470,6 +475,37 @@ void PhysicsManager::GetMeshInformation(const Ogre::MeshPtr mesh,
     }
 }
 
+void PhysicsManager::removeEnemy(EnemyPtr enemy)
+{
+	//
+	// TODO : maybe we don't really need a list, and we can just use a map...
+	//
+	mEnemyMap.erase(enemy->getName());
+}
+
+// --------------
+// Event handlers
+// --------------
+void PhysicsManager::registerHandlers()
+{
+	boost::shared_ptr<PhysicsManager> this_ = shared_from_this();
+
+	registerHandler(EventHandlerPtr(new EventHandler<PhysicsManager,EnemyKillEvent>(this_,&PhysicsManager::handleEnemyKillEvent)),EventTypes::EnemyKill);
+}
+
+void PhysicsManager::unregisterHandlers()
+{
+	
+}
+
+void PhysicsManager::handleEnemyKillEvent(EnemyKillEventPtr evt)
+ {
+	EnemyPtr enemy = evt->getEnemy();
+	PlayerPtr player = evt->getPlayer();
+
+	// The player has just hit the enemy
+   	removeEnemy(enemy);
+}
 
 // --------------------------------
 // Lua Physics Lib

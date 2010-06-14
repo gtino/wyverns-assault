@@ -6,8 +6,10 @@
 -------------------------------------
 
 -- ItemStates
-Modest = 0
+Initial = 0
 Catch = 1
+Caught = 2
+Removed = 3
 
 -- Distances
 CatchDistance = 10;
@@ -19,9 +21,18 @@ function runItemLogic(itemId, state)
 	local player = Physics.getNearestPlayer(itemId);
 	local distance = Physics.getDistance(itemId,player);
 	
-	if state == Modest then
+	-- How much time has passed since we entered last state?
+	local timeout = Item.getStateTimeout(itemId);
+	
+	if state == Initial then
 		if distance<CatchDistance then
-			newState = Catch -- Item catched 
+			newState = Catch -- Over item 
+		end
+	elseif state == Catch then
+		newState = Caught
+	elseif state == Caught then
+		if timeout > 2 then
+			newState = Removed -- Item animation/sound done, remove it
 		end
 	else
 		newState = state

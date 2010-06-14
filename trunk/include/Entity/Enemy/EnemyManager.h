@@ -23,12 +23,15 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #ifndef __ENEMY_MANAGER_H__
 #define __ENEMY_MANAGER_H__
 
+#define ENEMY_NODE_NAME "EnemyNode"
+
 #include <Ogre.h>
 #include <OgreSingleton.h>
 #include <boost/enable_shared_from_this.hpp>
 
 #include <vector>
 
+#include "..\..\Utils\Utils.h"
 #include "..\..\Lua\LuaInterface.h"
 #include "..\..\Entity\EntityManager.h"
 #include "..\..\Events\EventsInterface.h"
@@ -62,8 +65,8 @@ namespace WyvernsAssault
 		void finalize();
 		SceneManager* getSceneManager(){return this->mSceneManager;}
 
-		EnemyPtr createEnemy(EnemyTypes type);
-		EnemyPtr createEnemy(EnemyTypes type, Ogre::String name, Ogre::String mesh);
+		EnemyPtr createEnemy(Enemy::EnemyTypes type);
+		EnemyPtr createEnemy(Enemy::EnemyTypes type, Ogre::String name, Ogre::String mesh);
 
 		int getCount();
 
@@ -80,6 +83,8 @@ namespace WyvernsAssault
 		void setDebugEnabled(bool isDebugEnabled);
 		bool getDebugEnabled(){return mIsDebugEnabled;};
 
+		Ogre::SceneNode* _getSceneNode() const { return mEnemyNode; }
+
 		// ----------------
 		// Events interface
 		// ----------------
@@ -89,7 +94,8 @@ namespace WyvernsAssault
 		void unregisterHandlers();
 
 		void handleCollisionEvent(CollisionEventPtr evt);
-		void handleEnemyKillEvent(EnemyKillEventPtr evt);
+		void handleEnemyHitEvent(EnemyHitEventPtr evt);
+		void handleEnemySpecialHitEvent(EnemySpecialHitEventPtr evt);
 
 	private:
 		Ogre::String createUniqueId();
@@ -104,12 +110,13 @@ namespace WyvernsAssault
 		EnemyMap mEnemyMap;
 
 		Ogre::SceneManager* mSceneManager;
+		Ogre::SceneNode* mEnemyNode;
 
 		// --------------------------------
 		// BEGIN Lua Interface Declarations
 		// --------------------------------
 	public:
-		// Enemys Lib (exported to Lua)
+		// Enemies Lib (exported to Lua)
 		LUA_LIBRARY("Enemy", enemylib);
 
 		LUA_FUNCTION(createEnemy)
@@ -121,6 +128,7 @@ namespace WyvernsAssault
 		LUA_FUNCTION(setEnemyTarget)
 		LUA_FUNCTION(getEnemyStateTimeout)
 		LUA_FUNCTION(isEnemyHurt)
+		LUA_FUNCTION(isEnemyDying)
 		LUA_FUNCTION(removeEnemy)
 
 	public:

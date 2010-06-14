@@ -23,10 +23,13 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #ifndef __LIGHTS_MANAGER_H__
 #define __LIGHTS_MANAGER_H__
 
+#define LIGHT_NODE_NAME "LightNode"
+
 #include <Ogre.h>
 #include <OgreSingleton.h>
 #include <boost/enable_shared_from_this.hpp>
 
+#include "..\Utils\Utils.h"
 #include "..\Lua\LuaInterface.h"
 
 // Light types
@@ -67,10 +70,13 @@ namespace WyvernsAssault
 		void setAmbientLight(ColourValue color);
 		ColourValue getAmbientLight();
 
+		Ogre::SceneNode* _getSceneNode() const { return mLightNode; }
+
 	private:
 		Light* mLight;
 
 		SceneManager* mSceneManager;
+		SceneNode* mLightNode;
 
 	// --------------------------------
 	// BEGIN Lua Interface Declarations

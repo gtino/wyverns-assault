@@ -64,8 +64,8 @@ namespace WyvernsAssault
 	typedef std::map<Ogre::String, int> SoundNameToIdMap;
 	typedef std::map<Ogre::String, int>::iterator SoundNameToIdMapIterator;
 
-	typedef std::map<Ogre::SceneNode*, int> SceneNodeToChannelMap;
-	typedef std::map<Ogre::SceneNode*, int>::iterator SceneNodeToChannelMapIterator;
+	typedef std::map<Ogre::String, int> NameToChannelMap;
+	typedef std::map<Ogre::String, int>::iterator NameToChannelMapIterator;
 
 	//typedef std::vector<SoundPtr> SoundsList;
 	//typedef std::vector<SoundPtr>::iterator SoundsListIterator;
@@ -100,7 +100,7 @@ namespace WyvernsAssault
 		// Sound Manager
 		// -------------
 		void                 stopAllSounds(void);
-		void                 update(Ogre::SceneNode *listenerNode, Ogre::Real timeElapsed);
+		void                 update(Ogre::Vector3 listenerPosition, Ogre::Quaternion listenerOrientation, Ogre::Real timeElapsed);
 
 		int                  createSound(String &fileName);         // single-shot 3D sound.  returns soundIndex
 		int                  createStream(String &fileName);        // single-shot 2D stream.  returns soundIndex
@@ -109,8 +109,8 @@ namespace WyvernsAssault
 
 		int                  createSound(String &fileName, SOUND_TYPE soundType);
 
-		void				 playSound(String soundName, SceneNode *soundNode, int *channelIndex);
-		void                 playSound(int soundIndex, SceneNode *soundNode, int *channelIndex);
+		void				 playSound(String soundName, Ogre::Vector3 soundPosition, int *channelIndex);
+		void                 playSound(int soundIndex, Ogre::Vector3 soundPosition, int *channelIndex);
 		void				 playSoundTrack(String name);
 		void                 stopSound(int *channelIndex);
 		int                  findSound(String &fileName, SOUND_TYPE soundType);    // returns soundIndex;
@@ -128,7 +128,7 @@ namespace WyvernsAssault
 		FMOD::System*			mSystem;
 		Ogre::Vector3			mPrevListenerPosition;
 		SoundInstanceVector*	mSoundInstanceVector;
-		SceneNodeToChannelMap	mSceneNodeToChannelMap;
+		NameToChannelMap		mSceneNodeToChannelMap;
 		ChannelInstance			mChannelArray[MAX_SOUND_CHANNELS];
 		int						mSoundTrackChannelIndex; // HACK! Remove this shit, use an entity based channel
 

@@ -18,7 +18,7 @@ BaseState::BaseState()
 	this->mIsPaused = false;
 }
 
-BaseState::BaseState(GraphicsManagerPtr graphicsManager, InputManagerPtr inputManager, AudioManagerPtr audioManager)
+BaseState::BaseState(GraphicsManagerPtr graphicsManager, InputManagerPtr inputManager, AudioManagerPtr audioManager, CameraManagerPtr cameraManager, GuiManagerPtr guiManager)
 : mGuiScreen(0)
 , mSceneManager(0)
 , mRoot(0)
@@ -32,6 +32,8 @@ BaseState::BaseState(GraphicsManagerPtr graphicsManager, InputManagerPtr inputMa
 	this->mGraphicsManager	= graphicsManager;
 	this->mInputManager		= inputManager;
 	this->mAudioManager		= audioManager;
+	this->mGuiManager		= guiManager;
+	this->mCameraManager	= cameraManager;
 }
 
 BaseState::~BaseState()
@@ -56,26 +58,9 @@ void BaseState::initialize()
 
 	mSceneManager = mGraphicsManager->getSceneManager();
 
-	if(mSceneManager->hasCamera( "GuiCamera" ))
-	{
-		mCamera = mSceneManager->getCamera( "GuiCamera" );
-		mViewport = mCamera->getViewport();
+	mCamera = mCameraManager->getGuiCamera();
 
-		// Create viewport if not present already
-		if(!mViewport)
-		{
-			mViewport = mGraphicsManager->createViewport( mCamera );
-			mCamera->setAspectRatio(Real(mViewport->getActualWidth()) / Real(mViewport->getActualHeight()));
-			mViewport->setBackgroundColour( Ogre::ColourValue( 0.3, 0.6, 0.9 ) );
-		}
-	}
-	else
-	{
-		mCamera = mSceneManager->createCamera( "GuiCamera" );
-		mViewport = mGraphicsManager->createViewport( mCamera );
-		mCamera->setAspectRatio(Real(mViewport->getActualWidth()) / Real(mViewport->getActualHeight()));
-		mViewport->setBackgroundColour( Ogre::ColourValue( 0.3, 0.6, 0.9 ) );
-	}
+	mViewport = mCameraManager->getGuiViewport();
 }
 
 void BaseState::finalize()

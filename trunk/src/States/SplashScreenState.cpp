@@ -2,8 +2,8 @@
 
 using namespace WyvernsAssault;
 
-SplashScreenState::SplashScreenState(GraphicsManagerPtr graphicsManager, InputManagerPtr inputManager, AudioManagerPtr audioManager)
-: BaseState(graphicsManager,inputManager,audioManager)
+SplashScreenState::SplashScreenState(GraphicsManagerPtr graphicsManager, InputManagerPtr inputManager, AudioManagerPtr audioManager, CameraManagerPtr cameraManager, GuiManagerPtr guiManager)
+: BaseState(graphicsManager,inputManager,audioManager, cameraManager, guiManager)
 {	
 	//
 	// TODO Constructor

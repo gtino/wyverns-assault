@@ -14,10 +14,11 @@ EnemyManager& EnemyManager::getSingleton(void)
 }
 // END SINGLETON
 
-EnemyManager::EnemyManager(Ogre::SceneManager* sceneManager) :
-mCount(0),
-mId(0),
-mIsDebugEnabled(false)
+EnemyManager::EnemyManager(Ogre::SceneManager* sceneManager) 
+: mEnemyNode(0)
+, mCount(0)
+, mId(0)
+, mIsDebugEnabled(false)
 {
 	mSceneManager = sceneManager;
 }
@@ -29,24 +30,28 @@ EnemyManager::~EnemyManager()
 
 void EnemyManager::initialize()
 {
+	mEnemyNode = mSceneManager->getRootSceneNode()->createChildSceneNode(ENEMY_NODE_NAME);
 }
 
 void EnemyManager::finalize()
 {
 	mEnemyList.clear();
 	mEnemyMap.clear();
+
+	Utils::Destroy(mSceneManager,ENEMY_NODE_NAME);
+	mEnemyNode = NULL;
 }
 
-EnemyPtr EnemyManager::createEnemy(EnemyTypes type)
+EnemyPtr EnemyManager::createEnemy(Enemy::EnemyTypes type)
 {
 	Ogre::String mesh;
 
 	switch(type)
 	{
-	case Naked:
+	case Enemy::EnemyTypes::Naked:
 		mesh = Ogre::String("naked.mesh");
 		break;
-	case Wizard:
+	case Enemy::EnemyTypes::Wizard:
 		mesh = Ogre::String("wizard.mesh");
 		break;
 	default:
@@ -59,22 +64,18 @@ EnemyPtr EnemyManager::createEnemy(EnemyTypes type)
 	return createEnemy(type, name, mesh);
 }
 
-EnemyPtr EnemyManager::createEnemy(EnemyTypes type, Ogre::String name, Ogre::String mesh)
+EnemyPtr EnemyManager::createEnemy(Enemy::EnemyTypes type, Ogre::String name, Ogre::String mesh)
 {
 	// Enemy name == Mesh Name!
 	Ogre::Entity* enemyMesh = mSceneManager->createEntity(name, mesh);
 	enemyMesh->setQueryFlags(SceneManager::ENTITY_TYPE_MASK);
-	Ogre::SceneNode* enemySceneNode = mSceneManager->getRootSceneNode()->createChildSceneNode();
+	Ogre::SceneNode* enemySceneNode = mEnemyNode->createChildSceneNode("Enemy_"+name+"_Node");
 
 	enemySceneNode->attachObject(enemyMesh);
-	
-	// Balloon billboard
-	Ogre::BillboardSet* mBalloonSet = mSceneManager->createBillboardSet(name + "_BillboardSet");
-	enemySceneNode->attachObject(mBalloonSet);
 
-	EnemyPtr enemy = EnemyPtr(new Enemy(type));
-	enemy->initializeEntity(enemyMesh, enemySceneNode);
-	enemy->setBillboardSet(mBalloonSet);
+	EnemyPtr enemy = EnemyPtr(new Enemy(name, type));
+
+	enemy->initializeEntity(enemyMesh, enemySceneNode, mSceneManager);
 
 	mEnemyList.push_back(enemy);
 	mEnemyMap[name] = enemy;
@@ -126,8 +127,11 @@ bool EnemyManager::removeEnemy(Ogre::String name)
 	if( it != mEnemyList.end() )
 	{
 		mEnemyList.erase(it);
-		mSceneManager->destroyEntity(enemyToErase->getEntity());//getRootSceneNode()->removeChild(name);
 	}
+	
+	// Fire the event
+	EnemyRemovedEventPtr e = EnemyRemovedEventPtr(new EnemyRemovedEvent(enemyToErase) );
+	raiseEvent(e);
 
 	return true;
 }
@@ -137,14 +141,34 @@ bool EnemyManager::removeEnemy(Ogre::String name)
 */
 void EnemyManager::update(const float elapsedSeconds)
 {
+	EnemyList deadEnemies;
+
 	for(int i = 0; i < mEnemyList.size() ; i++)
 	{
 		EnemyPtr enemy =  mEnemyList[i];
 
-		enemy->updateLogic(L,elapsedSeconds);
-		//enemy->updatePhysics(elapsedSeconds);
-		enemy->updateEntity(elapsedSeconds);
+		// Is dead, this means that we can delete him!
+		if(enemy->getEnemyState() == Enemy::EnemyStates::Dead)
+		{
+			// Add them to the 'to delete' list
+			deadEnemies.push_back(enemy);
+		}	
+		else // Still alive, so we have to update him!
+		{
+			enemy->updateLogic(L,elapsedSeconds);
+			//enemy->updatePhysics(elapsedSeconds);
+			enemy->updateEntity(elapsedSeconds); // this updates animations too!
+		}
 	}
+
+	// Now we have to remove them and notify other listeners with the 'dead/remove' event!
+	for(int i = 0; i < deadEnemies.size(); i++)
+	{
+		EnemyPtr e = deadEnemies[i];
+		removeEnemy(e->getName());
+	}
+
+	deadEnemies.clear();
 }
 
 void EnemyManager::setDebugEnabled(bool isDebugEnabled)
@@ -169,7 +193,8 @@ void EnemyManager::registerHandlers()
 	boost::shared_ptr<EnemyManager> this_ = shared_from_this();
 
 	registerHandler(EventHandlerPtr(new EventHandler<EnemyManager,CollisionEvent>(this_,&EnemyManager::handleCollisionEvent)),EventTypes::Collision);
-	registerHandler(EventHandlerPtr(new EventHandler<EnemyManager,EnemyKillEvent>(this_,&EnemyManager::handleEnemyKillEvent)),EventTypes::EnemyKill);
+	registerHandler(EventHandlerPtr(new EventHandler<EnemyManager,EnemyHitEvent>(this_,&EnemyManager::handleEnemyHitEvent)),EventTypes::EnemyHit);
+	registerHandler(EventHandlerPtr(new EventHandler<EnemyManager,EnemySpecialHitEvent>(this_,&EnemyManager::handleEnemySpecialHitEvent)),EventTypes::EnemySpecialHit);
 }
 
 void EnemyManager::unregisterHandlers()
@@ -182,13 +207,33 @@ void EnemyManager::handleCollisionEvent(CollisionEventPtr evt)
 // TODO
 }
 
-void EnemyManager::handleEnemyKillEvent(EnemyKillEventPtr evt)
-{
+void EnemyManager::handleEnemyHitEvent(EnemyHitEventPtr evt)
+ {
 	EnemyPtr enemy = evt->getEnemy();
 	PlayerPtr player = evt->getPlayer();
 
-	// The player has just hit the enemy
-	removeEnemy(enemy->getName());
+	enemy->hit(evt->getDamage());
+
+	if(enemy->isDying())
+	{
+		EnemyKillEventPtr eKill = EnemyKillEventPtr(new EnemyKillEvent(enemy, player));
+		raiseEvent(eKill);
+	}
+}
+
+
+void EnemyManager::handleEnemySpecialHitEvent(EnemySpecialHitEventPtr evt)
+ {
+	EnemyPtr enemy = evt->getEnemy();
+	PlayerPtr player = evt->getPlayer();
+
+	enemy->hit(evt->getDamage());
+
+	if(enemy->isDying())
+	{
+		EnemyKillEventPtr eKill = EnemyKillEventPtr(new EnemyKillEvent(enemy, player));
+		raiseEvent(eKill);
+	}
 }
 
 // --------------------------------
@@ -204,6 +249,7 @@ LUA_BIND("setState", EnemyManager::setEnemyState)
 LUA_BIND("setTarget", EnemyManager::setEnemyTarget)
 LUA_BIND("getStateTimeout", EnemyManager::getEnemyStateTimeout)
 LUA_BIND("isHurt", EnemyManager::isEnemyHurt)
+LUA_BIND("isDying", EnemyManager::isEnemyDying)
 LUA_BIND("remove", EnemyManager::removeEnemy)
 LUA_END_BINDING()
 
@@ -216,7 +262,7 @@ int EnemyManager::createEnemy(lua_State *L)
 
 	int type = luaL_checkint(L, 1);
 
-	EnemyPtr enemy = EnemyManager::getSingleton().createEnemy((EnemyTypes)type);
+	EnemyPtr enemy = EnemyManager::getSingleton().createEnemy((Enemy::EnemyTypes)type);
 
 	lua_pushstring(L,enemy->getName().c_str());
 
@@ -364,6 +410,21 @@ int EnemyManager::isEnemyHurt(lua_State *L)
 	EnemyPtr enemy = EnemyManager::getSingleton().getEnemy(enemyId);
 
 	lua_pushboolean(L,enemy->isHurt());
+
+	/* return the number of results */
+	return 1;
+}
+
+int EnemyManager::isEnemyDying(lua_State *L)
+{
+	/* get number of arguments */
+	int n = lua_gettop(L);
+
+	Ogre::String enemyId = luaL_checkstring(L, 1);
+
+	EnemyPtr enemy = EnemyManager::getSingleton().getEnemy(enemyId);
+
+	lua_pushboolean(L,enemy->isDying());
 
 	/* return the number of results */
 	return 1;

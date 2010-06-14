@@ -123,8 +123,8 @@ void ParticleManager::bloodKill(SceneNode* node)
 
 void ParticleManager::bloodLens()
 {
-	Vector3 position = mSceneManager->getCamera("GameCamera")->getParentSceneNode()->getPosition();
-	Vector3 direction = mSceneManager->getCamera("GameCamera")->getDirection();
+	Vector3 position = mSceneManager->getCamera(GAME_CAMERA)->getParentSceneNode()->getPosition();
+	Vector3 direction = mSceneManager->getCamera(GAME_CAMERA)->getDirection();
 	SceneNode* node = mSceneManager->getSceneNode("bloodLensNode");
 	node->setPosition(position + direction * 170);	
 	ParticleUniverse::ParticleSystem* particles = mParticleSystemManager->getParticleSystem("bloodLens");
@@ -204,8 +204,8 @@ void ParticleManager::handleEnemyHitEvent(EnemyHitEventPtr evt)
 	EnemyPtr enemy = evt->getEnemy();
 	PlayerPtr player = evt->getPlayer();	
 
-	this->bloodHit(enemy->getSceneNode());	
-	this->hit(enemy->getSceneNode());
+	this->bloodHit(enemy->_getSceneNode());	
+	this->hit(enemy->_getSceneNode());
 }
 
 void ParticleManager::handleEnemySpecialHitEvent(EnemySpecialHitEventPtr evt)
@@ -214,7 +214,7 @@ void ParticleManager::handleEnemySpecialHitEvent(EnemySpecialHitEventPtr evt)
 	PlayerPtr player = evt->getPlayer();	
 	
 	// The player has just hit the enemy with special attack
-	this->hitSpecial(enemy->getSceneNode());
+	this->hitSpecial(enemy->_getSceneNode());
 }
 
 void ParticleManager::handleEnemyKillEvent(EnemyKillEventPtr evt)
@@ -222,6 +222,6 @@ void ParticleManager::handleEnemyKillEvent(EnemyKillEventPtr evt)
 	EnemyPtr enemy = evt->getEnemy();
 	PlayerPtr player = evt->getPlayer();	
 
-	this->bloodKill(enemy->getSceneNode());	
-	this->hit(enemy->getSceneNode());
+	this->bloodKill(enemy->_getSceneNode());	
+	this->hit(enemy->_getSceneNode());
 }

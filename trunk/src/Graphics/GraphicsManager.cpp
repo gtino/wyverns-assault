@@ -142,17 +142,9 @@ void GraphicsManager::finalize()
 	if(mSceneManager)
 	{
 		mSceneManager->clearScene();
-		mSceneManager->destroyAllCameras();
+
 		delete mSceneManager;
 		mSceneManager = NULL;
-	}
-
-	if(mRoot)
-	{
-		RenderWindow* window = mRoot->getAutoCreatedWindow();
-		
-		if(window)
-			window->removeAllViewports();
 	}
 
 	mInitialized = false;
@@ -239,24 +231,6 @@ bool GraphicsManager::renderOneFrame()
 	}
 
 	return result;
-}
-
-Ogre::Viewport* GraphicsManager::createViewport(Ogre::Camera* camera)
-{
-	assert(camera);
-
-	unsigned short nViewports = mRenderWindow->getNumViewports();
-
-	if(nViewports != 0)
-	{
-		mRenderWindow->getViewport(0)->setCamera(camera);
-	}
-	else
-	{
-		mViewport = mRenderWindow->addViewport(camera);
-	}
-
-	return mViewport;
 }
 
 void GraphicsManager::clearScene()

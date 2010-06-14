@@ -31,45 +31,61 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
 namespace WyvernsAssault
 {
-	/** List of item types */
-	enum ItemTypes
-	{
-		LiveSmall	= 0,
-		LiveMedium	= 1,
-		LiveBig	    = 2,
-		PowerSmall	= 3,
-		PowerMedium	= 4,
-		PowerBig	= 5,
-		ScoreSmall  = 6,
-		ScoreBig    = 7
-	};
-
-	enum ItemStates
-	{
-		Modest = 0,
-		Catch = 1
-	};
-
 	/**
 	Class used to manage single item
 	*/
-	class Item : public EntityInterface, public LogicInterface
+	class Item : public EntityInterface, public LogicInterface, public PhysicsInterface
 	{
 	public:
-		Item(ItemTypes type);
-		~Item();
+		/** List of item types */
+		enum ItemTypes
+		{
+			LiveSmall	= 0,
+			LiveMedium	= 1,
+			LiveBig	    = 2,
+			PowerSmall	= 3,
+			PowerMedium	= 4,
+			PowerBig	= 5,
+			ScoreSmall  = 6,
+			ScoreBig    = 7
+		};
 
-		virtual void updateEntity(const float elapsedSeconds);
-		virtual void updateLogic(lua_State *L, const float elapsedSeconds);
-
-		ItemStates getItemState(){return mState;}
-
-	private:
-		ItemTypes mType;
-		ItemStates mState;
+		enum ItemStates
+		{
+			Initial = 0,
+			Catch = 1,
+			Caught = 2,
+			Removed = 3
+		};
 
 	public:
-		static ItemTypes StringToType(Ogre::String typeStr);
+		Item(Ogre::String name, Item::ItemTypes type);
+		~Item();
+		
+		//
+		// Entity Interface
+		//
+		void initializeEntity(Ogre::Entity* mesh, Ogre::SceneNode* sceneNode, Ogre::SceneManager* sceneManager);
+		void finalizeEntity();
+		void updateEntity(const float elapsedSeconds);
+
+		void caught();
+		
+		//
+		// Logic Interface
+		//
+		void updateLogic(lua_State *L, const float elapsedSeconds);
+
+		Item::ItemStates getItemState(){return mState;}
+		float getStateTimeout(){return mStateTimeout;}
+
+	private:
+		Item::ItemTypes mType;
+		Item::ItemStates mState;
+		float mStateTimeout;
+
+	public:
+		static Item::ItemTypes StringToType(Ogre::String typeStr);
 	};
 
 	typedef boost::shared_ptr<Item> ItemPtr;

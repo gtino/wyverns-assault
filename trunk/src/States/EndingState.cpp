@@ -2,8 +2,8 @@
 
 using namespace WyvernsAssault;
 
-EndingState::EndingState(GraphicsManagerPtr graphicsManager, InputManagerPtr inputManager, AudioManagerPtr audioManager)
-: BaseState(graphicsManager,inputManager,audioManager)
+EndingState::EndingState(GraphicsManagerPtr graphicsManager, InputManagerPtr inputManager, AudioManagerPtr audioManager, CameraManagerPtr cameraManager, GuiManagerPtr guiManager)
+: BaseState(graphicsManager,inputManager,audioManager, cameraManager, guiManager)
 {
 	//
 	// TODO Constructor logic HERE
