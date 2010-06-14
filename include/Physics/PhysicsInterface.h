@@ -24,7 +24,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #define __PHYSICS_INTERFACE_H__
 
 #include <Ogre.h>
-#include "OgreOde_Core.h"
 
 #include "Physics.h"
 
@@ -41,54 +40,17 @@ namespace WyvernsAssault
 		Fake
 	};
 
-	typedef struct{
-		OgreOde::RayGeometry* geometry;
-		Ogre::Real radius;
-		Ogre::Vector3 lastContact;
-		bool updated;
-	}PhysicsRayInfo;
-
-	typedef std::vector<OgreOde::Body*> BodyList;
-
 	/**
 	Interface implemented by objects with physics
 	*/
 	class PhysicsInterface
 	{
+
 	public:
-		virtual void initializePhysics(OgreOde::Body* body){mBody = body;}
+		
+		virtual void initializePhysics(){}
 		virtual void finalizePhysics(){return;} 
 		virtual void updatePhysics(const float elapsedSeconds){};
-
-		virtual void setUpdated( bool updated ) { mRayInfo.updated = updated; }
-		virtual bool getUpdated(){ return mRayInfo.updated; }
-
-		virtual void setBody( OgreOde::Body* body ){ mBody = body;}
-		virtual OgreOde::Body* getBody(){ return mBody; }
-
-		virtual BodyList* getBodyList() { return &bodys; }
-
-		virtual size_t getGeometryId() const { return mRayInfo.geometry->getID(); }
-		
-		virtual void setRayInfo(PhysicsRayInfo rayInfo) { 
-			mRayInfo.geometry = rayInfo.geometry;
-			mRayInfo.radius = rayInfo.radius;
-			mRayInfo.lastContact = Vector3(0,0,0);
-			mRayInfo.updated = rayInfo.updated; // TODO : Double check!
-		};
-		virtual PhysicsRayInfo* getRayInfo(){ return &mRayInfo; }
-
-	protected:
-		OgreOde::Body* mBody;
-		PhysicsRayInfo mRayInfo;
-		BodyList bodys;
-
-		// ----------------------
-		// NEW PHYSICS INTERFACE!
-		// ----------------------
-	public:
-		//virtual void finalizePhysics(){return;} 
-		//virtual void updatePhysics(const float elapsedSeconds){};
 
 		Ogre::Real getSpeed(){return mSpeed;}
 		void setSpeed(Ogre::Real speed){mSpeed = speed;}

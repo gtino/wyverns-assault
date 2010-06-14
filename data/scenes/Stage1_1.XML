@@ -193,10 +193,15 @@
 	<skyDome material="CloudySky" curvature="5" tiling="8" distance="4000"/>
   
 	<physics>
-		<physic>
+		<physicGround>
 			<position x="0" y="0" z="0"/>
-			<entity meshFile="physic_ground.mesh" name="physic_ground"/>
-		</physic>
+			<groundLevel>
+				<entity meshFile="physicGround.mesh" maskType="BASIC_GROUND_MASK" name="physic_ground"/>
+			</groundLevel>
+			<groundLevel>		
+				<entity meshFile="physicBorders.mesh" maskType="BORDER_GROUND_MASK" name="physic_borders"/>
+			</groundLevel>
+		</physicGround>
 	</physics>
 
 	<enemys> 

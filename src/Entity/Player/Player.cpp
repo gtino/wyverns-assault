@@ -23,6 +23,7 @@ void Player::initializeEntity(Ogre::Entity* mesh, Ogre::SceneNode* sceneNode, Sc
 	mMesh = mesh;
 
 	mFireMesh = mSceneManager->createEntity("fireMesh", "redWyvernFireCone.mesh");
+
 	mFireMesh->setVisible(mIsDebugEnabled);
 
 	// Animation system

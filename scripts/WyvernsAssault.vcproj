@@ -40,7 +40,7 @@
 			<Tool
 				Name="VCCLCompilerTool"
 				Optimization="0"
-				AdditionalIncludeDirectories="..\include;..\externals\tinyxml;&quot;..\externals\G-Buffer\include&quot;;..\externals\tecnofreakanima\include;..\externals\ParticleUniverse\include;..\externals\Fmod\include;..\externals\OgreOde\include;&quot;$(OGRE_HOME)\include&quot;;&quot;$(OGRE_HOME)\include\OGRE&quot;;&quot;$(OGRE_HOME)\include\OIS&quot;;&quot;$(OGRE_HOME)\include\CEGUI&quot;;&quot;$(OGRE_HOME)\boost_1_42&quot;"
+				AdditionalIncludeDirectories="..\include;..\externals\tinyxml;&quot;..\externals\G-Buffer\include&quot;;..\externals\tecnofreakanima\include;..\externals\ParticleUniverse\include;..\externals\Fmod\include;&quot;$(OGRE_HOME)\include&quot;;&quot;$(OGRE_HOME)\include\OGRE&quot;;&quot;$(OGRE_HOME)\include\OIS&quot;;&quot;$(OGRE_HOME)\include\CEGUI&quot;;&quot;$(OGRE_HOME)\boost_1_42&quot;"
 				PreprocessorDefinitions="WIN32;_DEBUG;_WINDOWS"
 				MinimalRebuild="true"
 				ExceptionHandling="1"
@@ -65,10 +65,10 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="OgreMain_d.lib OIS_d.lib ParticleUniverse_d.lib Lua+Lib.lib ode_d.lib fmodex_vc.lib OgreOde_Core_d.lib OgreOde_Prefab_d.lib OgreOde_Loader_d.lib"
+				AdditionalDependencies="OgreMain_d.lib OIS_d.lib ParticleUniverse_d.lib Lua+Lib.lib fmodex_vc.lib"
 				OutputFile="$(OutDir)\$(ProjectName).exe"
 				LinkIncremental="2"
-				AdditionalLibraryDirectories="..\externals\Fmod\lib;..\externals\ParticleUniverse\lib;..\externals\OgreOde\lib;&quot;..\externals\Lua-5.0-SDK\lib&quot;;&quot;$(OGRE_HOME)\boost_1_42\lib&quot;;&quot;$(OGRE_HOME)\lib\$(ConfigurationName)&quot;"
+				AdditionalLibraryDirectories="..\externals\Fmod\lib;..\externals\ParticleUniverse\lib;&quot;..\externals\Lua-5.0-SDK\lib&quot;;&quot;$(OGRE_HOME)\boost_1_42\lib&quot;;&quot;$(OGRE_HOME)\lib\$(ConfigurationName)&quot;"
 				GenerateDebugInformation="true"
 				ProgramDatabaseFile="$(OutDir)/WyvernsAssault.pdb"
 				SubSystem="2"
@@ -129,7 +129,7 @@
 				EnableIntrinsicFunctions="true"
 				FavorSizeOrSpeed="1"
 				OmitFramePointers="true"
-				AdditionalIncludeDirectories="..\include;..\externals\tinyxml;&quot;..\externals\G-Buffer\include&quot;;..\externals\tecnofreakanima\include;..\externals\ParticleUniverse\include;..\externals\Fmod\include;..\externals\OgreOde\include;&quot;$(OGRE_HOME)\include&quot;;&quot;$(OGRE_HOME)\include\OIS&quot;;&quot;$(OGRE_HOME)\include\OGRE&quot;;&quot;$(OGRE_HOME)\include\CEGUI&quot;;&quot;$(OGRE_HOME)\boost_1_42&quot;"
+				AdditionalIncludeDirectories="..\include;..\externals\tinyxml;&quot;..\externals\G-Buffer\include&quot;;..\externals\tecnofreakanima\include;..\externals\ParticleUniverse\include;..\externals\Fmod\include;&quot;$(OGRE_HOME)\include&quot;;&quot;$(OGRE_HOME)\include\OIS&quot;;&quot;$(OGRE_HOME)\include\OGRE&quot;;&quot;$(OGRE_HOME)\include\CEGUI&quot;;&quot;$(OGRE_HOME)\boost_1_42&quot;"
 				PreprocessorDefinitions="WIN32;NDEBUG;_WINDOWS"
 				StringPooling="true"
 				MinimalRebuild="true"
@@ -155,10 +155,10 @@
 			/>
 			<Tool
 				Name="VCLinkerTool"
-				AdditionalDependencies="OgreMain.lib OIS.lib ParticleUniverse.lib Lua+Lib.lib ode.lib fmodex_vc.lib OgreOde_Core.lib OgreOde_Prefab.lib OgreOde_Loader.lib"
+				AdditionalDependencies="OgreMain.lib OIS.lib ParticleUniverse.lib Lua+Lib.lib fmodex_vc.lib"
 				OutputFile="$(OutDir)\$(ProjectName).exe"
 				LinkIncremental="1"
-				AdditionalLibraryDirectories="..\externals\ParticleUniverse\lib;..\externals\OgreOde\lib;..\externals\Fmod\lib;&quot;..\externals\Lua-5.0-SDK\lib&quot;;&quot;$(OGRE_HOME)\boost_1_42\lib&quot;;&quot;$(OGRE_HOME)\lib\$(ConfigurationName)&quot;"
+				AdditionalLibraryDirectories="..\externals\ParticleUniverse\lib;..\externals\Fmod\lib;&quot;..\externals\Lua-5.0-SDK\lib&quot;;&quot;$(OGRE_HOME)\boost_1_42\lib&quot;;&quot;$(OGRE_HOME)\lib\$(ConfigurationName)&quot;"
 				GenerateDebugInformation="false"
 				ProgramDatabaseFile=""
 				SubSystem="2"

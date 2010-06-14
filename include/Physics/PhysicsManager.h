@@ -23,10 +23,13 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #ifndef __PHYSICS_MANAGER_H__
 #define __PHYSICS_MANAGER_H__
 
+#define REDWYVERN_RAY_HEIGHT	25
+#define REDWYVERN_SLOW_VELOCITY	1
+#define REDWYVERN_FAST_VELOCITY	4hago un commi
+
 #include <Ogre.h>
 #include <OgreSingleton.h>
 #include <boost/enable_shared_from_this.hpp>
-//#include "OgreOde_Core.h"
 
 #include "..\Lua\LuaInterface.h"
 
@@ -43,28 +46,23 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 using namespace Ogre;
 
 namespace WyvernsAssault
-{
-	typedef std::map<size_t,PlayerPtr> OdePlayerMap;
-	typedef std::map<size_t,PlayerPtr>::iterator OdePlayerMapIterator;
+{		
+	//typedef std::map<size_t,ItemPtr> ItemMap;
+	//typedef std::map<size_t,ItemPtr>::iterator ItemMapIterator;
 
-	typedef std::map<size_t,EnemyPtr> OdeEnemyMap;
-	typedef std::map<size_t,EnemyPtr>::iterator OdeEnemyMapIterator;
-
-	// ------------------------
-	// NEW PHYSICS!
-	// ------------------------
+	//typedef std::map<size_t,ObjectPtr> ObjectMap;
+	//typedef std::map<size_t,ObjectPtr>::iterator ObjectMapIterator;
 
 	/* Ground types
 	*/
 	enum GroundQueryFlags
 	{
-		BASIC_GROUND_MASK = 1<<7,
-		ROAD_GROUND_MASK = 1<<8,
-		WATER_GROUND_MASK = 1<<9,
-		WHEAT_GROUND_MASK = 1<<10
+		BASIC_GROUND_MASK = 1<<0,
+		ROAD_GROUND_MASK = 1<<1,
+		WATER_GROUND_MASK = 1<<2,
+		WHEAT_GROUND_MASK = 1<<3,
+		BORDER_GROUND_MASK = 1<<4
 	};
-
-	// ------------------------
 
 	/**
 	Class used to manage entities/world physics
@@ -72,41 +70,36 @@ namespace WyvernsAssault
 	class PhysicsManager	: public Ogre::Singleton<PhysicsManager>
 							, public boost::enable_shared_from_this<PhysicsManager>
 							, public LuaInterface
-							, public OgreOde::CollisionListener
 							, public EventsInterface
 	{
 	public:
+
 		PhysicsManager(SceneManager* sceneManager);
 		~PhysicsManager();
 		static PhysicsManager& getSingleton(void);
 		static PhysicsManager* getSingletonPtr(void);
 
 	public:
+
 		bool initialize();
 		void finalize();
 		SceneManager* getSceneManager(){return this->mSceneManager;}
 
 		void showDebugObjects();
 
+		void addPhysicGround(Ogre::String mesh, Ogre::String name, WyvernsAssault::GroundQueryFlags type, Ogre::Vector3 position, Ogre::Vector3 scale);
+		void addPhysicPlayer(PlayerPtr player);
+		void addPhysicEnemy(EnemyPtr enemy);
+		//void addPhysicItem();
+		//void addPhysicObject();
+
 		void update(const float elapsedSeconds);
 
-		void createGround(Ogre::String mesh,Ogre::String name,Ogre::Vector3 position,Ogre::Vector3 scale);
-		void addPlayer(PlayerPtr player);
-		void addEnemy(EnemyPtr enemy);
-		void addAnimal(EnemyPtr animal);
-
-		/*
-		Called by OgreOde whenever a collision occurs, so 
-		that we can modify the contact parameters
-		*/
-		bool collision(OgreOde::Contact* contact);
-
 		//Move one character
-		void move(PlayerPtr player, Vector3 direction);
+		void move(PlayerPtr player, Vector3 direction, bool fastMode = false);
 		void move(EnemyPtr enemy, int rotate, int thrust);
-		void moveAnimal(EnemyPtr animal, Vector3 direction);
 
-		// TEST!
+		// Collision check
 		void checkForCollisions();
 
 		//
@@ -118,63 +111,35 @@ namespace WyvernsAssault
 		void unregisterHandlers(){};
 
 	private:
-		void synchronizeWorld(Real time);
-		//Update ray of one character
-		void updateRay(PlayerPtr player); 
-		void updateRay(EnemyPtr enemy);
+
+		bool calculateY(SceneNode *node, const Ogre::uint32 queryMask = 0xFFFFFFFF);
+		bool raycast(const Vector3 &point, const Vector3 &normal, Vector3 &result, float &closest_distance, const Ogre::uint32 queryMask);
+		bool collidesWithBorders(const Vector3& fromPoint, const Vector3& toPoint, const float collisionRadius = 2.5f, const float rayHeightLevel = 0.0f, const uint32 queryMask = 0xFFFFFFFF);
+		void GetMeshInformation(const Ogre::MeshPtr mesh,
+                                size_t &vertex_count,
+                                Ogre::Vector3* &vertices,
+                                size_t &index_count,
+                                unsigned long* &indices,
+                                const Ogre::Vector3 &position,
+                                const Ogre::Quaternion &orient,
+                                const Ogre::Vector3 &scale);
 
 	protected:
+
 		SceneManager* mSceneManager;
-		OgreOde::World* mWorld;
-		OgreOde::StepHandler* mStepper;
-		OgreOde::Space* mSpace;
+		Ogre::RaySceneQuery *mRaySceneQuery;
 
-		OgreOde::TriangleMeshGeometry* geom_ground;
-		
-		OdePlayerMap mPlayerMap;
-		OdeEnemyMap mEnemyMap;
-		OdeEnemyMap mAnimalMap;
-		OdePlayerMap mPlayerGeomMap;
-		OdeEnemyMap mEnemyGeomMap;
-		OdeEnemyMap mAnimalGeomMap;
-
-		// Keep track of the things we create so we can 
-		// delete them automatically when we switch scenes
-		std::vector<OgreOde::Body*>		_bodies;
-		std::vector<OgreOde::Geometry*> _geoms;
-		std::vector<OgreOde::Joint*>	_joints;
+		PlayerMap mPlayerMap;
+		EnemyMap mEnemyMap;
+		//ItemMap mItemMap;
+		//ObjectMap mObjectMap;
 
 	private:
+
 		// Control variable for states changing (from attacking to non attacking). Need for skipping multiple calling to same event.
 		bool mPlayerSpecialState;
 		int mPlayerAttackLast;
 
-	// ------------------------
-	// NEW PHYSICS!
-	// ------------------------
-	public:
-
-		void loadPhysicGround(Ogre::String mesh, Ogre::String name, Ogre::String type, Ogre::Vector3 position, Ogre::Vector3 scale);
-		//void loadPhysicEnemy();
-		//void loadPhysicItem();
-		//void loadPhysicObject();
-
-		//void update(const float elapsedSeconds);
-	
-	private:
-
-		void calculateY(SceneNode *node, const float heightAdjust, const Ogre::uint32 queryMask = 0xFFFFFFFF);
-		bool raycast(const Vector3 &point, const Vector3 &normal, Vector3 &result, const Ogre::uint32 queryMask);
-	
-	protected:
-		Ogre::RaySceneQuery *mRaySceneQuery;
-
-		//PlayerMap mPlayerMap;
-		//EnemyMap mEnemyMap;
-		//ItemMap mItemMap;
-		//ObjectMap mObjectMap;
-
-	// ------------------------
 
 	// --------------------------------
 	// BEGIN Lua Interface Declarations

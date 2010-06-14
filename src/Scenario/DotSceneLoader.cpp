@@ -289,7 +289,7 @@ void DotSceneLoader::processEnemys(TiXmlElement *XMLNode)
 		enemy->setScale(scale);
 		
 		// Add the enemy to the physics manager
-		mPhysicsManager->addEnemy(enemy);
+		mPhysicsManager->addPhysicEnemy(enemy);
 
 		pElement = pElement->NextSiblingElement("enemy");
 	}
@@ -343,7 +343,7 @@ void DotSceneLoader::processAnimals(TiXmlElement *XMLNode)
 		animal->setScale(scale);
 		
 		// Add the animal to the physics manager
-		mPhysicsManager->addAnimal(animal);
+		mPhysicsManager->addPhysicEnemy(animal);
 
 		pElement = pElement->NextSiblingElement("animal");
 	}
@@ -420,26 +420,20 @@ void DotSceneLoader::processPhysics(TiXmlElement *XMLNode)
 {
 	TiXmlElement *pElement;
 	TiXmlElement *pElementEntity;
+	TiXmlElement *pElementGL;
 	TiXmlElement *pElementPosition;
 	TiXmlElement *pElementScale;
 
 	// Process physics element
-	pElement = XMLNode->FirstChildElement("physic");
+	pElement = XMLNode->FirstChildElement("physicGround");
 	while(pElement)
 	{
 		Ogre::String name;
 		Ogre::String mesh;
+		Ogre::String maskType;
 		Ogre::Vector3 position = Vector3::ZERO;
 		Ogre::Vector3 scale= Vector3::UNIT_SCALE;
-
-		// Process entity
-		pElementEntity = pElement->FirstChildElement("entity");
-		if(pElementEntity)
-		{
-			name = getAttrib(pElementEntity, "name");
-			mesh = getAttrib(pElementEntity, "meshFile");
-		}
-
+		
 		// Process position
 		pElementPosition = pElement->FirstChildElement("position");
 		if(pElementPosition)
@@ -454,14 +448,29 @@ void DotSceneLoader::processPhysics(TiXmlElement *XMLNode)
 			scale = parseVector3(pElementScale);
 		}
 
-		// Create physic element
-		//
-		mPhysicsManager->createGround(mesh,name,position,scale);
-		
-		// Add the enemy to the physics manager
-		//mPhysicsManager->addEnemy(enemy);
+		// Process ground levels
+		pElementGL = pElement->FirstChildElement("groundLevel"); 
+		while(pElementGL)
+		{
 
-		pElement = pElement->NextSiblingElement("item");
+			pElementEntity = pElementGL->FirstChildElement("entity"); 
+			
+			name = getAttrib(pElementEntity, "name");
+			mesh = getAttrib(pElementEntity, "meshFile");
+			maskType = getAttrib(pElementEntity, "maskType");
+
+			// Create ground physic element
+			if(maskType == "BASIC_GROUND_MASK") 
+				mPhysicsManager->addPhysicGround(mesh,name,WyvernsAssault::BASIC_GROUND_MASK,position,scale);
+			else if(maskType == "BORDER_GROUND_MASK") 
+				mPhysicsManager->addPhysicGround(mesh,name,WyvernsAssault::BORDER_GROUND_MASK,position,scale);
+			else
+				mPhysicsManager->addPhysicGround(mesh,name,WyvernsAssault::BASIC_GROUND_MASK,position,scale);
+
+			pElementGL = pElementGL->NextSiblingElement("groundLevel");
+		}
+
+		pElement = pElement->NextSiblingElement("physicGround");
 	}
 		
 }
@@ -814,6 +823,7 @@ void DotSceneLoader::processEntity(TiXmlElement *XMLNode, SceneNode *pParent)
 		MeshManager::getSingleton().load(meshFile, m_sGroupName);
 		pEntity = mSceneMgr->createEntity(name, meshFile);
 		pEntity->setCastShadows(castShadows);
+		pEntity->setQueryFlags(SceneManager::ENTITY_TYPE_MASK);
 		pParent->attachObject(pEntity);
 
 		if(!materialFile.empty())
