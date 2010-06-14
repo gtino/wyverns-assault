@@ -294,23 +294,18 @@
 		<item>
 			<position x="360" y="4" z="795"/>
 			<entity type="LiveSmall" meshFile="ruby.mesh" name="LiveSmall1"/>
-			<scale x="0.45" y="0.45" z="0.45"/>
 		</item>
-
 		<item>
 			<position x="712" y="6" z="735"/>
 			<entity type="LiveMedium" meshFile="beerGlass.mesh" name="LiveMedium1"/>
-			<scale x="0.7" y="0.7" z="0.7"/>
 		</item>
 		<item>
 			<position x="875" y="4" z="710"/>
 			<entity type="LiveSmall" meshFile="beerHorn.mesh" name="LiveSmall2"/>
-			<scale x="0.7" y="0.7" z="0.7"/>
 		</item>
 		<item>
 			<position x="1142" y="4" z="460"/>
 			<entity type="LiveSmall" meshFile="beerHorn.mesh" name="LiveSmall3"/>
-			<scale x="0.7" y="0.7" z="0.7"/>
 		</item>
 		<item>
 			<position x="1275" y="6" z="215"/>
@@ -323,7 +318,6 @@
 		<item>
 			<position x="1007" y="6" z="-315"/>
 			<entity type="LiveMedium" meshFile="beerGlass.mesh" name="LiveMedium2"/>
-			<scale x="0.7" y="0.7" z="0.7"/>
 		</item>
 		<item>
 			<position x="905" y="6" z="-315"/>
@@ -332,12 +326,10 @@
 		<item>
 			<position x="532" y="6" z="-595"/>
 			<entity type="LiveMedium" meshFile="beerGlass.mesh" name="LiveMedium3"/>
-			<scale x="0.7" y="0.7" z="0.7"/>
 		</item>
 		<item>
 			<position x="75" y="5" z="-247"/>
 			<entity type="LiveSmall" meshFile="beerHorn.mesh" name="LiveSmall4"/>
-			<scale x="0.7" y="0.7" z="0.7"/>
 		</item>
 		<item>
 			<position x="1182" y="25" z="-28"/>
