@@ -1,4 +1,4 @@
-material Material5
+material chickenLegItem_material
 {
 	technique Toon
 	{
@@ -44,6 +44,5 @@ material Material5
 			}		
 		}
 	}
-
 }
 
