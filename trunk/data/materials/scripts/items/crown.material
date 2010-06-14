@@ -1,4 +1,4 @@
-material Crown_material
+material crown_material
 {
 	technique Toon
 	{
