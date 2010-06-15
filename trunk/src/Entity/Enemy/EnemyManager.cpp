@@ -48,15 +48,66 @@ EnemyPtr EnemyManager::createEnemy(Enemy::EnemyTypes type)
 
 	switch(type)
 	{
-	case Enemy::EnemyTypes::Naked:
-		mesh = Ogre::String("naked.mesh");
-		break;
-	case Enemy::EnemyTypes::Wizard:
-		mesh = Ogre::String("wizard.mesh");
-		break;
-	default:
-		mesh = Ogre::String("naked.mesh");
-		break;
+		case Enemy::EnemyTypes::KnightA:
+			mesh = Ogre::String("knighA.mesh");
+			break;
+		case Enemy::EnemyTypes::KnightA2:
+			mesh = Ogre::String("knighA.mesh");
+			break;
+		case Enemy::EnemyTypes::KnightA3:
+			mesh = Ogre::String("knighA.mesh");
+			break;
+		case Enemy::EnemyTypes::KnightA4:
+			mesh = Ogre::String("knighA.mesh");
+			break;
+		case Enemy::EnemyTypes::KnightA5:
+			mesh = Ogre::String("knighA.mesh");
+			break;
+		case Enemy::EnemyTypes::KnightB:
+			mesh = Ogre::String("knighB.mesh");
+			break;
+		case Enemy::EnemyTypes::KnightB2:
+			mesh = Ogre::String("knighB.mesh");
+			break;
+		case Enemy::EnemyTypes::KnightB3:
+			mesh = Ogre::String("knighB.mesh");
+			break;
+		case Enemy::EnemyTypes::KnightB4:
+			mesh = Ogre::String("knighB.mesh");
+			break;
+		case Enemy::EnemyTypes::KnightB5:
+			mesh = Ogre::String("knighB.mesh");
+			break;
+		case Enemy::EnemyTypes::KnightC:
+			mesh = Ogre::String("knighC.mesh");
+			break;
+		case Enemy::EnemyTypes::KnightC2:
+			mesh = Ogre::String("knighC.mesh");
+			break;
+		case Enemy::EnemyTypes::KnightC3:
+			mesh = Ogre::String("knighC.mesh");
+			break;
+		case Enemy::EnemyTypes::KnightC4:
+			mesh = Ogre::String("knighC.mesh");
+			break;
+		case Enemy::EnemyTypes::KnightC5:
+			mesh = Ogre::String("knighC.mesh");
+			break;
+
+		case Enemy::EnemyTypes::Wizard:
+			mesh = Ogre::String("wizard.mesh");
+			break;
+		case Enemy::EnemyTypes::Wizard2:
+			mesh = Ogre::String("wizard.mesh");
+			break;
+
+		case Enemy::EnemyTypes::Naked:
+			mesh = Ogre::String("naked.mesh");
+			break;
+
+		default:
+			mesh = Ogre::String("naked.mesh");
+			break;
 	}
 
 	Ogre::String name = createUniqueId();
@@ -68,6 +119,64 @@ EnemyPtr EnemyManager::createEnemy(Enemy::EnemyTypes type, Ogre::String name, Og
 {
 	// Enemy name == Mesh Name!
 	Ogre::Entity* enemyMesh = mSceneManager->createEntity(name, mesh);
+
+	// Switch enemy type for choose enemy mesh material. Only on enemies with multiple materials
+	switch(type)
+	{
+		case Enemy::EnemyTypes::KnightA:
+			enemyMesh->setMaterialName("knightA_material");
+			break;
+		case Enemy::EnemyTypes::KnightA2:
+			enemyMesh->setMaterialName("knightA_material_2");
+			break;
+		case Enemy::EnemyTypes::KnightA3:
+			enemyMesh->setMaterialName("knightA_material_3");
+			break;
+		case Enemy::EnemyTypes::KnightA4:
+			enemyMesh->setMaterialName("knightA_material_4");
+			break;
+		case Enemy::EnemyTypes::KnightA5:
+			enemyMesh->setMaterialName("knightA_material_5");
+			break;
+		case Enemy::EnemyTypes::KnightB:
+			enemyMesh->setMaterialName("knightB_material");
+			break;
+		case Enemy::EnemyTypes::KnightB2:
+			enemyMesh->setMaterialName("knightB_material_2");
+			break;
+		case Enemy::EnemyTypes::KnightB3:
+			enemyMesh->setMaterialName("knightB_material_3");
+			break;
+		case Enemy::EnemyTypes::KnightB4:
+			enemyMesh->setMaterialName("knightB_material_4");
+			break;
+		case Enemy::EnemyTypes::KnightB5:
+			enemyMesh->setMaterialName("knightB_material_5");
+			break;
+		case Enemy::EnemyTypes::KnightC:
+			enemyMesh->setMaterialName("knightC_material");
+			break;
+		case Enemy::EnemyTypes::KnightC2:
+			enemyMesh->setMaterialName("knightC_material_2");
+			break;
+		case Enemy::EnemyTypes::KnightC3:
+			enemyMesh->setMaterialName("knightC_material_3");
+			break;
+		case Enemy::EnemyTypes::KnightC4:
+			enemyMesh->setMaterialName("knightC_material_4");
+			break;
+		case Enemy::EnemyTypes::KnightC5:
+			enemyMesh->setMaterialName("knightC_material_5");
+			break;
+
+		case Enemy::EnemyTypes::Wizard:
+			enemyMesh->setMaterialName("wizard_material");
+			break;
+		case Enemy::EnemyTypes::Wizard2:
+			enemyMesh->setMaterialName("wizard_material_2");
+			break;
+	}
+
 	enemyMesh->setQueryFlags(SceneManager::ENTITY_TYPE_MASK);
 	Ogre::SceneNode* enemySceneNode = mEnemyNode->createChildSceneNode("Enemy_"+name+"_Node");
 

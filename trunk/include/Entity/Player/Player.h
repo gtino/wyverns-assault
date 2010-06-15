@@ -77,6 +77,7 @@ namespace WyvernsAssault
 
 		bool isAttacking(){ return attacking != 0 ; }
 		Real wichAttack(){ return attacking; }
+		bool attackStart() { return newAttack; }
 		bool isSpecial(){ return special ; }
 		bool isDeath() { return !live; }
 		bool isDying() { return timeDeath <= 3; }
@@ -130,6 +131,7 @@ namespace WyvernsAssault
 		bool special;
 		Real attacking;
 		bool continueAttacking;
+		bool newAttack;
 		bool live;
 		Real timeDeath;
 

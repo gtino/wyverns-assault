@@ -7,10 +7,27 @@ static struct EnemyLogic
 	Enemy::EnemyTypes type;
 	const char* function;
 } EnemyLogicList[] = {
-	{Enemy::EnemyTypes::Naked, "runNakedLogic"},
-	{Enemy::EnemyTypes::Soldier, "runSoldierLogic"},
+	{Enemy::EnemyTypes::KnightA, "runSoldierLogic"},
+	{Enemy::EnemyTypes::KnightA2, "runSoldierLogic"},
+	{Enemy::EnemyTypes::KnightA3, "runSoldierLogic"},
+	{Enemy::EnemyTypes::KnightA4, "runSoldierLogic"},
+	{Enemy::EnemyTypes::KnightA5, "runSoldierLogic"},
+	{Enemy::EnemyTypes::KnightB, "runSoldierLogic"},
+	{Enemy::EnemyTypes::KnightB2, "runSoldierLogic"},
+	{Enemy::EnemyTypes::KnightB3, "runSoldierLogic"},
+	{Enemy::EnemyTypes::KnightB4, "runSoldierLogic"},
+	{Enemy::EnemyTypes::KnightB5, "runSoldierLogic"},
+	{Enemy::EnemyTypes::KnightC, "runSoldierLogic"},
+	{Enemy::EnemyTypes::KnightC2, "runSoldierLogic"},
+	{Enemy::EnemyTypes::KnightC3, "runSoldierLogic"},
+	{Enemy::EnemyTypes::KnightC4, "runSoldierLogic"},
+	{Enemy::EnemyTypes::KnightC5, "runSoldierLogic"},
+
 	{Enemy::EnemyTypes::Wizard, "runWizardLogic"},
-	{Enemy::EnemyTypes::Knight, "runKnightLogic"},
+	{Enemy::EnemyTypes::Wizard2, "runWizardLogic"},
+
+	{Enemy::EnemyTypes::Naked, "runNakedLogic"},
+	{Enemy::EnemyTypes::Soldier, "runSoldierLogic"},	
 	{Enemy::EnemyTypes::Peasant, "runPeasantLogic"},
 	{Enemy::EnemyTypes::Woman,	"runWomanLogic"},
 	{Enemy::EnemyTypes::Chicken, "runAnimalLogic"}
@@ -20,10 +37,27 @@ Enemy::EnemyTypes Enemy::StringToType (Ogre::String string)
 {
 	const char* str = string.c_str();
 
+	if(strcmp ( "KnightA", str ) == 0) return Enemy::EnemyTypes::KnightA;
+	if(strcmp ( "KnightA2", str ) == 0) return Enemy::EnemyTypes::KnightA2;
+	if(strcmp ( "KnightA3", str ) == 0) return Enemy::EnemyTypes::KnightA3;
+	if(strcmp ( "KnightA4", str ) == 0) return Enemy::EnemyTypes::KnightA4;
+	if(strcmp ( "KnightA5", str ) == 0) return Enemy::EnemyTypes::KnightA5;
+	if(strcmp ( "KnightB", str ) == 0) return Enemy::EnemyTypes::KnightB;
+	if(strcmp ( "KnightB2", str ) == 0) return Enemy::EnemyTypes::KnightB2;
+	if(strcmp ( "KnightB3", str ) == 0) return Enemy::EnemyTypes::KnightB3;
+	if(strcmp ( "KnightB4", str ) == 0) return Enemy::EnemyTypes::KnightB4;
+	if(strcmp ( "KnightB5", str ) == 0) return Enemy::EnemyTypes::KnightB5;
+	if(strcmp ( "KnightC", str ) == 0) return Enemy::EnemyTypes::KnightC;
+	if(strcmp ( "KnightC2", str ) == 0) return Enemy::EnemyTypes::KnightC2;
+	if(strcmp ( "KnightC3", str ) == 0) return Enemy::EnemyTypes::KnightC3;
+	if(strcmp ( "KnightC4", str ) == 0) return Enemy::EnemyTypes::KnightC4;
+	if(strcmp ( "KnightC5", str ) == 0) return Enemy::EnemyTypes::KnightC5;
+
+	if(strcmp ( "Wizard", str ) == 0) return Enemy::EnemyTypes::Wizard;
+	if(strcmp ( "Wizard2", str ) == 0) return Enemy::EnemyTypes::Wizard2;
+
 	if(strcmp ( "Naked", str ) == 0) return Enemy::EnemyTypes::Naked;
 	if(strcmp ( "Soldier", str ) == 0) return Enemy::EnemyTypes::Soldier;
-	if(strcmp ( "Wizard", str ) == 0) return Enemy::EnemyTypes::Wizard;
-	if(strcmp ( "Knight", str ) == 0) return Enemy::EnemyTypes::Knight;
 	if(strcmp ( "Peasant", str ) == 0) return Enemy::EnemyTypes::Peasant;
 	if(strcmp ( "Woman", str ) == 0) return Enemy::EnemyTypes::Woman;
 	if(strcmp ( "Chicken", str) == 0) return Enemy::EnemyTypes::Chicken;

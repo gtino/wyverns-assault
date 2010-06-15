@@ -31,6 +31,7 @@ material Skin
 			
 			vertex_program_ref Outline
 			{
+				param_named offset float 0.35
 			}			
 			fragment_program_ref Black
 			{

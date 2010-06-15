@@ -39,6 +39,7 @@ material chicken_material
 			
 			vertex_program_ref Outline
 			{
+				param_named offset float 0.3
 			}			
 			fragment_program_ref Black
 			{
