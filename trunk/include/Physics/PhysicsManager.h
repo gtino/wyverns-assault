@@ -23,10 +23,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #ifndef __PHYSICS_MANAGER_H__
 #define __PHYSICS_MANAGER_H__
 
-#define REDWYVERN_RAY_HEIGHT	25
-#define REDWYVERN_SLOW_VELOCITY	1
-#define REDWYVERN_FAST_VELOCITY	4
-
 #define PHYSICS_NODE_NAME "PhysicsNode"
 
 #include <Ogre.h>
@@ -101,7 +97,7 @@ namespace WyvernsAssault
 		void update(const float elapsedSeconds);
 
 		//Move one character
-		void move(PlayerPtr player, Vector3 direction, bool fastMode = false);
+		void move(PlayerPtr player, Vector3 direction, const float elapsedSeconds, bool fastMode = false);
 		void move(EnemyPtr enemy, int rotate, int thrust);
 
 		// Collision check
@@ -121,7 +117,7 @@ namespace WyvernsAssault
 
 	private:
 
-		bool calculateY(SceneNode *node, const Ogre::uint32 queryMask = 0xFFFFFFFF);
+		Vector3 calculateY(const Vector3 &point, const Ogre::uint32 queryMask = 0xFFFFFFFF);
 		bool raycast(const Vector3 &point, const Vector3 &normal, Vector3 &result, float &closest_distance, const Ogre::uint32 queryMask);
 		bool collidesWithBorders(const Vector3& fromPoint, const Vector3& toPoint, const float collisionRadius = 2.5f, const float rayHeightLevel = 0.0f, const uint32 queryMask = 0xFFFFFFFF);
 		void GetMeshInformation(const Ogre::MeshPtr mesh,

@@ -62,6 +62,7 @@ namespace WyvernsAssault
 
 		virtual void setMaterialName(const Ogre::String materialName) { mEntity->setMaterialName(materialName);}
 		
+		const Ogre::AxisAlignedBox& getWorldBoundingBox(){return mEntity->getWorldBoundingBox();}
 		const Ogre::AxisAlignedBox& getBoundingBox(){return mEntity->getBoundingBox();}
 
 	protected:
@@ -75,6 +76,8 @@ namespace WyvernsAssault
 		Ogre::String mName;
 		Ogre::Vector3 mDirection;
 	};
+
+	typedef boost::shared_ptr<EntityInterface> EntityInterfacePtr;
 }
 
 #endif // __ENTITY_INTERFACE_H__

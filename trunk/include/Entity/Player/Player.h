@@ -41,6 +41,10 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #define PLAYER3 "Player3"
 #define PLAYER4 "Player4"
 
+#define REDWYVERN_RAY_HEIGHT	25
+#define REDWYVERN_SLOW_VELOCITY	40
+#define REDWYVERN_FAST_VELOCITY	120
+
 // Player animations number in tree
 #define IDDLE		0
 #define RUN			1
