@@ -126,6 +126,9 @@ void CameraManager::initialize(SceneManager* sceneManager, RenderWindow* window)
 /** Finalize the camera manager */
 void CameraManager::finalize()
 {	
+	if(!mSceneManager)
+		return;
+
 	if(mSceneManager->hasCamera(GUI_CAMERA))
 	{
 		mSceneManager->destroyCamera( GUI_CAMERA );

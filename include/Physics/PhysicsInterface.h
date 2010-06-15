@@ -52,6 +52,15 @@ namespace WyvernsAssault
 		virtual void finalizePhysics(){return;} 
 		virtual void updatePhysics(const float elapsedSeconds){};
 
+		//virtual void setPosition(Ogre::Vector3 position) = 0;
+		//virtual Ogre::Vector3 getPosition() = 0;
+
+		//virtual void setDirection(Ogre::Vector3 direction) = 0;
+		//virtual Ogre::Vector3 getDirection() = 0;
+
+		//virtual void setOrientation(Ogre::Quaternion orientation) = 0;
+		//virtual Ogre::Quaternion getOrientation() = 0;
+
 		Ogre::Real getSpeed(){return mSpeed;}
 		void setSpeed(Ogre::Real speed){mSpeed = speed;}
 
@@ -62,6 +71,8 @@ namespace WyvernsAssault
 		Ogre::Real mSpeed;
 		GeometryPtr mGeometry;
 	};
+
+	typedef boost::shared_ptr<PhysicsInterface> PhysicsInterfacePtr;
 }
 
 #endif // __PHYSICS_INTERFACE_H__

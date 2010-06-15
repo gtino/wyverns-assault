@@ -68,12 +68,14 @@ void PhysicsManager::update(const float elapsedSeconds){
 	for(PlayerMapIterator it_player = mPlayerMap.begin(); it_player != mPlayerMap.end(); ++it_player)
 	{
 		PlayerPtr player = it_player->second;
-		
-		// Check basic ground collision
-		if(calculateY(player->_getSceneNode(),BASIC_GROUND_MASK)){
-			// Basic ground collision event
+		Vector3 position = player->getPosition();
 
-		}
+		// Check basic ground collision
+		Vector3 hotPosition = calculateY(position,BASIC_GROUND_MASK);
+	
+		hotPosition.y += REDWYVERN_RAY_HEIGHT; // HACK : this should not be hardcoded!
+			
+		player->setPosition(hotPosition);
 	}
 
 	// Call bounding box collision
@@ -96,7 +98,7 @@ void PhysicsManager::checkForCollisions()
 			for(EnemyMapIterator it_enemy = mEnemyMap.begin(); it_enemy != mEnemyMap.end(); ++it_enemy)
 			{
 				EnemyPtr enemy = it_enemy->second;
-				AxisAlignedBox enemy_box = enemy->_getSceneNode()->_getWorldAABB();
+				AxisAlignedBox enemy_box = enemy->getWorldBoundingBox();
 				
 				if(player_firebox.intersects(enemy_box))
 				{
@@ -113,12 +115,12 @@ void PhysicsManager::checkForCollisions()
 		if( mPlayerAttackLast != player->wichAttack() && player->isAttacking() )
 		{
 
-			AxisAlignedBox player_box = player->_getSceneNode()->_getWorldAABB();
+			AxisAlignedBox player_box = player->getWorldBoundingBox();
 
 			for(EnemyMapIterator it_enemy = mEnemyMap.begin(); it_enemy != mEnemyMap.end(); ++it_enemy)
 			{
 				EnemyPtr enemy = it_enemy->second;
-				AxisAlignedBox enemy_box = enemy->_getSceneNode()->_getWorldAABB();
+				AxisAlignedBox enemy_box = enemy->getWorldBoundingBox();
 
 				if(player_box.intersects(enemy_box))
 				{
@@ -144,28 +146,26 @@ void PhysicsManager::checkForCollisions()
 
 }
 
-void PhysicsManager::move(PlayerPtr player, Vector3 direction, bool fastMode){
-	
+void PhysicsManager::move(PlayerPtr player, Vector3 direction, const float elapsedSeconds, bool fastMode)
+{
 	if(direction != Vector3::ZERO)
 	{
-		Quaternion q1 = player->_getSceneNode()->getOrientation();
+		Quaternion q1 = player->getOrientation();
 		// Get current direction where player is facing
 		Vector3 currentDirection = q1 * Vector3::UNIT_Z;
 		Quaternion q2 = currentDirection.getRotationTo(direction);
-		player->_getSceneNode()->setOrientation(q1*q2);
+		player->setOrientation(q1*q2);
 	}
 
 	Vector3 old_position = player->getPosition();
 	
 	if(fastMode)
-		player->setPosition((direction*REDWYVERN_FAST_VELOCITY) + old_position);
+		player->setPosition((direction*REDWYVERN_FAST_VELOCITY*elapsedSeconds) + old_position);
 	else
-		player->setPosition((direction*REDWYVERN_SLOW_VELOCITY) + old_position);
+		player->setPosition((direction*REDWYVERN_SLOW_VELOCITY*elapsedSeconds) + old_position);
 
 	if(collidesWithBorders(old_position,player->getPosition(),0.5f,0,BORDER_GROUND_MASK))
 		player->setPosition(old_position);
-
-
 }
 
 
@@ -207,23 +207,16 @@ void PhysicsManager::addPhysicEnemy(EnemyPtr enemy)
 
 /* Calculate heigth of terrain and translate node to adjust them
 */
-bool PhysicsManager::calculateY(SceneNode *node, const Ogre::uint32 queryMask)
+Vector3 PhysicsManager::calculateY(const Vector3 &point, const Ogre::uint32 queryMask)
 {
-
-	Vector3 position = node->getPosition();
-	float x = position.x;
-	float y = position.y;
-	float z = position.z;
 	Vector3 yPosition(0,0,0);
 	float distToColl = 0.0f;
 
-	if(raycast(Vector3(position.x,position.y,position.z),Vector3::NEGATIVE_UNIT_Y,yPosition, distToColl ,queryMask)){
-		node->setPosition(x,yPosition.y+REDWYVERN_RAY_HEIGHT,z);
-		return (true);
+	if(raycast(point,Vector3::NEGATIVE_UNIT_Y,yPosition, distToColl ,queryMask)){
+		return Ogre::Vector3(point.x,yPosition.y,point.z);
 	}
 
-	return (false);
-
+	return point;
 }
 
 /* Control border ground collision
