@@ -55,29 +55,34 @@
 <enemies> 
 		<!-- Soldiers -->
 		<enemy>
-			<position x="200" y="10" z="870"/>
- 			<entity type="Naked" meshFile="naked.mesh" name="naked0"/>
+			<position x="200" y="10" z="830"/>
+ 			<entity type="KnightA" meshFile="knightA.mesh" name="knight0"/>
 		</enemy>
 		<enemy>
-			<position x="200" y="10" z="900"/>
- 			<entity type="Naked" meshFile="naked.mesh" name="naked1"/>
+			<position x="200" y="10" z="860"/>
+ 			<entity type="KnightB" meshFile="knightB.mesh" name="knight1"/>
 		</enemy>
+		<enemy>
+			<position x="200" y="10" z="880"/>
+ 			<entity type="KnightC" meshFile="knightC.mesh" name="knight3"/>
+		</enemy>		
 		<enemy>
 			<position x="500" y="10" z="740"/>
- 			<entity type="Naked" meshFile="naked.mesh" name="naked2"/>
+ 			<entity type="KnightA2" meshFile="knightA.mesh" name="knight4"/>
 		</enemy>
 		<enemy>
 			<position x="520" y="10" z="730"/>
- 			<entity type="Naked" meshFile="naked.mesh" name="naked3"/>
+ 			<entity type="KnightC3" meshFile="knightC.mesh" name="knight5"/>
 		</enemy>
 		<enemy>
 			<position x="800" y="10" z="720"/>
- 			<entity type="Naked" meshFile="naked.mesh" name="naked4"/>
+ 			<entity type="KnightB4" meshFile="knightB.mesh" name="knight6"/>
 		</enemy>
 		<enemy>
 			<position x="800" y="10" z="700"/>
- 			<entity type="Naked" meshFile="naked.mesh" name="naked5"/>
+ 			<entity type="KnightC5" meshFile="knightC.mesh" name="knight7"/>
 		</enemy>
+		
 		<enemy>
 			<position x="900" y="10" z="650"/>
  			<entity type="Naked" meshFile="naked.mesh" name="naked6"/>
@@ -88,35 +93,35 @@
 		</enemy>
 		<enemy>
 			<position x="950" y="10" z="400"/>
- 			<entity type="Peasant" meshFile="peasant.mesh" name="peasant0"/>
+ 			<entity type="KnightB4" meshFile="knightB.mesh" name="knight8"/>
 		</enemy>
 		<enemy>
 			<position x="970" y="10" z="430"/>
- 			<entity type="Peasant" meshFile="peasant.mesh" name="peasant1"/>
+ 			<entity type="KnightB2" meshFile="knightB.mesh" name="knight9"/>
 		</enemy>
 		<enemy>
 			<position x="990" y="10" z="450"/>
- 			<entity type="Peasant" meshFile="peasant.mesh" name="peasant2"/>
+ 			<entity type="KnightB" meshFile="knightB.mesh" name="knight10"/>
 		</enemy>
 		<enemy>
 			<position x="1020" y="10" z="450"/>
- 			<entity type="Peasant" meshFile="peasant.mesh" name="peasant3"/>
+ 			<entity type="KnightB5" meshFile="knightB.mesh" name="knight11"/>
 		</enemy>
 		<enemy>
 			<position x="960" y="10" z="500"/>
- 			<entity type="Peasant" meshFile="peasant.mesh" name="peasant4"/>
+ 			<entity type="KnightC4" meshFile="knightC.mesh" name="knight12"/>
 		</enemy>
 		<enemy>
 			<position x="980" y="10" z="550"/>
- 			<entity type="Peasant" meshFile="peasant.mesh" name="peasant5"/>
+ 			<entity type="KnightC" meshFile="knightC.mesh" name="knight13"/>
 		</enemy>
 		<enemy>
 			<position x="1000" y="10" z="600"/>
- 			<entity type="Peasant" meshFile="peasant.mesh" name="peasant6"/>
+ 			<entity type="KnightC3" meshFile="knightC.mesh" name="knight14"/>
 		</enemy>
 		<enemy>
 			<position x="1000" y="10" z="350"/>
- 			<entity type="Peasant" meshFile="peasant.mesh" name="peasant7"/>
+ 			<entity type="Peasant" meshFile="peasant.mesh" name="peasant1"/>
 		</enemy>
 		<!--<enemy>
 			<position x="1225" y="10" z="80"/>

@@ -54,14 +54,29 @@ namespace WyvernsAssault
 		/** List of enemy types */
 		enum EnemyTypes
 		{
-			Naked	= 0,
-			Soldier	= 1,
-			Wizard	= 2,
-			Knight	= 3,
-			Peasant	= 4,
-			Woman	= 5,
-			Chicken = 6,
-			Cow = 7
+			KnightA		= 0,
+			KnightA2	= 1,
+			KnightA3	= 2,
+			KnightA4	= 3,
+			KnightA5	= 4,
+			KnightB		= 5,
+			KnightB2	= 6,
+			KnightB3	= 7,
+			KnightB4	= 8,
+			KnightB5	= 9,
+			KnightC		= 10,
+			KnightC2	= 11,
+			KnightC3	= 12,
+			KnightC4	= 13,
+			KnightC5	= 14,
+			Wizard		= 15,
+			Wizard2		= 16,
+			Naked		= 17,
+			Soldier		= 18,					
+			Peasant		= 19,
+			Woman		= 20,
+			Chicken		= 21,
+			Cow			= 22
 		};
 
 		enum EnemyStates

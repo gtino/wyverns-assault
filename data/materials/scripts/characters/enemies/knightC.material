@@ -1,4 +1,4 @@
-material knightB_material
+material knightC_material
 {
 	technique Toon
 	{
@@ -12,9 +12,9 @@ material knightB_material
 			fragment_program_ref ToonFP
 			{
 				param_named ambient float4 0.0 0.0 0.0 1.0
-				param_named diffuse float4 0.5 0.5 0.5 1
+				param_named diffuse float4 0.244 0.244 0.244 1
 				param_named specular float4 0.7 0.7 0.7 1
-				param_named emissive float4 0.228 0.228 0.228 1
+				param_named emissive float4 0.0 0.0 0.0 1
 			}
 
 			texture_unit ToonShades
@@ -38,6 +38,7 @@ material knightB_material
 			
 			vertex_program_ref Outline
 			{
+				param_named offset float 0.3
 			}			
 			fragment_program_ref Black
 			{
@@ -46,7 +47,7 @@ material knightB_material
 	}
 }
 
-material knightB_material_2
+material knightC_material_2
 {
 	technique Toon
 	{
@@ -60,9 +61,9 @@ material knightB_material_2
 			fragment_program_ref ToonFP
 			{
 				param_named ambient float4 0.0 0.0 0.0 1.0
-				param_named diffuse float4 0.5 0.5 0.5 1
+				param_named diffuse float4 0.244 0.244 0.244 1
 				param_named specular float4 0.7 0.7 0.7 1
-				param_named emissive float4 0.228 0.228 0.228 1
+				param_named emissive float4 0.0 0.0 0.0 1
 			}
 
 			texture_unit ToonShades
@@ -86,6 +87,7 @@ material knightB_material_2
 			
 			vertex_program_ref Outline
 			{
+				param_named offset float 0.3
 			}			
 			fragment_program_ref Black
 			{
@@ -94,7 +96,7 @@ material knightB_material_2
 	}
 }
 
-material knightB_material_3
+material knightC_material_3
 {
 	technique Toon
 	{
@@ -108,9 +110,9 @@ material knightB_material_3
 			fragment_program_ref ToonFP
 			{
 				param_named ambient float4 0.0 0.0 0.0 1.0
-				param_named diffuse float4 0.5 0.5 0.5 1
+				param_named diffuse float4 0.244 0.244 0.244 1
 				param_named specular float4 0.7 0.7 0.7 1
-				param_named emissive float4 0.228 0.228 0.228 1
+				param_named emissive float4 0.0 0.0 0.0 1
 			}
 
 			texture_unit ToonShades
@@ -134,6 +136,7 @@ material knightB_material_3
 			
 			vertex_program_ref Outline
 			{
+				param_named offset float 0.3
 			}			
 			fragment_program_ref Black
 			{
@@ -142,7 +145,7 @@ material knightB_material_3
 	}
 }
 
-material knightB_material_4
+material knightC_material_4
 {
 	technique Toon
 	{
@@ -156,9 +159,9 @@ material knightB_material_4
 			fragment_program_ref ToonFP
 			{
 				param_named ambient float4 0.0 0.0 0.0 1.0
-				param_named diffuse float4 0.5 0.5 0.5 1
+				param_named diffuse float4 0.244 0.244 0.244 1
 				param_named specular float4 0.7 0.7 0.7 1
-				param_named emissive float4 0.228 0.228 0.228 1
+				param_named emissive float4 0.0 0.0 0.0 1
 			}
 
 			texture_unit ToonShades
@@ -182,6 +185,7 @@ material knightB_material_4
 			
 			vertex_program_ref Outline
 			{
+				param_named offset float 0.3
 			}			
 			fragment_program_ref Black
 			{
@@ -190,7 +194,7 @@ material knightB_material_4
 	}
 }
 
-material knightB_material_5
+material knightC_material_5
 {
 	technique Toon
 	{
@@ -204,9 +208,9 @@ material knightB_material_5
 			fragment_program_ref ToonFP
 			{
 				param_named ambient float4 0.0 0.0 0.0 1.0
-				param_named diffuse float4 0.5 0.5 0.5 1
+				param_named diffuse float4 0.244 0.244 0.244 1
 				param_named specular float4 0.7 0.7 0.7 1
-				param_named emissive float4 0.228 0.228 0.228 1
+				param_named emissive float4 0.0 0.0 0.0 1
 			}
 
 			texture_unit ToonShades
@@ -230,6 +234,7 @@ material knightB_material_5
 			
 			vertex_program_ref Outline
 			{
+				param_named offset float 0.3
 			}			
 			fragment_program_ref Black
 			{

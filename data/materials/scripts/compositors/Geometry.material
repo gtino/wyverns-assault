@@ -26,7 +26,7 @@ fragment_program ShowDepth_FP cg
 	{
 		// Controls where white starts. Bigger values = more white zone.
 		// DOF material depends on this value. 
-		param_named MaxDepth float 15
+		param_named MaxDepth float 12
 	}
 }
 

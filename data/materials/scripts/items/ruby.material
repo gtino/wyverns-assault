@@ -39,6 +39,7 @@ material ruby_material
 			
 			vertex_program_ref Outline
 			{
+				param_named offset float 0.5
 			}			
 			fragment_program_ref Black
 			{
