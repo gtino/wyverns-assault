@@ -23,14 +23,22 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #ifndef __EVENTS_DEFINES_H__
 #define __EVENTS_DEFINES_H__
 
-#define EVENTS_BEGIN_REGISTER_HANDLERS(c)	void c##::registerHandlers() \
-											{
-#define EVENTS_REGISTER_HANDLER(h,t)		mEventsManager->registerHandler(h,t);
-#define EVENTS_END_REGISTER_HANDLERS();		}
+#define EVENTS_INTERFACE()	void registerHandlers(); \
+							void unregisterHandlers();
 
-#define EVENTS_BEGIN_UNREGISTER_HANDLERS(c)	void c##::registerHandlers() \
+#define EVENTS_HANDLER(h)	void handle##h##Event(h##EventPtr evt);
+
+#define EVENTS_BEGIN_REGISTER_HANDLERS(c)	void c##::registerHandlers() \
+											{ \
+											boost::shared_ptr<c> this_ = shared_from_this();
+#define EVENTS_REGISTER_HANDLER(c,e)		registerHandler(EventHandlerPtr(new EventHandler<c,e##Event>(this_,&##c##::handle##e##Event)),EventTypes::##e);
+#define EVENTS_END_REGISTER_HANDLERS()		}
+
+#define EVENTS_BEGIN_UNREGISTER_HANDLERS(c)	void c##::unregisterHandlers() \
 											{
-#define EVENTS_UNREGISTER_HANDLER(h,t)		mEventsManager->unregisterHandler(h,t);
-#define EVENTS_END_UNREGISTER_HANDLERS();	}
+#define EVENTS_UNREGISTER_HANDLER(c,e)		
+#define EVENTS_END_UNREGISTER_HANDLERS()	}
+
+#define EVENTS_DEFINE_HANDLER(c,e)	void c##::handle##e##Event(e##EventPtr evt)
 
 #endif // __EVENTS_DEFINES_H__
