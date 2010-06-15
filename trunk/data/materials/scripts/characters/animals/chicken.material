@@ -1,4 +1,4 @@
-material Chicken
+material chicken_material
 {
 	technique Toon
 	{
