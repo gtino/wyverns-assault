@@ -142,7 +142,7 @@ void Player::updateEntity(const float elapsedSeconds)
 				newAttack = true;
 
 				// Camera effect on third attack for bigger impact
-				CameraManager::getSingletonPtr()->shake(1);
+				//CameraManager::getSingletonPtr()->shake(1);
 			}
 			else
 				attacking = 0;

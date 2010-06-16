@@ -30,6 +30,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #include <boost/enable_shared_from_this.hpp>
 
 #include "ParticleSystem.h"
+#include "..\Camera\CameraManager.h"
 #include "..\Events\EventsInterface.h"
 
 using namespace Ogre;
