@@ -27,7 +27,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
 #include "..\Utils\Utils.h"
 #include "..\GUI\GuiObjectTextDisplay.h"
-#include "..\Camera\CameraManager.h"
 
 namespace WyvernsAssault
 {

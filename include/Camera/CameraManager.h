@@ -34,6 +34,9 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #include <boost/enable_shared_from_this.hpp>
 
 #include "..\Utils\Utils.h"
+#include "..\Lua\LuaInterface.h"
+//#include "..\Events\EventsInterface.h"
+
 #include "SdkCameraMan.h"
 
 using namespace Ogre;
@@ -43,7 +46,10 @@ namespace WyvernsAssault
 	/**
 		Class used to manage differents cameras
 	*/
-	class CameraManager : public Ogre::Singleton<CameraManager>, public boost::enable_shared_from_this<CameraManager>
+	class CameraManager : public Ogre::Singleton<CameraManager>
+						, public boost::enable_shared_from_this<CameraManager>
+						, public LuaInterface
+						//, public EventsInterface
 	{
 	public:
 		CameraManager();
@@ -185,6 +191,28 @@ namespace WyvernsAssault
 
 		std::vector<CameraSegment>		mCameraSegments;
 
+		// ----------------
+		// Events interface
+		// ----------------
+		// Register event handlers
+		//void registerHandlers();
+		// Unregister handlers
+		//void unregisterHandlers();
+
+		// --------------------------------
+		// BEGIN Lua Interface Declarations
+		// --------------------------------
+	public:
+		//Audio Lib (exported to Lua)
+		LUA_LIBRARY("Camera",cameralib);
+
+		LUA_FUNCTION(luaMoveCamera);
+
+	public:
+		void luaLoadScripts(){};
+		// ------------------------------
+		// END Lua Interface Declarations
+		// ------------------------------
 	};
 
 	typedef boost::shared_ptr<CameraManager> CameraManagerPtr;

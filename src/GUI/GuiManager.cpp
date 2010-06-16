@@ -72,3 +72,29 @@ bool GuiManager::keyReleased( const OIS::KeyEvent &arg )
 {
 	return true;
 }
+
+// --------------------------------
+// Lua Gui Lib
+// --------------------------------
+LUA_BEGIN_BINDING(GuiManager::guilib)
+LUA_BIND("showOverlay", GuiManager::luaShowOverlay)
+LUA_BIND("hideOverlay", GuiManager::luaHideOverlay)
+LUA_END_BINDING()
+
+int GuiManager::luaShowOverlay(lua_State *L)
+{
+	/* get number of arguments */
+	int n = lua_gettop(L);
+
+	/* return the number of results */
+	return 1;
+}
+
+int GuiManager::luaHideOverlay(lua_State *L)
+{
+	/* get number of arguments */
+	int n = lua_gettop(L);
+
+	/* return the number of results */
+	return 1;
+}

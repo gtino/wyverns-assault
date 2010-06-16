@@ -171,3 +171,29 @@ void PostProcessManager::update(float elapsedSeconds)
 			radialBlur(0);
 	}
 }
+
+// --------------------------------
+// Lua Camera Lib
+// --------------------------------
+LUA_BEGIN_BINDING(PostProcessManager::postprocesslib)
+LUA_BIND("enableCompositor", PostProcessManager::luaEnableCompositor)
+LUA_BIND("disableCompositor", PostProcessManager::luaDisableCompositor)
+LUA_END_BINDING()
+
+int PostProcessManager::luaEnableCompositor(lua_State *L)
+{
+	/* get number of arguments */
+	int n = lua_gettop(L);
+
+	/* return the number of results */
+	return 1;
+}
+
+int PostProcessManager::luaDisableCompositor(lua_State *L)
+{
+	/* get number of arguments */
+	int n = lua_gettop(L);
+
+	/* return the number of results */
+	return 1;
+}

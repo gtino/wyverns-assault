@@ -32,6 +32,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
 #include "..\Utils\Utils.h"
 #include "..\Events\EventsInterface.h"
+#include "..\Lua\LuaInterface.h"
 
 #include "Object.h"
 
@@ -51,6 +52,7 @@ namespace WyvernsAssault
 	class ScenarioManager	: public Ogre::Singleton<ScenarioManager>
 							, public boost::enable_shared_from_this<ScenarioManager>
 							, public EventsInterface
+							, public LuaInterface
 	{
 	public:
 		ScenarioManager(SceneManager* sceneManager);
@@ -91,6 +93,22 @@ namespace WyvernsAssault
 
 	private:
 		bool mInitialized;
+
+		// --------------------------------
+		// BEGIN Lua Interface Declarations
+		// --------------------------------
+	public:
+		//Scenario Lib (exported to Lua)
+		LUA_LIBRARY("Scenario",scenariolib);
+
+		LUA_FUNCTION(luaCreateObject);
+		LUA_FUNCTION(luaRemoveObject);
+
+	public:
+		void luaLoadScripts(){};
+		// ------------------------------
+		// END Lua Interface Declarations
+		// ------------------------------
 	};
 
 	typedef boost::shared_ptr<ScenarioManager> ScenarioManagerPtr;
