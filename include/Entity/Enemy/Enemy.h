@@ -31,6 +31,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
 #include "..\OBBoxRenderable.h"
 
+#include "Ogre/AnimationSystem.h"
+
 #define ENEMY_BILLBOARD_SHOW_TIME 2.0f // seconds
 
 #define ENEMY_SPEED_SLOW 10.0f
@@ -42,6 +44,12 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #define ANIMAL_SPEED_MEDIUM 30.0f
 #define ANIMAL_SPEED_FAST 50.0f
 #define ANIMAL_ROTATION_SPEED 3.0f
+
+// Enemies animations number in tree
+#define ENEMY_IDDLE			0
+#define ENEMY_RUN			1
+#define ENEMY_ATTACK		2
+#define ENEMY_DIE			3
 
 namespace WyvernsAssault
 {
@@ -134,6 +142,10 @@ namespace WyvernsAssault
 		void setDebugEnabled(bool isDebugEnabled);
 		bool getDebugEnabled(){return mIsDebugEnabled;};
 
+		/** Animation functions */
+		void setMoving(bool move){ moving = move; }
+		void setAttacking(bool attack);
+
 	private:
 		Enemy::EnemyTypes mType;
 
@@ -151,6 +163,14 @@ namespace WyvernsAssault
 
 		OBBoxRenderable* mOBBoxRenderable;
 		bool mIsDebugEnabled;
+
+		// Animation system
+		tecnofreak::IAnimationSystem*		mAnimationSystem;
+		tecnofreak::IParameter*				mCurrentAnimation;
+
+		// State control
+		bool		moving;
+		bool		attacking;
 
 	private:
 		void chase();
