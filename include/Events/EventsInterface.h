@@ -24,13 +24,12 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #define __EVENTS_INTERFACE_H_
 
 #include "Event.h"
+#include "EventsDefines.h"
 #include "EventHandler.h"
 #include "EventsManager.h"
 
 namespace WyvernsAssault
 {
-	class EventsManager;
-
 	class EventsInterface
 	{
 	public:

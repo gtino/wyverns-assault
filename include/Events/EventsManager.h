@@ -43,6 +43,7 @@ namespace WyvernsAssault
 	typedef std::map<EventTypes,EventHandlerList> EventHandlerMap;
 
 	class EventsInterface;
+	typedef boost::shared_ptr<EventsInterface> EventsInterfacePtr;
 
 	class EventsManager : public Ogre::Singleton<EventsManager>, public boost::enable_shared_from_this<EventsManager>
 	{
@@ -72,8 +73,8 @@ namespace WyvernsAssault
 		//
 		// Register an interface (handlers and events)
 		//
-		void registerInterface(EventsInterface* eventsInterface);
-		void unregisterInterface(EventsInterface* eventsInterface);
+		void registerInterface(EventsInterfacePtr eventsInterface);
+		void unregisterInterface(EventsInterfacePtr eventsInterface);
 
 	public:
 		/// Add a new event handler for the given event type
