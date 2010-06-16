@@ -35,7 +35,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
 #include "..\Utils\Utils.h"
 #include "..\Lua\LuaInterface.h"
-//#include "..\Events\EventsInterface.h"
+#include "..\Events\EventsInterface.h"
 
 #include "SdkCameraMan.h"
 
@@ -49,7 +49,7 @@ namespace WyvernsAssault
 	class CameraManager : public Ogre::Singleton<CameraManager>
 						, public boost::enable_shared_from_this<CameraManager>
 						, public LuaInterface
-						//, public EventsInterface
+						, public EventsInterface
 	{
 	public:
 		CameraManager();
@@ -195,9 +195,9 @@ namespace WyvernsAssault
 		// Events interface
 		// ----------------
 		// Register event handlers
-		//void registerHandlers();
+		void registerHandlers();
 		// Unregister handlers
-		//void unregisterHandlers();
+		void unregisterHandlers();
 
 		// --------------------------------
 		// BEGIN Lua Interface Declarations

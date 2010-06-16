@@ -803,14 +803,14 @@ void CameraManager::hideAxes()
 // --------------
 // Event handlers
 // --------------
-//void CameraManager::registerHandlers()
-//{
-//	boost::shared_ptr<CameraManager> this_ = shared_from_this();
-//}
-//
-//void CameraManager::unregisterHandlers()
-//{
-//}
+void CameraManager::registerHandlers()
+{
+	boost::shared_ptr<CameraManager> this_ = shared_from_this();
+}
+
+void CameraManager::unregisterHandlers()
+{
+}
 
 // --------------------------------
 // Lua Camera Lib
