@@ -297,26 +297,24 @@ void EnemyManager::setDebugEnabled(bool isDebugEnabled)
 // --------------
 // Event handlers
 // --------------
-void EnemyManager::registerHandlers()
-{
-	boost::shared_ptr<EnemyManager> this_ = shared_from_this();
+EVENTS_BEGIN_REGISTER_HANDLERS(EnemyManager)
+EVENTS_REGISTER_HANDLER(EnemyManager, Collision)
+EVENTS_REGISTER_HANDLER(EnemyManager, EnemyHit)
+EVENTS_REGISTER_HANDLER(EnemyManager, EnemyKill)
+EVENTS_END_REGISTER_HANDLERS()
 
-	registerHandler(EventHandlerPtr(new EventHandler<EnemyManager,CollisionEvent>(this_,&EnemyManager::handleCollisionEvent)),EventTypes::Collision);
-	registerHandler(EventHandlerPtr(new EventHandler<EnemyManager,EnemyHitEvent>(this_,&EnemyManager::handleEnemyHitEvent)),EventTypes::EnemyHit);
-	registerHandler(EventHandlerPtr(new EventHandler<EnemyManager,EnemyKillEvent>(this_,&EnemyManager::handleEnemyKillEvent)),EventTypes::EnemyKill);
-}
+EVENTS_BEGIN_UNREGISTER_HANDLERS(EnemyManager)
+EVENTS_UNREGISTER_HANDLER(EnemyManager, Collision)
+EVENTS_UNREGISTER_HANDLER(EnemyManager, EnemyHit)
+EVENTS_UNREGISTER_HANDLER(EnemyManager, EnemyKill)
+EVENTS_END_UNREGISTER_HANDLERS()
 
-void EnemyManager::unregisterHandlers()
-{
-
-}
-
-void EnemyManager::handleCollisionEvent(CollisionEventPtr evt)
+EVENTS_DEFINE_HANDLER(EnemyManager, Collision)
 {
 // TODO
 }
 
-void EnemyManager::handleEnemyHitEvent(EnemyHitEventPtr evt)
+EVENTS_DEFINE_HANDLER(EnemyManager, EnemyHit)
  {
 	EnemyPtr enemy = evt->getEnemy();
 	PlayerPtr player = evt->getPlayer();
@@ -330,7 +328,7 @@ void EnemyManager::handleEnemyHitEvent(EnemyHitEventPtr evt)
 	}
 }
 
-void EnemyManager::handleEnemyKillEvent(EnemyKillEventPtr evt)
+EVENTS_DEFINE_HANDLER(EnemyManager, EnemyKill)
  {
 	EnemyPtr enemy = evt->getEnemy();
 	PlayerPtr player = evt->getPlayer();

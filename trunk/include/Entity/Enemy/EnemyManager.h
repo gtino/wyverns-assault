@@ -88,14 +88,11 @@ namespace WyvernsAssault
 		// ----------------
 		// Events interface
 		// ----------------
-		// Register event handlers
-		void registerHandlers();
-		// Unregister handlers
-		void unregisterHandlers();
+		EVENTS_INTERFACE()
 
-		void handleCollisionEvent(CollisionEventPtr evt);
-		void handleEnemyHitEvent(EnemyHitEventPtr evt);
-		void handleEnemyKillEvent(EnemyKillEventPtr evt);
+		EVENTS_HANDLER(Collision)
+		EVENTS_HANDLER(EnemyHit)
+		EVENTS_HANDLER(EnemyKill)
 
 	private:
 		Ogre::String createUniqueId();
