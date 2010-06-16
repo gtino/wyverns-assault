@@ -579,22 +579,21 @@ float AudioManager::getSoundLength(int soundIndex)
 // --------------
 // Event handlers
 // --------------
-void AudioManager::registerHandlers()
-{
-	boost::shared_ptr<AudioManager> this_ = shared_from_this();
+EVENTS_BEGIN_REGISTER_HANDLERS(AudioManager)
+EVENTS_REGISTER_HANDLER(AudioManager, EnemyKill)
+EVENTS_REGISTER_HANDLER(AudioManager, PlayerAttack);
+EVENTS_REGISTER_HANDLER(AudioManager, PlayerAttackSpecial);
+EVENTS_REGISTER_HANDLER(AudioManager, ItemCatch);
+EVENTS_END_REGISTER_HANDLERS()
 
-	registerHandler(EventHandlerPtr(new EventHandler<AudioManager,EnemyKillEvent>(this_,&AudioManager::handleEnemyKillEvent)),EventTypes::EnemyKill);
-	registerHandler(EventHandlerPtr(new EventHandler<AudioManager,PlayerAttackEvent>(this_,&AudioManager::handlePlayerAttackEvent)),EventTypes::PlayerAttack);
-	registerHandler(EventHandlerPtr(new EventHandler<AudioManager,PlayerAttackSpecialEvent>(this_,&AudioManager::handlePlayerAttackSpecialEvent)),EventTypes::PlayerAttackSpecial);
-	registerHandler(EventHandlerPtr(new EventHandler<AudioManager,ItemCatchEvent>(this_,&AudioManager::handleItemCatchEvent)),EventTypes::ItemCatch);
-}
+EVENTS_BEGIN_UNREGISTER_HANDLERS(AudioManager)
+EVENTS_UNREGISTER_HANDLER(AudioManager, EnemyKill)
+EVENTS_UNREGISTER_HANDLER(AudioManager, PlayerAttack);
+EVENTS_UNREGISTER_HANDLER(AudioManager, PlayerAttackSpecial);
+EVENTS_UNREGISTER_HANDLER(AudioManager, ItemCatch);
+EVENTS_END_UNREGISTER_HANDLERS()
 
-void AudioManager::unregisterHandlers()
-{
-
-}
-
-void AudioManager::handleEnemyKillEvent(EnemyKillEventPtr evt)
+EVENTS_DEFINE_HANDLER(AudioManager, EnemyKill)
 {
 	Debug::Out("AudioManager : handleEnemyKillEvent");
 
@@ -616,7 +615,7 @@ void AudioManager::handleEnemyKillEvent(EnemyKillEventPtr evt)
 	}
 }
 
-void AudioManager::handlePlayerAttackEvent(PlayerAttackEventPtr evt)
+EVENTS_DEFINE_HANDLER(AudioManager, PlayerAttack)
 {
 	Debug::Out("AudioManager : handlePlayerAttackEvent");
 
@@ -639,7 +638,7 @@ void AudioManager::handlePlayerAttackEvent(PlayerAttackEventPtr evt)
 		playSound("PlayerHit03.wav",sceneNode->_getDerivedPosition(),&channelIndex);
 }
 
-void AudioManager::handlePlayerAttackSpecialEvent(PlayerAttackSpecialEventPtr evt)
+EVENTS_DEFINE_HANDLER(AudioManager, PlayerAttackSpecial)
 {
 	Debug::Out("AudioManager : handlePlayerAttackSpecialEvent");
 
@@ -657,7 +656,7 @@ void AudioManager::handlePlayerAttackSpecialEvent(PlayerAttackSpecialEventPtr ev
 	playSound("Flame02.wav",sceneNode->_getDerivedPosition(),&channelIndex);
 }
 
-void AudioManager::handleItemCatchEvent(ItemCatchEventPtr evt)
+EVENTS_DEFINE_HANDLER(AudioManager, ItemCatch)
 {
 	Debug::Out("AudioManager : handleItemCatchEvent");
 
