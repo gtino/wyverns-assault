@@ -93,7 +93,7 @@ void PhysicsManager::checkForCollisions()
 		AxisAlignedBox player_firebox = player->getFireBox();
 
 		// Only check if player is using special (fire) and last check was not using it
-		if ( mPlayerSpecialState != player->isSpecial() && player->isSpecial())
+		if ( player->isSpecial())
 		{
 			for(EnemyMapIterator it_enemy = mEnemyMap.begin(); it_enemy != mEnemyMap.end(); ++it_enemy)
 			{
@@ -102,14 +102,12 @@ void PhysicsManager::checkForCollisions()
 				
 				if(player_firebox.intersects(enemy_box))
 				{
-					EnemySpecialHitEventPtr enemySpecialHitEventPtr = EnemySpecialHitEventPtr(new EnemySpecialHitEvent(enemy, player));
-					enemySpecialHitEventPtr->setDamage(player->getSpecialHitDamage());
-					raiseEvent(enemySpecialHitEventPtr);
+					EnemyHitEventPtr enemyHitEventPtr = EnemyHitEventPtr(new EnemyHitEvent(enemy, player));
+					enemyHitEventPtr->setDamage(player->getSpecialHitDamage());
+					raiseEvent(enemyHitEventPtr);
 				}
 			}
 		}
-		// Save last state
-		mPlayerSpecialState = player->isSpecial();
 
 		// Only check if player is attacking and has changed state
 		if( mPlayerAttackLast != player->wichAttack() && player->isAttacking() )
@@ -184,7 +182,7 @@ void PhysicsManager::addPhysicGround(Ogre::String mesh, Ogre::String name, Wyver
 	Entity* entityGround = mSceneManager->createEntity(name,mesh);
 	entityGround->setQueryFlags(type);
 	nodeGround->attachObject(entityGround);
-	nodeGround->setVisible(true);
+	nodeGround->setVisible(false);
 	nodeGround->setScale(scale);
 
 }

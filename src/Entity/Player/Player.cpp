@@ -36,6 +36,7 @@ void Player::initializeEntity(Ogre::Entity* entity, Ogre::SceneNode* sceneNode, 
 	special = false;
 	attacking = 0;
 	continueAttacking = false;
+	newAttack = false;
 	live = true;
 	timeDeath = 0;
 	
@@ -68,54 +69,6 @@ void Player::finalizeEntity()
 
 void Player::updateEntity(const float elapsedSeconds)
 {
-	// Check if special attack animation is finish
-	if( mCurrentAnimation->getFloatValue() == SPECIAL && mEntity->getAnimationState("Special")->getTimePosition() +  elapsedSeconds > mEntity->getAnimationState("Special")->getLength() )
-	{
-		special = false;
-	}
-	// Check if attack animation is finish
-	if( mCurrentAnimation->getFloatValue() == ATTACKA1 && mEntity->getAnimationState("AttackA_01")->getTimePosition() +  elapsedSeconds > mEntity->getAnimationState("AttackA_01")->getLength() )
-	{
-		hideGrids();
-		if ( continueAttacking )
-		{
-			attacking = 2;
-			continueAttacking = false;
-		}
-		else
-			attacking = 0;
-	}
-	if( mCurrentAnimation->getFloatValue() == ATTACKA2 && mEntity->getAnimationState("AttackA_02")->getTimePosition() +  elapsedSeconds > mEntity->getAnimationState("AttackA_02")->getLength() )
-	{
-		hideGrids();
-		if ( continueAttacking )
-		{
-			attacking = 3;
-			continueAttacking = false;
-
-			// Camera effect on third attack for bigger impact
-			CameraManager::getSingletonPtr()->shake(1);
-		}
-		else
-			attacking = 0;
-	}
-	if( mCurrentAnimation->getFloatValue() == ATTACKA3 && mEntity->getAnimationState("AttackA_03")->getTimePosition() +  elapsedSeconds > mEntity->getAnimationState("AttackA_03")->getLength() )
-	{
-		hideGrids();
-		if ( continueAttacking )
-		{
-			attacking = 1;
-			continueAttacking = false;
-		}
-		else
-			attacking = 0;
-	}
-	// Check if death animation is finish (plus 1 second)
-	if( mCurrentAnimation->getFloatValue() == DIE && mEntity->getAnimationState("Die")->getTimePosition() +  elapsedSeconds > mEntity->getAnimationState("Die")->getLength() )
-	{
-		special = false;
-	}
-
 	// Activate current animation
 	if ( !live ) 
 	{
@@ -145,6 +98,70 @@ void Player::updateEntity(const float elapsedSeconds)
 	else
 	{
 		mCurrentAnimation->setValue( IDDLE );
+	}	
+
+	// Check if death animation is finish (plus 1 second)
+	if( mCurrentAnimation->getFloatValue() == DIE )
+	{
+		if( mEntity->getAnimationState("Die")->getTimePosition() +  elapsedSeconds > mEntity->getAnimationState("Die")->getLength() )
+			special = false;
+	}
+	// Check if special attack animation is finish
+	else if( mCurrentAnimation->getFloatValue() == SPECIAL )
+	{
+		if ( mEntity->getAnimationState("Special")->getTimePosition() +  elapsedSeconds > mEntity->getAnimationState("Special")->getLength() )
+		{
+			special = false;
+		}
+	}
+	// Check if attack animation is finish
+	else if( mCurrentAnimation->getFloatValue() == ATTACKA1 ) 
+	{
+		if( mEntity->getAnimationState("AttackA_01")->getTimePosition() +  elapsedSeconds > mEntity->getAnimationState("AttackA_01")->getLength() )
+		{
+			hideGrids();
+			if ( continueAttacking )
+			{
+				attacking = 2;
+				continueAttacking = false;
+				newAttack = true;
+			}
+			else
+				attacking = 0;
+		}
+	}
+	else if( mCurrentAnimation->getFloatValue() == ATTACKA2 )
+	{
+		if( mEntity->getAnimationState("AttackA_02")->getTimePosition() +  elapsedSeconds > mEntity->getAnimationState("AttackA_02")->getLength() )
+		{
+			hideGrids();
+			if ( continueAttacking )
+			{
+				attacking = 3;
+				continueAttacking = false;
+				newAttack = true;
+
+				// Camera effect on third attack for bigger impact
+				CameraManager::getSingletonPtr()->shake(1);
+			}
+			else
+				attacking = 0;
+		}
+	}
+	else if( mCurrentAnimation->getFloatValue() == ATTACKA3 )
+	{
+		if( mEntity->getAnimationState("AttackA_03")->getTimePosition() +  elapsedSeconds > mEntity->getAnimationState("AttackA_03")->getLength() )
+		{
+			hideGrids();
+			if ( continueAttacking )
+			{
+				attacking = 1;
+				continueAttacking = false;
+				newAttack = true;
+			}
+			else
+				attacking = 0;
+		}
 	}	
 
 	// If player death time is bigger than its animations, dont add time
@@ -193,6 +210,7 @@ void Player::attackA()
 		if ( attacking == 0 )
 		{
   			attacking = 1;
+			newAttack = true;
 		}
 		else if ( attacking == 1 )
 		{
@@ -240,9 +258,10 @@ void Player::attackA3()
 
 void Player::attackSpecial()
 {
-	if( attacking == 0)
+	if( attacking == 0 && !newAttack && !special)
 	{
 		special = true;	
+		newAttack = true;
 		mFireBreath->startAndStopFade(mEntity->getAnimationState("Special")->getLength());
 	}
 }

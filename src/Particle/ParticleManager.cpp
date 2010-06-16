@@ -191,7 +191,6 @@ void ParticleManager::registerHandlers()
 	boost::shared_ptr<ParticleManager> this_ = shared_from_this();
 
 	registerHandler(EventHandlerPtr(new EventHandler<ParticleManager,EnemyHitEvent>(this_,&ParticleManager::handleEnemyHitEvent)),EventTypes::EnemyHit);
-	registerHandler(EventHandlerPtr(new EventHandler<ParticleManager,EnemySpecialHitEvent>(this_,&ParticleManager::handleEnemySpecialHitEvent)),EventTypes::EnemySpecialHit);
 	registerHandler(EventHandlerPtr(new EventHandler<ParticleManager,EnemyKillEvent>(this_,&ParticleManager::handleEnemyKillEvent)),EventTypes::EnemyKill);
 }
 
@@ -204,17 +203,15 @@ void ParticleManager::handleEnemyHitEvent(EnemyHitEventPtr evt)
 	EnemyPtr enemy = evt->getEnemy();
 	PlayerPtr player = evt->getPlayer();	
 
-	this->bloodHit(enemy->_getSceneNode());	
-	this->hit(enemy->_getSceneNode());
-}
-
-void ParticleManager::handleEnemySpecialHitEvent(EnemySpecialHitEventPtr evt)
-{
-	EnemyPtr enemy = evt->getEnemy();
-	PlayerPtr player = evt->getPlayer();	
-	
-	// The player has just hit the enemy with special attack
-	this->hitSpecial(enemy->_getSceneNode());
+	if( player->isSpecial() )
+	{
+		this->hitSpecial(enemy->_getSceneNode());
+	}
+	else
+	{
+		this->bloodHit(enemy->_getSceneNode());	
+		this->hit(enemy->_getSceneNode());	
+	}
 }
 
 void ParticleManager::handleEnemyKillEvent(EnemyKillEventPtr evt)
@@ -222,6 +219,10 @@ void ParticleManager::handleEnemyKillEvent(EnemyKillEventPtr evt)
 	EnemyPtr enemy = evt->getEnemy();
 	PlayerPtr player = evt->getPlayer();	
 
-	this->bloodKill(enemy->_getSceneNode());	
-	this->hit(enemy->_getSceneNode());
+	if( player->isSpecial() )
+	{
+		this->hitSpecial(enemy->_getSceneNode());
+	}
+	else
+		this->bloodKill(enemy->_getSceneNode());	
 }

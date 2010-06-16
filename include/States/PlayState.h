@@ -111,6 +111,10 @@ namespace WyvernsAssault
 		// User interface
 		//
 		GuiUserInterface* mPlayerUI;
+
+	protected:
+		float			buttonTimer;
+		OIS::KeyCode	lastKey;
 		
 	};
 }

@@ -223,7 +223,7 @@ void Enemy::updateLogic(lua_State *L, const float elapsedSeconds)
 			mSpeed = 0;
 			mDirection = Vector3::ZERO;
 			mTarget = 0;
-			setMaterialName("Skin/Red"); // DEBUG : Make him red so it is obvious he is going to die
+			//setMaterialName("Skin/Red"); // DEBUG : Make him red so it is obvious he is going to die
 			break;
 		case Enemy::EnemyStates::Dead:
 			mBalloonSet->setVisible(false);

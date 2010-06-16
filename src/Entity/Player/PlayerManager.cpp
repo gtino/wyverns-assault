@@ -100,9 +100,12 @@ void PlayerManager::attack(Ogre::String name)
 
 	player->attackA();
 
-	PlayerAttackEventPtr evt = PlayerAttackEventPtr(new PlayerAttackEvent(player));
-
-	raiseEvent(evt);
+	if( player->attackStart() )
+	{
+		player->attackFinish();
+		PlayerAttackEventPtr evt = PlayerAttackEventPtr(new PlayerAttackEvent(player));
+		raiseEvent(evt);
+	}
 }
 
 void PlayerManager::attackSpecial(Ogre::String name)
@@ -111,9 +114,12 @@ void PlayerManager::attackSpecial(Ogre::String name)
 
 	player->attackSpecial();
 
-	PlayerAttackSpecialEventPtr evt = PlayerAttackSpecialEventPtr(new PlayerAttackSpecialEvent(player));
-
-	raiseEvent(evt);
+	if( player->attackStart() )
+	{
+		player->attackFinish();
+		PlayerAttackSpecialEventPtr evt = PlayerAttackSpecialEventPtr(new PlayerAttackSpecialEvent(player));
+		raiseEvent(evt);
+	}
 }
 
 void PlayerManager::setDebugEnabled(bool isDebugEnabled)

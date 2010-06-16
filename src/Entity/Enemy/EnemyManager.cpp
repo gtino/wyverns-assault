@@ -303,7 +303,7 @@ void EnemyManager::registerHandlers()
 
 	registerHandler(EventHandlerPtr(new EventHandler<EnemyManager,CollisionEvent>(this_,&EnemyManager::handleCollisionEvent)),EventTypes::Collision);
 	registerHandler(EventHandlerPtr(new EventHandler<EnemyManager,EnemyHitEvent>(this_,&EnemyManager::handleEnemyHitEvent)),EventTypes::EnemyHit);
-	registerHandler(EventHandlerPtr(new EventHandler<EnemyManager,EnemySpecialHitEvent>(this_,&EnemyManager::handleEnemySpecialHitEvent)),EventTypes::EnemySpecialHit);
+	registerHandler(EventHandlerPtr(new EventHandler<EnemyManager,EnemyKillEvent>(this_,&EnemyManager::handleEnemyKillEvent)),EventTypes::EnemyKill);
 }
 
 void EnemyManager::unregisterHandlers()
@@ -330,19 +330,15 @@ void EnemyManager::handleEnemyHitEvent(EnemyHitEventPtr evt)
 	}
 }
 
-
-void EnemyManager::handleEnemySpecialHitEvent(EnemySpecialHitEventPtr evt)
+void EnemyManager::handleEnemyKillEvent(EnemyKillEventPtr evt)
  {
 	EnemyPtr enemy = evt->getEnemy();
 	PlayerPtr player = evt->getPlayer();
 
-	enemy->hit(evt->getDamage());
-
-	if(enemy->isDying())
-	{
-		EnemyKillEventPtr eKill = EnemyKillEventPtr(new EnemyKillEvent(enemy, player));
-		raiseEvent(eKill);
-	}
+	if( player->isSpecial() )
+		enemy->setMaterialName("Skin/Black");
+	else
+		enemy->setMaterialName("Skin/Red");
 }
 
 // --------------------------------
