@@ -77,16 +77,6 @@ EnemyHitEvent::EnemyHitEvent(EnemyPtr e, PlayerPtr p)
 
 //----------------------
 
-EnemySpecialHitEvent::EnemySpecialHitEvent(EnemyPtr e, PlayerPtr p)
-: Event(EventTypes::EnemySpecialHit, EventPriorities::Normal)
-, mDamage(0)
-{
-	mEnemy = e;
-	mPlayer = p;
-};
-
-//----------------------
-
 EnemyKillEvent::EnemyKillEvent(EnemyPtr e, PlayerPtr p)
 :Event(EventTypes::EnemyKill, EventPriorities::Normal)
 {

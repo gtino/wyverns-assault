@@ -89,7 +89,6 @@ namespace WyvernsAssault
 		void unregisterHandlers();
 
 		void handleEnemyHitEvent(EnemyHitEventPtr evt);
-		void handleEnemySpecialHitEvent(EnemySpecialHitEventPtr evt);
 		void handleEnemyKillEvent(EnemyKillEventPtr evt);
 
 	private:

@@ -65,11 +65,21 @@ material Skin/Red
 				tex_address_mode clamp
 				filtering none
 			}
-
 		}
-
+		// Black outline
+		pass
+		{
+			cull_hardware anticlockwise
+			
+			vertex_program_ref Outline
+			{
+				param_named offset float 0.35
+			}			
+			fragment_program_ref Black
+			{
+			}		
+		}
 	}
-
 }
 
 material Skin/Yellow
@@ -97,11 +107,21 @@ material Skin/Yellow
 				tex_address_mode clamp
 				filtering none
 			}
-
 		}
-
+		// Black outline
+		pass
+		{
+			cull_hardware anticlockwise
+			
+			vertex_program_ref Outline
+			{
+				param_named offset float 0.35
+			}			
+			fragment_program_ref Black
+			{
+			}		
+		}
 	}
-
 }
 
 material Skin/Green
@@ -129,11 +149,21 @@ material Skin/Green
 				tex_address_mode clamp
 				filtering none
 			}
-
 		}
-
+		// Black outline
+		pass
+		{
+			cull_hardware anticlockwise
+			
+			vertex_program_ref Outline
+			{
+				param_named offset float 0.35
+			}			
+			fragment_program_ref Black
+			{
+			}		
+		}
 	}
-
 }
 
 material Skin/Blue
@@ -161,9 +191,61 @@ material Skin/Blue
 				tex_address_mode clamp
 				filtering none
 			}
-
 		}
-
+		// Black outline
+		pass
+		{
+			cull_hardware anticlockwise
+			
+			vertex_program_ref Outline
+			{
+				param_named offset float 0.35
+			}			
+			fragment_program_ref Black
+			{
+			}		
+		}
 	}
+}
 
+material Skin/Black
+{
+	technique Toon
+	{
+		pass 
+		{
+			vertex_program_ref ToonVP
+			{
+				param_named shininess float4 0 1.0 1.0 1.0
+			}
+
+			fragment_program_ref ToonFP
+			{
+				param_named ambient float4 0.1 0.1 0.1 1
+				param_named diffuse float4 0.0 0.0 0.0 1
+				param_named specular float4 0.0 0.0 0.0 1.0
+				param_named emissive float4 0.0 0.0 0.0 1.0
+			}
+
+			texture_unit ToonShades
+			{
+				texture toon.png 2d
+				tex_address_mode clamp
+				filtering none
+			}
+		}
+		// Black outline
+		pass
+		{
+			cull_hardware anticlockwise
+			
+			vertex_program_ref Outline
+			{
+				param_named offset float 0.35
+			}			
+			fragment_program_ref Black
+			{
+			}		
+		}
+	}
 }

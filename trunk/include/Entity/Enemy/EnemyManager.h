@@ -95,7 +95,7 @@ namespace WyvernsAssault
 
 		void handleCollisionEvent(CollisionEventPtr evt);
 		void handleEnemyHitEvent(EnemyHitEventPtr evt);
-		void handleEnemySpecialHitEvent(EnemySpecialHitEventPtr evt);
+		void handleEnemyKillEvent(EnemyKillEventPtr evt);
 
 	private:
 		Ogre::String createUniqueId();

@@ -42,7 +42,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #define PLAYER4 "Player4"
 
 #define REDWYVERN_RAY_HEIGHT	25
-#define REDWYVERN_SLOW_VELOCITY	40
+#define REDWYVERN_SLOW_VELOCITY	80
 #define REDWYVERN_FAST_VELOCITY	120
 
 // Player animations number in tree
@@ -78,6 +78,7 @@ namespace WyvernsAssault
 		bool isAttacking(){ return attacking != 0 ; }
 		Real wichAttack(){ return attacking; }
 		bool attackStart() { return newAttack; }
+		void attackFinish() { newAttack = false; }
 		bool isSpecial(){ return special ; }
 		bool isDeath() { return !live; }
 		bool isDying() { return timeDeath <= 3; }
