@@ -150,9 +150,15 @@ namespace WyvernsAssault
 		// ----------------
 		EVENTS_INTERFACE()
 
-		EVENTS_HANDLER(EnemyKill)
 		EVENTS_HANDLER(PlayerAttack)
 		EVENTS_HANDLER(PlayerAttackSpecial)
+		EVENTS_HANDLER(PlayerHit)
+		EVENTS_HANDLER(PlayerKill)
+
+		EVENTS_HANDLER(EnemyAttack)
+		EVENTS_HANDLER(EnemyHit)
+		EVENTS_HANDLER(EnemyKill)
+		
 		EVENTS_HANDLER(ItemCatch)
 
 		// --------------------------------
