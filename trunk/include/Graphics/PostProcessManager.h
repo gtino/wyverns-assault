@@ -29,6 +29,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #include <boost/enable_shared_from_this.hpp>
 
 #include "..\Events\EventsInterface.h"
+#include "..\Lua\LuaInterface.h"
 
 using namespace Ogre;
 
@@ -40,6 +41,7 @@ namespace WyvernsAssault
 	class PostProcessManager	: public Ogre::Singleton<PostProcessManager>
 								, public boost::enable_shared_from_this<PostProcessManager>
 								, public EventsInterface
+								, public LuaInterface
 	{
 	public:
 		PostProcessManager(Viewport* viewport);
@@ -68,15 +70,6 @@ namespace WyvernsAssault
 		// Update compositor time
 		void update(float elapsedSeconds);
 
-	public:
-		// ----------------
-		// Events interface
-		// ----------------
-		// Register event handlers
-		void registerHandlers(){};
-		// Unregister handlers
-		void unregisterHandlers(){};
-
 	private:
 		Viewport*			mViewport;
 
@@ -90,6 +83,31 @@ namespace WyvernsAssault
 
 		float		mMotionBlur;
 		float		mRadialBlur;
+
+	public:
+		// ----------------
+		// Events interface
+		// ----------------
+		// Register event handlers
+		void registerHandlers(){};
+		// Unregister handlers
+		void unregisterHandlers(){};
+
+		// --------------------------------
+		// BEGIN Lua Interface Declarations
+		// --------------------------------
+	public:
+		//PostProcess Lib (exported to Lua)
+		LUA_LIBRARY("PostProcess",postprocesslib);
+
+		LUA_FUNCTION(luaEnableCompositor);
+		LUA_FUNCTION(luaDisableCompositor);
+
+	public:
+		void luaLoadScripts(){};
+		// ------------------------------
+		// END Lua Interface Declarations
+		// ------------------------------
 	};
 
 	typedef boost::shared_ptr<PostProcessManager> PostProcessManagerPtr;

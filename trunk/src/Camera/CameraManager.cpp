@@ -799,3 +799,31 @@ void CameraManager::hideAxes()
 	mAxesNode->getAttachedObject("Axes")->setVisible(false);
 	mAxesNode->detachObject("Axes");	
 }
+
+// --------------
+// Event handlers
+// --------------
+//void CameraManager::registerHandlers()
+//{
+//	boost::shared_ptr<CameraManager> this_ = shared_from_this();
+//}
+//
+//void CameraManager::unregisterHandlers()
+//{
+//}
+
+// --------------------------------
+// Lua Camera Lib
+// --------------------------------
+LUA_BEGIN_BINDING(CameraManager::cameralib)
+LUA_BIND("move", CameraManager::luaMoveCamera)
+LUA_END_BINDING()
+
+int CameraManager::luaMoveCamera(lua_State *L)
+{
+	/* get number of arguments */
+	int n = lua_gettop(L);
+
+	/* return the number of results */
+	return 1;
+}

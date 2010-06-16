@@ -30,6 +30,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #include <boost/enable_shared_from_this.hpp>
 
 #include "..\Input\InputListener.h"
+#include "..\Lua\LuaInterface.h"
 
 #include "..\GUI\GuiScreen.h"
 #include "..\GUI\GuiBackground.h"
@@ -50,6 +51,7 @@ namespace WyvernsAssault
 	class GuiManager    : public Ogre::Singleton<GuiManager>
 						, public boost::enable_shared_from_this<GuiManager>
 						, public InputListener
+						, public LuaInterface
 	{
 	public:
 		GuiManager();
@@ -72,6 +74,22 @@ namespace WyvernsAssault
 		Root*			mRoot;
 		RenderWindow*   mWindow;
 		SceneManager*	mSceneManager;
+
+		// --------------------------------
+		// BEGIN Lua Interface Declarations
+		// --------------------------------
+	public:
+		//Gui Lib (exported to Lua)
+		LUA_LIBRARY("Gui",guilib);
+
+		LUA_FUNCTION(luaShowOverlay);
+		LUA_FUNCTION(luaHideOverlay);
+
+	public:
+		void luaLoadScripts(){};
+		// ------------------------------
+		// END Lua Interface Declarations
+		// ------------------------------
 	};
 
 	typedef boost::shared_ptr<GuiManager> GuiManagerPtr;

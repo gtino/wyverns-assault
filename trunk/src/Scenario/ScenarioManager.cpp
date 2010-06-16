@@ -112,3 +112,29 @@ bool ScenarioManager::removeObject(Ogre::String name)
 
 	return true;
 }
+
+// --------------------------------
+// Lua Scenario Lib
+// --------------------------------
+LUA_BEGIN_BINDING(ScenarioManager::scenariolib)
+LUA_BIND("createObject", ScenarioManager::luaCreateObject)
+LUA_BIND("removeObject", ScenarioManager::luaRemoveObject)
+LUA_END_BINDING()
+
+int ScenarioManager::luaCreateObject(lua_State *L)
+{
+	/* get number of arguments */
+	int n = lua_gettop(L);
+
+	/* return the number of results */
+	return 1;
+}
+
+int ScenarioManager::luaRemoveObject(lua_State *L)
+{
+	/* get number of arguments */
+	int n = lua_gettop(L);
+
+	/* return the number of results */
+	return 1;
+}
