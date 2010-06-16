@@ -80,12 +80,9 @@ namespace WyvernsAssault
 		// ----------------
 		// Events interface
 		// ----------------
-		// Register event handlers
-		void registerHandlers();
-		// Unregister handlers
-		void unregisterHandlers();
+		EVENTS_INTERFACE()
 
-		void handlePlayerHitEvent(PlayerHitEventPtr evt);
+		EVENTS_HANDLER(PlayerHit)
 
 	private:
 		SceneManager *mSceneManager;

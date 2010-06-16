@@ -186,19 +186,17 @@ void ParticleManager::glow(SceneNode* node)
 // --------------
 // Event handlers
 // --------------
-void ParticleManager::registerHandlers()
-{
-	boost::shared_ptr<ParticleManager> this_ = shared_from_this();
+EVENTS_BEGIN_REGISTER_HANDLERS(ParticleManager)
+	EVENTS_REGISTER_HANDLER(ParticleManager,EnemyHit)
+	EVENTS_REGISTER_HANDLER(ParticleManager,EnemyKill)
+EVENTS_END_REGISTER_HANDLERS()
 
-	registerHandler(EventHandlerPtr(new EventHandler<ParticleManager,EnemyHitEvent>(this_,&ParticleManager::handleEnemyHitEvent)),EventTypes::EnemyHit);
-	registerHandler(EventHandlerPtr(new EventHandler<ParticleManager,EnemyKillEvent>(this_,&ParticleManager::handleEnemyKillEvent)),EventTypes::EnemyKill);
-}
+EVENTS_BEGIN_UNREGISTER_HANDLERS(ParticleManager)
+	EVENTS_UNREGISTER_HANDLER(ParticleManager,EnemyHit)
+	EVENTS_UNREGISTER_HANDLER(ParticleManager,EnemyKill)
+EVENTS_END_REGISTER_HANDLERS()
 
-void ParticleManager::unregisterHandlers()
-{
-}
-
-void ParticleManager::handleEnemyHitEvent(EnemyHitEventPtr evt)
+EVENTS_DEFINE_HANDLER(ParticleManager,EnemyHit)
 {
 	EnemyPtr enemy = evt->getEnemy();
 	PlayerPtr player = evt->getPlayer();	
@@ -214,7 +212,7 @@ void ParticleManager::handleEnemyHitEvent(EnemyHitEventPtr evt)
 	}
 }
 
-void ParticleManager::handleEnemyKillEvent(EnemyKillEventPtr evt)
+EVENTS_DEFINE_HANDLER(ParticleManager, EnemyKill)
 {
 	EnemyPtr enemy = evt->getEnemy();
 	PlayerPtr player = evt->getPlayer();	
@@ -225,4 +223,30 @@ void ParticleManager::handleEnemyKillEvent(EnemyKillEventPtr evt)
 	}
 	else
 		this->bloodKill(enemy->_getSceneNode());	
+}
+
+// --------------------------------
+// Lua Camera Lib
+// --------------------------------
+LUA_BEGIN_BINDING(ParticleManager::particlelib)
+LUA_BIND("create", ParticleManager::luaCreateSystem)
+LUA_BIND("remove", ParticleManager::luaRemoveSystem)
+LUA_END_BINDING()
+
+int ParticleManager::luaCreateSystem(lua_State *L)
+{
+	/* get number of arguments */
+	int n = lua_gettop(L);
+
+	/* return the number of results */
+	return 1;
+}
+
+int ParticleManager::luaRemoveSystem(lua_State *L)
+{
+	/* get number of arguments */
+	int n = lua_gettop(L);
+
+	/* return the number of results */
+	return 1;
 }

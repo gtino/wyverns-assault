@@ -32,6 +32,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #include "ParticleSystem.h"
 #include "..\Camera\CameraManager.h"
 #include "..\Events\EventsInterface.h"
+#include "..\Lua\LuaInterface.h"
 
 using namespace Ogre;
 
@@ -43,7 +44,10 @@ namespace WyvernsAssault
 	/**
 	Class used to manage all the particle systems
 	*/
-	class ParticleManager : public Ogre::Singleton<ParticleManager>, public boost::enable_shared_from_this<ParticleManager>, public EventsInterface
+	class ParticleManager	: public Ogre::Singleton<ParticleManager>
+							, public boost::enable_shared_from_this<ParticleManager>
+							, public EventsInterface
+							, public LuaInterface
 	{
 	public:
 		ParticleManager(SceneManager* sceneManager);
@@ -84,13 +88,26 @@ namespace WyvernsAssault
 		// ----------------
 		// Events interface
 		// ----------------
-		// Register event handlers
-		void registerHandlers();
-		// Unregister handlers
-		void unregisterHandlers();
+		EVENTS_INTERFACE()
 
-		void handleEnemyHitEvent(EnemyHitEventPtr evt);
-		void handleEnemyKillEvent(EnemyKillEventPtr evt);
+		EVENTS_HANDLER(EnemyHit)
+		EVENTS_HANDLER(EnemyKill)
+
+		// --------------------------------
+		// BEGIN Lua Interface Declarations
+		// --------------------------------
+	public:
+		//Particle Lib (exported to Lua)
+		LUA_LIBRARY("Particle",particlelib);
+
+		LUA_FUNCTION(luaCreateSystem);
+		LUA_FUNCTION(luaRemoveSystem);
+
+	public:
+		void luaLoadScripts(){};
+		// ------------------------------
+		// END Lua Interface Declarations
+		// ------------------------------
 
 	private:
 		ParticleUniverse::ParticleSystemManager*	mParticleSystemManager;
