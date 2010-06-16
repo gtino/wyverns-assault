@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<animation_system>
+  <nodes>
+    <node type="AnimationNode" id="0">
+      <custom animation="Run" />
+    </node>
+	<node type="TransitionSelectNode" id="1">
+      <custom size="1" />
+    </node>
+    <node type="ParameterNode" id="2">
+      <custom parameter="CurrentAnimation" />
+    </node>
+  </nodes>
+  <connections>
+    <connection node_in="1" port_in="select" node_out="2" />
+    <connection node_in="1" port_in="animation 0" node_out="0" />
+  </connections>
+  <output>1</output>
+  <constants>
+    <constant node_id="0" port="speed" value="1" />
+    <constant node_id="1" port="time in" value="0.1" />
+    <constant node_id="1" port="time out" value="0.1" />
+  </constants>
+  <parameters>
+    <parameter name="CurrentAnimation" value="0" />
+  </parameters>
+</animation_system>

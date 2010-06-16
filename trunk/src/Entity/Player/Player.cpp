@@ -72,12 +72,12 @@ void Player::updateEntity(const float elapsedSeconds)
 	// Activate current animation
 	if ( !live ) 
 	{
-		mCurrentAnimation->setValue( DIE );
+		mCurrentAnimation->setValue( PLAYER_DIE );
 		timeDeath += elapsedSeconds;
 	}
 	else if( special )
 	{
-		mCurrentAnimation->setValue( SPECIAL );
+		mCurrentAnimation->setValue( PLAYER_SPECIAL );
 	}
 	else if( attacking  == 1 )
 	{
@@ -93,21 +93,21 @@ void Player::updateEntity(const float elapsedSeconds)
 	}
 	else if( moving )
 	{
-		mCurrentAnimation->setValue( RUN );
+		mCurrentAnimation->setValue( PLAYER_RUN );
 	}
 	else
 	{
-		mCurrentAnimation->setValue( IDDLE );
+		mCurrentAnimation->setValue( PLAYER_IDDLE );
 	}	
 
 	// Check if death animation is finish (plus 1 second)
-	if( mCurrentAnimation->getFloatValue() == DIE )
+	if( mCurrentAnimation->getFloatValue() == PLAYER_DIE )
 	{
 		if( mEntity->getAnimationState("Die")->getTimePosition() +  elapsedSeconds > mEntity->getAnimationState("Die")->getLength() )
 			special = false;
 	}
 	// Check if special attack animation is finish
-	else if( mCurrentAnimation->getFloatValue() == SPECIAL )
+	else if( mCurrentAnimation->getFloatValue() == PLAYER_SPECIAL )
 	{
 		if ( mEntity->getAnimationState("Special")->getTimePosition() +  elapsedSeconds > mEntity->getAnimationState("Special")->getLength() )
 		{
@@ -115,7 +115,7 @@ void Player::updateEntity(const float elapsedSeconds)
 		}
 	}
 	// Check if attack animation is finish
-	else if( mCurrentAnimation->getFloatValue() == ATTACKA1 ) 
+	else if( mCurrentAnimation->getFloatValue() == PLAYER_ATTACKA1 ) 
 	{
 		if( mEntity->getAnimationState("AttackA_01")->getTimePosition() +  elapsedSeconds > mEntity->getAnimationState("AttackA_01")->getLength() )
 		{
@@ -130,7 +130,7 @@ void Player::updateEntity(const float elapsedSeconds)
 				attacking = 0;
 		}
 	}
-	else if( mCurrentAnimation->getFloatValue() == ATTACKA2 )
+	else if( mCurrentAnimation->getFloatValue() == PLAYER_ATTACKA2 )
 	{
 		if( mEntity->getAnimationState("AttackA_02")->getTimePosition() +  elapsedSeconds > mEntity->getAnimationState("AttackA_02")->getLength() )
 		{
@@ -148,19 +148,12 @@ void Player::updateEntity(const float elapsedSeconds)
 				attacking = 0;
 		}
 	}
-	else if( mCurrentAnimation->getFloatValue() == ATTACKA3 )
+	else if( mCurrentAnimation->getFloatValue() == PLAYER_ATTACKA3 )
 	{
 		if( mEntity->getAnimationState("AttackA_03")->getTimePosition() +  elapsedSeconds > mEntity->getAnimationState("AttackA_03")->getLength() )
 		{
 			hideGrids();
-			if ( continueAttacking )
-			{
-				attacking = 1;
-				continueAttacking = false;
-				newAttack = true;
-			}
-			else
-				attacking = 0;
+			attacking = 0;
 		}
 	}	
 
@@ -229,7 +222,7 @@ void Player::attackA()
 
 void Player::attackA1()
 {
-	mCurrentAnimation->setValue( ATTACKA1 );
+	mCurrentAnimation->setValue( PLAYER_ATTACKA1 );
 
 	// Show current attack's grids
 	mEntity->getSubEntity("grid1")->setVisible(true);
@@ -239,7 +232,7 @@ void Player::attackA1()
 
 void Player::attackA2()
 {
-	mCurrentAnimation->setValue( ATTACKA2 );
+	mCurrentAnimation->setValue( PLAYER_ATTACKA2 );
 
 	// Show current attack's grids
 	mEntity->getSubEntity("grid4")->setVisible(true);
@@ -249,7 +242,7 @@ void Player::attackA2()
 
 void Player::attackA3()
 {
-	mCurrentAnimation->setValue( ATTACKA3 );
+	mCurrentAnimation->setValue( PLAYER_ATTACKA3 );
 
 	// Show current attack's grids
 	mEntity->getSubEntity("grid7")->setVisible(true);

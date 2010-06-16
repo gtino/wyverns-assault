@@ -107,6 +107,33 @@ void Enemy::initializeEntity(Ogre::Entity* entity, Ogre::SceneNode* sceneNode, O
 	mOBBoxRenderable->setupVertices(mEntity->getBoundingBox());
 	mOBBoxRenderable->setVisible(mIsDebugEnabled);
 	mSceneNode->attachObject(mOBBoxRenderable);
+
+	// Animation system
+	mAnimationSystem = new tecnofreak::ogre::AnimationSystem( entity );
+	switch( mType )
+	{
+	case Enemy::EnemyTypes::Chicken:
+		mAnimationSystem->loadAnimationTree( "data/animations/chicken.xml" );
+		break;
+	case Enemy::EnemyTypes::Wizard:
+		mAnimationSystem->loadAnimationTree( "data/animations/wizard.xml" );
+		break;
+	case Enemy::EnemyTypes::Wizard2:
+		mAnimationSystem->loadAnimationTree( "data/animations/wizard.xml" );
+		break;
+	case Enemy::EnemyTypes::Naked:
+		mAnimationSystem->loadAnimationTree( "data/animations/naked.xml" );
+		break;
+	default:
+		mAnimationSystem->loadAnimationTree( "data/animations/knight.xml" );		
+	}
+	mCurrentAnimation = mAnimationSystem->getParameter( "CurrentAnimation" );
+
+	moving = false;
+	attacking = false;
+
+	// Random animation start time
+	mAnimationSystem->update( rand() );
 }
 
 void Enemy::finalizeEntity()
@@ -123,22 +150,20 @@ void Enemy::finalizeEntity()
 
 void Enemy::updateEntity(const float elapsedSeconds)
 {
-	if(mType == Enemy::EnemyTypes::Chicken){
-		Vector3 mDirection = this->getDirection();
-		if (mDirection != Vector3::ZERO)
-		{
-			mAnimationState = mEntity->getAnimationState("Run");
-			mAnimationState->setEnabled(true);
-			mAnimationState->addTime(elapsedSeconds);
-		}
-		else
-		{
-			mAnimationState = mEntity->getAnimationState("Iddle");
-			mAnimationState->setEnabled(true);
-			mAnimationState->addTime(elapsedSeconds);
-		}
+	if( attacking )
+	{
+		mCurrentAnimation->setValue( ENEMY_ATTACK );
 	}
-	return;
+	else if( moving )
+	{
+		mCurrentAnimation->setValue( ENEMY_RUN );
+	}
+	else
+	{
+		mCurrentAnimation->setValue( ENEMY_IDDLE );
+	}
+
+	mAnimationSystem->update( elapsedSeconds );
 }
 
 void Enemy::updateLogic(lua_State *L, const float elapsedSeconds)
@@ -223,7 +248,6 @@ void Enemy::updateLogic(lua_State *L, const float elapsedSeconds)
 			mSpeed = 0;
 			mDirection = Vector3::ZERO;
 			mTarget = 0;
-			//setMaterialName("Skin/Red"); // DEBUG : Make him red so it is obvious he is going to die
 			break;
 		case Enemy::EnemyStates::Dead:
 			mBalloonSet->setVisible(false);
@@ -300,4 +324,11 @@ void Enemy::setDebugEnabled(bool isDebugEnabled)
 		if(mOBBoxRenderable)
 			mOBBoxRenderable->setVisible(mIsDebugEnabled);
 	}
+}
+
+// Attack animation
+void Enemy::setAttacking(bool attack)
+{
+	moving = false;
+	attacking = attack;
 }

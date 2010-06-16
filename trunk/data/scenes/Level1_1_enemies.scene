@@ -6,16 +6,6 @@
 		<entity type="Chicken" meshFile="chicken.mesh" name="Chicken1"/>
 		<scale x="1" y="1" z="1"/>
 	</animal>
-	<!--<animal>
-		<position x="387" y="10" z="755"/>
-		<entity type="Chicken" meshFile="chicken.mesh" name="Chicken2"/>
-		<scale x="1" y="1" z="1"/>
-	</animal>
-	<animal>
-		<position x="416" y="10" z="761"/>
-		<entity type="Chicken" meshFile="chicken.mesh" name="Chicken3"/>
-		<scale x="1" y="1" z="1"/>
-	</animal>-->
 	<animal>
 		<position x="398" y="-3" z="702"/>
 		<entity type="Chicken" meshFile="chicken.mesh" name="Chicken4"/>
@@ -56,19 +46,19 @@
 		<!-- Soldiers -->
 		<enemy>
 			<position x="200" y="10" z="830"/>
- 			<entity type="KnightA" meshFile="knightA.mesh" name="knight0"/>
+ 			<entity type="KnightA2" meshFile="knightA.mesh" name="knight0"/>
 		</enemy>
 		<enemy>
 			<position x="200" y="10" z="860"/>
- 			<entity type="KnightB" meshFile="knightB.mesh" name="knight1"/>
+ 			<entity type="KnightB2" meshFile="knightB.mesh" name="knight1"/>
 		</enemy>
 		<enemy>
 			<position x="200" y="10" z="880"/>
- 			<entity type="KnightC" meshFile="knightC.mesh" name="knight3"/>
+ 			<entity type="KnightC2" meshFile="knightC.mesh" name="knight3"/>
 		</enemy>		
 		<enemy>
 			<position x="500" y="10" z="740"/>
- 			<entity type="KnightA2" meshFile="knightA.mesh" name="knight4"/>
+ 			<entity type="KnightA4" meshFile="knightA.mesh" name="knight4"/>
 		</enemy>
 		<enemy>
 			<position x="520" y="10" z="730"/>
@@ -76,7 +66,7 @@
 		</enemy>
 		<enemy>
 			<position x="800" y="10" z="720"/>
- 			<entity type="KnightB4" meshFile="knightB.mesh" name="knight6"/>
+ 			<entity type="KnightB2" meshFile="knightB.mesh" name="knight6"/>
 		</enemy>
 		<enemy>
 			<position x="800" y="10" z="700"/>
@@ -120,28 +110,8 @@
  			<entity type="KnightC3" meshFile="knightC.mesh" name="knight14"/>
 		</enemy>
 		<enemy>
-			<position x="1000" y="10" z="350"/>
- 			<entity type="Peasant" meshFile="peasant.mesh" name="peasant1"/>
-		</enemy>
-		<enemy>
 			<position x="1225" y="10" z="80"/>
- 			<entity type="Wizard2" meshFile="wizard.mesh" name="wizard0"/>
-		</enemy>
-		<enemy>
-			<position x="1200" y="10" z="120"/>
- 			<entity type="Soldier" meshFile="soldier.mesh" name="soldier0"/>
-		</enemy>
-		<enemy>
-			<position x="1200" y="10" z="140"/>
- 			<entity type="Soldier" meshFile="soldier.mesh" name="soldier1"/>
-		</enemy>
-		<enemy>
-			<position x="1250" y="10" z="120"/>
- 			<entity type="Soldier" meshFile="soldier.mesh" name="soldier2"/>
-		</enemy>
-		<enemy>
-			<position x="1250" y="10" z="140"/>
- 			<entity type="Soldier" meshFile="soldier.mesh" name="soldier3"/>
+ 			<entity type="Wizard" meshFile="wizard.mesh" name="wizard0"/>
 		</enemy>	
 		<!-- Enemies list End -->
 	</enemies>

@@ -45,13 +45,13 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #define REDWYVERN_FAST_VELOCITY	120
 
 // Player animations number in tree
-#define IDDLE		0
-#define RUN			1
-#define SPECIAL		2
-#define ATTACKA1	3
-#define ATTACKA2	4
-#define ATTACKA3	5
-#define DIE			6
+#define PLAYER_IDDLE		0
+#define PLAYER_RUN			1
+#define PLAYER_SPECIAL		2
+#define PLAYER_ATTACKA1		3
+#define PLAYER_ATTACKA2		4
+#define PLAYER_ATTACKA3		5
+#define PLAYER_DIE			6
 
 using namespace Ogre;
 
