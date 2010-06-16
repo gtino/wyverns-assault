@@ -78,7 +78,8 @@ namespace WyvernsAssault
 	*/
 	class AudioManager	: public Ogre::Singleton<AudioManager>
 						, public boost::enable_shared_from_this<AudioManager>
-						, public LuaInterface, public EventsInterface
+						, public LuaInterface
+						, public EventsInterface
 	{
 	public:
 		AudioManager();
@@ -147,15 +148,12 @@ namespace WyvernsAssault
 		// ----------------
 		// Events interface
 		// ----------------
-		// Register event handlers
-		void registerHandlers();
-		// Unregister handlers
-		void unregisterHandlers();
+		EVENTS_INTERFACE()
 
-		void handleEnemyKillEvent(EnemyKillEventPtr evt);
-		void handlePlayerAttackEvent(PlayerAttackEventPtr evt);
-		void handlePlayerAttackSpecialEvent(PlayerAttackSpecialEventPtr evt);
-		void handleItemCatchEvent(ItemCatchEventPtr evt);
+		EVENTS_HANDLER(EnemyKill)
+		EVENTS_HANDLER(PlayerAttack)
+		EVENTS_HANDLER(PlayerAttackSpecial)
+		EVENTS_HANDLER(ItemCatch)
 
 		// --------------------------------
 		// BEGIN Lua Interface Declarations
