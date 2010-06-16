@@ -290,7 +290,18 @@ function runChickenLogic(enemyId, state)
 	local player = Physics.getNearestPlayer(animalId);
 	local distance = Physics.getDistance(animalId,player);
 	
-	if state == Initial then 
+	-- How much time has passed since we entered last state?
+	local timeout = Enemy.getStateTimeout(enemyId)
+	
+	if state == Dead then
+		newState = state
+	elseif state == Dying then -- Enemy is dying (this lasts seconds)
+		if timeout > 2 then -- Enemy dying animation/cry/blood has ended, enemy is DEAD!
+			newState = Dead -- Now can be removed!
+		end
+	elseif Enemy.isDying(enemyId) then -- Now is dying (his life is < 0)
+		newState = Dying -- So we make him die in blood and fear and stuff...
+	elseif state == Initial then 
 		newState = Idle
 	elseif state == Idle then
 		if distance<AlertDistance then -- The Animal can see the player!
@@ -322,7 +333,15 @@ function runAnimalLogic(enemyId, state)
 	-- How much time has passed since we entered last state?
 	local timeout = Enemy.getStateTimeout(enemyId)
 	
-	if state == Initial then 
+	if state == Dead then
+		newState = state
+	elseif state == Dying then -- Enemy is dying (this lasts seconds)
+		if timeout > 2 then -- Enemy dying animation/cry/blood has ended, enemy is DEAD!
+			newState = Dead -- Now can be removed!
+		end
+	elseif Enemy.isDying(enemyId) then -- Now is dying (his life is < 0)
+		newState = Dying -- So we make him die in blood and fear and stuff...
+	elseif state == Initial then 
 		newState = Idle
 	elseif state == Idle then
 		if distance<AlertDistance then 
