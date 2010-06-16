@@ -580,17 +580,17 @@ float AudioManager::getSoundLength(int soundIndex)
 // Event handlers
 // --------------
 EVENTS_BEGIN_REGISTER_HANDLERS(AudioManager)
-EVENTS_REGISTER_HANDLER(AudioManager, EnemyKill)
-EVENTS_REGISTER_HANDLER(AudioManager, PlayerAttack);
-EVENTS_REGISTER_HANDLER(AudioManager, PlayerAttackSpecial);
-EVENTS_REGISTER_HANDLER(AudioManager, ItemCatch);
+	EVENTS_REGISTER_HANDLER(AudioManager, EnemyKill)
+	EVENTS_REGISTER_HANDLER(AudioManager, PlayerAttack);
+	EVENTS_REGISTER_HANDLER(AudioManager, PlayerAttackSpecial);
+	EVENTS_REGISTER_HANDLER(AudioManager, ItemCatch);
 EVENTS_END_REGISTER_HANDLERS()
 
 EVENTS_BEGIN_UNREGISTER_HANDLERS(AudioManager)
-EVENTS_UNREGISTER_HANDLER(AudioManager, EnemyKill)
-EVENTS_UNREGISTER_HANDLER(AudioManager, PlayerAttack);
-EVENTS_UNREGISTER_HANDLER(AudioManager, PlayerAttackSpecial);
-EVENTS_UNREGISTER_HANDLER(AudioManager, ItemCatch);
+	EVENTS_UNREGISTER_HANDLER(AudioManager, EnemyKill)
+	EVENTS_UNREGISTER_HANDLER(AudioManager, PlayerAttack);
+	EVENTS_UNREGISTER_HANDLER(AudioManager, PlayerAttackSpecial);
+	EVENTS_UNREGISTER_HANDLER(AudioManager, ItemCatch);
 EVENTS_END_UNREGISTER_HANDLERS()
 
 EVENTS_DEFINE_HANDLER(AudioManager, EnemyKill)

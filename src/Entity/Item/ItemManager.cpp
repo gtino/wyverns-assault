@@ -172,17 +172,22 @@ void ItemManager::update(const float elapsedSeconds)
 // --------------
 // Event handlers
 // --------------
-void ItemManager::registerHandlers()
-{
-	boost::shared_ptr<ItemManager> this_ = shared_from_this();
-}
+EVENTS_BEGIN_REGISTER_HANDLERS(ItemManager)
+	EVENTS_REGISTER_HANDLER(ItemManager,ItemCatch)
+	EVENTS_REGISTER_HANDLER(ItemManager,ItemRemoved)
+EVENTS_END_REGISTER_HANDLERS()
 
-void ItemManager::unregisterHandlers()
+EVENTS_BEGIN_UNREGISTER_HANDLERS(ItemManager)
+	EVENTS_UNREGISTER_HANDLER(ItemManager,ItemCatch)
+	EVENTS_UNREGISTER_HANDLER(ItemManager,ItemRemoved)
+EVENTS_END_UNREGISTER_HANDLERS()
+
+EVENTS_DEFINE_HANDLER(ItemManager,ItemCatch)
 {
 	//TODO
 }
 
-void ItemManager::handleItemCatchEvent(ItemCatchEventPtr evt)
+EVENTS_DEFINE_HANDLER(ItemManager,ItemRemoved)
 {
 	//TODO
 }

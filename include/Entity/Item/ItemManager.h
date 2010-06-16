@@ -55,12 +55,10 @@ namespace WyvernsAssault
 		// ----------------
 		// Events interface
 		// ----------------
-		// Register event handlers
-		void registerHandlers();
-		// Unregister handlers
-		void unregisterHandlers();
+		EVENTS_INTERFACE()
 
-		void handleItemCatchEvent(ItemCatchEventPtr evt);
+		EVENTS_HANDLER(ItemCatch)
+		EVENTS_HANDLER(ItemRemoved)
 
 	private:
 		Ogre::String createUniqueId();

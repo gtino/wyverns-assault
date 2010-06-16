@@ -1,6 +1,5 @@
 #include "..\..\..\include\Entity\Player\PlayerManager.h"
 
-
 using namespace WyvernsAssault;
 
 // BEGIN SINGLETON
@@ -139,20 +138,17 @@ void PlayerManager::setDebugEnabled(bool isDebugEnabled)
 // --------------
 // Event handlers
 // --------------
-void PlayerManager::registerHandlers()
+EVENTS_BEGIN_REGISTER_HANDLERS(PlayerManager)
+	EVENTS_REGISTER_HANDLER(PlayerManager,PlayerHit)
+EVENTS_END_REGISTER_HANDLERS()
+
+EVENTS_BEGIN_UNREGISTER_HANDLERS(PlayerManager)
+	EVENTS_UNREGISTER_HANDLER(PlayerManager,PlayerHit)
+EVENTS_END_UNREGISTER_HANDLERS()
+
+EVENTS_DEFINE_HANDLER(PlayerManager, PlayerHit)
 {
-	boost::shared_ptr<PlayerManager> this_ = shared_from_this();
-
-	registerHandler(EventHandlerPtr(new EventHandler<PlayerManager,PlayerHitEvent>(this_,&PlayerManager::handlePlayerHitEvent)),EventTypes::PlayerHit);
-}
-
-void PlayerManager::unregisterHandlers()
-{
-
-}
-
-void PlayerManager::handlePlayerHitEvent(PlayerHitEventPtr evt)
-{
+	// TODO : use evt to access the event
 }
 
 // --------------------------------

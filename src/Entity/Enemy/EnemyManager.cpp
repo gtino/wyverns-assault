@@ -298,15 +298,15 @@ void EnemyManager::setDebugEnabled(bool isDebugEnabled)
 // Event handlers
 // --------------
 EVENTS_BEGIN_REGISTER_HANDLERS(EnemyManager)
-EVENTS_REGISTER_HANDLER(EnemyManager, Collision)
-EVENTS_REGISTER_HANDLER(EnemyManager, EnemyHit)
-EVENTS_REGISTER_HANDLER(EnemyManager, EnemyKill)
+	EVENTS_REGISTER_HANDLER(EnemyManager, Collision)
+	EVENTS_REGISTER_HANDLER(EnemyManager, EnemyHit)
+	EVENTS_REGISTER_HANDLER(EnemyManager, EnemyKill)
 EVENTS_END_REGISTER_HANDLERS()
 
 EVENTS_BEGIN_UNREGISTER_HANDLERS(EnemyManager)
-EVENTS_UNREGISTER_HANDLER(EnemyManager, Collision)
-EVENTS_UNREGISTER_HANDLER(EnemyManager, EnemyHit)
-EVENTS_UNREGISTER_HANDLER(EnemyManager, EnemyKill)
+	EVENTS_UNREGISTER_HANDLER(EnemyManager, Collision)
+	EVENTS_UNREGISTER_HANDLER(EnemyManager, EnemyHit)
+	EVENTS_UNREGISTER_HANDLER(EnemyManager, EnemyKill)
 EVENTS_END_UNREGISTER_HANDLERS()
 
 EVENTS_DEFINE_HANDLER(EnemyManager, Collision)
