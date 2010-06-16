@@ -803,13 +803,17 @@ void CameraManager::hideAxes()
 // --------------
 // Event handlers
 // --------------
-void CameraManager::registerHandlers()
-{
-	boost::shared_ptr<CameraManager> this_ = shared_from_this();
-}
+EVENTS_BEGIN_REGISTER_HANDLERS(CameraManager)
+EVENTS_REGISTER_HANDLER(CameraManager,EnemyKill)
+EVENTS_END_REGISTER_HANDLERS()
 
-void CameraManager::unregisterHandlers()
+EVENTS_BEGIN_UNREGISTER_HANDLERS(CameraManager)
+EVENTS_UNREGISTER_HANDLER(CameraManager,EnemyKill)
+EVENTS_END_UNREGISTER_HANDLERS()
+
+EVENTS_DEFINE_HANDLER(CameraManager,EnemyKill)
 {
+	this->shake(5);
 }
 
 // --------------------------------

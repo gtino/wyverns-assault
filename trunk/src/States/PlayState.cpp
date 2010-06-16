@@ -169,12 +169,13 @@ void PlayState::initialize()
 	//
 	// Register all events listeners/callers
 	//
-	mEventsManager->registerInterface(mEnemyManager.get());
-	mEventsManager->registerInterface(mPhysicsManager.get());
-	mEventsManager->registerInterface(mParticleManager.get());
-	mEventsManager->registerInterface(mAudioManager.get());
-	mEventsManager->registerInterface(mItemManager.get());
-	mEventsManager->registerInterface(mPlayerManager.get());
+	mEventsManager->registerInterface(mEnemyManager);
+	mEventsManager->registerInterface(mPhysicsManager);
+	mEventsManager->registerInterface(mParticleManager);
+	mEventsManager->registerInterface(mAudioManager);
+	mEventsManager->registerInterface(mItemManager);
+	mEventsManager->registerInterface(mPlayerManager);
+	mEventsManager->registerInterface(mCameraManager);
 
 	//
 	// Set game camera

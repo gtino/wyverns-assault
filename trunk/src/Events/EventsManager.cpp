@@ -100,13 +100,13 @@ void EventsManager::clear()
 	mEventHandlers.clear();
 }
 
-void EventsManager::registerInterface(EventsInterface* eventsInterface)
+void EventsManager::registerInterface(EventsInterfacePtr eventsInterface)
 {
 	eventsInterface->initialize(this);
 	eventsInterface->registerHandlers();
 }
 
-void EventsManager::unregisterInterface(EventsInterface* eventsInterface)
+void EventsManager::unregisterInterface(EventsInterfacePtr eventsInterface)
 {
 	eventsInterface->unregisterHandlers();
 }

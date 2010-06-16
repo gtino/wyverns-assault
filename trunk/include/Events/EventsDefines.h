@@ -41,4 +41,16 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
 #define EVENTS_DEFINE_HANDLER(c,e)	void c##::handle##e##Event(e##EventPtr evt)
 
+#include <Ogre.h>
+
+using namespace Ogre;
+
+namespace WyvernsAssault
+{
+	class EventsManager;
+
+	class EventsInterface;
+	typedef boost::shared_ptr<EventsInterface> EventsInterfacePtr;
+}
+
 #endif // __EVENTS_DEFINES_H__

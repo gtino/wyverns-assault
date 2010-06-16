@@ -326,7 +326,7 @@ void EnemyManager::handleEnemyHitEvent(EnemyHitEventPtr evt)
 	if(enemy->isDying())
 	{
 		EnemyKillEventPtr eKill = EnemyKillEventPtr(new EnemyKillEvent(enemy, player));
-		raiseEvent(eKill);
+ 		raiseEvent(eKill);
 	}
 }
 
