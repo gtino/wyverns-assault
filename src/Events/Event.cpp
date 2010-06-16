@@ -67,6 +67,14 @@ CollisionEvent::CollisionEvent()
 
 //----------------------
 
+EnemyAttackEvent::EnemyAttackEvent(EnemyPtr e)
+:Event(EventTypes::EnemyAttack, EventPriorities::Normal)
+{
+	mEnemy = e;
+};
+
+//----------------------
+
 EnemyHitEvent::EnemyHitEvent(EnemyPtr e, PlayerPtr p)
 : Event(EventTypes::EnemyHit, EventPriorities::Normal)
 , mDamage(0)
@@ -96,6 +104,15 @@ EnemyRemovedEvent::EnemyRemovedEvent(EnemyPtr e)
 
 PlayerHitEvent::PlayerHitEvent(EnemyPtr e, PlayerPtr p)
 :Event(EventTypes::PlayerHit, EventPriorities::Normal)
+{
+	mPlayer = p;
+	mEnemy = e;	
+}
+
+//----------------------
+
+PlayerKillEvent::PlayerKillEvent(EnemyPtr e, PlayerPtr p)
+:Event(EventTypes::PlayerKill, EventPriorities::Normal)
 {
 	mPlayer = p;
 	mEnemy = e;	

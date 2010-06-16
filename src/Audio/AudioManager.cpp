@@ -94,18 +94,41 @@ void AudioManager::finalize()
 void AudioManager::loadResources()
 {
 	//
-	// TODO Load resources
+	// Load resources
 	//
-	int enemyKill = createStream( String("EnemyDie01.wav"));
-	int itemCatch = createStream( String("Item01.wav"));
-	int playerAttack01 = createStream(String("PlayerHit01.wav"));
-	int playerAttack02 = createStream(String("PlayerHit02.wav"));
-	int playerAttack03 = createStream(String("PlayerHit03.wav"));
-	int playerAttackSpecial = createStream(String("Flame02.wav"));
 
-	int softSoundTrack = createLoopedStream(String("soft_track.mp3"));
-	int hardSoundTrack = createLoopedStream(String("hard_track.mp3"));
-	int mainSoundTrack = createLoopedStream(String("main_track.mp3"));
+	// Sound FX
+	createStream( String("ChickenDie01.wav"));
+	createStream( String("EnemyAttack01.wav"));
+	createStream( String("EnemyAttack02.wav"));
+	createStream( String("EnemyAttack03.wav"));
+	createStream( String("EnemyDie01.wav"));
+	createStream( String("EnemyDie02.wav"));
+	createStream( String("EnemyHit01.wav"));
+	createStream( String("EnemyHit02.wav"));
+	createStream( String("EnemyHit03.wav"));
+	createStream( String("NakedDie01.wav"));
+	createStream( String("NakedHit01.wav"));
+	createStream( String("NakedHit02.wav"));
+	createStream( String("WizardDie01.wav"));
+	createStream( String("WizardHit01.wav"));
+	createStream( String("WizardHit02.wav"));
+
+	createStream( String("Item01.wav"));
+
+	createStream( String("Flame01.wav"));
+	createStream( String("PlayerAttack01.wav"));
+	createStream( String("PlayerAttack02.wav"));
+	createStream( String("PlayerAttack03.wav"));
+	createStream( String("PlayerDie01.wav"));
+	createStream( String("PlayerHit01.wav"));
+	createStream( String("PlayerHit02.wav"));
+
+
+	// Musics
+	createLoopedStream(String("soft_track.mp3"));
+	createLoopedStream(String("hard_track.mp3"));
+	createLoopedStream(String("main_track.mp3"));
 
 	Debug::Out("AudioManager : Resources loaded");
 }
@@ -580,40 +603,27 @@ float AudioManager::getSoundLength(int soundIndex)
 // Event handlers
 // --------------
 EVENTS_BEGIN_REGISTER_HANDLERS(AudioManager)
-	EVENTS_REGISTER_HANDLER(AudioManager, EnemyKill)
 	EVENTS_REGISTER_HANDLER(AudioManager, PlayerAttack);
 	EVENTS_REGISTER_HANDLER(AudioManager, PlayerAttackSpecial);
+	EVENTS_REGISTER_HANDLER(AudioManager, PlayerHit);
+	EVENTS_REGISTER_HANDLER(AudioManager, PlayerKill);
+	EVENTS_REGISTER_HANDLER(AudioManager, EnemyAttack);
+	EVENTS_REGISTER_HANDLER(AudioManager, EnemyHit);
+	EVENTS_REGISTER_HANDLER(AudioManager, EnemyKill);	
 	EVENTS_REGISTER_HANDLER(AudioManager, ItemCatch);
 EVENTS_END_REGISTER_HANDLERS()
 
 EVENTS_BEGIN_UNREGISTER_HANDLERS(AudioManager)
-	EVENTS_UNREGISTER_HANDLER(AudioManager, EnemyKill)
 	EVENTS_UNREGISTER_HANDLER(AudioManager, PlayerAttack);
 	EVENTS_UNREGISTER_HANDLER(AudioManager, PlayerAttackSpecial);
+	EVENTS_UNREGISTER_HANDLER(AudioManager, PlayerHit);
+	EVENTS_UNREGISTER_HANDLER(AudioManager, PlayerKill);
+	EVENTS_UNREGISTER_HANDLER(AudioManager, EnemyAttack);
+	EVENTS_UNREGISTER_HANDLER(AudioManager, EnemyHit);
+	EVENTS_UNREGISTER_HANDLER(AudioManager, EnemyKill);	
 	EVENTS_UNREGISTER_HANDLER(AudioManager, ItemCatch);
 EVENTS_END_UNREGISTER_HANDLERS()
 
-EVENTS_DEFINE_HANDLER(AudioManager, EnemyKill)
-{
-	Debug::Out("AudioManager : handleEnemyKillEvent");
-
-	EnemyPtr enemy = evt->getEnemy();
-	PlayerPtr player = evt->getPlayer();
-
-	if(player->isAttacking())
-	{
-		int channelIndex = -1;
-
-		SceneNode* sceneNode = enemy->_getSceneNode();
-		//bool channelFound = mSceneNodeToChannelMap.find(sceneNode) != mSceneNodeToChannelMap.end();
-
-		//if(channelFound)
-			//channelIndex = mSceneNodeToChannelMap[sceneNode];
-
-		// The player has just hit the enemy
-		playSound("EnemyDie01.wav",sceneNode->_getDerivedPosition(),&channelIndex);
-	}
-}
 
 EVENTS_DEFINE_HANDLER(AudioManager, PlayerAttack)
 {
@@ -624,18 +634,14 @@ EVENTS_DEFINE_HANDLER(AudioManager, PlayerAttack)
 	int channelIndex = -1;
 
 	SceneNode* sceneNode = player->_getSceneNode();
-	//bool channelFound = mSceneNodeToChannelMap.find(sceneNode) != mSceneNodeToChannelMap.end();
 
-	//if(channelFound)
-		//channelIndex = mSceneNodeToChannelMap[sceneNode];
-
-	// The player has just hit the enemy
+	// The player has just attacked
 	if( player->wichAttack() == 1 )
-		playSound("PlayerHit01.wav",sceneNode->_getDerivedPosition(),&channelIndex);
+		playSound("PlayerAttack01.wav",sceneNode->_getDerivedPosition(),&channelIndex);
 	else if( player->wichAttack() == 2 )
- 		playSound("PlayerHit02.wav",sceneNode->_getDerivedPosition(),&channelIndex);
+ 		playSound("PlayerAttack02.wav",sceneNode->_getDerivedPosition(),&channelIndex);
 	else if( player->wichAttack() == 3 )
-		playSound("PlayerHit03.wav",sceneNode->_getDerivedPosition(),&channelIndex);
+		playSound("PlayerAttack03.wav",sceneNode->_getDerivedPosition(),&channelIndex);
 }
 
 EVENTS_DEFINE_HANDLER(AudioManager, PlayerAttackSpecial)
@@ -647,13 +653,133 @@ EVENTS_DEFINE_HANDLER(AudioManager, PlayerAttackSpecial)
 	int channelIndex = -1;
 
 	SceneNode* sceneNode = player->_getSceneNode();
-	//bool channelFound = mSceneNodeToChannelMap.find(sceneNode) != mSceneNodeToChannelMap.end();
 
-	//if(channelFound)
-		//channelIndex = mSceneNodeToChannelMap[sceneNode];
+	// The player has just used special attack
+	playSound("Flame01.wav",sceneNode->_getDerivedPosition(),&channelIndex);
+}
+
+EVENTS_DEFINE_HANDLER(AudioManager, PlayerHit)
+{
+	Debug::Out("AudioManager : handlePlayerHitEvent");
+
+	PlayerPtr player = evt->getPlayer();
+
+	int channelIndex = -1;
+
+	SceneNode* sceneNode = player->_getSceneNode();
+
+	// The enemy has just hit the player
+	if( (rand()%2) == 0)
+		playSound("PlayerHit01.wav",sceneNode->_getDerivedPosition(),&channelIndex);
+	else
+		playSound("PlayerHit02.wav",sceneNode->_getDerivedPosition(),&channelIndex);
+}
+
+EVENTS_DEFINE_HANDLER(AudioManager, PlayerKill)
+{
+	Debug::Out("AudioManager : handlePlayerKillEvent");
+
+	PlayerPtr player = evt->getPlayer();
+
+	int channelIndex = -1;
+
+	SceneNode* sceneNode = player->_getSceneNode();
+
+	// The enemy has kill player	
+	playSound("PlayerDie01.wav",sceneNode->_getDerivedPosition(),&channelIndex);
+}
+
+EVENTS_DEFINE_HANDLER(AudioManager, EnemyAttack)
+{
+	Debug::Out("AudioManager : handleEnemyAttackEvent");
+
+	EnemyPtr enemy = evt->getEnemy();
+
+	int channelIndex = -1;
+
+	SceneNode* sceneNode = enemy->_getSceneNode();
+
+	// The enemy has just attack
+	if( (rand()%3) == 0 )
+		playSound("EnemyAttack01.wav",sceneNode->_getDerivedPosition(),&channelIndex);
+	else if( (rand()%3) == 1 )
+		playSound("EnemyAttack02.wav",sceneNode->_getDerivedPosition(),&channelIndex);
+	else
+		playSound("EnemyAttack03.wav",sceneNode->_getDerivedPosition(),&channelIndex);
+}
+
+EVENTS_DEFINE_HANDLER(AudioManager, EnemyHit)
+{
+	Debug::Out("AudioManager : handleEnemyHitEvent");
+
+	EnemyPtr enemy = evt->getEnemy();
+
+	int channelIndex = -1;
+
+	SceneNode* sceneNode = enemy->_getSceneNode();
 
 	// The player has just hit the enemy
-	playSound("Flame02.wav",sceneNode->_getDerivedPosition(),&channelIndex);
+	if( enemy->getEnemyType() == Enemy::EnemyTypes::Wizard || enemy->getEnemyType() == Enemy::EnemyTypes::Wizard2 )
+	{
+		if( (rand()%2) == 0 )
+			playSound("WizardHit01.wav",sceneNode->_getDerivedPosition(),&channelIndex);
+		else 
+			playSound("WizardHit02.wav",sceneNode->_getDerivedPosition(),&channelIndex);
+	}
+	else if( enemy->getEnemyType() == Enemy::EnemyTypes::Naked )
+	{
+		if( (rand()%2) == 0 )
+			playSound("NakedHit01.wav",sceneNode->_getDerivedPosition(),&channelIndex);
+		else 
+			playSound("NakedHit02.wav",sceneNode->_getDerivedPosition(),&channelIndex);
+	}
+	else if( enemy->getEnemyType() == Enemy::EnemyTypes::Chicken )
+	{
+		playSound("ChickenDie01.wav",sceneNode->_getDerivedPosition(),&channelIndex);
+	}
+	else
+	{
+		if( (rand()%3) == 0 )
+			playSound("EnemyHit01.wav",sceneNode->_getDerivedPosition(),&channelIndex);
+		else if( (rand()%3) == 1 )
+			playSound("EnemyHit02.wav",sceneNode->_getDerivedPosition(),&channelIndex);
+		else
+			playSound("EnemyHit03.wav",sceneNode->_getDerivedPosition(),&channelIndex);
+	}
+}
+
+
+EVENTS_DEFINE_HANDLER(AudioManager, EnemyKill)
+{
+	Debug::Out("AudioManager : handleEnemyKillEvent");
+
+	EnemyPtr enemy = evt->getEnemy();
+	PlayerPtr player = evt->getPlayer();
+
+	int channelIndex = -1;
+
+	SceneNode* sceneNode = enemy->_getSceneNode();
+
+	// The player has just kill the enemy
+	if( enemy->getEnemyType() == Enemy::EnemyTypes::Wizard || enemy->getEnemyType() == Enemy::EnemyTypes::Wizard2 )
+	{
+		playSound("WizardDie01.wav",sceneNode->_getDerivedPosition(),&channelIndex);
+	}
+	else if( enemy->getEnemyType() == Enemy::EnemyTypes::Naked )
+	{
+		playSound("NakedDie01.wav",sceneNode->_getDerivedPosition(),&channelIndex);
+	}
+	else if( enemy->getEnemyType() == Enemy::EnemyTypes::Chicken )
+	{
+		playSound("ChickenDie01.wav",sceneNode->_getDerivedPosition(),&channelIndex);
+	}
+	else
+	{
+		if( (rand()%3) == 0 )
+			playSound("EnemyDie01.wav",sceneNode->_getDerivedPosition(),&channelIndex);
+		else
+			playSound("EnemyDie02.wav",sceneNode->_getDerivedPosition(),&channelIndex);
+	}
 }
 
 EVENTS_DEFINE_HANDLER(AudioManager, ItemCatch)
@@ -666,12 +792,8 @@ EVENTS_DEFINE_HANDLER(AudioManager, ItemCatch)
 	int channelIndex = -1;
 
 	SceneNode* sceneNode = item->_getSceneNode();
-	//bool channelFound = mSceneNodeToChannelMap.find(sceneNode) != mSceneNodeToChannelMap.end();
 
-	//if(channelFound)
-		//channelIndex = mSceneNodeToChannelMap[sceneNode];
-
-	// The player has just hit the enemy
+	// The player has just catch the item
 	playSound("Item01.wav",sceneNode->_getDerivedPosition(),&channelIndex);
 }
 
