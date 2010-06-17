@@ -111,7 +111,10 @@ namespace WyvernsAssault
 		virtual void setSize(float sizeX, float sizeY);
 		virtual Ogre::Rectangle2D* getRectangle2D();
 		virtual void show();
-		virtual void hide();		
+		virtual void hide();
+
+		virtual void* getData(){ return mData; }
+		virtual void setData(void* data){ mData = data; }
 
 	protected:
 		virtual void initialize();
@@ -122,6 +125,7 @@ namespace WyvernsAssault
 	protected:
 		GuiPosition mPosition;
 		GuiSize mSize;
+		void*	mData;
 
 		Ogre::Rectangle2D* mRectangle2D;
 	};

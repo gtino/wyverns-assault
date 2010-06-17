@@ -4,6 +4,7 @@ using namespace WyvernsAssault;
 
 GuiWidget::GuiWidget() 
 : mRectangle2D(0)
+, mData(0)
 {
 	//
 	// TODO Constructor
@@ -31,6 +32,8 @@ void GuiWidget::finalize()
 		delete mRectangle2D;
 		mRectangle2D = 0;
 	}
+
+	mData = NULL;
 }
 
 void GuiWidget::setPosition(Real positionX, Real positionY)

@@ -84,7 +84,7 @@ void GuiUserInterface::hide()
 /** Life and Special bars set */
 void GuiUserInterface::setLifeBar(Real value)
 {
-	if (value < 101 && value > 0)
+	if (value < 101 && value > -1)
 	{
 		Real factor = value / 100.0;
 		Real u1, v1, u2, v2;
@@ -98,7 +98,7 @@ void GuiUserInterface::setLifeBar(Real value)
 
 void GuiUserInterface::setSpecialBar(Real value)
 {
-	if (value < 101 && value > 0)
+	if (value < 101 && value > -1)
 	{
 		Real factor = value / 100.0;
 		Real u1, v1, u2, v2;
@@ -127,4 +127,15 @@ void GuiUserInterface::setTextPoints(Real value)
 	mPoints = value;
 	sprintf(uiText, "%.0f", mPoints);
 	mTextPoints->setCaption(uiText);
+}
+
+void GuiUserInterface::setData(void* data)
+{
+	GuiWidget::setData(data);
+
+	UserInterfaceData* userData = (UserInterfaceData*)mData;
+
+	this->setLifeBar( userData->life );
+	this->setSpecialBar( userData->special );
+	this->setTextPoints( userData->points );
 }
