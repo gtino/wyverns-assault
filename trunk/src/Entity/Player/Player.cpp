@@ -181,26 +181,6 @@ void Player::setFireBreath(ParticleUniverse::ParticleSystem* fireBreath)
 	mEntity->attachObjectToBone("llengua1", mFireOBBoxRenderable);	
 }
 
-void Player::setPosition(Ogre::Vector3 position)
-{	
-	mSceneNode->setPosition(position);
-}
-
-void Player::move(Real x, Real y, Real z)
-{
-	// Moving
-	if(Vector3(x, y, z) != Vector3::ZERO)
-	{
-		moving = true;
-	}
-	// Iddle
-	else
-	{
-		moving = false;
-		attacking = 0;
-	}
-}
-
 void Player::attackA()
 {
 	if (!special)

@@ -97,8 +97,8 @@ namespace WyvernsAssault
 		void update(const float elapsedSeconds);
 
 		//Move one character
-		void move(PlayerPtr player, Vector3 direction, const float elapsedSeconds, bool fastMode = false);
-		void move(EnemyPtr enemy, int rotate, int thrust);
+		void move(PlayerPtr player, const float elapsedSeconds, bool fastMode = false);
+		void move(EnemyPtr enemy, const float elapsedSeconds);
 
 		// Collision check
 		void checkForCollisions();

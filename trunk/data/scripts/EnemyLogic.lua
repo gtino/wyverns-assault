@@ -20,11 +20,11 @@ Dying = 10
 Dead = 11
 
 -- Distances
-FightingDistance = 100
+FightingDistance = 15
 MagicDistance = 250
-SightDistance = 250
-SoundDistance = 500
-AlertDistance = 50
+SightDistance = 70
+SoundDistance = 100
+AlertDistance = 40
 
 function runNakedLogic(enemyId, state)
 	

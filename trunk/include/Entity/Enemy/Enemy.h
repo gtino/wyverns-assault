@@ -35,10 +35,9 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
 #define ENEMY_BILLBOARD_SHOW_TIME 2.0f // seconds
 
-#define ENEMY_SPEED_SLOW 10.0f
-#define ENEMY_SPEED_MEDIUM 30.0f
-#define ENEMY_SPEED_FAST 50.0f
-#define ENEMY_ROTATION_SPEED 3.0f
+#define BASIC_ENEMY_RAY_HEIGHT	20
+#define BASIC_ENEMY_SLOW_VELOCITY	50
+#define BASIC_ENEMY_FAST_VELOCITY	160
 
 #define ANIMAL_SPEED_SLOW 10.0f
 #define ANIMAL_SPEED_MEDIUM 30.0f
@@ -139,6 +138,9 @@ namespace WyvernsAssault
 		int getChannel(){return mChannel;}
 		void setChannel(int channel){mChannel = channel;}
 
+		float getSpeed(){return mSpeed;}
+		void setSpeed(float speed){mSpeed = speed;}
+
 		// Enable Debug Stuff
 		void setDebugEnabled(bool isDebugEnabled);
 		bool getDebugEnabled(){return mIsDebugEnabled;};
@@ -162,6 +164,9 @@ namespace WyvernsAssault
 		float mMaxLife;
 		float mLife;
 
+		Vector3 beginPatrolPoint;
+		Vector3 endPatrolPoint;
+
 		OBBoxRenderable* mOBBoxRenderable;
 		bool mIsDebugEnabled;
 
@@ -174,7 +179,9 @@ namespace WyvernsAssault
 		bool		attacking;
 
 	private:
-		void chase();
+
+		void setDirectionToTarget();
+		void setDirectionOutTarget();
 
 	public:
 		static Enemy::EnemyTypes StringToType(Ogre::String typeStr);

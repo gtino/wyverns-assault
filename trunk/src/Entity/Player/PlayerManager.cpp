@@ -93,6 +93,22 @@ bool PlayerManager::removePlayer(Ogre::String name)
 	return true;
 }
 
+/* Set player direction of new move
+*/
+void PlayerManager::move(Ogre::String playerName, Vector3 direction){
+
+	PlayerPtr player = mPlayerMap[playerName];
+
+	player->setDirection(direction);
+	
+	if(direction != Vector3::ZERO){
+		player->setMoving(true);
+	}else{
+		player->setMoving(false);
+	}
+
+}
+
 void PlayerManager::attack(Ogre::String name)
 {
 	PlayerPtr player = getPlayer(name);
