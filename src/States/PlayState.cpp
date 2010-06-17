@@ -176,6 +176,7 @@ void PlayState::initialize()
 	mEventsManager->registerInterface(mItemManager);
 	mEventsManager->registerInterface(mPlayerManager);
 	mEventsManager->registerInterface(mCameraManager);
+	mEventsManager->registerInterface(mGuiManager);
 
 	//
 	// Set game camera
@@ -198,20 +199,15 @@ void PlayState::load()
 	//
 	// Gui Screen for this state
 	//
-	mGuiScreen = new GuiScreen(mSceneManager, GuiScreenId::PlayGui, "General");
+	mGuiScreen = mGuiManager->createGui(GuiScreenId::PlayGui, "PlayScreen");
 
 	//
 	// Wigdets for this state
 	//	
-	mPlayerUI = new GuiUserInterface(mWindow->getViewport(0)->getCamera()->getAspectRatio(), GuiScreenId::PlayGui, GuiWidgetPlayId::UserInterface1);
+	mPlayerUI = GuiUserInterfacePtr( new GuiUserInterface(mWindow->getViewport(0)->getCamera()->getAspectRatio(), GuiScreenId::PlayGui, GuiWidgetPlayId::UserInterface1) );
 
 	// Add Gui Widgets to Manager
-	mGuiScreen->addWidget(mPlayerUI,GuiWidgetPlayId::UserInterface1);	
-	
-	//
-	// Register the screen as input event listener, so it can receive events
-	//
-	mInputManager->addListener(mGuiScreen);
+	mGuiScreen->addWidget(mPlayerUI,GuiWidgetPlayId::UserInterface1);
 }
 
 /** Manage input */
@@ -432,13 +428,9 @@ void PlayState::unload()
 	if(mGuiScreen)
 	{
 		//
-		// Remove gui listener
-		//
-		mInputManager->removeListener(mGuiScreen);
-		//
 		// Remove gui
 		//
-		mGuiScreen->removeGui();
+		mGuiManager->removeGui(GuiScreenId::PlayGui);
 	}
 	if(mTrayMgr)
 	{
@@ -477,11 +469,7 @@ void PlayState::finalize()
 		mTrayMgr = NULL;
 	}
 
-	if(mGuiScreen)
-	{
-		delete mGuiScreen;
-		mGuiScreen = NULL;
-	}
+	mGuiScreen.reset();
 
 	mPhysicsManager.reset();
 

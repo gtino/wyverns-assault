@@ -30,7 +30,7 @@ void SplashScreenState::load()
 	//
 	// Gui Screen for this state
 	//
-	mGuiScreen = new GuiScreen(mSceneManager, GuiScreenId::SplashScreenGui, "SplashScreen");
+	mGuiScreen = mGuiManager->createGui(GuiScreenId::SplashScreenGui, "SplashScreen");
 	
 	GuiBackground* guiBackground = new GuiBackground();
 	guiBackground->setImage("SplashScreen.png","SplashBackground","General");
@@ -42,11 +42,6 @@ void SplashScreenState::load()
 	
 	// Add menu to screen
 	mGuiScreen->addMenu(mMenu);
-
-	//
-	// Register the screen as input event listener, so it can receive events
-	//
-	mInputManager->addListener(mGuiScreen);
 
 	//
 	// Play soft soundtrack
@@ -85,13 +80,10 @@ void SplashScreenState::unload()
 	if(mGuiScreen)
 	{
 		//
-		// Remove gui listener
-		//
-		mInputManager->removeListener(mGuiScreen);
-		//
 		// Remove gui
 		//
-		mGuiScreen->removeGui();
+		mGuiManager->removeGui(GuiScreenId::SplashScreenGui);
+		mGuiScreen.reset();
 	}
 }
 

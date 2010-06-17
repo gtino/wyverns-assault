@@ -40,6 +40,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #define PLAYER3 "Player3"
 #define PLAYER4 "Player4"
 
+#define SPECIAL_COST 25
+
 #define REDWYVERN_RAY_HEIGHT	25
 #define REDWYVERN_SLOW_VELOCITY	80
 #define REDWYVERN_FAST_VELOCITY	120
@@ -113,6 +115,13 @@ namespace WyvernsAssault
 		// Attack's grids
 		void hideGrids();
 
+		float getLife(){ return mLife; }
+		void addLife(float life);
+		float getSpecial(){ return mSpecial; }		
+		void addSpecial(float special);
+		float getScore() { return mScore; }
+		void addScore(float score){ mScore += score; }
+
 	private:
 		// Fire breath particle system and attach point
 		TagPoint*							mBreathPoint;
@@ -123,6 +132,13 @@ namespace WyvernsAssault
 		OBBoxRenderable* mOBBoxRenderable;
 		OBBoxRenderable* mFireOBBoxRenderable;
 		bool mIsDebugEnabled;
+
+	private:
+		float	mMaxLife;
+		float	mLife;
+		float	mMaxSpecial;
+		float	mSpecial;
+		float	mScore;
 
 	private:
 		

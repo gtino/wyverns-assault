@@ -21,7 +21,7 @@ GuiScreen::~GuiScreen()
 	mMenu = NULL;
 }
 
-void GuiScreen::addWidget(GuiWidget* widget, GuiWidgetId widgetId)
+void GuiScreen::addWidget(GuiWidgetPtr widget, GuiWidgetId widgetId)
 {
 	mWidgetMap[widgetId] = widget;
 
@@ -35,7 +35,7 @@ void GuiScreen::addWidget(GuiWidget* widget, GuiWidgetId widgetId)
 	widget->show();
 }
 
-GuiWidget* GuiScreen::getWidget(GuiWidgetId widgetId)
+GuiWidgetPtr GuiScreen::getWidget(GuiWidgetId widgetId)
 {
 	return mWidgetMap[widgetId];
 }
@@ -104,7 +104,7 @@ void GuiScreen::removeGui()
 	}
 }
 
-GuiWidget* GuiScreen::nextWidget(GuiWidgetId widgetId)
+GuiWidgetPtr GuiScreen::nextWidget(GuiWidgetId widgetId)
 {	
 	// TODO
 	if (!mWidgetMap[widgetId++])
@@ -113,7 +113,7 @@ GuiWidget* GuiScreen::nextWidget(GuiWidgetId widgetId)
 		return (mWidgetMap[widgetId++]);
 }
 
-GuiWidget* GuiScreen::previousWidget(GuiWidgetId widgetId)
+GuiWidgetPtr GuiScreen::previousWidget(GuiWidgetId widgetId)
 {
 	// TODO
 	if (widgetId>0)

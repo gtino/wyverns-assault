@@ -129,6 +129,7 @@ namespace WyvernsAssault
 		void setTarget(SceneNode* target);
 		void autoTrackTarget();
 		
+		Ogre::Real getHitDamage(){return 5.0f;} // TODO : This shoul be a config parameter!
 		void hit(float damage);
 
 		bool isHurt();

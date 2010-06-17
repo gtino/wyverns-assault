@@ -78,6 +78,8 @@ namespace WyvernsAssault
 		Real	mKills;
 		Real	mPoints;
 	};
+
+	typedef boost::shared_ptr<GuiUserInterface> GuiUserInterfacePtr;
 }
 
 #endif // __GUI_USERINTERFACE_H_

@@ -30,7 +30,7 @@ void PauseState::load()
 	//
 	// Gui Screen for this state
 	//
-	mGuiScreen = new GuiScreen(mSceneManager, GuiScreenId::PauseGui, "PauseScreen");
+	mGuiScreen = mGuiManager->createGui(GuiScreenId::PauseGui, "PauseScreen");
 	
 	GuiBackground* guiBackground = new GuiBackground();
 	guiBackground->setImage("Pause.png","PauseBackground","General");
@@ -42,11 +42,6 @@ void PauseState::load()
 	
 	// Add menu to screen
 	mGuiScreen->addMenu(mMenu);
-
-	//
-	// Register the screen as input event listener, so it can receive events
-	//
-	mInputManager->addListener(mGuiScreen);
 }
 
 /** Manage input */
@@ -80,10 +75,6 @@ void PauseState::unload()
 	if(mGuiScreen)
 	{
 		//
-		// Remove gui listener
-		//
-		mInputManager->removeListener(mGuiScreen);
-		//
 		// Remove gui
 		//
 		mGuiScreen->removeGui();
@@ -96,8 +87,8 @@ void PauseState::finalize()
 	// Destroy gui
 	if(mGuiScreen)
 	{
-		delete mGuiScreen;
-		mGuiScreen = 0;
+		mGuiManager->removeGui(GuiScreenId::PauseGui);
+		mGuiScreen.reset();
 	}
 
 	BaseState::finalize();

@@ -786,7 +786,6 @@ EVENTS_DEFINE_HANDLER(AudioManager, ItemCatch)
 {
 	Debug::Out("AudioManager : handleItemCatchEvent");
 
-	//PlayerPtr player = evt->getPlayer();
 	ItemPtr item = evt->getItem();
 
 	int channelIndex = -1;

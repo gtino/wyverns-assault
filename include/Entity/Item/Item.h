@@ -79,10 +79,18 @@ namespace WyvernsAssault
 		Item::ItemStates getItemState(){return mState;}
 		float getStateTimeout(){return mStateTimeout;}
 
+		float getLife(){ return mLife; }
+		float getSpecial(){ return mSpecial; }
+		float getScore(){ return mScore; }
+
 	private:
 		Item::ItemTypes mType;
 		Item::ItemStates mState;
 		float mStateTimeout;
+
+		float	mLife;
+		float	mSpecial;
+		float	mScore;
 
 	public:
 		static Item::ItemTypes StringToType(Ogre::String typeStr);

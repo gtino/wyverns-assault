@@ -31,6 +31,9 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
 #include "..\Input\InputListener.h"
 #include "..\Lua\LuaInterface.h"
+#include "..\Events\EventsInterface.h"
+
+#include "..\Debug\Debug.h"
 
 #include "..\GUI\GuiScreen.h"
 #include "..\GUI\GuiBackground.h"
@@ -42,7 +45,7 @@ using namespace Ogre;
 namespace WyvernsAssault
 {
 	/** The widget map type */
-	typedef std::map<GuiScreenId, GuiScreen*> GuiScreenMap;
+	typedef std::map<GuiScreenId, GuiScreenPtr> GuiScreenMap;
 	typedef GuiScreenMap::iterator GuiScreenMapIterator;
 
 	/**
@@ -52,6 +55,7 @@ namespace WyvernsAssault
 						, public boost::enable_shared_from_this<GuiManager>
 						, public InputListener
 						, public LuaInterface
+						, public EventsInterface
 	{
 	public:
 		GuiManager();
@@ -62,6 +66,10 @@ namespace WyvernsAssault
 	public:		
 		bool initialize(Ogre::Root* root, Ogre::SceneManager* sceneManager, Ogre::RenderWindow* window);		
 		void finalize();
+
+		GuiScreenPtr createGui(GuiScreenId id, const Ogre::String& name);
+		bool hasGui(GuiScreenId id);
+		void removeGui(GuiScreenId id);
 
 	private: // InputListener
 		bool mouseMoved( const OIS::MouseEvent &arg );
@@ -74,6 +82,16 @@ namespace WyvernsAssault
 		Root*			mRoot;
 		RenderWindow*   mWindow;
 		SceneManager*	mSceneManager;
+
+		GuiScreenMap	mGuiScreenMap;
+
+		// ----------------
+		// Events interface
+		// ----------------
+		EVENTS_INTERFACE()
+		
+		EVENTS_HANDLER(ItemCatch)
+		EVENTS_HANDLER(PlayerAttackSpecial)
 
 		// --------------------------------
 		// BEGIN Lua Interface Declarations

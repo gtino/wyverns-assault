@@ -3,8 +3,7 @@
 using namespace WyvernsAssault;
 
 BaseState::BaseState()
-: mGuiScreen(0)
-, mSceneManager(0)
+: mSceneManager(0)
 , mRoot(0)
 , mWindow(0)
 , mCamera(0)
@@ -19,8 +18,7 @@ BaseState::BaseState()
 }
 
 BaseState::BaseState(GraphicsManagerPtr graphicsManager, InputManagerPtr inputManager, AudioManagerPtr audioManager, CameraManagerPtr cameraManager, GuiManagerPtr guiManager)
-: mGuiScreen(0)
-, mSceneManager(0)
+: mSceneManager(0)
 , mRoot(0)
 , mWindow(0)
 , mCamera(0)
@@ -49,8 +47,6 @@ void BaseState::initialize()
 	// TODO Initialize
 	//
 	this->mNextGameStateId = this->getStateId();
-
-	mGuiScreen = 0;
 
 	mRoot = mGraphicsManager->getRoot();
 

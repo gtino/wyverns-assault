@@ -7,6 +7,9 @@ Item::Item(Ogre::String name, Item::ItemTypes type)
 , PhysicsInterface()
 , LogicInterface()
 , mState(Item::ItemStates::Initial)
+, mLife(0.0f)
+, mSpecial(0.0f)
+, mScore(0.0f)
 {
 	mType = type;
 }
@@ -20,6 +23,44 @@ void Item::initializeEntity(Ogre::Entity* entity, Ogre::SceneNode* sceneNode, Og
 {
 	// Always call base method before!
 	EntityInterface::initializeEntity(entity, sceneNode, sceneManager);
+
+	switch(mType)
+	{
+	case Item::ItemTypes::LiveBig :
+		mLife = 100;
+		mScore = 100;
+		break;
+	case Item::ItemTypes::LiveMedium :
+		mLife = 50;
+		mScore = 50;
+		break;
+	case Item::ItemTypes::LiveSmall :
+		mLife = 25;
+		mScore = 25;
+		break;
+	case Item::ItemTypes::PowerBig :
+		mSpecial = 100;
+		mScore = 100;
+		break;
+	case Item::ItemTypes::PowerMedium :
+		mSpecial = 50;
+		mScore = 50;
+		break;
+	case Item::ItemTypes::PowerSmall :
+		mSpecial = 25;
+		mScore = 25;
+		break;
+	case Item::ItemTypes::ScoreBig :
+		mScore = 500;
+		break;
+	case Item::ItemTypes::ScoreSmall :
+		mScore = 250;
+		break;
+	default:
+		mLife = 0;
+		mSpecial = 0;
+		mScore = 0;
+	}
 }
 
 void Item::finalizeEntity()

@@ -9,6 +9,11 @@ Player::Player(Ogre::String name)
 , mFireOBBoxRenderable(0)
 , mIsDebugEnabled(false)
 , mFireMesh(0)
+, mMaxLife(100.0f)
+, mLife(100.0f)
+, mMaxSpecial(100.0f)
+, mSpecial(100.0f)
+, mScore(0.0f)
 {
 }
 
@@ -251,11 +256,15 @@ void Player::attackA3()
 
 void Player::attackSpecial()
 {
-	if( attacking == 0 && !newAttack && !special)
+	if( mSpecial >= SPECIAL_COST)
 	{
-		special = true;	
-		newAttack = true;
-		mFireBreath->startAndStopFade(mEntity->getAnimationState("Special")->getLength());
+		if( attacking == 0 && !newAttack && !special)
+		{
+			mSpecial -= SPECIAL_COST;
+			special = true;	
+			newAttack = true;
+			mFireBreath->startAndStopFade(mEntity->getAnimationState("Special")->getLength());
+		}
 	}
 }
 
@@ -292,4 +301,18 @@ void Player::hideGrids()
 	mEntity->getSubEntity("grid6")->setVisible(false);
 	mEntity->getSubEntity("grid7")->setVisible(false);
 	mEntity->getSubEntity("grid8")->setVisible(false);
+}
+
+void Player::addLife(float life)
+{
+	mLife += life;
+	if( mLife > mMaxLife)
+		mLife = mMaxLife;
+}
+
+void Player::addSpecial(float special)
+{
+	mSpecial += special;
+	if( mSpecial > mMaxSpecial)
+		mSpecial = mMaxSpecial;
 }

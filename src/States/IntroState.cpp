@@ -39,7 +39,7 @@ void IntroState::load()
 	//
 	// Gui Screen for this state
 	//
-	mGuiScreen = new GuiScreen(mSceneManager, GuiScreenId::IntroGui, "IntroScreen");
+	mGuiScreen = mGuiManager->createGui(GuiScreenId::IntroGui, "IntroScreen");
 	
 	GuiBackground* guiBackground = new GuiBackground();
 	guiBackground->setImage("Intro.png","IntroBackground","General");
@@ -51,11 +51,6 @@ void IntroState::load()
 	
 	// Add menu to screen
 	mGuiScreen->addMenu(mMenu);
-
-	//
-	// Register the screen as input event listener, so it can receive events
-	//
-	mInputManager->addListener(mGuiScreen);
 }
 
 /** Update internal stuff */
@@ -80,13 +75,10 @@ void IntroState::unload()
 	if(mGuiScreen)
 	{
 		//
-		// Remove gui listener
-		//
-		mInputManager->removeListener(mGuiScreen);
-		//
 		// Remove gui
 		//
-		mGuiScreen->removeGui();
+		mGuiManager->removeGui(GuiScreenId::IntroGui);
+		mGuiScreen.reset();
 	}
 }
 

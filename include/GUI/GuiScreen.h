@@ -55,7 +55,7 @@ namespace WyvernsAssault
 	};
 
 	/** The widget map type */
-	typedef std::map<GuiWidgetId, GuiWidget*> WidgetMap;
+	typedef std::map<GuiWidgetId, GuiWidgetPtr> WidgetMap;
 	typedef WidgetMap::iterator WidgetMapIterator;
 
 	/** The widget list type */
@@ -70,16 +70,17 @@ namespace WyvernsAssault
 
 		void setBackground(GuiBackground* background);
 
-		void addWidget(GuiWidget* widget, GuiWidgetId widgetId);		
-		GuiWidget* getWidget(GuiWidgetId widgetId);
+		void addWidget(GuiWidgetPtr widget, GuiWidgetId widgetId);
+		GuiWidgetPtr getWidget(GuiWidgetId widgetId);
+
 		void removeWidget(GuiWidgetId widgetId);
 		void removeAllWidgets();
 		void addMenu(GuiMenu* menu);
 		void removeMenu();
 		// This will destroy whole Gui
 		void removeGui();
-		GuiWidget* nextWidget(GuiWidgetId widgetId);
-		GuiWidget* previousWidget(GuiWidgetId widgetId);
+		GuiWidgetPtr nextWidget(GuiWidgetId widgetId);
+		GuiWidgetPtr previousWidget(GuiWidgetId widgetId);
 		// Hide and show gui widgets
 		void show();
 		void hide();		
@@ -132,6 +133,8 @@ namespace WyvernsAssault
 		GuiImage* mImage;
 		GuiMenu* mMenu;
 	};
+
+	typedef boost::shared_ptr<GuiScreen> GuiScreenPtr;
 }
 
 #endif // __GUI_SCREEN_H_

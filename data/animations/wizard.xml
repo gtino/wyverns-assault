@@ -2,16 +2,16 @@
 <animation_system>
   <nodes>
     <node type="AnimationNode" id="0">
-      <custom animation="Run" />
+      <custom animation="Iddle" />
     </node>
     <node type="AnimationNode" id="1">
-      <custom animation="Attack" />
+      <custom animation="Run" />
     </node>
     <node type="AnimationNode" id="2">
-      <custom animation="Special" />
+      <custom animation="Attack" />
     </node>
     <node type="AnimationNode" id="3">
-      <custom animation="Die" />
+      <custom animation="Special" />
     </node>
 	<node type="TransitionSelectNode" id="4">
       <custom size="4" />
