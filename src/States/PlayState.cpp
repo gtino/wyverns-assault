@@ -489,7 +489,7 @@ void PlayState::finalize()
 
 	Debug::Out("**************************");
 
-	Debug::Out(mSceneManager->getRootSceneNode());
+	//Debug::Out(mSceneManager->getRootSceneNode());
 }
 
 /** Get state Id */
@@ -606,6 +606,7 @@ bool PlayState::keyPressed(const OIS::KeyEvent& e)
 
 			mEnemyManager->setDebugEnabled(true);
 			mPlayerManager->setDebugEnabled(true);
+			mPhysicsManager->setDebugEnabled(true);
 		}
 		else
 		{
@@ -617,6 +618,7 @@ bool PlayState::keyPressed(const OIS::KeyEvent& e)
 
 			mEnemyManager->setDebugEnabled(false);
 			mPlayerManager->setDebugEnabled(false);
+			mPhysicsManager->setDebugEnabled(false);
 		}		
 		break;
 	// Cycle filtering mode
