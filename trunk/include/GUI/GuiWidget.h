@@ -125,6 +125,8 @@ namespace WyvernsAssault
 
 		Ogre::Rectangle2D* mRectangle2D;
 	};
+
+	typedef boost::shared_ptr<GuiWidget> GuiWidgetPtr;
 }
 
 #endif // __GUI_WIDGET_H_

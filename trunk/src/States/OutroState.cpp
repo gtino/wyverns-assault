@@ -30,7 +30,7 @@ void OutroState::load()
 	//
 	// Gui Screen for this state
 	//
-	mGuiScreen = new GuiScreen(mSceneManager, GuiScreenId::OutroGui, "OutroScreen");
+	mGuiScreen = mGuiManager->createGui(GuiScreenId::OutroGui, "OutroScreen");
 	
 	GuiBackground* guiBackground = new GuiBackground();
 	guiBackground->setImage("Outro.png","OutroBackground","General");
@@ -42,11 +42,6 @@ void OutroState::load()
 	
 	// Add menu to screen
 	mGuiScreen->addMenu(mMenu);
-
-	//
-	// Register the screen as input event listener, so it can receive events
-	//
-	mInputManager->addListener(mGuiScreen);
 }
 
 /** Manage input */
@@ -79,13 +74,10 @@ void OutroState::unload()
 	if(mGuiScreen)
 	{
 		//
-		// Remove gui listener
-		//
-		mInputManager->removeListener(mGuiScreen);
-		//
 		// Remove gui
 		//
-		mGuiScreen->removeGui();
+		mGuiManager->removeGui(GuiScreenId::OutroGui);
+		mGuiScreen.reset();
 	}
 }
 

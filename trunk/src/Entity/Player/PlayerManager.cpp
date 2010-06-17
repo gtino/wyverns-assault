@@ -140,15 +140,34 @@ void PlayerManager::setDebugEnabled(bool isDebugEnabled)
 // --------------
 EVENTS_BEGIN_REGISTER_HANDLERS(PlayerManager)
 	EVENTS_REGISTER_HANDLER(PlayerManager,PlayerHit)
+	EVENTS_REGISTER_HANDLER(PlayerManager,ItemCatch)
 EVENTS_END_REGISTER_HANDLERS()
 
 EVENTS_BEGIN_UNREGISTER_HANDLERS(PlayerManager)
 	EVENTS_UNREGISTER_HANDLER(PlayerManager,PlayerHit)
+	EVENTS_UNREGISTER_HANDLER(PlayerManager,ItemCatch)
 EVENTS_END_UNREGISTER_HANDLERS()
 
 EVENTS_DEFINE_HANDLER(PlayerManager, PlayerHit)
 {
-	// TODO : use evt to access the event
+	Debug::Out("PlayerManager : handlePlayerHitEvent");
+
+	PlayerPtr player = evt->getPlayer();
+	EnemyPtr enemy = evt->getEnemy();
+
+	player->addLife(- enemy->getHitDamage());
+}
+
+EVENTS_DEFINE_HANDLER(PlayerManager, ItemCatch)
+{
+	Debug::Out("PlayerManager : handleItemCatchEvent");
+
+	//PlayerPtr player = evt->getPlayer();
+	ItemPtr item = evt->getItem();
+
+	/*player->addLife(evt->getLife());
+	player->addSpecial(evt->getSpecial());
+	player->addScore(evt->getScore());*/
 }
 
 // --------------------------------

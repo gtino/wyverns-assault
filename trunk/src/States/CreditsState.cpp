@@ -30,7 +30,7 @@ void CreditsState::load()
 	//
 	// Gui Screen for this state
 	//
-	mGuiScreen = new GuiScreen(mSceneManager, GuiScreenId::CreditsGui, "CreditsScreen");
+	mGuiScreen = mGuiManager->createGui(GuiScreenId::CreditsGui, "CreditsScreen");
 	
 	GuiBackground* guiBackground = new GuiBackground();
 	guiBackground->setImage("Credits.png","CreditsBackground","General");
@@ -42,11 +42,6 @@ void CreditsState::load()
 	
 	// Add menu to screen
 	mGuiScreen->addMenu(mMenu);
-
-	//
-	// Register the screen as input event listener, so it can receive events
-	//
-	mInputManager->addListener(mGuiScreen);
 }
 
 /** Manage input */
@@ -80,13 +75,10 @@ void CreditsState::unload()
 	if(mGuiScreen)
 	{
 		//
-		// Remove gui listener
-		//
-		mInputManager->removeListener(mGuiScreen);
-		//
 		// Remove gui
 		//
-		mGuiScreen->removeGui();
+		mGuiManager->removeGui(GuiScreenId::CreditsGui);
+		mGuiScreen.reset();
 	}
 }
 

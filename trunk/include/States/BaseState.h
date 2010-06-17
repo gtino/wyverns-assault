@@ -139,7 +139,7 @@ namespace WyvernsAssault
 		GameStateId mNextGameStateId;
 
 		/** The GUI manager */
-		GuiScreen* mGuiScreen;
+		GuiScreenPtr mGuiScreen;
 
 		/** GUI options menu */
 		GuiMenu*	mMenu;

@@ -30,7 +30,7 @@ void EndingState::load()
 	//
 	// Gui Screen for this state
 	//
-	mGuiScreen = new GuiScreen(mSceneManager, GuiScreenId::EndingGui, "EndingScreen");
+	mGuiScreen = mGuiManager->createGui(GuiScreenId::EndingGui, "EndingScreen");
 	
 	GuiBackground* guiBackground = new GuiBackground();
 	guiBackground->setImage("Ending.png","EndingBackground","General");
@@ -42,11 +42,6 @@ void EndingState::load()
 	
 	// Add menu to screen
 	mGuiScreen->addMenu(mMenu);
-
-	//
-	// Register the screen as input event listener, so it can receive events
-	//
-	mInputManager->addListener(mGuiScreen);
 	
 	//
 	// Audio manager
@@ -85,13 +80,10 @@ void EndingState::unload()
 	if(mGuiScreen)
 	{
 		//
-		// Remove gui listener
-		//
-		mInputManager->removeListener(mGuiScreen);
-		//
 		// Remove gui
 		//
-		mGuiScreen->removeGui();
+		mGuiManager->removeGui(GuiScreenId::EndingGui);
+		mGuiScreen.reset();
 	}
 }
 

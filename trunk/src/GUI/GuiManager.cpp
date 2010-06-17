@@ -43,6 +43,31 @@ void GuiManager::finalize()
 	//
 }
 
+GuiScreenPtr GuiManager::createGui(GuiScreenId id, const Ogre::String& name)
+{
+	if( this->hasGui(id) )
+	{
+		return mGuiScreenMap[id];
+	}
+	else
+	{
+		GuiScreenPtr guiScreen = GuiScreenPtr( new GuiScreen(mSceneManager, id, name) );
+		mGuiScreenMap[id] = guiScreen;
+		return guiScreen;
+	}
+}
+
+bool GuiManager::hasGui(GuiScreenId id)
+{
+	return mGuiScreenMap[id] != NULL;
+}
+
+void GuiManager::removeGui(GuiScreenId id)
+{
+	mGuiScreenMap[id]->removeGui();
+	mGuiScreenMap.erase(id);
+}
+
 //----------------------------------------------------------------//
 bool GuiManager::mouseMoved( const OIS::MouseEvent &arg )
 {
@@ -71,6 +96,38 @@ bool GuiManager::keyPressed( const OIS::KeyEvent &arg )
 bool GuiManager::keyReleased( const OIS::KeyEvent &arg )
 {
 	return true;
+}
+
+// --------------
+// Event handlers
+// --------------
+EVENTS_BEGIN_REGISTER_HANDLERS(GuiManager)	
+	EVENTS_REGISTER_HANDLER(GuiManager, ItemCatch);
+	EVENTS_REGISTER_HANDLER(GuiManager, PlayerAttackSpecial);
+EVENTS_END_REGISTER_HANDLERS()
+
+EVENTS_BEGIN_UNREGISTER_HANDLERS(GuiManager)
+	EVENTS_UNREGISTER_HANDLER(GuiManager, ItemCatch);
+	EVENTS_UNREGISTER_HANDLER(GuiManager, PlayerAttackSpecial);
+EVENTS_END_UNREGISTER_HANDLERS()
+
+
+EVENTS_DEFINE_HANDLER(GuiManager, ItemCatch)
+{
+	Debug::Out("GuiManager : handleItemCatchEvent");
+
+	//PlayerPtr player = evt->getPlayer();
+}
+
+EVENTS_DEFINE_HANDLER(GuiManager, PlayerAttackSpecial)
+{
+	Debug::Out("GuiManager : handlePlayerAttackSpecial");
+
+	PlayerPtr player = evt->getPlayer();
+
+	GuiWidgetPtr ui = mGuiScreenMap[GuiScreenId::PlayGui]->getWidget(GuiWidgetPlayId::UserInterface1);
+
+	//ui->setSpecialBar( player->getSpecial() );
 }
 
 // --------------------------------

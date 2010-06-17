@@ -110,7 +110,7 @@ namespace WyvernsAssault
 		//
 		// User interface
 		//
-		GuiUserInterface* mPlayerUI;
+		GuiUserInterfacePtr mPlayerUI;
 
 	protected:
 		float			buttonTimer;

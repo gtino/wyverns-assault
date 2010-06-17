@@ -39,7 +39,7 @@ void MainMenuState::load()
 	//
 	// Gui Screen for this state
 	//
-	mGuiScreen = new GuiScreen(mSceneManager, GuiScreenId::MainMenuGui, "MainMenuScreen");
+	mGuiScreen = mGuiManager->createGui(GuiScreenId::MainMenuGui, "MainMenuScreen");
 	
 	GuiBackground* guiBackground = new GuiBackground();
 	guiBackground->setImage("MainMenu.png","MainMenuBackground","General");
@@ -51,11 +51,6 @@ void MainMenuState::load()
 	
 	// Add menu to screen
 	mGuiScreen->addMenu(mMenu);
-
-	//
-	// Register the screen as input event listener, so it can receive events
-	//
-	mInputManager->addListener(mGuiScreen);
 }
 
 /** Update internal stuff */
@@ -80,13 +75,10 @@ void MainMenuState::unload()
 	if(mGuiScreen)
 	{
 		//
-		// Remove gui listener
-		//
-		mInputManager->removeListener(mGuiScreen);
-		//
 		// Remove gui
 		//
-		mGuiScreen->removeGui();
+		mGuiManager->removeGui(GuiScreenId::MainMenuGui);
+		mGuiScreen.reset();
 	}
 }
 

@@ -30,6 +30,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
 #include <boost/enable_shared_from_this.hpp>
 
+#include "..\..\Debug\Debug.h"
+
 #include "..\..\Utils\Utils.h"
 #include "..\..\..\include\Events\EventsInterface.h"
 #include "..\..\..\include\Lua\LuaInterface.h"
@@ -83,6 +85,7 @@ namespace WyvernsAssault
 		EVENTS_INTERFACE()
 
 		EVENTS_HANDLER(PlayerHit)
+		EVENTS_HANDLER(ItemCatch)
 
 	private:
 		SceneManager *mSceneManager;
