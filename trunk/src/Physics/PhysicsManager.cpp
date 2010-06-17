@@ -176,15 +176,13 @@ void move(EnemyPtr enemy, int rotate, int thrust)
 /* Load a mesh as ground type
 */
 void PhysicsManager::addPhysicGround(Ogre::String mesh, Ogre::String name, WyvernsAssault::GroundQueryFlags type, Ogre::Vector3 position, Ogre::Vector3 scale)
-{
-	
+{	
 	SceneNode* nodeGround = mPhysicsNode->createChildSceneNode(name,position);
 	Entity* entityGround = mSceneManager->createEntity(name,mesh);
 	entityGround->setQueryFlags(type);
 	nodeGround->attachObject(entityGround);
 	nodeGround->setVisible(false);
 	nodeGround->setScale(scale);
-
 }
 
 /* Load player physics

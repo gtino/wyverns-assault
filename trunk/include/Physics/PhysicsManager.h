@@ -105,6 +105,9 @@ namespace WyvernsAssault
 
 		Ogre::SceneNode* _getSceneNode() const { return mPhysicsNode; }
 
+		// Debug visibility function
+		void setDebugEnabled(bool visible){ mPhysicsNode->setVisible(visible); }
+
 		//
 		// Events interface
 		//
