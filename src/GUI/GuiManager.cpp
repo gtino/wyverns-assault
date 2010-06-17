@@ -116,7 +116,27 @@ EVENTS_DEFINE_HANDLER(GuiManager, ItemCatch)
 {
 	Debug::Out("GuiManager : handleItemCatchEvent");
 
-	//PlayerPtr player = evt->getPlayer();
+	/*PlayerPtr player = evt->getPlayer();
+
+	GuiWidgetPtr ui = mGuiScreenMap[GuiScreenId::PlayGui]->getWidget(GuiWidgetPlayId::UserInterface1);
+
+	GuiUserInterface::UserInterfaceData userData;
+
+	userData.life = player->getLife();
+	userData.special = player->getSpecial();
+	userData.points = player->getScore();
+
+	ui->setData(&userData);*/
+
+	GuiWidgetPtr ui = mGuiScreenMap[GuiScreenId::PlayGui]->getWidget(GuiWidgetPlayId::UserInterface1);
+
+	GuiUserInterface::UserInterfaceData userData;
+
+	userData.life = 50;
+	userData.special = 75;
+	userData.points = 200;
+
+	ui->setData(&userData);
 }
 
 EVENTS_DEFINE_HANDLER(GuiManager, PlayerAttackSpecial)
@@ -127,7 +147,13 @@ EVENTS_DEFINE_HANDLER(GuiManager, PlayerAttackSpecial)
 
 	GuiWidgetPtr ui = mGuiScreenMap[GuiScreenId::PlayGui]->getWidget(GuiWidgetPlayId::UserInterface1);
 
-	//ui->setSpecialBar( player->getSpecial() );
+	GuiUserInterface::UserInterfaceData userData;
+
+	userData.life = player->getLife();
+	userData.special = player->getSpecial();
+	userData.points = player->getScore();
+
+	ui->setData(&userData);
 }
 
 // --------------------------------

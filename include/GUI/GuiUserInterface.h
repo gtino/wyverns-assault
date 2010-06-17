@@ -38,6 +38,14 @@ namespace WyvernsAssault
 	class GuiUserInterface : public GuiWidget
 	{
 	public:
+		struct UserInterfaceData
+		{
+			Real life;
+			Real special;
+			Real points;
+		};
+
+	public:
 		GuiUserInterface(Real aspectRatio, int screenId, GuiWidgetId widgetId);
 		~GuiUserInterface();
 
@@ -47,6 +55,7 @@ namespace WyvernsAssault
 		void show();
 		void hide();
 
+	private:
 		/** Life and special bars values function */
 		Real getLifeBar(){return mLifePercent; }
 		Real getSpecialBar(){return mSpecialPercent; }
@@ -58,6 +67,8 @@ namespace WyvernsAssault
 		Real getTextPoints(){return mPoints; }
 		void setTextKills(Real value);		
 		void setTextPoints(Real value);
+
+		void setData(void* data);
 
 	protected:
 		GuiWidgetId					mWidgetId;
