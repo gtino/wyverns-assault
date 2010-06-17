@@ -63,19 +63,37 @@ void PhysicsManager::showDebugObjects()
 }
 
 void PhysicsManager::update(const float elapsedSeconds){
-	
-	// Update players ray
+
+	// Update players
 	for(PlayerMapIterator it_player = mPlayerMap.begin(); it_player != mPlayerMap.end(); ++it_player)
 	{
 		PlayerPtr player = it_player->second;
 		Vector3 position = player->getPosition();
 
-		// Check basic ground collision
+		// Update player ray
 		Vector3 hotPosition = calculateY(position,BASIC_GROUND_MASK);
-	
 		hotPosition.y += REDWYVERN_RAY_HEIGHT; // HACK : this should not be hardcoded!
-			
 		player->setPosition(hotPosition);
+
+		// Update player move
+		move(player,elapsedSeconds);
+
+	}
+
+	// Update enemys
+	for(EnemyMapIterator it_enemy = mEnemyMap.begin(); it_enemy != mEnemyMap.end(); ++it_enemy)
+	{
+		EnemyPtr enemy = it_enemy->second;
+		Vector3 position = enemy->getPosition();
+
+		// Update enemy ray
+		Vector3 hotPosition = calculateY(position,BASIC_GROUND_MASK);
+		hotPosition.y += BASIC_ENEMY_RAY_HEIGHT; // HACK : this should not be hardcoded!
+		enemy->setPosition(hotPosition);
+
+		//Update player move
+		move(enemy,elapsedSeconds);
+
 	}
 
 	// Call bounding box collision
@@ -144,8 +162,11 @@ void PhysicsManager::checkForCollisions()
 
 }
 
-void PhysicsManager::move(PlayerPtr player, Vector3 direction, const float elapsedSeconds, bool fastMode)
+void PhysicsManager::move(PlayerPtr player, const float elapsedSeconds, bool fastMode)
 {
+
+	Vector3 direction = player->getDirection();
+
 	if(direction != Vector3::ZERO)
 	{
 		Quaternion q1 = player->getOrientation();
@@ -167,10 +188,16 @@ void PhysicsManager::move(PlayerPtr player, Vector3 direction, const float elaps
 }
 
 
-void move(EnemyPtr enemy, int rotate, int thrust)
+void PhysicsManager::move(EnemyPtr enemy, const float elapsedSeconds)
 {
-	/* TODO
-	*/
+	Vector3 direction = enemy->getDirection();
+
+	Vector3 old_position = enemy->getPosition();
+
+	enemy->setPosition((direction*enemy->getSpeed()*elapsedSeconds) + old_position);
+
+	if(collidesWithBorders(old_position,enemy->getPosition(),0.5f,0,BORDER_GROUND_MASK))
+		enemy->setPosition(old_position);
 }
 
 /* Load a mesh as ground type

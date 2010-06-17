@@ -70,6 +70,7 @@ namespace WyvernsAssault
 		PlayerPtr getPlayer(Ogre::String name);
 		bool removePlayer(Ogre::String name);
 
+		void move(Ogre::String playerName, Vector3 direction);
 		void attack(Ogre::String name);
 		void attackSpecial(Ogre::String name);
 

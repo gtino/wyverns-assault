@@ -73,8 +73,8 @@ namespace WyvernsAssault
 		void finalizeEntity();
 		void updateEntity(const float elapsedSeconds);
 
-		// Player functions
-		void setPosition(Ogre::Vector3 position);
+		void setMoving(bool move){moving = move;}
+		void setAttacking(Real attack){attacking = attack;}
 
 		bool isAttacking(){ return attacking != 0 ; }
 		Real wichAttack(){ return attacking; }
@@ -93,8 +93,6 @@ namespace WyvernsAssault
 		// Particle systems
 		void setFireBreath(ParticleUniverse::ParticleSystem* fireBreath);
 
-		// Player actions functions
-		void move(Real x, Real y, Real z);
 		// Main attack combo
 		void attackA();
 		// Main attack chains

@@ -77,6 +77,8 @@ Enemy::Enemy(Ogre::String name, Enemy::EnemyTypes type)
 , mIsDebugEnabled(false)
 , mBalloonSet(0)
 , mBalloon(0)
+, beginPatrolPoint(Vector3::ZERO)
+, endPatrolPoint(Vector3::ZERO)
 {
 	mType = type;
 }
@@ -190,71 +192,91 @@ void Enemy::updateLogic(lua_State *L, const float elapsedSeconds)
 		case Enemy::EnemyStates::Idle:
 			mBalloonSet->setVisible(false);
 			mBalloonSet->setMaterialName("Balloons/Idle");
-			mSpeed = 0.0f;
 			mDirection = Vector3::ZERO;
+			mSpeed = 0.0f;
+			setMoving(false);
+			setAttacking(false);
 			break;
 		case Enemy::EnemyStates::Sleeping:
 			mBalloonSet->setVisible(true);
 			mBalloonSet->setMaterialName("Balloons/Sleeping");
-			mSpeed = 0.0f;
 			mDirection = Vector3::ZERO;
+			mSpeed = 0.0f;
+			setMoving(false);
+			setAttacking(false);
 			break;
 		case Enemy::EnemyStates::What:
 			mBalloonSet->setVisible(true);
 			mBalloonSet->setMaterialName("Balloons/What");
-			mSpeed = ENEMY_SPEED_SLOW;
-			mTarget = 0;
-			mDirection = Vector3::ZERO;
+			setDirectionToTarget();
+			mSpeed = BASIC_ENEMY_SLOW_VELOCITY;
+			setMoving(true);
+			setAttacking(false);
 			break;
 		case Enemy::EnemyStates::Alert:
 			mBalloonSet->setVisible(true);
 			mBalloonSet->setMaterialName("Balloons/Alert");
-			mSpeed = ENEMY_SPEED_FAST;
-			chase();
+			setDirectionToTarget();
+			mSpeed = BASIC_ENEMY_FAST_VELOCITY;
+			setMoving(true);
+			setAttacking(false);
 			break;
 		case Enemy::EnemyStates::Rage:
 			mBalloonSet->setVisible(true);
 			mBalloonSet->setMaterialName("Balloons/Rage");
+			mDirection = Vector3::ZERO;
 			mSpeed = 0.0f;
+			setMoving(false);
+			setAttacking(true);
 			break;
 		case Enemy::EnemyStates::Love:
 			mBalloonSet->setVisible(true);
 			mBalloonSet->setMaterialName("Balloons/Love");
-			mSpeed = 0.0f;
 			mDirection = Vector3::ZERO;
+			mSpeed = 0.0f;
+			setMoving(false);
+			setAttacking(true);
 			break;
 		case Enemy::EnemyStates::Fear:
 			mBalloonSet->setVisible(true);
 			mBalloonSet->setMaterialName("Balloons/Fear");
-			mSpeed = ENEMY_SPEED_FAST;
-			mTarget = 0;
+			setDirectionOutTarget();
+			mSpeed = BASIC_ENEMY_FAST_VELOCITY;
+			setMoving(true);
+			setAttacking(false);
 			break;
 		case Enemy::EnemyStates::Magic:
 			mBalloonSet->setVisible(true);
 			mBalloonSet->setMaterialName("Balloons/Magic");
 			mSpeed = 0.0f;
 			mDirection = Vector3::ZERO;
+			setMoving(false);
+			setAttacking(true);
 			break;
 		case Enemy::EnemyStates::Patrol:
 			mBalloonSet->setVisible(true);
 			mBalloonSet->setMaterialName("Balloons/Patrol");
-			mSpeed = ENEMY_SPEED_MEDIUM;
-			mDirection = Vector3::ZERO;
-			mTarget = 0;
+			mSpeed = BASIC_ENEMY_SLOW_VELOCITY;
+			//setAleatoryDirection();
+			//setMoving(true);
+			setMoving(false);
+			setAttacking(false);
 			break;
 		case Enemy::EnemyStates::Dying:
   			mBalloonSet->setVisible(true);
 			mBalloonSet->setMaterialName("Balloons/Dying");
-			mSpeed = 0;
 			mDirection = Vector3::ZERO;
-			mTarget = 0;
+			mSpeed = 0.0f;
+			setMoving(false);
+			setAttacking(false);
 			break;
 		case Enemy::EnemyStates::Dead:
 			mBalloonSet->setVisible(false);
 			mBalloonSet->setMaterialName("Balloons/Initial");
 			mSpeed = 0.0f;
 			mDirection = Vector3::ZERO;
-			mTarget = 0;
+			setMoving(false);
+			setAttacking(false);
 			setMaterialName("Skin/Blue"); // DEBUG : Make him blue so it is obvious he is dead
 			break;
 		default:
@@ -262,7 +284,6 @@ void Enemy::updateLogic(lua_State *L, const float elapsedSeconds)
 			mBalloonSet->setMaterialName("Balloons/Initial");
 			mSpeed = 0.0f;
 			mDirection = Vector3::ZERO;
-			mTarget = 0;
 			break;
 		}
 
@@ -303,16 +324,40 @@ bool Enemy::isDying()
 	return (mLife <= 0.0f);
 }
 
-void Enemy::chase()
+void Enemy::setDirectionToTarget()
 {
-	/*if(mTarget)
+	if(mTarget)
 	{
 		Vector3 direction = mTarget->getPosition() - mSceneNode->getPosition();
 
 		direction.normalise();
 
-		move(direction);
-	}*/
+		mDirection = direction;
+
+		/* TODO
+		*/
+		//Quaternion q1 = Quaternion(1,direction.x,direction.y,direction.z);
+		//setOrientation(q1);
+
+	}
+}
+
+void Enemy::setDirectionOutTarget()
+{
+	if(mTarget)
+	{
+		Vector3 direction = mSceneNode->getPosition() - mTarget->getPosition();
+
+		direction.normalise();
+
+		mDirection = direction;
+
+		/* TODO
+		*/
+		//Quaternion q1 = Quaternion(1,direction.x,direction.y,direction.z);
+		//setOrientation(q1);
+
+	}
 }
 
 void Enemy::setDebugEnabled(bool isDebugEnabled)

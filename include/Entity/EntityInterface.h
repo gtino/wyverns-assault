@@ -23,6 +23,16 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #ifndef __ENTITY_INTERFACE_H__
 #define __ENTITY_INTERFACE_H__
 
+#define UP_RIGHT_DIRECTION Ogre::Vector3(1,0,-1)
+#define DOWN_RIGHT_DIRECTION Ogre::Vector3(1,0,1)
+#define RIGHT_DIRECTION Ogre::Vector3(1,0,0)
+#define UP_LEFT_DIRECTION Ogre::Vector3(-1,0,-1)
+#define DOWN_LEFT_DIRECTION Ogre::Vector3(-1,0,1)
+#define LEFT_DIRECTION Ogre::Vector3(-1,0,0)
+#define UP_DIRECTION Ogre::Vector3(0,0,-1)
+#define DOWN_DIRECTION Ogre::Vector3(0,0,1)
+
+
 #include <Ogre.h>
 
 #include "..\Utils\Utils.h"

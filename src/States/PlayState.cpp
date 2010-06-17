@@ -290,65 +290,61 @@ void PlayState::update(const float elapsedSeconds)
 				// 8 directions move
 				if(this->mInputManager->getKeyboard()->isKeyDown(OIS::KeyCode::KC_RIGHT) && this->mInputManager->getKeyboard()->isKeyDown(OIS::KeyCode::KC_UP))
 				{
-					player1->move(1,0,-1);
-					mPhysicsManager->move(player1, mCameraManager->getDirection(Vector3(1,0,-1)), elapsedSeconds, fastPlayerMove);
+					mPlayerManager->move(PLAYER1,mCameraManager->getDirection(UP_RIGHT_DIRECTION));
 					lastKey = OIS::KeyCode::KC_UP;
 				}
 				else if(this->mInputManager->getKeyboard()->isKeyDown(OIS::KeyCode::KC_RIGHT) && this->mInputManager->getKeyboard()->isKeyDown(OIS::KeyCode::KC_DOWN))
 				{
-					player1->move(1,0,1);
-					mPhysicsManager->move(player1, mCameraManager->getDirection(Vector3(1,0,1)), elapsedSeconds, fastPlayerMove);
+					mPlayerManager->move(PLAYER1,mCameraManager->getDirection(DOWN_RIGHT_DIRECTION));
 					lastKey = OIS::KeyCode::KC_DOWN;
 				}
 				else if(this->mInputManager->getKeyboard()->isKeyDown(OIS::KeyCode::KC_LEFT) && this->mInputManager->getKeyboard()->isKeyDown(OIS::KeyCode::KC_UP))
 				{
-					player1->move(-1,0,-1);
-					mPhysicsManager->move(player1, mCameraManager->getDirection(Vector3(-1,0,-1)), elapsedSeconds, fastPlayerMove);
+					mPlayerManager->move(PLAYER1,mCameraManager->getDirection(UP_LEFT_DIRECTION));
 					lastKey = OIS::KeyCode::KC_UP;
 				}
 				else if(this->mInputManager->getKeyboard()->isKeyDown(OIS::KeyCode::KC_LEFT) && this->mInputManager->getKeyboard()->isKeyDown(OIS::KeyCode::KC_DOWN))
 				{
-					player1->move(-1,0,1);
-					mPhysicsManager->move(player1, mCameraManager->getDirection(Vector3(-1,0,1)), elapsedSeconds, fastPlayerMove);
+					mPlayerManager->move(PLAYER1,mCameraManager->getDirection(DOWN_LEFT_DIRECTION));
 					lastKey = OIS::KeyCode::KC_DOWN;
 				}
 				else if(this->mInputManager->getKeyboard()->isKeyDown(OIS::KeyCode::KC_RIGHT))
 				{
-					player1->move(1,0,0);
-					mPhysicsManager->move(player1, mCameraManager->getDirection(Vector3(1,0,0)), elapsedSeconds, fastPlayerMove);
+					mPlayerManager->move(PLAYER1,mCameraManager->getDirection(RIGHT_DIRECTION));
 					lastKey = OIS::KeyCode::KC_RIGHT;
 				}
 				else if(this->mInputManager->getKeyboard()->isKeyDown(OIS::KeyCode::KC_LEFT))
 				{
-					player1->move(-1,0,0);
-					mPhysicsManager->move(player1, mCameraManager->getDirection(Vector3(-1,0,0)), elapsedSeconds, fastPlayerMove);
+					mPlayerManager->move(PLAYER1,mCameraManager->getDirection(LEFT_DIRECTION));
 					lastKey = OIS::KeyCode::KC_LEFT;
 				}
 				else if(this->mInputManager->getKeyboard()->isKeyDown(OIS::KeyCode::KC_UP))
 				{
-					player1->move(0,0,-1);
-					mPhysicsManager->move(player1, mCameraManager->getDirection(Vector3(0,0,-1)), elapsedSeconds, fastPlayerMove);
+					mPlayerManager->move(PLAYER1,mCameraManager->getDirection(UP_DIRECTION));
 					lastKey = OIS::KeyCode::KC_UP;
 				}
 				else if(this->mInputManager->getKeyboard()->isKeyDown(OIS::KeyCode::KC_DOWN))
 				{
-					player1->move(0,0,1);
-					mPhysicsManager->move(player1, mCameraManager->getDirection(Vector3(0,0,1)), elapsedSeconds, fastPlayerMove);
+					mPlayerManager->move(PLAYER1,mCameraManager->getDirection(DOWN_DIRECTION));
 					lastKey = OIS::KeyCode::KC_DOWN;
 				}
 				else
 				{
 					// Iddle
-					player1->move(0,0,0);
-					//lastKey = OIS::KeyCode::KC_UNASSIGNED;
+					mPlayerManager->move(PLAYER1,Vector3::ZERO);
 				}
+			}
+			else
+			{
+				// No movement
+				mPlayerManager->move(PLAYER1,Vector3::ZERO);
 			}
 		}
 		// Other cameras not allowing movement
 		else
 		{
 			// No movement, iddle animation
-			player1->move(0,0,0);
+			mPlayerManager->move(PLAYER1,Vector3::ZERO);
 			lastKey = OIS::KeyCode::KC_UNASSIGNED;
 		}
 	}
