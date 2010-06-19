@@ -52,6 +52,13 @@ void PlayState::initialize()
 	//
 	mPostProcessManager = PostProcessManagerPtr(new PostProcessManager(mViewport));
 	mPostProcessManager->initialize();
+	
+	//
+	// Gui for this state
+	//
+	mGuiScreen = mGuiManager->createGui(GuiScreenId::PlayGui, "PlayScreen");
+	mPlayerUI = GuiUserInterfacePtr( new GuiUserInterface(mWindow->getViewport(0)->getCamera()->getAspectRatio(), GuiScreenId::PlayGui, GuiWidgetPlayId::UserInterface1) );
+	mGuiScreen->addWidget(mPlayerUI,GuiWidgetPlayId::UserInterface1);
 
 	// Player manager constructor
 	mPlayerManager = PlayerManagerPtr(new PlayerManager(mSceneManager));
@@ -62,6 +69,8 @@ void PlayState::initialize()
 	player1->setPosition(Vector3(80, 20, 870));
 	// Add fire breath (TEST!)
 	player1->setFireBreath(mParticleManager->create("firebreath","WyvernsAssault/DragonBreath"));
+	// Set player gui
+	player1->setGuiId(GuiWidgetPlayId::UserInterface1);
 
 	// Lights manager constructor
 	mLightsManager = LightsManagerPtr(new LightsManager(mSceneManager));
@@ -197,17 +206,8 @@ void PlayState::initialize()
 void PlayState::load()
 {
 	//
-	// Gui Screen for this state
+	// TODO: Load?
 	//
-	mGuiScreen = mGuiManager->createGui(GuiScreenId::PlayGui, "PlayScreen");
-
-	//
-	// Wigdets for this state
-	//	
-	mPlayerUI = GuiUserInterfacePtr( new GuiUserInterface(mWindow->getViewport(0)->getCamera()->getAspectRatio(), GuiScreenId::PlayGui, GuiWidgetPlayId::UserInterface1) );
-
-	// Add Gui Widgets to Manager
-	mGuiScreen->addWidget(mPlayerUI,GuiWidgetPlayId::UserInterface1);
 }
 
 /** Manage input */
@@ -350,6 +350,8 @@ void PlayState::update(const float elapsedSeconds)
 	}
 	else
 	{
+		mPlayerManager->stop(PLAYER1);
+
 		if( !player1->isDying() )
 			this->mNextGameStateId = GameStateId::GameOver;
 	}
@@ -559,7 +561,7 @@ bool PlayState::keyPressed(const OIS::KeyEvent& e)
 		this->mNextGameStateId = GameStateId::Ending;
 		break;
 	case OIS::KeyCode::KC_O:
-		player1->Die();		
+		player1->die();		
 		break;
 	// Pause menu
 	case OIS::KeyCode::KC_P:		

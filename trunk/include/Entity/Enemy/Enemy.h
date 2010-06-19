@@ -35,14 +35,12 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
 #define ENEMY_BILLBOARD_SHOW_TIME 2.0f // seconds
 
-#define BASIC_ENEMY_RAY_HEIGHT	20
-#define BASIC_ENEMY_SLOW_VELOCITY	50
-#define BASIC_ENEMY_FAST_VELOCITY	160
+#define ENEMY_RAY_HEIGHT	10.0f
+#define ENEMY_SLOW_SPEED	50.0f
+#define ENEMY_FAST_SPEED	70.0f
 
-#define ANIMAL_SPEED_SLOW 10.0f
-#define ANIMAL_SPEED_MEDIUM 30.0f
-#define ANIMAL_SPEED_FAST 50.0f
-#define ANIMAL_ROTATION_SPEED 3.0f
+#define ANIMAL_SLOW_SPEED	30.0f
+#define ANIMAL_FAST_SPEED	50.0f
 
 // Enemies animations number in tree
 #define ENEMY_IDDLE			0
@@ -128,8 +126,9 @@ namespace WyvernsAssault
 		void setTarget(SceneNode* target);
 		void autoTrackTarget();
 		
-		Ogre::Real getHitDamage(){return 5.0f;} // TODO : This shoul be a config parameter!
+		Ogre::Real getHitDamage(){return mAttackDamage;}
 		void hit(float damage);
+		float getPoints(){ return mPoints; }
 
 		bool isHurt();
 		bool isDying();
@@ -138,8 +137,8 @@ namespace WyvernsAssault
 		int getChannel(){return mChannel;}
 		void setChannel(int channel){mChannel = channel;}
 
-		float getSpeed(){return mSpeed;}
-		void setSpeed(float speed){mSpeed = speed;}
+		float getSpeed(){return mCurrentSpeed;}
+		//void setSpeed(float speed){mCurrentSpeed = speed;}
 
 		// Enable Debug Stuff
 		void setDebugEnabled(bool isDebugEnabled);
@@ -148,6 +147,9 @@ namespace WyvernsAssault
 		/** Animation functions */
 		void setMoving(bool move){ moving = move; }
 		void setAttacking(bool attack);
+		bool isAttacking(){ return attacking; }
+		bool attackStart(){ return newAttack; }
+		void attackFinish();
 
 	private:
 		Enemy::EnemyTypes mType;
@@ -160,9 +162,14 @@ namespace WyvernsAssault
 		Enemy::EnemyStates mState;
 		float mStateTimeout;
 		
-		float mSpeed;
-		float mMaxLife;
+		float mCurrentSpeed;
+		float mSlowSpeed;
+		float mFastSpeed;
 		float mLife;
+		float mMaxLife;
+		float mPoints;
+		float mAttackDamage;
+		float mSpecialDamage;
 
 		Vector3 beginPatrolPoint;
 		Vector3 endPatrolPoint;
@@ -177,6 +184,7 @@ namespace WyvernsAssault
 		// State control
 		bool		moving;
 		bool		attacking;
+		bool		newAttack;
 
 	private:
 

@@ -92,6 +92,8 @@ namespace WyvernsAssault
 		
 		EVENTS_HANDLER(ItemCatch)
 		EVENTS_HANDLER(PlayerAttackSpecial)
+		EVENTS_HANDLER(EnemyKill)
+		EVENTS_HANDLER(PlayerHit)
 
 		// --------------------------------
 		// BEGIN Lua Interface Declarations

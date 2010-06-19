@@ -111,11 +111,10 @@ PlayerHitEvent::PlayerHitEvent(EnemyPtr e, PlayerPtr p)
 
 //----------------------
 
-PlayerKillEvent::PlayerKillEvent(EnemyPtr e, PlayerPtr p)
+PlayerKillEvent::PlayerKillEvent(PlayerPtr p)
 :Event(EventTypes::PlayerKill, EventPriorities::Normal)
 {
 	mPlayer = p;
-	mEnemy = e;	
 }
 
 //----------------------

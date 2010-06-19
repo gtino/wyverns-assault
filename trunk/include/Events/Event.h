@@ -196,15 +196,13 @@ namespace WyvernsAssault
 	class PlayerKillEvent : public Event
 	{
 	public:
-		PlayerKillEvent(EnemyPtr e, PlayerPtr p);
+		PlayerKillEvent(PlayerPtr p);
 		~PlayerKillEvent(){};
 		
 		PlayerPtr getPlayer(){return mPlayer;}
-		EnemyPtr getEnemy(){return mEnemy;}		
 
 	private:		
 		PlayerPtr mPlayer;
-		EnemyPtr mEnemy;
 
 		Ogre::Real damage;
 	};

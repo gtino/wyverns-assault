@@ -71,8 +71,14 @@ Enemy::Enemy(Ogre::String name, Enemy::EnemyTypes type)
 , LogicInterface()
 , mStateTimeout(0.0f)
 , mState(Enemy::EnemyStates::Initial)
-, mMaxLife(100.0f)
+, mCurrentSpeed(0.0f)
+, mSlowSpeed(ENEMY_SLOW_SPEED)
+, mFastSpeed(ENEMY_FAST_SPEED)
 , mLife(100.0f)
+, mMaxLife(100.0f)
+, mPoints(100.0f)
+, mAttackDamage(0.0f)
+, mSpecialDamage(0.0f)
 , mOBBoxRenderable(0)
 , mIsDebugEnabled(false)
 , mBalloonSet(0)
@@ -101,7 +107,6 @@ void Enemy::initializeEntity(Ogre::Entity* entity, Ogre::SceneNode* sceneNode, O
 
 	Vector3 balloonPosition(0, 15, 0);
 	mBalloon = mBalloonSet->createBillboard(balloonPosition);
-	//mBalloon->setColour(ColourValue::White);
 
 	// Bounding Box
 	mOBBoxRenderable = new OBBoxRenderable("OBBoxManualMaterial_Enemy");
@@ -116,23 +121,41 @@ void Enemy::initializeEntity(Ogre::Entity* entity, Ogre::SceneNode* sceneNode, O
 	{
 	case Enemy::EnemyTypes::Chicken:
 		mAnimationSystem->loadAnimationTree( "data/animations/chicken.xml" );
+		mLife = 5;
+		mPoints = 25;
+		mSlowSpeed = ANIMAL_SLOW_SPEED;
+		mFastSpeed = ANIMAL_FAST_SPEED;
 		break;
 	case Enemy::EnemyTypes::Wizard:
 		mAnimationSystem->loadAnimationTree( "data/animations/wizard.xml" );
+		mLife = 150;
+		mPoints = 250;
+		mAttackDamage = 5;
 		break;
 	case Enemy::EnemyTypes::Wizard2:
 		mAnimationSystem->loadAnimationTree( "data/animations/wizard.xml" );
+		mLife = 150;
+		mPoints = 250;
+		mAttackDamage = 5;
 		break;
 	case Enemy::EnemyTypes::Naked:
 		mAnimationSystem->loadAnimationTree( "data/animations/naked.xml" );
+		mLife = 50;
+		mPoints = 150;
+		mSlowSpeed = ENEMY_FAST_SPEED;
 		break;
 	default:
-		mAnimationSystem->loadAnimationTree( "data/animations/knight.xml" );		
+		mAnimationSystem->loadAnimationTree( "data/animations/knight.xml" );
+		mLife = 100;
+		mPoints = 100;
+		mAttackDamage = 2;
 	}
+	mMaxLife = mLife;
 	mCurrentAnimation = mAnimationSystem->getParameter( "CurrentAnimation" );
 
 	moving = false;
 	attacking = false;
+	newAttack = false;
 
 	// Random animation start time
 	mAnimationSystem->update( rand() );
@@ -165,6 +188,13 @@ void Enemy::updateEntity(const float elapsedSeconds)
 		mCurrentAnimation->setValue( ENEMY_IDDLE );
 	}
 
+	if( mCurrentAnimation->getFloatValue() == ENEMY_ATTACK )
+	{
+		// New Attack
+		if( mEntity->getAnimationState("Attack")->getTimePosition() + elapsedSeconds > mEntity->getAnimationState("Attack")->getLength() )
+			newAttack = true;
+	}
+
 	mAnimationSystem->update( elapsedSeconds );
 }
 
@@ -193,7 +223,7 @@ void Enemy::updateLogic(lua_State *L, const float elapsedSeconds)
 			mBalloonSet->setVisible(false);
 			mBalloonSet->setMaterialName("Balloons/Idle");
 			mDirection = Vector3::ZERO;
-			mSpeed = 0.0f;
+			mCurrentSpeed = 0.0f;
 			setMoving(false);
 			setAttacking(false);
 			break;
@@ -201,7 +231,7 @@ void Enemy::updateLogic(lua_State *L, const float elapsedSeconds)
 			mBalloonSet->setVisible(true);
 			mBalloonSet->setMaterialName("Balloons/Sleeping");
 			mDirection = Vector3::ZERO;
-			mSpeed = 0.0f;
+			mCurrentSpeed = 0.0f;
 			setMoving(false);
 			setAttacking(false);
 			break;
@@ -209,7 +239,7 @@ void Enemy::updateLogic(lua_State *L, const float elapsedSeconds)
 			mBalloonSet->setVisible(true);
 			mBalloonSet->setMaterialName("Balloons/What");
 			setDirectionToTarget();
-			mSpeed = BASIC_ENEMY_SLOW_VELOCITY;
+			mCurrentSpeed = mSlowSpeed;
 			setMoving(true);
 			setAttacking(false);
 			break;
@@ -217,7 +247,7 @@ void Enemy::updateLogic(lua_State *L, const float elapsedSeconds)
 			mBalloonSet->setVisible(true);
 			mBalloonSet->setMaterialName("Balloons/Alert");
 			setDirectionToTarget();
-			mSpeed = BASIC_ENEMY_FAST_VELOCITY;
+			mCurrentSpeed = mSlowSpeed;
 			setMoving(true);
 			setAttacking(false);
 			break;
@@ -225,7 +255,7 @@ void Enemy::updateLogic(lua_State *L, const float elapsedSeconds)
 			mBalloonSet->setVisible(true);
 			mBalloonSet->setMaterialName("Balloons/Rage");
 			mDirection = Vector3::ZERO;
-			mSpeed = 0.0f;
+			mCurrentSpeed = 0.0f;
 			setMoving(false);
 			setAttacking(true);
 			break;
@@ -233,22 +263,22 @@ void Enemy::updateLogic(lua_State *L, const float elapsedSeconds)
 			mBalloonSet->setVisible(true);
 			mBalloonSet->setMaterialName("Balloons/Love");
 			mDirection = Vector3::ZERO;
-			mSpeed = 0.0f;
+			mCurrentSpeed = 0.0f;
 			setMoving(false);
-			setAttacking(true);
+			setAttacking(false);
 			break;
 		case Enemy::EnemyStates::Fear:
 			mBalloonSet->setVisible(true);
 			mBalloonSet->setMaterialName("Balloons/Fear");
 			setDirectionOutTarget();
-			mSpeed = BASIC_ENEMY_FAST_VELOCITY;
+			mCurrentSpeed = mFastSpeed;
 			setMoving(true);
 			setAttacking(false);
 			break;
 		case Enemy::EnemyStates::Magic:
 			mBalloonSet->setVisible(true);
 			mBalloonSet->setMaterialName("Balloons/Magic");
-			mSpeed = 0.0f;
+			mCurrentSpeed = 0.0f;
 			mDirection = Vector3::ZERO;
 			setMoving(false);
 			setAttacking(true);
@@ -256,9 +286,7 @@ void Enemy::updateLogic(lua_State *L, const float elapsedSeconds)
 		case Enemy::EnemyStates::Patrol:
 			mBalloonSet->setVisible(true);
 			mBalloonSet->setMaterialName("Balloons/Patrol");
-			mSpeed = BASIC_ENEMY_SLOW_VELOCITY;
-			//setAleatoryDirection();
-			//setMoving(true);
+			mCurrentSpeed = mSlowSpeed;
 			setMoving(false);
 			setAttacking(false);
 			break;
@@ -266,14 +294,14 @@ void Enemy::updateLogic(lua_State *L, const float elapsedSeconds)
   			mBalloonSet->setVisible(true);
 			mBalloonSet->setMaterialName("Balloons/Dying");
 			mDirection = Vector3::ZERO;
-			mSpeed = 0.0f;
+			mCurrentSpeed = 0.0f;
 			setMoving(false);
 			setAttacking(false);
 			break;
 		case Enemy::EnemyStates::Dead:
 			mBalloonSet->setVisible(false);
 			mBalloonSet->setMaterialName("Balloons/Initial");
-			mSpeed = 0.0f;
+			mCurrentSpeed = 0.0f;
 			mDirection = Vector3::ZERO;
 			setMoving(false);
 			setAttacking(false);
@@ -282,7 +310,7 @@ void Enemy::updateLogic(lua_State *L, const float elapsedSeconds)
 		default:
 			mBalloonSet->setVisible(false);
 			mBalloonSet->setMaterialName("Balloons/Initial");
-			mSpeed = 0.0f;
+			mCurrentSpeed = 0.0f;
 			mDirection = Vector3::ZERO;
 			break;
 		}
@@ -303,9 +331,6 @@ void Enemy::updateLogic(lua_State *L, const float elapsedSeconds)
 
 void Enemy::setTarget(SceneNode* target)
 {
-	//if(target)
-	//	mSceneNode->setAutoTracking(true,target);
-
 	mTarget = target;
 }
 
@@ -327,18 +352,23 @@ bool Enemy::isDying()
 void Enemy::setDirectionToTarget()
 {
 	if(mTarget)
-	{
-		Vector3 direction = mTarget->getPosition() - mSceneNode->getPosition();
+	{	
+		mDirection = mTarget->getPosition() - mSceneNode->getPosition();
+		Vector3 src = mSceneNode->getOrientation() * Vector3::UNIT_Z;
+		src.y = 0;
+		mDirection.y = 0;
+		mDirection.normalise();
+		src.normalise();
 
-		direction.normalise();
-
-		mDirection = direction;
-
-		/* TODO
-		*/
-		//Quaternion q1 = Quaternion(1,direction.x,direction.y,direction.z);
-		//setOrientation(q1);
-
+		if ((1.0f + src.dotProduct(mDirection)) <= 0.0001f)            // Work around 180 degree quaternion rotation quirk                         
+		{
+			mSceneNode->yaw(Degree(180));
+		}
+		else
+		{
+			Quaternion rotation = src.getRotationTo(mDirection);
+			mSceneNode->rotate(rotation);
+		}
 	}
 }
 
@@ -346,17 +376,22 @@ void Enemy::setDirectionOutTarget()
 {
 	if(mTarget)
 	{
-		Vector3 direction = mSceneNode->getPosition() - mTarget->getPosition();
+		mDirection = mTarget->getPosition() - mSceneNode->getPosition();
+		Vector3 src = mSceneNode->getOrientation() * Vector3::UNIT_Z;
+		src.y = 0;
+		mDirection.y = 0;
+		mDirection.normalise();
+		src.normalise();
 
-		direction.normalise();
-
-		mDirection = direction;
-
-		/* TODO
-		*/
-		//Quaternion q1 = Quaternion(1,direction.x,direction.y,direction.z);
-		//setOrientation(q1);
-
+		if ((1.0f + src.dotProduct(mDirection)) <= 0.0001f)            // Work around 180 degree quaternion rotation quirk                         
+		{
+			mSceneNode->yaw(Degree(180));
+		}
+		else
+		{
+			Quaternion rotation = src.getRotationTo(mDirection);
+			mSceneNode->rotate(rotation);
+		}
 	}
 }
 
@@ -374,6 +409,12 @@ void Enemy::setDebugEnabled(bool isDebugEnabled)
 // Attack animation
 void Enemy::setAttacking(bool attack)
 {
-	moving = false;
 	attacking = attack;
+	newAttack = attack;
+}
+
+void Enemy::attackFinish() 
+{ 
+	//attacking = false;
+	newAttack = false; 
 }

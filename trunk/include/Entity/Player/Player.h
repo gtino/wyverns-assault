@@ -32,6 +32,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #include "..\EntityInterface.h"
 #include "..\..\Physics\PhysicsInterface.h"
 #include "..\..\Logic\LogicInterface.h"
+#include "..\..\GUI\GuiWidget.h"
 
 #include "..\OBBoxRenderable.h"
 
@@ -42,9 +43,10 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
 #define SPECIAL_COST 25
 
-#define REDWYVERN_RAY_HEIGHT	25
-#define REDWYVERN_SLOW_VELOCITY	80
-#define REDWYVERN_FAST_VELOCITY	120
+#define REDWYVERN_HEIGHT			20
+#define REDWYVERN_SPEED				80
+#define REDWYVERN_ATTACK_DAMAGE		30
+#define REDWYVERN_SPECIAL_DAMAGE	250
 
 // Player animations number in tree
 #define PLAYER_IDDLE		0
@@ -84,8 +86,9 @@ namespace WyvernsAssault
 		bool isDeath() { return !live; }
 		bool isDying() { return timeDeath <= 3; }
 
-		Ogre::Real getHitDamage(){return 30.0f;} // TODO : This shoul be a config parameter!
-		Ogre::Real getSpecialHitDamage(){return 100.0f;} // TODO : This shoul be a config parameter!
+		Ogre::Real getHitDamage(){return mAttackDamage;}
+		Ogre::Real getComboHitDamage(){return mAttackDamage * 3;}
+		Ogre::Real getSpecialHitDamage(){return mSpecialDamage;}
 
 		// Fire attack bounding box
 		AxisAlignedBox getFireBox(){  return mFireMesh->getWorldBoundingBox(); }
@@ -104,7 +107,7 @@ namespace WyvernsAssault
 		// Special Attack
 		void attackSpecial();
 		// Die
-		void Die();
+		void die();
 
 		// Enable Debug Stuff
 		void setDebugEnabled(bool isDebugEnabled);
@@ -113,12 +116,21 @@ namespace WyvernsAssault
 		// Attack's grids
 		void hideGrids();
 
+		// Life and special
 		float getLife(){ return mLife; }
-		void addLife(float life);
+		void setLife(float life);
 		float getSpecial(){ return mSpecial; }		
-		void addSpecial(float special);
-		float getScore() { return mScore; }
-		void addScore(float score){ mScore += score; }
+		void setSpecial(float special);
+		// Player score
+		float getPoints() { return mScore; }
+		void addPoints(float score){ mScore += score; }
+
+		// Movement speed
+		float getSpeed(){ return mSpeed; }
+
+		// Gui
+		void setGuiId(GuiWidgetId id){ mGuiId = id; }
+		GuiWidgetId getGuiId(){ return mGuiId; }
 
 	private:
 		// Fire breath particle system and attach point
@@ -137,6 +149,11 @@ namespace WyvernsAssault
 		float	mMaxSpecial;
 		float	mSpecial;
 		float	mScore;
+		float	mSpeed;
+		float	mAttackDamage;
+		float	mSpecialDamage;
+
+		GuiWidgetId		mGuiId;
 
 	private:
 		

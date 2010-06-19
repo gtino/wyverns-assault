@@ -68,16 +68,15 @@ void PhysicsManager::update(const float elapsedSeconds){
 	for(PlayerMapIterator it_player = mPlayerMap.begin(); it_player != mPlayerMap.end(); ++it_player)
 	{
 		PlayerPtr player = it_player->second;
-		Vector3 position = player->getPosition();
+		Vector3 position = player->getPosition();		
 
 		// Update player ray
-		Vector3 hotPosition = calculateY(position,BASIC_GROUND_MASK);
+		/*Vector3 hotPosition = calculateY(position,BASIC_GROUND_MASK);
 		hotPosition.y += REDWYVERN_RAY_HEIGHT; // HACK : this should not be hardcoded!
-		player->setPosition(hotPosition);
+		player->setPosition(hotPosition);*/
 
 		// Update player move
 		move(player,elapsedSeconds);
-
 	}
 
 	// Update enemys
@@ -87,19 +86,16 @@ void PhysicsManager::update(const float elapsedSeconds){
 		Vector3 position = enemy->getPosition();
 
 		// Update enemy ray
-		Vector3 hotPosition = calculateY(position,BASIC_GROUND_MASK);
+		/*Vector3 hotPosition = calculateY(position,BASIC_GROUND_MASK);
 		hotPosition.y += BASIC_ENEMY_RAY_HEIGHT; // HACK : this should not be hardcoded!
-		enemy->setPosition(hotPosition);
+		enemy->setPosition(hotPosition);*/
 
 		//Update player move
 		move(enemy,elapsedSeconds);
-
 	}
 
 	// Call bounding box collision
 	checkForCollisions();
-
-	return;
 }
 
 // Bounding-Box collision
@@ -109,57 +105,47 @@ void PhysicsManager::checkForCollisions()
 	{
 		PlayerPtr player = it_player->second;
 		AxisAlignedBox player_firebox = player->getFireBox();
+		AxisAlignedBox player_box = player->getWorldBoundingBox();
 
-		// Only check if player is using special (fire) and last check was not using it
-		if ( player->isSpecial())
+		for(EnemyMapIterator it_enemy = mEnemyMap.begin(); it_enemy != mEnemyMap.end(); ++it_enemy)
 		{
-			for(EnemyMapIterator it_enemy = mEnemyMap.begin(); it_enemy != mEnemyMap.end(); ++it_enemy)
+			EnemyPtr enemy = it_enemy->second;
+			AxisAlignedBox enemy_box = enemy->getWorldBoundingBox();
+
+			// Check if player is using special (fire) and collisioning with enemy
+			if ( player->isSpecial() && player_firebox.intersects(enemy_box))
 			{
-				EnemyPtr enemy = it_enemy->second;
-				AxisAlignedBox enemy_box = enemy->getWorldBoundingBox();
-				
-				if(player_firebox.intersects(enemy_box))
+				EnemyHitEventPtr enemyHitEventPtr = EnemyHitEventPtr(new EnemyHitEvent(enemy, player));
+				enemyHitEventPtr->setDamage(player->getSpecialHitDamage());
+				raiseEvent(enemyHitEventPtr);
+			}
+
+			// Player and enemy are colliding
+			if(player_box.intersects(enemy_box))
+			{
+				// Check if player is attacking and has changed state
+				if( player->isAttacking() && mPlayerAttackLast != player->wichAttack() )
 				{
 					EnemyHitEventPtr enemyHitEventPtr = EnemyHitEventPtr(new EnemyHitEvent(enemy, player));
-					enemyHitEventPtr->setDamage(player->getSpecialHitDamage());
+					// If thrid strike more damage
+					if( player->wichAttack() == 3 )
+						enemyHitEventPtr->setDamage(player->getComboHitDamage());
+					else
+ 						enemyHitEventPtr->setDamage(player->getHitDamage());
 					raiseEvent(enemyHitEventPtr);
 				}
-			}
-		}
-
-		// Only check if player is attacking and has changed state
-		if( mPlayerAttackLast != player->wichAttack() && player->isAttacking() )
-		{
-
-			AxisAlignedBox player_box = player->getWorldBoundingBox();
-
-			for(EnemyMapIterator it_enemy = mEnemyMap.begin(); it_enemy != mEnemyMap.end(); ++it_enemy)
-			{
-				EnemyPtr enemy = it_enemy->second;
-				AxisAlignedBox enemy_box = enemy->getWorldBoundingBox();
-
-				if(player_box.intersects(enemy_box))
+				// Check if enemy is attacking
+				if( enemy->isAttacking() && enemy->attackStart() )
 				{
-					// More damage if player is doing combo!
-					if(player->wichAttack() == 3)
-					{
-						EnemyHitEventPtr enemyHitEventPtr = EnemyHitEventPtr(new EnemyHitEvent(enemy, player));
-						enemyHitEventPtr->setDamage(player->getHitDamage() * 3.0f);
-						raiseEvent(enemyHitEventPtr);
-					}
-					else
-					{
-						EnemyHitEventPtr enemyHitEventPtr = EnemyHitEventPtr(new EnemyHitEvent(enemy, player));
-						enemyHitEventPtr->setDamage(player->getHitDamage());
-						raiseEvent(enemyHitEventPtr);
-					}
+					PlayerHitEventPtr playerHitEventPtr = PlayerHitEventPtr(new PlayerHitEvent(enemy, player));
+					raiseEvent(playerHitEventPtr);
+					enemy->attackFinish();
 				}
 			}
 		}
 		// Save last attack
 		mPlayerAttackLast = player->wichAttack();
 	}
-
 }
 
 void PhysicsManager::move(PlayerPtr player, const float elapsedSeconds, bool fastMode)
@@ -178,10 +164,7 @@ void PhysicsManager::move(PlayerPtr player, const float elapsedSeconds, bool fas
 
 	Vector3 old_position = player->getPosition();
 	
-	if(fastMode)
-		player->setPosition((direction*REDWYVERN_FAST_VELOCITY*elapsedSeconds) + old_position);
-	else
-		player->setPosition((direction*REDWYVERN_SLOW_VELOCITY*elapsedSeconds) + old_position);
+	player->setPosition((direction * player->getSpeed() * elapsedSeconds) + old_position);
 
 	if(collidesWithBorders(old_position,player->getPosition(),0.5f,0,BORDER_GROUND_MASK))
 		player->setPosition(old_position);
@@ -235,7 +218,8 @@ Vector3 PhysicsManager::calculateY(const Vector3 &point, const Ogre::uint32 quer
 	Vector3 yPosition(0,0,0);
 	float distToColl = 0.0f;
 
-	if(raycast(point,Vector3::NEGATIVE_UNIT_Y,yPosition, distToColl ,queryMask)){
+	if(raycast(point,Vector3::NEGATIVE_UNIT_Y,yPosition, distToColl ,queryMask))
+	{
 		return Ogre::Vector3(point.x,yPosition.y,point.z);
 	}
 

@@ -9,7 +9,6 @@ GuiWidget()
 	char uiChild[40];
 
 	this->mWidgetId = widgetId;
-	this->mKills = 0;
 	this->mPoints = 0;
 	this->mLifePercent = 100;
 	this->mSpecialPercent = 100;
@@ -43,14 +42,6 @@ GuiWidget()
 	this->mSpecialU2 = u2;
 
 	// Initialize text areas
-	sprintf(uiChild, "Widget_%i_%i/GUI/UI/Kills", screenId, mWidgetId);
-	mTextKills = (TextAreaOverlayElement*)mUi->getChild(uiChild);
-	mTextKills->setTop(mTextKills->getTop()*aspectRatio);
-	mTextKills->setCharHeight(mTextKills->getCharHeight()*aspectRatio);
-	// Set kills value
-	sprintf(uiChild, "%.0f", mKills);
-	mTextKills->setCaption(uiChild);
-
 	sprintf(uiChild, "Widget_%i_%i/GUI/UI/Points", screenId, mWidgetId);
 	mTextPoints = (TextAreaOverlayElement*)mUi->getChild(uiChild);
 	mTextPoints->setTop(mTextPoints->getTop()*aspectRatio);	
@@ -84,42 +75,27 @@ void GuiUserInterface::hide()
 /** Life and Special bars set */
 void GuiUserInterface::setLifeBar(Real value)
 {
-	if (value < 101 && value > -1)
-	{
-		Real factor = value / 100.0;
-		Real u1, v1, u2, v2;
+	Real factor = value / 100.0;
+	Real u1, v1, u2, v2;
 
-		mLifePercent = value;
-		mLifeBar->setWidth(mLifeWidth * factor);
-		mLifeBar->getUV(u1, v1, u2, v2);		
-		mLifeBar->setUV(u1, v1, mLifeU2*factor, v2);
-	}
+	mLifePercent = value;
+	mLifeBar->setWidth(mLifeWidth * factor);
+	mLifeBar->getUV(u1, v1, u2, v2);		
+	mLifeBar->setUV(u1, v1, mLifeU2*factor, v2);
 }
 
 void GuiUserInterface::setSpecialBar(Real value)
 {
-	if (value < 101 && value > -1)
-	{
-		Real factor = value / 100.0;
-		Real u1, v1, u2, v2;
+	Real factor = value / 100.0;
+	Real u1, v1, u2, v2;
 
-		mSpecialPercent = value;
-		mSpecialBar->setWidth(mSpecialWidth * factor);
-		mSpecialBar->getUV(u1, v1, u2, v2);
-		mSpecialBar->setUV(u1, v1, mSpecialU2*factor, v2);
-	}
+	mSpecialPercent = value;
+	mSpecialBar->setWidth(mSpecialWidth * factor);
+	mSpecialBar->getUV(u1, v1, u2, v2);
+	mSpecialBar->setUV(u1, v1, mSpecialU2*factor, v2);
 }
 
-/** Kills and Points counter set */
-void GuiUserInterface::setTextKills(Real value)
-{
-	char uiText[20];
-
-	mKills = value;
-	sprintf(uiText, "%.0f", mKills);
-	mTextKills->setCaption(uiText);
-}
-
+/** Points counter set */
 void GuiUserInterface::setTextPoints(Real value)
 {
 	char uiText[20];

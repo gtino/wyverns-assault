@@ -110,6 +110,8 @@ void AudioManager::loadResources()
 	createStream( String("NakedDie01.wav"));
 	createStream( String("NakedHit01.wav"));
 	createStream( String("NakedHit02.wav"));
+	createStream( String("WizardAttack01.wav"));
+	createStream( String("WizardAttack02.wav"));
 	createStream( String("WizardDie01.wav"));
 	createStream( String("WizardHit01.wav"));
 	createStream( String("WizardHit02.wav"));
@@ -700,12 +702,22 @@ EVENTS_DEFINE_HANDLER(AudioManager, EnemyAttack)
 	SceneNode* sceneNode = enemy->_getSceneNode();
 
 	// The enemy has just attack
-	if( (rand()%3) == 0 )
-		playSound("EnemyAttack01.wav",sceneNode->_getDerivedPosition(),&channelIndex);
-	else if( (rand()%3) == 1 )
-		playSound("EnemyAttack02.wav",sceneNode->_getDerivedPosition(),&channelIndex);
-	else
-		playSound("EnemyAttack03.wav",sceneNode->_getDerivedPosition(),&channelIndex);
+	if( enemy->getEnemyType() == Enemy::EnemyTypes::Wizard || enemy->getEnemyType() == Enemy::EnemyTypes::Wizard2 )
+	{
+		if( (rand()%2) == 0 )
+			playSound("WizardAttack01.wav",sceneNode->_getDerivedPosition(),&channelIndex);
+		else 
+			playSound("WizardAttack02.wav",sceneNode->_getDerivedPosition(),&channelIndex);
+	}
+	else	
+	{
+		if( (rand()%3) == 0 )
+			playSound("EnemyAttack01.wav",sceneNode->_getDerivedPosition(),&channelIndex);
+		else if( (rand()%3) == 1 )
+			playSound("EnemyAttack02.wav",sceneNode->_getDerivedPosition(),&channelIndex);
+		else
+			playSound("EnemyAttack03.wav",sceneNode->_getDerivedPosition(),&channelIndex);
+	}
 }
 
 EVENTS_DEFINE_HANDLER(AudioManager, EnemyHit)

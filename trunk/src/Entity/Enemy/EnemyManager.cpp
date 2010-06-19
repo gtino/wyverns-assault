@@ -267,6 +267,11 @@ void EnemyManager::update(const float elapsedSeconds)
 			enemy->updateLogic(L,elapsedSeconds);
 			//enemy->updatePhysics(elapsedSeconds);
 			enemy->updateEntity(elapsedSeconds); // this updates animations too!
+			if( enemy->attackStart() )
+			{
+				EnemyAttackEventPtr evt = EnemyAttackEventPtr(new EnemyAttackEvent(enemy));
+				raiseEvent(evt);
+			}
 		}
 	}
 

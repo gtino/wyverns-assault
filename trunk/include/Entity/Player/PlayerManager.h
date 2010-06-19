@@ -73,6 +73,7 @@ namespace WyvernsAssault
 		void move(Ogre::String playerName, Vector3 direction);
 		void attack(Ogre::String name);
 		void attackSpecial(Ogre::String name);
+		void stop(Ogre::String playerName);
 
 		// Enable Debug Stuff
 		void setDebugEnabled(bool isDebugEnabled);
@@ -86,7 +87,12 @@ namespace WyvernsAssault
 		EVENTS_INTERFACE()
 
 		EVENTS_HANDLER(PlayerHit)
+		EVENTS_HANDLER(PlayerKill)
 		EVENTS_HANDLER(ItemCatch)
+		EVENTS_HANDLER(EnemyKill)
+
+	private:
+		PlayerList getPlayerList(){ return mPlayerList; }
 
 	private:
 		SceneManager *mSceneManager;
@@ -104,7 +110,8 @@ namespace WyvernsAssault
 		// Player Lib (exported to Lua)
 		LUA_LIBRARY("Player",playerlib);
 
-		LUA_FUNCTION(getPlayerPosition)
+		LUA_FUNCTION(LuaGetPlayerPosition)
+		LUA_FUNCTION(LuaGetNumPlayers)
 
 	public:
 		void luaLoadScripts(){};

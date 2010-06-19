@@ -18,7 +18,7 @@ system WyvernsAssault/Hit
         }
         emitter                                 Circle Emitter4
         {
-            emission_rate                       2
+            emission_rate                       1
             angle                               180
             time_to_live                        dyn_random
             {

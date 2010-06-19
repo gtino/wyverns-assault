@@ -63,9 +63,7 @@ namespace WyvernsAssault
 		void setSpecialBar(Real value);
 
 		/** Text area values function */
-		Real getTextKills(){return mKills; }
-		Real getTextPoints(){return mPoints; }
-		void setTextKills(Real value);		
+		Real getTextPoints(){return mPoints; }		
 		void setTextPoints(Real value);
 
 		void setData(void* data);
@@ -76,7 +74,6 @@ namespace WyvernsAssault
 		Overlay*					mOverlay;
 		PanelOverlayElement*		mLifeBar;
 		PanelOverlayElement*		mSpecialBar;
-		TextAreaOverlayElement*		mTextKills;
 		TextAreaOverlayElement*		mTextPoints;		
 
 	protected:
@@ -86,7 +83,6 @@ namespace WyvernsAssault
 		Real	mSpecialWidth;
 		Real	mSpecialU2;
 		Real	mSpecialPercent;
-		Real	mKills;
 		Real	mPoints;
 	};
 

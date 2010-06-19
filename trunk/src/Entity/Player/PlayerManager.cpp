@@ -47,6 +47,12 @@ void PlayerManager::update(const float elapsedSeconds)
 	{
 		PlayerPtr player =  mPlayerList[i];
 		player->updateEntity(elapsedSeconds);
+		// Check if dead
+		if( player->getLife() == 0 )
+		{
+			PlayerKillEventPtr playerKillEventPtr = PlayerKillEventPtr(new PlayerKillEvent(player));
+			raiseEvent(playerKillEventPtr);
+		}
 	}
 }
 
@@ -137,6 +143,12 @@ void PlayerManager::attackSpecial(Ogre::String name)
 	}
 }
 
+void PlayerManager::stop(Ogre::String playerName)
+{
+	PlayerPtr player = mPlayerMap[playerName];
+	player->setDirection(Vector3::ZERO);
+}
+
 void PlayerManager::setDebugEnabled(bool isDebugEnabled)
 {
 	if(mIsDebugEnabled != isDebugEnabled)
@@ -156,12 +168,16 @@ void PlayerManager::setDebugEnabled(bool isDebugEnabled)
 // --------------
 EVENTS_BEGIN_REGISTER_HANDLERS(PlayerManager)
 	EVENTS_REGISTER_HANDLER(PlayerManager,PlayerHit)
+	EVENTS_REGISTER_HANDLER(PlayerManager,PlayerKill)
 	EVENTS_REGISTER_HANDLER(PlayerManager,ItemCatch)
+	EVENTS_REGISTER_HANDLER(PlayerManager,EnemyKill)
 EVENTS_END_REGISTER_HANDLERS()
 
 EVENTS_BEGIN_UNREGISTER_HANDLERS(PlayerManager)
 	EVENTS_UNREGISTER_HANDLER(PlayerManager,PlayerHit)
+	EVENTS_UNREGISTER_HANDLER(PlayerManager,PlayerKill)
 	EVENTS_UNREGISTER_HANDLER(PlayerManager,ItemCatch)
+	EVENTS_UNREGISTER_HANDLER(PlayerManager,EnemyKill)
 EVENTS_END_UNREGISTER_HANDLERS()
 
 EVENTS_DEFINE_HANDLER(PlayerManager, PlayerHit)
@@ -171,7 +187,16 @@ EVENTS_DEFINE_HANDLER(PlayerManager, PlayerHit)
 	PlayerPtr player = evt->getPlayer();
 	EnemyPtr enemy = evt->getEnemy();
 
-	player->addLife(- enemy->getHitDamage());
+	player->setLife( player->getLife() - enemy->getHitDamage() );
+}
+
+EVENTS_DEFINE_HANDLER(PlayerManager, PlayerKill)
+{
+	Debug::Out("PlayerManager : handlePlayerKillEvent");
+
+	PlayerPtr player = evt->getPlayer();
+
+	player->die();
 }
 
 EVENTS_DEFINE_HANDLER(PlayerManager, ItemCatch)
@@ -186,14 +211,25 @@ EVENTS_DEFINE_HANDLER(PlayerManager, ItemCatch)
 	player->addScore(evt->getScore());*/
 }
 
+EVENTS_DEFINE_HANDLER(PlayerManager, EnemyKill)
+{
+	Debug::Out("PlayerManager : handleEnemyKill");
+
+	PlayerPtr player = evt->getPlayer();
+	EnemyPtr enemy = evt->getEnemy();
+
+	player->addPoints(enemy->getPoints());
+}
+
 // --------------------------------
 // Lua Player Lib
 // --------------------------------
 LUA_BEGIN_BINDING(PlayerManager::playerlib)
-LUA_BIND("getPosition", PlayerManager::getPlayerPosition)
+LUA_BIND("getPosition", PlayerManager::LuaGetPlayerPosition)
+LUA_BIND("getNumPlayers", PlayerManager::LuaGetNumPlayers)
 LUA_END_BINDING()
 
-int PlayerManager::getPlayerPosition(lua_State *L)
+int PlayerManager::LuaGetPlayerPosition(lua_State *L)
 {
 	/* get number of arguments */
 	int n = lua_gettop(L);
@@ -215,5 +251,26 @@ int PlayerManager::getPlayerPosition(lua_State *L)
 
 	/* return the number of results */
 	return 3;
+}
 
+int PlayerManager::LuaGetNumPlayers(lua_State *L)
+{
+	/* get number of arguments */
+	int n = lua_gettop(L);
+
+	int numPlayers = 0;
+
+	PlayerList list = PlayerManager::getSingleton().getPlayerList();
+	
+	for(int i = 0; i < list.size() ; i++)
+	{
+		PlayerPtr player =  list[i];
+		if(!player->isDeath())
+			numPlayers++;
+	}
+
+	lua_pushnumber(L, numPlayers);
+
+	/* return the number of results */
+	return 1;
 }
