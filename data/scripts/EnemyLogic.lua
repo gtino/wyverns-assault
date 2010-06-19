@@ -97,52 +97,61 @@ function runWizardLogic(enemyId, state)
 	--local nTimeInState = totalSeconds / 10;
 	--local newState = nTimeInState - math.floor(nTimeInState/nStates)*nStates
 		
-	local player = Physics.getNearestPlayer(enemyId);
-	local distance = Physics.getDistance(enemyId,player);
+	local playerNumber = Player.getNumPlayers();
+	--local playerNumber = 0;
 	
-	Enemy.setTarget(enemyId,player);
-	
-	-- How much time has passed since we entered last state?
-	local timeout = Enemy.getStateTimeout(enemyId)
-	
-	if state == Dead then
-		newState = state
-	elseif state == Dying then -- Enemy is dying (this lasts seconds)
-		if timeout > 2 then -- Enemy dying animation/cry/blood has ended, enemy is DEAD!
-			newState = Dead -- Now can be removed!
+	if playerNumber == 0 then
+		newState = Idle -- Party state! (no players alive)
+	elseif playerNumber > 0 then
+		
+		local player = Physics.getNearestPlayer(enemyId);
+		local distance = Physics.getDistance(enemyId,player);
+		
+		Enemy.setTarget(enemyId,player);
+		
+		-- How much time has passed since we entered last state?
+		local timeout = Enemy.getStateTimeout(enemyId)
+		
+		if state == Dead then
+			newState = state
+		elseif state == Dying then -- Enemy is dying (this lasts seconds)
+			if timeout > 2 then -- Enemy dying animation/cry/blood has ended, enemy is DEAD!
+				newState = Dead -- Now can be removed!
+			end
+		elseif Enemy.isDying(enemyId) then -- Now is dying (his life is < 0)
+			newState = Dying -- So we make him die in blood and fear and stuff...
+		elseif state == Initial then 
+			newState = Idle
+		elseif state == Love then -- A wizard is never in love!
+			newState = Idle -- ..he just reads his books!
+		elseif state == Patrol then -- A wizard never patrols!
+			newState = Idle -- ...he just reads his books!
+		elseif state == Idle then -- Wizard is idle...
+			if distance<SoundDistance then -- And suddenly hears a noise..
+				newState = What -- What happened? 
+			end
+		elseif state == What then -- Something is happening here...
+			if distance<SightDistance then -- The enemy can see the player!
+				newState = Magic -- ...fireballs!
+			elseif (distance>SoundDistance and timeout>15) then -- Nothing heard for a while
+				newState = Idle -- ...idle again
+			end
+		elseif state == Magic then -- ...we see the player and we are throwing fireballs at him!
+			if distance<FightingDistance then -- ...we reached the player
+				newState = Rage -- ...so let's attack him!
+			elseif (distance>SightDistance and timeout>15) then -- We cannot see the enemy anymore!
+				newState = What -- But still we are waiting to se what's going on
+			end
+		elseif state == Rage then -- ...we are attacking the player! Short Range Magic!
+			if distance>FightingDistance then -- The player is too far
+				newState = Magic -- ...fireballs
+			elseif distance>SightDistance then -- ...well the player really ran away
+				newState = What -- Caution for a little bit more...
+			end
+		else
+			newState = state -- same as before
 		end
-	elseif Enemy.isDying(enemyId) then -- Now is dying (his life is < 0)
-		newState = Dying -- So we make him die in blood and fear and stuff...
-	elseif state == Initial then 
-		newState = Idle
-	elseif state == Love then -- A wizard is never in love!
-		newState = Idle -- ..he just reads his books!
-	elseif state == Patrol then -- A wizard never patrols!
-		newState = Idle -- ...he just reads his books!
-	elseif state == Idle then -- Wizard is idle...
-		if distance<SoundDistance then -- And suddenly hears a noise..
-			newState = What -- What happened? 
-		end
-	elseif state == What then -- Something is happening here...
-		if distance<SightDistance then -- The enemy can see the player!
-			newState = Magic -- ...fireballs!
-		elseif (distance>SoundDistance and timeout>15) then -- Nothing heard for a while
-			newState = Idle -- ...idle again
-		end
-	elseif state == Magic then -- ...we see the player and we are throwing fireballs at him!
-		if distance<FightingDistance then -- ...we reached the player
-			newState = Rage -- ...so let's attack him!
-		elseif (distance>SightDistance and timeout>15) then -- We cannot see the enemy anymore!
-			newState = What -- But still we are waiting to se what's going on
-		end
-	elseif state == Rage then -- ...we are attacking the player! Short Range Magic!
-		if distance>FightingDistance then -- The player is too far
-			newState = Magic -- ...fireballs
-		elseif distance>SightDistance then -- ...well the player really ran away
-			newState = What -- Caution for a little bit more...
-		end
-	else
-		newState = state -- same as before
+		
 	end
   
 	return newState 
@@ -219,64 +228,73 @@ function runSoldierLogic(enemyId, state)
 	--local nTimeInState = totalSeconds / 10;
 	--local newState = nTimeInState - math.floor(nTimeInState/nStates)*nStates
 		
-	local player = Physics.getNearestPlayer(enemyId);
-	local distance = Physics.getDistance(enemyId,player);
+	local playerNumber = Player.getNumPlayers();
+	--local playerNumber = 0;
 	
-	Enemy.setTarget(enemyId,player);
+	if playerNumber == 0 then
+		newState = Idle -- Party state! (no players alive)
+	elseif playerNumber > 0 then
 	
-	-- How much time has passed since we entered last state?
-	local timeout = Enemy.getStateTimeout(enemyId)
-	
-	if state == Dead then
-		newState = state
-	elseif state == Dying then -- Enemy is dying (this lasts seconds)
-		if timeout > 2 then -- Enemy dying animation/cry/blood has ended, enemy is DEAD!
-			newState = Dead -- Now can be removed!
-		end
-	elseif Enemy.isDying(enemyId) then -- Now is dying (his life is < 0)
-		newState = Dying -- So we make him die in blood and fear and stuff...
-	elseif state == Initial then 
-		newState = Idle
-	elseif state == Love then -- A soldier is never in love!
-		newState = Patrol -- ..he just patrols!
-	elseif state == Idle then -- A soldier should never be in idle!
-		if timeout>10 then
-			newState = Patrol -- ...after a while he patrols again!
-		end
-	elseif state == Patrol then -- Enemy is patrolling...
-		if distance<SoundDistance then -- And suddenly hears a noise..
-			newState = What -- What happened? 
-		elseif timeout>20 then -- Bored, goes to idle
-			newState = Idle 
-		end
-	elseif state == What then -- Something is happening here...
-		if distance<SightDistance then -- The enemy can see the player!
-			newState = Alert -- ...and chase him!
-		elseif (distance>SoundDistance and timeout>5) then -- Nothing heard for a while
-			newState = Patrol -- ...patrol again
-		end
-	elseif state == Alert then -- ...we see the player and we are chasing him
-		if distance<FightingDistance then -- ...we reached the player
-			newState = Rage -- ...so let's attack him!
-		elseif distance>SightDistance then -- We cannot see the enemy anymore!
-			newState = What -- But still we are waiting to se what's going on
-		end
-	elseif state == Rage then -- ...we are attacking the player!
-		if Enemy.isHurt(enemyId) then -- But we are now seriously hurt!
-			newState = Fear -- Get the fuck outta here!
-		elseif distance>FightingDistance then -- The player is too far
-			newState = Alert -- ...chase him
-		elseif distance>SightDistance then -- ...well the player really ran away
-			newState = What -- Caution for a little bit more...
-		end
-	elseif state == Fear then
-		if distance>SoundDistance then
-			newState = Idle -- Fear is just fear
+		local player = Physics.getNearestPlayer(enemyId);
+		local distance = Physics.getDistance(enemyId,player);
+		
+		Enemy.setTarget(enemyId,player);
+		
+		-- How much time has passed since we entered last state?
+		local timeout = Enemy.getStateTimeout(enemyId)
+		
+		if state == Dead then
+			newState = state
+		elseif state == Dying then -- Enemy is dying (this lasts seconds)
+			if timeout > 2 then -- Enemy dying animation/cry/blood has ended, enemy is DEAD!
+				newState = Dead -- Now can be removed!
+			end
+		elseif Enemy.isDying(enemyId) then -- Now is dying (his life is < 0)
+			newState = Dying -- So we make him die in blood and fear and stuff...
+		elseif state == Initial then 
+			newState = Idle
+		elseif state == Love then -- A soldier is never in love!
+			newState = Patrol -- ..he just patrols!
+		elseif state == Idle then -- A soldier should never be in idle!
+			if timeout>10 then
+				newState = Patrol -- ...after a while he patrols again!
+			end
+		elseif state == Patrol then -- Enemy is patrolling...
+			if distance<SoundDistance then -- And suddenly hears a noise..
+				newState = What -- What happened? 
+			elseif timeout>20 then -- Bored, goes to idle
+				newState = Idle 
+			end
+		elseif state == What then -- Something is happening here...
+			if distance<SightDistance then -- The enemy can see the player!
+				newState = Alert -- ...and chase him!
+			elseif (distance>SoundDistance and timeout>5) then -- Nothing heard for a while
+				newState = Patrol -- ...patrol again
+			end
+		elseif state == Alert then -- ...we see the player and we are chasing him
+			if distance<FightingDistance then -- ...we reached the player
+				newState = Rage -- ...so let's attack him!
+			elseif distance>SightDistance then -- We cannot see the enemy anymore!
+				newState = What -- But still we are waiting to se what's going on
+			end
+		elseif state == Rage then -- ...we are attacking the player!
+			if Enemy.isHurt(enemyId) then -- But we are now seriously hurt!
+				newState = Fear -- Get the fuck outta here!
+			elseif distance>FightingDistance then -- The player is too far
+				newState = Alert -- ...chase him
+			elseif distance>SightDistance then -- ...well the player really ran away
+				newState = What -- Caution for a little bit more...
+			end
+		elseif state == Fear then
+			if distance>SoundDistance then
+				newState = Idle -- Fear is just fear
+			else
+				newState = Fear
+			end
 		else
-			newState = Fear
+			newState = state -- same as before
 		end
-	else
-		newState = state -- same as before
+		
 	end
   
 	return newState 

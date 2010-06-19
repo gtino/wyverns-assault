@@ -12,8 +12,8 @@ material beerGlass_material
 			fragment_program_ref ToonFP
 			{
 				param_named ambient float4 0.0 0.0 0.0 1.0
-				param_named diffuse float4 0.5 0.5 0.5 1
-				param_named specular float4 0.7 0.7 0.7 1
+				param_named diffuse float4 0.3 0.3 0.3 1
+				param_named specular float4 0.3 0.3 0.3 1
 				param_named emissive float4 0.0 0.0 0.0 1
 			}
 

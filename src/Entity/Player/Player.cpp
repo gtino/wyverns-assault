@@ -14,6 +14,10 @@ Player::Player(Ogre::String name)
 , mMaxSpecial(100.0f)
 , mSpecial(100.0f)
 , mScore(0.0f)
+, mSpeed(REDWYVERN_SPEED)
+, mAttackDamage (REDWYVERN_ATTACK_DAMAGE)
+, mSpecialDamage (REDWYVERN_SPECIAL_DAMAGE)
+, mGuiId(0)
 {
 }
 
@@ -248,10 +252,11 @@ void Player::attackSpecial()
 	}
 }
 
-void Player::Die()
+void Player::die()
 {
 	// Kill player
 	live = false;
+	mLife = -1;
 }
 
 void Player::setDebugEnabled(bool isDebugEnabled)
@@ -283,16 +288,20 @@ void Player::hideGrids()
 	mEntity->getSubEntity("grid8")->setVisible(false);
 }
 
-void Player::addLife(float life)
+void Player::setLife(float life)
 {
-	mLife += life;
+	mLife = life;
 	if( mLife > mMaxLife)
 		mLife = mMaxLife;
+	if( mLife < 0)
+		mLife = 0;
 }
 
-void Player::addSpecial(float special)
+void Player::setSpecial(float special)
 {
-	mSpecial += special;
+	mSpecial = special;
 	if( mSpecial > mMaxSpecial)
 		mSpecial = mMaxSpecial;
+	if( mSpecial < 0)
+		mSpecial = 0;
 }
