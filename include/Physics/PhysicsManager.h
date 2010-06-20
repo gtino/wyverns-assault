@@ -94,6 +94,7 @@ namespace WyvernsAssault
 		//void addPhysicObject();
 
 		void removeEnemy(EnemyPtr enemy);
+		void removeItem(ItemPtr item);
 
 		void update(const float elapsedSeconds);
 
@@ -118,6 +119,7 @@ namespace WyvernsAssault
 		void unregisterHandlers();
 
 		void handleEnemyKillEvent(EnemyKillEventPtr evt);
+		void handleItemCatchEvent(ItemCatchEventPtr evt);
 
 	private:
 

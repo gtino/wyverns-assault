@@ -55,11 +55,17 @@ void OBBoxRenderable::initialize(Ogre::String material)
 			matptrOBBoxManualMaterial->getTechnique(0)->getPass(0)->setAmbient(0, 1, 0);
 			matptrOBBoxManualMaterial->getTechnique(0)->getPass(0)->setSelfIllumination(0, 1, 0);
 		}
-		else
+		else if(material=="OBBoxManualMaterial_Item")
 		{
 			matptrOBBoxManualMaterial->getTechnique(0)->getPass(0)->setDiffuse(0, 0, 1, 0);
 			matptrOBBoxManualMaterial->getTechnique(0)->getPass(0)->setAmbient(0, 0, 1);
 			matptrOBBoxManualMaterial->getTechnique(0)->getPass(0)->setSelfIllumination(0, 0, 1);
+		}
+		else
+		{
+			matptrOBBoxManualMaterial->getTechnique(0)->getPass(0)->setDiffuse(1, 1, 0, 0);
+			matptrOBBoxManualMaterial->getTechnique(0)->getPass(0)->setAmbient(1, 1, 0);
+			matptrOBBoxManualMaterial->getTechnique(0)->getPass(0)->setSelfIllumination(1, 1, 0);
 		}
 	}
 	this->setCastShadows(false);
