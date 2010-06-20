@@ -17,6 +17,7 @@ ItemManager& ItemManager::getSingleton(void)
 ItemManager::ItemManager(Ogre::SceneManager* sceneManager)
 : mId(0)
 , mItemNode(0)
+,mIsDebugEnabled(false)
 {
 	mSceneManager = sceneManager;
 }
@@ -150,7 +151,6 @@ void ItemManager::update(const float elapsedSeconds)
 				raiseEvent(evt);
 			}
 
-			item->updateLogic(L,elapsedSeconds);
 			item->updateEntity(elapsedSeconds);
 		}
 	}
@@ -165,6 +165,19 @@ void ItemManager::update(const float elapsedSeconds)
 	itemsToRemove.clear();	
 }
 
+void ItemManager::setDebugEnabled(bool isDebugEnabled)
+{
+	if(mIsDebugEnabled != isDebugEnabled)
+	{
+		mIsDebugEnabled = isDebugEnabled;
+
+		for(int i = 0; i < mItemList.size() ; i++)
+		{
+			ItemPtr item =  mItemList[i];
+			item->setDebugEnabled(mIsDebugEnabled);
+		}
+	}
+}
 
 // --------------
 // Event handlers
@@ -189,53 +202,3 @@ EVENTS_DEFINE_HANDLER(ItemManager,ItemRemoved)
 	//TODO
 }
 
-// --------------------------------
-// Lua Item Lib
-// --------------------------------
-LUA_BEGIN_BINDING(ItemManager::itemlib)
-LUA_BIND("create", ItemManager::createItem)
-LUA_BIND("remove", ItemManager::removeItem)
-LUA_BIND("getStateTimeout", ItemManager::getItemStateTimeout)
-LUA_END_BINDING()
-
-int ItemManager::createItem(lua_State *L)
-{
-	/* get number of arguments */
-	int n = lua_gettop(L);
-
-	// n should be 1, the enemy type
-
-	int type = luaL_checkint(L, 1);
-
-	ItemPtr item = ItemManager::getSingleton().createItem((Item::ItemTypes)type);
-
-	lua_pushstring(L,item->getName().c_str());
-
-	/* return the number of results */
-	return 1;
-}
-
-int ItemManager::removeItem(lua_State *L)
-{
-	/* get number of arguments */
-	int n = lua_gettop(L);
-
-	/* return the number of results */
-	return 1;
-}
-
-int ItemManager::getItemStateTimeout(lua_State *L)
-{
-	/* get number of arguments */
-	int n = lua_gettop(L);
-
-	// n should be 1
-	Ogre::String name = luaL_checkstring(L, 1);
-
-	ItemPtr item = ItemManager::getSingleton().getItem(name);
-
-	lua_pushnumber(L,item->getStateTimeout());
-
-	/* return the number of results */
-	return 1;
-}

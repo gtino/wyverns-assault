@@ -27,14 +27,15 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
 #include "..\EntityInterface.h"
 #include "..\..\Physics\PhysicsInterface.h"
-#include "..\..\Logic\LogicInterface.h"
+
+#include "..\OBBoxRenderable.h"
 
 namespace WyvernsAssault
 {
 	/**
 	Class used to manage single item
 	*/
-	class Item : public EntityInterface, public LogicInterface, public PhysicsInterface
+	class Item : public EntityInterface, public PhysicsInterface
 	{
 	public:
 		/** List of item types */
@@ -70,11 +71,6 @@ namespace WyvernsAssault
 		void updateEntity(const float elapsedSeconds);
 
 		void caught();
-		
-		//
-		// Logic Interface
-		//
-		void updateLogic(lua_State *L, const float elapsedSeconds);
 
 		Item::ItemStates getItemState(){return mState;}
 		float getStateTimeout(){return mStateTimeout;}
@@ -83,10 +79,18 @@ namespace WyvernsAssault
 		float getSpecial(){ return mSpecial; }
 		float getScore(){ return mScore; }
 
+		
+		// Enable Debug Stuff
+		void setDebugEnabled(bool isDebugEnabled);
+		bool getDebugEnabled(){return mIsDebugEnabled;};
+
 	private:
 		Item::ItemTypes mType;
 		Item::ItemStates mState;
 		float mStateTimeout;
+
+		OBBoxRenderable* mOBBoxRenderable;
+		bool mIsDebugEnabled;
 
 		float	mLife;
 		float	mSpecial;

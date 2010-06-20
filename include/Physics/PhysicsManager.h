@@ -40,14 +40,15 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #include "..\Entity\Enemy\EnemyManager.h"
 #include "..\Entity\Enemy\Enemy.h"
 
+#include "..\Entity\Item\ItemManager.h"
+#include "..\Entity\Item\Item.h"
+
 #include "..\Events\EventsInterface.h"
 
 using namespace Ogre;
 
 namespace WyvernsAssault
 {		
-	//typedef std::map<size_t,ItemPtr> ItemMap;
-	//typedef std::map<size_t,ItemPtr>::iterator ItemMapIterator;
 
 	//typedef std::map<size_t,ObjectPtr> ObjectMap;
 	//typedef std::map<size_t,ObjectPtr>::iterator ObjectMapIterator;
@@ -89,7 +90,7 @@ namespace WyvernsAssault
 		void addPhysicGround(Ogre::String mesh, Ogre::String name, WyvernsAssault::GroundQueryFlags type, Ogre::Vector3 position, Ogre::Vector3 scale);
 		void addPhysicPlayer(PlayerPtr player);
 		void addPhysicEnemy(EnemyPtr enemy);
-		//void addPhysicItem();
+		void addPhysicItem(ItemPtr item);
 		//void addPhysicObject();
 
 		void removeEnemy(EnemyPtr enemy);
@@ -140,7 +141,7 @@ namespace WyvernsAssault
 
 		PlayerMap mPlayerMap;
 		EnemyMap mEnemyMap;
-		//ItemMap mItemMap;
+		ItemMap mItemMap;
 		//ObjectMap mObjectMap;
 
 	private:

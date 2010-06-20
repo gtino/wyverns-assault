@@ -141,7 +141,6 @@ void PlayState::initialize()
 	mLuaManager->registerInterface(mLogicManager);
 	mLuaManager->registerInterface(mEnemyManager);
 	mLuaManager->registerInterface(mPhysicsManager);
-	mLuaManager->registerInterface(mItemManager);
 	mLuaManager->registerInterface(mPlayerManager);
 
 	//
@@ -605,6 +604,7 @@ bool PlayState::keyPressed(const OIS::KeyEvent& e)
 			mEnemyManager->setDebugEnabled(true);
 			mPlayerManager->setDebugEnabled(true);
 			mPhysicsManager->setDebugEnabled(true);
+			mItemManager->setDebugEnabled(true);
 		}
 		else
 		{
@@ -617,6 +617,7 @@ bool PlayState::keyPressed(const OIS::KeyEvent& e)
 			mEnemyManager->setDebugEnabled(false);
 			mPlayerManager->setDebugEnabled(false);
 			mPhysicsManager->setDebugEnabled(false);
+			mItemManager->setDebugEnabled(false);
 		}		
 		break;
 	// Cycle filtering mode
