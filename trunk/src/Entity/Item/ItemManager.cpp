@@ -122,7 +122,7 @@ bool ItemManager::removeItem(Ogre::String name)
 	if( it != mItemList.end() )
 		mItemList.erase(it);
 
-	// Fire the event
+	// Remove the event
 	ItemRemovedEventPtr e = ItemRemovedEventPtr(new ItemRemovedEvent(itemToErase) );
 	raiseEvent(e);
 

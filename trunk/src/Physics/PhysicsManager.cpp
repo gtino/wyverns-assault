@@ -502,11 +502,14 @@ void PhysicsManager::GetMeshInformation(const Ogre::MeshPtr mesh,
 
 void PhysicsManager::removeEnemy(EnemyPtr enemy)
 {
-	//
-	// TODO : maybe we don't really need a list, and we can just use a map...
-	//
 	mEnemyMap.erase(enemy->getName());
 }
+
+void PhysicsManager::removeItem(ItemPtr item)
+{
+	mItemMap.erase(item->getName());
+}
+
 
 // --------------
 // Event handlers
@@ -516,6 +519,7 @@ void PhysicsManager::registerHandlers()
 	boost::shared_ptr<PhysicsManager> this_ = shared_from_this();
 
 	registerHandler(EventHandlerPtr(new EventHandler<PhysicsManager,EnemyKillEvent>(this_,&PhysicsManager::handleEnemyKillEvent)),EventTypes::EnemyKill);
+	registerHandler(EventHandlerPtr(new EventHandler<PhysicsManager,ItemCatchEvent>(this_,&PhysicsManager::handleItemCatchEvent)),EventTypes::ItemCatch);
 }
 
 void PhysicsManager::unregisterHandlers()
@@ -524,12 +528,20 @@ void PhysicsManager::unregisterHandlers()
 }
 
 void PhysicsManager::handleEnemyKillEvent(EnemyKillEventPtr evt)
- {
+{
 	EnemyPtr enemy = evt->getEnemy();
 	PlayerPtr player = evt->getPlayer();
 
 	// The player has just hit the enemy
    	removeEnemy(enemy);
+}
+
+void PhysicsManager::handleItemCatchEvent(ItemCatchEventPtr evt)
+{
+	ItemPtr item = evt->getItem();
+
+	// The player has just cacth the item
+   	removeItem(item);
 }
 
 // --------------------------------
