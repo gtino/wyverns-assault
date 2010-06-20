@@ -9,6 +9,8 @@ Item::Item(Ogre::String name, Item::ItemTypes type)
 , mLife(0.0f)
 , mSpecial(0.0f)
 , mScore(0.0f)
+, mOBBoxRenderable(0)
+, mIsDebugEnabled(false)
 {
 	mType = type;
 }
