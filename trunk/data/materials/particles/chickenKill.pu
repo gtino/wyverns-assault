@@ -1,98 +1,73 @@
-system WyvernsAssault/BloodKill
+system WyvernsAssault/ChickenKill
 {
-    technique Technique4
+    technique Technique10
     {
-        visual_particle_quota                   10
+        visual_particle_quota                   50
         emitted_emitter_quota                   10
-        material                                Particle/BloodSpray
+        material                                Particle/Feather
         renderer                                Billboard
         {
+            sorting                             true
             texture_coords_rows                 2
             texture_coords_columns              2
-            billboard_type                      oriented_self
             billboard_rotation_type             vertex
+            accurate_facing                     true
         }
-        emitter                                 SphereSurface Emitter7
+        emitter                                 SphereSurface Emitter11
         {
             emission_rate                       dyn_random
             {
-                min                             8
-                max                             10
+                min                             15
+                max                             20
             }
             angle                               dyn_random
             {
                 min                             10
-                max                             50
+                max                             20
             }
             time_to_live                        dyn_random
             {
-                min                             0.4
-                max                             0.5
+                min                             0.8
+                max                             1
             }
             velocity                            dyn_random
             {
-                min                             40
-                max                             60
+                min                             55
+                max                             70
             }
-            all_particle_dimensions             25
+            all_particle_dimensions             dyn_random
+            {
+                min                             4
+                max                             6
+            }
+            position                            0 -5 0
             end_texture_coords_range            3
             texture_coords                      3
-            start_colour_range                  1 1 1 1
             force_emission                      true
-            radius                              0.7
+            radius                              0.1
         }
-        affector                                Scale Affector4
+        affector                                LinearForce Affector9
         {
-            x_scale                             dyn_curved_linear
-            {
-                control_point                   0 0.922
-                control_point                   1 2.282
-            }
-            y_scale                             dyn_curved_spline
-            {
-                control_point                   0 0.95
-                control_point                   0.745 1.311
-                control_point                   1 2.604
-            }
+            force_vector                        0 -75 0
         }
-        affector                                Gravity Affector5
+        affector                                Colour Affector14
         {
-            position                            0 -0.1 0
-            gravity                             -0.5
+            time_colour                         0    0 0 0 0
+            time_colour                         0.05 1 1 1 1
+            time_colour                         0.7  1 1 1 1
+            time_colour                         1    0 0 0 0
         }
-        affector                                Jet Affector6
-        {
-            acceleration                        dyn_curved_linear
-            {
-                control_point                   0 2.475
-                control_point                   0.107 0.204
-                control_point                   1 0
-            }
-        }
-        affector                                Colour Affector8
-        {
-            time_colour                         0    1 1 1 1
-            time_colour                         0.378  1 1 1 1
-            time_colour                         0.47 1 0.788235 0.72549 1
-            time_colour                         0.683  0.858824 0.647059 0.607843 0.839216
-            time_colour                         0.754  0.807843 0.529412 0.45098 0.811765
-            time_colour                         1    1 1 1 0
-        }
-        affector                                TextureRotator Affector40
+        affector                                TextureRotator Affector16
         {
             rotation                            dyn_random
             {
-                min                             0
-                max                             360
+                min                             -1
+                max                             1
             }
-            rotation_speed                      dyn_random
-            {
-                min                             0.4
-                max                             0.5
-            }
+            rotation_speed                      0
         }
     }
-    technique Technique4
+    technique Technique11
     {
         visual_particle_quota                   15
         emitted_emitter_quota                   10
@@ -117,15 +92,15 @@ system WyvernsAssault/BloodKill
             duration                            20
             all_particle_dimensions             dyn_random
             {
-                min                             40
-                max                             50
+                min                             25
+                max                             30
             }
             particle_width                      dyn_random
             {
                 min                             0
                 max                             0
             }
-            position                            0 -10 0
+            position                            0 5 0
             end_texture_coords_range            1
             texture_coords                      1
             force_emission                      true

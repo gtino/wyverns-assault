@@ -80,7 +80,13 @@ namespace WyvernsAssault
 
 		/** Hit particles */
 		void hit(SceneNode* node);
-		void hitSpecial(SceneNode* node);
+
+		/** Fire particles **/
+		void fireHit(SceneNode* node);
+		void fireKill(SceneNode* node);
+
+		/** Animal particles **/
+		void chickenKill(SceneNode* node);
 
 		/** Glow particles */
 		void glow(SceneNode* node);

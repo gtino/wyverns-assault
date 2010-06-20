@@ -242,14 +242,14 @@ namespace WyvernsAssault
 	class ItemCatchEvent : public Event
 	{
 	public:
-		ItemCatchEvent(/*PlayerPtr p,*/ ItemPtr item);
+		ItemCatchEvent(PlayerPtr p, ItemPtr item);
 		~ItemCatchEvent(){};
 		
-		/*PlayerPtr getPlayer(){return mPlayer;}*/
+		PlayerPtr getPlayer(){return mPlayer;}
 		ItemPtr getItem(){return mItem;}
 
 	private:		
-		/*PlayerPtr mPlayer;*/
+		PlayerPtr mPlayer;
 		ItemPtr mItem;
 	};
 

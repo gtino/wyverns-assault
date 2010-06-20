@@ -136,10 +136,10 @@ PlayerAttackSpecialEvent::PlayerAttackSpecialEvent(PlayerPtr p)
 
 //----------------------
 
-ItemCatchEvent::ItemCatchEvent(/*PlayerPtr p,*/ ItemPtr i)
+ItemCatchEvent::ItemCatchEvent(PlayerPtr p, ItemPtr i)
 :Event(EventTypes::ItemCatch, EventPriorities::Normal)
 {
-	/*mPlayer = p;*/
+	mPlayer = p;
 	mItem = i;
 };
 

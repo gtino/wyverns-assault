@@ -338,10 +338,16 @@ EVENTS_DEFINE_HANDLER(EnemyManager, EnemyKill)
 	EnemyPtr enemy = evt->getEnemy();
 	PlayerPtr player = evt->getPlayer();
 
-	if( player->isSpecial() )
-		enemy->setMaterialName("Skin/Black");
+	if( enemy->getEnemyType() == Enemy::EnemyTypes::Chicken )
+		enemy->setVisible(false);
 	else
-		enemy->setMaterialName("Skin/Red");
+	{
+		if( player->isSpecial() )
+			//enemy->setMaterialName("Skin/Black");
+			enemy->setVisible(false);
+		else
+			enemy->setMaterialName("Skin/Red");
+	}
 }
 
 // --------------------------------

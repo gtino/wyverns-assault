@@ -128,6 +128,9 @@ namespace WyvernsAssault
 		// Movement speed
 		float getSpeed(){ return mSpeed; }
 
+		// Distance from center to ground
+		float getHeight(){ return mHeight; }
+
 		// Gui
 		void setGuiId(GuiWidgetId id){ mGuiId = id; }
 		GuiWidgetId getGuiId(){ return mGuiId; }
@@ -150,8 +153,9 @@ namespace WyvernsAssault
 		float	mSpecial;
 		float	mScore;
 		float	mSpeed;
+		float	mHeight;
 		float	mAttackDamage;
-		float	mSpecialDamage;
+		float	mSpecialDamage;		
 
 		GuiWidgetId		mGuiId;
 

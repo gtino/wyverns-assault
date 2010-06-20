@@ -35,10 +35,11 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
 #define ENEMY_BILLBOARD_SHOW_TIME 2.0f // seconds
 
-#define ENEMY_RAY_HEIGHT	10.0f
+#define ENEMY_HEIGHT		10.0f
 #define ENEMY_SLOW_SPEED	50.0f
 #define ENEMY_FAST_SPEED	70.0f
 
+#define ANIMAL_HEIGHT		0.0f
 #define ANIMAL_SLOW_SPEED	30.0f
 #define ANIMAL_FAST_SPEED	50.0f
 
@@ -139,6 +140,7 @@ namespace WyvernsAssault
 
 		float getSpeed(){return mCurrentSpeed;}
 		//void setSpeed(float speed){mCurrentSpeed = speed;}
+		float getHeight(){return mHeight; }
 
 		// Enable Debug Stuff
 		void setDebugEnabled(bool isDebugEnabled);
@@ -170,6 +172,7 @@ namespace WyvernsAssault
 		float mPoints;
 		float mAttackDamage;
 		float mSpecialDamage;
+		float mHeight;
 
 		Vector3 beginPatrolPoint;
 		Vector3 endPatrolPoint;

@@ -102,7 +102,7 @@ void ParticleManager::bloodHit(SceneNode* node)
 	{
 		particles = mParticleSystemManager->getParticleSystem( name + "_bloodHit");
 	}	
-	particles->startAndStopFade(1);
+	particles->startAndStopFade(2);
 }
 
 void ParticleManager::bloodKill(SceneNode* node)
@@ -118,7 +118,7 @@ void ParticleManager::bloodKill(SceneNode* node)
 	{
 		particles = mParticleSystemManager->getParticleSystem( name + "_bloodKill");
 	}	
-	particles->startAndStopFade(1);
+	particles->startAndStopFade(2);
 }
 
 void ParticleManager::bloodLens()
@@ -148,21 +148,55 @@ void ParticleManager::hit(SceneNode* node)
 	particles->startAndStopFade(1);
 }
 
-/** Hit particle */
-void ParticleManager::hitSpecial(SceneNode* node)
+/** Fire hit particle */
+void ParticleManager::fireHit(SceneNode* node)
 {
 	String name = node->getName();
 	ParticleUniverse::ParticleSystem* particles;
-	if( mParticleSystemManager->getParticleSystem(name + "_hitSpecial") == NULL)
+	if( mParticleSystemManager->getParticleSystem(name + "_fireHit") == NULL)
 	{
-		particles = mParticleSystemManager->createParticleSystem( name + "_hitSpecial", "WyvernsAssault/FireHit", mSceneManager);
+		particles = mParticleSystemManager->createParticleSystem( name + "_fireHit", "WyvernsAssault/FireHit", mSceneManager);
 		node->attachObject( particles );
 	}
 	else
 	{
-		particles = mParticleSystemManager->getParticleSystem( name + "_hitSpecial");
+		particles = mParticleSystemManager->getParticleSystem( name + "_fireHit");
 	}	
-	particles->startAndStopFade(1);
+	particles->startAndStopFade(2);
+}
+
+/** Fire kill particle */
+void ParticleManager::fireKill(SceneNode* node)
+{
+	String name = node->getName();
+	ParticleUniverse::ParticleSystem* particles;
+	if( mParticleSystemManager->getParticleSystem(name + "_fireKill") == NULL)
+	{
+		particles = mParticleSystemManager->createParticleSystem( name + "_fireKill", "WyvernsAssault/FireKill", mSceneManager);
+		node->attachObject( particles );
+	}
+	else
+	{
+		particles = mParticleSystemManager->getParticleSystem( name + "_fireKill");
+	}	
+	particles->startAndStopFade(2);
+}
+
+/** Chicken kill particle **/
+void ParticleManager::chickenKill(SceneNode* node)
+{
+	String name = node->getName();
+	ParticleUniverse::ParticleSystem* particles;
+	if( mParticleSystemManager->getParticleSystem(name + "_chickeKill") == NULL)
+	{
+		particles = mParticleSystemManager->createParticleSystem( name + "_chickeKill", "WyvernsAssault/ChickenKill", mSceneManager);
+		node->attachObject( particles );
+	}
+	else
+	{
+		particles = mParticleSystemManager->getParticleSystem( name + "_chickeKill");
+	}	
+	particles->startAndStopFade(2);
 }
 
 /** Glow particle */
@@ -179,7 +213,7 @@ void ParticleManager::glow(SceneNode* node)
 	{
 		particles = mParticleSystemManager->getParticleSystem( name + "_glow");
 	}	
-	particles->startAndStopFade(1);
+	particles->startAndStopFade(2);
 }
 
 
@@ -203,14 +237,17 @@ EVENTS_DEFINE_HANDLER(ParticleManager,EnemyHit)
 	EnemyPtr enemy = evt->getEnemy();
 	PlayerPtr player = evt->getPlayer();	
 
-	if( player->isSpecial() )
-	{
-		this->hitSpecial(enemy->_getSceneNode());
-	}
+	if( enemy->getEnemyType() == Enemy::EnemyTypes::Chicken )
+		this->chickenKill(enemy->_getSceneNode());
 	else
 	{
-		this->bloodHit(enemy->_getSceneNode());	
-		this->hit(enemy->_getSceneNode());	
+		if( player->isSpecial() )
+			this->fireHit(enemy->_getSceneNode());
+		else
+		{
+			this->bloodHit(enemy->_getSceneNode());	
+			this->hit(enemy->_getSceneNode());	
+		}
 	}
 }
 
@@ -219,12 +256,15 @@ EVENTS_DEFINE_HANDLER(ParticleManager, EnemyKill)
 	EnemyPtr enemy = evt->getEnemy();
 	PlayerPtr player = evt->getPlayer();	
 
-	if( player->isSpecial() )
-	{
-		this->hitSpecial(enemy->_getSceneNode());
-	}
+	if( enemy->getEnemyType() == Enemy::EnemyTypes::Chicken )
+		this->chickenKill(enemy->_getSceneNode());
 	else
-		this->bloodKill(enemy->_getSceneNode());	
+	{
+		if( player->isSpecial() )
+			this->fireKill(enemy->_getSceneNode());
+		else
+			this->bloodKill(enemy->_getSceneNode());	
+	}
 }
 
 EVENTS_DEFINE_HANDLER(ParticleManager, ItemCatch)
