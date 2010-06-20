@@ -1,0 +1,1262 @@
+<nodes>
+    <!--node name="light" id="840205056">
+      <rotation qw="0.324461" qx="0.906123" qy="-0.0196778" qz="-0.270701" />
+      <position x="-1705.53" y="905.216" z="-3087.19" />
+      <scale x="1" y="1" z="1" />
+    </node-->
+    <node name="Tree2_Billboard1" id="796929856">
+      <rotation qw="0.6534" qx="0.6534" qy="0.270313" qz="-0.270313" />
+      <position x="886.43" y="11.5394" z="471.361" />
+      <scale x="3.32831" y="41.7461" z="3.32831" />
+      <entity name="Entity#2" id="305429248" castshadows="true" meshFile="2DBillboard0.mesh">
+        <rotation qw="1" qx="0" qy="0" qz="0" />
+        <position x="0" y="0" z="0" />
+        <scale x="1" y="1" z="1" />
+        <subentities>
+          <subentity materialName="_2DTree2_Billboard" index="0" visible="true" />
+        </subentities>
+      </entity>
+    </node>
+    <node name="Tree3_Billboard6" id="874843584">
+      <rotation qw="0.706882" qx="0.706882" qy="0.0178101" qz="-0.0178101" />
+      <position x="613.533" y="12.6254" z="615.3" />
+      <scale x="4.25" y="4.25" z="4.25" />
+      <entity name="Entity#22" id="887691840" castshadows="true" meshFile="2DBillboard0.mesh">
+        <rotation qw="1" qx="0" qy="0" qz="0" />
+        <position x="0" y="0" z="0" />
+        <scale x="1" y="1" z="1" />
+        <subentities>
+          <subentity materialName="_2DTree3_Billboard" index="0" visible="true" />
+        </subentities>
+      </entity>
+    </node>
+    <node name="Tree3_Billboard12" id="546342400">
+      <rotation qw="0.705458" qx="0.705458" qy="0.0482547" qz="-0.0482547" />
+      <position x="790.436" y="14.6408" z="605.254" />
+      <scale x="4.25" y="4.25" z="4.25" />
+      <entity name="Entity#28" id="911679424" castshadows="true" meshFile="2DBillboard0.mesh">
+        <rotation qw="1" qx="0" qy="0" qz="0" />
+        <position x="0" y="0" z="0" />
+        <scale x="1" y="1" z="1" />
+        <subentities>
+          <subentity materialName="_2DTree3_Billboard" index="0" visible="true" />
+        </subentities>
+      </entity>
+    </node>
+    <node name="Tree3_Billboard3" id="897885056">
+      <rotation qw="0.707107" qx="0.707107" qy="0" qz="0" />
+      <position x="443.328" y="14.1261" z="601.374" />
+      <scale x="4.25" y="4.25" z="4.25" />
+      <entity name="Entity#19" id="256508080" castshadows="true" meshFile="2DBillboard0.mesh">
+        <rotation qw="1" qx="0" qy="0" qz="0" />
+        <position x="0" y="0" z="0" />
+        <scale x="1" y="1" z="1" />
+        <subentities>
+          <subentity materialName="_2DTree3_Billboard" index="0" visible="true" />
+        </subentities>
+      </entity>
+    </node>
+    <node name="CastleBillboard" id="731742336">
+      <rotation qw="0.707107" qx="0.707107" qy="-5.55112E-17" qz="8.71576E-33" />
+      <position x="495.397" y="90.9432" z="558.034" />
+      <scale x="4.95052" y="40.5771" z="4.95052" />
+      <entity name="Entity#0" id="553361600" castshadows="true" meshFile="2DBillboard0.mesh">
+        <rotation qw="1" qx="0" qy="0" qz="0" />
+        <position x="0" y="0" z="0" />
+        <scale x="1" y="1" z="1" />
+        <subentities>
+          <subentity materialName="Castle_Billboard" index="0" visible="true" />
+        </subentities>
+      </entity>
+    </node>
+    <node name="Tree2_Billboard11" id="295297088">
+      <rotation qw="0.6534" qx="0.6534" qy="0.270313" qz="-0.270313" />
+      <position x="1038.39" y="11.5394" z="340.706" />
+      <scale x="3.32831" y="41.7461" z="3.32831" />
+      <entity name="Entity#12" id="476973760" castshadows="true" meshFile="2DBillboard0.mesh">
+        <rotation qw="1" qx="0" qy="0" qz="0" />
+        <position x="0" y="0" z="0" />
+        <scale x="1" y="1" z="1" />
+        <subentities>
+          <subentity materialName="_2DTree2_Billboard" index="0" visible="true" />
+        </subentities>
+      </entity>
+    </node>
+    <node name="Tree2_Billboard9" id="798150592">
+      <rotation qw="0.6534" qx="0.6534" qy="0.270313" qz="-0.270313" />
+      <position x="1016.15" y="11.5394" z="351.454" />
+      <scale x="3.32831" y="41.7461" z="3.32831" />
+      <entity name="Entity#10" id="436262112" castshadows="true" meshFile="2DBillboard0.mesh">
+        <rotation qw="1" qx="0" qy="0" qz="0" />
+        <position x="0" y="0" z="0" />
+        <scale x="1" y="1" z="1" />
+        <subentities>
+          <subentity materialName="_2DTree2_Billboard" index="0" visible="true" />
+        </subentities>
+      </entity>
+    </node>
+    <node name="Tree2_Billboard4" id="854519">
+      <rotation qw="0.6534" qx="0.6534" qy="0.270313" qz="-0.270313" />
+      <position x="938.466" y="11.5394" z="345.355" />
+      <scale x="3.32831" y="41.7461" z="3.32831" />
+      <entity name="Entity#5" id="768578176" castshadows="true" meshFile="2DBillboard0.mesh">
+        <rotation qw="1" qx="0" qy="0" qz="0" />
+        <position x="0" y="0" z="0" />
+        <scale x="1" y="1" z="1" />
+        <subentities>
+          <subentity materialName="_2DTree2_Billboard" index="0" visible="true" />
+        </subentities>
+      </entity>
+    </node>
+    <node name="Tree3_Billboard" id="308725248">
+      <rotation qw="0.700991" qx="0.700991" qy="-0.0927974" qz="0.0927974" />
+      <position x="327.264" y="16.9563" z="667.261" />
+      <scale x="4.25" y="4.25" z="4.25" />
+      <entity name="Entity#16" id="373821216" castshadows="true" meshFile="2DBillboard0.mesh">
+        <rotation qw="1" qx="0" qy="0" qz="0" />
+        <position x="0" y="0" z="0" />
+        <scale x="1" y="1" z="1" />
+        <subentities>
+          <subentity materialName="_2DTree3_Billboard" index="0" visible="true" />
+        </subentities>
+      </entity>
+    </node>
+    <node name="Camera_Root" id="969328896">
+      <rotation qw="0.942793" qx="-0.182497" qy="0.273907" qz="0.0530203" />
+      <position x="-1637.57" y="3706.78" z="4363.15" />
+      <scale x="1" y="1" z="1" />
+    </node>
+    <node name="Tree3_Billboard10" id="449262976">
+      <rotation qw="0.655004" qx="0.655004" qy="0.266401" qz="-0.266401" />
+      <position x="823.332" y="14.6408" z="577.943" />
+      <scale x="4.25" y="4.25" z="4.25" />
+      <entity name="Entity#26" id="185064240" castshadows="true" meshFile="2DBillboard0.mesh">
+        <rotation qw="1" qx="0" qy="0" qz="0" />
+        <position x="0" y="0" z="0" />
+        <scale x="1" y="1" z="1" />
+        <subentities>
+          <subentity materialName="_2DTree3_Billboard" index="0" visible="true" />
+        </subentities>
+      </entity>
+    </node>
+    <node name="Tree2_Billboard12" id="874355328">
+      <rotation qw="0.603715" qx="0.603715" qy="0.368142" qz="-0.368142" />
+      <position x="1058.2" y="11.5394" z="312.948" />
+      <scale x="3.32831" y="41.7461" z="3.32831" />
+      <entity name="Entity#13" id="79287088" castshadows="true" meshFile="2DBillboard0.mesh">
+        <rotation qw="1" qx="0" qy="0" qz="0" />
+        <position x="0" y="0" z="0" />
+        <scale x="1" y="1" z="1" />
+        <subentities>
+          <subentity materialName="_2DTree2_Billboard" index="0" visible="true" />
+        </subentities>
+      </entity>
+    </node>
+    <node name="Scenario_Root" id="973754112">
+      <rotation qw="1" qx="0" qy="0" qz="0" />
+      <position x="0" y="-149.152" z="0" />
+      <scale x="0.25" y="0.25" z="0.25" />
+      <node name="BlueMountain4" id="993194368">
+        <rotation qw="0.96534" qx="0" qy="0.260994" qz="0" />
+        <position x="-317.867" y="174.689" z="1404" />
+        <scale x="65.7406" y="246.527" z="65.7406" />
+        <node name="PineTree26" id="687429440">
+          <rotation qw="0.0480279" qx="-0.453207" qy="-0.889544" qz="0.0317612" />
+          <position x="2.6842" y="3.21084" z="-0.135524" />
+          <scale x="0.0167324" y="0.00446198" z="0.0167324" />
+          <entity name="Entity#202" id="258888512" castshadows="true" meshFile="PineTree0.mesh">
+            <rotation qw="1" qx="0" qy="0" qz="0" />
+            <position x="0" y="0" z="0" />
+            <scale x="1" y="1" z="1" />
+            <subentities>
+              <subentity materialName="PineTree" index="0" visible="true" />
+            </subentities>
+          </entity>
+        </node>
+        <node name="PineTree27" id="411603136">
+          <rotation qw="0.408923" qx="0.183991" qy="0.827685" qz="0.33744" />
+          <position x="0.494591" y="2.91268" z="2.73949" />
+          <scale x="0.0167324" y="0.00446198" z="0.0167324" />
+          <entity name="Entity#201" id="27436140" castshadows="true" meshFile="PineTree0.mesh">
+            <rotation qw="1" qx="0" qy="0" qz="0" />
+            <position x="0" y="0" z="0" />
+            <scale x="1" y="1" z="1" />
+            <subentities>
+              <subentity materialName="PineTree" index="0" visible="true" />
+            </subentities>
+          </entity>
+        </node>
+        <node name="PineTree24" id="189001136">
+          <rotation qw="0.658201" qx="0.258401" qy="0.658201" qz="0.258401" />
+          <position x="0.494591" y="3.79778" z="1.39441" />
+          <scale x="0.0167324" y="0.00446198" z="0.0167324" />
+          <entity name="Entity#204" id="862208896" castshadows="true" meshFile="PineTree0.mesh">
+            <rotation qw="1" qx="0" qy="0" qz="0" />
+            <position x="0" y="0" z="0" />
+            <scale x="1" y="1" z="1" />
+            <subentities>
+              <subentity materialName="PineTree" index="0" visible="true" />
+            </subentities>
+          </entity>
+        </node>
+        <node name="PineTree25" id="169011504">
+          <rotation qw="0.606767" qx="-0.327638" qy="-0.652249" qz="0.314736" />
+          <position x="0.0964809" y="3.50901" z="-2.2149" />
+          <scale x="0.0167324" y="0.00446198" z="0.0167324" />
+          <entity name="Entity#203" id="228644672" castshadows="true" meshFile="PineTree0.mesh">
+            <rotation qw="1" qx="0" qy="0" qz="0" />
+            <position x="0" y="0" z="0" />
+            <scale x="1" y="1" z="1" />
+            <subentities>
+              <subentity materialName="PineTree" index="0" visible="true" />
+            </subentities>
+          </entity>
+        </node>
+        <entity name="Entity#200" id="101931824" castshadows="true" meshFile="BlueMountain0.mesh">
+          <rotation qw="1" qx="0" qy="0" qz="0" />
+          <position x="0" y="0" z="0" />
+          <scale x="1" y="1" z="1" />
+          <subentities>
+            <subentity materialName="StoneHill" index="0" visible="true" />
+          </subentities>
+        </entity>
+      </node>
+      <node name="GolfHill" id="791283904">
+        <rotation qw="0.707107" qx="0" qy="-0.707107" qz="0" />
+        <position x="1443.53" y="466.076" z="2268.96" />
+        <scale x="82.1758" y="82.1758" z="82.1758" />
+        <node name="PillTree26" id="858119424">
+          <rotation qw="1" qx="0" qy="0" qz="0" />
+          <position x="0.878308" y="4.37755" z="-0.734242" />
+          <scale x="0.0889946" y="0.289886" z="0.0889946" />
+          <entity name="Entity#347" id="744346432" castshadows="true" meshFile="BonBonTree0.mesh">
+            <rotation qw="1" qx="0" qy="0" qz="0" />
+            <position x="0" y="0" z="0" />
+            <scale x="1" y="1" z="1" />
+            <subentities>
+              <subentity materialName="BonBonTree" index="0" visible="true" />
+            </subentities>
+          </entity>
+        </node>
+        <entity name="Entity#346" id="369182400" castshadows="true" meshFile="GolfHill0.mesh">
+          <rotation qw="1" qx="0" qy="0" qz="0" />
+          <position x="0" y="0" z="0" />
+          <scale x="1" y="1" z="1" />
+          <subentities>
+            <subentity materialName="Hill" index="0" visible="true" />
+          </subentities>
+        </entity>
+      </node>
+      <node name="Volcano" id="304269568">
+        <rotation qw="1" qx="0" qy="0" qz="0" />
+        <position x="-2156.54" y="1447.61" z="1513.08" />
+        <scale x="4" y="4" z="4" />
+        <node name="Volcano_Mesh" id="781517952">
+          <rotation qw="1" qx="0" qy="0" qz="0" />
+          <position x="0" y="0" z="0" />
+          <scale x="1" y="1" z="1" />
+          <entity name="Entity#74" id="932889792" castshadows="true" meshFile="Volcano0.mesh">
+            <rotation qw="1" qx="0" qy="0" qz="0" />
+            <position x="0" y="0" z="0" />
+            <scale x="1" y="1" z="1" />
+            <subentities>
+              <subentity materialName="Volcano" index="0" visible="true" />
+              <subentity materialName="AnotherConcrete" index="1" visible="true" />
+              <subentity materialName="RedStripes" index="2" visible="true" />
+              <subentity materialName="Chalk" index="3" visible="true" />
+              <subentity materialName="ChimneyCoal" index="4" visible="true" />
+            </subentities>
+          </entity>
+        </node>
+      </node>
+      <node name="BigRock13" id="786462016">
+        <rotation qw="0.791477" qx="-0.321665" qy="0.478941" qz="-0.201771" />
+        <position x="-1366.89" y="1130.01" z="2815.33" />
+        <scale x="26.3667" y="65.4339" z="20.667" />
+        <node name="BigRock24" id="438367872">
+          <rotation qw="1" qx="7.28584E-17" qy="4.16334E-17" qz="-1.66533E-16" />
+          <position x="0" y="0" z="0" />
+          <scale x="3.16611" y="1" z="0.315845" />
+          <entity name="Entity#150" id="42146060" castshadows="true" meshFile="BigRock0.mesh">
+            <rotation qw="1" qx="0" qy="0" qz="0" />
+            <position x="0" y="0" z="0" />
+            <scale x="1" y="1" z="1" />
+            <subentities>
+              <subentity materialName="VulcanicRock" index="0" visible="true" />
+            </subentities>
+          </entity>
+        </node>
+        <entity name="Entity#149" id="21423996" castshadows="true" meshFile="BigRock0.mesh">
+          <rotation qw="1" qx="0" qy="0" qz="0" />
+          <position x="0" y="0" z="0" />
+          <scale x="1" y="1" z="1" />
+          <subentities>
+            <subentity materialName="VulcanicRock" index="0" visible="true" />
+          </subentities>
+        </entity>
+      </node>
+      <node name="CandySphereTree11" id="842127744">
+        <rotation qw="0.73582" qx="0" qy="-0.677178" qz="0" />
+        <position x="5063.8" y="621.009" z="142.449" />
+        <scale x="9.03096" y="10.7489" z="9.03096" />
+        <entity name="Entity#100" id="242622144" castshadows="true" meshFile="CandySphereTree0.mesh">
+          <rotation qw="1" qx="0" qy="0" qz="0" />
+          <position x="0" y="0" z="0" />
+          <scale x="1" y="1" z="1" />
+          <subentities>
+            <subentity materialName="Tree2" index="0" visible="true" />
+          </subentities>
+        </entity>
+      </node>
+      <node name="GreenMountain2" id="5188147">
+        <rotation qw="0.707107" qx="0" qy="-0.707107" qz="0" />
+        <position x="1541.71" y="204.208" z="1861.89" />
+        <scale x="65.7406" y="246.527" z="65.7406" />
+        <node name="RedSphereTree3" id="411664192">
+          <rotation qw="1" qx="0" qy="0" qz="0" />
+          <position x="2.48207" y="3.08068" z="-0.266152" />
+          <scale x="0.111717" y="0.030654" z="0.111717" />
+          <entity name="Entity#281" id="755333120" castshadows="true" meshFile="BonBonTree0.mesh">
+            <rotation qw="1" qx="0" qy="0" qz="0" />
+            <position x="0" y="0" z="0" />
+            <scale x="1" y="1" z="1" />
+            <subentities>
+              <subentity materialName="RedTree" index="0" visible="true" />
+            </subentities>
+          </entity>
+        </node>
+        <node name="RedSphereTree4" id="187658304">
+          <rotation qw="1" qx="0" qy="0" qz="0" />
+          <position x="1.41834" y="3.54449" z="1.18828" />
+          <scale x="0.111717" y="0.030654" z="0.111717" />
+          <entity name="Entity#282" id="101718192" castshadows="true" meshFile="BonBonTree0.mesh">
+            <rotation qw="1" qx="0" qy="0" qz="0" />
+            <position x="0" y="0" z="0" />
+            <scale x="1" y="1" z="1" />
+            <subentities>
+              <subentity materialName="RedTree" index="0" visible="true" />
+            </subentities>
+          </entity>
+        </node>
+        <entity name="Entity#280" id="914792320" castshadows="true" meshFile="BlueMountain0.mesh">
+          <rotation qw="1" qx="0" qy="0" qz="0" />
+          <position x="0" y="0" z="0" />
+          <scale x="1" y="1" z="1" />
+          <subentities>
+            <subentity materialName="HighHills" index="0" visible="true" />
+          </subentities>
+        </entity>
+      </node>
+      <node name="UfoTree_4" id="538926336">
+        <rotation qw="0.565152" qx="0" qy="-0.824987" qz="0" />
+        <position x="4151.55" y="596.607" z="-1827.96" />
+        <scale x="4" y="4" z="4" />
+        <node name="UfoTree_Mesh_2" id="991790528">
+          <rotation qw="1" qx="0" qy="-1.66533E-16" qz="0" />
+          <position x="0" y="0" z="0" />
+          <scale x="1" y="1" z="1" />
+          <entity name="Entity#41" id="869350272" castshadows="true" meshFile="UfoTree0.mesh">
+            <rotation qw="1" qx="0" qy="0" qz="0" />
+            <position x="0" y="0" z="0" />
+            <scale x="1" y="1" z="1" />
+            <subentities>
+              <subentity materialName="Wood" index="0" visible="true" />
+              <subentity materialName="TreeTop" index="1" visible="true" />
+            </subentities>
+          </entity>
+        </node>
+      </node>
+      <node name="CandyPillTree12" id="781426432">
+        <rotation qw="0.73582" qx="0" qy="-0.677178" qz="0" />
+        <position x="4600.11" y="656.73" z="613.201" />
+        <scale x="6.3783" y="20.7763" z="6.3783" />
+        <entity name="Entity#99" id="921506432" castshadows="true" meshFile="CandyPillTree0.mesh">
+          <rotation qw="1" qx="0" qy="0" qz="0" />
+          <position x="0" y="0" z="0" />
+          <scale x="1" y="1" z="1" />
+          <subentities>
+            <subentity materialName="Tree1" index="0" visible="true" />
+          </subentities>
+        </entity>
+      </node>
+      <node name="House01_1" id="588427392">
+        <rotation qw="0.999626" qx="0" qy="-0.0273661" qz="0" />
+        <position x="5204.72" y="671.049" z="694.782" />
+        <scale x="4" y="4" z="4" />
+        <node name="House01_Mesh_4" id="216223648">
+          <rotation qw="1" qx="0" qy="3.46945E-18" qz="0" />
+          <position x="-9.41469E-14" y="0" z="0" />
+          <scale x="1" y="1" z="1" />
+          <entity name="Entity#75" id="279305408" castshadows="true" meshFile="House1.mesh">
+            <rotation qw="1" qx="0" qy="0" qz="0" />
+            <position x="0" y="0" z="0" />
+            <scale x="1" y="1" z="1" />
+            <subentities>
+              <subentity materialName="House0_Roof_Material1" index="0" visible="true" />
+              <subentity materialName="House0_Building_Material1" index="1" visible="true" />
+            </subentities>
+          </entity>
+        </node>
+      </node>
+      <node name="WheatField4" id="180425440">
+        <rotation qw="0.499777" qx="-0.499777" qy="0.500223" qz="0.500223" />
+        <position x="4156.7" y="592.217" z="2391.52" />
+        <scale x="12.427" y="12.427" z="40" />
+        <entity name="Entity#104" id="297921696" castshadows="true" meshFile="WheatField1.mesh">
+          <rotation qw="1" qx="0" qy="0" qz="0" />
+          <position x="0" y="0" z="0" />
+          <scale x="1" y="1" z="1" />
+          <subentities>
+            <subentity materialName="WheatDarkGold" index="0" visible="true" />
+            <subentity materialName="WheatLightGold" index="1" visible="true" />
+          </subentities>
+        </entity>
+      </node>
+      <node name="BlueMountain1" id="105258336">
+        <rotation qw="0.949057" qx="0" qy="-0.315103" qz="0" />
+        <position x="428.805" y="174.689" z="2083.06" />
+        <scale x="65.7406" y="246.527" z="65.7406" />
+        <node name="PineTree8" id="564683968">
+          <rotation qw="0.658201" qx="0.258401" qy="0.658201" qz="0.258401" />
+          <position x="0.494591" y="3.79778" z="1.39441" />
+          <scale x="0.0167324" y="0.00446198" z="0.0167324" />
+          <entity name="Entity#224" id="469069472" castshadows="true" meshFile="PineTree0.mesh">
+            <rotation qw="1" qx="0" qy="0" qz="0" />
+            <position x="0" y="0" z="0" />
+            <scale x="1" y="1" z="1" />
+            <subentities>
+              <subentity materialName="PineTree" index="0" visible="true" />
+            </subentities>
+          </entity>
+        </node>
+        <node name="PineTree9" id="311532960">
+          <rotation qw="0.606767" qx="-0.327638" qy="-0.652249" qz="0.314736" />
+          <position x="0.0964809" y="3.50901" z="-2.2149" />
+          <scale x="0.0167324" y="0.00446198" z="0.0167324" />
+          <entity name="Entity#223" id="197668384" castshadows="true" meshFile="PineTree0.mesh">
+            <rotation qw="1" qx="0" qy="0" qz="0" />
+            <position x="0" y="0" z="0" />
+            <scale x="1" y="1" z="1" />
+            <subentities>
+              <subentity materialName="PineTree" index="0" visible="true" />
+            </subentities>
+          </entity>
+        </node>
+        <node name="PineTree11" id="276863936">
+          <rotation qw="0.408923" qx="0.183991" qy="0.827685" qz="0.33744" />
+          <position x="0.494591" y="2.91268" z="2.73949" />
+          <scale x="0.0167324" y="0.00446198" z="0.0167324" />
+          <entity name="Entity#221" id="316782112" castshadows="true" meshFile="PineTree0.mesh">
+            <rotation qw="1" qx="0" qy="0" qz="0" />
+            <position x="0" y="0" z="0" />
+            <scale x="1" y="1" z="1" />
+            <subentities>
+              <subentity materialName="PineTree" index="0" visible="true" />
+            </subentities>
+          </entity>
+        </node>
+        <node name="PineTree10" id="824243904">
+          <rotation qw="0.0480279" qx="-0.453207" qy="-0.889544" qz="0.0317612" />
+          <position x="2.6842" y="3.21084" z="-0.135524" />
+          <scale x="0.0167324" y="0.00446198" z="0.0167324" />
+          <entity name="Entity#222" id="853511168" castshadows="true" meshFile="PineTree0.mesh">
+            <rotation qw="1" qx="0" qy="0" qz="0" />
+            <position x="0" y="0" z="0" />
+            <scale x="1" y="1" z="1" />
+            <subentities>
+              <subentity materialName="PineTree" index="0" visible="true" />
+            </subentities>
+          </entity>
+        </node>
+        <entity name="Entity#220" id="394421216" castshadows="true" meshFile="BlueMountain0.mesh">
+          <rotation qw="1" qx="0" qy="0" qz="0" />
+          <position x="0" y="0" z="0" />
+          <scale x="1" y="1" z="1" />
+          <subentities>
+            <subentity materialName="StoneHill" index="0" visible="true" />
+          </subentities>
+        </entity>
+      </node>
+      <node name="GolfHill7" id="40620136">
+        <rotation qw="0.707107" qx="0" qy="-0.707107" qz="0" />
+        <position x="2548.12" y="506.861" z="-1074.86" />
+        <scale x="90.3934" y="90.3934" z="90.3934" />
+        <node name="PillTree32" id="707602112">
+          <rotation qw="1" qx="0" qy="0" qz="0" />
+          <position x="-2.33242" y="2.85455" z="2.0505" />
+          <scale x="0.0889946" y="0.289886" z="0.0889946" />
+          <entity name="Entity#356" id="442732000" castshadows="true" meshFile="BonBonTree0.mesh">
+            <rotation qw="1" qx="0" qy="0" qz="0" />
+            <position x="0" y="0" z="0" />
+            <scale x="1" y="1" z="1" />
+            <subentities>
+              <subentity materialName="BonBonTree" index="0" visible="true" />
+            </subentities>
+          </entity>
+        </node>
+        <node name="PillTree33" id="255958736">
+          <rotation qw="1" qx="0" qy="0" qz="0" />
+          <position x="-1.12533" y="2.85455" z="-2.26516" />
+          <scale x="0.0889946" y="0.289886" z="0.0889946" />
+          <entity name="Entity#355" id="410290848" castshadows="true" meshFile="BonBonTree0.mesh">
+            <rotation qw="1" qx="0" qy="0" qz="0" />
+            <position x="0" y="0" z="0" />
+            <scale x="1" y="1" z="1" />
+            <subentities>
+              <subentity materialName="BonBonTree" index="0" visible="true" />
+            </subentities>
+          </entity>
+        </node>
+        <entity name="Entity#354" id="221778000" castshadows="true" meshFile="GolfHill1.mesh">
+          <rotation qw="1" qx="0" qy="0" qz="0" />
+          <position x="0" y="0" z="0" />
+          <scale x="1" y="1" z="1" />
+          <subentities>
+            <subentity materialName="Hill" index="0" visible="true" />
+          </subentities>
+        </entity>
+      </node>
+      <node name="MuddyMountain1" id="454786848">
+        <rotation qw="0.813357" qx="0" qy="-0.581764" qz="0" />
+        <position x="2659.51" y="99.0215" z="1274.75" />
+        <scale x="65.7406" y="246.527" z="65.7406" />
+        <entity name="Entity#94" id="862300480" castshadows="true" meshFile="MuddyMountain0.mesh">
+          <rotation qw="1" qx="0" qy="0" qz="0" />
+          <position x="0" y="0" z="0" />
+          <scale x="1" y="1" z="1" />
+          <subentities>
+            <subentity materialName="MuddyHill" index="0" visible="true" />
+          </subentities>
+        </entity>
+      </node>
+      <node name="Forest6" id="326456480">
+        <rotation qw="0.910915" qx="0" qy="0.412593" qz="0" />
+        <position x="2612.28" y="567.964" z="2514.94" />
+        <scale x="0.0934924" y="0.701923" z="0.123805" />
+        <entity name="Entity#132" id="537491968" castshadows="true" meshFile="Forest0.mesh">
+          <rotation qw="1" qx="0" qy="0" qz="0" />
+          <position x="0" y="0" z="0" />
+          <scale x="1" y="1" z="1" />
+          <subentities>
+            <subentity materialName="PillTree" index="0" visible="true" />
+          </subentities>
+        </entity>
+      </node>
+      <node name="Hill16" id="144871376">
+        <rotation qw="0.707107" qx="0" qy="-0.707107" qz="0" />
+        <position x="1623.53" y="561.706" z="3630.31" />
+        <scale x="45.8645" y="45.8645" z="45.8645" />
+        <node name="PillTree19" id="761772544">
+          <rotation qw="1" qx="0" qy="-1.11022E-16" qz="0" />
+          <position x="-145.953" y="2.66807" z="2.53003" />
+          <scale x="0.158132" y="0.515092" z="0.158132" />
+          <entity name="Entity#317" id="433332320" castshadows="true" meshFile="BonBonTree0.mesh">
+            <rotation qw="1" qx="0" qy="0" qz="0" />
+            <position x="0" y="0" z="0" />
+            <scale x="1" y="1" z="1" />
+            <subentities>
+              <subentity materialName="BonBonTree" index="0" visible="true" />
+            </subentities>
+          </entity>
+        </node>
+        <node name="PillTree24" id="608111808">
+          <rotation qw="1" qx="0" qy="-1.11022E-16" qz="0" />
+          <position x="-142.152" y="2.66807" z="27.9268" />
+          <scale x="0.158132" y="0.515092" z="0.158132" />
+          <entity name="Entity#315" id="783654272" castshadows="true" meshFile="BonBonTree0.mesh">
+            <rotation qw="1" qx="0" qy="0" qz="0" />
+            <position x="0" y="0" z="0" />
+            <scale x="1" y="1" z="1" />
+            <subentities>
+              <subentity materialName="BonBonTree" index="0" visible="true" />
+            </subentities>
+          </entity>
+        </node>
+        <node name="PillTree9" id="636463552">
+          <rotation qw="1" qx="0" qy="-1.11022E-16" qz="0" />
+          <position x="-1.33336" y="3.51711" z="0.427385" />
+          <scale x="0.0996911" y="0.324729" z="0.0996911" />
+          <entity name="Entity#318" id="804559488" castshadows="true" meshFile="BonBonTree0.mesh">
+            <rotation qw="1" qx="0" qy="0" qz="0" />
+            <position x="0" y="0" z="0" />
+            <scale x="1" y="1" z="1" />
+            <subentities>
+              <subentity materialName="BonBonTree" index="0" visible="true" />
+            </subentities>
+          </entity>
+        </node>
+        <node name="PillTree8" id="174443792">
+          <rotation qw="1" qx="0" qy="-1.11022E-16" qz="0" />
+          <position x="1.29025" y="1.77774" z="2.73018" />
+          <scale x="0.0996911" y="0.324729" z="0.0996911" />
+          <entity name="Entity#319" id="322672192" castshadows="true" meshFile="BonBonTree0.mesh">
+            <rotation qw="1" qx="0" qy="0" qz="0" />
+            <position x="0" y="0" z="0" />
+            <scale x="1" y="1" z="1" />
+            <subentities>
+              <subentity materialName="BonBonTree" index="0" visible="true" />
+            </subentities>
+          </entity>
+        </node>
+        <node name="PillTree20" id="196844384">
+          <rotation qw="1" qx="0" qy="-1.11022E-16" qz="0" />
+          <position x="-99.0897" y="4.40745" z="-64.2661" />
+          <scale x="0.158132" y="0.515092" z="0.158132" />
+          <entity name="Entity#316" id="451704480" castshadows="true" meshFile="BonBonTree0.mesh">
+            <rotation qw="1" qx="0" qy="0" qz="0" />
+            <position x="0" y="0" z="0" />
+            <scale x="1" y="1" z="1" />
+            <subentities>
+              <subentity materialName="BonBonTree" index="0" visible="true" />
+            </subentities>
+          </entity>
+        </node>
+        <entity name="Entity#314" id="875270848" castshadows="true" meshFile="Hill0.mesh">
+          <rotation qw="1" qx="0" qy="0" qz="0" />
+          <position x="0" y="0" z="0" />
+          <scale x="1" y="1" z="1" />
+          <subentities>
+            <subentity materialName="Hill" index="0" visible="true" />
+          </subentities>
+        </entity>
+      </node>
+      <node name="Hill26" id="380108032">
+        <rotation qw="0.707107" qx="0" qy="-0.707107" qz="0" />
+        <position x="3883.67" y="522.847" z="-2112.1" />
+        <scale x="23.9051" y="37.0586" z="23.9051" />
+        <entity name="Entity#302" id="433271296" castshadows="true" meshFile="Hill0.mesh">
+          <rotation qw="1" qx="0" qy="0" qz="0" />
+          <position x="0" y="0" z="0" />
+          <scale x="1" y="1" z="1" />
+          <subentities>
+            <subentity materialName="Hill" index="0" visible="true" />
+          </subentities>
+        </entity>
+      </node>
+      <node name="TownHouse02_1" id="893948224">
+        <rotation qw="1" qx="0" qy="0" qz="0" />
+        <position x="861.557" y="717.254" z="-1161.25" />
+        <scale x="12" y="12" z="12" />
+        <node name="Tower" id="445570240">
+          <rotation qw="1" qx="0" qy="0" qz="0" />
+          <position x="0" y="0" z="0" />
+          <scale x="1.37201" y="2.77926" z="1.37201" />
+          <entity name="Entity#47" id="222113712" castshadows="true" meshFile="Tower0.mesh">
+            <rotation qw="1" qx="0" qy="0" qz="0" />
+            <position x="0" y="0" z="0" />
+            <scale x="1" y="1" z="1" />
+            <subentities>
+              <subentity materialName="Scene_Material" index="0" visible="true" />
+              <subentity materialName="Material1" index="1" visible="true" />
+              <subentity materialName="Material" index="2" visible="true" />
+              <subentity materialName="Material2" index="3" visible="true" />
+            </subentities>
+          </entity>
+        </node>
+      </node>
+      <node name="UfoTree_1" id="870082688">
+        <rotation qw="0.612542" qx="0" qy="-0.790438" qz="0" />
+        <position x="3598.93" y="596.607" z="-830.631" />
+        <scale x="4" y="4" z="4" />
+        <node name="UfoTree_Mesh_10" id="318063904">
+          <rotation qw="1" qx="0" qy="0" qz="0" />
+          <position x="0" y="0" z="1.42109E-14" />
+          <scale x="1" y="1" z="1" />
+          <entity name="Entity#89" id="939176640" castshadows="true" meshFile="UfoTree0.mesh">
+            <rotation qw="1" qx="0" qy="0" qz="0" />
+            <position x="0" y="0" z="0" />
+            <scale x="1" y="1" z="1" />
+            <subentities>
+              <subentity materialName="Wood" index="0" visible="true" />
+              <subentity materialName="TreeTop" index="1" visible="true" />
+            </subentities>
+          </entity>
+        </node>
+      </node>
+      <node name="CandySphereTree7" id="664906752">
+        <rotation qw="0.707107" qx="0" qy="-0.707107" qz="0" />
+        <position x="3284.71" y="621.009" z="2420.27" />
+        <scale x="9.03096" y="10.7489" z="9.03096" />
+        <entity name="Entity#113" id="870754112" castshadows="true" meshFile="CandySphereTree0.mesh">
+          <rotation qw="1" qx="0" qy="0" qz="0" />
+          <position x="0" y="0" z="0" />
+          <scale x="1" y="1" z="1" />
+          <subentities>
+            <subentity materialName="Tree2" index="0" visible="true" />
+          </subentities>
+        </entity>
+      </node>
+      <node name="House01_4" id="634754496">
+        <rotation qw="0.803457" qx="-1.07297E-18" qy="-0.595363" qz="1.997E-18" />
+        <position x="4712.17" y="671.049" z="425.726" />
+        <scale x="4" y="4" z="4" />
+        <node name="House01_Mesh" id="560075712">
+          <rotation qw="1" qx="0" qy="0" qz="0" />
+          <position x="0" y="-4.36588E-16" z="-9.9476E-14" />
+          <scale x="1" y="1" z="1" />
+          <entity name="Entity#48" id="624042496" castshadows="true" meshFile="House0.mesh">
+            <rotation qw="1" qx="0" qy="0" qz="0" />
+            <position x="0" y="0" z="0" />
+            <scale x="1" y="1" z="1" />
+            <subentities>
+              <subentity materialName="House0_Building_Material5" index="0" visible="true" />
+              <subentity materialName="House0_Roof_Material5" index="1" visible="true" />
+            </subentities>
+          </entity>
+        </node>
+      </node>
+      <node name="Bush14" id="389110976">
+        <rotation qw="0.867579" qx="0" qy="-0.4973" qz="0" />
+        <position x="2723.03" y="706.066" z="-1836.23" />
+        <scale x="4.54313" y="14.7986" z="4.54313" />
+        <entity name="Entity#249" id="427472768" castshadows="true" meshFile="Bush4.mesh">
+          <rotation qw="1" qx="0" qy="0" qz="0" />
+          <position x="0" y="0" z="0" />
+          <scale x="1" y="1" z="1" />
+          <subentities>
+            <subentity materialName="Tree1" index="0" visible="true" />
+          </subentities>
+        </entity>
+      </node>
+      <node name="MuddyMountain4" id="127628400">
+        <rotation qw="0.419168" qx="0" qy="0.907909" qz="0" />
+        <position x="2957.47" y="116.877" z="658.269" />
+        <scale x="65.7406" y="246.527" z="65.7406" />
+        <entity name="Entity#91" id="774895488" castshadows="true" meshFile="MuddyMountain0.mesh">
+          <rotation qw="1" qx="0" qy="0" qz="0" />
+          <position x="0" y="0" z="0" />
+          <scale x="1" y="1" z="1" />
+          <subentities>
+            <subentity materialName="MuddyHill" index="0" visible="true" />
+          </subentities>
+        </entity>
+      </node>
+      <node name="RedwoodTree1" id="646870336">
+        <rotation qw="1" qx="1.61029E-15" qy="1.03969E-16" qz="-1.67421E-31" />
+        <position x="2351.98" y="592.97" z="-1497.81" />
+        <scale x="4" y="4" z="4" />
+        <node name="RedwoodTree_Mesh_3" id="227729104">
+          <rotation qw="1" qx="0" qy="0" qz="0" />
+          <position x="-3.58236E-14" y="-3.27589E-17" z="0" />
+          <scale x="1" y="1" z="1" />
+          <entity name="Entity#42" id="812799424" castshadows="true" meshFile="RedwoodTree0.mesh">
+            <rotation qw="1" qx="0" qy="0" qz="0" />
+            <position x="0" y="0" z="0" />
+            <scale x="1" y="1" z="1" />
+            <subentities>
+              <subentity materialName="RedWood" index="0" visible="true" />
+              <subentity materialName="RedwoodLeaf" index="1" visible="true" />
+            </subentities>
+          </entity>
+        </node>
+      </node>
+      <node name="TownHouse01_8" id="231482896">
+        <rotation qw="0.707107" qx="0" qy="0.707107" qz="0" />
+        <position x="702.178" y="676.607" z="-1385.95" />
+        <scale x="4" y="4" z="4" />
+        <node name="TownHouse_8" id="494888160">
+          <rotation qw="1" qx="0" qy="0" qz="0" />
+          <position x="0" y="0" z="8.3292E-15" />
+          <scale x="5" y="5" z="5" />
+          <entity name="Entity#82" id="959807104" castshadows="true" meshFile="TownHouse0.mesh">
+            <rotation qw="1" qx="0" qy="0" qz="0" />
+            <position x="0" y="0" z="0" />
+            <scale x="1" y="1" z="1" />
+            <subentities>
+              <subentity materialName="TownHouse00_Roof" index="0" visible="true" />
+              <subentity materialName="TownHouse00_Building" index="1" visible="true" />
+            </subentities>
+          </entity>
+        </node>
+      </node>
+      <node name="BigRock21" id="341563168">
+        <rotation qw="0.253583" qx="0.00195124" qy="-0.967305" qz="0.00355048" />
+        <position x="1091.86" y="474.332" z="3715.83" />
+        <scale x="57.6194" y="65.4339" z="45.1637" />
+        <entity name="Entity#141" id="44373916" castshadows="true" meshFile="BigRock0.mesh">
+          <rotation qw="1" qx="0" qy="0" qz="0" />
+          <position x="0" y="0" z="0" />
+          <scale x="1" y="1" z="1" />
+          <subentities>
+            <subentity materialName="VulcanicRock" index="0" visible="true" />
+          </subentities>
+        </entity>
+      </node>
+      <node name="GolfHill14" id="121738336">
+        <rotation qw="0.707107" qx="0" qy="-0.707107" qz="0" />
+        <position x="-2.11199" y="550.862" z="925.08" />
+        <scale x="90.3934" y="90.3934" z="90.3934" />
+        <node name="PillTree28" id="706961280">
+          <rotation qw="1" qx="0" qy="0" qz="0" />
+          <position x="-2.0103" y="3.22865" z="1.33487" />
+          <scale x="0.0889946" y="0.289886" z="0.0889946" />
+          <entity name="Entity#333" id="470931104" castshadows="true" meshFile="BonBonTree0.mesh">
+            <rotation qw="1" qx="0" qy="0" qz="0" />
+            <position x="0" y="0" z="0" />
+            <scale x="1" y="1" z="1" />
+            <subentities>
+              <subentity materialName="BonBonTree" index="0" visible="true" />
+            </subentities>
+          </entity>
+        </node>
+        <entity name="Entity#332" id="284432512" castshadows="true" meshFile="GolfHill4.mesh">
+          <rotation qw="1" qx="0" qy="0" qz="0" />
+          <position x="0" y="0" z="0" />
+          <scale x="1" y="1" z="1" />
+          <subentities>
+            <subentity materialName="Hill" index="0" visible="true" />
+          </subentities>
+        </entity>
+      </node>
+      <node name="Bush11" id="302621536">
+        <rotation qw="0.867579" qx="0" qy="-0.4973" qz="0" />
+        <position x="2333.12" y="632.783" z="-2274.36" />
+        <scale x="6.43257" y="7.65621" z="6.43257" />
+        <entity name="Entity#246" id="478469184" castshadows="true" meshFile="Bush1.mesh">
+          <rotation qw="1" qx="0" qy="0" qz="0" />
+          <position x="0" y="0" z="0" />
+          <scale x="1" y="1" z="1" />
+          <subentities>
+            <subentity materialName="Tree2" index="0" visible="true" />
+          </subentities>
+        </entity>
+      </node>
+      <node name="GolfHill9" id="928434048">
+        <rotation qw="0.707107" qx="0" qy="-0.707107" qz="0" />
+        <position x="1384.53" y="449.084" z="-1572.67" />
+        <scale x="90.3934" y="90.3934" z="90.3934" />
+        <entity name="Entity#295" id="844325056" castshadows="true" meshFile="GolfHill4.mesh">
+          <rotation qw="1" qx="0" qy="0" qz="0" />
+          <position x="0" y="0" z="0" />
+          <scale x="1" y="1" z="1" />
+          <subentities>
+            <subentity materialName="Hill" index="0" visible="true" />
+          </subentities>
+        </entity>
+      </node>
+      <node name="House03_1" id="741813440">
+        <rotation qw="1" qx="0" qy="0" qz="0" />
+        <position x="2754.61" y="767.825" z="-1685.3" />
+        <scale x="4" y="4" z="4" />
+        <node name="House03_Mesh" id="716605120">
+          <rotation qw="1" qx="0" qy="0" qz="0" />
+          <position x="0" y="0" z="0" />
+          <scale x="1" y="1" z="1" />
+          <entity name="Entity#30" id="30884732" castshadows="true" meshFile="House4.mesh">
+            <rotation qw="1" qx="0" qy="0" qz="0" />
+            <position x="0" y="0" z="0" />
+            <scale x="1" y="1" z="1" />
+            <subentities>
+              <subentity materialName="wire_153228153" index="0" visible="true" />
+              <subentity materialName="wire_006134058" index="1" visible="true" />
+            </subentities>
+          </entity>
+        </node>
+      </node>
+      <node name="MelonHill2" id="152592544">
+        <rotation qw="0.252799" qx="0" qy="-0.967519" qz="0" />
+        <position x="3964.44" y="520.309" z="574.825" />
+        <scale x="82.1758" y="82.1758" z="82.1758" />
+        <node name="CandyPillTree2" id="405560448">
+          <rotation qw="1" qx="0" qy="0" qz="0" />
+          <position x="2.22357" y="3.73013" z="-1.061" />
+          <scale x="0.0853795" y="0.278111" z="0.0853795" />
+          <entity name="Entity#368" id="965819264" castshadows="true" meshFile="CandyPillTree0.mesh">
+            <rotation qw="1" qx="0" qy="0" qz="0" />
+            <position x="0" y="0" z="0" />
+            <scale x="1" y="1" z="1" />
+            <subentities>
+              <subentity materialName="Tree1" index="0" visible="true" />
+            </subentities>
+          </entity>
+        </node>
+        <node name="CandySphereTree2" id="97079384">
+          <rotation qw="1" qx="0" qy="0" qz="0" />
+          <position x="1.90338" y="3.37784" z="1.43852" />
+          <scale x="0.120888" y="0.143884" z="0.120888" />
+          <entity name="Entity#369" id="399578848" castshadows="true" meshFile="CandySphereTree0.mesh">
+            <rotation qw="1" qx="0" qy="0" qz="0" />
+            <position x="0" y="0" z="0" />
+            <scale x="1" y="1" z="1" />
+            <subentities>
+              <subentity materialName="Tree2" index="0" visible="true" />
+            </subentities>
+          </entity>
+        </node>
+        <node name="CandyPillTree3" id="535203104">
+          <rotation qw="1" qx="0" qy="0" qz="0" />
+          <position x="-2.23348" y="3.22078" z="-1.77651" />
+          <scale x="0.0889946" y="0.289886" z="0.0889946" />
+          <entity name="Entity#366" id="916714944" castshadows="true" meshFile="CandyPillTree1.mesh">
+            <rotation qw="1" qx="0" qy="0" qz="0" />
+            <position x="0" y="0" z="0" />
+            <scale x="1" y="1" z="1" />
+            <subentities>
+              <subentity materialName="Tree1" index="0" visible="true" />
+            </subentities>
+          </entity>
+        </node>
+        <node name="CandySphereTree3" id="652729856">
+          <rotation qw="1" qx="0" qy="0" qz="0" />
+          <position x="-0.143016" y="2.94102" z="-2.5134" />
+          <scale x="0.120888" y="0.143884" z="0.120888" />
+          <entity name="Entity#367" id="224463648" castshadows="true" meshFile="CandySphereTree1.mesh">
+            <rotation qw="1" qx="0" qy="0" qz="0" />
+            <position x="0" y="0" z="0" />
+            <scale x="1" y="1" z="1" />
+            <subentities>
+              <subentity materialName="Tree2" index="0" visible="true" />
+            </subentities>
+          </entity>
+        </node>
+        <entity name="Entity#365" id="16541033" castshadows="true" meshFile="MelonHill0.mesh">
+          <rotation qw="1" qx="0" qy="0" qz="0" />
+          <position x="0" y="0" z="0" />
+          <scale x="1" y="1" z="1" />
+          <subentities>
+            <subentity materialName="MelonHill" index="0" visible="true" />
+          </subentities>
+        </entity>
+      </node>
+      <node name="PillTree36" id="478438688">
+        <rotation qw="0.707107" qx="0" qy="-0.707107" qz="0" />
+        <position x="1593.64" y="663.922" z="2689.63" />
+        <scale x="7.3132" y="23.8216" z="7.3132" />
+        <entity name="Entity#127" id="691793536" castshadows="true" meshFile="BonBonTree0.mesh">
+          <rotation qw="1" qx="0" qy="0" qz="0" />
+          <position x="0" y="0" z="0" />
+          <scale x="1" y="1" z="1" />
+          <subentities>
+            <subentity materialName="BonBonTree" index="0" visible="true" />
+          </subentities>
+        </entity>
+      </node>
+      <node name="RedwoodTree" id="806390592">
+        <rotation qw="1" qx="0" qy="0" qz="0" />
+        <position x="3090.79" y="596.607" z="-2257.98" />
+        <scale x="4" y="4" z="4" />
+        <node name="RedwoodTree_Mesh_2" id="852015744">
+          <rotation qw="1" qx="0" qy="0" qz="0" />
+          <position x="0" y="0" z="0" />
+          <scale x="1" y="1" z="1" />
+          <entity name="Entity#40" id="331614144" castshadows="true" meshFile="RedwoodTree0.mesh">
+            <rotation qw="1" qx="0" qy="0" qz="0" />
+            <position x="0" y="0" z="0" />
+            <scale x="1" y="1" z="1" />
+            <subentities>
+              <subentity materialName="RedWood" index="0" visible="true" />
+              <subentity materialName="RedwoodLeaf" index="1" visible="true" />
+            </subentities>
+          </entity>
+        </node>
+      </node>
+      <node name="BigRock5" id="247383040">
+        <rotation qw="0.406186" qx="-0.128527" qy="-0.572883" qz="-0.700214" />
+        <position x="-68.9917" y="599.75" z="3090.65" />
+        <scale x="57.6194" y="65.4339" z="45.1637" />
+        <entity name="Entity#379" id="111575672" castshadows="true" meshFile="BigRock0.mesh">
+          <rotation qw="1" qx="0" qy="0" qz="0" />
+          <position x="0" y="0" z="0" />
+          <scale x="1" y="1" z="1" />
+          <subentities>
+            <subentity materialName="VulcanicRock" index="0" visible="true" />
+          </subentities>
+        </entity>
+      </node>
+      <node name="BonBonTree5" id="281380640">
+        <rotation qw="0.707107" qx="0" qy="-0.707107" qz="0" />
+        <position x="2626.81" y="641.867" z="2640.29" />
+        <scale x="7.3132" y="17.0004" z="7.3132" />
+        <entity name="Entity#121" id="949461312" castshadows="true" meshFile="BonBonTree0.mesh">
+          <rotation qw="1" qx="0" qy="0" qz="0" />
+          <position x="0" y="0" z="0" />
+          <scale x="1" y="1" z="1" />
+          <subentities>
+            <subentity materialName="BonBonTree" index="0" visible="true" />
+          </subentities>
+        </entity>
+      </node>
+      <node name="Bush" id="629139072">
+        <rotation qw="0.867579" qx="0" qy="-0.4973" qz="0" />
+        <position x="3062.76" y="698.109" z="-2537.57" />
+        <scale x="4.54313" y="14.7986" z="4.54313" />
+        <entity name="Entity#235" id="332773824" castshadows="true" meshFile="BonBonTree0.mesh">
+          <rotation qw="1" qx="0" qy="0" qz="0" />
+          <position x="0" y="0" z="0" />
+          <scale x="1" y="1" z="1" />
+          <subentities>
+            <subentity materialName="BonBonTree" index="0" visible="true" />
+          </subentities>
+        </entity>
+      </node>
+      <node name="GreenMountain10" id="343119584">
+        <rotation qw="0.0358865" qx="0" qy="-0.999356" qz="0" />
+        <position x="1737.81" y="204.208" z="-430.121" />
+        <scale x="65.7406" y="246.527" z="65.7406" />
+        <node name="RedSphereTree22" id="154271072">
+          <rotation qw="1" qx="0" qy="6.93889E-18" qz="0" />
+          <position x="-0.550182" y="3.54449" z="1.91848" />
+          <scale x="0.111717" y="0.030654" z="0.111717" />
+          <entity name="Entity#258" id="341532640" castshadows="true" meshFile="BonBonTree0.mesh">
+            <rotation qw="1" qx="0" qy="0" qz="0" />
+            <position x="0" y="0" z="0" />
+            <scale x="1" y="1" z="1" />
+            <subentities>
+              <subentity materialName="RedTree" index="0" visible="true" />
+            </subentities>
+          </entity>
+        </node>
+        <node name="RedSphereTree23" id="229316080">
+          <rotation qw="1" qx="0" qy="6.93889E-18" qz="0" />
+          <position x="-2.2117" y="3.3096" z="-0.647808" />
+          <scale x="0.111717" y="0.030654" z="0.111717" />
+          <entity name="Entity#257" id="310312224" castshadows="true" meshFile="BonBonTree0.mesh">
+            <rotation qw="1" qx="0" qy="0" qz="0" />
+            <position x="0" y="0" z="0" />
+            <scale x="1" y="1" z="1" />
+            <subentities>
+              <subentity materialName="RedTree" index="0" visible="true" />
+            </subentities>
+          </entity>
+        </node>
+        <entity name="Entity#256" id="913388480" castshadows="true" meshFile="BlueMountain0.mesh">
+          <rotation qw="1" qx="0" qy="0" qz="0" />
+          <position x="0" y="0" z="0" />
+          <scale x="1" y="1" z="1" />
+          <subentities>
+            <subentity materialName="HighHills" index="0" visible="true" />
+          </subentities>
+        </entity>
+      </node>
+      <node name="House02_4" id="418469792">
+        <rotation qw="0.719284" qx="0" qy="0.694717" qz="0" />
+        <position x="2872.87" y="602.788" z="-2460.33" />
+        <scale x="4" y="4" z="4" />
+        <node name="House02_Mesh_1" id="156590480">
+          <rotation qw="1" qx="0" qy="-1.66533E-16" qz="0" />
+          <position x="0" y="0" z="-3.19744E-14" />
+          <scale x="1" y="1" z="1" />
+          <entity name="Entity#36" id="919034432" castshadows="true" meshFile="House3.mesh">
+            <rotation qw="1" qx="0" qy="0" qz="0" />
+            <position x="0" y="0" z="0" />
+            <scale x="1" y="1" z="1" />
+            <subentities>
+              <subentity materialName="House02_Bottom_Material" index="0" visible="true" />
+              <subentity materialName="House02_Top_Material" index="1" visible="true" />
+            </subentities>
+          </entity>
+        </node>
+      </node>
+      <node name="RedwoodTree4" id="865199744">
+        <rotation qw="1" qx="0" qy="0" qz="0" />
+        <position x="3894.09" y="596.607" z="-534.047" />
+        <scale x="4" y="4" z="4" />
+        <node name="RedwoodTree_Mesh_7" id="437421792">
+          <rotation qw="1" qx="0" qy="0" qz="0" />
+          <position x="0" y="0" z="0" />
+          <scale x="1" y="1" z="1" />
+          <entity name="Entity#67" id="699636800" castshadows="true" meshFile="RedwoodTree0.mesh">
+            <rotation qw="1" qx="0" qy="0" qz="0" />
+            <position x="0" y="0" z="0" />
+            <scale x="1" y="1" z="1" />
+            <subentities>
+              <subentity materialName="RedWood" index="0" visible="true" />
+              <subentity materialName="RedwoodLeaf" index="1" visible="true" />
+            </subentities>
+          </entity>
+        </node>
+      </node>
+      <node name="TownHouse01_3" id="501693792">
+        <rotation qw="1" qx="0" qy="0" qz="0" />
+        <position x="834.846" y="676.607" z="-2571.34" />
+        <scale x="4" y="4" z="4" />
+        <node name="TownHouse_1" id="242866288">
+          <rotation qw="1" qx="0" qy="0" qz="0" />
+          <position x="0" y="0" z="0" />
+          <scale x="5" y="5" z="5" />
+          <entity name="Entity#37" id="754478592" castshadows="true" meshFile="TownHouse0.mesh">
+            <rotation qw="1" qx="0" qy="0" qz="0" />
+            <position x="0" y="0" z="0" />
+            <scale x="1" y="1" z="1" />
+            <subentities>
+              <subentity materialName="TownHouse00_Roof" index="0" visible="true" />
+              <subentity materialName="TownHouse00_Building" index="1" visible="true" />
+            </subentities>
+          </entity>
+        </node>
+      </node>
+      <node name="WoodenWall" id="367503872">
+        <rotation qw="1" qx="0" qy="0" qz="0" />
+        <position x="1894.63" y="0" z="-1747.99" />
+        <scale x="1" y="1" z="1" />
+        <node name="WoodenWallPole17" id="618854336">
+          <rotation qw="1" qx="0" qy="0" qz="0" />
+          <position x="-1.84336" y="677.474" z="-684.208" />
+          <scale x="4" y="4" z="4" />
+          <entity name="Entity#172" id="594775232" castshadows="true" meshFile="WoodenWallPole0.mesh">
+            <rotation qw="1" qx="0" qy="0" qz="0" />
+            <position x="0" y="0" z="0" />
+            <scale x="1" y="1" z="1" />
+            <subentities>
+              <subentity materialName="WoodenPole" index="0" visible="true" />
+            </subentities>
+          </entity>
+        </node>
+        <node name="WoodenWallPole32" id="289529088">
+          <rotation qw="1" qx="0" qy="0" qz="0" />
+          <position x="-46.9851" y="677.474" z="-204.777" />
+          <scale x="4" y="4" z="4" />
+          <entity name="Entity#157" id="50965912" castshadows="true" meshFile="WoodenWallPole0.mesh">
+            <rotation qw="1" qx="0" qy="0" qz="0" />
+            <position x="0" y="0" z="0" />
+            <scale x="1" y="1" z="1" />
+            <subentities>
+              <subentity materialName="WoodenPole" index="0" visible="true" />
+            </subentities>
+          </entity>
+        </node>
+        <node name="WoodenWallPole10" id="727561216">
+          <rotation qw="1" qx="0" qy="0" qz="0" />
+          <position x="-1.84336" y="675.991" z="-43.574" />
+          <scale x="4" y="4" z="4" />
+          <entity name="Entity#179" id="206488240" castshadows="true" meshFile="WoodenWallPole0.mesh">
+            <rotation qw="1" qx="0" qy="0" qz="0" />
+            <position x="0" y="0" z="0" />
+            <scale x="1" y="1" z="1" />
+            <subentities>
+              <subentity materialName="WoodenPole" index="0" visible="true" />
+            </subentities>
+          </entity>
+        </node>
+        <node name="WoodenWallPole28" id="649617024">
+          <rotation qw="1" qx="0" qy="0" qz="0" />
+          <position x="-80.9853" y="677.474" z="-255.352" />
+          <scale x="4" y="4" z="4" />
+          <entity name="Entity#161" id="83681752" castshadows="true" meshFile="WoodenWallPole0.mesh">
+            <rotation qw="1" qx="0" qy="0" qz="0" />
+            <position x="0" y="0" z="0" />
+            <scale x="1" y="1" z="1" />
+            <subentities>
+              <subentity materialName="WoodenPole" index="0" visible="true" />
+            </subentities>
+          </entity>
+        </node>
+        <node name="WoodenWallPole8" id="353984192">
+          <rotation qw="1" qx="0" qy="0" qz="0" />
+          <position x="-1.84336" y="670.826" z="-15.0891" />
+          <scale x="4" y="4" z="4" />
+          <entity name="Entity#181" id="361247584" castshadows="true" meshFile="WoodenWallPole0.mesh">
+            <rotation qw="1" qx="0" qy="0" qz="0" />
+            <position x="0" y="0" z="0" />
+            <scale x="1" y="1" z="1" />
+            <subentities>
+              <subentity materialName="WoodenPole" index="0" visible="true" />
+            </subentities>
+          </entity>
+        </node>
+        <node name="WoodenWallPole23" id="758842752">
+          <rotation qw="0.956799" qx="0" qy="0.29075" qz="0" />
+          <position x="-27.3287" y="677.474" z="-527.456" />
+          <scale x="4" y="4" z="4" />
+          <entity name="Entity#166" id="333811456" castshadows="true" meshFile="WoodenWallPole0.mesh">
+            <rotation qw="1" qx="0" qy="0" qz="0" />
+            <position x="0" y="0" z="0" />
+            <scale x="1" y="1" z="1" />
+            <subentities>
+              <subentity materialName="WoodenPole" index="0" visible="true" />
+            </subentities>
+          </entity>
+        </node>
+        <node name="WoodenWallPole3" id="282357248">
+          <rotation qw="1" qx="0" qy="0" qz="0" />
+          <position x="-2.40641" y="673.107" z="56.1232" />
+          <scale x="4" y="4" z="4" />
+          <entity name="Entity#186" id="355449088" castshadows="true" meshFile="WoodenWallPole0.mesh">
+            <rotation qw="1" qx="0" qy="0" qz="0" />
+            <position x="0" y="0" z="0" />
+            <scale x="1" y="1" z="1" />
+            <subentities>
+              <subentity materialName="WoodenPole" index="0" visible="true" />
+            </subentities>
+          </entity>
+        </node>
+        <node name="WoodenWallPole26" id="217535936">
+          <rotation qw="1" qx="0" qy="0" qz="0" />
+          <position x="-101.926" y="677.474" z="-282.19" />
+          <scale x="4" y="4" z="4" />
+          <entity name="Entity#163" id="562578176" castshadows="true" meshFile="WoodenWallPole0.mesh">
+            <rotation qw="1" qx="0" qy="0" qz="0" />
+            <position x="0" y="0" z="0" />
+            <scale x="1" y="1" z="1" />
+            <subentities>
+              <subentity materialName="WoodenPole" index="0" visible="true" />
+            </subentities>
+          </entity>
+        </node>
+        <node name="WoodenWallPole6" id="223639632">
+          <rotation qw="1" qx="0" qy="0" qz="0" />
+          <position x="-0.132775" y="678.002" z="13.3958" />
+          <scale x="4" y="4" z="4" />
+          <entity name="Entity#183" id="895779328" castshadows="true" meshFile="WoodenWallPole0.mesh">
+            <rotation qw="1" qx="0" qy="0" qz="0" />
+            <position x="0" y="0" z="0" />
+            <scale x="1" y="1" z="1" />
+            <subentities>
+              <subentity materialName="WoodenPole" index="0" visible="true" />
+            </subentities>
+          </entity>
+        </node>
+        <node name="WoodenWallPole18" id="999664320">
+          <rotation qw="1" qx="0" qy="0" qz="0" />
+          <position x="-1.84336" y="677.474" z="-669.604" />
+          <scale x="4" y="4" z="4" />
+          <entity name="Entity#171" id="634998592" castshadows="true" meshFile="WoodenWallPole0.mesh">
+            <rotation qw="1" qx="0" qy="0" qz="0" />
+            <position x="0" y="0" z="0" />
+            <scale x="1" y="1" z="1" />
+            <subentities>
+              <subentity materialName="WoodenPole" index="0" visible="true" />
+            </subentities>
+          </entity>
+        </node>
+        <node name="WoodenWallPole15" id="978881152">
+          <rotation qw="1" qx="0" qy="0" qz="0" />
+          <position x="-1.84336" y="677.474" z="-713.416" />
+          <scale x="4" y="4" z="4" />
+          <entity name="Entity#174" id="231513408" castshadows="true" meshFile="WoodenWallPole0.mesh">
+            <rotation qw="1" qx="0" qy="0" qz="0" />
+            <position x="0" y="0" z="0" />
+            <scale x="1" y="1" z="1" />
+            <subentities>
+              <subentity materialName="WoodenPole" index="0" visible="true" />
+            </subentities>
+          </entity>
+        </node>
+        <node name="WoodenWallPole34" id="955534528">
+          <rotation qw="0.966192" qx="0" qy="0.257824" qz="0" />
+          <position x="-114.108" y="677.474" z="-474.211" />
+          <scale x="4" y="4" z="4" />
+          <entity name="Entity#155" id="860072640" castshadows="true" meshFile="WoodenWallPole0.mesh">
+            <rotation qw="1" qx="0" qy="0" qz="0" />
+            <position x="0" y="0" z="0" />
+            <scale x="1" y="1" z="1" />
+            <subentities>
+              <subentity materialName="WoodenPole" index="0" visible="true" />
+            </subentities>
+          </entity>
+        </node>
+        <node name="WoodenWallPole1" id="219977408">
+          <rotation qw="1" qx="0" qy="0" qz="0" />
+          <position x="-0.689934" y="673.857" z="84.6081" />
+          <scale x="4" y="4" z="4" />
+          <entity name="Entity#188" id="99612416" castshadows="true" meshFile="WoodenWallPole0.mesh">
+            <rotation qw="1" qx="0" qy="0" qz="0" />
+            <position x="0" y="0" z="0" />
+            <scale x="1" y="1" z="1" />
+            <subentities>
+              <subentity materialName="WoodenPole" index="0" visible="true" />
+            </subentities>
+          </entity>
+        </node>
+  </nodes>
+</scene>
