@@ -137,21 +137,20 @@ void ItemManager::update(const float elapsedSeconds)
 	{
 		ItemPtr item =  mItemList[i];
 
-		if(item->getItemState() == Item::ItemStates::Removed)
+		if(item->isCatched() && item->getStateTimeout() > 2)
 		{
 			itemsToRemove.push_back(item);
 		}
 		else 
 		{
-			if(item->getItemState() == Item::ItemStates::Catch)
-			{
-				item->caught();
 
+			if(item->isCatched() && item->getStateTimeout() == 0){
 				ItemCatchEventPtr evt = ItemCatchEventPtr(new ItemCatchEvent(item));
 				raiseEvent(evt);
 			}
 
 			item->updateEntity(elapsedSeconds);
+			item->updateLogic(elapsedSeconds);
 		}
 	}
 

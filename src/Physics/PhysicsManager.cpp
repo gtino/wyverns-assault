@@ -157,7 +157,7 @@ void PhysicsManager::checkForCollisions()
 
 			if(player_box.intersects(item_box)){
 				//Item chatched
-				ItemCatchEventPtr itemCatchEventPtr = ItemCatchEventPtr(new ItemCatchEvent(item));
+				item->caught();
 			}
 
 		}

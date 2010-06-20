@@ -5,12 +5,13 @@ using namespace WyvernsAssault;
 Item::Item(Ogre::String name, Item::ItemTypes type) 
 : EntityInterface(name)
 , PhysicsInterface()
-, mState(Item::ItemStates::Initial)
 , mLife(0.0f)
 , mSpecial(0.0f)
 , mScore(0.0f)
 , mOBBoxRenderable(0)
 , mIsDebugEnabled(false)
+, mStateTimeout(0.0f)
+, catched(false)
 {
 	mType = type;
 }
@@ -86,9 +87,18 @@ void Item::updateEntity(const float elapsedSeconds)
 	return;
 }
 
+void Item::updateLogic(const float elapsedSeconds)
+{
+	if(catched)
+	{
+		mStateTimeout += elapsedSeconds;
+	}
+}
+
 void Item::caught()
 {
 	mEntity->setVisible(false);
+	catched = true;
 }
 
 Item::ItemTypes Item::StringToType (Ogre::String string)

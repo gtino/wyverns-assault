@@ -51,14 +51,6 @@ namespace WyvernsAssault
 			ScoreBig    = 7
 		};
 
-		enum ItemStates
-		{
-			Initial = 0,
-			Catch = 1,
-			Caught = 2,
-			Removed = 3
-		};
-
 	public:
 		Item(Ogre::String name, Item::ItemTypes type);
 		~Item();
@@ -69,10 +61,10 @@ namespace WyvernsAssault
 		void initializeEntity(Ogre::Entity* mesh, Ogre::SceneNode* sceneNode, Ogre::SceneManager* sceneManager);
 		void finalizeEntity();
 		void updateEntity(const float elapsedSeconds);
+		void updateLogic(const float elapsedSeconds);
 
 		void caught();
 
-		Item::ItemStates getItemState(){return mState;}
 		float getStateTimeout(){return mStateTimeout;}
 
 		float getLife(){ return mLife; }
@@ -84,10 +76,15 @@ namespace WyvernsAssault
 		void setDebugEnabled(bool isDebugEnabled);
 		bool getDebugEnabled(){return mIsDebugEnabled;};
 
+		bool isCatched(){return catched;};
+
+
 	private:
 		Item::ItemTypes mType;
-		Item::ItemStates mState;
+
 		float mStateTimeout;
+
+		bool catched;
 
 		OBBoxRenderable* mOBBoxRenderable;
 		bool mIsDebugEnabled;
