@@ -203,12 +203,12 @@ EVENTS_DEFINE_HANDLER(PlayerManager, ItemCatch)
 {
 	Debug::Out("PlayerManager : handleItemCatchEvent");
 
-	//PlayerPtr player = evt->getPlayer();
+	PlayerPtr player = evt->getPlayer();
 	ItemPtr item = evt->getItem();
 
-	/*player->addLife(evt->getLife());
-	player->addSpecial(evt->getSpecial());
-	player->addScore(evt->getScore());*/
+	player->setLife( player->getLife() + item->getLife() );
+	player->setSpecial( player->getSpecial() + item->getSpecial() );
+	player->addPoints(item->getScore());
 }
 
 EVENTS_DEFINE_HANDLER(PlayerManager, EnemyKill)

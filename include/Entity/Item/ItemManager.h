@@ -8,6 +8,8 @@
 
 #include <boost/enable_shared_from_this.hpp>
 
+#include "..\..\Debug\Debug.h"
+
 #include "..\..\Utils\Utils.h"
 #include "..\include\Entity\EntityManager.h"
 #include "..\include\Particle\ParticleManager.h"

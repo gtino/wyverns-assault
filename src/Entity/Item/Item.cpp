@@ -106,6 +106,13 @@ Item::ItemTypes Item::StringToType (Ogre::String string)
 	const char* str = string.c_str();
 
 	if(strcmp ( "LiveSmall", str ) == 0) return Item::ItemTypes::LiveSmall;
+	if(strcmp ( "LiveMedium", str ) == 0) return Item::ItemTypes::LiveMedium;
+	if(strcmp ( "LiveBig", str ) == 0) return Item::ItemTypes::LiveBig;
+	if(strcmp ( "PowerSmall", str ) == 0) return Item::ItemTypes::PowerSmall;
+	if(strcmp ( "PowerMedium", str ) == 0) return Item::ItemTypes::PowerMedium;
+	if(strcmp ( "PowerBig", str ) == 0) return Item::ItemTypes::PowerBig;
+	if(strcmp ( "ScoreSmall", str ) == 0) return Item::ItemTypes::ScoreSmall;
+	if(strcmp ( "ScoreBig", str ) == 0) return Item::ItemTypes::ScoreBig;
 
 	return Item::ItemTypes::LiveSmall;
 }

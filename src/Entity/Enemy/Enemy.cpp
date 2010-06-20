@@ -79,6 +79,7 @@ Enemy::Enemy(Ogre::String name, Enemy::EnemyTypes type)
 , mPoints(100.0f)
 , mAttackDamage(0.0f)
 , mSpecialDamage(0.0f)
+, mHeight(ENEMY_HEIGHT)
 , mOBBoxRenderable(0)
 , mIsDebugEnabled(false)
 , mBalloonSet(0)
@@ -125,6 +126,7 @@ void Enemy::initializeEntity(Ogre::Entity* entity, Ogre::SceneNode* sceneNode, O
 		mPoints = 25;
 		mSlowSpeed = ANIMAL_SLOW_SPEED;
 		mFastSpeed = ANIMAL_FAST_SPEED;
+		mHeight = ANIMAL_HEIGHT;
 		break;
 	case Enemy::EnemyTypes::Wizard:
 		mAnimationSystem->loadAnimationTree( "data/animations/wizard.xml" );

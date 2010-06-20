@@ -120,7 +120,7 @@ EVENTS_DEFINE_HANDLER(GuiManager, ItemCatch)
 {
 	Debug::Out("GuiManager : handleItemCatchEvent");
 
-	/*PlayerPtr player = evt->getPlayer();
+	PlayerPtr player = evt->getPlayer();
 
 	GuiWidgetPtr ui = mGuiScreenMap[GuiScreenId::PlayGui]->getWidget( player->getGuiId() );
 
@@ -130,7 +130,7 @@ EVENTS_DEFINE_HANDLER(GuiManager, ItemCatch)
 	userData.special = player->getSpecial();
 	userData.points = player->getPoints();
 
-	ui->setData(&userData);*/
+	ui->setData(&userData);
 }
 
 EVENTS_DEFINE_HANDLER(GuiManager, PlayerAttackSpecial)

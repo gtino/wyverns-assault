@@ -121,11 +121,6 @@ bool ItemManager::removeItem(Ogre::String name)
 	
 	if( it != mItemList.end() )
 		mItemList.erase(it);
-
-	// Remove the event
-	ItemRemovedEventPtr e = ItemRemovedEventPtr(new ItemRemovedEvent(itemToErase) );
-	raiseEvent(e);
-
 	return true;
 }
 
@@ -141,24 +136,19 @@ void ItemManager::update(const float elapsedSeconds)
 		{
 			itemsToRemove.push_back(item);
 		}
-		else 
-		{
 
-			if(item->isCatched() && item->getStateTimeout() == 0){
-				ItemCatchEventPtr evt = ItemCatchEventPtr(new ItemCatchEvent(item));
-				raiseEvent(evt);
-			}
-
-			item->updateEntity(elapsedSeconds);
-			item->updateLogic(elapsedSeconds);
-		}
+		item->updateEntity(elapsedSeconds);
+		item->updateLogic(elapsedSeconds);
 	}
 
 	// Now we have to remove them and notify other listeners with the 'dead/remove' event!
 	for(int i = 0; i < itemsToRemove.size(); i++)
 	{
 		ItemPtr item = itemsToRemove[i];
-		removeItem(item->getName());
+
+		//Item chatched
+		ItemRemovedEventPtr evt = ItemRemovedEventPtr(new ItemRemovedEvent(item));
+		raiseEvent(evt);
 	}
 
 	itemsToRemove.clear();	
@@ -193,11 +183,19 @@ EVENTS_END_UNREGISTER_HANDLERS()
 
 EVENTS_DEFINE_HANDLER(ItemManager,ItemCatch)
 {
-	//TODO
+	Debug::Out("ItemManager : handleItemCatchEvent");
+
+	ItemPtr item = evt->getItem();
+
+	item->caught();
 }
 
 EVENTS_DEFINE_HANDLER(ItemManager,ItemRemoved)
 {
-	//TODO
+	Debug::Out("ItemManager : handleItemRemovedEvent");
+
+	ItemPtr item = evt->getItem();	
+
+	removeItem(item->getName());
 }
 

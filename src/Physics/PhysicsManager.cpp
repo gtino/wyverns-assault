@@ -72,7 +72,7 @@ void PhysicsManager::update(const float elapsedSeconds){
 
 		// Update player ray
 		Vector3 hotPosition = calculateY(position,BASIC_GROUND_MASK);
-		hotPosition.y += REDWYVERN_HEIGHT; // HACK : this should not be hardcoded!
+		hotPosition.y += player->getHeight();
 		player->setPosition(hotPosition);
 
 		// Update player move
@@ -87,7 +87,7 @@ void PhysicsManager::update(const float elapsedSeconds){
 
 		// Update enemy ray
 		Vector3 hotPosition = calculateY(position,BASIC_GROUND_MASK);
-		hotPosition.y += ENEMY_RAY_HEIGHT; // HACK : this should not be hardcoded!
+		hotPosition.y += enemy->getHeight();
 		enemy->setPosition(hotPosition);
 
 		//Update player move
@@ -155,9 +155,11 @@ void PhysicsManager::checkForCollisions()
 			ItemPtr item = it_item->second;
 			AxisAlignedBox item_box = item->getWorldBoundingBox();
 
-			if(player_box.intersects(item_box)){
+			if(player_box.intersects(item_box))
+			{
 				//Item chatched
-				item->caught();
+				ItemCatchEventPtr evt = ItemCatchEventPtr(new ItemCatchEvent(player, item));
+				raiseEvent(evt);
 			}
 
 		}
