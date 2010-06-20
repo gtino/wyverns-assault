@@ -9,7 +9,6 @@
 #include <boost/enable_shared_from_this.hpp>
 
 #include "..\..\Utils\Utils.h"
-#include "..\include\Lua\LuaInterface.h"
 #include "..\include\Entity\EntityManager.h"
 #include "..\include\Particle\ParticleManager.h"
 #include "..\..\Events\EventsInterface.h"
@@ -28,7 +27,7 @@ namespace WyvernsAssault
 	/**
 	Class used to manage all the items
 	*/
-	class ItemManager : public Ogre::Singleton<ItemManager>, public boost::enable_shared_from_this<ItemManager>, public EntityManager, public LuaInterface, public EventsInterface
+	class ItemManager : public Ogre::Singleton<ItemManager>, public boost::enable_shared_from_this<ItemManager>, public EntityManager, public EventsInterface
 	{
 	public:
 		ItemManager(Ogre::SceneManager* sceneManager);
@@ -47,6 +46,10 @@ namespace WyvernsAssault
 		ItemPtr getItem(Ogre::String name);
 		
 		void update(const float elpasedSeconds);
+
+		// Enable Debug Stuff
+		void setDebugEnabled(bool isDebugEnabled);
+		bool getDebugEnabled(){return mIsDebugEnabled;};
 
 		bool removeItem(Ogre::String name);
 
@@ -67,26 +70,12 @@ namespace WyvernsAssault
 		Ogre::SceneManager* mSceneManager;
 		Ogre::SceneNode* mItemNode;
 
+		bool mIsDebugEnabled;
+
 		ItemList mItemList;
 		ItemMap mItemMap;
 		int mId;
 
-	// --------------------------------
-	// BEGIN Lua Interface Declarations
-	// -------------------------------- 
-	public:
-		// Item Lib (exported to Lua)
-		LUA_LIBRARY("Item",itemlib);
-
-		LUA_FUNCTION(createItem)
-		LUA_FUNCTION(removeItem)
-		LUA_FUNCTION(getItemStateTimeout)
-
-	public:
-		void luaLoadScripts(){luaLoadScript(".\\data\\scripts\\ItemLogic.lua");};
-	// ------------------------------
-	// END Lua Interface Declarations
-	// ------------------------------
 	};
 
 	typedef boost::shared_ptr<ItemManager> ItemManagerPtr;

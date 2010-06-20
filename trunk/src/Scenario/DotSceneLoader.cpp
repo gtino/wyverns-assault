@@ -413,7 +413,10 @@ void DotSceneLoader::processItems(TiXmlElement *XMLNode)
 		// Attach particle system
 		mParticleManager->add(item->_getSceneNode(), name, "WyvernsAssault/ItemGlow");
 		item->setPosition(position);
-		item->setScale(scale);		
+		item->setScale(scale);	
+
+		// Add the item to the physics manager
+		mPhysicsManager->addPhysicItem(item);
 
 		pElement = pElement->NextSiblingElement("item");
 	}

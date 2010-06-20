@@ -71,9 +71,9 @@ void PhysicsManager::update(const float elapsedSeconds){
 		Vector3 position = player->getPosition();		
 
 		// Update player ray
-		/*Vector3 hotPosition = calculateY(position,BASIC_GROUND_MASK);
-		hotPosition.y += REDWYVERN_RAY_HEIGHT; // HACK : this should not be hardcoded!
-		player->setPosition(hotPosition);*/
+		Vector3 hotPosition = calculateY(position,BASIC_GROUND_MASK);
+		hotPosition.y += REDWYVERN_HEIGHT; // HACK : this should not be hardcoded!
+		player->setPosition(hotPosition);
 
 		// Update player move
 		move(player,elapsedSeconds);
@@ -86,9 +86,9 @@ void PhysicsManager::update(const float elapsedSeconds){
 		Vector3 position = enemy->getPosition();
 
 		// Update enemy ray
-		/*Vector3 hotPosition = calculateY(position,BASIC_GROUND_MASK);
-		hotPosition.y += BASIC_ENEMY_RAY_HEIGHT; // HACK : this should not be hardcoded!
-		enemy->setPosition(hotPosition);*/
+		Vector3 hotPosition = calculateY(position,BASIC_GROUND_MASK);
+		hotPosition.y += ENEMY_RAY_HEIGHT; // HACK : this should not be hardcoded!
+		enemy->setPosition(hotPosition);
 
 		//Update player move
 		move(enemy,elapsedSeconds);
@@ -107,6 +107,8 @@ void PhysicsManager::checkForCollisions()
 		AxisAlignedBox player_firebox = player->getFireBox();
 		AxisAlignedBox player_box = player->getWorldBoundingBox();
 
+		/* Player - Enemy COLLISION
+		*/
 		for(EnemyMapIterator it_enemy = mEnemyMap.begin(); it_enemy != mEnemyMap.end(); ++it_enemy)
 		{
 			EnemyPtr enemy = it_enemy->second;
@@ -145,6 +147,21 @@ void PhysicsManager::checkForCollisions()
 		}
 		// Save last attack
 		mPlayerAttackLast = player->wichAttack();
+
+		/* Player - Item COLLISION
+		*/
+		for(ItemMapIterator it_item = mItemMap.begin(); it_item != mItemMap.end(); ++it_item)
+		{
+			ItemPtr item = it_item->second;
+			AxisAlignedBox item_box = item->getWorldBoundingBox();
+
+			if(player_box.intersects(item_box)){
+				//Item chatched
+				ItemCatchEventPtr itemCatchEventPtr = ItemCatchEventPtr(new ItemCatchEvent(item));
+			}
+
+		}
+
 	}
 }
 
@@ -210,6 +227,14 @@ void PhysicsManager::addPhysicEnemy(EnemyPtr enemy)
 {
 	mEnemyMap[enemy->getName()] = enemy;
 }
+
+/* Load item physics
+*/
+void PhysicsManager::addPhysicItem(ItemPtr item)
+{
+	mItemMap[item->getName()] = item;
+}
+
 
 /* Calculate heigth of terrain and translate node to adjust them
 */
