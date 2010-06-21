@@ -810,6 +810,7 @@ void DotSceneLoader::processEntity(TiXmlElement *XMLNode, SceneNode *pParent)
 	// Process attributes
 	String name = getAttrib(XMLNode, "name");
 	String id = getAttrib(XMLNode, "id");
+	String type = getAttrib(XMLNode, "type");
 	String meshFile = getAttrib(XMLNode, "meshFile");
 	String materialFile = getAttrib(XMLNode, "materialFile");
 	bool isStatic = getAttribBool(XMLNode, "static", false);
@@ -838,7 +839,12 @@ void DotSceneLoader::processEntity(TiXmlElement *XMLNode, SceneNode *pParent)
 		//
 		// Use the Object Manager to create an instance for the new Object
 		//
-		ObjectPtr object = mScenarioManager->createObject(ObjectTypes::Default, name, pEntity, pParent);
+		if(type == "DynamicObject"){
+			ObjectPtr object = mScenarioManager->createObject(ObjectTypes::DynamicObject, name, pEntity, pParent);
+			mPhysicsManager->addPhysicObject(object);
+		}else{
+			ObjectPtr object = mScenarioManager->createObject(ObjectTypes::Default, name, pEntity, pParent);
+		}
 
 		if(!materialFile.empty())
 			pEntity->setMaterialName(materialFile);

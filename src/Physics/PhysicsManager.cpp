@@ -237,6 +237,12 @@ void PhysicsManager::addPhysicItem(ItemPtr item)
 	mItemMap[item->getName()] = item;
 }
 
+/* Load object physics
+*/
+void PhysicsManager::addPhysicObject(ObjectPtr obj)
+{
+	mObjectMap[obj->getName()] = obj;
+}
 
 /* Calculate heigth of terrain and translate node to adjust them
 */
@@ -512,6 +518,10 @@ void PhysicsManager::removeItem(ItemPtr item)
 	mItemMap.erase(item->getName());
 }
 
+void PhysicsManager::removeObject(ObjectPtr obj)
+{
+	mObjectMap.erase(obj->getName());
+}
 
 // --------------
 // Event handlers

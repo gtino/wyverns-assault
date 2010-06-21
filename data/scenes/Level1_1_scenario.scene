@@ -3712,6 +3712,19 @@
           </entity>
         </node>
       </node>
+      <node name="BigRock" id="418500320">
+        <rotation qw="0.614954" qx="0.00319471" qy="-0.788553" qz="0.0024914" />
+        <position x="1161.11" y="709" z="3342.88" />
+        <scale x="53.9319" y="34.6235" z="42.2734" />
+        <entity name="Entity#383" id="639912128" type="DynamicObject" castshadows="true" meshFile="BigRock0.mesh">
+          <rotation qw="1" qx="0" qy="0" qz="0" />
+          <position x="0" y="0" z="0" />
+          <scale x="1" y="1" z="1" />
+          <subentities>
+            <subentity materialName="VulcanicRock" index="0" visible="true" />
+          </subentities>
+        </entity>
+      </node>
       <node name="CandyPillTree13" id="658497856">
         <rotation qw="0.73582" qx="0" qy="-0.677178" qz="0" />
         <position x="4519.03" y="656.73" z="584.968" />

@@ -73,6 +73,11 @@ namespace WyvernsAssault
 
 		bool removeObject(Ogre::String name);
 
+
+		// Enable Debug Stuff
+		void setDebugEnabled(bool isDebugEnabled);
+		bool getDebugEnabled(){return mIsDebugEnabled;};
+
 		Ogre::SceneNode* _getSceneNode() const { return mScenarioNode; }
 
 	public:
@@ -87,6 +92,8 @@ namespace WyvernsAssault
 	private:
 		ObjectList mObjectList;
 		ObjectMap mObjectMap;
+
+		bool mIsDebugEnabled;
 
 		Ogre::SceneManager*		mSceneManager;		
 		SceneNode*				mScenarioNode; // Base node for the scenario

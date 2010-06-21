@@ -18,6 +18,7 @@ ScenarioManager::ScenarioManager(SceneManager* sceneManager)
 : mInitialized(false)
 , mSceneManager(0)
 , mScenarioNode(0)
+,mIsDebugEnabled(false)
 {
 	mSceneManager = sceneManager;
 }
@@ -111,6 +112,20 @@ bool ScenarioManager::removeObject(Ogre::String name)
 	}
 
 	return true;
+}
+
+void ScenarioManager::setDebugEnabled(bool isDebugEnabled)
+{
+	if(mIsDebugEnabled != isDebugEnabled)
+	{
+		mIsDebugEnabled = isDebugEnabled;
+
+		for(int i = 0; i < mObjectList.size() ; i++)
+		{
+			ObjectPtr obj =  mObjectList[i];
+			obj->setDebugEnabled(mIsDebugEnabled);
+		}
+	}
 }
 
 // --------------------------------

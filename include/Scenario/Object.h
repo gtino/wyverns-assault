@@ -35,6 +35,7 @@ namespace WyvernsAssault
 	enum ObjectTypes
 	{
 		Default,
+		DynamicObject
 	};
 
 	/**
