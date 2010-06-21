@@ -20,11 +20,11 @@ Dying = 10
 Dead = 11
 
 -- Distances
-FightingDistance = 15
+FightingDistance = 20
 MagicDistance = 250
 SightDistance = 70
 SoundDistance = 100
-AlertDistance = 40
+AlertDistance = 80
 
 function runNakedLogic(enemyId, state)
 	
@@ -253,47 +253,65 @@ function runSoldierLogic(enemyId, state)
 			newState = Dying -- So we make him die in blood and fear and stuff...
 		elseif state == Initial then 
 			newState = Idle
-		elseif state == Love then -- A soldier is never in love!
-			newState = Patrol -- ..he just patrols!
-		elseif state == Idle then -- A soldier should never be in idle!
-			if timeout>10 then
-				newState = Patrol -- ...after a while he patrols again!
+		elseif state == Idle then
+			if distance<AlertDistance then
+				newState = Alert
 			end
-		elseif state == Patrol then -- Enemy is patrolling...
-			if distance<SoundDistance then -- And suddenly hears a noise..
-				newState = What -- What happened? 
-			elseif timeout>20 then -- Bored, goes to idle
-				newState = Idle 
+		elseif state == Alert then
+			if distance<FightingDistance then
+				newState = Rage
+			elseif distance>AlertDistance then
+				newState = Idle
 			end
-		elseif state == What then -- Something is happening here...
-			if distance<SightDistance then -- The enemy can see the player!
-				newState = Alert -- ...and chase him!
-			elseif (distance>SoundDistance and timeout>5) then -- Nothing heard for a while
-				newState = Patrol -- ...patrol again
-			end
-		elseif state == Alert then -- ...we see the player and we are chasing him
-			if distance<FightingDistance then -- ...we reached the player
-				newState = Rage -- ...so let's attack him!
-			elseif distance>SightDistance then -- We cannot see the enemy anymore!
-				newState = What -- But still we are waiting to se what's going on
-			end
-		elseif state == Rage then -- ...we are attacking the player!
-			if Enemy.isHurt(enemyId) then -- But we are now seriously hurt!
-				newState = Fear -- Get the fuck outta here!
-			elseif distance>FightingDistance then -- The player is too far
-				newState = Alert -- ...chase him
-			elseif distance>SightDistance then -- ...well the player really ran away
-				newState = What -- Caution for a little bit more...
-			end
-		elseif state == Fear then
-			if distance>SoundDistance then
-				newState = Idle -- Fear is just fear
-			else
-				newState = Fear
+		elseif state == Rage then
+			if distance>FightingDistance then
+				newState = Alert
 			end
 		else
 			newState = state -- same as before
 		end
+
+--		elseif state == Love then -- A soldier is never in love!
+--			newState = Patrol -- ..he just patrols!
+--		elseif state == Idle then -- A soldier should never be in idle!
+--			if timeout>10 then
+--				newState = Patrol -- ...after a while he patrols again!
+--			end
+--		elseif state == Patrol then -- Enemy is patrolling...
+--			if distance<SoundDistance then -- And suddenly hears a noise..
+--				newState = What -- What happened? 
+--			elseif timeout>20 then -- Bored, goes to idle
+--				newState = Idle 
+--			end
+--		elseif state == What then -- Something is happening here...
+--			if distance<SightDistance then -- The enemy can see the player!
+--				newState = Alert -- ...and chase him!
+--			elseif (distance>SoundDistance and timeout>5) then -- Nothing heard for a while
+--				newState = Patrol -- ...patrol again
+--			end
+--		elseif state == Alert then -- ...we see the player and we are chasing him
+--			if distance<FightingDistance then -- ...we reached the player
+--				newState = Rage -- ...so let's attack him!
+--			elseif distance>SightDistance then -- We cannot see the enemy anymore!
+--				newState = What -- But still we are waiting to se what's going on
+--			end
+--		elseif state == Rage then -- ...we are attacking the player!
+--			if Enemy.isHurt(enemyId) then -- But we are now seriously hurt!
+--				newState = Fear -- Get the fuck outta here!
+--			elseif distance>FightingDistance then -- The player is too far
+--				newState = Alert -- ...chase him
+--			elseif distance>SightDistance then -- ...well the player really ran away
+--				newState = What -- Caution for a little bit more...
+--			end
+--		elseif state == Fear then
+--			if distance>SoundDistance then
+--				newState = Idle -- Fear is just fear
+--			else
+--				newState = Fear
+--			end
+--		else
+--			newState = state -- same as before
+--		end
 		
 	end
   
