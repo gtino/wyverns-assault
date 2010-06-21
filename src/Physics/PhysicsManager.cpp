@@ -101,6 +101,9 @@ void PhysicsManager::update(const float elapsedSeconds){
 // Bounding-Box collision
 void PhysicsManager::checkForCollisions()
 {
+
+	/* Player Collisions
+	*/
 	for(PlayerMapIterator it_player = mPlayerMap.begin(); it_player != mPlayerMap.end(); ++it_player)
 	{
 		PlayerPtr player = it_player->second;
@@ -178,8 +181,46 @@ void PhysicsManager::checkForCollisions()
 			}
 
 		}
-
 	}
+
+	/* Enemy Collisions
+	*/
+	for(EnemyMapIterator it_enemy = mEnemyMap.begin(); it_enemy != mEnemyMap.end(); ++it_enemy)
+	{
+		EnemyPtr enemy = it_enemy->second;
+		AxisAlignedBox enemy_box = enemy->getWorldBoundingBox();
+
+		/* Enemy - Enemy COLLISION
+		*/
+		for(EnemyMapIterator it_enemy_second = mEnemyMap.begin(); it_enemy_second != mEnemyMap.end(); ++it_enemy_second)
+		{
+			EnemyPtr enemy_second = it_enemy_second->second;
+			AxisAlignedBox enemy_second_box = enemy_second->getWorldBoundingBox();
+
+			// Check if player is using special (fire) and collisioning with enemy
+			if (enemy_box.intersects(enemy_second_box))
+			{
+				/* TODO: Enemy-enemy Collision
+				*/
+			}
+		}
+
+		/* Enemy - Objects COLLISION
+		*/
+		for(ObjectMapIterator it_obj = mObjectMap.begin(); it_obj != mObjectMap.end(); ++it_obj)
+		{
+			ObjectPtr obj = it_obj->second;
+			AxisAlignedBox obj_box = obj->getWorldBoundingBox();
+
+			if(enemy_box.intersects(obj_box))
+			{
+				/* TODO: Enemy-Object Collision!
+				*/
+			}
+
+		}
+	}
+
 }
 
 void PhysicsManager::move(PlayerPtr player, const float elapsedSeconds, bool fastMode)
