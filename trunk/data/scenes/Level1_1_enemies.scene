@@ -7,7 +7,7 @@
 		<scale x="1" y="1" z="1"/>
 	</animal>
 	<animal>
-		<position x="398" y="-3" z="702"/>
+		<position x="398" y="-3" z="722"/>
 		<entity type="Chicken" meshFile="chicken.mesh" name="Chicken4"/>
 		<scale x="1" y="1" z="1"/>
 	</animal>
@@ -45,17 +45,17 @@
 <enemies> 
 		<!-- Soldiers -->
 		<enemy>
-			<position x="200" y="10" z="830"/>
+			<position x="785" y="10" z="730"/>
  			<entity type="KnightA2" meshFile="knightA.mesh" name="knight0"/>
 		</enemy>
 		<enemy>
-			<position x="200" y="10" z="860"/>
+			<position x="800" y="10" z="760"/>
  			<entity type="KnightB2" meshFile="knightB.mesh" name="knight1"/>
 		</enemy>
 		<enemy>
-			<position x="200" y="10" z="880"/>
+			<position x="780" y="10" z="780"/>
  			<entity type="KnightC2" meshFile="knightC.mesh" name="knight3"/>
-		</enemy>		
+		</enemy>
 		<enemy>
 			<position x="500" y="10" z="740"/>
  			<entity type="KnightA4" meshFile="knightA.mesh" name="knight4"/>
@@ -108,6 +108,30 @@
 		<enemy>
 			<position x="1000" y="10" z="600"/>
  			<entity type="KnightC3" meshFile="knightC.mesh" name="knight14"/>
+		</enemy>
+		<enemy>
+			<position x="1100" y="10" z="550"/>
+ 			<entity type="KnightA3" meshFile="knightA.mesh" name="knight15"/>
+		</enemy>
+		<enemy>
+			<position x="1105" y="10" z="560"/>
+ 			<entity type="KnightA4" meshFile="knightA.mesh" name="knight16"/>
+		</enemy>
+		<enemy>
+			<position x="1150" y="10" z="100"/>
+ 			<entity type="KnightC5" meshFile="knightC.mesh" name="knight17"/>
+		</enemy>
+		<enemy>
+			<position x="1150" y="10" z="50"/>
+ 			<entity type="KnightA5" meshFile="knightA.mesh" name="knight18"/>
+		</enemy>
+		<enemy>
+			<position x="1200" y="10" z="10"/>
+ 			<entity type="KnightB5" meshFile="knightB.mesh" name="knight19"/>
+		</enemy>
+		<enemy>
+			<position x="1200" y="10" z="50"/>
+ 			<entity type="KnightC5" meshFile="knightC.mesh" name="knight20"/>
 		</enemy>
 		<enemy>
 			<position x="1225" y="10" z="80"/>
