@@ -17,8 +17,8 @@ system WyvernsAssault/ChickenKill
         {
             emission_rate                       dyn_random
             {
-                min                             15
-                max                             20
+                min                             25
+                max                             35
             }
             angle                               dyn_random
             {
@@ -27,8 +27,8 @@ system WyvernsAssault/ChickenKill
             }
             time_to_live                        dyn_random
             {
-                min                             0.8
-                max                             1
+                min                             1.1
+                max                             1.5
             }
             velocity                            dyn_random
             {
@@ -40,7 +40,6 @@ system WyvernsAssault/ChickenKill
                 min                             4
                 max                             6
             }
-            position                            0 -5 0
             end_texture_coords_range            3
             texture_coords                      3
             force_emission                      true
@@ -87,7 +86,7 @@ system WyvernsAssault/ChickenKill
                 min                             45
                 max                             90
             }
-            time_to_live                        2.3
+            time_to_live                        2.5
             velocity                            0
             duration                            20
             all_particle_dimensions             dyn_random
@@ -100,7 +99,7 @@ system WyvernsAssault/ChickenKill
                 min                             0
                 max                             0
             }
-            position                            0 5 0
+            position                            0 2 0
             end_texture_coords_range            1
             texture_coords                      1
             force_emission                      true

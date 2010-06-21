@@ -120,9 +120,16 @@ EnemyPtr EnemyManager::createEnemy(Enemy::EnemyTypes type, Ogre::String name, Og
 	// Enemy name == Mesh Name!
 	Ogre::Entity* enemyMesh = mSceneManager->createEntity(name, mesh);
 
-	// Switch enemy type for choose enemy mesh material. Only on enemies with multiple materials
+	// Die mesh
+	Ogre::Entity* enemyDieMesh = NULL;
+
+	// Switch enemy type
 	switch(type)
 	{
+		case Enemy::EnemyTypes::Chicken:
+			enemyDieMesh = mSceneManager->createEntity(name + "Die", "chickenDie.mesh");
+			break;
+
 		case Enemy::EnemyTypes::KnightA:
 			enemyMesh->setMaterialName("knightA_material");
 			break;
@@ -178,13 +185,20 @@ EnemyPtr EnemyManager::createEnemy(Enemy::EnemyTypes type, Ogre::String name, Og
 	}
 
 	enemyMesh->setQueryFlags(SceneManager::ENTITY_TYPE_MASK);
-	Ogre::SceneNode* enemySceneNode = mEnemyNode->createChildSceneNode("Enemy_"+name+"_Node");
+	Ogre::SceneNode* enemySceneNode = mEnemyNode->createChildSceneNode("Enemy_" + name + "_Node");
 
 	enemySceneNode->attachObject(enemyMesh);
 
 	EnemyPtr enemy = EnemyPtr(new Enemy(name, type));
 
 	enemy->initializeEntity(enemyMesh, enemySceneNode, mSceneManager);
+
+	// Attach die mesh to node if exists and set to enemy
+	if( enemyDieMesh != NULL )
+	{
+		enemySceneNode->attachObject(enemyDieMesh);
+		enemy->setDieMesh(enemyDieMesh);
+	}
 
 	mEnemyList.push_back(enemy);
 	mEnemyMap[name] = enemy;
@@ -339,7 +353,9 @@ EVENTS_DEFINE_HANDLER(EnemyManager, EnemyKill)
 	PlayerPtr player = evt->getPlayer();
 
 	if( enemy->getEnemyType() == Enemy::EnemyTypes::Chicken )
-		enemy->setVisible(false);
+	{
+		enemy->dieSwitch();
+	}
 	else
 	{
 		if( player->isSpecial() )
