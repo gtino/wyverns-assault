@@ -164,6 +164,21 @@ void PhysicsManager::checkForCollisions()
 
 		}
 
+		/* Player - Objects COLLISION
+		*/
+		for(ObjectMapIterator it_obj = mObjectMap.begin(); it_obj != mObjectMap.end(); ++it_obj)
+		{
+			ObjectPtr obj = it_obj->second;
+			AxisAlignedBox obj_box = obj->getWorldBoundingBox();
+
+			if(player_box.intersects(obj_box))
+			{
+				/* TODO: Player-Object Collision!
+				*/
+			}
+
+		}
+
 	}
 }
 
