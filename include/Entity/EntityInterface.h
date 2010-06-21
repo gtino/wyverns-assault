@@ -75,14 +75,25 @@ namespace WyvernsAssault
 
 		virtual void setVisible(bool visible){ mEntity->setVisible(visible); }
 		
-		const Ogre::AxisAlignedBox& getWorldBoundingBox(){return mEntity->getWorldBoundingBox();}
-		const Ogre::AxisAlignedBox& getBoundingBox(){return mEntity->getBoundingBox();}
+		const Ogre::AxisAlignedBox& getWorldBoundingBox()
+		{
+			if(mPhysicEntity != 0)
+				return mPhysicEntity->getWorldBoundingBox();
+			return mEntity->getWorldBoundingBox();
+		}
+		const Ogre::AxisAlignedBox& getBoundingBox()
+		{
+			if(mPhysicEntity != 0)
+				return mPhysicEntity->getBoundingBox();
+			return mEntity->getBoundingBox();
+		}
 
 	protected:
 		void _destroy(SceneNode* sceneNode);
 
 	protected:
 		Ogre::Entity* mEntity;
+		Ogre::Entity* mPhysicEntity;
 		Ogre::SceneNode* mSceneNode;
 		Ogre::SceneManager* mSceneManager;
 		Ogre::AnimationState* mAnimationState;

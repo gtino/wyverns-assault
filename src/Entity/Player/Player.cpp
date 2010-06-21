@@ -32,9 +32,13 @@ void Player::initializeEntity(Ogre::Entity* entity, Ogre::SceneNode* sceneNode, 
 	// Always call base method before!
 	EntityInterface::initializeEntity(entity, sceneNode, sceneManager);
 
-	mFireMesh = mSceneManager->createEntity("fireMesh", "redWyvernFireCone.mesh");
 
+	mFireMesh = mSceneManager->createEntity("fireMesh", "redWyvernFireCone.mesh");
 	mFireMesh->setVisible(mIsDebugEnabled);
+
+	// Set physic body
+	mPhysicEntity = mSceneManager->createEntity("redWyvernPhysicMesh", "redWyvernPhysicBody.mesh");
+	mPhysicEntity->setVisible(mIsDebugEnabled);
 
 	// Animation system
 	mAnimationSystem = new tecnofreak::ogre::AnimationSystem( mEntity );
@@ -52,10 +56,13 @@ void Player::initializeEntity(Ogre::Entity* entity, Ogre::SceneNode* sceneNode, 
 	
 	// Bounding Box
 	mOBBoxRenderable = new OBBoxRenderable("OBBoxManualMaterial_Player");
-	mOBBoxRenderable->setupVertices(mEntity->getBoundingBox());
+	mOBBoxRenderable->setupVertices(mPhysicEntity->getBoundingBox());
 	mOBBoxRenderable->setVisible(mIsDebugEnabled);
-	mSceneNode->attachObject(mOBBoxRenderable);
-	
+
+	// Attach physic body to bone
+	mEntity->attachObjectToBone("columna", mPhysicEntity);
+	mEntity->attachObjectToBone("columna", mOBBoxRenderable);	
+
 	// Fire bounding box
 	mFireOBBoxRenderable = new OBBoxRenderable("OBBoxManualMaterial_Player");
 	mFireOBBoxRenderable->setupVertices(mFireMesh->getBoundingBox());
