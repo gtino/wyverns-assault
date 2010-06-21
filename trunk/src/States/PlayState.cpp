@@ -620,6 +620,7 @@ bool PlayState::keyPressed(const OIS::KeyEvent& e)
 			mPlayerManager->setDebugEnabled(false);
 			mPhysicsManager->setDebugEnabled(false);
 			mItemManager->setDebugEnabled(false);
+			mScenarioManager->setDebugEnabled(false);
 		}		
 		break;
 	// Cycle filtering mode
