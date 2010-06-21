@@ -166,6 +166,7 @@ void PlayState::initialize()
 	dotSceneLoader->parseDotScene("Level1_1_lights.scene","General", mSceneManager, mScenarioManager, mCameraManager, mLightsManager, mEnemyManager, mPhysicsManager, mItemManager, mParticleManager, mLightsManager->_getSceneNode());
 	dotSceneLoader->parseDotScene("Level1_1_items.scene","General", mSceneManager, mScenarioManager, mCameraManager, mLightsManager, mEnemyManager, mPhysicsManager, mItemManager, mParticleManager, mItemManager->_getSceneNode());
 	dotSceneLoader->parseDotScene("Level1_1_physics.scene","General", mSceneManager, mScenarioManager, mCameraManager, mLightsManager, mEnemyManager, mPhysicsManager, mItemManager, mParticleManager, mPhysicsManager->_getSceneNode());
+	dotSceneLoader->parseDotScene("Level1_1_objects.scene","General", mSceneManager, mScenarioManager, mCameraManager, mLightsManager, mEnemyManager, mPhysicsManager, mItemManager, mParticleManager, mPhysicsManager->_getSceneNode());
 
 	Debug::Out(mSceneManager->getRootSceneNode());
 
@@ -605,6 +606,7 @@ bool PlayState::keyPressed(const OIS::KeyEvent& e)
 			mPlayerManager->setDebugEnabled(true);
 			mPhysicsManager->setDebugEnabled(true);
 			mItemManager->setDebugEnabled(true);
+			mScenarioManager->setDebugEnabled(true);
 		}
 		else
 		{

@@ -43,6 +43,9 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #include "..\Entity\Item\ItemManager.h"
 #include "..\Entity\Item\Item.h"
 
+#include "..\Scenario\ScenarioManager.h"
+#include "..\Scenario\Object.h"
+
 #include "..\Events\EventsInterface.h"
 
 using namespace Ogre;
@@ -91,10 +94,11 @@ namespace WyvernsAssault
 		void addPhysicPlayer(PlayerPtr player);
 		void addPhysicEnemy(EnemyPtr enemy);
 		void addPhysicItem(ItemPtr item);
-		//void addPhysicObject();
+		void addPhysicObject(ObjectPtr obj);
 
 		void removeEnemy(EnemyPtr enemy);
 		void removeItem(ItemPtr item);
+		void removeObject(ObjectPtr obj);
 
 		void update(const float elapsedSeconds);
 
@@ -144,7 +148,7 @@ namespace WyvernsAssault
 		PlayerMap mPlayerMap;
 		EnemyMap mEnemyMap;
 		ItemMap mItemMap;
-		//ObjectMap mObjectMap;
+		ObjectMap mObjectMap;
 
 	private:
 
