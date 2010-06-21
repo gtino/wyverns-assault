@@ -139,7 +139,6 @@ namespace WyvernsAssault
 		void setChannel(int channel){mChannel = channel;}
 
 		float getSpeed(){return mCurrentSpeed;}
-		//void setSpeed(float speed){mCurrentSpeed = speed;}
 		float getHeight(){return mHeight; }
 
 		// Enable Debug Stuff
@@ -152,6 +151,11 @@ namespace WyvernsAssault
 		bool isAttacking(){ return attacking; }
 		bool attackStart(){ return newAttack; }
 		void attackFinish();
+
+		// Die functions
+		void setDieMesh(Ogre::Entity* entity);
+		bool hasDieMesh(){ return mEntityDie != NULL; }
+		void dieSwitch();
 
 	private:
 		Enemy::EnemyTypes mType;
@@ -188,6 +192,9 @@ namespace WyvernsAssault
 		bool		moving;
 		bool		attacking;
 		bool		newAttack;
+
+		//Dying mesh
+		Entity*		mEntityDie;
 
 	private:
 

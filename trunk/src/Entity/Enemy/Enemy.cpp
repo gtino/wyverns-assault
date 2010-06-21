@@ -100,6 +100,8 @@ void Enemy::initializeEntity(Ogre::Entity* entity, Ogre::SceneNode* sceneNode, O
 	// Always call base method before!
 	EntityInterface::initializeEntity(entity, sceneNode, sceneManager);
 
+	mEntityDie = NULL;
+
 	// Ballon Set
 	mBalloonSet = mSceneManager->createBillboardSet(mName + "_BillboardSet");
 	mBalloonSet->setDefaultDimensions(15.0,15.0);
@@ -177,27 +179,36 @@ void Enemy::finalizeEntity()
 
 void Enemy::updateEntity(const float elapsedSeconds)
 {
-	if( attacking )
+	// Update if enemy is not dying
+	if ( !isDying() )
 	{
-		mCurrentAnimation->setValue( ENEMY_ATTACK );
+		if( attacking )
+		{
+			mCurrentAnimation->setValue( ENEMY_ATTACK );
+		}
+		else if( moving )
+		{
+			mCurrentAnimation->setValue( ENEMY_RUN );
+		}
+		else
+		{
+			mCurrentAnimation->setValue( ENEMY_IDDLE );
+		}
+
+		if( mCurrentAnimation->getFloatValue() == ENEMY_ATTACK )
+		{
+			// New Attack
+			if( mEntity->getAnimationState("Attack")->getTimePosition() + elapsedSeconds > mEntity->getAnimationState("Attack")->getLength() )
+				newAttack = true;
+		}
+
+		mAnimationSystem->update( elapsedSeconds );
 	}
-	else if( moving )
-	{
-		mCurrentAnimation->setValue( ENEMY_RUN );
-	}
+	// Update in case that has dying animation
 	else
 	{
-		mCurrentAnimation->setValue( ENEMY_IDDLE );
+		// TODO: die animation
 	}
-
-	if( mCurrentAnimation->getFloatValue() == ENEMY_ATTACK )
-	{
-		// New Attack
-		if( mEntity->getAnimationState("Attack")->getTimePosition() + elapsedSeconds > mEntity->getAnimationState("Attack")->getLength() )
-			newAttack = true;
-	}
-
-	mAnimationSystem->update( elapsedSeconds );
 }
 
 void Enemy::updateLogic(lua_State *L, const float elapsedSeconds)
@@ -417,6 +428,22 @@ void Enemy::setAttacking(bool attack)
 
 void Enemy::attackFinish() 
 { 
-	//attacking = false;
 	newAttack = false; 
+}
+
+// Set die mesh and set invisible
+void Enemy::setDieMesh(Ogre::Entity* entity)
+{ 
+	mEntityDie = entity;
+	mEntityDie->setVisible(false);
+}
+
+// Die function, change visible meshes
+void Enemy::dieSwitch()
+{
+	// Main mesh visibility to false
+	setVisible(false);
+
+	// Die mesh visible
+	mEntityDie->setVisible(true);
 }
