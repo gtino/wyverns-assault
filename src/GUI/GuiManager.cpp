@@ -104,14 +104,14 @@ bool GuiManager::keyReleased( const OIS::KeyEvent &arg )
 EVENTS_BEGIN_REGISTER_HANDLERS(GuiManager)	
 	EVENTS_REGISTER_HANDLER(GuiManager, ItemCatch);
 	EVENTS_REGISTER_HANDLER(GuiManager, PlayerAttackSpecial);
-	EVENTS_REGISTER_HANDLER(GuiManager, EnemyKill);
+	EVENTS_REGISTER_HANDLER(GuiManager, EnemyKilled);
 	EVENTS_REGISTER_HANDLER(GuiManager, PlayerHit);
 EVENTS_END_REGISTER_HANDLERS()
 
 EVENTS_BEGIN_UNREGISTER_HANDLERS(GuiManager)
 	EVENTS_UNREGISTER_HANDLER(GuiManager, ItemCatch);
 	EVENTS_UNREGISTER_HANDLER(GuiManager, PlayerAttackSpecial);
-	EVENTS_UNREGISTER_HANDLER(GuiManager, EnemyKill);
+	EVENTS_UNREGISTER_HANDLER(GuiManager, EnemyKilled);
 	EVENTS_UNREGISTER_HANDLER(GuiManager, PlayerHit);
 EVENTS_END_UNREGISTER_HANDLERS()
 
@@ -150,9 +150,9 @@ EVENTS_DEFINE_HANDLER(GuiManager, PlayerAttackSpecial)
 	ui->setData(&userData);
 }
 
-EVENTS_DEFINE_HANDLER(GuiManager, EnemyKill)
+EVENTS_DEFINE_HANDLER(GuiManager, EnemyKilled)
 {
-	Debug::Out("GuiManager : handleEnemyKillEvent");
+	Debug::Out("GuiManager : handleEnemyKilledEvent");
 
 	PlayerPtr player = evt->getPlayer();
 

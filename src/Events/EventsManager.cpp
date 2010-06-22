@@ -28,7 +28,35 @@ EventsManager::~EventsManager()
 
 void EventsManager::addEvent(EventPtr evt)
 {
-	mEventQueue.push(evt);
+	if(evt->hasExpired())
+		mEventQueue.push(evt);
+	else
+		mDelayedEventList.push_back(evt);
+}
+
+void EventsManager::update(const float elapsedSeconds)
+{
+	updateDelayedEvents(elapsedSeconds);
+	dispatchEvents();
+}
+
+void EventsManager::updateDelayedEvents(const float elapsedSeconds)
+{
+	for(EventListIterator it = mDelayedEventList.begin();it != mDelayedEventList.end(); )
+	{
+		EventPtr e = (EventPtr)(*it);
+
+		if(e->hasExpired())
+		{
+			mEventQueue.push(e);
+			it = mDelayedEventList.erase(it);
+		}
+		else
+		{
+			e->updateTimer(elapsedSeconds);
+			it++;
+		}
+	}
 }
 
 void EventsManager::dispatchEvents()

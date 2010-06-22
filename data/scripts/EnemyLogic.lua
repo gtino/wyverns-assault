@@ -45,15 +45,7 @@ function runNakedLogic(enemyId, state)
 	-- How much time has passed since we entered last state?
 	local timeout = Enemy.getStateTimeout(enemyId)
 	
-	if state == Dead then
-		newState = state
-	elseif state == Dying then -- Enemy is dying (this lasts seconds)
-		if timeout > 2 then -- Enemy dying animation/cry/blood has ended, enemy is DEAD!
-			newState = Dead -- Now can be removed!
-		end
-	elseif Enemy.isDying(enemyId) then -- Now is dying (his life is < 0)
-		newState = Dying -- So we make him die in blood and fear and stuff...
-	elseif state == Initial then 
+	if state == Initial then 
 		newState = Idle
 	elseif state == Idle then -- Enemy is patrolling...
 		if distance<SoundDistance then -- And suddenly hears a noise..
@@ -79,6 +71,8 @@ function runNakedLogic(enemyId, state)
 		elseif distance>SightDistance then -- ...well the player really ran away
 			newState = What -- Caution for a little bit more...
 		end
+	elseif state == Dying then 
+		newState = Dying
 	else
 		newState = state -- same as before
 	end
@@ -112,15 +106,7 @@ function runWizardLogic(enemyId, state)
 		-- How much time has passed since we entered last state?
 		local timeout = Enemy.getStateTimeout(enemyId)
 		
-		if state == Dead then
-			newState = state
-		elseif state == Dying then -- Enemy is dying (this lasts seconds)
-			if timeout > 2 then -- Enemy dying animation/cry/blood has ended, enemy is DEAD!
-				newState = Dead -- Now can be removed!
-			end
-		elseif Enemy.isDying(enemyId) then -- Now is dying (his life is < 0)
-			newState = Dying -- So we make him die in blood and fear and stuff...
-		elseif state == Initial then 
+		if state == Initial then 
 			newState = Idle
 		elseif state == Love then -- A wizard is never in love!
 			newState = Idle -- ..he just reads his books!
@@ -148,6 +134,8 @@ function runWizardLogic(enemyId, state)
 			elseif distance>SightDistance then -- ...well the player really ran away
 				newState = What -- Caution for a little bit more...
 			end
+		elseif state == Dying then 
+			newState = Dying
 		else
 			newState = state -- same as before
 		end
@@ -176,15 +164,7 @@ function runPeasantLogic(enemyId, state)
 	-- How much time has passed since we entered last state?
 	local timeout = Enemy.getStateTimeout(enemyId)
 	
-	if state == Dead then
-		newState = state
-	elseif state == Dying then -- Enemy is dying (this lasts seconds)
-		if timeout > 2 then -- Enemy dying animation/cry/blood has ended, enemy is DEAD!
-			newState = Dead -- Now can be removed!
-		end
-	elseif Enemy.isDying(enemyId) then -- Now is dying (his life is < 0)
-		newState = Dying -- So we make him die in blood and fear and stuff...
-	elseif state == Initial then 
+	if state == Initial then 
 		newState = Idle
 	elseif state == Love then -- A peasant is never in love!
 		newState = Idle -- ..he just works!
@@ -210,6 +190,8 @@ function runPeasantLogic(enemyId, state)
 		else
 			newState = Rage -- Kepp fighting your way otta here!
 		end
+	elseif state == Dying then 
+		newState = Dying
 	else
 		newState = state -- same as before
 	end
@@ -243,15 +225,7 @@ function runSoldierLogic(enemyId, state)
 		-- How much time has passed since we entered last state?
 		local timeout = Enemy.getStateTimeout(enemyId)
 		
-		if state == Dead then
-			newState = state
-		elseif state == Dying then -- Enemy is dying (this lasts seconds)
-			if timeout > 2 then -- Enemy dying animation/cry/blood has ended, enemy is DEAD!
-				newState = Dead -- Now can be removed!
-			end
-		elseif Enemy.isDying(enemyId) then -- Now is dying (his life is < 0)
-			newState = Dying -- So we make him die in blood and fear and stuff...
-		elseif state == Initial then 
+		if state == Initial then 
 			newState = Idle
 		elseif state == Idle then
 			if distance<AlertDistance then
@@ -267,6 +241,8 @@ function runSoldierLogic(enemyId, state)
 			if distance>FightingDistance then
 				newState = Alert
 			end
+		elseif state == Dying then 
+			newState = Dying
 		else
 			newState = state -- same as before
 		end
@@ -329,15 +305,7 @@ function runChickenLogic(enemyId, state)
 	-- How much time has passed since we entered last state?
 	local timeout = Enemy.getStateTimeout(enemyId)
 	
-	if state == Dead then
-		newState = state
-	elseif state == Dying then -- Enemy is dying (this lasts seconds)
-		if timeout > 2 then -- Enemy dying animation/cry/blood has ended, enemy is DEAD!
-			newState = Dead -- Now can be removed!
-		end
-	elseif Enemy.isDying(enemyId) then -- Now is dying (his life is < 0)
-		newState = Dying -- So we make him die in blood and fear and stuff...
-	elseif state == Initial then 
+	if state == Initial then 
 		newState = Idle
 	elseif state == Idle then
 		if distance<AlertDistance then -- The Animal can see the player!
@@ -347,6 +315,8 @@ function runChickenLogic(enemyId, state)
 		if distance>AlertDistance then
 			newState = Idle 
 		end
+	elseif state == Dying then 
+		newState = Dying
 	else
 		newState = state
 	end
@@ -369,15 +339,7 @@ function runAnimalLogic(enemyId, state)
 	-- How much time has passed since we entered last state?
 	local timeout = Enemy.getStateTimeout(enemyId)
 	
-	if state == Dead then
-		newState = state
-	elseif state == Dying then -- Enemy is dying (this lasts seconds)
-		if timeout > 2 then -- Enemy dying animation/cry/blood has ended, enemy is DEAD!
-			newState = Dead -- Now can be removed!
-		end
-	elseif Enemy.isDying(enemyId) then -- Now is dying (his life is < 0)
-		newState = Dying -- So we make him die in blood and fear and stuff...
-	elseif state == Initial then 
+	if state == Initial then 
 		newState = Idle
 	elseif state == Idle then
 		if distance<AlertDistance then 
@@ -387,6 +349,8 @@ function runAnimalLogic(enemyId, state)
 		if distance>AlertDistance then
 			newState = Idle
 		end
+	elseif state == Dying then 
+		newState = Dying
 	else
 		newState = state
 	end

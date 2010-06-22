@@ -92,7 +92,8 @@ namespace WyvernsAssault
 
 		EVENTS_HANDLER(Collision)
 		EVENTS_HANDLER(EnemyHit)
-		EVENTS_HANDLER(EnemyKill)
+		EVENTS_HANDLER(EnemyKilled)
+		EVENTS_HANDLER(EnemyRemove)
 
 	private:
 		Ogre::String createUniqueId();

@@ -122,7 +122,7 @@ void PhysicsManager::checkForCollisions()
 			{
 				EnemyHitEventPtr enemyHitEventPtr = EnemyHitEventPtr(new EnemyHitEvent(enemy, player));
 				enemyHitEventPtr->setDamage(player->getSpecialHitDamage());
-				raiseEvent(enemyHitEventPtr);
+				EVENTS_FIRE(enemyHitEventPtr);
 			}
 
 			// Player and enemy are colliding
@@ -137,13 +137,14 @@ void PhysicsManager::checkForCollisions()
 						enemyHitEventPtr->setDamage(player->getComboHitDamage());
 					else
  						enemyHitEventPtr->setDamage(player->getHitDamage());
-					raiseEvent(enemyHitEventPtr);
+
+					EVENTS_FIRE(enemyHitEventPtr);
 				}
 				// Check if enemy is attacking
 				if( enemy->isAttacking() && enemy->attackStart() )
 				{
 					PlayerHitEventPtr playerHitEventPtr = PlayerHitEventPtr(new PlayerHitEvent(enemy, player));
-					raiseEvent(playerHitEventPtr);
+					EVENTS_FIRE(playerHitEventPtr);
 					enemy->attackFinish();
 				}
 			}
@@ -162,7 +163,7 @@ void PhysicsManager::checkForCollisions()
 			{
 				//Item chatched
 				ItemCatchEventPtr evt = ItemCatchEventPtr(new ItemCatchEvent(player, item));
-				raiseEvent(evt);
+				EVENTS_FIRE(evt);
 			}
 
 		}
@@ -582,20 +583,17 @@ void PhysicsManager::removeObject(ObjectPtr obj)
 // --------------
 // Event handlers
 // --------------
-void PhysicsManager::registerHandlers()
-{
-	boost::shared_ptr<PhysicsManager> this_ = shared_from_this();
+EVENTS_BEGIN_REGISTER_HANDLERS(PhysicsManager)
+	EVENTS_REGISTER_HANDLER(PhysicsManager, EnemyKilled)
+	EVENTS_REGISTER_HANDLER(PhysicsManager, ItemCatch);
+EVENTS_END_REGISTER_HANDLERS()
 
-	registerHandler(EventHandlerPtr(new EventHandler<PhysicsManager,EnemyKillEvent>(this_,&PhysicsManager::handleEnemyKillEvent)),EventTypes::EnemyKill);
-	registerHandler(EventHandlerPtr(new EventHandler<PhysicsManager,ItemCatchEvent>(this_,&PhysicsManager::handleItemCatchEvent)),EventTypes::ItemCatch);
-}
+EVENTS_BEGIN_UNREGISTER_HANDLERS(PhysicsManager)
+	EVENTS_UNREGISTER_HANDLER(PhysicsManager, EnemyKilled)
+	EVENTS_UNREGISTER_HANDLER(PhysicsManager, ItemCatch);
+EVENTS_END_UNREGISTER_HANDLERS()
 
-void PhysicsManager::unregisterHandlers()
-{
-	
-}
-
-void PhysicsManager::handleEnemyKillEvent(EnemyKillEventPtr evt)
+EVENTS_DEFINE_HANDLER(PhysicsManager,EnemyKilled)
 {
 	EnemyPtr enemy = evt->getEnemy();
 	PlayerPtr player = evt->getPlayer();
@@ -604,7 +602,7 @@ void PhysicsManager::handleEnemyKillEvent(EnemyKillEventPtr evt)
    	removeEnemy(enemy);
 }
 
-void PhysicsManager::handleItemCatchEvent(ItemCatchEventPtr evt)
+EVENTS_DEFINE_HANDLER(PhysicsManager,ItemCatch)
 {
 	ItemPtr item = evt->getItem();
 

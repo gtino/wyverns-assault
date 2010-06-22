@@ -23,6 +23,15 @@ void EventsInterface::raiseEvent(EventPtr e)
 	mEventsManager->addEvent(e);
 }
 
+// Raise an event
+void EventsInterface::raiseEvent(EventPtr e, const float timer)
+{
+	e->setTimer(timer);
+
+	mEventsManager->addEvent(e);
+}
+
+
 // Handle an event
 void EventsInterface::handleEvent(EventPtr e)
 {

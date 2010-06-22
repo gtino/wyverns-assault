@@ -196,7 +196,7 @@ namespace WyvernsAssault
 		// ----------------
 		EVENTS_INTERFACE()
 
-		EVENTS_HANDLER(EnemyKill)
+		EVENTS_HANDLER(EnemyKilled)
 
 		// --------------------------------
 		// BEGIN Lua Interface Declarations

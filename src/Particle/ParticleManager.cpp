@@ -222,13 +222,13 @@ void ParticleManager::glow(SceneNode* node)
 // --------------
 EVENTS_BEGIN_REGISTER_HANDLERS(ParticleManager)
 	EVENTS_REGISTER_HANDLER(ParticleManager,EnemyHit)
-	EVENTS_REGISTER_HANDLER(ParticleManager,EnemyKill)
+	EVENTS_REGISTER_HANDLER(ParticleManager,EnemyKilled)
 	EVENTS_REGISTER_HANDLER(ParticleManager,ItemCatch)
 EVENTS_END_REGISTER_HANDLERS()
 
 EVENTS_BEGIN_UNREGISTER_HANDLERS(ParticleManager)
 	EVENTS_UNREGISTER_HANDLER(ParticleManager,EnemyHit)
-	EVENTS_UNREGISTER_HANDLER(ParticleManager,EnemyKill)
+	EVENTS_UNREGISTER_HANDLER(ParticleManager,EnemyKilled)
 	EVENTS_UNREGISTER_HANDLER(ParticleManager,ItemCatch)
 EVENTS_END_REGISTER_HANDLERS()
 
@@ -251,7 +251,7 @@ EVENTS_DEFINE_HANDLER(ParticleManager,EnemyHit)
 	}
 }
 
-EVENTS_DEFINE_HANDLER(ParticleManager, EnemyKill)
+EVENTS_DEFINE_HANDLER(ParticleManager, EnemyKilled)
 {
 	EnemyPtr enemy = evt->getEnemy();
 	PlayerPtr player = evt->getPlayer();	

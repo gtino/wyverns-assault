@@ -608,10 +608,10 @@ EVENTS_BEGIN_REGISTER_HANDLERS(AudioManager)
 	EVENTS_REGISTER_HANDLER(AudioManager, PlayerAttack);
 	EVENTS_REGISTER_HANDLER(AudioManager, PlayerAttackSpecial);
 	EVENTS_REGISTER_HANDLER(AudioManager, PlayerHit);
-	EVENTS_REGISTER_HANDLER(AudioManager, PlayerKill);
+	EVENTS_REGISTER_HANDLER(AudioManager, PlayerKilled);
 	EVENTS_REGISTER_HANDLER(AudioManager, EnemyAttack);
 	EVENTS_REGISTER_HANDLER(AudioManager, EnemyHit);
-	EVENTS_REGISTER_HANDLER(AudioManager, EnemyKill);	
+	EVENTS_REGISTER_HANDLER(AudioManager, EnemyKilled);	
 	EVENTS_REGISTER_HANDLER(AudioManager, ItemCatch);
 EVENTS_END_REGISTER_HANDLERS()
 
@@ -619,10 +619,10 @@ EVENTS_BEGIN_UNREGISTER_HANDLERS(AudioManager)
 	EVENTS_UNREGISTER_HANDLER(AudioManager, PlayerAttack);
 	EVENTS_UNREGISTER_HANDLER(AudioManager, PlayerAttackSpecial);
 	EVENTS_UNREGISTER_HANDLER(AudioManager, PlayerHit);
-	EVENTS_UNREGISTER_HANDLER(AudioManager, PlayerKill);
+	EVENTS_UNREGISTER_HANDLER(AudioManager, PlayerKilled);
 	EVENTS_UNREGISTER_HANDLER(AudioManager, EnemyAttack);
 	EVENTS_UNREGISTER_HANDLER(AudioManager, EnemyHit);
-	EVENTS_UNREGISTER_HANDLER(AudioManager, EnemyKill);	
+	EVENTS_UNREGISTER_HANDLER(AudioManager, EnemyKilled);	
 	EVENTS_UNREGISTER_HANDLER(AudioManager, ItemCatch);
 EVENTS_END_UNREGISTER_HANDLERS()
 
@@ -677,9 +677,9 @@ EVENTS_DEFINE_HANDLER(AudioManager, PlayerHit)
 		playSound("PlayerHit02.wav",sceneNode->_getDerivedPosition(),&channelIndex);
 }
 
-EVENTS_DEFINE_HANDLER(AudioManager, PlayerKill)
+EVENTS_DEFINE_HANDLER(AudioManager, PlayerKilled)
 {
-	Debug::Out("AudioManager : handlePlayerKillEvent");
+	Debug::Out("AudioManager : handlePlayerKilledEvent");
 
 	PlayerPtr player = evt->getPlayer();
 
@@ -761,9 +761,9 @@ EVENTS_DEFINE_HANDLER(AudioManager, EnemyHit)
 }
 
 
-EVENTS_DEFINE_HANDLER(AudioManager, EnemyKill)
+EVENTS_DEFINE_HANDLER(AudioManager, EnemyKilled)
 {
-	Debug::Out("AudioManager : handleEnemyKillEvent");
+	Debug::Out("AudioManager : handleEnemyKilledEvent");
 
 	EnemyPtr enemy = evt->getEnemy();
 	PlayerPtr player = evt->getPlayer();

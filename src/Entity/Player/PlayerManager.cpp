@@ -50,8 +50,8 @@ void PlayerManager::update(const float elapsedSeconds)
 		// Check if dead
 		if( player->getLife() == 0 )
 		{
-			PlayerKillEventPtr playerKillEventPtr = PlayerKillEventPtr(new PlayerKillEvent(player));
-			raiseEvent(playerKillEventPtr);
+			PlayerKilledEventPtr playerKilledEventPtr = PlayerKilledEventPtr(new PlayerKilledEvent(player));
+			EVENTS_FIRE(playerKilledEventPtr);
 		}
 	}
 }
@@ -125,7 +125,7 @@ void PlayerManager::attack(Ogre::String name)
 	{
 		player->attackFinish();
 		PlayerAttackEventPtr evt = PlayerAttackEventPtr(new PlayerAttackEvent(player));
-		raiseEvent(evt);
+		EVENTS_FIRE(evt);
 	}
 }
 
@@ -139,7 +139,7 @@ void PlayerManager::attackSpecial(Ogre::String name)
 	{
 		player->attackFinish();
 		PlayerAttackSpecialEventPtr evt = PlayerAttackSpecialEventPtr(new PlayerAttackSpecialEvent(player));
-		raiseEvent(evt);
+		EVENTS_FIRE(evt);
 	}
 }
 
@@ -168,16 +168,16 @@ void PlayerManager::setDebugEnabled(bool isDebugEnabled)
 // --------------
 EVENTS_BEGIN_REGISTER_HANDLERS(PlayerManager)
 	EVENTS_REGISTER_HANDLER(PlayerManager,PlayerHit)
-	EVENTS_REGISTER_HANDLER(PlayerManager,PlayerKill)
+	EVENTS_REGISTER_HANDLER(PlayerManager,PlayerKilled)
 	EVENTS_REGISTER_HANDLER(PlayerManager,ItemCatch)
-	EVENTS_REGISTER_HANDLER(PlayerManager,EnemyKill)
+	EVENTS_REGISTER_HANDLER(PlayerManager,EnemyKilled)
 EVENTS_END_REGISTER_HANDLERS()
 
 EVENTS_BEGIN_UNREGISTER_HANDLERS(PlayerManager)
 	EVENTS_UNREGISTER_HANDLER(PlayerManager,PlayerHit)
-	EVENTS_UNREGISTER_HANDLER(PlayerManager,PlayerKill)
+	EVENTS_UNREGISTER_HANDLER(PlayerManager,PlayerKilled)
 	EVENTS_UNREGISTER_HANDLER(PlayerManager,ItemCatch)
-	EVENTS_UNREGISTER_HANDLER(PlayerManager,EnemyKill)
+	EVENTS_UNREGISTER_HANDLER(PlayerManager,EnemyKilled)
 EVENTS_END_UNREGISTER_HANDLERS()
 
 EVENTS_DEFINE_HANDLER(PlayerManager, PlayerHit)
@@ -190,9 +190,9 @@ EVENTS_DEFINE_HANDLER(PlayerManager, PlayerHit)
 	player->setLife( player->getLife() - enemy->getHitDamage() );
 }
 
-EVENTS_DEFINE_HANDLER(PlayerManager, PlayerKill)
+EVENTS_DEFINE_HANDLER(PlayerManager, PlayerKilled)
 {
-	Debug::Out("PlayerManager : handlePlayerKillEvent");
+	Debug::Out("PlayerManager : handlePlayerKilledEvent");
 
 	PlayerPtr player = evt->getPlayer();
 
@@ -211,9 +211,9 @@ EVENTS_DEFINE_HANDLER(PlayerManager, ItemCatch)
 	player->addPoints(item->getScore());
 }
 
-EVENTS_DEFINE_HANDLER(PlayerManager, EnemyKill)
+EVENTS_DEFINE_HANDLER(PlayerManager, EnemyKilled)
 {
-	Debug::Out("PlayerManager : handleEnemyKill");
+	Debug::Out("PlayerManager : handleEnemyKilled");
 
 	PlayerPtr player = evt->getPlayer();
 	EnemyPtr enemy = evt->getEnemy();
