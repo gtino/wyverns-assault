@@ -138,15 +138,23 @@ void PhysicsManager::checkForCollisions()
 					else
  						enemyHitEventPtr->setDamage(player->getHitDamage());
 
-					EVENTS_FIRE(enemyHitEventPtr);
+					EVENTS_FIRE_AFTER(enemyHitEventPtr, 0.25f);
 				}
 				// Check if enemy is attacking
 				if( enemy->isAttacking() && enemy->attackStart() )
 				{
 					PlayerHitEventPtr playerHitEventPtr = PlayerHitEventPtr(new PlayerHitEvent(enemy, player));
-					EVENTS_FIRE(playerHitEventPtr);
+					EVENTS_FIRE_AFTER(playerHitEventPtr, 0.25f);
 					enemy->attackFinish();
 				}
+				// Colision with chicken
+				if ( enemy->getEnemyType() == Enemy::EnemyTypes::Chicken && player->isMoving())
+				{
+					EnemyHitEventPtr enemyHitEventPtr = EnemyHitEventPtr(new EnemyHitEvent(enemy, player));
+					enemyHitEventPtr->setDamage(player->getHitDamage());
+					EVENTS_FIRE(enemyHitEventPtr);
+				}
+				// Collision withou attack
 			}
 		}
 		// Save last attack

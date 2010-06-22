@@ -130,13 +130,157 @@
  			<entity type="KnightB5" meshFile="knightB.mesh" name="knight19"/>
 		</enemy>
 		<enemy>
-			<position x="1200" y="10" z="50"/>
+			<position x="965" y="10" z="505"/>
  			<entity type="KnightC5" meshFile="knightC.mesh" name="knight20"/>
 		</enemy>
 		<enemy>
-			<position x="1225" y="10" z="80"/>
+			<position x="970" y="10" z="490"/>
  			<entity type="Wizard" meshFile="wizard.mesh" name="wizard0"/>
-		</enemy>	
+		</enemy>
+		<enemy>
+			<position x="985" y="10" z="500"/>
+ 			<entity type="KnightC5" meshFile="knightC.mesh" name="knight21"/>
+		</enemy>
+		<enemy>
+			<position x="990" y="10" z="500"/>
+ 			<entity type="KnightC5" meshFile="knightC.mesh" name="knight22"/>
+		</enemy>
+		<enemy>
+			<position x="960" y="10" z="510"/>
+ 			<entity type="KnightC5" meshFile="knightC.mesh" name="knight23"/>
+		</enemy>
+		<enemy>
+			<position x="950" y="10" z="475"/>
+ 			<entity type="KnightC5" meshFile="knightC.mesh" name="knight24"/>
+		</enemy>
+		<enemy>
+			<position x="990" y="10" z="475"/>
+ 			<entity type="KnightC5" meshFile="knightC.mesh" name="knight25"/>
+		</enemy>
+		<enemy>
+			<position x="960" y="10" z="530"/>
+ 			<entity type="KnightC5" meshFile="knightC.mesh" name="knight26"/>
+		</enemy>
+		<enemy>
+			<position x="975" y="10" z="530"/>
+ 			<entity type="KnightC5" meshFile="knightC.mesh" name="knight27"/>
+		</enemy>
+		<enemy>
+			<position x="945" y="10" z="530"/>
+ 			<entity type="KnightC5" meshFile="knightC.mesh" name="knight28"/>
+		</enemy>
+		<enemy>
+			<position x="915" y="10" z="530"/>
+ 			<entity type="KnightC5" meshFile="knightC.mesh" name="knight29"/>
+		</enemy>
+		<enemy>
+			<position x="920" y="10" z="530"/>
+ 			<entity type="KnightC5" meshFile="knightC.mesh" name="knight30"/>
+		</enemy>
+		<enemy>
+			<position x="900" y="10" z="500"/>
+ 			<entity type="KnightC5" meshFile="knightC.mesh" name="knight31"/>
+		</enemy>
+		<enemy>
+			<position x="965" y="10" z="540"/>
+ 			<entity type="KnightC5" meshFile="knightC.mesh" name="knight32"/>
+		</enemy>
+		<enemy>
+			<position x="990" y="10" z="450"/>
+ 			<entity type="KnightC5" meshFile="knightC.mesh" name="knight33"/>
+		</enemy>
+		<enemy>
+			<position x="975" y="10" z="480"/>
+ 			<entity type="KnightC5" meshFile="knightC.mesh" name="knight34"/>
+		</enemy>
+		<enemy>
+			<position x="900" y="10" z="450"/>
+ 			<entity type="KnightC5" meshFile="knightC.mesh" name="knight35"/>
+		</enemy>
+		<enemy>
+			<position x="945" y="10" z="450"/>
+ 			<entity type="KnightC5" meshFile="knightC.mesh" name="knight36"/>
+		</enemy>
+		<enemy>
+			<position x="935" y="10" z="500"/>
+ 			<entity type="KnightC5" meshFile="knightC.mesh" name="knight37"/>
+		</enemy>
+		<enemy>
+			<position x="980" y="10" z="530"/>
+ 			<entity type="KnightC5" meshFile="knightC.mesh" name="knight38"/>
+		</enemy>
+		<enemy>
+			<position x="985" y="10" z="530"/>
+ 			<entity type="KnightC5" meshFile="knightC.mesh" name="knight39"/>
+		</enemy>
+		<enemy>
+			<position x="970" y="10" z="520"/>
+ 			<entity type="KnightC5" meshFile="knightC.mesh" name="knight40"/>
+		</enemy>
+		<enemy>
+			<position x="935" y="10" z="510"/>
+ 			<entity type="KnightC5" meshFile="knightC.mesh" name="knight41"/>
+		</enemy>
+		<enemy>
+			<position x="890" y="10" z="500"/>
+ 			<entity type="KnightC5" meshFile="knightC.mesh" name="knight42"/>
+		</enemy>
+		<enemy>
+			<position x="890" y="10" z="550"/>
+ 			<entity type="KnightC5" meshFile="knightC.mesh" name="knight43"/>
+		</enemy>
+		<enemy>
+			<position x="880" y="10" z="560"/>
+ 			<entity type="KnightC5" meshFile="knightC.mesh" name="knight44"/>
+		</enemy>
+		<enemy>
+			<position x="875" y="10" z="560"/>
+ 			<entity type="KnightC5" meshFile="knightC.mesh" name="knight45"/>
+		</enemy>
+		<enemy>
+			<position x="870" y="10" z="530"/>
+ 			<entity type="KnightC5" meshFile="knightC.mesh" name="knight46"/>
+		</enemy>
+		<enemy>
+			<position x="860" y="10" z="500"/>
+ 			<entity type="KnightC5" meshFile="knightC.mesh" name="knight47"/>
+		</enemy>
+		<enemy>
+			<position x="850" y="10" z="505"/>
+ 			<entity type="KnightC5" meshFile="knightC.mesh" name="knight48"/>
+		</enemy>
+		<enemy>
+			<position x="815" y="10" z="505"/>
+ 			<entity type="KnightC5" meshFile="knightC.mesh" name="knight49"/>
+		</enemy>
+		<enemy>
+			<position x="815" y="10" z="505"/>
+ 			<entity type="KnightC5" meshFile="knightC.mesh" name="knight50"/>
+		</enemy>
+		<enemy>
+			<position x="920" y="10" z="535"/>
+ 			<entity type="KnightC5" meshFile="knightC.mesh" name="knight51"/>
+		</enemy>
+		<enemy>
+			<position x="945" y="10" z="560"/>
+ 			<entity type="KnightC5" meshFile="knightC.mesh" name="knight52"/>
+		</enemy>
+		<enemy>
+			<position x="915" y="10" z="560"/>
+ 			<entity type="KnightC5" meshFile="knightC.mesh" name="knight53"/>
+		</enemy>
+		<enemy>
+			<position x="950" y="10" z="560"/>
+ 			<entity type="KnightC5" meshFile="knightC.mesh" name="knight54"/>
+		</enemy>
+		<enemy>
+			<position x="970" y="10" z="580"/>
+ 			<entity type="KnightC5" meshFile="knightC.mesh" name="knight55"/>
+		</enemy>
+		<enemy>
+			<position x="990" y="10" z="580"/>
+ 			<entity type="KnightC5" meshFile="knightC.mesh" name="knight56"/>
+		</enemy>
 		<!-- Enemies list End -->
 	</enemies>
 </scene>
