@@ -269,6 +269,25 @@ void PhysicsManager::addPhysicGround(Ogre::String mesh, Ogre::String name, Wyver
 	nodeGround->attachObject(entityGround);
 	nodeGround->setVisible(false);
 	nodeGround->setScale(scale);
+
+    // Get the mesh information
+	if(type == BASIC_GROUND_MASK)
+	{
+		GetMeshInformation(entityGround->getMesh(), basicGroundMeshInfo.vertex_count, basicGroundMeshInfo.vertices,
+							basicGroundMeshInfo.index_count, basicGroundMeshInfo.indices,             
+							entityGround->getParentNode()->getPosition(),
+							entityGround->getParentNode()->getOrientation(),
+							entityGround->getParentNode()->getScale());
+	}
+	else if(type == BORDER_GROUND_MASK)
+	{
+		GetMeshInformation(entityGround->getMesh(), bordersGroundMeshInfo.vertex_count, bordersGroundMeshInfo.vertices,
+							bordersGroundMeshInfo.index_count, bordersGroundMeshInfo.indices,             
+							entityGround->getParentNode()->getPosition(),
+							entityGround->getParentNode()->getOrientation(),
+							entityGround->getParentNode()->getScale());
+	}
+
 }
 
 /* Load player physics
@@ -390,10 +409,20 @@ bool PhysicsManager::raycast(const Vector3 &point, const Vector3 &normal,
             unsigned long *indices;
 
             // get the mesh information
-			GetMeshInformation(pentity->getMesh(), vertex_count, vertices, index_count, indices,             
-                              pentity->getParentNode()->getPosition(),
-                              pentity->getParentNode()->getOrientation(),
-                              pentity->getParentNode()->getScale());
+			if(queryMask == BASIC_GROUND_MASK)
+			{
+				vertex_count = basicGroundMeshInfo.vertex_count;
+				index_count = basicGroundMeshInfo.index_count;
+				vertices = basicGroundMeshInfo.vertices;
+				indices = basicGroundMeshInfo.indices;
+			}
+			else if(queryMask == BORDER_GROUND_MASK)
+			{
+				vertex_count = bordersGroundMeshInfo.vertex_count;
+				index_count = bordersGroundMeshInfo.index_count;
+				vertices = bordersGroundMeshInfo.vertices;
+				indices = bordersGroundMeshInfo.indices;
+			}
 
             // test for hitting individual triangles on the mesh
             bool new_closest_found = false;
@@ -415,9 +444,6 @@ bool PhysicsManager::raycast(const Vector3 &point, const Vector3 &normal,
                     }
                 }
             }
-
-            delete[] vertices;
-            delete[] indices;
 
             // if we found a new closest raycast for this object, update the
             // closest_result before moving on to the next object.
