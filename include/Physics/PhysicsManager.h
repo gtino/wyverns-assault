@@ -53,8 +53,16 @@ using namespace Ogre;
 namespace WyvernsAssault
 {		
 
-	//typedef std::map<size_t,ObjectPtr> ObjectMap;
-	//typedef std::map<size_t,ObjectPtr>::iterator ObjectMapIterator;
+	class PhysicsMeshInfo{
+    public: 
+		PhysicsMeshInfo(){};
+		~PhysicsMeshInfo(){};
+	public:
+        size_t vertex_count;
+        size_t index_count;
+        unsigned long* indices;
+		Ogre::Vector3* vertices;
+    };
 
 	/* Ground types
 	*/
@@ -141,6 +149,8 @@ namespace WyvernsAssault
 		SceneManager* mSceneManager;
 		SceneNode* mPhysicsNode;
 		Ogre::RaySceneQuery *mRaySceneQuery;
+		PhysicsMeshInfo basicGroundMeshInfo;
+		PhysicsMeshInfo bordersGroundMeshInfo;
 
 		PlayerMap mPlayerMap;
 		EnemyMap mEnemyMap;
@@ -173,6 +183,7 @@ namespace WyvernsAssault
 	};
 
 	typedef boost::shared_ptr<PhysicsManager> PhysicsManagerPtr;
+
 }
 
 #endif // __PHYSICS_MANAGER_H__
