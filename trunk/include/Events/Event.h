@@ -35,18 +35,18 @@ namespace WyvernsAssault
 	enum EventTypes
 	{
 		PlayerHit = 0,
-		PlayerKill,
-		PlayerRemoved,
+		PlayerKilled,
+		PlayerRemove,
 		PlayerAttack,
 		PlayerAttackSpecial,
 		EnemyAttack,
 		EnemyHit,
-		EnemyKill,
-		EnemyRemoved,
+		EnemyKilled,
+		EnemyRemove,
 		ObjectHit,
 		Collision,		
 		ItemCatch,
-		ItemRemoved
+		ItemRemove
 	};
 
 	/** Event priority, used to put the event in the correct queue */
@@ -59,6 +59,7 @@ namespace WyvernsAssault
 		Lower
 	};
 
+	typedef float EventTimer;
 	typedef void* EventData;
 
 	class Event
@@ -77,10 +78,19 @@ namespace WyvernsAssault
 		/** Sets the event data */
 		void setData(EventData data);
 
+		// Set the internal timer
+		void setTimer(const float timoutInSeconds);
+		// Update internal timer. Internal timer will be decremented 
+		// of given amount of time in seconds 
+		void updateTimer(const float elapsedSeconds);
+		// Return if timer has expired (<= 0)
+		bool hasExpired();
+
 	private:
 		EventTypes mType;
 		EventPriorities mPriority;
 		EventData mData;
+		EventTimer mTimer;
 	};
 
 	typedef boost::shared_ptr<Event> EventPtr;
@@ -141,11 +151,11 @@ namespace WyvernsAssault
 	typedef boost::shared_ptr<EnemyHitEvent> EnemyHitEventPtr;
 
 	// --------------------------------
-	class EnemyKillEvent : public Event
+	class EnemyKilledEvent : public Event
 	{
 	public:
-		EnemyKillEvent(EnemyPtr e, PlayerPtr p);
-		~EnemyKillEvent(){};
+		EnemyKilledEvent(EnemyPtr e, PlayerPtr p);
+		~EnemyKilledEvent(){};
 		
 		EnemyPtr getEnemy(){return mEnemy;}
 		PlayerPtr getPlayer(){return mPlayer;}
@@ -155,14 +165,14 @@ namespace WyvernsAssault
 		PlayerPtr mPlayer;
 	};
 
-	typedef boost::shared_ptr<EnemyKillEvent> EnemyKillEventPtr;
+	typedef boost::shared_ptr<EnemyKilledEvent> EnemyKilledEventPtr;
 
 	// --------------------------------
-	class EnemyRemovedEvent : public Event
+	class EnemyRemoveEvent : public Event
 	{
 	public:
-		EnemyRemovedEvent(EnemyPtr e);
-		~EnemyRemovedEvent(){};
+		EnemyRemoveEvent(EnemyPtr e);
+		~EnemyRemoveEvent(){};
 		
 		EnemyPtr getEnemy(){return mEnemy;}
 
@@ -170,7 +180,7 @@ namespace WyvernsAssault
 		EnemyPtr mEnemy;
 	};
 
-	typedef boost::shared_ptr<EnemyRemovedEvent> EnemyRemovedEventPtr;
+	typedef boost::shared_ptr<EnemyRemoveEvent> EnemyRemoveEventPtr;
 
 	// --------------------------------
 	class PlayerHitEvent : public Event
@@ -193,11 +203,11 @@ namespace WyvernsAssault
 
 	// --------------------------------
 
-	class PlayerKillEvent : public Event
+	class PlayerKilledEvent : public Event
 	{
 	public:
-		PlayerKillEvent(PlayerPtr p);
-		~PlayerKillEvent(){};
+		PlayerKilledEvent(PlayerPtr p);
+		~PlayerKilledEvent(){};
 		
 		PlayerPtr getPlayer(){return mPlayer;}
 
@@ -207,7 +217,7 @@ namespace WyvernsAssault
 		Ogre::Real damage;
 	};
 
-	typedef boost::shared_ptr<PlayerKillEvent> PlayerKillEventPtr;
+	typedef boost::shared_ptr<PlayerKilledEvent> PlayerKilledEventPtr;
 
 	// --------------------------------
 	class PlayerAttackEvent : public Event
@@ -256,11 +266,11 @@ namespace WyvernsAssault
 	typedef boost::shared_ptr<ItemCatchEvent> ItemCatchEventPtr;
 
 	// --------------------------------
-	class ItemRemovedEvent : public Event
+	class ItemRemoveEvent : public Event
 	{
 	public:
-		ItemRemovedEvent(/*PlayerPtr p,*/ ItemPtr item);
-		~ItemRemovedEvent(){};
+		ItemRemoveEvent(/*PlayerPtr p,*/ ItemPtr item);
+		~ItemRemoveEvent(){};
 		
 		/*PlayerPtr getPlayer(){return mPlayer;}*/
 		ItemPtr getItem(){return mItem;}
@@ -270,7 +280,7 @@ namespace WyvernsAssault
 		ItemPtr mItem;
 	};
 
-	typedef boost::shared_ptr<ItemRemovedEvent> ItemRemovedEventPtr;
+	typedef boost::shared_ptr<ItemRemoveEvent> ItemRemoveEventPtr;
 }
 
 #endif // __EVENT_H_

@@ -121,37 +121,18 @@ bool ItemManager::removeItem(Ogre::String name)
 	
 	if( it != mItemList.end() )
 		mItemList.erase(it);
+
 	return true;
 }
 
 void ItemManager::update(const float elapsedSeconds)
 {
-	ItemList itemsToRemove;
-
 	for(int i = 0; i < mItemList.size() ; i++)
 	{
 		ItemPtr item =  mItemList[i];
 
-		if(item->isCatched() && item->getStateTimeout() > 2)
-		{
-			itemsToRemove.push_back(item);
-		}
-
 		item->updateEntity(elapsedSeconds);
-		item->updateLogic(elapsedSeconds);
 	}
-
-	// Now we have to remove them and notify other listeners with the 'dead/remove' event!
-	for(int i = 0; i < itemsToRemove.size(); i++)
-	{
-		ItemPtr item = itemsToRemove[i];
-
-		//Item chatched
-		ItemRemovedEventPtr evt = ItemRemovedEventPtr(new ItemRemovedEvent(item));
-		raiseEvent(evt);
-	}
-
-	itemsToRemove.clear();	
 }
 
 void ItemManager::setDebugEnabled(bool isDebugEnabled)
@@ -173,12 +154,12 @@ void ItemManager::setDebugEnabled(bool isDebugEnabled)
 // --------------
 EVENTS_BEGIN_REGISTER_HANDLERS(ItemManager)
 	EVENTS_REGISTER_HANDLER(ItemManager,ItemCatch)
-	EVENTS_REGISTER_HANDLER(ItemManager,ItemRemoved)
+	EVENTS_REGISTER_HANDLER(ItemManager,ItemRemove)
 EVENTS_END_REGISTER_HANDLERS()
 
 EVENTS_BEGIN_UNREGISTER_HANDLERS(ItemManager)
 	EVENTS_UNREGISTER_HANDLER(ItemManager,ItemCatch)
-	EVENTS_UNREGISTER_HANDLER(ItemManager,ItemRemoved)
+	EVENTS_UNREGISTER_HANDLER(ItemManager,ItemRemove)
 EVENTS_END_UNREGISTER_HANDLERS()
 
 EVENTS_DEFINE_HANDLER(ItemManager,ItemCatch)
@@ -186,13 +167,18 @@ EVENTS_DEFINE_HANDLER(ItemManager,ItemCatch)
 	Debug::Out("ItemManager : handleItemCatchEvent");
 
 	ItemPtr item = evt->getItem();
+	PlayerPtr player = evt->getPlayer();
 
 	item->caught();
+
+	// Item will be removed after a while
+	ItemRemoveEventPtr re = ItemRemoveEventPtr(new ItemRemoveEvent(item));
+	EVENTS_FIRE_AFTER(re,2.0f);
 }
 
-EVENTS_DEFINE_HANDLER(ItemManager,ItemRemoved)
+EVENTS_DEFINE_HANDLER(ItemManager,ItemRemove)
 {
-	Debug::Out("ItemManager : handleItemRemovedEvent");
+	Debug::Out("ItemManager : handleItemRemoveEvent");
 
 	ItemPtr item = evt->getItem();	
 

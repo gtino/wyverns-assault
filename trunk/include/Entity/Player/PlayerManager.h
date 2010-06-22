@@ -87,9 +87,9 @@ namespace WyvernsAssault
 		EVENTS_INTERFACE()
 
 		EVENTS_HANDLER(PlayerHit)
-		EVENTS_HANDLER(PlayerKill)
+		EVENTS_HANDLER(PlayerKilled)
 		EVENTS_HANDLER(ItemCatch)
-		EVENTS_HANDLER(EnemyKill)
+		EVENTS_HANDLER(EnemyKilled)
 
 	private:
 		PlayerList getPlayerList(){ return mPlayerList; }

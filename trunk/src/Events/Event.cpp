@@ -3,13 +3,14 @@
 using namespace WyvernsAssault;
 
 Event::Event(EventTypes type, EventPriorities priority)
+: mData(0)
+, mTimer(0.0f)
 {
 	//
 	// TODO Constructor
 	//
 	this->mType = type;
 	this->mPriority = priority;
-	this->mData = 0;
 }
 
 Event::~Event()
@@ -41,6 +42,23 @@ EventData Event::getData()
 void Event::setData(EventData data)
 {
 	mData = data;
+}
+
+void Event::setTimer(const float timoutInSeconds)
+{
+	mTimer = timoutInSeconds;
+}
+
+void Event::updateTimer(const float elapsedSeconds)
+{
+	mTimer -= elapsedSeconds;
+
+	if(mTimer < 0.0f) mTimer = 0.0f;
+}
+
+bool Event::hasExpired()
+{
+	return (mTimer <= 0.0f);
 }
 
 // -------------------------------
@@ -85,8 +103,8 @@ EnemyHitEvent::EnemyHitEvent(EnemyPtr e, PlayerPtr p)
 
 //----------------------
 
-EnemyKillEvent::EnemyKillEvent(EnemyPtr e, PlayerPtr p)
-:Event(EventTypes::EnemyKill, EventPriorities::Normal)
+EnemyKilledEvent::EnemyKilledEvent(EnemyPtr e, PlayerPtr p)
+:Event(EventTypes::EnemyKilled, EventPriorities::Normal)
 {
 	mEnemy = e;
 	mPlayer = p;
@@ -94,8 +112,8 @@ EnemyKillEvent::EnemyKillEvent(EnemyPtr e, PlayerPtr p)
 
 //----------------------
 
-EnemyRemovedEvent::EnemyRemovedEvent(EnemyPtr e)
-:Event(EventTypes::EnemyRemoved, EventPriorities::Normal)
+EnemyRemoveEvent::EnemyRemoveEvent(EnemyPtr e)
+:Event(EventTypes::EnemyRemove, EventPriorities::Normal)
 {
 	mEnemy = e;
 };
@@ -111,8 +129,8 @@ PlayerHitEvent::PlayerHitEvent(EnemyPtr e, PlayerPtr p)
 
 //----------------------
 
-PlayerKillEvent::PlayerKillEvent(PlayerPtr p)
-:Event(EventTypes::PlayerKill, EventPriorities::Normal)
+PlayerKilledEvent::PlayerKilledEvent(PlayerPtr p)
+:Event(EventTypes::PlayerKilled, EventPriorities::Normal)
 {
 	mPlayer = p;
 }
@@ -145,10 +163,9 @@ ItemCatchEvent::ItemCatchEvent(PlayerPtr p, ItemPtr i)
 
 //----------------------
 
-ItemRemovedEvent::ItemRemovedEvent(/*PlayerPtr p,*/ ItemPtr i)
-:Event(EventTypes::ItemRemoved, EventPriorities::Normal)
+ItemRemoveEvent::ItemRemoveEvent(ItemPtr i)
+:Event(EventTypes::ItemRemove, EventPriorities::Normal)
 {
-	/*mPlayer = p;*/
 	mItem = i;
 };
 

@@ -153,11 +153,11 @@ namespace WyvernsAssault
 		EVENTS_HANDLER(PlayerAttack)
 		EVENTS_HANDLER(PlayerAttackSpecial)
 		EVENTS_HANDLER(PlayerHit)
-		EVENTS_HANDLER(PlayerKill)
+		EVENTS_HANDLER(PlayerKilled)
 
 		EVENTS_HANDLER(EnemyAttack)
 		EVENTS_HANDLER(EnemyHit)
-		EVENTS_HANDLER(EnemyKill)
+		EVENTS_HANDLER(EnemyKilled)
 		
 		EVENTS_HANDLER(ItemCatch)
 

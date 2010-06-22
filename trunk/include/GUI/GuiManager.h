@@ -92,7 +92,7 @@ namespace WyvernsAssault
 		
 		EVENTS_HANDLER(ItemCatch)
 		EVENTS_HANDLER(PlayerAttackSpecial)
-		EVENTS_HANDLER(EnemyKill)
+		EVENTS_HANDLER(EnemyKilled)
 		EVENTS_HANDLER(PlayerHit)
 
 		// --------------------------------

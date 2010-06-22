@@ -41,6 +41,8 @@ namespace WyvernsAssault
 		virtual void unregisterHandlers() = 0;
 		// Raise an event
 		void raiseEvent(EventPtr e);
+		// Raise an event after the given amount of time (in seconds)
+		void raiseEvent(EventPtr e, const float timer);
 		// Handle an event
 		void handleEvent(EventPtr e);
 	protected:

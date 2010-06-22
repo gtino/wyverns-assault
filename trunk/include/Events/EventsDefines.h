@@ -41,6 +41,10 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
 #define EVENTS_DEFINE_HANDLER(c,e)	void c##::handle##e##Event(e##EventPtr evt)
 
+#define EVENTS_FIRE(e) raiseEvent(e);
+
+#define EVENTS_FIRE_AFTER(e,t) raiseEvent(e,t);
+
 #include <Ogre.h>
 
 using namespace Ogre;

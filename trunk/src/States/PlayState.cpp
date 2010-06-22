@@ -404,7 +404,7 @@ void PlayState::update(const float elapsedSeconds)
 	// EventsManager queue. The events manager will then dispatch them, calling
 	// for each of them the registered handler(s).
 	//
-	mEventsManager->dispatchEvents();
+	mEventsManager->update(elapsedSeconds);
 }
 
 /** Render */

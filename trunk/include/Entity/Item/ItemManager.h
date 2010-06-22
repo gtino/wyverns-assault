@@ -63,7 +63,7 @@ namespace WyvernsAssault
 		EVENTS_INTERFACE()
 
 		EVENTS_HANDLER(ItemCatch)
-		EVENTS_HANDLER(ItemRemoved)
+		EVENTS_HANDLER(ItemRemove)
 
 	private:
 		Ogre::String createUniqueId();

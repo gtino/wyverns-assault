@@ -114,16 +114,13 @@ namespace WyvernsAssault
 		// Debug visibility function
 		void setDebugEnabled(bool visible){ mPhysicsNode->setVisible(visible); }
 
-		//
+		// ----------------
 		// Events interface
-		//
-		// Register event handlers
-		void registerHandlers();
-		// Unregister handlers
-		void unregisterHandlers();
+		// ----------------
+		EVENTS_INTERFACE()
 
-		void handleEnemyKillEvent(EnemyKillEventPtr evt);
-		void handleItemCatchEvent(ItemCatchEventPtr evt);
+		EVENTS_HANDLER(ItemCatch)
+		EVENTS_HANDLER(EnemyKilled)
 
 	private:
 

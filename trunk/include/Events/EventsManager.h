@@ -41,6 +41,8 @@ namespace WyvernsAssault
 	typedef std::priority_queue<EventPtr,std::vector<EventPtr>,EventComparator> EventQueue;
 	typedef std::list<EventHandlerPtr> EventHandlerList;
 	typedef std::map<EventTypes,EventHandlerList> EventHandlerMap;
+	typedef std::list<EventPtr> EventList;
+	typedef std::list<EventPtr>::iterator EventListIterator;
 
 	class EventsInterface;
 	typedef boost::shared_ptr<EventsInterface> EventsInterfacePtr;
@@ -60,8 +62,7 @@ namespace WyvernsAssault
 		/// Add an event to the queue
 		/// @param evt event to enqueue
 		void addEvent(EventPtr evt);
-		/// Process all events
-		void dispatchEvents();
+		void update(const float elapsedSeconds);
 		/// Get the highest-priority event on the queue
 		/// @return highest-priority event on the queue
 		EventPtr peekEvent() const;
@@ -75,6 +76,12 @@ namespace WyvernsAssault
 		//
 		void registerInterface(EventsInterfacePtr eventsInterface);
 		void unregisterInterface(EventsInterfacePtr eventsInterface);
+	
+	private:
+		/// Update delayed events
+		void updateDelayedEvents(const float elapsedSeconds);
+		/// Process all events
+		void dispatchEvents();
 
 	public:
 		/// Add a new event handler for the given event type
@@ -90,6 +97,8 @@ namespace WyvernsAssault
 		void unregisterHandler(EventHandlerPtr handler,EventTypes evtType);
 
 	private:
+		EventList mDelayedEventList;
+
 		/** Priority queue to hold the events posted by the game objects or subsystems. */
 		EventQueue mEventQueue;
 		/// Map containing the registered event handlers. For each type of event there is a list linked to it

@@ -251,10 +251,6 @@ bool EnemyManager::removeEnemy(Ogre::String name)
 	{
 		mEnemyList.erase(it);
 	}
-	
-	// Fire the event
-	EnemyRemovedEventPtr e = EnemyRemovedEventPtr(new EnemyRemovedEvent(enemyToErase) );
-	raiseEvent(e);
 
 	return true;
 }
@@ -264,39 +260,20 @@ bool EnemyManager::removeEnemy(Ogre::String name)
 */
 void EnemyManager::update(const float elapsedSeconds)
 {
-	EnemyList deadEnemies;
-
 	for(int i = 0; i < mEnemyList.size() ; i++)
 	{
 		EnemyPtr enemy =  mEnemyList[i];
 
-		// Is dead, this means that we can delete him!
-		if(enemy->getEnemyState() == Enemy::EnemyStates::Dead)
+		enemy->updateLogic(L,elapsedSeconds);
+		//enemy->updatePhysics(elapsedSeconds);
+		enemy->updateEntity(elapsedSeconds); // this updates animations too!
+		
+		if( enemy->attackStart() )
 		{
-			// Add them to the 'to delete' list
-			deadEnemies.push_back(enemy);
-		}	
-		else // Still alive, so we have to update him!
-		{
-			enemy->updateLogic(L,elapsedSeconds);
-			//enemy->updatePhysics(elapsedSeconds);
-			enemy->updateEntity(elapsedSeconds); // this updates animations too!
-			if( enemy->attackStart() )
-			{
-				EnemyAttackEventPtr evt = EnemyAttackEventPtr(new EnemyAttackEvent(enemy));
-				raiseEvent(evt);
-			}
+			EnemyAttackEventPtr evt = EnemyAttackEventPtr(new EnemyAttackEvent(enemy));
+			EVENTS_FIRE(evt);
 		}
 	}
-
-	// Now we have to remove them and notify other listeners with the 'dead/remove' event!
-	for(int i = 0; i < deadEnemies.size(); i++)
-	{
-		EnemyPtr e = deadEnemies[i];
-		removeEnemy(e->getName());
-	}
-
-	deadEnemies.clear();
 }
 
 void EnemyManager::setDebugEnabled(bool isDebugEnabled)
@@ -319,13 +296,15 @@ void EnemyManager::setDebugEnabled(bool isDebugEnabled)
 EVENTS_BEGIN_REGISTER_HANDLERS(EnemyManager)
 	EVENTS_REGISTER_HANDLER(EnemyManager, Collision)
 	EVENTS_REGISTER_HANDLER(EnemyManager, EnemyHit)
-	EVENTS_REGISTER_HANDLER(EnemyManager, EnemyKill)
+	EVENTS_REGISTER_HANDLER(EnemyManager, EnemyKilled)
+	EVENTS_REGISTER_HANDLER(EnemyManager, EnemyRemove);
 EVENTS_END_REGISTER_HANDLERS()
 
 EVENTS_BEGIN_UNREGISTER_HANDLERS(EnemyManager)
 	EVENTS_UNREGISTER_HANDLER(EnemyManager, Collision)
 	EVENTS_UNREGISTER_HANDLER(EnemyManager, EnemyHit)
-	EVENTS_UNREGISTER_HANDLER(EnemyManager, EnemyKill)
+	EVENTS_UNREGISTER_HANDLER(EnemyManager, EnemyKilled)
+	EVENTS_UNREGISTER_HANDLER(EnemyManager, EnemyRemove);
 EVENTS_END_UNREGISTER_HANDLERS()
 
 EVENTS_DEFINE_HANDLER(EnemyManager, Collision)
@@ -342,12 +321,12 @@ EVENTS_DEFINE_HANDLER(EnemyManager, EnemyHit)
 
 	if(enemy->isDying())
 	{
-		EnemyKillEventPtr eKill = EnemyKillEventPtr(new EnemyKillEvent(enemy, player));
- 		raiseEvent(eKill);
+		EnemyKilledEventPtr eKill = EnemyKilledEventPtr(new EnemyKilledEvent(enemy, player));
+ 		EVENTS_FIRE(eKill);
 	}
 }
 
-EVENTS_DEFINE_HANDLER(EnemyManager, EnemyKill)
+EVENTS_DEFINE_HANDLER(EnemyManager, EnemyKilled)
  {
 	EnemyPtr enemy = evt->getEnemy();
 	PlayerPtr player = evt->getPlayer();
@@ -364,6 +343,15 @@ EVENTS_DEFINE_HANDLER(EnemyManager, EnemyKill)
 		else
 			enemy->setMaterialName("Skin/Red");
 	}
+
+	EnemyRemoveEventPtr eRemove = EnemyRemoveEventPtr(new EnemyRemoveEvent(enemy));
+ 	EVENTS_FIRE_AFTER(eRemove,2.0f);
+}
+
+EVENTS_DEFINE_HANDLER(EnemyManager, EnemyRemove)
+{
+	EnemyPtr e = evt->getEnemy();
+	removeEnemy(e->getName());
 }
 
 // --------------------------------
