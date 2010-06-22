@@ -55,6 +55,8 @@ This pages is used to store all the intersting links realted to the project. Eve
  * [http://en.wikipedia.org/wiki/Function_object Function Objects (introduction)]
  * [http://www.tutok.sk/fastgl/callback.html Callbacks In C++ Using Template Functors]
  * [http://www.codeproject.com/KB/stl/boostsmartptr.aspx boost Smart Pointers]
+ * [http://www.codeproject.com/KB/cpp/PtrToPtr.aspx ptr-to-ptr & ref-to-ptr]
+
 == Bugs ==
 
  * [http://lostgarden.com/2008/05/improving-bug-triage-with-user-pain.html Improving Bug Triage with User Pain]
