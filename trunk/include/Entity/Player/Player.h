@@ -78,11 +78,12 @@ namespace WyvernsAssault
 		void setMoving(bool move){moving = move;}
 		void setAttacking(Real attack){attacking = attack;}
 
+		bool isMoving(){ return moving; }
 		bool isAttacking(){ return attacking != 0 ; }
 		Real wichAttack(){ return attacking; }
 		bool attackStart() { return newAttack; }
 		void attackFinish() { newAttack = false; }
-		bool isSpecial(){ return special ; }
+		bool isSpecial(){ return special; }
 		bool isDeath() { return !live; }
 		bool isDying() { return timeDeath <= 3; }
 

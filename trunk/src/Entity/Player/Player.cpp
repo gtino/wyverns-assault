@@ -78,6 +78,9 @@ void Player::finalizeEntity()
 	{
 		if(mSceneManager->hasEntity("fireMesh"))
 			mSceneManager->destroyEntity("fireMesh");
+
+		if(mSceneManager->hasEntity("redWyvernPhysicMesh"))
+			mSceneManager->destroyEntity("redWyvernPhysicMesh");
 	}
 
 	// Always call base method before!
