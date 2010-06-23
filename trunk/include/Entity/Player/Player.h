@@ -43,7 +43,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
 #define SPECIAL_COST 25
 
-#define REDWYVERN_HEIGHT			20
+#define REDWYVERN_HEIGHT			22
 #define REDWYVERN_SPEED				80
 #define REDWYVERN_ATTACK_DAMAGE		30
 #define REDWYVERN_SPECIAL_DAMAGE	250
@@ -75,7 +75,7 @@ namespace WyvernsAssault
 		void finalizeEntity();
 		void updateEntity(const float elapsedSeconds);
 
-		void setMoving(bool move){moving = move;}
+		void setMoving(bool move);
 		void setAttacking(Real attack){attacking = attack;}
 
 		bool isMoving(){ return moving; }
@@ -95,7 +95,8 @@ namespace WyvernsAssault
 		AxisAlignedBox getFireBox(){  return mFireMesh->getWorldBoundingBox(); }
 
 		// Particle systems
-		void setFireBreath(ParticleUniverse::ParticleSystem* fireBreath);
+		void setFireBreath(ParticleUniverse::ParticleSystem* pSystem);
+		void setDust(ParticleUniverse::ParticleSystem* pSystemR, ParticleUniverse::ParticleSystem* pSystemL);
 
 		// Main attack combo
 		void attackA();
@@ -141,6 +142,9 @@ namespace WyvernsAssault
 		TagPoint*							mBreathPoint;
 		ParticleUniverse::ParticleSystem*	mFireBreath;
 		Entity*								mFireMesh;
+		// Foot dust particle system
+		ParticleUniverse::ParticleSystem*	mDustR;
+		ParticleUniverse::ParticleSystem*	mDustL;
 		
 		// Debug bounding box
 		OBBoxRenderable* mOBBoxRenderable;

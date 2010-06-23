@@ -173,7 +173,7 @@ EVENTS_DEFINE_HANDLER(ItemManager,ItemCatch)
 
 	// Item will be removed after a while
 	ItemRemoveEventPtr re = ItemRemoveEventPtr(new ItemRemoveEvent(item));
-	EVENTS_FIRE_AFTER(re,2.0f);
+	EVENTS_FIRE_AFTER(re,3.0f);
 }
 
 EVENTS_DEFINE_HANDLER(ItemManager,ItemRemove)

@@ -101,6 +101,7 @@ void Enemy::initializeEntity(Ogre::Entity* entity, Ogre::SceneNode* sceneNode, O
 	EntityInterface::initializeEntity(entity, sceneNode, sceneManager);
 
 	mEntityDie = NULL;
+	mDieAnimation = NULL;
 
 	// Set physic body
 	mPhysicEntity = mSceneManager->createEntity(entity->getName()+"_physicBody", "enemyBasicPhysicBody.mesh");
@@ -164,6 +165,7 @@ void Enemy::initializeEntity(Ogre::Entity* entity, Ogre::SceneNode* sceneNode, O
 	moving = false;
 	attacking = false;
 	newAttack = false;
+	burning = false;
 
 	// Random animation start time
 	mAnimationSystem->update( rand() );
@@ -175,6 +177,12 @@ void Enemy::finalizeEntity()
 	{
 		mSceneManager->destroyBillboardSet(mBalloonSet);
 		mBalloonSet = NULL;
+	}
+
+	if(mDieAnimation)
+	{
+		mSceneManager->destroyAnimationState(mDieAnimation->getAnimationName());
+		mDieAnimation = NULL;
 	}
 
 	// Always call base method before!
@@ -212,6 +220,10 @@ void Enemy::updateEntity(const float elapsedSeconds)
 	else
 	{
 		// TODO: die animation
+		if( mDieAnimation )
+		{
+			mDieAnimation->addTime(elapsedSeconds);
+		}
 	}
 }
 
@@ -450,4 +462,43 @@ void Enemy::dieSwitch()
 
 	// Die mesh visible
 	mEntityDie->setVisible(true);
+}
+
+// Die to camera animation
+void Enemy::dieToCamera()
+{
+	Vector3 begin = getPosition();
+	Vector3 end = mSceneManager->getCamera("GameCamera")->getParentSceneNode()->getPosition();  //HACK: must fix!
+	Vector3 direction = mSceneManager->getCamera("GameCamera")->getDirection();  //HACK: must fix!
+
+	if(mSceneManager->hasAnimation(mName + "_Die"))
+		mSceneManager->destroyAnimation(mName + "_Die");
+	Animation* anim = mSceneManager->createAnimation(mName + "_Die", 0.75);
+    // Spline it for nice curves
+    anim->setInterpolationMode(Animation::IM_SPLINE);
+    // Create a track to animate the camera's node
+	NodeAnimationTrack* track = anim->createNodeTrack(0, mSceneNode);
+    // Setup keyframes
+	TransformKeyFrame* key = track->createNodeKeyFrame(0);
+	key->setTranslate(begin);
+	key->setRotation(Quaternion(1, 0, 0, 0));
+	key = track->createNodeKeyFrame(0.74);
+	key->setTranslate(end + direction);
+	key->setRotation(Quaternion((rand()%2), 1, 1, 1));
+	key->setScale(Vector3(10, 10, 10));
+	key = track->createNodeKeyFrame(0.75);
+	key->setTranslate(end + direction);	
+	key->setScale(Vector3(0.1, 0.1, 0.1));
+	// Create a new animation state to track this
+	mDieAnimation = mSceneManager->createAnimationState(mName + "_Die");
+    mDieAnimation->setEnabled(true);
+	mDieAnimation->setWeight(1);
+	mDieAnimation->setLoop(false);
+}
+
+// Stop all enemy actions
+void Enemy::stop()
+{
+	mTarget = NULL;
+	mState = Enemy::EnemyStates::Dead;
 }

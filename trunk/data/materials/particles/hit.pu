@@ -30,6 +30,11 @@ system WyvernsAssault/Hit
                 min                             20
                 max                             50
             }
+            all_particle_dimensions             dyn_random
+            {
+                min                             10
+                max                             100
+            }
             position                            0 20 0
             end_texture_coords_range            15
             auto_direction                      true

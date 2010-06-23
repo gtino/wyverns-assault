@@ -43,6 +43,7 @@ namespace WyvernsAssault
 		EnemyHit,
 		EnemyKilled,
 		EnemyRemove,
+		EnemyCustom,
 		ObjectHit,
 		Collision,		
 		ItemCatch,
@@ -119,6 +120,7 @@ namespace WyvernsAssault
 	{
 	public:
 		EnemyAttackEvent(EnemyPtr e);
+		~EnemyAttackEvent(){};
 		
 		EnemyPtr getEnemy(){return mEnemy;}
 
@@ -181,6 +183,21 @@ namespace WyvernsAssault
 	};
 
 	typedef boost::shared_ptr<EnemyRemoveEvent> EnemyRemoveEventPtr;
+
+	// --------------------------------	
+	class EnemyCustomEvent : public Event
+	{
+	public:
+		EnemyCustomEvent(EnemyPtr e);
+		~EnemyCustomEvent(){};
+		
+		EnemyPtr getEnemy(){return mEnemy;}
+
+	private:		
+		EnemyPtr mEnemy;
+	};
+
+	typedef boost::shared_ptr<EnemyCustomEvent> EnemyCustomEventPtr;
 
 	// --------------------------------
 	class PlayerHitEvent : public Event

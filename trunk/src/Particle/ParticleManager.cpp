@@ -102,7 +102,7 @@ void ParticleManager::bloodHit(SceneNode* node)
 	{
 		particles = mParticleSystemManager->getParticleSystem( name + "_bloodHit");
 	}	
-	particles->startAndStopFade(2);
+	particles->start();
 }
 
 void ParticleManager::bloodKill(SceneNode* node)
@@ -118,7 +118,7 @@ void ParticleManager::bloodKill(SceneNode* node)
 	{
 		particles = mParticleSystemManager->getParticleSystem( name + "_bloodKill");
 	}	
-	particles->startAndStopFade(2);
+	particles->start();
 }
 
 void ParticleManager::bloodLens()
@@ -145,7 +145,7 @@ void ParticleManager::hit(SceneNode* node)
 	{
 		particles = mParticleSystemManager->getParticleSystem( name + "_hit");
 	}	
-	particles->startAndStopFade(1);
+	particles->start();
 }
 
 /** Fire hit particle */
@@ -162,7 +162,7 @@ void ParticleManager::fireHit(SceneNode* node)
 	{
 		particles = mParticleSystemManager->getParticleSystem( name + "_fireHit");
 	}	
-	particles->startAndStopFade(2);
+	particles->start();
 }
 
 /** Fire kill particle */
@@ -179,7 +179,7 @@ void ParticleManager::fireKill(SceneNode* node)
 	{
 		particles = mParticleSystemManager->getParticleSystem( name + "_fireKill");
 	}	
-	particles->startAndStopFade(2);
+	particles->start();
 }
 
 /** Chicken kill particle **/
@@ -196,7 +196,7 @@ void ParticleManager::chickenKill(SceneNode* node)
 	{
 		particles = mParticleSystemManager->getParticleSystem( name + "_chickeKill");
 	}	
-	particles->startAndStopFade(2);
+	particles->start();
 }
 
 /** Glow particle */
@@ -213,7 +213,7 @@ void ParticleManager::glow(SceneNode* node)
 	{
 		particles = mParticleSystemManager->getParticleSystem( name + "_glow");
 	}	
-	particles->startAndStopFade(2);
+	particles->start();
 }
 
 
@@ -223,12 +223,14 @@ void ParticleManager::glow(SceneNode* node)
 EVENTS_BEGIN_REGISTER_HANDLERS(ParticleManager)
 	EVENTS_REGISTER_HANDLER(ParticleManager,EnemyHit)
 	EVENTS_REGISTER_HANDLER(ParticleManager,EnemyKilled)
+	EVENTS_REGISTER_HANDLER(ParticleManager,EnemyCustom)
 	EVENTS_REGISTER_HANDLER(ParticleManager,ItemCatch)
 EVENTS_END_REGISTER_HANDLERS()
 
 EVENTS_BEGIN_UNREGISTER_HANDLERS(ParticleManager)
 	EVENTS_UNREGISTER_HANDLER(ParticleManager,EnemyHit)
 	EVENTS_UNREGISTER_HANDLER(ParticleManager,EnemyKilled)
+	EVENTS_UNREGISTER_HANDLER(ParticleManager,EnemyCustom)
 	EVENTS_UNREGISTER_HANDLER(ParticleManager,ItemCatch)
 EVENTS_END_REGISTER_HANDLERS()
 
@@ -237,17 +239,14 @@ EVENTS_DEFINE_HANDLER(ParticleManager,EnemyHit)
 	EnemyPtr enemy = evt->getEnemy();
 	PlayerPtr player = evt->getPlayer();	
 
-	if( enemy->getEnemyType() == Enemy::EnemyTypes::Chicken )
-		this->chickenKill(enemy->_getSceneNode());
+	if( player->isSpecial() )
+	{
+		this->fireHit(enemy->_getSceneNode());
+	}
 	else
 	{
-		if( player->isSpecial() )
-			this->fireHit(enemy->_getSceneNode());
-		else
-		{
-			this->bloodHit(enemy->_getSceneNode());	
-			this->hit(enemy->_getSceneNode());	
-		}
+		this->bloodHit(enemy->_getSceneNode());	
+		this->hit(enemy->_getSceneNode());	
 	}
 }
 
@@ -256,15 +255,27 @@ EVENTS_DEFINE_HANDLER(ParticleManager, EnemyKilled)
 	EnemyPtr enemy = evt->getEnemy();
 	PlayerPtr player = evt->getPlayer();	
 
-	if( enemy->getEnemyType() == Enemy::EnemyTypes::Chicken )
-		this->chickenKill(enemy->_getSceneNode());
-	else
+	if( !enemy->isBurning() )
 	{
-		if( player->isSpecial() )
-			this->fireKill(enemy->_getSceneNode());
+		if( enemy->getEnemyType() == Enemy::EnemyTypes::Chicken )
+			this->chickenKill(enemy->_getSceneNode());
+
+		else if( enemy->hasDieAnimation() )
+		{
+			this->bloodHit(enemy->_getSceneNode());
+			this->bloodLens();
+		}
 		else
-			this->bloodKill(enemy->_getSceneNode());	
+			this->bloodKill(enemy->_getSceneNode());
 	}
+}
+
+EVENTS_DEFINE_HANDLER(ParticleManager, EnemyCustom)
+{
+	EnemyPtr enemy = evt->getEnemy();
+
+	if( enemy->isBurning())
+		this->fireKill(enemy->_getSceneNode());
 }
 
 EVENTS_DEFINE_HANDLER(ParticleManager, ItemCatch)

@@ -35,11 +35,11 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
 #define ENEMY_BILLBOARD_SHOW_TIME 2.0f // seconds
 
-#define ENEMY_HEIGHT		10.0f
+#define ENEMY_HEIGHT		11.0f
 #define ENEMY_SLOW_SPEED	50.0f
 #define ENEMY_FAST_SPEED	70.0f
 
-#define ANIMAL_HEIGHT		0.0f
+#define ANIMAL_HEIGHT		2.0f
 #define ANIMAL_SLOW_SPEED	30.0f
 #define ANIMAL_FAST_SPEED	50.0f
 
@@ -153,9 +153,14 @@ namespace WyvernsAssault
 		void attackFinish();
 
 		// Die functions
+		bool isBurning(){ return burning; }
+		void setBurning(bool status){ burning = status; }
 		void setDieMesh(Ogre::Entity* entity);
 		bool hasDieMesh(){ return mEntityDie != NULL; }
+		bool hasDieAnimation(){ return mDieAnimation != NULL; }
 		void dieSwitch();
+		void dieToCamera();
+		void stop();
 
 	private:
 		Enemy::EnemyTypes mType;
@@ -192,9 +197,12 @@ namespace WyvernsAssault
 		bool		moving;
 		bool		attacking;
 		bool		newAttack;
+		bool		burning;
 
 		//Dying mesh
 		Entity*		mEntityDie;
+		// Die animation
+		AnimationState*		mDieAnimation;		
 
 	private:
 

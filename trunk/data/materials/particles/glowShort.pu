@@ -37,6 +37,7 @@ system WyvernsAssault/GlowShort
                 min                             5
                 max                             10
             }
+            position                            0 5 0
             force_emission                      true
             radius                              5
         }
@@ -67,6 +68,50 @@ system WyvernsAssault/GlowShort
             handler                             DoStopSystem Handler2
             {
             }
+        }
+    }
+    technique 
+    {
+        visual_particle_quota                   50
+        material                                Particle/Flare_02
+        renderer                                Billboard
+        {
+        }
+        emitter                                 SphereSurface 
+        {
+            emission_rate                       dyn_random
+            {
+                min                             25
+                max                             30
+            }
+            angle                               dyn_random
+            {
+                min                             0
+                max                             20
+            }
+            time_to_live                        0.6
+            velocity                            10
+            particle_width                      8
+            particle_height                     dyn_random
+            {
+                min                             20
+                max                             30
+            }
+            force_emission                      true
+            radius                              5
+        }
+        affector                                Colour Affector29
+        {
+            time_colour                         0    0 0 0 0
+            time_colour                         0.05 0.92549 0.909804 0.290196 0.858824
+            time_colour                         0.7  0.901961 0.882353 0.576471 0.858824
+            time_colour                         1    0 0 0 0
+        }
+        affector                                LinearForce Affector43
+        {
+            enabled                             false
+            position                            0 1.5 0
+            force_vector                        0 -15 0
         }
     }
 }

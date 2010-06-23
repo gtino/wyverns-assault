@@ -160,9 +160,6 @@ void Player::updateEntity(const float elapsedSeconds)
 				attacking = 3;
 				continueAttacking = false;
 				newAttack = true;
-
-				// Camera effect on third attack for bigger impact
-				//CameraManager::getSingletonPtr()->shake(1);
 			}
 			else
 				attacking = 0;
@@ -184,16 +181,46 @@ void Player::updateEntity(const float elapsedSeconds)
 	}
 }
 
-void Player::setFireBreath(ParticleUniverse::ParticleSystem* fireBreath)
+void Player::setMoving(bool move)
+{
+	moving = move;
+	/*if( moving )
+	{
+		if(mDustR->getState() != ParticleUniverse::ParticleSystem::ParticleSystemState::PSS_STARTED)
+			mDustR->start();
+		if(mDustL->getState() != ParticleUniverse::ParticleSystem::ParticleSystemState::PSS_STARTED)
+			mDustL->start();
+	}
+	else
+	{
+		if(mDustR->getState() != ParticleUniverse::ParticleSystem::ParticleSystemState::PSS_STOPPED)
+			mDustR->stopFade(0.1);
+		if(mDustL->getState() != ParticleUniverse::ParticleSystem::ParticleSystemState::PSS_STOPPED)
+			mDustL->stopFade(0.1);
+	}*/
+}
+
+void Player::setFireBreath(ParticleUniverse::ParticleSystem* pSystem)
 {
 	// Special attack particle system (fire breath)
-	mFireBreath = fireBreath;
+	mFireBreath = pSystem;
 
 	// Attach to bone	
 	mBreathPoint = mEntity->attachObjectToBone("llengua1", mFireBreath);
 	
+	// Physics and debug
 	mEntity->attachObjectToBone("llengua1", mFireMesh);
-	mEntity->attachObjectToBone("llengua1", mFireOBBoxRenderable);	
+	mEntity->attachObjectToBone("llengua1", mFireOBBoxRenderable);
+}
+
+void Player::setDust(ParticleUniverse::ParticleSystem* pSystemR, ParticleUniverse::ParticleSystem* pSystemL)
+{
+	mDustR = pSystemR;
+	mDustL = pSystemL;
+
+	// Attach to bone
+	mEntity->attachObjectToBone("peu_dret1", mDustR);
+	mEntity->attachObjectToBone("peu_esquerre1", mDustL);
 }
 
 void Player::attackA()
