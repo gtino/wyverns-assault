@@ -54,7 +54,7 @@ system WyvernsAssault/ChickenKill
             time_colour                         0    0 0 0 0
             time_colour                         0.05 1 1 1 1
             time_colour                         0.7  1 1 1 1
-            time_colour                         1    0 0 0 0
+            time_colour                         1    1 1 1 0
         }
         affector                                TextureRotator Affector16
         {
@@ -86,7 +86,11 @@ system WyvernsAssault/ChickenKill
                 min                             45
                 max                             90
             }
-            time_to_live                        2.5
+            time_to_live                        dyn_random
+            {
+                min                             4.5
+                max                             4.85
+            }
             velocity                            0
             duration                            20
             all_particle_dimensions             dyn_random

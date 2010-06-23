@@ -22,8 +22,8 @@ system WyvernsAssault/BloodSplash
             }
             time_to_live                        dyn_random
             {
-                min                             3
-                max                             4
+                min                             4.9
+                max                             4.75
             }
             velocity                            0
             duration                            20
@@ -68,9 +68,11 @@ system WyvernsAssault/BloodSplash
         }
         affector                                Colour Affector103
         {
-            time_colour                         0    1 1 1 0
-            time_colour                         0.04 0.831373 0.792157 0.74902 1
-            time_colour                         0.08 0.556863 0.513726 0.556863 1
+            time_colour                         0    1 1 1 1
+            time_colour                         0.378  1 1 1 1
+            time_colour                         0.47 1 0.788235 0.72549 1
+            time_colour                         0.683  0.858824 0.647059 0.607843 0.839216
+            time_colour                         0.754  0.807843 0.529412 0.45098 0.811765
             time_colour                         1    1 1 1 0
         }
         observer                                OnClear Observer21

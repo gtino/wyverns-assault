@@ -1,6 +1,6 @@
 // Wyverns Assault - Particle Systems Materials
 
-material Particle/Smoke
+material Particle/Smoke_01
 {
     technique
     {
@@ -11,7 +11,26 @@ material Particle/Smoke
             depth_write off
             texture_unit
             {
-                texture particle_smoke.png
+                texture particle_smoke01.png
+                tex_address_mode clamp
+            }
+        }
+    }
+}
+//-----------------------------------------------------------------------------------------------------------------------------------------------
+material Particle/Smoke_02
+{
+    technique
+    {
+        pass
+        {
+            lighting off
+            depth_write off
+            scene_blend alpha_blend
+
+            texture_unit
+            {
+                texture particle_smoke02.png
                 tex_address_mode clamp
             }
         }
@@ -238,7 +257,7 @@ material Particle/FlameLick
     }
 }
 //-----------------------------------------------------------------------------------------------------------------------------------------------
-material Particle/GlowAura
+material Particle/Glow_01
 {
     technique
     {
@@ -250,7 +269,25 @@ material Particle/GlowAura
 
             texture_unit
             {
-                texture particle_glowAura.png
+                texture particle_glow01.dds
+            }
+        }
+    }
+}
+//-----------------------------------------------------------------------------------------------------------------------------------------------
+material Particle/Glow_02
+{
+    technique
+    {
+        pass
+        {
+            lighting off
+            scene_blend add
+            depth_write off
+
+            texture_unit
+            {
+                texture particle_glow02.png
             }
         }
     }
@@ -349,3 +386,76 @@ material Particle/Feather
     }
 }
 //-----------------------------------------------------------------------------------------------------------------------------------------------
+material Particle/Trail_01
+{
+    technique
+    {
+        pass
+        {
+			lighting off
+			scene_blend add
+			depth_write off
+            texture_unit
+            {
+                texture particle_trail01.dds
+				tex_address_mode clamp
+            }
+        }
+    }
+}
+//-----------------------------------------------------------------------------------------------------------------------------------------------
+material Particle/Trail_02
+{
+    technique
+    {
+        pass
+        {
+			lighting off
+			scene_blend add
+			depth_write off
+            texture_unit
+            {
+                texture particle_trail02.dds
+				tex_address_mode clamp
+            }
+        }
+    }
+}
+//-----------------------------------------------------------------------------------------------------------------------------------------------
+material Particle/Blast_01
+{
+    technique
+    {
+        pass
+        {
+			lighting off
+			scene_blend add
+			depth_write off
+            texture_unit
+            {
+                texture particle_blast01.dds
+				tex_address_mode clamp
+            }
+        }
+    }
+}
+//-----------------------------------------------------------------------------------------------------------------------------------------------
+material Particle/Streak_01
+{
+    technique
+    {
+        pass
+        {
+            lighting off
+            scene_blend add
+            depth_write off
+
+            texture_unit
+            {
+                texture particle_streak01.png
+                tex_address_mode clamp
+            }
+        }
+    }
+}
+//-----------------------------------------------------------------------------------------------------------------------

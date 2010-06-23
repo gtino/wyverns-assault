@@ -13,11 +13,13 @@ system WyvernsAssault/BloodLens
             angle                               0
             time_to_live                        dyn_random
             {
-                min                             1
-                max                             1.2
+                min                             1.5
+                max                             1.75
             }
-            velocity                            0
+            velocity                            3
             all_particle_dimensions             300
+            enabled                             false
+            direction                           0 -1 0
             end_texture_coords_range            1
             texture_coords                      1
             force_emission                      true
@@ -40,10 +42,15 @@ system WyvernsAssault/BloodLens
         }
         affector                                Scale Affector11
         {
-            xyz_scale                           dyn_random
+            x_scale                             dyn_random
             {
                 min                             1
-                max                             2
+                max                             5
+            }
+            y_scale                             dyn_random
+            {
+                min                             10
+                max                             15
             }
         }
         observer                                OnClear Observer4
@@ -51,6 +58,16 @@ system WyvernsAssault/BloodLens
             handler                             DoStopSystem Handler5
             {
             }
+        }
+        observer                                OnTime Observer21
+        {
+            observe_particle_type               emitter_particle
+            handler                             DoEnableComponent Handler22
+            {
+                enable_component                emitter_component Emitter8 true
+            }
+            since_start_system                  true
+            on_time                             greater_than 0.5
         }
     }
 }

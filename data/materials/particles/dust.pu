@@ -1,0 +1,58 @@
+system WyvernsAssault/Dust
+{
+    technique Technique141
+    {
+        visual_particle_quota                   100
+        material                                Particle/Smoke_02
+        renderer                                Billboard
+        {
+        }
+        emitter                                 Box Emitter165
+        {
+            emission_rate                       30
+            angle                               dyn_random
+            {
+                min                             0
+                max                             30
+            }
+            velocity                            5
+            duration                            0.1
+            repeat_delay                        0.1
+            particle_width                      dyn_random
+            {
+                min                             5
+                max                             7
+            }
+            particle_height                     dyn_random
+            {
+                min                             5
+                max                             7
+            }
+            direction                           -1 -1 0
+            box_width                           5
+            box_height                          5
+            box_depth                           5
+        }
+        affector                                Colour Affector100
+        {
+            time_colour                         0    0 0 0 0
+            time_colour                         0.1  0.309804 0.215686 0.00784314 0.882353
+            time_colour                         0.85 0.309804 0.215686 0.00784314 0.784314
+            time_colour                         1    0 0 0 0
+        }
+        affector                                Scale Affector27
+        {
+            x_scale                             10
+            y_scale                             6
+        }
+        affector                                TextureRotator Affector113
+        {
+            rotation                            dyn_random
+            {
+                min                             0
+                max                             360
+            }
+            rotation_speed                      0
+        }
+    }
+}

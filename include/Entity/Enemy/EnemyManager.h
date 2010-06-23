@@ -94,6 +94,7 @@ namespace WyvernsAssault
 		EVENTS_HANDLER(EnemyHit)
 		EVENTS_HANDLER(EnemyKilled)
 		EVENTS_HANDLER(EnemyRemove)
+		EVENTS_HANDLER(EnemyCustom)
 
 	private:
 		Ogre::String createUniqueId();

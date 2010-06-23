@@ -91,9 +91,9 @@ system WyvernsAssault/BloodSpray
                 max                             0.5
             }
         }
-        observer                                OnClear Observer19
+        observer                                OnClear Observer21
         {
-            handler                             DoStopSystem Handler24
+            handler                             DoStopSystem Handler26
             {
             }
         }

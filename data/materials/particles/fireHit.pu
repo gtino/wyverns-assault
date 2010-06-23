@@ -18,8 +18,8 @@ system WyvernsAssault/FireHit
             angle                               120
             time_to_live                        dyn_random
             {
-                min                             0.5
-                max                             0.7
+                min                             0.75
+                max                             0.95
             }
             velocity                            dyn_random
             {
@@ -49,12 +49,6 @@ system WyvernsAssault/FireHit
         {
             xyz_scale                           5
         }
-        observer                                OnClear Observer1
-        {
-            handler                             DoStopSystem Handler2
-            {
-            }
-        }
     }
     technique Technique3
     {
@@ -74,8 +68,8 @@ system WyvernsAssault/FireHit
             angle                               120
             time_to_live                        dyn_random
             {
-                min                             0.35
-                max                             0.4
+                min                             0.5
+                max                             0.6
             }
             velocity                            dyn_random
             {
@@ -104,6 +98,125 @@ system WyvernsAssault/FireHit
         affector                                Scale Affector6
         {
             xyz_scale                           5
+        }
+    }
+    technique Technique29
+    {
+        visual_particle_quota                   2000
+        emitted_emitter_quota                   500
+        material                                Particle/Fire_02
+        renderer                                Billboard
+        {
+        }
+        emitter                                 SphereSurface Emitter30
+        {
+            emission_rate                       150
+            angle                               10
+            time_to_live                        dyn_random
+            {
+                min                             0.15
+                max                             0.3
+            }
+            velocity                            20
+            duration                            0.75
+            particle_width                      dyn_random
+            {
+                min                             15
+                max                             20
+            }
+            particle_height                     dyn_random
+            {
+                min                             20
+                max                             25
+            }
+            enabled                             false
+            radius                              3
+        }
+        affector                                Colour Affector48
+        {
+            time_colour                         0    0 0 0 0
+            time_colour                         0.2  1 1 1 1
+            time_colour                         0.85 1 1 1 1
+            time_colour                         1    0 0 0 0
+        }
+        affector                                TextureRotator Affector47
+        {
+            enabled                             false
+            rotation                            dyn_random
+            {
+                min                             0
+                max                             45
+            }
+            rotation_speed                      0.1
+        }
+        affector                                Scale Affector66
+        {
+            xyz_scale                           20
+        }
+        observer                                OnClear Observer12
+        {
+            handler                             DoStopSystem Handler14
+            {
+            }
+        }
+    }
+    technique Technique34
+    {
+        material                                Particle/FireFlash
+        renderer                                Billboard
+        {
+        }
+        emitter                                 Point Emitter21
+        {
+            emission_rate                       1
+            angle                               dyn_random
+            {
+                min                             0
+                max                             30
+            }
+            time_to_live                        0.5
+            velocity                            0
+            all_particle_dimensions             30
+            particle_width                      dyn_random
+            {
+                min                             25
+                max                             60
+            }
+            particle_height                     dyn_random
+            {
+                min                             15
+                max                             20
+            }
+            auto_direction                      true
+            force_emission                      true
+        }
+        affector                                Colour Affector48
+        {
+            time_colour                         0    0 0 0 0
+            time_colour                         0.2  1 1 1 1
+            time_colour                         0.85 1 1 1 1
+            time_colour                         1    0 0 0 0
+        }
+        affector                                TextureRotator Affector47
+        {
+            rotation                            dyn_random
+            {
+                min                             0
+                max                             45
+            }
+            rotation_speed                      0.1
+        }
+        affector                                Scale Affector66
+        {
+            xyz_scale                           20
+        }
+        observer                                OnExpire Observer1
+        {
+            observe_until_event                 true
+            handler                             DoEnableComponent Handler2
+            {
+                enable_component                emitter_component Emitter30 true
+            }
         }
     }
 }

@@ -3,7 +3,7 @@ system WyvernsAssault/Smoke
     technique 
     {
         visual_particle_quota                   100
-        material                                Particle/Smoke
+        material                                Particle/Smoke_01
         renderer                                Billboard
         {
         }

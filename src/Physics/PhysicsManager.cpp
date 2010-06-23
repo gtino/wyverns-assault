@@ -101,17 +101,14 @@ void PhysicsManager::update(const float elapsedSeconds){
 // Bounding-Box collision
 void PhysicsManager::checkForCollisions()
 {
-
-	/* Player Collisions
-	*/
+	// Player Collisions
 	for(PlayerMapIterator it_player = mPlayerMap.begin(); it_player != mPlayerMap.end(); ++it_player)
 	{
 		PlayerPtr player = it_player->second;
 		AxisAlignedBox player_firebox = player->getFireBox();
 		AxisAlignedBox player_box = player->getWorldBoundingBox();
 
-		/* Player - Enemy COLLISION
-		*/
+		// Player - Enemy COLLISION
 		for(EnemyMapIterator it_enemy = mEnemyMap.begin(); it_enemy != mEnemyMap.end(); ++it_enemy)
 		{
 			EnemyPtr enemy = it_enemy->second;
@@ -138,13 +135,13 @@ void PhysicsManager::checkForCollisions()
 					else
  						enemyHitEventPtr->setDamage(player->getHitDamage());
 
-					EVENTS_FIRE_AFTER(enemyHitEventPtr, 0.25f);
+					EVENTS_FIRE(enemyHitEventPtr);
 				}
 				// Check if enemy is attacking
 				if( enemy->isAttacking() && enemy->attackStart() )
 				{
 					PlayerHitEventPtr playerHitEventPtr = PlayerHitEventPtr(new PlayerHitEvent(enemy, player));
-					EVENTS_FIRE_AFTER(playerHitEventPtr, 0.25f);
+					EVENTS_FIRE(playerHitEventPtr);
 					enemy->attackFinish();
 				}
 				// Colision with chicken
@@ -160,8 +157,7 @@ void PhysicsManager::checkForCollisions()
 		// Save last attack
 		mPlayerAttackLast = player->wichAttack();
 
-		/* Player - Item COLLISION
-		*/
+		// Player - Item COLLISION
 		for(ItemMapIterator it_item = mItemMap.begin(); it_item != mItemMap.end(); ++it_item)
 		{
 			ItemPtr item = it_item->second;
@@ -173,11 +169,9 @@ void PhysicsManager::checkForCollisions()
 				ItemCatchEventPtr evt = ItemCatchEventPtr(new ItemCatchEvent(player, item));
 				EVENTS_FIRE(evt);
 			}
-
 		}
 
-		/* Player - Objects COLLISION
-		*/
+		// Player - Objects COLLISION
 		for(ObjectMapIterator it_obj = mObjectMap.begin(); it_obj != mObjectMap.end(); ++it_obj)
 		{
 			ObjectPtr obj = it_obj->second;
@@ -185,22 +179,19 @@ void PhysicsManager::checkForCollisions()
 
 			if(player_box.intersects(obj_box))
 			{
-				/* TODO: Player-Object Collision!
-				*/
-			}
+				// TODO: Player-Object Collision!
 
+			}
 		}
 	}
 
-	/* Enemy Collisions
-	*/
-	for(EnemyMapIterator it_enemy = mEnemyMap.begin(); it_enemy != mEnemyMap.end(); ++it_enemy)
+	// Enemy Collisions
+/*	for(EnemyMapIterator it_enemy = mEnemyMap.begin(); it_enemy != mEnemyMap.end(); ++it_enemy)
 	{
 		EnemyPtr enemy = it_enemy->second;
 		AxisAlignedBox enemy_box = enemy->getWorldBoundingBox();
 
-		/* Enemy - Enemy COLLISION
-		*/
+		// Enemy - Enemy COLLISION
 		for(EnemyMapIterator it_enemy_second = mEnemyMap.begin(); it_enemy_second != mEnemyMap.end(); ++it_enemy_second)
 		{
 			EnemyPtr enemy_second = it_enemy_second->second;
@@ -209,13 +200,12 @@ void PhysicsManager::checkForCollisions()
 			// Check if player is using special (fire) and collisioning with enemy
 			if (enemy_box.intersects(enemy_second_box))
 			{
-				/* TODO: Enemy-enemy Collision
-				*/
+				// TODO: Enemy-enemy Collision
+
 			}
 		}
 
-		/* Enemy - Objects COLLISION
-		*/
+		// Enemy - Objects COLLISION
 		for(ObjectMapIterator it_obj = mObjectMap.begin(); it_obj != mObjectMap.end(); ++it_obj)
 		{
 			ObjectPtr obj = it_obj->second;
@@ -223,13 +213,12 @@ void PhysicsManager::checkForCollisions()
 
 			if(enemy_box.intersects(obj_box))
 			{
-				/* TODO: Enemy-Object Collision!
-				*/
+				// TODO: Enemy-Object Collision!
+				
 			}
 
 		}
-	}
-
+	}*/
 }
 
 void PhysicsManager::move(PlayerPtr player, const float elapsedSeconds, bool fastMode)

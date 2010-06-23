@@ -30,11 +30,6 @@ CameraManager::CameraManager()
 , mAxesTransition(0)
 , mCameraEffect(0)
 , mCameraEffectLook(0)
-, mCameraAnimation(0)
-, mLookAtAnimation(0)
-, mAxesAnimation(0)
-, mCameraEffectAnimation(0)
-, mCameraEffectLookAnimation(0)
 , mGameViewport(0)
 , mGuiViewport(0)
 {
@@ -77,7 +72,7 @@ void CameraManager::initialize(SceneManager* sceneManager, RenderWindow* window)
 	mGameViewport->setBackgroundColour( Ogre::ColourValue( 0.3, 0.6, 0.9 ) );
 
 	/** Game camera cofiguration */
-	mGameCamera->setNearClipDistance(1);
+	mGameCamera->setNearClipDistance(50);
 	mGameCamera->setFarClipDistance(20000);
 	mGameCamera->setAspectRatio(Real(mGameViewport->getActualWidth()) / Real(mGameViewport->getActualHeight()));	
 
@@ -99,14 +94,13 @@ void CameraManager::initialize(SceneManager* sceneManager, RenderWindow* window)
 	
 	/** Other variables initialization */
 	mGameArea = 0;
-	mGameCameraZoom = 0;
 	mFixedCamera = 0;
 
-	mCameraAnimation = mSceneManager->createAnimation("CameraTrack", 1);
-	mLookAtAnimation = mSceneManager->createAnimation("LookAtTrack", 1);
-	mAxesAnimation = mSceneManager->createAnimation("AxesTrack", 1);
-	mCameraEffectAnimation = mSceneManager->createAnimation("CameraEffect", 1);
-	mCameraEffectLookAnimation = mSceneManager->createAnimation("CameraEffectLook", 1);
+	mSceneManager->createAnimation("CameraTrack", 1);
+	mSceneManager->createAnimation("LookAtTrack", 1);
+	mSceneManager->createAnimation("AxesTrack", 1);
+	mSceneManager->createAnimation("CameraEffect", 1);
+	mSceneManager->createAnimation("CameraEffectLook", 1);
 	mCameraTransition = mSceneManager->createAnimationState("CameraTrack");
 	mCameraTransition->setEnabled(false);
 	mLookAtTransition = mSceneManager->createAnimationState("LookAtTrack");
@@ -171,22 +165,10 @@ void CameraManager::finalize()
 		mAxesNode = NULL;
 	}
 
-	if(mCameraAnimation)
-	{
-		mSceneManager->destroyAnimation("CameraTrack");
-		mCameraAnimation = NULL;
-	}
-
 	if(mCameraTransition)
 	{
 		mSceneManager->destroyAnimationState("CameraTrack");
 		mCameraTransition = NULL;
-	}
-
-	if(mLookAtAnimation)
-	{
-	mSceneManager->destroyAnimation("LookAtTrack");
-	mLookAtAnimation = NULL;
 	}
 
 	if(mLookAtTransition)
@@ -195,34 +177,16 @@ void CameraManager::finalize()
 		mLookAtTransition = NULL;
 	}
 
-	if(mAxesAnimation)
-	{
-		mSceneManager->destroyAnimation("AxesTrack");
-		mAxesAnimation = NULL;
-	}
-
 	if(mAxesTransition)
 	{
 		mSceneManager->destroyAnimationState("AxesTrack");
 		mAxesTransition = NULL;
 	}
 
-	if(mCameraEffectAnimation)
-	{
-		mSceneManager->destroyAnimation("CameraEffect");
-		mCameraEffectAnimation = NULL;
-	}
-
 	if( mCameraEffect)
 	{
 		mSceneManager->destroyAnimationState("CameraEffect");
 		mCameraEffect = NULL;
-	}
-
-	if(mCameraEffectLookAnimation)
-	{
-		mSceneManager->destroyAnimation("CameraEffectLook");
-		mCameraEffectLookAnimation = NULL;
 	}
 
 	if(mCameraEffectLook)
@@ -364,7 +328,7 @@ void CameraManager::updateCamera(Vector3 player, Real elapsedSeconds)
 			}
 
 			Real gap = (position.x - begin.x) / (end.x - begin.x);
-			position.z = begin.z - (gap * (begin.z - end.z)) +  mGameCameraZoom;
+			position.z = begin.z - (gap * (begin.z - end.z));
 			position.y = begin.y + (gap * (end.y - begin.y));
 		}
 		// Movement in ZX (side scroll in Z). Be carefull with Z index!
@@ -381,7 +345,7 @@ void CameraManager::updateCamera(Vector3 player, Real elapsedSeconds)
 			}
 
 			Real gap = (begin.z - position.z) / (begin.z - end.z);
-			position.x = begin.x + (gap * (end.x - begin.x)) + mGameCameraZoom;
+			position.x = begin.x + (gap * (end.x - begin.x));
 			position.y = begin.y + (gap * (end.y - begin.y));
 		}		
 		
@@ -526,7 +490,33 @@ void CameraManager::setFixedCamera(int camera, Vector3 position, Vector3 lookAt)
 /** Camera effects */
 void CameraManager::zoom(Real zoom)
 {
-	mGameCameraZoom += zoom;
+	Vector3 begin = this->getCameraPosition();
+	Vector3 zoomIn = this->getCameraDirection() * zoom;
+	// Camera node
+	if(mSceneManager->hasAnimation("CameraEffect"))
+		mSceneManager->destroyAnimation("CameraEffect");
+	Animation* anim = mSceneManager->createAnimation("CameraEffect", 3);
+    // Spline it for nice curves
+	anim->setInterpolationMode(Animation::IM_LINEAR);
+    // Create a track to animate the camera's node
+	NodeAnimationTrack* track = anim->createNodeTrack(0, mGameCameraNode);
+    // Setup keyframes
+	TransformKeyFrame* key = track->createNodeKeyFrame(0);
+	//key->setTranslate( begin );
+	key = track->createNodeKeyFrame(0.25);
+	key->setTranslate( zoomIn );
+	key = track->createNodeKeyFrame(2.75);
+	key->setTranslate( zoomIn );
+	key = track->createNodeKeyFrame(3);
+	//key->setTranslate( begin );
+    // Create a new animation state to track this
+	if(mSceneManager->hasAnimationState("CameraEffect"))
+		mSceneManager->destroyAnimationState("CameraEffect");
+	mCameraEffect = mSceneManager->createAnimationState("CameraEffect");
+    mCameraEffect->setEnabled(true);
+	mCameraEffect->setWeight(1);
+	mCameraEffect->setLoop(false);
+	
 }
 
 void CameraManager::rumble(Real scale)
@@ -813,7 +803,22 @@ EVENTS_END_UNREGISTER_HANDLERS()
 
 EVENTS_DEFINE_HANDLER(CameraManager,EnemyKilled)
 {
-	this->shake(5);
+	EnemyPtr enemy = evt->getEnemy();
+	PlayerPtr player = evt->getPlayer();
+
+	if( enemy->hasDieAnimation() )
+	{
+		this->shake((rand()%4)*2);
+	}
+	else
+	{
+		this->rumble((rand()%4));
+	}
+
+	if( player->isSpecial() )
+	{
+		this->zoom(1);
+	}
 }
 
 // --------------------------------

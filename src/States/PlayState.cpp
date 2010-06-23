@@ -67,8 +67,9 @@ void PlayState::initialize()
 	// Create a single player (TEST!)
 	PlayerPtr player1 = mPlayerManager->createPlayer("Player1","redWyvern.mesh");
 	player1->setPosition(Vector3(80, 20, 870));
-	// Add fire breath (TEST!)
+	// Add particle systems
 	player1->setFireBreath(mParticleManager->create("firebreath","WyvernsAssault/DragonBreath"));
+	player1->setDust(mParticleManager->create("dustR","WyvernsAssault/Dust"), mParticleManager->create("dustL","WyvernsAssault/Dust"));
 	// Set player gui
 	player1->setGuiId(GuiWidgetPlayId::UserInterface1);
 
@@ -253,10 +254,6 @@ bool PlayState::frameRenderingQueued(const Ogre::FrameEvent& evt)
 void PlayState::update(const float elapsedSeconds)
 {
 	PlayerPtr player1 = mPlayerManager->getPlayer(PLAYER1);
-	bool fastPlayerMove = false;
-
-	if(this->mInputManager->getKeyboard()->isKeyDown(OIS::KeyCode::KC_A))	
-		fastPlayerMove = true;
 
 	if ( !player1->isDeath() )
 	{
@@ -337,7 +334,7 @@ void PlayState::update(const float elapsedSeconds)
 			else
 			{
 				// No movement
-				mPlayerManager->move(PLAYER1,Vector3::ZERO);
+				mPlayerManager->stop(PLAYER1);
 			}
 		}
 		// Other cameras not allowing movement
@@ -517,6 +514,9 @@ void PlayState::pause()
 
 	// Disable all post process
 	mPostProcessManager->pause();
+
+	// Pause all particles
+
 }
 
 /** Called when the state has to be resumed (from pause) */
@@ -722,30 +722,14 @@ bool PlayState::keyPressed(const OIS::KeyEvent& e)
 	// Depth On/Off
 	case OIS::KeyCode::KC_END:
 		mPostProcessManager->showDepth();
-		break;	
-
-	// Camera rumble - Debug
-	case OIS::KeyCode::KC_N:
-		mCameraManager->rumble(5);
 		break;
-	// Camera tremor - Debug
+
 	case OIS::KeyCode::KC_M:
-		mCameraManager->tremor(5);
+		mCameraManager->zoom(1);
 		break;
-
-	// Blood particle system - Debug
-	case OIS::KeyCode::KC_Z:		
-		mParticleManager->bloodKill(player1->_getSceneNode());
+	case OIS::KeyCode::KC_N:
+		mCameraManager->zoom(2);
 		break;
-	case OIS::KeyCode::KC_X:
-		mParticleManager->hit(player1->_getSceneNode());
-		break;
-	case OIS::KeyCode::KC_C:
-		mParticleManager->bloodHit(player1->_getSceneNode());
-		break;
-	case OIS::KeyCode::KC_V:
-		mParticleManager->bloodLens();
-		break;	
 	}
 
 	// Free camera mode move

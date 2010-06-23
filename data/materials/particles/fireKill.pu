@@ -7,7 +7,7 @@ system WyvernsAssault/FireKill
         emitted_technique_quota                 900
         emitted_affector_quota                  900
         emitted_system_quota                    900
-        material                                Particle/Smoke
+        material                                Particle/Smoke_01
         renderer                                Billboard
         {
         }
@@ -19,7 +19,11 @@ system WyvernsAssault/FireKill
                 min                             0
                 max                             25
             }
-            time_to_live                        2
+            time_to_live                        dyn_random
+            {
+                min                             4.5
+                max                             4.85
+            }
             velocity                            dyn_random
             {
                 min                             60
@@ -51,6 +55,12 @@ system WyvernsAssault/FireKill
             bouncyness                          0
             normal                              0 1 0
         }
+        observer                                OnClear Observer6
+        {
+            handler                             DoStopSystem Handler8
+            {
+            }
+        }
     }
     technique Technique2
     {
@@ -64,11 +74,11 @@ system WyvernsAssault/FireKill
         {
             billboard_rotation_type             vertex
         }
-        emitter                                 Point Emitter1
+        emitter                                 Point Emitter2
         {
             emission_rate                       1
             angle                               0
-            time_to_live                        2
+            time_to_live                        4.5
             velocity                            dyn_random
             {
                 min                             50
@@ -115,11 +125,11 @@ system WyvernsAssault/FireKill
         {
             billboard_rotation_type             vertex
         }
-        emitter                                 Point Emitter2
+        emitter                                 Point Emitter3
         {
             emission_rate                       1
             angle                               0
-            time_to_live                        2
+            time_to_live                        4.5
             velocity                            dyn_random
             {
                 min                             50
@@ -164,7 +174,7 @@ system WyvernsAssault/FireKill
         renderer                                Billboard
         {
         }
-        emitter                                 Box Emitter2
+        emitter                                 Box Emitter4
         {
             emission_rate                       dyn_random
             {
@@ -176,7 +186,11 @@ system WyvernsAssault/FireKill
                 min                             0
                 max                             25
             }
-            time_to_live                        2
+            time_to_live                        dyn_random
+            {
+                min                             4.5
+                max                             4.85
+            }
             velocity                            dyn_random
             {
                 min                             60
@@ -206,12 +220,6 @@ system WyvernsAssault/FireKill
         {
             bouncyness                          0
             normal                              0 1 0
-        }
-        observer                                OnClear Observer11
-        {
-            handler                             DoStopSystem Handler12
-            {
-            }
         }
     }
 }

@@ -120,6 +120,14 @@ EnemyRemoveEvent::EnemyRemoveEvent(EnemyPtr e)
 
 //----------------------
 
+EnemyCustomEvent::EnemyCustomEvent(EnemyPtr e)
+:Event(EventTypes::EnemyCustom, EventPriorities::Normal)
+{
+	mEnemy = e;
+};
+
+//----------------------
+
 PlayerHitEvent::PlayerHitEvent(EnemyPtr e, PlayerPtr p)
 :Event(EventTypes::PlayerHit, EventPriorities::Normal)
 {

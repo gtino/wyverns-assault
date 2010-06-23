@@ -297,14 +297,16 @@ EVENTS_BEGIN_REGISTER_HANDLERS(EnemyManager)
 	EVENTS_REGISTER_HANDLER(EnemyManager, Collision)
 	EVENTS_REGISTER_HANDLER(EnemyManager, EnemyHit)
 	EVENTS_REGISTER_HANDLER(EnemyManager, EnemyKilled)
-	EVENTS_REGISTER_HANDLER(EnemyManager, EnemyRemove);
+	EVENTS_REGISTER_HANDLER(EnemyManager, EnemyRemove)
+	EVENTS_REGISTER_HANDLER(EnemyManager, EnemyCustom);
 EVENTS_END_REGISTER_HANDLERS()
 
 EVENTS_BEGIN_UNREGISTER_HANDLERS(EnemyManager)
 	EVENTS_UNREGISTER_HANDLER(EnemyManager, Collision)
 	EVENTS_UNREGISTER_HANDLER(EnemyManager, EnemyHit)
 	EVENTS_UNREGISTER_HANDLER(EnemyManager, EnemyKilled)
-	EVENTS_UNREGISTER_HANDLER(EnemyManager, EnemyRemove);
+	EVENTS_UNREGISTER_HANDLER(EnemyManager, EnemyRemove)
+	EVENTS_UNREGISTER_HANDLER(EnemyManager, EnemyCustom);
 EVENTS_END_UNREGISTER_HANDLERS()
 
 EVENTS_DEFINE_HANDLER(EnemyManager, Collision)
@@ -331,27 +333,50 @@ EVENTS_DEFINE_HANDLER(EnemyManager, EnemyKilled)
 	EnemyPtr enemy = evt->getEnemy();
 	PlayerPtr player = evt->getPlayer();
 
-	if( enemy->getEnemyType() == Enemy::EnemyTypes::Chicken )
+	// Stop the enemy from rotating and moving
+	enemy->stop();
+
+	if( player->isSpecial() )
 	{
-		enemy->dieSwitch();
+		enemy->setMaterialName("Skin/Black");
+		enemy->setBurning(true);
+		EnemyCustomEventPtr eCustom = EnemyCustomEventPtr(new EnemyCustomEvent(enemy));
+		EVENTS_FIRE_AFTER(eCustom, 1.0f);
 	}
 	else
 	{
-		if( player->isSpecial() )
-			//enemy->setMaterialName("Skin/Black");
-			enemy->setVisible(false);
-		else
-			enemy->setMaterialName("Skin/Red");
-	}
+		if( enemy->getEnemyType() == Enemy::EnemyTypes::Chicken )
+		{
+			enemy->dieSwitch();
+		}
+		else 
+		{
+			if( (rand()%3) == 0 )
+				enemy->dieToCamera();
+			else
+				enemy->setMaterialName("Skin/Red");
+		}
 
-	EnemyRemoveEventPtr eRemove = EnemyRemoveEventPtr(new EnemyRemoveEvent(enemy));
- 	EVENTS_FIRE_AFTER(eRemove,2.0f);
+		EnemyRemoveEventPtr eRemove = EnemyRemoveEventPtr(new EnemyRemoveEvent(enemy));
+ 		EVENTS_FIRE_AFTER(eRemove, 4.0f);
+	}
 }
 
 EVENTS_DEFINE_HANDLER(EnemyManager, EnemyRemove)
 {
 	EnemyPtr e = evt->getEnemy();
 	removeEnemy(e->getName());
+}
+
+EVENTS_DEFINE_HANDLER(EnemyManager, EnemyCustom)
+{
+	EnemyPtr enemy = evt->getEnemy();
+
+	if( enemy->isBurning())
+		enemy->setVisible(false);
+
+	EnemyRemoveEventPtr eRemove = EnemyRemoveEventPtr(new EnemyRemoveEvent(enemy));
+	EVENTS_FIRE_AFTER(eRemove, 4.0f);
 }
 
 // --------------------------------

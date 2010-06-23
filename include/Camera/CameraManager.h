@@ -66,6 +66,7 @@ namespace WyvernsAssault
 	public:
 		/** Camera functions */
 		Vector3 getCameraPosition();
+		Vector3 getCameraDirection(){ return mGameCamera->getDirection(); }
 		Vector3 getCameraLookAt();
 		String getCameraMode() { return mGameCameraMode ; }
 		int getGameArea(Vector3 position);
@@ -136,17 +137,10 @@ namespace WyvernsAssault
 		SceneNode*				mGameCameraLookAtNode;
 
 		String					mGameCameraMode;
-		Real					mGameCameraZoom;
 		int						mGameArea;
 
 		Entity*					mAxes;
 		SceneNode*				mAxesNode;
-
-		Animation*				mCameraAnimation;
-		Animation*				mLookAtAnimation;
-		Animation*				mAxesAnimation;
-		Animation*				mCameraEffectAnimation;
-		Animation*				mCameraEffectLookAnimation;
 
 		AnimationState*			mCameraTransition;
 		AnimationState*			mLookAtTransition;

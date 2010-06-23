@@ -74,6 +74,7 @@ namespace WyvernsAssault
 		virtual void setMaterialName(const Ogre::String materialName) { mEntity->setMaterialName(materialName);}
 
 		virtual void setVisible(bool visible){ mEntity->setVisible(visible); }
+		virtual void isVisible(){ mEntity->isVisible(); }
 		
 		const Ogre::AxisAlignedBox& getWorldBoundingBox()
 		{
