@@ -148,6 +148,22 @@ void ParticleManager::hit(SceneNode* node)
 	particles->start();
 }
 
+void ParticleManager::impact(SceneNode* node)
+{
+	String name = node->getName();
+	ParticleUniverse::ParticleSystem* particles;
+	if( mParticleSystemManager->getParticleSystem(name + "_impact") == NULL)
+	{
+		particles = mParticleSystemManager->createParticleSystem( name + "_impact", "WyvernsAssault/Impact", mSceneManager);
+		node->attachObject( particles );
+	}
+	else
+	{
+		particles = mParticleSystemManager->getParticleSystem( name + "_impact");
+	}	
+	particles->start();
+}
+
 /** Fire hit particle */
 void ParticleManager::fireHit(SceneNode* node)
 {
@@ -216,11 +232,46 @@ void ParticleManager::glow(SceneNode* node)
 	particles->start();
 }
 
+/** Attack particles **/
+void ParticleManager::blast(SceneNode* node)
+{
+	String name = node->getName();
+	ParticleUniverse::ParticleSystem* particles;
+	if( mParticleSystemManager->getParticleSystem(name + "_blast") == NULL)
+	{
+		particles = mParticleSystemManager->createParticleSystem( name + "_blast", "WyvernsAssault/Blast", mSceneManager);
+		node->attachObject( particles );
+	}
+	else
+	{
+		particles = mParticleSystemManager->getParticleSystem( name + "_blast");
+	}	
+	particles->start();
+}
+
+void ParticleManager::swing(SceneNode* node)
+{
+	String name = node->getName();
+	ParticleUniverse::ParticleSystem* particles;
+	if( mParticleSystemManager->getParticleSystem(name + "_swing") == NULL)
+	{
+		particles = mParticleSystemManager->createParticleSystem( name + "_swing", "WyvernsAssault/Swing", mSceneManager);
+		node->attachObject( particles );
+	}
+	else
+	{
+		particles = mParticleSystemManager->getParticleSystem( name + "_swing");
+	}	
+	particles->start();
+}
 
 // --------------
 // Event handlers
 // --------------
 EVENTS_BEGIN_REGISTER_HANDLERS(ParticleManager)
+	EVENTS_REGISTER_HANDLER(ParticleManager,PlayerAttack)
+	EVENTS_REGISTER_HANDLER(ParticleManager,PlayerHit)
+	EVENTS_REGISTER_HANDLER(ParticleManager,EnemyAttack)
 	EVENTS_REGISTER_HANDLER(ParticleManager,EnemyHit)
 	EVENTS_REGISTER_HANDLER(ParticleManager,EnemyKilled)
 	EVENTS_REGISTER_HANDLER(ParticleManager,EnemyCustom)
@@ -228,11 +279,42 @@ EVENTS_BEGIN_REGISTER_HANDLERS(ParticleManager)
 EVENTS_END_REGISTER_HANDLERS()
 
 EVENTS_BEGIN_UNREGISTER_HANDLERS(ParticleManager)
+	EVENTS_UNREGISTER_HANDLER(ParticleManager,PlayerAttack)
+	EVENTS_UNREGISTER_HANDLER(ParticleManager,PlayerHit)
+	EVENTS_UNREGISTER_HANDLER(ParticleManager,EnemyAttack)
 	EVENTS_UNREGISTER_HANDLER(ParticleManager,EnemyHit)
 	EVENTS_UNREGISTER_HANDLER(ParticleManager,EnemyKilled)
 	EVENTS_UNREGISTER_HANDLER(ParticleManager,EnemyCustom)
 	EVENTS_UNREGISTER_HANDLER(ParticleManager,ItemCatch)
 EVENTS_END_REGISTER_HANDLERS()
+
+
+EVENTS_DEFINE_HANDLER(ParticleManager, PlayerAttack)
+{
+	PlayerPtr player = evt->getPlayer();
+
+	SceneNode* sceneNode = player->_getSceneNode();
+
+	//this->blast(sceneNode);
+}
+
+EVENTS_DEFINE_HANDLER(ParticleManager, PlayerHit)
+{
+	PlayerPtr player = evt->getPlayer();
+
+	SceneNode* sceneNode = player->_getSceneNode();
+
+	this->impact(sceneNode);
+}
+
+EVENTS_DEFINE_HANDLER(ParticleManager, EnemyAttack)
+{
+	EnemyPtr enemy = evt->getEnemy();
+
+	SceneNode* sceneNode = enemy->_getSceneNode();
+
+	//this->swing(sceneNode);
+}
 
 EVENTS_DEFINE_HANDLER(ParticleManager,EnemyHit)
 {

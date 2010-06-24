@@ -75,14 +75,14 @@ namespace WyvernsAssault
 		void finalizeEntity();
 		void updateEntity(const float elapsedSeconds);
 
-		void setMoving(bool move);
-		void setAttacking(Real attack){attacking = attack;}
-
+		// Control functions
 		bool isMoving(){ return moving; }
-		bool isAttacking(){ return attacking != 0 ; }
-		Real wichAttack(){ return attacking; }
+		bool isAttacking(){ return attackNumber != 0 ; }
+		float wichAttack(){ return attackNumber; }
 		bool attackStart() { return newAttack; }
-		void attackFinish() { newAttack = false; }
+		void attackFinished() { newAttack = false; }
+		void setAttackHited(bool value){ attackHited = value; }
+		bool hasAttackHited() { return attackHited; }
 		bool isSpecial(){ return special; }
 		bool isDeath() { return !live; }
 		bool isDying() { return timeDeath <= 3; }
@@ -97,6 +97,9 @@ namespace WyvernsAssault
 		// Particle systems
 		void setFireBreath(ParticleUniverse::ParticleSystem* pSystem);
 		void setDust(ParticleUniverse::ParticleSystem* pSystemR, ParticleUniverse::ParticleSystem* pSystemL);
+
+		// Movie function
+		void setMoving(bool move);
 
 		// Main attack combo
 		void attackA();
@@ -167,13 +170,14 @@ namespace WyvernsAssault
 	private:
 		
 		// Animation control variables
-		bool moving;		
-		bool special;
-		Real attacking;
-		bool continueAttacking;
-		bool newAttack;
-		bool live;
-		Real timeDeath;
+		bool	moving;		
+		bool	special;
+		float	attackNumber;
+		bool	continueAttacking;
+		bool	newAttack;
+		bool	attackHited;
+		bool	live;
+		float	timeDeath;
 
 		// Animation system
 		tecnofreak::IAnimationSystem*		mAnimationSystem;

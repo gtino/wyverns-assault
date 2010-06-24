@@ -158,11 +158,7 @@ namespace WyvernsAssault
 		ObjectMap mObjectMap;
 
 	private:
-
-		// Control variable for states changing (from attacking to non attacking). Need for skipping multiple calling to same event.
-		bool mPlayerSpecialState;
-		int mPlayerAttackLast;
-
+		int		mLastAttackChecked;
 
 	// --------------------------------
 	// BEGIN Lua Interface Declarations

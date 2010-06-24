@@ -817,7 +817,7 @@ EVENTS_DEFINE_HANDLER(CameraManager,EnemyKilled)
 
 	if( player->isSpecial() )
 	{
-		this->zoom(1);
+		this->zoom(1.5);
 	}
 }
 

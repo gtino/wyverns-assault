@@ -165,6 +165,7 @@ void Enemy::initializeEntity(Ogre::Entity* entity, Ogre::SceneNode* sceneNode, O
 	moving = false;
 	attacking = false;
 	newAttack = false;
+	attackHited = false;
 	burning = false;
 
 	// Random animation start time
@@ -440,11 +441,6 @@ void Enemy::setAttacking(bool attack)
 {
 	attacking = attack;
 	newAttack = attack;
-}
-
-void Enemy::attackFinish() 
-{ 
-	newAttack = false; 
 }
 
 // Set die mesh and set invisible

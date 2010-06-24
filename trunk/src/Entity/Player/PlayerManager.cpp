@@ -122,10 +122,11 @@ void PlayerManager::attack(Ogre::String name)
 	player->attackA();
 
 	if( player->attackStart() )
-	{
-		player->attackFinish();
+	{		
 		PlayerAttackEventPtr evt = PlayerAttackEventPtr(new PlayerAttackEvent(player));
 		EVENTS_FIRE(evt);
+		player->attackFinished();
+		player->setAttackHited(false);
 	}
 }
 
@@ -136,10 +137,10 @@ void PlayerManager::attackSpecial(Ogre::String name)
 	player->attackSpecial();
 
 	if( player->attackStart() )
-	{
-		player->attackFinish();
+	{		
 		PlayerAttackSpecialEventPtr evt = PlayerAttackSpecialEventPtr(new PlayerAttackSpecialEvent(player));
 		EVENTS_FIRE(evt);
+		player->attackFinished();
 	}
 }
 
