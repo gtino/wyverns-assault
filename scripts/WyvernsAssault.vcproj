@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="Windows-1252"?>
 <VisualStudioProject
 	ProjectType="Visual C++"
-	Version="9,00"
+	Version="9.00"
 	Name="WyvernsAssault"
 	ProjectGUID="{DA8BACB6-E0B2-465D-84CE-60A33C2E795E}"
 	RootNamespace="WyvernsAssault"
@@ -520,6 +520,22 @@
 					>
 				</File>
 			</Filter>
+			<Filter
+				Name="Video"
+				>
+				<File
+					RelativePath="..\src\Video\VideoManager.cpp"
+					>
+				</File>
+			</Filter>
+			<Filter
+				Name="CutScene"
+				>
+				<File
+					RelativePath="..\src\CutScene\CutSceneManager.cpp"
+					>
+				</File>
+			</Filter>
 		</Filter>
 		<Filter
 			Name="Header Files"
@@ -867,6 +883,22 @@
 				>
 				<File
 					RelativePath="..\include\Utils\Utils.h"
+					>
+				</File>
+			</Filter>
+			<Filter
+				Name="Video"
+				>
+				<File
+					RelativePath="..\include\Video\VideoManager.h"
+					>
+				</File>
+			</Filter>
+			<Filter
+				Name="CutScene"
+				>
+				<File
+					RelativePath="..\include\CutScene\CutSceneManager.h"
 					>
 				</File>
 			</Filter>
