@@ -34,6 +34,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
 #include "InputListener.h"
 
+#include "..\Lua\LuaInterface.h"
+
 #define WA_CALL_LISTENERS(method) for ( InputListenersIterator it=mRegisteredListeners.begin() ; it < mRegisteredListeners.end(); it++ ) {(*it)->method;}
 
 namespace Ogre
@@ -132,6 +134,12 @@ namespace WyvernsAssault
 		/** Buffered input - pov moved */
 		bool povMoved(const OIS::JoyStickEvent &evt, int index);
 
+		//
+		// Enable/disable input
+		//
+		void InputManager::disable(){mEnabled = false;}
+		void InputManager::enable(){mEnabled = true;}
+
 	protected:
 		OIS::InputManager* mInputManager;
 		OIS::Keyboard* mKeyboard;
@@ -146,6 +154,23 @@ namespace WyvernsAssault
 		InputListenersList mRegisteredListeners;
 
 		bool mInitialized;
+		bool mEnabled;
+
+	public:
+		// --------------------------------
+		// BEGIN Lua Interface Declarations
+		// --------------------------------
+		public:
+			LUA_INTERFACE();
+
+			// Physics Lib (exported to Lua)
+			LUA_LIBRARY("Input",inputlib);
+
+			LUA_FUNCTION(enable);
+			LUA_FUNCTION(disable);
+		// ------------------------------
+		// END Lua Interface Declarations
+		// ------------------------------
 	};
 
 	typedef boost::shared_ptr<InputManager> InputManagerPtr;

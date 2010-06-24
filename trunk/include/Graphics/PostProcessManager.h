@@ -97,14 +97,13 @@ namespace WyvernsAssault
 		// BEGIN Lua Interface Declarations
 		// --------------------------------
 	public:
+		LUA_INTERFACE();
+
 		//PostProcess Lib (exported to Lua)
 		LUA_LIBRARY("PostProcess",postprocesslib);
 
-		LUA_FUNCTION(luaEnableCompositor);
-		LUA_FUNCTION(luaDisableCompositor);
-
-	public:
-		void luaLoadScripts(){};
+		LUA_FUNCTION(enableCompositor);
+		LUA_FUNCTION(disableCompositor);
 		// ------------------------------
 		// END Lua Interface Declarations
 		// ------------------------------

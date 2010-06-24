@@ -187,12 +187,21 @@ EVENTS_DEFINE_HANDLER(GuiManager, PlayerHit)
 // --------------------------------
 // Lua Gui Lib
 // --------------------------------
-LUA_BEGIN_BINDING(GuiManager::guilib)
-LUA_BIND("showOverlay", GuiManager::luaShowOverlay)
-LUA_BIND("hideOverlay", GuiManager::luaHideOverlay)
+LUA_BEGIN_BINDING(GuiManager, guilib)
+LUA_BIND(GuiManager, showOverlay)
+LUA_BIND(GuiManager, hideOverlay)
 LUA_END_BINDING()
 
-int GuiManager::luaShowOverlay(lua_State *L)
+//
+// Load lua scripts that will be used by this manager
+//
+LUA_BEGIN_LOAD_SCRIPTS(GuiManager)
+// 
+// TODO : Load scripts if needed
+//
+LUA_END_LOAD_SCRIPTS()
+
+LUA_DEFINE_FUNCTION(GuiManager,showOverlay)
 {
 	/* get number of arguments */
 	int n = lua_gettop(L);
@@ -201,7 +210,7 @@ int GuiManager::luaShowOverlay(lua_State *L)
 	return 1;
 }
 
-int GuiManager::luaHideOverlay(lua_State *L)
+LUA_DEFINE_FUNCTION(GuiManager,hideOverlay)
 {
 	/* get number of arguments */
 	int n = lua_gettop(L);

@@ -105,14 +105,13 @@ namespace WyvernsAssault
 		// BEGIN Lua Interface Declarations
 		// --------------------------------
 	public:
+		LUA_INTERFACE();
+
 		//Particle Lib (exported to Lua)
 		LUA_LIBRARY("Particle",particlelib);
 
-		LUA_FUNCTION(luaCreateSystem);
-		LUA_FUNCTION(luaRemoveSystem);
-
-	public:
-		void luaLoadScripts(){};
+		LUA_FUNCTION(createSystem);
+		LUA_FUNCTION(removeSystem);
 		// ------------------------------
 		// END Lua Interface Declarations
 		// ------------------------------

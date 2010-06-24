@@ -51,10 +51,19 @@ bool LogicManager::update(const float elapsedSeconds)
 // --------------------------------
 // Lua Game Lib
 // --------------------------------
-LUA_BEGIN_BINDING(LogicManager::gamelib)
-LUA_BIND("getTotalSeconds", LogicManager::getTotalSeconds)
-LUA_BIND("getElapsedSeconds", LogicManager::getElapsedSeconds)
+LUA_BEGIN_BINDING(LogicManager,gamelib)
+LUA_BIND(LogicManager,getTotalSeconds)
+LUA_BIND(LogicManager,getElapsedSeconds)
 LUA_END_BINDING()
+
+//
+// Load lua scripts that will be used by this manager
+//
+LUA_BEGIN_LOAD_SCRIPTS(LogicManager)
+// 
+// TODO : Load scripts if needed
+//
+LUA_END_LOAD_SCRIPTS()
 
 void LogicManager::luaInitialize(lua_State *L)
 {
@@ -64,15 +73,7 @@ void LogicManager::luaInitialize(lua_State *L)
 	LUA_PROPERTY_SET(LogicManager,ElapsedSeconds,0);
 }
 
-//
-// Load lua scripts that will be used by this manager
-//
-void LogicManager::luaLoadScripts()
-{	
-	return;
-}
-
-int LogicManager::getTotalSeconds(lua_State *L)
+LUA_DEFINE_FUNCTION(LogicManager,getTotalSeconds)
 {
 	/* get number of arguments */
 	int n = lua_gettop(L);
@@ -86,7 +87,7 @@ int LogicManager::getTotalSeconds(lua_State *L)
 	return 1;
 }
 
-int LogicManager::getElapsedSeconds(lua_State *L)
+LUA_DEFINE_FUNCTION(LogicManager,getElapsedSeconds)
 {
 	/* get number of arguments */
 	int n = lua_gettop(L);

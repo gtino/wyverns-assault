@@ -131,12 +131,21 @@ void ScenarioManager::setDebugEnabled(bool isDebugEnabled)
 // --------------------------------
 // Lua Scenario Lib
 // --------------------------------
-LUA_BEGIN_BINDING(ScenarioManager::scenariolib)
-LUA_BIND("createObject", ScenarioManager::luaCreateObject)
-LUA_BIND("removeObject", ScenarioManager::luaRemoveObject)
+LUA_BEGIN_BINDING(ScenarioManager, scenariolib)
+LUA_BIND(ScenarioManager, createObject)
+LUA_BIND(ScenarioManager, removeObject)
 LUA_END_BINDING()
 
-int ScenarioManager::luaCreateObject(lua_State *L)
+//
+// Load lua scripts that will be used by this manager
+//
+LUA_BEGIN_LOAD_SCRIPTS(ScenarioManager)
+// 
+// TODO : Load scripts if needed
+//
+LUA_END_LOAD_SCRIPTS()
+
+LUA_DEFINE_FUNCTION(ScenarioManager, createObject)
 {
 	/* get number of arguments */
 	int n = lua_gettop(L);
@@ -145,7 +154,7 @@ int ScenarioManager::luaCreateObject(lua_State *L)
 	return 1;
 }
 
-int ScenarioManager::luaRemoveObject(lua_State *L)
+LUA_DEFINE_FUNCTION(ScenarioManager, removeObject)
 {
 	/* get number of arguments */
 	int n = lua_gettop(L);

@@ -175,12 +175,21 @@ void PostProcessManager::update(float elapsedSeconds)
 // --------------------------------
 // Lua Camera Lib
 // --------------------------------
-LUA_BEGIN_BINDING(PostProcessManager::postprocesslib)
-LUA_BIND("enableCompositor", PostProcessManager::luaEnableCompositor)
-LUA_BIND("disableCompositor", PostProcessManager::luaDisableCompositor)
+LUA_BEGIN_BINDING(PostProcessManager,postprocesslib)
+LUA_BIND(PostProcessManager,enableCompositor)
+LUA_BIND(PostProcessManager,disableCompositor)
 LUA_END_BINDING()
 
-int PostProcessManager::luaEnableCompositor(lua_State *L)
+//
+// Load lua scripts that will be used by this manager
+//
+LUA_BEGIN_LOAD_SCRIPTS(PostProcessManager)
+// 
+// TODO : Load scripts if needed
+//
+LUA_END_LOAD_SCRIPTS()
+
+LUA_DEFINE_FUNCTION( PostProcessManager, enableCompositor)
 {
 	/* get number of arguments */
 	int n = lua_gettop(L);
@@ -189,7 +198,7 @@ int PostProcessManager::luaEnableCompositor(lua_State *L)
 	return 1;
 }
 
-int PostProcessManager::luaDisableCompositor(lua_State *L)
+LUA_DEFINE_FUNCTION( PostProcessManager, disableCompositor)
 {
 	/* get number of arguments */
 	int n = lua_gettop(L);

@@ -107,14 +107,13 @@ namespace WyvernsAssault
 	// BEGIN Lua Interface Declarations
 	// --------------------------------
 	public:
+		LUA_INTERFACE();
+
 		// Player Lib (exported to Lua)
 		LUA_LIBRARY("Player",playerlib);
 
-		LUA_FUNCTION(LuaGetPlayerPosition)
-		LUA_FUNCTION(LuaGetNumPlayers)
-
-	public:
-		void luaLoadScripts(){};
+		LUA_FUNCTION(getPlayerPosition)
+		LUA_FUNCTION(getNumPlayers)
 	// ------------------------------
 	// END Lua Interface Declarations
 	// ------------------------------

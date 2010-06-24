@@ -224,12 +224,21 @@ EVENTS_DEFINE_HANDLER(PlayerManager, EnemyKilled)
 // --------------------------------
 // Lua Player Lib
 // --------------------------------
-LUA_BEGIN_BINDING(PlayerManager::playerlib)
-LUA_BIND("getPosition", PlayerManager::LuaGetPlayerPosition)
-LUA_BIND("getNumPlayers", PlayerManager::LuaGetNumPlayers)
+LUA_BEGIN_BINDING(PlayerManager, playerlib)
+LUA_BIND(PlayerManager, getPlayerPosition)
+LUA_BIND(PlayerManager, getNumPlayers)
 LUA_END_BINDING()
 
-int PlayerManager::LuaGetPlayerPosition(lua_State *L)
+//
+// Load lua scripts that will be used by this manager
+//
+LUA_BEGIN_LOAD_SCRIPTS(PlayerManager)
+// 
+// TODO : Load scripts if needed
+//
+LUA_END_LOAD_SCRIPTS()
+
+LUA_DEFINE_FUNCTION(PlayerManager, getPlayerPosition)
 {
 	/* get number of arguments */
 	int n = lua_gettop(L);
@@ -253,7 +262,7 @@ int PlayerManager::LuaGetPlayerPosition(lua_State *L)
 	return 3;
 }
 
-int PlayerManager::LuaGetNumPlayers(lua_State *L)
+LUA_DEFINE_FUNCTION(PlayerManager, getNumPlayers)
 {
 	/* get number of arguments */
 	int n = lua_gettop(L);

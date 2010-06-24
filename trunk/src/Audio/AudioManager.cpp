@@ -811,11 +811,30 @@ EVENTS_DEFINE_HANDLER(AudioManager, ItemCatch)
 // --------------------------------
 // Lua Audio Lib
 // --------------------------------
-LUA_BEGIN_BINDING(AudioManager::audiolib)
-LUA_BIND("playSound", AudioManager::luaPlaySound)
+LUA_BEGIN_BINDING(AudioManager,audiolib)
+LUA_BIND(AudioManager,playOnce)
+LUA_BIND(AudioManager,playLoop)
 LUA_END_BINDING()
 
-int AudioManager::luaPlaySound(lua_State *L)
+//
+// Load lua scripts that will be used by this manager
+//
+LUA_BEGIN_LOAD_SCRIPTS(AudioManager)
+// 
+// TODO : Load scripts if needed
+//
+LUA_END_LOAD_SCRIPTS()
+
+LUA_DEFINE_FUNCTION(AudioManager, playOnce)
+{
+	/* get number of arguments */
+	int n = lua_gettop(L);
+
+	/* return the number of results */
+	return 1;
+}
+
+LUA_DEFINE_FUNCTION(AudioManager, playLoop)
 {
 	/* get number of arguments */
 	int n = lua_gettop(L);
