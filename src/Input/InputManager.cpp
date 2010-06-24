@@ -24,6 +24,7 @@ InputManager::InputManager()
 , mUseBufferedInputJoyStick(false)
 , mInputTypeSwitchingOn(false)
 , mInitialized(false)
+, mEnabled(true)
 {
 	//
 	// TODO Constructor
@@ -222,22 +223,37 @@ void InputManager::setJoyStickMode(const bool isBuffered)
 /** Buffered input - mouse moved */
 bool InputManager::mouseMoved( const OIS::MouseEvent& e ) 
 {
-	WA_CALL_LISTENERS(mouseMoved(e))
-	return true;
+	if(mEnabled)
+	{
+		WA_CALL_LISTENERS(mouseMoved(e))
+		return true;
+	}
+
+	return false;
 }
 
 /** Buffered input - mouse button pressed */
 bool InputManager::mousePressed( const OIS::MouseEvent& e, OIS::MouseButtonID button )
 {
-	WA_CALL_LISTENERS(mousePressed(e, button))
-	return true;
+	if(mEnabled)
+	{
+		WA_CALL_LISTENERS(mousePressed(e, button))
+		return true;
+	}
+
+	return false;
 }
 
 /** Buffered input - mouse button released */
 bool InputManager::mouseReleased( const OIS::MouseEvent& e, OIS::MouseButtonID button )
 {
-	WA_CALL_LISTENERS(mouseReleased(e, button))
-	return true;
+	if(mEnabled)
+	{
+		WA_CALL_LISTENERS(mouseReleased(e, button))
+		return true;
+	}
+
+	return false;
 }
 
 // ------------------
@@ -246,22 +262,37 @@ bool InputManager::mouseReleased( const OIS::MouseEvent& e, OIS::MouseButtonID b
 /** Buffered input - keyboard key clicked */
 bool InputManager::keyClicked(const OIS::KeyEvent& e)
 {
-	WA_CALL_LISTENERS(keyClicked(e))
-	return true;
+	if(mEnabled)
+	{
+		WA_CALL_LISTENERS(keyClicked(e))
+		return true;
+	}
+
+	return false;
 }
 
 /** Buffered input - keyboard key clicked */
 bool InputManager::keyPressed( const OIS::KeyEvent& e )
 {
-	WA_CALL_LISTENERS(keyPressed(e))
-	return true;
+	if(mEnabled)
+	{
+		WA_CALL_LISTENERS(keyPressed(e))
+		return true;
+	}
+
+	return false;
 }
 
 /** Buffered input - keyboard key clicked */
 bool InputManager::keyReleased( const OIS::KeyEvent& e )
 {
-	WA_CALL_LISTENERS(keyReleased(e))
-	return true;
+	if(mEnabled)
+	{
+		WA_CALL_LISTENERS(keyReleased(e))
+		return true;
+	}
+
+	return false;
 }
 
 // ----------------
@@ -270,27 +301,90 @@ bool InputManager::keyReleased( const OIS::KeyEvent& e )
 /** Buffered input - joystick button pressed */
 bool InputManager::buttonPressed(const OIS::JoyStickEvent &evt, int index)
 {
-	WA_CALL_LISTENERS(buttonPressed(evt,index))
-	return true;
+	if(mEnabled)
+	{
+		WA_CALL_LISTENERS(buttonPressed(evt,index))
+		return true;
+	}
+
+	return false;
 }
 
 /** Buffered input - joystick button released */
 bool InputManager::buttonReleased(const OIS::JoyStickEvent &evt, int index)
 {
-	WA_CALL_LISTENERS(buttonReleased(evt,index))
-	return true;
+	if(mEnabled)
+	{
+		WA_CALL_LISTENERS(buttonReleased(evt,index))
+		return true;
+	}
+
+	return false;
 }
 
 /** Buffered input - axis pad moved */
 bool InputManager::axisMoved(const OIS::JoyStickEvent &evt, int index)
 {
+	if(mEnabled)
+	{
 	WA_CALL_LISTENERS(axisMoved(evt,index))
 	return true;
+	}
+
+	return false;
 }
 
 /** Buffered input - pov moved */
 bool InputManager::povMoved(const OIS::JoyStickEvent &evt, int index)
 {
+	if(mEnabled)
+	{
 	WA_CALL_LISTENERS(povMoved(evt,index))
 	return true;
+	}
+
+	return false;
+}
+
+// --------------------------------
+// Lua Physics Lib
+// --------------------------------
+LUA_BEGIN_BINDING(InputManager, inputlib)
+LUA_BIND(InputManager, disable)
+LUA_BIND(InputManager, enable)
+LUA_END_BINDING()
+
+//
+// Load lua scripts that will be used by this manager
+//
+LUA_BEGIN_LOAD_SCRIPTS(InputManager)
+// 
+// TODO : Load scripts if needed
+//
+LUA_END_LOAD_SCRIPTS()
+
+LUA_DEFINE_FUNCTION(InputManager, disable)
+{
+	/* get number of arguments */
+	int n = lua_gettop(L);
+
+	// n should be 0
+
+	InputManager::getSingleton().disable();
+
+	/* return the number of results */
+	return 0;
+}
+
+LUA_DEFINE_FUNCTION(InputManager, enable)
+{
+	/* get number of arguments */
+	int n = lua_gettop(L);
+
+	// n should be 0
+
+	InputManager::getSingleton().enable();
+
+	/* return the number of results */
+	return 0;
 }

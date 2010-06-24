@@ -636,13 +636,22 @@ EVENTS_DEFINE_HANDLER(PhysicsManager,ItemCatch)
 // --------------------------------
 // Lua Physics Lib
 // --------------------------------
-LUA_BEGIN_BINDING(PhysicsManager::physicslib)
-LUA_BIND("getHOT", PhysicsManager::LuaGetHOT)
-LUA_BIND("getDistance", PhysicsManager::LuaGetDistance)
-LUA_BIND("getNearestPlayer", PhysicsManager::LuaGetNearestPlayer)
+LUA_BEGIN_BINDING(PhysicsManager, physicslib)
+LUA_BIND(PhysicsManager, getHOT)
+LUA_BIND(PhysicsManager, getDistance)
+LUA_BIND(PhysicsManager, getNearestPlayer)
 LUA_END_BINDING()
 
-int PhysicsManager::LuaGetHOT(lua_State *L)
+//
+// Load lua scripts that will be used by this manager
+//
+LUA_BEGIN_LOAD_SCRIPTS(PhysicsManager)
+// 
+// TODO : Load scripts if needed
+//
+LUA_END_LOAD_SCRIPTS()
+
+LUA_DEFINE_FUNCTION(PhysicsManager, getHOT)
 {
 	/* get number of arguments */
 	int n = lua_gettop(L);
@@ -663,7 +672,7 @@ int PhysicsManager::LuaGetHOT(lua_State *L)
 	return 1;
 }
 
-int PhysicsManager::LuaGetDistance(lua_State *L)
+LUA_DEFINE_FUNCTION(PhysicsManager, getDistance)
 {
 	/* get number of arguments */
 	int n = lua_gettop(L);
@@ -692,7 +701,7 @@ int PhysicsManager::LuaGetDistance(lua_State *L)
 	return 1;
 }
 
-int PhysicsManager::LuaGetNearestPlayer(lua_State *L)
+LUA_DEFINE_FUNCTION(PhysicsManager, getNearestPlayer)
 {
 		/* get number of arguments */
 	int n = lua_gettop(L);

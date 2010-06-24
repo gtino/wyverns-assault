@@ -99,14 +99,13 @@ namespace WyvernsAssault
 		// BEGIN Lua Interface Declarations
 		// --------------------------------
 	public:
+		LUA_INTERFACE();
+
 		//Gui Lib (exported to Lua)
-		LUA_LIBRARY("Gui",guilib);
+		LUA_LIBRARY("Gui", guilib);
 
-		LUA_FUNCTION(luaShowOverlay);
-		LUA_FUNCTION(luaHideOverlay);
-
-	public:
-		void luaLoadScripts(){};
+		LUA_FUNCTION(showOverlay);
+		LUA_FUNCTION(hideOverlay);
 		// ------------------------------
 		// END Lua Interface Declarations
 		// ------------------------------

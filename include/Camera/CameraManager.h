@@ -196,13 +196,18 @@ namespace WyvernsAssault
 		// BEGIN Lua Interface Declarations
 		// --------------------------------
 	public:
-		//Audio Lib (exported to Lua)
+		LUA_INTERFACE();
+
+		//Camera Lib (exported to Lua)
 		LUA_LIBRARY("Camera",cameralib);
 
-		LUA_FUNCTION(luaMoveCamera);
+		LUA_FUNCTION(setCurrent);
+		LUA_FUNCTION(translate);
+		LUA_FUNCTION(rotate);
+		LUA_FUNCTION(lookAt);
+		LUA_FUNCTION(moveTo);
+		LUA_FUNCTION(flyTo);
 
-	public:
-		void luaLoadScripts(){};
 		// ------------------------------
 		// END Lua Interface Declarations
 		// ------------------------------

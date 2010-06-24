@@ -382,21 +382,28 @@ EVENTS_DEFINE_HANDLER(EnemyManager, EnemyCustom)
 // --------------------------------
 // Lua Enemy Lib
 // --------------------------------
-LUA_BEGIN_BINDING(EnemyManager::enemylib)
-LUA_BIND("create", EnemyManager::createEnemy)
-LUA_BIND("getCount", EnemyManager::getEnemyCount)
-LUA_BIND("getName",EnemyManager::getEnemyName)
-LUA_BIND("getPosition", EnemyManager::getEnemyPosition)
-LUA_BIND("setPosition", EnemyManager::setEnemyPosition)
-LUA_BIND("setState", EnemyManager::setEnemyState)
-LUA_BIND("setTarget", EnemyManager::setEnemyTarget)
-LUA_BIND("getStateTimeout", EnemyManager::getEnemyStateTimeout)
-LUA_BIND("isHurt", EnemyManager::isEnemyHurt)
-LUA_BIND("isDying", EnemyManager::isEnemyDying)
-LUA_BIND("remove", EnemyManager::removeEnemy)
+LUA_BEGIN_BINDING(EnemyManager, enemylib)
+LUA_BIND(EnemyManager, create)
+LUA_BIND(EnemyManager, getCount)
+LUA_BIND(EnemyManager, getName)
+LUA_BIND(EnemyManager, getPosition)
+LUA_BIND(EnemyManager, setPosition)
+LUA_BIND(EnemyManager, setState)
+LUA_BIND(EnemyManager, setTarget)
+LUA_BIND(EnemyManager, getStateTimeout)
+LUA_BIND(EnemyManager, isHurt)
+LUA_BIND(EnemyManager, isDying)
+LUA_BIND(EnemyManager, remove)
 LUA_END_BINDING()
 
-int EnemyManager::createEnemy(lua_State *L)
+//
+// Load lua scripts that will be used by this manager
+//
+LUA_BEGIN_LOAD_SCRIPTS(EnemyManager)
+LUA_LOAD_SCRIPT(".\\data\\scripts\\EnemyLogic.lua")
+LUA_END_LOAD_SCRIPTS()
+
+LUA_DEFINE_FUNCTION(EnemyManager, create)
 {
 	/* get number of arguments */
 	int n = lua_gettop(L);
@@ -413,7 +420,7 @@ int EnemyManager::createEnemy(lua_State *L)
 	return 1;
 }
 
-int EnemyManager::getEnemyCount(lua_State *L)
+LUA_DEFINE_FUNCTION(EnemyManager, getCount)
 {
 	/* get number of arguments */
 	int n = lua_gettop(L);
@@ -428,7 +435,7 @@ int EnemyManager::getEnemyCount(lua_State *L)
 	return 1;
 }
 
-int EnemyManager::getEnemyName(lua_State *L)
+LUA_DEFINE_FUNCTION(EnemyManager, getName)
 {
 	/* get number of arguments */
 	int n = lua_gettop(L);
@@ -444,7 +451,7 @@ int EnemyManager::getEnemyName(lua_State *L)
 	return 1;
 }
 
-int EnemyManager::getEnemyPosition(lua_State *L)
+LUA_DEFINE_FUNCTION(EnemyManager, getPosition)
 {
 	/* get number of arguments */
 	int n = lua_gettop(L);
@@ -453,7 +460,7 @@ int EnemyManager::getEnemyPosition(lua_State *L)
 	return 1;
 }
 
-int EnemyManager::setEnemyPosition(lua_State *L)
+LUA_DEFINE_FUNCTION(EnemyManager,setPosition)
 {
 	/* get number of arguments */
 	int n = lua_gettop(L);
@@ -462,7 +469,7 @@ int EnemyManager::setEnemyPosition(lua_State *L)
 	return 1;
 }
 
-int EnemyManager::setEnemyState(lua_State *L)
+LUA_DEFINE_FUNCTION(EnemyManager,setState)
 {
 	/* get number of arguments */
 	int n = lua_gettop(L);
@@ -498,7 +505,7 @@ int EnemyManager::setEnemyState(lua_State *L)
 	return 1;
 }
 
-int EnemyManager::getEnemyStateTimeout(lua_State *L)
+LUA_DEFINE_FUNCTION(EnemyManager,getStateTimeout)
 {
 	/* get number of arguments */
 	int n = lua_gettop(L);
@@ -514,7 +521,7 @@ int EnemyManager::getEnemyStateTimeout(lua_State *L)
 	return 1;
 }
 
-int EnemyManager::removeEnemy(lua_State *L)
+LUA_DEFINE_FUNCTION(EnemyManager,remove)
 {
 	/* get number of arguments */
 	int n = lua_gettop(L);
@@ -523,7 +530,7 @@ int EnemyManager::removeEnemy(lua_State *L)
 	return 1;
 }
 
-int EnemyManager::setEnemyTarget(lua_State *L)
+LUA_DEFINE_FUNCTION(EnemyManager,setTarget)
 {
 	/* get number of arguments */
 	int n = lua_gettop(L);
@@ -543,7 +550,7 @@ int EnemyManager::setEnemyTarget(lua_State *L)
 	return 0;
 }
 
-int EnemyManager::isEnemyHurt(lua_State *L)
+LUA_DEFINE_FUNCTION(EnemyManager,isHurt)
 {
 	/* get number of arguments */
 	int n = lua_gettop(L);
@@ -558,7 +565,7 @@ int EnemyManager::isEnemyHurt(lua_State *L)
 	return 1;
 }
 
-int EnemyManager::isEnemyDying(lua_State *L)
+LUA_DEFINE_FUNCTION(EnemyManager,isDying)
 {
 	/* get number of arguments */
 	int n = lua_gettop(L);

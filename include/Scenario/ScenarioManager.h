@@ -105,14 +105,13 @@ namespace WyvernsAssault
 		// BEGIN Lua Interface Declarations
 		// --------------------------------
 	public:
+		LUA_INTERFACE();
+
 		//Scenario Lib (exported to Lua)
 		LUA_LIBRARY("Scenario",scenariolib);
 
-		LUA_FUNCTION(luaCreateObject);
-		LUA_FUNCTION(luaRemoveObject);
-
-	public:
-		void luaLoadScripts(){};
+		LUA_FUNCTION(createObject);
+		LUA_FUNCTION(removeObject);
 		// ------------------------------
 		// END Lua Interface Declarations
 		// ------------------------------

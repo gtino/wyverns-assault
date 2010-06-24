@@ -85,17 +85,6 @@ namespace WyvernsAssault
 
 		Ogre::SceneNode* _getSceneNode() const { return mEnemyNode; }
 
-		// ----------------
-		// Events interface
-		// ----------------
-		EVENTS_INTERFACE()
-
-		EVENTS_HANDLER(Collision)
-		EVENTS_HANDLER(EnemyHit)
-		EVENTS_HANDLER(EnemyKilled)
-		EVENTS_HANDLER(EnemyRemove)
-		EVENTS_HANDLER(EnemyCustom)
-
 	private:
 		Ogre::String createUniqueId();
 
@@ -111,30 +100,38 @@ namespace WyvernsAssault
 		Ogre::SceneManager* mSceneManager;
 		Ogre::SceneNode* mEnemyNode;
 
+	public:
+		// ----------------
+		// Events interface
+		// ----------------
+		EVENTS_INTERFACE()
+
+		EVENTS_HANDLER(Collision)
+		EVENTS_HANDLER(EnemyHit)
+		EVENTS_HANDLER(EnemyKilled)
+		EVENTS_HANDLER(EnemyRemove)
+		EVENTS_HANDLER(EnemyCustom)
+
 		// --------------------------------
 		// BEGIN Lua Interface Declarations
 		// --------------------------------
 	public:
+		LUA_INTERFACE();
+
 		// Enemies Lib (exported to Lua)
 		LUA_LIBRARY("Enemy", enemylib);
 
-		LUA_FUNCTION(createEnemy)
-		LUA_FUNCTION(getEnemyCount)
-		LUA_FUNCTION(getEnemyName)
-		LUA_FUNCTION(getEnemyPosition)
-		LUA_FUNCTION(setEnemyPosition)
-		LUA_FUNCTION(setEnemyState)
-		LUA_FUNCTION(setEnemyTarget)
-		LUA_FUNCTION(getEnemyStateTimeout)
-		LUA_FUNCTION(isEnemyHurt)
-		LUA_FUNCTION(isEnemyDying)
-		LUA_FUNCTION(removeEnemy)
-
-	public:
-		void luaLoadScripts(){luaLoadScript(".\\data\\scripts\\EnemyLogic.lua");}
-
-	private:
-		static const struct luaL_reg l[];
+		LUA_FUNCTION(create)
+		LUA_FUNCTION(getCount)
+		LUA_FUNCTION(getName)
+		LUA_FUNCTION(getPosition)
+		LUA_FUNCTION(setPosition)
+		LUA_FUNCTION(setState)
+		LUA_FUNCTION(setTarget)
+		LUA_FUNCTION(getStateTimeout)
+		LUA_FUNCTION(isHurt)
+		LUA_FUNCTION(isDying)
+		LUA_FUNCTION(remove)
 		// ------------------------------
 		// END Lua Interface Declarations
 		// ------------------------------

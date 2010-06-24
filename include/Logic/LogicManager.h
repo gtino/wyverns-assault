@@ -51,6 +51,8 @@ namespace WyvernsAssault
 		LUA_PROPERTY(ElapsedSeconds,float);
 
 	public:
+		LUA_INTERFACE();
+
 		// Game Lib (exported to Lua)
 		LUA_LIBRARY("Game",gamelib)
 
@@ -58,7 +60,6 @@ namespace WyvernsAssault
 		LUA_FUNCTION(getTotalSeconds)
 		LUA_FUNCTION(getElapsedSeconds)
 
-		void luaLoadScripts();
 		void luaInitialize(lua_State *L);
 	};
 

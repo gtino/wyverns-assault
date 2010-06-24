@@ -824,11 +824,70 @@ EVENTS_DEFINE_HANDLER(CameraManager,EnemyKilled)
 // --------------------------------
 // Lua Camera Lib
 // --------------------------------
-LUA_BEGIN_BINDING(CameraManager::cameralib)
-LUA_BIND("move", CameraManager::luaMoveCamera)
+LUA_BEGIN_BINDING(CameraManager, cameralib)
+LUA_BIND(CameraManager, setCurrent)
+LUA_BIND(CameraManager, rotate)
+LUA_BIND(CameraManager, translate)
+LUA_BIND(CameraManager, lookAt)
+LUA_BIND(CameraManager, moveTo)
+LUA_BIND(CameraManager, flyTo)
 LUA_END_BINDING()
 
-int CameraManager::luaMoveCamera(lua_State *L)
+//
+// Load lua scripts that will be used by this manager
+//
+LUA_BEGIN_LOAD_SCRIPTS(CameraManager)
+// 
+// TODO : Load scripts if needed
+//
+LUA_END_LOAD_SCRIPTS()
+
+LUA_DEFINE_FUNCTION(CameraManager, setCurrent)
+{
+	/* get number of arguments */
+	int n = lua_gettop(L);
+
+	/* return the number of results */
+	return 1;
+}
+
+LUA_DEFINE_FUNCTION(CameraManager, translate)
+{
+	/* get number of arguments */
+	int n = lua_gettop(L);
+
+	/* return the number of results */
+	return 1;
+}
+
+LUA_DEFINE_FUNCTION(CameraManager, rotate)
+{
+	/* get number of arguments */
+	int n = lua_gettop(L);
+
+	/* return the number of results */
+	return 1;
+}
+
+LUA_DEFINE_FUNCTION(CameraManager, lookAt)
+{
+	/* get number of arguments */
+	int n = lua_gettop(L);
+
+	/* return the number of results */
+	return 1;
+}
+
+LUA_DEFINE_FUNCTION(CameraManager, moveTo)
+{
+	/* get number of arguments */
+	int n = lua_gettop(L);
+
+	/* return the number of results */
+	return 1;
+}
+
+LUA_DEFINE_FUNCTION(CameraManager, flyTo)
 {
 	/* get number of arguments */
 	int n = lua_gettop(L);

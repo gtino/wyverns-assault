@@ -82,7 +82,9 @@ namespace WyvernsAssault
 	// BEGIN Lua Interface Declarations
 	// --------------------------------
 	public:
-		// Export library lib as "LibName" to be called from Lua scripts
+		LUA_INTERFACE();
+
+		// Export library lib as "Light" to be called from Lua scripts
 		LUA_LIBRARY("Light",lightlib)
 
 		// From Lua to C++
@@ -92,9 +94,6 @@ namespace WyvernsAssault
 		LUA_FUNCTION(setLightPosition)
 		LUA_FUNCTION(getAmbientLight)
 		LUA_FUNCTION(setAmbientLight)
-
-	public:
-		void luaLoadScripts();
 
 	private:
 		// From C++ to Lua

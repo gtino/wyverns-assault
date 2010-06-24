@@ -89,22 +89,21 @@ Ogre::ColourValue LightsManager::getAmbientLight()
 // --------------------------------
 // Lua Light Lib
 // --------------------------------
-LUA_BEGIN_BINDING(LightsManager::lightlib)
-LUA_BIND("getLightDiffuseColor", LightsManager::getLightDiffuseColor)
-LUA_BIND("setLightDiffuseColor", LightsManager::setLightDiffuseColor)
-LUA_BIND("getLightPosition", LightsManager::getLightPosition)
-LUA_BIND("setLightPosition", LightsManager::setLightPosition)
-LUA_BIND("getAmbientLight", LightsManager::getAmbientLight)
-LUA_BIND("setAmbientLight", LightsManager::setAmbientLight)
+LUA_BEGIN_BINDING(LightsManager, lightlib)
+LUA_BIND(LightsManager, getLightDiffuseColor)
+LUA_BIND(LightsManager, setLightDiffuseColor)
+LUA_BIND(LightsManager, getLightPosition)
+LUA_BIND(LightsManager, setLightPosition)
+LUA_BIND(LightsManager, getAmbientLight)
+LUA_BIND(LightsManager, setAmbientLight)
 LUA_END_BINDING()
 
 //
 // Load lua scripts that will be used by this manager
 //
-void LightsManager::luaLoadScripts()
-{
-	luaLoadScript(".\\data\\scripts\\Scenario.lua");
-}
+LUA_BEGIN_LOAD_SCRIPTS(LightsManager)
+LUA_LOAD_SCRIPT(".\\data\\scripts\\Scenario.lua")
+LUA_END_LOAD_SCRIPTS()
 
 // ----------------------------
 // Lua Routines called from C++
@@ -128,7 +127,7 @@ bool LightsManager::runDayLight(const float totalSeconds)
 //--------------------------------
 // C++ Methods called FROM Lua
 //--------------------------------
-int LightsManager::getLightDiffuseColor(lua_State *L)
+LUA_DEFINE_FUNCTION(LightsManager, getLightDiffuseColor)
 {
 	//
 	// Pass it to Lua script
@@ -159,7 +158,7 @@ int LightsManager::getLightDiffuseColor(lua_State *L)
 	return 3;
 }
 
-int LightsManager::setLightDiffuseColor(lua_State *L)
+LUA_DEFINE_FUNCTION(LightsManager, setLightDiffuseColor)
 {
 	//
 	// Pass it to Lua script
@@ -192,7 +191,7 @@ int LightsManager::setLightDiffuseColor(lua_State *L)
 	return 0;
 }
 
-int LightsManager::getLightPosition(lua_State *L)
+LUA_DEFINE_FUNCTION(LightsManager, getLightPosition)
 {
 	//
 	// Pass it to Lua script
@@ -223,7 +222,7 @@ int LightsManager::getLightPosition(lua_State *L)
 	return 3;
 }
 
-int LightsManager::setLightPosition(lua_State *L)
+LUA_DEFINE_FUNCTION(LightsManager, setLightPosition)
 {
 	//
 	// Pass it to Lua script
@@ -256,7 +255,7 @@ int LightsManager::setLightPosition(lua_State *L)
 	return 0;
 }
 
-int LightsManager::getAmbientLight(lua_State *L)
+LUA_DEFINE_FUNCTION(LightsManager, getAmbientLight)
 {
 	//
 	// Pass it to Lua script
@@ -282,7 +281,7 @@ int LightsManager::getAmbientLight(lua_State *L)
 	return 3;
 }
 
-int LightsManager::setAmbientLight(lua_State *L)
+LUA_DEFINE_FUNCTION(LightsManager, setAmbientLight)
 {
 	//
 	// Pass it to Lua script

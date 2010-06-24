@@ -32,6 +32,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #include <OgreSingleton.h>
 #include <boost/enable_shared_from_this.hpp>
 
+#include "..\Lua\LuaInterface.h"
+
 #include "Event.h"
 #include "EventHandler.h"
 #include "EventsInterface.h"
@@ -108,6 +110,21 @@ namespace WyvernsAssault
 		/// Then, the map entry for CAUSE_DAMAGE will contain at least one event handler object linking the instance
 		/// that will react to the event and the callback method (the function onCauseDamage).		
 		EventHandlerMap mEventHandlers;
+
+	public:
+		// --------------------------------
+		// BEGIN Lua Interface Declarations
+		// --------------------------------
+		public:
+			LUA_INTERFACE();
+
+			// Physics Lib (exported to Lua)
+			LUA_LIBRARY("Events",eventslib);
+
+			LUA_FUNCTION(fire);
+		// ------------------------------
+		// END Lua Interface Declarations
+		// ------------------------------
 	};
 
 	typedef boost::shared_ptr<EventsManager> EventsManagerPtr;

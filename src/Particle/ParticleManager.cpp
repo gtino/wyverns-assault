@@ -289,14 +289,23 @@ EVENTS_DEFINE_HANDLER(ParticleManager, ItemCatch)
 }
 
 // --------------------------------
-// Lua Camera Lib
+// Lua Particle Lib
 // --------------------------------
-LUA_BEGIN_BINDING(ParticleManager::particlelib)
-LUA_BIND("create", ParticleManager::luaCreateSystem)
-LUA_BIND("remove", ParticleManager::luaRemoveSystem)
+LUA_BEGIN_BINDING(ParticleManager, particlelib)
+LUA_BIND(ParticleManager, createSystem)
+LUA_BIND(ParticleManager, removeSystem)
 LUA_END_BINDING()
 
-int ParticleManager::luaCreateSystem(lua_State *L)
+//
+// Load lua scripts that will be used by this manager
+//
+LUA_BEGIN_LOAD_SCRIPTS(ParticleManager)
+// 
+// TODO : Load scripts if needed
+//
+LUA_END_LOAD_SCRIPTS()
+
+LUA_DEFINE_FUNCTION(ParticleManager, createSystem)
 {
 	/* get number of arguments */
 	int n = lua_gettop(L);
@@ -305,7 +314,7 @@ int ParticleManager::luaCreateSystem(lua_State *L)
 	return 1;
 }
 
-int ParticleManager::luaRemoveSystem(lua_State *L)
+LUA_DEFINE_FUNCTION(ParticleManager, removeSystem)
 {
 	/* get number of arguments */
 	int n = lua_gettop(L);

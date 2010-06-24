@@ -165,15 +165,13 @@ namespace WyvernsAssault
 		// BEGIN Lua Interface Declarations
 		// --------------------------------
 	public:
-
+		LUA_INTERFACE();
 
 		//Audio Lib (exported to Lua)
 		LUA_LIBRARY("Audio",audiolib);
 
-		LUA_FUNCTION(luaPlaySound);
-
-	public:
-		void luaLoadScripts(){};
+		LUA_FUNCTION(playOnce);
+		LUA_FUNCTION(playLoop);
 		// ------------------------------
 		// END Lua Interface Declarations
 		// ------------------------------

@@ -185,3 +185,37 @@ EVENTS_DEFINE_HANDLER(ItemManager,ItemRemove)
 	removeItem(item->getName());
 }
 
+// --------------------------------
+// Lua Particle Lib
+// --------------------------------
+LUA_BEGIN_BINDING(ItemManager, itemlib)
+LUA_BIND(ItemManager, create)
+LUA_BIND(ItemManager, remove)
+LUA_END_BINDING()
+
+//
+// Load lua scripts that will be used by this manager
+//
+LUA_BEGIN_LOAD_SCRIPTS(ItemManager)
+// 
+// TODO : Load scripts if needed
+//
+LUA_END_LOAD_SCRIPTS()
+
+LUA_DEFINE_FUNCTION(ItemManager, create)
+{
+	/* get number of arguments */
+	int n = lua_gettop(L);
+
+	/* return the number of results */
+	return 1;
+}
+
+LUA_DEFINE_FUNCTION(ItemManager, remove)
+{
+	/* get number of arguments */
+	int n = lua_gettop(L);
+
+	/* return the number of results */
+	return 1;
+}

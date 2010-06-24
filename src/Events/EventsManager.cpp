@@ -138,3 +138,30 @@ void EventsManager::unregisterInterface(EventsInterfacePtr eventsInterface)
 {
 	eventsInterface->unregisterHandlers();
 }
+
+// --------------------------------
+// Lua Event Lib
+// --------------------------------
+LUA_BEGIN_BINDING(EventsManager, eventslib)
+LUA_BIND(EventsManager, fire)
+LUA_END_BINDING()
+
+//
+// Load lua scripts that will be used by this manager
+//
+LUA_BEGIN_LOAD_SCRIPTS(EventsManager)
+// 
+// TODO : Load scripts if needed
+//
+LUA_END_LOAD_SCRIPTS()
+
+LUA_DEFINE_FUNCTION(EventsManager, fire)
+{
+	/* get number of arguments */
+	int n = lua_gettop(L);
+
+	// n should be ?
+
+	/* return the number of results */
+	return 1;
+}

@@ -168,15 +168,14 @@ namespace WyvernsAssault
 	// BEGIN Lua Interface Declarations
 	// --------------------------------
 	public:
+		LUA_INTERFACE();
+
 		// Physics Lib (exported to Lua)
 		LUA_LIBRARY("Physics",physicslib);
 
-		LUA_FUNCTION(LuaGetHOT)
-		LUA_FUNCTION(LuaGetDistance)
-		LUA_FUNCTION(LuaGetNearestPlayer)
-
-	public:
-		void luaLoadScripts(){};
+		LUA_FUNCTION(getHOT);
+		LUA_FUNCTION(getDistance);
+		LUA_FUNCTION(getNearestPlayer);
 	// ------------------------------
 	// END Lua Interface Declarations
 	// ------------------------------

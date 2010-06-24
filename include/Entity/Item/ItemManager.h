@@ -15,6 +15,8 @@
 #include "..\include\Particle\ParticleManager.h"
 #include "..\..\Events\EventsInterface.h"
 
+#include "..\..\Lua\LuaInterface.h"
+
 #include "Item.h"
 
 namespace WyvernsAssault
@@ -57,14 +59,6 @@ namespace WyvernsAssault
 
 		Ogre::SceneNode* _getSceneNode() const { return mItemNode; }
 
-		// ----------------
-		// Events interface
-		// ----------------
-		EVENTS_INTERFACE()
-
-		EVENTS_HANDLER(ItemCatch)
-		EVENTS_HANDLER(ItemRemove)
-
 	private:
 		Ogre::String createUniqueId();
 
@@ -78,6 +72,29 @@ namespace WyvernsAssault
 		ItemMap mItemMap;
 		int mId;
 
+	public:
+		// ----------------
+		// Events interface
+		// ----------------
+		EVENTS_INTERFACE()
+
+		EVENTS_HANDLER(ItemCatch)
+		EVENTS_HANDLER(ItemRemove)
+
+		// --------------------------------
+		// BEGIN Lua Interface Declarations
+		// --------------------------------
+	public:
+		LUA_INTERFACE();
+
+		//Particle Lib (exported to Lua)
+		LUA_LIBRARY("Item",itemlib);
+
+		LUA_FUNCTION(create);
+		LUA_FUNCTION(remove);
+		// ------------------------------
+		// END Lua Interface Declarations
+		// ------------------------------
 	};
 
 	typedef boost::shared_ptr<ItemManager> ItemManagerPtr;
