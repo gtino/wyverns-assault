@@ -269,10 +269,10 @@ void PlayState::update(const float elapsedSeconds)
 			}
 
 			// Special Attack
-			if ( this->mInputManager->getKeyboard()->isKeyDown(OIS::KeyCode::KC_BACK) && lastKey != OIS::KeyCode::KC_BACK )
+			if ( this->mInputManager->getKeyboard()->isKeyDown(OIS::KeyCode::KC_LCONTROL) && lastKey != OIS::KeyCode::KC_LCONTROL )
 			{
 				mPlayerManager->attackSpecial("Player1");
-				lastKey = OIS::KeyCode::KC_BACK;		
+				lastKey = OIS::KeyCode::KC_LCONTROL;		
 			}
 			// Main attack
 			else if( this->mInputManager->getKeyboard()->isKeyDown(OIS::KeyCode::KC_SPACE) && lastKey != OIS::KeyCode::KC_SPACE )
@@ -695,7 +695,7 @@ bool PlayState::keyPressed(const OIS::KeyEvent& e)
 		mPlayerManager->attack("Player1");
 		break;
 	// Special Attack
-	case OIS::KeyCode::KC_BACK:
+	case OIS::KeyCode::KC_LCONTROL:
 		mPlayerManager->attackSpecial("Player1");
 		break;
 */

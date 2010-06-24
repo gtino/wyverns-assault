@@ -2,13 +2,15 @@ system WyvernsAssault/Blast
 {
     technique Technique9
     {
+        visual_particle_quota                   50
         material                                Particle/Blast_01
         renderer                                Billboard
         {
+            sorting                             true
             billboard_type                      perpendicular_common
-            billboard_rotation_type             vertex
             common_direction                    0 1 0
             common_up_vector                    0 0 1
+            accurate_facing                     true
         }
         emitter                                 Point Emitter10
         {
@@ -16,11 +18,7 @@ system WyvernsAssault/Blast
             angle                               0
             time_to_live                        0.5
             velocity                            50
-            all_particle_dimensions             dyn_random
-            {
-                min                             5
-                max                             7.5
-            }
+            all_particle_dimensions             15
             direction                           1 0 0
             force_emission                      true
         }
@@ -33,7 +31,7 @@ system WyvernsAssault/Blast
         }
         affector                                TextureRotator Affector20
         {
-            rotation                            1.5
+            rotation                            4.75
             rotation_speed                      0
         }
         affector                                Scale Affector15

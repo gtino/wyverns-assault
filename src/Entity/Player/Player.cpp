@@ -48,9 +48,10 @@ void Player::initializeEntity(Ogre::Entity* entity, Ogre::SceneNode* sceneNode, 
 	// Control variables
 	moving = false;	
 	special = false;
-	attacking = 0;
+	attackNumber = 0;
 	continueAttacking = false;
 	newAttack = false;
+	attackHited = false;
 	live = true;
 	timeDeath = 0;
 	
@@ -99,15 +100,15 @@ void Player::updateEntity(const float elapsedSeconds)
 	{
 		mCurrentAnimation->setValue( PLAYER_SPECIAL );
 	}
-	else if( attacking  == 1 )
+	else if( attackNumber  == 1 )
 	{
 		attackA1();
 	}
-	else if( attacking  == 2 )
+	else if( attackNumber  == 2 )
 	{
 		attackA2();
 	}
-	else if( attacking  == 3 )
+	else if( attackNumber  == 3 )
 	{
 		attackA3();
 	}
@@ -142,12 +143,14 @@ void Player::updateEntity(const float elapsedSeconds)
 			hideGrids();
 			if ( continueAttacking )
 			{
-				attacking = 2;
+				attackNumber = 2;
 				continueAttacking = false;
 				newAttack = true;
 			}
 			else
-				attacking = 0;
+			{
+				attackNumber = 0;
+			}
 		}
 	}
 	else if( mCurrentAnimation->getFloatValue() == PLAYER_ATTACKA2 )
@@ -157,12 +160,14 @@ void Player::updateEntity(const float elapsedSeconds)
 			hideGrids();
 			if ( continueAttacking )
 			{
-				attacking = 3;
+				attackNumber = 3;
 				continueAttacking = false;
 				newAttack = true;
 			}
 			else
-				attacking = 0;
+			{
+				attackNumber = 0;
+			}
 		}
 	}
 	else if( mCurrentAnimation->getFloatValue() == PLAYER_ATTACKA3 )
@@ -170,7 +175,7 @@ void Player::updateEntity(const float elapsedSeconds)
 		if( mEntity->getAnimationState("AttackA_03")->getTimePosition() +  elapsedSeconds > mEntity->getAnimationState("AttackA_03")->getLength() )
 		{
 			hideGrids();
-			attacking = 0;
+			attackNumber = 0;
 		}
 	}	
 
@@ -227,20 +232,20 @@ void Player::attackA()
 {
 	if (!special)
 	{
-		if ( attacking == 0 )
+		if ( attackNumber == 0 )
 		{
-  			attacking = 1;
+  			attackNumber = 1;
 			newAttack = true;
 		}
-		else if ( attacking == 1 )
+		else if ( attackNumber == 1 )
 		{
 			continueAttacking = true;
 		}
-		else if ( attacking == 2 )
+		else if ( attackNumber == 2 )
 		{
 			continueAttacking = true;
 		}
-		else if ( attacking == 3 )
+		else if ( attackNumber == 3 )
 		{
 			continueAttacking = true;
 		}
@@ -280,7 +285,7 @@ void Player::attackSpecial()
 {
 	if( mSpecial >= SPECIAL_COST)
 	{
-		if( attacking == 0 && !newAttack && !special)
+		if( attackNumber == 0 && !newAttack && !special)
 		{
 			mSpecial -= SPECIAL_COST;
 			special = true;	

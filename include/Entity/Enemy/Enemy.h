@@ -150,7 +150,9 @@ namespace WyvernsAssault
 		void setAttacking(bool attack);
 		bool isAttacking(){ return attacking; }
 		bool attackStart(){ return newAttack; }
-		void attackFinish();
+		void attackFinished(){ newAttack = false; }
+		void setAttackHited(bool value){ attackHited = value; }
+		bool hasAttackHited() { return attackHited; }
 
 		// Die functions
 		bool isBurning(){ return burning; }
@@ -197,6 +199,7 @@ namespace WyvernsAssault
 		bool		moving;
 		bool		attacking;
 		bool		newAttack;
+		bool		attackHited;
 		bool		burning;
 
 		//Dying mesh

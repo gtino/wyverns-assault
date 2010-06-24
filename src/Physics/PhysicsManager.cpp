@@ -29,21 +29,20 @@ PhysicsManager::~PhysicsManager()
 
 bool PhysicsManager::initialize()
 {
-	mPhysicsNode = mSceneManager->getRootSceneNode()->createChildSceneNode(PHYSICS_NODE_NAME);
+	mLastAttackChecked = 0;
 
-	// State control variables
-	mPlayerSpecialState = false;
-	mPlayerAttackLast = 0;
+	mPhysicsNode = mSceneManager->getRootSceneNode()->createChildSceneNode(PHYSICS_NODE_NAME);
 
 	// Initialize RaySceneQuery
 	mRaySceneQuery = mSceneManager->createRayQuery(Ogre::Ray());
+
     if (NULL == mRaySceneQuery)
     {
-      return (false);
+		return false;
     }
     mRaySceneQuery->setSortByDistance(true);
 
-	return (true);
+	return true;
 }
 
 void PhysicsManager::finalize()
@@ -126,7 +125,7 @@ void PhysicsManager::checkForCollisions()
 			if(player_box.intersects(enemy_box))
 			{
 				// Check if player is attacking and has changed state
-				if( player->isAttacking() && mPlayerAttackLast != player->wichAttack() )
+				if( player->isAttacking() && mLastAttackChecked != player->wichAttack() )
 				{
 					EnemyHitEventPtr enemyHitEventPtr = EnemyHitEventPtr(new EnemyHitEvent(enemy, player));
 					// If thrid strike more damage
@@ -138,13 +137,14 @@ void PhysicsManager::checkForCollisions()
 					EVENTS_FIRE(enemyHitEventPtr);
 				}
 				// Check if enemy is attacking
-				if( enemy->isAttacking() && enemy->attackStart() )
+				if( enemy->isAttacking() && !enemy->hasAttackHited() )
 				{
 					PlayerHitEventPtr playerHitEventPtr = PlayerHitEventPtr(new PlayerHitEvent(enemy, player));
 					EVENTS_FIRE(playerHitEventPtr);
-					enemy->attackFinish();
+
+					enemy->setAttackHited(true);
 				}
-				// Colision with chicken
+				// Colision with chicken if moving. Chicken mash!
 				if ( enemy->getEnemyType() == Enemy::EnemyTypes::Chicken && player->isMoving())
 				{
 					EnemyHitEventPtr enemyHitEventPtr = EnemyHitEventPtr(new EnemyHitEvent(enemy, player));
@@ -152,10 +152,11 @@ void PhysicsManager::checkForCollisions()
 					EVENTS_FIRE(enemyHitEventPtr);
 				}
 				// Collision withou attack
-			}
+			}			
 		}
-		// Save last attack
-		mPlayerAttackLast = player->wichAttack();
+
+		// Save last player attack checked
+		mLastAttackChecked = player->wichAttack();
 
 		// Player - Item COLLISION
 		for(ItemMapIterator it_item = mItemMap.begin(); it_item != mItemMap.end(); ++it_item)

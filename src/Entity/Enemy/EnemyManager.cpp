@@ -272,6 +272,8 @@ void EnemyManager::update(const float elapsedSeconds)
 		{
 			EnemyAttackEventPtr evt = EnemyAttackEventPtr(new EnemyAttackEvent(enemy));
 			EVENTS_FIRE(evt);
+			enemy->attackFinished();
+			enemy->setAttackHited(false);
 		}
 	}
 }

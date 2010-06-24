@@ -80,6 +80,7 @@ namespace WyvernsAssault
 
 		/** Hit particles */
 		void hit(SceneNode* node);
+		void impact(SceneNode* node);
 
 		/** Fire particles **/
 		void fireHit(SceneNode* node);
@@ -91,15 +92,22 @@ namespace WyvernsAssault
 		/** Glow particles */
 		void glow(SceneNode* node);
 
+		/* Attack particles */
+		void blast(SceneNode* node);
+		void swing(SceneNode* node);
+
 		// ----------------
 		// Events interface
 		// ----------------
 		EVENTS_INTERFACE()
 
+		EVENTS_HANDLER(PlayerAttack)
+		EVENTS_HANDLER(PlayerHit)
+		EVENTS_HANDLER(EnemyAttack)
 		EVENTS_HANDLER(EnemyHit)
 		EVENTS_HANDLER(EnemyKilled)
 		EVENTS_HANDLER(EnemyCustom)
-		EVENTS_HANDLER(ItemCatch)
+		EVENTS_HANDLER(ItemCatch)		
 
 		// --------------------------------
 		// BEGIN Lua Interface Declarations

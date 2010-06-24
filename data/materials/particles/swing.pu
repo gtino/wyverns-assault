@@ -5,8 +5,8 @@ system WyvernsAssault/Swing
         material                                Particle/Trail_02
         renderer                                Billboard
         {
+            sorting                             true
             billboard_type                      perpendicular_common
-            billboard_rotation_type             vertex
             common_direction                    0 1 0
             common_up_vector                    0 0 1
         }
@@ -16,11 +16,7 @@ system WyvernsAssault/Swing
             angle                               0
             time_to_live                        0.5
             velocity                            50
-            all_particle_dimensions             dyn_random
-            {
-                min                             5
-                max                             7.5
-            }
+            all_particle_dimensions             20
             direction                           1 0 0
             force_emission                      true
         }
@@ -33,7 +29,8 @@ system WyvernsAssault/Swing
         }
         affector                                TextureRotator Affector20
         {
-            rotation                            1.5
+            enabled                             false
+            rotation                            5
             rotation_speed                      0
         }
         affector                                Scale Affector15
