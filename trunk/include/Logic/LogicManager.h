@@ -46,7 +46,12 @@ namespace WyvernsAssault
 		void finalize();
 		bool update(const float elapsedSeconds);
 
+		void enable() {mEnabled = true;}
+		void disable(){mEnabled = false;}
+
 	private: // Game data
+		bool mEnabled;
+
 		LUA_PROPERTY(TotalSeconds,float);
 		LUA_PROPERTY(ElapsedSeconds,float);
 
@@ -54,9 +59,11 @@ namespace WyvernsAssault
 		LUA_INTERFACE();
 
 		// Game Lib (exported to Lua)
-		LUA_LIBRARY("Game",gamelib)
+		LUA_LIBRARY("Game",logiclib)
 
 		// From Lua to C++
+		LUA_FUNCTION(enable)
+		LUA_FUNCTION(disable)
 		LUA_FUNCTION(getTotalSeconds)
 		LUA_FUNCTION(getElapsedSeconds)
 
