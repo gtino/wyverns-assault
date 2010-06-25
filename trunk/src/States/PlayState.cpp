@@ -158,20 +158,6 @@ void PlayState::initialize()
 	mScenarioManager->initialize();
 
 	//
-	// Load scene!
-	//
-	boost::scoped_ptr<DotSceneLoader> dotSceneLoader ( new DotSceneLoader );
-	dotSceneLoader->parseDotScene("Level1_1_scenario.scene","General", mSceneManager, mScenarioManager, mCameraManager, mLightsManager, mEnemyManager, mPhysicsManager, mItemManager, mParticleManager, mScenarioManager->_getSceneNode());
-	dotSceneLoader->parseDotScene("Level1_1_enemies.scene","General", mSceneManager, mScenarioManager, mCameraManager, mLightsManager, mEnemyManager, mPhysicsManager, mItemManager, mParticleManager, mEnemyManager->_getSceneNode());
-	dotSceneLoader->parseDotScene("Level1_1_cameras.scene","General", mSceneManager, mScenarioManager, mCameraManager, mLightsManager, mEnemyManager, mPhysicsManager, mItemManager, mParticleManager, mCameraManager->_getSceneNode());
-	dotSceneLoader->parseDotScene("Level1_1_lights.scene","General", mSceneManager, mScenarioManager, mCameraManager, mLightsManager, mEnemyManager, mPhysicsManager, mItemManager, mParticleManager, mLightsManager->_getSceneNode());
-	dotSceneLoader->parseDotScene("Level1_1_items.scene","General", mSceneManager, mScenarioManager, mCameraManager, mLightsManager, mEnemyManager, mPhysicsManager, mItemManager, mParticleManager, mItemManager->_getSceneNode());
-	dotSceneLoader->parseDotScene("Level1_1_physics.scene","General", mSceneManager, mScenarioManager, mCameraManager, mLightsManager, mEnemyManager, mPhysicsManager, mItemManager, mParticleManager, mPhysicsManager->_getSceneNode());
-	dotSceneLoader->parseDotScene("Level1_1_objects.scene","General", mSceneManager, mScenarioManager, mCameraManager, mLightsManager, mEnemyManager, mPhysicsManager, mItemManager, mParticleManager, mPhysicsManager->_getSceneNode());
-
-	Debug::Out(mSceneManager->getRootSceneNode());
-
-	//
 	// Events Manager 
 	//
 	mEventsManager = EventsManagerPtr(new EventsManager());
@@ -187,6 +173,21 @@ void PlayState::initialize()
 	mEventsManager->registerInterface(mPlayerManager);
 	mEventsManager->registerInterface(mCameraManager);
 	mEventsManager->registerInterface(mGuiManager);
+	mEventsManager->registerInterface(mPostProcessManager);
+
+	//
+	// Load scene!
+	//
+	boost::scoped_ptr<DotSceneLoader> dotSceneLoader ( new DotSceneLoader );
+	dotSceneLoader->parseDotScene("Level1_1_scenario.scene","General", mSceneManager, mScenarioManager, mCameraManager, mLightsManager, mEnemyManager, mPhysicsManager, mItemManager, mParticleManager, mScenarioManager->_getSceneNode());
+	dotSceneLoader->parseDotScene("Level1_1_enemies.scene","General", mSceneManager, mScenarioManager, mCameraManager, mLightsManager, mEnemyManager, mPhysicsManager, mItemManager, mParticleManager, mEnemyManager->_getSceneNode());
+	dotSceneLoader->parseDotScene("Level1_1_cameras.scene","General", mSceneManager, mScenarioManager, mCameraManager, mLightsManager, mEnemyManager, mPhysicsManager, mItemManager, mParticleManager, mCameraManager->_getSceneNode());
+	dotSceneLoader->parseDotScene("Level1_1_lights.scene","General", mSceneManager, mScenarioManager, mCameraManager, mLightsManager, mEnemyManager, mPhysicsManager, mItemManager, mParticleManager, mLightsManager->_getSceneNode());
+	dotSceneLoader->parseDotScene("Level1_1_items.scene","General", mSceneManager, mScenarioManager, mCameraManager, mLightsManager, mEnemyManager, mPhysicsManager, mItemManager, mParticleManager, mItemManager->_getSceneNode());
+	dotSceneLoader->parseDotScene("Level1_1_physics.scene","General", mSceneManager, mScenarioManager, mCameraManager, mLightsManager, mEnemyManager, mPhysicsManager, mItemManager, mParticleManager, mPhysicsManager->_getSceneNode());
+	dotSceneLoader->parseDotScene("Level1_1_objects.scene","General", mSceneManager, mScenarioManager, mCameraManager, mLightsManager, mEnemyManager, mPhysicsManager, mItemManager, mParticleManager, mPhysicsManager->_getSceneNode());
+
+	Debug::Out(mSceneManager->getRootSceneNode());
 
 	//
 	// Set game camera
@@ -699,10 +700,6 @@ bool PlayState::keyPressed(const OIS::KeyEvent& e)
 		mPlayerManager->attackSpecial("Player1");
 		break;
 */
-	// Motion Blur
-	case OIS::KeyCode::KC_J:
-		mPostProcessManager->motionBlur(2);	
-		break;
 
 	// Depth of Field
 	case OIS::KeyCode::KC_K:
@@ -725,10 +722,10 @@ bool PlayState::keyPressed(const OIS::KeyEvent& e)
 		break;
 
 	case OIS::KeyCode::KC_M:
-		mCameraManager->zoom(1);
+		mCameraManager->zoom(2);
 		break;
 	case OIS::KeyCode::KC_N:
-		mCameraManager->zoom(2);
+		mCameraManager->zoom(5);
 		break;
 	}
 

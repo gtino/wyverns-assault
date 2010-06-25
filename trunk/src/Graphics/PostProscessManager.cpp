@@ -172,6 +172,29 @@ void PostProcessManager::update(float elapsedSeconds)
 	}
 }
 
+// --------------
+// Event handlers
+// --------------
+EVENTS_BEGIN_REGISTER_HANDLERS(PostProcessManager)
+	EVENTS_REGISTER_HANDLER(PostProcessManager,ItemCatch)
+EVENTS_END_REGISTER_HANDLERS()
+
+EVENTS_BEGIN_UNREGISTER_HANDLERS(PostProcessManager)
+	EVENTS_UNREGISTER_HANDLER(PostProcessManager,ItemCatch)
+EVENTS_END_UNREGISTER_HANDLERS()
+
+EVENTS_DEFINE_HANDLER(PostProcessManager, ItemCatch)
+{
+	ItemPtr item = evt->getItem();
+
+	if ( item->getType() == Item::ItemTypes::PowerBig )
+		this->motionBlur(6);
+	else if( item->getType() == Item::ItemTypes::PowerMedium ) 
+		this->motionBlur(4);
+	else if( item->getType() == Item::ItemTypes::PowerSmall )	
+		this->motionBlur(2);
+}
+
 // --------------------------------
 // Lua Camera Lib
 // --------------------------------

@@ -82,6 +82,9 @@ ItemPtr ItemManager::createItem(Item::ItemTypes type, Ogre::String name, Ogre::S
 
 	//mCount++;
 
+	ItemCreationEventPtr evt = ItemCreationEventPtr(new ItemCreationEvent(item));	
+	EVENTS_FIRE(evt);
+
 	return item;
 }
 

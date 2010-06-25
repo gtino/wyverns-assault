@@ -275,6 +275,7 @@ EVENTS_BEGIN_REGISTER_HANDLERS(ParticleManager)
 	EVENTS_REGISTER_HANDLER(ParticleManager,EnemyHit)
 	EVENTS_REGISTER_HANDLER(ParticleManager,EnemyKilled)
 	EVENTS_REGISTER_HANDLER(ParticleManager,EnemyCustom)
+	EVENTS_REGISTER_HANDLER(ParticleManager,ItemCreation)
 	EVENTS_REGISTER_HANDLER(ParticleManager,ItemCatch)
 EVENTS_END_REGISTER_HANDLERS()
 
@@ -285,6 +286,7 @@ EVENTS_BEGIN_UNREGISTER_HANDLERS(ParticleManager)
 	EVENTS_UNREGISTER_HANDLER(ParticleManager,EnemyHit)
 	EVENTS_UNREGISTER_HANDLER(ParticleManager,EnemyKilled)
 	EVENTS_UNREGISTER_HANDLER(ParticleManager,EnemyCustom)
+	EVENTS_UNREGISTER_HANDLER(ParticleManager,ItemCreation)
 	EVENTS_UNREGISTER_HANDLER(ParticleManager,ItemCatch)
 EVENTS_END_REGISTER_HANDLERS()
 
@@ -360,12 +362,27 @@ EVENTS_DEFINE_HANDLER(ParticleManager, EnemyCustom)
 		this->fireKill(enemy->_getSceneNode());
 }
 
+EVENTS_DEFINE_HANDLER(ParticleManager, ItemCreation)
+{
+	ItemPtr item = evt->getItem();
+
+	this->add(item->_getSceneNode(), item->getName() + "_glow", "WyvernsAssault/ItemGlow");
+
+	if ( item->getType() == Item::ItemTypes::LiveBig || item->getType() == Item::ItemTypes::LiveMedium || item->getType() == Item::ItemTypes::LiveSmall )
+		this->add(item->_getSceneNode(), item->getName(), "WyvernsAssault/Heart");
+	else if ( item->getType() == Item::ItemTypes::PowerBig || item->getType() == Item::ItemTypes::PowerMedium || item->getType() == Item::ItemTypes::PowerSmall )
+		this->add(item->_getSceneNode(), item->getName(), "WyvernsAssault/Skull");
+	else if ( item->getType() == Item::ItemTypes::ScoreBig || item->getType() == Item::ItemTypes::ScoreSmall )
+		this->add(item->_getSceneNode(), item->getName(), "WyvernsAssault/Money");
+}
+
 EVENTS_DEFINE_HANDLER(ParticleManager, ItemCatch)
 {
 	ItemPtr item = evt->getItem();
 
 	SceneNode* sceneNode = item->_getSceneNode();
 
+	this->remove(sceneNode, item->getName()+ "_glow");
 	this->remove(sceneNode, item->getName());
 	this->glow(sceneNode);
 }

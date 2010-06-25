@@ -45,7 +45,8 @@ namespace WyvernsAssault
 		EnemyRemove,
 		EnemyCustom,
 		ObjectHit,
-		Collision,		
+		Collision,
+		ItemCreation,
 		ItemCatch,
 		ItemRemove
 	};
@@ -266,6 +267,21 @@ namespace WyvernsAssault
 	typedef boost::shared_ptr<PlayerAttackSpecialEvent> PlayerAttackSpecialEventPtr;
 
 	// --------------------------------
+	class ItemCreationEvent : public Event
+	{
+	public:
+		ItemCreationEvent(ItemPtr item);
+		~ItemCreationEvent(){};
+		
+		ItemPtr getItem(){return mItem;}
+
+	private:
+		ItemPtr mItem;
+	};
+
+	typedef boost::shared_ptr<ItemCreationEvent> ItemCreationEventPtr;
+
+	// --------------------------------
 	class ItemCatchEvent : public Event
 	{
 	public:
@@ -286,14 +302,12 @@ namespace WyvernsAssault
 	class ItemRemoveEvent : public Event
 	{
 	public:
-		ItemRemoveEvent(/*PlayerPtr p,*/ ItemPtr item);
+		ItemRemoveEvent(ItemPtr item);
 		~ItemRemoveEvent(){};
 		
-		/*PlayerPtr getPlayer(){return mPlayer;}*/
 		ItemPtr getItem(){return mItem;}
 
-	private:		
-		/*PlayerPtr mPlayer;*/
+	private:
 		ItemPtr mItem;
 	};
 

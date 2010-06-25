@@ -1,0 +1,38 @@
+system WyvernsAssault/Skull
+{
+    technique 
+    {
+        visual_particle_quota                   50
+        material                                Particle/Skull
+        renderer                                Billboard
+        {
+            billboard_rotation_type             vertex
+        }
+        emitter                                 Point 
+        {
+            emission_rate                       1
+            angle                               0
+            time_to_live                        2
+            velocity                            7
+            duration                            1.5
+            repeat_delay                        1.5
+            all_particle_dimensions             10
+            position                            0 10 0
+        }
+        affector                                Colour 
+        {
+            time_colour                         0    0.627451 0.627451 0.627451 0
+            time_colour                         0.2  0.439216 0.439216 0.439216 1
+            time_colour                         1    0 0 0 0
+        }
+        affector                                LinearForce 
+        {
+            enabled                             false
+            force_vector                        -3 0.5 0
+        }
+        affector                                Scale 
+        {
+            xyz_scale                           5
+        }
+    }
+}

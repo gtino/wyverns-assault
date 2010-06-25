@@ -88,10 +88,9 @@ namespace WyvernsAssault
 		// ----------------
 		// Events interface
 		// ----------------
-		// Register event handlers
-		void registerHandlers(){};
-		// Unregister handlers
-		void unregisterHandlers(){};
+		EVENTS_INTERFACE()
+
+		EVENTS_HANDLER(ItemCatch)
 
 		// --------------------------------
 		// BEGIN Lua Interface Declarations

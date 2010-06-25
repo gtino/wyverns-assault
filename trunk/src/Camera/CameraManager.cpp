@@ -488,14 +488,14 @@ void CameraManager::setFixedCamera(int camera, Vector3 position, Vector3 lookAt)
 }
 
 /** Camera effects */
-void CameraManager::zoom(Real zoom)
+void CameraManager::zoom(Real duration)
 {
 	Vector3 begin = this->getCameraPosition();
-	Vector3 zoomIn = this->getCameraDirection() * zoom;
+	Vector3 zoomIn = this->getCameraDirection() * 2;
 	// Camera node
 	if(mSceneManager->hasAnimation("CameraEffect"))
 		mSceneManager->destroyAnimation("CameraEffect");
-	Animation* anim = mSceneManager->createAnimation("CameraEffect", 3);
+	Animation* anim = mSceneManager->createAnimation("CameraEffect", duration);
     // Spline it for nice curves
 	anim->setInterpolationMode(Animation::IM_LINEAR);
     // Create a track to animate the camera's node
@@ -503,11 +503,11 @@ void CameraManager::zoom(Real zoom)
     // Setup keyframes
 	TransformKeyFrame* key = track->createNodeKeyFrame(0);
 	//key->setTranslate( begin );
-	key = track->createNodeKeyFrame(0.25);
+	key = track->createNodeKeyFrame( duration - (duration - 0.1) );
 	key->setTranslate( zoomIn );
-	key = track->createNodeKeyFrame(2.75);
+	key = track->createNodeKeyFrame( duration - 0.1 );
 	key->setTranslate( zoomIn );
-	key = track->createNodeKeyFrame(3);
+	key = track->createNodeKeyFrame( duration );
 	//key->setTranslate( begin );
     // Create a new animation state to track this
 	if(mSceneManager->hasAnimationState("CameraEffect"))
@@ -515,8 +515,7 @@ void CameraManager::zoom(Real zoom)
 	mCameraEffect = mSceneManager->createAnimationState("CameraEffect");
     mCameraEffect->setEnabled(true);
 	mCameraEffect->setWeight(1);
-	mCameraEffect->setLoop(false);
-	
+	mCameraEffect->setLoop(false);	
 }
 
 void CameraManager::rumble(Real scale)
@@ -817,7 +816,7 @@ EVENTS_DEFINE_HANDLER(CameraManager,EnemyKilled)
 
 	if( player->isSpecial() )
 	{
-		this->zoom(1.5);
+		this->zoom(player->getSpecialLength());
 	}
 }
 

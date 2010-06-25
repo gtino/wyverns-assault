@@ -65,7 +65,8 @@ namespace WyvernsAssault
 
 		void caught();
 
-		float getStateTimeout(){return mStateTimeout;}
+		float getStateTimeout(){ return mStateTimeout; }
+		ItemTypes getType(){ return mType; }
 
 		float getLife(){ return mLife; }
 		float getSpecial(){ return mSpecial; }
@@ -76,8 +77,7 @@ namespace WyvernsAssault
 		void setDebugEnabled(bool isDebugEnabled);
 		bool getDebugEnabled(){return mIsDebugEnabled;};
 
-		bool isCatched(){return catched;};
-
+		bool isCatched(){ return catched; }
 
 	private:
 		Item::ItemTypes mType;

@@ -7,7 +7,7 @@ system WyvernsAssault/Impact
         {
             billboard_rotation_type             vertex
         }
-        emitter                                 Position Emitter21
+        emitter                                 Point Emitter21
         {
             emission_rate                       1
             angle                               dyn_random
@@ -17,17 +17,11 @@ system WyvernsAssault/Impact
             }
             time_to_live                        0.3
             velocity                            0
-            all_particle_dimensions             dyn_random
-            {
-                min                             10
-                max                             20
-            }
+            all_particle_dimensions             8
             start_colour_range                  1 1 0 1
             end_colour_range                    0.988235 0.235294 0.0117647 1
             auto_direction                      true
             force_emission                      true
-            random_position                     false
-            add_position                        0 0 10
         }
         affector                                Colour Affector48
         {
@@ -50,12 +44,6 @@ system WyvernsAssault/Impact
         {
             xyz_scale                           75
         }
-        observer                                OnClear Observer4
-        {
-            handler                             DoStopSystem Handler5
-            {
-            }
-        }
     }
     technique 
     {
@@ -65,7 +53,7 @@ system WyvernsAssault/Impact
         {
             billboard_type                      oriented_self
         }
-        emitter                                 Position Emitter8
+        emitter                                 Point Emitter8
         {
             emission_rate                       100
             angle                               360
@@ -82,14 +70,13 @@ system WyvernsAssault/Impact
             }
             particle_height                     dyn_random
             {
-                min                             40
-                max                             80
+                min                             20
+                max                             50
             }
             start_colour_range                  1 1 0 1
             end_colour_range                    0.988235 0.235294 0.0117647 1
             auto_direction                      true
             force_emission                      true
-            add_position                        0 0 10
         }
         affector                                Colour Affector48
         {
@@ -98,6 +85,84 @@ system WyvernsAssault/Impact
             time_colour                         0.85 1 1 1 1
             time_colour                         1    0 0 0 0
             colour_operation                    multiply
+        }
+    }
+    technique Technique10
+    {
+        visual_particle_quota                   15
+        emitted_emitter_quota                   10
+        material                                Particle/BloodGreen
+        renderer                                Billboard
+        {
+            sorting                             true
+            texture_coords_rows                 2
+            texture_coords_columns              2
+            billboard_rotation_type             vertex
+            accurate_facing                     true
+        }
+        emitter                                 SphereSurface Emitter11
+        {
+            emission_rate                       dyn_random
+            {
+                min                             6
+                max                             10
+            }
+            angle                               dyn_random
+            {
+                min                             10
+                max                             35
+            }
+            time_to_live                        dyn_random
+            {
+                min                             0.8
+                max                             0.9
+            }
+            velocity                            90
+            all_particle_dimensions             35
+            position                            0 -5 0
+            end_texture_coords_range            3
+            texture_coords                      3
+            force_emission                      true
+            radius                              0.3
+        }
+        affector                                Gravity Affector8
+        {
+            position                            0 -10 0
+            gravity                             20
+        }
+        affector                                LinearForce Affector9
+        {
+            force_vector                        0 -110 0
+        }
+        affector                                Colour Affector14
+        {
+            time_colour                         0    1 1 1 0
+            time_colour                         0.05 1 1 1 1
+            time_colour                         0.7  1 1 1 1
+            time_colour                         1    1 1 1 0
+        }
+        affector                                Scale Affector7
+        {
+            xyz_scale                           -5
+        }
+        affector                                Randomiser Affector8
+        {
+            max_deviation_y                     0.5
+        }
+        affector                                TextureRotator Affector16
+        {
+            rotation                            dyn_random
+            {
+                min                             3
+                max                             5
+            }
+            rotation_speed                      0
+        }
+        observer                                OnClear Observer6
+        {
+            handler                             DoStopSystem Handler7
+            {
+            }
         }
     }
 }
