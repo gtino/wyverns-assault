@@ -28,6 +28,7 @@
       <DIRECTORY type="FileSystem" value="../materials/scripts/characters/animals"></DIRECTORY>
       <DIRECTORY type="FileSystem" value="../models/items"></DIRECTORY>
       <DIRECTORY type="FileSystem" value="../models/characters/dragons"></DIRECTORY>
+      <DIRECTORY type="FileSystem" value="../materials/textures/animations/fire"></DIRECTORY>
       <DIRECTORY type="FileSystem" value="../scenes"></DIRECTORY>
       <DIRECTORY type="FileSystem" value="../materials/scripts/characters/dragons"></DIRECTORY>
       <DIRECTORY type="FileSystem" value="../models/characters/animals"></DIRECTORY>
@@ -46,6 +47,7 @@
       <DIRECTORY type="FileSystem" value="../sound/Music"></DIRECTORY>
       <DIRECTORY type="FileSystem" value="../materials/scripts/particles"></DIRECTORY>
       <DIRECTORY type="FileSystem" value="./"></DIRECTORY>
+      <DIRECTORY type="FileSystem" value="../materials/scripts/animations"></DIRECTORY>
       <DIRECTORY type="FileSystem" value="../materials/scripts/items"></DIRECTORY>
       <DIRECTORY type="FileSystem" value="../materials/scripts/sky"></DIRECTORY>
       <DIRECTORY type="FileSystem" value="../models/stages"></DIRECTORY>
@@ -53,7 +55,7 @@
   <CAMERASPEED value="41"></CAMERASPEED>
   <CAMERAPOSITIONS count="1">
     <OPTION id="0" position="1417.36 9.53911 54.9741" orientation="0.707107 0 0.707107 0"></OPTION>
-    <OPTION id="1" position="-28.011 824.475 1628.63" orientation="-0.916258 0.399585 0.0259992 0.011323"></OPTION>
+    <OPTION id="1" position="-9.82538 257.24 1097.11" orientation="0.969541 -0.240611 -0.0444506 -0.0110312"></OPTION>
   </CAMERAPOSITIONS>
     <LAYERS>
       <LAYER id="0" name="Layer 0" visible="true"></LAYER>
@@ -134,10 +136,10 @@
   <OBJECT object_id="2000000002" name="Viewport1" typename="Viewport Object">
     <PROPERTY id="camera::clipdistance" type="8" value="0.05 100000"></PROPERTY>
     <PROPERTY id="camera::fov" type="6" value="1"></PROPERTY>
-    <PROPERTY id="camera::orientation" type="13" value="-0.91629 0.399599 0.0260001 0.0113234"></PROPERTY>
+    <PROPERTY id="camera::orientation" type="13" value="0.969543 -0.240611 -0.0444507 -0.0110312"></PROPERTY>
     <PROPERTY id="camera::polymode" type="2" value="3"></PROPERTY>
-    <PROPERTY id="camera::position" type="9" value="-28.011 824.475 1628.63"></PROPERTY>
-    <PROPERTY id="camera::viewmode" type="2" value="3"></PROPERTY>
+    <PROPERTY id="camera::position" type="9" value="-9.82538 257.24 1097.11"></PROPERTY>
+    <PROPERTY id="camera::viewmode" type="2" value="0"></PROPERTY>
     <PROPERTY id="colour" type="11" value="0 0 0 1"></PROPERTY>
     <PROPERTY id="compositorcount" type="2" value="0"></PROPERTY>
     <PROPERTY id="index" type="2" value="1"></PROPERTY>
@@ -291,6 +293,18 @@
     <PROPERTY id="orientation" type="13" value="0.6534 0.6534 0.270313 -0.270313"></PROPERTY>
     <PROPERTY id="position" type="9" value="938.466 11.5394 345.355"></PROPERTY>
     <PROPERTY id="scale" type="9" value="3.32831 41.7461 3.32831"></PROPERTY>
+    <PROPERTY id="updatescript" type="7" value=""></PROPERTY>
+    <CUSTOMPROPERTIES>
+    </CUSTOMPROPERTIES>
+  </OBJECT>
+
+  <OBJECT object_id="791985792" name="Fire#1" typename="Node Object" parentnode="SceneManager1">
+    <PROPERTY id="autotracktarget" type="7" value="None"></PROPERTY>
+    <PROPERTY id="layer" type="2" value="0"></PROPERTY>
+    <PROPERTY id="locked" type="12" value="false"></PROPERTY>
+    <PROPERTY id="orientation" type="13" value="0.688355 0.725374 0 0"></PROPERTY>
+    <PROPERTY id="position" type="9" value="56.7725 50.3456 713.023"></PROPERTY>
+    <PROPERTY id="scale" type="9" value="9 1 8"></PROPERTY>
     <PROPERTY id="updatescript" type="7" value=""></PROPERTY>
     <CUSTOMPROPERTIES>
     </CUSTOMPROPERTIES>
@@ -5408,6 +5422,18 @@
     </CUSTOMPROPERTIES>
   </OBJECT>
 
+  <OBJECT object_id="813409792" name="Fire#3" typename="Node Object" parentnode="SceneManager1">
+    <PROPERTY id="autotracktarget" type="7" value="None"></PROPERTY>
+    <PROPERTY id="layer" type="2" value="0"></PROPERTY>
+    <PROPERTY id="locked" type="12" value="false"></PROPERTY>
+    <PROPERTY id="orientation" type="13" value="0.704008 0.710179 -0.00322978 0.00293373"></PROPERTY>
+    <PROPERTY id="position" type="9" value="82.2957 29.0323 810"></PROPERTY>
+    <PROPERTY id="scale" type="9" value="5 1 4"></PROPERTY>
+    <PROPERTY id="updatescript" type="7" value=""></PROPERTY>
+    <CUSTOMPROPERTIES>
+    </CUSTOMPROPERTIES>
+  </OBJECT>
+
   <OBJECT object_id="522598976" name="Tree3_Billboard13" typename="Node Object" parentnode="SceneManager1">
     <PROPERTY id="autotracktarget" type="7" value="None"></PROPERTY>
     <PROPERTY id="layer" type="2" value="0"></PROPERTY>
@@ -5463,6 +5489,18 @@
     <PROPERTY id="orientation" type="13" value="0.603715 0.603715 0.368142 -0.368142"></PROPERTY>
     <PROPERTY id="position" type="9" value="928.476 11.5394 432.855"></PROPERTY>
     <PROPERTY id="scale" type="9" value="3.32831 41.7461 3.32831"></PROPERTY>
+    <PROPERTY id="updatescript" type="7" value=""></PROPERTY>
+    <CUSTOMPROPERTIES>
+    </CUSTOMPROPERTIES>
+  </OBJECT>
+
+  <OBJECT object_id="349803136" name="Fire#0" typename="Node Object" parentnode="SceneManager1">
+    <PROPERTY id="autotracktarget" type="7" value="None"></PROPERTY>
+    <PROPERTY id="layer" type="2" value="0"></PROPERTY>
+    <PROPERTY id="locked" type="12" value="false"></PROPERTY>
+    <PROPERTY id="orientation" type="13" value="0.688355 0.725374 0 0"></PROPERTY>
+    <PROPERTY id="position" type="9" value="0 67.3886 723.812"></PROPERTY>
+    <PROPERTY id="scale" type="9" value="10 1 10"></PROPERTY>
     <PROPERTY id="updatescript" type="7" value=""></PROPERTY>
     <CUSTOMPROPERTIES>
     </CUSTOMPROPERTIES>
@@ -5535,6 +5573,30 @@
     <PROPERTY id="orientation" type="13" value="0.69036 0.69036 -0.152982 0.152982"></PROPERTY>
     <PROPERTY id="position" type="9" value="471.743 12.6254 615.3"></PROPERTY>
     <PROPERTY id="scale" type="9" value="4.25 4.25 4.25"></PROPERTY>
+    <PROPERTY id="updatescript" type="7" value=""></PROPERTY>
+    <CUSTOMPROPERTIES>
+    </CUSTOMPROPERTIES>
+  </OBJECT>
+
+  <OBJECT object_id="146671952" name="Fire#2" typename="Node Object" parentnode="SceneManager1">
+    <PROPERTY id="autotracktarget" type="7" value="None"></PROPERTY>
+    <PROPERTY id="layer" type="2" value="0"></PROPERTY>
+    <PROPERTY id="locked" type="12" value="false"></PROPERTY>
+    <PROPERTY id="orientation" type="13" value="0.677897 0.714354 0.12596 -0.119532"></PROPERTY>
+    <PROPERTY id="position" type="9" value="-53.3856 66.2404 745.721"></PROPERTY>
+    <PROPERTY id="scale" type="9" value="10 1 10"></PROPERTY>
+    <PROPERTY id="updatescript" type="7" value=""></PROPERTY>
+    <CUSTOMPROPERTIES>
+    </CUSTOMPROPERTIES>
+  </OBJECT>
+
+  <OBJECT object_id="273934112" name="Fire#3Copy#0" typename="Node Object" parentnode="SceneManager1">
+    <PROPERTY id="autotracktarget" type="7" value="None"></PROPERTY>
+    <PROPERTY id="layer" type="2" value="0"></PROPERTY>
+    <PROPERTY id="locked" type="12" value="false"></PROPERTY>
+    <PROPERTY id="orientation" type="13" value="0.704008 0.710179 -0.00322978 0.00293373"></PROPERTY>
+    <PROPERTY id="position" type="9" value="29.0504 35.0739 798.13"></PROPERTY>
+    <PROPERTY id="scale" type="9" value="2 1 5"></PROPERTY>
     <PROPERTY id="updatescript" type="7" value=""></PROPERTY>
     <CUSTOMPROPERTIES>
     </CUSTOMPROPERTIES>
@@ -6674,6 +6736,24 @@
     </CUSTOMPROPERTIES>
   </OBJECT>
 
+  <OBJECT object_id="99215672" name="2DBillboard0#0Copy#0Copy#0" typename="Entity Object" parentnode="Fire#2">
+    <PROPERTY id="autotracktarget" type="7" value="None"></PROPERTY>
+    <PROPERTY id="castshadows" type="12" value="false"></PROPERTY>
+    <PROPERTY id="layer" type="2" value="0"></PROPERTY>
+    <PROPERTY id="locked" type="12" value="false"></PROPERTY>
+    <PROPERTY id="meshfile" type="7" value="2DBillboard0.mesh"></PROPERTY>
+    <PROPERTY id="orientation" type="13" value="1 0 0 0"></PROPERTY>
+    <PROPERTY id="position" type="9" value="0 0 0"></PROPERTY>
+    <PROPERTY id="renderingdistance" type="6" value="5000"></PROPERTY>
+    <PROPERTY id="scale" type="9" value="1 1 1"></PROPERTY>
+    <PROPERTY id="subentity0::material" type="7" value="Animations/Fire"></PROPERTY>
+    <PROPERTY id="subentity0::visible" type="12" value="true"></PROPERTY>
+    <PROPERTY id="subentitycount" type="2" value="1"></PROPERTY>
+    <PROPERTY id="updatescript" type="7" value=""></PROPERTY>
+    <CUSTOMPROPERTIES>
+    </CUSTOMPROPERTIES>
+  </OBJECT>
+
   <OBJECT object_id="351603744" name="Entity#61" typename="Entity Object" parentnode="RedwoodTree_Mesh_6">
     <PROPERTY id="autotracktarget" type="7" value="None"></PROPERTY>
     <PROPERTY id="castshadows" type="12" value="true"></PROPERTY>
@@ -7093,6 +7173,24 @@
     <PROPERTY id="renderingdistance" type="6" value="5000"></PROPERTY>
     <PROPERTY id="scale" type="9" value="1 1 1"></PROPERTY>
     <PROPERTY id="subentity0::material" type="7" value="_2DTree2_Billboard"></PROPERTY>
+    <PROPERTY id="subentity0::visible" type="12" value="true"></PROPERTY>
+    <PROPERTY id="subentitycount" type="2" value="1"></PROPERTY>
+    <PROPERTY id="updatescript" type="7" value=""></PROPERTY>
+    <CUSTOMPROPERTIES>
+    </CUSTOMPROPERTIES>
+  </OBJECT>
+
+  <OBJECT object_id="174718464" name="2DBillboard0#0Copy#0Copy#0Copy#0Copy#0" typename="Entity Object" parentnode="Fire#3Copy#0">
+    <PROPERTY id="autotracktarget" type="7" value="None"></PROPERTY>
+    <PROPERTY id="castshadows" type="12" value="false"></PROPERTY>
+    <PROPERTY id="layer" type="2" value="0"></PROPERTY>
+    <PROPERTY id="locked" type="12" value="false"></PROPERTY>
+    <PROPERTY id="meshfile" type="7" value="2DBillboard0.mesh"></PROPERTY>
+    <PROPERTY id="orientation" type="13" value="1 0 0 0"></PROPERTY>
+    <PROPERTY id="position" type="9" value="0 0 0"></PROPERTY>
+    <PROPERTY id="renderingdistance" type="6" value="5000"></PROPERTY>
+    <PROPERTY id="scale" type="9" value="1 1 1"></PROPERTY>
+    <PROPERTY id="subentity0::material" type="7" value="Animations/Fire"></PROPERTY>
     <PROPERTY id="subentity0::visible" type="12" value="true"></PROPERTY>
     <PROPERTY id="subentitycount" type="2" value="1"></PROPERTY>
     <PROPERTY id="updatescript" type="7" value=""></PROPERTY>
@@ -9037,6 +9135,24 @@
     <PROPERTY id="subentity1::material" type="7" value="RedwoodLeaf"></PROPERTY>
     <PROPERTY id="subentity1::visible" type="12" value="true"></PROPERTY>
     <PROPERTY id="subentitycount" type="2" value="2"></PROPERTY>
+    <PROPERTY id="updatescript" type="7" value=""></PROPERTY>
+    <CUSTOMPROPERTIES>
+    </CUSTOMPROPERTIES>
+  </OBJECT>
+
+  <OBJECT object_id="199621568" name="2DBillboard0#0Copy#0" typename="Entity Object" parentnode="Fire#1">
+    <PROPERTY id="autotracktarget" type="7" value="None"></PROPERTY>
+    <PROPERTY id="castshadows" type="12" value="false"></PROPERTY>
+    <PROPERTY id="layer" type="2" value="0"></PROPERTY>
+    <PROPERTY id="locked" type="12" value="false"></PROPERTY>
+    <PROPERTY id="meshfile" type="7" value="2DBillboard0.mesh"></PROPERTY>
+    <PROPERTY id="orientation" type="13" value="1 0 0 0"></PROPERTY>
+    <PROPERTY id="position" type="9" value="0 0 0"></PROPERTY>
+    <PROPERTY id="renderingdistance" type="6" value="5000"></PROPERTY>
+    <PROPERTY id="scale" type="9" value="1 1 1"></PROPERTY>
+    <PROPERTY id="subentity0::material" type="7" value="Animations/Fire"></PROPERTY>
+    <PROPERTY id="subentity0::visible" type="12" value="true"></PROPERTY>
+    <PROPERTY id="subentitycount" type="2" value="1"></PROPERTY>
     <PROPERTY id="updatescript" type="7" value=""></PROPERTY>
     <CUSTOMPROPERTIES>
     </CUSTOMPROPERTIES>
@@ -12200,6 +12316,24 @@
     </CUSTOMPROPERTIES>
   </OBJECT>
 
+  <OBJECT object_id="63936280" name="2DBillboard0#0Copy#0Copy#0Copy#0" typename="Entity Object" parentnode="Fire#3">
+    <PROPERTY id="autotracktarget" type="7" value="None"></PROPERTY>
+    <PROPERTY id="castshadows" type="12" value="false"></PROPERTY>
+    <PROPERTY id="layer" type="2" value="0"></PROPERTY>
+    <PROPERTY id="locked" type="12" value="false"></PROPERTY>
+    <PROPERTY id="meshfile" type="7" value="2DBillboard0.mesh"></PROPERTY>
+    <PROPERTY id="orientation" type="13" value="1 0 0 0"></PROPERTY>
+    <PROPERTY id="position" type="9" value="0 0 0"></PROPERTY>
+    <PROPERTY id="renderingdistance" type="6" value="5000"></PROPERTY>
+    <PROPERTY id="scale" type="9" value="1 1 1"></PROPERTY>
+    <PROPERTY id="subentity0::material" type="7" value="Animations/Fire"></PROPERTY>
+    <PROPERTY id="subentity0::visible" type="12" value="true"></PROPERTY>
+    <PROPERTY id="subentitycount" type="2" value="1"></PROPERTY>
+    <PROPERTY id="updatescript" type="7" value=""></PROPERTY>
+    <CUSTOMPROPERTIES>
+    </CUSTOMPROPERTIES>
+  </OBJECT>
+
   <OBJECT object_id="859065536" name="Entity#140" typename="Entity Object" parentnode="Forest">
     <PROPERTY id="autotracktarget" type="7" value="None"></PROPERTY>
     <PROPERTY id="castshadows" type="12" value="true"></PROPERTY>
@@ -12489,6 +12623,24 @@
     <PROPERTY id="subentity3::material" type="7" value="Material2"></PROPERTY>
     <PROPERTY id="subentity3::visible" type="12" value="true"></PROPERTY>
     <PROPERTY id="subentitycount" type="2" value="4"></PROPERTY>
+    <PROPERTY id="updatescript" type="7" value=""></PROPERTY>
+    <CUSTOMPROPERTIES>
+    </CUSTOMPROPERTIES>
+  </OBJECT>
+
+  <OBJECT object_id="795251328" name="2DBillboard0#0" typename="Entity Object" parentnode="Fire#0">
+    <PROPERTY id="autotracktarget" type="7" value="None"></PROPERTY>
+    <PROPERTY id="castshadows" type="12" value="false"></PROPERTY>
+    <PROPERTY id="layer" type="2" value="0"></PROPERTY>
+    <PROPERTY id="locked" type="12" value="false"></PROPERTY>
+    <PROPERTY id="meshfile" type="7" value="2DBillboard0.mesh"></PROPERTY>
+    <PROPERTY id="orientation" type="13" value="1 0 0 0"></PROPERTY>
+    <PROPERTY id="position" type="9" value="0 0 0"></PROPERTY>
+    <PROPERTY id="renderingdistance" type="6" value="5000"></PROPERTY>
+    <PROPERTY id="scale" type="9" value="1 1 1"></PROPERTY>
+    <PROPERTY id="subentity0::material" type="7" value="Animations/Fire"></PROPERTY>
+    <PROPERTY id="subentity0::visible" type="12" value="true"></PROPERTY>
+    <PROPERTY id="subentitycount" type="2" value="1"></PROPERTY>
     <PROPERTY id="updatescript" type="7" value=""></PROPERTY>
     <CUSTOMPROPERTIES>
     </CUSTOMPROPERTIES>
