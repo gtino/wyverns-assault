@@ -86,10 +86,11 @@ namespace WyvernsAssault
 		bool isSpecial(){ return special; }
 		bool isDeath() { return !live; }
 		bool isDying() { return timeDeath <= 3; }
+		void hurt(float damage){ mLife -= damage * (1 / mDrunkMult); } 
 
-		Ogre::Real getHitDamage(){return mAttackDamage;}
-		Ogre::Real getComboHitDamage(){return mAttackDamage * 3;}
-		Ogre::Real getSpecialHitDamage(){return mSpecialDamage;}
+		Ogre::Real getHitDamage(){return mAttackDamage * mDrunkMult;}
+		Ogre::Real getComboHitDamage(){return mAttackDamage * mDrunkMult * 3;}
+		Ogre::Real getSpecialHitDamage(){return mSpecialDamage * mDrunkMult;}
 		float getSpecialLength(){ return mSpecialLength; }
 
 		// Fire attack bounding box
@@ -114,6 +115,9 @@ namespace WyvernsAssault
 		void attackSpecial();
 		// Die
 		void die();
+
+		// Drunk when drinks beer, resistance and damage modified
+		void drunk(float multiplier, float time);
 
 		// Enable Debug Stuff
 		void setDebugEnabled(bool isDebugEnabled);
@@ -166,6 +170,8 @@ namespace WyvernsAssault
 		Ogre::Real	mAttackDamage;
 		Ogre::Real	mSpecialDamage;
 		float		mSpecialLength;
+		float		mDrunkMult;
+		float		mDrunkTime;
 
 		GuiWidgetId		mGuiId;
 
