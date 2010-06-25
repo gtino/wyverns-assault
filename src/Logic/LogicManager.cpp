@@ -15,6 +15,7 @@ LogicManager& LogicManager::getSingleton(void)
 // END SINGLETON
 
 LogicManager::LogicManager()
+: mEnabled(0)
 {
 	//
 	// TODO Constructor logic HERE
@@ -39,6 +40,9 @@ void LogicManager::finalize()
 
 bool LogicManager::update(const float elapsedSeconds)
 {
+	if(!mEnabled)
+		return false;
+
 	LUA_PROPERTY_SET(LogicManager,ElapsedSeconds,elapsedSeconds);
 
 	float totalSeconds = LUA_PROPERTY_GET(LogicManager,TotalSeconds);
@@ -51,7 +55,9 @@ bool LogicManager::update(const float elapsedSeconds)
 // --------------------------------
 // Lua Game Lib
 // --------------------------------
-LUA_BEGIN_BINDING(LogicManager,gamelib)
+LUA_BEGIN_BINDING(LogicManager,logiclib)
+LUA_BIND(LogicManager,enable)
+LUA_BIND(LogicManager,disable)
 LUA_BIND(LogicManager,getTotalSeconds)
 LUA_BIND(LogicManager,getElapsedSeconds)
 LUA_END_BINDING()
@@ -71,6 +77,32 @@ void LogicManager::luaInitialize(lua_State *L)
 
 	LUA_PROPERTY_SET(LogicManager,TotalSeconds,0);
 	LUA_PROPERTY_SET(LogicManager,ElapsedSeconds,0);
+}
+
+LUA_DEFINE_FUNCTION(LogicManager,enable)
+{
+	/* get number of arguments */
+	int n = lua_gettop(L);
+
+	// n should be 0
+
+	LogicManager::getSingleton().enable();
+
+	/* return the number of results */
+	return 0;
+}
+
+LUA_DEFINE_FUNCTION(LogicManager,disable)
+{
+	/* get number of arguments */
+	int n = lua_gettop(L);
+
+	// n should be 0
+
+	LogicManager::getSingleton().disable();
+
+	/* return the number of results */
+	return 0;
 }
 
 LUA_DEFINE_FUNCTION(LogicManager,getTotalSeconds)

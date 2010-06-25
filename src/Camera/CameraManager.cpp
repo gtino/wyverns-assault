@@ -826,11 +826,18 @@ EVENTS_DEFINE_HANDLER(CameraManager,EnemyKilled)
 // --------------------------------
 LUA_BEGIN_BINDING(CameraManager, cameralib)
 LUA_BIND(CameraManager, setCurrent)
+LUA_BIND(CameraManager, getCurrent)
 LUA_BIND(CameraManager, rotate)
 LUA_BIND(CameraManager, translate)
 LUA_BIND(CameraManager, lookAt)
 LUA_BIND(CameraManager, moveTo)
 LUA_BIND(CameraManager, flyTo)
+LUA_BIND(CameraManager, hasArrived)
+LUA_BIND(CameraManager, strife)
+LUA_BIND(CameraManager, shake)
+LUA_BIND(CameraManager, rumble)
+LUA_BIND(CameraManager, tremor)
+LUA_BIND(CameraManager, zoom)
 LUA_END_BINDING()
 
 //
@@ -847,6 +854,33 @@ LUA_DEFINE_FUNCTION(CameraManager, setCurrent)
 	/* get number of arguments */
 	int n = lua_gettop(L);
 
+	//
+	// Retrieve the CameraManager
+	//
+	CameraManager* cameraManager = CameraManager::getSingletonPtr();
+
+	//
+	// Set current camera
+	//
+
+	/* return the number of results */
+	return 0;
+}
+
+LUA_DEFINE_FUNCTION(CameraManager, getCurrent)
+{
+	/* get number of arguments */
+	int n = lua_gettop(L);
+
+	//
+	// Retrieve the CameraManager
+	//
+	CameraManager* cameraManager = CameraManager::getSingletonPtr();
+
+	//
+	// Get current camera name, and return it
+	//
+
 	/* return the number of results */
 	return 1;
 }
@@ -856,8 +890,13 @@ LUA_DEFINE_FUNCTION(CameraManager, translate)
 	/* get number of arguments */
 	int n = lua_gettop(L);
 
+	//
+	// Retrieve the CameraManager
+	//
+	CameraManager* cameraManager = CameraManager::getSingletonPtr();
+
 	/* return the number of results */
-	return 1;
+	return 0;
 }
 
 LUA_DEFINE_FUNCTION(CameraManager, rotate)
@@ -865,8 +904,13 @@ LUA_DEFINE_FUNCTION(CameraManager, rotate)
 	/* get number of arguments */
 	int n = lua_gettop(L);
 
+	//
+	// Retrieve the CameraManager
+	//
+	CameraManager* cameraManager = CameraManager::getSingletonPtr();
+
 	/* return the number of results */
-	return 1;
+	return 0;
 }
 
 LUA_DEFINE_FUNCTION(CameraManager, lookAt)
@@ -874,8 +918,13 @@ LUA_DEFINE_FUNCTION(CameraManager, lookAt)
 	/* get number of arguments */
 	int n = lua_gettop(L);
 
+	//
+	// Retrieve the CameraManager
+	//
+	CameraManager* cameraManager = CameraManager::getSingletonPtr();
+
 	/* return the number of results */
-	return 1;
+	return 0;
 }
 
 LUA_DEFINE_FUNCTION(CameraManager, moveTo)
@@ -883,8 +932,13 @@ LUA_DEFINE_FUNCTION(CameraManager, moveTo)
 	/* get number of arguments */
 	int n = lua_gettop(L);
 
+	//
+	// Retrieve the CameraManager
+	//
+	CameraManager* cameraManager = CameraManager::getSingletonPtr();
+
 	/* return the number of results */
-	return 1;
+	return 0;
 }
 
 LUA_DEFINE_FUNCTION(CameraManager, flyTo)
@@ -892,6 +946,95 @@ LUA_DEFINE_FUNCTION(CameraManager, flyTo)
 	/* get number of arguments */
 	int n = lua_gettop(L);
 
+	//
+	// Retrieve the CameraManager
+	//
+	CameraManager* cameraManager = CameraManager::getSingletonPtr();
+
+	/* return the number of results */
+	return 0;
+}
+
+LUA_DEFINE_FUNCTION(CameraManager, hasArrived)
+{
+	/* get number of arguments */
+	int n = lua_gettop(L);
+
+	//
+	// Retrieve the CameraManager
+	//
+	CameraManager* cameraManager = CameraManager::getSingletonPtr();
+
 	/* return the number of results */
 	return 1;
+}
+
+LUA_DEFINE_FUNCTION(CameraManager, strife)
+{
+	/* get number of arguments */
+	int n = lua_gettop(L);
+
+	//
+	// Retrieve the CameraManager
+	//
+	CameraManager* cameraManager = CameraManager::getSingletonPtr();
+
+	/* return the number of results */
+	return 0;
+}
+
+LUA_DEFINE_FUNCTION(CameraManager, shake)
+{
+	/* get number of arguments */
+	int n = lua_gettop(L);
+
+	//
+	// Retrieve the CameraManager
+	//
+	CameraManager* cameraManager = CameraManager::getSingletonPtr();
+
+	/* return the number of results */
+	return 0;
+}
+
+LUA_DEFINE_FUNCTION(CameraManager, rumble)
+{
+	/* get number of arguments */
+	int n = lua_gettop(L);
+
+	//
+	// Retrieve the CameraManager
+	//
+	CameraManager* cameraManager = CameraManager::getSingletonPtr();
+
+	/* return the number of results */
+	return 0;
+}
+
+LUA_DEFINE_FUNCTION(CameraManager, tremor)
+{
+	/* get number of arguments */
+	int n = lua_gettop(L);
+
+	//
+	// Retrieve the CameraManager
+	//
+	CameraManager* cameraManager = CameraManager::getSingletonPtr();
+
+	/* return the number of results */
+	return 0;
+}
+
+LUA_DEFINE_FUNCTION(CameraManager, zoom)
+{
+	/* get number of arguments */
+	int n = lua_gettop(L);
+
+	//
+	// Retrieve the CameraManager
+	//
+	CameraManager* cameraManager = CameraManager::getSingletonPtr();
+
+	/* return the number of results */
+	return 0;
 }

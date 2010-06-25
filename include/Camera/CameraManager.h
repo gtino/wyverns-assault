@@ -202,11 +202,18 @@ namespace WyvernsAssault
 		LUA_LIBRARY("Camera",cameralib);
 
 		LUA_FUNCTION(setCurrent);
+		LUA_FUNCTION(getCurrent);
 		LUA_FUNCTION(translate);
 		LUA_FUNCTION(rotate);
 		LUA_FUNCTION(lookAt);
 		LUA_FUNCTION(moveTo);
 		LUA_FUNCTION(flyTo);
+		LUA_FUNCTION(hasArrived);
+		LUA_FUNCTION(strife);
+		LUA_FUNCTION(shake);
+		LUA_FUNCTION(rumble);
+		LUA_FUNCTION(tremor);
+		LUA_FUNCTION(zoom);
 
 		// ------------------------------
 		// END Lua Interface Declarations
