@@ -14,6 +14,8 @@ Player::Player(Ogre::String name)
 , mMaxSpecial(100.0f)
 , mSpecial(100.0f)
 , mScore(0.0f)
+, mDrunkMult(1.0f)
+, mDrunkTime(0.0f)
 , mSpeed(REDWYVERN_SPEED)
 , mHeight(REDWYVERN_HEIGHT)
 , mAttackDamage (REDWYVERN_ATTACK_DAMAGE)
@@ -186,6 +188,14 @@ void Player::updateEntity(const float elapsedSeconds)
 	{
 		mAnimationSystem->update( elapsedSeconds );
 	}
+
+	// Drunk state timer
+	if( mDrunkTime > 0 )
+		mDrunkTime -= elapsedSeconds;
+	else
+	{
+		drunk(1.0f, 0.0f);
+	}
 }
 
 void Player::setMoving(bool move)
@@ -302,6 +312,13 @@ void Player::die()
 	// Kill player
 	live = false;
 	mLife = -1;
+}
+
+// Drunk when drinks beer, resistance and damage modified
+void Player::drunk(float multiplier, float time)
+{
+	mDrunkMult = multiplier;
+	mDrunkTime = time;	
 }
 
 void Player::setDebugEnabled(bool isDebugEnabled)

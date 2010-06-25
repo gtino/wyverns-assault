@@ -200,7 +200,7 @@ EVENTS_DEFINE_HANDLER(PlayerManager, PlayerHit)
 	PlayerPtr player = evt->getPlayer();
 	EnemyPtr enemy = evt->getEnemy();
 
-	player->setLife( player->getLife() - enemy->getHitDamage() );
+	player->hurt( enemy->getHitDamage() );
 }
 
 EVENTS_DEFINE_HANDLER(PlayerManager, PlayerKilled)
@@ -222,6 +222,13 @@ EVENTS_DEFINE_HANDLER(PlayerManager, ItemCatch)
 	player->setLife( player->getLife() + item->getLife() );
 	player->setSpecial( player->getSpecial() + item->getSpecial() );
 	player->addPoints(item->getScore());
+
+	if ( item->getType() == Item::ItemTypes::PowerBig )
+		player->drunk(4, 6);
+	else if( item->getType() == Item::ItemTypes::PowerMedium ) 
+		player->drunk(3, 4);
+	else if( item->getType() == Item::ItemTypes::PowerSmall )	
+		player->drunk(2, 2);
 }
 
 EVENTS_DEFINE_HANDLER(PlayerManager, EnemyKilled)

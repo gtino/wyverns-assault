@@ -1,0 +1,40 @@
+fragment_program Compositor/GlassFP cg
+{
+	source GlassFP.cg
+	entry_point main_ps
+	profiles ps_2_0 arbfp1
+}
+
+material Compositor/GlassPass
+{
+	technique
+	{
+		pass
+		{
+			depth_check off
+
+			vertex_program_ref Compositor/StdQuad_Cg_vp
+			{
+			}
+
+			fragment_program_ref Compositor/GlassFP
+			{
+			}
+
+			texture_unit RT
+			{
+                tex_coord_set 0
+				tex_address_mode clamp
+				filtering linear linear linear
+			}
+
+			texture_unit
+			{
+				texture WaterNormal1.tga 2d
+                tex_coord_set 1
+				//tex_address_mode clamp
+				filtering linear linear linear
+			}
+		}
+	}
+}
