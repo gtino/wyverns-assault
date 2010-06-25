@@ -53,7 +53,7 @@
   <CAMERASPEED value="41"></CAMERASPEED>
   <CAMERAPOSITIONS count="1">
     <OPTION id="0" position="1417.36 9.53911 54.9741" orientation="0.707107 0 0.707107 0"></OPTION>
-    <OPTION id="1" position="1507.58 341.746 824.894" orientation="-0.948263 0.16293 -0.268555 -0.0461473"></OPTION>
+    <OPTION id="1" position="-28.011 824.475 1628.63" orientation="-0.916258 0.399585 0.0259992 0.011323"></OPTION>
   </CAMERAPOSITIONS>
     <LAYERS>
       <LAYER id="0" name="Layer 0" visible="true"></LAYER>
@@ -134,9 +134,9 @@
   <OBJECT object_id="2000000002" name="Viewport1" typename="Viewport Object">
     <PROPERTY id="camera::clipdistance" type="8" value="0.05 100000"></PROPERTY>
     <PROPERTY id="camera::fov" type="6" value="1"></PROPERTY>
-    <PROPERTY id="camera::orientation" type="13" value="-0.948288 0.162934 -0.268562 -0.0461485"></PROPERTY>
+    <PROPERTY id="camera::orientation" type="13" value="-0.91629 0.399599 0.0260001 0.0113234"></PROPERTY>
     <PROPERTY id="camera::polymode" type="2" value="3"></PROPERTY>
-    <PROPERTY id="camera::position" type="9" value="1507.58 341.746 824.894"></PROPERTY>
+    <PROPERTY id="camera::position" type="9" value="-28.011 824.475 1628.63"></PROPERTY>
     <PROPERTY id="camera::viewmode" type="2" value="3"></PROPERTY>
     <PROPERTY id="colour" type="11" value="0 0 0 1"></PROPERTY>
     <PROPERTY id="compositorcount" type="2" value="0"></PROPERTY>
@@ -4609,8 +4609,8 @@
     <PROPERTY id="layer" type="2" value="0"></PROPERTY>
     <PROPERTY id="locked" type="12" value="false"></PROPERTY>
     <PROPERTY id="orientation" type="13" value="1 0 0 0"></PROPERTY>
-    <PROPERTY id="position" type="9" value="0 0 0"></PROPERTY>
-    <PROPERTY id="scale" type="9" value="0.25 0.25 0.25"></PROPERTY>
+    <PROPERTY id="position" type="9" value="0 149.152 0"></PROPERTY>
+    <PROPERTY id="scale" type="9" value="1 1 1"></PROPERTY>
     <PROPERTY id="updatescript" type="7" value=""></PROPERTY>
     <CUSTOMPROPERTIES>
     </CUSTOMPROPERTIES>
@@ -7207,6 +7207,7 @@
     <PROPERTY id="subentitycount" type="2" value="2"></PROPERTY>
     <PROPERTY id="updatescript" type="7" value=""></PROPERTY>
     <CUSTOMPROPERTIES>
+      <PROPERTY id="type" type="7" value="DynamicObject"></PROPERTY>
     </CUSTOMPROPERTIES>
   </OBJECT>
 
@@ -8107,6 +8108,7 @@
     <PROPERTY id="subentitycount" type="2" value="2"></PROPERTY>
     <PROPERTY id="updatescript" type="7" value=""></PROPERTY>
     <CUSTOMPROPERTIES>
+      <PROPERTY id="type" type="7" value="DynamicObject"></PROPERTY>
     </CUSTOMPROPERTIES>
   </OBJECT>
 
@@ -9319,6 +9321,7 @@
     <PROPERTY id="subentitycount" type="2" value="2"></PROPERTY>
     <PROPERTY id="updatescript" type="7" value=""></PROPERTY>
     <CUSTOMPROPERTIES>
+      <PROPERTY id="type" type="7" value="DynamicObject"></PROPERTY>
     </CUSTOMPROPERTIES>
   </OBJECT>
 
@@ -9801,6 +9804,7 @@
     <PROPERTY id="subentitycount" type="2" value="2"></PROPERTY>
     <PROPERTY id="updatescript" type="7" value=""></PROPERTY>
     <CUSTOMPROPERTIES>
+      <PROPERTY id="type" type="7" value="DynamicObject"></PROPERTY>
     </CUSTOMPROPERTIES>
   </OBJECT>
 
@@ -10113,6 +10117,7 @@
     <PROPERTY id="subentitycount" type="2" value="2"></PROPERTY>
     <PROPERTY id="updatescript" type="7" value=""></PROPERTY>
     <CUSTOMPROPERTIES>
+      <PROPERTY id="type" type="7" value="DynamicObject"></PROPERTY>
     </CUSTOMPROPERTIES>
   </OBJECT>
 
@@ -10815,6 +10820,7 @@
     <PROPERTY id="subentitycount" type="2" value="2"></PROPERTY>
     <PROPERTY id="updatescript" type="7" value=""></PROPERTY>
     <CUSTOMPROPERTIES>
+      <PROPERTY id="type" type="7" value="DynamicObject"></PROPERTY>
     </CUSTOMPROPERTIES>
   </OBJECT>
 
@@ -12665,6 +12671,7 @@
     <PROPERTY id="subentitycount" type="2" value="1"></PROPERTY>
     <PROPERTY id="updatescript" type="7" value=""></PROPERTY>
     <CUSTOMPROPERTIES>
+      <PROPERTY id="type" type="7" value="DynamicObject"></PROPERTY>
     </CUSTOMPROPERTIES>
   </OBJECT>
 

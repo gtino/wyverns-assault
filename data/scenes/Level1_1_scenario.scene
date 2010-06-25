@@ -2,13 +2,12 @@
 <scene>
   <resourceLocations />
   <environment />
-  <skyDome material="CloudySky" curvature="5" tiling="8" distance="4000"/>
   <nodes>
-    <!--node name="light" id="840205056">
+    <node name="light" id="840205056">
       <rotation qw="0.324461" qx="0.906123" qy="-0.0196778" qz="-0.270701" />
       <position x="-1705.53" y="905.216" z="-3087.19" />
       <scale x="1" y="1" z="1" />
-    </node-->
+    </node>
     <node name="Tree2_Billboard1" id="796929856">
       <rotation qw="0.6534" qx="0.6534" qy="0.270313" qz="-0.270313" />
       <position x="886.43" y="11.5394" z="471.361" />
@@ -392,7 +391,7 @@
           <rotation qw="1" qx="0" qy="3.46945E-18" qz="0" />
           <position x="-9.41469E-14" y="0" z="0" />
           <scale x="1" y="1" z="1" />
-          <entity name="Entity#75" id="279305408" castshadows="true" meshFile="House1.mesh">
+          <entity name="Entity#75" id="279305408" castshadows="true" meshFile="House1.mesh" type="DynamicObject">
             <rotation qw="1" qx="0" qy="0" qz="0" />
             <position x="0" y="0" z="0" />
             <scale x="1" y="1" z="1" />
@@ -696,10 +695,10 @@
         <position x="4712.17" y="671.049" z="425.726" />
         <scale x="4" y="4" z="4" />
         <node name="House01_Mesh" id="560075712">
-          <rotation qw="1" qx="0" qy="0" qz="0" />
+          <rotation qw="-0.104529" qx="-1.03398E-25" qy="0.994522" qz="2.06795E-25" />
           <position x="0" y="-4.36588E-16" z="-9.9476E-14" />
           <scale x="1" y="1" z="1" />
-          <entity name="Entity#48" id="624042496" castshadows="true" meshFile="House0.mesh">
+          <entity name="Entity#48" id="624042496" castshadows="true" meshFile="House0.mesh" type="DynamicObject">
             <rotation qw="1" qx="0" qy="0" qz="0" />
             <position x="0" y="0" z="0" />
             <scale x="1" y="1" z="1" />
@@ -2877,7 +2876,7 @@
           <rotation qw="1" qx="0" qy="-3.46945E-18" qz="0" />
           <position x="6.75016E-14" y="0" z="0" />
           <scale x="1" y="1" z="1" />
-          <entity name="Entity#62" id="626483968" castshadows="true" meshFile="House0.mesh">
+          <entity name="Entity#62" id="626483968" castshadows="true" meshFile="House0.mesh" type="DynamicObject">
             <rotation qw="1" qx="0" qy="0" qz="0" />
             <position x="0" y="0" z="0" />
             <scale x="1" y="1" z="1" />
@@ -3097,10 +3096,10 @@
         <position x="4388.56" y="671.049" z="692.401" />
         <scale x="4" y="4" z="4" />
         <node name="House01_Mesh_5" id="924710784">
-          <rotation qw="1" qx="0" qy="0" qz="0" />
+          <rotation qw="0.0130895" qx="0" qy="0.999914" qz="0" />
           <position x="-2.13163E-14" y="0" z="0" />
           <scale x="1" y="1" z="1" />
-          <entity name="Entity#85" id="601062080" castshadows="true" meshFile="House0.mesh">
+          <entity name="Entity#85" id="601062080" castshadows="true" meshFile="House0.mesh" type="DynamicObject">
             <rotation qw="1" qx="0" qy="0" qz="0" />
             <position x="0" y="0" z="0" />
             <scale x="1" y="1" z="1" />
@@ -3716,7 +3715,7 @@
         <rotation qw="0.614954" qx="0.00319471" qy="-0.788553" qz="0.0024914" />
         <position x="1161.11" y="709" z="3342.88" />
         <scale x="53.9319" y="34.6235" z="42.2734" />
-        <entity name="Entity#383" id="639912128" type="DynamicObject" castshadows="true" meshFile="BigRock0.mesh">
+        <entity name="Entity#383" id="639912128" castshadows="true" meshFile="BigRock0.mesh" type="DynamicObject">
           <rotation qw="1" qx="0" qy="0" qz="0" />
           <position x="0" y="0" z="0" />
           <scale x="1" y="1" z="1" />
@@ -3746,7 +3745,7 @@
           <rotation qw="1" qx="0" qy="0" qz="0" />
           <position x="-5.68434E-14" y="0" z="0" />
           <scale x="1" y="1" z="1" />
-          <entity name="Entity#59" id="646626176" castshadows="true" meshFile="House0.mesh">
+          <entity name="Entity#59" id="646626176" castshadows="true" meshFile="House0.mesh" type="DynamicObject">
             <rotation qw="1" qx="0" qy="0" qz="0" />
             <position x="0" y="0" z="0" />
             <scale x="1" y="1" z="1" />
@@ -4439,8 +4438,8 @@
         <scale x="4" y="4" z="4" />
         <node name="Ground" id="602343808">
           <rotation qw="1" qx="0" qy="0" qz="0" />
-          <position x="0" y="0" z="0" />
-          <scale x="0.25" y="0.25" z="0.25" />
+          <position x="0" y="149.152" z="0" />
+          <scale x="1" y="1" z="1" />
           <entity name="Entity#68" id="498550368" castshadows="true" meshFile="Ground0.mesh">
             <rotation qw="1" qx="0" qy="0" qz="0" />
             <position x="0" y="0" z="0" />
@@ -4457,10 +4456,10 @@
         <position x="4607.47" y="671.049" z="947.17" />
         <scale x="4" y="4" z="4" />
         <node name="House01_Mesh_3" id="937345536">
-          <rotation qw="1" qx="0" qy="-6.93889E-18" qz="0" />
+          <rotation qw="-0.0130898" qx="0" qy="0.999914" qz="0" />
           <position x="2.84217E-14" y="3.97496E-17" z="0" />
           <scale x="1" y="1" z="1" />
-          <entity name="Entity#70" id="859523328" castshadows="true" meshFile="House0.mesh">
+          <entity name="Entity#70" id="859523328" castshadows="true" meshFile="House0.mesh" type="DynamicObject">
             <rotation qw="1" qx="0" qy="0" qz="0" />
             <position x="0" y="0" z="0" />
             <scale x="1" y="1" z="1" />
