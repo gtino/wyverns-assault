@@ -41,7 +41,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #define PLAYER3 "Player3"
 #define PLAYER4 "Player4"
 
-#define SPECIAL_COST 25
+#define SPECIAL_COST 100
 
 #define REDWYVERN_HEIGHT			22
 #define REDWYVERN_SPEED				80
@@ -168,6 +168,8 @@ namespace WyvernsAssault
 		float		mSpecialLength;
 
 		GuiWidgetId		mGuiId;
+
+		float		refillTimer;
 
 	private:
 		

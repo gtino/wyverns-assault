@@ -52,6 +52,16 @@ namespace WyvernsAssault
 						, public EventsInterface
 	{
 	public:
+		/** List of camera modes */
+		enum CameraModes
+		{
+			Game = 0,
+			Fixed = 1,
+			Free = 2,
+			CutScene = 3
+		};
+
+	public:
 		CameraManager();
 		~CameraManager();
 		static CameraManager& getSingleton(void);
@@ -68,7 +78,8 @@ namespace WyvernsAssault
 		Vector3 getCameraPosition();
 		Vector3 getCameraDirection(){ return mGameCamera->getDirection(); }
 		Vector3 getCameraLookAt();
-		String getCameraMode() { return mGameCameraMode ; }
+		CameraModes getCameraMode() { return mGameCameraMode ; }
+		String getCameraModeString();
 		int getGameArea(Vector3 position);
 
 		Camera* getGameCamera(){return mGameCamera;}
@@ -84,7 +95,7 @@ namespace WyvernsAssault
 		void updateCamera(Vector3 player, Real elapsedSeconds);
 		
 		/** Create transition animation */
-		void createTransition(Vector3 begin, Vector3 end, Vector3 lbegin, Vector3 lend);
+		void createTransition(Vector3 begin, Vector3 end, Vector3 lbegin, Vector3 lend, float duration);
 
 		/** Add game area  and camera segment */
 		void addGameArea(Vector3 beginNear, Vector3 endNear, Vector3 beginFar, Vector3 endFar);
@@ -94,21 +105,30 @@ namespace WyvernsAssault
 		void setFixedCamera(int camera, Vector3 position, Vector3 lookAt);
 		
 		/** Camera effects */
-		void zoom(Real duration);
-		void rumble(Real scale);
-		void tremor(Real scale);
-		void shake(Real scale);
+		void zoom(Real duration, Real amount);
+		void rumble(Real duration, Real amount);
+		void tremor(Real duration, Real amount);
+		void shake(Real duration, Real amount);
+		void drunk(Real duration, Real amount);
 
 		/** Camera modes */		
 		void gameCamera();
 		void freeCamera();
 		void fixedCamera(int camera);
+		void cutSceneCamera();
 		void resumeCamera();
 
 		/** Free camera functions */
 		void freeCameraMouse(OIS::MouseEvent evt);
 		void freeCameraKeyboardDown(OIS::KeyEvent evt);
 		void freeCameraKeyboardUp(OIS::KeyEvent evt);
+
+		/** Cut Scenes camera function **/
+		void translate(Ogre::Vector3 vector){ mCameraNode->translate(vector); }
+		void moveTo(Ogre::Vector3 vector){ mCameraNode->setPosition(vector); }		
+		void lookAt(Ogre::Vector3 vector){ mGameCameraLookAtNode->setPosition(vector); }
+		void translateLookAt(Ogre::Vector3 vector){ mGameCameraLookAtNode->translate(vector); }
+		bool isMoving(){ return mMoving; }
 
 		/**  Rendering queue */
 		bool frameRenderingQueued(FrameEvent evt);		
@@ -136,7 +156,7 @@ namespace WyvernsAssault
 		SceneNode*				mGameCameraNode;
 		SceneNode*				mGameCameraLookAtNode;
 
-		String					mGameCameraMode;
+		CameraModes				mGameCameraMode;
 		int						mGameArea;
 
 		Entity*					mAxes;
@@ -147,6 +167,8 @@ namespace WyvernsAssault
 		AnimationState*			mAxesTransition;
 		AnimationState*			mCameraEffect;
 		AnimationState*			mCameraEffectLook;
+
+		bool					mMoving;
 
 		// Sdk Camera Manager for free look camera
 		OgreBites::SdkCameraMan*		mCameraMan;
@@ -191,6 +213,7 @@ namespace WyvernsAssault
 		EVENTS_INTERFACE()
 
 		EVENTS_HANDLER(EnemyKilled)
+		EVENTS_HANDLER(ItemCatch)
 
 		// --------------------------------
 		// BEGIN Lua Interface Declarations
@@ -204,7 +227,6 @@ namespace WyvernsAssault
 		LUA_FUNCTION(setCurrent);
 		LUA_FUNCTION(getCurrent);
 		LUA_FUNCTION(translate);
-		LUA_FUNCTION(rotate);
 		LUA_FUNCTION(lookAt);
 		LUA_FUNCTION(moveTo);
 		LUA_FUNCTION(flyTo);

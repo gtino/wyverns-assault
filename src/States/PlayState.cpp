@@ -233,7 +233,7 @@ bool PlayState::frameRenderingQueued(const Ogre::FrameEvent& evt)
 			mDetailsPanel->setParamValue(0, StringConverter::toString(player1->getPosition().x, 5));
 			mDetailsPanel->setParamValue(1, StringConverter::toString(player1->getPosition().y, 5));
 			mDetailsPanel->setParamValue(2, StringConverter::toString(player1->getPosition().z, 5));
-			mDetailsPanel->setParamValue(4, mCameraManager->getCameraMode().c_str());
+			mDetailsPanel->setParamValue(4, mCameraManager->getCameraModeString().c_str());
 			mDetailsPanel->setParamValue(5, StringConverter::toString(mCameraManager->getCameraPosition().x, 5));
 			mDetailsPanel->setParamValue(6, StringConverter::toString(mCameraManager->getCameraPosition().y, 5));
 			mDetailsPanel->setParamValue(7, StringConverter::toString(mCameraManager->getCameraPosition().z, 5));
@@ -243,7 +243,7 @@ bool PlayState::frameRenderingQueued(const Ogre::FrameEvent& evt)
 		}
 	}
 
-	if(mCameraManager->getCameraMode() == "Free")
+	if(mCameraManager->getCameraMode() == CameraManager::CameraModes::Free)
 	{
 		mCameraManager->frameRenderingQueued(evt);
 	}
@@ -259,7 +259,7 @@ void PlayState::update(const float elapsedSeconds)
 	if ( !player1->isDeath() )
 	{
 		// Movement
-		if(mCameraManager->getCameraMode() == "Game")
+		if(mCameraManager->getCameraMode() == CameraManager::CameraModes::Game)
 		{
 			// Trick for key hit inaccuracies
 			buttonTimer += elapsedSeconds;
@@ -686,7 +686,7 @@ bool PlayState::keyPressed(const OIS::KeyEvent& e)
 		else
 			mLuaManager->enable();
 		break;
-	// Physics debug mode
+	// Physics debug
 	case OIS::KeyCode::KC_F:
 		mPhysicsManager->showDebugObjects();
 		break;
@@ -721,16 +721,22 @@ bool PlayState::keyPressed(const OIS::KeyEvent& e)
 		mPostProcessManager->showDepth();
 		break;
 
-	case OIS::KeyCode::KC_M:
-		mCameraManager->zoom(2);
+	case OIS::KeyCode::KC_V:
+		mCameraManager->shake(0.25, 20);
+		break;
+	case OIS::KeyCode::KC_B:
+		mCameraManager->rumble(0.5, 5);
 		break;
 	case OIS::KeyCode::KC_N:
-		mCameraManager->zoom(5);
+		mCameraManager->tremor(0.5, 20);
+		break;
+	case OIS::KeyCode::KC_M:
+		mCameraManager->drunk(2, 15);
 		break;
 	}
 
 	// Free camera mode move
-	if(mCameraManager->getCameraMode() == "Free")
+	if(mCameraManager->getCameraMode() == CameraManager::CameraModes::Free)
 	{
 		mCameraManager->freeCameraKeyboardDown(e);
 	}
@@ -741,7 +747,7 @@ bool PlayState::keyPressed(const OIS::KeyEvent& e)
 bool PlayState::keyReleased(const OIS::KeyEvent& e)
 {
 	// Free camera mode move
-	if(mCameraManager->getCameraMode() == "Free")
+	if(mCameraManager->getCameraMode() == CameraManager::CameraModes::Free)
 	{
 		mCameraManager->freeCameraKeyboardUp(e);
 	}
