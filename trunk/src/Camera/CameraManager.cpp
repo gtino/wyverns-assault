@@ -93,7 +93,7 @@ void CameraManager::initialize(SceneManager* sceneManager, RenderWindow* window)
 	mAxesNode->setVisible(false);
 	
 	/** Other variables initialization */
-	mGameArea = 0;
+	mGameArea = -1;
 	mFixedCamera = 0;
 	mMoving = false;
 
@@ -318,6 +318,12 @@ void CameraManager::updateCamera(Vector3 player, Real elapsedSeconds)
 	// Update camera camera
 	if( mGameCameraMode == CameraModes::Game )
 	{
+		// Game Area changed, raise event
+		if( mGameArea != getGameArea(player) )
+		{
+			GameAreaChangedEventPtr evt = GameAreaChangedEventPtr(new GameAreaChangedEvent(mGameArea, getGameArea(player)));
+			EVENTS_FIRE(evt);
+		}
 		mGameArea = getGameArea(player);
 
 		Vector3 begin = mCameraSegments[mGameArea].mPositionBegin;
@@ -688,46 +694,21 @@ void CameraManager::tremor(Real duration, Real amount)
 
 void CameraManager::shake(Real duration, Real amount)
 {
-	// Camera node translation animation
-	if(mSceneManager->hasAnimation("CameraEffect"))
-		mSceneManager->destroyAnimation("CameraEffect");
-	Animation* anim = mSceneManager->createAnimation("CameraEffect", duration);
+	// Camera look at node translation animation
+	if(mSceneManager->hasAnimation("CameraEffectLook"))
+		mSceneManager->destroyAnimation("CameraEffectLook");
+	Animation* anim = mSceneManager->createAnimation("CameraEffectLook", duration);
     // Spline it for nice curves
     anim->setInterpolationMode(Animation::IM_SPLINE);
     // Create a track to animate the camera's node
-	NodeAnimationTrack* track = anim->createNodeTrack(0, mGameCameraNode);
+	NodeAnimationTrack* track = anim->createNodeTrack(0, mGameCameraLookAtNode);
     // Setup keyframes
 	TransformKeyFrame* key = track->createNodeKeyFrame(0);
 	key->setTranslate(Vector3::ZERO);
 	key = track->createNodeKeyFrame(duration/3);
-	key->setTranslate(Vector3(0, -amount, 0));
-	key = track->createNodeKeyFrame(duration*2/3);
-	key->setTranslate(Vector3(0, amount, 0));
-	key = track->createNodeKeyFrame(duration);
-	key->setTranslate(Vector3::ZERO);
-    // Create a new animation state to track this
-	if(mSceneManager->hasAnimationState("CameraEffect"))
-		mSceneManager->destroyAnimationState("CameraEffect");
-	mCameraEffect = mSceneManager->createAnimationState("CameraEffect");
-    mCameraEffect->setEnabled(true);
-	mCameraEffect->setWeight(1);
-	mCameraEffect->setLoop(false);
-
-	// Camera look at node translation animation
-	if(mSceneManager->hasAnimation("CameraEffectLook"))
-		mSceneManager->destroyAnimation("CameraEffectLook");
-	anim = mSceneManager->createAnimation("CameraEffectLook", duration);
-    // Spline it for nice curves
-    anim->setInterpolationMode(Animation::IM_SPLINE);
-    // Create a track to animate the camera's node
-	track = anim->createNodeTrack(0, mGameCameraLookAtNode);
-    // Setup keyframes
-	key = track->createNodeKeyFrame(0);
-	key->setTranslate(Vector3::ZERO);
-	key = track->createNodeKeyFrame(duration/3);
 	key->setTranslate(Vector3(0, amount, 0));
 	key = track->createNodeKeyFrame(duration*2/3);
-	key->setTranslate(Vector3(0, -amount, 0));
+	key->setTranslate(Vector3(0, -amount*2, 0));
 	key = track->createNodeKeyFrame(duration);
 	key->setTranslate(Vector3::ZERO);
     // Create a new animation state to track this
@@ -741,14 +722,14 @@ void CameraManager::shake(Real duration, Real amount)
 
 void CameraManager::drunk(Real duration, Real amount)
 {
-/*	// Camera node
-	if(mSceneManager->hasAnimation("CameraEffect"))
-		mSceneManager->destroyAnimation("CameraEffect");
-	Animation* anim = mSceneManager->createAnimation("CameraEffect", duration);
+	// Camera look at node
+	if(mSceneManager->hasAnimation("CameraEffectLook"))
+		mSceneManager->destroyAnimation("CameraEffectLook");
+	Animation* anim = mSceneManager->createAnimation("CameraEffectLook", duration);
     // Spline it for nice curves
     anim->setInterpolationMode(Animation::IM_SPLINE);
     // Create a track to animate the camera's node
-	NodeAnimationTrack* track = anim->createNodeTrack(0, mGameCameraNode);
+	NodeAnimationTrack* track = anim->createNodeTrack(0, mGameCameraLookAtNode);
     // Setup keyframes
 	TransformKeyFrame* key = track->createNodeKeyFrame(0);
 	key->setTranslate(Vector3::ZERO);
@@ -764,42 +745,6 @@ void CameraManager::drunk(Real duration, Real amount)
 
 	key = track->createNodeKeyFrame(duration*4/5);
 	key->setTranslate(Vector3(amount/2, amount/2, 0));
-
-	key = track->createNodeKeyFrame(duration);
-	key->setTranslate(Vector3::ZERO);
-
-    // Create a new animation state to track this
-	if(mSceneManager->hasAnimationState("CameraEffect"))
-		mSceneManager->destroyAnimationState("CameraEffect");
-	mCameraEffect = mSceneManager->createAnimationState("CameraEffect");
-    mCameraEffect->setEnabled(true);
-	mCameraEffect->setWeight(1);
-	mCameraEffect->setLoop(false);
-*/
-	float offset = 0;
-	// Camera look at node
-	if(mSceneManager->hasAnimation("CameraEffectLook"))
-		mSceneManager->destroyAnimation("CameraEffectLook");
-	Animation* anim = mSceneManager->createAnimation("CameraEffectLook", duration);
-    // Spline it for nice curves
-    anim->setInterpolationMode(Animation::IM_SPLINE);
-    // Create a track to animate the camera's node
-	NodeAnimationTrack* track = anim->createNodeTrack(0, mGameCameraLookAtNode);
-    // Setup keyframes
-	TransformKeyFrame* key = track->createNodeKeyFrame(0);
-	key->setTranslate(Vector3::ZERO);
-
-	key = track->createNodeKeyFrame(duration/5);
-	key->setTranslate(Vector3(-(amount + offset), -(amount + offset), 0));
-
-	key = track->createNodeKeyFrame(duration*2/5);
-	key->setTranslate(Vector3((amount + offset), (amount + offset), 0));
-
-	key = track->createNodeKeyFrame(duration*3/5);
-	key->setTranslate(Vector3(-(amount + offset)/2, -(amount + offset)/2, 0));
-
-	key = track->createNodeKeyFrame(duration*4/5);
-	key->setTranslate(Vector3((amount + offset)/2, (amount + offset)/2, 0));
 	key = track->createNodeKeyFrame(duration);
 	key->setTranslate(Vector3::ZERO);
     // Create a new animation state to track this
@@ -916,7 +861,7 @@ EVENTS_DEFINE_HANDLER(CameraManager,EnemyKilled)
 
 	if( enemy->hasDieAnimation() )
 	{
-		this->shake(0.5, (rand()%5)*2);
+		this->shake(0.5, (rand()%5));
 	}
 	else
 	{
@@ -934,11 +879,11 @@ EVENTS_DEFINE_HANDLER(CameraManager, ItemCatch)
 	ItemPtr item = evt->getItem();
 
 	if ( item->getType() == Item::ItemTypes::PowerBig )
-		this->drunk(6, 15);
+		this->drunk(6, 12);
 	else if( item->getType() == Item::ItemTypes::PowerMedium ) 
-		this->drunk(4, 10);
+		this->drunk(4, 8);
 	else if( item->getType() == Item::ItemTypes::PowerSmall )	
-		this->drunk(2, 8);
+		this->drunk(2, 6);
 }
 
 // --------------------------------

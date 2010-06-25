@@ -106,6 +106,7 @@ EVENTS_BEGIN_REGISTER_HANDLERS(GuiManager)
 	EVENTS_REGISTER_HANDLER(GuiManager, PlayerAttackSpecial);
 	EVENTS_REGISTER_HANDLER(GuiManager, EnemyKilled);
 	EVENTS_REGISTER_HANDLER(GuiManager, PlayerHit);
+	EVENTS_REGISTER_HANDLER(GuiManager, PlayerStatusUpdate);
 EVENTS_END_REGISTER_HANDLERS()
 
 EVENTS_BEGIN_UNREGISTER_HANDLERS(GuiManager)
@@ -113,6 +114,7 @@ EVENTS_BEGIN_UNREGISTER_HANDLERS(GuiManager)
 	EVENTS_UNREGISTER_HANDLER(GuiManager, PlayerAttackSpecial);
 	EVENTS_UNREGISTER_HANDLER(GuiManager, EnemyKilled);
 	EVENTS_UNREGISTER_HANDLER(GuiManager, PlayerHit);
+	EVENTS_UNREGISTER_HANDLER(GuiManager, PlayerStatusUpdate);
 EVENTS_END_UNREGISTER_HANDLERS()
 
 
@@ -170,6 +172,23 @@ EVENTS_DEFINE_HANDLER(GuiManager, EnemyKilled)
 EVENTS_DEFINE_HANDLER(GuiManager, PlayerHit)
 {
 	Debug::Out("GuiManager : handlePlayerHitEvent");
+
+	PlayerPtr player = evt->getPlayer();
+
+	GuiWidgetPtr ui = mGuiScreenMap[GuiScreenId::PlayGui]->getWidget( player->getGuiId() );
+
+	GuiUserInterface::UserInterfaceData userData;
+
+	userData.life = player->getLife();
+	userData.special = player->getSpecial();
+	userData.points = player->getPoints();
+
+	ui->setData(&userData);
+}
+
+EVENTS_DEFINE_HANDLER(GuiManager, PlayerStatusUpdate)
+{
+	Debug::Out("GuiManager : handlePlayerStatusUpdateEvent");
 
 	PlayerPtr player = evt->getPlayer();
 

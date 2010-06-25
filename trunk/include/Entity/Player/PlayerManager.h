@@ -103,6 +103,8 @@ namespace WyvernsAssault
 
 		bool mIsDebugEnabled;
 
+		float mRefillTimer;
+
 	// --------------------------------
 	// BEGIN Lua Interface Declarations
 	// --------------------------------

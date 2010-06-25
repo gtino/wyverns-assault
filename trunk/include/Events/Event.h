@@ -39,6 +39,7 @@ namespace WyvernsAssault
 		PlayerRemove,
 		PlayerAttack,
 		PlayerAttackSpecial,
+		PlayerStatusUpdate,
 		EnemyAttack,
 		EnemyHit,
 		EnemyKilled,
@@ -48,7 +49,8 @@ namespace WyvernsAssault
 		Collision,
 		ItemCreation,
 		ItemCatch,
-		ItemRemove
+		ItemRemove,
+		GameAreaChanged
 	};
 
 	/** Event priority, used to put the event in the correct queue */
@@ -266,6 +268,22 @@ namespace WyvernsAssault
 
 	typedef boost::shared_ptr<PlayerAttackSpecialEvent> PlayerAttackSpecialEventPtr;
 
+	
+	// --------------------------------
+	class PlayerStatusUpdateEvent : public Event
+	{
+	public:
+		PlayerStatusUpdateEvent(PlayerPtr player);
+		~PlayerStatusUpdateEvent(){};
+		
+		PlayerPtr getPlayer(){return mPlayer;}
+
+	private:
+		PlayerPtr mPlayer;
+	};
+
+	typedef boost::shared_ptr<PlayerStatusUpdateEvent> PlayerStatusUpdateEventPtr;
+
 	// --------------------------------
 	class ItemCreationEvent : public Event
 	{
@@ -312,6 +330,23 @@ namespace WyvernsAssault
 	};
 
 	typedef boost::shared_ptr<ItemRemoveEvent> ItemRemoveEventPtr;
+
+	// --------------------------------
+	class GameAreaChangedEvent : public Event
+	{
+	public:
+		GameAreaChangedEvent(int previousArea, int actualArea);
+		~GameAreaChangedEvent(){};
+		
+		int getPreviousArea(){ return mPreviousArea; }
+		int getActualArea(){ return mActualArea; }
+
+	private:
+		int mPreviousArea;
+		int mActualArea;
+	};
+
+	typedef boost::shared_ptr<GameAreaChangedEvent> GameAreaChangedEventPtr;
 }
 
 #endif // __EVENT_H_
