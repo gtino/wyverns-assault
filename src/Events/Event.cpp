@@ -161,6 +161,14 @@ PlayerAttackSpecialEvent::PlayerAttackSpecialEvent(PlayerPtr p)
 
 //----------------------
 
+PlayerStatusUpdateEvent::PlayerStatusUpdateEvent(PlayerPtr p)
+:Event(EventTypes::PlayerStatusUpdate, EventPriorities::Normal)
+{
+	mPlayer = p;
+};
+
+//----------------------
+
 ItemCreationEvent::ItemCreationEvent(ItemPtr i)
 :Event(EventTypes::ItemCreation, EventPriorities::Normal)
 {
@@ -182,4 +190,13 @@ ItemRemoveEvent::ItemRemoveEvent(ItemPtr i)
 :Event(EventTypes::ItemRemove, EventPriorities::Normal)
 {
 	mItem = i;
+};
+
+//----------------------
+
+GameAreaChangedEvent::GameAreaChangedEvent(int previousArea, int actualArea)
+:Event(EventTypes::GameAreaChanged, EventPriorities::Normal)
+{
+	mPreviousArea = previousArea;
+	mActualArea = actualArea;
 };

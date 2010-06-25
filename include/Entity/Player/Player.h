@@ -169,8 +169,6 @@ namespace WyvernsAssault
 
 		GuiWidgetId		mGuiId;
 
-		float		refillTimer;
-
 	private:
 		
 		// Animation control variables

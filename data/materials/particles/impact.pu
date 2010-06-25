@@ -137,8 +137,8 @@ system WyvernsAssault/Impact
         affector                                Colour Affector14
         {
             time_colour                         0    1 1 1 0
-            time_colour                         0.05 1 1 1 1
-            time_colour                         0.7  1 1 1 1
+            time_colour                         0.1  1 1 1 0.784314
+            time_colour                         0.7  1 1 1 0.784314
             time_colour                         1    1 1 1 0
         }
         affector                                Scale Affector7

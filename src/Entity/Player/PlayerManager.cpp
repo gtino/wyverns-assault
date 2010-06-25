@@ -25,6 +25,8 @@ PlayerManager::PlayerManager(Ogre::SceneManager* sceneManager)
 void PlayerManager::initialize()
 {
 	mPlayerNode = mSceneManager->getRootSceneNode()->createChildSceneNode(PLAYER_NODE_NAME);
+
+	mRefillTimer = 0.0f;
 }
 
 PlayerManager::~PlayerManager()
@@ -44,7 +46,7 @@ void PlayerManager::finalize()
 void PlayerManager::update(const float elapsedSeconds)
 {
 	for(int i = 0; i < mPlayerList.size() ; i++)
-	{
+	{		
 		PlayerPtr player =  mPlayerList[i];
 		player->updateEntity(elapsedSeconds);
 		// Check if dead
@@ -52,6 +54,16 @@ void PlayerManager::update(const float elapsedSeconds)
 		{
 			PlayerKilledEventPtr playerKilledEventPtr = PlayerKilledEventPtr(new PlayerKilledEvent(player));
 			EVENTS_FIRE(playerKilledEventPtr);
+		}
+
+		mRefillTimer += elapsedSeconds;
+		// Every 0.1 seconds, fill special bar 2 units
+		if( mRefillTimer > 0.05 )
+		{
+			player->setSpecial( player->getSpecial() + 2 );
+			mRefillTimer = 0.0f;
+			PlayerStatusUpdateEventPtr playerStatusUpdateEventPtr = PlayerStatusUpdateEventPtr(new PlayerStatusUpdateEvent(player));
+			EVENTS_FIRE(playerStatusUpdateEventPtr);
 		}
 	}
 }
