@@ -409,9 +409,7 @@ void DotSceneLoader::processItems(TiXmlElement *XMLNode)
 		}
 
 		// Add to ItemManager
-		ItemPtr item = mItemManager->createItem(Item::StringToType(type), name, mesh);
-		// Attach particle system
-		mParticleManager->add(item->_getSceneNode(), name, "WyvernsAssault/ItemGlow");
+		ItemPtr item = mItemManager->createItem(Item::StringToType(type), name, mesh);		
 		item->setPosition(position);
 		item->setScale(scale);	
 

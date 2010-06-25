@@ -94,7 +94,7 @@ namespace WyvernsAssault
 		void setFixedCamera(int camera, Vector3 position, Vector3 lookAt);
 		
 		/** Camera effects */
-		void zoom(Real zoom);
+		void zoom(Real duration);
 		void rumble(Real scale);
 		void tremor(Real scale);
 		void shake(Real scale);

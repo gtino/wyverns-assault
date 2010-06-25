@@ -147,6 +147,24 @@ material Particle/BloodHit
     }
 }
 //-----------------------------------------------------------------------------------------------------------------------------------------------
+material Particle/BloodGreen
+{
+    technique
+    {
+        pass
+        {
+			lighting off
+			scene_blend alpha_blend
+			depth_write off
+            texture_unit
+            {
+                texture particle_bloodGreen.png
+				tex_address_mode clamp
+            }
+        }
+    }
+}
+//-----------------------------------------------------------------------------------------------------------------------------------------------
 material Particle/Flare_01
 {
     technique
@@ -458,4 +476,58 @@ material Particle/Streak_01
         }
     }
 }
-//-----------------------------------------------------------------------------------------------------------------------
+//-----------------------------------------------------------------------------------------------------------------------------------------------
+material Particle/Skull
+{
+    technique
+    {
+        pass
+        {
+			lighting off
+			scene_blend alpha_blend
+			depth_write off
+            texture_unit
+            {
+                texture particle_skull.png
+				tex_address_mode clamp
+            }
+        }
+    }
+}
+//-----------------------------------------------------------------------------------------------------------------------------------------------
+material Particle/Heart
+{
+    technique
+    {
+        pass
+        {
+			lighting off
+			scene_blend alpha_blend
+			depth_write off
+            texture_unit
+            {
+                texture particle_heart.png
+				tex_address_mode clamp
+            }
+        }
+    }
+}
+//-----------------------------------------------------------------------------------------------------------------------------------------------
+material Particle/Money
+{
+    technique
+    {
+        pass
+        {
+			lighting off
+			scene_blend alpha_blend
+			depth_write off
+            texture_unit
+            {
+                texture particle_money.png
+				tex_address_mode clamp
+            }
+        }
+    }
+}
+//-----------------------------------------------------------------------------------------------------------------------------------------------

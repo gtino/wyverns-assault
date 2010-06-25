@@ -54,6 +54,8 @@ void Player::initializeEntity(Ogre::Entity* entity, Ogre::SceneNode* sceneNode, 
 	attackHited = false;
 	live = true;
 	timeDeath = 0;
+
+	mSpecialLength = mEntity->getAnimationState("Special")->getLength();
 	
 	// Bounding Box
 	mOBBoxRenderable = new OBBoxRenderable("OBBoxManualMaterial_Player");

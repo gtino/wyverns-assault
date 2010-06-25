@@ -159,6 +159,13 @@ PlayerAttackSpecialEvent::PlayerAttackSpecialEvent(PlayerPtr p)
 	mPlayer = p;
 };
 
+//----------------------
+
+ItemCreationEvent::ItemCreationEvent(ItemPtr i)
+:Event(EventTypes::ItemCreation, EventPriorities::Normal)
+{
+	mItem = i;
+};
 
 //----------------------
 
@@ -176,5 +183,3 @@ ItemRemoveEvent::ItemRemoveEvent(ItemPtr i)
 {
 	mItem = i;
 };
-
-

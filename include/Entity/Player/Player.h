@@ -90,6 +90,7 @@ namespace WyvernsAssault
 		Ogre::Real getHitDamage(){return mAttackDamage;}
 		Ogre::Real getComboHitDamage(){return mAttackDamage * 3;}
 		Ogre::Real getSpecialHitDamage(){return mSpecialDamage;}
+		float getSpecialLength(){ return mSpecialLength; }
 
 		// Fire attack bounding box
 		AxisAlignedBox getFireBox(){  return mFireMesh->getWorldBoundingBox(); }
@@ -155,15 +156,16 @@ namespace WyvernsAssault
 		bool mIsDebugEnabled;
 
 	private:
-		float	mMaxLife;
-		float	mLife;
-		float	mMaxSpecial;
-		float	mSpecial;
-		float	mScore;
-		float	mSpeed;
-		float	mHeight;
-		float	mAttackDamage;
-		float	mSpecialDamage;		
+		float		mMaxLife;
+		float		mLife;
+		float		mMaxSpecial;
+		float		mSpecial;
+		float		mScore;
+		float		mSpeed;
+		float		mHeight;
+		Ogre::Real	mAttackDamage;
+		Ogre::Real	mSpecialDamage;
+		float		mSpecialLength;
 
 		GuiWidgetId		mGuiId;
 
