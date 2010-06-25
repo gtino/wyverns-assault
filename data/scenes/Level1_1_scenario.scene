@@ -112,6 +112,19 @@
         </subentities>
       </entity>
     </node>
+    <node name="Fire#1" id="791985792">
+      <rotation qw="0.688355" qx="0.725374" qy="0" qz="0" />
+      <position x="56.7725" y="50.3456" z="713.023" />
+      <scale x="9" y="1" z="8" />
+      <entity name="2DBillboard0#0Copy#0" id="199621568" castshadows="false" meshFile="2DBillboard0.mesh">
+        <rotation qw="1" qx="0" qy="0" qz="0" />
+        <position x="0" y="0" z="0" />
+        <scale x="1" y="1" z="1" />
+        <subentities>
+          <subentity materialName="Animations/Fire" index="0" visible="true" />
+        </subentities>
+      </entity>
+    </node>
     <node name="Tree3_Billboard" id="308725248">
       <rotation qw="0.700991" qx="0.700991" qy="-0.0927974" qz="0.0927974" />
       <position x="327.264" y="16.9563" z="667.261" />
@@ -5223,6 +5236,19 @@
         </subentities>
       </entity>
     </node>
+    <node name="Fire#3" id="813409792">
+      <rotation qw="0.704008" qx="0.710179" qy="-0.00322978" qz="0.00293373" />
+      <position x="82.2957" y="29.0323" z="810" />
+      <scale x="5" y="1" z="4" />
+      <entity name="2DBillboard0#0Copy#0Copy#0Copy#0" id="63936280" castshadows="false" meshFile="2DBillboard0.mesh">
+        <rotation qw="1" qx="0" qy="0" qz="0" />
+        <position x="0" y="0" z="0" />
+        <scale x="1" y="1" z="1" />
+        <subentities>
+          <subentity materialName="Animations/Fire" index="0" visible="true" />
+        </subentities>
+      </entity>
+    </node>
     <node name="Tree3_Billboard13" id="522598976">
       <rotation qw="0.679263" qx="0.679263" qy="0.196473" qz="-0.196473" />
       <position x="852.428" y="14.6408" z="567.035" />
@@ -5277,6 +5303,19 @@
         <scale x="1" y="1" z="1" />
         <subentities>
           <subentity materialName="_2DTree2_Billboard" index="0" visible="true" />
+        </subentities>
+      </entity>
+    </node>
+    <node name="Fire#0" id="349803136">
+      <rotation qw="0.688355" qx="0.725374" qy="0" qz="0" />
+      <position x="0" y="67.3886" z="723.812" />
+      <scale x="10" y="1" z="10" />
+      <entity name="2DBillboard0#0" id="795251328" castshadows="false" meshFile="2DBillboard0.mesh">
+        <rotation qw="1" qx="0" qy="0" qz="0" />
+        <position x="0" y="0" z="0" />
+        <scale x="1" y="1" z="1" />
+        <subentities>
+          <subentity materialName="Animations/Fire" index="0" visible="true" />
         </subentities>
       </entity>
     </node>
@@ -5355,6 +5394,32 @@
         <scale x="1" y="1" z="1" />
         <subentities>
           <subentity materialName="_2DTree3_Billboard" index="0" visible="true" />
+        </subentities>
+      </entity>
+    </node>
+    <node name="Fire#2" id="146671952">
+      <rotation qw="0.677897" qx="0.714354" qy="0.12596" qz="-0.119532" />
+      <position x="-53.3856" y="66.2404" z="745.721" />
+      <scale x="10" y="1" z="10" />
+      <entity name="2DBillboard0#0Copy#0Copy#0" id="99215672" castshadows="false" meshFile="2DBillboard0.mesh">
+        <rotation qw="1" qx="0" qy="0" qz="0" />
+        <position x="0" y="0" z="0" />
+        <scale x="1" y="1" z="1" />
+        <subentities>
+          <subentity materialName="Animations/Fire" index="0" visible="true" />
+        </subentities>
+      </entity>
+    </node>
+    <node name="Fire#3Copy#0" id="273934112">
+      <rotation qw="0.704008" qx="0.710179" qy="-0.00322978" qz="0.00293373" />
+      <position x="29.0504" y="35.0739" z="798.13" />
+      <scale x="2" y="1" z="5" />
+      <entity name="2DBillboard0#0Copy#0Copy#0Copy#0Copy#0" id="174718464" castshadows="false" meshFile="2DBillboard0.mesh">
+        <rotation qw="1" qx="0" qy="0" qz="0" />
+        <position x="0" y="0" z="0" />
+        <scale x="1" y="1" z="1" />
+        <subentities>
+          <subentity materialName="Animations/Fire" index="0" visible="true" />
         </subentities>
       </entity>
     </node>
