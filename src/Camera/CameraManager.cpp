@@ -83,8 +83,8 @@ void CameraManager::initialize(SceneManager* sceneManager, RenderWindow* window)
 	mGameCamera->setAutoTracking(true, mGameCameraLookAtNode, Vector3::UNIT_X);
 
 	// Initial Camera Position
-	mGameCameraMode = CameraModes::Game;
-	mGameCameraNode->setPosition(2000, 1500, -2000);
+	mGameCameraMode = CameraModes::Fixed;
+	mGameCameraNode->setPosition(0, 0, 0);
 
 	/** Debug axes node */
 	mAxes = mSceneManager->createEntity("Axes", "axes.mesh");
@@ -762,6 +762,8 @@ void CameraManager::gameCamera()
 	mGameCameraMode = CameraModes::Game;
 	mCameraMan->setStyle(OgreBites::CS_MANUAL);
 	mGameCamera->setAutoTracking(true, mGameCameraLookAtNode, Vector3::UNIT_X);
+	mGameCamera->setPosition(Vector3::ZERO);
+	mGameViewport->setCamera(mGameCamera);
 }
 void CameraManager::freeCamera()
 {
@@ -792,6 +794,7 @@ void CameraManager::cutSceneCamera()
 	mGameCameraMode = CameraModes::CutScene;
 	mCameraMan->setStyle(OgreBites::CS_MANUAL);
 	mGameCamera->setAutoTracking(true, mGameCameraLookAtNode, Vector3::UNIT_X);
+	mGameCamera->setPosition(Vector3::ZERO);
 	mGameViewport->setCamera(mGameCamera);
 }
 
@@ -894,7 +897,6 @@ LUA_BEGIN_BINDING(CameraManager, cameralib)
 LUA_BIND(CameraManager, setCurrent)
 LUA_BIND(CameraManager, getCurrent)
 LUA_BIND(CameraManager, translate)
-LUA_BIND(CameraManager, lookAt)
 LUA_BIND(CameraManager, moveTo)
 LUA_BIND(CameraManager, flyTo)
 LUA_BIND(CameraManager, hasArrived)
@@ -974,43 +976,26 @@ LUA_DEFINE_FUNCTION(CameraManager, translate)
 	int n = lua_gettop(L);
 
 	Ogre::Vector3 position = Ogre::Vector3::ZERO;
+	Ogre::Vector3 lookAt = Ogre::Vector3::ZERO;
 
 	position.x = lua_tonumber(L, 1);
 	position.y = lua_tonumber(L, 2);
 	position.z = lua_tonumber(L, 3);
+	lookAt.x = lua_tonumber(L, 4);
+	lookAt.y = lua_tonumber(L, 5);
+	lookAt.z = lua_tonumber(L, 6);
 
 	//
 	// Retrieve the CameraManager
 	//
 	CameraManager* cameraManager = CameraManager::getSingletonPtr();
 
-	cameraManager->translate(position);
+	cameraManager->translate(position, lookAt);
 
 	/* return the number of results */
 	return 0;
 }
 
-LUA_DEFINE_FUNCTION(CameraManager, lookAt)
-{
-	/* get number of arguments */
-	int n = lua_gettop(L);
-
-	Ogre::Vector3 position = Ogre::Vector3::ZERO;
-
-	position.x = lua_tonumber(L, 1);
-	position.y = lua_tonumber(L, 2);
-	position.z = lua_tonumber(L, 3);
-
-	//
-	// Retrieve the CameraManager
-	//
-	CameraManager* cameraManager = CameraManager::getSingletonPtr();
-
-	cameraManager->lookAt(position);
-
-	/* return the number of results */
-	return 0;
-}
 
 LUA_DEFINE_FUNCTION(CameraManager, moveTo)
 {
@@ -1018,17 +1003,21 @@ LUA_DEFINE_FUNCTION(CameraManager, moveTo)
 	int n = lua_gettop(L);
 
 	Ogre::Vector3 position = Ogre::Vector3::ZERO;
+	Ogre::Vector3 lookAt = Ogre::Vector3::ZERO;
 
 	position.x = lua_tonumber(L, 1);
 	position.y = lua_tonumber(L, 2);
 	position.z = lua_tonumber(L, 3);
+	lookAt.x = lua_tonumber(L, 4);
+	lookAt.y = lua_tonumber(L, 5);
+	lookAt.z = lua_tonumber(L, 6);
 
 	//
 	// Retrieve the CameraManager
 	//
 	CameraManager* cameraManager = CameraManager::getSingletonPtr();
 
-	cameraManager->moveTo(position);
+	cameraManager->moveTo(position, lookAt);
 
 	/* return the number of results */
 	return 0;
@@ -1113,8 +1102,7 @@ LUA_DEFINE_FUNCTION(CameraManager, strife)
 
 	dir = dir * amount;
 
-	cameraManager->translate(dir);
-	cameraManager->translateLookAt(dir);
+	cameraManager->translate(dir, dir);
 
 	/* return the number of results */
 	return 0;

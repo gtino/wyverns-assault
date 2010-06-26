@@ -57,10 +57,10 @@ void PlayerManager::update(const float elapsedSeconds)
 		}
 
 		mRefillTimer += elapsedSeconds;
-		// Every 0.1 seconds, fill special bar 2 units
+		// Every 0.1 seconds, fill special bar 1 units
 		if( mRefillTimer > 0.05 )
 		{
-			player->setSpecial( player->getSpecial() + 2 );
+			player->setSpecial( player->getSpecial() + 1 );
 			mRefillTimer = 0.0f;
 			PlayerStatusUpdateEventPtr playerStatusUpdateEventPtr = PlayerStatusUpdateEventPtr(new PlayerStatusUpdateEvent(player));
 			EVENTS_FIRE(playerStatusUpdateEventPtr);
