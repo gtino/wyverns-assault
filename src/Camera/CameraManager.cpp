@@ -792,6 +792,7 @@ void CameraManager::cutSceneCamera()
 	mGameCameraMode = CameraModes::CutScene;
 	mCameraMan->setStyle(OgreBites::CS_MANUAL);
 	mGameCamera->setAutoTracking(true, mGameCameraLookAtNode, Vector3::UNIT_X);
+	mGameViewport->setCamera(mGameCamera);
 }
 
 void CameraManager::resumeCamera()

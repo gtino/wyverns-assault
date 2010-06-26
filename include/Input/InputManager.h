@@ -57,6 +57,7 @@ namespace WyvernsAssault
 						, public OIS::MouseListener
 						, public OIS::KeyListener
 						, public OIS::JoyStickListener
+						, public LuaInterface
 	{
 	public:
 		InputManager();
