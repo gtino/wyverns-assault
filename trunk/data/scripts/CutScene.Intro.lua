@@ -29,17 +29,17 @@ function playIntroCutScene(elapsedTime)
 		--PostProcess.disableAllCompositors(); -- Disable all compositos
 		
 		Camera.setCurrent(CameraMode_CutScene); -- Sets the current camera
-		Camera.moveTo(2000, 1500, -2000); -- Start from some point far away
-		Camera.lookAt(80, 24, 870); -- And look at the player
+		Camera.moveTo(2000, 1500, -2000, 80, 24, 870); -- Start from some point far away	
 		
 		Audio.playLoop("soft_track.mp3"); -- Play the soundtrack
 
 		CutScene.nextStep(); -- Simply go to next step
-	elseif step == 1 then	
-		-- First part of the scene: camera flyes from the sky to the wyverns cave	
-		--Camera.flyTo(80, 180, 1140, 76.8, -100, 630, 5);	
-		Camera.moveTo(80, 180, 1140);--, 76.8, -100, 630, 5);			
-		CutScene.nextStep(); -- Simply go to next step
+	elseif step == 1 then
+		if Camera.hasArrived() then
+			-- First part of the scene: camera flyes from the sky to the wyverns cave	
+			Camera.flyTo(80, 180, 1140, 76.8, -100, 630, 5);		
+			CutScene.nextStep(); -- Simply go to next step
+		end
 	elseif step == 2 then
 		if Camera.hasArrived() then
 			-- Camera has arrived

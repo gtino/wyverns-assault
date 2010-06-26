@@ -42,7 +42,7 @@ void CutSceneManager::finalize()
 
 void CutSceneManager::update(const float elapsedSeconds)
 {
-	return; // NOTE : Disabled until Lua scripts are not ready
+	//return; // NOTE : Disabled until Lua scripts are not ready
 
 	if(mCutSceneId == CutSceneId::Nothing)
 		return;

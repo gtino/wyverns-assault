@@ -124,10 +124,14 @@ namespace WyvernsAssault
 		void freeCameraKeyboardUp(OIS::KeyEvent evt);
 
 		/** Cut Scenes camera function **/
-		void translate(Ogre::Vector3 vector){ mCameraNode->translate(vector); }
-		void moveTo(Ogre::Vector3 vector){ mCameraNode->setPosition(vector); }		
-		void lookAt(Ogre::Vector3 vector){ mGameCameraLookAtNode->setPosition(vector); }
-		void translateLookAt(Ogre::Vector3 vector){ mGameCameraLookAtNode->translate(vector); }
+		void translate(Ogre::Vector3 position, Ogre::Vector3 lookAt)
+		{ 
+			createTransition(getCameraPosition(), (getCameraPosition() + position), getCameraLookAt(), (getCameraLookAt() + lookAt), 0.01f); 
+		}
+		void moveTo(Ogre::Vector3 position, Ogre::Vector3 lookAt)
+		{ 
+			createTransition(getCameraPosition(), position, getCameraLookAt(), lookAt, 0.01f); 
+		}
 		bool isMoving(){ return mMoving; }
 
 		/**  Rendering queue */
@@ -227,7 +231,6 @@ namespace WyvernsAssault
 		LUA_FUNCTION(setCurrent);
 		LUA_FUNCTION(getCurrent);
 		LUA_FUNCTION(translate);
-		LUA_FUNCTION(lookAt);
 		LUA_FUNCTION(moveTo);
 		LUA_FUNCTION(flyTo);
 		LUA_FUNCTION(hasArrived);
