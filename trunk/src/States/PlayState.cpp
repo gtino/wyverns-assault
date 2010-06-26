@@ -179,6 +179,7 @@ void PlayState::initialize()
 	mLuaManager->registerInterface(mGuiManager);
 	mLuaManager->registerInterface(mPostProcessManager);
 	mLuaManager->registerInterface(mCameraManager);
+	mLuaManager->registerInterface(mInputManager);
 
 	//
 	// THIRD :	This call to 'initialize' will initialize Lua,
