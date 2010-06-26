@@ -22,6 +22,15 @@ IntroState::~IntroState()
 void IntroState::initialize()
 {
 	BaseState::initialize();
+
+	//
+	// Set game camera 
+	// NOTE : I do not know why this is required, but IT IS! 
+	//
+	mCameraManager->gameCamera();
+
+	mVideoManager = VideoManagerPtr(new VideoManager(mSceneManager));
+	mVideoManager->initialize();
 }
 
 /** Manage input */
@@ -41,16 +50,18 @@ void IntroState::load()
 	//
 	mGuiScreen = mGuiManager->createGui(GuiScreenId::IntroGui, "IntroScreen");
 	
-	GuiBackground* guiBackground = new GuiBackground();
-	guiBackground->setImage("Intro.png","IntroBackground","General");
+	//GuiBackground* guiBackground = new GuiBackground();
+	//guiBackground->setImage("Intro.png","IntroBackground","General");
 
-	mGuiScreen->setBackground(guiBackground);
+	//mGuiScreen->setBackground(guiBackground);
 
 	// Gui Widgets for this state
 	mMenu = new GuiMenu(mWindow->getViewport(0)->getCamera()->getAspectRatio(), GuiScreenId::IntroGui);
 	
 	// Add menu to screen
 	mGuiScreen->addMenu(mMenu);
+
+	mVideoManager->play();
 }
 
 /** Update internal stuff */
@@ -59,6 +70,8 @@ void IntroState::update(const float elapsedSeconds)
 	//
 	// TODO Update
 	//
+	if(mVideoManager->isDone())
+		this->mNextGameStateId = GameStateId::MainMenu;
 }
 
 /** Render */
@@ -80,6 +93,8 @@ void IntroState::unload()
 		mGuiManager->removeGui(GuiScreenId::IntroGui);
 		mGuiScreen.reset();
 	}
+
+	mVideoManager.reset();
 }
 
 /** Destroy the state */

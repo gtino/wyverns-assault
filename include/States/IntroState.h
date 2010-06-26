@@ -25,6 +25,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
 #include "BaseState.h"
 
+#include "..\Video\VideoManager.h"
+
 namespace WyvernsAssault
 {
 	/**
@@ -63,6 +65,9 @@ namespace WyvernsAssault
 
 		/** Get state Id */
 		GameStateId getStateId();
+
+	private:
+		VideoManagerPtr mVideoManager;
 	};
 }
 #endif // __INTRO_STATE_H_
