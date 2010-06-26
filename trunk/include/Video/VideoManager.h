@@ -27,8 +27,14 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #include <OgreSingleton.h>
 #include <boost/enable_shared_from_this.hpp>
 
+#include "TheoraVideoManager.h"
+#include "TheoraVideoClip.h"
+
 #include "..\Utils\Utils.h"
 #include "..\Lua\LuaInterface.h"
+
+#define VIDEO_FILE "intro.ogv"
+#define VIDEO_NODE_NAME "VideoNode"
 
 using namespace Ogre;
 
@@ -57,9 +63,21 @@ namespace WyvernsAssault
 
 		Ogre::SceneNode* _getSceneNode() const { return mVideoNode; }
 
+		void play();
+		void stop();
+		bool isDone();
+
+	private:
+		void createQuad(String name,String material_name,float left,float top,float right,float bottom);
+
 	private:
 		SceneManager* mSceneManager;
 		SceneNode* mVideoNode;
+
+		TheoraVideoManager* mTheoraVideoManager;
+		TheoraVideoClip* mTheoraVideoClip;
+
+		bool mInitialized;
 
 	// --------------------------------
 	// BEGIN Lua Interface Declarations

@@ -1,0 +1,18 @@
+material video_material
+ {
+   technique
+   {
+     pass
+     {
+       texture_unit
+       {
+         texture_source ogg_video
+         {
+           filename intro.ogv
+           precache 16
+           play_mode play
+         }
+       }
+     }
+   }
+ }
