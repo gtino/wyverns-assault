@@ -48,6 +48,7 @@ namespace WyvernsAssault
 
 		void enable() {mEnabled = true;}
 		void disable(){mEnabled = false;}
+		bool isEnabled(){return mEnabled;}
 
 	private: // Game data
 		bool mEnabled;
@@ -59,11 +60,12 @@ namespace WyvernsAssault
 		LUA_INTERFACE();
 
 		// Game Lib (exported to Lua)
-		LUA_LIBRARY("Game",logiclib)
+		LUA_LIBRARY("Logic",logiclib)
 
 		// From Lua to C++
 		LUA_FUNCTION(enable)
 		LUA_FUNCTION(disable)
+		LUA_FUNCTION(isEnabled)
 		LUA_FUNCTION(getTotalSeconds)
 		LUA_FUNCTION(getElapsedSeconds)
 

@@ -51,6 +51,10 @@ void PostProcessManager::initialize()
 	/** Debug compositors */
 	mCompositorManager->addCompositor(mViewport, "ShowDepth");
 	mCompositorManager->addCompositor(mViewport, "ShowNormal");
+	// CutScene compositors
+	mCompositorManager->addCompositor(mViewport, "OldMovie");
+	mCompositorManager->addCompositor(mViewport, "OldTV");
+	mCompositorManager->addCompositor(mViewport, "BlackAndWhite");
 
 	//
 	// Disable all by default
@@ -71,6 +75,10 @@ void PostProcessManager::finalize()
 	/** Debug compositors */
 	mCompositorManager->removeCompositor(mViewport, "ShowDepth");
 	mCompositorManager->removeCompositor(mViewport, "ShowNormal");
+	// CutScene compositors
+	mCompositorManager->removeCompositor(mViewport, "OldMovie");
+	mCompositorManager->removeCompositor(mViewport, "OldTV");
+	mCompositorManager->removeCompositor(mViewport, "BlackAndWhite");
 }
 
 void PostProcessManager::disableAll()
@@ -90,6 +98,10 @@ void PostProcessManager::disableAll()
 	/** Debug compositors */
 	mCompositorManager->setCompositorEnabled(mViewport, "ShowDepth", false);
 	mCompositorManager->setCompositorEnabled(mViewport, "ShowNormal", false);
+	// CutScene compositors
+	mCompositorManager->setCompositorEnabled(mViewport, "OldMovie",false);
+	mCompositorManager->setCompositorEnabled(mViewport, "OldTV",false);
+	mCompositorManager->setCompositorEnabled(mViewport, "BlackAndWhite",false);
 }
 
 void PostProcessManager::pause()
@@ -117,6 +129,17 @@ void PostProcessManager::resume()
 	mCompositorManager->setCompositorEnabled(mViewport, "ShowDepth", mShowDepth);
 	mCompositorManager->setCompositorEnabled(mViewport, "ShowNormal", mShowNormal);
 }
+
+void PostProcessManager::enable(Ogre::String name)
+{
+		mCompositorManager->setCompositorEnabled(mViewport, name, true);
+}
+
+void PostProcessManager::disable(Ogre::String name)
+{
+		mCompositorManager->setCompositorEnabled(mViewport, name, false);
+}
+
 
 // Depth of field compositor enable function
 void PostProcessManager::depthOfField()
@@ -201,6 +224,7 @@ EVENTS_DEFINE_HANDLER(PostProcessManager, ItemCatch)
 LUA_BEGIN_BINDING(PostProcessManager,postprocesslib)
 LUA_BIND(PostProcessManager,enableCompositor)
 LUA_BIND(PostProcessManager,disableCompositor)
+LUA_BIND(PostProcessManager,disableAllCompositors)
 LUA_END_BINDING()
 
 //
@@ -217,8 +241,12 @@ LUA_DEFINE_FUNCTION( PostProcessManager, enableCompositor)
 	/* get number of arguments */
 	int n = lua_gettop(L);
 
+	Ogre::String name = luaL_checkstring(L, 1);
+
+	PostProcessManager::getSingleton().enable(name);
+
 	/* return the number of results */
-	return 1;
+	return 0;
 }
 
 LUA_DEFINE_FUNCTION( PostProcessManager, disableCompositor)
@@ -226,6 +254,21 @@ LUA_DEFINE_FUNCTION( PostProcessManager, disableCompositor)
 	/* get number of arguments */
 	int n = lua_gettop(L);
 
+	Ogre::String name = luaL_checkstring(L, 1);
+
+	PostProcessManager::getSingleton().disable(name);
+
 	/* return the number of results */
-	return 1;
+	return 0;
+}
+
+LUA_DEFINE_FUNCTION( PostProcessManager, disableAllCompositors)
+{
+	/* get number of arguments */
+	int n = lua_gettop(L);
+
+	PostProcessManager::getSingleton().disableAll();
+
+	/* return the number of results */
+	return 0;
 }

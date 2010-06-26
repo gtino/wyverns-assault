@@ -126,36 +126,17 @@ void PlayState::initialize()
 	mLogicManager = LogicManagerPtr(new LogicManager());
 	mLogicManager->initialize();
 
-	// -----------
-	// Lua Manager
-	// -----------
-	// Create this manager after ALL other managers. Never alter
-	// the oreder of the operations!
-	//
-	// FIRST : Instatniate the Lua Manager
-	mLuaManager = LuaManagerPtr(new LuaManager());
-
-	//
-	// SECOND : Register all the LuaInterfaces you want. 
-	//
-	mLuaManager->registerInterface(mLightsManager);
-	mLuaManager->registerInterface(mLogicManager);
-	mLuaManager->registerInterface(mEnemyManager);
-	mLuaManager->registerInterface(mPhysicsManager);
-	mLuaManager->registerInterface(mPlayerManager);
-
-	//
-	// THIRD :	This call to 'initialize' will initialize Lua,
-	//			open default Lua libs, add custom libs exported by
-	//			our registered LuaInterfaces, setup the environment.
-	//
-	mLuaManager->initialize();
-
 	//
 	// Create ScenarioManager
 	//
 	mScenarioManager = ScenarioManagerPtr(new ScenarioManager(mSceneManager));
 	mScenarioManager->initialize();
+
+	//
+	// Cut scene manager
+	//
+	mCutSceneManager = CutSceneManagerPtr(new CutSceneManager(mSceneManager));
+	mCutSceneManager->initialize();
 
 	//
 	// Events Manager 
@@ -174,6 +155,37 @@ void PlayState::initialize()
 	mEventsManager->registerInterface(mCameraManager);
 	mEventsManager->registerInterface(mGuiManager);
 	mEventsManager->registerInterface(mPostProcessManager);
+	mEventsManager->registerInterface(mCutSceneManager);
+
+		// -----------
+	// Lua Manager
+	// -----------
+	// Create this manager after ALL other managers. Never alter
+	// the oreder of the operations!
+	//
+	// FIRST : Instatniate the Lua Manager
+	mLuaManager = LuaManagerPtr(new LuaManager());
+
+	//
+	// SECOND : Register all the LuaInterfaces you want. 
+	//
+	mLuaManager->registerInterface(mLightsManager);
+	mLuaManager->registerInterface(mLogicManager);
+	mLuaManager->registerInterface(mEnemyManager);
+	mLuaManager->registerInterface(mPhysicsManager);
+	mLuaManager->registerInterface(mPlayerManager);
+	mLuaManager->registerInterface(mCutSceneManager);
+	mLuaManager->registerInterface(mAudioManager);
+	mLuaManager->registerInterface(mGuiManager);
+	mLuaManager->registerInterface(mPostProcessManager);
+	mLuaManager->registerInterface(mCameraManager);
+
+	//
+	// THIRD :	This call to 'initialize' will initialize Lua,
+	//			open default Lua libs, add custom libs exported by
+	//			our registered LuaInterfaces, setup the environment.
+	//
+	mLuaManager->initialize();
 
 	//
 	// Load scene!
@@ -398,6 +410,11 @@ void PlayState::update(const float elapsedSeconds)
 	mPostProcessManager->update(elapsedSeconds);
 
 	//
+	// Update CutScene Manager
+	//
+	mCutSceneManager->update(elapsedSeconds);
+
+	//
 	// Dispatch events. Managers have probably raised events, that are now in the 
 	// EventsManager queue. The events manager will then dispatch them, calling
 	// for each of them the registered handler(s).
@@ -478,6 +495,8 @@ void PlayState::finalize()
 	mParticleManager.reset();
 
 	mPostProcessManager.reset();
+
+	mCutSceneManager.reset();
 
 	//mGraphicsManager->clearScene();
 

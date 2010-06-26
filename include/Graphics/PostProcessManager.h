@@ -57,6 +57,8 @@ namespace WyvernsAssault
 		// Pause/Resume compositors
 		void pause();
 		void resume();
+		void enable(Ogre::String name);
+		void disable(Ogre::String name);
 
 		// Compositor toogle
 		void depthOfField();		
@@ -103,6 +105,7 @@ namespace WyvernsAssault
 
 		LUA_FUNCTION(enableCompositor);
 		LUA_FUNCTION(disableCompositor);
+		LUA_FUNCTION(disableAllCompositors);
 		// ------------------------------
 		// END Lua Interface Declarations
 		// ------------------------------

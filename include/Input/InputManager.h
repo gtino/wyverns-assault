@@ -137,8 +137,9 @@ namespace WyvernsAssault
 		//
 		// Enable/disable input
 		//
-		void InputManager::disable(){mEnabled = false;}
-		void InputManager::enable(){mEnabled = true;}
+		void disable(){mEnabled = false;}
+		void enable(){mEnabled = true;}
+		bool isEnabled(){return mEnabled;}
 
 	protected:
 		OIS::InputManager* mInputManager;
@@ -168,6 +169,7 @@ namespace WyvernsAssault
 
 			LUA_FUNCTION(enable);
 			LUA_FUNCTION(disable);
+			LUA_FUNCTION(isEnabled);
 		// ------------------------------
 		// END Lua Interface Declarations
 		// ------------------------------

@@ -6,8 +6,8 @@
 
 function runDayLight(p)
 	
-	local totalSeconds = Game.getTotalSeconds()
-	local elapsedSeconds = Game.getElapsedSeconds()
+	local totalSeconds = Logic.getTotalSeconds()
+	local elapsedSeconds =Logic.getElapsedSeconds()
 	
 	local r,g,b = Light.getLightDiffuseColor("Point1")
 	local ar,ag,ab = Light.getAmbientLight();

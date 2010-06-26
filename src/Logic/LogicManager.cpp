@@ -58,6 +58,7 @@ bool LogicManager::update(const float elapsedSeconds)
 LUA_BEGIN_BINDING(LogicManager,logiclib)
 LUA_BIND(LogicManager,enable)
 LUA_BIND(LogicManager,disable)
+LUA_BIND(LogicManager,isEnabled)
 LUA_BIND(LogicManager,getTotalSeconds)
 LUA_BIND(LogicManager,getElapsedSeconds)
 LUA_END_BINDING()
@@ -103,6 +104,21 @@ LUA_DEFINE_FUNCTION(LogicManager,disable)
 
 	/* return the number of results */
 	return 0;
+}
+
+LUA_DEFINE_FUNCTION(LogicManager, isEnabled)
+{
+	/* get number of arguments */
+	int n = lua_gettop(L);
+
+	// n should be 0
+
+	bool isEnabled = LogicManager::getSingleton().isEnabled();
+
+	lua_pushboolean(L, isEnabled);
+
+	/* return the number of results */
+	return 1;
 }
 
 LUA_DEFINE_FUNCTION(LogicManager,getTotalSeconds)
