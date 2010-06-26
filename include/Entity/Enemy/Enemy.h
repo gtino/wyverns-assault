@@ -159,9 +159,12 @@ namespace WyvernsAssault
 		void setBurning(bool status){ burning = status; }
 		void setDieMesh(Ogre::Entity* entity);
 		bool hasDieMesh(){ return mEntityDie != NULL; }
+		void setDieMaterialName(Ogre::String material){ mEntityDie->setMaterialName(material); }
+		void setDieAnimation(Ogre::AnimationState* dieAnimation);
 		bool hasDieAnimation(){ return mDieAnimation != NULL; }
 		void dieSwitch();
 		void dieToCamera();
+		bool isFlying(){ return flying; }
 		void stop();
 
 	private:
@@ -201,9 +204,10 @@ namespace WyvernsAssault
 		bool		newAttack;
 		bool		attackHited;
 		bool		burning;
+		bool		flying;
 
 		//Dying mesh
-		Entity*		mEntityDie;
+		Entity*				mEntityDie;
 		// Die animation
 		AnimationState*		mDieAnimation;		
 

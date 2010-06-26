@@ -120,8 +120,9 @@ EnemyPtr EnemyManager::createEnemy(Enemy::EnemyTypes type, Ogre::String name, Og
 	// Enemy name == Mesh Name!
 	Ogre::Entity* enemyMesh = mSceneManager->createEntity(name, mesh);
 
-	// Die mesh
+	// Die mesh and animation
 	Ogre::Entity* enemyDieMesh = NULL;
+	Ogre::AnimationState* enemyDieAnimation = NULL;
 
 	// Switch enemy type
 	switch(type)
@@ -131,56 +132,95 @@ EnemyPtr EnemyManager::createEnemy(Enemy::EnemyTypes type, Ogre::String name, Og
 			break;
 
 		case Enemy::EnemyTypes::KnightA:
+			enemyDieMesh = mSceneManager->createEntity(name + "Die", "nakedDie.mesh");
+			enemyDieAnimation = enemyDieMesh->getAnimationState("Die");
 			enemyMesh->setMaterialName("knightA_material");
 			break;
 		case Enemy::EnemyTypes::KnightA2:
+			enemyDieMesh = mSceneManager->createEntity(name + "Die", "nakedDie.mesh");
+			enemyDieAnimation = enemyDieMesh->getAnimationState("Die");
 			enemyMesh->setMaterialName("knightA_material_2");
 			break;
 		case Enemy::EnemyTypes::KnightA3:
+			enemyDieMesh = mSceneManager->createEntity(name + "Die", "nakedDie.mesh");
+			enemyDieAnimation = enemyDieMesh->getAnimationState("Die");
 			enemyMesh->setMaterialName("knightA_material_3");
 			break;
 		case Enemy::EnemyTypes::KnightA4:
+			enemyDieMesh = mSceneManager->createEntity(name + "Die", "nakedDie.mesh");
+			enemyDieAnimation = enemyDieMesh->getAnimationState("Die");
 			enemyMesh->setMaterialName("knightA_material_4");
 			break;
 		case Enemy::EnemyTypes::KnightA5:
+			enemyDieMesh = mSceneManager->createEntity(name + "Die", "nakedDie.mesh");
+			enemyDieAnimation = enemyDieMesh->getAnimationState("Die");
 			enemyMesh->setMaterialName("knightA_material_5");
 			break;
 		case Enemy::EnemyTypes::KnightB:
+			enemyDieMesh = mSceneManager->createEntity(name + "Die", "nakedDie.mesh");
+			enemyDieAnimation = enemyDieMesh->getAnimationState("Die");
 			enemyMesh->setMaterialName("knightB_material");
 			break;
 		case Enemy::EnemyTypes::KnightB2:
+			enemyDieMesh = mSceneManager->createEntity(name + "Die", "nakedDie.mesh");
+			enemyDieAnimation = enemyDieMesh->getAnimationState("Die");
 			enemyMesh->setMaterialName("knightB_material_2");
 			break;
 		case Enemy::EnemyTypes::KnightB3:
+			enemyDieMesh = mSceneManager->createEntity(name + "Die", "nakedDie.mesh");
+			enemyDieAnimation = enemyDieMesh->getAnimationState("Die");
 			enemyMesh->setMaterialName("knightB_material_3");
 			break;
 		case Enemy::EnemyTypes::KnightB4:
+			enemyDieMesh = mSceneManager->createEntity(name + "Die", "nakedDie.mesh");
+			enemyDieAnimation = enemyDieMesh->getAnimationState("Die");
 			enemyMesh->setMaterialName("knightB_material_4");
 			break;
 		case Enemy::EnemyTypes::KnightB5:
+			enemyDieMesh = mSceneManager->createEntity(name + "Die", "nakedDie.mesh");
+			enemyDieAnimation = enemyDieMesh->getAnimationState("Die");
 			enemyMesh->setMaterialName("knightB_material_5");
 			break;
 		case Enemy::EnemyTypes::KnightC:
+			enemyDieMesh = mSceneManager->createEntity(name + "Die", "nakedDie.mesh");
+			enemyDieAnimation = enemyDieMesh->getAnimationState("Die");
 			enemyMesh->setMaterialName("knightC_material");
 			break;
 		case Enemy::EnemyTypes::KnightC2:
+			enemyDieMesh = mSceneManager->createEntity(name + "Die", "nakedDie.mesh");
+			enemyDieAnimation = enemyDieMesh->getAnimationState("Die");
 			enemyMesh->setMaterialName("knightC_material_2");
 			break;
 		case Enemy::EnemyTypes::KnightC3:
+			enemyDieMesh = mSceneManager->createEntity(name + "Die", "nakedDie.mesh");
+			enemyDieAnimation = enemyDieMesh->getAnimationState("Die");
 			enemyMesh->setMaterialName("knightC_material_3");
 			break;
 		case Enemy::EnemyTypes::KnightC4:
+			enemyDieMesh = mSceneManager->createEntity(name + "Die", "nakedDie.mesh");
+			enemyDieAnimation = enemyDieMesh->getAnimationState("Die");
 			enemyMesh->setMaterialName("knightC_material_4");
 			break;
 		case Enemy::EnemyTypes::KnightC5:
+			enemyDieMesh = mSceneManager->createEntity(name + "Die", "nakedDie.mesh");
+			enemyDieAnimation = enemyDieMesh->getAnimationState("Die");
 			enemyMesh->setMaterialName("knightC_material_5");
 			break;
 
 		case Enemy::EnemyTypes::Wizard:
+			enemyDieMesh = mSceneManager->createEntity(name + "Die", "nakedDie.mesh");
+			enemyDieAnimation = enemyDieMesh->getAnimationState("Die");
 			enemyMesh->setMaterialName("wizard_material");
 			break;
 		case Enemy::EnemyTypes::Wizard2:
+			enemyDieMesh = mSceneManager->createEntity(name + "Die", "nakedDie.mesh");
+			enemyDieAnimation = enemyDieMesh->getAnimationState("Die");
 			enemyMesh->setMaterialName("wizard_material_2");
+			break;
+
+		case Enemy::EnemyTypes::Naked:
+			enemyDieMesh = mSceneManager->createEntity(name + "Die", "nakedDie.mesh");
+			enemyDieAnimation = enemyDieMesh->getAnimationState("Die");
 			break;
 	}
 
@@ -198,6 +238,10 @@ EnemyPtr EnemyManager::createEnemy(Enemy::EnemyTypes type, Ogre::String name, Og
 	{
 		enemySceneNode->attachObject(enemyDieMesh);
 		enemy->setDieMesh(enemyDieMesh);
+
+		// Set die animation if exists
+		if( enemyDieAnimation != NULL )
+			enemy->setDieAnimation(enemyDieAnimation);
 	}
 
 	mEnemyList.push_back(enemy);
@@ -353,10 +397,18 @@ EVENTS_DEFINE_HANDLER(EnemyManager, EnemyKilled)
 		}
 		else 
 		{
-			if( (rand()%3) == 0 )
+			if( (rand()%6) == 0 )
 				enemy->dieToCamera();
 			else
-				enemy->setMaterialName("Skin/Red");
+			{				
+				if( enemy->hasDieAnimation() )
+				{
+					enemy->dieSwitch();
+					enemy->setDieMaterialName("Skin/Red");
+				}
+				else
+					enemy->setMaterialName("Skin/Red");
+			}
 		}
 
 		EnemyRemoveEventPtr eRemove = EnemyRemoveEventPtr(new EnemyRemoveEvent(enemy));

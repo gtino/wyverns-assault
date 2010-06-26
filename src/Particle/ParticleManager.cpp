@@ -344,7 +344,7 @@ EVENTS_DEFINE_HANDLER(ParticleManager, EnemyKilled)
 		if( enemy->getEnemyType() == Enemy::EnemyTypes::Chicken )
 			this->chickenKill(enemy->_getSceneNode());
 
-		else if( enemy->hasDieAnimation() )
+		else if( enemy->isFlying() )
 		{
 			this->bloodHit(enemy->_getSceneNode());
 			this->bloodLens();
