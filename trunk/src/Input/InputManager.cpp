@@ -352,6 +352,7 @@ bool InputManager::povMoved(const OIS::JoyStickEvent &evt, int index)
 LUA_BEGIN_BINDING(InputManager, inputlib)
 LUA_BIND(InputManager, disable)
 LUA_BIND(InputManager, enable)
+LUA_BIND(InputManager, isEnabled)
 LUA_END_BINDING()
 
 //
@@ -387,4 +388,19 @@ LUA_DEFINE_FUNCTION(InputManager, enable)
 
 	/* return the number of results */
 	return 0;
+}
+
+LUA_DEFINE_FUNCTION(InputManager, isEnabled)
+{
+	/* get number of arguments */
+	int n = lua_gettop(L);
+
+	// n should be 0
+
+	bool isEnabled = InputManager::getSingleton().isEnabled();
+
+	lua_pushboolean(L, isEnabled);
+
+	/* return the number of results */
+	return 1;
 }

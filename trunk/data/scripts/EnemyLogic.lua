@@ -30,8 +30,8 @@ function runNakedLogic(enemyId, state)
 	
 	local newState = state
 	
-	local totalSeconds = Game.getTotalSeconds()
-	local elapsedSeconds = Game.getElapsedSeconds()
+	local totalSeconds = Logic.getTotalSeconds()
+	local elapsedSeconds = Logic.getElapsedSeconds()
 	
 	--local nStates = Fear;
 	--local nTimeInState = totalSeconds / 10;
@@ -84,8 +84,8 @@ function runWizardLogic(enemyId, state)
 	
 	local newState = state
 	
-	local totalSeconds = Game.getTotalSeconds()
-	local elapsedSeconds = Game.getElapsedSeconds()
+	local totalSeconds = Logic.getTotalSeconds()
+	local elapsedSeconds = Logic.getElapsedSeconds()
 	
 	--local nStates = Fear;
 	--local nTimeInState = totalSeconds / 10;
@@ -149,8 +149,8 @@ function runPeasantLogic(enemyId, state)
 	
 	local newState = state
 	
-	local totalSeconds = Game.getTotalSeconds()
-	local elapsedSeconds = Game.getElapsedSeconds()
+	local totalSeconds = Logic.getTotalSeconds()
+	local elapsedSeconds = Logic.getElapsedSeconds()
 	
 	--local nStates = Fear;
 	--local nTimeInState = totalSeconds / 10;
@@ -203,8 +203,8 @@ function runSoldierLogic(enemyId, state)
 	
 	local newState = state
 	
-	local totalSeconds = Game.getTotalSeconds()
-	local elapsedSeconds = Game.getElapsedSeconds()
+	local totalSeconds = Logic.getTotalSeconds()
+	local elapsedSeconds = Logic.getElapsedSeconds()
 	
 	--local nStates = Fear;
 	--local nTimeInState = totalSeconds / 10;
@@ -328,8 +328,8 @@ function runAnimalLogic(enemyId, state)
 	
 	local newState = state
 	
-	local totalSeconds = Game.getTotalSeconds()
-	local elapsedSeconds = Game.getElapsedSeconds()
+	local totalSeconds = Logic.getTotalSeconds()
+	local elapsedSeconds = Logic.getElapsedSeconds()
 		
 	local player = Physics.getNearestPlayer(enemyId);
 	local distance = Physics.getDistance(enemyId,player);

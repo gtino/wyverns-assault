@@ -830,8 +830,14 @@ LUA_DEFINE_FUNCTION(AudioManager, playOnce)
 	/* get number of arguments */
 	int n = lua_gettop(L);
 
+	Ogre::String name = luaL_checkstring(L, 1);
+
+	int channelIndex = -1;
+
+	AudioManager::getSingleton().playSound(name,Ogre::Vector3::ZERO,&channelIndex);
+
 	/* return the number of results */
-	return 1;
+	return 0;
 }
 
 LUA_DEFINE_FUNCTION(AudioManager, playLoop)
@@ -839,6 +845,10 @@ LUA_DEFINE_FUNCTION(AudioManager, playLoop)
 	/* get number of arguments */
 	int n = lua_gettop(L);
 
+	Ogre::String name = luaL_checkstring(L, 1);
+
+	AudioManager::getSingleton().playSoundTrack(name);
+
 	/* return the number of results */
-	return 1;
+	return 0;
 }

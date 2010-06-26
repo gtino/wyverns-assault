@@ -35,6 +35,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #include "..\Particle\ParticleManager.h"
 #include "..\Events\EventsManager.h"
 #include "..\Scenario\ScenarioManager.h"
+#include "..\CutScene\CutSceneManager.h"
 #include "..\include\Graphics\PostProcessManager.h"
 #include "..\include\Scenario\DotSceneLoader.h"
 
@@ -98,6 +99,7 @@ namespace WyvernsAssault
 		EventsManagerPtr mEventsManager;
 		ScenarioManagerPtr mScenarioManager;
 		PostProcessManagerPtr mPostProcessManager;
+		CutSceneManagerPtr mCutSceneManager;
 
 		SceneNode* mRootSceneNode;
 

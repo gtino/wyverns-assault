@@ -160,6 +160,14 @@ namespace WyvernsAssault
 	private:
 		int		mLastAttackChecked;
 
+	public:
+		void enable() {mEnabled = true;}
+		void disable(){mEnabled = false;}
+		bool isEnabled(){return mEnabled;}
+
+	private: // Game data
+		bool mEnabled;
+
 	// --------------------------------
 	// BEGIN Lua Interface Declarations
 	// --------------------------------
@@ -169,6 +177,9 @@ namespace WyvernsAssault
 		// Physics Lib (exported to Lua)
 		LUA_LIBRARY("Physics",physicslib);
 
+		LUA_FUNCTION(enable)
+		LUA_FUNCTION(disable)
+		LUA_FUNCTION(isEnabled)
 		LUA_FUNCTION(getHOT);
 		LUA_FUNCTION(getDistance);
 		LUA_FUNCTION(getNearestPlayer);

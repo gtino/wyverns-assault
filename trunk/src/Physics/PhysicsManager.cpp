@@ -61,7 +61,11 @@ void PhysicsManager::showDebugObjects()
 	*/
 }
 
-void PhysicsManager::update(const float elapsedSeconds){
+void PhysicsManager::update(const float elapsedSeconds)
+{
+	// Skip update if physics have been disabled (maybe via Lua)
+	if(!mEnabled)
+		return;
 
 	// Update players
 	for(PlayerMapIterator it_player = mPlayerMap.begin(); it_player != mPlayerMap.end(); ++it_player)
@@ -638,6 +642,9 @@ EVENTS_DEFINE_HANDLER(PhysicsManager,ItemCatch)
 // Lua Physics Lib
 // --------------------------------
 LUA_BEGIN_BINDING(PhysicsManager, physicslib)
+LUA_BIND(PhysicsManager, disable)
+LUA_BIND(PhysicsManager, enable)
+LUA_BIND(PhysicsManager, isEnabled)
 LUA_BIND(PhysicsManager, getHOT)
 LUA_BIND(PhysicsManager, getDistance)
 LUA_BIND(PhysicsManager, getNearestPlayer)
@@ -651,6 +658,47 @@ LUA_BEGIN_LOAD_SCRIPTS(PhysicsManager)
 // TODO : Load scripts if needed
 //
 LUA_END_LOAD_SCRIPTS()
+
+LUA_DEFINE_FUNCTION(PhysicsManager,enable)
+{
+	/* get number of arguments */
+	int n = lua_gettop(L);
+
+	// n should be 0
+
+	PhysicsManager::getSingleton().enable();
+
+	/* return the number of results */
+	return 0;
+}
+
+LUA_DEFINE_FUNCTION(PhysicsManager,disable)
+{
+	/* get number of arguments */
+	int n = lua_gettop(L);
+
+	// n should be 0
+
+	PhysicsManager::getSingleton().disable();
+
+	/* return the number of results */
+	return 0;
+}
+
+LUA_DEFINE_FUNCTION(PhysicsManager, isEnabled)
+{
+	/* get number of arguments */
+	int n = lua_gettop(L);
+
+	// n should be 0
+
+	bool isEnabled = PhysicsManager::getSingleton().isEnabled();
+
+	lua_pushboolean(L, isEnabled);
+
+	/* return the number of results */
+	return 1;
+}
 
 LUA_DEFINE_FUNCTION(PhysicsManager, getHOT)
 {

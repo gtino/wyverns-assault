@@ -29,6 +29,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
 #include "..\Utils\Utils.h"
 #include "..\Lua\LuaInterface.h"
+#include "..\Events\EventsInterface.h"
 
 using namespace Ogre;
 
@@ -40,7 +41,20 @@ namespace WyvernsAssault
 	class CutSceneManager	: public Ogre::Singleton<CutSceneManager>
 							, public boost::enable_shared_from_this<CutSceneManager>
 							, public LuaInterface
+							, public EventsInterface
 	{
+
+	typedef enum CutSceneId
+	{
+		Nothing = 0,
+		Intro = 1,
+		Wheat = 2,
+		Bridge = 3,
+		Forest = 4,
+		WoodenWall = 5,
+		Castle = 6
+	};
+
 	public:
 		CutSceneManager(SceneManager* sceneManager);
 		~CutSceneManager();
@@ -58,8 +72,28 @@ namespace WyvernsAssault
 		Ogre::SceneNode* _getSceneNode() const { return mCutSceneNode; }
 
 	private:
+		const int getCurrentStep(){return mCurrentStep;}
+		const float getElapsedSceneTime(){return mElapsedSceneTime;}
+		const bool wait(const float timeout);
+		const int nextStep(){return ++mCurrentStep;}
+		void reset();
+
+	private:
 		SceneManager* mSceneManager;
 		SceneNode* mCutSceneNode;
+
+		CutSceneId mCutSceneId;
+		int mCurrentStep;
+		float mElapsedSceneTime;
+		float mWaitTimer;
+
+	public:
+		// ----------------
+		// Events interface
+		// ----------------
+		EVENTS_INTERFACE();
+
+		EVENTS_HANDLER(GameAreaChanged);
 
 	// --------------------------------
 	// BEGIN Lua Interface Declarations
@@ -68,11 +102,20 @@ namespace WyvernsAssault
 		LUA_INTERFACE();
 
 		// Export library lib as "CutScene" to be called from Lua scripts
-		LUA_LIBRARY("CutScene",videolib)
+		LUA_LIBRARY("CutScene",cutscenelib)
 
 		// From Lua to C++
-		LUA_FUNCTION(play)
-		LUA_FUNCTION(stop)
+		LUA_FUNCTION(getCurrentStep)
+		LUA_FUNCTION(getElapsedSceneTime)
+		LUA_FUNCTION(wait)
+		LUA_FUNCTION(nextStep)
+		LUA_FUNCTION(reset)
+
+	private:
+		// ----------------------------
+		// Lua Routines called from C++
+		// ----------------------------
+		bool playIntroCutScene(const float totalSeconds);
 	// ------------------------------
 	// END Lua Interface Declarations
 	// ------------------------------
