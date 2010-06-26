@@ -167,6 +167,7 @@ void Enemy::initializeEntity(Ogre::Entity* entity, Ogre::SceneNode* sceneNode, O
 	newAttack = false;
 	attackHited = false;
 	burning = false;
+	flying = false;
 
 	// Random animation start time
 	mAnimationSystem->update( rand() );
@@ -220,10 +221,11 @@ void Enemy::updateEntity(const float elapsedSeconds)
 	// Update in case that has dying animation
 	else
 	{
-		// TODO: die animation
-		if( mDieAnimation )
+		if( hasDieAnimation() )
 		{
 			mDieAnimation->addTime(elapsedSeconds);
+			if( mDieAnimation->hasEnded() && hasDieMesh() )
+				mEntityDie->setVisible(false);
 		}
 	}
 }
@@ -450,6 +452,15 @@ void Enemy::setDieMesh(Ogre::Entity* entity)
 	mEntityDie->setVisible(false);
 }
 
+// Set die animation from skeleton
+void Enemy::setDieAnimation(Ogre::AnimationState* dieAnimation)
+{
+	mDieAnimation = dieAnimation;
+	mDieAnimation->setEnabled(true);
+	mDieAnimation->setWeight(1);
+	mDieAnimation->setLoop(false);
+}
+
 // Die function, change visible meshes
 void Enemy::dieSwitch()
 {
@@ -458,6 +469,13 @@ void Enemy::dieSwitch()
 
 	// Die mesh visible
 	mEntityDie->setVisible(true);
+
+	// Rotate random if has die animation
+	if( hasDieAnimation() )
+	{
+		int angle = rand() % 60;
+		mSceneNode->rotate(Quaternion(Degree(angle), Vector3(0,1,1)));
+	}
 }
 
 // Die to camera animation
@@ -490,6 +508,8 @@ void Enemy::dieToCamera()
     mDieAnimation->setEnabled(true);
 	mDieAnimation->setWeight(1);
 	mDieAnimation->setLoop(false);
+
+	flying = true;
 }
 
 // Stop all enemy actions
