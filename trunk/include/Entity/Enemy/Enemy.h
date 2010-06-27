@@ -56,12 +56,11 @@ namespace WyvernsAssault
 			Naked		= 0,
 			Chicken		= 1,
 			Knight		= 2,
-			Wizard		= 4,		
-			// Still not used
-			Soldier		= 10,					
-			Peasant		= 11,
-			Woman		= 12,			
-			Cow			= 13
+			Wizard		= 3,
+			Soldier		= 4,					
+			Peasant		= 5,
+			Woman		= 6,			
+			Cow			= 7
 		};
 
 		enum EnemyStates
