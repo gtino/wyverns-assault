@@ -5,9 +5,13 @@ using namespace WyvernsAssault;
 GuiImage::GuiImage() :
 GuiWidget()
 {
-	//
-	// TODO Constructor
-	//
+	// Render the background after everything else
+	mRectangle2D->setRenderQueueGroup(RENDER_QUEUE_OVERLAY);
+
+	// Use infinite AAB to always stay visible
+	AxisAlignedBox aabInf;
+	aabInf.setInfinite();
+	mRectangle2D->setBoundingBox(aabInf);
 }
 
 GuiImage::~GuiImage()
@@ -28,12 +32,4 @@ void GuiImage::setImage(const Ogre::String& filename, const Ogre::String& name, 
 	mImageMaterial->getTechnique(0)->getPass(0)->setSceneBlending(Ogre::SBT_TRANSPARENT_ALPHA);
 
 	mRectangle2D->setMaterial(name);
-
-	// Render the background after everything else
-	mRectangle2D->setRenderQueueGroup(RENDER_QUEUE_OVERLAY);
-
-	// Use infinite AAB to always stay visible
-	AxisAlignedBox aabInf;
-	aabInf.setInfinite();
-	mRectangle2D->setBoundingBox(aabInf);
 }

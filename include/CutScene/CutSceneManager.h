@@ -44,16 +44,19 @@ namespace WyvernsAssault
 							, public EventsInterface
 	{
 
-	typedef enum CutSceneId
-	{
-		Nothing = 0,
-		Intro = 1,
-		Wheat = 2,
-		Bridge = 3,
-		Forest = 4,
-		WoodenWall = 5,
-		Castle = 6
-	};
+	public:
+		typedef enum CutSceneId
+		{
+			Nothing = 0,
+			Intro = 1,
+			FirstKills = 2,
+			Beer = 3,
+			Bridge = 4,
+			Forest = 5,
+			WoodenWall = 6,
+			Village = 7,
+			Boss = 8
+		};
 
 	public:
 		CutSceneManager(SceneManager* sceneManager);
@@ -68,6 +71,7 @@ namespace WyvernsAssault
 		void finalize();
 		/** Update and run lua scripts */
 		void update(const float elapsedSeconds);
+		void play(CutSceneId id);
 
 		Ogre::SceneNode* _getSceneNode() const { return mCutSceneNode; }
 
@@ -115,7 +119,7 @@ namespace WyvernsAssault
 		// ----------------------------
 		// Lua Routines called from C++
 		// ----------------------------
-		bool playIntroCutScene(const float totalSeconds);
+		bool playCutScene(const float totalSeconds, Ogre::String cutSceneName);
 	// ------------------------------
 	// END Lua Interface Declarations
 	// ------------------------------

@@ -61,7 +61,7 @@ void PlayState::initialize()
 	mGuiScreen->addWidget(mPlayerUI,GuiWidgetPlayId::UserInterface1);
 	
 	GuiForegroundPtr foreground = GuiForegroundPtr(new GuiForeground());
-	foreground->setImage("intro_1.png","IntroBackground","General");
+	//foreground->setImage("intro_1.png","IntroBackground","General");
 
 	mGuiScreen->setForeground(foreground);
 
@@ -142,6 +142,7 @@ void PlayState::initialize()
 	//
 	mCutSceneManager = CutSceneManagerPtr(new CutSceneManager(mSceneManager));
 	mCutSceneManager->initialize();
+	//mCutSceneManager->play(CutSceneManager::CutSceneId::Intro);
 
 	//
 	// Events Manager 
@@ -218,7 +219,7 @@ void PlayState::initialize()
 	//
 	// Audio: playState track
 	//
-	mAudioManager->playSoundTrack("main_track.mp3");
+	//mAudioManager->playSoundTrack("main_track.mp3"); // Lua will do this from the cut scene
 
 	buttonTimer = 0.0;
 	lastKey = OIS::KeyCode::KC_UNASSIGNED;
@@ -274,6 +275,11 @@ bool PlayState::frameRenderingQueued(const Ogre::FrameEvent& evt)
 /** Update internal stuff */
 void PlayState::update(const float elapsedSeconds)
 {
+	//
+	// Update CutScene Manager
+	//
+	mCutSceneManager->update(elapsedSeconds);
+
 	PlayerPtr player1 = mPlayerManager->getPlayer(PLAYER1);
 
 	if ( !player1->isDeath() )
@@ -416,11 +422,6 @@ void PlayState::update(const float elapsedSeconds)
 	// Update post processing compositors
 	//
 	mPostProcessManager->update(elapsedSeconds);
-
-	//
-	// Update CutScene Manager
-	//
-	mCutSceneManager->update(elapsedSeconds);
 
 	//
 	// Dispatch events. Managers have probably raised events, that are now in the 

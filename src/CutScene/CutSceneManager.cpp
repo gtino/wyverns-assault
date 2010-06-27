@@ -40,6 +40,11 @@ void CutSceneManager::finalize()
 {
 }
 
+void CutSceneManager::play(CutSceneId id)
+{
+	mCutSceneId = id;
+}
+
 void CutSceneManager::update(const float elapsedSeconds)
 {
 	//return; // NOTE : Disabled until Lua scripts are not ready
@@ -54,22 +59,28 @@ void CutSceneManager::update(const float elapsedSeconds)
 	switch(mCutSceneId)
 	{
 	case CutSceneId::Intro:
-		finished = playIntroCutScene(elapsedSeconds);
+		finished = playCutScene(elapsedSeconds, "playIntroCutScene");
 		break;
-	case CutSceneId::Wheat:
-		//finished = playWheatCutScene(elapsedSeconds);
+	case CutSceneId::FirstKills:
+		finished = playCutScene(elapsedSeconds, "playFirstKillsCutScene");
+		break;
+	case CutSceneId::Beer:
+		finished = playCutScene(elapsedSeconds, "playBeerCutScene");
 		break;
 	case CutSceneId::Bridge:
-		//finished = playBridgeCutScene(elapsedSeconds);
+		finished = playCutScene(elapsedSeconds, "playBridgeCutScene");
 		break;
 	case CutSceneId::Forest:
-		//finished = playForestCutScene(elapsedSeconds);
+		finished = playCutScene(elapsedSeconds, "playForestCutScene");
 		break;
 	case CutSceneId::WoodenWall:
-		//finished = playWoodenWallCutScene(elapsedSeconds);
+		finished = playCutScene(elapsedSeconds, "playWoodenWallCutScene");
 		break;
-	case CutSceneId::Castle:
-		//finished = playCastleCutScene(elapsedSeconds);
+	case CutSceneId::Village:
+		finished = playCutScene(elapsedSeconds, "playVillageCutScene");
+		break;
+	case CutSceneId::Boss:
+		finished = playCutScene(elapsedSeconds, "playBossCutScene");
 		break;
 	default:
 		finished = true;
@@ -137,6 +148,28 @@ EVENTS_DEFINE_HANDLER(CutSceneManager, GameAreaChanged)
 		{
 		case 0:
 			mCutSceneId = CutSceneId::Intro;
+			playCutScene(0,"playIntroCutScene");
+			break;
+		case 1:
+			mCutSceneId = CutSceneId::FirstKills;
+			break;
+		case 2:
+			mCutSceneId = CutSceneId::Beer;
+			break;
+		case 5:
+			mCutSceneId = CutSceneId::Bridge;
+			break;
+		case 7:
+			mCutSceneId = CutSceneId::Forest;
+			break;
+		case 8:
+			mCutSceneId = CutSceneId::WoodenWall;
+			break;
+		case 10:
+			mCutSceneId = CutSceneId::Village;
+			break;
+		case 11:
+			mCutSceneId = CutSceneId::Boss;
 			break;
 		default:
 			mCutSceneId = CutSceneId::Nothing;
@@ -162,11 +195,13 @@ LUA_END_BINDING()
 //
 LUA_BEGIN_LOAD_SCRIPTS(CutSceneManager)
 LUA_LOAD_SCRIPT(".\\data\\scripts\\CutScene.Intro.lua")
-//LUA_LOAD_SCRIPT(".\\data\\scripts\\CutScene.Wheat.lua")
-//LUA_LOAD_SCRIPT(".\\data\\scripts\\CutScene.Bridge.lua")
-//LUA_LOAD_SCRIPT(".\\data\\scripts\\CutScene.Forest.lua")
-//LUA_LOAD_SCRIPT(".\\data\\scripts\\CutScene.WoodenWall.lua")
-//LUA_LOAD_SCRIPT(".\\data\\scripts\\CutScene.Castle.lua")
+LUA_LOAD_SCRIPT(".\\data\\scripts\\CutScene.FirstKills.lua")
+LUA_LOAD_SCRIPT(".\\data\\scripts\\CutScene.Beer.lua")
+LUA_LOAD_SCRIPT(".\\data\\scripts\\CutScene.Bridge.lua")
+LUA_LOAD_SCRIPT(".\\data\\scripts\\CutScene.Forest.lua")
+LUA_LOAD_SCRIPT(".\\data\\scripts\\CutScene.WoodenWall.lua")
+LUA_LOAD_SCRIPT(".\\data\\scripts\\CutScene.Village.lua")
+LUA_LOAD_SCRIPT(".\\data\\scripts\\CutScene.Boss.lua")
 LUA_END_LOAD_SCRIPTS()
 
 //--------------------------------
@@ -255,10 +290,10 @@ LUA_DEFINE_FUNCTION(CutSceneManager, reset)
 // ----------------------------
 // Lua Routines called from C++
 // ----------------------------
-bool CutSceneManager::playIntroCutScene(const float totalSeconds)
+bool CutSceneManager::playCutScene(const float totalSeconds, Ogre::String cutSceneName)
 {
 	///* the function name */
-	lua_getglobal(L,"playIntroCutScene");
+	lua_getglobal(L,cutSceneName.c_str());
 	///* push arguments */
 	lua_pushnumber(L, 1);
 	///* call the function with 1 argument, return 1 result */
