@@ -397,9 +397,9 @@ void Enemy::dieSwitch()
 // Die to camera animation
 void Enemy::dieToCamera()
 {
-	Vector3 begin = getPosition();
-	Vector3 end = mSceneManager->getCamera("GameCamera")->getParentSceneNode()->getPosition();  //HACK: must fix!
-	Vector3 direction = mSceneManager->getCamera("GameCamera")->getDirection();  //HACK: must fix!
+	Vector3 begin = getPosition() - getInitialPosition();
+	Vector3 end = mSceneManager->getCamera("GameCamera")->getParentSceneNode()->getPosition() - getInitialPosition();
+	Vector3 direction = mSceneManager->getCamera("GameCamera")->getDirection();
 
 	if(mSceneManager->hasAnimation(mName + "_Die"))
 		mSceneManager->destroyAnimation(mName + "_Die");
@@ -417,7 +417,7 @@ void Enemy::dieToCamera()
 	key->setRotation(Quaternion((rand()%2), 1, 1, 1));
 	key->setScale(Vector3(10, 10, 10));
 	key = track->createNodeKeyFrame(0.75);
-	key->setTranslate(end + direction);	
+	key->setTranslate(end + direction);
 	key->setScale(Vector3(0.1, 0.1, 0.1));
 	// Create a new animation state to track this
 	mDieAnimation = mSceneManager->createAnimationState(mName + "_Die");
