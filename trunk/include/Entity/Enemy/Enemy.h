@@ -33,21 +33,14 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
 #include "Ogre/AnimationSystem.h"
 
+
 #define ENEMY_BILLBOARD_SHOW_TIME 2.0f // seconds
-
-#define ENEMY_HEIGHT		11.0f
-#define ENEMY_SLOW_SPEED	50.0f
-#define ENEMY_FAST_SPEED	70.0f
-
-#define ANIMAL_HEIGHT		2.0f
-#define ANIMAL_SLOW_SPEED	30.0f
-#define ANIMAL_FAST_SPEED	50.0f
 
 // Enemies animations number in tree
 #define ENEMY_IDDLE			0
 #define ENEMY_RUN			1
 #define ENEMY_ATTACK		2
-#define ENEMY_DIE			3
+#define ENEMY_SPECIAL		3
 
 namespace WyvernsAssault
 {
@@ -60,29 +53,15 @@ namespace WyvernsAssault
 		/** List of enemy types */
 		enum EnemyTypes
 		{
-			KnightA		= 0,
-			KnightA2	= 1,
-			KnightA3	= 2,
-			KnightA4	= 3,
-			KnightA5	= 4,
-			KnightB		= 5,
-			KnightB2	= 6,
-			KnightB3	= 7,
-			KnightB4	= 8,
-			KnightB5	= 9,
-			KnightC		= 10,
-			KnightC2	= 11,
-			KnightC3	= 12,
-			KnightC4	= 13,
-			KnightC5	= 14,
-			Wizard		= 15,
-			Wizard2		= 16,
-			Naked		= 17,
-			Soldier		= 18,					
-			Peasant		= 19,
-			Woman		= 20,
-			Chicken		= 21,
-			Cow			= 22
+			Naked		= 0,
+			Chicken		= 1,
+			Knight		= 2,
+			Wizard		= 4,		
+			// Still not used
+			Soldier		= 10,					
+			Peasant		= 11,
+			Woman		= 12,			
+			Cow			= 13
 		};
 
 		enum EnemyStates
@@ -103,14 +82,28 @@ namespace WyvernsAssault
 			Dead = 11
 		};
 
+		struct EnemyParameters
+		{
+			String animationTree;
+			Real life;
+			Real points;
+			Real speed;
+			Real damage;
+			Real specialDamage;
+			Real height;
+			String dieMesh;
+			String dieAnimation;
+			String physicMesh;
+		};
+
 	public:
-		Enemy(Ogre::String name, Enemy::EnemyTypes type);
+		Enemy(Ogre::String name, Enemy::EnemyTypes type, Enemy::EnemyParameters params);
 		~Enemy();
 
 		//
 		// Entity Interface
 		//
-		void initializeEntity(Ogre::Entity* mesh, Ogre::SceneNode* sceneNode, Ogre::SceneManager* sceneManager);
+		void initializeEntity(Ogre::Entity* entity, Ogre::SceneNode* sceneNode, Ogre::SceneManager* sceneManager);
 		void finalizeEntity();
 		void updateEntity(const float elapsedSeconds);
 		
@@ -127,9 +120,9 @@ namespace WyvernsAssault
 		void setTarget(SceneNode* target);
 		void autoTrackTarget();
 		
-		Ogre::Real getHitDamage(){return mAttackDamage;}
+		Ogre::Real getHitDamage(){return mParameters.damage;}
 		void hit(float damage);
-		float getPoints(){ return mPoints; }
+		float getPoints(){ return mParameters.points; }
 
 		bool isHurt();
 		bool isDying();
@@ -138,8 +131,8 @@ namespace WyvernsAssault
 		int getChannel(){return mChannel;}
 		void setChannel(int channel){mChannel = channel;}
 
-		float getSpeed(){return mCurrentSpeed;}
-		float getHeight(){return mHeight; }
+		float getSpeed(){return mParameters.speed;}
+		float getHeight(){return mParameters.height; }
 
 		// Enable Debug Stuff
 		void setDebugEnabled(bool isDebugEnabled);
@@ -158,8 +151,8 @@ namespace WyvernsAssault
 		bool isBurning(){ return burning; }
 		void setBurning(bool status){ burning = status; }
 		void setDieMesh(Ogre::Entity* entity);
-		bool hasDieMesh(){ return mEntityDie != NULL; }
-		void setDieMaterialName(Ogre::String material){ mEntityDie->setMaterialName(material); }
+		bool hasDieMesh(){ return mDieMesh != NULL; }
+		void setDieMaterialName(Ogre::String material){ mDieMesh->setMaterialName(material); }
 		void setDieAnimation(Ogre::AnimationState* dieAnimation);
 		bool hasDieAnimation(){ return mDieAnimation != NULL; }
 		void dieSwitch();
@@ -178,15 +171,11 @@ namespace WyvernsAssault
 		Enemy::EnemyStates mState;
 		float mStateTimeout;
 		
-		float mCurrentSpeed;
-		float mSlowSpeed;
-		float mFastSpeed;
-		float mLife;
-		float mMaxLife;
-		float mPoints;
-		float mAttackDamage;
-		float mSpecialDamage;
-		float mHeight;
+		EnemyParameters		mParameters;
+		Real				mMaxLife;
+
+		Entity*				mDieMesh;
+		AnimationState*		mDieAnimation;
 
 		Vector3 beginPatrolPoint;
 		Vector3 endPatrolPoint;
@@ -204,12 +193,7 @@ namespace WyvernsAssault
 		bool		newAttack;
 		bool		attackHited;
 		bool		burning;
-		bool		flying;
-
-		//Dying mesh
-		Entity*				mEntityDie;
-		// Die animation
-		AnimationState*		mDieAnimation;		
+		bool		flying;			
 
 	private:
 

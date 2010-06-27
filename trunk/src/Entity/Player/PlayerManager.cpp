@@ -220,15 +220,10 @@ EVENTS_DEFINE_HANDLER(PlayerManager, ItemCatch)
 	ItemPtr item = evt->getItem();
 
 	player->setLife( player->getLife() + item->getLife() );
-	player->setSpecial( player->getSpecial() + item->getSpecial() );
-	player->addPoints(item->getScore());
+	player->addPoints(item->getPoints());
 
-	if ( item->getType() == Item::ItemTypes::PowerBig )
-		player->drunk(4, 6);
-	else if( item->getType() == Item::ItemTypes::PowerMedium ) 
-		player->drunk(3, 4);
-	else if( item->getType() == Item::ItemTypes::PowerSmall )	
-		player->drunk(2, 2);
+	if ( item->getDrunkTime() > 0 )
+		player->drunk(item->getDrunkTime() / 2, item->getDrunkTime());
 }
 
 EVENTS_DEFINE_HANDLER(PlayerManager, EnemyKilled)

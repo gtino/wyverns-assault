@@ -210,12 +210,8 @@ EVENTS_DEFINE_HANDLER(PostProcessManager, ItemCatch)
 {
 	ItemPtr item = evt->getItem();
 
-	if ( item->getType() == Item::ItemTypes::PowerBig )
-		this->motionBlur(6);
-	else if( item->getType() == Item::ItemTypes::PowerMedium ) 
-		this->motionBlur(4);
-	else if( item->getType() == Item::ItemTypes::PowerSmall )	
-		this->motionBlur(2);
+	if ( item->getDrunkTime() > 0 )
+		this->motionBlur( item->getDrunkTime() );
 }
 
 // --------------------------------

@@ -2,18 +2,14 @@
 
 using namespace WyvernsAssault;
 
-Item::Item(Ogre::String name, Item::ItemTypes type) 
+Item::Item(Ogre::String name, Item::ItemTypes type, Item::ItemParameters params) 
 : EntityInterface(name)
 , PhysicsInterface()
-, mLife(0.0f)
-, mSpecial(0.0f)
-, mScore(0.0f)
 , mOBBoxRenderable(0)
 , mIsDebugEnabled(false)
-, mStateTimeout(0.0f)
-, catched(false)
 {
 	mType = type;
+	mParameters = params;
 }
 
 Item::~Item()
@@ -26,51 +22,12 @@ void Item::initializeEntity(Ogre::Entity* entity, Ogre::SceneNode* sceneNode, Og
 	// Always call base method before!
 	EntityInterface::initializeEntity(entity, sceneNode, sceneManager);
 
-	switch(mType)
-	{
-	case Item::ItemTypes::LiveBig :
-		mLife = 100;
-		mScore = 100;
-		break;
-	case Item::ItemTypes::LiveMedium :
-		mLife = 50;
-		mScore = 50;
-		break;
-	case Item::ItemTypes::LiveSmall :
-		mLife = 25;
-		mScore = 25;
-		break;
-	case Item::ItemTypes::PowerBig :
-		mSpecial = 100;
-		mScore = 100;
-		break;
-	case Item::ItemTypes::PowerMedium :
-		mSpecial = 50;
-		mScore = 50;
-		break;
-	case Item::ItemTypes::PowerSmall :
-		mSpecial = 25;
-		mScore = 25;
-		break;
-	case Item::ItemTypes::ScoreBig :
-		mScore = 500;
-		break;
-	case Item::ItemTypes::ScoreSmall :
-		mScore = 250;
-		break;
-	default:
-		mLife = 0;
-		mSpecial = 0;
-		mScore = 0;
-	}
-
 	// Bounding Box
 	mOBBoxRenderable = new OBBoxRenderable("OBBoxManualMaterial_Item");
 
 	mOBBoxRenderable->setupVertices(mEntity->getBoundingBox());
 	mOBBoxRenderable->setVisible(mIsDebugEnabled);
 	mSceneNode->attachObject(mOBBoxRenderable);
-
 }
 
 void Item::finalizeEntity()
@@ -89,32 +46,22 @@ void Item::updateEntity(const float elapsedSeconds)
 
 void Item::updateLogic(const float elapsedSeconds)
 {
-	if(catched)
-	{
-		mStateTimeout += elapsedSeconds;
-	}
 }
 
 void Item::caught()
 {
 	mEntity->setVisible(false);
-	catched = true;
 }
 
 Item::ItemTypes Item::StringToType (Ogre::String string)
 {
 	const char* str = string.c_str();
 
-	if(strcmp ( "LiveSmall", str ) == 0) return Item::ItemTypes::LiveSmall;
-	if(strcmp ( "LiveMedium", str ) == 0) return Item::ItemTypes::LiveMedium;
-	if(strcmp ( "LiveBig", str ) == 0) return Item::ItemTypes::LiveBig;
-	if(strcmp ( "PowerSmall", str ) == 0) return Item::ItemTypes::PowerSmall;
-	if(strcmp ( "PowerMedium", str ) == 0) return Item::ItemTypes::PowerMedium;
-	if(strcmp ( "PowerBig", str ) == 0) return Item::ItemTypes::PowerBig;
-	if(strcmp ( "ScoreSmall", str ) == 0) return Item::ItemTypes::ScoreSmall;
-	if(strcmp ( "ScoreBig", str ) == 0) return Item::ItemTypes::ScoreBig;
+	if(strcmp ( "Life", str ) == 0) return Item::ItemTypes::Life;	
+	if(strcmp ( "Points", str ) == 0) return Item::ItemTypes::Points;
+	if(strcmp ( "Drunk", str ) == 0) return Item::ItemTypes::Drunk;
 
-	return Item::ItemTypes::LiveSmall;
+	return Item::ItemTypes::Life;
 }
 
 

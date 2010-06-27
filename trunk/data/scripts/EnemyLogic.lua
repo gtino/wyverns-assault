@@ -21,10 +21,10 @@ Dead = 11
 
 -- Distances
 FightingDistance = 20
-MagicDistance = 250
-SightDistance = 70
-SoundDistance = 100
-AlertDistance = 80
+MagicDistance = 80
+SightDistance = 100
+SoundDistance = 150
+AlertDistance = 120
 
 function runNakedLogic(enemyId, state)
 	
@@ -298,9 +298,14 @@ end
 function runChickenLogic(enemyId, state)
 	
 	local newState = state
+	
+	local totalSeconds = Logic.getTotalSeconds()
+	local elapsedSeconds = Logic.getElapsedSeconds()
 		
-	local player = Physics.getNearestPlayer(animalId);
-	local distance = Physics.getDistance(animalId,player);
+	local player = Physics.getNearestPlayer(enemyId);
+	local distance = Physics.getDistance(enemyId,player);
+	
+	Enemy.setTarget(enemyId,player);
 	
 	-- How much time has passed since we entered last state?
 	local timeout = Enemy.getStateTimeout(enemyId)
@@ -308,12 +313,12 @@ function runChickenLogic(enemyId, state)
 	if state == Initial then 
 		newState = Idle
 	elseif state == Idle then
-		if distance<AlertDistance then -- The Animal can see the player!
+		if distance<AlertDistance then  -- The Animal can see the player!
 			newState = Fear
 		end
-	elseif state == Fear then
+	elseif state == Fear then 
 		if distance>AlertDistance then
-			newState = Idle 
+			newState = Idle
 		end
 	elseif state == Dying then 
 		newState = Dying
@@ -342,7 +347,7 @@ function runAnimalLogic(enemyId, state)
 	if state == Initial then 
 		newState = Idle
 	elseif state == Idle then
-		if distance<AlertDistance then 
+		if distance<AlertDistance then  -- The Animal can see the player!
 			newState = Fear
 		end
 	elseif state == Fear then 

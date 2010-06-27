@@ -41,18 +41,21 @@ namespace WyvernsAssault
 		/** List of item types */
 		enum ItemTypes
 		{
-			LiveSmall	= 0,
-			LiveMedium	= 1,
-			LiveBig	    = 2,
-			PowerSmall	= 3,
-			PowerMedium	= 4,
-			PowerBig	= 5,
-			ScoreSmall  = 6,
-			ScoreBig    = 7
+			Life	= 0,
+			Points	= 1,
+			Drunk	= 2
+		};
+
+		/** Item parameters **/
+		struct ItemParameters
+		{
+			Real life;
+			Real points;
+			Real drunkTime;
 		};
 
 	public:
-		Item(Ogre::String name, Item::ItemTypes type);
+		Item(Ogre::String name, Item::ItemTypes type, Item::ItemParameters params);
 		~Item();
 		
 		//
@@ -65,33 +68,22 @@ namespace WyvernsAssault
 
 		void caught();
 
-		float getStateTimeout(){ return mStateTimeout; }
 		ItemTypes getType(){ return mType; }
 
-		float getLife(){ return mLife; }
-		float getSpecial(){ return mSpecial; }
-		float getScore(){ return mScore; }
-
+		float getLife(){ return mParameters.life; }
+		float getPoints(){ return mParameters.points; }
+		float getDrunkTime(){ return mParameters.drunkTime; }
 		
 		// Enable Debug Stuff
 		void setDebugEnabled(bool isDebugEnabled);
-		bool getDebugEnabled(){return mIsDebugEnabled;};
-
-		bool isCatched(){ return catched; }
+		bool getDebugEnabled(){ return mIsDebugEnabled; }
 
 	private:
 		Item::ItemTypes mType;
-
-		float mStateTimeout;
-
-		bool catched;
+		ItemParameters mParameters;
 
 		OBBoxRenderable* mOBBoxRenderable;
-		bool mIsDebugEnabled;
-
-		float	mLife;
-		float	mSpecial;
-		float	mScore;
+		bool mIsDebugEnabled;	
 
 	public:
 		static Item::ItemTypes StringToType(Ogre::String typeStr);

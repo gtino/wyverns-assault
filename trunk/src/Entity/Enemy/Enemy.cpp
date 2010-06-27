@@ -7,87 +7,52 @@ static struct EnemyLogic
 	Enemy::EnemyTypes type;
 	const char* function;
 } EnemyLogicList[] = {
-	{Enemy::EnemyTypes::KnightA, "runSoldierLogic"},
-	{Enemy::EnemyTypes::KnightA2, "runSoldierLogic"},
-	{Enemy::EnemyTypes::KnightA3, "runSoldierLogic"},
-	{Enemy::EnemyTypes::KnightA4, "runSoldierLogic"},
-	{Enemy::EnemyTypes::KnightA5, "runSoldierLogic"},
-	{Enemy::EnemyTypes::KnightB, "runSoldierLogic"},
-	{Enemy::EnemyTypes::KnightB2, "runSoldierLogic"},
-	{Enemy::EnemyTypes::KnightB3, "runSoldierLogic"},
-	{Enemy::EnemyTypes::KnightB4, "runSoldierLogic"},
-	{Enemy::EnemyTypes::KnightB5, "runSoldierLogic"},
-	{Enemy::EnemyTypes::KnightC, "runSoldierLogic"},
-	{Enemy::EnemyTypes::KnightC2, "runSoldierLogic"},
-	{Enemy::EnemyTypes::KnightC3, "runSoldierLogic"},
-	{Enemy::EnemyTypes::KnightC4, "runSoldierLogic"},
-	{Enemy::EnemyTypes::KnightC5, "runSoldierLogic"},
-
-	{Enemy::EnemyTypes::Wizard, "runWizardLogic"},
-	{Enemy::EnemyTypes::Wizard2, "runWizardLogic"},
-
-	{Enemy::EnemyTypes::Naked, "runNakedLogic"},
-	{Enemy::EnemyTypes::Soldier, "runSoldierLogic"},	
-	{Enemy::EnemyTypes::Peasant, "runPeasantLogic"},
-	{Enemy::EnemyTypes::Woman,	"runWomanLogic"},
-	{Enemy::EnemyTypes::Chicken, "runAnimalLogic"}
+	{Enemy::EnemyTypes::Naked,		"runNakedLogic"},
+	{Enemy::EnemyTypes::Chicken,	"runChickenLogic"},
+	{Enemy::EnemyTypes::Knight,		"runSoldierLogic"},
+	{Enemy::EnemyTypes::Wizard,		"runWizardLogic"},	
+	// Still not used
+	{Enemy::EnemyTypes::Soldier,	"runSoldierLogic"},	
+	{Enemy::EnemyTypes::Peasant,	"runPeasantLogic"},
+	{Enemy::EnemyTypes::Woman,		"runWomanLogic"},
+	{Enemy::EnemyTypes::Cow,		"runAnimalLogic"}
 };
 
 Enemy::EnemyTypes Enemy::StringToType (Ogre::String string)
 {
 	const char* str = string.c_str();
 
-	if(strcmp ( "KnightA", str ) == 0) return Enemy::EnemyTypes::KnightA;
-	if(strcmp ( "KnightA2", str ) == 0) return Enemy::EnemyTypes::KnightA2;
-	if(strcmp ( "KnightA3", str ) == 0) return Enemy::EnemyTypes::KnightA3;
-	if(strcmp ( "KnightA4", str ) == 0) return Enemy::EnemyTypes::KnightA4;
-	if(strcmp ( "KnightA5", str ) == 0) return Enemy::EnemyTypes::KnightA5;
-	if(strcmp ( "KnightB", str ) == 0) return Enemy::EnemyTypes::KnightB;
-	if(strcmp ( "KnightB2", str ) == 0) return Enemy::EnemyTypes::KnightB2;
-	if(strcmp ( "KnightB3", str ) == 0) return Enemy::EnemyTypes::KnightB3;
-	if(strcmp ( "KnightB4", str ) == 0) return Enemy::EnemyTypes::KnightB4;
-	if(strcmp ( "KnightB5", str ) == 0) return Enemy::EnemyTypes::KnightB5;
-	if(strcmp ( "KnightC", str ) == 0) return Enemy::EnemyTypes::KnightC;
-	if(strcmp ( "KnightC2", str ) == 0) return Enemy::EnemyTypes::KnightC2;
-	if(strcmp ( "KnightC3", str ) == 0) return Enemy::EnemyTypes::KnightC3;
-	if(strcmp ( "KnightC4", str ) == 0) return Enemy::EnemyTypes::KnightC4;
-	if(strcmp ( "KnightC5", str ) == 0) return Enemy::EnemyTypes::KnightC5;
-
-	if(strcmp ( "Wizard", str ) == 0) return Enemy::EnemyTypes::Wizard;
-	if(strcmp ( "Wizard2", str ) == 0) return Enemy::EnemyTypes::Wizard2;
-
 	if(strcmp ( "Naked", str ) == 0) return Enemy::EnemyTypes::Naked;
+	if(strcmp ( "Chicken", str) == 0) return Enemy::EnemyTypes::Chicken;
+	if(strcmp ( "Knight", str ) == 0) return Enemy::EnemyTypes::Knight;
+	if(strcmp ( "Wizard", str ) == 0) return Enemy::EnemyTypes::Wizard;
+	// Still not used	
 	if(strcmp ( "Soldier", str ) == 0) return Enemy::EnemyTypes::Soldier;
 	if(strcmp ( "Peasant", str ) == 0) return Enemy::EnemyTypes::Peasant;
-	if(strcmp ( "Woman", str ) == 0) return Enemy::EnemyTypes::Woman;
-	if(strcmp ( "Chicken", str) == 0) return Enemy::EnemyTypes::Chicken;
+	if(strcmp ( "Woman", str ) == 0) return Enemy::EnemyTypes::Woman;	
+	if(strcmp ( "Cow", str ) == 0) return Enemy::EnemyTypes::Cow;
 
 	return Enemy::EnemyTypes::Naked;
 }
 
-Enemy::Enemy(Ogre::String name, Enemy::EnemyTypes type)
+Enemy::Enemy(Ogre::String name, Enemy::EnemyTypes type, Enemy::EnemyParameters params)
 : EntityInterface(name)
 , PhysicsInterface()
 , LogicInterface()
 , mStateTimeout(0.0f)
 , mState(Enemy::EnemyStates::Initial)
-, mCurrentSpeed(0.0f)
-, mSlowSpeed(ENEMY_SLOW_SPEED)
-, mFastSpeed(ENEMY_FAST_SPEED)
-, mLife(100.0f)
-, mMaxLife(100.0f)
-, mPoints(100.0f)
-, mAttackDamage(0.0f)
-, mSpecialDamage(0.0f)
-, mHeight(ENEMY_HEIGHT)
 , mOBBoxRenderable(0)
 , mIsDebugEnabled(false)
 , mBalloonSet(0)
 , mBalloon(0)
 , beginPatrolPoint(Vector3::ZERO)
 , endPatrolPoint(Vector3::ZERO)
+, mDieMesh(NULL)
+, mDieAnimation(NULL)
 {
 	mType = type;
+	mParameters = params;
+	mMaxLife = params.life;
 }
 
 Enemy::~Enemy()
@@ -100,11 +65,8 @@ void Enemy::initializeEntity(Ogre::Entity* entity, Ogre::SceneNode* sceneNode, O
 	// Always call base method before!
 	EntityInterface::initializeEntity(entity, sceneNode, sceneManager);
 
-	mEntityDie = NULL;
-	mDieAnimation = NULL;
-
 	// Set physic body
-	mPhysicEntity = mSceneManager->createEntity(entity->getName()+"_physicBody", "enemyBasicPhysicBody.mesh");
+	mPhysicEntity = mSceneManager->createEntity(entity->getName() + "_physicBody", mParameters.physicMesh);
 	mPhysicEntity->setVisible(mIsDebugEnabled);
 	mSceneNode->attachObject(mPhysicEntity);
 
@@ -125,43 +87,10 @@ void Enemy::initializeEntity(Ogre::Entity* entity, Ogre::SceneNode* sceneNode, O
 
 	// Animation system
 	mAnimationSystem = new tecnofreak::ogre::AnimationSystem( entity );
-	switch( mType )
-	{
-	case Enemy::EnemyTypes::Chicken:
-		mAnimationSystem->loadAnimationTree( "data/animations/chicken.xml" );
-		mLife = 5;
-		mPoints = 25;
-		mSlowSpeed = ANIMAL_SLOW_SPEED;
-		mFastSpeed = ANIMAL_FAST_SPEED;
-		mHeight = ANIMAL_HEIGHT;
-		break;
-	case Enemy::EnemyTypes::Wizard:
-		mAnimationSystem->loadAnimationTree( "data/animations/wizard.xml" );
-		mLife = 150;
-		mPoints = 250;
-		mAttackDamage = 5;
-		break;
-	case Enemy::EnemyTypes::Wizard2:
-		mAnimationSystem->loadAnimationTree( "data/animations/wizard.xml" );
-		mLife = 150;
-		mPoints = 250;
-		mAttackDamage = 5;
-		break;
-	case Enemy::EnemyTypes::Naked:
-		mAnimationSystem->loadAnimationTree( "data/animations/naked.xml" );
-		mLife = 50;
-		mPoints = 150;
-		mSlowSpeed = ENEMY_FAST_SPEED;
-		break;
-	default:
-		mAnimationSystem->loadAnimationTree( "data/animations/knight.xml" );
-		mLife = 100;
-		mPoints = 100;
-		mAttackDamage = 2;
-	}
-	mMaxLife = mLife;
+	mAnimationSystem->loadAnimationTree( mParameters.animationTree );	
 	mCurrentAnimation = mAnimationSystem->getParameter( "CurrentAnimation" );
 
+	// States control variables
 	moving = false;
 	attacking = false;
 	newAttack = false;
@@ -225,7 +154,7 @@ void Enemy::updateEntity(const float elapsedSeconds)
 		{
 			mDieAnimation->addTime(elapsedSeconds);
 			if( mDieAnimation->hasEnded() && hasDieMesh() )
-				mEntityDie->setVisible(false);
+				mDieMesh->setVisible(false);
 		}
 	}
 }
@@ -255,7 +184,6 @@ void Enemy::updateLogic(lua_State *L, const float elapsedSeconds)
 			mBalloonSet->setVisible(false);
 			mBalloonSet->setMaterialName("Balloons/Idle");
 			mDirection = Vector3::ZERO;
-			mCurrentSpeed = 0.0f;
 			setMoving(false);
 			setAttacking(false);
 			break;
@@ -263,7 +191,6 @@ void Enemy::updateLogic(lua_State *L, const float elapsedSeconds)
 			mBalloonSet->setVisible(true);
 			mBalloonSet->setMaterialName("Balloons/Sleeping");
 			mDirection = Vector3::ZERO;
-			mCurrentSpeed = 0.0f;
 			setMoving(false);
 			setAttacking(false);
 			break;
@@ -271,7 +198,6 @@ void Enemy::updateLogic(lua_State *L, const float elapsedSeconds)
 			mBalloonSet->setVisible(true);
 			mBalloonSet->setMaterialName("Balloons/What");
 			setDirectionToTarget();
-			mCurrentSpeed = mSlowSpeed;
 			setMoving(true);
 			setAttacking(false);
 			break;
@@ -279,7 +205,6 @@ void Enemy::updateLogic(lua_State *L, const float elapsedSeconds)
 			mBalloonSet->setVisible(true);
 			mBalloonSet->setMaterialName("Balloons/Alert");
 			setDirectionToTarget();
-			mCurrentSpeed = mSlowSpeed;
 			setMoving(true);
 			setAttacking(false);
 			break;
@@ -287,7 +212,6 @@ void Enemy::updateLogic(lua_State *L, const float elapsedSeconds)
 			mBalloonSet->setVisible(true);
 			mBalloonSet->setMaterialName("Balloons/Rage");
 			mDirection = Vector3::ZERO;
-			mCurrentSpeed = 0.0f;
 			setMoving(false);
 			setAttacking(true);
 			break;
@@ -295,7 +219,6 @@ void Enemy::updateLogic(lua_State *L, const float elapsedSeconds)
 			mBalloonSet->setVisible(true);
 			mBalloonSet->setMaterialName("Balloons/Love");
 			mDirection = Vector3::ZERO;
-			mCurrentSpeed = 0.0f;
 			setMoving(false);
 			setAttacking(false);
 			break;
@@ -303,14 +226,12 @@ void Enemy::updateLogic(lua_State *L, const float elapsedSeconds)
 			mBalloonSet->setVisible(true);
 			mBalloonSet->setMaterialName("Balloons/Fear");
 			setDirectionOutTarget();
-			mCurrentSpeed = mFastSpeed;
 			setMoving(true);
 			setAttacking(false);
 			break;
 		case Enemy::EnemyStates::Magic:
 			mBalloonSet->setVisible(true);
 			mBalloonSet->setMaterialName("Balloons/Magic");
-			mCurrentSpeed = 0.0f;
 			mDirection = Vector3::ZERO;
 			setMoving(false);
 			setAttacking(true);
@@ -318,7 +239,6 @@ void Enemy::updateLogic(lua_State *L, const float elapsedSeconds)
 		case Enemy::EnemyStates::Patrol:
 			mBalloonSet->setVisible(true);
 			mBalloonSet->setMaterialName("Balloons/Patrol");
-			mCurrentSpeed = mSlowSpeed;
 			setMoving(false);
 			setAttacking(false);
 			break;
@@ -326,14 +246,12 @@ void Enemy::updateLogic(lua_State *L, const float elapsedSeconds)
   			mBalloonSet->setVisible(true);
 			mBalloonSet->setMaterialName("Balloons/Dying");
 			mDirection = Vector3::ZERO;
-			mCurrentSpeed = 0.0f;
 			setMoving(false);
 			setAttacking(false);
 			break;
 		case Enemy::EnemyStates::Dead:
 			mBalloonSet->setVisible(false);
 			mBalloonSet->setMaterialName("Balloons/Initial");
-			mCurrentSpeed = 0.0f;
 			mDirection = Vector3::ZERO;
 			setMoving(false);
 			setAttacking(false);
@@ -342,7 +260,6 @@ void Enemy::updateLogic(lua_State *L, const float elapsedSeconds)
 		default:
 			mBalloonSet->setVisible(false);
 			mBalloonSet->setMaterialName("Balloons/Initial");
-			mCurrentSpeed = 0.0f;
 			mDirection = Vector3::ZERO;
 			break;
 		}
@@ -368,17 +285,17 @@ void Enemy::setTarget(SceneNode* target)
 
 void Enemy::hit(float damage)
 {
-	mLife -= damage;
+	mParameters.life -= damage;
 }
 
 bool Enemy::isHurt()
 {
-	return (mLife / mMaxLife * 100.0f) < 15.0f;
+	return (mParameters.life / mMaxLife * 100.0f) < 15.0f;
 }
 
 bool Enemy::isDying()
 {
-	return (mLife <= 0.0f);
+	return (mParameters.life <= 0.0f);
 }
 
 void Enemy::setDirectionToTarget()
@@ -408,7 +325,7 @@ void Enemy::setDirectionOutTarget()
 {
 	if(mTarget)
 	{
-		mDirection = mTarget->getPosition() - mSceneNode->getPosition();
+		mDirection = mSceneNode->getPosition() - mTarget->getPosition();
 		Vector3 src = mSceneNode->getOrientation() * Vector3::UNIT_Z;
 		src.y = 0;
 		mDirection.y = 0;
@@ -448,8 +365,8 @@ void Enemy::setAttacking(bool attack)
 // Set die mesh and set invisible
 void Enemy::setDieMesh(Ogre::Entity* entity)
 { 
-	mEntityDie = entity;
-	mEntityDie->setVisible(false);
+	mDieMesh = entity;
+	mDieMesh->setVisible(false);
 }
 
 // Set die animation from skeleton
@@ -468,7 +385,7 @@ void Enemy::dieSwitch()
 	setVisible(false);
 
 	// Die mesh visible
-	mEntityDie->setVisible(true);
+	mDieMesh->setVisible(true);
 
 	// Rotate random if has die animation
 	if( hasDieAnimation() )

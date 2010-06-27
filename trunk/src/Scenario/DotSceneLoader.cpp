@@ -288,16 +288,15 @@ void DotSceneLoader::processEnemies(TiXmlElement *XMLNode)
 		}
 
 		// Add to EnemyManager
-		EnemyPtr enemy = mEnemyManager->createEnemy(Enemy::StringToType(type), name, mesh);
+		/*EnemyPtr enemy = mEnemyManager->createEnemy(Enemy::StringToType(type), name, mesh);
 		enemy->setPosition(position);
 		enemy->setScale(scale);
 		
 		// Add the enemy to the physics manager
-		mPhysicsManager->addPhysicEnemy(enemy);
+		mPhysicsManager->addPhysicEnemy(enemy);*/
 
 		pElement = pElement->NextSiblingElement("enemy");
-	}
-		
+	}		
 }
 
 void DotSceneLoader::processAnimals(TiXmlElement *XMLNode)
@@ -342,16 +341,15 @@ void DotSceneLoader::processAnimals(TiXmlElement *XMLNode)
 		}
 
 		// Add to EnemyManager
-		EnemyPtr animal = mEnemyManager->createEnemy(Enemy::StringToType(type), name, mesh);
+		/*EnemyPtr animal = mEnemyManager->createEnemy(Enemy::StringToType(type), name, mesh);
 		animal->setPosition(position);
 		animal->setScale(scale);
 		
 		// Add the animal to the physics manager
 		mPhysicsManager->addPhysicEnemy(animal);
 
-		pElement = pElement->NextSiblingElement("animal");
-	}
-		
+		pElement = pElement->NextSiblingElement("animal");*/
+	}		
 }
 
 void DotSceneLoader::processCameras(TiXmlElement *XMLNode)
@@ -409,13 +407,13 @@ void DotSceneLoader::processItems(TiXmlElement *XMLNode)
 		}
 
 		// Add to ItemManager
-		ItemPtr item = mItemManager->createItem(Item::StringToType(type), name, mesh);		
+/*		ItemPtr item = mItemManager->createItem(Item::StringToType(type), name, mesh);		
 		item->setPosition(position);
 		item->setScale(scale);	
 
 		// Add the item to the physics manager
 		mPhysicsManager->addPhysicItem(item);
-
+*/
 		pElement = pElement->NextSiblingElement("item");
 	}
 		
@@ -808,7 +806,7 @@ void DotSceneLoader::processEntity(TiXmlElement *XMLNode, SceneNode *pParent)
 	// Process attributes
 	String name = getAttrib(XMLNode, "name");
 	String id = getAttrib(XMLNode, "id");
-	String type = getAttrib(XMLNode, "type");
+	String type = getAttrib(XMLNode, "type");	
 	String meshFile = getAttrib(XMLNode, "meshFile");
 	String materialFile = getAttrib(XMLNode, "materialFile");
 	bool isStatic = getAttribBool(XMLNode, "static", false);
@@ -837,10 +835,52 @@ void DotSceneLoader::processEntity(TiXmlElement *XMLNode, SceneNode *pParent)
 		//
 		// Use the Object Manager to create an instance for the new Object
 		//
-		if(type == "DynamicObject"){
+		if( type == "DynamicObject" )
+		{
 			ObjectPtr object = mScenarioManager->createObject(ObjectTypes::DynamicObject, name, pEntity, pParent);
 			mPhysicsManager->addPhysicObject(object);
-		}else{
+		}
+		else if( type == "Enemy" )
+		{
+			// Get own atributes
+			String subType = getAttrib(XMLNode, "subType");
+
+			Enemy::EnemyParameters params;
+
+			params.animationTree = getAttrib(XMLNode, "animationTree");
+			params.life = getAttribReal(XMLNode, "life");
+			params.points = getAttribReal(XMLNode, "points");
+			params.speed = getAttribReal(XMLNode, "speed");
+			params.damage = getAttribReal(XMLNode, "damage");
+			params.specialDamage = getAttribReal(XMLNode, "specialDamage");
+			params.height = getAttribReal(XMLNode, "height");
+			params.dieMesh = getAttrib(XMLNode, "dieMesh");
+			params.dieAnimation = getAttrib(XMLNode, "dieAnimation");
+			params.physicMesh = getAttrib(XMLNode, "physicMesh");
+
+			// Add to EnemyManager
+			EnemyPtr enemy = mEnemyManager->createEnemy(Enemy::StringToType(subType), name, pEntity, pParent, params);
+			// Add the enemy to the physics manager
+			mPhysicsManager->addPhysicEnemy(enemy);
+		}
+		else if( type == "Item" )
+		{
+			// Get own atributes
+			String subType = getAttrib(XMLNode, "subType");
+
+			Item::ItemParameters params;
+
+			params.life = getAttribReal(XMLNode, "life");
+			params.points = getAttribReal(XMLNode, "points");
+			params.drunkTime = getAttribReal(XMLNode, "drunkTime");
+
+			// Add to ItemManager
+			ItemPtr item = mItemManager->createItem(Item::StringToType(subType), name, pEntity, pParent, params);
+			// Add the item to the physics manager
+			mPhysicsManager->addPhysicItem(item);
+		}
+		else
+		{
 			ObjectPtr object = mScenarioManager->createObject(ObjectTypes::Default, name, pEntity, pParent);
 		}
 

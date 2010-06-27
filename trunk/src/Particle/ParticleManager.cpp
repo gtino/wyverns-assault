@@ -368,11 +368,11 @@ EVENTS_DEFINE_HANDLER(ParticleManager, ItemCreation)
 
 	this->add(item->_getSceneNode(), item->getName() + "_glow", "WyvernsAssault/ItemGlow");
 
-	if ( item->getType() == Item::ItemTypes::LiveBig || item->getType() == Item::ItemTypes::LiveMedium || item->getType() == Item::ItemTypes::LiveSmall )
+	if ( item->getType() == Item::ItemTypes::Life )
 		this->add(item->_getSceneNode(), item->getName(), "WyvernsAssault/Heart");
-	else if ( item->getType() == Item::ItemTypes::PowerBig || item->getType() == Item::ItemTypes::PowerMedium || item->getType() == Item::ItemTypes::PowerSmall )
+	else if ( item->getType() == Item::ItemTypes::Drunk )
 		this->add(item->_getSceneNode(), item->getName(), "WyvernsAssault/Skull");
-	else if ( item->getType() == Item::ItemTypes::ScoreBig || item->getType() == Item::ItemTypes::ScoreSmall )
+	else if ( item->getType() == Item::ItemTypes::Points )
 		this->add(item->_getSceneNode(), item->getName(), "WyvernsAssault/Money");
 }
 
