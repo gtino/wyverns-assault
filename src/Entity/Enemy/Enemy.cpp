@@ -7,15 +7,14 @@ static struct EnemyLogic
 	Enemy::EnemyTypes type;
 	const char* function;
 } EnemyLogicList[] = {
-	{Enemy::EnemyTypes::Naked,		"runNakedLogic"},
-	{Enemy::EnemyTypes::Chicken,	"runChickenLogic"},
-	{Enemy::EnemyTypes::Knight,		"runSoldierLogic"},
-	{Enemy::EnemyTypes::Wizard,		"runWizardLogic"},	
-	// Still not used
-	{Enemy::EnemyTypes::Soldier,	"runSoldierLogic"},	
-	{Enemy::EnemyTypes::Peasant,	"runPeasantLogic"},
-	{Enemy::EnemyTypes::Woman,		"runWomanLogic"},
-	{Enemy::EnemyTypes::Cow,		"runAnimalLogic"}
+	{Enemy::EnemyTypes::Naked, "runNakedLogic"},
+	{Enemy::EnemyTypes::Chicken, "runChickenLogic"},
+	{Enemy::EnemyTypes::Knight, "runSoldierLogic"},
+	{Enemy::EnemyTypes::Wizard, "runWizardLogic"},
+	{Enemy::EnemyTypes::Soldier, "runSoldierLogic"},	
+	{Enemy::EnemyTypes::Peasant, "runPeasantLogic"},
+	{Enemy::EnemyTypes::Woman, "runWomanLogic"},
+	{Enemy::EnemyTypes::Cow, "runAnimalLogic"}
 };
 
 Enemy::EnemyTypes Enemy::StringToType (Ogre::String string)
