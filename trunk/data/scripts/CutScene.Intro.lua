@@ -60,6 +60,7 @@ function playIntroCutScene(elapsedTime)
 	elseif step == 4 then
 		-- Wait 4 seconds
 		if CutScene.wait(4) then
+			Gui.hideForeground();
 			CutScene.nextStep(); -- Simply go to next step
 		end
 	elseif step == 5 then 
@@ -77,12 +78,14 @@ function playIntroCutScene(elapsedTime)
 	elseif step == 8 then
 		if Camera.hasArrived() then
 			Gui.setForeground("intro_3");
+			Gui.showForeground();
 			-- Camera has arrived
 			CutScene.nextStep(); -- Simply go to next step
 		end
 	elseif step == 9 then
-		-- Wait 5 seconds, so we can see the rock
-		if CutScene.wait(5) then
+		-- Wait 4 seconds, so we can see the rock
+		if CutScene.wait(4) then
+			Gui.hideForeground();
 			CutScene.nextStep(); -- Simply go to next step
 		end
 	elseif step == 10 then -- rotate to the player 1
@@ -91,12 +94,14 @@ function playIntroCutScene(elapsedTime)
 	elseif step == 11 then
 		if Camera.hasArrived() then
 			Gui.setForeground("intro_4");
+			Gui.showForeground();
 			-- Camera has arrived
 			CutScene.nextStep(); -- Simply go to next step
 		end
 	elseif step == 12 then
-		-- Wait 10 seconds, so we can see the wyvern
-		if CutScene.wait(10) then
+		-- Wait 4 seconds, so we can see the wyvern
+		if CutScene.wait(4) then
+			Gui.hideForeground();
 			CutScene.nextStep(); -- Simply go to next step
 		end
 	elseif step == 13 then
@@ -106,6 +111,8 @@ function playIntroCutScene(elapsedTime)
 	elseif step == 14 then
 		if Camera.hasArrived() then
 			Gui.setForeground("intro_5");
+			Gui.showForeground();
+			--Audio.playOnce("");
 			-- Camera has arrived
 			CutScene.nextStep(); -- Simply go to next step
 		end	
