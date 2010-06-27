@@ -54,9 +54,9 @@ void BaseState::initialize()
 
 	mSceneManager = mGraphicsManager->getSceneManager();
 
-	mCamera = mCameraManager->getGuiCamera();
+	mCamera = mCameraManager->getGameCamera();
 
-	mViewport = mCameraManager->getGuiViewport();
+	mViewport = mCameraManager->getGameViewport();
 }
 
 void BaseState::finalize()

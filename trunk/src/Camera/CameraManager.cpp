@@ -18,7 +18,6 @@ CameraManager& CameraManager::getSingleton(void)
 CameraManager::CameraManager()
 : mGameCamera(0)
 , mSceneManager(0)
-, mGuiCamera(0)
 , mCameraNode(0)
 , mGameCameraNode(0)
 , mGameCameraLookAtNode(0)
@@ -31,7 +30,6 @@ CameraManager::CameraManager()
 , mCameraEffect(0)
 , mCameraEffectLook(0)
 , mGameViewport(0)
-, mGuiViewport(0)
 {
 }
 
@@ -46,19 +44,6 @@ void CameraManager::initialize(SceneManager* sceneManager, RenderWindow* window)
 	this->mSceneManager = sceneManager;
 	this->mWindow = window;
 	this->mCameraNode = mSceneManager->getRootSceneNode()->createChildSceneNode(CAMERA_NODE_NAME);
-
-	// -----------------------
-	// Gui Camera and Viewport
-	// -----------------------
-	if(mSceneManager->hasCamera( GUI_CAMERA ))
-		mGuiCamera = mSceneManager->getCamera( GUI_CAMERA );
-	else
-		mGuiCamera = mSceneManager->createCamera( GUI_CAMERA );
-
-	mGuiViewport = window->addViewport(mGuiCamera,0);
-	mGuiViewport->setBackgroundColour( Ogre::ColourValue( 0, 0, 0 ) );
-
-	mGuiCamera->setAspectRatio(Real(mGuiViewport->getActualWidth()) / Real(mGuiViewport->getActualHeight()));	
 
 	// ------------------------
 	// Game Camera and Viewport
@@ -123,12 +108,6 @@ void CameraManager::finalize()
 {	
 	if(!mSceneManager)
 		return;
-
-	if(mSceneManager->hasCamera(GUI_CAMERA))
-	{
-		mSceneManager->destroyCamera( GUI_CAMERA );
-		mGuiCamera = NULL;
-	}
 
 	if(mSceneManager->hasCamera(GAME_CAMERA))
 	{

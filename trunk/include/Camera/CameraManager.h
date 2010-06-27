@@ -83,10 +83,8 @@ namespace WyvernsAssault
 		int getGameArea(Vector3 position);
 
 		Camera* getGameCamera(){return mGameCamera;}
-		Camera* getGuiCamera(){return mGuiCamera;}
 
 		Viewport* getGameViewport(){return mGameViewport;}
-		Viewport* getGuiViewport(){return mGuiViewport;}
 		
 		/** Camera moving direction */
 		Vector3 getDirection(Vector3 direction);
@@ -150,13 +148,11 @@ namespace WyvernsAssault
 		SceneManager*			mSceneManager;
 		RenderWindow*			mWindow;
 		Viewport*				mGameViewport;
-		Viewport*				mGuiViewport;
 
 	protected:
 		SceneNode*				mCameraNode;
 
 		Camera*					mGameCamera;
-		Camera*					mGuiCamera;
 		SceneNode*				mGameCameraNode;
 		SceneNode*				mGameCameraLookAtNode;
 

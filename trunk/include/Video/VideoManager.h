@@ -30,6 +30,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #include "TheoraVideoManager.h"
 #include "TheoraVideoClip.h"
 
+#include "FmodAudioInterface.h"
+
 #include "..\Utils\Utils.h"
 #include "..\Lua\LuaInterface.h"
 
@@ -76,6 +78,8 @@ namespace WyvernsAssault
 
 		TheoraVideoManager* mTheoraVideoManager;
 		TheoraVideoClip* mTheoraVideoClip;
+
+		FmodAudioInterfaceFactory* mFmodAudioInterfaceFactory;
 
 		bool mInitialized;
 

@@ -50,10 +50,10 @@ void IntroState::load()
 	//
 	mGuiScreen = mGuiManager->createGui(GuiScreenId::IntroGui, "IntroScreen");
 	
-	//GuiBackground* guiBackground = new GuiBackground();
-	//guiBackground->setImage("Intro.png","IntroBackground","General");
+	GuiMovieClip* guiMovieClip = new GuiMovieClip();
+	guiMovieClip->setMovieClip("video_material");
 
-	//mGuiScreen->setBackground(guiBackground);
+	mGuiScreen->setBackground(guiMovieClip);
 
 	// Gui Widgets for this state
 	mMenu = new GuiMenu(mWindow->getViewport(0)->getCamera()->getAspectRatio(), GuiScreenId::IntroGui);
@@ -61,6 +61,7 @@ void IntroState::load()
 	// Add menu to screen
 	mGuiScreen->addMenu(mMenu);
 
+	mAudioManager->playSoundTrack("intro.mp3");
 	mVideoManager->play();
 }
 
