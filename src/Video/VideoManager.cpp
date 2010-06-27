@@ -19,6 +19,7 @@ VideoManager::VideoManager(SceneManager* sceneManager)
 , mTheoraVideoManager(0)
 , mTheoraVideoClip(0)
 , mInitialized(false)
+, mFmodAudioInterfaceFactory(0)
 {
 	this->mSceneManager = sceneManager;
 
@@ -35,10 +36,10 @@ void VideoManager::initialize()
 	// and atach it to the root node
 	mVideoNode = this->mSceneManager->getRootSceneNode()->createChildSceneNode(VIDEO_NODE_NAME);
 
-	createQuad("video_quad","video_material",-1,1,1,-1);
-
 	mTheoraVideoManager = TheoraVideoManager::getSingletonPtr();
 	
+	mFmodAudioInterfaceFactory = new FmodAudioInterfaceFactory();
+	//mTheoraVideoManager->setAudioInterfaceFactory(mFmodAudioInterfaceFactory);
 
 	mTheoraVideoManager->setInputName(VIDEO_FILE);
 	mTheoraVideoManager->createDefinedTexture("video_material");
@@ -58,8 +59,6 @@ void VideoManager::finalize()
 	if(mInitialized)
 	{
 		stop();
-
-		mSceneManager->destroyManualObject("video_quad");
 
 		Utils::Destroy(mSceneManager,VIDEO_NODE_NAME);
 		mVideoNode = NULL;
@@ -87,30 +86,6 @@ bool VideoManager::isDone()
 {
 	return mTheoraVideoClip->isDone();
 }
-
-//
-// Internal stuff
-//
-void VideoManager::createQuad(String name,String material_name,float left,float top,float right,float bottom)
-	{
-		ManualObject* model = mSceneManager->createManualObject(name);
-		model->begin(material_name);
-
-		model->position(right,bottom,0); model->textureCoord(1,1);
-		model->position(right,top   ,0); model->textureCoord(1,0);
-		model->position(left ,top   ,0); model->textureCoord(0,0);
-		model->position(left ,top   ,0); model->textureCoord(0,0);
-		model->position(left, bottom,0); model->textureCoord(0,1);
-		model->position(right,bottom,0); model->textureCoord(1,1);		
-
-		model->end();
-		// make the model 2D
-		model->setUseIdentityProjection(true);
-		model->setUseIdentityView(true);
-		
-		mVideoNode->attachObject(model);
-	}
-
 
 // --------------------------------
 // Lua Video Lib

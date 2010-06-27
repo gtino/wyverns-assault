@@ -360,6 +360,10 @@
 					>
 				</File>
 				<File
+					RelativePath="..\src\GUI\GuiMovieClip.cpp"
+					>
+				</File>
+				<File
 					RelativePath="..\src\GUI\GuiObjectTextDisplay.cpp"
 					>
 				</File>
@@ -524,6 +528,10 @@
 				Name="Video"
 				>
 				<File
+					RelativePath="..\src\Video\FmodAudioInterface.cpp"
+					>
+				</File>
+				<File
 					RelativePath="..\src\Video\VideoManager.cpp"
 					>
 				</File>
@@ -635,6 +643,10 @@
 				</File>
 				<File
 					RelativePath="..\include\GUI\GuiMenu.h"
+					>
+				</File>
+				<File
+					RelativePath="..\include\GUI\GuiMovieClip.h"
 					>
 				</File>
 				<File
@@ -889,6 +901,10 @@
 			<Filter
 				Name="Video"
 				>
+				<File
+					RelativePath="..\include\Video\FmodAudioInterface.h"
+					>
+				</File>
 				<File
 					RelativePath="..\include\Video\VideoManager.h"
 					>

@@ -131,6 +131,7 @@ void AudioManager::loadResources()
 	createLoopedStream(String("soft_track.mp3"));
 	createLoopedStream(String("hard_track.mp3"));
 	createLoopedStream(String("main_track.mp3"));
+	createLoopedStream(String("intro.mp3"));
 
 	Debug::Out("AudioManager : Resources loaded");
 }

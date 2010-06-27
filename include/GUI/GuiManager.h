@@ -39,6 +39,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #include "..\GUI\GuiBackground.h"
 #include "..\GUI\GuiButton.h"
 #include "..\GUI\GuiMenu.h"
+#include "..\GUI\GuiMovieClip.h"
 
 using namespace Ogre;
 
