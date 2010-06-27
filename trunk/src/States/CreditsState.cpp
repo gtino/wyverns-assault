@@ -30,9 +30,9 @@ void CreditsState::load()
 	//
 	// Gui Screen for this state
 	//
-	mGuiScreen = mGuiManager->createGui(GuiScreenId::CreditsGui, "CreditsScreen");
+	mGuiScreen = mGuiManager->createScreen(GuiScreenId::CreditsGui, "CreditsScreen");
 	
-	GuiBackground* guiBackground = new GuiBackground();
+	GuiBackgroundPtr guiBackground = GuiBackgroundPtr(new GuiBackground());
 	guiBackground->setImage("Credits.png","CreditsBackground","General");
 
 	mGuiScreen->setBackground(guiBackground);
@@ -77,7 +77,7 @@ void CreditsState::unload()
 		//
 		// Remove gui
 		//
-		mGuiManager->removeGui(GuiScreenId::CreditsGui);
+		mGuiManager->removeScreen(GuiScreenId::CreditsGui);
 		mGuiScreen.reset();
 	}
 }

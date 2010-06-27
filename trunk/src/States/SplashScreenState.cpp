@@ -30,9 +30,9 @@ void SplashScreenState::load()
 	//
 	// Gui Screen for this state
 	//
-	mGuiScreen = mGuiManager->createGui(GuiScreenId::SplashScreenGui, "SplashScreen");
+	mGuiScreen = mGuiManager->createScreen(GuiScreenId::SplashScreenGui, "SplashScreen");
 	
-	GuiBackground* guiBackground = new GuiBackground();
+	GuiBackgroundPtr guiBackground = GuiBackgroundPtr(new GuiBackground());
 	guiBackground->setImage("SplashScreen.png","SplashBackground","General");
 
 	mGuiScreen->setBackground(guiBackground);
@@ -82,7 +82,7 @@ void SplashScreenState::unload()
 		//
 		// Remove gui
 		//
-		mGuiManager->removeGui(GuiScreenId::SplashScreenGui);
+		mGuiManager->removeScreen(GuiScreenId::SplashScreenGui);
 		mGuiScreen.reset();
 	}
 }

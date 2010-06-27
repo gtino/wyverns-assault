@@ -30,9 +30,9 @@ void PauseState::load()
 	//
 	// Gui Screen for this state
 	//
-	mGuiScreen = mGuiManager->createGui(GuiScreenId::PauseGui, "PauseScreen");
+	mGuiScreen = mGuiManager->createScreen(GuiScreenId::PauseGui, "PauseScreen");
 	
-	GuiBackground* guiBackground = new GuiBackground();
+	GuiBackgroundPtr guiBackground = GuiBackgroundPtr(new GuiBackground());
 	guiBackground->setImage("Pause.png","PauseBackground","General");
 
 	mGuiScreen->setBackground(guiBackground);
@@ -87,7 +87,7 @@ void PauseState::finalize()
 	// Destroy gui
 	if(mGuiScreen)
 	{
-		mGuiManager->removeGui(GuiScreenId::PauseGui);
+		mGuiManager->removeScreen(GuiScreenId::PauseGui);
 		mGuiScreen.reset();
 	}
 

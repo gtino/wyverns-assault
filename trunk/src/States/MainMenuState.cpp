@@ -39,9 +39,9 @@ void MainMenuState::load()
 	//
 	// Gui Screen for this state
 	//
-	mGuiScreen = mGuiManager->createGui(GuiScreenId::MainMenuGui, "MainMenuScreen");
+	mGuiScreen = mGuiManager->createScreen(GuiScreenId::MainMenuGui, "MainMenuScreen");
 	
-	GuiBackground* guiBackground = new GuiBackground();
+	GuiBackgroundPtr guiBackground = GuiBackgroundPtr(new GuiBackground());
 	guiBackground->setImage("MainMenu.png","MainMenuBackground","General");
 
 	mGuiScreen->setBackground(guiBackground);
@@ -77,7 +77,7 @@ void MainMenuState::unload()
 		//
 		// Remove gui
 		//
-		mGuiManager->removeGui(GuiScreenId::MainMenuGui);
+		mGuiManager->removeScreen(GuiScreenId::MainMenuGui);
 		mGuiScreen.reset();
 	}
 }

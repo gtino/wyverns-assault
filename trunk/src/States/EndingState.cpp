@@ -30,9 +30,9 @@ void EndingState::load()
 	//
 	// Gui Screen for this state
 	//
-	mGuiScreen = mGuiManager->createGui(GuiScreenId::EndingGui, "EndingScreen");
+	mGuiScreen = mGuiManager->createScreen(GuiScreenId::EndingGui, "EndingScreen");
 	
-	GuiBackground* guiBackground = new GuiBackground();
+	GuiBackgroundPtr guiBackground = GuiBackgroundPtr(new GuiBackground());
 	guiBackground->setImage("Ending.png","EndingBackground","General");
 
 	mGuiScreen->setBackground(guiBackground);
@@ -82,7 +82,7 @@ void EndingState::unload()
 		//
 		// Remove gui
 		//
-		mGuiManager->removeGui(GuiScreenId::EndingGui);
+		mGuiManager->removeScreen(GuiScreenId::EndingGui);
 		mGuiScreen.reset();
 	}
 }

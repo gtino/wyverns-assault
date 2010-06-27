@@ -56,9 +56,14 @@ void PlayState::initialize()
 	//
 	// Gui for this state
 	//
-	mGuiScreen = mGuiManager->createGui(GuiScreenId::PlayGui, "PlayScreen");
+	mGuiScreen = mGuiManager->createScreen(GuiScreenId::PlayGui, "PlayScreen");
 	mPlayerUI = GuiUserInterfacePtr( new GuiUserInterface(mWindow->getViewport(0)->getCamera()->getAspectRatio(), GuiScreenId::PlayGui, GuiWidgetPlayId::UserInterface1) );
 	mGuiScreen->addWidget(mPlayerUI,GuiWidgetPlayId::UserInterface1);
+	
+	GuiForegroundPtr foreground = GuiForegroundPtr(new GuiForeground());
+	foreground->setImage("intro_1.png","IntroBackground","General");
+
+	mGuiScreen->setForeground(foreground);
 
 	// Player manager constructor
 	mPlayerManager = PlayerManagerPtr(new PlayerManager(mSceneManager));
@@ -446,7 +451,7 @@ void PlayState::unload()
 		//
 		// Remove gui
 		//
-		mGuiManager->removeGui(GuiScreenId::PlayGui);
+		mGuiManager->removeScreen(GuiScreenId::PlayGui);
 	}
 	if(mTrayMgr)
 	{

@@ -11,7 +11,13 @@ GuiScreen::GuiScreen(Ogre::SceneManager* sceneManager, GuiScreenId id, const Ogr
 	mSceneManager = sceneManager;
 	mGuiScreenId = id;
 	mGuiScreenName = name;
-	mBackgroundNode = NULL;
+
+	//// Attach background to the scene
+	mBackgroundNode = mSceneManager->getRootSceneNode()->createChildSceneNode(mGuiScreenName+"_Background");
+
+	//// Attach background to the scene
+	mForegroundNode = mSceneManager->getRootSceneNode()->createChildSceneNode(mGuiScreenName+"_Foreground");
+	
 	mMenu = NULL;
 }
 
@@ -121,11 +127,47 @@ GuiWidgetPtr GuiScreen::previousWidget(GuiWidgetId widgetId)
 	return (mWidgetMap[widgetId]);
 }
 
-void GuiScreen::setBackground(GuiBackground* background)
+void GuiScreen::setBackground(GuiBackgroundPtr background)
 {
-	//// Attach background to the scene
-	mBackgroundNode = mSceneManager->getRootSceneNode()->createChildSceneNode(mGuiScreenName+"_Background");
-	mBackgroundNode->attachObject(background->getRectangle2D());
+	mBackground = background;
+	mBackgroundNode->attachObject(mBackground->getRectangle2D());
+}
+
+void GuiScreen::changeBackground(const Ogre::String& filename, const Ogre::String& name, const Ogre::String& group)
+{
+	mBackground->setImage(filename,name,group);
+}
+
+void GuiScreen::showBackground()
+{
+	mBackgroundNode->setVisible(true);
+}
+
+void GuiScreen::hideBackground()
+{
+	mBackgroundNode->setVisible(false);
+}
+
+void GuiScreen::setForeground(GuiForegroundPtr foreground)
+{
+	mForeground = foreground;
+
+	mForegroundNode->attachObject(mForeground->getRectangle2D());
+}
+
+void GuiScreen::changeForeground(const Ogre::String& filename, const Ogre::String& name, const Ogre::String& group)
+{
+	mForeground->setImage(filename,name,group);
+}
+
+void GuiScreen::showForeground()
+{
+	mForegroundNode->setVisible(true);
+}
+
+void GuiScreen::hideForeground()
+{
+	mForegroundNode->setVisible(false);
 }
 
 void GuiScreen::show()

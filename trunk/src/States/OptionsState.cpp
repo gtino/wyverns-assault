@@ -39,9 +39,9 @@ void OptionsState::load()
 	//
 	// Gui Screen for this state
 	//
-	mGuiScreen = mGuiManager->createGui(GuiScreenId::OptionsGui, "OptionsScreen");
+	mGuiScreen = mGuiManager->createScreen(GuiScreenId::OptionsGui, "OptionsScreen");
 	
-	GuiBackground* guiBackground = new GuiBackground();
+	GuiBackgroundPtr guiBackground = GuiBackgroundPtr(new GuiBackground());
 	guiBackground->setImage("Options.png","OptionsBackground","General");
 
 	mGuiScreen->setBackground(guiBackground);
@@ -77,7 +77,7 @@ void OptionsState::unload()
 		//
 		// Remove gui
 		//
-		mGuiManager->removeGui(GuiScreenId::OptionsGui);
+		mGuiManager->removeScreen(GuiScreenId::OptionsGui);
 		mGuiScreen.reset();
 	}
 }
