@@ -65,8 +65,8 @@ namespace WyvernsAssault
 		void finalize();
 		SceneManager* getSceneManager(){return this->mSceneManager;}
 
-		EnemyPtr createEnemy(Enemy::EnemyTypes type);
-		EnemyPtr createEnemy(Enemy::EnemyTypes type, Ogre::String name, Ogre::String mesh);
+		EnemyPtr createEnemy(Enemy::EnemyTypes type);	// For random enemies creation. Still not used
+		EnemyPtr createEnemy(Enemy::EnemyTypes type, Ogre::String name, Ogre::Entity* mesh, Ogre::SceneNode* sceneNode, Enemy::EnemyParameters params);
 
 		int getCount();
 

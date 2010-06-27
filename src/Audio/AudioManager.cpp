@@ -702,14 +702,14 @@ EVENTS_DEFINE_HANDLER(AudioManager, EnemyAttack)
 	SceneNode* sceneNode = enemy->_getSceneNode();
 
 	// The enemy has just attack
-	if( enemy->getEnemyType() == Enemy::EnemyTypes::Wizard || enemy->getEnemyType() == Enemy::EnemyTypes::Wizard2 )
+	if( enemy->getEnemyType() == Enemy::EnemyTypes::Wizard )
 	{
 		if( (rand()%2) == 0 )
 			playSound("WizardAttack01.wav",sceneNode->_getDerivedPosition(),&channelIndex);
 		else 
 			playSound("WizardAttack02.wav",sceneNode->_getDerivedPosition(),&channelIndex);
 	}
-	else	
+	else if ( enemy->getEnemyType() == Enemy::EnemyTypes::Knight )
 	{
 		if( (rand()%3) == 0 )
 			playSound("EnemyAttack01.wav",sceneNode->_getDerivedPosition(),&channelIndex);
@@ -731,7 +731,7 @@ EVENTS_DEFINE_HANDLER(AudioManager, EnemyHit)
 	SceneNode* sceneNode = enemy->_getSceneNode();
 
 	// The player has just hit the enemy
-	if( enemy->getEnemyType() == Enemy::EnemyTypes::Wizard || enemy->getEnemyType() == Enemy::EnemyTypes::Wizard2 )
+	if( enemy->getEnemyType() == Enemy::EnemyTypes::Wizard )
 	{
 		if( (rand()%2) == 0 )
 			playSound("WizardHit01.wav",sceneNode->_getDerivedPosition(),&channelIndex);
@@ -749,7 +749,7 @@ EVENTS_DEFINE_HANDLER(AudioManager, EnemyHit)
 	{
 		playSound("ChickenDie01.wav",sceneNode->_getDerivedPosition(),&channelIndex);
 	}
-	else
+	else if( enemy->getEnemyType() == Enemy::EnemyTypes::Knight )
 	{
 		if( (rand()%3) == 0 )
 			playSound("EnemyHit01.wav",sceneNode->_getDerivedPosition(),&channelIndex);
@@ -773,7 +773,7 @@ EVENTS_DEFINE_HANDLER(AudioManager, EnemyKilled)
 	SceneNode* sceneNode = enemy->_getSceneNode();
 
 	// The player has just kill the enemy
-	if( enemy->getEnemyType() == Enemy::EnemyTypes::Wizard || enemy->getEnemyType() == Enemy::EnemyTypes::Wizard2 )
+	if( enemy->getEnemyType() == Enemy::EnemyTypes::Wizard )
 	{
 		playSound("WizardDie01.wav",sceneNode->_getDerivedPosition(),&channelIndex);
 	}
@@ -785,7 +785,7 @@ EVENTS_DEFINE_HANDLER(AudioManager, EnemyKilled)
 	{
 		playSound("ChickenDie01.wav",sceneNode->_getDerivedPosition(),&channelIndex);
 	}
-	else
+	else if( enemy->getEnemyType() == Enemy::EnemyTypes::Knight )
 	{
 		if( (rand()%3) == 0 )
 			playSound("EnemyDie01.wav",sceneNode->_getDerivedPosition(),&channelIndex);

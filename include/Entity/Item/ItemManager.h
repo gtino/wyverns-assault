@@ -66,7 +66,7 @@ namespace WyvernsAssault
 		static ItemManager* getSingletonPtr(void);
 
 		ItemPtr createItem(Item::ItemTypes type);
-		ItemPtr createItem(Item::ItemTypes type, Ogre::String name, Ogre::String mesh);
+		ItemPtr createItem(Item::ItemTypes type, Ogre::String name, Ogre::Entity* mesh, Ogre::SceneNode* sceneNode, Item::ItemParameters params);
 
 		ItemPtr getItem(int index);
 		ItemPtr getItem(Ogre::String name);

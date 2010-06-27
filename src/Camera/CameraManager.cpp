@@ -882,12 +882,8 @@ EVENTS_DEFINE_HANDLER(CameraManager, ItemCatch)
 {
 	ItemPtr item = evt->getItem();
 
-	if ( item->getType() == Item::ItemTypes::PowerBig )
-		this->drunk(6, 12);
-	else if( item->getType() == Item::ItemTypes::PowerMedium ) 
-		this->drunk(4, 8);
-	else if( item->getType() == Item::ItemTypes::PowerSmall )	
-		this->drunk(2, 6);
+	if ( item->getDrunkTime() > 0 )
+		this->drunk(item->getDrunkTime() / 2 , item->getDrunkTime());
 }
 
 // --------------------------------

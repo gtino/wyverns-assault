@@ -47,35 +47,57 @@ ItemPtr ItemManager::createItem(Item::ItemTypes type)
 {
 	Ogre::String mesh;
 
+	int subType = rand();
+
 	switch(type)
 	{
-	case Item::ItemTypes::LiveSmall:
-		mesh = Ogre::String("crown.mesh");
+	case Item::ItemTypes::Life:
+		if( subType%2 == 0 )
+			mesh = Ogre::String("chickenLegItem.mesh");
+		else
+			mesh = Ogre::String("chickenItem.mesh");
 		break;
-	case Item::ItemTypes::LiveMedium:
-		mesh = Ogre::String("beerGlass.mesh");
+	case Item::ItemTypes::Points:
+		if( subType%2 == 0 )
+			mesh = Ogre::String("ruby.mesh");
+		else
+			mesh = Ogre::String("crown.mesh");
 		break;
-	default:
-		mesh = Ogre::String("beerTank.mesh");
+	case Item::ItemTypes::Drunk:
+		if( subType%3 == 0 )
+			mesh = Ogre::String("beerHorn.mesh");
+		if( subType%3 == 1 )
+			mesh = Ogre::String("beerGlass.mesh");
+		else
+			mesh = Ogre::String("beerTank.mesh");
 		break;
 	}
 
 	Ogre::String name = createUniqueId();
 
-	return createItem(type, name, mesh);
+	Ogre::Entity* itemMesh = mSceneManager->createEntity(name, mesh);
+	itemMesh->setCastShadows(true);
+	itemMesh->setQueryFlags(SceneManager::ENTITY_TYPE_MASK);
+
+	Ogre::SceneNode* sceneNode = mItemNode->createChildSceneNode(name + "_Node");
+	sceneNode->attachObject(itemMesh);
+
+	Item::ItemParameters params;
+
+	// Get standar parameters for item type
+
+	return createItem(type, name, itemMesh, sceneNode, params);
 }
 
-ItemPtr ItemManager::createItem(Item::ItemTypes type, Ogre::String name, Ogre::String mesh)
+ItemPtr ItemManager::createItem(Item::ItemTypes type, Ogre::String name, Ogre::Entity* mesh, Ogre::SceneNode* sceneNode, Item::ItemParameters params)
 {
 	// Item name == Mesh Name!
-	Ogre::Entity* itemMesh = mSceneManager->createEntity(name, mesh);
-	itemMesh->setQueryFlags(SceneManager::ENTITY_TYPE_MASK);
-	Ogre::SceneNode* itemSceneNode = mItemNode->createChildSceneNode();
+	Ogre::Entity* itemMesh = mesh;
 
-	itemSceneNode->attachObject(itemMesh);
+	sceneNode->attachObject(itemMesh);
 
-	ItemPtr item = ItemPtr(new Item(name, type));
-	item->initializeEntity(itemMesh, itemSceneNode, mSceneManager);
+	ItemPtr item = ItemPtr(new Item(name, type, params));
+	item->initializeEntity(itemMesh, sceneNode, mSceneManager);
 
 	mItemList.push_back(item);
 	mItemMap[name] = item;
