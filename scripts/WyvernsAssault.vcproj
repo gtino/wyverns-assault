@@ -348,6 +348,10 @@
 					>
 				</File>
 				<File
+					RelativePath="..\src\GUI\GuiForeground.cpp"
+					>
+				</File>
+				<File
 					RelativePath="..\src\GUI\GuiImage.cpp"
 					>
 				</File>
@@ -631,6 +635,10 @@
 				</File>
 				<File
 					RelativePath="..\include\GUI\GuiDebugText.h"
+					>
+				</File>
+				<File
+					RelativePath="..\include\GUI\GuiForeground.h"
 					>
 				</File>
 				<File

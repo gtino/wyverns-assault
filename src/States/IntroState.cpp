@@ -48,9 +48,9 @@ void IntroState::load()
 	//
 	// Gui Screen for this state
 	//
-	mGuiScreen = mGuiManager->createGui(GuiScreenId::IntroGui, "IntroScreen");
+	mGuiScreen = mGuiManager->createScreen(GuiScreenId::IntroGui, "IntroScreen");
 	
-	GuiMovieClip* guiMovieClip = new GuiMovieClip();
+	GuiMovieClipPtr guiMovieClip = GuiMovieClipPtr(new GuiMovieClip());
 	guiMovieClip->setMovieClip("video_material");
 
 	mGuiScreen->setBackground(guiMovieClip);
@@ -91,7 +91,7 @@ void IntroState::unload()
 		//
 		// Remove gui
 		//
-		mGuiManager->removeGui(GuiScreenId::IntroGui);
+		mGuiManager->removeScreen(GuiScreenId::IntroGui);
 		mGuiScreen.reset();
 	}
 

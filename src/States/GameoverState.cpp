@@ -39,9 +39,9 @@ void GameoverState::load()
 	//
 	// Gui Screen for this state
 	//
-	mGuiScreen = mGuiManager->createGui(GuiScreenId::GameOverGui, "GameOverScreen");
+	mGuiScreen = mGuiManager->createScreen(GuiScreenId::GameOverGui, "GameOverScreen");
 	
-	GuiBackground* guiBackground = new GuiBackground();
+	GuiBackgroundPtr guiBackground = GuiBackgroundPtr(new GuiBackground());
 	guiBackground->setImage("GameOver.png","GameOverBackground","General");
 
 	mGuiScreen->setBackground(guiBackground);
@@ -82,7 +82,7 @@ void GameoverState::unload()
 		//
 		// Remove gui
 		//
-		mGuiManager->removeGui(GuiScreenId::GameOverGui);
+		mGuiManager->removeScreen(GuiScreenId::GameOverGui);
 		mGuiScreen.reset();
 	}
 }

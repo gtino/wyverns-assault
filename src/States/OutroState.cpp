@@ -30,9 +30,9 @@ void OutroState::load()
 	//
 	// Gui Screen for this state
 	//
-	mGuiScreen = mGuiManager->createGui(GuiScreenId::OutroGui, "OutroScreen");
+	mGuiScreen = mGuiManager->createScreen(GuiScreenId::OutroGui, "OutroScreen");
 	
-	GuiBackground* guiBackground = new GuiBackground();
+	GuiBackgroundPtr guiBackground = GuiBackgroundPtr(new GuiBackground());
 	guiBackground->setImage("Outro.png","OutroBackground","General");
 
 	mGuiScreen->setBackground(guiBackground);
@@ -76,7 +76,7 @@ void OutroState::unload()
 		//
 		// Remove gui
 		//
-		mGuiManager->removeGui(GuiScreenId::OutroGui);
+		mGuiManager->removeScreen(GuiScreenId::OutroGui);
 		mGuiScreen.reset();
 	}
 }

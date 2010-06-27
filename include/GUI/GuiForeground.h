@@ -20,8 +20,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
 -----------------------------------------------------------------------------
 */
-#ifndef __GUI_BACKGROUND_H_
-#define __GUI_BACKGROUND_H_
+#ifndef __GUI_FOREGROUND_H_
+#define __GUI_FOREGROUND_H_
 
 #include <Ogre.h>
 #include <OgreRenderWindow.h>
@@ -32,16 +32,16 @@ using namespace Ogre;
 
 namespace WyvernsAssault
 {
-	class GuiBackground : public GuiImage
+	class GuiForeground : public GuiImage
 	{
 	public:
-		GuiBackground();
-		~GuiBackground();
+		GuiForeground();
+		~GuiForeground();
 
 		void setImage(const Ogre::String& filename, const Ogre::String& name, const Ogre::String& group);
 	};
 
-	typedef boost::shared_ptr<GuiBackground> GuiBackgroundPtr;
+	typedef boost::shared_ptr<GuiForeground> GuiForegroundPtr;
 }
 
-#endif // __GUI_BACKGROUND_H_
+#endif // __GUI_FOREGROUND_H_

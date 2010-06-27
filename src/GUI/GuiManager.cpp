@@ -43,9 +43,9 @@ void GuiManager::finalize()
 	//
 }
 
-GuiScreenPtr GuiManager::createGui(GuiScreenId id, const Ogre::String& name)
+GuiScreenPtr GuiManager::createScreen(GuiScreenId id, const Ogre::String& name)
 {
-	if( this->hasGui(id) )
+	if( this->hasScreen(id) )
 	{
 		return mGuiScreenMap[id];
 	}
@@ -57,15 +57,30 @@ GuiScreenPtr GuiManager::createGui(GuiScreenId id, const Ogre::String& name)
 	}
 }
 
-bool GuiManager::hasGui(GuiScreenId id)
+bool GuiManager::hasScreen(GuiScreenId id)
 {
 	return mGuiScreenMap[id] != NULL;
 }
 
-void GuiManager::removeGui(GuiScreenId id)
+void GuiManager::removeScreen(GuiScreenId id)
 {
 	mGuiScreenMap[id]->removeGui();
 	mGuiScreenMap.erase(id);
+}
+
+void GuiManager::showScreen(GuiScreenId id)
+{
+	mGuiScreenMap[id]->show();
+}
+
+void GuiManager::hideScreen(GuiScreenId id)
+{
+	mGuiScreenMap[id]->hide();
+}
+
+GuiScreenPtr GuiManager::getScreen(GuiScreenId id)
+{
+	return mGuiScreenMap[id];
 }
 
 //----------------------------------------------------------------//
@@ -207,8 +222,13 @@ EVENTS_DEFINE_HANDLER(GuiManager, PlayerStatusUpdate)
 // Lua Gui Lib
 // --------------------------------
 LUA_BEGIN_BINDING(GuiManager, guilib)
-LUA_BIND(GuiManager, showOverlay)
-LUA_BIND(GuiManager, hideOverlay)
+LUA_BIND(GuiManager, showScreen)
+LUA_BIND(GuiManager, hideScreen)
+LUA_BIND(GuiManager, showUi)
+LUA_BIND(GuiManager, hideUi)
+LUA_BIND(GuiManager, showForeground)
+LUA_BIND(GuiManager, hideForeground)
+LUA_BIND(GuiManager, setForeground)
 LUA_END_BINDING()
 
 //
@@ -220,20 +240,115 @@ LUA_BEGIN_LOAD_SCRIPTS(GuiManager)
 //
 LUA_END_LOAD_SCRIPTS()
 
-LUA_DEFINE_FUNCTION(GuiManager,showOverlay)
+LUA_DEFINE_FUNCTION(GuiManager,showScreen)
 {
 	/* get number of arguments */
 	int n = lua_gettop(L);
 
+	// n should be 1, the screen id
+
+	int id = luaL_checkint(L, 1);
+
+	GuiManager::getSingleton().showScreen((GuiScreenId)id);
+
 	/* return the number of results */
-	return 1;
+	return 0;
 }
 
-LUA_DEFINE_FUNCTION(GuiManager,hideOverlay)
+LUA_DEFINE_FUNCTION(GuiManager,hideScreen)
 {
 	/* get number of arguments */
 	int n = lua_gettop(L);
 
+	// n should be 1, the screen id
+
+	int id = luaL_checkint(L, 1);
+
+	GuiManager::getSingleton().hideScreen((GuiScreenId)id);
+
 	/* return the number of results */
-	return 1;
+	return 0;
+}
+
+LUA_DEFINE_FUNCTION(GuiManager,showUi)
+{
+	/* get number of arguments */
+	int n = lua_gettop(L);
+
+	// n should be 1, the screen id
+
+	GuiScreenPtr playScreen = GuiManager::getSingleton().getScreen(GuiScreenId::PlayGui);
+
+	GuiWidgetPtr widget1 = playScreen->getWidget(GuiWidgetPlayId::UserInterface1);
+
+	widget1->show();
+
+	/* return the number of results */
+	return 0;
+}
+
+LUA_DEFINE_FUNCTION(GuiManager,hideUi)
+{
+	/* get number of arguments */
+	int n = lua_gettop(L);
+
+	// n should be 1, the screen id
+
+	GuiScreenPtr playScreen = GuiManager::getSingleton().getScreen(GuiScreenId::PlayGui);
+
+	GuiWidgetPtr widget1 = playScreen->getWidget(GuiWidgetPlayId::UserInterface1);
+
+	widget1->hide();
+
+	/* return the number of results */
+	return 0;
+}
+
+LUA_DEFINE_FUNCTION(GuiManager,showForeground)
+{
+	/* get number of arguments */
+	int n = lua_gettop(L);
+
+	// n should be 1, the screen id
+
+	//int id = luaL_checkint(L, 1);
+
+	GuiScreenPtr playScreen = GuiManager::getSingleton().getScreen(GuiScreenId::PlayGui);
+
+	playScreen->showForeground();
+
+	/* return the number of results */
+	return 0;
+}
+
+LUA_DEFINE_FUNCTION(GuiManager, hideForeground)
+{
+	/* get number of arguments */
+	int n = lua_gettop(L);
+
+	// n should be 1, the screen id
+
+	GuiScreenPtr playScreen = GuiManager::getSingleton().getScreen(GuiScreenId::PlayGui);
+
+	playScreen->hideForeground();
+
+	/* return the number of results */
+	return 0;
+}
+
+LUA_DEFINE_FUNCTION(GuiManager, setForeground)
+{
+	/* get number of arguments */
+	int n = lua_gettop(L);
+
+	// n should be 1, the screen id
+
+	Ogre::String materialName = luaL_checkstring(L, 1);
+
+	GuiScreenPtr playScreen = GuiManager::getSingleton().getScreen(GuiScreenId::PlayGui);
+
+	playScreen->changeForeground(materialName+".png",materialName+"Foreground","General");
+
+	/* return the number of results */
+	return 0;
 }

@@ -68,9 +68,12 @@ namespace WyvernsAssault
 		bool initialize(Ogre::Root* root, Ogre::SceneManager* sceneManager, Ogre::RenderWindow* window);		
 		void finalize();
 
-		GuiScreenPtr createGui(GuiScreenId id, const Ogre::String& name);
-		bool hasGui(GuiScreenId id);
-		void removeGui(GuiScreenId id);
+		GuiScreenPtr createScreen(GuiScreenId id, const Ogre::String& name);
+		bool hasScreen(GuiScreenId id);
+		void removeScreen(GuiScreenId id);
+		void showScreen(GuiScreenId id);
+		void hideScreen(GuiScreenId id);
+		GuiScreenPtr getScreen(GuiScreenId id);
 
 	private: // InputListener
 		bool mouseMoved( const OIS::MouseEvent &arg );
@@ -106,8 +109,13 @@ namespace WyvernsAssault
 		//Gui Lib (exported to Lua)
 		LUA_LIBRARY("Gui", guilib);
 
-		LUA_FUNCTION(showOverlay);
-		LUA_FUNCTION(hideOverlay);
+		LUA_FUNCTION(showScreen);
+		LUA_FUNCTION(hideScreen);
+		LUA_FUNCTION(showUi);
+		LUA_FUNCTION(hideUi);
+		LUA_FUNCTION(showForeground);
+		LUA_FUNCTION(hideForeground);
+		LUA_FUNCTION(setForeground);
 		// ------------------------------
 		// END Lua Interface Declarations
 		// ------------------------------

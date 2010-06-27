@@ -97,7 +97,11 @@ const bool CutSceneManager::wait(const float timeout)
 	}
 
 	if(mElapsedSceneTime >= mWaitTimer)
+	{
+		// Reset the timer!
+		mWaitTimer = 0.0f;
 		return true;
+	}
 
 	return false;
 }
