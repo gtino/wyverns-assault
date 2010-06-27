@@ -54,7 +54,7 @@ void CameraManager::initialize(SceneManager* sceneManager, RenderWindow* window)
 		mGameCamera = mSceneManager->createCamera( GAME_CAMERA );
 
 	mGameViewport = window->addViewport(mGameCamera,1);
-	mGameViewport->setBackgroundColour( Ogre::ColourValue( 0.3, 0.6, 0.9 ) );
+	mGameViewport->setBackgroundColour( Ogre::ColourValue( 0.0, 0.0, 0.0 ) );
 
 	/** Game camera cofiguration */
 	mGameCamera->setNearClipDistance(50);
@@ -69,7 +69,7 @@ void CameraManager::initialize(SceneManager* sceneManager, RenderWindow* window)
 
 	// Initial Camera Position
 	mGameCameraMode = CameraModes::Fixed;
-	mGameCameraNode->setPosition(0, 0, 0);
+	mGameCameraNode->setPosition(2000, 1500, -2000);
 
 	/** Debug axes node */
 	mAxes = mSceneManager->createEntity("Axes", "axes.mesh");

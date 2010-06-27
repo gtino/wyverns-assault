@@ -128,6 +128,8 @@ namespace WyvernsAssault
 		}
 		void moveTo(Ogre::Vector3 position, Ogre::Vector3 lookAt)
 		{ 
+			//mGameCameraNode->setPosition(position);
+			//mGameCameraNode->lookAt(lookAt,Ogre::Node::TransformSpace::TS_WORLD);
 			createTransition(getCameraPosition(), position, getCameraLookAt(), lookAt, 0.01f); 
 		}
 		bool isMoving(){ return mMoving; }

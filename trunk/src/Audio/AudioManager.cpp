@@ -125,6 +125,9 @@ void AudioManager::loadResources()
 	createStream( String("PlayerDie01.wav"));
 	createStream( String("PlayerHit01.wav"));
 	createStream( String("PlayerHit02.wav"));
+	createStream( String("PlayerYell01.wav"));
+	createStream( String("PlayerYell02.wav"));
+	createStream( String("PlayerYell03.wav"));
 
 
 	// Musics

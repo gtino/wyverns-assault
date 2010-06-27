@@ -112,13 +112,13 @@ function playIntroCutScene(elapsedTime)
 		if Camera.hasArrived() then
 			Gui.setForeground("intro_5");
 			Gui.showForeground();
-			--Audio.playOnce("");
+			Audio.playOnce("PlayerYell03.wav");
 			-- Camera has arrived
 			CutScene.nextStep(); -- Simply go to next step
 		end	
 	elseif step == 15 then
-		-- Wait 4 seconds, so we can see the wyvern
-		if CutScene.wait(4) then
+		-- Wait 2 seconds, so we can see the wyvern
+		if CutScene.wait(2) then
 			CutScene.nextStep(); -- Simply go to next step
 		end
 	elseif step == 16 then 
