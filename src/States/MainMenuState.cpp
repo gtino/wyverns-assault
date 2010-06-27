@@ -51,6 +51,11 @@ void MainMenuState::load()
 	
 	// Add menu to screen
 	mGuiScreen->addMenu(mMenu);
+
+	//
+	// Play soft soundtrack
+	//
+	mAudioManager->playSoundTrack("hard_track.mp3");
 }
 
 /** Update internal stuff */
