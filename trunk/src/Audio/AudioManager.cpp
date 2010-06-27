@@ -484,6 +484,11 @@ void AudioManager::playSoundTrack(String name)
 		channel->setVolume(0.5);
 }
 
+void AudioManager::stopSoundTrack()
+{
+	stopSound(&mSoundTrackChannelIndex);
+}
+
 SoundInstance *AudioManager::getSoundInstance(int soundIndex)
 {
 	return mSoundInstanceVector->at(soundIndex);

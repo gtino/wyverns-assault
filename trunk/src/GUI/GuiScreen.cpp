@@ -24,6 +24,7 @@ GuiScreen::GuiScreen(Ogre::SceneManager* sceneManager, GuiScreenId id, const Ogr
 GuiScreen::~GuiScreen()
 {
 	mBackgroundNode = NULL;
+	mForegroundNode = NULL;
 	mMenu = NULL;
 }
 
@@ -102,6 +103,11 @@ void GuiScreen::removeGui()
 	{
 		mSceneManager->destroySceneNode(mBackgroundNode);
 		mBackgroundNode = NULL;
+	}
+	if(mForegroundNode)
+	{
+		mSceneManager->destroySceneNode(mForegroundNode);
+		mForegroundNode = NULL;
 	}
 	if(mMenu)
 	{

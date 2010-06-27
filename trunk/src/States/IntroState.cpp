@@ -94,6 +94,8 @@ void IntroState::unload()
 		mGuiManager->removeScreen(GuiScreenId::IntroGui);
 		mGuiScreen.reset();
 	}
+	
+	mAudioManager->stopSoundTrack();
 
 	mVideoManager.reset();
 }
