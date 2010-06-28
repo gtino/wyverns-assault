@@ -51,7 +51,7 @@ function playBeerCutScene(elapsedTime)
 		-- Wait 2 seconds
 		if CutScene.wait(2) then
 			Gui.hideForeground();
-			PostProcess.enableCompositor("RadialBlur");
+			PostProcess.enableCompositor("MotionBlur");
 			Camera.rumble(2,5);
 			CutScene.nextStep(); -- Simply go to next step
 		end
@@ -59,7 +59,7 @@ function playBeerCutScene(elapsedTime)
 		-- Wait 2 seconds
 		if CutScene.wait(2) then
 			Gui.hideForeground();
-			PostProcess.disableCompositor("RadialBlur");
+			PostProcess.disableCompositor("MotionBlur");
 			CutScene.nextStep(); -- Simply go to next step
 		end
 	elseif step == 6 then
