@@ -49,6 +49,13 @@ GuiWidget()
 	// Set points value
 	sprintf(uiChild, "%.0f", mPoints);
 	mTextPoints->setCaption(uiChild);
+	// Set points value
+	sprintf(uiChild, "Widget_%i_%i/GUI/UI/GodMode", screenId, mWidgetId);
+	mTextGodMode = (TextAreaOverlayElement*)mUi->getChild(uiChild);
+	mTextGodMode->setTop(mTextGodMode->getTop()*aspectRatio);	
+	mTextGodMode->setCharHeight(mTextGodMode->getCharHeight()*aspectRatio);
+	sprintf(uiChild, "");
+	mTextGodMode->setCaption(uiChild);
 
 	// Create an overlay, and add the panel
 	mOverlay = overlayManager.create(uiName);
@@ -103,6 +110,20 @@ void GuiUserInterface::setTextPoints(Real value)
 	mPoints = value;
 	sprintf(uiText, "%.0f", mPoints);
 	mTextPoints->setCaption(uiText);
+}
+
+void GuiUserInterface::setTextGodMode(bool enabled)
+{
+	char uiText[20];
+
+	mGodModeOn = enabled;
+
+	if(mGodModeOn)
+		sprintf(uiText, "GodMode!" );
+	else
+		sprintf(uiText, "");
+
+	mTextGodMode->setCaption(uiText);
 }
 
 void GuiUserInterface::setData(void* data)

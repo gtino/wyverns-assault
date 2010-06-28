@@ -55,6 +55,8 @@ namespace WyvernsAssault
 		void show();
 		void hide();
 
+		void setGodMode(bool enabled){setTextGodMode(enabled);}
+
 	private:
 		/** Life and special bars values function */
 		Real getLifeBar(){return mLifePercent; }
@@ -66,6 +68,9 @@ namespace WyvernsAssault
 		Real getTextPoints(){return mPoints; }		
 		void setTextPoints(Real value);
 
+		bool getTextGodMode(){return mGodModeOn; }		
+		void setTextGodMode(bool enabled);
+
 		void setData(void* data);
 
 	protected:
@@ -74,7 +79,8 @@ namespace WyvernsAssault
 		Overlay*					mOverlay;
 		PanelOverlayElement*		mLifeBar;
 		PanelOverlayElement*		mSpecialBar;
-		TextAreaOverlayElement*		mTextPoints;		
+		TextAreaOverlayElement*		mTextPoints;	
+		TextAreaOverlayElement*		mTextGodMode;
 
 	protected:
 		Real	mLifeWidth;
@@ -84,6 +90,7 @@ namespace WyvernsAssault
 		Real	mSpecialU2;
 		Real	mSpecialPercent;
 		Real	mPoints;
+		bool	mGodModeOn;
 	};
 
 	typedef boost::shared_ptr<GuiUserInterface> GuiUserInterfacePtr;

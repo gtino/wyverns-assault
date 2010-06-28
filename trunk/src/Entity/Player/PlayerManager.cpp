@@ -176,6 +176,21 @@ void PlayerManager::setDebugEnabled(bool isDebugEnabled)
 	}
 }
 
+void PlayerManager::toggleGodMode()
+{
+	for(int i = 0; i < mPlayerList.size() ; i++)
+	{
+		PlayerPtr player =  mPlayerList[i];
+		player->toggleGodMode();
+
+		if(player->isGodModeOn())
+		{
+			player->setLife(PLAYER_MAX_LIFE); // Max life 
+			player->setSpecial(PLAYER_MAX_SPECIAL); // Max special
+		}
+	}
+}
+
 // --------------
 // Event handlers
 // --------------
@@ -199,8 +214,11 @@ EVENTS_DEFINE_HANDLER(PlayerManager, PlayerHit)
 
 	PlayerPtr player = evt->getPlayer();
 	EnemyPtr enemy = evt->getEnemy();
-
-	player->hurt( enemy->getHitDamage() );
+	
+	if(!player->isGodModeOn()) // DEBUG : God mode!
+	{
+		player->hurt( enemy->getHitDamage() );
+	}
 }
 
 EVENTS_DEFINE_HANDLER(PlayerManager, PlayerKilled)

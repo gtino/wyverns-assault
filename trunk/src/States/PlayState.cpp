@@ -597,6 +597,10 @@ bool PlayState::keyPressed(const OIS::KeyEvent& e)
 
 	switch(e.key)
 	{
+	case OIS::KeyCode::KC_B:
+		this->mPlayerManager->toggleGodMode();
+		this->mPlayerUI->setGodMode(this->mPlayerManager->getPlayer(PLAYER1)->isGodModeOn());
+		break;
 	case OIS::KeyCode::KC_I:
 		this->mNextGameStateId = GameStateId::Ending;
 		break;
