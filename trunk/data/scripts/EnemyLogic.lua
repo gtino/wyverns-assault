@@ -22,9 +22,10 @@ Dead = 11
 -- Distances
 FightingDistance = 20
 MagicDistance = 80
-SightDistance = 100
-SoundDistance = 150
-AlertDistance = 120
+SightDistance = 150
+SoundDistance = 200
+AlertDistance = 175
+ChickenAlertDistance = 50;
 
 function runNakedLogic(enemyId, state)
 	
@@ -313,11 +314,11 @@ function runChickenLogic(enemyId, state)
 	if state == Initial then 
 		newState = Idle
 	elseif state == Idle then
-		if distance<AlertDistance then  -- The Animal can see the player!
+		if distance<ChickenAlertDistance then  -- The Animal can see the player!
 			newState = Fear
 		end
 	elseif state == Fear then 
-		if distance>AlertDistance then
+		if distance>ChickenAlertDistance then
 			newState = Idle
 		end
 	elseif state == Dying then 
