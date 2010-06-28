@@ -418,6 +418,8 @@ void Enemy::dieSwitch()
 
 	// Die mesh visible
 	mDieMesh->setVisible(true);
+	if(mBalloonSet)
+		mBalloonSet->setVisible(false);
 
 	// Rotate random if has die animation
 	if( hasDieAnimation() )
@@ -457,6 +459,9 @@ void Enemy::dieToCamera()
     mDieAnimation->setEnabled(true);
 	mDieAnimation->setWeight(1);
 	mDieAnimation->setLoop(false);
+
+	if(mBalloonSet)
+		mBalloonSet->setVisible(false);
 
 	flying = true;
 }
