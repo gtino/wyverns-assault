@@ -38,6 +38,15 @@ namespace WyvernsAssault
 		DynamicObject
 	};
 
+	struct ObjectParameters
+	{
+		Real life;
+		Real points;
+		String dieMesh;
+		String dieAnimation;
+		String physicMesh;
+	};
+
 	/**
 	Class used to manage all the enemies
 	*/
@@ -56,6 +65,10 @@ namespace WyvernsAssault
 		void setDebugEnabled(bool isDebugEnabled);
 		bool getDebugEnabled(){return mIsDebugEnabled;}
 
+		void hit(float damage);
+		bool isHurt();
+		bool isDying();
+
 		//
 		// Entity Interface
 		//
@@ -65,6 +78,9 @@ namespace WyvernsAssault
 
 	private:
 		ObjectTypes mType;
+
+		Real mMaxLife;
+		ObjectParameters mParameters;
 
 		OBBoxRenderable* mOBBoxRenderable;
 		bool mIsDebugEnabled;
