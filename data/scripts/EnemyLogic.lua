@@ -20,7 +20,7 @@ Dying = 10
 Dead = 11
 
 -- Distances
-FightingDistance = 20
+FightingDistance = 23
 MagicDistance = 80
 SightDistance = 150
 SoundDistance = 200
