@@ -68,6 +68,7 @@ void Enemy::initializeEntity(Ogre::Entity* entity, Ogre::SceneNode* sceneNode, O
 	mPhysicEntity = mSceneManager->createEntity(entity->getName() + "_physicBody", mParameters.physicMesh);
 	mPhysicEntity->setVisible(mIsDebugEnabled);
 	mSceneNode->attachObject(mPhysicEntity);
+	initializePhysics(mPhysicEntity);
 
 	// Ballon Set
 	mBalloonSet = mSceneManager->createBillboardSet(mName + "_BillboardSet");

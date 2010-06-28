@@ -4,7 +4,6 @@ using namespace WyvernsAssault;
 
 EntityInterface::EntityInterface(Ogre::String name)
 : mEntity(0)
-, mPhysicEntity(0)
 , mSceneNode(0)
 , mSceneManager(0)
 , mAnimationState(0)

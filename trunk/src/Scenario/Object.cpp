@@ -25,10 +25,12 @@ void Object::initializeEntity(Ogre::Entity* entity, Ogre::SceneNode* sceneNode, 
 	if(mType == WyvernsAssault::ObjectTypes::DynamicObject){
 		// Bounding Box
 		mOBBoxRenderable = new OBBoxRenderable("OBBoxManualMaterial_Object");
-
 		mOBBoxRenderable->setupVertices(mEntity->getBoundingBox());
 		mOBBoxRenderable->setVisible(mIsDebugEnabled);
 		mSceneNode->attachObject(mOBBoxRenderable);
+
+		initializePhysics(mEntity);
+		//getGeometry()->initializeMeshInformation(sceneNode->getPosition(),sceneNode->getOrientation(),sceneNode->getScale());
 	}
 }
 

@@ -29,12 +29,48 @@ using namespace Ogre;
 
 namespace WyvernsAssault
 {
-	class Geometry
-	{
-		//
-		// TODO : an array or hierarchical structure of bounding geometry
-		//
-	};
+    class PhysicsMeshInfo{
+    public:
+
+        PhysicsMeshInfo(){};
+        ~PhysicsMeshInfo(){};
+
+    public:
+
+        size_t vertex_count;
+        size_t index_count;
+        unsigned long* indices;
+        Ogre::Vector3* vertices;
+
+    };
+   
+    class Geometry
+    {
+	public:
+
+		Geometry(Ogre::Entity* physicsMesh);
+        ~Geometry();
+
+		void initializeMeshInformation(Ogre::Vector3 position, Ogre::Quaternion orient, Ogre::Vector3 scale);
+
+        const Ogre::AxisAlignedBox& getWorldBoundingBox()
+        {
+                return mPhysicEntity->getWorldBoundingBox();
+        }
+        const Ogre::AxisAlignedBox& getBoundingBox()
+        {
+                return mPhysicEntity->getBoundingBox();
+        }
+        const PhysicsMeshInfo& getPhysicsMeshInfo()
+        {
+                return mPhysicsMesh;
+        }
+   
+	private:
+
+        Ogre::Entity* mPhysicEntity;
+        PhysicsMeshInfo mPhysicsMesh;
+    };
 
 	typedef boost::shared_ptr<Geometry> GeometryPtr;
 }

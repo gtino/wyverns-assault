@@ -74,7 +74,7 @@ void PhysicsManager::update(const float elapsedSeconds)
 		Vector3 position = player->getPosition();		
 
 		// Update player ray
-		Vector3 hotPosition = calculateY(position,BASIC_GROUND_MASK);
+		Vector3 hotPosition = calculateY(position);
 		hotPosition.y += player->getHeight();
 		player->setPosition(hotPosition);
 
@@ -89,7 +89,7 @@ void PhysicsManager::update(const float elapsedSeconds)
 		Vector3 position = enemy->getPosition();
 
 		// Update enemy ray
-		Vector3 hotPosition = calculateY(position,BASIC_GROUND_MASK);
+		Vector3 hotPosition = calculateY(position);
 		hotPosition.y += enemy->getHeight();
 		enemy->setPosition(hotPosition);
 
@@ -109,13 +109,13 @@ void PhysicsManager::checkForCollisions()
 	{
 		PlayerPtr player = it_player->second;
 		AxisAlignedBox player_firebox = player->getFireBox();
-		AxisAlignedBox player_box = player->getWorldBoundingBox();
+		AxisAlignedBox player_box = player->getGeometry()->getWorldBoundingBox();
 
 		// Player - Enemy COLLISION
 		for(EnemyMapIterator it_enemy = mEnemyMap.begin(); it_enemy != mEnemyMap.end(); ++it_enemy)
 		{
 			EnemyPtr enemy = it_enemy->second;
-			AxisAlignedBox enemy_box = enemy->getWorldBoundingBox();
+			AxisAlignedBox enemy_box = enemy->getGeometry()->getWorldBoundingBox();
 
 			// Check if player is using special (fire) and collisioning with enemy
 			if ( player->isSpecial() && player_firebox.intersects(enemy_box))
@@ -166,7 +166,7 @@ void PhysicsManager::checkForCollisions()
 		for(ItemMapIterator it_item = mItemMap.begin(); it_item != mItemMap.end(); ++it_item)
 		{
 			ItemPtr item = it_item->second;
-			AxisAlignedBox item_box = item->getWorldBoundingBox();
+			AxisAlignedBox item_box = item->getGeometry()->getWorldBoundingBox();
 
 			if(player_box.intersects(item_box))
 			{
@@ -175,32 +175,19 @@ void PhysicsManager::checkForCollisions()
 				EVENTS_FIRE(evt);
 			}
 		}
-
-		// Player - Objects COLLISION
-		for(ObjectMapIterator it_obj = mObjectMap.begin(); it_obj != mObjectMap.end(); ++it_obj)
-		{
-			ObjectPtr obj = it_obj->second;
-			AxisAlignedBox obj_box = obj->getWorldBoundingBox();
-
-			if(player_box.intersects(obj_box))
-			{
-				// TODO: Player-Object Collision!
-
-			}
-		}
 	}
 
 	// Enemy Collisions
-/*	for(EnemyMapIterator it_enemy = mEnemyMap.begin(); it_enemy != mEnemyMap.end(); ++it_enemy)
+	for(EnemyMapIterator it_enemy = mEnemyMap.begin(); it_enemy != mEnemyMap.end(); ++it_enemy)
 	{
 		EnemyPtr enemy = it_enemy->second;
-		AxisAlignedBox enemy_box = enemy->getWorldBoundingBox();
+		AxisAlignedBox enemy_box = enemy->getGeometry()->getWorldBoundingBox();
 
 		// Enemy - Enemy COLLISION
 		for(EnemyMapIterator it_enemy_second = mEnemyMap.begin(); it_enemy_second != mEnemyMap.end(); ++it_enemy_second)
 		{
 			EnemyPtr enemy_second = it_enemy_second->second;
-			AxisAlignedBox enemy_second_box = enemy_second->getWorldBoundingBox();
+			AxisAlignedBox enemy_second_box = enemy_second->getGeometry()->getWorldBoundingBox();
 
 			// Check if player is using special (fire) and collisioning with enemy
 			if (enemy_box.intersects(enemy_second_box))
@@ -209,21 +196,7 @@ void PhysicsManager::checkForCollisions()
 
 			}
 		}
-
-		// Enemy - Objects COLLISION
-		for(ObjectMapIterator it_obj = mObjectMap.begin(); it_obj != mObjectMap.end(); ++it_obj)
-		{
-			ObjectPtr obj = it_obj->second;
-			AxisAlignedBox obj_box = obj->getWorldBoundingBox();
-
-			if(enemy_box.intersects(obj_box))
-			{
-				// TODO: Enemy-Object Collision!
-				
-			}
-
-		}
-	}*/
+	}
 }
 
 void PhysicsManager::move(PlayerPtr player, const float elapsedSeconds, bool fastMode)
@@ -244,7 +217,12 @@ void PhysicsManager::move(PlayerPtr player, const float elapsedSeconds, bool fas
 	
 	player->setPosition((direction * player->getSpeed() * elapsedSeconds) + old_position);
 
-	if(collidesWithBorders(old_position,player->getPosition(),0.5f,0,BORDER_GROUND_MASK))
+	//Test object collision
+	bool objCollision = collidesAllObjects(player, old_position,player->getPosition(),0.5f,0.0);
+	//Test border collision
+	bool borderCollision = collides(old_position,player->getPosition(),borderGround->getPhysicsMeshInfo(),0.5f,0);
+	
+	if( borderCollision || objCollision  )
 		player->setPosition(old_position);
 }
 
@@ -257,43 +235,31 @@ void PhysicsManager::move(EnemyPtr enemy, const float elapsedSeconds)
 
 	enemy->setPosition((direction*enemy->getSpeed()*elapsedSeconds) + old_position);
 
-	if(collidesWithBorders(old_position,enemy->getPosition(),0.5f,0,BORDER_GROUND_MASK))
+	if(collides(old_position,enemy->getPosition(),borderGround->getPhysicsMeshInfo(),0.5f,0))
 		enemy->setPosition(old_position);
 }
 
-/* Load a mesh as ground type
-*/
+// Load a mesh as ground type
 void PhysicsManager::addPhysicGround(Ogre::String mesh, Ogre::String name, WyvernsAssault::GroundQueryFlags type, Ogre::Vector3 position, Ogre::Vector3 scale)
 {	
 	SceneNode* nodeGround = mPhysicsNode->createChildSceneNode(name,position);
-	Entity* entityGround = mSceneManager->createEntity(name,mesh);
+	Ogre::Entity* entityGround = mSceneManager->createEntity(name,mesh);
 	entityGround->setQueryFlags(type);
 	nodeGround->attachObject(entityGround);
 	nodeGround->setVisible(false);
 	nodeGround->setScale(scale);
 
-    // Get the mesh information
-	if(type == BASIC_GROUND_MASK)
-	{
-		GetMeshInformation(entityGround->getMesh(), basicGroundMeshInfo.vertex_count, basicGroundMeshInfo.vertices,
-							basicGroundMeshInfo.index_count, basicGroundMeshInfo.indices,             
-							entityGround->getParentNode()->getPosition(),
-							entityGround->getParentNode()->getOrientation(),
-							entityGround->getParentNode()->getScale());
+	// initialize geometry
+	if(type == WyvernsAssault::BASIC_GROUND_MASK){
+		basicGround = GeometryPtr(new Geometry(entityGround));
+		basicGround->initializeMeshInformation(nodeGround->getPosition(),nodeGround->getOrientation(),nodeGround->getScale());
+	}else if(type == WyvernsAssault::BORDER_GROUND_MASK){
+		borderGround = GeometryPtr(new Geometry(entityGround));
+		borderGround->initializeMeshInformation(nodeGround->getPosition(),nodeGround->getOrientation(),nodeGround->getScale());
 	}
-	else if(type == BORDER_GROUND_MASK)
-	{
-		GetMeshInformation(entityGround->getMesh(), bordersGroundMeshInfo.vertex_count, bordersGroundMeshInfo.vertices,
-							bordersGroundMeshInfo.index_count, bordersGroundMeshInfo.indices,             
-							entityGround->getParentNode()->getPosition(),
-							entityGround->getParentNode()->getOrientation(),
-							entityGround->getParentNode()->getScale());
-	}
-
 }
 
-/* Load player physics
-*/
+// Load player physics
 void PhysicsManager::addPhysicPlayer(PlayerPtr player)
 {
 
@@ -301,35 +267,31 @@ void PhysicsManager::addPhysicPlayer(PlayerPtr player)
 
 }
 
-/* Load enemy physics
-*/
+// Load enemy physics
 void PhysicsManager::addPhysicEnemy(EnemyPtr enemy)
 {
 	mEnemyMap[enemy->getName()] = enemy;
 }
 
-/* Load item physics
-*/
+// Load item physics
 void PhysicsManager::addPhysicItem(ItemPtr item)
 {
 	mItemMap[item->getName()] = item;
 }
 
-/* Load object physics
-*/
+// Load object physics
 void PhysicsManager::addPhysicObject(ObjectPtr obj)
 {
 	mObjectMap[obj->getName()] = obj;
 }
 
-/* Calculate heigth of terrain and translate node to adjust them
-*/
-Vector3 PhysicsManager::calculateY(const Vector3 &point, const Ogre::uint32 queryMask)
+// Calculate heigth of terrain and translate node to adjust them
+Vector3 PhysicsManager::calculateY(const Vector3 &point)
 {
 	Vector3 yPosition(0,0,0);
 	float distToColl = 0.0f;
 
-	if(raycast(point,Vector3::NEGATIVE_UNIT_Y,yPosition, distToColl ,queryMask))
+	if(raycast(point,Vector3::NEGATIVE_UNIT_Y,yPosition, distToColl ,basicGround->getPhysicsMeshInfo()))
 	{
 		return Ogre::Vector3(point.x,yPosition.y,point.z);
 	}
@@ -337,9 +299,42 @@ Vector3 PhysicsManager::calculateY(const Vector3 &point, const Ogre::uint32 quer
 	return point;
 }
 
-/* Control border ground collision
-*/
-bool PhysicsManager::collidesWithBorders(const Vector3& fromPoint, const Vector3& toPoint, const float collisionRadius, const float rayHeightLevel, const uint32 queryMask)
+// Control player-object collision
+bool PhysicsManager::collidesAllObjects(PlayerPtr player, const Vector3& fromPoint, const Vector3& toPoint, const float collisionRadius, const float rayHeightLevel )
+{
+
+	AxisAlignedBox player_firebox = player->getFireBox();
+	AxisAlignedBox player_box = player->getGeometry()->getWorldBoundingBox();
+
+	//Launch ray
+	Vector3 fromPointAdj(fromPoint.x, fromPoint.y + rayHeightLevel, fromPoint.z);
+	Vector3 toPointAdj(toPoint.x, toPoint.y + rayHeightLevel, toPoint.z);	
+	Vector3 normal = toPointAdj - fromPointAdj;
+
+    static Ogre::Ray ray;
+	ray.setOrigin(fromPointAdj);
+	ray.setDirection(normal);
+
+	Vector3 translation =  Ogre::Vector3::ZERO;
+
+	for(ObjectMapIterator it_obj = mObjectMap.begin(); it_obj != mObjectMap.end(); ++it_obj)
+	{
+		ObjectPtr obj = it_obj->second;
+		AxisAlignedBox obj_box = obj->getGeometry()->getBoundingBox();
+		obj_box.transformAffine(obj->_getSceneNode()->_getFullTransform());
+
+		std::pair<bool, Ogre::Real> hit = Ogre::Math::intersects(ray, obj_box);
+
+		if(hit.first && hit.second < 5){
+			return true;
+		}
+	}
+
+	return false;
+
+}
+
+bool PhysicsManager::collides(const Vector3& fromPoint, const Vector3& toPoint, PhysicsMeshInfo objInfo, const float collisionRadius, const float rayHeightLevel)
 {
 	Vector3 fromPointAdj(fromPoint.x, fromPoint.y + rayHeightLevel, fromPoint.z);
 	Vector3 toPointAdj(toPoint.x, toPoint.y + rayHeightLevel, toPoint.z);	
@@ -349,7 +344,7 @@ bool PhysicsManager::collidesWithBorders(const Vector3& fromPoint, const Vector3
 	float distToColl = 0.0f;
 	Vector3 myResult(0, 0, 0);
 
-	if (raycast(fromPointAdj, normal, myResult, distToColl ,queryMask))
+	if (raycast(fromPointAdj, normal, myResult, distToColl ,objInfo))
 	{
 		distToColl -= collisionRadius; 
 		return (distToColl <= distToDest);
@@ -360,101 +355,49 @@ bool PhysicsManager::collidesWithBorders(const Vector3& fromPoint, const Vector3
 	}
 }
 
-/* Raycast from a point in to the scene. returns success or failure.
- * on success the point is returned in the result.
- */
-bool PhysicsManager::raycast(const Vector3 &point, const Vector3 &normal, 
-							 Vector3 &result,float &closest_distance, const Ogre::uint32 queryMask)
+bool PhysicsManager::raycast(const Vector3 &point, const Vector3 &normal,
+							 Vector3 &result,float &closest_distance, PhysicsMeshInfo objInfo)
 {
-
-
     // Create the ray to test
     static Ogre::Ray ray;
 	ray.setOrigin(point);
 	ray.setDirection(normal);
 
-    if (mRaySceneQuery != NULL)
-    {
-        mRaySceneQuery->setRay(ray);
-		mRaySceneQuery->setSortByDistance(true);
-		mRaySceneQuery->setQueryMask(queryMask);
-        // Execute the query, returns a vector of hits
-        if (mRaySceneQuery->execute().size() <= 0)
-        {
-            // Raycast did not hit an objects bounding box
-            return (false);
-        }
-    }
-    else
-    {
-		//raycast failed
-        return (false);
-    }   
-
 	closest_distance = -1.0f;
     Ogre::Vector3 closest_result;
-	ulong target = NULL;
-    Ogre::RaySceneQueryResult &query_result = mRaySceneQuery->getLastResults();
-	for (size_t qr_idx = 0; qr_idx < query_result.size(); qr_idx++)
-	{
-		
-		// Only check this result if its a hit against an physic entity
-		if (query_result[qr_idx].movable->getQueryFlags() == queryMask) 
-		{
 
-			 // Get the entity to check
-			Ogre::Entity *pentity = static_cast<Ogre::Entity*>(query_result[qr_idx].movable); 			
-						      
-            size_t vertex_count;
-            size_t index_count;
-            Ogre::Vector3 *vertices;
-            unsigned long *indices;
+	PhysicsMeshInfo meshInfo = objInfo;
 
-            // get the mesh information
-			if(queryMask == BASIC_GROUND_MASK)
-			{
-				vertex_count = basicGroundMeshInfo.vertex_count;
-				index_count = basicGroundMeshInfo.index_count;
-				vertices = basicGroundMeshInfo.vertices;
-				indices = basicGroundMeshInfo.indices;
-			}
-			else if(queryMask == BORDER_GROUND_MASK)
-			{
-				vertex_count = bordersGroundMeshInfo.vertex_count;
-				index_count = bordersGroundMeshInfo.index_count;
-				vertices = bordersGroundMeshInfo.vertices;
-				indices = bordersGroundMeshInfo.indices;
-			}
+	size_t vertex_count = meshInfo.vertex_count;
+	size_t index_count = meshInfo.index_count;
+	Ogre::Vector3 *vertices = meshInfo.vertices;
+	unsigned long *indices = meshInfo.indices;
 
-            // test for hitting individual triangles on the mesh
-            bool new_closest_found = false;
-            for (int i = 0; i < static_cast<int>(index_count); i += 3)
-            {
-                // check for a hit against this triangle
-                std::pair<bool, Ogre::Real> hit = Ogre::Math::intersects(ray, vertices[indices[i]],
+    // test for hitting individual triangles on the mesh
+    bool new_closest_found = false;
+    for (int i = 0; i < static_cast<int>(index_count); i += 3)
+    {
+		// check for a hit against this triangle
+        std::pair<bool, Ogre::Real> hit = Ogre::Math::intersects(ray, vertices[indices[i]],
                     vertices[indices[i+1]], vertices[indices[i+2]], true, false);
 
-                // if it was a hit check if its the closest
-                if (hit.first)
-                {
-                    if ((closest_distance < 0.0f) ||
-                        (hit.second < closest_distance))
-                    {
-                        // this is the closest so far, save it off
-                        closest_distance = hit.second;
-                        new_closest_found = true;
-                    }
-                }
-            }
-
-            // if we found a new closest raycast for this object, update the
-            // closest_result before moving on to the next object.
-            if (new_closest_found)
+        // if it was a hit check if its the closest
+        if (hit.first)
+        {
+			if ((closest_distance < 0.0f) || (hit.second < closest_distance))
             {
-				target = (ulong)pentity;
-                closest_result = ray.getPoint(closest_distance);               
-            }
+				// this is the closest so far, save it off
+                closest_distance = hit.second;
+                new_closest_found = true;
+			}
 		}
+	}
+
+	// if we found a new closest raycast for this object, update the
+    // closest_result before moving on to the next object.
+    if (new_closest_found)
+    {
+        closest_result = ray.getPoint(closest_distance);               
 	}
 
     if (closest_distance >= 0.0f)
@@ -469,128 +412,6 @@ bool PhysicsManager::raycast(const Vector3 &point, const Vector3 &normal,
         return (false);
     } 
 
-}
-
-/* Get the mesh information for the given mesh.
-*/
-void PhysicsManager::GetMeshInformation(const Ogre::MeshPtr mesh,
-                                size_t &vertex_count,
-                                Ogre::Vector3* &vertices,
-                                size_t &index_count,
-                                unsigned long* &indices,
-                                const Ogre::Vector3 &position,
-                                const Ogre::Quaternion &orient,
-                                const Ogre::Vector3 &scale)
-{
-    bool added_shared = false;
-    size_t current_offset = 0;
-    size_t shared_offset = 0;
-    size_t next_offset = 0;
-    size_t index_offset = 0;
-
-    vertex_count = index_count = 0;
-
-    // Calculate how many vertices and indices we're going to need
-    for (unsigned short i = 0; i < mesh->getNumSubMeshes(); ++i)
-    {
-        Ogre::SubMesh* submesh = mesh->getSubMesh( i );
-
-        // We only need to add the shared vertices once
-        if(submesh->useSharedVertices)
-        {
-            if( !added_shared )
-            {
-                vertex_count += mesh->sharedVertexData->vertexCount;
-                added_shared = true;
-            }
-        }
-        else
-        {
-            vertex_count += submesh->vertexData->vertexCount;
-        }
-
-        // Add the indices
-        index_count += submesh->indexData->indexCount;
-    }
-
-
-    // Allocate space for the vertices and indices
-    vertices = new Ogre::Vector3[vertex_count];
-    indices = new unsigned long[index_count];
-
-    added_shared = false;
-
-    // Run through the submeshes again, adding the data into the arrays
-    for ( unsigned short i = 0; i < mesh->getNumSubMeshes(); ++i)
-    {
-        Ogre::SubMesh* submesh = mesh->getSubMesh(i);
-
-        Ogre::VertexData* vertex_data = submesh->useSharedVertices ? mesh->sharedVertexData : submesh->vertexData;
-
-        if((!submesh->useSharedVertices)||(submesh->useSharedVertices && !added_shared))
-        {
-            if(submesh->useSharedVertices)
-            {
-                added_shared = true;
-                shared_offset = current_offset;
-            }
-
-            const Ogre::VertexElement* posElem =
-                vertex_data->vertexDeclaration->findElementBySemantic(Ogre::VES_POSITION);
-
-            Ogre::HardwareVertexBufferSharedPtr vbuf =
-                vertex_data->vertexBufferBinding->getBuffer(posElem->getSource());
-
-            unsigned char* vertex =
-                static_cast<unsigned char*>(vbuf->lock(Ogre::HardwareBuffer::HBL_READ_ONLY));
-
-            float* pReal;
-
-            for( size_t j = 0; j < vertex_data->vertexCount; ++j, vertex += vbuf->getVertexSize())
-            {
-                posElem->baseVertexPointerToElement(vertex, &pReal);
-
-                Ogre::Vector3 pt(pReal[0], pReal[1], pReal[2]);
-
-                vertices[current_offset + j] = (orient * (pt * scale)) + position;
-            }
-
-            vbuf->unlock();
-            next_offset += vertex_data->vertexCount;
-        }
-
-
-        Ogre::IndexData* index_data = submesh->indexData;
-        size_t numTris = index_data->indexCount / 3;
-        Ogre::HardwareIndexBufferSharedPtr ibuf = index_data->indexBuffer;
-
-        bool use32bitindexes = (ibuf->getType() == Ogre::HardwareIndexBuffer::IT_32BIT);
-
-        unsigned long*  pLong = static_cast<unsigned long*>(ibuf->lock(Ogre::HardwareBuffer::HBL_READ_ONLY));
-        unsigned short* pShort = reinterpret_cast<unsigned short*>(pLong);
-
-
-        size_t offset = (submesh->useSharedVertices)? shared_offset : current_offset;
-
-        if ( use32bitindexes )
-        {
-            for ( size_t k = 0; k < numTris*3; ++k)
-            {
-                indices[index_offset++] = pLong[k] + static_cast<unsigned long>(offset);
-            }
-        }
-        else
-        {
-            for ( size_t k = 0; k < numTris*3; ++k)
-            {
-                indices[index_offset++] = static_cast<unsigned long>(pShort[k]) +
-                    static_cast<unsigned long>(offset);
-            }
-        }
-
-        ibuf->unlock();
-        current_offset = next_offset;
-    }
 }
 
 void PhysicsManager::removeEnemy(EnemyPtr enemy)
