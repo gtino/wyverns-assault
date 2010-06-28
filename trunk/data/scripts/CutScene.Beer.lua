@@ -25,8 +25,6 @@ function playBeerCutScene(elapsedTime)
 		Physics.disable(); -- Suspend gae physics
 		
 		Gui.hideUi();
-		Gui.showForeground();
-		Gui.setForeground("beer_1");	
 		
 		local inputEnabled = Input.isEnabled(); -- Checks if input is enabled
 		local logicEnabled = Logic.isEnabled(); -- Checks if logic is enabled
@@ -41,7 +39,48 @@ function playBeerCutScene(elapsedTime)
 		end
 	elseif step == 2 then
 		-- Wait 3 seconds
-		if CutScene.wait(3) then
+		--Camera.flyTo(1417,10,55); -- The beer
+		CutScene.nextStep(); -- Simply go to next step	
+	elseif step == 3 then
+		if Camera.hasArrived() then
+			Gui.setForeground("beer_2");
+			Gui.showForeground();
+			CutScene.nextStep(); -- Simply go to next step
+		end		
+	elseif step == 4 then
+		-- Wait 2 seconds
+		if CutScene.wait(2) then
+			Gui.hideForeground();
+			PostProcess.enableCompositor("RadialBlur");
+			Camera.rumble(2,5);
+			CutScene.nextStep(); -- Simply go to next step
+		end
+	elseif step == 5 then
+		-- Wait 2 seconds
+		if CutScene.wait(2) then
+			Gui.hideForeground();
+			PostProcess.disableCompositor("RadialBlur");
+			CutScene.nextStep(); -- Simply go to next step
+		end
+	elseif step == 6 then
+		-- Wait 2 seconds
+		--Camera.flyTo(); -- The wyverns
+		CutScene.nextStep(); -- Simply go to next step	
+	elseif step == 7 then
+		if Camera.hasArrived() then
+			Gui.setForeground("beer_3");
+			Gui.showForeground();
+			CutScene.nextStep(); -- Simply go to next step
+		end	
+	elseif step == 8 then
+		-- Wait 1 seconds
+		if CutScene.wait(1) then
+			Gui.setForeground("beer_4");
+			CutScene.nextStep(); -- Simply go to next step
+		end
+	elseif step == 9 then
+		-- Wait 5 seconds
+		if CutScene.wait(5) then
 			Gui.hideForeground();
 			CutScene.nextStep(); -- Simply go to next step
 		end

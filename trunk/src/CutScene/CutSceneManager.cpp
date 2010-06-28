@@ -38,6 +38,7 @@ void CutSceneManager::initialize()
 /** Finalize the lights manager */
 void CutSceneManager::finalize()
 {
+	mAlreadyPlayed.clear();
 }
 
 void CutSceneManager::play(CutSceneId id)
@@ -148,7 +149,6 @@ EVENTS_DEFINE_HANDLER(CutSceneManager, GameAreaChanged)
 		{
 		case 0:
 			mCutSceneId = CutSceneId::Intro;
-			playCutScene(0,"playIntroCutScene");
 			break;
 		case 1:
 			mCutSceneId = CutSceneId::FirstKills;
@@ -175,6 +175,23 @@ EVENTS_DEFINE_HANDLER(CutSceneManager, GameAreaChanged)
 			mCutSceneId = CutSceneId::Nothing;
 			break;
 			// TODO : All other cut scenes!
+		}
+
+		CutScenesPlayedMapIterator it = mAlreadyPlayed.find(mCutSceneId);
+
+		if(it == mAlreadyPlayed.end())
+		{
+			mAlreadyPlayed[mCutSceneId] = true;
+
+			//
+			// HACK : to make sue this plays from the very first frame!
+			//
+			if(mCutSceneId == CutSceneId::Intro)
+				playCutScene(0,"playIntroCutScene");
+		}
+		else
+		{
+			mCutSceneId = CutSceneId::Nothing;
 		}
 	}
 }
@@ -303,5 +320,4 @@ bool CutSceneManager::playCutScene(const float totalSeconds, Ogre::String cutSce
 	lua_pop(L, 1);
 
 	return result;
-	//return true;
 }
