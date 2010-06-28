@@ -7,8 +7,10 @@ Object::Object(Ogre::String name, ObjectTypes type)
 , PhysicsInterface()
 , mOBBoxRenderable(0)
 , mIsDebugEnabled(false)
+, mMaxLife(100)
 {
 	mType = type;
+	mParameters.life = mMaxLife;
 }
 
 
@@ -38,6 +40,21 @@ void Object::finalizeEntity()
 {
 	// Always call base method before!
 	EntityInterface::finalizeEntity();
+}
+
+bool Object::isHurt()
+{
+	return (mParameters.life / mMaxLife * 100.0f) < 15.0f;
+}
+
+bool Object::isDying()
+{
+	return (mParameters.life <= 0.0f);
+}
+
+void Object::hit(float damage)
+{
+	mParameters.life -= damage;
 }
 
 ObjectTypes Object::StringToType (Ogre::String string)
