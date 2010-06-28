@@ -48,7 +48,10 @@ namespace WyvernsAssault
 
 	public:
 		
-		virtual void initializePhysics(){}
+		virtual void initializePhysics(Ogre::Entity* mPhysicEntity){
+			// Create geometry
+			mGeometry = GeometryPtr(new Geometry(mPhysicEntity));
+		}
 		virtual void finalizePhysics(){return;} 
 		virtual void updatePhysics(const float elapsedSeconds){};
 
@@ -70,6 +73,7 @@ namespace WyvernsAssault
 	private:
 		Ogre::Real mSpeed;
 		GeometryPtr mGeometry;
+
 	};
 
 	typedef boost::shared_ptr<PhysicsInterface> PhysicsInterfacePtr;

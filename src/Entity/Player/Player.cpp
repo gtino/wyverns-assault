@@ -38,9 +38,10 @@ void Player::initializeEntity(Ogre::Entity* entity, Ogre::SceneNode* sceneNode, 
 	mFireMesh = mSceneManager->createEntity("fireMesh", "redWyvernFireCone.mesh");
 	mFireMesh->setVisible(mIsDebugEnabled);
 
-	// Set physic body
-	mPhysicEntity = mSceneManager->createEntity("redWyvernPhysicMesh", "redWyvernPhysicBody.mesh");
+	// Physic Body
+	Ogre::Entity* mPhysicEntity = mSceneManager->createEntity("redWyvernPhysicMesh", "redWyvernPhysicBody.mesh");
 	mPhysicEntity->setVisible(mIsDebugEnabled);
+	initializePhysics(mPhysicEntity);
 
 	// Animation system
 	mAnimationSystem = new tecnofreak::ogre::AnimationSystem( mEntity );

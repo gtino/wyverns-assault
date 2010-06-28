@@ -53,17 +53,6 @@ using namespace Ogre;
 namespace WyvernsAssault
 {		
 
-	class PhysicsMeshInfo{
-    public: 
-		PhysicsMeshInfo(){};
-		~PhysicsMeshInfo(){};
-	public:
-        size_t vertex_count;
-        size_t index_count;
-        unsigned long* indices;
-		Ogre::Vector3* vertices;
-    };
-
 	/* Ground types
 	*/
 	enum GroundQueryFlags
@@ -132,25 +121,20 @@ namespace WyvernsAssault
 
 	private:
 
-		Vector3 calculateY(const Vector3 &point, const Ogre::uint32 queryMask = 0xFFFFFFFF);
-		bool raycast(const Vector3 &point, const Vector3 &normal, Vector3 &result, float &closest_distance, const Ogre::uint32 queryMask);
-		bool collidesWithBorders(const Vector3& fromPoint, const Vector3& toPoint, const float collisionRadius = 2.5f, const float rayHeightLevel = 0.0f, const uint32 queryMask = 0xFFFFFFFF);
-		void GetMeshInformation(const Ogre::MeshPtr mesh,
-                                size_t &vertex_count,
-                                Ogre::Vector3* &vertices,
-                                size_t &index_count,
-                                unsigned long* &indices,
-                                const Ogre::Vector3 &position,
-                                const Ogre::Quaternion &orient,
-                                const Ogre::Vector3 &scale);
+		Vector3 calculateY(const Vector3 &point);
+		bool collides(const Vector3& fromPoint, const Vector3& toPoint, PhysicsMeshInfo objInfo, const float collisionRadius = 2.5, const float rayHeightLevel = 0.0f);
+		bool raycast(const Vector3 &point, const Vector3 &normal, Vector3 &result, float &closest_distance, PhysicsMeshInfo objInfo);
+		bool collidesAllObjects(PlayerPtr player, const Vector3& fromPoint, const Vector3& toPoint, const float collisionRadius = 2.5f, const float rayHeightLevel = 0.0f );
 
 	protected:
 
 		SceneManager* mSceneManager;
 		SceneNode* mPhysicsNode;
 		Ogre::RaySceneQuery *mRaySceneQuery;
-		PhysicsMeshInfo basicGroundMeshInfo;
-		PhysicsMeshInfo bordersGroundMeshInfo;
+		
+		//Grounds geometry
+		GeometryPtr basicGround;
+		GeometryPtr borderGround;
 
 		PlayerMap mPlayerMap;
 		EnemyMap mEnemyMap;
