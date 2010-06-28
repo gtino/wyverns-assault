@@ -84,10 +84,12 @@ namespace WyvernsAssault
 		// ----------------
 		// Events interface
 		// ----------------
-		// Register event handlers
-		void registerHandlers(){};
-		// Unregister handlers
-		void unregisterHandlers(){};
+		EVENTS_INTERFACE()
+
+		EVENTS_HANDLER(Collision)
+		EVENTS_HANDLER(ObjectHit)
+		EVENTS_HANDLER(ObjectKilled)
+		EVENTS_HANDLER(ObjectRemove)
 
 	private:
 		ObjectList mObjectList;

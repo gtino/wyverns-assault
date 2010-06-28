@@ -69,6 +69,11 @@ namespace WyvernsAssault
 		bool isHurt();
 		bool isDying();
 
+		void setDieMaterialName(Ogre::String material){ mDieMesh->setMaterialName(material); }
+		void setDieMesh(Ogre::Entity* entity);
+		void setDieAnimation(Ogre::AnimationState* dieAnimation);
+		void dieSwitch();
+
 		//
 		// Entity Interface
 		//
@@ -81,6 +86,9 @@ namespace WyvernsAssault
 
 		Real mMaxLife;
 		ObjectParameters mParameters;
+
+		Entity*				mDieMesh;
+		AnimationState*		mDieAnimation;
 
 		OBBoxRenderable* mOBBoxRenderable;
 		bool mIsDebugEnabled;

@@ -164,6 +164,7 @@ void PlayState::initialize()
 	mEventsManager->registerInterface(mGuiManager);
 	mEventsManager->registerInterface(mPostProcessManager);
 	mEventsManager->registerInterface(mCutSceneManager);
+	mEventsManager->registerInterface(mScenarioManager);
 
 	// -----------
 	// Lua Manager
