@@ -434,6 +434,12 @@ void PlayState::update(const float elapsedSeconds)
 	// for each of them the registered handler(s).
 	//
 	mEventsManager->update(elapsedSeconds);
+
+	//
+	// HACK : just to let the player win!
+	//
+	if(mEnemyManager->getCount() == 0 && mCameraManager->getGameArea(player1->getPosition()) == 11)
+		this->mNextGameStateId = GameStateId::Ending;
 }
 
 /** Render */
