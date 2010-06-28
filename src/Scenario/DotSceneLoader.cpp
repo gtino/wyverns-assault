@@ -863,6 +863,27 @@ void DotSceneLoader::processSkyBox(TiXmlElement *XMLNode)
 	mSceneMgr->setSkyBox(true, material, distance, drawFirst);
 }
 
+void DotSceneLoader::processFog(TiXmlElement *XMLNode)
+{
+	// Process attributes
+	//TiXmlElement* pElement = XMLNode->FirstChildElement("mode");
+	//if(pElement)
+	//{
+	//	diffuse = parseFogMode(pElement);
+	//}
+	//pElement = XMLNode->FirstChildElement("colour");
+	//if(pElement)
+	//{
+	//	diffuse = parseColour(pElement);
+	//}
+	Real expDensity = getAttribReal(XMLNode, "expDensity", 0.001);
+	Real linearStart = getAttribReal(XMLNode, "linearStart", 0.0);
+	Real linearEnd = getAttribBool(XMLNode, "linearEnd", 1.0);
+
+	// Setup the sky dome
+	//mSceneMgr->setFog();
+}
+
 void DotSceneLoader::processSkyDome(TiXmlElement *XMLNode)
 {
 	// Process attributes

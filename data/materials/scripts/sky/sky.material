@@ -9,7 +9,7 @@ material NoonSkyBox
 			depth_write off
 			texture_unit
 			{
-				cubic_texture mysky.jpg separateUV
+				cubic_texture toonsky.jpg separateUV
 				tex_address_mode clamp
 			}
 		}
@@ -27,8 +27,8 @@ material CloudySky
 
 			texture_unit
 			{
-				texture cartoon_cloudy_sky.png
-				scroll_anim 0.05 0
+				texture SkyDome-Cloud-Wispy-MidMorning.png
+				scroll_anim 0 0
 			}
 		}
 	}

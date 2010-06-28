@@ -224,6 +224,9 @@ void PlayState::initialize()
 
 	buttonTimer = 0.0;
 	lastKey = OIS::KeyCode::KC_UNASSIGNED;
+
+	Ogre::ColourValue fadeColour(0.9, 0.9, 0.9);
+	mSceneManager->setFog(Ogre::FOG_LINEAR, fadeColour, 0.0, 2500, 5000);
 }
 
 /** Load resources */
