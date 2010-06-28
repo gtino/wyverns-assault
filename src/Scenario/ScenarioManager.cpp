@@ -192,7 +192,10 @@ EVENTS_DEFINE_HANDLER(ScenarioManager, ObjectKilled)
 	ObjectPtr obj = evt->getObject();
 	PlayerPtr player = evt->getPlayer();
 
-	obj->dieSwitch();
+	if( obj->hasDieAnimation() )
+	{
+		obj->dieSwitch();
+	}
 
 	ObjectRemoveEventPtr oRemove = ObjectRemoveEventPtr(new ObjectRemoveEvent(obj));
  	EVENTS_FIRE_AFTER(oRemove, 4.0f);
