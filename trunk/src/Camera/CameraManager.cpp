@@ -67,20 +67,11 @@ void CameraManager::initialize(SceneManager* sceneManager, RenderWindow* window)
 	mGameCameraNode->attachObject(mGameCamera);
 	mGameCamera->setAutoTracking(true, mGameCameraLookAtNode, Vector3::UNIT_X);
 
-	// Initial Camera Position
-	mGameCameraMode = CameraModes::Fixed;
-	mGameCameraNode->setPosition(2000, 1500, -2000);
-
 	/** Debug axes node */
 	mAxes = mSceneManager->createEntity("Axes", "axes.mesh");
 	mAxesNode = mCameraNode->createChildSceneNode("AxesNode");
 	mAxesNode->setScale(0.1, 0.1, 0.1);
 	mAxesNode->setVisible(false);
-	
-	/** Other variables initialization */
-	mGameArea = -1;
-	mFixedCamera = 0;
-	mMoving = false;
 
 	mSceneManager->createAnimation("CameraTrack", 1);
 	mSceneManager->createAnimation("LookAtTrack", 1);
@@ -101,6 +92,8 @@ void CameraManager::initialize(SceneManager* sceneManager, RenderWindow* window)
 	/** Sdk Camera Manager for free look camera */
 	mCameraMan = new OgreBites::SdkCameraMan(mGameCamera);
 	mCameraMan->setStyle(OgreBites::CS_MANUAL);
+
+	this->startCameras();
 }
 
 /** Finalize the camera manager */
@@ -187,6 +180,21 @@ void CameraManager::finalize()
 	{
 		mWindow->removeAllViewports();
 	}
+}
+
+void CameraManager::startCameras()
+{
+	// Initial Camera Position
+	mGameCameraMode = CameraModes::Game;
+	// Force camera movement adding time to its nodes animation
+	this->moveTo(Vector3(2000, 1500, -2000), Vector3(0, 0, 0));
+	mCameraTransition->addTime(1);
+	mLookAtTransition->addTime(1);
+
+	/** Other variables initialization */
+	mGameArea = -1;
+	mFixedCamera = 0;
+	mMoving = false;
 }
 
 Vector3 CameraManager::getCameraPosition()

@@ -74,6 +74,9 @@ namespace WyvernsAssault
 		void finalize();
 
 	public:
+		/** Start functions **/ 
+		void startCameras();
+
 		/** Camera functions */
 		Vector3 getCameraPosition();
 		Vector3 getCameraDirection(){ return mGameCamera->getDirection(); }
