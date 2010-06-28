@@ -44,7 +44,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #define SPECIAL_COST 100
 
 #define REDWYVERN_HEIGHT			22
-#define REDWYVERN_SPEED				150
+#define REDWYVERN_SPEED				80
 #define REDWYVERN_ATTACK_DAMAGE		30
 #define REDWYVERN_SPECIAL_DAMAGE	250
 

@@ -73,7 +73,7 @@ void PlayState::initialize()
 
 	// Create a single player (TEST!)
 	PlayerPtr player1 = mPlayerManager->createPlayer("Player1","redWyvern.mesh");
-	player1->setPosition(Vector3(80, 20, 870));
+	player1->setPosition(Vector3(80, 24.5, 870));
 	// Add particle systems
 	player1->setFireBreath(mParticleManager->create("firebreath","WyvernsAssault/DragonBreath"));
 	player1->setDust(mParticleManager->create("dustR","WyvernsAssault/Dust"), mParticleManager->create("dustL","WyvernsAssault/Dust"));

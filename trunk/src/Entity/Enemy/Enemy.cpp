@@ -323,7 +323,11 @@ void Enemy::setDirectionToTarget()
 
 void Enemy::setDirectionOutTarget()
 {
-	if(mTarget)
+	if( mType == EnemyTypes::Chicken )
+	{
+		setDirectionRandom();
+	}
+	else if(mTarget)
 	{
 		mDirection = mSceneNode->getPosition() - mTarget->getPosition();
 		Vector3 src = mSceneNode->getOrientation() * Vector3::UNIT_Z;
@@ -341,6 +345,26 @@ void Enemy::setDirectionOutTarget()
 			Quaternion rotation = src.getRotationTo(mDirection);
 			mSceneNode->rotate(rotation);
 		}
+	}
+}
+
+void Enemy::setDirectionRandom()
+{
+	mDirection = Vector3((rand() / 100), (rand() / 100), (rand() / 100) );
+	Vector3 src = mSceneNode->getOrientation() * Vector3::UNIT_Z;
+	src.y = 0;
+	mDirection.y = 0;
+	mDirection.normalise();
+	src.normalise();
+
+	if ((1.0f + src.dotProduct(mDirection)) <= 0.0001f)            // Work around 180 degree quaternion rotation quirk                         
+	{
+		mSceneNode->yaw(Degree(180));
+	}
+	else
+	{
+		Quaternion rotation = src.getRotationTo(mDirection);
+		mSceneNode->rotate(rotation);
 	}
 }
 
