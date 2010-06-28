@@ -9,10 +9,10 @@ Player::Player(Ogre::String name)
 , mFireOBBoxRenderable(0)
 , mIsDebugEnabled(false)
 , mFireMesh(0)
-, mMaxLife(100.0f)
-, mLife(100.0f)
-, mMaxSpecial(100.0f)
-, mSpecial(100.0f)
+, mMaxLife(PLAYER_MAX_LIFE)
+, mLife(PLAYER_MAX_LIFE)
+, mMaxSpecial(PLAYER_MAX_SPECIAL)
+, mSpecial(PLAYER_MAX_SPECIAL)
 , mScore(0.0f)
 , mDrunkMult(1.0f)
 , mDrunkTime(0.0f)
@@ -21,6 +21,7 @@ Player::Player(Ogre::String name)
 , mAttackDamage (REDWYVERN_ATTACK_DAMAGE)
 , mSpecialDamage (REDWYVERN_SPECIAL_DAMAGE)
 , mGuiId(0)
+, mGodMode(false)
 {
 }
 
@@ -300,7 +301,11 @@ void Player::attackSpecial()
 	{
 		if( attackNumber == 0 && !newAttack && !special)
 		{
-			mSpecial -= SPECIAL_COST;
+			if(!mGodMode) // DEBUG : in god mode you can do all the specials you want!
+			{
+				mSpecial -= SPECIAL_COST;
+			}
+
 			special = true;	
 			newAttack = true;
 			mFireBreath->startAndStopFade(mEntity->getAnimationState("Special")->getLength());

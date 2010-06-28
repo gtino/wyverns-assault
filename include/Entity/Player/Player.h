@@ -48,6 +48,9 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #define REDWYVERN_ATTACK_DAMAGE		30
 #define REDWYVERN_SPECIAL_DAMAGE	250
 
+#define PLAYER_MAX_LIFE 100.0f
+#define PLAYER_MAX_SPECIAL 100.0f
+
 // Player animations number in tree
 #define PLAYER_IDDLE		0
 #define PLAYER_RUN			1
@@ -145,6 +148,9 @@ namespace WyvernsAssault
 		void setGuiId(GuiWidgetId id){ mGuiId = id; }
 		GuiWidgetId getGuiId(){ return mGuiId; }
 
+		void toggleGodMode(){ mGodMode ? mGodMode = false : mGodMode = true;}
+		bool isGodModeOn(){return mGodMode;}
+
 	private:
 		// Fire breath particle system and attach point
 		TagPoint*							mBreathPoint;
@@ -158,6 +164,7 @@ namespace WyvernsAssault
 		OBBoxRenderable* mOBBoxRenderable;
 		OBBoxRenderable* mFireOBBoxRenderable;
 		bool mIsDebugEnabled;
+		bool mGodMode;
 
 	private:
 		float		mMaxLife;

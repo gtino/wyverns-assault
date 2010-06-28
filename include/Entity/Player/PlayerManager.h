@@ -78,6 +78,7 @@ namespace WyvernsAssault
 		// Enable Debug Stuff
 		void setDebugEnabled(bool isDebugEnabled);
 		bool getDebugEnabled(){return mIsDebugEnabled;};
+		void toggleGodMode();
 
 		Ogre::SceneNode* _getSceneNode() const { return mPlayerNode; }
 
