@@ -66,31 +66,32 @@ namespace Ogre
 		void processScene(TiXmlElement *XMLRoot);
 
 		void processNodes(TiXmlElement *XMLNode);
+		void processNode(TiXmlElement *XMLNode, SceneNode *pParent = 0);
+
+		void processEntity(TiXmlElement *XMLNode, SceneNode *pParent);
+		void processSubEntities(TiXmlElement *XMLNode, Entity *pEntity);
+		void processSubEntity(TiXmlElement *XMLNode, Entity *pEntity);
+
 		void processCameras(TiXmlElement *XMLNode);
+		void processCamera(TiXmlElement *XMLNode, SceneNode *pParent = 0);
+
+		void processGameAreas(TiXmlElement *XMLNode);
+		void processGameArea(TiXmlElement *XMLNode, SceneNode *pParent = 0);
+		void processCameraSegments(TiXmlElement *XMLNode);		
+		void processCameraSegment(TiXmlElement *XMLNode, SceneNode *pParent = 0);
+
 		void processLights(TiXmlElement *XMLNode);		
-		void processEnemies(TiXmlElement *XMLNode);	
+		void processLight(TiXmlElement *XMLNode, SceneNode *pParent = 0);
+		void processLightRange(TiXmlElement *XMLNode, Light *pLight);
+		void processLightAttenuation(TiXmlElement *XMLNode, Light *pLight);
+		
+		void processPhysics(TiXmlElement *XMLNode);
+		
 		void processSkyBox(TiXmlElement *XMLNode);
 		void processSkyDome(TiXmlElement *XMLNode);
-		void processSubEntities(TiXmlElement *XMLNode, Entity *pEntity);
-		void processGameAreas(TiXmlElement *XMLNode);
-		void processCameraSegments(TiXmlElement *XMLNode);
-		void processItems(TiXmlElement *XMLNode);
-		void processPhysics(TiXmlElement *XMLNode);
-		void processAnimals(TiXmlElement *XMLNode);
-
-		void processNode(TiXmlElement *XMLNode, SceneNode *pParent = 0);
-		void processCamera(TiXmlElement *XMLNode, SceneNode *pParent = 0);
-		void processLight(TiXmlElement *XMLNode, SceneNode *pParent = 0);
 
 		void processLookTarget(TiXmlElement *XMLNode, SceneNode *pParent);
 		void processTrackTarget(TiXmlElement *XMLNode, SceneNode *pParent);
-		void processEntity(TiXmlElement *XMLNode, SceneNode *pParent);
-		void processSubEntity(TiXmlElement *XMLNode, Entity *pEntity);
-		void processGameArea(TiXmlElement *XMLNode, SceneNode *pParent = 0);
-		void processCameraSegment(TiXmlElement *XMLNode, SceneNode *pParent = 0);
-
-		void processLightRange(TiXmlElement *XMLNode, Light *pLight);
-		void processLightAttenuation(TiXmlElement *XMLNode, Light *pLight);
 
 		String getAttrib(TiXmlElement *XMLNode, const String &parameter, const String &defaultValue = "");
 		Real getAttribReal(TiXmlElement *XMLNode, const String &parameter, Real defaultValue = 0);

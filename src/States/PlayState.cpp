@@ -76,7 +76,7 @@ void PlayState::initialize()
 	player1->setPosition(Vector3(80, 24.5, 870));
 	// Add particle systems
 	player1->setFireBreath(mParticleManager->create("firebreath","WyvernsAssault/DragonBreath"));
-	player1->setDust(mParticleManager->create("dustR","WyvernsAssault/Dust"), mParticleManager->create("dustL","WyvernsAssault/Dust"));
+	//player1->setDust(mParticleManager->create("dustR","WyvernsAssault/Dust"), mParticleManager->create("dustL","WyvernsAssault/Dust"));
 	// Set player gui
 	player1->setGuiId(GuiWidgetPlayId::UserInterface1);
 
@@ -165,7 +165,7 @@ void PlayState::initialize()
 	mEventsManager->registerInterface(mPostProcessManager);
 	mEventsManager->registerInterface(mCutSceneManager);
 
-		// -----------
+	// -----------
 	// Lua Manager
 	// -----------
 	// Create this manager after ALL other managers. Never alter
@@ -200,22 +200,21 @@ void PlayState::initialize()
 	// Load scene!
 	//
 	boost::scoped_ptr<DotSceneLoader> dotSceneLoader ( new DotSceneLoader );
+	// Scenario, enemies and items
 	dotSceneLoader->parseDotScene("Level1_1.scene","General", mSceneManager, mScenarioManager, mCameraManager, mLightsManager, mEnemyManager, mPhysicsManager, mItemManager, mParticleManager, mScenarioManager->_getSceneNode());
-
-	//dotSceneLoader->parseDotScene("Level1_1_scenario.scene","General", mSceneManager, mScenarioManager, mCameraManager, mLightsManager, mEnemyManager, mPhysicsManager, mItemManager, mParticleManager, mScenarioManager->_getSceneNode());
-	//dotSceneLoader->parseDotScene("Level1_1_enemies.scene","General", mSceneManager, mScenarioManager, mCameraManager, mLightsManager, mEnemyManager, mPhysicsManager, mItemManager, mParticleManager, mEnemyManager->_getSceneNode());
+	// Fixed cameras, game areas + camera segments
 	dotSceneLoader->parseDotScene("Level1_1_cameras.scene","General", mSceneManager, mScenarioManager, mCameraManager, mLightsManager, mEnemyManager, mPhysicsManager, mItemManager, mParticleManager, mCameraManager->_getSceneNode());
+	// Lights
 	dotSceneLoader->parseDotScene("Level1_1_lights.scene","General", mSceneManager, mScenarioManager, mCameraManager, mLightsManager, mEnemyManager, mPhysicsManager, mItemManager, mParticleManager, mLightsManager->_getSceneNode());
-	//dotSceneLoader->parseDotScene("Level1_1_items.scene","General", mSceneManager, mScenarioManager, mCameraManager, mLightsManager, mEnemyManager, mPhysicsManager, mItemManager, mParticleManager, mItemManager->_getSceneNode());
+	// Scenario physcis
 	dotSceneLoader->parseDotScene("Level1_1_physics.scene","General", mSceneManager, mScenarioManager, mCameraManager, mLightsManager, mEnemyManager, mPhysicsManager, mItemManager, mParticleManager, mPhysicsManager->_getSceneNode());
-	dotSceneLoader->parseDotScene("Level1_1_objects.scene","General", mSceneManager, mScenarioManager, mCameraManager, mLightsManager, mEnemyManager, mPhysicsManager, mItemManager, mParticleManager, mPhysicsManager->_getSceneNode());
 
 	Debug::Out(mSceneManager->getRootSceneNode());
 
 	//
 	// Set game camera
 	//
-	//mCameraManager->gameCamera();
+	//mCameraManager->gameCamera(); // Lua will do this from the cut scene
 
 	Viewport* gameViewport = mCameraManager->getGameViewport();
 	//
@@ -716,10 +715,7 @@ bool PlayState::keyPressed(const OIS::KeyEvent& e)
 		else
 			mLuaManager->enable();
 		break;
-	// Physics debug
-	case OIS::KeyCode::KC_F:
-		mPhysicsManager->showDebugObjects();
-		break;
+
 /*
 	// Attack A
 	case OIS::KeyCode::KC_SPACE:
@@ -749,19 +745,6 @@ bool PlayState::keyPressed(const OIS::KeyEvent& e)
 	// Depth On/Off
 	case OIS::KeyCode::KC_END:
 		mPostProcessManager->showDepth();
-		break;
-
-	case OIS::KeyCode::KC_V:
-		mCameraManager->shake(0.25, 20);
-		break;
-	case OIS::KeyCode::KC_B:
-		mCameraManager->rumble(0.5, 5);
-		break;
-	case OIS::KeyCode::KC_N:
-		mCameraManager->tremor(0.5, 20);
-		break;
-	case OIS::KeyCode::KC_M:
-		mCameraManager->drunk(2, 15);
 		break;
 	}
 
