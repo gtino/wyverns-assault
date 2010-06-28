@@ -192,7 +192,7 @@ EVENTS_DEFINE_HANDLER(ScenarioManager, ObjectKilled)
 	PlayerPtr player = evt->getPlayer();
 
 	obj->dieSwitch();
-	//obj->setMaterialName("Skin/Red");
+	obj->setMaterialName("Skin/Red");
 
 	ObjectRemoveEventPtr oRemove = ObjectRemoveEventPtr(new ObjectRemoveEvent(obj));
  	EVENTS_FIRE_AFTER(oRemove, 4.0f);
