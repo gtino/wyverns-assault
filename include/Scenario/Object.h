@@ -61,6 +61,8 @@ namespace WyvernsAssault
 
 		ObjectTypes getObjectType(){return mType;}
 
+		void updateEntity(const float elapsedSeconds);
+
 		// Enable Debug Stuff
 		void setDebugEnabled(bool isDebugEnabled);
 		bool getDebugEnabled(){return mIsDebugEnabled;}
@@ -70,6 +72,8 @@ namespace WyvernsAssault
 		bool isDying();
 
 		void setDieMaterialName(Ogre::String material){ mDieMesh->setMaterialName(material); }
+		bool hasDieAnimation(){ return mDieAnimation != NULL; }
+		bool hasDieMesh(){ return mDieMesh != NULL; }
 		void setDieMesh(Ogre::Entity* entity);
 		void setDieAnimation(Ogre::AnimationState* dieAnimation);
 		void dieSwitch();
@@ -79,7 +83,6 @@ namespace WyvernsAssault
 		//
 		void initializeEntity(Ogre::Entity* mesh, Ogre::SceneNode* sceneNode, Ogre::SceneManager* sceneManager);
 		void finalizeEntity();
-		void updateEntity(const float elapsedSeconds);
 
 	private:
 		ObjectTypes mType;

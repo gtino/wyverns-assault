@@ -329,11 +329,10 @@ bool PhysicsManager::collidesAllObjects(PlayerPtr player, const Vector3& fromPoi
 			ObjectHitEventPtr objectHitEventPtr = ObjectHitEventPtr(new ObjectHitEvent(obj, player));
 			objectHitEventPtr->setDamage(player->getSpecialHitDamage());
 			EVENTS_FIRE(objectHitEventPtr);
-			return false;
 		}else{
 			std::pair<bool, Ogre::Real> hit = Ogre::Math::intersects(ray, obj_box);
 			
-			if(hit.first && hit.second < 5){
+			if(hit.first && hit.second < 2){
 				/*
 				// Check if player is attacking and has changed state
  				if( player->isAttacking() && mLastAttackChecked != player->wichAttack())

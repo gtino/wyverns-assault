@@ -424,6 +424,11 @@ void PlayState::update(const float elapsedSeconds)
 	mAudioManager->update(Vector3::ZERO, Quaternion::ZERO, elapsedSeconds);
 
 	//
+	// Update scenario objects
+	//
+	mScenarioManager->update(elapsedSeconds);
+
+	//
 	// Update post processing compositors
 	//
 	mPostProcessManager->update(elapsedSeconds);

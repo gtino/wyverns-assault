@@ -73,16 +73,16 @@ ObjectPtr ScenarioManager::createObject(WyvernsAssault::ObjectTypes type, Ogre::
 
 	sceneNode->attachObject(entity);
 
-	// Die mesh and animation
-	if(type == WyvernsAssault::ObjectTypes::DynamicObject)
+	// Die mesh and animation - TEST
+	if(type == WyvernsAssault::ObjectTypes::DynamicObject && name == "Entity#383")
 	{
-		//Ogre::Entity* objDieMesh = NULL;
-		//Ogre::AnimationState* objDieAnimation = NULL;
-		//objDieMesh = mSceneManager->createEntity(name + "Die", "BigRock0Die.mesh");
-		//sceneNode->attachObject(objDieMesh);			
-		//object->setDieMesh(objDieMesh);		
-		//objDieAnimation = objDieMesh->getAnimationState("die");
-		//object->setDieAnimation(objDieAnimation);
+		Ogre::Entity* objDieMesh = NULL;
+		Ogre::AnimationState* objDieAnimation = NULL;
+		objDieMesh = mSceneManager->createEntity(name + "Die", "BigRock0Die.mesh");
+		sceneNode->attachObject(objDieMesh);			
+		object->setDieMesh(objDieMesh);		
+		objDieAnimation = objDieMesh->getAnimationState("Die");
+		object->setDieAnimation(objDieAnimation);
 	}
 
 	mObjectList.push_back(object);
@@ -140,6 +140,16 @@ void ScenarioManager::setDebugEnabled(bool isDebugEnabled)
 	}
 }
 
+void ScenarioManager::update(const float elapsedSeconds)
+{
+	for(int i = 0; i < mObjectList.size() ; i++)
+	{
+		ObjectPtr obj =  mObjectList[i];
+		obj->updateEntity(elapsedSeconds); // this updates animations too!
+		
+	}
+}
+
 // --------------
 // Event handlers
 // --------------
@@ -182,8 +192,7 @@ EVENTS_DEFINE_HANDLER(ScenarioManager, ObjectKilled)
 	PlayerPtr player = evt->getPlayer();
 
 	obj->dieSwitch();
-	obj->setMaterialName("Skin/Red");
-	
+	//obj->setMaterialName("Skin/Red");
 
 	ObjectRemoveEventPtr oRemove = ObjectRemoveEventPtr(new ObjectRemoveEvent(obj));
  	EVENTS_FIRE_AFTER(oRemove, 4.0f);
