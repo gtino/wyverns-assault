@@ -63,6 +63,8 @@ namespace WyvernsAssault
 		void initialize();
 		void load(Ogre::String file);
 
+		void update(const float elpasedSeconds);
+
 		ObjectPtr createObject(WyvernsAssault::ObjectTypes type, Ogre::String name, Ogre::String meshFile);
 		ObjectPtr createObject(WyvernsAssault::ObjectTypes type, Ogre::String name, Ogre::Entity* entity, Ogre::SceneNode* sceneNode);
 
