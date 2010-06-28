@@ -32,6 +32,8 @@ void PlayState::initialize()
 	mCamera = mCameraManager->getGameCamera();
 	mViewport = mCameraManager->getGameViewport();
 
+	mCameraManager->startCameras();
+
 	mInputManager->setKeyMode(true);
 	mInputManager->setMouseMode(true);
 	mInputManager->setJoyStickMode(true);
@@ -213,7 +215,7 @@ void PlayState::initialize()
 	//
 	// Set game camera
 	//
-	mCameraManager->gameCamera();
+	//mCameraManager->gameCamera();
 
 	Viewport* gameViewport = mCameraManager->getGameViewport();
 	//
