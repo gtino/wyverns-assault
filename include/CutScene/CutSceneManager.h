@@ -58,6 +58,9 @@ namespace WyvernsAssault
 			Boss = 8
 		};
 
+	typedef std::map<CutSceneId,bool> CutScenesPlayedMap;
+	typedef std::map<CutSceneId,bool>::iterator CutScenesPlayedMapIterator;
+
 	public:
 		CutSceneManager(SceneManager* sceneManager);
 		~CutSceneManager();
@@ -90,6 +93,8 @@ namespace WyvernsAssault
 		int mCurrentStep;
 		float mElapsedSceneTime;
 		float mWaitTimer;
+
+		CutScenesPlayedMap mAlreadyPlayed;
 
 	public:
 		// ----------------
