@@ -198,6 +198,7 @@ namespace WyvernsAssault
 
 		void setDirectionToTarget();
 		void setDirectionOutTarget();
+		void setDirectionRandom();
 
 	public:
 		static Enemy::EnemyTypes StringToType(Ogre::String typeStr);
