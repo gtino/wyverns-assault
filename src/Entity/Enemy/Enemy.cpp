@@ -211,14 +211,14 @@ void Enemy::updateLogic(lua_State *L, const float elapsedSeconds)
 		case Enemy::EnemyStates::Rage:
 			mBalloonSet->setVisible(true);
 			mBalloonSet->setMaterialName("Balloons/Rage");
-			mDirection = Vector3::ZERO;
+			setDirectionToTarget();
 			setMoving(false);
 			setAttacking(true);
 			break;
 		case Enemy::EnemyStates::Love:
 			mBalloonSet->setVisible(true);
 			mBalloonSet->setMaterialName("Balloons/Love");
-			mDirection = Vector3::ZERO;
+			setDirectionToTarget();
 			setMoving(false);
 			setAttacking(false);
 			break;
@@ -269,6 +269,20 @@ void Enemy::updateLogic(lua_State *L, const float elapsedSeconds)
 	}
 	else
 	{
+		//
+		// HACK! To update enemy direction every frame!
+		//
+		if(mState == Enemy::EnemyStates::Fear) 
+		{
+			setDirectionOutTarget();
+		}
+		else if(	(mState == Enemy::EnemyStates::Rage) ||
+					(mState == Enemy::EnemyStates::Alert) ||
+					(mState == Enemy::EnemyStates::Love))
+		{
+			setDirectionToTarget();
+		}
+
 		mStateTimeout += elapsedSeconds;
 	}
 
