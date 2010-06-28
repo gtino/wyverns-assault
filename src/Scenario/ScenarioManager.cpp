@@ -79,6 +79,7 @@ ObjectPtr ScenarioManager::createObject(WyvernsAssault::ObjectTypes type, Ogre::
 		Ogre::Entity* objDieMesh = NULL;
 		Ogre::AnimationState* objDieAnimation = NULL;
 		objDieMesh = mSceneManager->createEntity(name + "Die", "BigRock0Die.mesh");
+		objDieMesh->setMaterialName("BigRock");
 		sceneNode->attachObject(objDieMesh);			
 		object->setDieMesh(objDieMesh);		
 		objDieAnimation = objDieMesh->getAnimationState("Die");
@@ -192,7 +193,6 @@ EVENTS_DEFINE_HANDLER(ScenarioManager, ObjectKilled)
 	PlayerPtr player = evt->getPlayer();
 
 	obj->dieSwitch();
-	obj->setMaterialName("Skin/Red");
 
 	ObjectRemoveEventPtr oRemove = ObjectRemoveEventPtr(new ObjectRemoveEvent(obj));
  	EVENTS_FIRE_AFTER(oRemove, 4.0f);
