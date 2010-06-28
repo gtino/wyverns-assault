@@ -335,11 +335,7 @@ void Enemy::setDirectionToTarget()
 
 void Enemy::setDirectionOutTarget()
 {
-	if( mType == EnemyTypes::Chicken )
-	{
-		setDirectionRandom();
-	}
-	else if(mTarget)
+	if(mTarget)
 	{
 		mDirection = mSceneNode->getPosition() - mTarget->getPosition();
 		Vector3 src = mSceneNode->getOrientation() * Vector3::UNIT_Z;
