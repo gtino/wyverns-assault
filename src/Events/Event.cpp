@@ -194,6 +194,33 @@ ItemRemoveEvent::ItemRemoveEvent(ItemPtr i)
 
 //----------------------
 
+ObjectHitEvent::ObjectHitEvent(ObjectPtr o, PlayerPtr p)
+: Event(EventTypes::ObjectHit, EventPriorities::Normal)
+, mDamage(0)
+{
+	mObject = o;
+	mPlayer = p;
+};
+
+//----------------------
+
+ObjectKilledEvent::ObjectKilledEvent(ObjectPtr o, PlayerPtr p)
+:Event(EventTypes::ObjectKilled, EventPriorities::Normal)
+{
+	mObject = o;
+	mPlayer = p;
+};
+
+//----------------------
+
+ObjectRemoveEvent::ObjectRemoveEvent(ObjectPtr o)
+:Event(EventTypes::ObjectRemove, EventPriorities::Normal)
+{
+	mObject = o;
+};
+
+//----------------------
+
 GameAreaChangedEvent::GameAreaChangedEvent(int previousArea, int actualArea)
 :Event(EventTypes::GameAreaChanged, EventPriorities::Normal)
 {

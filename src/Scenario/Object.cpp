@@ -7,10 +7,12 @@ Object::Object(Ogre::String name, ObjectTypes type)
 , PhysicsInterface()
 , mOBBoxRenderable(0)
 , mIsDebugEnabled(false)
-, mMaxLife(100)
+, mMaxLife(200)
+, mDieAnimation(NULL)
 {
 	mType = type;
 	mParameters.life = mMaxLife;
+
 }
 
 
@@ -55,6 +57,32 @@ bool Object::isDying()
 void Object::hit(float damage)
 {
 	mParameters.life -= damage;
+}
+
+// Die function, change visible meshes
+void Object::dieSwitch()
+{
+	// Main mesh visibility to false
+	setVisible(false);
+
+	// Die mesh visible
+	mDieMesh->setVisible(true);
+}
+
+// Set die mesh and set invisible
+void Object::setDieMesh(Ogre::Entity* entity)
+{ 
+	mDieMesh = entity;
+	mDieMesh->setVisible(false);
+}
+
+// Set die animation from skeleton
+void Object::setDieAnimation(Ogre::AnimationState* dieAnimation)
+{
+	mDieAnimation = dieAnimation;
+	mDieAnimation->setEnabled(true);
+	mDieAnimation->setWeight(1);
+	mDieAnimation->setLoop(false);
 }
 
 ObjectTypes Object::StringToType (Ogre::String string)

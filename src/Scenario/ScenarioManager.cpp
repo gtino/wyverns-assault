@@ -73,6 +73,18 @@ ObjectPtr ScenarioManager::createObject(WyvernsAssault::ObjectTypes type, Ogre::
 
 	sceneNode->attachObject(entity);
 
+	// Die mesh and animation
+	if(type == WyvernsAssault::ObjectTypes::DynamicObject)
+	{
+		//Ogre::Entity* objDieMesh = NULL;
+		//Ogre::AnimationState* objDieAnimation = NULL;
+		//objDieMesh = mSceneManager->createEntity(name + "Die", "BigRock0Die.mesh");
+		//sceneNode->attachObject(objDieMesh);			
+		//object->setDieMesh(objDieMesh);		
+		//objDieAnimation = objDieMesh->getAnimationState("die");
+		//object->setDieAnimation(objDieAnimation);
+	}
+
 	mObjectList.push_back(object);
 	mObjectMap[name] = object;
 
@@ -126,6 +138,62 @@ void ScenarioManager::setDebugEnabled(bool isDebugEnabled)
 			obj->setDebugEnabled(mIsDebugEnabled);
 		}
 	}
+}
+
+// --------------
+// Event handlers
+// --------------
+EVENTS_BEGIN_REGISTER_HANDLERS(ScenarioManager)
+	EVENTS_REGISTER_HANDLER(ScenarioManager, Collision)
+	EVENTS_REGISTER_HANDLER(ScenarioManager, ObjectHit)
+	EVENTS_REGISTER_HANDLER(ScenarioManager, ObjectKilled)
+	EVENTS_REGISTER_HANDLER(ScenarioManager, ObjectRemove);
+EVENTS_END_REGISTER_HANDLERS()
+
+EVENTS_BEGIN_UNREGISTER_HANDLERS(ScenarioManager)
+	EVENTS_UNREGISTER_HANDLER(ScenarioManager, Collision)
+	EVENTS_UNREGISTER_HANDLER(ScenarioManager, ObjectHit)
+	EVENTS_UNREGISTER_HANDLER(ScenarioManager, ObjectKilled)
+	EVENTS_UNREGISTER_HANDLER(ScenarioManager, ObjectRemove);
+EVENTS_END_UNREGISTER_HANDLERS()
+
+EVENTS_DEFINE_HANDLER(ScenarioManager, Collision)
+{
+// TODO
+}
+
+EVENTS_DEFINE_HANDLER(ScenarioManager, ObjectHit)
+ {
+	ObjectPtr obj = evt->getObject();
+	PlayerPtr player = evt->getPlayer();
+
+	obj->hit(evt->getDamage());
+
+	if(obj->isDying())
+	{
+		ObjectKilledEventPtr oKill = ObjectKilledEventPtr(new ObjectKilledEvent(obj, player));
+ 		EVENTS_FIRE(oKill);
+	}
+}
+
+EVENTS_DEFINE_HANDLER(ScenarioManager, ObjectKilled)
+ {
+	ObjectPtr obj = evt->getObject();
+	PlayerPtr player = evt->getPlayer();
+
+	obj->dieSwitch();
+	obj->setMaterialName("Skin/Red");
+	
+
+	ObjectRemoveEventPtr oRemove = ObjectRemoveEventPtr(new ObjectRemoveEvent(obj));
+ 	EVENTS_FIRE_AFTER(oRemove, 4.0f);
+
+}
+
+EVENTS_DEFINE_HANDLER(ScenarioManager, ObjectRemove)
+{
+	ObjectPtr o = evt->getObject();
+	removeObject(o->getName());
 }
 
 // --------------------------------

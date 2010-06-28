@@ -326,15 +326,17 @@ bool PhysicsManager::collidesAllObjects(PlayerPtr player, const Vector3& fromPoi
 		// Check if player is using special (fire) and collisioning with enemy
 		if ( player->isSpecial() && player_firebox.intersects(obj_box))
 		{
-			//ObjectHitEventPtr objectHitEventPtr = ObjectHitEventPtr(new ObjectHitEvent(obj, player));
-			//ObjectHitEventPtr->setDamage(player->getSpecialHitDamage());
-			//EVENTS_FIRE(ObjectHitEventPtr);
+			ObjectHitEventPtr objectHitEventPtr = ObjectHitEventPtr(new ObjectHitEvent(obj, player));
+			objectHitEventPtr->setDamage(player->getSpecialHitDamage());
+			EVENTS_FIRE(objectHitEventPtr);
+			return false;
 		}else{
 			std::pair<bool, Ogre::Real> hit = Ogre::Math::intersects(ray, obj_box);
 			
 			if(hit.first && hit.second < 5){
+				/*
 				// Check if player is attacking and has changed state
-				if( player->isAttacking() )
+ 				if( player->isAttacking() && mLastAttackChecked != player->wichAttack())
 				{
 					//EnemyHitEventPtr enemyHitEventPtr = EnemyHitEventPtr(new EnemyHitEvent(enemy, player));
 					// If thrid strike more damage
@@ -344,8 +346,13 @@ bool PhysicsManager::collidesAllObjects(PlayerPtr player, const Vector3& fromPoi
  					//	enemyHitEventPtr->setDamage(player->getHitDamage());
 
 					//EVENTS_FIRE(enemyHitEventPtr);
-					return true;
+
+					//return true;
+					
+					// Save last player attack checked
+					mLastAttackChecked = player->wichAttack();
 				}
+				*/
 
 				//Collision wihout attack
 				return true;

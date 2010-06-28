@@ -28,6 +28,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #include "..\Entity\Enemy\Enemy.h"
 #include "..\Entity\Player\Player.h"
 #include "..\Entity\Item\Item.h"
+#include "..\Scenario\Object.h"
 
 namespace WyvernsAssault
 {
@@ -46,6 +47,8 @@ namespace WyvernsAssault
 		EnemyRemove,
 		EnemyCustom,
 		ObjectHit,
+		ObjectKilled,
+		ObjectRemove,
 		Collision,
 		ItemCreation,
 		ItemCatch,
@@ -330,6 +333,61 @@ namespace WyvernsAssault
 	};
 
 	typedef boost::shared_ptr<ItemRemoveEvent> ItemRemoveEventPtr;
+
+
+	// --------------------------------
+	class ObjectHitEvent : public Event
+	{
+	public:
+		ObjectHitEvent(ObjectPtr o, PlayerPtr p);
+		~ObjectHitEvent(){};
+		
+		ObjectPtr getObject(){return mObject;}
+		PlayerPtr getPlayer(){return mPlayer;}
+		
+		void setDamage(Ogre::Real damage){mDamage = damage;}
+		Ogre::Real getDamage(){return mDamage;}
+
+	private:
+		ObjectPtr mObject;
+		PlayerPtr mPlayer;
+
+		Ogre::Real mDamage;
+	};
+
+	typedef boost::shared_ptr<ObjectHitEvent> ObjectHitEventPtr;
+
+		// --------------------------------
+	class ObjectKilledEvent : public Event
+	{
+	public:
+		ObjectKilledEvent(ObjectPtr o, PlayerPtr p);
+		~ObjectKilledEvent(){};
+		
+		ObjectPtr getObject(){return mObject;}
+		PlayerPtr getPlayer(){return mPlayer;}
+
+	private:
+		ObjectPtr mObject;
+		PlayerPtr mPlayer;
+	};
+
+	typedef boost::shared_ptr<ObjectKilledEvent> ObjectKilledEventPtr;
+
+	// --------------------------------
+	class ObjectRemoveEvent : public Event
+	{
+	public:
+		ObjectRemoveEvent(ObjectPtr o);
+		~ObjectRemoveEvent(){};
+		
+		ObjectPtr getObject(){return mObject;}
+
+	private:
+		ObjectPtr mObject;
+	};
+
+	typedef boost::shared_ptr<ObjectRemoveEvent> ObjectRemoveEventPtr;
 
 	// --------------------------------
 	class GameAreaChangedEvent : public Event
