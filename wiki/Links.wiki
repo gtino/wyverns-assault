@@ -13,6 +13,10 @@ This pages is used to store all the intersting links realted to the project. Eve
  * [http://www.ogre3d.org/forums/ Ogre Forums]
  * [http://www.ogre3d.org/wiki/index.php/CommonMistakes Ogre Common Mistakes]
 
+== Dependencies ==
+
+ * [http://www.microsoft.com/downloads/details.aspx?displaylang=en&FamilyID=2051a0c1-c9b5-4b0a-a8f5-770a549fd78c#filelist] Runtime C 
+
 == Tools ==
 === GUI ===
  * [http://www.cegui.org.uk/wiki/index.php/Main_Page CEGUI]
