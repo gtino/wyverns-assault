@@ -18,6 +18,9 @@ This pages is used to store all the intersting links realted to the project. Eve
  * [http://www.microsoft.com/downloads/details.aspx?displaylang=en&FamilyID=2051a0c1-c9b5-4b0a-a8f5-770a549fd78c#filelist Runtime C] 
 
 == Tools ==
+
+ * [http://www.ogitor.org/ Ogitor 0.4.2]
+
 === GUI ===
  * [http://www.cegui.org.uk/wiki/index.php/Main_Page CEGUI]
  * [http://www.ogre3d.org/wiki/index.php/Awesomium Awesonium]
