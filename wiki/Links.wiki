@@ -16,6 +16,7 @@ This pages is used to store all the intersting links realted to the project. Eve
 == Dependencies ==
 
  * [http://www.microsoft.com/downloads/details.aspx?displaylang=en&FamilyID=2051a0c1-c9b5-4b0a-a8f5-770a549fd78c#filelist Runtime C] 
+ * [http://www.microsoft.com/downloads/en/confirmation.aspx?familyId=2da43d38-db71-4c1b-bc6a-9b6652cd92a3&displayLang=en DirectX installer]
 
 == Tools ==
 
