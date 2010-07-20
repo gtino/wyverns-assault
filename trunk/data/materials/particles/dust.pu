@@ -18,8 +18,8 @@ system WyvernsAssault/Dust
         {
             emission_rate                       dyn_random
             {
-                min                             25
-                max                             30
+                min                             5
+                max                             8
             }
             angle                               0
             time_to_live                        dyn_random
@@ -27,20 +27,18 @@ system WyvernsAssault/Dust
                 min                             1
                 max                             1.5
             }
-            velocity                            dyn_random
-            {
-                min                             50
-                max                             150
-            }
             all_particle_dimensions             dyn_random
             {
-                min                             5
+                min                             15
                 max                             20
             }
             position                            0 5 15
             direction                           0 0 0
             orientation                         0 0 0 0
             end_texture_coords_range            3
+            start_colour_range                  0.486275 0.337255 0.0627451 1
+            end_colour_range                    0.682353 0.47451 0.0823529 1
+            colour                              0.619608 0.435294 0.0784314 1
             auto_direction                      true
             force_emission                      true
             radius                              0.1
@@ -48,9 +46,10 @@ system WyvernsAssault/Dust
         }
         affector                                Colour Affector100
         {
-            time_colour                         0    0 0 0 0
-            time_colour                         0.25 0.619608 0.435294 0.0784314 0.882353
-            time_colour                         1    0.619608 0.435294 0.0784314 0
+            time_colour                         0    1 1 1 0
+            time_colour                         0.25 1 1 1 0.882353
+            time_colour                         1    1 1 1 0
+            colour_operation                    multiply
         }
         affector                                Scale Affector27
         {
@@ -64,13 +63,80 @@ system WyvernsAssault/Dust
         affector                                Jet Affector215
         {
             position                            0 5 15
-            acceleration                        -4
+            acceleration                        -6
         }
         observer                                OnClear Observer1
         {
             handler                             DoStopSystem Handler2
             {
             }
+        }
+    }
+    technique Technique141
+    {
+        emitted_emitter_quota                   100
+        emitted_technique_quota                 100
+        emitted_affector_quota                  100
+        emitted_system_quota                    100
+        material                                Particle/Cloud
+        renderer                                Billboard
+        {
+            render_queue_group                  100
+            texture_coords_rows                 2
+            texture_coords_columns              2
+            billboard_rotation_type             vertex
+        }
+        emitter                                 Circle Emitter165
+        {
+            emission_rate                       dyn_random
+            {
+                min                             5
+                max                             8
+            }
+            angle                               0
+            time_to_live                        dyn_random
+            {
+                min                             1
+                max                             1.5
+            }
+            velocity                            150
+            all_particle_dimensions             dyn_random
+            {
+                min                             10
+                max                             15
+            }
+            position                            0 5 15
+            direction                           0 0 0
+            orientation                         0 0 0 0
+            end_texture_coords_range            3
+            start_colour_range                  0.486275 0.337255 0.0627451 1
+            end_colour_range                    0.682353 0.47451 0.0823529 1
+            colour                              0.619608 0.435294 0.0784314 1
+            auto_direction                      true
+            force_emission                      true
+            radius                              0.1
+            normal                              0 1 0
+        }
+        affector                                Colour Affector100
+        {
+            time_colour                         0    1 1 1 0
+            time_colour                         0.25 1 1 1 0.882353
+            time_colour                         1    1 1 1 0
+            colour_operation                    multiply
+        }
+        affector                                Scale Affector27
+        {
+            xyz_scale                           -2
+        }
+        affector                                TextureRotator Affector113
+        {
+            enabled                             false
+            rotation_speed                      0.35
+        }
+        affector                                Jet Affector215
+        {
+            position                            0 5 15
+            acceleration                        -5
         }
     }
 }
