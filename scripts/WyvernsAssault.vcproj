@@ -754,6 +754,10 @@
 				Name="Physics"
 				>
 				<File
+					RelativePath="..\include\Physics\Physics.h"
+					>
+				</File>
+				<File
 					RelativePath="..\include\Physics\PhysicsInterface.h"
 					>
 				</File>
@@ -897,10 +901,6 @@
 			<Filter
 				Name="Utils"
 				>
-				<File
-					RelativePath="..\include\Physics\Physics.h"
-					>
-				</File>
 				<File
 					RelativePath="..\include\Utils\Utils.h"
 					>

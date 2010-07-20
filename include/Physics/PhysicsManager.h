@@ -29,8 +29,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #include <OgreSingleton.h>
 #include <boost/enable_shared_from_this.hpp>
 
-#include "..\Lua\LuaInterface.h"
-
 #include "PhysicsInterface.h"
 
 #include "..\Utils\Utils.h"
@@ -48,25 +46,24 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
 #include "..\Events\EventsInterface.h"
 
+#include "..\Lua\LuaInterface.h"
+
 using namespace Ogre;
 
 namespace WyvernsAssault
 {		
 
-	/* Ground types
-	*/
+	// Ground types
 	enum GroundQueryFlags
 	{
-		BASIC_GROUND_MASK = 1<<0,
-		ROAD_GROUND_MASK = 1<<1,
-		WATER_GROUND_MASK = 1<<2,
-		WHEAT_GROUND_MASK = 1<<3,
-		BORDER_GROUND_MASK = 1<<4
+		GROUND_MASK = 1<<0,
+		ROAD_MASK = 1<<1,
+		WATER_MASK = 1<<2,
+		WHEAT_MASK = 1<<3,
+		WALL_MASK = 1<<4
 	};
 
-	/**
-	Class used to manage entities/world physics
-	*/
+	//	Class used to manage entities/world physics
 	class PhysicsManager	: public Ogre::Singleton<PhysicsManager>
 							, public boost::enable_shared_from_this<PhysicsManager>
 							, public LuaInterface
@@ -81,26 +78,25 @@ namespace WyvernsAssault
 
 	public:
 
-		bool initialize();
+		void initialize();
 		void finalize();
-		SceneManager* getSceneManager(){return this->mSceneManager;}
 
-		void showDebugObjects();
-
-		void addPhysicGround(Ogre::String mesh, Ogre::String name, WyvernsAssault::GroundQueryFlags type, Ogre::Vector3 position, Ogre::Vector3 scale);
+		// Add phyisic entities to manager
+		void addPhysicScenario(String mesh, String name, GroundQueryFlags type, Vector3 position, Vector3 scale);
 		void addPhysicPlayer(PlayerPtr player);
 		void addPhysicEnemy(EnemyPtr enemy);
 		void addPhysicItem(ItemPtr item);
 		void addPhysicObject(ObjectPtr obj);
 
+		// Remove physic entities from manager
 		void removeEnemy(EnemyPtr enemy);
 		void removeItem(ItemPtr item);
 		void removeObject(ObjectPtr obj);
 
 		void update(const float elapsedSeconds);
 
-		//Move one character
-		void move(PlayerPtr player, const float elapsedSeconds, bool fastMode = false);
+		// Move character
+		void move(PlayerPtr player, const float elapsedSeconds);
 		void move(EnemyPtr enemy, const float elapsedSeconds);
 
 		// Collision check
@@ -111,35 +107,42 @@ namespace WyvernsAssault
 		// Debug visibility function
 		void setDebugEnabled(bool visible){ mPhysicsNode->setVisible(visible); }
 
+
 		// ----------------
 		// Events interface
 		// ----------------
 		EVENTS_INTERFACE()
 
-		EVENTS_HANDLER(ItemCatch)
 		EVENTS_HANDLER(EnemyKilled)
+		EVENTS_HANDLER(ItemCatch)		
+		EVENTS_HANDLER(ObjectKilled)
 
 	private:
 
-		Vector3 calculateY(const Vector3 &point);
-		bool collides(const Vector3& fromPoint, const Vector3& toPoint, PhysicsMeshInfo objInfo, const float collisionRadius = 2.5, const float rayHeightLevel = 0.0f);
-		bool raycast(const Vector3 &point, const Vector3 &normal, Vector3 &result, float &closest_distance, PhysicsMeshInfo objInfo);
+		SceneManager* getSceneManager(){ return this->mSceneManager; }
+
+		Vector3 calculateHeight(const Vector3 &point);
 		bool collidesAllObjects(PlayerPtr player, const Vector3& fromPoint, const Vector3& toPoint, const float collisionRadius = 2.5f, const float rayHeightLevel = 0.0f );
+		bool collides(const Vector3& fromPoint, const Vector3& toPoint, PhysicsMeshInfo objInfo, const float collisionRadius = 2.5, const float rayHeightLevel = 0.0f);
+
+		bool raycast(const Vector3 &point, const Vector3 &normal, Vector3 &result, float &closest_distance, PhysicsMeshInfo objInfo);		
 
 	protected:
 
-		SceneManager* mSceneManager;
-		SceneNode* mPhysicsNode;
-		Ogre::RaySceneQuery *mRaySceneQuery;
-		
-		//Grounds geometry
-		GeometryPtr basicGround;
-		GeometryPtr borderGround;
+		SceneManager*	mSceneManager;
+		SceneNode*		mPhysicsNode;
+		RaySceneQuery*	mRaySceneQuery;
 
-		PlayerMap mPlayerMap;
-		EnemyMap mEnemyMap;
-		ItemMap mItemMap;
-		ObjectMap mObjectMap;
+		// Entities maps
+		PlayerMap		mPlayerMap;
+		EnemyMap		mEnemyMap;
+		ItemMap			mItemMap;
+		ObjectMap		mObjectMap;
+
+		// Ground geometry
+		GeometryPtr		mGroundGeometry;
+		// Wall geometry
+		GeometryPtr		mWallGeometry;
 
 	private:
 		int		mLastAttackChecked;

@@ -2,8 +2,6 @@
 
 using namespace WyvernsAssault;
 
-const Ogre::Real STEP_RATE = 0.01;
-
 // BEGIN SINGLETON
 template<> PhysicsManager* Ogre::Singleton<PhysicsManager>::ms_Singleton = 0;
 PhysicsManager* PhysicsManager::getSingletonPtr(void)
@@ -27,22 +25,16 @@ PhysicsManager::~PhysicsManager()
 	finalize();
 }
 
-bool PhysicsManager::initialize()
+void PhysicsManager::initialize()
 {
 	mLastAttackChecked = 0;
 
 	mPhysicsNode = mSceneManager->getRootSceneNode()->createChildSceneNode(PHYSICS_NODE_NAME);
 
 	// Initialize RaySceneQuery
-	mRaySceneQuery = mSceneManager->createRayQuery(Ogre::Ray());
+	mRaySceneQuery = mSceneManager->createRayQuery(Ray());
 
-    if (NULL == mRaySceneQuery)
-    {
-		return false;
-    }
     mRaySceneQuery->setSortByDistance(true);
-
-	return true;
 }
 
 void PhysicsManager::finalize()
@@ -54,13 +46,6 @@ void PhysicsManager::finalize()
 	mPhysicsNode = NULL;
 }
 
-
-void PhysicsManager::showDebugObjects()
-{
-	/*TODO
-	*/
-}
-
 void PhysicsManager::update(const float elapsedSeconds)
 {
 	// Skip update if physics have been disabled (maybe via Lua)
@@ -68,30 +53,30 @@ void PhysicsManager::update(const float elapsedSeconds)
 		return;
 
 	// Update players
-	for(PlayerMapIterator it_player = mPlayerMap.begin(); it_player != mPlayerMap.end(); ++it_player)
+	for( PlayerMapIterator it_player = mPlayerMap.begin(); it_player != mPlayerMap.end(); ++it_player )
 	{
 		PlayerPtr player = it_player->second;
 		Vector3 position = player->getPosition();		
 
 		// Update player ray
-		Vector3 hotPosition = calculateY(position);
-		hotPosition.y += player->getHeight();
-		player->setPosition(hotPosition);
+		Vector3 newPosition = calculateHeight(position);
+		newPosition.y += player->getHeight();
+		player->setPosition(newPosition);
 
 		// Update player move
-		move(player,elapsedSeconds);
+		move(player, elapsedSeconds);
 	}
 
-	// Update enemys
+	// Update enemies
 	for(EnemyMapIterator it_enemy = mEnemyMap.begin(); it_enemy != mEnemyMap.end(); ++it_enemy)
 	{
 		EnemyPtr enemy = it_enemy->second;
 		Vector3 position = enemy->getPosition();
 
 		// Update enemy ray
-		Vector3 hotPosition = calculateY(position);
-		hotPosition.y += enemy->getHeight();
-		enemy->setPosition(hotPosition);
+		Vector3 newPosition = calculateHeight(position);
+		newPosition.y += enemy->getHeight();
+		enemy->setPosition(newPosition);
 
 		//Update player move
 		move(enemy,elapsedSeconds);
@@ -144,7 +129,7 @@ void PhysicsManager::checkForCollisions()
 				if( enemy->isAttacking() && !enemy->hasAttackHited() )
 				{
 					PlayerHitEventPtr playerHitEventPtr = PlayerHitEventPtr(new PlayerHitEvent(enemy, player));
-					EVENTS_FIRE(playerHitEventPtr);
+					EVENTS_FIRE_AFTER(playerHitEventPtr, 0.4);
 
 					enemy->setAttackHited(true);
 				}
@@ -199,72 +184,66 @@ void PhysicsManager::checkForCollisions()
 	}
 }
 
-void PhysicsManager::move(PlayerPtr player, const float elapsedSeconds, bool fastMode)
+void PhysicsManager::move(PlayerPtr player, const float elapsedSeconds)
 {
-
 	Vector3 direction = player->getDirection();
-
-	if(direction != Vector3::ZERO)
-	{
-		Quaternion q1 = player->getOrientation();
-		// Get current direction where player is facing
-		Vector3 currentDirection = q1 * Vector3::UNIT_Z;
-		Quaternion q2 = currentDirection.getRotationTo(direction);
-		player->setOrientation(q1*q2);
-	}
-
-	Vector3 old_position = player->getPosition();
+	Vector3 lastPosition = player->getPosition();
 	
-	player->setPosition((direction * player->getSpeed() * elapsedSeconds) + old_position);
+	// Translation depends on time since last frame and player's speed
+	player->translate( (direction * player->getSpeed() * elapsedSeconds) );
 
-	//Test object collision
-	bool objCollision = collidesAllObjects(player, old_position,player->getPosition(),0.5f,0.0);
-	//Test border collision
-	bool borderCollision = collides(old_position,player->getPosition(),borderGround->getPhysicsMeshInfo(),0.5f,0);
+	// Test object collision
+	bool objectCollision = collidesAllObjects(player, lastPosition, player->getPosition(), 0.5f, 0.0);
+
+	// Test walls collision
+	bool wallCollision = collides(lastPosition, player->getPosition(), mWallGeometry->getPhysicsMeshInfo(),0.5f,0);
 	
-	if( borderCollision || objCollision  )
-		player->setPosition(old_position);
+	// If player is colliding with something, undo movement
+	if( objectCollision || wallCollision  )
+		player->setPosition(lastPosition);
 }
 
 
 void PhysicsManager::move(EnemyPtr enemy, const float elapsedSeconds)
 {
 	Vector3 direction = enemy->getDirection();
+	Vector3 lastPosition = enemy->getPosition();
 
-	Vector3 old_position = enemy->getPosition();
+	enemy->translate( (direction  * enemy->getSpeed() * elapsedSeconds) );
 
-	enemy->setPosition((direction*enemy->getSpeed()*elapsedSeconds) + old_position);
-
-	if(collides(old_position,enemy->getPosition(),borderGround->getPhysicsMeshInfo(),0.5f,0))
-		enemy->setPosition(old_position);
+	// Enemies only collides with scenario walls
+	if( collides(lastPosition, enemy->getPosition(), mWallGeometry->getPhysicsMeshInfo(), 0.5f, 0) )
+		enemy->setPosition(lastPosition);
 }
 
-// Load a mesh as ground type
-void PhysicsManager::addPhysicGround(Ogre::String mesh, Ogre::String name, WyvernsAssault::GroundQueryFlags type, Ogre::Vector3 position, Ogre::Vector3 scale)
+// Load scenario physics
+void PhysicsManager::addPhysicScenario(Ogre::String mesh, Ogre::String name, WyvernsAssault::GroundQueryFlags type, Ogre::Vector3 position, Ogre::Vector3 scale)
 {	
-	SceneNode* nodeGround = mPhysicsNode->createChildSceneNode(name,position);
-	Ogre::Entity* entityGround = mSceneManager->createEntity(name,mesh);
-	entityGround->setQueryFlags(type);
-	nodeGround->attachObject(entityGround);
-	nodeGround->setVisible(false);
-	nodeGround->setScale(scale);
+	SceneNode* nodeScenario = mPhysicsNode->createChildSceneNode(name, position);
+	Entity* entityScenario = mSceneManager->createEntity(name, mesh);
 
-	// initialize geometry
-	if(type == WyvernsAssault::BASIC_GROUND_MASK){
-		basicGround = GeometryPtr(new Geometry(entityGround));
-		basicGround->initializeMeshInformation(nodeGround->getPosition(),nodeGround->getOrientation(),nodeGround->getScale());
-	}else if(type == WyvernsAssault::BORDER_GROUND_MASK){
-		borderGround = GeometryPtr(new Geometry(entityGround));
-		borderGround->initializeMeshInformation(nodeGround->getPosition(),nodeGround->getOrientation(),nodeGround->getScale());
+	entityScenario->setQueryFlags(type);
+	nodeScenario->attachObject(entityScenario);
+	nodeScenario->setVisible(false);
+	nodeScenario->setScale(scale);
+
+	// Initialize scenario physics geometry
+	if( type == WyvernsAssault::GROUND_MASK)
+	{
+		mGroundGeometry = GeometryPtr(new Geometry(entityScenario));
+		mGroundGeometry->initializeMeshInformation(nodeScenario->getPosition(), nodeScenario->getOrientation(), nodeScenario->getScale());
+	}
+	else if(type == WyvernsAssault::WALL_MASK)
+	{
+		mWallGeometry = GeometryPtr(new Geometry(entityScenario));
+		mWallGeometry->initializeMeshInformation(nodeScenario->getPosition(), nodeScenario->getOrientation(), nodeScenario->getScale());
 	}
 }
 
 // Load player physics
 void PhysicsManager::addPhysicPlayer(PlayerPtr player)
 {
-
 	mPlayerMap[player->getName()] = player;
-
 }
 
 // Load enemy physics
@@ -285,84 +264,42 @@ void PhysicsManager::addPhysicObject(ObjectPtr obj)
 	mObjectMap[obj->getName()] = obj;
 }
 
-// Calculate heigth of terrain and translate node to adjust them
-Vector3 PhysicsManager::calculateY(const Vector3 &point)
+// Calculate terrain's height and modify player position
+Vector3 PhysicsManager::calculateHeight(const Vector3 &point)
 {
-	Vector3 yPosition(0,0,0);
+	Vector3 newPosition = Vector3(0,0,0);
 	float distToColl = 0.0f;
 
-	if(raycast(point,Vector3::NEGATIVE_UNIT_Y,yPosition, distToColl ,basicGround->getPhysicsMeshInfo()))
+	if( raycast(point, Vector3::NEGATIVE_UNIT_Y, newPosition, distToColl, mGroundGeometry->getPhysicsMeshInfo()) )
 	{
-		return Ogre::Vector3(point.x,yPosition.y,point.z);
+		return newPosition;
 	}
 
 	return point;
 }
 
-// Control player-object collision
+// Collisions between player and scenario physic objects
 bool PhysicsManager::collidesAllObjects(PlayerPtr player, const Vector3& fromPoint, const Vector3& toPoint, const float collisionRadius, const float rayHeightLevel )
 {
-
-	AxisAlignedBox player_firebox = player->getFireBox();
-	AxisAlignedBox player_box = player->getGeometry()->getWorldBoundingBox();
-
-	//Launch ray
-	Vector3 fromPointAdj(fromPoint.x, fromPoint.y + rayHeightLevel, fromPoint.z);
-	Vector3 toPointAdj(toPoint.x, toPoint.y + rayHeightLevel, toPoint.z);	
-	Vector3 normal = toPointAdj - fromPointAdj;
-
-    static Ogre::Ray ray;
-	ray.setOrigin(fromPointAdj);
-	ray.setDirection(normal);
-
-	Vector3 translation =  Ogre::Vector3::ZERO;
+	Vector3 min = player->getPosition() - Vector3( 20, 20, 20) /2;
+	Vector3 max = player->getPosition() + Vector3( 20, 20, 20) /2;
+	AxisAlignedBox player_box(min, max);
 
 	for(ObjectMapIterator it_obj = mObjectMap.begin(); it_obj != mObjectMap.end(); ++it_obj)
 	{
 		ObjectPtr obj = it_obj->second;
-		AxisAlignedBox obj_box = obj->getGeometry()->getBoundingBox();
-		obj_box.transformAffine(obj->_getSceneNode()->_getFullTransform());
+		min = obj->getPosition() - Vector3( 50, 40, 50) /2;
+		max = obj->getPosition() + Vector3( 50, 40, 50) /2;
+		AxisAlignedBox obj_box(min, max);
 
-		// Check if player is using special (fire) and collisioning with enemy
-		if ( player->isSpecial() && player_firebox.intersects(obj_box))
-		{
-			ObjectHitEventPtr objectHitEventPtr = ObjectHitEventPtr(new ObjectHitEvent(obj, player));
-			objectHitEventPtr->setDamage(player->getSpecialHitDamage());
-			EVENTS_FIRE(objectHitEventPtr);
-		}else{
-			std::pair<bool, Ogre::Real> hit = Ogre::Math::intersects(ray, obj_box);
-			
-			if(hit.first && hit.second < 2){
-				/*
-				// Check if player is attacking and has changed state
- 				if( player->isAttacking() && mLastAttackChecked != player->wichAttack())
-				{
-					//EnemyHitEventPtr enemyHitEventPtr = EnemyHitEventPtr(new EnemyHitEvent(enemy, player));
-					// If thrid strike more damage
-					//if( player->wichAttack() == 3 )
-						//enemyHitEventPtr->setDamage(player->getComboHitDamage());
-					//else
- 					//	enemyHitEventPtr->setDamage(player->getHitDamage());
-
-					//EVENTS_FIRE(enemyHitEventPtr);
-
-					//return true;
-					
-					// Save last player attack checked
-					mLastAttackChecked = player->wichAttack();
-				}
-				*/
-
-				//Collision wihout attack
-				return true;
-			}
-		}
+		if( player_box.intersects(obj_box) )
+			return true;
 	}
 
 	return false;
-
 }
 
+// Collisions between entity and scenario walls
 bool PhysicsManager::collides(const Vector3& fromPoint, const Vector3& toPoint, PhysicsMeshInfo objInfo, const float collisionRadius, const float rayHeightLevel)
 {
 	Vector3 fromPointAdj(fromPoint.x, fromPoint.y + rayHeightLevel, fromPoint.z);
@@ -379,13 +316,11 @@ bool PhysicsManager::collides(const Vector3& fromPoint, const Vector3& toPoint, 
 		return (distToColl <= distToDest);
 	}
 	else
-	{
 		return false;
-	}
 }
 
 bool PhysicsManager::raycast(const Vector3 &point, const Vector3 &normal,
-							 Vector3 &result,float &closest_distance, PhysicsMeshInfo objInfo)
+							 Vector3 &result, float &closest_distance, PhysicsMeshInfo objInfo)
 {
     // Create the ray to test
     static Ogre::Ray ray;
@@ -464,14 +399,16 @@ void PhysicsManager::removeObject(ObjectPtr obj)
 EVENTS_BEGIN_REGISTER_HANDLERS(PhysicsManager)
 	EVENTS_REGISTER_HANDLER(PhysicsManager, EnemyKilled)
 	EVENTS_REGISTER_HANDLER(PhysicsManager, ItemCatch);
+	EVENTS_REGISTER_HANDLER(PhysicsManager, ObjectKilled);
 EVENTS_END_REGISTER_HANDLERS()
 
 EVENTS_BEGIN_UNREGISTER_HANDLERS(PhysicsManager)
 	EVENTS_UNREGISTER_HANDLER(PhysicsManager, EnemyKilled)
 	EVENTS_UNREGISTER_HANDLER(PhysicsManager, ItemCatch);
+	EVENTS_UNREGISTER_HANDLER(PhysicsManager, ObjectKilled);
 EVENTS_END_UNREGISTER_HANDLERS()
 
-EVENTS_DEFINE_HANDLER(PhysicsManager,EnemyKilled)
+EVENTS_DEFINE_HANDLER(PhysicsManager, EnemyKilled)
 {
 	EnemyPtr enemy = evt->getEnemy();
 	PlayerPtr player = evt->getPlayer();
@@ -480,12 +417,20 @@ EVENTS_DEFINE_HANDLER(PhysicsManager,EnemyKilled)
    	removeEnemy(enemy);
 }
 
-EVENTS_DEFINE_HANDLER(PhysicsManager,ItemCatch)
+EVENTS_DEFINE_HANDLER(PhysicsManager, ItemCatch)
 {
 	ItemPtr item = evt->getItem();
 
 	// The player has just cacth the item
    	removeItem(item);
+}
+
+EVENTS_DEFINE_HANDLER(PhysicsManager, ObjectKilled)
+{
+	ObjectPtr object = evt->getObject();
+
+	// The player has just cacth the item
+   	removeObject(object);
 }
 
 // --------------------------------
@@ -562,7 +507,7 @@ LUA_DEFINE_FUNCTION(PhysicsManager, getHOT)
 	Ogre::Real z = luaL_checknumber(L, 3);
 
 	// TODO :
-	//smPhysicsManager->getHOT
+	//mPhysicsManager->getHOT
 
 	/* push the total seconds */
 	lua_pushnumber(L, 0); // 
@@ -581,17 +526,12 @@ LUA_DEFINE_FUNCTION(PhysicsManager, getDistance)
 	Ogre::String name1 = luaL_checkstring(L, 1);
 	Ogre::String name2 = luaL_checkstring(L, 2);
 
-	Ogre::SceneManager* sceneManager = PhysicsManager::getSingleton().getSceneManager();
+	SceneManager* sceneManager = PhysicsManager::getSingleton().getSceneManager();
 
 	SceneNode* node1 = sceneManager->getEntity(name1)->getParentSceneNode();
 	SceneNode* node2 = sceneManager->getEntity(name2)->getParentSceneNode();
 
-    Vector3 pos1 = node1->_getDerivedPosition();
-    Vector3 pos2 = node2->_getDerivedPosition();
-      
-    //euclidian distance, using x and z, 
-    //as y is vertical in this coordinate system
-    double range = sqrt( pow((pos1.x - pos2.x), 2) + pow((pos1.z - pos2.z), 2));
+	double range = node1->getPosition().distance(node2->getPosition());
 
 	/* push the distance */
 	lua_pushnumber(L, range); // 
@@ -602,26 +542,20 @@ LUA_DEFINE_FUNCTION(PhysicsManager, getDistance)
 
 LUA_DEFINE_FUNCTION(PhysicsManager, getNearestPlayer)
 {
-		/* get number of arguments */
+	/* get number of arguments */
 	int n = lua_gettop(L);
 
 	// n should be 2
 
 	Ogre::String enemyId = luaL_checkstring(L, 1);
 
-	 // TODO Retrieve the REAL nearest player!
+	// TODO Retrieve the REAL nearest player!
 	//Ogre::SceneManager* sceneManager = PhysicsManager::getSingleton().getSceneManager();
 
 	//SceneNode* node1 = sceneManager->getEntity(name1)->getParentSceneNode();
-
 	//SceneNode* node2 = sceneManager->getEntity("Player1")->getParentSceneNode();
 
- //   Vector3 pos1 = node1->_getDerivedPosition();
- //   Vector3 pos2 = node2->_getDerivedPosition();
- //     
- //   //euclidian distance, using x and z, 
- //   //as y is vertical in this coordinate system
- //   double range = sqrt( pow((pos1.x - pos2.x), 2) + pow((pos1.z - pos2.z), 2));
+	//double range = node1->getPosition().distance(node2->getPosition());
 
 	Ogre::String playerId = "Player1"; // TODO Retrieve the REAL nearest player!
 

@@ -281,12 +281,12 @@ void DotSceneLoader::processPhysics(TiXmlElement *XMLNode)
 			maskType = getAttrib(pElementEntity, "maskType");
 
 			// Create ground physic element
-			if(maskType == "BASIC_GROUND_MASK") 
-				mPhysicsManager->addPhysicGround(mesh,name,WyvernsAssault::BASIC_GROUND_MASK,position,scale);
-			else if(maskType == "BORDER_GROUND_MASK") 
-				mPhysicsManager->addPhysicGround(mesh,name,WyvernsAssault::BORDER_GROUND_MASK,position,scale);
+			if(maskType == "GROUND_MASK") 
+				mPhysicsManager->addPhysicScenario(mesh, name, WyvernsAssault::GROUND_MASK, position, scale);
+			else if(maskType == "WALL_MASK") 
+				mPhysicsManager->addPhysicScenario(mesh, name, WyvernsAssault::WALL_MASK, position, scale);
 			else
-				mPhysicsManager->addPhysicGround(mesh,name,WyvernsAssault::BASIC_GROUND_MASK,position,scale);
+				mPhysicsManager->addPhysicScenario(mesh, name, WyvernsAssault::GROUND_MASK, position, scale);
 
 			pElementGL = pElementGL->NextSiblingElement("groundLevel");
 		}

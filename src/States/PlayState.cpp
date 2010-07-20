@@ -76,7 +76,7 @@ void PlayState::initialize()
 	player1->setPosition(Vector3(80, 24.5, 870));
 	// Add particle systems
 	player1->setFireBreath(mParticleManager->create("firebreath","WyvernsAssault/DragonBreath"));
-	//player1->setDust(mParticleManager->create("dustR","WyvernsAssault/Dust"), mParticleManager->create("dustL","WyvernsAssault/Dust"));
+	player1->setDust(mParticleManager->create("dust","WyvernsAssault/Dust"));
 	// Set player gui
 	player1->setGuiId(GuiWidgetPlayId::UserInterface1);
 
@@ -89,7 +89,7 @@ void PlayState::initialize()
 	// 
 	mPhysicsManager = PhysicsManagerPtr(new PhysicsManager(mSceneManager));
 	mPhysicsManager->initialize();
-	mPhysicsManager->addPhysicPlayer(player1);
+	mPhysicsManager->addPhysicPlayer(player1);	// NEED FIX!
 
 	//Enemies manager constructor
 	mEnemyManager = EnemyManagerPtr(new EnemyManager(mSceneManager));

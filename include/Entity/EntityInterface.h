@@ -61,6 +61,8 @@ namespace WyvernsAssault
 		virtual Ogre::Vector3 getPosition() { return mSceneNode->getPosition(); } 
 		virtual Ogre::Vector3 getInitialPosition() { return mSceneNode->getInitialPosition(); } 
 
+		virtual void translate(const Ogre::Vector3 translation) { mSceneNode->translate(translation); }
+
 		virtual Ogre::Vector3 getDerivedPosition() {return mSceneNode->_getDerivedPosition();}
 
 		virtual void setScale(const Ogre::Vector3 scale) { mSceneNode->setScale(scale); }
@@ -83,13 +85,14 @@ namespace WyvernsAssault
 		void _destroy(SceneNode* sceneNode);
 
 	protected:
-		Ogre::Entity* mEntity;
-		Ogre::Entity* mPhysicEntity;
-		Ogre::SceneNode* mSceneNode;
-		Ogre::SceneManager* mSceneManager;
-		Ogre::AnimationState* mAnimationState;
-		Ogre::String mName;
-		Ogre::Vector3 mDirection;
+		Ogre::SceneNode*		mSceneNode;
+		Ogre::Entity*			mEntity;
+		Ogre::Entity*			mPhysicEntity;
+		Ogre::AnimationState*	mAnimationState;
+		Ogre::String			mName;
+		Ogre::Vector3			mDirection;
+
+		Ogre::SceneManager*		mSceneManager;
 	};
 
 	typedef boost::shared_ptr<EntityInterface> EntityInterfacePtr;

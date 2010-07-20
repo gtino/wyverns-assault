@@ -17,8 +17,8 @@ system WyvernsAssault/ChickenKill
         {
             emission_rate                       dyn_random
             {
-                min                             25
-                max                             35
+                min                             35
+                max                             50
             }
             angle                               dyn_random
             {
@@ -27,13 +27,13 @@ system WyvernsAssault/ChickenKill
             }
             time_to_live                        dyn_random
             {
-                min                             1.1
-                max                             1.5
+                min                             1.75
+                max                             2
             }
             velocity                            dyn_random
             {
-                min                             55
-                max                             70
+                min                             75
+                max                             100
             }
             all_particle_dimensions             dyn_random
             {
@@ -47,7 +47,7 @@ system WyvernsAssault/ChickenKill
         }
         affector                                LinearForce Affector9
         {
-            force_vector                        0 -75 0
+            force_vector                        0 -100 0
         }
         affector                                Colour Affector14
         {
@@ -63,7 +63,11 @@ system WyvernsAssault/ChickenKill
                 min                             -1
                 max                             1
             }
-            rotation_speed                      0
+            rotation_speed                      dyn_random
+            {
+                min                             1
+                max                             2
+            }
         }
     }
     technique Technique11

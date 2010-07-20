@@ -3,10 +3,10 @@
 		<physicGround>
 			<position x="0" y="2" z="0"/>
 			<groundLevel>
-				<entity meshFile="physicGround.mesh" maskType="BASIC_GROUND_MASK" name="physic_ground"/>
+				<entity meshFile="physicGround.mesh" maskType="GROUND_MASK" name="physic_ground"/>
 			</groundLevel>
 			<groundLevel>		
-				<entity meshFile="physicBorders.mesh" maskType="BORDER_GROUND_MASK" name="physic_borders"/>
+				<entity meshFile="physicWall.mesh" maskType="WALL_MASK" name="physic_wall"/>
 			</groundLevel>
 		</physicGround>
 	</physics>

@@ -22,24 +22,24 @@ system WyvernsAssault/Hit
             angle                               180
             time_to_live                        dyn_random
             {
-                min                             0.2
+                min                             0.35
                 max                             0.6
             }
             velocity                            dyn_random
             {
-                min                             20
-                max                             50
+                min                             15
+                max                             35
             }
             all_particle_dimensions             dyn_random
             {
-                min                             10
-                max                             100
+                min                             35
+                max                             50
             }
             position                            0 20 0
             end_texture_coords_range            15
             auto_direction                      true
             force_emission                      true
-            radius                              10
+            radius                              50
         }
         affector                                Colour Affector3
         {

@@ -43,8 +43,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
 #define SPECIAL_COST 100
 
-#define REDWYVERN_HEIGHT			22
-#define REDWYVERN_SPEED				80
+#define REDWYVERN_HEIGHT			24
+#define REDWYVERN_SPEED				70
 #define REDWYVERN_ATTACK_DAMAGE		30
 #define REDWYVERN_SPECIAL_DAMAGE	250
 
@@ -101,7 +101,7 @@ namespace WyvernsAssault
 
 		// Particle systems
 		void setFireBreath(ParticleUniverse::ParticleSystem* pSystem);
-		void setDust(ParticleUniverse::ParticleSystem* pSystemR, ParticleUniverse::ParticleSystem* pSystemL);
+		void setDust(ParticleUniverse::ParticleSystem* pSystem);
 
 		// Movie function
 		void setMoving(bool move);
@@ -156,9 +156,8 @@ namespace WyvernsAssault
 		TagPoint*							mBreathPoint;
 		ParticleUniverse::ParticleSystem*	mFireBreath;
 		Entity*								mFireMesh;
-		// Foot dust particle system
-		ParticleUniverse::ParticleSystem*	mDustR;
-		ParticleUniverse::ParticleSystem*	mDustL;
+		// Walk dust particle system
+		ParticleUniverse::ParticleSystem*	mDust;
 		
 		// Debug bounding box
 		OBBoxRenderable* mOBBoxRenderable;
@@ -193,6 +192,7 @@ namespace WyvernsAssault
 		bool	attackHited;
 		bool	live;
 		float	timeDeath;
+		float	timeRunning;
 
 		// Animation system
 		tecnofreak::IAnimationSystem*		mAnimationSystem;

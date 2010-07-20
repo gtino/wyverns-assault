@@ -102,15 +102,18 @@ system WyvernsAssault/FireHit
     }
     technique Technique29
     {
-        visual_particle_quota                   2000
-        emitted_emitter_quota                   500
+        visual_particle_quota                   100
+        emitted_emitter_quota                   100
+        emitted_technique_quota                 100
+        emitted_affector_quota                  100
+        emitted_system_quota                    100
         material                                Particle/Fire_02
         renderer                                Billboard
         {
         }
         emitter                                 SphereSurface Emitter30
         {
-            emission_rate                       150
+            emission_rate                       200
             angle                               10
             time_to_live                        dyn_random
             {
