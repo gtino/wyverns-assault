@@ -118,13 +118,17 @@ void PlayerManager::move(Ogre::String playerName, Vector3 direction){
 	PlayerPtr player = mPlayerMap[playerName];
 
 	player->setDirection(direction);
-	
-	if(direction != Vector3::ZERO){
-		player->setMoving(true);
-	}else{
-		player->setMoving(false);
-	}
 
+	player->setMoving(direction != Vector3::ZERO);
+
+	if(direction != Vector3::ZERO)
+	{
+		Quaternion q1 = player->getOrientation();
+		// Get current direction where player is facing
+		Vector3 currentDirection = q1 * Vector3::UNIT_Z;
+		Quaternion q2 = currentDirection.getRotationTo(direction);
+		player->setOrientation( q1*q2 );
+	}
 }
 
 void PlayerManager::attack(Ogre::String name)

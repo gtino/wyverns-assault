@@ -2,57 +2,75 @@ system WyvernsAssault/Dust
 {
     technique Technique141
     {
-        visual_particle_quota                   100
-        material                                Particle/Smoke_02
+        emitted_emitter_quota                   100
+        emitted_technique_quota                 100
+        emitted_affector_quota                  100
+        emitted_system_quota                    100
+        material                                Particle/Cloud
         renderer                                Billboard
         {
+            render_queue_group                  100
+            texture_coords_rows                 2
+            texture_coords_columns              2
+            billboard_rotation_type             vertex
         }
-        emitter                                 Box Emitter165
+        emitter                                 Circle Emitter165
         {
-            emission_rate                       30
-            angle                               dyn_random
+            emission_rate                       dyn_random
             {
-                min                             0
+                min                             25
                 max                             30
             }
-            velocity                            5
-            duration                            0.1
-            repeat_delay                        0.1
-            particle_width                      dyn_random
+            angle                               0
+            time_to_live                        dyn_random
+            {
+                min                             1
+                max                             1.5
+            }
+            velocity                            dyn_random
+            {
+                min                             50
+                max                             150
+            }
+            all_particle_dimensions             dyn_random
             {
                 min                             5
-                max                             7
+                max                             20
             }
-            particle_height                     dyn_random
-            {
-                min                             5
-                max                             7
-            }
-            direction                           -1 -1 0
-            box_width                           5
-            box_height                          5
-            box_depth                           5
+            position                            0 5 15
+            direction                           0 0 0
+            orientation                         0 0 0 0
+            end_texture_coords_range            3
+            auto_direction                      true
+            force_emission                      true
+            radius                              0.1
+            normal                              0 1 0
         }
         affector                                Colour Affector100
         {
             time_colour                         0    0 0 0 0
-            time_colour                         0.1  0.309804 0.215686 0.00784314 0.882353
-            time_colour                         0.85 0.309804 0.215686 0.00784314 0.784314
-            time_colour                         1    0 0 0 0
+            time_colour                         0.25 0.619608 0.435294 0.0784314 0.882353
+            time_colour                         1    0.619608 0.435294 0.0784314 0
         }
         affector                                Scale Affector27
         {
-            x_scale                             10
-            y_scale                             6
+            xyz_scale                           -2
         }
         affector                                TextureRotator Affector113
         {
-            rotation                            dyn_random
+            enabled                             false
+            rotation_speed                      0.35
+        }
+        affector                                Jet Affector215
+        {
+            position                            0 5 15
+            acceleration                        -4
+        }
+        observer                                OnClear Observer1
+        {
+            handler                             DoStopSystem Handler2
             {
-                min                             0
-                max                             360
             }
-            rotation_speed                      0
         }
     }
 }

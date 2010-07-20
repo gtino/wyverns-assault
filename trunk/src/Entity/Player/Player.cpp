@@ -58,6 +58,7 @@ void Player::initializeEntity(Ogre::Entity* entity, Ogre::SceneNode* sceneNode, 
 	attackHited = false;
 	live = true;
 	timeDeath = 0;
+	timeRunning = 0;
 
 	mSpecialLength = mEntity->getAnimationState("Special")->getLength();
 	
@@ -68,7 +69,7 @@ void Player::initializeEntity(Ogre::Entity* entity, Ogre::SceneNode* sceneNode, 
 
 	// Attach physic body to bone
 	mEntity->attachObjectToBone("columna", mPhysicEntity);
-	mEntity->attachObjectToBone("columna", mOBBoxRenderable);	
+	mEntity->attachObjectToBone("columna", mOBBoxRenderable);
 
 	// Fire bounding box
 	mFireOBBoxRenderable = new OBBoxRenderable("OBBoxManualMaterial_Player");
@@ -121,6 +122,14 @@ void Player::updateEntity(const float elapsedSeconds)
 	else if( moving )
 	{
 		mCurrentAnimation->setValue( PLAYER_RUN );
+		if( timeRunning > 0.5 )
+		{
+			//if( mDust->getState() == ParticleUniverse::ParticleSystem::ParticleSystemState::PSS_STOPPED )
+			mDust->start();
+			timeRunning = 0;
+		}
+		else
+			timeRunning += elapsedSeconds;
 	}
 	else
 	{
@@ -203,20 +212,6 @@ void Player::updateEntity(const float elapsedSeconds)
 void Player::setMoving(bool move)
 {
 	moving = move;
-	/*if( moving )
-	{
-		if(mDustR->getState() != ParticleUniverse::ParticleSystem::ParticleSystemState::PSS_STARTED)
-			mDustR->start();
-		if(mDustL->getState() != ParticleUniverse::ParticleSystem::ParticleSystemState::PSS_STARTED)
-			mDustL->start();
-	}
-	else
-	{
-		if(mDustR->getState() != ParticleUniverse::ParticleSystem::ParticleSystemState::PSS_STOPPED)
-			mDustR->stopFade(0.1);
-		if(mDustL->getState() != ParticleUniverse::ParticleSystem::ParticleSystemState::PSS_STOPPED)
-			mDustL->stopFade(0.1);
-	}*/
 }
 
 void Player::setFireBreath(ParticleUniverse::ParticleSystem* pSystem)
@@ -232,14 +227,12 @@ void Player::setFireBreath(ParticleUniverse::ParticleSystem* pSystem)
 	mEntity->attachObjectToBone("llengua1", mFireOBBoxRenderable);
 }
 
-void Player::setDust(ParticleUniverse::ParticleSystem* pSystemR, ParticleUniverse::ParticleSystem* pSystemL)
+void Player::setDust(ParticleUniverse::ParticleSystem* pSystem)
 {
-	mDustR = pSystemR;
-	mDustL = pSystemL;
+	mDust = pSystem;
 
-	// Attach to bone
-	mEntity->attachObjectToBone("peu_dret1", mDustR);
-	mEntity->attachObjectToBone("peu_esquerre1", mDustL);
+	// Attach to chind scene node
+	mSceneNode->createChildSceneNode(Vector3(0, -getHeight(), 0))->attachObject(mDust);
 }
 
 void Player::attackA()

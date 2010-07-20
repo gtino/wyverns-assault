@@ -2,9 +2,10 @@ system WyvernsAssault/BloodLens
 {
     technique Technique7
     {
-        material                                Particle/BloodSplash
+        material                                Particle/BloodLens
         renderer                                Billboard
         {
+            render_queue_group                  90
             billboard_rotation_type             vertex
         }
         emitter                                 Point Emitter8
