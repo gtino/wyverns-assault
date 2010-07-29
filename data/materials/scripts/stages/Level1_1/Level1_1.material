@@ -1133,9 +1133,9 @@ material Ground
 
 			fragment_program_ref ToonFP
 			{
-				param_named ambient float4 0.3 0.239 0.195 1
-				param_named diffuse float4 0.611 0.478 0.248 1
-				param_named specular float4 0.0 0.0 0.0 1.0
+				param_named ambient float4 0 0 0 1
+				param_named diffuse float4 0.3 0.3 0.3 1
+				param_named specular float4 0.3 0.3 0.3 1.0
 				param_named emissive float4 0.0 0.0 0.0 1.0
 			}
 
@@ -1144,6 +1144,11 @@ material Ground
 				texture toon.png 2d
 				tex_address_mode clamp
 				filtering none
+			}
+			
+			texture_unit
+			{
+				texture GroundTexture.png
 			}
 
 		}
@@ -1160,14 +1165,14 @@ material Grass
 		{
 			vertex_program_ref ToonVP
 			{
-				param_named shininess float4 50 1.0 1.0 1.0
+				param_named shininess float4 0 1.0 1.0 1.0
 			}
 
 			fragment_program_ref ToonFP
 			{
 				param_named ambient float4 0 0 0 1
-				param_named diffuse float4 0.478431 0.8 0.156863 1
-				param_named specular float4 0.33 0.33 0.33 1
+				param_named diffuse float4 0.3 0.3 0.3 1
+				param_named specular float4 0.3 0.3 0.3 1
 				param_named emissive float4 0.0 0.0 0.0 1.0
 			}
 
@@ -1176,6 +1181,11 @@ material Grass
 				texture toon.png 2d
 				tex_address_mode clamp
 				filtering none
+			}
+			
+			texture_unit
+			{
+				texture GroundTexture.png
 			}
 
 		}
