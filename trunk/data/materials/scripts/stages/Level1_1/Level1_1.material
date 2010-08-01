@@ -2670,3 +2670,24 @@ material Trees1
 
 	}
 }
+
+material Trees2
+{
+	technique
+	{
+		pass
+		{
+			lighting off
+			scene_blend alpha_blend
+			depth_check on
+			depth_write off
+
+			texture_unit
+			{
+				texture Trees2.png
+				tex_address_mode clamp
+			}
+		}
+
+	}
+}
