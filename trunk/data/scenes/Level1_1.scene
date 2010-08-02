@@ -449,6 +449,19 @@
           </subentities>
         </entity>
       </node>
+      <node name="Tent2_1" id="47090060">
+        <rotation qw="-0.0261771" qx="0" qy="0.999657" qz="0" />
+        <position x="2391.2" y="595.07" z="3269.05" />
+        <scale x="4" y="4" z="4" />
+        <entity name="Tent2#1" id="4333629" castshadows="false" meshFile="Tent2.mesh">
+          <rotation qw="1" qx="0" qy="0" qz="0" />
+          <position x="0" y="0" z="0" />
+          <scale x="1" y="1" z="1" />
+          <subentities>
+            <subentity materialName="Tent2" index="0" visible="true" />
+          </subentities>
+        </entity>
+      </node>
       <node name="TownHouse01_5" id="231086144">
         <rotation qw="1" qx="0" qy="0" qz="0" />
         <position x="-47.3671" y="676.607" z="-1854.44" />
@@ -1712,6 +1725,19 @@
           </subentities>
         </entity>
       </node>
+      <node name="Tent0_0" id="918790208">
+        <rotation qw="1" qx="0" qy="0" qz="0" />
+        <position x="2070.61" y="596.39" z="2728.23" />
+        <scale x="4" y="4" z="4" />
+        <entity name="Tent0#0" id="279580064" castshadows="false" meshFile="Tent0.mesh">
+          <rotation qw="1" qx="0" qy="0" qz="0" />
+          <position x="0" y="0" z="0" />
+          <scale x="1" y="1" z="1" />
+          <subentities>
+            <subentity materialName="Tent0" index="0" visible="true" />
+          </subentities>
+        </entity>
+      </node>
       <node name="MelonHill2" id="152592544">
         <rotation qw="0.252799" qx="0" qy="-0.967519" qz="0" />
         <position x="3964.44" y="520.309" z="574.825" />
@@ -2457,6 +2483,19 @@
           </subentities>
         </entity>
       </node>
+      <node name="FireCamp_1" id="619983488">
+        <rotation qw="-0.0261771" qx="0" qy="0.999657" qz="0" />
+        <position x="2384.79" y="595.07" z="3146.73" />
+        <scale x="4" y="4" z="4" />
+        <entity name="FireCamp#1" id="922482944" castshadows="false" meshFile="FireCamp.mesh">
+          <rotation qw="1" qx="0" qy="0" qz="0" />
+          <position x="0" y="0" z="0" />
+          <scale x="1" y="1" z="1" />
+          <subentities>
+            <subentity materialName="FireCamp_material" index="0" visible="true" />
+          </subentities>
+        </entity>
+      </node>
       <node name="BlueMountain6" id="656056384">
         <rotation qw="0.717117" qx="0" qy="0.696953" qz="0" />
         <position x="883.014" y="174.689" z="1328.53" />
@@ -2679,6 +2718,19 @@
           </subentities>
         </entity>
       </node>
+      <node name="Tent1_1" id="426801344">
+        <rotation qw="-0.850352" qx="0" qy="-0.526214" qz="0" />
+        <position x="2047.83" y="595.07" z="3062.41" />
+        <scale x="4" y="4" z="4" />
+        <entity name="Tent1#1" id="397686688" castshadows="false" meshFile="Tent1.mesh">
+          <rotation qw="1" qx="0" qy="0" qz="0" />
+          <position x="0" y="0" z="0" />
+          <scale x="1" y="1" z="1" />
+          <subentities>
+            <subentity materialName="Tent1" index="0" visible="true" />
+          </subentities>
+        </entity>
+      </node>
       <node name="Lava" id="212775056">
         <rotation qw="1" qx="0" qy="0" qz="0" />
         <position x="-140.649" y="594.753" z="2814.65" />
@@ -2858,6 +2910,19 @@
           <scale x="1" y="1" z="1" />
           <subentities>
             <subentity materialName="Trees0" index="0" visible="true" />
+          </subentities>
+        </entity>
+      </node>
+      <node name="Tent0_1" id="144474624">
+        <rotation qw="-0.0261771" qx="0" qy="0.999657" qz="0" />
+        <position x="2244.42" y="595.07" z="3147.75" />
+        <scale x="4" y="4" z="4" />
+        <entity name="Tent0#0Copy#0" id="1617482" castshadows="false" meshFile="Tent0.mesh">
+          <rotation qw="1" qx="0" qy="0" qz="0" />
+          <position x="0" y="0" z="0" />
+          <scale x="1" y="1" z="1" />
+          <subentities>
+            <subentity materialName="Tent0" index="0" visible="true" />
           </subentities>
         </entity>
       </node>
@@ -3515,6 +3580,19 @@
           </subentities>
         </entity>
       </node>
+      <node name="FireCamp_2" id="782097792">
+        <rotation qw="-0.0261771" qx="0" qy="0.999657" qz="0" />
+        <position x="2089.46" y="595.07" z="2882.06" />
+        <scale x="4" y="4" z="4" />
+        <entity name="FireCamp#2" id="870387904" castshadows="false" meshFile="FireCamp.mesh">
+          <rotation qw="1" qx="0" qy="0" qz="0" />
+          <position x="0" y="0" z="0" />
+          <scale x="1" y="1" z="1" />
+          <subentities>
+            <subentity materialName="FireCamp_material" index="0" visible="true" />
+          </subentities>
+        </entity>
+      </node>
       <node name="BlueMountain5" id="763298432">
         <rotation qw="0.96534" qx="0" qy="0.260994" qz="0" />
         <position x="408.801" y="174.689" z="1351.72" />
@@ -3590,6 +3668,19 @@
           <scale x="1" y="1" z="1" />
           <subentities>
             <subentity materialName="BonBonTree" index="0" visible="true" />
+          </subentities>
+        </entity>
+      </node>
+      <node name="Tent1_0" id="53804132">
+        <rotation qw="-0.833886" qx="0" qy="0.551937" qz="0" />
+        <position x="2260.4" y="595.07" z="2856.51" />
+        <scale x="4" y="4" z="4" />
+        <entity name="Tent1#0" id="842097216" castshadows="false" meshFile="Tent1.mesh">
+          <rotation qw="1" qx="0" qy="0" qz="0" />
+          <position x="0" y="0" z="0" />
+          <scale x="1" y="1" z="1" />
+          <subentities>
+            <subentity materialName="Tent1" index="0" visible="true" />
           </subentities>
         </entity>
       </node>
@@ -5270,6 +5361,19 @@
           <scale x="1" y="1" z="1" />
           <subentities>
             <subentity materialName="Tree2" index="0" visible="true" />
+          </subentities>
+        </entity>
+      </node>
+      <node name="Tent2_0" id="931638528">
+        <rotation qw="0.889017" qx="0" qy="-0.457874" qz="0" />
+        <position x="2441.87" y="595.07" z="2870.95" />
+        <scale x="4" y="4" z="4" />
+        <entity name="Tent2#0" id="693533120" castshadows="false" meshFile="Tent2.mesh">
+          <rotation qw="1" qx="0" qy="0" qz="0" />
+          <position x="0" y="0" z="0" />
+          <scale x="1" y="1" z="1" />
+          <subentities>
+            <subentity materialName="Tent2" index="0" visible="true" />
           </subentities>
         </entity>
       </node>
