@@ -111,6 +111,19 @@
           </subentities>
         </entity>
       </node>
+      <node name="Sheaf0_0Copy#1" id="155919056">
+        <rotation qw="0.97237" qx="0" qy="0.233445" qz="0" />
+        <position x="3790.21" y="593.26" z="2719.98" />
+        <scale x="4" y="4" z="4" />
+        <entity name="Sheaf0#2" id="775872064" castshadows="false" meshFile="Sheaf0.mesh">
+          <rotation qw="1" qx="0" qy="0" qz="0" />
+          <position x="0" y="0" z="0" />
+          <scale x="1" y="1" z="1" />
+          <subentities>
+            <subentity materialName="Sheaf0" index="0" visible="true" />
+          </subentities>
+        </entity>
+      </node>
       <node name="House02_1" id="645039232">
         <rotation qw="0.956893" qx="0" qy="0.29044" qz="0" />
         <position x="3969.74" y="594.063" z="-1673.42" />
@@ -197,7 +210,7 @@
       </node>
       <node name="SwirlTree0Copy#2Copy#3" id="676625856">
         <rotation qw="0.97237" qx="0" qy="0.233445" qz="0" />
-        <position x="3702.77" y="593.26" z="2808.59" />
+        <position x="3616.63" y="593.26" z="2304.26" />
         <scale x="4" y="4" z="4" />
         <entity name="PineTree2d7#7" id="22888884" castshadows="false" meshFile="PineTree2d7.mesh">
           <rotation qw="1" qx="0" qy="0" qz="0" />
@@ -449,19 +462,6 @@
           </subentities>
         </entity>
       </node>
-      <node name="Tent2_1" id="47090060">
-        <rotation qw="-0.0261771" qx="0" qy="0.999657" qz="0" />
-        <position x="2391.2" y="595.07" z="3269.05" />
-        <scale x="4" y="4" z="4" />
-        <entity name="Tent2#1" id="4333629" castshadows="false" meshFile="Tent2.mesh">
-          <rotation qw="1" qx="0" qy="0" qz="0" />
-          <position x="0" y="0" z="0" />
-          <scale x="1" y="1" z="1" />
-          <subentities>
-            <subentity materialName="Tent2" index="0" visible="true" />
-          </subentities>
-        </entity>
-      </node>
       <node name="TownHouse01_5" id="231086144">
         <rotation qw="1" qx="0" qy="0" qz="0" />
         <position x="-47.3671" y="676.607" z="-1854.44" />
@@ -704,6 +704,19 @@
           <scale x="1" y="1" z="1" />
           <subentities>
             <subentity materialName="Tree1" index="0" visible="true" />
+          </subentities>
+        </entity>
+      </node>
+      <node name="Sheaf0_0Copy#2" id="240546896">
+        <rotation qw="0.97237" qx="0" qy="0.233445" qz="0" />
+        <position x="4490.62" y="593.26" z="802.803" />
+        <scale x="4" y="4" z="4" />
+        <entity name="Sheaf0#3" id="939085056" castshadows="false" meshFile="Sheaf0.mesh">
+          <rotation qw="1" qx="0" qy="0" qz="0" />
+          <position x="0" y="0" z="0" />
+          <scale x="1" y="1" z="1" />
+          <subentities>
+            <subentity materialName="Sheaf0" index="0" visible="true" />
           </subentities>
         </entity>
       </node>
@@ -1061,7 +1074,7 @@
       </node>
       <node name="SwirlTree0" id="198706016">
         <rotation qw="0.91706" qx="0" qy="0.398749" qz="0" />
-        <position x="3814.53" y="593.26" z="2724.92" />
+        <position x="3894.93" y="593.26" z="2706.84" />
         <scale x="4" y="4" z="4" />
         <entity name="PineTree2d7#0" id="464033920" castshadows="false" meshFile="PineTree2d7.mesh">
           <rotation qw="1" qx="0" qy="0" qz="0" />
@@ -1469,6 +1482,19 @@
           </subentities>
         </entity>
       </node>
+      <node name="Sheaf0_0Copy#3" id="521439264">
+        <rotation qw="0.97237" qx="0" qy="0.233445" qz="0" />
+        <position x="5062.04" y="593.26" z="1538.01" />
+        <scale x="4" y="4" z="4" />
+        <entity name="Sheaf0#4" id="921292800" castshadows="false" meshFile="Sheaf0.mesh">
+          <rotation qw="1" qx="0" qy="0" qz="0" />
+          <position x="0" y="0" z="0" />
+          <scale x="1" y="1" z="1" />
+          <subentities>
+            <subentity materialName="Sheaf0" index="0" visible="true" />
+          </subentities>
+        </entity>
+      </node>
       <node name="GolfHill2" id="463850816">
         <rotation qw="0.707107" qx="0" qy="-0.707107" qz="0" />
         <position x="2547.89" y="589.364" z="2135.64" />
@@ -1722,19 +1748,6 @@
           <scale x="1" y="1" z="1" />
           <subentities>
             <subentity materialName="Trees0" index="0" visible="true" />
-          </subentities>
-        </entity>
-      </node>
-      <node name="Tent0_0" id="918790208">
-        <rotation qw="1" qx="0" qy="0" qz="0" />
-        <position x="2070.61" y="596.39" z="2728.23" />
-        <scale x="4" y="4" z="4" />
-        <entity name="Tent0#0" id="279580064" castshadows="false" meshFile="Tent0.mesh">
-          <rotation qw="1" qx="0" qy="0" qz="0" />
-          <position x="0" y="0" z="0" />
-          <scale x="1" y="1" z="1" />
-          <subentities>
-            <subentity materialName="Tent0" index="0" visible="true" />
           </subentities>
         </entity>
       </node>
@@ -2718,19 +2731,6 @@
           </subentities>
         </entity>
       </node>
-      <node name="Tent1_1" id="426801344">
-        <rotation qw="-0.850352" qx="0" qy="-0.526214" qz="0" />
-        <position x="2047.83" y="595.07" z="3062.41" />
-        <scale x="4" y="4" z="4" />
-        <entity name="Tent1#1" id="397686688" castshadows="false" meshFile="Tent1.mesh">
-          <rotation qw="1" qx="0" qy="0" qz="0" />
-          <position x="0" y="0" z="0" />
-          <scale x="1" y="1" z="1" />
-          <subentities>
-            <subentity materialName="Tent1" index="0" visible="true" />
-          </subentities>
-        </entity>
-      </node>
       <node name="Lava" id="212775056">
         <rotation qw="1" qx="0" qy="0" qz="0" />
         <position x="-140.649" y="594.753" z="2814.65" />
@@ -2910,19 +2910,6 @@
           <scale x="1" y="1" z="1" />
           <subentities>
             <subentity materialName="Trees0" index="0" visible="true" />
-          </subentities>
-        </entity>
-      </node>
-      <node name="Tent0_1" id="144474624">
-        <rotation qw="-0.0261771" qx="0" qy="0.999657" qz="0" />
-        <position x="2244.42" y="595.07" z="3147.75" />
-        <scale x="4" y="4" z="4" />
-        <entity name="Tent0#0Copy#0" id="1617482" castshadows="false" meshFile="Tent0.mesh">
-          <rotation qw="1" qx="0" qy="0" qz="0" />
-          <position x="0" y="0" z="0" />
-          <scale x="1" y="1" z="1" />
-          <subentities>
-            <subentity materialName="Tent0" index="0" visible="true" />
           </subentities>
         </entity>
       </node>
@@ -3671,16 +3658,16 @@
           </subentities>
         </entity>
       </node>
-      <node name="Tent1_0" id="53804132">
-        <rotation qw="-0.833886" qx="0" qy="0.551937" qz="0" />
-        <position x="2260.4" y="595.07" z="2856.51" />
+      <node name="Sheaf0_0" id="777733696">
+        <rotation qw="0.97237" qx="0" qy="0.233445" qz="0" />
+        <position x="3665.16" y="593.26" z="2381.33" />
         <scale x="4" y="4" z="4" />
-        <entity name="Tent1#0" id="842097216" castshadows="false" meshFile="Tent1.mesh">
+        <entity name="Sheaf0#0" id="85451824" castshadows="false" meshFile="Sheaf0.mesh">
           <rotation qw="1" qx="0" qy="0" qz="0" />
           <position x="0" y="0" z="0" />
           <scale x="1" y="1" z="1" />
           <subentities>
-            <subentity materialName="Tent1" index="0" visible="true" />
+            <subentity materialName="Sheaf0" index="0" visible="true" />
           </subentities>
         </entity>
       </node>
@@ -4509,8 +4496,8 @@
         </entity>
       </node>
       <node name="SwirlTree0Copy#1" id="595019392">
-        <rotation qw="0.91706" qx="0" qy="0.398749" qz="0" />
-        <position x="3876.24" y="593.26" z="2709.59" />
+        <rotation qw="0.971342" qx="0" qy="0.237686" qz="0" />
+        <position x="3921.59" y="593.26" z="2660.96" />
         <scale x="3.44327" y="3.44327" z="4" />
         <entity name="PineTree2d7#2" id="590624704" castshadows="false" meshFile="PineTree2d7.mesh">
           <rotation qw="1" qx="0" qy="0" qz="0" />
@@ -4712,6 +4699,19 @@
           <scale x="1" y="1" z="1" />
           <subentities>
             <subentity materialName="Tree2" index="0" visible="true" />
+          </subentities>
+        </entity>
+      </node>
+      <node name="Sheaf0_0Copy#0" id="218634608">
+        <rotation qw="0.97237" qx="0" qy="0.233445" qz="0" />
+        <position x="3582.54" y="593.26" z="2438.57" />
+        <scale x="4" y="4" z="4" />
+        <entity name="Sheaf0#1" id="902279744" castshadows="false" meshFile="Sheaf0.mesh">
+          <rotation qw="1" qx="0" qy="0" qz="0" />
+          <position x="0" y="0" z="0" />
+          <scale x="1" y="1" z="1" />
+          <subentities>
+            <subentity materialName="Sheaf0" index="0" visible="true" />
           </subentities>
         </entity>
       </node>
@@ -5364,19 +5364,6 @@
           </subentities>
         </entity>
       </node>
-      <node name="Tent2_0" id="931638528">
-        <rotation qw="0.889017" qx="0" qy="-0.457874" qz="0" />
-        <position x="2441.87" y="595.07" z="2870.95" />
-        <scale x="4" y="4" z="4" />
-        <entity name="Tent2#0" id="693533120" castshadows="false" meshFile="Tent2.mesh">
-          <rotation qw="1" qx="0" qy="0" qz="0" />
-          <position x="0" y="0" z="0" />
-          <scale x="1" y="1" z="1" />
-          <subentities>
-            <subentity materialName="Tent2" index="0" visible="true" />
-          </subentities>
-        </entity>
-      </node>
       <node name="TownHouse01_4" id="292153696">
         <rotation qw="1" qx="0" qy="0" qz="0" />
         <position x="971.026" y="676.607" z="-1404.16" />
@@ -5540,7 +5527,7 @@
       </node>
       <node name="SwirlTree0Copy#0" id="808374272">
         <rotation qw="0.91706" qx="0" qy="0.398749" qz="0" />
-        <position x="3814.53" y="593.26" z="2724.92" />
+        <position x="3722.73" y="593.26" z="2785.76" />
         <scale x="2.90532" y="2.90532" z="4" />
         <entity name="PineTree2d7#1" id="793176064" castshadows="false" meshFile="PineTree2d7.mesh">
           <rotation qw="1" qx="0" qy="0" qz="0" />
@@ -7093,6 +7080,33 @@
       <rotation qw="1" qx="0" qy="0" qz="0" />
       <position x="0" y="0" z="0" />
       <scale x="1" y="1" z="1" />
+      <node name="Farm0_0" id="279305408">
+        <rotation qw="0.994968" qx="0" qy="-0.100188" qz="0" />
+        <position x="1290.77" y="20.1627" z="262.376" />
+        <scale x="1" y="1" z="1" />
+        <entity name="Farm0#0" id="265938288" castshadows="false" meshFile="House0.mesh">
+          <rotation qw="1" qx="0" qy="0" qz="0" />
+          <position x="0" y="0" z="0" />
+          <scale x="1" y="1" z="1" />
+          <subentities>
+            <subentity materialName="House0_Building_Material5" index="0" visible="true" />
+            <subentity materialName="House0_Roof_Material5" index="1" visible="true" />
+          </subentities>
+        </entity>
+      </node>
+      <node name="Tent0_0" id="918790208">
+        <rotation qw="1" qx="0" qy="0" qz="0" />
+        <position x="517.6" y="0" z="682" />
+        <scale x="1" y="1" z="1" />
+        <entity name="Tent0#0" id="279580064" castshadows="false" meshFile="Tent0.mesh">
+          <rotation qw="1" qx="0" qy="0" qz="0" />
+          <position x="0" y="0" z="0" />
+          <scale x="1" y="1" z="1" />
+          <subentities>
+            <subentity materialName="Tent0" index="0" visible="true" />
+          </subentities>
+        </entity>
+      </node>
       <node name="BigRock" id="418500320">
         <rotation qw="0.614954" qx="0.00319471" qy="-0.788553" qz="0.0024914" />
         <position x="290.277" y="28.098" z="835.72" />
@@ -7103,6 +7117,127 @@
           <scale x="1" y="1" z="1" />
           <subentities>
             <subentity materialName="VulcanicRock" index="0" visible="true" />
+          </subentities>
+        </entity>
+      </node>
+      <node name="Farm0_3" id="877956480">
+        <rotation qw="0.143493" qx="0" qy="0.989651" qz="0" />
+        <position x="1192.57" y="20.1627" z="117.95" />
+        <scale x="1" y="1" z="1" />
+        <entity name="Farm0#0Copy#2" id="362376768" castshadows="false" meshFile="House0.mesh">
+          <rotation qw="1" qx="0" qy="0" qz="0" />
+          <position x="0" y="0" z="0" />
+          <scale x="1" y="1" z="1" />
+          <subentities>
+            <subentity materialName="House0_Building_Material5" index="0" visible="true" />
+            <subentity materialName="House0_Roof_Material5" index="1" visible="true" />
+          </subentities>
+        </entity>
+      </node>
+      <node name="Tent0_1" id="144474624">
+        <rotation qw="-0.0261771" qx="0" qy="0.999657" qz="0" />
+        <position x="561.1" y="0" z="786.9" />
+        <scale x="1" y="1" z="1" />
+        <entity name="Tent0#0Copy#0" id="1617482" castshadows="false" meshFile="Tent0.mesh">
+          <rotation qw="1" qx="0" qy="0" qz="0" />
+          <position x="0" y="0" z="0" />
+          <scale x="1" y="1" z="1" />
+          <subentities>
+            <subentity materialName="Tent0" index="0" visible="true" />
+          </subentities>
+        </entity>
+      </node>
+      <node name="Tent1_1" id="426801344">
+        <rotation qw="-0.850352" qx="0" qy="-0.526214" qz="0" />
+        <position x="511.9" y="0" z="765.6" />
+        <scale x="1" y="1" z="1" />
+        <entity name="Tent1#1" id="397686688" castshadows="false" meshFile="Tent1.mesh">
+          <rotation qw="1" qx="0" qy="0" qz="0" />
+          <position x="0" y="0" z="0" />
+          <scale x="1" y="1" z="1" />
+          <subentities>
+            <subentity materialName="Tent1" index="0" visible="true" />
+          </subentities>
+        </entity>
+      </node>
+      <node name="Farm0_2" id="830591744">
+        <rotation qw="0.997564" qx="0" qy="0.0697561" qz="0" />
+        <position x="1302.62" y="20.1627" z="93.4744" />
+        <scale x="1" y="1" z="1" />
+        <entity name="Farm0#0Copy#1" id="852565056" castshadows="false" meshFile="House0.mesh">
+          <rotation qw="1" qx="0" qy="0" qz="0" />
+          <position x="0" y="0" z="0" />
+          <scale x="1" y="1" z="1" />
+          <subentities>
+            <subentity materialName="House0_Building_Material5" index="0" visible="true" />
+            <subentity materialName="House0_Roof_Material5" index="1" visible="true" />
+          </subentities>
+        </entity>
+      </node>
+      <node name="Tent1_0" id="53804132">
+        <rotation qw="-0.833886" qx="0" qy="0.551937" qz="0" />
+        <position x="565.1" y="0" z="714.12" />
+        <scale x="1" y="1" z="1" />
+        <entity name="Tent1#0" id="842097216" castshadows="false" meshFile="Tent1.mesh">
+          <rotation qw="1" qx="0" qy="0" qz="0" />
+          <position x="0" y="0" z="0" />
+          <scale x="1" y="1" z="1" />
+          <subentities>
+            <subentity materialName="Tent1" index="0" visible="true" />
+          </subentities>
+        </entity>
+      </node>
+      <node name="Tent2_0" id="931638528">
+        <rotation qw="0.889017" qx="0" qy="-0.457874" qz="0" />
+        <position x="610.4" y="0" z="717.7" />
+        <scale x="1" y="1" z="1" />
+        <entity name="Tent2#0" id="693533120" castshadows="false" meshFile="Tent2.mesh">
+          <rotation qw="1" qx="0" qy="0" qz="0" />
+          <position x="0" y="0" z="0" />
+          <scale x="1" y="1" z="1" />
+          <subentities>
+            <subentity materialName="Tent2" index="0" visible="true" />
+          </subentities>
+        </entity>
+      </node>
+      <node name="Farm0_4" id="394695872">
+        <rotation qw="-0.113204" qx="0" qy="-0.993572" qz="0" />
+        <position x="1161.19" y="20.1627" z="233.617" />
+        <scale x="1" y="1" z="1" />
+        <entity name="Farm0#0Copy#3" id="235602880" castshadows="false" meshFile="House0.mesh">
+          <rotation qw="1" qx="0" qy="0" qz="0" />
+          <position x="0" y="0" z="0" />
+          <scale x="1" y="1" z="1" />
+          <subentities>
+            <subentity materialName="House0_Building_Material5" index="0" visible="true" />
+            <subentity materialName="House0_Roof_Material5" index="1" visible="true" />
+          </subentities>
+        </entity>
+      </node>
+      <node name="Tent2_1" id="47090060">
+        <rotation qw="-0.0261771" qx="0" qy="0.999657" qz="0" />
+        <position x="604.026" y="0" z="810.655" />
+        <scale x="1" y="1" z="1" />
+        <entity name="Tent2#1" id="4333629" castshadows="false" meshFile="Tent2.mesh">
+          <rotation qw="1" qx="0" qy="0" qz="0" />
+          <position x="0" y="0" z="0" />
+          <scale x="1" y="1" z="1" />
+          <subentities>
+            <subentity materialName="Tent2" index="0" visible="true" />
+          </subentities>
+        </entity>
+      </node>
+      <node name="Farm0_1" id="912228736">
+        <rotation qw="1" qx="0" qy="-3.94881E-07" qz="0" />
+        <position x="1307.88" y="20.1627" z="177.934" />
+        <scale x="1" y="1" z="1" />
+        <entity name="Farm0#0Copy#0" id="630603968" castshadows="false" meshFile="House0.mesh">
+          <rotation qw="1" qx="0" qy="0" qz="0" />
+          <position x="0" y="0" z="0" />
+          <scale x="1" y="1" z="1" />
+          <subentities>
+            <subentity materialName="House0_Building_Material5" index="0" visible="true" />
+            <subentity materialName="House0_Roof_Material5" index="1" visible="true" />
           </subentities>
         </entity>
       </node>
@@ -7560,7 +7695,7 @@
       <scale x="1" y="1" z="1" />
       <node name="BeerHorn#1" id="634266176">
         <rotation qw="1" qx="0" qy="0" qz="0" />
-        <position x="1253.6" y="9" z="395.227" />
+        <position x="1213.15" y="9" z="361.13" />
         <scale x="1" y="1" z="1" />
         <entity name="beerHorn#0#1" id="550401344" castshadows="true" meshFile="beerHorn.mesh" type="Item" subType="Drunk" life="0" drunkTime="3" points="200">
           <rotation qw="1" qx="0" qy="0" qz="0" />

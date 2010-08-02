@@ -2644,6 +2644,7 @@ material Trees0
 			{
 				texture Trees0.png
 				tex_address_mode clamp
+				filtering none
 			}
 		}
 
@@ -2665,6 +2666,7 @@ material Trees1
 			{
 				texture Trees1.png
 				tex_address_mode clamp
+				filtering none
 			}
 		}
 
@@ -2686,6 +2688,7 @@ material Trees2
 			{
 				texture Trees2.png
 				tex_address_mode clamp
+				filtering none
 			}
 		}
 
@@ -2698,15 +2701,33 @@ material Tent0
 	{
 		pass
 		{
-			lighting off
 			scene_blend alpha_blend
-			depth_check on
-			depth_write off
+		
+      vertex_program_ref ToonVP
+			{
+				param_named shininess float4 0 1.0 1.0 1.0
+			}
+
+			fragment_program_ref ToonFP
+			{
+				param_named ambient float4 0 0 0 1
+				param_named diffuse float4 0.5 0.5 0.5 1.0
+				param_named specular float4 0.0 0.0 0.0 1.0
+				param_named emissive float4 0.0 0.0 0.0 1.0
+			}
+
+			texture_unit ToonShades
+			{
+				texture toon.png 2d
+				tex_address_mode clamp
+				filtering none
+			}
 
 			texture_unit
 			{
 				texture Tent0.png
 				tex_address_mode clamp
+				filtering none
 			}
 		}
 
@@ -2720,15 +2741,33 @@ material Tent1
 	{
 		pass
 		{
-			lighting off
 			scene_blend alpha_blend
-			depth_check on
-			depth_write off
+		
+      vertex_program_ref ToonVP
+			{
+				param_named shininess float4 0 1.0 1.0 1.0
+			}
+
+			fragment_program_ref ToonFP
+			{
+				param_named ambient float4 0 0 0 1
+				param_named diffuse float4 0.5 0.5 0.5 1.0
+				param_named specular float4 0.0 0.0 0.0 1.0
+				param_named emissive float4 0.0 0.0 0.0 1.0
+			}
+
+			texture_unit ToonShades
+			{
+				texture toon.png 2d
+				tex_address_mode clamp
+				filtering none
+			}
 
 			texture_unit
 			{
 				texture Tent1.png
 				tex_address_mode clamp
+				filtering none
 			}
 		}
 
@@ -2742,18 +2781,74 @@ material Tent2
 	{
 		pass
 		{
-			lighting off
-			scene_blend alpha_blend
-			depth_check on
-			depth_write off
+      scene_blend alpha_blend
+		
+      vertex_program_ref ToonVP
+			{
+				param_named shininess float4 0 1.0 1.0 1.0
+			}
+
+			fragment_program_ref ToonFP
+			{
+				param_named ambient float4 0 0 0 1
+				param_named diffuse float4 0.5 0.5 0.5 1.0
+				param_named specular float4 0.0 0.0 0.0 1.0
+				param_named emissive float4 0.0 0.0 0.0 1.0
+			}
+
+			texture_unit ToonShades
+			{
+				texture toon.png 2d
+				tex_address_mode clamp
+				filtering none
+			}
 
 			texture_unit
 			{
 				texture Tent2.png
 				tex_address_mode clamp
+				filtering none
 			}
 		}
 
 	}
 
 }
+
+material Sheaf0
+{
+	technique
+	{
+		pass
+		{
+      vertex_program_ref ToonVP
+			{
+				param_named shininess float4 0 1.0 1.0 1.0
+			}
+
+			fragment_program_ref ToonFP
+			{
+				param_named ambient float4 0 0 0 1
+				param_named diffuse float4 0.5 0.5 0.5 1.0
+				param_named specular float4 0.0 0.0 0.0 1.0
+				param_named emissive float4 0.0 0.0 0.0 1.0
+			}
+
+			texture_unit ToonShades
+			{
+				texture toon.png 2d
+				tex_address_mode clamp
+				filtering none
+			}
+
+			texture_unit
+			{
+				texture Sheaf0.png
+				tex_address_mode clamp
+				filtering none
+			}
+		}
+
+	}
+}
+
