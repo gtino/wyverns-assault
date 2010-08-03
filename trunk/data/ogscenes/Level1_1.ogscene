@@ -52,10 +52,10 @@
       <DIRECTORY type="FileSystem" value="../materials/scripts/sky"></DIRECTORY>
       <DIRECTORY type="FileSystem" value="../models/stages"></DIRECTORY>
     </RESOURCEDIRECTORIES>
-  <CAMERASPEED value="100"></CAMERASPEED>
+  <CAMERASPEED value="19"></CAMERASPEED>
   <CAMERAPOSITIONS count="1">
     <OPTION id="0" position="1417.36 9.53911 54.9741" orientation="0.707107 0 0.707107 0"></OPTION>
-    <OPTION id="1" position="1084.34 265.373 868.592" orientation="-0.974369 0.138977 -0.175114 -0.025006"></OPTION>
+    <OPTION id="1" position="1237.73 951.402 862.078" orientation="-0.798927 0.596427 -0.0619997 -0.0463209"></OPTION>
   </CAMERAPOSITIONS>
     <LAYERS>
       <LAYER id="0" name="Layer 0" visible="true"></LAYER>
@@ -136,9 +136,9 @@
   <OBJECT object_id="2000000002" name="Viewport1" typename="Viewport Object">
     <PROPERTY id="camera::clipdistance" type="8" value="0.05 100000"></PROPERTY>
     <PROPERTY id="camera::fov" type="6" value="1"></PROPERTY>
-    <PROPERTY id="camera::orientation" type="13" value="-0.974383 0.138979 -0.175116 -0.0250064"></PROPERTY>
+    <PROPERTY id="camera::orientation" type="13" value="-0.798927 0.596427 -0.0619997 -0.0463209"></PROPERTY>
     <PROPERTY id="camera::polymode" type="2" value="3"></PROPERTY>
-    <PROPERTY id="camera::position" type="9" value="1084.34 265.373 868.592"></PROPERTY>
+    <PROPERTY id="camera::position" type="9" value="1237.73 951.402 862.078"></PROPERTY>
     <PROPERTY id="camera::viewmode" type="2" value="0"></PROPERTY>
     <PROPERTY id="colour" type="11" value="0 0 0 1"></PROPERTY>
     <PROPERTY id="compositorcount" type="2" value="0"></PROPERTY>
@@ -394,6 +394,18 @@
     </CUSTOMPROPERTIES>
   </OBJECT>
 
+  <OBJECT object_id="134739216" name="WheatField_Right" typename="Node Object" parentnode="Scenario">
+    <PROPERTY id="autotracktarget" type="7" value="None"></PROPERTY>
+    <PROPERTY id="layer" type="2" value="0"></PROPERTY>
+    <PROPERTY id="locked" type="12" value="false"></PROPERTY>
+    <PROPERTY id="orientation" type="13" value="1 0 0 0"></PROPERTY>
+    <PROPERTY id="position" type="9" value="4764.9 592.217 2017.22"></PROPERTY>
+    <PROPERTY id="scale" type="9" value="4 4 4"></PROPERTY>
+    <PROPERTY id="updatescript" type="7" value=""></PROPERTY>
+    <CUSTOMPROPERTIES>
+    </CUSTOMPROPERTIES>
+  </OBJECT>
+
   <OBJECT object_id="676625856" name="SwirlTree0Copy#2Copy#3" typename="Node Object" parentnode="Scenario">
     <PROPERTY id="autotracktarget" type="7" value="None"></PROPERTY>
     <PROPERTY id="layer" type="2" value="0"></PROPERTY>
@@ -437,6 +449,18 @@
     <PROPERTY id="orientation" type="13" value="0.707107 0 -0.707107 0"></PROPERTY>
     <PROPERTY id="position" type="9" value="116.311 629.748 -1962.32"></PROPERTY>
     <PROPERTY id="scale" type="9" value="5.95145 19.3859 5.95145"></PROPERTY>
+    <PROPERTY id="updatescript" type="7" value=""></PROPERTY>
+    <CUSTOMPROPERTIES>
+    </CUSTOMPROPERTIES>
+  </OBJECT>
+
+  <OBJECT object_id="180425440" name="WheatField_Left" typename="Node Object" parentnode="Scenario">
+    <PROPERTY id="autotracktarget" type="7" value="None"></PROPERTY>
+    <PROPERTY id="layer" type="2" value="0"></PROPERTY>
+    <PROPERTY id="locked" type="12" value="false"></PROPERTY>
+    <PROPERTY id="orientation" type="13" value="1 0 0 0"></PROPERTY>
+    <PROPERTY id="position" type="9" value="4155.35 586.328 2387.02"></PROPERTY>
+    <PROPERTY id="scale" type="9" value="4 4 4"></PROPERTY>
     <PROPERTY id="updatescript" type="7" value=""></PROPERTY>
     <CUSTOMPROPERTIES>
     </CUSTOMPROPERTIES>
@@ -545,18 +569,6 @@
     <PROPERTY id="orientation" type="13" value="0.979345 0 -0.202196 0"></PROPERTY>
     <PROPERTY id="position" type="9" value="1297.68 567.964 2727.45"></PROPERTY>
     <PROPERTY id="scale" type="9" value="0.307813 0.701923 0.485538"></PROPERTY>
-    <PROPERTY id="updatescript" type="7" value=""></PROPERTY>
-    <CUSTOMPROPERTIES>
-    </CUSTOMPROPERTIES>
-  </OBJECT>
-
-  <OBJECT object_id="134739216" name="WheatField5" typename="Node Object" parentnode="Scenario">
-    <PROPERTY id="autotracktarget" type="7" value="None"></PROPERTY>
-    <PROPERTY id="layer" type="2" value="0"></PROPERTY>
-    <PROPERTY id="locked" type="12" value="false"></PROPERTY>
-    <PROPERTY id="orientation" type="13" value="0.499777 -0.499777 0.500223 0.500223"></PROPERTY>
-    <PROPERTY id="position" type="9" value="4764.9 592.217 2017.22"></PROPERTY>
-    <PROPERTY id="scale" type="9" value="12.427 12.427 40"></PROPERTY>
     <PROPERTY id="updatescript" type="7" value=""></PROPERTY>
     <CUSTOMPROPERTIES>
     </CUSTOMPROPERTIES>
@@ -844,18 +856,6 @@
     <PROPERTY id="locked" type="12" value="false"></PROPERTY>
     <PROPERTY id="orientation" type="13" value="0.529793 -0.0185001 0.847846 -0.0115601"></PROPERTY>
     <PROPERTY id="position" type="9" value="3974.69 596 -308.999"></PROPERTY>
-    <PROPERTY id="scale" type="9" value="4 4 4"></PROPERTY>
-    <PROPERTY id="updatescript" type="7" value=""></PROPERTY>
-    <CUSTOMPROPERTIES>
-    </CUSTOMPROPERTIES>
-  </OBJECT>
-
-  <OBJECT object_id="873836480" name="WheatField" typename="Node Object" parentnode="Scenario">
-    <PROPERTY id="autotracktarget" type="7" value="None"></PROPERTY>
-    <PROPERTY id="layer" type="2" value="0"></PROPERTY>
-    <PROPERTY id="locked" type="12" value="false"></PROPERTY>
-    <PROPERTY id="orientation" type="13" value="1 0 0 0"></PROPERTY>
-    <PROPERTY id="position" type="9" value="4263.37 586.328 1836.74"></PROPERTY>
     <PROPERTY id="scale" type="9" value="4 4 4"></PROPERTY>
     <PROPERTY id="updatescript" type="7" value=""></PROPERTY>
     <CUSTOMPROPERTIES>
@@ -1229,18 +1229,6 @@
     <PROPERTY id="orientation" type="13" value="0.73582 0 -0.677178 0"></PROPERTY>
     <PROPERTY id="position" type="9" value="5063.8 621.009 142.449"></PROPERTY>
     <PROPERTY id="scale" type="9" value="9.03096 10.7489 9.03096"></PROPERTY>
-    <PROPERTY id="updatescript" type="7" value=""></PROPERTY>
-    <CUSTOMPROPERTIES>
-    </CUSTOMPROPERTIES>
-  </OBJECT>
-
-  <OBJECT object_id="180425440" name="WheatField4" typename="Node Object" parentnode="Scenario">
-    <PROPERTY id="autotracktarget" type="7" value="None"></PROPERTY>
-    <PROPERTY id="layer" type="2" value="0"></PROPERTY>
-    <PROPERTY id="locked" type="12" value="false"></PROPERTY>
-    <PROPERTY id="orientation" type="13" value="0.499777 -0.499777 0.500223 0.500223"></PROPERTY>
-    <PROPERTY id="position" type="9" value="4156.7 592.217 2391.52"></PROPERTY>
-    <PROPERTY id="scale" type="9" value="12.427 12.427 40"></PROPERTY>
     <PROPERTY id="updatescript" type="7" value=""></PROPERTY>
     <CUSTOMPROPERTIES>
     </CUSTOMPROPERTIES>
@@ -3880,6 +3868,18 @@
     <PROPERTY id="locked" type="12" value="false"></PROPERTY>
     <PROPERTY id="orientation" type="13" value="0.529874 0.0111006 0.847976 0.00693643"></PROPERTY>
     <PROPERTY id="position" type="9" value="4901.13 600.108 -828.901"></PROPERTY>
+    <PROPERTY id="scale" type="9" value="4 4 4"></PROPERTY>
+    <PROPERTY id="updatescript" type="7" value=""></PROPERTY>
+    <CUSTOMPROPERTIES>
+    </CUSTOMPROPERTIES>
+  </OBJECT>
+
+  <OBJECT object_id="873836480" name="WheatField_Big" typename="Node Object" parentnode="Scenario">
+    <PROPERTY id="autotracktarget" type="7" value="None"></PROPERTY>
+    <PROPERTY id="layer" type="2" value="0"></PROPERTY>
+    <PROPERTY id="locked" type="12" value="false"></PROPERTY>
+    <PROPERTY id="orientation" type="13" value="1 0 0 0"></PROPERTY>
+    <PROPERTY id="position" type="9" value="4263.37 586.328 1836.74"></PROPERTY>
     <PROPERTY id="scale" type="9" value="4 4 4"></PROPERTY>
     <PROPERTY id="updatescript" type="7" value=""></PROPERTY>
     <CUSTOMPROPERTIES>
@@ -8056,7 +8056,7 @@
     </CUSTOMPROPERTIES>
   </OBJECT>
 
-  <OBJECT object_id="471724608" name="WheatField_Big#0" typename="Entity Object" parentnode="WheatField">
+  <OBJECT object_id="471724608" name="WheatField_Big#0" typename="Entity Object" parentnode="WheatField_Big">
     <PROPERTY id="autotracktarget" type="7" value="None"></PROPERTY>
     <PROPERTY id="castshadows" type="12" value="false"></PROPERTY>
     <PROPERTY id="layer" type="2" value="0"></PROPERTY>
@@ -8917,26 +8917,6 @@
     <PROPERTY id="subentity0::material" type="7" value="PineTree"></PROPERTY>
     <PROPERTY id="subentity0::visible" type="12" value="true"></PROPERTY>
     <PROPERTY id="subentitycount" type="2" value="1"></PROPERTY>
-    <PROPERTY id="updatescript" type="7" value=""></PROPERTY>
-    <CUSTOMPROPERTIES>
-    </CUSTOMPROPERTIES>
-  </OBJECT>
-
-  <OBJECT object_id="58229316" name="Entity#106" typename="Entity Object" parentnode="WheatField5">
-    <PROPERTY id="autotracktarget" type="7" value="None"></PROPERTY>
-    <PROPERTY id="castshadows" type="12" value="true"></PROPERTY>
-    <PROPERTY id="layer" type="2" value="0"></PROPERTY>
-    <PROPERTY id="locked" type="12" value="false"></PROPERTY>
-    <PROPERTY id="meshfile" type="7" value="WheatField2.mesh"></PROPERTY>
-    <PROPERTY id="orientation" type="13" value="1 0 0 0"></PROPERTY>
-    <PROPERTY id="position" type="9" value="0 0 0"></PROPERTY>
-    <PROPERTY id="renderingdistance" type="6" value="5000"></PROPERTY>
-    <PROPERTY id="scale" type="9" value="1 1 1"></PROPERTY>
-    <PROPERTY id="subentity0::material" type="7" value="WheatLightGold"></PROPERTY>
-    <PROPERTY id="subentity0::visible" type="12" value="true"></PROPERTY>
-    <PROPERTY id="subentity1::material" type="7" value="WheatDarkGold"></PROPERTY>
-    <PROPERTY id="subentity1::visible" type="12" value="true"></PROPERTY>
-    <PROPERTY id="subentitycount" type="2" value="2"></PROPERTY>
     <PROPERTY id="updatescript" type="7" value=""></PROPERTY>
     <CUSTOMPROPERTIES>
     </CUSTOMPROPERTIES>
@@ -13276,26 +13256,6 @@
     </CUSTOMPROPERTIES>
   </OBJECT>
 
-  <OBJECT object_id="297921696" name="Entity#104" typename="Entity Object" parentnode="WheatField4">
-    <PROPERTY id="autotracktarget" type="7" value="None"></PROPERTY>
-    <PROPERTY id="castshadows" type="12" value="true"></PROPERTY>
-    <PROPERTY id="layer" type="2" value="0"></PROPERTY>
-    <PROPERTY id="locked" type="12" value="false"></PROPERTY>
-    <PROPERTY id="meshfile" type="7" value="WheatField1.mesh"></PROPERTY>
-    <PROPERTY id="orientation" type="13" value="1 0 0 0"></PROPERTY>
-    <PROPERTY id="position" type="9" value="0 0 0"></PROPERTY>
-    <PROPERTY id="renderingdistance" type="6" value="5000"></PROPERTY>
-    <PROPERTY id="scale" type="9" value="1 1 1"></PROPERTY>
-    <PROPERTY id="subentity0::material" type="7" value="WheatDarkGold"></PROPERTY>
-    <PROPERTY id="subentity0::visible" type="12" value="true"></PROPERTY>
-    <PROPERTY id="subentity1::material" type="7" value="WheatLightGold"></PROPERTY>
-    <PROPERTY id="subentity1::visible" type="12" value="true"></PROPERTY>
-    <PROPERTY id="subentitycount" type="2" value="2"></PROPERTY>
-    <PROPERTY id="updatescript" type="7" value=""></PROPERTY>
-    <CUSTOMPROPERTIES>
-    </CUSTOMPROPERTIES>
-  </OBJECT>
-
   <OBJECT object_id="811120896" name="Entity#335" typename="Entity Object" parentnode="PillTree29">
     <PROPERTY id="autotracktarget" type="7" value="None"></PROPERTY>
     <PROPERTY id="castshadows" type="12" value="true"></PROPERTY>
@@ -16505,6 +16465,24 @@
     </CUSTOMPROPERTIES>
   </OBJECT>
 
+  <OBJECT object_id="588427392" name="WheatField_Right#0" typename="Entity Object" parentnode="WheatField_Right">
+    <PROPERTY id="autotracktarget" type="7" value="None"></PROPERTY>
+    <PROPERTY id="castshadows" type="12" value="false"></PROPERTY>
+    <PROPERTY id="layer" type="2" value="0"></PROPERTY>
+    <PROPERTY id="locked" type="12" value="false"></PROPERTY>
+    <PROPERTY id="meshfile" type="7" value="WheatField_Right.mesh"></PROPERTY>
+    <PROPERTY id="orientation" type="13" value="1 0 0 0"></PROPERTY>
+    <PROPERTY id="position" type="9" value="0 0 0"></PROPERTY>
+    <PROPERTY id="renderingdistance" type="6" value="5000"></PROPERTY>
+    <PROPERTY id="scale" type="9" value="1 1 1"></PROPERTY>
+    <PROPERTY id="subentity0::material" type="7" value="Wheat"></PROPERTY>
+    <PROPERTY id="subentity0::visible" type="12" value="true"></PROPERTY>
+    <PROPERTY id="subentitycount" type="2" value="1"></PROPERTY>
+    <PROPERTY id="updatescript" type="7" value=""></PROPERTY>
+    <CUSTOMPROPERTIES>
+    </CUSTOMPROPERTIES>
+  </OBJECT>
+
   <OBJECT object_id="394421216" name="Entity#220" typename="Entity Object" parentnode="BlueMountain1">
     <PROPERTY id="autotracktarget" type="7" value="None"></PROPERTY>
     <PROPERTY id="castshadows" type="12" value="true"></PROPERTY>
@@ -18984,6 +18962,24 @@
     <PROPERTY id="renderingdistance" type="6" value="5000"></PROPERTY>
     <PROPERTY id="scale" type="9" value="1 1 1"></PROPERTY>
     <PROPERTY id="subentity0::material" type="7" value="Tree1"></PROPERTY>
+    <PROPERTY id="subentity0::visible" type="12" value="true"></PROPERTY>
+    <PROPERTY id="subentitycount" type="2" value="1"></PROPERTY>
+    <PROPERTY id="updatescript" type="7" value=""></PROPERTY>
+    <CUSTOMPROPERTIES>
+    </CUSTOMPROPERTIES>
+  </OBJECT>
+
+  <OBJECT object_id="53987244" name="WheatField_Left#0" typename="Entity Object" parentnode="WheatField_Left">
+    <PROPERTY id="autotracktarget" type="7" value="None"></PROPERTY>
+    <PROPERTY id="castshadows" type="12" value="false"></PROPERTY>
+    <PROPERTY id="layer" type="2" value="0"></PROPERTY>
+    <PROPERTY id="locked" type="12" value="false"></PROPERTY>
+    <PROPERTY id="meshfile" type="7" value="WheatField_Left.mesh"></PROPERTY>
+    <PROPERTY id="orientation" type="13" value="1 0 0 0"></PROPERTY>
+    <PROPERTY id="position" type="9" value="0 0 0"></PROPERTY>
+    <PROPERTY id="renderingdistance" type="6" value="5000"></PROPERTY>
+    <PROPERTY id="scale" type="9" value="1 1 1"></PROPERTY>
+    <PROPERTY id="subentity0::material" type="7" value="Wheat"></PROPERTY>
     <PROPERTY id="subentity0::visible" type="12" value="true"></PROPERTY>
     <PROPERTY id="subentitycount" type="2" value="1"></PROPERTY>
     <PROPERTY id="updatescript" type="7" value=""></PROPERTY>

@@ -208,6 +208,19 @@
           </subentities>
         </entity>
       </node>
+      <node name="WheatField_Right" id="134739216">
+        <rotation qw="1" qx="0" qy="0" qz="0" />
+        <position x="4764.9" y="592.217" z="2017.22" />
+        <scale x="4" y="4" z="4" />
+        <entity name="WheatField_Right#0" id="588427392" castshadows="false" meshFile="WheatField_Right.mesh">
+          <rotation qw="1" qx="0" qy="0" qz="0" />
+          <position x="0" y="0" z="0" />
+          <scale x="1" y="1" z="1" />
+          <subentities>
+            <subentity materialName="Wheat" index="0" visible="true" />
+          </subentities>
+        </entity>
+      </node>
       <node name="SwirlTree0Copy#2Copy#3" id="676625856">
         <rotation qw="0.97237" qx="0" qy="0.233445" qz="0" />
         <position x="3616.63" y="593.26" z="2304.26" />
@@ -257,6 +270,19 @@
           <scale x="1" y="1" z="1" />
           <subentities>
             <subentity materialName="BonBonTree" index="0" visible="true" />
+          </subentities>
+        </entity>
+      </node>
+      <node name="WheatField_Left" id="180425440">
+        <rotation qw="1" qx="0" qy="0" qz="0" />
+        <position x="4155.35" y="586.328" z="2387.02" />
+        <scale x="4" y="4" z="4" />
+        <entity name="WheatField_Left#0" id="53987244" castshadows="false" meshFile="WheatField_Left.mesh">
+          <rotation qw="1" qx="0" qy="0" qz="0" />
+          <position x="0" y="0" z="0" />
+          <scale x="1" y="1" z="1" />
+          <subentities>
+            <subentity materialName="Wheat" index="0" visible="true" />
           </subentities>
         </entity>
       </node>
@@ -374,20 +400,6 @@
           <scale x="1" y="1" z="1" />
           <subentities>
             <subentity materialName="PillTree" index="0" visible="true" />
-          </subentities>
-        </entity>
-      </node>
-      <node name="WheatField5" id="134739216">
-        <rotation qw="0.499777" qx="-0.499777" qy="0.500223" qz="0.500223" />
-        <position x="4764.9" y="592.217" z="2017.22" />
-        <scale x="12.427" y="12.427" z="40" />
-        <entity name="Entity#106" id="58229316" castshadows="true" meshFile="WheatField2.mesh">
-          <rotation qw="1" qx="0" qy="0" qz="0" />
-          <position x="0" y="0" z="0" />
-          <scale x="1" y="1" z="1" />
-          <subentities>
-            <subentity materialName="WheatLightGold" index="0" visible="true" />
-            <subentity materialName="WheatDarkGold" index="1" visible="true" />
           </subentities>
         </entity>
       </node>
@@ -665,19 +677,6 @@
           <scale x="1" y="1" z="1" />
           <subentities>
             <subentity materialName="Trees0" index="0" visible="true" />
-          </subentities>
-        </entity>
-      </node>
-      <node name="WheatField" id="873836480">
-        <rotation qw="1" qx="0" qy="0" qz="0" />
-        <position x="4263.37" y="586.328" z="1836.74" />
-        <scale x="4" y="4" z="4" />
-        <entity name="WheatField_Big#0" id="471724608" castshadows="false" meshFile="WheatField_Big.mesh">
-          <rotation qw="1" qx="0" qy="0" qz="0" />
-          <position x="0" y="0" z="0" />
-          <scale x="1" y="1" z="1" />
-          <subentities>
-            <subentity materialName="Wheat" index="0" visible="true" />
           </subentities>
         </entity>
       </node>
@@ -1055,20 +1054,6 @@
           <scale x="1" y="1" z="1" />
           <subentities>
             <subentity materialName="Tree2" index="0" visible="true" />
-          </subentities>
-        </entity>
-      </node>
-      <node name="WheatField4" id="180425440">
-        <rotation qw="0.499777" qx="-0.499777" qy="0.500223" qz="0.500223" />
-        <position x="4156.7" y="592.217" z="2391.52" />
-        <scale x="12.427" y="12.427" z="40" />
-        <entity name="Entity#104" id="297921696" castshadows="true" meshFile="WheatField1.mesh">
-          <rotation qw="1" qx="0" qy="0" qz="0" />
-          <position x="0" y="0" z="0" />
-          <scale x="1" y="1" z="1" />
-          <subentities>
-            <subentity materialName="WheatDarkGold" index="0" visible="true" />
-            <subentity materialName="WheatLightGold" index="1" visible="true" />
           </subentities>
         </entity>
       </node>
@@ -3773,6 +3758,19 @@
           <scale x="1" y="1" z="1" />
           <subentities>
             <subentity materialName="Trees0" index="0" visible="true" />
+          </subentities>
+        </entity>
+      </node>
+      <node name="WheatField_Big" id="873836480">
+        <rotation qw="1" qx="0" qy="0" qz="0" />
+        <position x="4263.37" y="586.328" z="1836.74" />
+        <scale x="4" y="4" z="4" />
+        <entity name="WheatField_Big#0" id="471724608" castshadows="false" meshFile="WheatField_Big.mesh">
+          <rotation qw="1" qx="0" qy="0" qz="0" />
+          <position x="0" y="0" z="0" />
+          <scale x="1" y="1" z="1" />
+          <subentities>
+            <subentity materialName="Wheat" index="0" visible="true" />
           </subentities>
         </entity>
       </node>
