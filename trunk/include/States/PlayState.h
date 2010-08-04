@@ -23,6 +23,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #ifndef __PLAY_STATE_H_
 #define __PLAY_STATE_H_
 
+#include "..\Debug\Timers.h"
+
 #include "BaseState.h"
 #include "..\Camera\CameraManager.h"
 #include "..\Graphics\LightsManager.h"
@@ -108,11 +110,32 @@ namespace WyvernsAssault
 		//
 		OgreBites::SdkTrayManager* mTrayMgr;
 		OgreBites::ParamsPanel* mDetailsPanel;
+		OgreBites::ParamsPanel* mPerformancesPanel;
 
 		//
 		// User interface
 		//
 		GuiUserInterfacePtr mPlayerUI;
+
+		//
+		// Performances timers
+		//
+		float mElapsedSeconds;
+
+		TIMER(Update);
+		TIMER(CutScene);
+		TIMER(Player);
+		TIMER(Physics);
+		TIMER(Logic);
+		TIMER(Enemy);
+		TIMER(Lua);
+		TIMER(Lights);
+		TIMER(Item);
+		TIMER(Camera);
+		TIMER(Audio);
+		TIMER(Scenario);
+		TIMER(PostProcess);
+		TIMER(Events);
 
 	protected:
 		float			buttonTimer;
