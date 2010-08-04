@@ -18,6 +18,7 @@ PlayerManager::PlayerManager(Ogre::SceneManager* sceneManager)
 : mSceneManager(0)
 , mIsDebugEnabled(false)
 , mPlayerNode(0)
+, mEnabled(true)
 {
 	mSceneManager = sceneManager;
 }
@@ -45,25 +46,28 @@ void PlayerManager::finalize()
 
 void PlayerManager::update(const float elapsedSeconds)
 {
-	for(int i = 0; i < mPlayerList.size() ; i++)
-	{		
-		PlayerPtr player =  mPlayerList[i];
-		player->updateEntity(elapsedSeconds);
-		// Check if dead
-		if( player->getLife() == 0 )
-		{
-			PlayerKilledEventPtr playerKilledEventPtr = PlayerKilledEventPtr(new PlayerKilledEvent(player));
-			EVENTS_FIRE(playerKilledEventPtr);
-		}
+	if(mEnabled)
+	{
+		for(int i = 0; i < mPlayerList.size() ; i++)
+		{		
+			PlayerPtr player =  mPlayerList[i];
+			player->updateEntity(elapsedSeconds);
+			// Check if dead
+			if( player->getLife() == 0 )
+			{
+				PlayerKilledEventPtr playerKilledEventPtr = PlayerKilledEventPtr(new PlayerKilledEvent(player));
+				EVENTS_FIRE(playerKilledEventPtr);
+			}
 
-		mRefillTimer += elapsedSeconds;
-		// Every 0.1 seconds, fill special bar 1 units
-		if( mRefillTimer > 0.05 )
-		{
-			player->setSpecial( player->getSpecial() + 1 );
-			mRefillTimer = 0.0f;
-			PlayerStatusUpdateEventPtr playerStatusUpdateEventPtr = PlayerStatusUpdateEventPtr(new PlayerStatusUpdateEvent(player));
-			EVENTS_FIRE(playerStatusUpdateEventPtr);
+			mRefillTimer += elapsedSeconds;
+			// Every 0.1 seconds, fill special bar 1 units
+			if( mRefillTimer > 0.05 )
+			{
+				player->setSpecial( player->getSpecial() + 1 );
+				mRefillTimer = 0.0f;
+				PlayerStatusUpdateEventPtr playerStatusUpdateEventPtr = PlayerStatusUpdateEventPtr(new PlayerStatusUpdateEvent(player));
+				EVENTS_FIRE(playerStatusUpdateEventPtr);
+			}
 		}
 	}
 }
@@ -113,57 +117,69 @@ bool PlayerManager::removePlayer(Ogre::String name)
 
 /* Set player direction of new move
 */
-void PlayerManager::move(Ogre::String playerName, Vector3 direction){
-
-	PlayerPtr player = mPlayerMap[playerName];
-
-	player->setDirection(direction);
-
-	player->setMoving(direction != Vector3::ZERO);
-
-	if(direction != Vector3::ZERO)
+void PlayerManager::move(Ogre::String playerName, Vector3 direction)
+{
+	if(mEnabled)
 	{
-		Quaternion q1 = player->getOrientation();
-		// Get current direction where player is facing
-		Vector3 currentDirection = q1 * Vector3::UNIT_Z;
-		Quaternion q2 = currentDirection.getRotationTo(direction);
-		player->setOrientation( q1*q2 );
+		PlayerPtr player = mPlayerMap[playerName];
+
+		player->setDirection(direction);
+
+		player->setMoving(direction != Vector3::ZERO);
+
+		if(direction != Vector3::ZERO)
+		{
+			Quaternion q1 = player->getOrientation();
+			// Get current direction where player is facing
+			Vector3 currentDirection = q1 * Vector3::UNIT_Z;
+			Quaternion q2 = currentDirection.getRotationTo(direction);
+			player->setOrientation( q1*q2 );
+		}
 	}
 }
 
 void PlayerManager::attack(Ogre::String name)
 {
-	PlayerPtr player = getPlayer(name);
+	if(mEnabled)
+	{
+		PlayerPtr player = getPlayer(name);
 
-	player->attackA();
+		player->attackA();
 
-	if( player->attackStart() )
-	{		
-		PlayerAttackEventPtr evt = PlayerAttackEventPtr(new PlayerAttackEvent(player));
-		EVENTS_FIRE(evt);
-		player->attackFinished();
-		player->setAttackHited(false);
+		if( player->attackStart() )
+		{		
+			PlayerAttackEventPtr evt = PlayerAttackEventPtr(new PlayerAttackEvent(player));
+			EVENTS_FIRE(evt);
+			player->attackFinished();
+			player->setAttackHited(false);
+		}
 	}
 }
 
 void PlayerManager::attackSpecial(Ogre::String name)
 {
-	PlayerPtr player = getPlayer(name);
+	if(mEnabled)
+	{
+		PlayerPtr player = getPlayer(name);
 
-	player->attackSpecial();
+		player->attackSpecial();
 
-	if( player->attackStart() )
-	{		
-		PlayerAttackSpecialEventPtr evt = PlayerAttackSpecialEventPtr(new PlayerAttackSpecialEvent(player));
-		EVENTS_FIRE(evt);
-		player->attackFinished();
+		if( player->attackStart() )
+		{		
+			PlayerAttackSpecialEventPtr evt = PlayerAttackSpecialEventPtr(new PlayerAttackSpecialEvent(player));
+			EVENTS_FIRE(evt);
+			player->attackFinished();
+		}
 	}
 }
 
 void PlayerManager::stop(Ogre::String playerName)
 {
-	PlayerPtr player = mPlayerMap[playerName];
-	player->setDirection(Vector3::ZERO);
+	if(mEnabled)
+	{
+		PlayerPtr player = mPlayerMap[playerName];
+		player->setDirection(Vector3::ZERO);
+	}
 }
 
 void PlayerManager::setDebugEnabled(bool isDebugEnabled)
@@ -264,6 +280,9 @@ EVENTS_DEFINE_HANDLER(PlayerManager, EnemyKilled)
 LUA_BEGIN_BINDING(PlayerManager, playerlib)
 LUA_BIND(PlayerManager, getPlayerPosition)
 LUA_BIND(PlayerManager, getNumPlayers)
+LUA_BIND(PlayerManager, enable)
+LUA_BIND(PlayerManager, disable)
+LUA_BIND(PlayerManager, isEnabled)
 LUA_END_BINDING()
 
 //
@@ -316,6 +335,47 @@ LUA_DEFINE_FUNCTION(PlayerManager, getNumPlayers)
 	}
 
 	lua_pushnumber(L, numPlayers);
+
+	/* return the number of results */
+	return 1;
+}
+
+LUA_DEFINE_FUNCTION(PlayerManager, disable)
+{
+	/* get number of arguments */
+	int n = lua_gettop(L);
+
+	// n should be 0
+
+	PlayerManager::getSingleton().disable();
+
+	/* return the number of results */
+	return 0;
+}
+
+LUA_DEFINE_FUNCTION(PlayerManager, enable)
+{
+	/* get number of arguments */
+	int n = lua_gettop(L);
+
+	// n should be 0
+
+	PlayerManager::getSingleton().enable();
+
+	/* return the number of results */
+	return 0;
+}
+
+LUA_DEFINE_FUNCTION(PlayerManager, isEnabled)
+{
+	/* get number of arguments */
+	int n = lua_gettop(L);
+
+	// n should be 0
+
+	bool isEnabled = PlayerManager::getSingleton().isEnabled();
+
+	lua_pushboolean(L, isEnabled);
 
 	/* return the number of results */
 	return 1;

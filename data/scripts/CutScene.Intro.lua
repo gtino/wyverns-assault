@@ -20,7 +20,7 @@ function playIntroCutScene(elapsedTime)
 	
 	if step == 0 then
 		-- Initialize cut scene
-		Input.disable(); -- Suspend player input until the end of the cut scene
+		Player.disable(); -- Suspend player input until the end of the cut scene
 		Logic.disable(); -- Suspend enemy logic
 		Physics.disable(); -- Suspend gae physics
 		
@@ -137,7 +137,7 @@ function playIntroCutScene(elapsedTime)
 		Gui.showUi();
 	
 		-- scene
-		Input.enable(); -- Resume player input
+		Player.enable(); -- Resume player input
 		Logic.enable(); -- Resume enemy logic
 		Physics.enable(); -- Resume game physics
 		

@@ -23,6 +23,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #ifndef __PLAY_STATE_H_
 #define __PLAY_STATE_H_
 
+//#define SKIP_CUT_SCENES
+
 #include "..\Debug\Timers.h"
 
 #include "BaseState.h"

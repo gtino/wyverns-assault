@@ -335,9 +335,11 @@ void PlayState::update(const float elapsedSeconds)
 	//
 	// Update CutScene Manager
 	//
+#ifndef SKIP_CUT_SCENES
 	TIMER_START(CutScene);
 	mCutSceneManager->update(elapsedSeconds);
 	TIMER_STOP(CutScene);
+#endif
 
 	//
 	// Player update
@@ -362,13 +364,13 @@ void PlayState::update(const float elapsedSeconds)
 			// Special Attack
 			if ( this->mInputManager->getKeyboard()->isKeyDown(OIS::KeyCode::KC_LCONTROL) && lastKey != OIS::KeyCode::KC_LCONTROL )
 			{
-				mPlayerManager->attackSpecial("Player1");
+				mPlayerManager->attackSpecial(PLAYER1);
 				lastKey = OIS::KeyCode::KC_LCONTROL;		
 			}
 			// Main attack
 			else if( this->mInputManager->getKeyboard()->isKeyDown(OIS::KeyCode::KC_SPACE) && lastKey != OIS::KeyCode::KC_SPACE )
 			{
-				mPlayerManager->attack("Player1");
+				mPlayerManager->attack(PLAYER1);
 				lastKey = OIS::KeyCode::KC_SPACE;				
 			}
 
@@ -862,6 +864,9 @@ bool PlayState::keyPressed(const OIS::KeyEvent& e)
 	// Depth On/Off
 	case OIS::KeyCode::KC_END:
 		mPostProcessManager->showDepth();
+		break;
+	case OIS::KeyCode::KC_RETURN:
+		mCutSceneManager->skip();
 		break;
 	}
 

@@ -82,6 +82,13 @@ namespace WyvernsAssault
 
 		Ogre::SceneNode* _getSceneNode() const { return mPlayerNode; }
 
+		//
+		// Enable/disable the manager
+		//
+		void disable(){mEnabled = false;}
+		void enable(){mEnabled = true;}
+		bool isEnabled(){return mEnabled;}
+
 		// ----------------
 		// Events interface
 		// ----------------
@@ -105,6 +112,7 @@ namespace WyvernsAssault
 		bool mIsDebugEnabled;
 
 		float mRefillTimer;
+		bool mEnabled;
 
 	// --------------------------------
 	// BEGIN Lua Interface Declarations
@@ -117,6 +125,9 @@ namespace WyvernsAssault
 
 		LUA_FUNCTION(getPlayerPosition)
 		LUA_FUNCTION(getNumPlayers)
+		LUA_FUNCTION(enable);
+		LUA_FUNCTION(disable);
+		LUA_FUNCTION(isEnabled);
 	// ------------------------------
 	// END Lua Interface Declarations
 	// ------------------------------

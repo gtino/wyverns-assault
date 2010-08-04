@@ -31,6 +31,9 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #include "..\Lua\LuaInterface.h"
 #include "..\Events\EventsInterface.h"
 
+// A big enough number, we will never have that many steps in a single cut scene!
+#define CUTSCENE_FINAL_STEP 9999
+
 using namespace Ogre;
 
 namespace WyvernsAssault 
@@ -75,10 +78,12 @@ namespace WyvernsAssault
 		/** Update and run lua scripts */
 		void update(const float elapsedSeconds);
 		void play(CutSceneId id);
+		void skip(){setCurrentStep(CUTSCENE_FINAL_STEP);}
 
 		Ogre::SceneNode* _getSceneNode() const { return mCutSceneNode; }
 
 	private:
+		void setCurrentStep(int step){mCurrentStep = step;}
 		const int getCurrentStep(){return mCurrentStep;}
 		const float getElapsedSceneTime(){return mElapsedSceneTime;}
 		const bool wait(const float timeout);
