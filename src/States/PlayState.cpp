@@ -6,7 +6,9 @@ PlayState::PlayState(GraphicsManagerPtr graphicsManager, InputManagerPtr inputMa
 : BaseState(graphicsManager,inputManager,audioManager, cameraManager, guiManager)
 , mTrayMgr(NULL)
 , mDetailsPanel(NULL)
+, mPerformancesPanel(NULL)
 , mRootSceneNode(0)
+, mElapsedSeconds(0.0f)
 {
 	//
 	// TODO Constructor logic HERE
@@ -120,6 +122,30 @@ void PlayState::initialize()
 	mDetailsPanel->setParamValue(12, "Bilinear");
 	mDetailsPanel->setParamValue(13, "Solid");
 	mDetailsPanel->hide();
+
+	// Create another panel to display FPS and performances related stuff
+	StringVector fpsItems;
+	fpsItems.push_back("Loop Time");
+	fpsItems.push_back("Real FPS");
+	fpsItems.push_back("");
+	fpsItems.push_back("Update   %");
+	fpsItems.push_back("CutScene %");
+	fpsItems.push_back("Player   %");
+	fpsItems.push_back("Physics  %");
+	fpsItems.push_back("Logic    %");
+	fpsItems.push_back("Enemy    %");
+	fpsItems.push_back("Lua      %");
+	fpsItems.push_back("Lights   %");
+	fpsItems.push_back("Item     %");
+	fpsItems.push_back("Camera   %");
+	fpsItems.push_back("Audio    %");
+	fpsItems.push_back("Scenario %");
+	fpsItems.push_back("PostProc %");
+	fpsItems.push_back("Events   %");
+
+ 
+	mPerformancesPanel = mTrayMgr->createParamsPanel(OgreBites::TL_NONE, "PerformancesPanel", 200, fpsItems);
+	mPerformancesPanel->hide();
 
 	//
 	// Item Manager
@@ -267,6 +293,28 @@ bool PlayState::frameRenderingQueued(const Ogre::FrameEvent& evt)
 			mDetailsPanel->setParamValue(9, StringConverter::toString(mCameraManager->getCameraLookAt().y, 5));
 			mDetailsPanel->setParamValue(10, StringConverter::toString(mCameraManager->getCameraLookAt().z, 5));
 		}
+
+		if(mPerformancesPanel->isVisible())
+		{
+			mPerformancesPanel->setParamValue(0,StringConverter::toString(mElapsedSeconds));
+			mPerformancesPanel->setParamValue(1,StringConverter::toString(1.0f/ (mElapsedSeconds > 0 ? mElapsedSeconds : 0.0001f)));
+			
+
+			mPerformancesPanel->setParamValue(3,StringConverter::toString(TIMER_PERCENT(Update,Update))); // Update
+			mPerformancesPanel->setParamValue(4,StringConverter::toString(TIMER_PERCENT(CutScene,Update))); // CutScene
+			mPerformancesPanel->setParamValue(5,StringConverter::toString(TIMER_PERCENT(Player,Update))); // Player
+			mPerformancesPanel->setParamValue(6,StringConverter::toString(TIMER_PERCENT(Physics,Update))); // Physics
+			mPerformancesPanel->setParamValue(7,StringConverter::toString(TIMER_PERCENT(Logic,Update))); // Logic
+			mPerformancesPanel->setParamValue(8,StringConverter::toString(TIMER_PERCENT(Enemy,Update))); // Enemy
+			mPerformancesPanel->setParamValue(9,StringConverter::toString(TIMER_PERCENT(Lua,Update))); // Lua
+			mPerformancesPanel->setParamValue(10,StringConverter::toString(TIMER_PERCENT(Lights,Update))); // Lights
+			mPerformancesPanel->setParamValue(11,StringConverter::toString(TIMER_PERCENT(Item,Update))); // Item
+			mPerformancesPanel->setParamValue(12,StringConverter::toString(TIMER_PERCENT(Camera,Update))); // Camera
+			mPerformancesPanel->setParamValue(13,StringConverter::toString(TIMER_PERCENT(Audio,Update))); // Audio
+			mPerformancesPanel->setParamValue(14,StringConverter::toString(TIMER_PERCENT(Scenario,Update))); // Scenario
+			mPerformancesPanel->setParamValue(15,StringConverter::toString(TIMER_PERCENT(PostProcess,Update))); // PostProcess
+			mPerformancesPanel->setParamValue(16,StringConverter::toString(TIMER_PERCENT(Events,Update))); // Events
+		}
 	}
 
 	if(mCameraManager->getCameraMode() == CameraManager::CameraModes::Free)
@@ -280,10 +328,21 @@ bool PlayState::frameRenderingQueued(const Ogre::FrameEvent& evt)
 /** Update internal stuff */
 void PlayState::update(const float elapsedSeconds)
 {
+	TIMER_START(Update);
+
+	mElapsedSeconds = elapsedSeconds;
+
 	//
 	// Update CutScene Manager
 	//
+	TIMER_START(CutScene);
 	mCutSceneManager->update(elapsedSeconds);
+	TIMER_STOP(CutScene);
+
+	//
+	// Player update
+	//
+	TIMER_START(Player);
 
 	PlayerPtr player1 = mPlayerManager->getPlayer(PLAYER1);
 
@@ -385,66 +444,101 @@ void PlayState::update(const float elapsedSeconds)
 			this->mNextGameStateId = GameStateId::GameOver;
 	}
 
-	/** Game Updates **/
-
-	//
-	//Update Physic
-	//
-	mPhysicsManager->update(elapsedSeconds);
-
-	//
-	// Logic manager
-	//
-	mLogicManager->update(elapsedSeconds);
-
-	//
-	// LUA manager
-	// 
-	mLuaManager->update(elapsedSeconds);
-
-	mLightsManager->update(elapsedSeconds);
-
-	mEnemyManager->update(elapsedSeconds);
-
-	mItemManager->update(elapsedSeconds);
-
 	//
 	// Update animation state
 	//
 	mPlayerManager->update(elapsedSeconds);
 
+	TIMER_STOP(Player);
+
+	/** Game Updates **/
+
+	//
+	//Update Physic
+	//
+	TIMER_START(Physics);
+	mPhysicsManager->update(elapsedSeconds);
+	TIMER_STOP(Physics);
+
+	//
+	// Logic manager
+	//
+	TIMER_START(Logic);
+	mLogicManager->update(elapsedSeconds);
+	TIMER_STOP(Logic);
+
+	//
+	// LUA manager
+	// 
+	TIMER_START(Lua);
+	mLuaManager->update(elapsedSeconds);
+	TIMER_STOP(Lua);
+
+	//
+	// Lights manager
+	//
+	TIMER_START(Lights);
+	mLightsManager->update(elapsedSeconds);
+	TIMER_STOP(Lights);
+
+	//
+	// Enemy manager
+	//
+	TIMER_START(Enemy);
+	mEnemyManager->update(elapsedSeconds);
+	TIMER_STOP(Enemy);
+
+	//
+	// Item Manager
+	//
+	TIMER_START(Item);
+	mItemManager->update(elapsedSeconds);
+	TIMER_STOP(Item);
+
 	//
 	// Update camera
 	//
+	TIMER_START(Camera);
 	mCameraManager->updateCamera(player1->getPosition(), elapsedSeconds);
+	TIMER_STOP(Camera);
 
 	//
 	// Update sounds
 	//
+	TIMER_START(Audio);
 	mAudioManager->update(Vector3::ZERO, Quaternion::ZERO, elapsedSeconds);
+	TIMER_STOP(Audio);
 
 	//
 	// Update scenario objects
 	//
+	TIMER_START(Scenario);
 	mScenarioManager->update(elapsedSeconds);
+	TIMER_STOP(Scenario);
 
 	//
 	// Update post processing compositors
 	//
+	TIMER_START(PostProcess);
 	mPostProcessManager->update(elapsedSeconds);
+	TIMER_STOP(PostProcess);
 
 	//
 	// Dispatch events. Managers have probably raised events, that are now in the 
 	// EventsManager queue. The events manager will then dispatch them, calling
 	// for each of them the registered handler(s).
 	//
+	TIMER_START(Events);
 	mEventsManager->update(elapsedSeconds);
+	TIMER_STOP(Events);
 
 	//
 	// HACK : just to let the player win!
 	//
 	if(mEnemyManager->getCount() == 0 && mCameraManager->getGameArea(player1->getPosition()) == 11)
 		this->mNextGameStateId = GameStateId::Ending;
+
+	TIMER_STOP(Update);
 }
 
 /** Render */
@@ -645,6 +739,8 @@ bool PlayState::keyPressed(const OIS::KeyEvent& e)
 	case OIS::KeyCode::KC_G:		
 		if (mDetailsPanel->getTrayLocation() == OgreBites::TL_NONE)
 		{
+			mTrayMgr->moveWidgetToTray(mPerformancesPanel, OgreBites::TL_TOPLEFT, 0);
+			mPerformancesPanel->show();
 			mTrayMgr->moveWidgetToTray(mDetailsPanel, OgreBites::TL_TOPRIGHT, 0);
 			mDetailsPanel->show();
 			mTrayMgr->showFrameStats(OgreBites::TL_BOTTOMLEFT);
@@ -659,6 +755,8 @@ bool PlayState::keyPressed(const OIS::KeyEvent& e)
 		}
 		else
 		{
+			mTrayMgr->removeWidgetFromTray(mPerformancesPanel);
+			mPerformancesPanel->hide();
 			mTrayMgr->removeWidgetFromTray(mDetailsPanel);
 			mDetailsPanel->hide();
 			mTrayMgr->hideFrameStats();

@@ -32,7 +32,7 @@ namespace WyvernsAssault
 		GuiDebugText();
 		~GuiDebugText();
 
-		void init();
+		void initialize();
 		void finalize();
 		// Print at <x/y>
 		void print(float x, float y, const char*, ...);
@@ -82,5 +82,7 @@ namespace WyvernsAssault
 			float mSize;
 		} mContext;
 	};
+
+	typedef boost::shared_ptr<GuiDebugText> GuiDebugTextPtr;
 }
 #endif // !__GUI_DEBUG_TEXT_H_
