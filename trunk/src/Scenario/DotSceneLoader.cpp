@@ -705,6 +705,33 @@ void DotSceneLoader::processEntity(TiXmlElement *XMLNode, SceneNode *pParent)
 		if(!materialFile.empty())
 			pEntity->setMaterialName(materialFile);
 
+		
+		// Process position
+		pElement = XMLNode->FirstChildElement("position");
+		if(pElement)
+		{
+			Ogre::Vector3 pos = parseVector3(pElement);
+
+			pParent->translate(pos.x, pos.y, pos.z, Ogre::Node::TransformSpace::TS_WORLD);
+			pParent->setInitialState();
+		}
+
+		// Process rotation
+		pElement = XMLNode->FirstChildElement("rotation");
+		if(pElement)
+		{
+			pParent->rotate(parseQuaternion(pElement));
+			pParent->setInitialState();
+		}
+
+		// Process scale
+		pElement = XMLNode->FirstChildElement("scale");
+		if(pElement)
+		{
+			pParent->scale(parseVector3(pElement));
+			pParent->setInitialState();
+		}
+
 		// Process subentities
 		pElement = XMLNode->FirstChildElement("subentities");
 		while(pElement)
