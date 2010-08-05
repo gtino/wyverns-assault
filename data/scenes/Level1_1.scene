@@ -299,6 +299,19 @@
           </subentities>
         </entity>
       </node>
+      <node name="Trunk0Copy#0" id="176580096">
+        <rotation qw="0.894858" qx="0.0130891" qy="0.44616" qz="0.00011423" />
+        <position x="3730.52" y="574.268" z="-763.112" />
+        <scale x="2" y="4" z="2" />
+        <entity name="Trunk0#1" id="853968896" castshadows="false" meshFile="Trunk0.mesh">
+          <rotation qw="0.99725" qx="0.0741085" qy="3.34694E-09" qz="0" />
+          <position x="-77.2803" y="-15.2858" z="146.183" />
+          <scale x="1" y="1" z="1" />
+          <subentities>
+            <subentity materialName="Trunk0" index="0" visible="true" />
+          </subentities>
+        </entity>
+      </node>
       <node name="GreenMountain6" id="538377024">
         <rotation qw="0.751269" qx="0" qy="0.659996" qz="0" />
         <position x="1306.47" y="140.883" z="878.683" />
@@ -904,6 +917,19 @@
           <scale x="1" y="1" z="1" />
           <subentities>
             <subentity materialName="Hill" index="0" visible="true" />
+          </subentities>
+        </entity>
+      </node>
+      <node name="Trunk0Copy#1" id="743278336">
+        <rotation qw="0.795596" qx="-0.192648" qy="0.402637" qz="-0.40963" />
+        <position x="3667.27" y="571.375" z="-679.26" />
+        <scale x="2" y="4" z="2" />
+        <entity name="Trunk0#2" id="808038592" castshadows="false" meshFile="Trunk0.mesh">
+          <rotation qw="1" qx="0" qy="0" qz="0" />
+          <position x="0" y="0" z="0" />
+          <scale x="1" y="1" z="1" />
+          <subentities>
+            <subentity materialName="Trunk0" index="0" visible="true" />
           </subentities>
         </entity>
       </node>
@@ -1519,6 +1545,19 @@
           </subentities>
         </entity>
       </node>
+      <node name="Trunk0Copy#0Copy#0Copy#0" id="556657600">
+        <rotation qw="0.350791" qx="-0.278893" qy="-0.611562" qz="-0.65204" />
+        <position x="2665.55" y="606.541" z="-2698.1" />
+        <scale x="2" y="4" z="2" />
+        <entity name="Trunk0#7" id="638233600" castshadows="false" meshFile="Trunk0.mesh">
+          <rotation qw="1" qx="0" qy="0" qz="0" />
+          <position x="0" y="0" z="0" />
+          <scale x="1" y="1" z="1" />
+          <subentities>
+            <subentity materialName="Trunk0" index="0" visible="true" />
+          </subentities>
+        </entity>
+      </node>
       <node name="PineTree2d0_11Copy#1" id="611590912">
         <rotation qw="0.951624" qx="0.0604186" qy="0.301081" qz="0.0105441" />
         <position x="4811.99" y="573.503" z="-458.395" />
@@ -1895,6 +1934,19 @@
           </entity>
         </node>
       </node>
+      <node name="Trunk0" id="982970624">
+        <rotation qw="0.894858" qx="0.0130891" qy="0.44616" qz="0.00011423" />
+        <position x="3730.52" y="574.268" z="-763.112" />
+        <scale x="2" y="4" z="2" />
+        <entity name="Trunk0#0" id="501205504" castshadows="false" meshFile="Trunk0.mesh">
+          <rotation qw="0.700909" qx="-0.713251" qy="-1.67638E-08" qz="2.98023E-08" />
+          <position x="0.0337518" y="8.28545" z="-0.128182" />
+          <scale x="1" y="1" z="1" />
+          <subentities>
+            <subentity materialName="Trunk0" index="0" visible="true" />
+          </subentities>
+        </entity>
+      </node>
       <node name="AppleTree0Copy#0" id="73885312">
         <rotation qw="0.906308" qx="0" qy="0.422618" qz="0" />
         <position x="5119.11" y="594.172" z="1810.73" />
@@ -2041,6 +2093,19 @@
           <scale x="1" y="1" z="1" />
           <subentities>
             <subentity materialName="VulcanicRock" index="0" visible="true" />
+          </subentities>
+        </entity>
+      </node>
+      <node name="Trunk0Copy#3Copy#0" id="404705952">
+        <rotation qw="0.997037" qx="-0.00316397" qy="-0.0170046" qz="-0.0749536" />
+        <position x="3690" y="519.599" z="-2082.38" />
+        <scale x="2" y="4" z="2" />
+        <entity name="Trunk0#5" id="992614528" castshadows="false" meshFile="Trunk0.mesh">
+          <rotation qw="1" qx="0" qy="0" qz="0" />
+          <position x="0" y="0" z="0" />
+          <scale x="1" y="1" z="1" />
+          <subentities>
+            <subentity materialName="Trunk0" index="0" visible="true" />
           </subentities>
         </entity>
       </node>
@@ -2370,6 +2435,19 @@
             </subentities>
           </entity>
         </node>
+      </node>
+      <node name="Trunk0Copy#0Copy#0" id="875423424">
+        <rotation qw="0.350791" qx="-0.278893" qy="-0.611562" qz="-0.65204" />
+        <position x="2287.37" y="611.054" z="-1622.24" />
+        <scale x="2" y="4" z="2" />
+        <entity name="Trunk0#6" id="343577376" castshadows="false" meshFile="Trunk0.mesh">
+          <rotation qw="1" qx="0" qy="0" qz="0" />
+          <position x="0" y="0" z="0" />
+          <scale x="1" y="1" z="1" />
+          <subentities>
+            <subentity materialName="Trunk0" index="0" visible="true" />
+          </subentities>
+        </entity>
       </node>
       <node name="PineTree2d0_4Copy#5" id="354014688">
         <rotation qw="0.233336" qx="-0.0194249" qy="0.971917" qz="-0.0235642" />
@@ -2726,6 +2804,19 @@
           <scale x="1" y="1" z="1" />
           <subentities>
             <subentity materialName="Lava" index="0" visible="true" />
+          </subentities>
+        </entity>
+      </node>
+      <node name="Trunk0Copy#0Copy#0Copy#1" id="779503744">
+        <rotation qw="0.28682" qx="-0.0142243" qy="-0.772003" qz="-0.567048" />
+        <position x="2629.24" y="589.209" z="-2798.67" />
+        <scale x="2" y="4" z="2" />
+        <entity name="Trunk0#8" id="281746880" castshadows="false" meshFile="Trunk0.mesh">
+          <rotation qw="1" qx="0" qy="0" qz="0" />
+          <position x="0" y="0" z="0" />
+          <scale x="1" y="1" z="1" />
+          <subentities>
+            <subentity materialName="Trunk0" index="0" visible="true" />
           </subentities>
         </entity>
       </node>
@@ -3643,6 +3734,19 @@
           </subentities>
         </entity>
       </node>
+      <node name="Trunk0Copy#2" id="55909908">
+        <rotation qw="0.695563" qx="-0.691473" qy="0.134087" qz="0.1417" />
+        <position x="3789.05" y="604.294" z="-2071.48" />
+        <scale x="2" y="4" z="2" />
+        <entity name="Trunk0#3" id="383007296" castshadows="false" meshFile="Trunk0.mesh">
+          <rotation qw="1" qx="0" qy="0" qz="0" />
+          <position x="0" y="0" z="0" />
+          <scale x="1" y="1" z="1" />
+          <subentities>
+            <subentity materialName="Trunk0" index="0" visible="true" />
+          </subentities>
+        </entity>
+      </node>
       <node name="Sheaf0_0" id="777733696">
         <rotation qw="0.97237" qx="0" qy="0.233445" qz="0" />
         <position x="3665.16" y="593.26" z="2381.33" />
@@ -3784,6 +3888,19 @@
           <scale x="1" y="1" z="1" />
           <subentities>
             <subentity materialName="BonBonTree" index="0" visible="true" />
+          </subentities>
+        </entity>
+      </node>
+      <node name="ForestRock0" id="195623648">
+        <rotation qw="0.707107" qx="0" qy="-0.707107" qz="0" />
+        <position x="2459.39" y="616.805" z="-2697.6" />
+        <scale x="14.8514" y="13.3759" z="12.6956" />
+        <entity name="BigRock0#0" id="238502144" castshadows="false" meshFile="BigRock0.mesh">
+          <rotation qw="1" qx="0" qy="0" qz="0" />
+          <position x="0" y="0" z="0" />
+          <scale x="1" y="1" z="1" />
+          <subentities>
+            <subentity materialName="VulcanicRock" index="0" visible="true" />
           </subentities>
         </entity>
       </node>
@@ -4850,6 +4967,19 @@
           </subentities>
         </entity>
       </node>
+      <node name="ForestRock0Copy#0" id="867427584">
+        <rotation qw="0.707107" qx="0" qy="-0.707107" qz="0" />
+        <position x="2418.26" y="616.805" z="-2633.8" />
+        <scale x="14.8514" y="22.3141" z="12.6956" />
+        <entity name="BigRock0#1" id="840205056" castshadows="false" meshFile="BigRock0.mesh">
+          <rotation qw="1" qx="0" qy="0" qz="0" />
+          <position x="0" y="0" z="0" />
+          <scale x="1" y="1" z="1" />
+          <subentities>
+            <subentity materialName="VulcanicRock" index="0" visible="true" />
+          </subentities>
+        </entity>
+      </node>
       <node name="BlueMountain4" id="993194368">
         <rotation qw="0.96534" qx="0" qy="0.260994" qz="0" />
         <position x="-317.867" y="174.689" z="1404" />
@@ -4951,6 +5081,19 @@
           <scale x="1" y="1" z="1" />
           <subentities>
             <subentity materialName="Hill" index="0" visible="true" />
+          </subentities>
+        </entity>
+      </node>
+      <node name="Trunk0Copy#3" id="639210176">
+        <rotation qw="0.454342" qx="-0.658383" qy="0.364093" qz="0.477012" />
+        <position x="3654.16" y="602.958" z="-2166.71" />
+        <scale x="2" y="4" z="2" />
+        <entity name="Trunk0#4" id="811059904" castshadows="false" meshFile="Trunk0.mesh">
+          <rotation qw="1" qx="0" qy="0" qz="0" />
+          <position x="0" y="0" z="0" />
+          <scale x="1" y="1" z="1" />
+          <subentities>
+            <subentity materialName="Trunk0" index="0" visible="true" />
           </subentities>
         </entity>
       </node>
