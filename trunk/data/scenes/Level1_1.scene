@@ -745,19 +745,6 @@
           </subentities>
         </entity>
       </node>
-      <node name="Man" id="806726272">
-        <rotation qw="0.495618" qx="-0.495618" qy="-0.504344" qz="-0.504344" />
-        <position x="4203.72" y="636.346" z="204.987" />
-        <scale x="40" y="40" z="40" />
-        <entity name="Entity#108" id="158818320" castshadows="true" meshFile="Man0.mesh">
-          <rotation qw="1" qx="0" qy="0" qz="0" />
-          <position x="0" y="0" z="0" />
-          <scale x="1" y="1" z="1" />
-          <subentities>
-            <subentity materialName="Skin/Red" index="0" visible="true" />
-          </subentities>
-        </entity>
-      </node>
       <node name="Hill18" id="54139836">
         <rotation qw="0.707107" qx="0" qy="-0.707107" qz="0" />
         <position x="1876.68" y="544.846" z="-2739.96" />
@@ -2427,11 +2414,6 @@
             <scale x="1" y="1" z="1" />
             <subentities>
               <subentity materialName="ToxicWasteHouse" index="0" visible="true" />
-              <subentity materialName="SilverConcrete" index="1" visible="true" />
-              <subentity materialName="ToxicWater" index="2" visible="true" />
-              <subentity materialName="TubeOrangeRed" index="3" visible="true" />
-              <subentity materialName="TubeYellow" index="4" visible="true" />
-              <subentity materialName="Chalk" index="5" visible="true" />
             </subentities>
           </entity>
         </node>

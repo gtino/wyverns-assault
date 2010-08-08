@@ -55,7 +55,7 @@
   <CAMERASPEED value="19"></CAMERASPEED>
   <CAMERAPOSITIONS count="1">
     <OPTION id="0" position="1417.36 9.53911 54.9741" orientation="0.707107 0 0.707107 0"></OPTION>
-    <OPTION id="1" position="1365.44 155.505 68.4918" orientation="-0.655195 0.157946 -0.71818 -0.173174"></OPTION>
+    <OPTION id="1" position="1356.53 150.922 69.311" orientation="-0.655195 0.157946 -0.71818 -0.173174"></OPTION>
   </CAMERAPOSITIONS>
     <LAYERS>
       <LAYER id="0" name="Layer 0" visible="true"></LAYER>
@@ -136,9 +136,9 @@
   <OBJECT object_id="2000000002" name="Viewport1" typename="Viewport Object">
     <PROPERTY id="camera::clipdistance" type="8" value="0.05 100000"></PROPERTY>
     <PROPERTY id="camera::fov" type="6" value="1"></PROPERTY>
-    <PROPERTY id="camera::orientation" type="13" value="-0.6552 0.157948 -0.718186 -0.173176"></PROPERTY>
+    <PROPERTY id="camera::orientation" type="13" value="-0.655195 0.157946 -0.71818 -0.173174"></PROPERTY>
     <PROPERTY id="camera::polymode" type="2" value="3"></PROPERTY>
-    <PROPERTY id="camera::position" type="9" value="1365.44 155.505 68.4918"></PROPERTY>
+    <PROPERTY id="camera::position" type="9" value="1356.53 150.922 69.311"></PROPERTY>
     <PROPERTY id="camera::viewmode" type="2" value="0"></PROPERTY>
     <PROPERTY id="colour" type="11" value="0 0 0 1"></PROPERTY>
     <PROPERTY id="compositorcount" type="2" value="0"></PROPERTY>
@@ -917,18 +917,6 @@
     <PROPERTY id="orientation" type="13" value="0.707107 0 -0.707107 0"></PROPERTY>
     <PROPERTY id="position" type="9" value="3060.7 484.86 2072.62"></PROPERTY>
     <PROPERTY id="scale" type="9" value="82.1758 82.1758 82.1758"></PROPERTY>
-    <PROPERTY id="updatescript" type="7" value=""></PROPERTY>
-    <CUSTOMPROPERTIES>
-    </CUSTOMPROPERTIES>
-  </OBJECT>
-
-  <OBJECT object_id="806726272" name="Man" typename="Node Object" parentnode="Scenario">
-    <PROPERTY id="autotracktarget" type="7" value="None"></PROPERTY>
-    <PROPERTY id="layer" type="2" value="0"></PROPERTY>
-    <PROPERTY id="locked" type="12" value="false"></PROPERTY>
-    <PROPERTY id="orientation" type="13" value="0.495618 -0.495618 -0.504344 -0.504344"></PROPERTY>
-    <PROPERTY id="position" type="9" value="4203.72 636.346 204.987"></PROPERTY>
-    <PROPERTY id="scale" type="9" value="40 40 40"></PROPERTY>
     <PROPERTY id="updatescript" type="7" value=""></PROPERTY>
     <CUSTOMPROPERTIES>
     </CUSTOMPROPERTIES>
@@ -12822,17 +12810,7 @@
     <PROPERTY id="scale" type="9" value="1 1 1"></PROPERTY>
     <PROPERTY id="subentity0::material" type="7" value="ToxicWasteHouse"></PROPERTY>
     <PROPERTY id="subentity0::visible" type="12" value="true"></PROPERTY>
-    <PROPERTY id="subentity1::material" type="7" value="SilverConcrete"></PROPERTY>
-    <PROPERTY id="subentity1::visible" type="12" value="true"></PROPERTY>
-    <PROPERTY id="subentity2::material" type="7" value="ToxicWater"></PROPERTY>
-    <PROPERTY id="subentity2::visible" type="12" value="true"></PROPERTY>
-    <PROPERTY id="subentity3::material" type="7" value="TubeOrangeRed"></PROPERTY>
-    <PROPERTY id="subentity3::visible" type="12" value="true"></PROPERTY>
-    <PROPERTY id="subentity4::material" type="7" value="TubeYellow"></PROPERTY>
-    <PROPERTY id="subentity4::visible" type="12" value="true"></PROPERTY>
-    <PROPERTY id="subentity5::material" type="7" value="Chalk"></PROPERTY>
-    <PROPERTY id="subentity5::visible" type="12" value="true"></PROPERTY>
-    <PROPERTY id="subentitycount" type="2" value="6"></PROPERTY>
+    <PROPERTY id="subentitycount" type="2" value="1"></PROPERTY>
     <PROPERTY id="updatescript" type="7" value=""></PROPERTY>
     <CUSTOMPROPERTIES>
     </CUSTOMPROPERTIES>
@@ -16986,24 +16964,6 @@
     <PROPERTY id="renderingdistance" type="6" value="5000"></PROPERTY>
     <PROPERTY id="scale" type="9" value="1 1 1"></PROPERTY>
     <PROPERTY id="subentity0::material" type="7" value="PineTree"></PROPERTY>
-    <PROPERTY id="subentity0::visible" type="12" value="true"></PROPERTY>
-    <PROPERTY id="subentitycount" type="2" value="1"></PROPERTY>
-    <PROPERTY id="updatescript" type="7" value=""></PROPERTY>
-    <CUSTOMPROPERTIES>
-    </CUSTOMPROPERTIES>
-  </OBJECT>
-
-  <OBJECT object_id="158818320" name="Entity#108" typename="Entity Object" parentnode="Man">
-    <PROPERTY id="autotracktarget" type="7" value="None"></PROPERTY>
-    <PROPERTY id="castshadows" type="12" value="true"></PROPERTY>
-    <PROPERTY id="layer" type="2" value="0"></PROPERTY>
-    <PROPERTY id="locked" type="12" value="false"></PROPERTY>
-    <PROPERTY id="meshfile" type="7" value="Man0.mesh"></PROPERTY>
-    <PROPERTY id="orientation" type="13" value="1 0 0 0"></PROPERTY>
-    <PROPERTY id="position" type="9" value="0 0 0"></PROPERTY>
-    <PROPERTY id="renderingdistance" type="6" value="5000"></PROPERTY>
-    <PROPERTY id="scale" type="9" value="1 1 1"></PROPERTY>
-    <PROPERTY id="subentity0::material" type="7" value="Skin/Red"></PROPERTY>
     <PROPERTY id="subentity0::visible" type="12" value="true"></PROPERTY>
     <PROPERTY id="subentitycount" type="2" value="1"></PROPERTY>
     <PROPERTY id="updatescript" type="7" value=""></PROPERTY>
