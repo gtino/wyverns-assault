@@ -8123,5 +8123,18 @@
         </entity>
       </node>
     </node>
+    <node name="Skydome" id="108279672">
+      <rotation qw="1" qx="0" qy="0" qz="0" />
+      <position x="0" y="0" z="0" />
+      <scale x="1" y="1" z="1" />
+      <entity name="Skydome#0" id="475295264" castshadows="false" meshFile="Skydome.mesh">
+        <rotation qw="1" qx="0" qy="0" qz="0" />
+        <position x="0" y="0" z="0" />
+        <scale x="1" y="1" z="1" />
+        <subentities>
+          <subentity materialName="Skydome" index="0" visible="true" />
+        </subentities>
+      </entity>
+    </node>
   </nodes>
 </scene>
