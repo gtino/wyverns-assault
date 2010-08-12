@@ -22,8 +22,8 @@ system WyvernsAssault/Hit
             angle                               180
             time_to_live                        dyn_random
             {
-                min                             0.35
-                max                             0.6
+                min                             0.6
+                max                             1
             }
             velocity                            dyn_random
             {
@@ -32,14 +32,14 @@ system WyvernsAssault/Hit
             }
             all_particle_dimensions             dyn_random
             {
-                min                             35
-                max                             50
+                min                             20
+                max                             30
             }
             position                            0 20 0
             end_texture_coords_range            15
             auto_direction                      true
             force_emission                      true
-            radius                              50
+            radius                              15
         }
         affector                                Colour Affector3
         {
@@ -53,8 +53,8 @@ system WyvernsAssault/Hit
             xyz_scale                           dyn_curved_linear
             {
                 control_point                   0 0
-                control_point                   0.8 60
-                control_point                   1 60
+                control_point                   0.8 80
+                control_point                   1 80
             }
         }
         affector                                TextureRotator Affector6
@@ -76,7 +76,7 @@ system WyvernsAssault/Hit
             {
                 control_point                   0 0
                 control_point                   0.5 0.5
-                control_point                   1 -5
+                control_point                   1 -10
             }
         }
         observer                                OnClear Observer1
