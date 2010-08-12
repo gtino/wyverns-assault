@@ -135,7 +135,7 @@ system WyvernsAssault/ItemGlow
     }
     technique 
     {
-        material                                Particle/Streak_01
+        material                                Particle/Streak_02
         renderer                                Billboard
         {
         }
