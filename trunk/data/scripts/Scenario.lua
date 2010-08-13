@@ -45,7 +45,7 @@ function runDayLight(p)
 	end
   
 	Light.setLightDiffuseColor("Point1",r,g,b)
-	Light.setAmbientLight(ar,ag,ab)
+	--Light.setAmbientLight(ar,ag,ab)
   
 	local x,y,z = Light.getLightPosition("Point1")
   
