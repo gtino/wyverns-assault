@@ -55,7 +55,7 @@
   <CAMERASPEED value="19"></CAMERASPEED>
   <CAMERAPOSITIONS count="1">
     <OPTION id="0" position="1417.36 9.53911 54.9741" orientation="0.707107 0 0.707107 0"></OPTION>
-    <OPTION id="1" position="1639.14 431.683 947.402" orientation="-0.848836 0.0661783 -0.522594 -0.0446358"></OPTION>
+    <OPTION id="1" position="774.886 284.935 648.847" orientation="-0.940896 -0.0563946 -0.333562 0.0164816"></OPTION>
   </CAMERAPOSITIONS>
     <LAYERS>
       <LAYER id="0" name="Layer 0" visible="true"></LAYER>
@@ -103,13 +103,13 @@
   <OBJECTCOUNT value="0"></OBJECTCOUNT>
   </PROJECT>
   <OBJECT object_id="24048588" name="SceneManager1" typename="OctreeSceneManager">
-    <PROPERTY id="ambient" type="11" value="0.361333 0.361333 0.361333 3"></PROPERTY>
+    <PROPERTY id="ambient" type="11" value="1 1 0.498039 1"></PROPERTY>
     <PROPERTY id="configfile" type="7" value=""></PROPERTY>
-    <PROPERTY id="fog::colour" type="11" value="1 1 1 1"></PROPERTY>
+    <PROPERTY id="fog::colour" type="11" value="0.901961 0.901961 0.901961 0.156863"></PROPERTY>
     <PROPERTY id="fog::density" type="6" value="0.001"></PROPERTY>
-    <PROPERTY id="fog::end" type="6" value="5000"></PROPERTY>
+    <PROPERTY id="fog::end" type="6" value="6000"></PROPERTY>
     <PROPERTY id="fog::mode" type="2" value="3"></PROPERTY>
-    <PROPERTY id="fog::start" type="6" value="2000"></PROPERTY>
+    <PROPERTY id="fog::start" type="6" value="2500"></PROPERTY>
     <PROPERTY id="layer" type="2" value="0"></PROPERTY>
     <PROPERTY id="locked" type="12" value="false"></PROPERTY>
     <PROPERTY id="orientation" type="13" value="1 0 0 0"></PROPERTY>
@@ -119,15 +119,15 @@
     <PROPERTY id="scenemanagertype" type="7" value="OctreeSceneManager"></PROPERTY>
     <PROPERTY id="shadows::enabled" type="12" value="false"></PROPERTY>
     <PROPERTY id="shadows::renderingdistance" type="2" value="1000"></PROPERTY>
-    <PROPERTY id="shadows::resolutionfar" type="2" value="512"></PROPERTY>
-    <PROPERTY id="shadows::resolutionmiddle" type="2" value="512"></PROPERTY>
-    <PROPERTY id="shadows::resolutionnear" type="2" value="1024"></PROPERTY>
+    <PROPERTY id="shadows::resolutionfar" type="2" value="4096"></PROPERTY>
+    <PROPERTY id="shadows::resolutionmiddle" type="2" value="4096"></PROPERTY>
+    <PROPERTY id="shadows::resolutionnear" type="2" value="4096"></PROPERTY>
     <PROPERTY id="shadows::technique" type="2" value="37"></PROPERTY>
     <PROPERTY id="skybox::active" type="12" value="false"></PROPERTY>
     <PROPERTY id="skybox::distance" type="6" value="5000"></PROPERTY>
-    <PROPERTY id="skybox::material" type="7" value=""></PROPERTY>
+    <PROPERTY id="skybox::material" type="7" value="NoonSkyBox"></PROPERTY>
     <PROPERTY id="skydome::active" type="12" value="false"></PROPERTY>
-    <PROPERTY id="skydome::material" type="7" value=""></PROPERTY>
+    <PROPERTY id="skydome::material" type="7" value="Skydome"></PROPERTY>
     <PROPERTY id="updatescript" type="7" value=""></PROPERTY>
     <CUSTOMPROPERTIES>
     </CUSTOMPROPERTIES>
@@ -136,9 +136,9 @@
   <OBJECT object_id="2000000002" name="Viewport1" typename="Viewport Object">
     <PROPERTY id="camera::clipdistance" type="8" value="0.05 100000"></PROPERTY>
     <PROPERTY id="camera::fov" type="6" value="1"></PROPERTY>
-    <PROPERTY id="camera::orientation" type="13" value="-0.849253 0.0662108 -0.522851 -0.0446577"></PROPERTY>
+    <PROPERTY id="camera::orientation" type="13" value="-0.940905 -0.0563951 -0.333566 0.0164818"></PROPERTY>
     <PROPERTY id="camera::polymode" type="2" value="3"></PROPERTY>
-    <PROPERTY id="camera::position" type="9" value="1639.14 431.683 947.402"></PROPERTY>
+    <PROPERTY id="camera::position" type="9" value="774.886 284.935 648.847"></PROPERTY>
     <PROPERTY id="camera::viewmode" type="2" value="0"></PROPERTY>
     <PROPERTY id="colour" type="11" value="0 0 0 1"></PROPERTY>
     <PROPERTY id="compositorcount" type="2" value="0"></PROPERTY>

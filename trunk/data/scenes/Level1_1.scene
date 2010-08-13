@@ -1,7 +1,16 @@
 <?xml version="1.0"?>
 <scene>
   <resourceLocations />
-  <environment />
+  <environment>
+    <fog r="0.901961" g="0.901961" b="0.901961" a="0.156863" density="0.001" end="6000" mode="3" start="2500" />
+    <skyBox active="false" distance="5000" material="NoonSkyBox" />
+    <skyDome active="false" material="Skydome" />
+    <shadows />
+    <ambient r="1" g="1" b="0.498039" a="1" />
+    <rotation qw="1" qx="0" qy="0" qz="0" />
+    <position x="0" y="0" z="0" />
+    <scale x="1" y="1" z="1" />
+  </environment>
   <nodes>
     <node name="Scenario" id="973754112">
       <rotation qw="1" qx="0" qy="0" qz="0" />
