@@ -87,9 +87,12 @@ namespace Ogre
 		
 		void processPhysics(TiXmlElement *XMLNode);
 		
+		void processEnvironment(TiXmlElement *XMLNode);
 		void processSkyBox(TiXmlElement *XMLNode);
 		void processSkyDome(TiXmlElement *XMLNode);
 		void processFog(TiXmlElement *XMLNode);
+		void processAmbient(TiXmlElement *XMLNode);
+		void processShadows(TiXmlElement *XMLNode);
 
 		void processLookTarget(TiXmlElement *XMLNode, SceneNode *pParent);
 		void processTrackTarget(TiXmlElement *XMLNode, SceneNode *pParent);
