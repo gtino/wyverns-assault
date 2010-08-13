@@ -150,19 +150,12 @@ void DotSceneLoader::processScene(TiXmlElement *XMLRoot)
 
 	LogManager::getSingleton().logMessage("[DotSceneLoader] Light processed.");
 
-	// Process skyBox
-	pElement = XMLRoot->FirstChildElement("skyBox");
+	// Process environment
+	pElement = XMLRoot->FirstChildElement("environment");
 	if(pElement)
-		processSkyBox(pElement);
+		processEnvironment(pElement);
 
-	LogManager::getSingleton().logMessage("[DotSceneLoader] SkyBox processed.");
-	
-	// Process skyDome
-	pElement = XMLRoot->FirstChildElement("skyDome");
-	if(pElement)
-		processSkyDome(pElement);
-
-	LogManager::getSingleton().logMessage("[DotSceneLoader] SkyDome processed.");
+	LogManager::getSingleton().logMessage("[DotSceneLoader] Environment processed.");
 
 	// Process game areas
 	pElement = XMLRoot->FirstChildElement("gameAreas");
@@ -307,6 +300,46 @@ void DotSceneLoader::processLights(TiXmlElement *XMLNode)
 		processLight(pElement);
 		pElement = pElement->NextSiblingElement("light");
 	}
+}
+
+void DotSceneLoader::processEnvironment(TiXmlElement *XMLNode)
+{
+	TiXmlElement *pElement;
+
+	// Process skyBox
+	pElement = XMLNode->FirstChildElement("skyBox");
+	if(pElement)
+		processSkyBox(pElement);
+
+	LogManager::getSingleton().logMessage("[DotSceneLoader] SkyBox processed.");
+	
+	// Process skyDome
+	pElement = XMLNode->FirstChildElement("skyDome");
+	if(pElement)
+		processSkyDome(pElement);
+
+	LogManager::getSingleton().logMessage("[DotSceneLoader] SkyDome processed.");
+
+	// Process fog
+	pElement = XMLNode->FirstChildElement("fog");
+	if(pElement)
+		processFog(pElement);
+
+	LogManager::getSingleton().logMessage("[DotSceneLoader] Fog processed.");
+
+	// Process ambient
+	pElement = XMLNode->FirstChildElement("ambient");
+	if(pElement)
+		processAmbient(pElement);
+
+	LogManager::getSingleton().logMessage("[DotSceneLoader] Ambient Light processed.");
+
+	// Process shadows
+	pElement = XMLNode->FirstChildElement("shadows");
+	if(pElement)
+		processShadows(pElement);
+
+	LogManager::getSingleton().logMessage("[DotSceneLoader] Shadows processed.");
 }
 
 void DotSceneLoader::processNode(TiXmlElement *XMLNode, SceneNode *pParent)
@@ -628,7 +661,7 @@ void DotSceneLoader::processEntity(TiXmlElement *XMLNode, SceneNode *pParent)
 	String meshFile = getAttrib(XMLNode, "meshFile");
 	String materialFile = getAttrib(XMLNode, "materialFile");
 	bool isStatic = getAttribBool(XMLNode, "static", false);
-	bool castShadows = getAttribBool(XMLNode, "castShadows", true);
+	bool castShadows = getAttribBool(XMLNode, "castShadows", false);
 
 	// TEMP: Maintain a list of static and dynamic objects
 	if(isStatic)
@@ -763,6 +796,7 @@ void DotSceneLoader::processSubEntity(TiXmlElement *XMLNode, Entity *pEntity)
 	// Process attributes
 	int index = getAttribInt(XMLNode, "index");
 	String materialName = getAttrib(XMLNode, "materialName");
+	bool isVisible = getAttribBool(XMLNode,"visible",true);
 
 	TiXmlElement *pElement;
 
@@ -774,6 +808,8 @@ void DotSceneLoader::processSubEntity(TiXmlElement *XMLNode, Entity *pEntity)
 
 		if(!materialName.empty())
 			pSubEntity->setMaterialName(materialName);
+
+		pSubEntity->setVisible(isVisible);
 	}
 	catch(Ogre::Exception &/*e*/)
 	{
@@ -882,38 +918,55 @@ void DotSceneLoader::processCameraSegment(TiXmlElement *XMLNode, SceneNode *pPar
 void DotSceneLoader::processSkyBox(TiXmlElement *XMLNode)
 {
 	// Process attributes
+	bool enabled = getAttribBool(XMLNode,"active",false);
 	String material = getAttrib(XMLNode, "material");
 	Real distance = getAttribReal(XMLNode, "distance", 100);
 	bool drawFirst = getAttribBool(XMLNode, "drawFirst", true);
 
 	// Setup the sky box
-	mSceneMgr->setSkyBox(true, material, distance, drawFirst);
+	mSceneMgr->setSkyBox(enabled, material, distance, drawFirst);
 }
 
 void DotSceneLoader::processFog(TiXmlElement *XMLNode)
 {
-	// Process attributes
-	//TiXmlElement* pElement = XMLNode->FirstChildElement("mode");
-	//if(pElement)
-	//{
-	//	diffuse = parseFogMode(pElement);
-	//}
-	//pElement = XMLNode->FirstChildElement("colour");
-	//if(pElement)
-	//{
-	//	diffuse = parseColour(pElement);
-	//}
-	Real expDensity = getAttribReal(XMLNode, "expDensity", 0.001);
-	Real linearStart = getAttribReal(XMLNode, "linearStart", 0.0);
-	Real linearEnd = getAttribBool(XMLNode, "linearEnd", 1.0);
+	// Fog color
+	Real r = getAttribReal(XMLNode, "r", 1.0);
+	Real g = getAttribReal(XMLNode, "g", 1.0);
+	Real b = getAttribReal(XMLNode, "b", 1.0);
+	Real a = getAttribReal(XMLNode, "a", 1.0);
 
-	// Setup the sky dome
-	//mSceneMgr->setFog();
+	// Other fog attributes
+	Real density = getAttribReal(XMLNode, "density", 0.0);
+	Real end = getAttribReal(XMLNode, "end", 1.0);
+	int mode = getAttribInt(XMLNode, "mode", 0);
+	Real start = getAttribReal(XMLNode, "start", 1.0);
+
+	//
+	// If fog is not enabled, there is no need of parsing all these properties...
+	//
+	if(mode != 0)
+	{
+		mSceneMgr->setFog((Ogre::FogMode)mode,Ogre::ColourValue(r,g,b,a),density,start,end);
+	}
+}
+
+void DotSceneLoader::processAmbient(TiXmlElement *XMLNode)
+{
+	Real r = getAttribReal(XMLNode, "r");
+	Real g = getAttribReal(XMLNode, "g");
+	Real b = getAttribReal(XMLNode, "b");
+	Real a = getAttribReal(XMLNode, "a");
+
+	//
+	// Set Ambient lighting
+	//
+	mLightsManager->setAmbientLight(Ogre::ColourValue(r,g,b,a));
 }
 
 void DotSceneLoader::processSkyDome(TiXmlElement *XMLNode)
 {
 	// Process attributes
+	bool enabled = getAttribBool(XMLNode,"active",false);
 	String material = getAttrib(XMLNode, "material");
 	Real curvature = getAttribReal(XMLNode, "curvature", 10);
 	Real tiling = getAttribReal(XMLNode, "tiling", 8);
@@ -921,7 +974,16 @@ void DotSceneLoader::processSkyDome(TiXmlElement *XMLNode)
 	bool drawFirst = getAttribBool(XMLNode, "drawFirst", true);
 
 	// Setup the sky dome
-	mSceneMgr->setSkyDome(true, material, curvature, tiling, distance, drawFirst);
+	mSceneMgr->setSkyDome(enabled, material, curvature, tiling, distance, drawFirst);
+}
+
+void DotSceneLoader::processShadows(TiXmlElement *XMLNode)
+{
+	// Process attributes
+	bool enabled = getAttribBool(XMLNode,"enabled",false);
+
+	//// Setup the shadows
+	//mSceneMgr->setShadowTechnique(Ogre::ShadowTechnique::SHADOWTYPE_TEXTURE_ADDITIVE);
 }
 
 void DotSceneLoader::processLightRange(TiXmlElement *XMLNode, Light *pLight)
