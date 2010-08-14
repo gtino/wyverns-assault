@@ -55,7 +55,7 @@
   <CAMERASPEED value="19"></CAMERASPEED>
   <CAMERAPOSITIONS count="1">
     <OPTION id="0" position="1417.36 9.53911 54.9741" orientation="0.707107 0 0.707107 0"></OPTION>
-    <OPTION id="1" position="774.886 284.935 648.847" orientation="-0.940896 -0.0563946 -0.333562 0.0164816"></OPTION>
+    <OPTION id="1" position="1353.25 5.12225 -101.198" orientation="0.707107 0 0.707107 0"></OPTION>
   </CAMERAPOSITIONS>
     <LAYERS>
       <LAYER id="0" name="Layer 0" visible="true"></LAYER>
@@ -136,10 +136,10 @@
   <OBJECT object_id="2000000002" name="Viewport1" typename="Viewport Object">
     <PROPERTY id="camera::clipdistance" type="8" value="0.05 100000"></PROPERTY>
     <PROPERTY id="camera::fov" type="6" value="1"></PROPERTY>
-    <PROPERTY id="camera::orientation" type="13" value="-0.940905 -0.0563951 -0.333566 0.0164818"></PROPERTY>
+    <PROPERTY id="camera::orientation" type="13" value="0.707107 0 0.707107 0"></PROPERTY>
     <PROPERTY id="camera::polymode" type="2" value="3"></PROPERTY>
-    <PROPERTY id="camera::position" type="9" value="774.886 284.935 648.847"></PROPERTY>
-    <PROPERTY id="camera::viewmode" type="2" value="0"></PROPERTY>
+    <PROPERTY id="camera::position" type="9" value="1353.25 5.12225 -101.198"></PROPERTY>
+    <PROPERTY id="camera::viewmode" type="2" value="9"></PROPERTY>
     <PROPERTY id="colour" type="11" value="0 0 0 1"></PROPERTY>
     <PROPERTY id="compositorcount" type="2" value="0"></PROPERTY>
     <PROPERTY id="index" type="2" value="1"></PROPERTY>
@@ -1466,9 +1466,9 @@
     <PROPERTY id="autotracktarget" type="7" value="None"></PROPERTY>
     <PROPERTY id="layer" type="2" value="0"></PROPERTY>
     <PROPERTY id="locked" type="12" value="false"></PROPERTY>
-    <PROPERTY id="orientation" type="13" value="0.5 -0.5 -0.5 -0.5"></PROPERTY>
-    <PROPERTY id="position" type="9" value="3756.5 1569.27 -1924.13"></PROPERTY>
-    <PROPERTY id="scale" type="9" value="40 40 40"></PROPERTY>
+    <PROPERTY id="orientation" type="13" value="1 0 0 0"></PROPERTY>
+    <PROPERTY id="position" type="9" value="4737.06 501.339 -63.0769"></PROPERTY>
+    <PROPERTY id="scale" type="9" value="4 4 4"></PROPERTY>
     <PROPERTY id="updatescript" type="7" value=""></PROPERTY>
     <CUSTOMPROPERTIES>
     </CUSTOMPROPERTIES>
@@ -9830,7 +9830,7 @@
     <PROPERTY id="locked" type="12" value="false"></PROPERTY>
     <PROPERTY id="meshfile" type="7" value="ToxicRiver0.mesh"></PROPERTY>
     <PROPERTY id="orientation" type="13" value="1 0 0 0"></PROPERTY>
-    <PROPERTY id="position" type="9" value="0 0 0"></PROPERTY>
+    <PROPERTY id="position" type="9" value="4.42261 1.10759 0.16152"></PROPERTY>
     <PROPERTY id="renderingdistance" type="6" value="10000"></PROPERTY>
     <PROPERTY id="scale" type="9" value="1 1 1"></PROPERTY>
     <PROPERTY id="subentity0::material" type="7" value="ToxicWater"></PROPERTY>
