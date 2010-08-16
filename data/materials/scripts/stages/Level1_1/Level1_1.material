@@ -2973,3 +2973,55 @@ material Sea
 
 	}
 }
+
+material Clouds0
+{
+	technique Toon
+	{
+		pass 
+		{
+      lighting off
+			scene_blend alpha_blend
+			depth_check on
+			depth_write off
+			
+			texture_unit ToonShades
+			{
+				texture Clouds.png
+				//alpha_op_ex source1 src_manual src_texture 0.9
+				scroll_anim 0.005 0.0
+				tex_address_mode wrap
+				filtering none
+			}
+
+		}
+
+	}
+
+}
+
+material Clouds1
+{
+	technique Toon
+	{
+		pass 
+		{
+      lighting off
+			scene_blend alpha_blend
+			depth_check on
+			depth_write off
+			
+			texture_unit ToonShades
+			{
+				texture Clouds.png
+				//alpha_op_ex source1 src_manual src_texture 0.9
+				scroll_anim 0.01 0.0
+				tex_address_mode wrap
+				filtering none
+			}
+
+		}
+
+	}
+
+}
