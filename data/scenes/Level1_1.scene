@@ -497,22 +497,16 @@
       </node>
       <node name="TownHouse01_5" id="231086144">
         <rotation qw="1" qx="0" qy="0" qz="0" />
-        <position x="-47.3671" y="676.607" z="-1854.44" />
-        <scale x="4" y="4" z="4" />
-        <node name="TownHouse_5" id="190710176">
+        <position x="-47.3671" y="598.719" z="-1854.44" />
+        <scale x="1" y="1" z="1" />
+        <entity name="Entity#78" id="446791008" castshadows="true" meshFile="TownHouse0.mesh">
           <rotation qw="1" qx="0" qy="0" qz="0" />
           <position x="0" y="0" z="0" />
-          <scale x="5" y="5" z="5" />
-          <entity name="Entity#78" id="446791008" castshadows="true" meshFile="TownHouse0.mesh">
-            <rotation qw="1" qx="0" qy="0" qz="0" />
-            <position x="0" y="0" z="0" />
-            <scale x="1" y="1" z="1" />
-            <subentities>
-              <subentity materialName="TownHouse00_Roof" index="0" visible="true" />
-              <subentity materialName="TownHouse00_Building" index="1" visible="true" />
-            </subentities>
-          </entity>
-        </node>
+          <scale x="1" y="1" z="1" />
+          <subentities>
+            <subentity materialName="TownHouse0" index="0" visible="true" />
+          </subentities>
+        </entity>
       </node>
       <node name="BigRock14" id="157994336">
         <rotation qw="0.971768" qx="-0.12738" qy="-0.175583" qz="-0.0928025" />
@@ -943,23 +937,18 @@
       <node name="TownHouse02_4" id="748313856">
         <rotation qw="1" qx="0" qy="0" qz="0" />
         <position x="124.611" y="717.254" z="-2162.53" />
-        <scale x="12" y="12" z="12" />
-        <node name="Tower_1" id="333872512">
+        <scale x="1" y="1" z="1" />
+        <entity name="Entity#55" id="902127168" castshadows="true" meshFile="Tower0.mesh">
           <rotation qw="1" qx="0" qy="0" qz="0" />
           <position x="0" y="0" z="0" />
           <scale x="1.37201" y="2.77926" z="1.37201" />
-          <entity name="Entity#55" id="902127168" castshadows="true" meshFile="Tower0.mesh">
-            <rotation qw="1" qx="0" qy="0" qz="0" />
-            <position x="0" y="0" z="0" />
-            <scale x="1" y="1" z="1" />
-            <subentities>
-              <subentity materialName="Scene_Material" index="0" visible="true" />
-              <subentity materialName="Material1" index="1" visible="true" />
-              <subentity materialName="Material" index="2" visible="true" />
-              <subentity materialName="Material2" index="3" visible="true" />
-            </subentities>
-          </entity>
-        </node>
+          <subentities>
+            <subentity materialName="Scene_Material" index="0" visible="false" />
+            <subentity materialName="Material1" index="1" visible="false" />
+            <subentity materialName="Material" index="2" visible="false" />
+            <subentity materialName="Material2" index="3" visible="false" />
+          </subentities>
+        </entity>
       </node>
       <node name="PineTree2d0_11Copy#4" id="462202816">
         <rotation qw="0.783909" qx="0.170312" qy="0.596098" qz="0.0338771" />
@@ -1020,22 +1009,16 @@
       </node>
       <node name="TownHouse01_0" id="533127840">
         <rotation qw="1" qx="0" qy="0" qz="0" />
-        <position x="-242.757" y="676.607" z="-1854.44" />
-        <scale x="4" y="4" z="4" />
-        <node name="TownHouse_3" id="10071109">
+        <position x="-242.757" y="598.719" z="-1854.44" />
+        <scale x="1" y="1" z="1" />
+        <entity name="Entity#66" id="974242368" castshadows="true" meshFile="TownHouse0.mesh">
           <rotation qw="1" qx="0" qy="0" qz="0" />
           <position x="0" y="0" z="0" />
-          <scale x="5" y="5" z="5" />
-          <entity name="Entity#66" id="974242368" castshadows="true" meshFile="TownHouse0.mesh">
-            <rotation qw="1" qx="0" qy="0" qz="0" />
-            <position x="0" y="0" z="0" />
-            <scale x="1" y="1" z="1" />
-            <subentities>
-              <subentity materialName="TownHouse00_Roof" index="0" visible="true" />
-              <subentity materialName="TownHouse00_Building" index="1" visible="true" />
-            </subentities>
-          </entity>
-        </node>
+          <scale x="1" y="1" z="1" />
+          <subentities>
+            <subentity materialName="TownHouse0" index="0" visible="true" />
+          </subentities>
+        </entity>
       </node>
       <node name="BigRock13" id="786462016">
         <rotation qw="0.791477" qx="-0.321665" qy="0.478941" qz="-0.201771" />
@@ -1214,22 +1197,16 @@
       </node>
       <node name="TownHouse01_6" id="279732640">
         <rotation qw="0.707107" qx="0" qy="0.707107" qz="0" />
-        <position x="402.621" y="676.607" z="-2476.54" />
-        <scale x="4" y="4" z="4" />
-        <node name="TownHouse_9" id="515549184">
+        <position x="402.621" y="598.719" z="-2476.54" />
+        <scale x="1" y="1" z="1" />
+        <entity name="Entity#84" id="490554496" castshadows="true" meshFile="TownHouse0.mesh">
           <rotation qw="1" qx="0" qy="0" qz="0" />
-          <position x="0" y="0" z="4.63291E-15" />
-          <scale x="5" y="5" z="5" />
-          <entity name="Entity#84" id="490554496" castshadows="true" meshFile="TownHouse0.mesh">
-            <rotation qw="1" qx="0" qy="0" qz="0" />
-            <position x="0" y="0" z="0" />
-            <scale x="1" y="1" z="1" />
-            <subentities>
-              <subentity materialName="TownHouse00_Roof" index="0" visible="true" />
-              <subentity materialName="TownHouse00_Building" index="1" visible="true" />
-            </subentities>
-          </entity>
-        </node>
+          <position x="0" y="0" z="0" />
+          <scale x="1" y="1" z="1" />
+          <subentities>
+            <subentity materialName="TownHouse0" index="0" visible="true" />
+          </subentities>
+        </entity>
       </node>
       <node name="BigRock23" id="525620288">
         <rotation qw="0.565148" qx="0.242459" qy="-0.727252" qz="-0.304837" />
@@ -1909,23 +1886,18 @@
       <node name="TownHouse02_3" id="597216704">
         <rotation qw="1" qx="0" qy="0" qz="0" />
         <position x="-181.011" y="717.254" z="-2310.96" />
-        <scale x="12" y="12" z="12" />
-        <node name="Tower_2" id="263618880">
+        <scale x="1" y="1" z="1" />
+        <entity name="Entity#60" id="844233536" castshadows="true" meshFile="Tower0.mesh">
           <rotation qw="1" qx="0" qy="0" qz="0" />
           <position x="0" y="0" z="0" />
           <scale x="1.37201" y="2.77926" z="1.37201" />
-          <entity name="Entity#60" id="844233536" castshadows="true" meshFile="Tower0.mesh">
-            <rotation qw="1" qx="0" qy="0" qz="0" />
-            <position x="0" y="0" z="0" />
-            <scale x="1" y="1" z="1" />
-            <subentities>
-              <subentity materialName="Scene_Material" index="0" visible="true" />
-              <subentity materialName="Material1" index="1" visible="true" />
-              <subentity materialName="Material" index="2" visible="true" />
-              <subentity materialName="Material2" index="3" visible="true" />
-            </subentities>
-          </entity>
-        </node>
+          <subentities>
+            <subentity materialName="Scene_Material" index="0" visible="false" />
+            <subentity materialName="Material1" index="1" visible="false" />
+            <subentity materialName="Material" index="2" visible="false" />
+            <subentity materialName="Material2" index="3" visible="false" />
+          </subentities>
+        </entity>
       </node>
       <node name="Trunk0" id="982970624">
         <rotation qw="0.894858" qx="0.0130891" qy="0.44616" qz="0.00011423" />
@@ -2033,22 +2005,16 @@
       </node>
       <node name="TownHouse01_1" id="889675648">
         <rotation qw="1" qx="0" qy="0" qz="0" />
-        <position x="45.8675" y="676.607" z="-2397.79" />
-        <scale x="4" y="4" z="4" />
-        <node name="TownHouse" id="32166512">
+        <position x="45.8675" y="598.719" z="-2397.79" />
+        <scale x="1" y="1" z="1" />
+        <entity name="Entity#34" id="773491648" castshadows="true" meshFile="TownHouse0.mesh">
           <rotation qw="1" qx="0" qy="0" qz="0" />
           <position x="0" y="0" z="0" />
-          <scale x="5" y="5" z="5" />
-          <entity name="Entity#34" id="773491648" castshadows="true" meshFile="TownHouse0.mesh">
-            <rotation qw="1" qx="0" qy="0" qz="0" />
-            <position x="0" y="0" z="0" />
-            <scale x="1" y="1" z="1" />
-            <subentities>
-              <subentity materialName="TownHouse00_Roof" index="0" visible="true" />
-              <subentity materialName="TownHouse00_Building" index="1" visible="true" />
-            </subentities>
-          </entity>
-        </node>
+          <scale x="1" y="1" z="1" />
+          <subentities>
+            <subentity materialName="TownHouse0" index="0" visible="true" />
+          </subentities>
+        </entity>
       </node>
       <node name="BigRock10" id="982055104">
         <rotation qw="0.732872" qx="-0.0592455" qy="-0.661862" qz="-0.146041" />
@@ -2305,22 +2271,16 @@
       </node>
       <node name="TownHouse01_7" id="301400800">
         <rotation qw="2.83275E-16" qx="0" qy="1" qz="0" />
-        <position x="864.45" y="676.607" z="-906.485" />
-        <scale x="4" y="4" z="4" />
-        <node name="TownHouse_4" id="727134016">
+        <position x="864.45" y="598.719" z="-906.485" />
+        <scale x="1" y="1" z="1" />
+        <entity name="Entity#77" id="866603584" castshadows="true" meshFile="TownHouse0.mesh">
           <rotation qw="1" qx="0" qy="0" qz="0" />
-          <position x="-1.37163E-14" y="0" z="0" />
-          <scale x="5" y="5" z="5" />
-          <entity name="Entity#77" id="866603584" castshadows="true" meshFile="TownHouse0.mesh">
-            <rotation qw="1" qx="0" qy="0" qz="0" />
-            <position x="0" y="0" z="0" />
-            <scale x="1" y="1" z="1" />
-            <subentities>
-              <subentity materialName="TownHouse00_Roof" index="0" visible="true" />
-              <subentity materialName="TownHouse00_Building" index="1" visible="true" />
-            </subentities>
-          </entity>
-        </node>
+          <position x="0" y="0" z="0" />
+          <scale x="1" y="1" z="1" />
+          <subentities>
+            <subentity materialName="TownHouse0" index="0" visible="true" />
+          </subentities>
+        </entity>
       </node>
       <node name="BigRock22" id="948149056">
         <rotation qw="0.387779" qx="0.00745561" qy="-0.908179" qz="-0.157424" />
@@ -3032,23 +2992,18 @@
       <node name="TownHouse02_2" id="951322944">
         <rotation qw="1" qx="0" qy="0" qz="0" />
         <position x="-124.203" y="717.254" z="-1593.75" />
-        <scale x="12" y="12" z="12" />
-        <node name="Tower_4" id="548356608">
+        <scale x="1" y="1" z="1" />
+        <entity name="Entity#87" id="834925376" castshadows="true" meshFile="Tower0.mesh">
           <rotation qw="1" qx="0" qy="0" qz="0" />
           <position x="0" y="0" z="0" />
           <scale x="1.37201" y="2.77926" z="1.37201" />
-          <entity name="Entity#87" id="834925376" castshadows="true" meshFile="Tower0.mesh">
-            <rotation qw="1" qx="0" qy="0" qz="0" />
-            <position x="0" y="0" z="0" />
-            <scale x="1" y="1" z="1" />
-            <subentities>
-              <subentity materialName="Scene_Material" index="0" visible="true" />
-              <subentity materialName="Material1" index="1" visible="true" />
-              <subentity materialName="Material" index="2" visible="true" />
-              <subentity materialName="Material2" index="3" visible="true" />
-            </subentities>
-          </entity>
-        </node>
+          <subentities>
+            <subentity materialName="Scene_Material" index="0" visible="false" />
+            <subentity materialName="Material1" index="1" visible="false" />
+            <subentity materialName="Material" index="2" visible="false" />
+            <subentity materialName="Material2" index="3" visible="false" />
+          </subentities>
+        </entity>
       </node>
       <node name="AppleTree0Copy#1" id="924802368">
         <rotation qw="0.887011" qx="0" qy="0.461749" qz="0" />
@@ -3148,22 +3103,16 @@
       </node>
       <node name="TownHouse01_2" id="794427328">
         <rotation qw="1" qx="0" qy="0" qz="0" />
-        <position x="331.57" y="676.607" z="-2174.38" />
-        <scale x="4" y="4" z="4" />
-        <node name="TownHouse_11" id="801660160">
+        <position x="331.57" y="598.719" z="-2174.38" />
+        <scale x="1" y="1" z="1" />
+        <entity name="Entity#88" id="592852608" castshadows="true" meshFile="TownHouse0.mesh">
           <rotation qw="1" qx="0" qy="0" qz="0" />
           <position x="0" y="0" z="0" />
-          <scale x="5" y="5" z="5" />
-          <entity name="Entity#88" id="592852608" castshadows="true" meshFile="TownHouse0.mesh">
-            <rotation qw="1" qx="0" qy="0" qz="0" />
-            <position x="0" y="0" z="0" />
-            <scale x="1" y="1" z="1" />
-            <subentities>
-              <subentity materialName="TownHouse00_Roof" index="0" visible="true" />
-              <subentity materialName="TownHouse00_Building" index="1" visible="true" />
-            </subentities>
-          </entity>
-        </node>
+          <scale x="1" y="1" z="1" />
+          <subentities>
+            <subentity materialName="TownHouse0" index="0" visible="true" />
+          </subentities>
+        </entity>
       </node>
       <node name="BigRock11" id="68269912">
         <rotation qw="0.387779" qx="0.00745561" qy="-0.908179" qz="-0.157424" />
@@ -3342,22 +3291,16 @@
       </node>
       <node name="TownHouse01_8" id="231482896">
         <rotation qw="0.707107" qx="0" qy="0.707107" qz="0" />
-        <position x="702.178" y="676.607" z="-1385.95" />
-        <scale x="4" y="4" z="4" />
-        <node name="TownHouse_8" id="494888160">
+        <position x="702.178" y="598.719" z="-1385.95" />
+        <scale x="1" y="1" z="1" />
+        <entity name="Entity#82" id="959807104" castshadows="true" meshFile="TownHouse0.mesh">
           <rotation qw="1" qx="0" qy="0" qz="0" />
-          <position x="0" y="0" z="8.3292E-15" />
-          <scale x="5" y="5" z="5" />
-          <entity name="Entity#82" id="959807104" castshadows="true" meshFile="TownHouse0.mesh">
-            <rotation qw="1" qx="0" qy="0" qz="0" />
-            <position x="0" y="0" z="0" />
-            <scale x="1" y="1" z="1" />
-            <subentities>
-              <subentity materialName="TownHouse00_Roof" index="0" visible="true" />
-              <subentity materialName="TownHouse00_Building" index="1" visible="true" />
-            </subentities>
-          </entity>
-        </node>
+          <position x="0" y="0" z="0" />
+          <scale x="1" y="1" z="1" />
+          <subentities>
+            <subentity materialName="TownHouse0" index="0" visible="true" />
+          </subentities>
+        </entity>
       </node>
       <node name="BigRock21" id="341563168">
         <rotation qw="0.253583" qx="0.00195124" qy="-0.967305" qz="0.00355048" />
@@ -3899,23 +3842,18 @@
       <node name="TownHouse02_1" id="893948224">
         <rotation qw="1" qx="0" qy="0" qz="0" />
         <position x="861.557" y="717.254" z="-1161.25" />
-        <scale x="12" y="12" z="12" />
-        <node name="Tower" id="445570240">
+        <scale x="1" y="1" z="1" />
+        <entity name="Entity#47" id="222113712" castshadows="true" meshFile="Tower0.mesh">
           <rotation qw="1" qx="0" qy="0" qz="0" />
           <position x="0" y="0" z="0" />
           <scale x="1.37201" y="2.77926" z="1.37201" />
-          <entity name="Entity#47" id="222113712" castshadows="true" meshFile="Tower0.mesh">
-            <rotation qw="1" qx="0" qy="0" qz="0" />
-            <position x="0" y="0" z="0" />
-            <scale x="1" y="1" z="1" />
-            <subentities>
-              <subentity materialName="Scene_Material" index="0" visible="true" />
-              <subentity materialName="Material1" index="1" visible="true" />
-              <subentity materialName="Material" index="2" visible="true" />
-              <subentity materialName="Material2" index="3" visible="true" />
-            </subentities>
-          </entity>
-        </node>
+          <subentities>
+            <subentity materialName="Scene_Material" index="0" visible="false" />
+            <subentity materialName="Material1" index="1" visible="false" />
+            <subentity materialName="Material" index="2" visible="false" />
+            <subentity materialName="Material2" index="3" visible="false" />
+          </subentities>
+        </entity>
       </node>
       <node name="UfoTree_1" id="870082688">
         <rotation qw="0.612542" qx="0" qy="-0.790438" qz="0" />
@@ -3982,22 +3920,16 @@
       </node>
       <node name="TownHouse01_3" id="501693792">
         <rotation qw="1" qx="0" qy="0" qz="0" />
-        <position x="834.846" y="676.607" z="-2571.34" />
-        <scale x="4" y="4" z="4" />
-        <node name="TownHouse_1" id="242866288">
+        <position x="834.846" y="598.719" z="-2571.34" />
+        <scale x="1" y="1" z="1" />
+        <entity name="Entity#37" id="754478592" castshadows="true" meshFile="TownHouse0.mesh">
           <rotation qw="1" qx="0" qy="0" qz="0" />
           <position x="0" y="0" z="0" />
-          <scale x="5" y="5" z="5" />
-          <entity name="Entity#37" id="754478592" castshadows="true" meshFile="TownHouse0.mesh">
-            <rotation qw="1" qx="0" qy="0" qz="0" />
-            <position x="0" y="0" z="0" />
-            <scale x="1" y="1" z="1" />
-            <subentities>
-              <subentity materialName="TownHouse00_Roof" index="0" visible="true" />
-              <subentity materialName="TownHouse00_Building" index="1" visible="true" />
-            </subentities>
-          </entity>
-        </node>
+          <scale x="1" y="1" z="1" />
+          <subentities>
+            <subentity materialName="TownHouse0" index="0" visible="true" />
+          </subentities>
+        </entity>
       </node>
       <node name="WoodenWall" id="367503872">
         <rotation qw="1" qx="0" qy="0" qz="0" />
@@ -4487,22 +4419,16 @@
       </node>
       <node name="TownHouse01_11" id="890347008">
         <rotation qw="0.707107" qx="0" qy="0.707107" qz="0" />
-        <position x="603.891" y="676.607" z="-932.514" />
-        <scale x="4" y="4" z="4" />
-        <node name="TownHouse_6" id="574327808">
+        <position x="603.891" y="598.719" z="-932.514" />
+        <scale x="1" y="1" z="1" />
+        <entity name="Entity#79" id="28778956" castshadows="true" meshFile="TownHouse0.mesh">
           <rotation qw="1" qx="0" qy="0" qz="0" />
-          <position x="0" y="0" z="5.07847E-15" />
-          <scale x="5" y="5" z="5" />
-          <entity name="Entity#79" id="28778956" castshadows="true" meshFile="TownHouse0.mesh">
-            <rotation qw="1" qx="0" qy="0" qz="0" />
-            <position x="0" y="0" z="0" />
-            <scale x="1" y="1" z="1" />
-            <subentities>
-              <subentity materialName="TownHouse00_Roof" index="0" visible="true" />
-              <subentity materialName="TownHouse00_Building" index="1" visible="true" />
-            </subentities>
-          </entity>
-        </node>
+          <position x="0" y="0" z="0" />
+          <scale x="1" y="1" z="1" />
+          <subentities>
+            <subentity materialName="TownHouse0" index="0" visible="true" />
+          </subentities>
+        </entity>
       </node>
       <node name="AppleTree0" id="802880960">
         <rotation qw="0.819152" qx="0" qy="0.573577" qz="0" />
@@ -4616,22 +4542,16 @@
       </node>
       <node name="TownHouse01_9" id="256935328">
         <rotation qw="0.707107" qx="0" qy="0.707107" qz="0" />
-        <position x="34.2203" y="676.607" z="-2708.12" />
-        <scale x="4" y="4" z="4" />
-        <node name="TownHouse_7" id="169835504">
+        <position x="34.2203" y="598.719" z="-2708.12" />
+        <scale x="1" y="1" z="1" />
+        <entity name="Entity#81" id="116122928" castshadows="true" meshFile="TownHouse0.mesh">
           <rotation qw="1" qx="0" qy="0" qz="0" />
-          <position x="0" y="0" z="-1.41449E-14" />
-          <scale x="5" y="5" z="5" />
-          <entity name="Entity#81" id="116122928" castshadows="true" meshFile="TownHouse0.mesh">
-            <rotation qw="1" qx="0" qy="0" qz="0" />
-            <position x="0" y="0" z="0" />
-            <scale x="1" y="1" z="1" />
-            <subentities>
-              <subentity materialName="TownHouse00_Roof" index="0" visible="true" />
-              <subentity materialName="TownHouse00_Building" index="1" visible="true" />
-            </subentities>
-          </entity>
-        </node>
+          <position x="0" y="0" z="0" />
+          <scale x="1" y="1" z="1" />
+          <subentities>
+            <subentity materialName="TownHouse0" index="0" visible="true" />
+          </subentities>
+        </entity>
       </node>
       <node name="BigRock20" id="484298240">
         <rotation qw="0.843109" qx="0.0038436" qy="-0.537727" qz="0.00128062" />
@@ -5417,24 +5337,19 @@
       </node>
       <node name="TownHouse02_0" id="964110272">
         <rotation qw="1" qx="0" qy="0" qz="0" />
-        <position x="633.535" y="717.254" z="-2464.69" />
-        <scale x="12" y="12" z="12" />
-        <node name="Tower_3" id="608813760">
+        <position x="633.535" y="598.719" z="-2464.69" />
+        <scale x="1" y="1" z="1" />
+        <entity name="Entity#71" id="583971648" castshadows="true" meshFile="Tower0.mesh">
           <rotation qw="1" qx="0" qy="0" qz="0" />
           <position x="0" y="0" z="0" />
           <scale x="1.37201" y="2.77926" z="1.37201" />
-          <entity name="Entity#71" id="583971648" castshadows="true" meshFile="Tower0.mesh">
-            <rotation qw="1" qx="0" qy="0" qz="0" />
-            <position x="0" y="0" z="0" />
-            <scale x="1" y="1" z="1" />
-            <subentities>
-              <subentity materialName="Scene_Material" index="0" visible="true" />
-              <subentity materialName="Material1" index="1" visible="true" />
-              <subentity materialName="Material" index="2" visible="true" />
-              <subentity materialName="Material2" index="3" visible="true" />
-            </subentities>
-          </entity>
-        </node>
+          <subentities>
+            <subentity materialName="Scene_Material" index="0" visible="false" />
+            <subentity materialName="Material1" index="1" visible="false" />
+            <subentity materialName="Material" index="2" visible="false" />
+            <subentity materialName="Material2" index="3" visible="false" />
+          </subentities>
+        </entity>
       </node>
       <node name="UfoTree_0" id="516525760">
         <rotation qw="0.871971" qx="0" qy="-0.489558" qz="0" />
@@ -5483,22 +5398,16 @@
       </node>
       <node name="TownHouse01_4" id="292153696">
         <rotation qw="1" qx="0" qy="0" qz="0" />
-        <position x="971.026" y="676.607" z="-1404.16" />
-        <scale x="4" y="4" z="4" />
-        <node name="TownHouse_10" id="475753024">
+        <position x="971.026" y="598.719" z="-1404.16" />
+        <scale x="1" y="1" z="1" />
+        <entity name="Entity#86" id="401654080" castshadows="true" meshFile="TownHouse0.mesh">
           <rotation qw="1" qx="0" qy="0" qz="0" />
           <position x="0" y="0" z="0" />
-          <scale x="5" y="5" z="5" />
-          <entity name="Entity#86" id="401654080" castshadows="true" meshFile="TownHouse0.mesh">
-            <rotation qw="1" qx="0" qy="0" qz="0" />
-            <position x="0" y="0" z="0" />
-            <scale x="1" y="1" z="1" />
-            <subentities>
-              <subentity materialName="TownHouse00_Roof" index="0" visible="true" />
-              <subentity materialName="TownHouse00_Building" index="1" visible="true" />
-            </subentities>
-          </entity>
-        </node>
+          <scale x="1" y="1" z="1" />
+          <subentities>
+            <subentity materialName="TownHouse0" index="0" visible="true" />
+          </subentities>
+        </entity>
       </node>
       <node name="BigRock17" id="568681920">
         <rotation qw="0.387779" qx="0.00745561" qy="-0.908179" qz="-0.157424" />
@@ -5593,22 +5502,16 @@
       </node>
       <node name="TownHouse01_10" id="818384320">
         <rotation qw="0.707107" qx="0" qy="0.707107" qz="0" />
-        <position x="608.431" y="676.607" z="-1158.84" />
-        <scale x="4" y="4" z="4" />
-        <node name="TownHouse_2" id="739463488">
+        <position x="608.431" y="598.719" z="-1158.84" />
+        <scale x="1" y="1" z="1" />
+        <entity name="Entity#53" id="135776848" castshadows="true" meshFile="TownHouse0.mesh">
           <rotation qw="1" qx="0" qy="0" qz="0" />
-          <position x="0" y="0" z="-7.48509E-15" />
-          <scale x="5" y="5" z="5" />
-          <entity name="Entity#53" id="135776848" castshadows="true" meshFile="TownHouse0.mesh">
-            <rotation qw="1" qx="0" qy="0" qz="0" />
-            <position x="0" y="0" z="0" />
-            <scale x="1" y="1" z="1" />
-            <subentities>
-              <subentity materialName="TownHouse00_Roof" index="0" visible="true" />
-              <subentity materialName="TownHouse00_Building" index="1" visible="true" />
-            </subentities>
-          </entity>
-        </node>
+          <position x="0" y="0" z="0" />
+          <scale x="1" y="1" z="1" />
+          <subentities>
+            <subentity materialName="TownHouse0" index="0" visible="true" />
+          </subentities>
+        </entity>
       </node>
       <node name="MileRock" id="935331264">
         <rotation qw="0.5" qx="-0.5" qy="-0.5" qz="-0.5" />
