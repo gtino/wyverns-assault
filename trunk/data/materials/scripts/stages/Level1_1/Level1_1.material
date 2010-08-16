@@ -200,7 +200,7 @@ material RedwoodLeaf
 
 }
 
-material TownHouse00_Roof
+material TownHouse0
 {
 	technique Toon
 	{
@@ -213,8 +213,8 @@ material TownHouse00_Roof
 
 			fragment_program_ref ToonFP
 			{
-				param_named ambient float4 0.646 0.3 0 1
-				param_named diffuse float4 0.885 0.372 0.142 1
+				param_named ambient float4 0 0 0 1
+				param_named diffuse float4 0.5 0.5 0.5 1.0
 				param_named specular float4 0.0 0.0 0.0 1.0
 				param_named emissive float4 0.0 0.0 0.0 1.0
 			}
@@ -226,38 +226,12 @@ material TownHouse00_Roof
 				filtering none
 			}
 
-		}
-
-	}
-
-}
-
-material TownHouse00_Building
-{
-	technique Toon
-	{
-		pass 
-		{
-			vertex_program_ref ToonVP
+      texture_unit
 			{
-				param_named shininess float4 0 1.0 1.0 1.0
-			}
-
-			fragment_program_ref ToonFP
-			{
-				param_named ambient float4 0.628 0.54 0.248 1
-				param_named diffuse float4 0.832 0.699 0.186 1
-				param_named specular float4 0.0 0.0 0.0 1.0
-				param_named emissive float4 0.0 0.0 0.0 1.0
-			}
-
-			texture_unit ToonShades
-			{
-				texture toon.png 2d
+				texture TownHouse0.png
 				tex_address_mode clamp
 				filtering none
 			}
-
 		}
 
 	}
