@@ -238,6 +238,302 @@ material TownHouse0
 
 }
 
+material TownHouse1
+{
+	technique Toon
+	{
+		pass 
+		{
+			vertex_program_ref ToonVP
+			{
+				param_named shininess float4 0 1.0 1.0 1.0
+			}
+
+			fragment_program_ref ToonFP
+			{
+				param_named ambient float4 0 0 0 1
+				param_named diffuse float4 0.5 0.5 0.5 1.0
+				param_named specular float4 0.0 0.0 0.0 1.0
+				param_named emissive float4 0.0 0.0 0.0 1.0
+			}
+
+			texture_unit ToonShades
+			{
+				texture toon.png 2d
+				tex_address_mode clamp
+				filtering none
+			}
+
+      texture_unit
+			{
+				texture TownHouse1.png
+				tex_address_mode clamp
+				filtering none
+			}
+		}
+
+	}
+}
+
+material TownHouse1_White
+{
+	technique Toon
+	{
+		pass 
+		{
+			vertex_program_ref ToonVP
+			{
+				param_named shininess float4 0 1.0 1.0 1.0
+			}
+
+			fragment_program_ref ToonFP
+			{
+				param_named ambient float4 0 0 0 1
+				param_named diffuse float4 0.5 0.5 0.5 1.0
+				param_named specular float4 0.0 0.0 0.0 1.0
+				param_named emissive float4 0.0 0.0 0.0 1.0
+			}
+
+			texture_unit ToonShades
+			{
+				texture toon.png 2d
+				tex_address_mode clamp
+				filtering none
+			}
+
+      texture_unit
+			{
+				texture TownHouse1_White.png
+				tex_address_mode clamp
+				filtering none
+			}
+		}
+
+	}
+}
+
+material TownHouse1_Yellow
+{
+	technique Toon
+	{
+		pass 
+		{
+			vertex_program_ref ToonVP
+			{
+				param_named shininess float4 0 1.0 1.0 1.0
+			}
+
+			fragment_program_ref ToonFP
+			{
+				param_named ambient float4 0 0 0 1
+				param_named diffuse float4 0.5 0.5 0.5 1.0
+				param_named specular float4 0.0 0.0 0.0 1.0
+				param_named emissive float4 0.0 0.0 0.0 1.0
+			}
+
+			texture_unit ToonShades
+			{
+				texture toon.png 2d
+				tex_address_mode clamp
+				filtering none
+			}
+
+      texture_unit
+			{
+				texture TownHouse1_Yellow.png
+				tex_address_mode clamp
+				filtering none
+			}
+		}
+
+	}
+}
+
+material TownHouse1_Red
+{
+	technique Toon
+	{
+		pass 
+		{
+			vertex_program_ref ToonVP
+			{
+				param_named shininess float4 0 1.0 1.0 1.0
+			}
+
+			fragment_program_ref ToonFP
+			{
+				param_named ambient float4 0 0 0 1
+				param_named diffuse float4 0.5 0.5 0.5 1.0
+				param_named specular float4 0.0 0.0 0.0 1.0
+				param_named emissive float4 0.0 0.0 0.0 1.0
+			}
+
+			texture_unit ToonShades
+			{
+				texture toon.png 2d
+				tex_address_mode clamp
+				filtering none
+			}
+
+      texture_unit
+			{
+				texture TownHouse1_Red.png
+				tex_address_mode clamp
+				filtering none
+			}
+		}
+
+	}
+}
+
+material TownHouse1_Brown
+{
+	technique Toon
+	{
+		pass 
+		{
+			vertex_program_ref ToonVP
+			{
+				param_named shininess float4 0 1.0 1.0 1.0
+			}
+
+			fragment_program_ref ToonFP
+			{
+				param_named ambient float4 0 0 0 1
+				param_named diffuse float4 0.5 0.5 0.5 1.0
+				param_named specular float4 0.0 0.0 0.0 1.0
+				param_named emissive float4 0.0 0.0 0.0 1.0
+			}
+
+			texture_unit ToonShades
+			{
+				texture toon.png 2d
+				tex_address_mode clamp
+				filtering none
+			}
+
+      texture_unit
+			{
+				texture TownHouse1_Brown.png
+				tex_address_mode clamp
+				filtering none
+			}
+		}
+
+	}
+}
+
+material TownHouse1_Cyan
+{
+	technique Toon
+	{
+		pass 
+		{
+			vertex_program_ref ToonVP
+			{
+				param_named shininess float4 0 1.0 1.0 1.0
+			}
+
+			fragment_program_ref ToonFP
+			{
+				param_named ambient float4 0 0 0 1
+				param_named diffuse float4 0.5 0.5 0.5 1.0
+				param_named specular float4 0.0 0.0 0.0 1.0
+				param_named emissive float4 0.0 0.0 0.0 1.0
+			}
+
+			texture_unit ToonShades
+			{
+				texture toon.png 2d
+				tex_address_mode clamp
+				filtering none
+			}
+
+      texture_unit
+			{
+				texture TownHouse1_Cyan.png
+				tex_address_mode clamp
+				filtering none
+			}
+		}
+
+	}
+}
+
+material TownHouse1_Green
+{
+	technique Toon
+	{
+		pass 
+		{
+			vertex_program_ref ToonVP
+			{
+				param_named shininess float4 0 1.0 1.0 1.0
+			}
+
+			fragment_program_ref ToonFP
+			{
+				param_named ambient float4 0 0 0 1
+				param_named diffuse float4 0.5 0.5 0.5 1.0
+				param_named specular float4 0.0 0.0 0.0 1.0
+				param_named emissive float4 0.0 0.0 0.0 1.0
+			}
+
+			texture_unit ToonShades
+			{
+				texture toon.png 2d
+				tex_address_mode clamp
+				filtering none
+			}
+
+      texture_unit
+			{
+				texture TownHouse1_Green.png
+				tex_address_mode clamp
+				filtering none
+			}
+		}
+
+	}
+}
+
+material TownHouse1_Gray
+{
+	technique Toon
+	{
+		pass 
+		{
+			vertex_program_ref ToonVP
+			{
+				param_named shininess float4 0 1.0 1.0 1.0
+			}
+
+			fragment_program_ref ToonFP
+			{
+				param_named ambient float4 0 0 0 1
+				param_named diffuse float4 0.5 0.5 0.5 1.0
+				param_named specular float4 0.0 0.0 0.0 1.0
+				param_named emissive float4 0.0 0.0 0.0 1.0
+			}
+
+			texture_unit ToonShades
+			{
+				texture toon.png 2d
+				tex_address_mode clamp
+				filtering none
+			}
+
+      texture_unit
+			{
+				texture TownHouse1_Gray.png
+				tex_address_mode clamp
+				filtering none
+			}
+		}
+
+	}
+}
+
 material TowerUpperWood
 {
 	technique Toon
