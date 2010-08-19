@@ -16,6 +16,7 @@ PhysicsManager& PhysicsManager::getSingleton(void)
 
 PhysicsManager::PhysicsManager(SceneManager* sceneManager)
 : mPhysicsNode(0)
+, mCurrentGameArea(-1)
 {
 	mSceneManager = sceneManager;
 }
@@ -40,7 +41,7 @@ void PhysicsManager::initialize()
 void PhysicsManager::finalize()
 {
 	mPlayerMap.clear();
-	mEnemyMap.clear();
+	mEnemyMapList.clear();
 
 	Utils::Destroy(mSceneManager, PHYSICS_NODE_NAME);
 	mPhysicsNode = NULL;
@@ -68,9 +69,9 @@ void PhysicsManager::update(const float elapsedSeconds)
 	}
 
 	// Update enemies
-	for(EnemyMapIterator it_enemy = mEnemyMap.begin(); it_enemy != mEnemyMap.end(); ++it_enemy)
+	for(int i = 0; i < mEnemyMapList[mCurrentGameArea].size(); i++)
 	{
-		EnemyPtr enemy = it_enemy->second;
+		EnemyPtr enemy =  mEnemyMapList[mCurrentGameArea][i];
 		Vector3 position = enemy->getPosition();
 
 		// Update enemy ray
@@ -97,9 +98,9 @@ void PhysicsManager::checkForCollisions()
 		AxisAlignedBox player_box = player->getGeometry()->getWorldBoundingBox();
 
 		// Player - Enemy COLLISION
-		for(EnemyMapIterator it_enemy = mEnemyMap.begin(); it_enemy != mEnemyMap.end(); ++it_enemy)
+		for(int i = 0; i < mEnemyMapList[mCurrentGameArea].size(); i++)
 		{
-			EnemyPtr enemy = it_enemy->second;
+			EnemyPtr enemy =  mEnemyMapList[mCurrentGameArea][i];
 			AxisAlignedBox enemy_box = enemy->getGeometry()->getWorldBoundingBox();
 
 			// Check if player is using special (fire) and collisioning with enemy
@@ -163,16 +164,16 @@ void PhysicsManager::checkForCollisions()
 	}
 
 	// Enemy Collisions
-	for(EnemyMapIterator it_enemy = mEnemyMap.begin(); it_enemy != mEnemyMap.end(); ++it_enemy)
+	for(int i = 0; i < mEnemyMapList[mCurrentGameArea].size(); i++)
 	{
-		EnemyPtr enemy = it_enemy->second;
+		EnemyPtr enemy =  mEnemyMapList[mCurrentGameArea][i];
 		AxisAlignedBox enemy_box = enemy->getGeometry()->getWorldBoundingBox();
 
 		// Enemy - Enemy COLLISION
-		for(EnemyMapIterator it_enemy_second = mEnemyMap.begin(); it_enemy_second != mEnemyMap.end(); ++it_enemy_second)
+		for(int i = 0; i < mEnemyMapList[mCurrentGameArea].size(); i++)
 		{
-			EnemyPtr enemy_second = it_enemy_second->second;
-			AxisAlignedBox enemy_second_box = enemy_second->getGeometry()->getWorldBoundingBox();
+			EnemyPtr enemy =  mEnemyMapList[mCurrentGameArea][i];
+			AxisAlignedBox enemy_second_box = enemy->getGeometry()->getWorldBoundingBox();
 
 			// Check if player is using special (fire) and collisioning with enemy
 			if (enemy_box.intersects(enemy_second_box))
@@ -247,9 +248,9 @@ void PhysicsManager::addPhysicPlayer(PlayerPtr player)
 }
 
 // Load enemy physics
-void PhysicsManager::addPhysicEnemy(EnemyPtr enemy)
+void PhysicsManager::addPhysicEnemy(EnemyPtr enemy, int gameArea)
 {
-	mEnemyMap[enemy->getName()] = enemy;
+	mEnemyMapList[gameArea].push_back(enemy);
 }
 
 // Load item physics
@@ -378,10 +379,20 @@ bool PhysicsManager::raycast(const Vector3 &point, const Vector3 &normal,
 
 }
 
-void PhysicsManager::removeEnemy(EnemyPtr enemy)
-{
-	mEnemyMap.erase(enemy->getName());
+
+bool PhysicsManager::removeEnemy(EnemyPtr enemy)
+{	
+	EnemyListIterator it = find(mEnemyMapList[mCurrentGameArea].begin(), mEnemyMapList[mCurrentGameArea].end(), enemy);
+	
+	if( it != mEnemyMapList[mCurrentGameArea].end() )
+	{
+		mEnemyMapList[mCurrentGameArea].erase(it);
+		return true;
+	}
+
+	return false;
 }
+
 
 void PhysicsManager::removeItem(ItemPtr item)
 {
@@ -400,12 +411,14 @@ EVENTS_BEGIN_REGISTER_HANDLERS(PhysicsManager)
 	EVENTS_REGISTER_HANDLER(PhysicsManager, EnemyKilled)
 	EVENTS_REGISTER_HANDLER(PhysicsManager, ItemCatch);
 	EVENTS_REGISTER_HANDLER(PhysicsManager, ObjectKilled);
+	EVENTS_REGISTER_HANDLER(PhysicsManager, GameAreaChanged);
 EVENTS_END_REGISTER_HANDLERS()
 
 EVENTS_BEGIN_UNREGISTER_HANDLERS(PhysicsManager)
 	EVENTS_UNREGISTER_HANDLER(PhysicsManager, EnemyKilled)
 	EVENTS_UNREGISTER_HANDLER(PhysicsManager, ItemCatch);
 	EVENTS_UNREGISTER_HANDLER(PhysicsManager, ObjectKilled);
+	EVENTS_UNREGISTER_HANDLER(PhysicsManager, GameAreaChanged);
 EVENTS_END_UNREGISTER_HANDLERS()
 
 EVENTS_DEFINE_HANDLER(PhysicsManager, EnemyKilled)
@@ -431,6 +444,11 @@ EVENTS_DEFINE_HANDLER(PhysicsManager, ObjectKilled)
 
 	// The player has just cacth the item
    	removeObject(object);
+}
+
+EVENTS_DEFINE_HANDLER(PhysicsManager, GameAreaChanged)
+{
+	mCurrentGameArea = evt->getActualArea();
 }
 
 // --------------------------------

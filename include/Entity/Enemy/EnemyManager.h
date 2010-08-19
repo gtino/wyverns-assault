@@ -39,11 +39,11 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
 namespace WyvernsAssault
 {
-	typedef std::map<Ogre::String,EnemyPtr> EnemyMap;
-	typedef std::map<Ogre::String,EnemyPtr>::iterator EnemyMapIterator;
-
 	typedef std::vector<EnemyPtr> EnemyList;
 	typedef std::vector<EnemyPtr>::iterator EnemyListIterator;
+
+	typedef std::map<int, EnemyList> EnemyMapList;
+	typedef std::map<int, EnemyList>::iterator EnemyMapListIterator;
 
 	/**
 	Class used to manage all the enemies
@@ -66,17 +66,20 @@ namespace WyvernsAssault
 		SceneManager* getSceneManager(){return this->mSceneManager;}
 
 		EnemyPtr createEnemy(Enemy::EnemyTypes type);	// For random enemies creation. Still not used
-		EnemyPtr createEnemy(Enemy::EnemyTypes type, Ogre::String name, Ogre::Entity* mesh, Ogre::SceneNode* sceneNode, Enemy::EnemyParameters params);
+		EnemyPtr createEnemy(Enemy::EnemyTypes type, Ogre::String name, Ogre::Entity* mesh, Ogre::SceneNode* sceneNode, Enemy::EnemyParameters params, int gameArea);
 
+		// Enemy count on current game area
 		int getCount();
+		// Enemy count on a game area
+		int getCount(int gameArea);
 
 		EnemyPtr getEnemy(int index);
+		EnemyPtr getEnemy(int index, int gameArea);
 		EnemyPtr getEnemy(Ogre::String name);
+		EnemyPtr getEnemy(Ogre::String name, int gameArea);
 
 		bool removeEnemy(Ogre::String name);
 
-		/* TODO : Enemy IA
-		*/
 		void update(const float elpasedSeconds);
 
 		// Enable Debug Stuff
@@ -89,13 +92,14 @@ namespace WyvernsAssault
 		Ogre::String createUniqueId();
 
 	private:
-		int mCount;
 		int mId;
 
 		bool mIsDebugEnabled;
 
-		EnemyList mEnemyList;
-		EnemyMap mEnemyMap;
+		// Where enemies are stored and sorted by game area
+		EnemyMapList	mEnemyMapList;
+
+		int mCurrentGameArea;
 
 		Ogre::SceneManager* mSceneManager;
 		Ogre::SceneNode* mEnemyNode;
@@ -111,6 +115,7 @@ namespace WyvernsAssault
 		EVENTS_HANDLER(EnemyKilled)
 		EVENTS_HANDLER(EnemyRemove)
 		EVENTS_HANDLER(EnemyCustom)
+		EVENTS_HANDLER(GameAreaChanged)
 
 		// --------------------------------
 		// BEGIN Lua Interface Declarations

@@ -192,7 +192,6 @@ void CameraManager::startCameras()
 	mLookAtTransition->addTime(1);
 
 	/** Other variables initialization */
-	mGameArea = -1;
 	mFixedCamera = 0;
 	mMoving = false;
 }
@@ -232,29 +231,6 @@ String CameraManager::getCameraModeString()
 		default:
 			return "NoMode";
 	}
-}
-
-int CameraManager::getGameArea(Vector3 position)
-{
-	// Look for player's current game area
-	for(int areaId = 0; areaId < mGameAreas.size(); areaId++)
-	{
-		// Define a polygon (in correct order) for the game area
-		Ogre::Polygon area;
-		area.insertVertex( mGameAreas[areaId].mBeginNear);
-		area.insertVertex( mGameAreas[areaId].mEndNear);
-		area.insertVertex( mGameAreas[areaId].mEndFar);
-		area.insertVertex( mGameAreas[areaId].mBeginFar);
-
-		// Check if player position (without height) is inside this game area
-		if(area.isPointInside(position * Vector3(1,0,1)))
-		{	
-			return areaId;
-		}
-	}
-
-	// No game area - Control ERROR
-	return 0;
 }
 
 /** Camera moving direction */
@@ -300,23 +276,15 @@ Vector3 CameraManager::getDirection(Vector3 direction)
 
 /** Camera functions **/
 
-void CameraManager::updateCamera(Vector3 player, Real elapsedSeconds)
+void CameraManager::updateCamera(Vector3 player, int gameArea, Real elapsedSeconds)
 {
 	// Update camera camera
 	if( mGameCameraMode == CameraModes::Game )
 	{
-		// Game Area changed, raise event
-		if( mGameArea != getGameArea(player) )
-		{
-			GameAreaChangedEventPtr evt = GameAreaChangedEventPtr(new GameAreaChangedEvent(mGameArea, getGameArea(player)));
-			EVENTS_FIRE(evt);
-		}
-		mGameArea = getGameArea(player);
-
-		Vector3 begin = mCameraSegments[mGameArea].mPositionBegin;
-		Vector3 end = mCameraSegments[mGameArea].mPositionEnd;
-		Vector3 lbegin = mCameraSegments[mGameArea].mLookAtBegin;
-		Vector3 lend = mCameraSegments[mGameArea].mLookAtEnd;
+		Vector3 begin = mCameraSegments[gameArea].mPositionBegin;
+		Vector3 end = mCameraSegments[gameArea].mPositionEnd;
+		Vector3 lbegin = mCameraSegments[gameArea].mLookAtBegin;
+		Vector3 lend = mCameraSegments[gameArea].mLookAtEnd;
 
 		Vector3 position;
 		Vector3 lookAt;
@@ -470,17 +438,6 @@ void CameraManager::createTransition(Vector3 begin, Vector3 end, Vector3 lbegin,
     mAxesTransition->setEnabled(true);
 	mAxesTransition->setWeight(1);
 	mAxesTransition->setLoop(false);
-}
-
-/** Add game area to vector */
-void CameraManager::addGameArea(Vector3 beginNear, Vector3 endNear, Vector3 beginFar, Vector3 endFar)
-{
-	GameArea area;
-	area.mBeginNear = beginNear;
-	area.mEndNear = endNear;
-	area.mBeginFar = beginFar;
-	area.mEndFar = endFar;
-	mGameAreas.push_back(area);
 }
 
 /** Add camera segment to vector */

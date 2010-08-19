@@ -26,7 +26,7 @@
 		</camera> 
 	</cameras>
 	
-	<gameAreas>	
+<!--	<gameAreas>	
 		<gameArea id="0">
 			<beginNear x="-200" y="0" z="1000"/>
 			<endNear x="327" y="0" z="1000"/>
@@ -100,7 +100,7 @@
 			<endFar x="-55" y="0" z="190"/>
 		</gameArea>		
 	</gameAreas>
-	
+-->	
 	<cameraSegments>	
 		<cameraSegment id="0">
 			<positionBegin x="-20" y="180" z="1140"/>

@@ -160,17 +160,23 @@ void PlayState::initialize()
 	mLogicManager->initialize();
 
 	//
-	// Create ScenarioManager
+	// Scenario Manager
 	//
 	mScenarioManager = ScenarioManagerPtr(new ScenarioManager(mSceneManager));
 	mScenarioManager->initialize();
 
 	//
-	// Cut scene manager
+	// Cut Scene manager
 	//
 	mCutSceneManager = CutSceneManagerPtr(new CutSceneManager(mSceneManager));
 	mCutSceneManager->initialize();
 	//mCutSceneManager->play(CutSceneManager::CutSceneId::Intro);
+
+	//
+	// Game Area manager
+	//
+	mGameAreaManager = GameAreaManagerPtr(new GameAreaManager());
+	mGameAreaManager->initialize();
 
 	//
 	// Events Manager 
@@ -191,6 +197,7 @@ void PlayState::initialize()
 	mEventsManager->registerInterface(mPostProcessManager);
 	mEventsManager->registerInterface(mCutSceneManager);
 	mEventsManager->registerInterface(mScenarioManager);
+	mEventsManager->registerInterface(mGameAreaManager);
 
 	// -----------
 	// Lua Manager
@@ -227,14 +234,16 @@ void PlayState::initialize()
 	// Load scene!
 	//
 	boost::scoped_ptr<DotSceneLoader> dotSceneLoader ( new DotSceneLoader );
+	// Game areas
+	dotSceneLoader->parseDotScene("Level1_1_gameAreas.scene","General", mSceneManager, mScenarioManager, mCameraManager, mLightsManager, mEnemyManager, mPhysicsManager, mItemManager, mParticleManager, mGameAreaManager, mCameraManager->_getSceneNode());
 	// Scenario, enemies and items
-	dotSceneLoader->parseDotScene("Level1_1.scene","General", mSceneManager, mScenarioManager, mCameraManager, mLightsManager, mEnemyManager, mPhysicsManager, mItemManager, mParticleManager, mScenarioManager->_getSceneNode());
-	// Fixed cameras, game areas + camera segments
-	dotSceneLoader->parseDotScene("Level1_1_cameras.scene","General", mSceneManager, mScenarioManager, mCameraManager, mLightsManager, mEnemyManager, mPhysicsManager, mItemManager, mParticleManager, mCameraManager->_getSceneNode());
+	dotSceneLoader->parseDotScene("Level1_1.scene","General", mSceneManager, mScenarioManager, mCameraManager, mLightsManager, mEnemyManager, mPhysicsManager, mItemManager, mParticleManager, mGameAreaManager, mScenarioManager->_getSceneNode());
+	// Fixed cameras and camera segments
+	dotSceneLoader->parseDotScene("Level1_1_cameras.scene","General", mSceneManager, mScenarioManager, mCameraManager, mLightsManager, mEnemyManager, mPhysicsManager, mItemManager, mParticleManager, mGameAreaManager, mCameraManager->_getSceneNode());	
 	// Lights
-	dotSceneLoader->parseDotScene("Level1_1_lights.scene","General", mSceneManager, mScenarioManager, mCameraManager, mLightsManager, mEnemyManager, mPhysicsManager, mItemManager, mParticleManager, mLightsManager->_getSceneNode());
+	dotSceneLoader->parseDotScene("Level1_1_lights.scene","General", mSceneManager, mScenarioManager, mCameraManager, mLightsManager, mEnemyManager, mPhysicsManager, mItemManager, mParticleManager, mGameAreaManager, mLightsManager->_getSceneNode());
 	// Scenario physcis
-	dotSceneLoader->parseDotScene("Level1_1_physics.scene","General", mSceneManager, mScenarioManager, mCameraManager, mLightsManager, mEnemyManager, mPhysicsManager, mItemManager, mParticleManager, mPhysicsManager->_getSceneNode());
+	dotSceneLoader->parseDotScene("Level1_1_physics.scene","General", mSceneManager, mScenarioManager, mCameraManager, mLightsManager, mEnemyManager, mPhysicsManager, mItemManager, mParticleManager, mGameAreaManager, mPhysicsManager->_getSceneNode());
 
 	Debug::Out(mSceneManager->getRootSceneNode());
 
@@ -495,10 +504,17 @@ void PlayState::update(const float elapsedSeconds)
 	TIMER_STOP(Item);
 
 	//
+	// Game Area Manager
+	//
+	TIMER_START(GameArea);
+	mGameAreaManager->update(player1->getPosition(), elapsedSeconds);
+	TIMER_STOP(GameArea);
+
+	//
 	// Update camera
 	//
 	TIMER_START(Camera);
-	mCameraManager->updateCamera(player1->getPosition(), elapsedSeconds);
+	mCameraManager->updateCamera(player1->getPosition(), mGameAreaManager->getGameArea(), elapsedSeconds);
 	TIMER_STOP(Camera);
 
 	//
@@ -532,9 +548,9 @@ void PlayState::update(const float elapsedSeconds)
 	TIMER_STOP(Events);
 
 	//
-	// HACK : just to let the player win!
+	// HACK : just to let the player win!  ------> NEED TO BE CHANGED
 	//
-	if(mEnemyManager->getCount() == 0 && mCameraManager->getGameArea(player1->getPosition()) == 11)
+	if(mEnemyManager->getCount() == 0 && mGameAreaManager->getGameArea() == 11)
 		this->mNextGameStateId = GameStateId::Ending;
 
 	TIMER_STOP(Update);
@@ -615,6 +631,8 @@ void PlayState::finalize()
 	mPostProcessManager.reset();
 
 	mCutSceneManager.reset();
+
+	mGameAreaManager.reset();
 
 	//mGraphicsManager->clearScene();
 
