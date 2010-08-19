@@ -14,6 +14,7 @@
 #include "..\Entity\Enemy\EnemyManager.h"
 #include "..\Entity\Item\ItemManager.h"
 #include "..\Particle\ParticleManager.h"
+#include "..\GameArea\GameAreaManager.h"
 
  
 // Forward declarations
@@ -52,7 +53,8 @@ namespace Ogre
 			WyvernsAssault::EnemyManagerPtr enemysManager,
 			WyvernsAssault::PhysicsManagerPtr physicsManager, 
 			WyvernsAssault::ItemManagerPtr itemsManager, 
-			WyvernsAssault::ParticleManagerPtr particleManager, 
+			WyvernsAssault::ParticleManagerPtr particleManager,
+			WyvernsAssault::GameAreaManagerPtr gameAreaManager,
 			SceneNode *pAttachNode = NULL, 
 			const String &sPrependNode = "");
 
@@ -119,6 +121,7 @@ namespace Ogre
 		WyvernsAssault::PhysicsManagerPtr mPhysicsManager;
 		WyvernsAssault::ItemManagerPtr mItemManager;
 		WyvernsAssault::ParticleManagerPtr mParticleManager;
+		WyvernsAssault::GameAreaManagerPtr mGameAreaManager;
 	};
 }
 

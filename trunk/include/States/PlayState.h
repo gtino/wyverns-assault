@@ -40,8 +40,9 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #include "..\Events\EventsManager.h"
 #include "..\Scenario\ScenarioManager.h"
 #include "..\CutScene\CutSceneManager.h"
-#include "..\include\Graphics\PostProcessManager.h"
-#include "..\include\Scenario\DotSceneLoader.h"
+#include "..\Graphics\PostProcessManager.h"
+#include "..\Scenario\DotSceneLoader.h"
+#include "..\GameArea\GameAreaManager.h"
 
 #include <boost/scoped_ptr.hpp>
 
@@ -104,6 +105,7 @@ namespace WyvernsAssault
 		ScenarioManagerPtr mScenarioManager;
 		PostProcessManagerPtr mPostProcessManager;
 		CutSceneManagerPtr mCutSceneManager;
+		GameAreaManagerPtr mGameAreaManager;
 
 		SceneNode* mRootSceneNode;
 
@@ -138,6 +140,7 @@ namespace WyvernsAssault
 		TIMER(Scenario);
 		TIMER(PostProcess);
 		TIMER(Events);
+		TIMER(GameArea);
 
 	protected:
 		float			buttonTimer;

@@ -84,12 +84,12 @@ namespace WyvernsAssault
 		// Add phyisic entities to manager
 		void addPhysicScenario(String mesh, String name, GroundQueryFlags type, Vector3 position, Vector3 scale);
 		void addPhysicPlayer(PlayerPtr player);
-		void addPhysicEnemy(EnemyPtr enemy);
+		void addPhysicEnemy(EnemyPtr enemy, int gameArea);
 		void addPhysicItem(ItemPtr item);
 		void addPhysicObject(ObjectPtr obj);
 
 		// Remove physic entities from manager
-		void removeEnemy(EnemyPtr enemy);
+		bool removeEnemy(EnemyPtr enemy);
 		void removeItem(ItemPtr item);
 		void removeObject(ObjectPtr obj);
 
@@ -107,16 +107,6 @@ namespace WyvernsAssault
 		// Debug visibility function
 		void setDebugEnabled(bool visible){ mPhysicsNode->setVisible(visible); }
 
-
-		// ----------------
-		// Events interface
-		// ----------------
-		EVENTS_INTERFACE()
-
-		EVENTS_HANDLER(EnemyKilled)
-		EVENTS_HANDLER(ItemCatch)		
-		EVENTS_HANDLER(ObjectKilled)
-
 	private:
 
 		SceneManager* getSceneManager(){ return this->mSceneManager; }
@@ -127,38 +117,48 @@ namespace WyvernsAssault
 
 		bool raycast(const Vector3 &point, const Vector3 &normal, Vector3 &result, float &closest_distance, PhysicsMeshInfo objInfo);		
 
-	protected:
+	private:
 
 		SceneManager*	mSceneManager;
 		SceneNode*		mPhysicsNode;
 		RaySceneQuery*	mRaySceneQuery;
-
-		// Entities maps
-		PlayerMap		mPlayerMap;
-		EnemyMap		mEnemyMap;
-		ItemMap			mItemMap;
-		ObjectMap		mObjectMap;
-
+		
 		// Ground geometry
 		GeometryPtr		mGroundGeometry;
 		// Wall geometry
 		GeometryPtr		mWallGeometry;
 
-	private:
-		int		mLastAttackChecked;
+		// Entities maps
+		PlayerMap		mPlayerMap;
+		EnemyMapList	mEnemyMapList;
+		ItemMap			mItemMap;
+		ObjectMap		mObjectMap;
+
+		int				mCurrentGameArea;	
+
+		int				mLastAttackChecked;
+		bool			mEnabled;
 
 	public:
 		void enable() {mEnabled = true;}
 		void disable(){mEnabled = false;}
-		bool isEnabled(){return mEnabled;}
+		bool isEnabled(){return mEnabled;}		
 
-	private: // Game data
-		bool mEnabled;
-
-	// --------------------------------
-	// BEGIN Lua Interface Declarations
-	// --------------------------------
 	public:
+		// ----------------
+		// Events interface
+		// ----------------
+		EVENTS_INTERFACE()
+
+		EVENTS_HANDLER(EnemyKilled)
+		EVENTS_HANDLER(ItemCatch)		
+		EVENTS_HANDLER(ObjectKilled)
+		EVENTS_HANDLER(GameAreaChanged)
+
+	public:
+		// --------------------------------
+		// BEGIN Lua Interface Declarations
+		// --------------------------------
 		LUA_INTERFACE();
 
 		// Physics Lib (exported to Lua)
@@ -170,9 +170,9 @@ namespace WyvernsAssault
 		LUA_FUNCTION(getHOT);
 		LUA_FUNCTION(getDistance);
 		LUA_FUNCTION(getNearestPlayer);
-	// ------------------------------
-	// END Lua Interface Declarations
-	// ------------------------------
+		// ------------------------------
+		// END Lua Interface Declarations
+		// ------------------------------
 	};
 
 	typedef boost::shared_ptr<PhysicsManager> PhysicsManagerPtr;

@@ -19,7 +19,8 @@ void DotSceneLoader::parseDotScene(const String &SceneName,
 								   WyvernsAssault::EnemyManagerPtr enemysManager, 
 								   WyvernsAssault::PhysicsManagerPtr physicsManager, 
 								   WyvernsAssault::ItemManagerPtr itemsManager, 
-								   WyvernsAssault::ParticleManagerPtr particleManager, 
+								   WyvernsAssault::ParticleManagerPtr particleManager,
+								   WyvernsAssault::GameAreaManagerPtr gameAreaManager,
 								   SceneNode *pAttachNode, 
 								   const String &sPrependNode)
 {
@@ -47,6 +48,9 @@ void DotSceneLoader::parseDotScene(const String &SceneName,
 
 	//Set ParticleManager
 	mParticleManager = particleManager;
+
+	//Set GameAreaManager
+	mGameAreaManager = gameAreaManager;
 
 	//Set up shared object values
 	m_sGroupName = groupName;
@@ -709,10 +713,12 @@ void DotSceneLoader::processEntity(TiXmlElement *XMLNode, SceneNode *pParent)
 			params.dieAnimation = getAttrib(XMLNode, "dieAnimation");
 			params.physicMesh = getAttrib(XMLNode, "physicMesh");
 
+			int gameArea = mGameAreaManager->positionGameArea(pParent->getPosition());
+
 			// Add to EnemyManager
-			EnemyPtr enemy = mEnemyManager->createEnemy(Enemy::StringToType(subType), name, pEntity, pParent, params);
+			EnemyPtr enemy = mEnemyManager->createEnemy(Enemy::StringToType(subType), name, pEntity, pParent, params, gameArea);
 			// Add the enemy to the physics manager
-			mPhysicsManager->addPhysicEnemy(enemy);
+			mPhysicsManager->addPhysicEnemy(enemy, gameArea);
 		}
 		else if( type == "Item" )
 		{
@@ -876,7 +882,7 @@ void DotSceneLoader::processGameArea(TiXmlElement *XMLNode, SceneNode *pParent)
 		endFar = parseVector3(pElement);
 	}
 
-	mCameraManager->addGameArea(beginNear, endNear, beginFar, endFar);
+	mGameAreaManager->addGameArea(beginNear, endNear, beginFar, endFar);
 }
 
 void DotSceneLoader::processCameraSegment(TiXmlElement *XMLNode, SceneNode *pParent)

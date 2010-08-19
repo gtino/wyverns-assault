@@ -83,7 +83,6 @@ namespace WyvernsAssault
 		Vector3 getCameraLookAt();
 		CameraModes getCameraMode() { return mGameCameraMode ; }
 		String getCameraModeString();
-		int getGameArea(Vector3 position);
 
 		Camera* getGameCamera(){return mGameCamera;}
 
@@ -93,13 +92,12 @@ namespace WyvernsAssault
 		Vector3 getDirection(Vector3 direction);
 		
 		/** Update camera position in game mode */
-		void updateCamera(Vector3 player, Real elapsedSeconds);
+		void updateCamera(Vector3 player, int gameArea, Real elapsedSeconds);
 		
 		/** Create transition animation */
 		void createTransition(Vector3 begin, Vector3 end, Vector3 lbegin, Vector3 lend, float duration);
 
 		/** Add game area  and camera segment */
-		void addGameArea(Vector3 beginNear, Vector3 endNear, Vector3 beginFar, Vector3 endFar);
 		void addCameraSegment(Vector3 pbegin, Vector3 pend, Vector3 lbegin, Vector3 lend);
 
 		/** Fixed cameras functions */
@@ -162,7 +160,6 @@ namespace WyvernsAssault
 		SceneNode*				mGameCameraLookAtNode;
 
 		CameraModes				mGameCameraMode;
-		int						mGameArea;
 
 		Entity*					mAxes;
 		SceneNode*				mAxesNode;
@@ -191,15 +188,6 @@ namespace WyvernsAssault
 		int								mFixedCamera;
 
 	private:
-		struct GameArea
-		{
-			Ogre::Vector3	mBeginNear;
-			Ogre::Vector3	mEndNear;
-			Ogre::Vector3	mBeginFar;
-			Ogre::Vector3	mEndFar;
-		};
-
-		std::vector<GameArea> mGameAreas;
 
 		struct CameraSegment
 		{

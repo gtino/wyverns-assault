@@ -16,9 +16,9 @@ EnemyManager& EnemyManager::getSingleton(void)
 
 EnemyManager::EnemyManager(Ogre::SceneManager* sceneManager) 
 : mEnemyNode(0)
-, mCount(0)
 , mId(0)
 , mIsDebugEnabled(false)
+, mCurrentGameArea(-1)
 {
 	mSceneManager = sceneManager;
 }
@@ -35,13 +35,13 @@ void EnemyManager::initialize()
 
 void EnemyManager::finalize()
 {
-	mEnemyList.clear();
-	mEnemyMap.clear();
+	mEnemyMapList.clear();
 
 	Utils::Destroy(mSceneManager,ENEMY_NODE_NAME);
 	mEnemyNode = NULL;
 }
 
+// Random enemies
 EnemyPtr EnemyManager::createEnemy(Enemy::EnemyTypes type)
 {
 	Ogre::String mesh;
@@ -82,10 +82,11 @@ EnemyPtr EnemyManager::createEnemy(Enemy::EnemyTypes type)
 
 	// Get standar parameters for enemy type
 
-	return createEnemy(type, name, enemyMesh, sceneNode, params);
+	return createEnemy(type, name, enemyMesh, sceneNode, params, mCurrentGameArea);
 }
 
-EnemyPtr EnemyManager::createEnemy(Enemy::EnemyTypes type, Ogre::String name, Ogre::Entity* mesh, Ogre::SceneNode* sceneNode, Enemy::EnemyParameters params)
+// Fixed enemies from xml
+EnemyPtr EnemyManager::createEnemy(Enemy::EnemyTypes type, Ogre::String name, Ogre::Entity* mesh, Ogre::SceneNode* sceneNode, Enemy::EnemyParameters params, int gameArea)
 {
 	// Enemy name == Mesh Name!
 	Ogre::Entity* enemyMesh = mesh;
@@ -114,10 +115,8 @@ EnemyPtr EnemyManager::createEnemy(Enemy::EnemyTypes type, Ogre::String name, Og
 		}
 	}
 
-	mEnemyList.push_back(enemy);
-	mEnemyMap[name] = enemy;
-
-	mCount++;
+	// Store enemy in its game area
+	mEnemyMapList[gameArea].push_back(enemy);
 
 	return enemy;
 }
@@ -136,50 +135,84 @@ Ogre::String EnemyManager::createUniqueId()
 
 int EnemyManager::getCount()
 {
-	return mEnemyList.size();
+	return mEnemyMapList[mCurrentGameArea].size();
 }
+
+int EnemyManager::getCount(int gameArea)
+{
+	return mEnemyMapList[gameArea].size();
+}
+
 
 EnemyPtr EnemyManager::getEnemy(int index)
 {
-	return mEnemyList[index];
+	return mEnemyMapList[mCurrentGameArea][index];
 }
 
+EnemyPtr EnemyManager::getEnemy(int index, int gameArea)
+{
+	return mEnemyMapList[gameArea][index];
+}
 
 EnemyPtr EnemyManager::getEnemy(Ogre::String name)
 {
-	return mEnemyMap[name];
+	// Search enemy in current game area enemies list
+	for( int i = 0; i < mEnemyMapList[mCurrentGameArea].size(); i++ )
+	{
+		EnemyPtr enemy = mEnemyMapList[mCurrentGameArea][i];
+
+		if( enemy->getName() == name )
+			return mEnemyMapList[mCurrentGameArea][i];
+	}
+
+	// Search in others game areas lists
+	for( EnemyMapListIterator it = mEnemyMapList.begin(); it != mEnemyMapList.end(); ++it )
+	{
+		EnemyList list = it->second;
+
+		for( int i = 0; i < list.size(); i++ )
+		{
+			EnemyPtr enemy = list[i];
+
+			if( enemy->getName() == name )
+				return list[i];
+		}
+	}
+}
+
+EnemyPtr EnemyManager::getEnemy(Ogre::String name, int gameArea)
+{
+	for( int i = 0; i < mEnemyMapList[gameArea].size(); i++ )
+	{
+		EnemyPtr enemy = mEnemyMapList[gameArea][i];
+
+		if( enemy->getName() == name )
+			return mEnemyMapList[gameArea][i];
+	}
 }
 
 bool EnemyManager::removeEnemy(Ogre::String name)
 {
-	//
-	// TODO : maybe we don't really need a list, and we can just use a map...
-	//
-	EnemyPtr enemyToErase = mEnemyMap[name];
-
-	mEnemyMap.erase(name);
+	EnemyPtr enemyToErase = getEnemy(name);
 	
-	EnemyListIterator it = find(mEnemyList.begin(), mEnemyList.end(), enemyToErase);
+	EnemyListIterator it = find(mEnemyMapList[mCurrentGameArea].begin(), mEnemyMapList[mCurrentGameArea].end(), enemyToErase);
 	
-	if( it != mEnemyList.end() )
+	if( it != mEnemyMapList[mCurrentGameArea].end() )
 	{
-		mEnemyList.erase(it);
+		mEnemyMapList[mCurrentGameArea].erase(it);
+		return true;
 	}
 
-	return true;
+	return false;
 }
 
-/* 
-* TODO
-*/
 void EnemyManager::update(const float elapsedSeconds)
 {
-	for(int i = 0; i < mEnemyList.size() ; i++)
+	for(int i = 0; i < mEnemyMapList[mCurrentGameArea].size() ; i++)
 	{
-		EnemyPtr enemy =  mEnemyList[i];
+		EnemyPtr enemy =  mEnemyMapList[mCurrentGameArea][i];
 
-		enemy->updateLogic(L,elapsedSeconds);
-		//enemy->updatePhysics(elapsedSeconds);
+		enemy->updateLogic(L,elapsedSeconds);		
 		enemy->updateEntity(elapsedSeconds); // this updates animations too!
 		
 		if( enemy->attackStart() )
@@ -198,9 +231,9 @@ void EnemyManager::setDebugEnabled(bool isDebugEnabled)
 	{
 		mIsDebugEnabled = isDebugEnabled;
 
-		for(int i = 0; i < mEnemyList.size() ; i++)
+		for(int i = 0; i < mEnemyMapList[mCurrentGameArea].size() ; i++)
 		{
-			EnemyPtr enemy =  mEnemyList[i];
+			EnemyPtr enemy =  mEnemyMapList[mCurrentGameArea][i];
 			enemy->setDebugEnabled(mIsDebugEnabled);
 		}
 	}
@@ -215,6 +248,7 @@ EVENTS_BEGIN_REGISTER_HANDLERS(EnemyManager)
 	EVENTS_REGISTER_HANDLER(EnemyManager, EnemyKilled)
 	EVENTS_REGISTER_HANDLER(EnemyManager, EnemyRemove)
 	EVENTS_REGISTER_HANDLER(EnemyManager, EnemyCustom);
+	EVENTS_REGISTER_HANDLER(EnemyManager, GameAreaChanged);
 EVENTS_END_REGISTER_HANDLERS()
 
 EVENTS_BEGIN_UNREGISTER_HANDLERS(EnemyManager)
@@ -223,6 +257,7 @@ EVENTS_BEGIN_UNREGISTER_HANDLERS(EnemyManager)
 	EVENTS_UNREGISTER_HANDLER(EnemyManager, EnemyKilled)
 	EVENTS_UNREGISTER_HANDLER(EnemyManager, EnemyRemove)
 	EVENTS_UNREGISTER_HANDLER(EnemyManager, EnemyCustom);
+	EVENTS_UNREGISTER_HANDLER(EnemyManager, GameAreaChanged);
 EVENTS_END_UNREGISTER_HANDLERS()
 
 EVENTS_DEFINE_HANDLER(EnemyManager, Collision)
@@ -301,6 +336,11 @@ EVENTS_DEFINE_HANDLER(EnemyManager, EnemyCustom)
 
 	EnemyRemoveEventPtr eRemove = EnemyRemoveEventPtr(new EnemyRemoveEvent(enemy));
 	EVENTS_FIRE_AFTER(eRemove, 4.0f);
+}
+
+EVENTS_DEFINE_HANDLER(EnemyManager, GameAreaChanged)
+{
+	mCurrentGameArea = evt->getActualArea();
 }
 
 // --------------------------------
