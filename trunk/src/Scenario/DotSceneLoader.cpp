@@ -687,13 +687,15 @@ void DotSceneLoader::processEntity(TiXmlElement *XMLNode, SceneNode *pParent)
 		pEntity->setCastShadows(castShadows);
 		pEntity->setQueryFlags(SceneManager::ENTITY_TYPE_MASK);
 
+		int gameArea = mGameAreaManager->positionGameArea(pParent->getPosition());
+
 		//
 		// Use the Object Manager to create an instance for the new Object
 		//
 		if( type == "DynamicObject" )
 		{
-			ObjectPtr object = mScenarioManager->createObject(ObjectTypes::DynamicObject, name, pEntity, pParent);
-			mPhysicsManager->addPhysicObject(object);
+			ObjectPtr object = mScenarioManager->createObject(ObjectTypes::DynamicObject, name, pEntity, pParent, gameArea);
+			mPhysicsManager->addPhysicObject(object, gameArea);
 		}
 		else if( type == "Enemy" )
 		{
@@ -711,9 +713,7 @@ void DotSceneLoader::processEntity(TiXmlElement *XMLNode, SceneNode *pParent)
 			params.height = getAttribReal(XMLNode, "height");
 			params.dieMesh = getAttrib(XMLNode, "dieMesh");
 			params.dieAnimation = getAttrib(XMLNode, "dieAnimation");
-			params.physicMesh = getAttrib(XMLNode, "physicMesh");
-
-			int gameArea = mGameAreaManager->positionGameArea(pParent->getPosition());
+			params.physicMesh = getAttrib(XMLNode, "physicMesh");			
 
 			// Add to EnemyManager
 			EnemyPtr enemy = mEnemyManager->createEnemy(Enemy::StringToType(subType), name, pEntity, pParent, params, gameArea);
@@ -732,13 +732,13 @@ void DotSceneLoader::processEntity(TiXmlElement *XMLNode, SceneNode *pParent)
 			params.drunkTime = getAttribReal(XMLNode, "drunkTime");
 
 			// Add to ItemManager
-			ItemPtr item = mItemManager->createItem(Item::StringToType(subType), name, pEntity, pParent, params);
+			ItemPtr item = mItemManager->createItem(Item::StringToType(subType), name, pEntity, pParent, params, gameArea);
 			// Add the item to the physics manager
-			mPhysicsManager->addPhysicItem(item);
+			mPhysicsManager->addPhysicItem(item, gameArea);
 		}
 		else
 		{
-			ObjectPtr object = mScenarioManager->createObject(ObjectTypes::Default, name, pEntity, pParent);
+			ObjectPtr object = mScenarioManager->createObject(ObjectTypes::Default, name, pEntity, pParent, gameArea);
 		}
 
 		if(!materialFile.empty())

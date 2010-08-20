@@ -85,13 +85,13 @@ namespace WyvernsAssault
 		void addPhysicScenario(String mesh, String name, GroundQueryFlags type, Vector3 position, Vector3 scale);
 		void addPhysicPlayer(PlayerPtr player);
 		void addPhysicEnemy(EnemyPtr enemy, int gameArea);
-		void addPhysicItem(ItemPtr item);
-		void addPhysicObject(ObjectPtr obj);
+		void addPhysicItem(ItemPtr item, int gameArea);
+		void addPhysicObject(ObjectPtr obj, int gameArea);
 
 		// Remove physic entities from manager
 		bool removeEnemy(EnemyPtr enemy);
-		void removeItem(ItemPtr item);
-		void removeObject(ObjectPtr obj);
+		bool removeItem(ItemPtr item);
+		bool removeObject(ObjectPtr obj);
 
 		void update(const float elapsedSeconds);
 
@@ -131,8 +131,8 @@ namespace WyvernsAssault
 		// Entities maps
 		PlayerMap		mPlayerMap;
 		EnemyMapList	mEnemyMapList;
-		ItemMap			mItemMap;
-		ObjectMap		mObjectMap;
+		ItemMapList		mItemMapList;
+		ObjectMapList	mObjectMapList;
 
 		int				mCurrentGameArea;	
 

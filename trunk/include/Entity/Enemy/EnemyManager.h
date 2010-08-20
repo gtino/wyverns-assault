@@ -27,14 +27,16 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
 #include <Ogre.h>
 #include <OgreSingleton.h>
+
 #include <boost/enable_shared_from_this.hpp>
 
-#include <vector>
+#include "..\..\Debug\Debug.h"
 
 #include "..\..\Utils\Utils.h"
 #include "..\..\Lua\LuaInterface.h"
 #include "..\..\Entity\EntityManager.h"
 #include "..\..\Events\EventsInterface.h"
+
 #include "Enemy.h"
 
 namespace WyvernsAssault
@@ -68,9 +70,7 @@ namespace WyvernsAssault
 		EnemyPtr createEnemy(Enemy::EnemyTypes type);	// For random enemies creation. Still not used
 		EnemyPtr createEnemy(Enemy::EnemyTypes type, Ogre::String name, Ogre::Entity* mesh, Ogre::SceneNode* sceneNode, Enemy::EnemyParameters params, int gameArea);
 
-		// Enemy count on current game area
 		int getCount();
-		// Enemy count on a game area
 		int getCount(int gameArea);
 
 		EnemyPtr getEnemy(int index);
@@ -92,17 +92,15 @@ namespace WyvernsAssault
 		Ogre::String createUniqueId();
 
 	private:
-		int mId;
-
-		bool mIsDebugEnabled;
+		Ogre::SceneManager*		mSceneManager;
+		Ogre::SceneNode*		mEnemyNode;
 
 		// Where enemies are stored and sorted by game area
-		EnemyMapList	mEnemyMapList;
+		EnemyMapList			mEnemyMapList;
+		int						mCurrentGameArea;
 
-		int mCurrentGameArea;
-
-		Ogre::SceneManager* mSceneManager;
-		Ogre::SceneNode* mEnemyNode;
+		int						mId;
+		bool					mIsDebugEnabled;
 
 	public:
 		// ----------------

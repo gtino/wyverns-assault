@@ -33,8 +33,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #include "..\..\Debug\Debug.h"
 
 #include "..\..\Utils\Utils.h"
-#include "..\include\Entity\EntityManager.h"
-#include "..\include\Particle\ParticleManager.h"
+#include "..\..\Entity\EntityManager.h"
+#include "..\..\Particle\ParticleManager.h"
 #include "..\..\Events\EventsInterface.h"
 
 #include "..\..\Lua\LuaInterface.h"
@@ -43,12 +43,11 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
 namespace WyvernsAssault
 {
-
-	typedef std::map<Ogre::String,ItemPtr> ItemMap;
-	typedef std::map<Ogre::String,ItemPtr>::iterator ItemMapIterator;
-
 	typedef std::vector<ItemPtr> ItemList;
 	typedef std::vector<ItemPtr>::iterator ItemListIterator;
+
+	typedef std::map<int, ItemList> ItemMapList;
+	typedef std::map<int, ItemList>::iterator ItemMapListIterator;
 
 	/**
 	Class used to manage all the items
@@ -65,19 +64,24 @@ namespace WyvernsAssault
 		static ItemManager& getSingleton(void);
 		static ItemManager* getSingletonPtr(void);
 
-		ItemPtr createItem(Item::ItemTypes type);
-		ItemPtr createItem(Item::ItemTypes type, Ogre::String name, Ogre::Entity* mesh, Ogre::SceneNode* sceneNode, Item::ItemParameters params);
+		ItemPtr createItem(Item::ItemTypes type); // For random item generation. Still not used
+		ItemPtr createItem(Item::ItemTypes type, Ogre::String name, Ogre::Entity* mesh, Ogre::SceneNode* sceneNode, Item::ItemParameters params, int gameArea);
+
+		int getCount();
+		int getCount(int gameArea);
 
 		ItemPtr getItem(int index);
+		ItemPtr getItem(int index, int gameArea);
 		ItemPtr getItem(Ogre::String name);
+		ItemPtr getItem(Ogre::String name, int gameArea);
 		
+		bool removeItem(Ogre::String name);
+
 		void update(const float elpasedSeconds);
 
 		// Enable Debug Stuff
 		void setDebugEnabled(bool isDebugEnabled);
-		bool getDebugEnabled(){return mIsDebugEnabled;};
-
-		bool removeItem(Ogre::String name);
+		bool getDebugEnabled(){return mIsDebugEnabled;};		
 
 		Ogre::SceneNode* _getSceneNode() const { return mItemNode; }
 
@@ -85,14 +89,15 @@ namespace WyvernsAssault
 		Ogre::String createUniqueId();
 
 	private:
-		Ogre::SceneManager* mSceneManager;
-		Ogre::SceneNode* mItemNode;
+		Ogre::SceneManager*		mSceneManager;
+		Ogre::SceneNode*		mItemNode;
 
-		bool mIsDebugEnabled;
+		// Where items are stored and sorted by game area
+		ItemMapList				mItemMapList;
+		int						mCurrentGameArea;
 
-		ItemList mItemList;
-		ItemMap mItemMap;
-		int mId;
+		int						mId;
+		bool					mIsDebugEnabled;
 
 	public:
 		// ----------------
@@ -101,7 +106,8 @@ namespace WyvernsAssault
 		EVENTS_INTERFACE()
 
 		EVENTS_HANDLER(ItemCatch)
-		EVENTS_HANDLER(ItemRemove)
+		EVENTS_HANDLER(ItemRemove)		
+		EVENTS_HANDLER(GameAreaChanged)
 
 		// --------------------------------
 		// BEGIN Lua Interface Declarations

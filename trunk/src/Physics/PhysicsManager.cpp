@@ -100,7 +100,7 @@ void PhysicsManager::checkForCollisions()
 		// Player - Enemy COLLISION
 		for(int i = 0; i < mEnemyMapList[mCurrentGameArea].size(); i++)
 		{
-			EnemyPtr enemy =  mEnemyMapList[mCurrentGameArea][i];
+			EnemyPtr enemy = mEnemyMapList[mCurrentGameArea][i];
 			AxisAlignedBox enemy_box = enemy->getGeometry()->getWorldBoundingBox();
 
 			// Check if player is using special (fire) and collisioning with enemy
@@ -149,9 +149,9 @@ void PhysicsManager::checkForCollisions()
 		mLastAttackChecked = player->wichAttack();
 
 		// Player - Item COLLISION
-		for(ItemMapIterator it_item = mItemMap.begin(); it_item != mItemMap.end(); ++it_item)
+		for(int i = 0; i < mItemMapList[mCurrentGameArea].size(); i++)
 		{
-			ItemPtr item = it_item->second;
+			ItemPtr item = mItemMapList[mCurrentGameArea][i];
 			AxisAlignedBox item_box = item->getGeometry()->getWorldBoundingBox();
 
 			if(player_box.intersects(item_box))
@@ -254,15 +254,15 @@ void PhysicsManager::addPhysicEnemy(EnemyPtr enemy, int gameArea)
 }
 
 // Load item physics
-void PhysicsManager::addPhysicItem(ItemPtr item)
+void PhysicsManager::addPhysicItem(ItemPtr item, int gameArea)
 {
-	mItemMap[item->getName()] = item;
+	mItemMapList[gameArea].push_back(item);
 }
 
 // Load object physics
-void PhysicsManager::addPhysicObject(ObjectPtr obj)
+void PhysicsManager::addPhysicObject(ObjectPtr obj, int gameArea)
 {
-	mObjectMap[obj->getName()] = obj;
+	mObjectMapList[gameArea].push_back(obj);
 }
 
 // Calculate terrain's height and modify player position
@@ -286,9 +286,10 @@ bool PhysicsManager::collidesAllObjects(PlayerPtr player, const Vector3& fromPoi
 	Vector3 max = player->getPosition() + Vector3( 20, 20, 20) /2;
 	AxisAlignedBox player_box(min, max);
 
-	for(ObjectMapIterator it_obj = mObjectMap.begin(); it_obj != mObjectMap.end(); ++it_obj)
+	for(int i = 0; i < mObjectMapList[mCurrentGameArea].size(); i++)
 	{
-		ObjectPtr obj = it_obj->second;
+		ObjectPtr obj = mObjectMapList[mCurrentGameArea][i];
+
 		min = obj->getPosition() - Vector3( 50, 40, 50) /2;
 		max = obj->getPosition() + Vector3( 50, 40, 50) /2;
 		AxisAlignedBox obj_box(min, max);
@@ -394,14 +395,30 @@ bool PhysicsManager::removeEnemy(EnemyPtr enemy)
 }
 
 
-void PhysicsManager::removeItem(ItemPtr item)
+bool PhysicsManager::removeItem(ItemPtr item)
 {
-	mItemMap.erase(item->getName());
+	ItemListIterator it = find(mItemMapList[mCurrentGameArea].begin(), mItemMapList[mCurrentGameArea].end(), item);
+	
+	if( it != mItemMapList[mCurrentGameArea].end() )
+	{
+		mItemMapList[mCurrentGameArea].erase(it);
+		return true;
+	}
+
+	return false;
 }
 
-void PhysicsManager::removeObject(ObjectPtr obj)
+bool PhysicsManager::removeObject(ObjectPtr obj)
 {
-	mObjectMap.erase(obj->getName());
+	ObjectListIterator it = find(mObjectMapList[mCurrentGameArea].begin(), mObjectMapList[mCurrentGameArea].end(), obj);
+	
+	if( it != mObjectMapList[mCurrentGameArea].end() )
+	{
+		mObjectMapList[mCurrentGameArea].erase(it);
+		return true;
+	}
+
+	return false;
 }
 
 // --------------

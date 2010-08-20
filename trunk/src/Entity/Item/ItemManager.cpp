@@ -17,7 +17,8 @@ ItemManager& ItemManager::getSingleton(void)
 ItemManager::ItemManager(Ogre::SceneManager* sceneManager)
 : mId(0)
 , mItemNode(0)
-,mIsDebugEnabled(false)
+, mIsDebugEnabled(false)
+, mCurrentGameArea(-1)
 {
 	mSceneManager = sceneManager;
 }
@@ -36,8 +37,7 @@ bool ItemManager::initialize()
 
 void ItemManager::finalize()
 {
-	mItemList.clear();
-	mItemMap.clear();
+	mItemMapList.clear();
 
 	Utils::Destroy(mSceneManager,ITEM_NODE_NAME);
 	mItemNode = NULL;
@@ -86,10 +86,10 @@ ItemPtr ItemManager::createItem(Item::ItemTypes type)
 
 	// Get standar parameters for item type
 
-	return createItem(type, name, itemMesh, sceneNode, params);
+	return createItem(type, name, itemMesh, sceneNode, params, mCurrentGameArea);
 }
 
-ItemPtr ItemManager::createItem(Item::ItemTypes type, Ogre::String name, Ogre::Entity* mesh, Ogre::SceneNode* sceneNode, Item::ItemParameters params)
+ItemPtr ItemManager::createItem(Item::ItemTypes type, Ogre::String name, Ogre::Entity* mesh, Ogre::SceneNode* sceneNode, Item::ItemParameters params, int gameArea)
 {
 	// Item name == Mesh Name!
 	Ogre::Entity* itemMesh = mesh;
@@ -99,10 +99,7 @@ ItemPtr ItemManager::createItem(Item::ItemTypes type, Ogre::String name, Ogre::E
 	ItemPtr item = ItemPtr(new Item(name, type, params));
 	item->initializeEntity(itemMesh, sceneNode, mSceneManager);
 
-	mItemList.push_back(item);
-	mItemMap[name] = item;
-
-	//mCount++;
+	mItemMapList[gameArea].push_back(item);
 
 	ItemCreationEventPtr evt = ItemCreationEventPtr(new ItemCreationEvent(item));	
 	EVENTS_FIRE(evt);
@@ -122,39 +119,83 @@ Ogre::String ItemManager::createUniqueId()
 	return uniqueId;
 }
 
-ItemPtr ItemManager::getItem(int index)
+int ItemManager::getCount()
 {
-	return mItemList[index];
+	return mItemMapList[mCurrentGameArea].size();
 }
 
+int ItemManager::getCount(int gameArea)
+{
+	return mItemMapList[gameArea].size();
+}
+
+ItemPtr ItemManager::getItem(int index)
+{
+	return mItemMapList[mCurrentGameArea][index];
+}
+
+ItemPtr ItemManager::getItem(int index, int gameArea)
+{
+	return mItemMapList[gameArea][index];
+}
 
 ItemPtr ItemManager::getItem(Ogre::String name)
 {
-	return mItemMap[name];
+	// Search item in current game area enemies list
+	for( int i = 0; i < mItemMapList[mCurrentGameArea].size(); i++ )
+	{
+		ItemPtr item = mItemMapList[mCurrentGameArea][i];
+
+		if( item->getName() == name )
+			return mItemMapList[mCurrentGameArea][i];
+	}
+
+	// Search in others game areas lists
+	for( ItemMapListIterator it = mItemMapList.begin(); it != mItemMapList.end(); ++it )
+	{
+		ItemList list = it->second;
+
+		for( int i = 0; i < list.size(); i++ )
+		{
+			ItemPtr item = list[i];
+
+			if( item->getName() == name )
+				return list[i];
+		}
+	}
+}
+
+ItemPtr ItemManager::getItem(Ogre::String name, int gameArea)
+{
+	for( int i = 0; i < mItemMapList[gameArea].size(); i++ )
+	{
+		ItemPtr item = mItemMapList[gameArea][i];
+
+		if( item->getName() == name )
+			return mItemMapList[gameArea][i];
+	}
 }
 
 bool ItemManager::removeItem(Ogre::String name)
 {
-	//
-	// TODO : maybe we don't really need a list, and we can just use a map...
-	//
-	ItemPtr itemToErase = mItemMap[name];
-
-	mItemMap.erase(name);
+	ItemPtr itemToErase = getItem(name);
 	
-	ItemListIterator it = find(mItemList.begin(), mItemList.end(), itemToErase);
+	ItemListIterator it = find(mItemMapList[mCurrentGameArea].begin(), mItemMapList[mCurrentGameArea].end(), itemToErase);
 	
-	if( it != mItemList.end() )
-		mItemList.erase(it);
+	if( it != mItemMapList[mCurrentGameArea].end() )
+	{
+		mItemMapList[mCurrentGameArea].erase(it);
+		return true;
+	}
 
-	return true;
+	return false;
 }
 
 void ItemManager::update(const float elapsedSeconds)
 {
-	for(int i = 0; i < mItemList.size() ; i++)
+	for(int i = 0; i < mItemMapList[mCurrentGameArea].size() ; i++)
 	{
-		ItemPtr item =  mItemList[i];
+		ItemPtr item =  mItemMapList[mCurrentGameArea][i];
 
 		item->updateEntity(elapsedSeconds);
 	}
@@ -166,9 +207,9 @@ void ItemManager::setDebugEnabled(bool isDebugEnabled)
 	{
 		mIsDebugEnabled = isDebugEnabled;
 
-		for(int i = 0; i < mItemList.size() ; i++)
+		for(int i = 0; i < mItemMapList[mCurrentGameArea].size() ; i++)
 		{
-			ItemPtr item =  mItemList[i];
+			ItemPtr item =  mItemMapList[mCurrentGameArea][i];
 			item->setDebugEnabled(mIsDebugEnabled);
 		}
 	}
@@ -180,11 +221,13 @@ void ItemManager::setDebugEnabled(bool isDebugEnabled)
 EVENTS_BEGIN_REGISTER_HANDLERS(ItemManager)
 	EVENTS_REGISTER_HANDLER(ItemManager,ItemCatch)
 	EVENTS_REGISTER_HANDLER(ItemManager,ItemRemove)
+	EVENTS_REGISTER_HANDLER(ItemManager,GameAreaChanged)
 EVENTS_END_REGISTER_HANDLERS()
 
 EVENTS_BEGIN_UNREGISTER_HANDLERS(ItemManager)
 	EVENTS_UNREGISTER_HANDLER(ItemManager,ItemCatch)
 	EVENTS_UNREGISTER_HANDLER(ItemManager,ItemRemove)
+	EVENTS_UNREGISTER_HANDLER(ItemManager,GameAreaChanged)
 EVENTS_END_UNREGISTER_HANDLERS()
 
 EVENTS_DEFINE_HANDLER(ItemManager,ItemCatch)
@@ -208,6 +251,13 @@ EVENTS_DEFINE_HANDLER(ItemManager,ItemRemove)
 	ItemPtr item = evt->getItem();	
 
 	removeItem(item->getName());
+}
+
+EVENTS_DEFINE_HANDLER(ItemManager,GameAreaChanged)
+{
+	Debug::Out("ItemManager : handleGameAreaChangedEvent");
+
+	mCurrentGameArea = evt->getActualArea();
 }
 
 // --------------------------------

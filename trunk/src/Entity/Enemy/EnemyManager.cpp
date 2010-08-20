@@ -143,7 +143,6 @@ int EnemyManager::getCount(int gameArea)
 	return mEnemyMapList[gameArea].size();
 }
 
-
 EnemyPtr EnemyManager::getEnemy(int index)
 {
 	return mEnemyMapList[mCurrentGameArea][index];
@@ -266,7 +265,9 @@ EVENTS_DEFINE_HANDLER(EnemyManager, Collision)
 }
 
 EVENTS_DEFINE_HANDLER(EnemyManager, EnemyHit)
- {
+{
+	Debug::Out("EnemyManager : handleEnemyHitEvent");
+
 	EnemyPtr enemy = evt->getEnemy();
 	PlayerPtr player = evt->getPlayer();
 
@@ -280,7 +281,9 @@ EVENTS_DEFINE_HANDLER(EnemyManager, EnemyHit)
 }
 
 EVENTS_DEFINE_HANDLER(EnemyManager, EnemyKilled)
- {
+{
+	Debug::Out("EnemyManager : handleEnemyKilledEvent");
+
 	EnemyPtr enemy = evt->getEnemy();
 	PlayerPtr player = evt->getPlayer();
 
@@ -323,12 +326,16 @@ EVENTS_DEFINE_HANDLER(EnemyManager, EnemyKilled)
 
 EVENTS_DEFINE_HANDLER(EnemyManager, EnemyRemove)
 {
+	Debug::Out("EnemyManager : handleEnemyRemoveEvent");
+
 	EnemyPtr e = evt->getEnemy();
 	removeEnemy(e->getName());
 }
 
 EVENTS_DEFINE_HANDLER(EnemyManager, EnemyCustom)
 {
+	Debug::Out("EnemyManager : handleEnemyCustomEvent");
+
 	EnemyPtr enemy = evt->getEnemy();
 
 	if( enemy->isBurning())
@@ -340,6 +347,8 @@ EVENTS_DEFINE_HANDLER(EnemyManager, EnemyCustom)
 
 EVENTS_DEFINE_HANDLER(EnemyManager, GameAreaChanged)
 {
+	Debug::Out("EnemyManager : handleGameAreaChangedEvent");
+
 	mCurrentGameArea = evt->getActualArea();
 }
 
