@@ -30,6 +30,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
 #include <boost/enable_shared_from_this.hpp>
 
+#include "..\Debug\Debug.h"
+
 #include "..\Utils\Utils.h"
 #include "..\Events\EventsInterface.h"
 #include "..\Lua\LuaInterface.h"
@@ -40,11 +42,11 @@ using namespace Ogre;
 
 namespace WyvernsAssault 
 {
-	typedef std::map<Ogre::String,ObjectPtr> ObjectMap;
-	typedef std::map<Ogre::String,ObjectPtr>::iterator ObjectMapIterator;
-
 	typedef std::vector<ObjectPtr> ObjectList;
 	typedef std::vector<ObjectPtr>::iterator ObjectListIterator;
+
+	typedef std::map<int, ObjectList> ObjectMapList;
+	typedef std::map<int, ObjectList>::iterator ObjectMapListIterator;
 
 	/**
 	Class used to manage all the scenarios
@@ -66,15 +68,17 @@ namespace WyvernsAssault
 		void update(const float elpasedSeconds);
 
 		ObjectPtr createObject(WyvernsAssault::ObjectTypes type, Ogre::String name, Ogre::String meshFile);
-		ObjectPtr createObject(WyvernsAssault::ObjectTypes type, Ogre::String name, Ogre::Entity* entity, Ogre::SceneNode* sceneNode);
+		ObjectPtr createObject(WyvernsAssault::ObjectTypes type, Ogre::String name, Ogre::Entity* entity, Ogre::SceneNode* sceneNode, int gameArea);
 
 		int getCount();
+		int getCount(int gameArea);
 
 		ObjectPtr getObject(int index);
+		ObjectPtr getObject(int index, int gameArea);
 		ObjectPtr getObject(Ogre::String name);
+		ObjectPtr getObject(Ogre::String name, int gameArea);
 
 		bool removeObject(Ogre::String name);
-
 
 		// Enable Debug Stuff
 		void setDebugEnabled(bool isDebugEnabled);
@@ -92,15 +96,17 @@ namespace WyvernsAssault
 		EVENTS_HANDLER(ObjectHit)
 		EVENTS_HANDLER(ObjectKilled)
 		EVENTS_HANDLER(ObjectRemove)
+		EVENTS_HANDLER(GameAreaChanged)
 
 	private:
-		ObjectList mObjectList;
-		ObjectMap mObjectMap;
+		Ogre::SceneManager*		mSceneManager;
+		Ogre::SceneNode*		mScenarioNode;
 
-		bool mIsDebugEnabled;
+		// Where items are stored and sorted by game area
+		ObjectMapList			mObjectMapList;
+		int						mCurrentGameArea;
 
-		Ogre::SceneManager*		mSceneManager;		
-		SceneNode*				mScenarioNode; // Base node for the scenario
+		bool					mIsDebugEnabled;
 
 	private:
 		bool mInitialized;

@@ -18,7 +18,8 @@ ScenarioManager::ScenarioManager(SceneManager* sceneManager)
 : mInitialized(false)
 , mSceneManager(0)
 , mScenarioNode(0)
-,mIsDebugEnabled(false)
+, mIsDebugEnabled(false)
+, mCurrentGameArea(-1)
 {
 	mSceneManager = sceneManager;
 }
@@ -30,8 +31,7 @@ ScenarioManager::~ScenarioManager()
 		//
 		// Destroy all the objects (destructors will take care of deleting them)
 		//
-		mObjectList.clear();
-		mObjectMap.clear();
+		mObjectMapList.clear();
 
 		Utils::Destroy(mSceneManager, SCENARIO_NODE_NAME);
 		mScenarioNode = NULL;
@@ -62,10 +62,10 @@ ObjectPtr ScenarioManager::createObject(WyvernsAssault::ObjectTypes type, Ogre::
 
 	Ogre::SceneNode* pSceneNode = mSceneManager->getRootSceneNode()->createChildSceneNode("Object_"+name+"_Node");
 
-	return createObject(type, name, pEntity, pSceneNode);
+	return createObject(type, name, pEntity, pSceneNode, mCurrentGameArea);
 }
 
-ObjectPtr ScenarioManager::createObject(WyvernsAssault::ObjectTypes type, Ogre::String name, Ogre::Entity* entity, Ogre::SceneNode* sceneNode)
+ObjectPtr ScenarioManager::createObject(WyvernsAssault::ObjectTypes type, Ogre::String name, Ogre::Entity* entity, Ogre::SceneNode* sceneNode, int gameArea)
 {
 	ObjectPtr object = ObjectPtr(new Object(name, type));
 
@@ -86,45 +86,82 @@ ObjectPtr ScenarioManager::createObject(WyvernsAssault::ObjectTypes type, Ogre::
 		object->setDieAnimation(objDieAnimation);
 	}
 
-	mObjectList.push_back(object);
-	mObjectMap[name] = object;
+	mObjectMapList[gameArea].push_back(object);
 
 	return object;
 }
 
 int ScenarioManager::getCount()
 {
-	return mObjectList.size();
+	return mObjectMapList[mCurrentGameArea].size();
+}
+
+int ScenarioManager::getCount(int gameArea)
+{
+	return mObjectMapList[gameArea].size();
 }
 
 ObjectPtr ScenarioManager::getObject(int index)
 {
-	return mObjectList[index];
+	return mObjectMapList[mCurrentGameArea][index];
+}
+
+ObjectPtr ScenarioManager::getObject(int index, int gameArea)
+{
+	return mObjectMapList[gameArea][index];
 }
 
 
 ObjectPtr ScenarioManager::getObject(Ogre::String name)
 {
-	return mObjectMap[name];
+	// Search item in current game area enemies list
+	for( int i = 0; i < mObjectMapList[mCurrentGameArea].size(); i++ )
+	{
+		ObjectPtr object = mObjectMapList[mCurrentGameArea][i];
+
+		if( object->getName() == name )
+			return mObjectMapList[mCurrentGameArea][i];
+	}
+
+	// Search in others game areas lists
+	for( ObjectMapListIterator it = mObjectMapList.begin(); it != mObjectMapList.end(); ++it )
+	{
+		ObjectList list = it->second;
+
+		for( int i = 0; i < list.size(); i++ )
+		{
+			ObjectPtr object = list[i];
+
+			if( object->getName() == name )
+				return list[i];
+		}
+	}
+}
+
+ObjectPtr ScenarioManager::getObject(Ogre::String name, int gameArea)
+{
+	for( int i = 0; i < mObjectMapList[gameArea].size(); i++ )
+	{
+		ObjectPtr object = mObjectMapList[gameArea][i];
+
+		if( object->getName() == name )
+			return mObjectMapList[gameArea][i];
+	}
 }
 
 bool ScenarioManager::removeObject(Ogre::String name)
 {
-	//
-	// TODO : maybe we don't really need a list, and we can just use a map...
-	//
-	ObjectPtr objectToErase = mObjectMap[name];
-
-	mObjectMap.erase(name);
+	ObjectPtr objectToErase = getObject(name);
 	
-	ObjectListIterator it = find(mObjectList.begin(), mObjectList.end(), objectToErase);
+	ObjectListIterator it = find(mObjectMapList[mCurrentGameArea].begin(), mObjectMapList[mCurrentGameArea].end(), objectToErase);
 	
-	if( it != mObjectList.end() )
-	{		
-		mObjectList.erase(it);
+	if( it != mObjectMapList[mCurrentGameArea].end() )
+	{
+		mObjectMapList[mCurrentGameArea].erase(it);
+		return true;
 	}
 
-	return true;
+	return false;
 }
 
 void ScenarioManager::setDebugEnabled(bool isDebugEnabled)
@@ -133,9 +170,9 @@ void ScenarioManager::setDebugEnabled(bool isDebugEnabled)
 	{
 		mIsDebugEnabled = isDebugEnabled;
 
-		for(int i = 0; i < mObjectList.size() ; i++)
+		for(int i = 0; i < mObjectMapList[mCurrentGameArea].size() ; i++)
 		{
-			ObjectPtr obj =  mObjectList[i];
+			ObjectPtr obj =  mObjectMapList[mCurrentGameArea][i];
 			obj->setDebugEnabled(mIsDebugEnabled);
 		}
 	}
@@ -143,11 +180,10 @@ void ScenarioManager::setDebugEnabled(bool isDebugEnabled)
 
 void ScenarioManager::update(const float elapsedSeconds)
 {
-	for(int i = 0; i < mObjectList.size() ; i++)
+	for(int i = 0; i < mObjectMapList[mCurrentGameArea].size() ; i++)
 	{
-		ObjectPtr obj =  mObjectList[i];
-		obj->updateEntity(elapsedSeconds); // this updates animations too!
-		
+		ObjectPtr obj =  mObjectMapList[mCurrentGameArea][i];
+		obj->updateEntity(elapsedSeconds); // this updates animations too!		
 	}
 }
 
@@ -158,14 +194,16 @@ EVENTS_BEGIN_REGISTER_HANDLERS(ScenarioManager)
 	EVENTS_REGISTER_HANDLER(ScenarioManager, Collision)
 	EVENTS_REGISTER_HANDLER(ScenarioManager, ObjectHit)
 	EVENTS_REGISTER_HANDLER(ScenarioManager, ObjectKilled)
-	EVENTS_REGISTER_HANDLER(ScenarioManager, ObjectRemove);
+	EVENTS_REGISTER_HANDLER(ScenarioManager, ObjectRemove)
+	EVENTS_REGISTER_HANDLER(ScenarioManager, GameAreaChanged)
 EVENTS_END_REGISTER_HANDLERS()
 
 EVENTS_BEGIN_UNREGISTER_HANDLERS(ScenarioManager)
 	EVENTS_UNREGISTER_HANDLER(ScenarioManager, Collision)
 	EVENTS_UNREGISTER_HANDLER(ScenarioManager, ObjectHit)
 	EVENTS_UNREGISTER_HANDLER(ScenarioManager, ObjectKilled)
-	EVENTS_UNREGISTER_HANDLER(ScenarioManager, ObjectRemove);
+	EVENTS_UNREGISTER_HANDLER(ScenarioManager, ObjectRemove)
+	EVENTS_UNREGISTER_HANDLER(ScenarioManager, GameAreaChanged)
 EVENTS_END_UNREGISTER_HANDLERS()
 
 EVENTS_DEFINE_HANDLER(ScenarioManager, Collision)
@@ -174,7 +212,9 @@ EVENTS_DEFINE_HANDLER(ScenarioManager, Collision)
 }
 
 EVENTS_DEFINE_HANDLER(ScenarioManager, ObjectHit)
- {
+{
+	Debug::Out("ScenarioManager : handleObjectHitEvent");
+
 	ObjectPtr obj = evt->getObject();
 	PlayerPtr player = evt->getPlayer();
 
@@ -188,7 +228,9 @@ EVENTS_DEFINE_HANDLER(ScenarioManager, ObjectHit)
 }
 
 EVENTS_DEFINE_HANDLER(ScenarioManager, ObjectKilled)
- {
+{
+	Debug::Out("ScenarioManager : handleObjectKilledEvent");
+
 	ObjectPtr obj = evt->getObject();
 	PlayerPtr player = evt->getPlayer();
 
@@ -204,8 +246,17 @@ EVENTS_DEFINE_HANDLER(ScenarioManager, ObjectKilled)
 
 EVENTS_DEFINE_HANDLER(ScenarioManager, ObjectRemove)
 {
+	Debug::Out("ScenarioManager : handleObjectRemoveEvent");
+
 	ObjectPtr o = evt->getObject();
 	removeObject(o->getName());
+}
+
+EVENTS_DEFINE_HANDLER(ScenarioManager, GameAreaChanged)
+{
+	Debug::Out("ScenarioManager : handleGameAreaChangedEvent");
+
+	mCurrentGameArea = evt->getActualArea();
 }
 
 // --------------------------------
