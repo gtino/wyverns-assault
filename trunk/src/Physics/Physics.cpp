@@ -8,6 +8,12 @@ Geometry::Geometry(Ogre::Entity* physicMesh)
 
 }
 
+Geometry::Geometry(Ogre::Vector3 boxDimension)
+{
+	boundingBoxDimension = boxDimension; 
+
+}
+
 void Geometry::initializeMeshInformation(Ogre::Vector3 position, Ogre::Quaternion orient, Ogre::Vector3 scale){
 
 	size_t &vertex_count = mPhysicsMesh.vertex_count;
@@ -126,6 +132,14 @@ void Geometry::initializeMeshInformation(Ogre::Vector3 position, Ogre::Quaternio
         ibuf->unlock();
         current_offset = next_offset;
     }
+}
+
+Ogre::AxisAlignedBox& Geometry::getWorldBoundingBox(Ogre::Vector3 position)
+{
+	Vector3 min = position - boundingBoxDimension/2;
+	Vector3 max = position + boundingBoxDimension/2;
+	AxisAlignedBox boundingBox(min, max);
+	return boundingBox;
 }
 
 Geometry::~Geometry()

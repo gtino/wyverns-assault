@@ -47,20 +47,17 @@ namespace WyvernsAssault
     class Geometry
     {
 	public:
-
+	
+		//Ground geometry contructor
 		Geometry(Ogre::Entity* physicsMesh);
+		//Object geometry contructor
+		Geometry(Ogre::Vector3 boxDimension);
         ~Geometry();
 
 		void initializeMeshInformation(Ogre::Vector3 position, Ogre::Quaternion orient, Ogre::Vector3 scale);
 
-        const Ogre::AxisAlignedBox& getWorldBoundingBox()
-        {
-                return mPhysicEntity->getWorldBoundingBox();
-        }
-        const Ogre::AxisAlignedBox& getBoundingBox()
-        {
-                return mPhysicEntity->getBoundingBox();
-        }
+		Ogre::AxisAlignedBox& getWorldBoundingBox(Ogre::Vector3 position);
+
         const PhysicsMeshInfo& getPhysicsMeshInfo()
         {
                 return mPhysicsMesh;
@@ -69,6 +66,7 @@ namespace WyvernsAssault
 	private:
 
         Ogre::Entity* mPhysicEntity;
+		Ogre::Vector3 boundingBoxDimension;
         PhysicsMeshInfo mPhysicsMesh;
     };
 

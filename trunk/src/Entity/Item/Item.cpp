@@ -27,8 +27,9 @@ void Item::initializeEntity(Ogre::Entity* entity, Ogre::SceneNode* sceneNode, Og
 	mOBBoxRenderable->setupVertices(mEntity->getBoundingBox());
 	mOBBoxRenderable->setVisible(mIsDebugEnabled);
 	mSceneNode->attachObject(mOBBoxRenderable);
+	
 	// Initialize item physics
-	initializePhysics(mEntity);
+	initializePhysics(Vector3(20,20,20));
 
 }
 
