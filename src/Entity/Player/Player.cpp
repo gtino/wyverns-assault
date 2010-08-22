@@ -40,9 +40,7 @@ void Player::initializeEntity(Ogre::Entity* entity, Ogre::SceneNode* sceneNode, 
 	mFireMesh->setVisible(mIsDebugEnabled);
 
 	// Physic Body
-	Ogre::Entity* mPhysicEntity = mSceneManager->createEntity("redWyvernPhysicMesh", "redWyvernPhysicBody.mesh");
-	mPhysicEntity->setVisible(mIsDebugEnabled);
-	initializePhysics(mPhysicEntity);
+	initializePhysics(Vector3(20,50,20)); 
 
 	// Animation system
 	mAnimationSystem = new tecnofreak::ogre::AnimationSystem( mEntity );
@@ -64,12 +62,9 @@ void Player::initializeEntity(Ogre::Entity* entity, Ogre::SceneNode* sceneNode, 
 	
 	// Bounding Box
 	mOBBoxRenderable = new OBBoxRenderable("OBBoxManualMaterial_Player");
-	mOBBoxRenderable->setupVertices(mPhysicEntity->getBoundingBox());
+	//mOBBoxRenderable->setupVertices(mPhysicEntity->getBoundingBox());
+	mOBBoxRenderable->setupVertices(entity->getBoundingBox());
 	mOBBoxRenderable->setVisible(mIsDebugEnabled);
-
-	// Attach physic body to bone
-	mEntity->attachObjectToBone("columna", mPhysicEntity);
-	mEntity->attachObjectToBone("columna", mOBBoxRenderable);
 
 	// Fire bounding box
 	mFireOBBoxRenderable = new OBBoxRenderable("OBBoxManualMaterial_Player");

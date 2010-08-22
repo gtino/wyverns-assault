@@ -48,10 +48,11 @@ namespace WyvernsAssault
 
 	public:
 		
-		virtual void initializePhysics(Ogre::Entity* mPhysicEntity){
+		virtual void initializePhysics(Ogre::Vector3 boxDimension){
 			// Create geometry
-			mGeometry = GeometryPtr(new Geometry(mPhysicEntity));
+			mGeometry = GeometryPtr(new Geometry(boxDimension));
 		}
+
 		virtual void finalizePhysics(){return;} 
 		virtual void updatePhysics(const float elapsedSeconds){};
 

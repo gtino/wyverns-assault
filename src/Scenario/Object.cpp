@@ -33,8 +33,8 @@ void Object::initializeEntity(Ogre::Entity* entity, Ogre::SceneNode* sceneNode, 
 		mOBBoxRenderable->setVisible(mIsDebugEnabled);
 		mSceneNode->attachObject(mOBBoxRenderable);
 
-		initializePhysics(mEntity);
-		//getGeometry()->initializeMeshInformation(sceneNode->getPosition(),sceneNode->getOrientation(),sceneNode->getScale());
+		initializePhysics(Vector3(20,20,20));
+
 	}
 }
 

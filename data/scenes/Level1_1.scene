@@ -3792,10 +3792,7 @@
             <position x="0" y="0" z="0" />
             <scale x="1" y="1" z="1" />
             <subentities>
-              <subentity materialName="Castle_Chalk" index="0" visible="true" />
-              <subentity materialName="Castle_Wood" index="1" visible="true" />
-              <subentity materialName="Castle_Sand" index="2" visible="true" />
-              <subentity materialName="Castle_Roofs" index="3" visible="true" />
+              <subentity materialName="Castle" index="0" visible="true" />
             </subentities>
           </entity>
         </node>
@@ -7181,7 +7178,7 @@
       </node>
       <node name="BigRock" id="418500320">
         <rotation qw="0.614954" qx="0.00319471" qy="-0.788553" qz="0.0024914" />
-        <position x="290.277" y="28.098" z="835.72" />
+        <position x="180.277" y="28.098" z="850.72" />
         <scale x="13.483" y="8.65588" z="10.5683" />
         <entity name="BigRock#0" id="639912128" castshadows="true" meshFile="BigRock0.mesh" type="DynamicObject">
           <rotation qw="1" qx="0" qy="0" qz="0" />

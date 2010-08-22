@@ -65,10 +65,7 @@ void Enemy::initializeEntity(Ogre::Entity* entity, Ogre::SceneNode* sceneNode, O
 	EntityInterface::initializeEntity(entity, sceneNode, sceneManager);
 
 	// Set physic body
-	mPhysicEntity = mSceneManager->createEntity(entity->getName() + "_physicBody", mParameters.physicMesh);
-	mPhysicEntity->setVisible(mIsDebugEnabled);
-	mSceneNode->attachObject(mPhysicEntity);
-	initializePhysics(mPhysicEntity);
+	initializePhysics(Vector3(20,20,20));
 
 	// Ballon Set
 	mBalloonSet = mSceneManager->createBillboardSet(mName + "_BillboardSet");
@@ -81,7 +78,8 @@ void Enemy::initializeEntity(Ogre::Entity* entity, Ogre::SceneNode* sceneNode, O
 
 	// Bounding Box
 	mOBBoxRenderable = new OBBoxRenderable("OBBoxManualMaterial_Enemy");
-	mOBBoxRenderable->setupVertices(mPhysicEntity->getBoundingBox());
+	//mOBBoxRenderable->setupVertices(mPhysicEntity->getBoundingBox());
+	mOBBoxRenderable->setupVertices(entity->getBoundingBox());
 	mOBBoxRenderable->setVisible(mIsDebugEnabled);
 	mSceneNode->attachObject(mOBBoxRenderable);
 

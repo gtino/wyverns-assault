@@ -95,13 +95,13 @@ void PhysicsManager::checkForCollisions()
 	{
 		PlayerPtr player = it_player->second;
 		AxisAlignedBox player_firebox = player->getFireBox();
-		AxisAlignedBox player_box = player->getGeometry()->getWorldBoundingBox();
+		AxisAlignedBox player_box = player->getGeometry()->getWorldBoundingBox(player->getPosition());
 
 		// Player - Enemy COLLISION
 		for(int i = 0; i < mEnemyMapList[mCurrentGameArea].size(); i++)
 		{
 			EnemyPtr enemy = mEnemyMapList[mCurrentGameArea][i];
-			AxisAlignedBox enemy_box = enemy->getGeometry()->getWorldBoundingBox();
+			AxisAlignedBox enemy_box = enemy->getGeometry()->getWorldBoundingBox(enemy->getPosition());
 
 			// Check if player is using special (fire) and collisioning with enemy
 			if ( player->isSpecial() && player_firebox.intersects(enemy_box))
@@ -147,12 +147,12 @@ void PhysicsManager::checkForCollisions()
 
 		// Save last player attack checked
 		mLastAttackChecked = player->wichAttack();
-
+	
 		// Player - Item COLLISION
 		for(int i = 0; i < mItemMapList[mCurrentGameArea].size(); i++)
 		{
 			ItemPtr item = mItemMapList[mCurrentGameArea][i];
-			AxisAlignedBox item_box = item->getGeometry()->getWorldBoundingBox();
+			AxisAlignedBox item_box = item->getGeometry()->getWorldBoundingBox(item->getPosition());
 
 			if(player_box.intersects(item_box))
 			{
@@ -167,13 +167,13 @@ void PhysicsManager::checkForCollisions()
 	for(int i = 0; i < mEnemyMapList[mCurrentGameArea].size(); i++)
 	{
 		EnemyPtr enemy =  mEnemyMapList[mCurrentGameArea][i];
-		AxisAlignedBox enemy_box = enemy->getGeometry()->getWorldBoundingBox();
+		AxisAlignedBox enemy_box = enemy->getGeometry()->getWorldBoundingBox(enemy->getPosition());
 
 		// Enemy - Enemy COLLISION
 		for(int i = 0; i < mEnemyMapList[mCurrentGameArea].size(); i++)
 		{
 			EnemyPtr enemy =  mEnemyMapList[mCurrentGameArea][i];
-			AxisAlignedBox enemy_second_box = enemy->getGeometry()->getWorldBoundingBox();
+			AxisAlignedBox enemy_second_box = enemy->getGeometry()->getWorldBoundingBox(enemy->getPosition());
 
 			// Check if player is using special (fire) and collisioning with enemy
 			if (enemy_box.intersects(enemy_second_box))
@@ -289,17 +289,13 @@ Vector3 PhysicsManager::calculateHeight(const Vector3 &point)
 // Collisions between player and scenario physic objects
 bool PhysicsManager::collidesAllObjects(PlayerPtr player, const Vector3& fromPoint, const Vector3& toPoint, const float collisionRadius, const float rayHeightLevel )
 {
-	Vector3 min = player->getPosition() - Vector3( 20, 20, 20) /2;
-	Vector3 max = player->getPosition() + Vector3( 20, 20, 20) /2;
-	AxisAlignedBox player_box(min, max);
+	AxisAlignedBox player_box = player->getGeometry()->getWorldBoundingBox(player->getPosition());
 
 	for(int i = 0; i < mObjectMapList[mCurrentGameArea].size(); i++)
 	{
 		ObjectPtr obj = mObjectMapList[mCurrentGameArea][i];
 
-		min = obj->getPosition() - Vector3( 50, 40, 50) /2;
-		max = obj->getPosition() + Vector3( 50, 40, 50) /2;
-		AxisAlignedBox obj_box(min, max);
+		AxisAlignedBox obj_box = obj->getGeometry()->getWorldBoundingBox(obj->getPosition());
 
 		if( player_box.intersects(obj_box) )
 			return true;
