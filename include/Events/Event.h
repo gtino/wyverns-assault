@@ -53,7 +53,8 @@ namespace WyvernsAssault
 		ItemCreation,
 		ItemCatch,
 		ItemRemove,
-		GameAreaChanged
+		GameAreaChanged,
+		GameAreaCleared
 	};
 
 	/** Event priority, used to put the event in the correct queue */
@@ -405,6 +406,21 @@ namespace WyvernsAssault
 	};
 
 	typedef boost::shared_ptr<GameAreaChangedEvent> GameAreaChangedEventPtr;
+
+	// --------------------------------
+	class GameAreaClearedEvent : public Event
+	{
+	public:
+		GameAreaClearedEvent(int gameArea);
+		~GameAreaClearedEvent(){};
+		
+		int getGameArea(){ return mGameArea; }
+
+	private:
+		int mGameArea;
+	};
+
+	typedef boost::shared_ptr<GameAreaClearedEvent> GameAreaClearedEventPtr;
 }
 
 #endif // __EVENT_H_

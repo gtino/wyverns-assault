@@ -222,6 +222,13 @@ void EnemyManager::update(const float elapsedSeconds)
 			enemy->setAttackHited(false);
 		}
 	}
+
+	// If game area is cleared raise event
+	if( getCount() == 0 )
+	{
+		GameAreaClearedEventPtr evt = GameAreaClearedEventPtr(new GameAreaClearedEvent(mCurrentGameArea));
+		EVENTS_FIRE(evt);
+	}
 }
 
 void EnemyManager::setDebugEnabled(bool isDebugEnabled)
