@@ -44,6 +44,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #include "..\Scenario\ScenarioManager.h"
 #include "..\Scenario\Object.h"
 
+#include "..\include\GameArea\GameAreaManager.h"
+
 #include "..\Events\EventsInterface.h"
 
 #include "..\Lua\LuaInterface.h"
@@ -134,7 +136,8 @@ namespace WyvernsAssault
 		ItemMapList		mItemMapList;
 		ObjectMapList	mObjectMapList;
 
-		int				mCurrentGameArea;	
+		int				mCurrentGameArea;
+		bool			mGameAreaCleared;
 
 		int				mLastAttackChecked;
 		bool			mEnabled;
@@ -154,6 +157,7 @@ namespace WyvernsAssault
 		EVENTS_HANDLER(ItemCatch)		
 		EVENTS_HANDLER(ObjectKilled)
 		EVENTS_HANDLER(GameAreaChanged)
+		EVENTS_HANDLER(GameAreaCleared)
 
 	public:
 		// --------------------------------

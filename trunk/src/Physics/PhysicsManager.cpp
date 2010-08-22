@@ -16,7 +16,9 @@ PhysicsManager& PhysicsManager::getSingleton(void)
 
 PhysicsManager::PhysicsManager(SceneManager* sceneManager)
 : mPhysicsNode(0)
+, mLastAttackChecked(0)
 , mCurrentGameArea(-1)
+, mGameAreaCleared(true)
 {
 	mSceneManager = sceneManager;
 }
@@ -28,8 +30,6 @@ PhysicsManager::~PhysicsManager()
 
 void PhysicsManager::initialize()
 {
-	mLastAttackChecked = 0;
-
 	mPhysicsNode = mSceneManager->getRootSceneNode()->createChildSceneNode(PHYSICS_NODE_NAME);
 
 	// Initialize RaySceneQuery
@@ -202,6 +202,13 @@ void PhysicsManager::move(PlayerPtr player, const float elapsedSeconds)
 	// If player is colliding with something, undo movement
 	if( objectCollision || wallCollision  )
 		player->setPosition(lastPosition);
+
+	// If player leaves game area not cleared, undo movement
+	if( GameAreaManager::getSingletonPtr()->positionGameArea(player->getPosition()) != mCurrentGameArea )
+	{
+		if( !mGameAreaCleared )
+			player->setPosition(lastPosition);
+	}
 }
 
 
@@ -429,6 +436,7 @@ EVENTS_BEGIN_REGISTER_HANDLERS(PhysicsManager)
 	EVENTS_REGISTER_HANDLER(PhysicsManager, ItemCatch);
 	EVENTS_REGISTER_HANDLER(PhysicsManager, ObjectKilled);
 	EVENTS_REGISTER_HANDLER(PhysicsManager, GameAreaChanged);
+	EVENTS_REGISTER_HANDLER(PhysicsManager, GameAreaCleared);
 EVENTS_END_REGISTER_HANDLERS()
 
 EVENTS_BEGIN_UNREGISTER_HANDLERS(PhysicsManager)
@@ -436,10 +444,13 @@ EVENTS_BEGIN_UNREGISTER_HANDLERS(PhysicsManager)
 	EVENTS_UNREGISTER_HANDLER(PhysicsManager, ItemCatch);
 	EVENTS_UNREGISTER_HANDLER(PhysicsManager, ObjectKilled);
 	EVENTS_UNREGISTER_HANDLER(PhysicsManager, GameAreaChanged);
+	EVENTS_UNREGISTER_HANDLER(PhysicsManager, GameAreaCleared);
 EVENTS_END_UNREGISTER_HANDLERS()
 
 EVENTS_DEFINE_HANDLER(PhysicsManager, EnemyKilled)
 {
+	Debug::Out("PhysicsManager : handleEnemyKilledEvent");
+
 	EnemyPtr enemy = evt->getEnemy();
 	PlayerPtr player = evt->getPlayer();
 
@@ -449,6 +460,8 @@ EVENTS_DEFINE_HANDLER(PhysicsManager, EnemyKilled)
 
 EVENTS_DEFINE_HANDLER(PhysicsManager, ItemCatch)
 {
+	Debug::Out("PhysicsManager : handleItemCatchEvent");
+
 	ItemPtr item = evt->getItem();
 
 	// The player has just cacth the item
@@ -457,6 +470,8 @@ EVENTS_DEFINE_HANDLER(PhysicsManager, ItemCatch)
 
 EVENTS_DEFINE_HANDLER(PhysicsManager, ObjectKilled)
 {
+	Debug::Out("PhysicsManager : handleObjectKilledEvent");
+
 	ObjectPtr object = evt->getObject();
 
 	// The player has just cacth the item
@@ -465,7 +480,20 @@ EVENTS_DEFINE_HANDLER(PhysicsManager, ObjectKilled)
 
 EVENTS_DEFINE_HANDLER(PhysicsManager, GameAreaChanged)
 {
+	Debug::Out("PhysicsManager : handleGameAreaChangedEvent");
+
+	// New game area
 	mCurrentGameArea = evt->getActualArea();
+	mGameAreaCleared = false;
+}
+
+EVENTS_DEFINE_HANDLER(PhysicsManager, GameAreaCleared)
+{
+	Debug::Out("PhysicsManager : handleGameAreaClearedEvent");
+
+	// Actual game area is cleared
+	if( mCurrentGameArea == evt->getGameArea() && !mGameAreaCleared)
+		mGameAreaCleared = true;
 }
 
 // --------------------------------

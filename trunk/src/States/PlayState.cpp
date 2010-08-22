@@ -117,6 +117,9 @@ void PlayState::initialize()
 	items.push_back("");	
 	items.push_back("Filtering");
 	items.push_back("Poly Mode");
+	items.push_back("");	
+	items.push_back("Game Area");
+	items.push_back("Enemies");
  
 	mDetailsPanel = mTrayMgr->createParamsPanel(OgreBites::TL_NONE, "DetailsPanel", 200, items);
 	mDetailsPanel->setParamValue(12, "Bilinear");
@@ -142,6 +145,7 @@ void PlayState::initialize()
 	fpsItems.push_back("Scenario %");
 	fpsItems.push_back("PostProc %");
 	fpsItems.push_back("Events   %");
+	fpsItems.push_back("GameArea %");
 
  
 	mPerformancesPanel = mTrayMgr->createParamsPanel(OgreBites::TL_NONE, "PerformancesPanel", 200, fpsItems);
@@ -298,6 +302,8 @@ bool PlayState::frameRenderingQueued(const Ogre::FrameEvent& evt)
 			mDetailsPanel->setParamValue(8, StringConverter::toString(mCameraManager->getCameraLookAt().x, 5));
 			mDetailsPanel->setParamValue(9, StringConverter::toString(mCameraManager->getCameraLookAt().y, 5));
 			mDetailsPanel->setParamValue(10, StringConverter::toString(mCameraManager->getCameraLookAt().z, 5));
+			mDetailsPanel->setParamValue(15, StringConverter::toString(mGameAreaManager->getGameArea()));
+			mDetailsPanel->setParamValue(16, StringConverter::toString(mEnemyManager->getCount()));
 		}
 
 		if(mPerformancesPanel->isVisible())
@@ -320,6 +326,7 @@ bool PlayState::frameRenderingQueued(const Ogre::FrameEvent& evt)
 			mPerformancesPanel->setParamValue(14,StringConverter::toString(TIMER_PERCENT(Scenario,Update))); // Scenario
 			mPerformancesPanel->setParamValue(15,StringConverter::toString(TIMER_PERCENT(PostProcess,Update))); // PostProcess
 			mPerformancesPanel->setParamValue(16,StringConverter::toString(TIMER_PERCENT(Events,Update))); // Events
+			mPerformancesPanel->setParamValue(17,StringConverter::toString(TIMER_PERCENT(GameArea,Update))); // GameArea
 		}
 	}
 

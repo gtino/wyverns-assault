@@ -28,6 +28,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
 #include <boost/enable_shared_from_this.hpp>
 
+#include "..\Debug\Debug.h"
+
 #include "..\Utils\Utils.h"
 #include "..\Events\EventsInterface.h"
 
@@ -71,6 +73,8 @@ namespace WyvernsAssault
 		// ----------------
 		EVENTS_INTERFACE()
 
+		EVENTS_HANDLER(GameAreaCleared)
+
 	private:
 		struct GameArea
 		{
@@ -82,9 +86,10 @@ namespace WyvernsAssault
 
 		std::vector<GameArea> mGameAreas;
 
-		int mCurrentGameArea;
+		int		mCurrentGameArea;
+		bool	mGameAreaCleared;
 
-		bool mIsDebugEnabled;
+		bool	mIsDebugEnabled;
 
 	private:
 

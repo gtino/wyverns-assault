@@ -227,3 +227,11 @@ GameAreaChangedEvent::GameAreaChangedEvent(int previousArea, int actualArea)
 	mPreviousArea = previousArea;
 	mActualArea = actualArea;
 };
+
+//----------------------
+
+GameAreaClearedEvent::GameAreaClearedEvent(int gameArea)
+:Event(EventTypes::GameAreaCleared, EventPriorities::Normal)
+{
+	mGameArea= gameArea;
+};

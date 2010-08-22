@@ -16,7 +16,9 @@ GameAreaManager& GameAreaManager::getSingleton(void)
 
 GameAreaManager::GameAreaManager()
 : mInitialized(false)
-,mIsDebugEnabled(false)
+, mIsDebugEnabled(false)
+, mCurrentGameArea(-1)
+, mGameAreaCleared(true)
 {
 
 }
@@ -37,7 +39,6 @@ void GameAreaManager::initialize()
 {
 	// Now it is initialized!
 	mInitialized = true;
-	mCurrentGameArea = -1;
 }
 
 void GameAreaManager::load(Ogre::String file)
@@ -49,13 +50,14 @@ void GameAreaManager::update(Vector3 playerPosition, const float elpasedSeconds)
 {
 	int playerArea = positionGameArea(playerPosition);
 
-	// Game Area changed, raise event
+	// Game Area changed and game are is cleared raise event
 	if( mCurrentGameArea != playerArea )
 	{
 		GameAreaChangedEventPtr evt = GameAreaChangedEventPtr(new GameAreaChangedEvent(mCurrentGameArea, playerArea));
 		EVENTS_FIRE(evt);
 
 		mCurrentGameArea = playerArea;
+		mGameAreaCleared = false;
 	}	
 }
 
@@ -99,10 +101,17 @@ void GameAreaManager::addGameArea(Vector3 beginNear, Vector3 endNear, Vector3 be
 // Event handlers
 // --------------
 EVENTS_BEGIN_REGISTER_HANDLERS(GameAreaManager)
-	//EVENTS_REGISTER_HANDLER(GameAreaManager, )
+	EVENTS_REGISTER_HANDLER(GameAreaManager, GameAreaCleared)
 EVENTS_END_REGISTER_HANDLERS()
 
 EVENTS_BEGIN_UNREGISTER_HANDLERS(GameAreaManager)
-	//EVENTS_UNREGISTER_HANDLER(GameAreaManager, )
+	EVENTS_UNREGISTER_HANDLER(GameAreaManager, GameAreaCleared)
 EVENTS_END_UNREGISTER_HANDLERS()
 
+EVENTS_DEFINE_HANDLER(GameAreaManager, GameAreaCleared)
+{
+	Debug::Out("GameAreaManager : handleGameAreaClearedEvent");
+
+	if( mCurrentGameArea == evt->getGameArea() )
+		mGameAreaCleared = true;
+}
