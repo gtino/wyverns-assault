@@ -135,53 +135,58 @@ void DotSceneLoader::processScene(TiXmlElement *XMLRoot)
 	// Process nodes
 	pElement = XMLRoot->FirstChildElement("nodes");
 	if(pElement)
-		processNodes(pElement);
-	
+	{
+		processNodes(pElement);			
+	}
 	LogManager::getSingleton().logMessage("[DotSceneLoader] Nodes processed.");
 	
 	// Process cameras
 	pElement = XMLRoot->FirstChildElement("cameras");
-	if(pElement){
+	if(pElement)
+	{
 		processCameras(pElement);
 	}
-
 	LogManager::getSingleton().logMessage("[DotSceneLoader] Camera processed.");
 
 	// Process lights
 	pElement = XMLRoot->FirstChildElement("lights");
 	if(pElement)
-		processLights(pElement);
-
+	{
+		processLights(pElement);		
+	}
 	LogManager::getSingleton().logMessage("[DotSceneLoader] Light processed.");
 
 	// Process environment
 	pElement = XMLRoot->FirstChildElement("environment");
 	if(pElement)
-		processEnvironment(pElement);
-
+	{
+		processEnvironment(pElement);		
+	}
 	LogManager::getSingleton().logMessage("[DotSceneLoader] Environment processed.");
 
 	// Process game areas
 	pElement = XMLRoot->FirstChildElement("gameAreas");
 	if(pElement)
-		processGameAreas(pElement);
-
+	{
+		processGameAreas(pElement);		
+	}
 	LogManager::getSingleton().logMessage("[DotSceneLoader] Game areas processed.");
 
 	// Process camera segments
 	pElement = XMLRoot->FirstChildElement("cameraSegments");
 	if(pElement)
-		processCameraSegments(pElement);
-
+	{
+		processCameraSegments(pElement);		
+	}
 	LogManager::getSingleton().logMessage("[DotSceneLoader] Camera segments processed.");
 
 	// Process phyics
 	pElement = XMLRoot->FirstChildElement("physics");
 	if(pElement)
-		processPhysics(pElement);
-
+	{
+		processPhysics(pElement);		
+	}
 	LogManager::getSingleton().logMessage("[DotSceneLoader] Physics processed.");
-
 }
 
 void DotSceneLoader::processNodes(TiXmlElement *XMLNode)
