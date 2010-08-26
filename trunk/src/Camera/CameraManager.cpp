@@ -274,11 +274,9 @@ Vector3 CameraManager::getDirection(Vector3 direction)
 	return finalDirection * Vector3(1,0,1);
 }
 
-/** Camera functions **/
-
 void CameraManager::updateCamera(Vector3 player, int gameArea, Real elapsedSeconds)
 {
-	// Update camera camera
+	// Update game camera
 	if( mGameCameraMode == CameraModes::Game )
 	{
 		Vector3 begin = mCameraSegments[gameArea].mPositionBegin;
@@ -795,12 +793,24 @@ void CameraManager::hideAxes()
 EVENTS_BEGIN_REGISTER_HANDLERS(CameraManager)
 	EVENTS_REGISTER_HANDLER(CameraManager,EnemyKilled)
 	EVENTS_REGISTER_HANDLER(CameraManager,ItemCatch)
+	EVENTS_REGISTER_HANDLER(CameraManager,PlayerAttack)
 EVENTS_END_REGISTER_HANDLERS()
 
 EVENTS_BEGIN_UNREGISTER_HANDLERS(CameraManager)
 	EVENTS_UNREGISTER_HANDLER(CameraManager,EnemyKilled)
 	EVENTS_UNREGISTER_HANDLER(CameraManager,ItemCatch)
+	EVENTS_UNREGISTER_HANDLER(CameraManager,PlayerAttack)
 EVENTS_END_UNREGISTER_HANDLERS()
+
+EVENTS_DEFINE_HANDLER(CameraManager,PlayerAttack)
+{
+	PlayerPtr player = evt->getPlayer();
+
+	if( player->isSpecial() )
+	{
+		this->zoom(player->getSpecialLength(), 3);
+	}
+}
 
 EVENTS_DEFINE_HANDLER(CameraManager,EnemyKilled)
 {
@@ -809,16 +819,11 @@ EVENTS_DEFINE_HANDLER(CameraManager,EnemyKilled)
 
 	if( enemy->hasDieAnimation() )
 	{
-		this->shake(0.5, (rand()%5));
+		this->shake(0.5, (rand()%4));
 	}
 	else
 	{
-		this->rumble(0.5, (rand()%4));
-	}
-
-	if( player->isSpecial() )
-	{
-		this->zoom(player->getSpecialLength(), 3);
+		this->rumble(0.5, (rand()%3));
 	}
 }
 

@@ -81,8 +81,8 @@ int GameAreaManager::positionGameArea(Vector3 position)
 		}
 	}
 
-	// No game area - Control ERROR
-	return -1;
+	// Return last game area
+	return mCurrentGameArea;
 }
 
 /** Add game area to vector */
