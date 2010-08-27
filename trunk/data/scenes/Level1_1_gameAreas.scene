@@ -2,77 +2,65 @@
 
 	<gameAreas>	
 		<gameArea id="0">
-			<beginNear x="-200" y="0" z="1000"/>
-			<endNear x="327" y="0" z="1000"/>
-			<beginFar x="-173" y="0" z="670"/>
-			<endFar x="257" y="0" z="690"/>			
+			<beginNear x="-417" y="0" z="972"/>
+			<endNear x="318" y="0" z="1016"/>
+			<beginFar x="-307" y="0" z="527"/>
+			<endFar x="218" y="0" z="685"/>			
 		</gameArea>
 		<gameArea id="1">
-			<beginNear x="327" y="0" z="1000"/>
-			<endNear x="553" y="0" z="992"/>
-			<beginFar x="257" y="0" z="690"/>
-			<endFar x="445" y="0" z="620"/>			
+			<beginNear x="318" y="0" z="1016"/>
+			<endNear x="765" y="0" z="889"/>
+			<beginFar x="218" y="0" z="685"/>
+			<endFar x="633" y="0" z="574"/>			
 		</gameArea>
 		<gameArea id="2">
-			<beginNear x="553" y="0" z="992"/>
-			<endNear x="815" y="0" z="876"/>
-			<beginFar x="445" y="0" z="620"/>
-			<endFar x="653" y="0" z="580"/>			
+			<beginNear x="765" y="0" z="889"/>
+			<endNear x="1020" y="0" z="710"/>
+			<beginFar x="633" y="0" z="574"/>
+			<endFar x="810" y="0" z="442"/>			
 		</gameArea>
 		<gameArea id="3">
-			<beginNear x="815" y="0" z="876"/>
-			<endNear x="1112" y="0" z="672"/>
-			<beginFar x="653" y="0" z="580"/>
-			<endFar x="855" y="0" z="440"/>			
+			<beginNear x="1020" y="0" z="710"/>
+			<endNear x="1348" y="0" z="348"/>
+			<beginFar x="810" y="0" z="442"/>
+			<endFar x="1025" y="0" z="223"/>			
 		</gameArea>
 		<gameArea id="4">
-			<beginNear x="1112" y="0" z="672"/>
-			<endNear x="1395" y="0" z="385"/>	
-			<beginFar x="855" y="0" z="440"/>
-			<endFar x="1047" y="0" z="260"/>
+			<beginNear x="1348" y="0" z="348"/>
+			<endNear x="1368" y="0" z="4"/>	
+			<beginFar x="1025" y="0" z="223"/>
+			<endFar x="1016" y="0" z="89"/>
 		</gameArea>
 		<gameArea id="5">
-			<beginNear x="1395" y="0" z="385"/>
-			<endNear x="1372" y="0" z="7"/>	
-			<beginFar x="1047" y="0" z="260"/>
-			<endFar x="1020" y="0" z="116"/>
+			<beginNear x="1368" y="0" z="4"/>
+			<endNear x="1247" y="0" z="-260"/>	
+			<beginFar x="1016" y="0" z="89"/>
+			<endFar x="875" y="0" z="-111"/>
 		</gameArea>
 		<gameArea id="6">
-			<beginNear x="1372" y="0" z="7"/>
-			<endNear x="1265" y="0" z="-300"/>
-			<beginFar x="1020" y="0" z="116"/>
-			<endFar x="860" y="0" z="-100"/>
+			<beginNear x="1247" y="0" z="-260"/>
+			<endNear x="913" y="0" z="-666"/>
+			<beginFar x="875" y="0" z="-111"/>
+			<endFar x="684" y="0" z="-261"/>
 		</gameArea>
 		<gameArea id="7">
-			<beginNear x="1265" y="0" z="-300"/>
-			<endNear x="923" y="0" z="-650"/>
-			<beginFar x="860" y="0" z="-100"/>
-			<endFar x="700" y="0" z="-250"/>
+			<beginNear x="913" y="0" z="-666"/>
+			<endNear x="387" y="0" z="-932"/>
+			<beginFar x="684" y="0" z="-261"/>
+			<endFar x="434" y="0" z="-365"/>
 		</gameArea>
 		<gameArea id="8">
-			<beginNear x="923" y="0" z="-650"/>
-			<endNear x="491" y="0" z="-814"/>
-			<beginFar x="700" y="0" z="-250"/>
-			<endFar x="423" y="0" z="-333"/>
+			<beginNear x="387" y="0" z="-932"/>
+			<endNear x="-235" y="0" z="-657"/>
+			<beginFar x="434" y="0" z="-365"/>
+			<endFar x="293" y="0" z="-33"/>
 		</gameArea>
 		<gameArea id="9">
-			<beginNear x="491" y="0" z="-814"/>
-			<endNear x="-77" y="0" z="-616"/>
-			<beginFar x="423" y="0" z="-333"/>
-			<endFar x="305" y="0" z="-276"/>
-		</gameArea>
-		<gameArea id="10">
-			<beginNear x="-77" y="0" z="-616"/>
-			<endNear x="-151" y="0" z="-391"/>
-			<beginFar x="305" y="0" z="-276"/>
-			<endFar x="226" y="0" z="-28"/>
-		</gameArea>
-		<gameArea id="11">
-			<beginNear x="-151" y="0" z="-391"/>
-			<endNear x="-361" y="0" z="-202"/>
-			<beginFar x="226" y="0" z="-28"/>
-			<endFar x="-55" y="0" z="190"/>
-		</gameArea>		
+			<beginNear x="-235" y="0" z="-657"/>
+			<endNear x="-377" y="0" z="-230"/>
+			<beginFar x="293" y="0" z="-33"/>
+			<endFar x="-81" y="0" z="163"/>
+		</gameArea>	
 	</gameAreas>
 	
 </scene>
