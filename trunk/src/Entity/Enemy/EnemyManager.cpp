@@ -216,6 +216,12 @@ void EnemyManager::update(const float elapsedSeconds)
 		
 		if( enemy->attackStart() )
 		{
+			//If attack comes from a wizard
+			if(enemy->getEnemyType() == Enemy::EnemyTypes::Wizard){
+				//Projectile event 
+				ProjectileFireEventPtr projEvt = ProjectileFireEventPtr(new ProjectileFireEvent(enemy));
+				EVENTS_FIRE(projEvt);
+			}
 			EnemyAttackEventPtr evt = EnemyAttackEventPtr(new EnemyAttackEvent(enemy));
 			EVENTS_FIRE(evt);
 			enemy->attackFinished();

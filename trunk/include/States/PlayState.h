@@ -34,6 +34,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #include "..\Logic\LogicManager.h"
 #include "..\Lua\LuaManager.h"
 #include "..\Entity\Player\PlayerManager.h"
+#include "..\Entity\Projectile\ProjectileManager.h"
 #include "..\Entity\Enemy\EnemyManager.h"
 #include "..\Entity\Item\ItemManager.h"
 #include "..\Particle\ParticleManager.h"
@@ -106,6 +107,7 @@ namespace WyvernsAssault
 		PostProcessManagerPtr mPostProcessManager;
 		CutSceneManagerPtr mCutSceneManager;
 		GameAreaManagerPtr mGameAreaManager;
+		ProjectileManagerPtr mProjectileManager;
 
 		SceneNode* mRootSceneNode;
 
