@@ -30,6 +30,7 @@ CameraManager::CameraManager()
 , mCameraEffect(0)
 , mCameraEffectLook(0)
 , mGameViewport(0)
+, mCurrentGameArea(0)
 {
 }
 
@@ -236,42 +237,43 @@ String CameraManager::getCameraModeString()
 /** Camera moving direction */
 Vector3 CameraManager::getDirection(Vector3 direction)
 {
-	Vector3 finalDirection;
+	Vector3 finalDirection = mGameCamera->getDirection() * Vector3(1,0,1);
+	finalDirection.normalise();
 
 	if(direction == Vector3(1,0,0))
 	{
-		finalDirection = Quaternion(Degree(270), Vector3::UNIT_Y) * mGameCamera->getDirection();
+		finalDirection = Quaternion(Degree(270), Vector3::UNIT_Y) * finalDirection;
 	}
 	else if(direction == Vector3(-1,0,0))
 	{
-		finalDirection = Quaternion(Degree(90), Vector3::UNIT_Y) * mGameCamera->getDirection();
+		finalDirection = Quaternion(Degree(90), Vector3::UNIT_Y) * finalDirection;
 	}
 	else if(direction == Vector3(0,0,1))
 	{
-		finalDirection = Quaternion(Degree(180), Vector3::UNIT_Y) * mGameCamera->getDirection();
+		finalDirection = Quaternion(Degree(180), Vector3::UNIT_Y) * finalDirection;
 	}
 	else if(direction == Vector3(0,0,-1))
 	{
-		finalDirection = mGameCamera->getDirection();
+		finalDirection = finalDirection;
 	}
 	else if(direction == Vector3(1,0,1))
 	{
-		finalDirection = Quaternion(Degree(225), Vector3::UNIT_Y) * mGameCamera->getDirection();
+		finalDirection = Quaternion(Degree(225), Vector3::UNIT_Y) * finalDirection;
 	}
 	else if(direction == Vector3(1,0,-1))
 	{
-		finalDirection = Quaternion(Degree(315), Vector3::UNIT_Y) * mGameCamera->getDirection();
+		finalDirection = Quaternion(Degree(315), Vector3::UNIT_Y) * finalDirection;
 	}
 	else if(direction == Vector3(-1,0,1))
 	{
-		finalDirection = Quaternion(Degree(135), Vector3::UNIT_Y) * mGameCamera->getDirection();
+		finalDirection = Quaternion(Degree(135), Vector3::UNIT_Y) * finalDirection;
 	}		
 	else if(direction == Vector3(-1,0,-1))
 	{
-		finalDirection = Quaternion(Degree(45), Vector3::UNIT_Y) * mGameCamera->getDirection();
+		finalDirection = Quaternion(Degree(45), Vector3::UNIT_Y) * finalDirection;
 	}
 
-	return finalDirection * Vector3(1,0,1);
+	return finalDirection;
 }
 
 void CameraManager::updateCamera(Vector3 player, int gameArea, Real elapsedSeconds)
@@ -279,6 +281,8 @@ void CameraManager::updateCamera(Vector3 player, int gameArea, Real elapsedSecon
 	// Update game camera
 	if( mGameCameraMode == CameraModes::Game )
 	{
+		mCurrentGameArea = gameArea;
+
 		Vector3 begin = mCameraSegments[gameArea].mPositionBegin;
 		Vector3 end = mCameraSegments[gameArea].mPositionEnd;
 		Vector3 lbegin = mCameraSegments[gameArea].mLookAtBegin;
@@ -808,7 +812,7 @@ EVENTS_DEFINE_HANDLER(CameraManager,PlayerAttack)
 
 	if( player->isSpecial() )
 	{
-		this->zoom(player->getSpecialLength(), 3);
+		this->zoom(player->getSpecialLength(), 1);
 	}
 }
 

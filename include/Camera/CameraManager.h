@@ -172,6 +172,8 @@ namespace WyvernsAssault
 
 		bool					mMoving;
 
+		int						mCurrentGameArea;
+
 		// Sdk Camera Manager for free look camera
 		OgreBites::SdkCameraMan*		mCameraMan;
 

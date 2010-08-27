@@ -214,18 +214,32 @@ void EnemyManager::update(const float elapsedSeconds)
 		enemy->updateLogic(L,elapsedSeconds);		
 		enemy->updateEntity(elapsedSeconds); // this updates animations too!
 		
-		if( enemy->attackStart() )
+		// Attack cooldown
+		if( enemy->getAttackTimeout() == 0 )
 		{
-			//If attack comes from a wizard
-			if(enemy->getEnemyType() == Enemy::EnemyTypes::Wizard){
-				//Projectile event 
-				ProjectileFireEventPtr projEvt = ProjectileFireEventPtr(new ProjectileFireEvent(enemy));
-				EVENTS_FIRE(projEvt);
+			if( enemy->attackStart() )
+			{
+				//If attack comes from a wizard
+				if(enemy->getEnemyType() == Enemy::EnemyTypes::Wizard){
+					//Projectile event 
+					ProjectileFireEventPtr projEvt = ProjectileFireEventPtr(new ProjectileFireEvent(enemy));
+					EVENTS_FIRE(projEvt);
+				}
+				EnemyAttackEventPtr evt = EnemyAttackEventPtr(new EnemyAttackEvent(enemy));
+				EVENTS_FIRE(evt);				
+
+				enemy->setAttackTimeout(elapsedSeconds);
 			}
-			EnemyAttackEventPtr evt = EnemyAttackEventPtr(new EnemyAttackEvent(enemy));
-			EVENTS_FIRE(evt);
-			enemy->attackFinished();
-			enemy->setAttackHited(false);
+		}
+		else
+		{
+			enemy->setAttackTimeout(enemy->getAttackTimeout() + elapsedSeconds);
+			if( enemy->getAttackTimeout() > enemy->getAttackCooldown() )
+			{
+				enemy->setAttackTimeout(0);
+				enemy->attackFinished();
+				enemy->setAttackHited(false);
+			}
 		}
 	}
 
@@ -333,7 +347,7 @@ EVENTS_DEFINE_HANDLER(EnemyManager, EnemyKilled)
 		}
 
 		EnemyRemoveEventPtr eRemove = EnemyRemoveEventPtr(new EnemyRemoveEvent(enemy));
- 		EVENTS_FIRE_AFTER(eRemove, 4.0f);
+ 		EVENTS_FIRE_AFTER(eRemove, 5.0f);
 	}
 }
 
@@ -355,7 +369,7 @@ EVENTS_DEFINE_HANDLER(EnemyManager, EnemyCustom)
 		enemy->setVisible(false);
 
 	EnemyRemoveEventPtr eRemove = EnemyRemoveEventPtr(new EnemyRemoveEvent(enemy));
-	EVENTS_FIRE_AFTER(eRemove, 4.0f);
+	EVENTS_FIRE_AFTER(eRemove, 5.0f);
 }
 
 EVENTS_DEFINE_HANDLER(EnemyManager, GameAreaChanged)

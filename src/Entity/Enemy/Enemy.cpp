@@ -48,10 +48,14 @@ Enemy::Enemy(Ogre::String name, Enemy::EnemyTypes type, Enemy::EnemyParameters p
 , endPatrolPoint(Vector3::ZERO)
 , mDieMesh(NULL)
 , mDieAnimation(NULL)
+, mAttackTimeout(0)
 {
 	mType = type;
 	mParameters = params;
 	mMaxLife = params.life;
+
+	// Attack cooldown
+	mParameters.attackCooldown = 1.0f;
 }
 
 Enemy::~Enemy()

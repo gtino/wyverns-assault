@@ -90,6 +90,7 @@ namespace WyvernsAssault
 			Real damage;
 			Real specialDamage;
 			Real height;
+			Real attackCooldown;
 			String dieMesh;
 			String dieAnimation;
 			String physicMesh;
@@ -132,7 +133,11 @@ namespace WyvernsAssault
 		void setChannel(int channel){mChannel = channel;}
 
 		float getSpeed(){return mParameters.speed;}
-		float getHeight(){return mParameters.height; }
+		float getHeight(){return mParameters.height;}
+
+		Real getAttackTimeout(){return mAttackTimeout;}
+		void setAttackTimeout(Real time){mAttackTimeout = time;}
+		Real getAttackCooldown(){return mParameters.attackCooldown;}
 
 		// Enable Debug Stuff
 		void setDebugEnabled(bool isDebugEnabled);
@@ -173,6 +178,8 @@ namespace WyvernsAssault
 		
 		EnemyParameters		mParameters;
 		Real				mMaxLife;
+
+		Real				mAttackTimeout;
 
 		Entity*				mDieMesh;
 		AnimationState*		mDieAnimation;
