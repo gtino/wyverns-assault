@@ -467,6 +467,18 @@
 						>
 					</File>
 				</Filter>
+				<Filter
+					Name="Projectile"
+					>
+					<File
+						RelativePath="..\src\Entity\Projectile\Projectile.cpp"
+						>
+					</File>
+					<File
+						RelativePath="..\src\Entity\Projectile\ProjectileManager.cpp"
+						>
+					</File>
+				</Filter>
 			</Filter>
 			<Filter
 				Name="Events"
@@ -834,6 +846,18 @@
 					</File>
 					<File
 						RelativePath="..\include\Entity\Item\ItemManager.h"
+						>
+					</File>
+				</Filter>
+				<Filter
+					Name="Projectile"
+					>
+					<File
+						RelativePath="..\include\Entity\Projectile\Projectile.h"
+						>
+					</File>
+					<File
+						RelativePath="..\include\Entity\Projectile\ProjectileManager.h"
 						>
 					</File>
 				</Filter>

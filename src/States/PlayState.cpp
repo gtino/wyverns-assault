@@ -158,6 +158,11 @@ void PlayState::initialize()
 	mItemManager->initialize();
 
 	//
+	// ProjectileManager 
+	//
+	mProjectileManager = ProjectileManagerPtr(new ProjectileManager(mSceneManager));
+
+	//
 	// Logic Manager
 	//
 	mLogicManager = LogicManagerPtr(new LogicManager());
@@ -202,6 +207,7 @@ void PlayState::initialize()
 	mEventsManager->registerInterface(mCutSceneManager);
 	mEventsManager->registerInterface(mScenarioManager);
 	mEventsManager->registerInterface(mGameAreaManager);
+	mEventsManager->registerInterface(mProjectileManager);
 
 	// -----------
 	// Lua Manager

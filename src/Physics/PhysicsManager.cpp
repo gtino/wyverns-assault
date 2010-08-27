@@ -83,6 +83,16 @@ void PhysicsManager::update(const float elapsedSeconds)
 		move(enemy,elapsedSeconds);
 	}
 
+	// Update projectiles
+	for(int i = 0; i < mProjectileList.size(); i++)
+	{
+		ProjectilePtr projectile =  mProjectileList[i];
+
+		//Update projectile move
+		move(projectile,elapsedSeconds);
+
+	}
+
 	// Call bounding box collision
 	checkForCollisions();
 }
@@ -161,6 +171,21 @@ void PhysicsManager::checkForCollisions()
 				EVENTS_FIRE(evt);
 			}
 		}
+
+		//Player - Projectile COLLISION
+		for(int i = 0; i < mProjectileList.size(); i++)
+		{
+			ProjectilePtr projectile = mProjectileList[i];
+			AxisAlignedBox projectile_box = projectile->getGeometry()->getWorldBoundingBox(projectile->getPosition());
+
+			if(player_box.intersects(projectile_box))
+			{
+				//Projectile atacck
+				Vector3 pos;
+				//ItemCatchEventPtr evt = ItemCatchEventPtr(new ItemCatchEvent(player, item));
+				//EVENTS_FIRE(evt);
+			}
+		}
 	}
 
 	// Enemy Collisions
@@ -224,6 +249,14 @@ void PhysicsManager::move(EnemyPtr enemy, const float elapsedSeconds)
 		enemy->setPosition(lastPosition);
 }
 
+void PhysicsManager::move(ProjectilePtr projectile, const float elapsedSeconds)
+{
+	Vector3 direction = projectile->getDirection();
+
+	projectile->translate( (direction  * elapsedSeconds * Ogre::Vector3(1,0,1)) );
+
+}
+
 // Load scenario physics
 void PhysicsManager::addPhysicScenario(Ogre::String mesh, Ogre::String name, WyvernsAssault::GroundQueryFlags type, Ogre::Vector3 position, Ogre::Vector3 scale)
 {	
@@ -264,6 +297,12 @@ void PhysicsManager::addPhysicEnemy(EnemyPtr enemy, int gameArea)
 void PhysicsManager::addPhysicItem(ItemPtr item, int gameArea)
 {
 	mItemMapList[gameArea].push_back(item);
+}
+
+// Load projectile physics
+void PhysicsManager::addPhysicProjectile(ProjectilePtr projectile)
+{
+	mProjectileList.push_back(projectile);
 }
 
 // Load object physics
@@ -424,6 +463,19 @@ bool PhysicsManager::removeObject(ObjectPtr obj)
 	return false;
 }
 
+bool PhysicsManager::removeProjectile(ProjectilePtr projectile)
+{
+	ProjectileListIterator it = find(mProjectileList.begin(), mProjectileList.end(), projectile);
+		if( it != mProjectileList.end() )
+	{
+		mProjectileList.erase(it);
+		return true;
+	}
+
+	return false;
+
+}
+
 // --------------
 // Event handlers
 // --------------
@@ -433,6 +485,8 @@ EVENTS_BEGIN_REGISTER_HANDLERS(PhysicsManager)
 	EVENTS_REGISTER_HANDLER(PhysicsManager, ObjectKilled);
 	EVENTS_REGISTER_HANDLER(PhysicsManager, GameAreaChanged);
 	EVENTS_REGISTER_HANDLER(PhysicsManager, GameAreaCleared);
+	EVENTS_REGISTER_HANDLER(PhysicsManager, ProjectileUpdate);
+	EVENTS_REGISTER_HANDLER(PhysicsManager, ProjectileRemove);
 EVENTS_END_REGISTER_HANDLERS()
 
 EVENTS_BEGIN_UNREGISTER_HANDLERS(PhysicsManager)
@@ -441,6 +495,8 @@ EVENTS_BEGIN_UNREGISTER_HANDLERS(PhysicsManager)
 	EVENTS_UNREGISTER_HANDLER(PhysicsManager, ObjectKilled);
 	EVENTS_UNREGISTER_HANDLER(PhysicsManager, GameAreaChanged);
 	EVENTS_UNREGISTER_HANDLER(PhysicsManager, GameAreaCleared);
+	EVENTS_UNREGISTER_HANDLER(PhysicsManager, ProjectileUpdate);
+	EVENTS_UNREGISTER_HANDLER(PhysicsManager, ProjectileRemove);
 EVENTS_END_UNREGISTER_HANDLERS()
 
 EVENTS_DEFINE_HANDLER(PhysicsManager, EnemyKilled)
@@ -490,6 +546,24 @@ EVENTS_DEFINE_HANDLER(PhysicsManager, GameAreaCleared)
 	// Actual game area is cleared
 	if( mCurrentGameArea == evt->getGameArea() && !mGameAreaCleared)
 		mGameAreaCleared = true;
+}
+
+EVENTS_DEFINE_HANDLER(PhysicsManager, ProjectileUpdate)
+{
+	Debug::Out("PhysicsManager : handleProjectileUpdateEvent");
+
+	ProjectilePtr projectile = evt->getProjectile();
+   	addPhysicProjectile(projectile);
+	
+}
+
+EVENTS_DEFINE_HANDLER(PhysicsManager, ProjectileRemove)
+{
+	Debug::Out("PhysicsManager : handleProjectileRemoveEvent");
+
+	ProjectilePtr projectile = evt->getProjectile();
+   	removeProjectile(projectile);
+	
 }
 
 // --------------------------------

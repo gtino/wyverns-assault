@@ -28,6 +28,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #include "..\Entity\Enemy\Enemy.h"
 #include "..\Entity\Player\Player.h"
 #include "..\Entity\Item\Item.h"
+#include "..\Entity\Projectile\Projectile.h"
 #include "..\Scenario\Object.h"
 
 namespace WyvernsAssault
@@ -54,7 +55,10 @@ namespace WyvernsAssault
 		ItemCatch,
 		ItemRemove,
 		GameAreaChanged,
-		GameAreaCleared
+		GameAreaCleared,
+		ProjectileFire,
+		ProjectileUpdate,
+		ProjectileRemove
 	};
 
 	/** Event priority, used to put the event in the correct queue */
@@ -421,6 +425,52 @@ namespace WyvernsAssault
 	};
 
 	typedef boost::shared_ptr<GameAreaClearedEvent> GameAreaClearedEventPtr;
+
+	// --------------------------------
+	class ProjectileFireEvent : public Event
+	{
+	public:
+		ProjectileFireEvent( EnemyPtr e);
+		~ProjectileFireEvent(){};
+		
+		EnemyPtr getEnemy(){return mEnemy;}
+
+	private:		
+		EnemyPtr mEnemy;
+	};
+
+	typedef boost::shared_ptr<ProjectileFireEvent> ProjectileFireEventPtr;
+
+	// --------------------------------
+	class ProjectileUpdateEvent : public Event
+	{
+	public:
+		ProjectileUpdateEvent( ProjectilePtr p);
+		~ProjectileUpdateEvent(){};
+		
+		ProjectilePtr getProjectile(){return mProjectile;}
+
+	private:		
+		ProjectilePtr mProjectile;
+	};
+
+	typedef boost::shared_ptr<ProjectileUpdateEvent> ProjectileUpdateEventPtr;
+
+	// --------------------------------
+	class ProjectileRemoveEvent : public Event
+	{
+	public:
+		ProjectileRemoveEvent( ProjectilePtr p);
+		~ProjectileRemoveEvent(){};
+		
+		ProjectilePtr getProjectile(){return mProjectile;}
+
+	private:		
+		ProjectilePtr mProjectile;
+	};
+
+	typedef boost::shared_ptr<ProjectileRemoveEvent> ProjectileRemoveEventPtr;
+
 }
 
 #endif // __EVENT_H_

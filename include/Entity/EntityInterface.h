@@ -54,7 +54,8 @@ namespace WyvernsAssault
 		virtual void finalizeEntity();
 
 		virtual Ogre::SceneNode* _getSceneNode() const { return mSceneNode; }
-		
+		virtual Ogre::SceneManager* _getSceneManager() const { return mSceneManager; }
+
 		virtual const Ogre::String& getName() { return mName; }
 
 		virtual void setPosition(const Ogre::Vector3 position) { mSceneNode->setPosition(position); }

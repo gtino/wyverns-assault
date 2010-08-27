@@ -235,3 +235,27 @@ GameAreaClearedEvent::GameAreaClearedEvent(int gameArea)
 {
 	mGameArea= gameArea;
 };
+
+//----------------------
+
+ProjectileFireEvent::ProjectileFireEvent(EnemyPtr e)
+:Event(EventTypes::ProjectileFire, EventPriorities::Normal)
+{
+	mEnemy = e;	
+}
+
+//----------------------
+
+ProjectileUpdateEvent::ProjectileUpdateEvent(ProjectilePtr p)
+:Event(EventTypes::ProjectileUpdate, EventPriorities::Normal)
+{
+	mProjectile = p;	
+}
+
+//----------------------
+
+ProjectileRemoveEvent::ProjectileRemoveEvent(ProjectilePtr p)
+:Event(EventTypes::ProjectileRemove, EventPriorities::Normal)
+{
+	mProjectile = p;	
+}

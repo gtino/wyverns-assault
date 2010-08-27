@@ -38,6 +38,9 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #include "..\Entity\Enemy\EnemyManager.h"
 #include "..\Entity\Enemy\Enemy.h"
 
+#include "..\Entity\Projectile\ProjectileManager.h"
+#include "..\Entity\Projectile\Projectile.h"
+
 #include "..\Entity\Item\ItemManager.h"
 #include "..\Entity\Item\Item.h"
 
@@ -94,12 +97,14 @@ namespace WyvernsAssault
 		bool removeEnemy(EnemyPtr enemy);
 		bool removeItem(ItemPtr item);
 		bool removeObject(ObjectPtr obj);
+		bool removeProjectile(ProjectilePtr projectile);
 
 		void update(const float elapsedSeconds);
 
 		// Move character
 		void move(PlayerPtr player, const float elapsedSeconds);
 		void move(EnemyPtr enemy, const float elapsedSeconds);
+		void move(ProjectilePtr projectile, const float elapsedSeconds);
 
 		// Collision check
 		void checkForCollisions();
@@ -112,6 +117,8 @@ namespace WyvernsAssault
 	private:
 
 		SceneManager* getSceneManager(){ return this->mSceneManager; }
+
+		void addPhysicProjectile(ProjectilePtr projectile);
 
 		Vector3 calculateHeight(const Vector3 &point);
 		bool collidesAllObjects(PlayerPtr player, const Vector3& fromPoint, const Vector3& toPoint, const float collisionRadius = 2.5f, const float rayHeightLevel = 0.0f );
@@ -135,6 +142,7 @@ namespace WyvernsAssault
 		EnemyMapList	mEnemyMapList;
 		ItemMapList		mItemMapList;
 		ObjectMapList	mObjectMapList;
+		ProjectileList  mProjectileList;
 
 		int				mCurrentGameArea;
 		bool			mGameAreaCleared;
@@ -158,6 +166,8 @@ namespace WyvernsAssault
 		EVENTS_HANDLER(ObjectKilled)
 		EVENTS_HANDLER(GameAreaChanged)
 		EVENTS_HANDLER(GameAreaCleared)
+		EVENTS_HANDLER(ProjectileUpdate)
+		EVENTS_HANDLER(ProjectileRemove)
 
 	public:
 		// --------------------------------

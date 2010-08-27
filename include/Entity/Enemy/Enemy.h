@@ -117,6 +117,7 @@ namespace WyvernsAssault
 		Enemy::EnemyStates getEnemyState(){return mState;}
 
 		void setTarget(SceneNode* target);
+		SceneNode* getTarget(){return mTarget;}
 		void autoTrackTarget();
 		
 		Ogre::Real getHitDamage(){return mParameters.damage;}
