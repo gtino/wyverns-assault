@@ -6,6 +6,8 @@ Projectile::Projectile(Ogre::String name, Ogre::Vector3 init, Ogre::Vector3 fini
 : EntityInterface(name)
 , PhysicsInterface()
 , mOBBoxRenderable(0)
+, aliveTime(0)
+, live(true)
 , mIsDebugEnabled(false)
 {
 	initPoint = init;
@@ -28,6 +30,7 @@ void Projectile::initializeEntity(Ogre::Entity* entity, Ogre::SceneNode* sceneNo
 
 	// Set direction of projectile
 	mDirection = finishPoint - initPoint;
+	mDirection.normalise();
 
 	// Bounding Box
 	//mOBBoxRenderable = new OBBoxRenderable("OBBoxManualMaterial_Object");

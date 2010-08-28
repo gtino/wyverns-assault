@@ -137,7 +137,7 @@ void PhysicsManager::checkForCollisions()
 					EVENTS_FIRE(enemyHitEventPtr);
 				}
 				// Check if enemy is attacking
-				if( enemy->isAttacking() && !enemy->hasAttackHited() )
+				if( enemy->isAttacking() && !enemy->hasAttackHited() && enemy->getEnemyType() != Enemy::EnemyTypes::Wizard )
 				{
 					PlayerHitEventPtr playerHitEventPtr = PlayerHitEventPtr(new PlayerHitEvent(enemy, player));
 					EVENTS_FIRE_AFTER(playerHitEventPtr, 0.4);
@@ -181,9 +181,12 @@ void PhysicsManager::checkForCollisions()
 			if(player_box.intersects(projectile_box))
 			{
 				//Projectile atacck
-				Vector3 pos;
-				//ItemCatchEventPtr evt = ItemCatchEventPtr(new ItemCatchEvent(player, item));
-				//EVENTS_FIRE(evt);
+				ProjectileHitEventPtr evtHit = ProjectileHitEventPtr(new ProjectileHitEvent(projectile, player));
+				EVENTS_FIRE(evtHit);
+				//Projectile remove
+				ProjectileRemoveEventPtr evtRemove = ProjectileRemoveEventPtr(new ProjectileRemoveEvent(projectile));
+				EVENTS_FIRE(evtRemove);
+				projectile->death();
 			}
 		}
 	}
@@ -253,7 +256,7 @@ void PhysicsManager::move(ProjectilePtr projectile, const float elapsedSeconds)
 {
 	Vector3 direction = projectile->getDirection();
 
-	projectile->translate( (direction  * elapsedSeconds * Ogre::Vector3(1,0,1)) );
+	projectile->translate( (direction  * elapsedSeconds * 80)  );
 
 }
 

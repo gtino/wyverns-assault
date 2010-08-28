@@ -503,6 +503,13 @@ void PlayState::update(const float elapsedSeconds)
 	TIMER_STOP(Lights);
 
 	//
+	// Projectile manager
+	//
+	TIMER_START(Projectile);
+	mProjectileManager->update(elapsedSeconds);
+	TIMER_STOP(Projectile);
+
+	//
 	// Enemy manager
 	//
 	TIMER_START(Enemy);
@@ -646,6 +653,8 @@ void PlayState::finalize()
 	mCutSceneManager.reset();
 
 	mGameAreaManager.reset();
+
+	mProjectileManager.reset();
 
 	//mGraphicsManager->clearScene();
 

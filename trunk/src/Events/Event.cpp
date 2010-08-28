@@ -259,3 +259,12 @@ ProjectileRemoveEvent::ProjectileRemoveEvent(ProjectilePtr p)
 {
 	mProjectile = p;	
 }
+
+//----------------------
+
+ProjectileHitEvent::ProjectileHitEvent(ProjectilePtr p, PlayerPtr player)
+:Event(EventTypes::ProjectileHit, EventPriorities::Normal)
+{
+	mProjectile = p;	
+	mPlayer = player;
+}

@@ -55,10 +55,6 @@ ProjectilePtr ProjectileManager::createProjectile(Ogre::String name, Ogre::Scene
 	ProjectileUpdateEventPtr evtUpdate = ProjectileUpdateEventPtr(new ProjectileUpdateEvent(projectile));
 	EVENTS_FIRE(evtUpdate);
 
-	// Launch event for remove projectile after 2 seconds
-	ProjectileRemoveEventPtr evtRemove = ProjectileRemoveEventPtr(new ProjectileRemoveEvent(projectile));
-	EVENTS_FIRE_AFTER(evtRemove, 0.7f);
-
 	return projectile;
 }
 
@@ -75,6 +71,23 @@ bool ProjectileManager::removeProjectile(Ogre::String name)
 	}
 
 	return false;
+}
+
+void ProjectileManager::update(const float elapsedSeconds){
+
+	for(int i = 0; i < mProjectileList.size(); i++)
+	{
+		ProjectilePtr projectile = mProjectileList[i];
+		projectile->setProjectileTimer(projectile->getProjectileTimer() + elapsedSeconds);
+
+		if(projectile->getProjectileTimer() >= PROJECTILE_LIVE_TIME && projectile->isLive())
+		{
+			//Projectile remove
+			ProjectileRemoveEventPtr evtRemove = ProjectileRemoveEventPtr(new ProjectileRemoveEvent(projectile));
+			EVENTS_FIRE(evtRemove);
+		}
+	}
+
 }
 
 Ogre::String ProjectileManager::createUniqueId()
@@ -140,7 +153,9 @@ EVENTS_DEFINE_HANDLER(ProjectileManager, ProjectileFire)
 	SceneNode* projectileNode = enemy->_getSceneManager()->getRootSceneNode()->createChildSceneNode();
 	projectileNode->setPosition(init);
 
-	createProjectile(createUniqueId(), projectileNode, init, finish);
+	ProjectilePtr projectile = createProjectile(createUniqueId(), projectileNode, init, finish);
+
+	projectile->setProjectileDamage(enemy->getHitDamage());
 
 }
 

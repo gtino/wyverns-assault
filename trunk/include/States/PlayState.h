@@ -143,6 +143,7 @@ namespace WyvernsAssault
 		TIMER(PostProcess);
 		TIMER(Events);
 		TIMER(GameArea);
+		TIMER(Projectile);
 
 	protected:
 		float			buttonTimer;

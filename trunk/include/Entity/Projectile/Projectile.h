@@ -30,6 +30,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
 #include "..\OBBoxRenderable.h"
 
+#define PROJECTILE_LIVE_TIME 0.8
 
 namespace WyvernsAssault
 {
@@ -51,15 +52,28 @@ namespace WyvernsAssault
 		void finalizeEntity();
 
 		Ogre::Vector3 getFinishPoint(){return finishPoint;}
-		
+
 		// Enable Debug Stuff
 		void setDebugEnabled(bool isDebugEnabled);
 		bool getDebugEnabled(){return mIsDebugEnabled;};
+
+		void setProjectileTimer(float seconds){ aliveTime = seconds; }
+		float getProjectileTimer(){ return aliveTime; }
+
+		void setProjectileDamage(Ogre::Real damage){ hitDamage = damage; }
+		Ogre::Real getProjectileDamage(){ return hitDamage; }
+
+		void death(){ live = false; }
+		bool isLive(){ return live; }
 
 	private:
 
 		Vector3 initPoint;
 		Vector3 finishPoint;
+
+		Ogre::Real hitDamage;
+		float aliveTime;
+		bool live;
 
 		OBBoxRenderable* mOBBoxRenderable;
 		bool mIsDebugEnabled;
