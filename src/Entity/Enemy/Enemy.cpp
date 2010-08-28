@@ -155,8 +155,6 @@ void Enemy::updateEntity(const float elapsedSeconds)
 		if( hasDieAnimation() )
 		{
 			mDieAnimation->addTime(elapsedSeconds);
-			if( mDieAnimation->hasEnded() && hasDieMesh() )
-				mDieMesh->setVisible(false);
 		}
 	}
 }
@@ -426,8 +424,9 @@ void Enemy::dieSwitch()
 	// Rotate random if has die animation
 	if( hasDieAnimation() )
 	{
-		int angle = rand() % 60;
-		mSceneNode->rotate(Quaternion(Degree(angle), Vector3(0,1,1)));
+		int angle = rand() * 200;
+		mSceneNode->rotate(Quaternion(Degree(angle), Vector3(0,1,0)));
+		mSceneNode->translate(0, getHeight()/2, 0);
 	}
 }
 
