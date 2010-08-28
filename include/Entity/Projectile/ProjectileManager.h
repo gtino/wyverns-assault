@@ -65,6 +65,8 @@ namespace WyvernsAssault
 
 		ProjectilePtr getProjectile(Ogre::String name);
 
+		void update(const float elapsedSeconds);
+
 		// Enable Debug Stuff
 		void setDebugEnabled(bool isDebugEnabled);
 		bool getDebugEnabled(){return mIsDebugEnabled;};

@@ -58,6 +58,7 @@ namespace WyvernsAssault
 		GameAreaCleared,
 		ProjectileFire,
 		ProjectileUpdate,
+		ProjectileHit,
 		ProjectileRemove
 	};
 
@@ -470,6 +471,23 @@ namespace WyvernsAssault
 	};
 
 	typedef boost::shared_ptr<ProjectileRemoveEvent> ProjectileRemoveEventPtr;
+
+	// --------------------------------
+	class ProjectileHitEvent : public Event
+	{
+	public:
+		ProjectileHitEvent( ProjectilePtr p, PlayerPtr player );
+		~ProjectileHitEvent(){};
+		
+		ProjectilePtr getProjectile(){return mProjectile;}
+		PlayerPtr getPlayer(){return mPlayer;}
+
+	private:		
+		ProjectilePtr mProjectile;
+		PlayerPtr mPlayer;
+	};
+
+	typedef boost::shared_ptr<ProjectileHitEvent> ProjectileHitEventPtr;
 
 }
 

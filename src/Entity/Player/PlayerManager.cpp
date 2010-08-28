@@ -219,6 +219,7 @@ EVENTS_BEGIN_REGISTER_HANDLERS(PlayerManager)
 	EVENTS_REGISTER_HANDLER(PlayerManager,PlayerKilled)
 	EVENTS_REGISTER_HANDLER(PlayerManager,ItemCatch)
 	EVENTS_REGISTER_HANDLER(PlayerManager,EnemyKilled)
+	EVENTS_REGISTER_HANDLER(PlayerManager,ProjectileHit)
 EVENTS_END_REGISTER_HANDLERS()
 
 EVENTS_BEGIN_UNREGISTER_HANDLERS(PlayerManager)
@@ -226,6 +227,7 @@ EVENTS_BEGIN_UNREGISTER_HANDLERS(PlayerManager)
 	EVENTS_UNREGISTER_HANDLER(PlayerManager,PlayerKilled)
 	EVENTS_UNREGISTER_HANDLER(PlayerManager,ItemCatch)
 	EVENTS_UNREGISTER_HANDLER(PlayerManager,EnemyKilled)
+	EVENTS_UNREGISTER_HANDLER(PlayerManager,ProjectileHit)
 EVENTS_END_UNREGISTER_HANDLERS()
 
 EVENTS_DEFINE_HANDLER(PlayerManager, PlayerHit)
@@ -272,6 +274,19 @@ EVENTS_DEFINE_HANDLER(PlayerManager, EnemyKilled)
 	EnemyPtr enemy = evt->getEnemy();
 
 	player->addPoints(enemy->getPoints());
+}
+
+EVENTS_DEFINE_HANDLER(PlayerManager, ProjectileHit)
+{
+	Debug::Out("PlayerManager : handleProjectileHitEvent");
+
+	PlayerPtr player = evt->getPlayer();
+	ProjectilePtr projectile = evt->getProjectile();
+	
+	if(!player->isGodModeOn()) // DEBUG : God mode!
+	{
+		player->hurt( projectile->getProjectileDamage() );
+	}
 }
 
 // --------------------------------

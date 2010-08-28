@@ -89,7 +89,10 @@ namespace WyvernsAssault
 		bool isSpecial(){ return special; }
 		bool isDeath() { return !live; }
 		bool isDying() { return timeDeath <= 3; }
-		void hurt(float damage){ mLife -= damage * (1 / mDrunkMult); } 
+		void hurt(float damage){ 
+			mLife -= damage * (1 / mDrunkMult); 
+			if(mLife < 0) mLife = 0;
+		} 
 
 		Ogre::Real getHitDamage(){return mAttackDamage * mDrunkMult;}
 		Ogre::Real getComboHitDamage(){return mAttackDamage * mDrunkMult * 3;}
