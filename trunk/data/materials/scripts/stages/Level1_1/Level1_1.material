@@ -2457,30 +2457,20 @@ material WaterPool
 	{
 		pass 
 		{
-			vertex_program_ref ToonVP
-			{
-				param_named shininess float4 50 1.0 1.0 1.0
-			}
+			lighting off
+			scene_blend modulate
+			depth_check on
+			depth_write off
 
-			fragment_program_ref ToonFP
+			texture_unit 
 			{
-				param_named ambient float4 0.139 0.188 0.396 1
-				param_named diffuse float4 0.435294 0.619608 0.654902 1
-				param_named specular float4 0.33 0.752 0.673 1
-				param_named emissive float4 0.0 0.0 0.0 1.0
-			}
-
-			texture_unit ToonShades
-			{
-				texture toon.png 2d
-				tex_address_mode clamp
+				texture clean_water.png
+				tex_address_mode wrap
+				scroll_anim 0 0.1
 				filtering none
 			}
-
 		}
-
 	}
-
 }
 
 material WoodenPole
