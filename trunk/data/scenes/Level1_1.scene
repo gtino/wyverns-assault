@@ -509,15 +509,15 @@
         </entity>
       </node>
       <node name="TownHouse01_5" id="231086144">
-        <rotation qw="0.669131" qx="0" qy="0.743145" qz="0" />
-        <position x="-68.7949" y="598.719" z="-1512.76" />
+        <rotation qw="0.995805" qx="0" qy="0.0915014" qz="0" />
+        <position x="-71.9596" y="598.719" z="-1539.47" />
         <scale x="1" y="1" z="1" />
-        <entity name="Entity#78" id="446791008" castshadows="true" meshFile="TownHouse0.mesh">
+        <entity name="TownHouse2#2" id="210638752" castshadows="false" meshFile="TownHouse2.mesh">
           <rotation qw="1" qx="0" qy="0" qz="0" />
           <position x="0" y="0" z="0" />
           <scale x="1" y="1" z="1" />
           <subentities>
-            <subentity materialName="TownHouse0" index="0" visible="true" />
+            <subentity materialName="TownHouse2" index="0" visible="true" />
           </subentities>
         </entity>
       </node>
@@ -3044,6 +3044,19 @@
           </subentities>
         </entity>
       </node>
+      <node name="TownHouse02" id="842158272">
+        <rotation qw="-0.426569" qx="0" qy="-0.904455" qz="0" />
+        <position x="650.751" y="598.719" z="-765.57" />
+        <scale x="1" y="1" z="1" />
+        <entity name="TownHouse2#0" id="61006500" castshadows="false" meshFile="TownHouse2.mesh">
+          <rotation qw="1" qx="0" qy="0" qz="0" />
+          <position x="0" y="0" z="0" />
+          <scale x="1" y="1" z="1" />
+          <subentities>
+            <subentity materialName="TownHouse2" index="0" visible="true" />
+          </subentities>
+        </entity>
+      </node>
       <node name="GreenMountain14" id="593493440">
         <rotation qw="0.707107" qx="0" qy="-0.707107" qz="0" />
         <position x="3186.12" y="102.181" z="17.3866" />
@@ -4454,8 +4467,8 @@
         </entity>
       </node>
       <node name="TownHouse01_11" id="890347008">
-        <rotation qw="-0.271441" qx="0" qy="0.962455" qz="0" />
-        <position x="670.906" y="598.719" z="-756.325" />
+        <rotation qw="0.69779" qx="0" qy="0.716302" qz="0" />
+        <position x="-50.353" y="598.719" z="-1338.96" />
         <scale x="1" y="1" z="1" />
         <entity name="TownHouse1#3" id="297921696" castshadows="false" meshFile="TownHouse1.mesh">
           <rotation qw="1" qx="0" qy="0" qz="0" />
@@ -4577,15 +4590,15 @@
         </entity>
       </node>
       <node name="TownHouse01_9" id="256935328">
-        <rotation qw="0.922201" qx="0" qy="-0.386711" qz="0" />
-        <position x="87.9084" y="598.719" z="-2635.89" />
+        <rotation qw="0.386711" qx="0" qy="-0.922201" qz="0" />
+        <position x="109.067" y="598.719" z="-2646.47" />
         <scale x="1" y="1" z="1" />
-        <entity name="Entity#81" id="116122928" castshadows="true" meshFile="TownHouse0.mesh">
+        <entity name="TownHouse2#1" id="58778652" castshadows="false" meshFile="TownHouse2.mesh">
           <rotation qw="1" qx="0" qy="0" qz="0" />
           <position x="0" y="0" z="0" />
           <scale x="1" y="1" z="1" />
           <subentities>
-            <subentity materialName="TownHouse0" index="0" visible="true" />
+            <subentity materialName="TownHouse2" index="0" visible="true" />
           </subentities>
         </entity>
       </node>
@@ -5794,7 +5807,7 @@
       </node>
       <node name="Naked##0" id="255287312">
         <rotation qw="1" qx="0" qy="0" qz="0" />
-        <position x="292.28" y="12" z="-495.542" />
+        <position x="232.971" y="12" z="-548.615" />
         <scale x="1" y="1" z="1" />
         <entity name="naked##0" id="36622212" castshadows="true" meshFile="naked.mesh" type="Enemy" subType="Naked" animationTree="data/animations/naked.xml" life="50" points="150" speed="75" damage="0" specialDamage="0" height="11" dieMesh="nakedDie.mesh" dieAnimation="Die" physicMesh="enemyBasicPhysicBody.mesh">
           <rotation qw="1" qx="0" qy="0" qz="0" />
