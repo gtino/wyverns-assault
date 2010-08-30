@@ -55,7 +55,7 @@
   <CAMERASPEED value="28"></CAMERASPEED>
   <CAMERAPOSITIONS count="1">
     <OPTION id="0" position="1417.36 9.53911 54.9741" orientation="0.707107 0 0.707107 0"></OPTION>
-    <OPTION id="1" position="1449.26 215.031 169.378" orientation="0.591366 -0.21524 0.730277 0.265806"></OPTION>
+    <OPTION id="1" position="1406.63 143.002 426.584" orientation="0.751255 -0.182096 0.61654 0.149448"></OPTION>
   </CAMERAPOSITIONS>
     <LAYERS>
       <LAYER id="0" name="Layer 0" visible="true"></LAYER>
@@ -136,9 +136,9 @@
   <OBJECT object_id="2000000002" name="Viewport1" typename="Viewport Object">
     <PROPERTY id="camera::clipdistance" type="8" value="0.05 100000"></PROPERTY>
     <PROPERTY id="camera::fov" type="6" value="1"></PROPERTY>
-    <PROPERTY id="camera::orientation" type="13" value="0.591366 -0.21524 0.730277 0.265806"></PROPERTY>
+    <PROPERTY id="camera::orientation" type="13" value="0.751257 -0.182097 0.616542 0.149448"></PROPERTY>
     <PROPERTY id="camera::polymode" type="2" value="3"></PROPERTY>
-    <PROPERTY id="camera::position" type="9" value="1449.26 215.031 169.378"></PROPERTY>
+    <PROPERTY id="camera::position" type="9" value="1406.63 143.002 426.584"></PROPERTY>
     <PROPERTY id="camera::viewmode" type="2" value="6"></PROPERTY>
     <PROPERTY id="colour" type="11" value="0.901961 0.901961 0.901961 1"></PROPERTY>
     <PROPERTY id="compositorcount" type="2" value="0"></PROPERTY>
@@ -1683,7 +1683,7 @@
     <PROPERTY id="layer" type="2" value="0"></PROPERTY>
     <PROPERTY id="locked" type="12" value="false"></PROPERTY>
     <PROPERTY id="orientation" type="13" value="0.97237 0 0.233445 0"></PROPERTY>
-    <PROPERTY id="position" type="9" value="5062.04 593.26 1538.01"></PROPERTY>
+    <PROPERTY id="position" type="9" value="5131.44 593.26 1689.54"></PROPERTY>
     <PROPERTY id="scale" type="9" value="4 4 4"></PROPERTY>
     <PROPERTY id="updatescript" type="7" value=""></PROPERTY>
     <CUSTOMPROPERTIES>
@@ -2117,6 +2117,18 @@
     <PROPERTY id="orientation" type="13" value="0.707107 0 -0.707107 0"></PROPERTY>
     <PROPERTY id="position" type="9" value="3516.2 55.9104 311.935"></PROPERTY>
     <PROPERTY id="scale" type="9" value="65.7406 246.527 65.7406"></PROPERTY>
+    <PROPERTY id="updatescript" type="7" value=""></PROPERTY>
+    <CUSTOMPROPERTIES>
+    </CUSTOMPROPERTIES>
+  </OBJECT>
+
+  <OBJECT object_id="286080512" name="Windmill" typename="Node Object" parentnode="Scenario">
+    <PROPERTY id="autotracktarget" type="7" value="None"></PROPERTY>
+    <PROPERTY id="layer" type="2" value="0"></PROPERTY>
+    <PROPERTY id="locked" type="12" value="false"></PROPERTY>
+    <PROPERTY id="orientation" type="13" value="0.809017 0 -0.587786 0"></PROPERTY>
+    <PROPERTY id="position" type="9" value="5075.47 593.26 1542.68"></PROPERTY>
+    <PROPERTY id="scale" type="9" value="4 4 4"></PROPERTY>
     <PROPERTY id="updatescript" type="7" value=""></PROPERTY>
     <CUSTOMPROPERTIES>
     </CUSTOMPROPERTIES>
@@ -5535,7 +5547,7 @@
     <PROPERTY id="layer" type="2" value="0"></PROPERTY>
     <PROPERTY id="locked" type="12" value="false"></PROPERTY>
     <PROPERTY id="orientation" type="13" value="0.819152 0 0.573577 0"></PROPERTY>
-    <PROPERTY id="position" type="9" value="5161.85 594.172 1617.73"></PROPERTY>
+    <PROPERTY id="position" type="9" value="5236.3 594.172 1374.57"></PROPERTY>
     <PROPERTY id="scale" type="9" value="4 4 4"></PROPERTY>
     <PROPERTY id="updatescript" type="7" value=""></PROPERTY>
     <CUSTOMPROPERTIES>
@@ -8913,6 +8925,24 @@
     <PROPERTY id="renderingdistance" type="6" value="10000"></PROPERTY>
     <PROPERTY id="scale" type="9" value="1 1 1"></PROPERTY>
     <PROPERTY id="subentity0::material" type="7" value="Hill"></PROPERTY>
+    <PROPERTY id="subentity0::visible" type="12" value="true"></PROPERTY>
+    <PROPERTY id="subentitycount" type="2" value="1"></PROPERTY>
+    <PROPERTY id="updatescript" type="7" value=""></PROPERTY>
+    <CUSTOMPROPERTIES>
+    </CUSTOMPROPERTIES>
+  </OBJECT>
+
+  <OBJECT object_id="834620160" name="Windmill#0" typename="Entity Object" parentnode="Windmill">
+    <PROPERTY id="autotracktarget" type="7" value="None"></PROPERTY>
+    <PROPERTY id="castshadows" type="12" value="false"></PROPERTY>
+    <PROPERTY id="layer" type="2" value="0"></PROPERTY>
+    <PROPERTY id="locked" type="12" value="false"></PROPERTY>
+    <PROPERTY id="meshfile" type="7" value="Windmill.mesh"></PROPERTY>
+    <PROPERTY id="orientation" type="13" value="1 0 0 0"></PROPERTY>
+    <PROPERTY id="position" type="9" value="0 0 0"></PROPERTY>
+    <PROPERTY id="renderingdistance" type="6" value="10000"></PROPERTY>
+    <PROPERTY id="scale" type="9" value="1 1 1"></PROPERTY>
+    <PROPERTY id="subentity0::material" type="7" value="Windmill"></PROPERTY>
     <PROPERTY id="subentity0::visible" type="12" value="true"></PROPERTY>
     <PROPERTY id="subentitycount" type="2" value="1"></PROPERTY>
     <PROPERTY id="updatescript" type="7" value=""></PROPERTY>

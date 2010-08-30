@@ -1544,7 +1544,7 @@
       </node>
       <node name="Sheaf0_0Copy#3" id="521439264">
         <rotation qw="0.97237" qx="0" qy="0.233445" qz="0" />
-        <position x="5062.04" y="593.26" z="1538.01" />
+        <position x="5131.44" y="593.26" z="1689.54" />
         <scale x="4" y="4" z="4" />
         <entity name="Sheaf0#4" id="921292800" castshadows="false" meshFile="Sheaf0.mesh">
           <rotation qw="1" qx="0" qy="0" qz="0" />
@@ -2014,6 +2014,19 @@
           <scale x="1" y="1" z="1" />
           <subentities>
             <subentity materialName="HighHills" index="0" visible="true" />
+          </subentities>
+        </entity>
+      </node>
+      <node name="Windmill" id="286080512">
+        <rotation qw="0.809017" qx="0" qy="-0.587786" qz="0" />
+        <position x="5075.47" y="593.26" z="1542.68" />
+        <scale x="4" y="4" z="4" />
+        <entity name="Windmill#0" id="834620160" castshadows="false" meshFile="Windmill.mesh">
+          <rotation qw="1" qx="0" qy="0" qz="0" />
+          <position x="0" y="0" z="0" />
+          <scale x="1" y="1" z="1" />
+          <subentities>
+            <subentity materialName="Windmill" index="0" visible="true" />
           </subentities>
         </entity>
       </node>
@@ -5552,7 +5565,7 @@
       </node>
       <node name="AppleTree0Copy#3" id="97506632">
         <rotation qw="0.819152" qx="0" qy="0.573577" qz="0" />
-        <position x="5161.85" y="594.172" z="1617.73" />
+        <position x="5236.3" y="594.172" z="1374.57" />
         <scale x="4" y="4" z="4" />
         <entity name="PineTree2d6#0Copy#3" id="597827072" castshadows="false" meshFile="PineTree2d6.mesh">
           <rotation qw="1" qx="0" qy="0" qz="0" />
