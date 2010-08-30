@@ -55,7 +55,7 @@
   <CAMERASPEED value="28"></CAMERASPEED>
   <CAMERAPOSITIONS count="1">
     <OPTION id="0" position="1417.36 9.53911 54.9741" orientation="0.707107 0 0.707107 0"></OPTION>
-    <OPTION id="1" position="351.486 410.545 -680.932" orientation="0.707107 -0.707107 0 0"></OPTION>
+    <OPTION id="1" position="1449.26 215.031 169.378" orientation="0.591366 -0.21524 0.730277 0.265806"></OPTION>
   </CAMERAPOSITIONS>
     <LAYERS>
       <LAYER id="0" name="Layer 0" visible="true"></LAYER>
@@ -136,9 +136,9 @@
   <OBJECT object_id="2000000002" name="Viewport1" typename="Viewport Object">
     <PROPERTY id="camera::clipdistance" type="8" value="0.05 100000"></PROPERTY>
     <PROPERTY id="camera::fov" type="6" value="1"></PROPERTY>
-    <PROPERTY id="camera::orientation" type="13" value="0.707107 -0.707107 0 0"></PROPERTY>
+    <PROPERTY id="camera::orientation" type="13" value="0.591366 -0.21524 0.730277 0.265806"></PROPERTY>
     <PROPERTY id="camera::polymode" type="2" value="3"></PROPERTY>
-    <PROPERTY id="camera::position" type="9" value="351.486 410.545 -680.932"></PROPERTY>
+    <PROPERTY id="camera::position" type="9" value="1449.26 215.031 169.378"></PROPERTY>
     <PROPERTY id="camera::viewmode" type="2" value="6"></PROPERTY>
     <PROPERTY id="colour" type="11" value="0.901961 0.901961 0.901961 1"></PROPERTY>
     <PROPERTY id="compositorcount" type="2" value="0"></PROPERTY>
@@ -927,7 +927,7 @@
     <PROPERTY id="layer" type="2" value="0"></PROPERTY>
     <PROPERTY id="locked" type="12" value="false"></PROPERTY>
     <PROPERTY id="orientation" type="13" value="0.97237 0 0.233445 0"></PROPERTY>
-    <PROPERTY id="position" type="9" value="4490.62 593.26 802.803"></PROPERTY>
+    <PROPERTY id="position" type="9" value="4399.92 593.26 943.021"></PROPERTY>
     <PROPERTY id="scale" type="9" value="4 4 4"></PROPERTY>
     <PROPERTY id="updatescript" type="7" value=""></PROPERTY>
     <CUSTOMPROPERTIES>
@@ -999,7 +999,7 @@
     <PROPERTY id="layer" type="2" value="0"></PROPERTY>
     <PROPERTY id="locked" type="12" value="false"></PROPERTY>
     <PROPERTY id="orientation" type="13" value="0.73582 0 -0.677178 0"></PROPERTY>
-    <PROPERTY id="position" type="9" value="4519.03 656.73 584.968"></PROPERTY>
+    <PROPERTY id="position" type="9" value="4475.87 656.73 318.531"></PROPERTY>
     <PROPERTY id="scale" type="9" value="6.3783 20.7763 6.3783"></PROPERTY>
     <PROPERTY id="updatescript" type="7" value=""></PROPERTY>
     <CUSTOMPROPERTIES>
@@ -1251,7 +1251,7 @@
     <PROPERTY id="layer" type="2" value="0"></PROPERTY>
     <PROPERTY id="locked" type="12" value="false"></PROPERTY>
     <PROPERTY id="orientation" type="13" value="0.73582 0 -0.677178 0"></PROPERTY>
-    <PROPERTY id="position" type="9" value="5063.8 621.009 142.449"></PROPERTY>
+    <PROPERTY id="position" type="9" value="5190.01 621.009 -41.3142"></PROPERTY>
     <PROPERTY id="scale" type="9" value="9.03096 10.7489 9.03096"></PROPERTY>
     <PROPERTY id="updatescript" type="7" value=""></PROPERTY>
     <CUSTOMPROPERTIES>
@@ -1875,7 +1875,7 @@
     <PROPERTY id="layer" type="2" value="0"></PROPERTY>
     <PROPERTY id="locked" type="12" value="false"></PROPERTY>
     <PROPERTY id="orientation" type="13" value="0.73582 0 -0.677178 0"></PROPERTY>
-    <PROPERTY id="position" type="9" value="4600.11 656.73 613.201"></PROPERTY>
+    <PROPERTY id="position" type="9" value="4170.99 656.73 886.247"></PROPERTY>
     <PROPERTY id="scale" type="9" value="6.3783 20.7763 6.3783"></PROPERTY>
     <PROPERTY id="updatescript" type="7" value=""></PROPERTY>
     <CUSTOMPROPERTIES>
@@ -2211,7 +2211,7 @@
     <PROPERTY id="layer" type="2" value="0"></PROPERTY>
     <PROPERTY id="locked" type="12" value="false"></PROPERTY>
     <PROPERTY id="orientation" type="13" value="0.73582 0 -0.677178 0"></PROPERTY>
-    <PROPERTY id="position" type="9" value="4371.78 621.009 849.026"></PROPERTY>
+    <PROPERTY id="position" type="9" value="4057.47 811.008 1124.84"></PROPERTY>
     <PROPERTY id="scale" type="9" value="9.03096 10.7489 9.03096"></PROPERTY>
     <PROPERTY id="updatescript" type="7" value=""></PROPERTY>
     <CUSTOMPROPERTIES>
@@ -3646,6 +3646,18 @@
     </CUSTOMPROPERTIES>
   </OBJECT>
 
+  <OBJECT object_id="747337280" name="Sheaf0_0Copy#2Copy#0" typename="Node Object" parentnode="Scenario">
+    <PROPERTY id="autotracktarget" type="7" value="None"></PROPERTY>
+    <PROPERTY id="layer" type="2" value="0"></PROPERTY>
+    <PROPERTY id="locked" type="12" value="false"></PROPERTY>
+    <PROPERTY id="orientation" type="13" value="0.97237 0 0.233445 0"></PROPERTY>
+    <PROPERTY id="position" type="9" value="4524.34 593.26 976.021"></PROPERTY>
+    <PROPERTY id="scale" type="9" value="4 4 4"></PROPERTY>
+    <PROPERTY id="updatescript" type="7" value=""></PROPERTY>
+    <CUSTOMPROPERTIES>
+    </CUSTOMPROPERTIES>
+  </OBJECT>
+
   <OBJECT object_id="107638784" name="PineTree2d0_4Copy#4" typename="Node Object" parentnode="Scenario">
     <PROPERTY id="autotracktarget" type="7" value="None"></PROPERTY>
     <PROPERTY id="layer" type="2" value="0"></PROPERTY>
@@ -3879,7 +3891,7 @@
     <PROPERTY id="layer" type="2" value="0"></PROPERTY>
     <PROPERTY id="locked" type="12" value="false"></PROPERTY>
     <PROPERTY id="orientation" type="13" value="0.73582 0 -0.677178 0"></PROPERTY>
-    <PROPERTY id="position" type="9" value="4529.6 656.73 422.627"></PROPERTY>
+    <PROPERTY id="position" type="9" value="4534.19 656.73 293.318"></PROPERTY>
     <PROPERTY id="scale" type="9" value="6.3783 20.7763 6.3783"></PROPERTY>
     <PROPERTY id="updatescript" type="7" value=""></PROPERTY>
     <CUSTOMPROPERTIES>
@@ -4534,6 +4546,18 @@
     </CUSTOMPROPERTIES>
   </OBJECT>
 
+  <OBJECT object_id="548234496" name="Sheaf0_0Copy#2Copy#0Copy#0" typename="Node Object" parentnode="Scenario">
+    <PROPERTY id="autotracktarget" type="7" value="None"></PROPERTY>
+    <PROPERTY id="layer" type="2" value="0"></PROPERTY>
+    <PROPERTY id="locked" type="12" value="false"></PROPERTY>
+    <PROPERTY id="orientation" type="13" value="0.97237 0 0.233445 0"></PROPERTY>
+    <PROPERTY id="position" type="9" value="5092.22 593.26 45.7332"></PROPERTY>
+    <PROPERTY id="scale" type="9" value="4 4 4"></PROPERTY>
+    <PROPERTY id="updatescript" type="7" value=""></PROPERTY>
+    <CUSTOMPROPERTIES>
+    </CUSTOMPROPERTIES>
+  </OBJECT>
+
   <OBJECT object_id="807000960" name="PillTree35" typename="Node Object" parentnode="Scenario">
     <PROPERTY id="autotracktarget" type="7" value="None"></PROPERTY>
     <PROPERTY id="layer" type="2" value="0"></PROPERTY>
@@ -4887,7 +4911,7 @@
     <PROPERTY id="layer" type="2" value="0"></PROPERTY>
     <PROPERTY id="locked" type="12" value="false"></PROPERTY>
     <PROPERTY id="orientation" type="13" value="0.73582 0 -0.677178 0"></PROPERTY>
-    <PROPERTY id="position" type="9" value="5219.19 656.73 870.209"></PROPERTY>
+    <PROPERTY id="position" type="9" value="3849.74 656.73 1427"></PROPERTY>
     <PROPERTY id="scale" type="9" value="6.3783 20.7763 6.3783"></PROPERTY>
     <PROPERTY id="updatescript" type="7" value=""></PROPERTY>
     <CUSTOMPROPERTIES>
@@ -5117,6 +5141,18 @@
     <PROPERTY id="orientation" type="13" value="0.454342 -0.658383 0.364093 0.477012"></PROPERTY>
     <PROPERTY id="position" type="9" value="3654.16 602.958 -2166.71"></PROPERTY>
     <PROPERTY id="scale" type="9" value="2 4 2"></PROPERTY>
+    <PROPERTY id="updatescript" type="7" value=""></PROPERTY>
+    <CUSTOMPROPERTIES>
+    </CUSTOMPROPERTIES>
+  </OBJECT>
+
+  <OBJECT object_id="645558080" name="FarmChickenYard" typename="Node Object" parentnode="Scenario">
+    <PROPERTY id="autotracktarget" type="7" value="None"></PROPERTY>
+    <PROPERTY id="layer" type="2" value="0"></PROPERTY>
+    <PROPERTY id="locked" type="12" value="false"></PROPERTY>
+    <PROPERTY id="orientation" type="13" value="-0.130526 0 0.991445 0"></PROPERTY>
+    <PROPERTY id="position" type="9" value="5148.64 598.556 131.207"></PROPERTY>
+    <PROPERTY id="scale" type="9" value="3 3 3"></PROPERTY>
     <PROPERTY id="updatescript" type="7" value=""></PROPERTY>
     <CUSTOMPROPERTIES>
     </CUSTOMPROPERTIES>
@@ -5621,6 +5657,18 @@
     <PROPERTY id="orientation" type="13" value="0.910915 0 0.412593 0"></PROPERTY>
     <PROPERTY id="position" type="9" value="2607.14 567.964 2776.33"></PROPERTY>
     <PROPERTY id="scale" type="9" value="0.169641 0.701923 0.224643"></PROPERTY>
+    <PROPERTY id="updatescript" type="7" value=""></PROPERTY>
+    <CUSTOMPROPERTIES>
+    </CUSTOMPROPERTIES>
+  </OBJECT>
+
+  <OBJECT object_id="712363072" name="Sheaf0_0Copy#2Copy#0Copy#1" typename="Node Object" parentnode="Scenario">
+    <PROPERTY id="autotracktarget" type="7" value="None"></PROPERTY>
+    <PROPERTY id="layer" type="2" value="0"></PROPERTY>
+    <PROPERTY id="locked" type="12" value="false"></PROPERTY>
+    <PROPERTY id="orientation" type="13" value="0.97237 0 0.233445 0"></PROPERTY>
+    <PROPERTY id="position" type="9" value="5250.56 593.26 202.192"></PROPERTY>
+    <PROPERTY id="scale" type="9" value="4 4 4"></PROPERTY>
     <PROPERTY id="updatescript" type="7" value=""></PROPERTY>
     <CUSTOMPROPERTIES>
     </CUSTOMPROPERTIES>
@@ -6399,7 +6447,7 @@
     <PROPERTY id="layer" type="2" value="0"></PROPERTY>
     <PROPERTY id="locked" type="12" value="false"></PROPERTY>
     <PROPERTY id="orientation" type="13" value="1 0 0 0"></PROPERTY>
-    <PROPERTY id="position" type="9" value="1285.47 2 131.53"></PROPERTY>
+    <PROPERTY id="position" type="9" value="1279.21 2 39.1046"></PROPERTY>
     <PROPERTY id="scale" type="9" value="1 1 1"></PROPERTY>
     <PROPERTY id="updatescript" type="7" value=""></PROPERTY>
     <CUSTOMPROPERTIES>
@@ -7214,8 +7262,8 @@
     <PROPERTY id="autotracktarget" type="7" value="None"></PROPERTY>
     <PROPERTY id="layer" type="2" value="0"></PROPERTY>
     <PROPERTY id="locked" type="12" value="false"></PROPERTY>
-    <PROPERTY id="orientation" type="13" value="1 0 -3.94881e-007 0"></PROPERTY>
-    <PROPERTY id="position" type="9" value="1307.88 20.1627 177.934"></PROPERTY>
+    <PROPERTY id="orientation" type="13" value="0.99863 0 -0.0523364 0"></PROPERTY>
+    <PROPERTY id="position" type="9" value="1302.25 20.1627 180.302"></PROPERTY>
     <PROPERTY id="scale" type="9" value="1 1 1"></PROPERTY>
     <PROPERTY id="updatescript" type="7" value=""></PROPERTY>
     <CUSTOMPROPERTIES>
@@ -7270,6 +7318,18 @@
     </CUSTOMPROPERTIES>
   </OBJECT>
 
+  <OBJECT object_id="241096224" name="FarmCrate#2" typename="Node Object" parentnode="Objects">
+    <PROPERTY id="autotracktarget" type="7" value="None"></PROPERTY>
+    <PROPERTY id="layer" type="2" value="0"></PROPERTY>
+    <PROPERTY id="locked" type="12" value="false"></PROPERTY>
+    <PROPERTY id="orientation" type="13" value="1 0 0 0"></PROPERTY>
+    <PROPERTY id="position" type="9" value="1130.35 0 95.1266"></PROPERTY>
+    <PROPERTY id="scale" type="9" value="1 1 1"></PROPERTY>
+    <PROPERTY id="updatescript" type="7" value=""></PROPERTY>
+    <CUSTOMPROPERTIES>
+    </CUSTOMPROPERTIES>
+  </OBJECT>
+
   <OBJECT object_id="291787488" name="MarketTent1Copy#1Copy#0" typename="Node Object" parentnode="Objects">
     <PROPERTY id="autotracktarget" type="7" value="None"></PROPERTY>
     <PROPERTY id="layer" type="2" value="0"></PROPERTY>
@@ -7299,7 +7359,19 @@
     <PROPERTY id="layer" type="2" value="0"></PROPERTY>
     <PROPERTY id="locked" type="12" value="false"></PROPERTY>
     <PROPERTY id="orientation" type="13" value="0.997564 0 0.0697561 0"></PROPERTY>
-    <PROPERTY id="position" type="9" value="1302.62 20.1627 93.4744"></PROPERTY>
+    <PROPERTY id="position" type="9" value="1299.61 20.1627 102.314"></PROPERTY>
+    <PROPERTY id="scale" type="9" value="1 1 1"></PROPERTY>
+    <PROPERTY id="updatescript" type="7" value=""></PROPERTY>
+    <CUSTOMPROPERTIES>
+    </CUSTOMPROPERTIES>
+  </OBJECT>
+
+  <OBJECT object_id="534226528" name="FarmCrate" typename="Node Object" parentnode="Objects">
+    <PROPERTY id="autotracktarget" type="7" value="None"></PROPERTY>
+    <PROPERTY id="layer" type="2" value="0"></PROPERTY>
+    <PROPERTY id="locked" type="12" value="false"></PROPERTY>
+    <PROPERTY id="orientation" type="13" value="1 0 0 0"></PROPERTY>
+    <PROPERTY id="position" type="9" value="1154.62 0 101.705"></PROPERTY>
     <PROPERTY id="scale" type="9" value="1 1 1"></PROPERTY>
     <PROPERTY id="updatescript" type="7" value=""></PROPERTY>
     <CUSTOMPROPERTIES>
@@ -7324,6 +7396,18 @@
     <PROPERTY id="locked" type="12" value="false"></PROPERTY>
     <PROPERTY id="orientation" type="13" value="0.710185 0 -0.704015 0"></PROPERTY>
     <PROPERTY id="position" type="9" value="94.5208 0 -359.417"></PROPERTY>
+    <PROPERTY id="scale" type="9" value="1 1 1"></PROPERTY>
+    <PROPERTY id="updatescript" type="7" value=""></PROPERTY>
+    <CUSTOMPROPERTIES>
+    </CUSTOMPROPERTIES>
+  </OBJECT>
+
+  <OBJECT object_id="314065984" name="FarmBig0" typename="Node Object" parentnode="Objects">
+    <PROPERTY id="autotracktarget" type="7" value="None"></PROPERTY>
+    <PROPERTY id="layer" type="2" value="0"></PROPERTY>
+    <PROPERTY id="locked" type="12" value="false"></PROPERTY>
+    <PROPERTY id="orientation" type="13" value="0.994968 0 -0.100188 0"></PROPERTY>
+    <PROPERTY id="position" type="9" value="1113.72 0 161.016"></PROPERTY>
     <PROPERTY id="scale" type="9" value="1 1 1"></PROPERTY>
     <PROPERTY id="updatescript" type="7" value=""></PROPERTY>
     <CUSTOMPROPERTIES>
@@ -7486,6 +7570,18 @@
     </CUSTOMPROPERTIES>
   </OBJECT>
 
+  <OBJECT object_id="954802112" name="FarmCrate#1" typename="Node Object" parentnode="Objects">
+    <PROPERTY id="autotracktarget" type="7" value="None"></PROPERTY>
+    <PROPERTY id="layer" type="2" value="0"></PROPERTY>
+    <PROPERTY id="locked" type="12" value="false"></PROPERTY>
+    <PROPERTY id="orientation" type="13" value="1 0 0 0"></PROPERTY>
+    <PROPERTY id="position" type="9" value="1143.33 0 99.3682"></PROPERTY>
+    <PROPERTY id="scale" type="9" value="1 1 1"></PROPERTY>
+    <PROPERTY id="updatescript" type="7" value=""></PROPERTY>
+    <CUSTOMPROPERTIES>
+    </CUSTOMPROPERTIES>
+  </OBJECT>
+
   <OBJECT object_id="842493952" name="MarketTent1Copy#1Copy#1" typename="Node Object" parentnode="Objects">
     <PROPERTY id="autotracktarget" type="7" value="None"></PROPERTY>
     <PROPERTY id="layer" type="2" value="0"></PROPERTY>
@@ -7522,36 +7618,12 @@
     </CUSTOMPROPERTIES>
   </OBJECT>
 
-  <OBJECT object_id="877956480" name="Farm0_3" typename="Node Object" parentnode="Objects">
-    <PROPERTY id="autotracktarget" type="7" value="None"></PROPERTY>
-    <PROPERTY id="layer" type="2" value="0"></PROPERTY>
-    <PROPERTY id="locked" type="12" value="false"></PROPERTY>
-    <PROPERTY id="orientation" type="13" value="0.143493 0 0.989651 0"></PROPERTY>
-    <PROPERTY id="position" type="9" value="1192.57 20.1627 117.95"></PROPERTY>
-    <PROPERTY id="scale" type="9" value="1 1 1"></PROPERTY>
-    <PROPERTY id="updatescript" type="7" value=""></PROPERTY>
-    <CUSTOMPROPERTIES>
-    </CUSTOMPROPERTIES>
-  </OBJECT>
-
   <OBJECT object_id="152653584" name="Crate0Copy#1" typename="Node Object" parentnode="Objects">
     <PROPERTY id="autotracktarget" type="7" value="None"></PROPERTY>
     <PROPERTY id="layer" type="2" value="0"></PROPERTY>
     <PROPERTY id="locked" type="12" value="false"></PROPERTY>
     <PROPERTY id="orientation" type="13" value="0.942641 0 -0.333807 0"></PROPERTY>
     <PROPERTY id="position" type="9" value="283.993 -0.00305939 -495.141"></PROPERTY>
-    <PROPERTY id="scale" type="9" value="1 1 1"></PROPERTY>
-    <PROPERTY id="updatescript" type="7" value=""></PROPERTY>
-    <CUSTOMPROPERTIES>
-    </CUSTOMPROPERTIES>
-  </OBJECT>
-
-  <OBJECT object_id="394695872" name="Farm0_4" typename="Node Object" parentnode="Objects">
-    <PROPERTY id="autotracktarget" type="7" value="None"></PROPERTY>
-    <PROPERTY id="layer" type="2" value="0"></PROPERTY>
-    <PROPERTY id="locked" type="12" value="false"></PROPERTY>
-    <PROPERTY id="orientation" type="13" value="-0.113204 0 -0.993572 0"></PROPERTY>
-    <PROPERTY id="position" type="9" value="1161.19 20.1627 233.617"></PROPERTY>
     <PROPERTY id="scale" type="9" value="1 1 1"></PROPERTY>
     <PROPERTY id="updatescript" type="7" value=""></PROPERTY>
     <CUSTOMPROPERTIES>
@@ -9384,6 +9456,24 @@
     </CUSTOMPROPERTIES>
   </OBJECT>
 
+  <OBJECT object_id="909146368" name="ChickenYard0#1" typename="Entity Object" parentnode="FarmChickenYard">
+    <PROPERTY id="autotracktarget" type="7" value="None"></PROPERTY>
+    <PROPERTY id="castshadows" type="12" value="false"></PROPERTY>
+    <PROPERTY id="layer" type="2" value="0"></PROPERTY>
+    <PROPERTY id="locked" type="12" value="false"></PROPERTY>
+    <PROPERTY id="meshfile" type="7" value="ChickenYard0.mesh"></PROPERTY>
+    <PROPERTY id="orientation" type="13" value="1 0 0 0"></PROPERTY>
+    <PROPERTY id="position" type="9" value="0 0 0"></PROPERTY>
+    <PROPERTY id="renderingdistance" type="6" value="10000"></PROPERTY>
+    <PROPERTY id="scale" type="9" value="1 1 1"></PROPERTY>
+    <PROPERTY id="subentity0::material" type="7" value="Wood"></PROPERTY>
+    <PROPERTY id="subentity0::visible" type="12" value="true"></PROPERTY>
+    <PROPERTY id="subentitycount" type="2" value="1"></PROPERTY>
+    <PROPERTY id="updatescript" type="7" value=""></PROPERTY>
+    <CUSTOMPROPERTIES>
+    </CUSTOMPROPERTIES>
+  </OBJECT>
+
   <OBJECT object_id="911252224" name="Entity#309" typename="Entity Object" parentnode="Hill18">
     <PROPERTY id="autotracktarget" type="7" value="None"></PROPERTY>
     <PROPERTY id="castshadows" type="12" value="true"></PROPERTY>
@@ -11010,6 +11100,24 @@
     </CUSTOMPROPERTIES>
   </OBJECT>
 
+  <OBJECT object_id="496902368" name="Sheaf0#3Copy#0" typename="Entity Object" parentnode="Sheaf0_0Copy#2Copy#0">
+    <PROPERTY id="autotracktarget" type="7" value="None"></PROPERTY>
+    <PROPERTY id="castshadows" type="12" value="false"></PROPERTY>
+    <PROPERTY id="layer" type="2" value="0"></PROPERTY>
+    <PROPERTY id="locked" type="12" value="false"></PROPERTY>
+    <PROPERTY id="meshfile" type="7" value="Sheaf0.mesh"></PROPERTY>
+    <PROPERTY id="orientation" type="13" value="1 0 0 0"></PROPERTY>
+    <PROPERTY id="position" type="9" value="0 0 0"></PROPERTY>
+    <PROPERTY id="renderingdistance" type="6" value="10000"></PROPERTY>
+    <PROPERTY id="scale" type="9" value="1 1 1"></PROPERTY>
+    <PROPERTY id="subentity0::material" type="7" value="Sheaf0"></PROPERTY>
+    <PROPERTY id="subentity0::visible" type="12" value="true"></PROPERTY>
+    <PROPERTY id="subentitycount" type="2" value="1"></PROPERTY>
+    <PROPERTY id="updatescript" type="7" value=""></PROPERTY>
+    <CUSTOMPROPERTIES>
+    </CUSTOMPROPERTIES>
+  </OBJECT>
+
   <OBJECT object_id="433240768" name="Entity#225" typename="Entity Object" parentnode="BlueMountain2">
     <PROPERTY id="autotracktarget" type="7" value="None"></PROPERTY>
     <PROPERTY id="castshadows" type="12" value="true"></PROPERTY>
@@ -11664,26 +11772,6 @@
     <PROPERTY id="subentity0::material" type="7" value="MuddyHill"></PROPERTY>
     <PROPERTY id="subentity0::visible" type="12" value="true"></PROPERTY>
     <PROPERTY id="subentitycount" type="2" value="1"></PROPERTY>
-    <PROPERTY id="updatescript" type="7" value=""></PROPERTY>
-    <CUSTOMPROPERTIES>
-    </CUSTOMPROPERTIES>
-  </OBJECT>
-
-  <OBJECT object_id="235602880" name="Farm0#0Copy#3" typename="Entity Object" parentnode="Farm0_4">
-    <PROPERTY id="autotracktarget" type="7" value="None"></PROPERTY>
-    <PROPERTY id="castshadows" type="12" value="false"></PROPERTY>
-    <PROPERTY id="layer" type="2" value="0"></PROPERTY>
-    <PROPERTY id="locked" type="12" value="false"></PROPERTY>
-    <PROPERTY id="meshfile" type="7" value="House0.mesh"></PROPERTY>
-    <PROPERTY id="orientation" type="13" value="1 0 0 0"></PROPERTY>
-    <PROPERTY id="position" type="9" value="0 0 0"></PROPERTY>
-    <PROPERTY id="renderingdistance" type="6" value="10000"></PROPERTY>
-    <PROPERTY id="scale" type="9" value="1 1 1"></PROPERTY>
-    <PROPERTY id="subentity0::material" type="7" value="House0_Building_Material5"></PROPERTY>
-    <PROPERTY id="subentity0::visible" type="12" value="true"></PROPERTY>
-    <PROPERTY id="subentity1::material" type="7" value="House0_Roof_Material5"></PROPERTY>
-    <PROPERTY id="subentity1::visible" type="12" value="true"></PROPERTY>
-    <PROPERTY id="subentitycount" type="2" value="2"></PROPERTY>
     <PROPERTY id="updatescript" type="7" value=""></PROPERTY>
     <CUSTOMPROPERTIES>
     </CUSTOMPROPERTIES>
@@ -13814,26 +13902,6 @@
     </CUSTOMPROPERTIES>
   </OBJECT>
 
-  <OBJECT object_id="362376768" name="Farm0#0Copy#2" typename="Entity Object" parentnode="Farm0_3">
-    <PROPERTY id="autotracktarget" type="7" value="None"></PROPERTY>
-    <PROPERTY id="castshadows" type="12" value="false"></PROPERTY>
-    <PROPERTY id="layer" type="2" value="0"></PROPERTY>
-    <PROPERTY id="locked" type="12" value="false"></PROPERTY>
-    <PROPERTY id="meshfile" type="7" value="House0.mesh"></PROPERTY>
-    <PROPERTY id="orientation" type="13" value="1 0 0 0"></PROPERTY>
-    <PROPERTY id="position" type="9" value="0 0 0"></PROPERTY>
-    <PROPERTY id="renderingdistance" type="6" value="10000"></PROPERTY>
-    <PROPERTY id="scale" type="9" value="1 1 1"></PROPERTY>
-    <PROPERTY id="subentity0::material" type="7" value="House0_Building_Material5"></PROPERTY>
-    <PROPERTY id="subentity0::visible" type="12" value="true"></PROPERTY>
-    <PROPERTY id="subentity1::material" type="7" value="House0_Roof_Material5"></PROPERTY>
-    <PROPERTY id="subentity1::visible" type="12" value="true"></PROPERTY>
-    <PROPERTY id="subentitycount" type="2" value="2"></PROPERTY>
-    <PROPERTY id="updatescript" type="7" value=""></PROPERTY>
-    <CUSTOMPROPERTIES>
-    </CUSTOMPROPERTIES>
-  </OBJECT>
-
   <OBJECT object_id="49439984" name="Entity#214" typename="Entity Object" parentnode="PineTree16">
     <PROPERTY id="autotracktarget" type="7" value="None"></PROPERTY>
     <PROPERTY id="castshadows" type="12" value="true"></PROPERTY>
@@ -13881,6 +13949,24 @@
     <PROPERTY id="renderingdistance" type="6" value="10000"></PROPERTY>
     <PROPERTY id="scale" type="9" value="1 1 1"></PROPERTY>
     <PROPERTY id="subentity0::material" type="7" value="Hill"></PROPERTY>
+    <PROPERTY id="subentity0::visible" type="12" value="true"></PROPERTY>
+    <PROPERTY id="subentitycount" type="2" value="1"></PROPERTY>
+    <PROPERTY id="updatescript" type="7" value=""></PROPERTY>
+    <CUSTOMPROPERTIES>
+    </CUSTOMPROPERTIES>
+  </OBJECT>
+
+  <OBJECT object_id="669820224" name="Sheaf0#10" typename="Entity Object" parentnode="Sheaf0_0Copy#2Copy#0Copy#1">
+    <PROPERTY id="autotracktarget" type="7" value="None"></PROPERTY>
+    <PROPERTY id="castshadows" type="12" value="false"></PROPERTY>
+    <PROPERTY id="layer" type="2" value="0"></PROPERTY>
+    <PROPERTY id="locked" type="12" value="false"></PROPERTY>
+    <PROPERTY id="meshfile" type="7" value="Sheaf0.mesh"></PROPERTY>
+    <PROPERTY id="orientation" type="13" value="1 0 0 0"></PROPERTY>
+    <PROPERTY id="position" type="9" value="0 0 0"></PROPERTY>
+    <PROPERTY id="renderingdistance" type="6" value="10000"></PROPERTY>
+    <PROPERTY id="scale" type="9" value="1 1 1"></PROPERTY>
+    <PROPERTY id="subentity0::material" type="7" value="Sheaf0"></PROPERTY>
     <PROPERTY id="subentity0::visible" type="12" value="true"></PROPERTY>
     <PROPERTY id="subentitycount" type="2" value="1"></PROPERTY>
     <PROPERTY id="updatescript" type="7" value=""></PROPERTY>
@@ -14996,6 +15082,24 @@
     </CUSTOMPROPERTIES>
   </OBJECT>
 
+  <OBJECT object_id="435499136" name="Crate0#5" typename="Entity Object" parentnode="FarmCrate">
+    <PROPERTY id="autotracktarget" type="7" value="None"></PROPERTY>
+    <PROPERTY id="castshadows" type="12" value="false"></PROPERTY>
+    <PROPERTY id="layer" type="2" value="0"></PROPERTY>
+    <PROPERTY id="locked" type="12" value="false"></PROPERTY>
+    <PROPERTY id="meshfile" type="7" value="Crate0.mesh"></PROPERTY>
+    <PROPERTY id="orientation" type="13" value="1 0 0 0"></PROPERTY>
+    <PROPERTY id="position" type="9" value="0 0 0"></PROPERTY>
+    <PROPERTY id="renderingdistance" type="6" value="10000"></PROPERTY>
+    <PROPERTY id="scale" type="9" value="1 1 1"></PROPERTY>
+    <PROPERTY id="subentity0::material" type="7" value="Crate0"></PROPERTY>
+    <PROPERTY id="subentity0::visible" type="12" value="true"></PROPERTY>
+    <PROPERTY id="subentitycount" type="2" value="1"></PROPERTY>
+    <PROPERTY id="updatescript" type="7" value=""></PROPERTY>
+    <CUSTOMPROPERTIES>
+    </CUSTOMPROPERTIES>
+  </OBJECT>
+
   <OBJECT object_id="611987648" name="knightB##9" typename="Entity Object" parentnode="Knight##15">
     <PROPERTY id="autotracktarget" type="7" value="None"></PROPERTY>
     <PROPERTY id="castshadows" type="12" value="true"></PROPERTY>
@@ -15514,6 +15618,24 @@
     </CUSTOMPROPERTIES>
   </OBJECT>
 
+  <OBJECT object_id="890224960" name="Crate1#4" typename="Entity Object" parentnode="FarmCrate#1">
+    <PROPERTY id="autotracktarget" type="7" value="None"></PROPERTY>
+    <PROPERTY id="castshadows" type="12" value="false"></PROPERTY>
+    <PROPERTY id="layer" type="2" value="0"></PROPERTY>
+    <PROPERTY id="locked" type="12" value="false"></PROPERTY>
+    <PROPERTY id="meshfile" type="7" value="Crate1.mesh"></PROPERTY>
+    <PROPERTY id="orientation" type="13" value="1 0 0 0"></PROPERTY>
+    <PROPERTY id="position" type="9" value="0 0 0"></PROPERTY>
+    <PROPERTY id="renderingdistance" type="6" value="10000"></PROPERTY>
+    <PROPERTY id="scale" type="9" value="1 1 1"></PROPERTY>
+    <PROPERTY id="subentity0::material" type="7" value="Crate1"></PROPERTY>
+    <PROPERTY id="subentity0::visible" type="12" value="true"></PROPERTY>
+    <PROPERTY id="subentitycount" type="2" value="1"></PROPERTY>
+    <PROPERTY id="updatescript" type="7" value=""></PROPERTY>
+    <CUSTOMPROPERTIES>
+    </CUSTOMPROPERTIES>
+  </OBJECT>
+
   <OBJECT object_id="895779328" name="Entity#183" typename="Entity Object" parentnode="WoodenWallPole6">
     <PROPERTY id="autotracktarget" type="7" value="None"></PROPERTY>
     <PROPERTY id="castshadows" type="12" value="true"></PROPERTY>
@@ -15747,6 +15869,24 @@
     <PROPERTY id="renderingdistance" type="6" value="10000"></PROPERTY>
     <PROPERTY id="scale" type="9" value="1 1 1"></PROPERTY>
     <PROPERTY id="subentity0::material" type="7" value="Chalk"></PROPERTY>
+    <PROPERTY id="subentity0::visible" type="12" value="true"></PROPERTY>
+    <PROPERTY id="subentitycount" type="2" value="1"></PROPERTY>
+    <PROPERTY id="updatescript" type="7" value=""></PROPERTY>
+    <CUSTOMPROPERTIES>
+    </CUSTOMPROPERTIES>
+  </OBJECT>
+
+  <OBJECT object_id="707998848" name="Farm#0" typename="Entity Object" parentnode="FarmBig0">
+    <PROPERTY id="autotracktarget" type="7" value="None"></PROPERTY>
+    <PROPERTY id="castshadows" type="12" value="false"></PROPERTY>
+    <PROPERTY id="layer" type="2" value="0"></PROPERTY>
+    <PROPERTY id="locked" type="12" value="false"></PROPERTY>
+    <PROPERTY id="meshfile" type="7" value="Farm.mesh"></PROPERTY>
+    <PROPERTY id="orientation" type="13" value="1 0 0 0"></PROPERTY>
+    <PROPERTY id="position" type="9" value="0 0 0"></PROPERTY>
+    <PROPERTY id="renderingdistance" type="6" value="10000"></PROPERTY>
+    <PROPERTY id="scale" type="9" value="1 1 1"></PROPERTY>
+    <PROPERTY id="subentity0::material" type="7" value="Farm"></PROPERTY>
     <PROPERTY id="subentity0::visible" type="12" value="true"></PROPERTY>
     <PROPERTY id="subentitycount" type="2" value="1"></PROPERTY>
     <PROPERTY id="updatescript" type="7" value=""></PROPERTY>
@@ -17101,6 +17241,24 @@
     </CUSTOMPROPERTIES>
   </OBJECT>
 
+  <OBJECT object_id="4272592" name="Crate0#6" typename="Entity Object" parentnode="FarmCrate#2">
+    <PROPERTY id="autotracktarget" type="7" value="None"></PROPERTY>
+    <PROPERTY id="castshadows" type="12" value="false"></PROPERTY>
+    <PROPERTY id="layer" type="2" value="0"></PROPERTY>
+    <PROPERTY id="locked" type="12" value="false"></PROPERTY>
+    <PROPERTY id="meshfile" type="7" value="Crate0.mesh"></PROPERTY>
+    <PROPERTY id="orientation" type="13" value="1 0 0 0"></PROPERTY>
+    <PROPERTY id="position" type="9" value="0 0 0"></PROPERTY>
+    <PROPERTY id="renderingdistance" type="6" value="10000"></PROPERTY>
+    <PROPERTY id="scale" type="9" value="1 1 1"></PROPERTY>
+    <PROPERTY id="subentity0::material" type="7" value="Crate0"></PROPERTY>
+    <PROPERTY id="subentity0::visible" type="12" value="true"></PROPERTY>
+    <PROPERTY id="subentitycount" type="2" value="1"></PROPERTY>
+    <PROPERTY id="updatescript" type="7" value=""></PROPERTY>
+    <CUSTOMPROPERTIES>
+    </CUSTOMPROPERTIES>
+  </OBJECT>
+
   <OBJECT object_id="437726976" name="knightB##8" typename="Entity Object" parentnode="Knight##13">
     <PROPERTY id="autotracktarget" type="7" value="None"></PROPERTY>
     <PROPERTY id="castshadows" type="12" value="true"></PROPERTY>
@@ -17544,6 +17702,24 @@
     <PROPERTY id="renderingdistance" type="6" value="10000"></PROPERTY>
     <PROPERTY id="scale" type="9" value="1 1 1"></PROPERTY>
     <PROPERTY id="subentity0::material" type="7" value="StoneHill"></PROPERTY>
+    <PROPERTY id="subentity0::visible" type="12" value="true"></PROPERTY>
+    <PROPERTY id="subentitycount" type="2" value="1"></PROPERTY>
+    <PROPERTY id="updatescript" type="7" value=""></PROPERTY>
+    <CUSTOMPROPERTIES>
+    </CUSTOMPROPERTIES>
+  </OBJECT>
+
+  <OBJECT object_id="492629760" name="Sheaf0#9" typename="Entity Object" parentnode="Sheaf0_0Copy#2Copy#0Copy#0">
+    <PROPERTY id="autotracktarget" type="7" value="None"></PROPERTY>
+    <PROPERTY id="castshadows" type="12" value="false"></PROPERTY>
+    <PROPERTY id="layer" type="2" value="0"></PROPERTY>
+    <PROPERTY id="locked" type="12" value="false"></PROPERTY>
+    <PROPERTY id="meshfile" type="7" value="Sheaf0.mesh"></PROPERTY>
+    <PROPERTY id="orientation" type="13" value="1 0 0 0"></PROPERTY>
+    <PROPERTY id="position" type="9" value="0 0 0"></PROPERTY>
+    <PROPERTY id="renderingdistance" type="6" value="10000"></PROPERTY>
+    <PROPERTY id="scale" type="9" value="1 1 1"></PROPERTY>
+    <PROPERTY id="subentity0::material" type="7" value="Sheaf0"></PROPERTY>
     <PROPERTY id="subentity0::visible" type="12" value="true"></PROPERTY>
     <PROPERTY id="subentitycount" type="2" value="1"></PROPERTY>
     <PROPERTY id="updatescript" type="7" value=""></PROPERTY>
