@@ -135,12 +135,30 @@ Ogre::String EnemyManager::createUniqueId()
 
 int EnemyManager::getCount()
 {
-	return mEnemyMapList[mCurrentGameArea].size();
+	int count = 0;
+
+	for( int i = 0; i < mEnemyMapList[mCurrentGameArea].size(); i++ )
+	{
+		if( mEnemyMapList[mCurrentGameArea][i]->getEnemyType() != Enemy::EnemyTypes::Chicken && 
+			mEnemyMapList[mCurrentGameArea][i]->getEnemyType() != Enemy::EnemyTypes::Cow )
+			count++;
+	}
+
+	return count;
 }
 
 int EnemyManager::getCount(int gameArea)
 {
-	return mEnemyMapList[gameArea].size();
+	int count = 0;
+
+	for( int i = 0; i < mEnemyMapList[gameArea].size(); i++ )
+	{
+		if( mEnemyMapList[gameArea][i]->getEnemyType() != Enemy::EnemyTypes::Chicken && 
+			mEnemyMapList[gameArea][i]->getEnemyType() != Enemy::EnemyTypes::Cow )
+			count++;
+	}
+
+	return count;
 }
 
 EnemyPtr EnemyManager::getEnemy(int index)
