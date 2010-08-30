@@ -72,6 +72,76 @@ material Crate1
 	}
 }
 
+material FountainBase
+{
+	technique Toon
+	{
+		pass
+		{
+      vertex_program_ref ToonVP
+			{
+				param_named shininess float4 0.0 1.0 1.0 1.0
+			}
+
+			fragment_program_ref ToonFP
+			{
+				param_named ambient float4 0 0 0 1
+				param_named diffuse float4 0.5 0.5 0.5 1.0
+				param_named specular float4 0.0 0.0 0.0 1.0
+				param_named emissive float4 0.0 0.0 0.0 1.0
+			}
+
+			texture_unit ToonShades
+			{
+				texture toon.png 2d
+				tex_address_mode clamp
+				filtering none
+			}
+
+			texture_unit
+			{
+				texture FountainBase.png
+				tex_address_mode clamp
+				filtering none
+			}
+		}
+
+	}
+}
+
+material FountainWater
+{
+	technique Toon
+	{
+		pass
+		{
+      lighting off
+			scene_blend alpha_blend
+			depth_check on
+			depth_write off
+
+			texture_unit
+			{
+        colour_op_ex blend_current_alpha 
+				texture Sea_Base.png
+				tex_address_mode wrap
+				filtering none
+			}
+			
+			texture_unit
+			{
+				texture Sea_Waves.png
+				colour_op_ex blend_current_alpha 
+				scale 0.01 0.01
+				wave_xform scroll_x sine 0.0 0.01 0.0 1.0
+				wave_xform scroll_y sine 0.0 0.01 0.03 1.0
+				tex_address_mode wrap 4.0 4.0
+				filtering none
+			}
+		}
+	}
+}
+
 material House02
 {
 	technique Toon
@@ -3297,18 +3367,18 @@ material UnderTheSea
 	technique Toon
 	{
 		pass
-		{
+		{	
       vertex_program_ref ToonVP
 			{
-				param_named shininess float4 0.0 1.0 1.0 1.0
+				param_named shininess float4 0.0 0.0 0.0 0.0
 			}
 
 			fragment_program_ref ToonFP
 			{
 				param_named ambient float4 0 0 0 1
-				param_named diffuse float4 0.5 0.5 0.5 1.0
+				param_named diffuse float4 0.3 0.3 0.3 1.0
 				param_named specular float4 0.0 0.0 0.0 1.0
-				param_named emissive float4 0.3 0.3 0.3 1.0
+				param_named emissive float4 0.1 0.1 0.1 1.0
 			}
 
 			texture_unit ToonShades

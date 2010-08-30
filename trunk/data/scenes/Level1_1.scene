@@ -547,6 +547,33 @@
           </subentities>
         </entity>
       </node>
+      <node name="Fountain" id="599047808">
+        <rotation qw="1" qx="0" qy="0" qz="0" />
+        <position x="364.664" y="598.719" z="-1937.37" />
+        <scale x="4" y="4" z="4" />
+        <node name="NakedPuttino" id="576036864">
+          <rotation qw="0.446198" qx="0" qy="0.894934" qz="0" />
+          <position x="-2.32988" y="53" z="3.38724" />
+          <scale x="1" y="1" z="1" />
+          <entity name="naked#2" id="149113424" castshadows="false" meshFile="naked.mesh">
+            <rotation qw="1" qx="0" qy="0" qz="0" />
+            <position x="0" y="0" z="0" />
+            <scale x="1" y="1" z="1" />
+            <subentities>
+              <subentity materialName="SilverConcrete" index="0" visible="true" />
+            </subentities>
+          </entity>
+        </node>
+        <entity name="Fountain#0" id="743125696" castshadows="false" meshFile="Fountain.mesh">
+          <rotation qw="1" qx="0" qy="0" qz="0" />
+          <position x="0" y="0" z="0" />
+          <scale x="1" y="1" z="1" />
+          <subentities>
+            <subentity materialName="FountainWater" index="0" visible="true" />
+            <subentity materialName="FountainBase" index="1" visible="true" />
+          </subentities>
+        </entity>
+      </node>
       <node name="PineTree2d0_4Copy#10Copy#4" id="378185376">
         <rotation qw="0.438166" qx="-0.0240646" qy="0.898375" qz="-0.0188013" />
         <position x="3703.4" y="593.773" z="-2377.33" />
