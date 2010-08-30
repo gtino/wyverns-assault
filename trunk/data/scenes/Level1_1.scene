@@ -974,6 +974,19 @@
           </subentities>
         </entity>
       </node>
+      <node name="CitySheafs0" id="183019504">
+        <rotation qw="1" qx="0" qy="0" qz="0" />
+        <position x="1471.26" y="592.742" z="-1987.78" />
+        <scale x="4" y="4" z="4" />
+        <entity name="Sheaf0#8" id="769219072" castshadows="false" meshFile="Sheaf0.mesh">
+          <rotation qw="1" qx="0" qy="0" qz="0" />
+          <position x="0" y="0" z="0" />
+          <scale x="1" y="1" z="1" />
+          <subentities>
+            <subentity materialName="Sheaf0" index="0" visible="true" />
+          </subentities>
+        </entity>
+      </node>
       <node name="TownHouse02_4" id="748313856">
         <rotation qw="1" qx="0" qy="0" qz="0" />
         <position x="124.611" y="717.254" z="-2162.53" />
@@ -1307,6 +1320,19 @@
             </subentities>
           </entity>
         </node>
+      </node>
+      <node name="CitySheafs0Copy#2" id="778283008">
+        <rotation qw="1" qx="0" qy="0" qz="0" />
+        <position x="1157.92" y="592.742" z="-2724.94" />
+        <scale x="4" y="4" z="4" />
+        <entity name="Sheaf0#7" id="332132928" castshadows="false" meshFile="Sheaf0.mesh">
+          <rotation qw="1" qx="0" qy="0" qz="0" />
+          <position x="0" y="0" z="0" />
+          <scale x="1" y="1" z="1" />
+          <subentities>
+            <subentity materialName="Sheaf0" index="0" visible="true" />
+          </subentities>
+        </entity>
       </node>
       <node name="PineTree2d0_4Copy#10Copy#5" id="772515072">
         <rotation qw="0.139108" qx="-0.0170769" qy="0.989806" qz="-0.0253175" />
@@ -2367,6 +2393,19 @@
           </entity>
         </node>
       </node>
+      <node name="CitySheafs0Copy#1" id="347331168">
+        <rotation qw="1" qx="0" qy="0" qz="0" />
+        <position x="992.211" y="592.742" z="-2855.5" />
+        <scale x="4" y="4" z="4" />
+        <entity name="Sheaf0#5" id="202826016" castshadows="false" meshFile="Sheaf0.mesh">
+          <rotation qw="1" qx="0" qy="0" qz="0" />
+          <position x="0" y="0" z="0" />
+          <scale x="1" y="1" z="1" />
+          <subentities>
+            <subentity materialName="Sheaf0" index="0" visible="true" />
+          </subentities>
+        </entity>
+      </node>
       <node name="PineTree2d0_4Copy#10Copy#2" id="298501536">
         <rotation qw="0.374432" qx="-0.0226945" qy="0.926751" qz="-0.0204342" />
         <position x="3209.33" y="600.844" z="-2660.92" />
@@ -3412,6 +3451,19 @@
             </subentities>
           </entity>
         </node>
+      </node>
+      <node name="CitySheafs0Copy#0" id="713827904">
+        <rotation qw="1" qx="0" qy="0" qz="0" />
+        <position x="1157.92" y="592.742" z="-2612.46" />
+        <scale x="4" y="4" z="4" />
+        <entity name="Sheaf0#6" id="941862208" castshadows="false" meshFile="Sheaf0.mesh">
+          <rotation qw="1" qx="0" qy="0" qz="0" />
+          <position x="0" y="0" z="0" />
+          <scale x="1" y="1" z="1" />
+          <subentities>
+            <subentity materialName="Sheaf0" index="0" visible="true" />
+          </subentities>
+        </entity>
       </node>
       <node name="PineTree2d0_4Copy#10Copy#3" id="808862592">
         <rotation qw="0.345955" qx="-0.0220599" qy="0.937754" qz="-0.0211177" />
@@ -4848,6 +4900,19 @@
           </subentities>
         </entity>
       </node>
+      <node name="CityYards" id="565813184">
+        <rotation qw="1" qx="0" qy="0" qz="0" />
+        <position x="1369.89" y="598.719" z="-2050.07" />
+        <scale x="4" y="4" z="4" />
+        <entity name="ChickenYard0#0" id="871913792" castshadows="false" meshFile="ChickenYard0.mesh">
+          <rotation qw="0.872496" qx="0" qy="0.488621" qz="0" />
+          <position x="-7.9006" y="0" z="11.1306" />
+          <scale x="1" y="1" z="1" />
+          <subentities>
+            <subentity materialName="TowerBaseWood" index="0" visible="true" />
+          </subentities>
+        </entity>
+      </node>
       <node name="Forest5" id="570787648">
         <rotation qw="0.910915" qx="0" qy="0.412593" qz="0" />
         <position x="2034.78" y="567.964" z="2691.96" />
@@ -5821,7 +5886,7 @@
       </node>
       <node name="Knight##19" id="168919952">
         <rotation qw="-0.237686" qx="0" qy="-0.971342" qz="0" />
-        <position x="345.703" y="12" z="-487.772" />
+        <position x="297.684" y="12" z="-525.117" />
         <scale x="1" y="1" z="1" />
         <entity name="knightB##11" id="624103552" castshadows="true" meshFile="knightB.mesh" type="Enemy" subType="Knight" animationTree="data/animations/knight.xml" life="100" points="100" speed="50" damage="2" specialDamage="0" height="11" dieMesh="nakedDie.mesh" dieAnimation="Die" physicMesh="enemyBasicPhysicBody.mesh">
           <rotation qw="1" qx="0" qy="0" qz="0" />
@@ -5951,7 +6016,7 @@
       </node>
       <node name="ChickenBig#01" id="517014080">
         <rotation qw="0.488621" qx="0" qy="0.872496" qz="0" />
-        <position x="92.2553" y="3.5" z="-349.889" />
+        <position x="126.535" y="3.5" z="-302.753" />
         <scale x="5" y="5" z="5" />
         <entity name="chicken#16" id="662984064" castshadows="false" meshFile="chicken.mesh" type="Enemy" subType="Chicken" animationTree="data/animations/chicken.xml" life="5" points="25" speed="10" damage="0" specialDamage="0" height="10" dieMesh="chickenDie.mesh" dieAnimation="" physicMesh="enemyBasicPhysicBody.mesh">
           <rotation qw="1" qx="0" qy="0" qz="0" />
@@ -6445,7 +6510,7 @@
       </node>
       <node name="Knight##24" id="66164128">
         <rotation qw="0.740218" qx="0" qy="0.672367" qz="0" />
-        <position x="165.127" y="12" z="-524.749" />
+        <position x="146.532" y="12" z="-585.446" />
         <scale x="1" y="1" z="1" />
         <entity name="knightC##10" id="427808448" castshadows="true" meshFile="knightC.mesh" type="Enemy" subType="Knight" animationTree="data/animations/knight.xml" life="100" points="100" speed="50" damage="2" specialDamage="0" height="11" dieMesh="nakedDie.mesh" dieAnimation="Die" physicMesh="enemyBasicPhysicBody.mesh">
           <rotation qw="1" qx="0" qy="0" qz="0" />
@@ -7202,24 +7267,37 @@
       <rotation qw="1" qx="0" qy="0" qz="0" />
       <position x="0" y="0" z="0" />
       <scale x="1" y="1" z="1" />
-      <node name="Crate0" id="604144384">
-        <rotation qw="0.942641" qx="0" qy="-0.333807" qz="0" />
-        <position x="299.822" y="-0.00305939" z="-480.183" />
+      <node name="MarketTent1Copy#1Copy#2" id="430890816">
+        <rotation qw="-0.948324" qx="0" qy="-0.317304" qz="0" />
+        <position x="169.613" y="0" z="-499.313" />
         <scale x="1" y="1" z="1" />
-        <entity name="Crate0#0" id="737907072" castshadows="false" meshFile="Crate0.mesh">
+        <entity name="MarketTent1#5" id="753318912" castshadows="false" meshFile="MarketTent1.mesh">
+          <rotation qw="0.997859" qx="0" qy="-0.0654032" qz="0" />
+          <position x="2.037" y="0" z="-13.3129" />
+          <scale x="1" y="1" z="1" />
+          <subentities>
+            <subentity materialName="MarketTent1" index="0" visible="true" />
+          </subentities>
+        </entity>
+      </node>
+      <node name="CityTents" id="809778176">
+        <rotation qw="1" qx="0" qy="0" qz="0" />
+        <position x="357.83" y="-1.54287" z="-663.94" />
+        <scale x="1" y="1" z="1" />
+        <entity name="FireCamp#3" id="343241664" castshadows="false" meshFile="FireCamp.mesh">
           <rotation qw="1" qx="0" qy="0" qz="0" />
           <position x="0" y="0" z="0" />
           <scale x="1" y="1" z="1" />
           <subentities>
-            <subentity materialName="Crate0" index="0" visible="true" />
+            <subentity materialName="FireCamp_material" index="0" visible="true" />
           </subentities>
         </entity>
       </node>
-      <node name="Crate0Copy#4" id="826685376">
+      <node name="Crate0Copy#6" id="725028224">
         <rotation qw="0.942641" qx="0" qy="-0.333807" qz="0" />
-        <position x="130.533" y="-0.00305939" z="-611.37" />
+        <position x="14.3416" y="-0.00305939" z="-377.228" />
         <scale x="1" y="1" z="1" />
-        <entity name="Crate1#1" id="875637056" castshadows="false" meshFile="Crate1.mesh">
+        <entity name="Crate1#3" id="919980480" castshadows="false" meshFile="Crate1.mesh">
           <rotation qw="1" qx="0" qy="0" qz="0" />
           <position x="0" y="0" z="0" />
           <scale x="1" y="1" z="1" />
@@ -7228,11 +7306,37 @@
           </subentities>
         </entity>
       </node>
-      <node name="Farm0_0" id="279305408">
-        <rotation qw="0.994968" qx="0" qy="-0.100188" qz="0" />
-        <position x="1290.77" y="20.1627" z="262.376" />
+      <node name="MarketTent0" id="445570240">
+        <rotation qw="0.710185" qx="0" qy="-0.704015" qz="0" />
+        <position x="36.9262" y="0" z="-525.492" />
         <scale x="1" y="1" z="1" />
-        <entity name="Farm0#0" id="265938288" castshadows="false" meshFile="House0.mesh">
+        <entity name="MarketTent0#0" id="739463488" castshadows="false" meshFile="MarketTent0.mesh">
+          <rotation qw="0.378648" qx="0" qy="-0.925541" qz="0" />
+          <position x="0" y="0" z="0" />
+          <scale x="1" y="1" z="1" />
+          <subentities>
+            <subentity materialName="MarketTent0" index="0" visible="true" />
+          </subentities>
+        </entity>
+      </node>
+      <node name="MarketTent1Copy#0" id="858638272">
+        <rotation qw="0.932008" qx="0" qy="-0.362438" qz="0" />
+        <position x="-11.6176" y="0" z="-536.876" />
+        <scale x="1" y="1" z="1" />
+        <entity name="MarketTent1#1" id="815973376" castshadows="false" meshFile="MarketTent1.mesh">
+          <rotation qw="1" qx="0" qy="0" qz="0" />
+          <position x="0" y="0" z="0" />
+          <scale x="1" y="1" z="1" />
+          <subentities>
+            <subentity materialName="MarketTent1" index="0" visible="true" />
+          </subentities>
+        </entity>
+      </node>
+      <node name="Farm0_1" id="912228736">
+        <rotation qw="1" qx="0" qy="-3.94881E-07" qz="0" />
+        <position x="1307.88" y="20.1627" z="177.934" />
+        <scale x="1" y="1" z="1" />
+        <entity name="Farm0#0Copy#0" id="630603968" castshadows="false" meshFile="House0.mesh">
           <rotation qw="1" qx="0" qy="0" qz="0" />
           <position x="0" y="0" z="0" />
           <scale x="1" y="1" z="1" />
@@ -7255,19 +7359,6 @@
           </subentities>
         </entity>
       </node>
-      <node name="BigRock" id="418500320">
-        <rotation qw="0.614954" qx="0.00319471" qy="-0.788553" qz="0.0024914" />
-        <position x="180.277" y="28.098" z="850.72" />
-        <scale x="13.483" y="8.65588" z="10.5683" />
-        <entity name="BigRock#0" id="639912128" castshadows="true" meshFile="BigRock0.mesh" type="DynamicObject">
-          <rotation qw="1" qx="0" qy="0" qz="0" />
-          <position x="0" y="0" z="0" />
-          <scale x="1" y="1" z="1" />
-          <subentities>
-            <subentity materialName="VulcanicRock" index="0" visible="true" />
-          </subentities>
-        </entity>
-      </node>
       <node name="Crate0Copy#3" id="313882848">
         <rotation qw="0.942641" qx="0" qy="-0.333807" qz="0" />
         <position x="274.118" y="-0.00305939" z="-502.837" />
@@ -7281,11 +7372,129 @@
           </subentities>
         </entity>
       </node>
-      <node name="Farm0_3" id="877956480">
-        <rotation qw="0.143493" qx="0" qy="0.989651" qz="0" />
-        <position x="1192.57" y="20.1627" z="117.95" />
+      <node name="MarketTent0Copy#0" id="520035392">
+        <rotation qw="0.999391" qx="0" qy="0.0348991" qz="0" />
+        <position x="-37.1138" y="0" z="-586.498" />
         <scale x="1" y="1" z="1" />
-        <entity name="Farm0#0Copy#2" id="362376768" castshadows="false" meshFile="House0.mesh">
+        <entity name="MarketTent0#0Copy#0" id="725699648" castshadows="false" meshFile="MarketTent0.mesh">
+          <rotation qw="0.378648" qx="0" qy="-0.925541" qz="0" />
+          <position x="0" y="0" z="0" />
+          <scale x="1" y="1" z="1" />
+          <subentities>
+            <subentity materialName="MarketTent0" index="0" visible="true" />
+          </subentities>
+        </entity>
+      </node>
+      <node name="CityTentsCopy#1" id="165623952">
+        <rotation qw="1" qx="0" qy="0" qz="0" />
+        <position x="341.729" y="-1.54287" z="-701.174" />
+        <scale x="1" y="1" z="1" />
+        <entity name="Tent1#2" id="548570240" castshadows="false" meshFile="Tent1.mesh">
+          <rotation qw="1" qx="0" qy="0" qz="0" />
+          <position x="0" y="0" z="0" />
+          <scale x="1" y="1" z="1" />
+          <subentities>
+            <subentity materialName="Tent1" index="0" visible="true" />
+          </subentities>
+        </entity>
+      </node>
+      <node name="MarketTent1Copy#1Copy#0" id="291787488">
+        <rotation qw="-0.694659" qx="0" qy="-0.719339" qz="0" />
+        <position x="114.015" y="0" z="-409.06" />
+        <scale x="1" y="1" z="1" />
+        <entity name="MarketTent1#3" id="205725264" castshadows="false" meshFile="MarketTent1.mesh">
+          <rotation qw="1" qx="0" qy="0" qz="0" />
+          <position x="0" y="0" z="0" />
+          <scale x="1" y="1" z="1" />
+          <subentities>
+            <subentity materialName="MarketTent1" index="0" visible="true" />
+          </subentities>
+        </entity>
+      </node>
+      <node name="Tent1_1" id="426801344">
+        <rotation qw="-0.850352" qx="0" qy="-0.526214" qz="0" />
+        <position x="511.9" y="0" z="765.6" />
+        <scale x="1" y="1" z="1" />
+        <entity name="Tent1#1" id="397686688" castshadows="false" meshFile="Tent1.mesh">
+          <rotation qw="1" qx="0" qy="0" qz="0" />
+          <position x="0" y="0" z="0" />
+          <scale x="1" y="1" z="1" />
+          <subentities>
+            <subentity materialName="Tent1" index="0" visible="true" />
+          </subentities>
+        </entity>
+      </node>
+      <node name="Farm0_2" id="830591744">
+        <rotation qw="0.997564" qx="0" qy="0.0697561" qz="0" />
+        <position x="1302.62" y="20.1627" z="93.4744" />
+        <scale x="1" y="1" z="1" />
+        <entity name="Farm0#0Copy#1" id="852565056" castshadows="false" meshFile="House0.mesh">
+          <rotation qw="1" qx="0" qy="0" qz="0" />
+          <position x="0" y="0" z="0" />
+          <scale x="1" y="1" z="1" />
+          <subentities>
+            <subentity materialName="House0_Building_Material5" index="0" visible="true" />
+            <subentity materialName="House0_Roof_Material5" index="1" visible="true" />
+          </subentities>
+        </entity>
+      </node>
+      <node name="Crate0Copy#0" id="408978560">
+        <rotation qw="0.942641" qx="0" qy="-0.333807" qz="0" />
+        <position x="291.77" y="-0.00305939" z="-486.835" />
+        <scale x="1" y="1" z="1" />
+        <entity name="Crate0#1" id="300057984" castshadows="false" meshFile="Crate0.mesh">
+          <rotation qw="1" qx="0" qy="0" qz="0" />
+          <position x="0" y="0" z="0" />
+          <scale x="1" y="1" z="1" />
+          <subentities>
+            <subentity materialName="Crate0" index="0" visible="true" />
+          </subentities>
+        </entity>
+      </node>
+      <node name="MarketTent0Copy#2" id="817590912">
+        <rotation qw="0.710185" qx="0" qy="-0.704015" qz="0" />
+        <position x="94.5208" y="0" z="-359.417" />
+        <scale x="1" y="1" z="1" />
+        <entity name="MarketTent0#2" id="254188656" castshadows="false" meshFile="MarketTent0.mesh">
+          <rotation qw="1" qx="0" qy="0" qz="0" />
+          <position x="0" y="0" z="0" />
+          <scale x="1" y="1" z="1" />
+          <subentities>
+            <subentity materialName="MarketTent0" index="0" visible="true" />
+          </subentities>
+        </entity>
+      </node>
+      <node name="Crate0Copy#5" id="873348160">
+        <rotation qw="0.971342" qx="0" qy="-0.237686" qz="0" />
+        <position x="218.013" y="-0.00305939" z="-434.368" />
+        <scale x="1" y="1" z="1" />
+        <entity name="Crate1#2" id="653859072" castshadows="false" meshFile="Crate1.mesh">
+          <rotation qw="1" qx="0" qy="0" qz="0" />
+          <position x="0" y="0" z="0" />
+          <scale x="1" y="1" z="1" />
+          <subentities>
+            <subentity materialName="Crate1" index="0" visible="true" />
+          </subentities>
+        </entity>
+      </node>
+      <node name="MarketTent1Copy#1" id="448530528">
+        <rotation qw="-0.337917" qx="0" qy="-0.941176" qz="0" />
+        <position x="10.2324" y="0" z="-562.977" />
+        <scale x="1" y="1" z="1" />
+        <entity name="MarketTent1#2" id="974150848" castshadows="false" meshFile="MarketTent1.mesh">
+          <rotation qw="1" qx="0" qy="0" qz="0" />
+          <position x="0" y="0" z="0" />
+          <scale x="1" y="1" z="1" />
+          <subentities>
+            <subentity materialName="MarketTent1" index="0" visible="true" />
+          </subentities>
+        </entity>
+      </node>
+      <node name="Farm0_0" id="279305408">
+        <rotation qw="0.994968" qx="0" qy="-0.100188" qz="0" />
+        <position x="1290.77" y="20.1627" z="262.376" />
+        <scale x="1" y="1" z="1" />
+        <entity name="Farm0#0" id="265938288" castshadows="false" meshFile="House0.mesh">
           <rotation qw="1" qx="0" qy="0" qz="0" />
           <position x="0" y="0" z="0" />
           <scale x="1" y="1" z="1" />
@@ -7308,64 +7517,11 @@
           </subentities>
         </entity>
       </node>
-      <node name="Tent1_1" id="426801344">
-        <rotation qw="-0.850352" qx="0" qy="-0.526214" qz="0" />
-        <position x="511.9" y="0" z="765.6" />
-        <scale x="1" y="1" z="1" />
-        <entity name="Tent1#1" id="397686688" castshadows="false" meshFile="Tent1.mesh">
-          <rotation qw="1" qx="0" qy="0" qz="0" />
-          <position x="0" y="0" z="0" />
-          <scale x="1" y="1" z="1" />
-          <subentities>
-            <subentity materialName="Tent1" index="0" visible="true" />
-          </subentities>
-        </entity>
-      </node>
       <node name="Crate0Copy#2" id="737998592">
         <rotation qw="0.942641" qx="0" qy="-0.333807" qz="0" />
         <position x="217.549" y="7.92316" z="-434.647" />
         <scale x="1" y="1" z="1" />
         <entity name="Crate0#3" id="127231672" castshadows="false" meshFile="Crate0.mesh">
-          <rotation qw="1" qx="0" qy="0" qz="0" />
-          <position x="0" y="0" z="0" />
-          <scale x="1" y="1" z="1" />
-          <subentities>
-            <subentity materialName="Crate0" index="0" visible="true" />
-          </subentities>
-        </entity>
-      </node>
-      <node name="Farm0_2" id="830591744">
-        <rotation qw="0.997564" qx="0" qy="0.0697561" qz="0" />
-        <position x="1302.62" y="20.1627" z="93.4744" />
-        <scale x="1" y="1" z="1" />
-        <entity name="Farm0#0Copy#1" id="852565056" castshadows="false" meshFile="House0.mesh">
-          <rotation qw="1" qx="0" qy="0" qz="0" />
-          <position x="0" y="0" z="0" />
-          <scale x="1" y="1" z="1" />
-          <subentities>
-            <subentity materialName="House0_Building_Material5" index="0" visible="true" />
-            <subentity materialName="House0_Roof_Material5" index="1" visible="true" />
-          </subentities>
-        </entity>
-      </node>
-      <node name="Tent1_0" id="53804132">
-        <rotation qw="-0.833886" qx="0" qy="0.551937" qz="0" />
-        <position x="565.1" y="0" z="714.12" />
-        <scale x="1" y="1" z="1" />
-        <entity name="Tent1#0" id="842097216" castshadows="false" meshFile="Tent1.mesh">
-          <rotation qw="1" qx="0" qy="0" qz="0" />
-          <position x="0" y="0" z="0" />
-          <scale x="1" y="1" z="1" />
-          <subentities>
-            <subentity materialName="Tent1" index="0" visible="true" />
-          </subentities>
-        </entity>
-      </node>
-      <node name="Crate0Copy#1" id="152653584">
-        <rotation qw="0.942641" qx="0" qy="-0.333807" qz="0" />
-        <position x="283.993" y="-0.00305939" z="-495.141" />
-        <scale x="1" y="1" z="1" />
-        <entity name="Crate0#2" id="943998528" castshadows="false" meshFile="Crate0.mesh">
           <rotation qw="1" qx="0" qy="0" qz="0" />
           <position x="0" y="0" z="0" />
           <scale x="1" y="1" z="1" />
@@ -7387,11 +7543,155 @@
           </subentities>
         </entity>
       </node>
-      <node name="Crate0Copy#0" id="408978560">
-        <rotation qw="0.942641" qx="0" qy="-0.333807" qz="0" />
-        <position x="291.77" y="-0.00305939" z="-486.835" />
+      <node name="CityTentsCopy#0" id="491042816">
+        <rotation qw="0.891007" qx="0" qy="-0.453991" qz="0" />
+        <position x="379.214" y="-1.54287" z="-683.06" />
         <scale x="1" y="1" z="1" />
-        <entity name="Crate0#1" id="300057984" castshadows="false" meshFile="Crate0.mesh">
+        <entity name="Tent0#1" id="848689280" castshadows="false" meshFile="Tent0.mesh">
+          <rotation qw="1" qx="0" qy="0" qz="0" />
+          <position x="0" y="0" z="0" />
+          <scale x="1" y="1" z="1" />
+          <subentities>
+            <subentity materialName="Tent0" index="0" visible="true" />
+          </subentities>
+        </entity>
+      </node>
+      <node name="Crate0" id="604144384">
+        <rotation qw="0.942641" qx="0" qy="-0.333807" qz="0" />
+        <position x="299.822" y="-0.00305939" z="-480.183" />
+        <scale x="1" y="1" z="1" />
+        <entity name="Crate0#0" id="737907072" castshadows="false" meshFile="Crate0.mesh">
+          <rotation qw="1" qx="0" qy="0" qz="0" />
+          <position x="0" y="0" z="0" />
+          <scale x="1" y="1" z="1" />
+          <subentities>
+            <subentity materialName="Crate0" index="0" visible="true" />
+          </subentities>
+        </entity>
+      </node>
+      <node name="BigRock" id="418500320">
+        <rotation qw="0.614954" qx="0.00319471" qy="-0.788553" qz="0.0024914" />
+        <position x="180.277" y="28.098" z="850.72" />
+        <scale x="13.483" y="8.65588" z="10.5683" />
+        <entity name="BigRock#0" id="639912128" castshadows="true" meshFile="BigRock0.mesh" type="DynamicObject">
+          <rotation qw="1" qx="0" qy="0" qz="0" />
+          <position x="0" y="0" z="0" />
+          <scale x="1" y="1" z="1" />
+          <subentities>
+            <subentity materialName="VulcanicRock" index="0" visible="true" />
+          </subentities>
+        </entity>
+      </node>
+      <node name="Tent1_0" id="53804132">
+        <rotation qw="-0.833886" qx="0" qy="0.551937" qz="0" />
+        <position x="565.1" y="0" z="714.12" />
+        <scale x="1" y="1" z="1" />
+        <entity name="Tent1#0" id="842097216" castshadows="false" meshFile="Tent1.mesh">
+          <rotation qw="1" qx="0" qy="0" qz="0" />
+          <position x="0" y="0" z="0" />
+          <scale x="1" y="1" z="1" />
+          <subentities>
+            <subentity materialName="Tent1" index="0" visible="true" />
+          </subentities>
+        </entity>
+      </node>
+      <node name="MarketTent1" id="262947472">
+        <rotation qw="0.710185" qx="0" qy="-0.704015" qz="0" />
+        <position x="72.0279" y="0" z="-408.503" />
+        <scale x="1" y="1" z="1" />
+        <entity name="MarketTent1#0" id="708761856" castshadows="false" meshFile="MarketTent1.mesh">
+          <rotation qw="1" qx="0" qy="0" qz="0" />
+          <position x="0" y="0" z="0" />
+          <scale x="1" y="1" z="1" />
+          <subentities>
+            <subentity materialName="MarketTent1" index="0" visible="true" />
+          </subentities>
+        </entity>
+      </node>
+      <node name="MarketTent0Copy#1" id="266090864">
+        <rotation qw="0.246153" qx="0" qy="-0.969231" qz="0" />
+        <position x="200.619" y="0" z="-555.213" />
+        <scale x="1" y="1" z="1" />
+        <entity name="MarketTent0#1" id="624897024" castshadows="false" meshFile="MarketTent0.mesh">
+          <rotation qw="1" qx="0" qy="0" qz="0" />
+          <position x="0" y="0" z="0" />
+          <scale x="1" y="1" z="1" />
+          <subentities>
+            <subentity materialName="MarketTent0" index="0" visible="true" />
+          </subentities>
+        </entity>
+      </node>
+      <node name="CityTentsCopy#2" id="724600960">
+        <rotation qw="1" qx="0" qy="0" qz="0" />
+        <position x="394.057" y="-1.54287" z="-647.839" />
+        <scale x="1" y="1" z="1" />
+        <entity name="Tent2#2" id="208746608" castshadows="false" meshFile="Tent2.mesh">
+          <rotation qw="1" qx="0" qy="0" qz="0" />
+          <position x="0" y="0" z="0" />
+          <scale x="1" y="1" z="1" />
+          <subentities>
+            <subentity materialName="Tent2" index="0" visible="true" />
+          </subentities>
+        </entity>
+      </node>
+      <node name="MarketTent1Copy#1Copy#1" id="842493952">
+        <rotation qw="0.296541" qx="0" qy="-0.95502" qz="0" />
+        <position x="143.066" y="0" z="-542.06" />
+        <scale x="1" y="1" z="1" />
+        <entity name="MarketTent1#4" id="928739328" castshadows="false" meshFile="MarketTent1.mesh">
+          <rotation qw="0.999657" qx="0" qy="-0.026177" qz="0" />
+          <position x="0" y="0" z="0" />
+          <scale x="1" y="1" z="1" />
+          <subentities>
+            <subentity materialName="MarketTent1" index="0" visible="true" />
+          </subentities>
+        </entity>
+      </node>
+      <node name="Crate0Copy#4" id="826685376">
+        <rotation qw="0.942641" qx="0" qy="-0.333807" qz="0" />
+        <position x="130.533" y="-0.00305939" z="-611.37" />
+        <scale x="1" y="1" z="1" />
+        <entity name="Crate1#1" id="875637056" castshadows="false" meshFile="Crate1.mesh">
+          <rotation qw="1" qx="0" qy="0" qz="0" />
+          <position x="0" y="0" z="0" />
+          <scale x="1" y="1" z="1" />
+          <subentities>
+            <subentity materialName="Crate1" index="0" visible="true" />
+          </subentities>
+        </entity>
+      </node>
+      <node name="Crate0Copy#3Copy#0" id="475112128">
+        <rotation qw="0.942641" qx="0" qy="-0.333807" qz="0" />
+        <position x="194.125" y="-0.00305939" z="-562.783" />
+        <scale x="1" y="1" z="1" />
+        <entity name="Crate0#4" id="549577280" castshadows="false" meshFile="Crate0.mesh">
+          <rotation qw="0.98245" qx="0" qy="-0.186524" qz="0" />
+          <position x="0" y="0" z="0" />
+          <scale x="1" y="1" z="1" />
+          <subentities>
+            <subentity materialName="Crate0" index="0" visible="true" />
+          </subentities>
+        </entity>
+      </node>
+      <node name="Farm0_3" id="877956480">
+        <rotation qw="0.143493" qx="0" qy="0.989651" qz="0" />
+        <position x="1192.57" y="20.1627" z="117.95" />
+        <scale x="1" y="1" z="1" />
+        <entity name="Farm0#0Copy#2" id="362376768" castshadows="false" meshFile="House0.mesh">
+          <rotation qw="1" qx="0" qy="0" qz="0" />
+          <position x="0" y="0" z="0" />
+          <scale x="1" y="1" z="1" />
+          <subentities>
+            <subentity materialName="House0_Building_Material5" index="0" visible="true" />
+            <subentity materialName="House0_Roof_Material5" index="1" visible="true" />
+          </subentities>
+        </entity>
+      </node>
+      <node name="Crate0Copy#1" id="152653584">
+        <rotation qw="0.942641" qx="0" qy="-0.333807" qz="0" />
+        <position x="283.993" y="-0.00305939" z="-495.141" />
+        <scale x="1" y="1" z="1" />
+        <entity name="Crate0#2" id="943998528" castshadows="false" meshFile="Crate0.mesh">
           <rotation qw="1" qx="0" qy="0" qz="0" />
           <position x="0" y="0" z="0" />
           <scale x="1" y="1" z="1" />
@@ -7424,46 +7724,6 @@
           <scale x="1" y="1" z="1" />
           <subentities>
             <subentity materialName="Tent2" index="0" visible="true" />
-          </subentities>
-        </entity>
-      </node>
-      <node name="Crate0Copy#6" id="725028224">
-        <rotation qw="0.942641" qx="0" qy="-0.333807" qz="0" />
-        <position x="14.3416" y="-0.00305939" z="-377.228" />
-        <scale x="1" y="1" z="1" />
-        <entity name="Crate1#3" id="919980480" castshadows="false" meshFile="Crate1.mesh">
-          <rotation qw="1" qx="0" qy="0" qz="0" />
-          <position x="0" y="0" z="0" />
-          <scale x="1" y="1" z="1" />
-          <subentities>
-            <subentity materialName="Crate1" index="0" visible="true" />
-          </subentities>
-        </entity>
-      </node>
-      <node name="Crate0Copy#5" id="873348160">
-        <rotation qw="0.971342" qx="0" qy="-0.237686" qz="0" />
-        <position x="218.013" y="-0.00305939" z="-434.368" />
-        <scale x="1" y="1" z="1" />
-        <entity name="Crate1#2" id="653859072" castshadows="false" meshFile="Crate1.mesh">
-          <rotation qw="1" qx="0" qy="0" qz="0" />
-          <position x="0" y="0" z="0" />
-          <scale x="1" y="1" z="1" />
-          <subentities>
-            <subentity materialName="Crate1" index="0" visible="true" />
-          </subentities>
-        </entity>
-      </node>
-      <node name="Farm0_1" id="912228736">
-        <rotation qw="1" qx="0" qy="-3.94881E-07" qz="0" />
-        <position x="1307.88" y="20.1627" z="177.934" />
-        <scale x="1" y="1" z="1" />
-        <entity name="Farm0#0Copy#0" id="630603968" castshadows="false" meshFile="House0.mesh">
-          <rotation qw="1" qx="0" qy="0" qz="0" />
-          <position x="0" y="0" z="0" />
-          <scale x="1" y="1" z="1" />
-          <subentities>
-            <subentity materialName="House0_Building_Material5" index="0" visible="true" />
-            <subentity materialName="House0_Roof_Material5" index="1" visible="true" />
           </subentities>
         </entity>
       </node>
@@ -8124,7 +8384,7 @@
       </node>
       <node name="BeerGlass" id="290383616">
         <rotation qw="1" qx="0" qy="0" qz="0" />
-        <position x="323.99" y="12" z="-715.689" />
+        <position x="308.881" y="12" z="-715.689" />
         <scale x="1" y="1" z="1" />
         <entity name="beerGlass#0" id="546678080" castshadows="true" meshFile="beerGlass.mesh" type="Item" subType="Drunk" life="0" drunkTime="5" points="350">
           <rotation qw="1" qx="0" qy="0" qz="0" />
