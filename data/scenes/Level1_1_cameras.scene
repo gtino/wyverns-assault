@@ -50,20 +50,20 @@
 		<cameraSegment id="3">
 			<positionBegin x="995" y="300" z="590"/>
 			<positionEnd x="1164" y="300" z="371"/>
-			<lookAtBegin x="1013" y="0" z="549"/>
-			<lookAtEnd x="1179" y="0" z="333"/>
+			<lookAtBegin x="1013" y="-10" z="549"/>
+			<lookAtEnd x="1179" y="-10" z="333"/>
 		</cameraSegment>
 		<cameraSegment id="4">
 			<positionBegin x="1411" y="130" z="161"/>
 			<positionEnd x="1412" y="130" z="146"/>
-			<lookAtBegin x="1225" y="0" z="160"/>
-			<lookAtEnd x="1225" y="0" z="160"/>
+			<lookAtBegin x="1225" y="-10" z="160"/>
+			<lookAtEnd x="1225" y="-10" z="160"/>
 		</cameraSegment>
 		<cameraSegment id="5">
-			<positionBegin x="1372" y="175" z="-76"/>
-			<positionEnd x="1329" y="175" z="-167"/>
-			<lookAtBegin x="1014" y="-150" z="71"/>
-			<lookAtEnd x="947" y="-150" z="-56"/>
+			<positionBegin x="1384" y="175" z="-85"/>
+			<positionEnd x="1318" y="175" z="-231"/>
+			<lookAtBegin x="1022" y="-150" z="68"/>
+			<lookAtEnd x="989" y="-150" z="8"/>
 		</cameraSegment>
 		<cameraSegment id="6">
 			<positionBegin x="1222" y="150" z="-280"/>
@@ -72,22 +72,22 @@
 			<lookAtEnd x="809" y="50" z="-403"/>
 		</cameraSegment>
 		<cameraSegment id="7">
-			<positionBegin x="861" y="180" z="-513"/>
-			<positionEnd x="651" y="200" z="-568"/>
-			<lookAtBegin x="653" y="0" z="-508"/>
-			<lookAtEnd x="356" y="-50" z="-526"/>
+			<positionBegin x="866" y="375" z="-437"/>
+			<positionEnd x="866" y="375" z="-592"/>			
+			<lookAtBegin x="609" y="-50" z="-538"/>
+			<lookAtEnd x="610" y="-50" z="-493"/>
 		</cameraSegment>
 		<cameraSegment id="8">
-			<positionBegin x="259" y="250" z="-878"/>
-			<positionEnd x="-69" y="250" z="-711"/>
-			<lookAtBegin x="365" y="-100" z="-236"/>
-			<lookAtEnd x="209" y="-100" z="-85"/>
+			<positionBegin x="-51" y="330" z="-343"/>
+			<positionEnd x="-121" y="300" z="-601"/>			
+			<lookAtBegin x="203" y="0" z="-370"/>
+			<lookAtEnd x="236" y="0" z="-590"/>
 		</cameraSegment>		
 		<cameraSegment id="9">
-			<positionBegin x="148" y="300" z="-320"/>
-			<positionEnd x="-19" y="300" z="-462"/>
-			<lookAtBegin x="-103" y="-50" z="257"/>
-			<lookAtEnd x="-576" y="-50" z="-138"/>
+			<positionBegin x="180" y="250" z="-423"/>
+			<positionEnd x="235" y="250" z="-328"/>
+			<lookAtBegin x="-306" y="-120" z="-176"/>
+			<lookAtEnd x="-102" y="-120" z="68"/>
 		</cameraSegment>
 	</cameraSegments>
 </scene>
