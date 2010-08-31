@@ -32,7 +32,7 @@ This pages is used to store all the intersting links realted to the project. Eve
  * [http://gamepipe.usc.edu/animation/Bake_Export/AniViewer.rar Ani Viewer]
 
 === Photoshop ===
- * [http://www.adobetutorialz.com/articles/107/1/-How-to-Create-a-Tileable-Lava-Texture Hot to create e tileable lava texture]
+ * [http://www.adobetutorialz.com/articles/107/1/-How-to-Create-a-Tileable-Lava-Texture How to create e tileable lava texture]
 
 == Game Coding ==
 
