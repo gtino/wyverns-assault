@@ -118,6 +118,9 @@ EnemyPtr EnemyManager::createEnemy(Enemy::EnemyTypes type, Ogre::String name, Og
 	// Store enemy in its game area
 	mEnemyMapList[gameArea].push_back(enemy);
 
+	// Set visible false by default
+	enemy->setVisible(false);
+
 	return enemy;
 }
 
@@ -283,6 +286,15 @@ void EnemyManager::setDebugEnabled(bool isDebugEnabled)
 	}
 }
 
+// Visibility
+void EnemyManager::setEnemiesVisible(bool visibility, int gameArea)
+{
+	for( int i = 0; i < mEnemyMapList[gameArea].size(); i++ )
+	{
+		mEnemyMapList[gameArea][i]->setVisible(visibility);
+	}
+}
+
 // --------------
 // Event handlers
 // --------------
@@ -395,6 +407,9 @@ EVENTS_DEFINE_HANDLER(EnemyManager, GameAreaChanged)
 	Debug::Out("EnemyManager : handleGameAreaChangedEvent");
 
 	mCurrentGameArea = evt->getActualArea();
+
+	setEnemiesVisible(false, evt->getPreviousArea());
+	setEnemiesVisible(true, evt->getActualArea());
 }
 
 // --------------------------------

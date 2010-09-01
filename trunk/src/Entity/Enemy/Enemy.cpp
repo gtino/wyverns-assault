@@ -467,6 +467,13 @@ void Enemy::dieToCamera()
 	flying = true;
 }
 
+// Visibility function
+void Enemy::setVisible(bool visibility)
+{
+	mEntity->setVisible(visibility);
+	mBalloonSet->setVisible(visibility);
+}
+
 // Stop all enemy actions
 void Enemy::stop()
 {
