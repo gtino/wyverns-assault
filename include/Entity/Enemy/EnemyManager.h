@@ -82,6 +82,9 @@ namespace WyvernsAssault
 
 		void update(const float elpasedSeconds);
 
+		// Visibility
+		void setEnemiesVisible(bool visibility, int gameArea);
+
 		// Enable Debug Stuff
 		void setDebugEnabled(bool isDebugEnabled);
 		bool getDebugEnabled(){return mIsDebugEnabled;};

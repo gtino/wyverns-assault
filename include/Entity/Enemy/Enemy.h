@@ -119,31 +119,29 @@ namespace WyvernsAssault
 
 		void setTarget(SceneNode* target);
 		SceneNode* getTarget(){return mTarget;}
-		void autoTrackTarget();
 		
 		Ogre::Real getHitDamage(){return mParameters.damage;}
 		void hit(float damage);
 		float getPoints(){ return mParameters.points; }
-
-		bool isHurt();
-		bool isDying();
-
-		int mChannel;
-		int getChannel(){return mChannel;}
-		void setChannel(int channel){mChannel = channel;}
-
 		float getSpeed(){return mParameters.speed;}
-		float getHeight(){return mParameters.height;}
-
+		float getHeight(){return mParameters.height;}	
 		Real getAttackTimeout(){return mAttackTimeout;}
 		void setAttackTimeout(Real time){mAttackTimeout = time;}
 		Real getAttackCooldown(){return mParameters.attackCooldown;}
 
+		// Sound functions
+		int mChannel;
+		int getChannel(){return mChannel;}
+		void setChannel(int channel){mChannel = channel;}
+
 		// Enable Debug Stuff
 		void setDebugEnabled(bool isDebugEnabled);
-		bool getDebugEnabled(){return mIsDebugEnabled;};
+		bool getDebugEnabled(){return mIsDebugEnabled;}
 
-		/** Animation functions */
+		// Visibility function
+		void setVisible(bool visibility);
+
+		// Animation functions
 		void setMoving(bool move){ moving = move; }
 		void setAttacking(bool attack);
 		bool isAttacking(){ return attacking; }
@@ -153,6 +151,8 @@ namespace WyvernsAssault
 		bool hasAttackHited() { return attackHited; }
 
 		// Die functions
+		bool isHurt();
+		bool isDying();
 		bool isBurning(){ return burning; }
 		void setBurning(bool status){ burning = status; }
 		void setDieMesh(Ogre::Entity* entity);
