@@ -19,6 +19,8 @@ GameAreaManager::GameAreaManager()
 , mIsDebugEnabled(false)
 , mCurrentGameArea(-1)
 , mGameAreaCleared(true)
+, mEnemiesAlive(false)
+, mTime(0.0)
 {
 
 }
@@ -46,19 +48,41 @@ void GameAreaManager::load(Ogre::String file)
 	assert(mInitialized);
 }
 
-void GameAreaManager::update(Vector3 playerPosition, const float elpasedSeconds)
+void GameAreaManager::update(Vector3 playerPosition, const float elapsedSeconds)
 {
 	int playerArea = positionGameArea(playerPosition);
 
-	// Game Area changed and game are is cleared raise event
-	if( mCurrentGameArea != playerArea )
+	// Game Area changed and game area is cleared raise event
+	if( mCurrentGameArea != playerArea && mGameAreaCleared )
 	{
 		GameAreaChangedEventPtr evt = GameAreaChangedEventPtr(new GameAreaChangedEvent(mCurrentGameArea, playerArea));
 		EVENTS_FIRE(evt);
 
 		mCurrentGameArea = playerArea;
 		mGameAreaCleared = false;
-	}	
+		mEnemiesAlive = (mGameAreas[playerArea].mEnemies != 0);
+		mTime = 0.0;		
+	}
+
+	mTime += elapsedSeconds;
+
+	// Game Area cleared by time
+	if( mGameAreas[mCurrentGameArea].mFinishTime != 0 )
+	{
+		if( mGameAreas[mCurrentGameArea].mFinishTime < mTime && !mGameAreaCleared )
+		{
+			mGameAreaCleared = true;
+			GameAreaClearedEventPtr evt = GameAreaClearedEventPtr(new GameAreaClearedEvent(mCurrentGameArea));
+			EVENTS_FIRE(evt);
+		}
+	}
+	// Cleared by killing enemies
+	else if( !mEnemiesAlive && !mGameAreaCleared)
+	{	
+		mGameAreaCleared = true;
+		GameAreaClearedEventPtr evt = GameAreaClearedEventPtr(new GameAreaClearedEvent(mCurrentGameArea));
+		EVENTS_FIRE(evt);
+	}
 }
 
 // Get game area from a position
@@ -86,13 +110,8 @@ int GameAreaManager::positionGameArea(Vector3 position)
 }
 
 /** Add game area to vector */
-void GameAreaManager::addGameArea(Vector3 beginNear, Vector3 endNear, Vector3 beginFar, Vector3 endFar)
+void GameAreaManager::addGameArea(GameArea area)
 {
-	GameArea area;
-	area.mBeginNear = beginNear;
-	area.mEndNear = endNear;
-	area.mBeginFar = beginFar;
-	area.mEndFar = endFar;
 	mGameAreas.push_back(area);
 }
 
@@ -101,17 +120,17 @@ void GameAreaManager::addGameArea(Vector3 beginNear, Vector3 endNear, Vector3 be
 // Event handlers
 // --------------
 EVENTS_BEGIN_REGISTER_HANDLERS(GameAreaManager)
-	EVENTS_REGISTER_HANDLER(GameAreaManager, GameAreaCleared)
+	EVENTS_REGISTER_HANDLER(GameAreaManager, GameAreaEnemiesDeath)
 EVENTS_END_REGISTER_HANDLERS()
 
 EVENTS_BEGIN_UNREGISTER_HANDLERS(GameAreaManager)
-	EVENTS_UNREGISTER_HANDLER(GameAreaManager, GameAreaCleared)
+	EVENTS_UNREGISTER_HANDLER(GameAreaManager, GameAreaEnemiesDeath)
 EVENTS_END_UNREGISTER_HANDLERS()
 
-EVENTS_DEFINE_HANDLER(GameAreaManager, GameAreaCleared)
+EVENTS_DEFINE_HANDLER(GameAreaManager, GameAreaEnemiesDeath)
 {
-	Debug::Out("GameAreaManager : handleGameAreaClearedEvent");
+	Debug::Out("GameAreaManager : handleGameAreaEnemiesDeathEvent");
 
 	if( mCurrentGameArea == evt->getGameArea() )
-		mGameAreaCleared = true;
+		mEnemiesAlive = false;
 }

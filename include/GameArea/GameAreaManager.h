@@ -45,6 +45,20 @@ namespace WyvernsAssault
 							, public EventsInterface
 	{
 	public:
+		
+		struct GameArea
+		{
+			Ogre::Vector3	mBeginNear;
+			Ogre::Vector3	mEndNear;
+			Ogre::Vector3	mBeginFar;
+			Ogre::Vector3	mEndFar;
+
+			Ogre::Real		mFinishTime;
+			int				mEnemies;
+			int				mDifficult;
+			int				mType;
+		};
+
 		GameAreaManager();
 		~GameAreaManager();
 		static GameAreaManager& getSingleton(void);
@@ -52,10 +66,15 @@ namespace WyvernsAssault
 
 		void initialize();
 		void load(Ogre::String file);
-		void update(Vector3 playerPosition, const float elpasedSeconds);
+		void update(Vector3 playerPosition, const float elapsedSeconds);
 		
 		int getGameArea() { return mCurrentGameArea; }
 		void setGameArea(int gameArea) { mCurrentGameArea = gameArea; }
+
+		// Get parameters
+		int getEnemies(){ return mGameAreas[mCurrentGameArea].mEnemies; } 
+		int getDifficult(){ return mGameAreas[mCurrentGameArea].mDifficult; }
+		int getType(){ return mGameAreas[mCurrentGameArea].mType; }
 
 		// Get game area from a position
 		int positionGameArea(Vector3 position);
@@ -65,7 +84,7 @@ namespace WyvernsAssault
 		bool getDebugEnabled(){return mIsDebugEnabled;};
 
 		// Add game area to game area list
-		void addGameArea(Vector3 beginNear, Vector3 endNear, Vector3 beginFar, Vector3 endFar);
+		void addGameArea(GameArea area);
 
 	public:
 		// ----------------
@@ -73,21 +92,16 @@ namespace WyvernsAssault
 		// ----------------
 		EVENTS_INTERFACE()
 
-		EVENTS_HANDLER(GameAreaCleared)
+		EVENTS_HANDLER(GameAreaEnemiesDeath)
 
 	private:
-		struct GameArea
-		{
-			Ogre::Vector3	mBeginNear;
-			Ogre::Vector3	mEndNear;
-			Ogre::Vector3	mBeginFar;
-			Ogre::Vector3	mEndFar;
-		};
-
 		std::vector<GameArea> mGameAreas;
 
 		int		mCurrentGameArea;
 		bool	mGameAreaCleared;
+
+		bool	mEnemiesAlive;
+		Real	mTime;
 
 		bool	mIsDebugEnabled;
 

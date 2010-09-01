@@ -56,6 +56,7 @@ namespace WyvernsAssault
 		ItemRemove,
 		GameAreaChanged,
 		GameAreaCleared,
+		GameAreaEnemiesDeath,
 		ProjectileFire,
 		ProjectileUpdate,
 		ProjectileHit,
@@ -426,6 +427,21 @@ namespace WyvernsAssault
 	};
 
 	typedef boost::shared_ptr<GameAreaClearedEvent> GameAreaClearedEventPtr;
+
+	// --------------------------------
+	class GameAreaEnemiesDeathEvent : public Event
+	{
+	public:
+		GameAreaEnemiesDeathEvent(int gameArea);
+		~GameAreaEnemiesDeathEvent(){};
+		
+		int getGameArea(){ return mGameArea; }
+
+	private:
+		int mGameArea;
+	};
+
+	typedef boost::shared_ptr<GameAreaEnemiesDeathEvent> GameAreaEnemiesDeathEventPtr;
 
 	// --------------------------------
 	class ProjectileFireEvent : public Event

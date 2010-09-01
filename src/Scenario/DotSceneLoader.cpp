@@ -856,38 +856,40 @@ void DotSceneLoader::processCameraSegments(TiXmlElement *XMLNode)
 
 void DotSceneLoader::processGameArea(TiXmlElement *XMLNode, SceneNode *pParent)
 {
-	Vector3 beginNear;
-	Vector3 endNear;
-	Vector3 beginFar;
-	Vector3 endFar;
+	GameAreaManager::GameArea area;
 	TiXmlElement *pElement;
+
+	area.mFinishTime = StringConverter::parseReal(XMLNode->Attribute("time"));
+	area.mEnemies = StringConverter::parseInt(XMLNode->Attribute("enemies"));
+	area.mDifficult = StringConverter::parseInt(XMLNode->Attribute("difficult"));
+	area.mType = StringConverter::parseInt(XMLNode->Attribute("type"));
 
 	// Process begin near
 	pElement = XMLNode->FirstChildElement("beginNear");
 	if(pElement)
 	{
-		beginNear = parseVector3(pElement);
+		area.mBeginNear = parseVector3(pElement);
 	}
 	// Process end near
 	pElement = XMLNode->FirstChildElement("endNear");
 	if(pElement)
 	{
-		endNear = parseVector3(pElement);
+		area.mEndNear = parseVector3(pElement);
 	}
 	// Process begin far
 	pElement = XMLNode->FirstChildElement("beginFar");
 	if(pElement)
 	{
-		beginFar = parseVector3(pElement);
+		area.mBeginFar = parseVector3(pElement);
 	}
 	// Process end far
 	pElement = XMLNode->FirstChildElement("endFar");
 	if(pElement)
 	{
-		endFar = parseVector3(pElement);
+		area.mEndFar = parseVector3(pElement);
 	}
 
-	mGameAreaManager->addGameArea(beginNear, endNear, beginFar, endFar);
+	mGameAreaManager->addGameArea(area);
 }
 
 void DotSceneLoader::processCameraSegment(TiXmlElement *XMLNode, SceneNode *pParent)
