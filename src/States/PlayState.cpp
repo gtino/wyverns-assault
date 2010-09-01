@@ -902,8 +902,16 @@ bool PlayState::keyPressed(const OIS::KeyEvent& e)
 	case OIS::KeyCode::KC_END:
 		mPostProcessManager->showDepth();
 		break;
+
+	// Skip cutscene
 	case OIS::KeyCode::KC_RETURN:
 		mCutSceneManager->skip();
+		break;
+
+	// Create enemy
+	case OIS::KeyCode::KC_BACK:
+		EnemyPtr enemy = mEnemyManager->createEnemy(Enemy::EnemyTypes::Knight, player1->getPosition());
+		mPhysicsManager->addPhysicEnemy(enemy, mGameAreaManager->positionGameArea(player1->getPosition()));
 		break;
 	}
 

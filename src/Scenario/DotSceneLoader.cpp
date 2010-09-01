@@ -718,10 +718,9 @@ void DotSceneLoader::processEntity(TiXmlElement *XMLNode, SceneNode *pParent)
 			params.height = getAttribReal(XMLNode, "height");
 			params.dieMesh = getAttrib(XMLNode, "dieMesh");
 			params.dieAnimation = getAttrib(XMLNode, "dieAnimation");
-			params.physicMesh = getAttrib(XMLNode, "physicMesh");			
 
 			// Add to EnemyManager
-			EnemyPtr enemy = mEnemyManager->createEnemy(Enemy::StringToType(subType), name, pEntity, pParent, params, gameArea);
+			EnemyPtr enemy = mEnemyManager->createEnemy(Enemy::StringToType(subType), name, pEntity, pParent, params, gameArea, false);
 			// Add the enemy to the physics manager
 			mPhysicsManager->addPhysicEnemy(enemy, gameArea);
 		}
