@@ -93,7 +93,6 @@ namespace WyvernsAssault
 			Real attackCooldown;
 			String dieMesh;
 			String dieAnimation;
-			String physicMesh;
 		};
 
 	public:
@@ -120,6 +119,7 @@ namespace WyvernsAssault
 		void setTarget(SceneNode* target);
 		SceneNode* getTarget(){return mTarget;}
 		
+		// Parameters functions
 		Ogre::Real getHitDamage(){return mParameters.damage;}
 		void hit(float damage);
 		float getPoints(){ return mParameters.points; }

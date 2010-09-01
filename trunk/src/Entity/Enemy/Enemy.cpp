@@ -55,7 +55,7 @@ Enemy::Enemy(Ogre::String name, Enemy::EnemyTypes type, Enemy::EnemyParameters p
 	mMaxLife = params.life;
 
 	// Attack cooldown
-	mParameters.attackCooldown = 1.0f;
+	mParameters.attackCooldown = 0.5f;
 }
 
 Enemy::~Enemy()

@@ -41,8 +41,45 @@ void EnemyManager::finalize()
 	mEnemyNode = NULL;
 }
 
+// Enemy parameters
+Enemy::EnemyParameters EnemyManager::createParameters(int difficult)
+{
+	Enemy::EnemyParameters params;
+
+	switch ( difficult )
+	{
+		case 0:
+			params.animationTree = "data/animations/knight.xml";
+			params.life = 100.0;
+			params.points = 100.0;
+			params.speed = 50.0;
+			params.damage = 2.0;
+			params.specialDamage = 0.0;
+			params.height = 11.0;
+			params.attackCooldown = 0.5;
+			params.dieMesh = "nakedDie.mesh";
+			params.dieAnimation = "Die";
+			break;
+
+		default:
+			params.animationTree = "data/animations/knight.xml";
+			params.life = 100.0;
+			params.points = 100.0;
+			params.speed = 50.0;
+			params.damage = 2.0;
+			params.specialDamage = 0.0;
+			params.height = 11.0;
+			params.attackCooldown = 0.5;
+			params.dieMesh = "nakedDie.mesh";
+			params.dieAnimation = "Die";
+			break;
+	}
+
+	return params;
+}
+
 // Random enemies
-EnemyPtr EnemyManager::createEnemy(Enemy::EnemyTypes type)
+EnemyPtr EnemyManager::createEnemy(Enemy::EnemyTypes type, Vector3 position)
 {
 	Ogre::String mesh;
 
@@ -55,11 +92,11 @@ EnemyPtr EnemyManager::createEnemy(Enemy::EnemyTypes type)
 			break;
 		case Enemy::EnemyTypes::Knight:			
 			if( subType%3 == 0 )
-				mesh = Ogre::String("knighA.mesh");
+				mesh = Ogre::String("knightA.mesh");
 			else if( subType%3 == 1 )
-				mesh = Ogre::String("knighB.mesh");
+				mesh = Ogre::String("knightB.mesh");
 			else
-				mesh = Ogre::String("knighC.mesh");
+				mesh = Ogre::String("knightC.mesh");
 			break;
 		case Enemy::EnemyTypes::Wizard:
 			mesh = Ogre::String("wizard.mesh");
@@ -70,23 +107,23 @@ EnemyPtr EnemyManager::createEnemy(Enemy::EnemyTypes type)
 	}
 
 	Ogre::String name = createUniqueId();
-
 	Ogre::Entity* enemyMesh = mSceneManager->createEntity(name, mesh);
 	enemyMesh->setCastShadows(true);
 	enemyMesh->setQueryFlags(SceneManager::ENTITY_TYPE_MASK);
 
-	Ogre::SceneNode* sceneNode = mEnemyNode->createChildSceneNode(name + "_Node");
-	sceneNode->attachObject(enemyMesh);
-
-	Enemy::EnemyParameters params;
+	Ogre::SceneNode* sceneNode = mEnemyNode->createChildSceneNode(name + "_Node", position);
 
 	// Get standar parameters for enemy type
+	Enemy::EnemyParameters params = createParameters(0);	
 
-	return createEnemy(type, name, enemyMesh, sceneNode, params, mCurrentGameArea);
+	// Create enemy
+	EnemyPtr enemy = createEnemy(type, name, enemyMesh, sceneNode, params, mCurrentGameArea, true);
+	
+	return enemy;
 }
 
 // Fixed enemies from xml
-EnemyPtr EnemyManager::createEnemy(Enemy::EnemyTypes type, Ogre::String name, Ogre::Entity* mesh, Ogre::SceneNode* sceneNode, Enemy::EnemyParameters params, int gameArea)
+EnemyPtr EnemyManager::createEnemy(Enemy::EnemyTypes type, Ogre::String name, Ogre::Entity* mesh, Ogre::SceneNode* sceneNode, Enemy::EnemyParameters params, int gameArea, bool visible)
 {
 	// Enemy name == Mesh Name!
 	Ogre::Entity* enemyMesh = mesh;
@@ -119,7 +156,7 @@ EnemyPtr EnemyManager::createEnemy(Enemy::EnemyTypes type, Ogre::String name, Og
 	mEnemyMapList[gameArea].push_back(enemy);
 
 	// Set visible false by default
-	enemy->setVisible(false);
+	enemy->setVisible(visible);
 
 	return enemy;
 }
@@ -265,7 +302,7 @@ void EnemyManager::update(const float elapsedSeconds)
 	}
 
 	// If game area is cleared raise event
-	if( getCount() == 0 )
+	if( getCount() <= 0 )
 	{
 		GameAreaEnemiesDeathEventPtr evt = GameAreaEnemiesDeathEventPtr(new GameAreaEnemiesDeathEvent(mCurrentGameArea));
 		EVENTS_FIRE(evt);
@@ -444,8 +481,10 @@ LUA_DEFINE_FUNCTION(EnemyManager, create)
 	// n should be 1, the enemy type
 
 	int type = luaL_checkint(L, 1);
+	
+	Vector3 position;
 
-	EnemyPtr enemy = EnemyManager::getSingleton().createEnemy((Enemy::EnemyTypes)type);
+	EnemyPtr enemy = EnemyManager::getSingleton().createEnemy((Enemy::EnemyTypes)type, position);
 
 	lua_pushstring(L,enemy->getName().c_str());
 
