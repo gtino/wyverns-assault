@@ -1,61 +1,61 @@
 <scene>
 
 	<gameAreas>	
-		<gameArea id="0">
+		<gameArea id="0" time="20.0" enemies="0" difficult="1" type="0">
 			<beginNear x="-417" y="0" z="972"/>
 			<endNear x="318" y="0" z="1016"/>
 			<beginFar x="-307" y="0" z="527"/>
 			<endFar x="218" y="0" z="685"/>			
 		</gameArea>
-		<gameArea id="1">
+		<gameArea id="1" time="0.0" enemies="1" difficult="1" type="0">
 			<beginNear x="318" y="0" z="1016"/>
 			<endNear x="765" y="0" z="889"/>
 			<beginFar x="218" y="0" z="685"/>
 			<endFar x="633" y="0" z="574"/>			
 		</gameArea>
-		<gameArea id="2">
+		<gameArea id="2" time="0.0" enemies="1" difficult="1" type="0">
 			<beginNear x="765" y="0" z="889"/>
 			<endNear x="1020" y="0" z="710"/>
 			<beginFar x="633" y="0" z="574"/>
 			<endFar x="810" y="0" z="442"/>			
 		</gameArea>
-		<gameArea id="3">
+		<gameArea id="3" time="0.0" enemies="1" difficult="1" type="0">
 			<beginNear x="1020" y="0" z="710"/>
 			<endNear x="1348" y="0" z="348"/>
 			<beginFar x="810" y="0" z="442"/>
 			<endFar x="1025" y="0" z="223"/>			
 		</gameArea>
-		<gameArea id="4">
+		<gameArea id="4" time="0.0" enemies="1" difficult="1" type="0">
 			<beginNear x="1348" y="0" z="348"/>
 			<endNear x="1368" y="0" z="4"/>	
 			<beginFar x="1025" y="0" z="223"/>
 			<endFar x="1016" y="0" z="89"/>
 		</gameArea>
-		<gameArea id="5">
+		<gameArea id="5" time="0.0" enemies="0" difficult="1" type="0">
 			<beginNear x="1368" y="0" z="4"/>
 			<endNear x="1247" y="0" z="-260"/>	
 			<beginFar x="1016" y="0" z="89"/>
 			<endFar x="875" y="0" z="-111"/>
 		</gameArea>
-		<gameArea id="6">
+		<gameArea id="6" time="0.0" enemies="1" difficult="1" type="0">
 			<beginNear x="1247" y="0" z="-260"/>
 			<endNear x="913" y="0" z="-666"/>
 			<beginFar x="875" y="0" z="-111"/>
 			<endFar x="684" y="0" z="-261"/>
 		</gameArea>
-		<gameArea id="7">
+		<gameArea id="7" time="0.0" enemies="1" difficult="1" type="0">
 			<beginNear x="913" y="0" z="-666"/>
 			<endNear x="387" y="0" z="-932"/>
 			<beginFar x="684" y="0" z="-261"/>
 			<endFar x="434" y="0" z="-365"/>
 		</gameArea>
-		<gameArea id="8">
+		<gameArea id="8" time="0.0" enemies="1" difficult="1" type="0">
 			<beginNear x="387" y="0" z="-932"/>
 			<endNear x="-235" y="0" z="-657"/>
 			<beginFar x="434" y="0" z="-365"/>
 			<endFar x="293" y="0" z="-33"/>
 		</gameArea>
-		<gameArea id="9">
+		<gameArea id="9" time="0.0" enemies="1" difficult="1" type="0">
 			<beginNear x="-235" y="0" z="-657"/>
 			<endNear x="-377" y="0" z="-230"/>
 			<beginFar x="293" y="0" z="-33"/>

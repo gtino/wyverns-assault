@@ -267,7 +267,7 @@ void EnemyManager::update(const float elapsedSeconds)
 	// If game area is cleared raise event
 	if( getCount() == 0 )
 	{
-		GameAreaClearedEventPtr evt = GameAreaClearedEventPtr(new GameAreaClearedEvent(mCurrentGameArea));
+		GameAreaEnemiesDeathEventPtr evt = GameAreaEnemiesDeathEventPtr(new GameAreaEnemiesDeathEvent(mCurrentGameArea));
 		EVENTS_FIRE(evt);
 	}
 }
