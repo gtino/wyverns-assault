@@ -56,42 +56,42 @@
     </RESOURCEDIRECTORIES>
   <CAMERASPEED value="4"></CAMERASPEED>
   <CAMERAPOSITIONS count="0">
-    <OPTION id="0" position="-244.603 95.96 342.948" orientation="0.951045 -0.0905182 -0.294173 -0.0279753"></OPTION>
+    <OPTION id="0" position="178.874 364.255 159.216" orientation="0.791955 -0.32499 0.478192 0.196269"></OPTION>
   </CAMERAPOSITIONS>
     <LAYERS>
-      <LAYER id="0" name="Layer 0" visible="true"></LAYER>
-      <LAYER id="1" name="Layer 1" visible="true"></LAYER>
-      <LAYER id="2" name="Layer 2" visible="true"></LAYER>
-      <LAYER id="3" name="Layer 3" visible="true"></LAYER>
-      <LAYER id="4" name="Layer 4" visible="true"></LAYER>
-      <LAYER id="5" name="Layer 5" visible="true"></LAYER>
-      <LAYER id="6" name="Layer 6" visible="true"></LAYER>
-      <LAYER id="7" name="Layer 7" visible="true"></LAYER>
-      <LAYER id="8" name="Layer 8" visible="true"></LAYER>
-      <LAYER id="9" name="Layer 9" visible="true"></LAYER>
-      <LAYER id="10" name="Layer 10" visible="true"></LAYER>
-      <LAYER id="11" name="Layer 11" visible="true"></LAYER>
-      <LAYER id="12" name="Layer 12" visible="true"></LAYER>
-      <LAYER id="13" name="Layer 13" visible="true"></LAYER>
-      <LAYER id="14" name="Layer 14" visible="true"></LAYER>
-      <LAYER id="15" name="Layer 15" visible="true"></LAYER>
-      <LAYER id="16" name="Layer 16" visible="true"></LAYER>
-      <LAYER id="17" name="Layer 17" visible="true"></LAYER>
-      <LAYER id="18" name="Layer 18" visible="true"></LAYER>
-      <LAYER id="19" name="Layer 19" visible="true"></LAYER>
-      <LAYER id="20" name="Layer 20" visible="true"></LAYER>
-      <LAYER id="21" name="Layer 21" visible="true"></LAYER>
-      <LAYER id="22" name="Layer 22" visible="true"></LAYER>
-      <LAYER id="23" name="Layer 23" visible="true"></LAYER>
-      <LAYER id="24" name="Layer 24" visible="true"></LAYER>
-      <LAYER id="25" name="Layer 25" visible="true"></LAYER>
-      <LAYER id="26" name="Layer 26" visible="true"></LAYER>
-      <LAYER id="27" name="Layer 27" visible="true"></LAYER>
-      <LAYER id="28" name="Layer 28" visible="true"></LAYER>
-      <LAYER id="29" name="Layer 29" visible="true"></LAYER>
-      <LAYER id="30" name="Layer 30" visible="true"></LAYER>
+      <LAYER id="0" name="Scenario" visible="true"></LAYER>
+      <LAYER id="1" name="Layer1" visible="true"></LAYER>
+      <LAYER id="2" name="Layer2" visible="true"></LAYER>
+      <LAYER id="3" name="Layer3" visible="true"></LAYER>
+      <LAYER id="4" name="Layer 1" visible="true"></LAYER>
+      <LAYER id="5" name="Layer 2" visible="true"></LAYER>
+      <LAYER id="6" name="Layer 3" visible="true"></LAYER>
+      <LAYER id="7" name="Layer 4" visible="true"></LAYER>
+      <LAYER id="8" name="Layer 5" visible="true"></LAYER>
+      <LAYER id="9" name="Layer 6" visible="true"></LAYER>
+      <LAYER id="10" name="Layer 7" visible="true"></LAYER>
+      <LAYER id="11" name="Layer 8" visible="true"></LAYER>
+      <LAYER id="12" name="Layer 9" visible="true"></LAYER>
+      <LAYER id="13" name="Layer 10" visible="true"></LAYER>
+      <LAYER id="14" name="Layer 11" visible="true"></LAYER>
+      <LAYER id="15" name="Layer 12" visible="true"></LAYER>
+      <LAYER id="16" name="Layer 13" visible="true"></LAYER>
+      <LAYER id="17" name="Layer 14" visible="true"></LAYER>
+      <LAYER id="18" name="Layer 15" visible="true"></LAYER>
+      <LAYER id="19" name="Layer 16" visible="true"></LAYER>
+      <LAYER id="20" name="Layer 17" visible="true"></LAYER>
+      <LAYER id="21" name="Layer 18" visible="true"></LAYER>
+      <LAYER id="22" name="Layer 19" visible="true"></LAYER>
+      <LAYER id="23" name="Layer 20" visible="true"></LAYER>
+      <LAYER id="24" name="Layer 21" visible="true"></LAYER>
+      <LAYER id="25" name="Layer 22" visible="true"></LAYER>
+      <LAYER id="26" name="Layer 23" visible="true"></LAYER>
+      <LAYER id="27" name="Layer 24" visible="true"></LAYER>
+      <LAYER id="28" name="Layer 25" visible="true"></LAYER>
+      <LAYER id="29" name="Layer 26" visible="true"></LAYER>
+      <LAYER id="30" name="Layer 27" visible="true"></LAYER>
     </LAYERS>
-  <LAYERCOUNT value="1"></LAYERCOUNT>
+  <LAYERCOUNT value="4"></LAYERCOUNT>
   <SELECTIONRECTCOLOUR value="0.498039 0 1 1"></SELECTIONRECTCOLOUR>
   <SELECTIONCOLOUR value="1 1 1 1"></SELECTIONCOLOUR>
   <HIGHLIGHTCOLOUR value="0.909804 0.188235 0.188235 1"></HIGHLIGHTCOLOUR>
@@ -137,9 +137,9 @@
   <OBJECT object_id="2000000002" name="Viewport1" typename="Viewport Object">
     <PROPERTY id="camera::clipdistance" type="8" value="1 3000"></PROPERTY>
     <PROPERTY id="camera::fov" type="6" value="1"></PROPERTY>
-    <PROPERTY id="camera::orientation" type="13" value="0.951047 -0.0905185 -0.294174 -0.0279753"></PROPERTY>
+    <PROPERTY id="camera::orientation" type="13" value="0.791993 -0.325005 0.478215 0.196279"></PROPERTY>
     <PROPERTY id="camera::polymode" type="2" value="3"></PROPERTY>
-    <PROPERTY id="camera::position" type="9" value="-244.603 95.96 342.948"></PROPERTY>
+    <PROPERTY id="camera::position" type="9" value="178.874 364.255 159.216"></PROPERTY>
     <PROPERTY id="camera::viewmode" type="2" value="0"></PROPERTY>
     <PROPERTY id="colour" type="11" value="0 0 0 1"></PROPERTY>
     <PROPERTY id="compositorcount" type="2" value="0"></PROPERTY>
@@ -186,6 +186,30 @@
     <PROPERTY id="position" type="9" value="0 0 0"></PROPERTY>
     <PROPERTY id="power" type="6" value="2"></PROPERTY>
     <PROPERTY id="specular" type="11" value="1 1 1 1"></PROPERTY>
+    <PROPERTY id="updatescript" type="7" value=""></PROPERTY>
+    <CUSTOMPROPERTIES>
+    </CUSTOMPROPERTIES>
+  </OBJECT>
+
+  <OBJECT object_id="26703696" name="Players" typename="Node Object" parentnode="SceneManager">
+    <PROPERTY id="autotracktarget" type="7" value="None"></PROPERTY>
+    <PROPERTY id="layer" type="2" value="0"></PROPERTY>
+    <PROPERTY id="locked" type="12" value="false"></PROPERTY>
+    <PROPERTY id="orientation" type="13" value="0.292372 0 0.956305 0"></PROPERTY>
+    <PROPERTY id="position" type="9" value="0 0 0"></PROPERTY>
+    <PROPERTY id="scale" type="9" value="1 1 1"></PROPERTY>
+    <PROPERTY id="updatescript" type="7" value=""></PROPERTY>
+    <CUSTOMPROPERTIES>
+    </CUSTOMPROPERTIES>
+  </OBJECT>
+
+  <OBJECT object_id="616931648" name="Player1_Node" typename="Node Object" parentnode="Players">
+    <PROPERTY id="autotracktarget" type="7" value="None"></PROPERTY>
+    <PROPERTY id="layer" type="2" value="0"></PROPERTY>
+    <PROPERTY id="locked" type="12" value="false"></PROPERTY>
+    <PROPERTY id="orientation" type="13" value="0.292372 0 -0.956305 0"></PROPERTY>
+    <PROPERTY id="position" type="9" value="-46.0645 22.9337 -288.092"></PROPERTY>
+    <PROPERTY id="scale" type="9" value="1 1 1"></PROPERTY>
     <PROPERTY id="updatescript" type="7" value=""></PROPERTY>
     <CUSTOMPROPERTIES>
     </CUSTOMPROPERTIES>
@@ -364,7 +388,7 @@
     <PROPERTY id="layer" type="2" value="0"></PROPERTY>
     <PROPERTY id="locked" type="12" value="false"></PROPERTY>
     <PROPERTY id="orientation" type="13" value="1 0 0 0"></PROPERTY>
-    <PROPERTY id="position" type="9" value="-157.322 37 250.162"></PROPERTY>
+    <PROPERTY id="position" type="9" value="0 0 0"></PROPERTY>
     <PROPERTY id="scale" type="9" value="1 1 1"></PROPERTY>
     <PROPERTY id="updatescript" type="7" value=""></PROPERTY>
     <CUSTOMPROPERTIES>
@@ -448,7 +472,7 @@
     <PROPERTY id="layer" type="2" value="0"></PROPERTY>
     <PROPERTY id="locked" type="12" value="false"></PROPERTY>
     <PROPERTY id="orientation" type="13" value="0.878817 0 -0.477159 0"></PROPERTY>
-    <PROPERTY id="position" type="9" value="0 50.8812 0"></PROPERTY>
+    <PROPERTY id="position" type="9" value="0 137.453 0"></PROPERTY>
     <PROPERTY id="scale" type="9" value="1 1 1"></PROPERTY>
     <PROPERTY id="updatescript" type="7" value=""></PROPERTY>
     <CUSTOMPROPERTIES>
@@ -456,6 +480,42 @@
   </OBJECT>
 
   <OBJECT object_id="769066432" name="Objects" typename="Node Object" parentnode="SceneManager">
+    <PROPERTY id="autotracktarget" type="7" value="None"></PROPERTY>
+    <PROPERTY id="layer" type="2" value="0"></PROPERTY>
+    <PROPERTY id="locked" type="12" value="false"></PROPERTY>
+    <PROPERTY id="orientation" type="13" value="1 0 0 0"></PROPERTY>
+    <PROPERTY id="position" type="9" value="0 0 0"></PROPERTY>
+    <PROPERTY id="scale" type="9" value="1 1 1"></PROPERTY>
+    <PROPERTY id="updatescript" type="7" value=""></PROPERTY>
+    <CUSTOMPROPERTIES>
+    </CUSTOMPROPERTIES>
+  </OBJECT>
+
+  <OBJECT object_id="743125696" name="Physics" typename="Node Object" parentnode="SceneManager">
+    <PROPERTY id="autotracktarget" type="7" value="None"></PROPERTY>
+    <PROPERTY id="layer" type="2" value="0"></PROPERTY>
+    <PROPERTY id="locked" type="12" value="false"></PROPERTY>
+    <PROPERTY id="orientation" type="13" value="1 0 0 0"></PROPERTY>
+    <PROPERTY id="position" type="9" value="0 0 0"></PROPERTY>
+    <PROPERTY id="scale" type="9" value="1 1 1"></PROPERTY>
+    <PROPERTY id="updatescript" type="7" value=""></PROPERTY>
+    <CUSTOMPROPERTIES>
+    </CUSTOMPROPERTIES>
+  </OBJECT>
+
+  <OBJECT object_id="388103872" name="Ground" typename="Node Object" parentnode="Physics">
+    <PROPERTY id="autotracktarget" type="7" value="None"></PROPERTY>
+    <PROPERTY id="layer" type="2" value="0"></PROPERTY>
+    <PROPERTY id="locked" type="12" value="false"></PROPERTY>
+    <PROPERTY id="orientation" type="13" value="1 0 0 0"></PROPERTY>
+    <PROPERTY id="position" type="9" value="0 0 0"></PROPERTY>
+    <PROPERTY id="scale" type="9" value="1 1 1"></PROPERTY>
+    <PROPERTY id="updatescript" type="7" value=""></PROPERTY>
+    <CUSTOMPROPERTIES>
+    </CUSTOMPROPERTIES>
+  </OBJECT>
+
+  <OBJECT object_id="903866688" name="Wall" typename="Node Object" parentnode="Physics">
     <PROPERTY id="autotracktarget" type="7" value="None"></PROPERTY>
     <PROPERTY id="layer" type="2" value="0"></PROPERTY>
     <PROPERTY id="locked" type="12" value="false"></PROPERTY>
@@ -514,6 +574,42 @@
     <PROPERTY id="renderingdistance" type="6" value="5000"></PROPERTY>
     <PROPERTY id="scale" type="9" value="1 1 1"></PROPERTY>
     <PROPERTY id="subentity0::material" type="7" value="VulcanicRock"></PROPERTY>
+    <PROPERTY id="subentity0::visible" type="12" value="true"></PROPERTY>
+    <PROPERTY id="subentitycount" type="2" value="1"></PROPERTY>
+    <PROPERTY id="updatescript" type="7" value=""></PROPERTY>
+    <CUSTOMPROPERTIES>
+    </CUSTOMPROPERTIES>
+  </OBJECT>
+
+  <OBJECT object_id="733695488" name="Boss_Physics_Ground#0" typename="Entity Object" parentnode="Ground">
+    <PROPERTY id="autotracktarget" type="7" value="None"></PROPERTY>
+    <PROPERTY id="castshadows" type="12" value="false"></PROPERTY>
+    <PROPERTY id="layer" type="2" value="0"></PROPERTY>
+    <PROPERTY id="locked" type="12" value="false"></PROPERTY>
+    <PROPERTY id="meshfile" type="7" value="Boss_Physics_Ground.mesh"></PROPERTY>
+    <PROPERTY id="orientation" type="13" value="1 0 0 0"></PROPERTY>
+    <PROPERTY id="position" type="9" value="0 0 0"></PROPERTY>
+    <PROPERTY id="renderingdistance" type="6" value="5000"></PROPERTY>
+    <PROPERTY id="scale" type="9" value="1 1 1"></PROPERTY>
+    <PROPERTY id="subentity0::material" type="7" value="Physics"></PROPERTY>
+    <PROPERTY id="subentity0::visible" type="12" value="true"></PROPERTY>
+    <PROPERTY id="subentitycount" type="2" value="1"></PROPERTY>
+    <PROPERTY id="updatescript" type="7" value=""></PROPERTY>
+    <CUSTOMPROPERTIES>
+    </CUSTOMPROPERTIES>
+  </OBJECT>
+
+  <OBJECT object_id="200170912" name="Boss_Physics_Wall#0" typename="Entity Object" parentnode="Wall">
+    <PROPERTY id="autotracktarget" type="7" value="None"></PROPERTY>
+    <PROPERTY id="castshadows" type="12" value="false"></PROPERTY>
+    <PROPERTY id="layer" type="2" value="0"></PROPERTY>
+    <PROPERTY id="locked" type="12" value="false"></PROPERTY>
+    <PROPERTY id="meshfile" type="7" value="Boss_Physics_Wall.mesh"></PROPERTY>
+    <PROPERTY id="orientation" type="13" value="1 0 0 0"></PROPERTY>
+    <PROPERTY id="position" type="9" value="0 0 0"></PROPERTY>
+    <PROPERTY id="renderingdistance" type="6" value="5000"></PROPERTY>
+    <PROPERTY id="scale" type="9" value="1 1 1"></PROPERTY>
+    <PROPERTY id="subentity0::material" type="7" value="Physics"></PROPERTY>
     <PROPERTY id="subentity0::visible" type="12" value="true"></PROPERTY>
     <PROPERTY id="subentitycount" type="2" value="1"></PROPERTY>
     <PROPERTY id="updatescript" type="7" value=""></PROPERTY>
@@ -726,7 +822,7 @@
     <PROPERTY id="locked" type="12" value="false"></PROPERTY>
     <PROPERTY id="meshfile" type="7" value="LavaRiver.mesh"></PROPERTY>
     <PROPERTY id="orientation" type="13" value="1 0 0 0"></PROPERTY>
-    <PROPERTY id="position" type="9" value="157.322 -39.8138 -250.162"></PROPERTY>
+    <PROPERTY id="position" type="9" value="0 0 0"></PROPERTY>
     <PROPERTY id="renderingdistance" type="6" value="5000"></PROPERTY>
     <PROPERTY id="scale" type="9" value="1 1 1"></PROPERTY>
     <PROPERTY id="subentity0::material" type="7" value="LavaRiver"></PROPERTY>
@@ -758,7 +854,7 @@
   <OBJECT object_id="982787520" name="Boss#0" typename="Entity Object" parentnode="Boss">
     <PROPERTY id="autotracktarget" type="7" value="None"></PROPERTY>
     <PROPERTY id="castshadows" type="12" value="false"></PROPERTY>
-    <PROPERTY id="layer" type="2" value="0"></PROPERTY>
+    <PROPERTY id="layer" type="2" value="2"></PROPERTY>
     <PROPERTY id="locked" type="12" value="false"></PROPERTY>
     <PROPERTY id="meshfile" type="7" value="Boss.mesh"></PROPERTY>
     <PROPERTY id="orientation" type="13" value="1 0 0 0"></PROPERTY>
@@ -804,6 +900,46 @@
     <PROPERTY id="subentity0::material" type="7" value="VulcanicRock"></PROPERTY>
     <PROPERTY id="subentity0::visible" type="12" value="true"></PROPERTY>
     <PROPERTY id="subentitycount" type="2" value="1"></PROPERTY>
+    <PROPERTY id="updatescript" type="7" value=""></PROPERTY>
+    <CUSTOMPROPERTIES>
+    </CUSTOMPROPERTIES>
+  </OBJECT>
+
+  <OBJECT object_id="612567552" name="Player1" typename="Entity Object" parentnode="Player1_Node">
+    <PROPERTY id="autotracktarget" type="7" value="None"></PROPERTY>
+    <PROPERTY id="castshadows" type="12" value="false"></PROPERTY>
+    <PROPERTY id="layer" type="2" value="0"></PROPERTY>
+    <PROPERTY id="locked" type="12" value="false"></PROPERTY>
+    <PROPERTY id="meshfile" type="7" value="redWyvern.mesh"></PROPERTY>
+    <PROPERTY id="orientation" type="13" value="0.212178 0 0.977231 0"></PROPERTY>
+    <PROPERTY id="position" type="9" value="0 0 0"></PROPERTY>
+    <PROPERTY id="renderingdistance" type="6" value="5000"></PROPERTY>
+    <PROPERTY id="scale" type="9" value="1 1 1"></PROPERTY>
+    <PROPERTY id="subentity0::material" type="7" value="RedWyvernBody"></PROPERTY>
+    <PROPERTY id="subentity0::visible" type="12" value="true"></PROPERTY>
+    <PROPERTY id="subentity10::material" type="7" value="RedWyvernHead"></PROPERTY>
+    <PROPERTY id="subentity10::visible" type="12" value="true"></PROPERTY>
+    <PROPERTY id="subentity11::material" type="7" value="Scene_Material"></PROPERTY>
+    <PROPERTY id="subentity11::visible" type="12" value="true"></PROPERTY>
+    <PROPERTY id="subentity1::material" type="7" value="Grid1_Material"></PROPERTY>
+    <PROPERTY id="subentity1::visible" type="12" value="true"></PROPERTY>
+    <PROPERTY id="subentity2::material" type="7" value="Grid2_Material"></PROPERTY>
+    <PROPERTY id="subentity2::visible" type="12" value="true"></PROPERTY>
+    <PROPERTY id="subentity3::material" type="7" value="Grid3_Material"></PROPERTY>
+    <PROPERTY id="subentity3::visible" type="12" value="true"></PROPERTY>
+    <PROPERTY id="subentity4::material" type="7" value="Grid4_Material"></PROPERTY>
+    <PROPERTY id="subentity4::visible" type="12" value="true"></PROPERTY>
+    <PROPERTY id="subentity5::material" type="7" value="Grid5_Material"></PROPERTY>
+    <PROPERTY id="subentity5::visible" type="12" value="true"></PROPERTY>
+    <PROPERTY id="subentity6::material" type="7" value="Grid6_Material"></PROPERTY>
+    <PROPERTY id="subentity6::visible" type="12" value="true"></PROPERTY>
+    <PROPERTY id="subentity7::material" type="7" value="Grid7_Material"></PROPERTY>
+    <PROPERTY id="subentity7::visible" type="12" value="true"></PROPERTY>
+    <PROPERTY id="subentity8::material" type="7" value="Grid8_Material"></PROPERTY>
+    <PROPERTY id="subentity8::visible" type="12" value="true"></PROPERTY>
+    <PROPERTY id="subentity9::material" type="7" value="Material"></PROPERTY>
+    <PROPERTY id="subentity9::visible" type="12" value="true"></PROPERTY>
+    <PROPERTY id="subentitycount" type="2" value="12"></PROPERTY>
     <PROPERTY id="updatescript" type="7" value=""></PROPERTY>
     <CUSTOMPROPERTIES>
     </CUSTOMPROPERTIES>
