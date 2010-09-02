@@ -5,7 +5,7 @@
   <PROPERTY id="animationTree" type="7" value="data/animations/naked.xml"></PROPERTY>
   <PROPERTY id="life" type="6" value="50"></PROPERTY>
   <PROPERTY id="points" type="6" value="150"></PROPERTY>
-  <PROPERTY id="speed" type="6" value="75"></PROPERTY>
+  <PROPERTY id="speed" type="6" value="60"></PROPERTY>
   <PROPERTY id="damage" type="6" value="0"></PROPERTY>
   <PROPERTY id="specialDamage" type="6" value="0"></PROPERTY>
   <PROPERTY id="height" type="6" value="11"></PROPERTY>
