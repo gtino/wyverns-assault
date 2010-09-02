@@ -1,4 +1,4 @@
-material physic_material
+material Physics
 {
 	technique
 	{
