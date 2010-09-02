@@ -55,7 +55,7 @@
   <CAMERASPEED value="28"></CAMERASPEED>
   <CAMERAPOSITIONS count="1">
     <OPTION id="0" position="1417.36 9.53911 54.9741" orientation="0.707107 0 0.707107 0"></OPTION>
-    <OPTION id="1" position="1406.63 143.002 426.584" orientation="0.751255 -0.182096 0.61654 0.149448"></OPTION>
+    <OPTION id="1" position="118.039 239.389 1101.16" orientation="0.965334 -0.260872 0.00836348 0.00258012"></OPTION>
   </CAMERAPOSITIONS>
     <LAYERS>
       <LAYER id="0" name="Layer 0" visible="true"></LAYER>
@@ -136,9 +136,9 @@
   <OBJECT object_id="2000000002" name="Viewport1" typename="Viewport Object">
     <PROPERTY id="camera::clipdistance" type="8" value="0.05 100000"></PROPERTY>
     <PROPERTY id="camera::fov" type="6" value="1"></PROPERTY>
-    <PROPERTY id="camera::orientation" type="13" value="0.751257 -0.182097 0.616542 0.149448"></PROPERTY>
+    <PROPERTY id="camera::orientation" type="13" value="0.965368 -0.260881 0.00836377 0.00258021"></PROPERTY>
     <PROPERTY id="camera::polymode" type="2" value="3"></PROPERTY>
-    <PROPERTY id="camera::position" type="9" value="1406.63 143.002 426.584"></PROPERTY>
+    <PROPERTY id="camera::position" type="9" value="118.039 239.389 1101.16"></PROPERTY>
     <PROPERTY id="camera::viewmode" type="2" value="6"></PROPERTY>
     <PROPERTY id="colour" type="11" value="0.901961 0.901961 0.901961 1"></PROPERTY>
     <PROPERTY id="compositorcount" type="2" value="0"></PROPERTY>
@@ -387,8 +387,8 @@
     <PROPERTY id="layer" type="2" value="0"></PROPERTY>
     <PROPERTY id="locked" type="12" value="false"></PROPERTY>
     <PROPERTY id="orientation" type="13" value="0.387779 0.00745561 -0.908179 -0.157424"></PROPERTY>
-    <PROPERTY id="position" type="9" value="771.522 504.907 3646.47"></PROPERTY>
-    <PROPERTY id="scale" type="9" value="26.3667 61.5305 20.667"></PROPERTY>
+    <PROPERTY id="position" type="9" value="785.92 630.961 3685.16"></PROPERTY>
+    <PROPERTY id="scale" type="9" value="27.5389 14.4909 13.7695"></PROPERTY>
     <PROPERTY id="updatescript" type="7" value=""></PROPERTY>
     <CUSTOMPROPERTIES>
     </CUSTOMPROPERTIES>
@@ -5907,7 +5907,7 @@
     <PROPERTY id="layer" type="2" value="0"></PROPERTY>
     <PROPERTY id="locked" type="12" value="false"></PROPERTY>
     <PROPERTY id="orientation" type="13" value="1 0 0 0"></PROPERTY>
-    <PROPERTY id="position" type="9" value="984.283 12 460.953"></PROPERTY>
+    <PROPERTY id="position" type="9" value="1301.28 12 18.1403"></PROPERTY>
     <PROPERTY id="scale" type="9" value="1 1 1"></PROPERTY>
     <PROPERTY id="updatescript" type="7" value=""></PROPERTY>
     <CUSTOMPROPERTIES>
@@ -5919,7 +5919,7 @@
     <PROPERTY id="layer" type="2" value="0"></PROPERTY>
     <PROPERTY id="locked" type="12" value="false"></PROPERTY>
     <PROPERTY id="orientation" type="13" value="1 0 0 0"></PROPERTY>
-    <PROPERTY id="position" type="9" value="1276.96 2 216.478"></PROPERTY>
+    <PROPERTY id="position" type="9" value="1179.2 2 365.982"></PROPERTY>
     <PROPERTY id="scale" type="9" value="1 1 1"></PROPERTY>
     <PROPERTY id="updatescript" type="7" value=""></PROPERTY>
     <CUSTOMPROPERTIES>
@@ -5931,7 +5931,7 @@
     <PROPERTY id="layer" type="2" value="0"></PROPERTY>
     <PROPERTY id="locked" type="12" value="false"></PROPERTY>
     <PROPERTY id="orientation" type="13" value="-0.237686 0 -0.971342 0"></PROPERTY>
-    <PROPERTY id="position" type="9" value="297.684 12 -525.117"></PROPERTY>
+    <PROPERTY id="position" type="9" value="157.123 12 -435.184"></PROPERTY>
     <PROPERTY id="scale" type="9" value="1 1 1"></PROPERTY>
     <PROPERTY id="updatescript" type="7" value=""></PROPERTY>
     <CUSTOMPROPERTIES>
@@ -5943,7 +5943,7 @@
     <PROPERTY id="layer" type="2" value="0"></PROPERTY>
     <PROPERTY id="locked" type="12" value="false"></PROPERTY>
     <PROPERTY id="orientation" type="13" value="0.92881 0 -0.370557 0"></PROPERTY>
-    <PROPERTY id="position" type="9" value="1158.93 12 432.914"></PROPERTY>
+    <PROPERTY id="position" type="9" value="1323.34 12 216.641"></PROPERTY>
     <PROPERTY id="scale" type="9" value="1 1 1"></PROPERTY>
     <PROPERTY id="updatescript" type="7" value=""></PROPERTY>
     <CUSTOMPROPERTIES>
@@ -5955,7 +5955,7 @@
     <PROPERTY id="layer" type="2" value="0"></PROPERTY>
     <PROPERTY id="locked" type="12" value="false"></PROPERTY>
     <PROPERTY id="orientation" type="13" value="1 0 0 0"></PROPERTY>
-    <PROPERTY id="position" type="9" value="232.971 12 -548.615"></PROPERTY>
+    <PROPERTY id="position" type="9" value="161.977 12 -385.248"></PROPERTY>
     <PROPERTY id="scale" type="9" value="1 1 1"></PROPERTY>
     <PROPERTY id="updatescript" type="7" value=""></PROPERTY>
     <CUSTOMPROPERTIES>
@@ -5991,7 +5991,7 @@
     <PROPERTY id="layer" type="2" value="0"></PROPERTY>
     <PROPERTY id="locked" type="12" value="false"></PROPERTY>
     <PROPERTY id="orientation" type="13" value="0.861629 0 -0.507538 0"></PROPERTY>
-    <PROPERTY id="position" type="9" value="539.634 12 708.696"></PROPERTY>
+    <PROPERTY id="position" type="9" value="497.3 13.2234 720.098"></PROPERTY>
     <PROPERTY id="scale" type="9" value="1 1 1"></PROPERTY>
     <PROPERTY id="updatescript" type="7" value=""></PROPERTY>
     <CUSTOMPROPERTIES>
@@ -6015,7 +6015,7 @@
     <PROPERTY id="layer" type="2" value="0"></PROPERTY>
     <PROPERTY id="locked" type="12" value="false"></PROPERTY>
     <PROPERTY id="orientation" type="13" value="0.816642 0 -0.577145 0"></PROPERTY>
-    <PROPERTY id="position" type="9" value="1184.36 12 450.936"></PROPERTY>
+    <PROPERTY id="position" type="9" value="1318.12 12 133.083"></PROPERTY>
     <PROPERTY id="scale" type="9" value="1 1 1"></PROPERTY>
     <PROPERTY id="updatescript" type="7" value=""></PROPERTY>
     <CUSTOMPROPERTIES>
@@ -6027,7 +6027,7 @@
     <PROPERTY id="layer" type="2" value="0"></PROPERTY>
     <PROPERTY id="locked" type="12" value="false"></PROPERTY>
     <PROPERTY id="orientation" type="13" value="0.816642 0 -0.577145 0"></PROPERTY>
-    <PROPERTY id="position" type="9" value="1119.85 12 285.923"></PROPERTY>
+    <PROPERTY id="position" type="9" value="550.674 12 686.008"></PROPERTY>
     <PROPERTY id="scale" type="9" value="1 1 1"></PROPERTY>
     <PROPERTY id="updatescript" type="7" value=""></PROPERTY>
     <CUSTOMPROPERTIES>
@@ -6063,7 +6063,7 @@
     <PROPERTY id="layer" type="2" value="0"></PROPERTY>
     <PROPERTY id="locked" type="12" value="false"></PROPERTY>
     <PROPERTY id="orientation" type="13" value="0.62932 0 0.777146 0"></PROPERTY>
-    <PROPERTY id="position" type="9" value="1142.93 12 178.476"></PROPERTY>
+    <PROPERTY id="position" type="9" value="1155.93 12 179.188"></PROPERTY>
     <PROPERTY id="scale" type="9" value="1 1 1"></PROPERTY>
     <PROPERTY id="updatescript" type="7" value=""></PROPERTY>
     <CUSTOMPROPERTIES>
@@ -6099,19 +6099,7 @@
     <PROPERTY id="layer" type="2" value="0"></PROPERTY>
     <PROPERTY id="locked" type="12" value="false"></PROPERTY>
     <PROPERTY id="orientation" type="13" value="-0.725373 0 -0.688356 0"></PROPERTY>
-    <PROPERTY id="position" type="9" value="599.932 12 -573.43"></PROPERTY>
-    <PROPERTY id="scale" type="9" value="1 1 1"></PROPERTY>
-    <PROPERTY id="updatescript" type="7" value=""></PROPERTY>
-    <CUSTOMPROPERTIES>
-    </CUSTOMPROPERTIES>
-  </OBJECT>
-
-  <OBJECT object_id="698507648" name="Knight#0" typename="Node Object" parentnode="Enemies">
-    <PROPERTY id="autotracktarget" type="7" value="None"></PROPERTY>
-    <PROPERTY id="layer" type="2" value="0"></PROPERTY>
-    <PROPERTY id="locked" type="12" value="false"></PROPERTY>
-    <PROPERTY id="orientation" type="13" value="0.92881 0 -0.370557 0"></PROPERTY>
-    <PROPERTY id="position" type="9" value="1150.9 12 280.622"></PROPERTY>
+    <PROPERTY id="position" type="9" value="521.106 12 -593.425"></PROPERTY>
     <PROPERTY id="scale" type="9" value="1 1 1"></PROPERTY>
     <PROPERTY id="updatescript" type="7" value=""></PROPERTY>
     <CUSTOMPROPERTIES>
@@ -6135,7 +6123,7 @@
     <PROPERTY id="layer" type="2" value="0"></PROPERTY>
     <PROPERTY id="locked" type="12" value="false"></PROPERTY>
     <PROPERTY id="orientation" type="13" value="-0.725373 0 -0.688356 0"></PROPERTY>
-    <PROPERTY id="position" type="9" value="600.049 12 -528.599"></PROPERTY>
+    <PROPERTY id="position" type="9" value="529.227 12 -624.455"></PROPERTY>
     <PROPERTY id="scale" type="9" value="1 1 1"></PROPERTY>
     <PROPERTY id="updatescript" type="7" value=""></PROPERTY>
     <CUSTOMPROPERTIES>
@@ -6147,7 +6135,7 @@
     <PROPERTY id="layer" type="2" value="0"></PROPERTY>
     <PROPERTY id="locked" type="12" value="false"></PROPERTY>
     <PROPERTY id="orientation" type="13" value="0.845728 0 0.533615 0"></PROPERTY>
-    <PROPERTY id="position" type="9" value="1059.88 2 609.59"></PROPERTY>
+    <PROPERTY id="position" type="9" value="1119.17 2 499.891"></PROPERTY>
     <PROPERTY id="scale" type="9" value="1 1 1"></PROPERTY>
     <PROPERTY id="updatescript" type="7" value=""></PROPERTY>
     <CUSTOMPROPERTIES>
@@ -6171,7 +6159,7 @@
     <PROPERTY id="layer" type="2" value="0"></PROPERTY>
     <PROPERTY id="locked" type="12" value="false"></PROPERTY>
     <PROPERTY id="orientation" type="13" value="0.882948 0 -0.469472 0"></PROPERTY>
-    <PROPERTY id="position" type="9" value="801.614 12 740.495"></PROPERTY>
+    <PROPERTY id="position" type="9" value="909.485 12 680.415"></PROPERTY>
     <PROPERTY id="scale" type="9" value="1 1 1"></PROPERTY>
     <PROPERTY id="updatescript" type="7" value=""></PROPERTY>
     <CUSTOMPROPERTIES>
@@ -6183,7 +6171,7 @@
     <PROPERTY id="layer" type="2" value="0"></PROPERTY>
     <PROPERTY id="locked" type="12" value="false"></PROPERTY>
     <PROPERTY id="orientation" type="13" value="0.925541 0 -0.378649 0"></PROPERTY>
-    <PROPERTY id="position" type="9" value="767.694 12 731.993"></PROPERTY>
+    <PROPERTY id="position" type="9" value="844.809 12 689.584"></PROPERTY>
     <PROPERTY id="scale" type="9" value="1 1 1"></PROPERTY>
     <PROPERTY id="updatescript" type="7" value=""></PROPERTY>
     <CUSTOMPROPERTIES>
@@ -6195,7 +6183,7 @@
     <PROPERTY id="layer" type="2" value="0"></PROPERTY>
     <PROPERTY id="locked" type="12" value="false"></PROPERTY>
     <PROPERTY id="orientation" type="13" value="1 0 0 0"></PROPERTY>
-    <PROPERTY id="position" type="9" value="1240.69 12 140.195"></PROPERTY>
+    <PROPERTY id="position" type="9" value="1123.85 12 56.5268"></PROPERTY>
     <PROPERTY id="scale" type="9" value="1 1 1"></PROPERTY>
     <PROPERTY id="updatescript" type="7" value=""></PROPERTY>
     <CUSTOMPROPERTIES>
@@ -6207,7 +6195,7 @@
     <PROPERTY id="layer" type="2" value="0"></PROPERTY>
     <PROPERTY id="locked" type="12" value="false"></PROPERTY>
     <PROPERTY id="orientation" type="13" value="0.83147 0 -0.55557 0"></PROPERTY>
-    <PROPERTY id="position" type="9" value="1127.49 12 565.79"></PROPERTY>
+    <PROPERTY id="position" type="9" value="1140.02 12 554.545"></PROPERTY>
     <PROPERTY id="scale" type="9" value="1 1 1"></PROPERTY>
     <PROPERTY id="updatescript" type="7" value=""></PROPERTY>
     <CUSTOMPROPERTIES>
@@ -6219,7 +6207,7 @@
     <PROPERTY id="layer" type="2" value="0"></PROPERTY>
     <PROPERTY id="locked" type="12" value="false"></PROPERTY>
     <PROPERTY id="orientation" type="13" value="0.700909 0 0.713251 0"></PROPERTY>
-    <PROPERTY id="position" type="9" value="20.9107 2 -397.474"></PROPERTY>
+    <PROPERTY id="position" type="9" value="-195.609 2 107.761"></PROPERTY>
     <PROPERTY id="scale" type="9" value="1 1 1"></PROPERTY>
     <PROPERTY id="updatescript" type="7" value=""></PROPERTY>
     <CUSTOMPROPERTIES>
@@ -6243,7 +6231,7 @@
     <PROPERTY id="layer" type="2" value="0"></PROPERTY>
     <PROPERTY id="locked" type="12" value="false"></PROPERTY>
     <PROPERTY id="orientation" type="13" value="0.816642 0 -0.577145 0"></PROPERTY>
-    <PROPERTY id="position" type="9" value="1231.7 12 293.611"></PROPERTY>
+    <PROPERTY id="position" type="9" value="626.499 12 776.109"></PROPERTY>
     <PROPERTY id="scale" type="9" value="1 1 1"></PROPERTY>
     <PROPERTY id="updatescript" type="7" value=""></PROPERTY>
     <CUSTOMPROPERTIES>
@@ -6255,7 +6243,7 @@
     <PROPERTY id="layer" type="2" value="0"></PROPERTY>
     <PROPERTY id="locked" type="12" value="false"></PROPERTY>
     <PROPERTY id="orientation" type="13" value="1 0 0 0"></PROPERTY>
-    <PROPERTY id="position" type="9" value="331.907 12 -680.188"></PROPERTY>
+    <PROPERTY id="position" type="9" value="312.811 12 -678.023"></PROPERTY>
     <PROPERTY id="scale" type="9" value="1 1 1"></PROPERTY>
     <PROPERTY id="updatescript" type="7" value=""></PROPERTY>
     <CUSTOMPROPERTIES>
@@ -6279,7 +6267,7 @@
     <PROPERTY id="layer" type="2" value="0"></PROPERTY>
     <PROPERTY id="locked" type="12" value="false"></PROPERTY>
     <PROPERTY id="orientation" type="13" value="0.952396 0 -0.304864 0"></PROPERTY>
-    <PROPERTY id="position" type="9" value="496.629 12 698.103"></PROPERTY>
+    <PROPERTY id="position" type="9" value="475.8 13.2234 736.875"></PROPERTY>
     <PROPERTY id="scale" type="9" value="1 1 1"></PROPERTY>
     <PROPERTY id="updatescript" type="7" value=""></PROPERTY>
     <CUSTOMPROPERTIES>
@@ -6291,7 +6279,7 @@
     <PROPERTY id="layer" type="2" value="0"></PROPERTY>
     <PROPERTY id="locked" type="12" value="false"></PROPERTY>
     <PROPERTY id="orientation" type="13" value="0.989651 0 -0.143493 0"></PROPERTY>
-    <PROPERTY id="position" type="9" value="789.172 12 671.689"></PROPERTY>
+    <PROPERTY id="position" type="9" value="882.716 12 632.659"></PROPERTY>
     <PROPERTY id="scale" type="9" value="1 1 1"></PROPERTY>
     <PROPERTY id="updatescript" type="7" value=""></PROPERTY>
     <CUSTOMPROPERTIES>
@@ -6303,7 +6291,7 @@
     <PROPERTY id="layer" type="2" value="0"></PROPERTY>
     <PROPERTY id="locked" type="12" value="false"></PROPERTY>
     <PROPERTY id="orientation" type="13" value="0.816642 0 -0.577145 0"></PROPERTY>
-    <PROPERTY id="position" type="9" value="1181.09 12 427.852"></PROPERTY>
+    <PROPERTY id="position" type="9" value="1163.81 12 74.7587"></PROPERTY>
     <PROPERTY id="scale" type="9" value="1 1 1"></PROPERTY>
     <PROPERTY id="updatescript" type="7" value=""></PROPERTY>
     <CUSTOMPROPERTIES>
@@ -6315,7 +6303,7 @@
     <PROPERTY id="layer" type="2" value="0"></PROPERTY>
     <PROPERTY id="locked" type="12" value="false"></PROPERTY>
     <PROPERTY id="orientation" type="13" value="0.816642 0 -0.577145 0"></PROPERTY>
-    <PROPERTY id="position" type="9" value="1256.42 12 283.657"></PROPERTY>
+    <PROPERTY id="position" type="9" value="594.892 12 749.717"></PROPERTY>
     <PROPERTY id="scale" type="9" value="1 1 1"></PROPERTY>
     <PROPERTY id="updatescript" type="7" value=""></PROPERTY>
     <CUSTOMPROPERTIES>
@@ -6327,7 +6315,7 @@
     <PROPERTY id="layer" type="2" value="0"></PROPERTY>
     <PROPERTY id="locked" type="12" value="false"></PROPERTY>
     <PROPERTY id="orientation" type="13" value="-0.544638 0 -0.838671 0"></PROPERTY>
-    <PROPERTY id="position" type="9" value="588.613 12 -493.366"></PROPERTY>
+    <PROPERTY id="position" type="9" value="530.361 12 -458.009"></PROPERTY>
     <PROPERTY id="scale" type="9" value="1 1 1"></PROPERTY>
     <PROPERTY id="updatescript" type="7" value=""></PROPERTY>
     <CUSTOMPROPERTIES>
@@ -6339,7 +6327,7 @@
     <PROPERTY id="layer" type="2" value="0"></PROPERTY>
     <PROPERTY id="locked" type="12" value="false"></PROPERTY>
     <PROPERTY id="orientation" type="13" value="1 0 0 0"></PROPERTY>
-    <PROPERTY id="position" type="9" value="331.914 2 -549.867"></PROPERTY>
+    <PROPERTY id="position" type="9" value="308.515 2 -503.406"></PROPERTY>
     <PROPERTY id="scale" type="9" value="1 1 1"></PROPERTY>
     <PROPERTY id="updatescript" type="7" value=""></PROPERTY>
     <CUSTOMPROPERTIES>
@@ -6351,7 +6339,7 @@
     <PROPERTY id="layer" type="2" value="0"></PROPERTY>
     <PROPERTY id="locked" type="12" value="false"></PROPERTY>
     <PROPERTY id="orientation" type="13" value="1 0 0 0"></PROPERTY>
-    <PROPERTY id="position" type="9" value="989.399 2 550.821"></PROPERTY>
+    <PROPERTY id="position" type="9" value="1029.82 2 555.245"></PROPERTY>
     <PROPERTY id="scale" type="9" value="1 1 1"></PROPERTY>
     <PROPERTY id="updatescript" type="7" value=""></PROPERTY>
     <CUSTOMPROPERTIES>
@@ -6363,7 +6351,7 @@
     <PROPERTY id="layer" type="2" value="0"></PROPERTY>
     <PROPERTY id="locked" type="12" value="false"></PROPERTY>
     <PROPERTY id="orientation" type="13" value="-0.612217 0 0.790689 0"></PROPERTY>
-    <PROPERTY id="position" type="9" value="1244.7 12 214.947"></PROPERTY>
+    <PROPERTY id="position" type="9" value="1250.61 12 150.046"></PROPERTY>
     <PROPERTY id="scale" type="9" value="1 1 1"></PROPERTY>
     <PROPERTY id="updatescript" type="7" value=""></PROPERTY>
     <CUSTOMPROPERTIES>
@@ -6399,7 +6387,7 @@
     <PROPERTY id="layer" type="2" value="0"></PROPERTY>
     <PROPERTY id="locked" type="12" value="false"></PROPERTY>
     <PROPERTY id="orientation" type="13" value="0.882948 0 -0.469472 0"></PROPERTY>
-    <PROPERTY id="position" type="9" value="827.112 12 685.154"></PROPERTY>
+    <PROPERTY id="position" type="9" value="913.496 12 633.508"></PROPERTY>
     <PROPERTY id="scale" type="9" value="1 1 1"></PROPERTY>
     <PROPERTY id="updatescript" type="7" value=""></PROPERTY>
     <CUSTOMPROPERTIES>
@@ -6411,7 +6399,7 @@
     <PROPERTY id="layer" type="2" value="0"></PROPERTY>
     <PROPERTY id="locked" type="12" value="false"></PROPERTY>
     <PROPERTY id="orientation" type="13" value="0.418659 0 0.908143 0"></PROPERTY>
-    <PROPERTY id="position" type="9" value="253.299 12 -562.661"></PROPERTY>
+    <PROPERTY id="position" type="9" value="154.559 12 -331.664"></PROPERTY>
     <PROPERTY id="scale" type="9" value="1 1 1"></PROPERTY>
     <PROPERTY id="updatescript" type="7" value=""></PROPERTY>
     <CUSTOMPROPERTIES>
@@ -6423,7 +6411,7 @@
     <PROPERTY id="layer" type="2" value="0"></PROPERTY>
     <PROPERTY id="locked" type="12" value="false"></PROPERTY>
     <PROPERTY id="orientation" type="13" value="0.92388 0 -0.382683 0"></PROPERTY>
-    <PROPERTY id="position" type="9" value="1061.37 2 544.068"></PROPERTY>
+    <PROPERTY id="position" type="9" value="1076.52 2 540.132"></PROPERTY>
     <PROPERTY id="scale" type="9" value="1 1 1"></PROPERTY>
     <PROPERTY id="updatescript" type="7" value=""></PROPERTY>
     <CUSTOMPROPERTIES>
@@ -6435,7 +6423,7 @@
     <PROPERTY id="layer" type="2" value="0"></PROPERTY>
     <PROPERTY id="locked" type="12" value="false"></PROPERTY>
     <PROPERTY id="orientation" type="13" value="0.941176 0 0.337917 0"></PROPERTY>
-    <PROPERTY id="position" type="9" value="363.84 12 -606.759"></PROPERTY>
+    <PROPERTY id="position" type="9" value="229.202 12 -509.693"></PROPERTY>
     <PROPERTY id="scale" type="9" value="1 1 1"></PROPERTY>
     <PROPERTY id="updatescript" type="7" value=""></PROPERTY>
     <CUSTOMPROPERTIES>
@@ -6447,7 +6435,7 @@
     <PROPERTY id="layer" type="2" value="0"></PROPERTY>
     <PROPERTY id="locked" type="12" value="false"></PROPERTY>
     <PROPERTY id="orientation" type="13" value="1 0 0 0"></PROPERTY>
-    <PROPERTY id="position" type="9" value="1009.11 12 582.073"></PROPERTY>
+    <PROPERTY id="position" type="9" value="1285.88 12 363.561"></PROPERTY>
     <PROPERTY id="scale" type="9" value="1 1 1"></PROPERTY>
     <PROPERTY id="updatescript" type="7" value=""></PROPERTY>
     <CUSTOMPROPERTIES>
@@ -6471,7 +6459,7 @@
     <PROPERTY id="layer" type="2" value="0"></PROPERTY>
     <PROPERTY id="locked" type="12" value="false"></PROPERTY>
     <PROPERTY id="orientation" type="13" value="0.92881 0 -0.370557 0"></PROPERTY>
-    <PROPERTY id="position" type="9" value="1133.46 12 480.579"></PROPERTY>
+    <PROPERTY id="position" type="9" value="1124.93 12 229.678"></PROPERTY>
     <PROPERTY id="scale" type="9" value="1 1 1"></PROPERTY>
     <PROPERTY id="updatescript" type="7" value=""></PROPERTY>
     <CUSTOMPROPERTIES>
@@ -6483,7 +6471,7 @@
     <PROPERTY id="layer" type="2" value="0"></PROPERTY>
     <PROPERTY id="locked" type="12" value="false"></PROPERTY>
     <PROPERTY id="orientation" type="13" value="1 0 0 0"></PROPERTY>
-    <PROPERTY id="position" type="9" value="689.103 12 755.786"></PROPERTY>
+    <PROPERTY id="position" type="9" value="977.324 12 384.205"></PROPERTY>
     <PROPERTY id="scale" type="9" value="1 1 1"></PROPERTY>
     <PROPERTY id="updatescript" type="7" value=""></PROPERTY>
     <CUSTOMPROPERTIES>
@@ -6495,7 +6483,7 @@
     <PROPERTY id="layer" type="2" value="0"></PROPERTY>
     <PROPERTY id="locked" type="12" value="false"></PROPERTY>
     <PROPERTY id="orientation" type="13" value="0.956305 0 0.292372 0"></PROPERTY>
-    <PROPERTY id="position" type="9" value="135.23 2 -564.252"></PROPERTY>
+    <PROPERTY id="position" type="9" value="311.749 2 -654.409"></PROPERTY>
     <PROPERTY id="scale" type="9" value="1 1 1"></PROPERTY>
     <PROPERTY id="updatescript" type="7" value=""></PROPERTY>
     <CUSTOMPROPERTIES>
@@ -6507,7 +6495,7 @@
     <PROPERTY id="layer" type="2" value="0"></PROPERTY>
     <PROPERTY id="locked" type="12" value="false"></PROPERTY>
     <PROPERTY id="orientation" type="13" value="0.740218 0 0.672367 0"></PROPERTY>
-    <PROPERTY id="position" type="9" value="146.532 12 -585.446"></PROPERTY>
+    <PROPERTY id="position" type="9" value="172.949 12 -543.959"></PROPERTY>
     <PROPERTY id="scale" type="9" value="1 1 1"></PROPERTY>
     <PROPERTY id="updatescript" type="7" value=""></PROPERTY>
     <CUSTOMPROPERTIES>
@@ -6519,7 +6507,7 @@
     <PROPERTY id="layer" type="2" value="0"></PROPERTY>
     <PROPERTY id="locked" type="12" value="false"></PROPERTY>
     <PROPERTY id="orientation" type="13" value="0.92881 0 -0.370557 0"></PROPERTY>
-    <PROPERTY id="position" type="9" value="472.477 12 710.515"></PROPERTY>
+    <PROPERTY id="position" type="9" value="433.247 13.2234 723.758"></PROPERTY>
     <PROPERTY id="scale" type="9" value="1 1 1"></PROPERTY>
     <PROPERTY id="updatescript" type="7" value=""></PROPERTY>
     <CUSTOMPROPERTIES>
@@ -6531,7 +6519,7 @@
     <PROPERTY id="layer" type="2" value="0"></PROPERTY>
     <PROPERTY id="locked" type="12" value="false"></PROPERTY>
     <PROPERTY id="orientation" type="13" value="0.816642 0 -0.577145 0"></PROPERTY>
-    <PROPERTY id="position" type="9" value="1142.53 12 452.053"></PROPERTY>
+    <PROPERTY id="position" type="9" value="1197.25 12 76.6209"></PROPERTY>
     <PROPERTY id="scale" type="9" value="1 1 1"></PROPERTY>
     <PROPERTY id="updatescript" type="7" value=""></PROPERTY>
     <CUSTOMPROPERTIES>
@@ -6543,7 +6531,7 @@
     <PROPERTY id="layer" type="2" value="0"></PROPERTY>
     <PROPERTY id="locked" type="12" value="false"></PROPERTY>
     <PROPERTY id="orientation" type="13" value="0.816642 0 -0.577145 0"></PROPERTY>
-    <PROPERTY id="position" type="9" value="1270.68 12 308.019"></PROPERTY>
+    <PROPERTY id="position" type="9" value="657.798 12 777.732"></PROPERTY>
     <PROPERTY id="scale" type="9" value="1 1 1"></PROPERTY>
     <PROPERTY id="updatescript" type="7" value=""></PROPERTY>
     <CUSTOMPROPERTIES>
@@ -6579,7 +6567,7 @@
     <PROPERTY id="layer" type="2" value="0"></PROPERTY>
     <PROPERTY id="locked" type="12" value="false"></PROPERTY>
     <PROPERTY id="orientation" type="13" value="0.935135 0 -0.354291 0"></PROPERTY>
-    <PROPERTY id="position" type="9" value="742.096 12 711.488"></PROPERTY>
+    <PROPERTY id="position" type="9" value="813.751 12 643.831"></PROPERTY>
     <PROPERTY id="scale" type="9" value="1 1 1"></PROPERTY>
     <PROPERTY id="updatescript" type="7" value=""></PROPERTY>
     <CUSTOMPROPERTIES>
@@ -6591,7 +6579,7 @@
     <PROPERTY id="layer" type="2" value="0"></PROPERTY>
     <PROPERTY id="locked" type="12" value="false"></PROPERTY>
     <PROPERTY id="orientation" type="13" value="0.816642 0 -0.577145 0"></PROPERTY>
-    <PROPERTY id="position" type="9" value="1164.69 12 463.977"></PROPERTY>
+    <PROPERTY id="position" type="9" value="1253.07 12 33.1249"></PROPERTY>
     <PROPERTY id="scale" type="9" value="1 1 1"></PROPERTY>
     <PROPERTY id="updatescript" type="7" value=""></PROPERTY>
     <CUSTOMPROPERTIES>
@@ -6610,24 +6598,12 @@
     </CUSTOMPROPERTIES>
   </OBJECT>
 
-  <OBJECT object_id="569200704" name="Knight#1" typename="Node Object" parentnode="Enemies">
-    <PROPERTY id="autotracktarget" type="7" value="None"></PROPERTY>
-    <PROPERTY id="layer" type="2" value="0"></PROPERTY>
-    <PROPERTY id="locked" type="12" value="false"></PROPERTY>
-    <PROPERTY id="orientation" type="13" value="0.92881 0 -0.370557 0"></PROPERTY>
-    <PROPERTY id="position" type="9" value="1210.62 12 286.626"></PROPERTY>
-    <PROPERTY id="scale" type="9" value="1 1 1"></PROPERTY>
-    <PROPERTY id="updatescript" type="7" value=""></PROPERTY>
-    <CUSTOMPROPERTIES>
-    </CUSTOMPROPERTIES>
-  </OBJECT>
-
   <OBJECT object_id="628681280" name="Knight##12" typename="Node Object" parentnode="Enemies">
     <PROPERTY id="autotracktarget" type="7" value="None"></PROPERTY>
     <PROPERTY id="layer" type="2" value="0"></PROPERTY>
     <PROPERTY id="locked" type="12" value="false"></PROPERTY>
     <PROPERTY id="orientation" type="13" value="-0.725373 0 -0.688356 0"></PROPERTY>
-    <PROPERTY id="position" type="9" value="550.03 12 -492.814"></PROPERTY>
+    <PROPERTY id="position" type="9" value="507.824 12 -430.491"></PROPERTY>
     <PROPERTY id="scale" type="9" value="1 1 1"></PROPERTY>
     <PROPERTY id="updatescript" type="7" value=""></PROPERTY>
     <CUSTOMPROPERTIES>
@@ -6639,7 +6615,19 @@
     <PROPERTY id="layer" type="2" value="0"></PROPERTY>
     <PROPERTY id="locked" type="12" value="false"></PROPERTY>
     <PROPERTY id="orientation" type="13" value="0.0261768 0 0.999657 0"></PROPERTY>
-    <PROPERTY id="position" type="9" value="964.761 2 650.491"></PROPERTY>
+    <PROPERTY id="position" type="9" value="1018.89 2 608.835"></PROPERTY>
+    <PROPERTY id="scale" type="9" value="1 1 1"></PROPERTY>
+    <PROPERTY id="updatescript" type="7" value=""></PROPERTY>
+    <CUSTOMPROPERTIES>
+    </CUSTOMPROPERTIES>
+  </OBJECT>
+
+  <OBJECT object_id="699270592" name="Cow#0" typename="Node Object" parentnode="Enemies">
+    <PROPERTY id="autotracktarget" type="7" value="None"></PROPERTY>
+    <PROPERTY id="layer" type="2" value="0"></PROPERTY>
+    <PROPERTY id="locked" type="12" value="false"></PROPERTY>
+    <PROPERTY id="orientation" type="13" value="0.876727 0 -0.480989 0"></PROPERTY>
+    <PROPERTY id="position" type="9" value="670.371 16.9841 754.283"></PROPERTY>
     <PROPERTY id="scale" type="9" value="1 1 1"></PROPERTY>
     <PROPERTY id="updatescript" type="7" value=""></PROPERTY>
     <CUSTOMPROPERTIES>
@@ -6663,7 +6651,7 @@
     <PROPERTY id="layer" type="2" value="0"></PROPERTY>
     <PROPERTY id="locked" type="12" value="false"></PROPERTY>
     <PROPERTY id="orientation" type="13" value="0.983255 0 -0.182235 0"></PROPERTY>
-    <PROPERTY id="position" type="9" value="813.495 12 -544.479"></PROPERTY>
+    <PROPERTY id="position" type="9" value="662.749 12 -649.211"></PROPERTY>
     <PROPERTY id="scale" type="9" value="1 1 1"></PROPERTY>
     <PROPERTY id="updatescript" type="7" value=""></PROPERTY>
     <CUSTOMPROPERTIES>
@@ -6687,7 +6675,7 @@
     <PROPERTY id="layer" type="2" value="0"></PROPERTY>
     <PROPERTY id="locked" type="12" value="false"></PROPERTY>
     <PROPERTY id="orientation" type="13" value="0.892979 0 -0.450098 0"></PROPERTY>
-    <PROPERTY id="position" type="9" value="767.196 12 755.783"></PROPERTY>
+    <PROPERTY id="position" type="9" value="861.03 12 738.478"></PROPERTY>
     <PROPERTY id="scale" type="9" value="1 1 1"></PROPERTY>
     <PROPERTY id="updatescript" type="7" value=""></PROPERTY>
     <CUSTOMPROPERTIES>
@@ -6699,7 +6687,7 @@
     <PROPERTY id="layer" type="2" value="0"></PROPERTY>
     <PROPERTY id="locked" type="12" value="false"></PROPERTY>
     <PROPERTY id="orientation" type="13" value="1 0 0 0"></PROPERTY>
-    <PROPERTY id="position" type="9" value="292.406 12 -565.197"></PROPERTY>
+    <PROPERTY id="position" type="9" value="45.3199 12 -588.5"></PROPERTY>
     <PROPERTY id="scale" type="9" value="1 1 1"></PROPERTY>
     <PROPERTY id="updatescript" type="7" value=""></PROPERTY>
     <CUSTOMPROPERTIES>
@@ -6711,7 +6699,7 @@
     <PROPERTY id="layer" type="2" value="0"></PROPERTY>
     <PROPERTY id="locked" type="12" value="false"></PROPERTY>
     <PROPERTY id="orientation" type="13" value="0.461749 0 0.887011 0"></PROPERTY>
-    <PROPERTY id="position" type="9" value="212.184 2 -524.148"></PROPERTY>
+    <PROPERTY id="position" type="9" value="339.891 2 -515.401"></PROPERTY>
     <PROPERTY id="scale" type="9" value="1 1 1"></PROPERTY>
     <PROPERTY id="updatescript" type="7" value=""></PROPERTY>
     <CUSTOMPROPERTIES>
@@ -6723,7 +6711,7 @@
     <PROPERTY id="layer" type="2" value="0"></PROPERTY>
     <PROPERTY id="locked" type="12" value="false"></PROPERTY>
     <PROPERTY id="orientation" type="13" value="0.998135 0 0.061049 0"></PROPERTY>
-    <PROPERTY id="position" type="9" value="788.833 12 -476.014"></PROPERTY>
+    <PROPERTY id="position" type="9" value="745.609 12 -659.777"></PROPERTY>
     <PROPERTY id="scale" type="9" value="1 1 1"></PROPERTY>
     <PROPERTY id="updatescript" type="7" value=""></PROPERTY>
     <CUSTOMPROPERTIES>
@@ -6735,7 +6723,7 @@
     <PROPERTY id="layer" type="2" value="0"></PROPERTY>
     <PROPERTY id="locked" type="12" value="false"></PROPERTY>
     <PROPERTY id="orientation" type="13" value="0.918791 0 -0.394744 0"></PROPERTY>
-    <PROPERTY id="position" type="9" value="837.378 12 706.104"></PROPERTY>
+    <PROPERTY id="position" type="9" value="923.762 12 654.458"></PROPERTY>
     <PROPERTY id="scale" type="9" value="1 1 1"></PROPERTY>
     <PROPERTY id="updatescript" type="7" value=""></PROPERTY>
     <CUSTOMPROPERTIES>
@@ -6747,7 +6735,7 @@
     <PROPERTY id="layer" type="2" value="0"></PROPERTY>
     <PROPERTY id="locked" type="12" value="false"></PROPERTY>
     <PROPERTY id="orientation" type="13" value="0.816642 0 -0.577145 0"></PROPERTY>
-    <PROPERTY id="position" type="9" value="1229 12 267.481"></PROPERTY>
+    <PROPERTY id="position" type="9" value="622.97 12 744.54"></PROPERTY>
     <PROPERTY id="scale" type="9" value="1 1 1"></PROPERTY>
     <PROPERTY id="updatescript" type="7" value=""></PROPERTY>
     <CUSTOMPROPERTIES>
@@ -6759,7 +6747,7 @@
     <PROPERTY id="layer" type="2" value="0"></PROPERTY>
     <PROPERTY id="locked" type="12" value="false"></PROPERTY>
     <PROPERTY id="orientation" type="13" value="1 0 0 0"></PROPERTY>
-    <PROPERTY id="position" type="9" value="400.571 12 -623.801"></PROPERTY>
+    <PROPERTY id="position" type="9" value="680.507 12 -685.07"></PROPERTY>
     <PROPERTY id="scale" type="9" value="1 1 1"></PROPERTY>
     <PROPERTY id="updatescript" type="7" value=""></PROPERTY>
     <CUSTOMPROPERTIES>
@@ -6771,7 +6759,7 @@
     <PROPERTY id="layer" type="2" value="0"></PROPERTY>
     <PROPERTY id="locked" type="12" value="false"></PROPERTY>
     <PROPERTY id="orientation" type="13" value="0.816642 0 -0.577145 0"></PROPERTY>
-    <PROPERTY id="position" type="9" value="779.698 12 -510.29"></PROPERTY>
+    <PROPERTY id="position" type="9" value="690.026 12 -507.162"></PROPERTY>
     <PROPERTY id="scale" type="9" value="1 1 1"></PROPERTY>
     <PROPERTY id="updatescript" type="7" value=""></PROPERTY>
     <CUSTOMPROPERTIES>
@@ -6783,7 +6771,7 @@
     <PROPERTY id="layer" type="2" value="0"></PROPERTY>
     <PROPERTY id="locked" type="12" value="false"></PROPERTY>
     <PROPERTY id="orientation" type="13" value="0.816642 0 -0.577145 0"></PROPERTY>
-    <PROPERTY id="position" type="9" value="493.627 12 738.51"></PROPERTY>
+    <PROPERTY id="position" type="9" value="450.433 13.2234 741.615"></PROPERTY>
     <PROPERTY id="scale" type="9" value="1 1 1"></PROPERTY>
     <PROPERTY id="updatescript" type="7" value=""></PROPERTY>
     <CUSTOMPROPERTIES>
@@ -6795,7 +6783,7 @@
     <PROPERTY id="layer" type="2" value="0"></PROPERTY>
     <PROPERTY id="locked" type="12" value="false"></PROPERTY>
     <PROPERTY id="orientation" type="13" value="0.991445 0 -0.130526 0"></PROPERTY>
-    <PROPERTY id="position" type="9" value="759.508 12 680.735"></PROPERTY>
+    <PROPERTY id="position" type="9" value="842.197 12 610.231"></PROPERTY>
     <PROPERTY id="scale" type="9" value="1 1 1"></PROPERTY>
     <PROPERTY id="updatescript" type="7" value=""></PROPERTY>
     <CUSTOMPROPERTIES>
@@ -6807,7 +6795,7 @@
     <PROPERTY id="layer" type="2" value="0"></PROPERTY>
     <PROPERTY id="locked" type="12" value="false"></PROPERTY>
     <PROPERTY id="orientation" type="13" value="0.816642 0 -0.577145 0"></PROPERTY>
-    <PROPERTY id="position" type="9" value="1115.28 12 469.414"></PROPERTY>
+    <PROPERTY id="position" type="9" value="1297.38 12 38.3834"></PROPERTY>
     <PROPERTY id="scale" type="9" value="1 1 1"></PROPERTY>
     <PROPERTY id="updatescript" type="7" value=""></PROPERTY>
     <CUSTOMPROPERTIES>
@@ -6819,7 +6807,7 @@
     <PROPERTY id="layer" type="2" value="0"></PROPERTY>
     <PROPERTY id="locked" type="12" value="false"></PROPERTY>
     <PROPERTY id="orientation" type="13" value="0.816642 0 -0.577145 0"></PROPERTY>
-    <PROPERTY id="position" type="9" value="1153.82 12 326.533"></PROPERTY>
+    <PROPERTY id="position" type="9" value="550.695 12 758.595"></PROPERTY>
     <PROPERTY id="scale" type="9" value="1 1 1"></PROPERTY>
     <PROPERTY id="updatescript" type="7" value=""></PROPERTY>
     <CUSTOMPROPERTIES>
@@ -6843,7 +6831,7 @@
     <PROPERTY id="layer" type="2" value="0"></PROPERTY>
     <PROPERTY id="locked" type="12" value="false"></PROPERTY>
     <PROPERTY id="orientation" type="13" value="0.793354 0 0.608761 0"></PROPERTY>
-    <PROPERTY id="position" type="9" value="1031.29 12 -182.169"></PROPERTY>
+    <PROPERTY id="position" type="9" value="993.333 12 -236.944"></PROPERTY>
     <PROPERTY id="scale" type="9" value="1.3 1.3 1.3"></PROPERTY>
     <PROPERTY id="updatescript" type="7" value=""></PROPERTY>
     <CUSTOMPROPERTIES>
@@ -6855,7 +6843,7 @@
     <PROPERTY id="layer" type="2" value="0"></PROPERTY>
     <PROPERTY id="locked" type="12" value="false"></PROPERTY>
     <PROPERTY id="orientation" type="13" value="0.857167 0 0.515039 0"></PROPERTY>
-    <PROPERTY id="position" type="9" value="731.09 12 -384.805"></PROPERTY>
+    <PROPERTY id="position" type="9" value="604.697 12 -436.248"></PROPERTY>
     <PROPERTY id="scale" type="9" value="1 1 1"></PROPERTY>
     <PROPERTY id="updatescript" type="7" value=""></PROPERTY>
     <CUSTOMPROPERTIES>
@@ -6867,7 +6855,7 @@
     <PROPERTY id="layer" type="2" value="0"></PROPERTY>
     <PROPERTY id="locked" type="12" value="false"></PROPERTY>
     <PROPERTY id="orientation" type="13" value="0.882948 0 0.469472 0"></PROPERTY>
-    <PROPERTY id="position" type="9" value="46.8552 2 -301.102"></PROPERTY>
+    <PROPERTY id="position" type="9" value="334.769 2 -662.418"></PROPERTY>
     <PROPERTY id="scale" type="9" value="1 1 1"></PROPERTY>
     <PROPERTY id="updatescript" type="7" value=""></PROPERTY>
     <CUSTOMPROPERTIES>
@@ -6891,7 +6879,7 @@
     <PROPERTY id="layer" type="2" value="0"></PROPERTY>
     <PROPERTY id="locked" type="12" value="false"></PROPERTY>
     <PROPERTY id="orientation" type="13" value="1 0 0 0"></PROPERTY>
-    <PROPERTY id="position" type="9" value="1198.03 2 233.923"></PROPERTY>
+    <PROPERTY id="position" type="9" value="1186.37 2 423.541"></PROPERTY>
     <PROPERTY id="scale" type="9" value="1 1 1"></PROPERTY>
     <PROPERTY id="updatescript" type="7" value=""></PROPERTY>
     <CUSTOMPROPERTIES>
@@ -6903,7 +6891,7 @@
     <PROPERTY id="layer" type="2" value="0"></PROPERTY>
     <PROPERTY id="locked" type="12" value="false"></PROPERTY>
     <PROPERTY id="orientation" type="13" value="0.92881 0 -0.370557 0"></PROPERTY>
-    <PROPERTY id="position" type="9" value="1113.6 12 449.677"></PROPERTY>
+    <PROPERTY id="position" type="9" value="1270.42 12 119.841"></PROPERTY>
     <PROPERTY id="scale" type="9" value="1 1 1"></PROPERTY>
     <PROPERTY id="updatescript" type="7" value=""></PROPERTY>
     <CUSTOMPROPERTIES>
@@ -6915,7 +6903,7 @@
     <PROPERTY id="layer" type="2" value="0"></PROPERTY>
     <PROPERTY id="locked" type="12" value="false"></PROPERTY>
     <PROPERTY id="orientation" type="13" value="0.985556 0 -0.16935 0"></PROPERTY>
-    <PROPERTY id="position" type="9" value="776.552 12 703.009"></PROPERTY>
+    <PROPERTY id="position" type="9" value="864.31 12 662.155"></PROPERTY>
     <PROPERTY id="scale" type="9" value="1 1 1"></PROPERTY>
     <PROPERTY id="updatescript" type="7" value=""></PROPERTY>
     <CUSTOMPROPERTIES>
@@ -6927,7 +6915,7 @@
     <PROPERTY id="layer" type="2" value="0"></PROPERTY>
     <PROPERTY id="locked" type="12" value="false"></PROPERTY>
     <PROPERTY id="orientation" type="13" value="1 0 0 0"></PROPERTY>
-    <PROPERTY id="position" type="9" value="387.9 12 776.965"></PROPERTY>
+    <PROPERTY id="position" type="9" value="861.223 12 583.331"></PROPERTY>
     <PROPERTY id="scale" type="9" value="1 1 1"></PROPERTY>
     <PROPERTY id="updatescript" type="7" value=""></PROPERTY>
     <CUSTOMPROPERTIES>
@@ -6951,7 +6939,7 @@
     <PROPERTY id="layer" type="2" value="0"></PROPERTY>
     <PROPERTY id="locked" type="12" value="false"></PROPERTY>
     <PROPERTY id="orientation" type="13" value="0.27144 0 0.962455 0"></PROPERTY>
-    <PROPERTY id="position" type="9" value="391.501 2 -474.59"></PROPERTY>
+    <PROPERTY id="position" type="9" value="340.394 2 -500.519"></PROPERTY>
     <PROPERTY id="scale" type="9" value="1 1 1"></PROPERTY>
     <PROPERTY id="updatescript" type="7" value=""></PROPERTY>
     <CUSTOMPROPERTIES>
@@ -6975,19 +6963,7 @@
     <PROPERTY id="layer" type="2" value="0"></PROPERTY>
     <PROPERTY id="locked" type="12" value="false"></PROPERTY>
     <PROPERTY id="orientation" type="13" value="0.841039 0 -0.540974 0"></PROPERTY>
-    <PROPERTY id="position" type="9" value="534.019 12 742.343"></PROPERTY>
-    <PROPERTY id="scale" type="9" value="1 1 1"></PROPERTY>
-    <PROPERTY id="updatescript" type="7" value=""></PROPERTY>
-    <CUSTOMPROPERTIES>
-    </CUSTOMPROPERTIES>
-  </OBJECT>
-
-  <OBJECT object_id="612048704" name="Knight##2" typename="Node Object" parentnode="Enemies">
-    <PROPERTY id="autotracktarget" type="7" value="None"></PROPERTY>
-    <PROPERTY id="layer" type="2" value="0"></PROPERTY>
-    <PROPERTY id="locked" type="12" value="false"></PROPERTY>
-    <PROPERTY id="orientation" type="13" value="0.816642 0 -0.577145 0"></PROPERTY>
-    <PROPERTY id="position" type="9" value="1186.95 12 304.62"></PROPERTY>
+    <PROPERTY id="position" type="9" value="481.488 13.2234 757.197"></PROPERTY>
     <PROPERTY id="scale" type="9" value="1 1 1"></PROPERTY>
     <PROPERTY id="updatescript" type="7" value=""></PROPERTY>
     <CUSTOMPROPERTIES>
@@ -6999,7 +6975,7 @@
     <PROPERTY id="layer" type="2" value="0"></PROPERTY>
     <PROPERTY id="locked" type="12" value="false"></PROPERTY>
     <PROPERTY id="orientation" type="13" value="1 0 0 0"></PROPERTY>
-    <PROPERTY id="position" type="9" value="390.454 12 -525.194"></PROPERTY>
+    <PROPERTY id="position" type="9" value="670.099 12 -418.78"></PROPERTY>
     <PROPERTY id="scale" type="9" value="1 1 1"></PROPERTY>
     <PROPERTY id="updatescript" type="7" value=""></PROPERTY>
     <CUSTOMPROPERTIES>
@@ -7011,7 +6987,7 @@
     <PROPERTY id="layer" type="2" value="0"></PROPERTY>
     <PROPERTY id="locked" type="12" value="false"></PROPERTY>
     <PROPERTY id="orientation" type="13" value="1 0 0 0"></PROPERTY>
-    <PROPERTY id="position" type="9" value="1197.12 2 379.014"></PROPERTY>
+    <PROPERTY id="position" type="9" value="1141.97 2 429.596"></PROPERTY>
     <PROPERTY id="scale" type="9" value="1 1 1"></PROPERTY>
     <PROPERTY id="updatescript" type="7" value=""></PROPERTY>
     <CUSTOMPROPERTIES>
@@ -7035,7 +7011,7 @@
     <PROPERTY id="layer" type="2" value="0"></PROPERTY>
     <PROPERTY id="locked" type="12" value="false"></PROPERTY>
     <PROPERTY id="orientation" type="13" value="0.809017 0 -0.587785 0"></PROPERTY>
-    <PROPERTY id="position" type="9" value="515.709 12 721.061"></PROPERTY>
+    <PROPERTY id="position" type="9" value="464.968 13.2234 718.783"></PROPERTY>
     <PROPERTY id="scale" type="9" value="1 1 1"></PROPERTY>
     <PROPERTY id="updatescript" type="7" value=""></PROPERTY>
     <CUSTOMPROPERTIES>
@@ -7047,7 +7023,7 @@
     <PROPERTY id="layer" type="2" value="0"></PROPERTY>
     <PROPERTY id="locked" type="12" value="false"></PROPERTY>
     <PROPERTY id="orientation" type="13" value="-0.872496 0 -0.488622 0"></PROPERTY>
-    <PROPERTY id="position" type="9" value="1066 12 -214.489"></PROPERTY>
+    <PROPERTY id="position" type="9" value="1028.04 12 -269.264"></PROPERTY>
     <PROPERTY id="scale" type="9" value="1.3 1.3 1.3"></PROPERTY>
     <PROPERTY id="updatescript" type="7" value=""></PROPERTY>
     <CUSTOMPROPERTIES>
@@ -7059,7 +7035,7 @@
     <PROPERTY id="layer" type="2" value="0"></PROPERTY>
     <PROPERTY id="locked" type="12" value="false"></PROPERTY>
     <PROPERTY id="orientation" type="13" value="0.942642 0 -0.333806 0"></PROPERTY>
-    <PROPERTY id="position" type="9" value="1148.92 12 399.676"></PROPERTY>
+    <PROPERTY id="position" type="9" value="1232.65 12 105.603"></PROPERTY>
     <PROPERTY id="scale" type="9" value="1 1 1"></PROPERTY>
     <PROPERTY id="updatescript" type="7" value=""></PROPERTY>
     <CUSTOMPROPERTIES>
@@ -7071,7 +7047,7 @@
     <PROPERTY id="layer" type="2" value="0"></PROPERTY>
     <PROPERTY id="locked" type="12" value="false"></PROPERTY>
     <PROPERTY id="orientation" type="13" value="0.816642 0 -0.577145 0"></PROPERTY>
-    <PROPERTY id="position" type="9" value="1198.34 12 263.889"></PROPERTY>
+    <PROPERTY id="position" type="9" value="650.085 12 725.318"></PROPERTY>
     <PROPERTY id="scale" type="9" value="1 1 1"></PROPERTY>
     <PROPERTY id="updatescript" type="7" value=""></PROPERTY>
     <CUSTOMPROPERTIES>
@@ -7082,8 +7058,8 @@
     <PROPERTY id="autotracktarget" type="7" value="None"></PROPERTY>
     <PROPERTY id="layer" type="2" value="0"></PROPERTY>
     <PROPERTY id="locked" type="12" value="false"></PROPERTY>
-    <PROPERTY id="orientation" type="13" value="0.92881 0 -0.370557 0"></PROPERTY>
-    <PROPERTY id="position" type="9" value="1230.57 12 315.603"></PROPERTY>
+    <PROPERTY id="orientation" type="13" value="0.836286 0 -0.548293 0"></PROPERTY>
+    <PROPERTY id="position" type="9" value="909.089 12 706.536"></PROPERTY>
     <PROPERTY id="scale" type="9" value="1 1 1"></PROPERTY>
     <PROPERTY id="updatescript" type="7" value=""></PROPERTY>
     <CUSTOMPROPERTIES>
@@ -7095,7 +7071,7 @@
     <PROPERTY id="layer" type="2" value="0"></PROPERTY>
     <PROPERTY id="locked" type="12" value="false"></PROPERTY>
     <PROPERTY id="orientation" type="13" value="1 0 0 0"></PROPERTY>
-    <PROPERTY id="position" type="9" value="632.482 2 807.036"></PROPERTY>
+    <PROPERTY id="position" type="9" value="344.135 2 816.462"></PROPERTY>
     <PROPERTY id="scale" type="9" value="1 1 1"></PROPERTY>
     <PROPERTY id="updatescript" type="7" value=""></PROPERTY>
     <CUSTOMPROPERTIES>
@@ -7119,7 +7095,7 @@
     <PROPERTY id="layer" type="2" value="0"></PROPERTY>
     <PROPERTY id="locked" type="12" value="false"></PROPERTY>
     <PROPERTY id="orientation" type="13" value="1 0 0 0"></PROPERTY>
-    <PROPERTY id="position" type="9" value="938.014 2 568.112"></PROPERTY>
+    <PROPERTY id="position" type="9" value="977.393 2 590.892"></PROPERTY>
     <PROPERTY id="scale" type="9" value="1 1 1"></PROPERTY>
     <PROPERTY id="updatescript" type="7" value=""></PROPERTY>
     <CUSTOMPROPERTIES>
@@ -7167,7 +7143,7 @@
     <PROPERTY id="layer" type="2" value="0"></PROPERTY>
     <PROPERTY id="locked" type="12" value="false"></PROPERTY>
     <PROPERTY id="orientation" type="13" value="0.649448 0 0.760406 0"></PROPERTY>
-    <PROPERTY id="position" type="9" value="1220.49 12 214.064"></PROPERTY>
+    <PROPERTY id="position" type="9" value="1226.4 12 149.163"></PROPERTY>
     <PROPERTY id="scale" type="9" value="1 1 1"></PROPERTY>
     <PROPERTY id="updatescript" type="7" value=""></PROPERTY>
     <CUSTOMPROPERTIES>
@@ -7179,7 +7155,7 @@
     <PROPERTY id="layer" type="2" value="0"></PROPERTY>
     <PROPERTY id="locked" type="12" value="false"></PROPERTY>
     <PROPERTY id="orientation" type="13" value="0.932008 0 -0.362438 0"></PROPERTY>
-    <PROPERTY id="position" type="9" value="797.241 12 715.061"></PROPERTY>
+    <PROPERTY id="position" type="9" value="882.003 12 698.03"></PROPERTY>
     <PROPERTY id="scale" type="9" value="1 1 1"></PROPERTY>
     <PROPERTY id="updatescript" type="7" value=""></PROPERTY>
     <CUSTOMPROPERTIES>
@@ -7191,7 +7167,7 @@
     <PROPERTY id="layer" type="2" value="0"></PROPERTY>
     <PROPERTY id="locked" type="12" value="false"></PROPERTY>
     <PROPERTY id="orientation" type="13" value="0.704014 0 0.710186 0"></PROPERTY>
-    <PROPERTY id="position" type="9" value="183.21 12 -581.527"></PROPERTY>
+    <PROPERTY id="position" type="9" value="259.243 12 -561.756"></PROPERTY>
     <PROPERTY id="scale" type="9" value="1 1 1"></PROPERTY>
     <PROPERTY id="updatescript" type="7" value=""></PROPERTY>
     <CUSTOMPROPERTIES>
@@ -7526,9 +7502,9 @@
     <PROPERTY id="autotracktarget" type="7" value="None"></PROPERTY>
     <PROPERTY id="layer" type="2" value="0"></PROPERTY>
     <PROPERTY id="locked" type="12" value="false"></PROPERTY>
-    <PROPERTY id="orientation" type="13" value="0.614954 0.00319471 -0.788553 0.0024914"></PROPERTY>
-    <PROPERTY id="position" type="9" value="180.277 28.098 850.72"></PROPERTY>
-    <PROPERTY id="scale" type="9" value="13.483 8.65588 10.5683"></PROPERTY>
+    <PROPERTY id="orientation" type="13" value="0.81612 0.00234115 -0.577868 0.0033064"></PROPERTY>
+    <PROPERTY id="position" type="9" value="180.402 12.6127 850.72"></PROPERTY>
+    <PROPERTY id="scale" type="9" value="1 1 1"></PROPERTY>
     <PROPERTY id="updatescript" type="7" value=""></PROPERTY>
     <CUSTOMPROPERTIES>
     </CUSTOMPROPERTIES>
@@ -8115,7 +8091,7 @@
     <PROPERTY id="layer" type="2" value="0"></PROPERTY>
     <PROPERTY id="locked" type="12" value="false"></PROPERTY>
     <PROPERTY id="orientation" type="13" value="1 0 0 0"></PROPERTY>
-    <PROPERTY id="position" type="9" value="1084.07 9 573.669"></PROPERTY>
+    <PROPERTY id="position" type="9" value="1052.09 9 569.73"></PROPERTY>
     <PROPERTY id="scale" type="9" value="1 1 1"></PROPERTY>
     <PROPERTY id="updatescript" type="7" value=""></PROPERTY>
     <CUSTOMPROPERTIES>
@@ -8163,7 +8139,7 @@
     <PROPERTY id="layer" type="2" value="0"></PROPERTY>
     <PROPERTY id="locked" type="12" value="false"></PROPERTY>
     <PROPERTY id="orientation" type="13" value="1 0 0 0"></PROPERTY>
-    <PROPERTY id="position" type="9" value="1199.84 9 331.231"></PROPERTY>
+    <PROPERTY id="position" type="9" value="1212.62 9 255.667"></PROPERTY>
     <PROPERTY id="scale" type="9" value="1 1 1"></PROPERTY>
     <PROPERTY id="updatescript" type="7" value=""></PROPERTY>
     <CUSTOMPROPERTIES>
@@ -8259,7 +8235,7 @@
     <PROPERTY id="layer" type="2" value="0"></PROPERTY>
     <PROPERTY id="locked" type="12" value="false"></PROPERTY>
     <PROPERTY id="orientation" type="13" value="1 0 0 0"></PROPERTY>
-    <PROPERTY id="position" type="9" value="1033.32 9 457.595"></PROPERTY>
+    <PROPERTY id="position" type="9" value="1257.4 9 452.684"></PROPERTY>
     <PROPERTY id="scale" type="9" value="1 1 1"></PROPERTY>
     <PROPERTY id="updatescript" type="7" value=""></PROPERTY>
     <CUSTOMPROPERTIES>
@@ -8271,7 +8247,7 @@
     <PROPERTY id="layer" type="2" value="0"></PROPERTY>
     <PROPERTY id="locked" type="12" value="false"></PROPERTY>
     <PROPERTY id="orientation" type="13" value="1 0 0 0"></PROPERTY>
-    <PROPERTY id="position" type="9" value="308.881 12 -715.689"></PROPERTY>
+    <PROPERTY id="position" type="9" value="322.47 12 -584.058"></PROPERTY>
     <PROPERTY id="scale" type="9" value="1 1 1"></PROPERTY>
     <PROPERTY id="updatescript" type="7" value=""></PROPERTY>
     <CUSTOMPROPERTIES>
@@ -8283,7 +8259,7 @@
     <PROPERTY id="layer" type="2" value="0"></PROPERTY>
     <PROPERTY id="locked" type="12" value="false"></PROPERTY>
     <PROPERTY id="orientation" type="13" value="1 0 0 0"></PROPERTY>
-    <PROPERTY id="position" type="9" value="1023.24 12 -102.84"></PROPERTY>
+    <PROPERTY id="position" type="9" value="1015.39 12 -180.337"></PROPERTY>
     <PROPERTY id="scale" type="9" value="1 1 1"></PROPERTY>
     <PROPERTY id="updatescript" type="7" value=""></PROPERTY>
     <CUSTOMPROPERTIES>
@@ -8331,7 +8307,7 @@
     <PROPERTY id="layer" type="2" value="0"></PROPERTY>
     <PROPERTY id="locked" type="12" value="false"></PROPERTY>
     <PROPERTY id="orientation" type="13" value="1 0 0 0"></PROPERTY>
-    <PROPERTY id="position" type="9" value="628.504 9 755.476"></PROPERTY>
+    <PROPERTY id="position" type="9" value="765.234 9 730.335"></PROPERTY>
     <PROPERTY id="scale" type="9" value="1 1 1"></PROPERTY>
     <PROPERTY id="updatescript" type="7" value=""></PROPERTY>
     <CUSTOMPROPERTIES>
@@ -8343,7 +8319,7 @@
     <PROPERTY id="layer" type="2" value="0"></PROPERTY>
     <PROPERTY id="locked" type="12" value="false"></PROPERTY>
     <PROPERTY id="orientation" type="13" value="1 0 0 0"></PROPERTY>
-    <PROPERTY id="position" type="9" value="910.507 9 -532.277"></PROPERTY>
+    <PROPERTY id="position" type="9" value="765.586 9 -551.161"></PROPERTY>
     <PROPERTY id="scale" type="9" value="1 1 1"></PROPERTY>
     <PROPERTY id="updatescript" type="7" value=""></PROPERTY>
     <CUSTOMPROPERTIES>
@@ -9422,7 +9398,7 @@
       <PROPERTY id="animationTree" type="7" value="data/animations/naked.xml"></PROPERTY>
       <PROPERTY id="life" type="6" value="50"></PROPERTY>
       <PROPERTY id="points" type="6" value="150"></PROPERTY>
-      <PROPERTY id="speed" type="6" value="75"></PROPERTY>
+      <PROPERTY id="speed" type="6" value="60"></PROPERTY>
       <PROPERTY id="damage" type="6" value="0"></PROPERTY>
       <PROPERTY id="specialDamage" type="6" value="0"></PROPERTY>
       <PROPERTY id="height" type="6" value="11"></PROPERTY>
@@ -9633,36 +9609,6 @@
     <PROPERTY id="subentitycount" type="2" value="4"></PROPERTY>
     <PROPERTY id="updatescript" type="7" value=""></PROPERTY>
     <CUSTOMPROPERTIES>
-    </CUSTOMPROPERTIES>
-  </OBJECT>
-
-  <OBJECT object_id="740745216" name="knightA#12" typename="Entity Object" parentnode="Knight#0">
-    <PROPERTY id="autotracktarget" type="7" value="None"></PROPERTY>
-    <PROPERTY id="castshadows" type="12" value="true"></PROPERTY>
-    <PROPERTY id="layer" type="2" value="1"></PROPERTY>
-    <PROPERTY id="locked" type="12" value="false"></PROPERTY>
-    <PROPERTY id="meshfile" type="7" value="knightA.mesh"></PROPERTY>
-    <PROPERTY id="orientation" type="13" value="1 0 0 0"></PROPERTY>
-    <PROPERTY id="position" type="9" value="0 0 0"></PROPERTY>
-    <PROPERTY id="renderingdistance" type="6" value="10000"></PROPERTY>
-    <PROPERTY id="scale" type="9" value="1 1 1"></PROPERTY>
-    <PROPERTY id="subentity0::material" type="7" value="knightA_material"></PROPERTY>
-    <PROPERTY id="subentity0::visible" type="12" value="true"></PROPERTY>
-    <PROPERTY id="subentitycount" type="2" value="1"></PROPERTY>
-    <PROPERTY id="updatescript" type="7" value=""></PROPERTY>
-    <CUSTOMPROPERTIES>
-      <PROPERTY id="type" type="7" value="Enemy"></PROPERTY>
-      <PROPERTY id="subType" type="7" value="Knight"></PROPERTY>
-      <PROPERTY id="animationTree" type="7" value="data/animations/knight.xml"></PROPERTY>
-      <PROPERTY id="life" type="6" value="100"></PROPERTY>
-      <PROPERTY id="points" type="6" value="100"></PROPERTY>
-      <PROPERTY id="speed" type="6" value="50"></PROPERTY>
-      <PROPERTY id="damage" type="6" value="2"></PROPERTY>
-      <PROPERTY id="specialDamage" type="6" value="0"></PROPERTY>
-      <PROPERTY id="height" type="6" value="11"></PROPERTY>
-      <PROPERTY id="dieMesh" type="7" value="nakedDie.mesh"></PROPERTY>
-      <PROPERTY id="dieAnimation" type="7" value="Die"></PROPERTY>
-      <PROPERTY id="physicMesh" type="7" value="enemyBasicPhysicBody.mesh"></PROPERTY>
     </CUSTOMPROPERTIES>
   </OBJECT>
 
@@ -9878,6 +9824,36 @@
     </CUSTOMPROPERTIES>
   </OBJECT>
 
+  <OBJECT object_id="486587104" name="cow#0" typename="Entity Object" parentnode="Cow#0">
+    <PROPERTY id="autotracktarget" type="7" value="None"></PROPERTY>
+    <PROPERTY id="castshadows" type="12" value="false"></PROPERTY>
+    <PROPERTY id="layer" type="2" value="1"></PROPERTY>
+    <PROPERTY id="locked" type="12" value="false"></PROPERTY>
+    <PROPERTY id="meshfile" type="7" value="cow.mesh"></PROPERTY>
+    <PROPERTY id="orientation" type="13" value="1 0 0 0"></PROPERTY>
+    <PROPERTY id="position" type="9" value="0 0 0"></PROPERTY>
+    <PROPERTY id="renderingdistance" type="6" value="10000"></PROPERTY>
+    <PROPERTY id="scale" type="9" value="1 1 1"></PROPERTY>
+    <PROPERTY id="subentity0::material" type="7" value="CowMaterial"></PROPERTY>
+    <PROPERTY id="subentity0::visible" type="12" value="true"></PROPERTY>
+    <PROPERTY id="subentitycount" type="2" value="1"></PROPERTY>
+    <PROPERTY id="updatescript" type="7" value=""></PROPERTY>
+    <CUSTOMPROPERTIES>
+      <PROPERTY id="type" type="7" value="Enemy"></PROPERTY>
+      <PROPERTY id="subType" type="7" value="Cow"></PROPERTY>
+      <PROPERTY id="animationTree" type="7" value="data/animations/cow.xml"></PROPERTY>
+      <PROPERTY id="life" type="6" value="10"></PROPERTY>
+      <PROPERTY id="points" type="6" value="50"></PROPERTY>
+      <PROPERTY id="speed" type="6" value="15"></PROPERTY>
+      <PROPERTY id="damage" type="6" value="0"></PROPERTY>
+      <PROPERTY id="specialDamage" type="6" value="0"></PROPERTY>
+      <PROPERTY id="height" type="6" value="5"></PROPERTY>
+      <PROPERTY id="dieMesh" type="7" value="cowDie.mesh"></PROPERTY>
+      <PROPERTY id="dieAnimation" type="7" value=""></PROPERTY>
+      <PROPERTY id="physicMesh" type="7" value="enemyBasicPhysicBody.mesh"></PROPERTY>
+    </CUSTOMPROPERTIES>
+  </OBJECT>
+
   <OBJECT object_id="504135264" name="naked#0" typename="Entity Object" parentnode="Naked#00">
     <PROPERTY id="autotracktarget" type="7" value="None"></PROPERTY>
     <PROPERTY id="castshadows" type="12" value="true"></PROPERTY>
@@ -9898,7 +9874,7 @@
       <PROPERTY id="animationTree" type="7" value="data/animations/naked.xml"></PROPERTY>
       <PROPERTY id="life" type="6" value="50"></PROPERTY>
       <PROPERTY id="points" type="6" value="150"></PROPERTY>
-      <PROPERTY id="speed" type="6" value="75"></PROPERTY>
+      <PROPERTY id="speed" type="6" value="60"></PROPERTY>
       <PROPERTY id="damage" type="6" value="0"></PROPERTY>
       <PROPERTY id="specialDamage" type="6" value="0"></PROPERTY>
       <PROPERTY id="height" type="6" value="11"></PROPERTY>
@@ -11935,7 +11911,7 @@
       <PROPERTY id="animationTree" type="7" value="data/animations/naked.xml"></PROPERTY>
       <PROPERTY id="life" type="6" value="50"></PROPERTY>
       <PROPERTY id="points" type="6" value="150"></PROPERTY>
-      <PROPERTY id="speed" type="6" value="75"></PROPERTY>
+      <PROPERTY id="speed" type="6" value="60"></PROPERTY>
       <PROPERTY id="damage" type="6" value="0"></PROPERTY>
       <PROPERTY id="specialDamage" type="6" value="0"></PROPERTY>
       <PROPERTY id="height" type="6" value="11"></PROPERTY>
@@ -12159,36 +12135,6 @@
     </CUSTOMPROPERTIES>
   </OBJECT>
 
-  <OBJECT object_id="305825984" name="knightA#13" typename="Entity Object" parentnode="Knight#1">
-    <PROPERTY id="autotracktarget" type="7" value="None"></PROPERTY>
-    <PROPERTY id="castshadows" type="12" value="true"></PROPERTY>
-    <PROPERTY id="layer" type="2" value="1"></PROPERTY>
-    <PROPERTY id="locked" type="12" value="false"></PROPERTY>
-    <PROPERTY id="meshfile" type="7" value="knightA.mesh"></PROPERTY>
-    <PROPERTY id="orientation" type="13" value="1 0 0 0"></PROPERTY>
-    <PROPERTY id="position" type="9" value="0 0 0"></PROPERTY>
-    <PROPERTY id="renderingdistance" type="6" value="10000"></PROPERTY>
-    <PROPERTY id="scale" type="9" value="1 1 1"></PROPERTY>
-    <PROPERTY id="subentity0::material" type="7" value="knightA_material"></PROPERTY>
-    <PROPERTY id="subentity0::visible" type="12" value="true"></PROPERTY>
-    <PROPERTY id="subentitycount" type="2" value="1"></PROPERTY>
-    <PROPERTY id="updatescript" type="7" value=""></PROPERTY>
-    <CUSTOMPROPERTIES>
-      <PROPERTY id="type" type="7" value="Enemy"></PROPERTY>
-      <PROPERTY id="subType" type="7" value="Knight"></PROPERTY>
-      <PROPERTY id="animationTree" type="7" value="data/animations/knight.xml"></PROPERTY>
-      <PROPERTY id="life" type="6" value="100"></PROPERTY>
-      <PROPERTY id="points" type="6" value="100"></PROPERTY>
-      <PROPERTY id="speed" type="6" value="50"></PROPERTY>
-      <PROPERTY id="damage" type="6" value="2"></PROPERTY>
-      <PROPERTY id="specialDamage" type="6" value="0"></PROPERTY>
-      <PROPERTY id="height" type="6" value="11"></PROPERTY>
-      <PROPERTY id="dieMesh" type="7" value="nakedDie.mesh"></PROPERTY>
-      <PROPERTY id="dieAnimation" type="7" value="Die"></PROPERTY>
-      <PROPERTY id="physicMesh" type="7" value="enemyBasicPhysicBody.mesh"></PROPERTY>
-    </CUSTOMPROPERTIES>
-  </OBJECT>
-
   <OBJECT object_id="56154056" name="Entity#206" typename="Entity Object" parentnode="PineTree23">
     <PROPERTY id="autotracktarget" type="7" value="None"></PROPERTY>
     <PROPERTY id="castshadows" type="12" value="true"></PROPERTY>
@@ -12383,7 +12329,7 @@
       <PROPERTY id="animationTree" type="7" value="data/animations/naked.xml"></PROPERTY>
       <PROPERTY id="life" type="6" value="50"></PROPERTY>
       <PROPERTY id="points" type="6" value="150"></PROPERTY>
-      <PROPERTY id="speed" type="6" value="75"></PROPERTY>
+      <PROPERTY id="speed" type="6" value="60"></PROPERTY>
       <PROPERTY id="damage" type="6" value="0"></PROPERTY>
       <PROPERTY id="specialDamage" type="6" value="0"></PROPERTY>
       <PROPERTY id="height" type="6" value="11"></PROPERTY>
@@ -12598,7 +12544,7 @@
     <PROPERTY id="locked" type="12" value="false"></PROPERTY>
     <PROPERTY id="meshfile" type="7" value="beerHorn.mesh"></PROPERTY>
     <PROPERTY id="orientation" type="13" value="1 0 0 0"></PROPERTY>
-    <PROPERTY id="position" type="9" value="0 0 0"></PROPERTY>
+    <PROPERTY id="position" type="9" value="11.2782 0 -189.859"></PROPERTY>
     <PROPERTY id="renderingdistance" type="6" value="10000"></PROPERTY>
     <PROPERTY id="scale" type="9" value="1 1 1"></PROPERTY>
     <PROPERTY id="subentity0::material" type="7" value="beerHorn_material"></PROPERTY>
@@ -12853,36 +12799,6 @@
     <PROPERTY id="subentitycount" type="2" value="2"></PROPERTY>
     <PROPERTY id="updatescript" type="7" value=""></PROPERTY>
     <CUSTOMPROPERTIES>
-    </CUSTOMPROPERTIES>
-  </OBJECT>
-
-  <OBJECT object_id="691122176" name="knightC##1" typename="Entity Object" parentnode="Knight##2">
-    <PROPERTY id="autotracktarget" type="7" value="None"></PROPERTY>
-    <PROPERTY id="castshadows" type="12" value="true"></PROPERTY>
-    <PROPERTY id="layer" type="2" value="1"></PROPERTY>
-    <PROPERTY id="locked" type="12" value="false"></PROPERTY>
-    <PROPERTY id="meshfile" type="7" value="knightC.mesh"></PROPERTY>
-    <PROPERTY id="orientation" type="13" value="1 0 0 0"></PROPERTY>
-    <PROPERTY id="position" type="9" value="0 0 0"></PROPERTY>
-    <PROPERTY id="renderingdistance" type="6" value="10000"></PROPERTY>
-    <PROPERTY id="scale" type="9" value="1 1 1"></PROPERTY>
-    <PROPERTY id="subentity0::material" type="7" value="knightB_material"></PROPERTY>
-    <PROPERTY id="subentity0::visible" type="12" value="true"></PROPERTY>
-    <PROPERTY id="subentitycount" type="2" value="1"></PROPERTY>
-    <PROPERTY id="updatescript" type="7" value=""></PROPERTY>
-    <CUSTOMPROPERTIES>
-      <PROPERTY id="type" type="7" value="Enemy"></PROPERTY>
-      <PROPERTY id="subType" type="7" value="Knight"></PROPERTY>
-      <PROPERTY id="animationTree" type="7" value="data/animations/knight.xml"></PROPERTY>
-      <PROPERTY id="life" type="6" value="100"></PROPERTY>
-      <PROPERTY id="points" type="6" value="100"></PROPERTY>
-      <PROPERTY id="speed" type="6" value="50"></PROPERTY>
-      <PROPERTY id="damage" type="6" value="2"></PROPERTY>
-      <PROPERTY id="specialDamage" type="6" value="0"></PROPERTY>
-      <PROPERTY id="height" type="6" value="11"></PROPERTY>
-      <PROPERTY id="dieMesh" type="7" value="nakedDie.mesh"></PROPERTY>
-      <PROPERTY id="dieAnimation" type="7" value="Die"></PROPERTY>
-      <PROPERTY id="physicMesh" type="7" value="enemyBasicPhysicBody.mesh"></PROPERTY>
     </CUSTOMPROPERTIES>
   </OBJECT>
 
@@ -14114,7 +14030,7 @@
       <PROPERTY id="animationTree" type="7" value="data/animations/naked.xml"></PROPERTY>
       <PROPERTY id="life" type="6" value="50"></PROPERTY>
       <PROPERTY id="points" type="6" value="150"></PROPERTY>
-      <PROPERTY id="speed" type="6" value="75"></PROPERTY>
+      <PROPERTY id="speed" type="6" value="60"></PROPERTY>
       <PROPERTY id="damage" type="6" value="0"></PROPERTY>
       <PROPERTY id="specialDamage" type="6" value="0"></PROPERTY>
       <PROPERTY id="height" type="6" value="11"></PROPERTY>
@@ -15788,7 +15704,7 @@
       <PROPERTY id="animationTree" type="7" value="data/animations/naked.xml"></PROPERTY>
       <PROPERTY id="life" type="6" value="50"></PROPERTY>
       <PROPERTY id="points" type="6" value="150"></PROPERTY>
-      <PROPERTY id="speed" type="6" value="75"></PROPERTY>
+      <PROPERTY id="speed" type="6" value="60"></PROPERTY>
       <PROPERTY id="damage" type="6" value="0"></PROPERTY>
       <PROPERTY id="specialDamage" type="6" value="0"></PROPERTY>
       <PROPERTY id="height" type="6" value="11"></PROPERTY>
@@ -16347,7 +16263,7 @@
       <PROPERTY id="animationTree" type="7" value="data/animations/naked.xml"></PROPERTY>
       <PROPERTY id="life" type="6" value="50"></PROPERTY>
       <PROPERTY id="points" type="6" value="150"></PROPERTY>
-      <PROPERTY id="speed" type="6" value="75"></PROPERTY>
+      <PROPERTY id="speed" type="6" value="60"></PROPERTY>
       <PROPERTY id="damage" type="6" value="0"></PROPERTY>
       <PROPERTY id="specialDamage" type="6" value="0"></PROPERTY>
       <PROPERTY id="height" type="6" value="11"></PROPERTY>
@@ -16739,7 +16655,7 @@
       <PROPERTY id="animationTree" type="7" value="data/animations/naked.xml"></PROPERTY>
       <PROPERTY id="life" type="6" value="50"></PROPERTY>
       <PROPERTY id="points" type="6" value="150"></PROPERTY>
-      <PROPERTY id="speed" type="6" value="75"></PROPERTY>
+      <PROPERTY id="speed" type="6" value="60"></PROPERTY>
       <PROPERTY id="damage" type="6" value="0"></PROPERTY>
       <PROPERTY id="specialDamage" type="6" value="0"></PROPERTY>
       <PROPERTY id="height" type="6" value="11"></PROPERTY>
@@ -17941,7 +17857,7 @@
       <PROPERTY id="animationTree" type="7" value="data/animations/naked.xml"></PROPERTY>
       <PROPERTY id="life" type="6" value="50"></PROPERTY>
       <PROPERTY id="points" type="6" value="150"></PROPERTY>
-      <PROPERTY id="speed" type="6" value="75"></PROPERTY>
+      <PROPERTY id="speed" type="6" value="60"></PROPERTY>
       <PROPERTY id="damage" type="6" value="0"></PROPERTY>
       <PROPERTY id="specialDamage" type="6" value="0"></PROPERTY>
       <PROPERTY id="height" type="6" value="11"></PROPERTY>
@@ -18367,7 +18283,7 @@
       <PROPERTY id="animationTree" type="7" value="data/animations/naked.xml"></PROPERTY>
       <PROPERTY id="life" type="6" value="50"></PROPERTY>
       <PROPERTY id="points" type="6" value="150"></PROPERTY>
-      <PROPERTY id="speed" type="6" value="75"></PROPERTY>
+      <PROPERTY id="speed" type="6" value="60"></PROPERTY>
       <PROPERTY id="damage" type="6" value="0"></PROPERTY>
       <PROPERTY id="specialDamage" type="6" value="0"></PROPERTY>
       <PROPERTY id="height" type="6" value="11"></PROPERTY>
@@ -18832,6 +18748,25 @@
     <PROPERTY id="subentitycount" type="2" value="1"></PROPERTY>
     <PROPERTY id="updatescript" type="7" value=""></PROPERTY>
     <CUSTOMPROPERTIES>
+    </CUSTOMPROPERTIES>
+  </OBJECT>
+
+  <OBJECT object_id="572405184" name="BigRock1#0" typename="Entity Object" parentnode="BigRock">
+    <PROPERTY id="autotracktarget" type="7" value="None"></PROPERTY>
+    <PROPERTY id="castshadows" type="12" value="true"></PROPERTY>
+    <PROPERTY id="layer" type="2" value="3"></PROPERTY>
+    <PROPERTY id="locked" type="12" value="false"></PROPERTY>
+    <PROPERTY id="meshfile" type="7" value="BigRock1.mesh"></PROPERTY>
+    <PROPERTY id="orientation" type="13" value="1 0 0 0"></PROPERTY>
+    <PROPERTY id="position" type="9" value="-0.00440903 6.23822 -0.0175504"></PROPERTY>
+    <PROPERTY id="renderingdistance" type="6" value="10000"></PROPERTY>
+    <PROPERTY id="scale" type="9" value="1 1 1"></PROPERTY>
+    <PROPERTY id="subentity0::material" type="7" value="VulcanicRock"></PROPERTY>
+    <PROPERTY id="subentity0::visible" type="12" value="true"></PROPERTY>
+    <PROPERTY id="subentitycount" type="2" value="1"></PROPERTY>
+    <PROPERTY id="updatescript" type="7" value=""></PROPERTY>
+    <CUSTOMPROPERTIES>
+      <PROPERTY id="type" type="7" value="DynamicObject"></PROPERTY>
     </CUSTOMPROPERTIES>
   </OBJECT>
 
@@ -19360,7 +19295,7 @@
     <PROPERTY id="locked" type="12" value="false"></PROPERTY>
     <PROPERTY id="meshfile" type="7" value="chicken.mesh"></PROPERTY>
     <PROPERTY id="orientation" type="13" value="1 0 0 0"></PROPERTY>
-    <PROPERTY id="position" type="9" value="106.601 0 -54.15"></PROPERTY>
+    <PROPERTY id="position" type="9" value="0 0 0"></PROPERTY>
     <PROPERTY id="renderingdistance" type="6" value="10000"></PROPERTY>
     <PROPERTY id="scale" type="9" value="1 1 1"></PROPERTY>
     <PROPERTY id="subentity0::material" type="7" value="chicken_material"></PROPERTY>
@@ -20031,7 +19966,7 @@
       <PROPERTY id="animationTree" type="7" value="data/animations/naked.xml"></PROPERTY>
       <PROPERTY id="life" type="6" value="50"></PROPERTY>
       <PROPERTY id="points" type="6" value="150"></PROPERTY>
-      <PROPERTY id="speed" type="6" value="75"></PROPERTY>
+      <PROPERTY id="speed" type="6" value="60"></PROPERTY>
       <PROPERTY id="damage" type="6" value="0"></PROPERTY>
       <PROPERTY id="specialDamage" type="6" value="0"></PROPERTY>
       <PROPERTY id="height" type="6" value="11"></PROPERTY>
@@ -20092,25 +20027,6 @@
     <PROPERTY id="subentitycount" type="2" value="1"></PROPERTY>
     <PROPERTY id="updatescript" type="7" value=""></PROPERTY>
     <CUSTOMPROPERTIES>
-    </CUSTOMPROPERTIES>
-  </OBJECT>
-
-  <OBJECT object_id="639912128" name="BigRock#0" typename="Entity Object" parentnode="BigRock">
-    <PROPERTY id="autotracktarget" type="7" value="None"></PROPERTY>
-    <PROPERTY id="castshadows" type="12" value="true"></PROPERTY>
-    <PROPERTY id="layer" type="2" value="3"></PROPERTY>
-    <PROPERTY id="locked" type="12" value="false"></PROPERTY>
-    <PROPERTY id="meshfile" type="7" value="BigRock0.mesh"></PROPERTY>
-    <PROPERTY id="orientation" type="13" value="1 0 0 0"></PROPERTY>
-    <PROPERTY id="position" type="9" value="0 0 0"></PROPERTY>
-    <PROPERTY id="renderingdistance" type="6" value="10000"></PROPERTY>
-    <PROPERTY id="scale" type="9" value="1 1 1"></PROPERTY>
-    <PROPERTY id="subentity0::material" type="7" value="VulcanicRock"></PROPERTY>
-    <PROPERTY id="subentity0::visible" type="12" value="true"></PROPERTY>
-    <PROPERTY id="subentitycount" type="2" value="1"></PROPERTY>
-    <PROPERTY id="updatescript" type="7" value=""></PROPERTY>
-    <CUSTOMPROPERTIES>
-      <PROPERTY id="type" type="7" value="DynamicObject"></PROPERTY>
     </CUSTOMPROPERTIES>
   </OBJECT>
 

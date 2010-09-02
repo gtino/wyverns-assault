@@ -8,8 +8,7 @@
   <PROPERTY id="speed" type="6" value="50"></PROPERTY>
   <PROPERTY id="damage" type="6" value="2"></PROPERTY>
   <PROPERTY id="specialDamage" type="6" value="0"></PROPERTY>
-  <PROPERTY id="height" type="6" value="11"></PROPERTY>
+  <PROPERTY id="height" type="6" value="12"></PROPERTY>
   <PROPERTY id="dieMesh" type="7" value="nakedDie.mesh"></PROPERTY>
   <PROPERTY id="dieAnimation" type="7" value="Die"></PROPERTY>
-  <PROPERTY id="physicMesh" type="7" value="enemyBasicPhysicBody.mesh"></PROPERTY>
 </CUSTOMPROPERTIES>

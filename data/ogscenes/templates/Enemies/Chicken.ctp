@@ -11,5 +11,4 @@
   <PROPERTY id="height" type="6" value="2"></PROPERTY>
   <PROPERTY id="dieMesh" type="7" value="chickenDie.mesh"></PROPERTY>
   <PROPERTY id="dieAnimation" type="7" value=""></PROPERTY>
-  <PROPERTY id="physicMesh" type="7" value="enemyBasicPhysicBody.mesh"></PROPERTY>
 </CUSTOMPROPERTIES>
