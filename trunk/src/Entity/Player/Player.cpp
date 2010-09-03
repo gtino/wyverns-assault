@@ -35,12 +35,13 @@ void Player::initializeEntity(Ogre::Entity* entity, Ogre::SceneNode* sceneNode, 
 	// Always call base method before!
 	EntityInterface::initializeEntity(entity, sceneNode, sceneManager);
 
-
 	mFireMesh = mSceneManager->createEntity("fireMesh", "redWyvernFireCone.mesh");
 	mFireMesh->setVisible(mIsDebugEnabled);
 
 	// Physic Body
-	initializePhysics(Vector3(20,50,20)); 
+	initializePhysics(entity->getName(), Vector3(20,50,20),"OBBoxManualMaterial_Player"); 
+	sceneNode->attachObject(getGeometry()->getMovableObject());
+
 
 	// Animation system
 	mAnimationSystem = new tecnofreak::ogre::AnimationSystem( mEntity );
@@ -59,12 +60,6 @@ void Player::initializeEntity(Ogre::Entity* entity, Ogre::SceneNode* sceneNode, 
 	timeRunning = 0;
 
 	mSpecialLength = mEntity->getAnimationState("Special")->getLength();
-	
-	// Bounding Box
-	mOBBoxRenderable = new OBBoxRenderable("OBBoxManualMaterial_Player");
-	//mOBBoxRenderable->setupVertices(mPhysicEntity->getBoundingBox());
-	mOBBoxRenderable->setupVertices(entity->getBoundingBox());
-	mOBBoxRenderable->setVisible(mIsDebugEnabled);
 
 	// Fire bounding box
 	mFireOBBoxRenderable = new OBBoxRenderable("OBBoxManualMaterial_Player");
@@ -320,9 +315,8 @@ void Player::setDebugEnabled(bool isDebugEnabled)
 	if(mIsDebugEnabled != isDebugEnabled)
 	{
 		mIsDebugEnabled = isDebugEnabled;
-		
-		if(mOBBoxRenderable)
-			mOBBoxRenderable->setVisible(mIsDebugEnabled);
+
+		getGeometry()->getMovableObject()->setVisible(mIsDebugEnabled);
 
 		if(mFireOBBoxRenderable)
 			mFireOBBoxRenderable->setVisible(mIsDebugEnabled);

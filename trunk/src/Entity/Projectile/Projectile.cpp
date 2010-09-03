@@ -26,17 +26,12 @@ void Projectile::initializeEntity(Ogre::Entity* entity, Ogre::SceneNode* sceneNo
 	EntityInterface::initializeEntity(entity, sceneNode, sceneManager);
 
 	// Set physic body
-	initializePhysics(Vector3(20,20,20));
+	initializePhysics(entity->getName(), Vector3(10,10,10),"OBBoxManualMaterial_Enemy");
+	sceneNode->attachObject(getGeometry()->getMovableObject());
 
 	// Set direction of projectile
 	mDirection = finishPoint - initPoint;
 	mDirection.normalise();
-
-	// Bounding Box
-	//mOBBoxRenderable = new OBBoxRenderable("OBBoxManualMaterial_Object");
-	//mOBBoxRenderable->setupVertices(entity->getBoundingBox());
-	//mOBBoxRenderable->setVisible(mIsDebugEnabled);
-	//mSceneNode->attachObject(mOBBoxRenderable);
 }
 
 void Projectile::finalizeEntity()
@@ -50,8 +45,6 @@ void Projectile::setDebugEnabled(bool isDebugEnabled)
 	if(mIsDebugEnabled != isDebugEnabled)
 	{
 		mIsDebugEnabled = isDebugEnabled;
-
-		if(mOBBoxRenderable)
-			mOBBoxRenderable->setVisible(mIsDebugEnabled);
+		getGeometry()->getMovableObject()->setVisible(mIsDebugEnabled);
 	}
 }

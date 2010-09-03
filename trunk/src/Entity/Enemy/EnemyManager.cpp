@@ -278,6 +278,9 @@ void EnemyManager::update(const float elapsedSeconds)
 		enemy->updateLogic(L,elapsedSeconds);		
 		enemy->updateEntity(elapsedSeconds); // this updates animations too!
 		
+		// Physic debugg control
+		enemy->setDebugEnabled(mIsDebugEnabled);
+
 		// Attack cooldown
 		if( enemy->getAttackTimeout() == 0 )
 		{
@@ -307,6 +310,7 @@ void EnemyManager::update(const float elapsedSeconds)
 		}
 	}
 
+
 	// If game area is cleared raise event
 	if( getCount() <= 0 )
 	{
@@ -320,12 +324,6 @@ void EnemyManager::setDebugEnabled(bool isDebugEnabled)
 	if(mIsDebugEnabled != isDebugEnabled)
 	{
 		mIsDebugEnabled = isDebugEnabled;
-
-		for(int i = 0; i < mEnemyMapList[mCurrentGameArea].size() ; i++)
-		{
-			EnemyPtr enemy =  mEnemyMapList[mCurrentGameArea][i];
-			enemy->setDebugEnabled(mIsDebugEnabled);
-		}
 	}
 }
 

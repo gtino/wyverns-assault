@@ -77,8 +77,12 @@ void ProjectileManager::update(const float elapsedSeconds){
 
 	for(int i = 0; i < mProjectileList.size(); i++)
 	{
+
 		ProjectilePtr projectile = mProjectileList[i];
 		projectile->setProjectileTimer(projectile->getProjectileTimer() + elapsedSeconds);
+
+		// Physic debugg control
+		projectile->setDebugEnabled(mIsDebugEnabled);
 
 		if(projectile->getProjectileTimer() >= PROJECTILE_LIVE_TIME && projectile->isLive())
 		{

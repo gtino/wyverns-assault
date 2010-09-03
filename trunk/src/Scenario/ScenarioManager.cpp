@@ -170,11 +170,6 @@ void ScenarioManager::setDebugEnabled(bool isDebugEnabled)
 	{
 		mIsDebugEnabled = isDebugEnabled;
 
-		for(int i = 0; i < mObjectMapList[mCurrentGameArea].size() ; i++)
-		{
-			ObjectPtr obj =  mObjectMapList[mCurrentGameArea][i];
-			obj->setDebugEnabled(mIsDebugEnabled);
-		}
 	}
 }
 
@@ -184,6 +179,9 @@ void ScenarioManager::update(const float elapsedSeconds)
 	{
 		ObjectPtr obj =  mObjectMapList[mCurrentGameArea][i];
 		obj->updateEntity(elapsedSeconds); // this updates animations too!		
+
+		// Physic debugg control
+		obj->setDebugEnabled(mIsDebugEnabled);
 	}
 }
 

@@ -8,9 +8,10 @@ Geometry::Geometry(Ogre::Entity* physicMesh)
 
 }
 
-Geometry::Geometry(Ogre::Vector3 boxDimension)
+Geometry::Geometry(Ogre::Vector3 boxDimension, Ogre::String name, Ogre::String material)
 {
 	boundingBoxDimension = boxDimension; 
+	mDebuggGeom = debuggGeometry(name, material);
 
 }
 
@@ -140,6 +141,45 @@ Ogre::AxisAlignedBox& Geometry::getWorldBoundingBox(Ogre::Vector3 position)
 	Vector3 max = position + boundingBoxDimension/2;
 	AxisAlignedBox boundingBox(min, max);
 	return boundingBox;
+}
+
+Ogre::ManualObject* Geometry::debuggGeometry(Ogre::String name, Ogre::String material)
+{
+	
+	Vector3 box = boundingBoxDimension;
+
+	float x = box.x/2;
+	float y = box.y/2;
+	float z = box.z/2;
+
+	ManualObject* m_pManObj = new ManualObject(name+"manObject");
+
+	// tell OGRE we use the OT_TRIANGLE_STRIP to draw
+	m_pManObj->begin(material,Ogre::RenderOperation::OperationType::OT_LINE_STRIP);
+
+	m_pManObj->position(x,-y,z);
+	m_pManObj->position(x,y,z);
+	m_pManObj->position(-x,y,z);
+	m_pManObj->position(-x,-y,z);
+	m_pManObj->position(x,-y,z);
+	m_pManObj->position(x,-y,-z); 
+	m_pManObj->position(-x,-y,-z);
+	m_pManObj->position(-x,-y,z);
+	m_pManObj->position(-x,y,z);
+	m_pManObj->position(-x,y,-z); 
+	m_pManObj->position(x,y,-z);
+	m_pManObj->position(x,y,z);
+	m_pManObj->position(x,y,-z);
+	m_pManObj->position(x,-y,-z);
+	m_pManObj->position(-x,-y,-z);
+	m_pManObj->position(-x,y,-z);
+
+	m_pManObj->end(); // end of a TRIANGLE_STRIP
+
+	m_pManObj->setVisible(false);
+
+	return m_pManObj;
+
 }
 
 Geometry::~Geometry()

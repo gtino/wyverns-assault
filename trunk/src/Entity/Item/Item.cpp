@@ -21,15 +21,10 @@ void Item::initializeEntity(Ogre::Entity* entity, Ogre::SceneNode* sceneNode, Og
 {
 	// Always call base method before!
 	EntityInterface::initializeEntity(entity, sceneNode, sceneManager);
-
-	// Bounding Box
-	mOBBoxRenderable = new OBBoxRenderable("OBBoxManualMaterial_Item");
-	mOBBoxRenderable->setupVertices(mEntity->getBoundingBox());
-	mOBBoxRenderable->setVisible(mIsDebugEnabled);
-	mSceneNode->attachObject(mOBBoxRenderable);
 	
 	// Initialize item physics
-	initializePhysics(Vector3(20,20,20));
+	initializePhysics(entity->getName(), Vector3(20,20,20),"OBBoxManualMaterial_Item");
+	sceneNode->attachObject(getGeometry()->getMovableObject());
 
 }
 
@@ -73,8 +68,6 @@ void Item::setDebugEnabled(bool isDebugEnabled)
 	if(mIsDebugEnabled != isDebugEnabled)
 	{
 		mIsDebugEnabled = isDebugEnabled;
-
-		if(mOBBoxRenderable)
-			mOBBoxRenderable->setVisible(mIsDebugEnabled);
+		getGeometry()->getMovableObject()->setVisible(mIsDebugEnabled);
 	}
 }

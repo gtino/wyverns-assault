@@ -51,7 +51,7 @@ namespace WyvernsAssault
 		//Ground geometry contructor
 		Geometry(Ogre::Entity* physicsMesh);
 		//Object geometry contructor
-		Geometry(Ogre::Vector3 boxDimension);
+		Geometry(Ogre::Vector3 boxDimension, Ogre::String name, Ogre::String material);
         ~Geometry();
 
 		void initializeMeshInformation(Ogre::Vector3 position, Ogre::Quaternion orient, Ogre::Vector3 scale);
@@ -62,12 +62,19 @@ namespace WyvernsAssault
         {
                 return mPhysicsMesh;
         }
+
+		Ogre::MovableObject* getMovableObject(){return mDebuggGeom;}
+
+	private:
+		Ogre::ManualObject* debuggGeometry(Ogre::String name, Ogre::String material);
    
 	private:
 
         Ogre::Entity* mPhysicEntity;
 		Ogre::Vector3 boundingBoxDimension;
         PhysicsMeshInfo mPhysicsMesh;
+		Ogre::MovableObject* mDebuggGeom;
+
     };
 
 	typedef boost::shared_ptr<Geometry> GeometryPtr;

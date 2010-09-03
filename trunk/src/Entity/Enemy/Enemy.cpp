@@ -69,7 +69,9 @@ void Enemy::initializeEntity(Ogre::Entity* entity, Ogre::SceneNode* sceneNode, O
 	EntityInterface::initializeEntity(entity, sceneNode, sceneManager);
 
 	// Set physic body
-	initializePhysics(Vector3(20,20,20));
+	initializePhysics(entity->getName(), Vector3(20,20,20),"OBBoxManualMaterial_Enemy");
+	sceneNode->attachObject(getGeometry()->getMovableObject());
+
 
 	// Ballon Set
 	mBalloonSet = mSceneManager->createBillboardSet(mName + "_BillboardSet");
@@ -79,13 +81,6 @@ void Enemy::initializeEntity(Ogre::Entity* entity, Ogre::SceneNode* sceneNode, O
 
 	Vector3 balloonPosition(0, 15, 0);
 	mBalloon = mBalloonSet->createBillboard(balloonPosition);
-
-	// Bounding Box
-	mOBBoxRenderable = new OBBoxRenderable("OBBoxManualMaterial_Enemy");
-	//mOBBoxRenderable->setupVertices(mPhysicEntity->getBoundingBox());
-	mOBBoxRenderable->setupVertices(entity->getBoundingBox());
-	mOBBoxRenderable->setVisible(mIsDebugEnabled);
-	mSceneNode->attachObject(mOBBoxRenderable);
 
 	// Animation system
 	mAnimationSystem = new tecnofreak::ogre::AnimationSystem( entity );
@@ -381,9 +376,7 @@ void Enemy::setDebugEnabled(bool isDebugEnabled)
 	if(mIsDebugEnabled != isDebugEnabled)
 	{
 		mIsDebugEnabled = isDebugEnabled;
-
-		if(mOBBoxRenderable)
-			mOBBoxRenderable->setVisible(mIsDebugEnabled);
+		getGeometry()->getMovableObject()->setVisible(mIsDebugEnabled);
 	}
 }
 
