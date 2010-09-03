@@ -57,10 +57,16 @@
 		</gameArea>
 		<gameArea id="9" time="0.0" enemies="1" difficult="1" type="0">
 			<beginNear x="-235" y="0" z="-657"/>
-			<endNear x="-377" y="0" z="-230"/>
+			<endNear x="-308" y="0" z="-341"/>
 			<beginFar x="293" y="0" z="-33"/>
-			<endFar x="-81" y="0" z="163"/>
-		</gameArea>	
+			<endFar x="-37" y="0" z="141"/>
+		</gameArea>		
+		<gameArea id="10" time="0.0" enemies="1" difficult="1" type="0">
+			<beginNear x="-308" y="0" z="-341"/>
+			<endNear x="-849" y="0" z="-360"/>
+			<beginFar x="-37" y="0" z="141"/>
+			<endFar x="-810" y="0" z="176"/>
+		</gameArea>		
 	</gameAreas>
 	
 </scene>

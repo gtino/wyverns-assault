@@ -417,9 +417,9 @@ void CameraManager::createTransition(Vector3 begin, Vector3 end, Vector3 lbegin,
 	mLookAtTransition->setLoop(false);
 
 	/** Debug axes positioning translation animation */
-	Real x = end.x - ((end.x - lend.x)/10);
-	Real y = end.y - ((end.y - lend.y)/10);
-	Real z = end.z - ((end.z - lend.z)/10);
+	Real x = end.x - ((end.x - lend.x)/5);
+	Real y = end.y - ((end.y - lend.y)/5);
+	Real z = end.z - ((end.z - lend.z)/5);
 	Vector3 axesBegin = mAxesNode->getPosition();
 	Vector3 axesEnd = Vector3(x, y, z);
 

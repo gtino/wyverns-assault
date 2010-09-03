@@ -10,3 +10,16 @@ material Physics
 		}
 	}
 }
+
+material physic_material
+{
+	technique
+	{
+		pass
+		{
+			cull_hardware none
+			cull_software none			
+			polygon_mode wireframe
+		}
+	}
+}
