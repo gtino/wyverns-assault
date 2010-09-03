@@ -48,9 +48,9 @@ namespace WyvernsAssault
 
 	public:
 		
-		virtual void initializePhysics(Ogre::Vector3 boxDimension){
-			// Create geometry
-			mGeometry = GeometryPtr(new Geometry(boxDimension));
+		virtual void initializePhysics(Ogre::String name, Ogre::Vector3 boxDimension, Ogre::String material){
+			// Create real geometry
+			mGeometry = GeometryPtr(new Geometry(boxDimension, name, material));
 		}
 
 		virtual void finalizePhysics(){return;} 

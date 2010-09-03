@@ -52,6 +52,10 @@ void PlayerManager::update(const float elapsedSeconds)
 		{		
 			PlayerPtr player =  mPlayerList[i];
 			player->updateEntity(elapsedSeconds);
+
+			// Physic debugg control
+			player->setDebugEnabled(mIsDebugEnabled);
+
 			// Check if dead
 			if( player->getLife() == 0 )
 			{
@@ -187,12 +191,6 @@ void PlayerManager::setDebugEnabled(bool isDebugEnabled)
 	if(mIsDebugEnabled != isDebugEnabled)
 	{
 		mIsDebugEnabled = isDebugEnabled;
-
-		for(int i = 0; i < mPlayerList.size() ; i++)
-		{
-			PlayerPtr player =  mPlayerList[i];
-			player->setDebugEnabled(mIsDebugEnabled);
-		}
 	}
 }
 

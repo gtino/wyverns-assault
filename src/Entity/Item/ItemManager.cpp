@@ -198,6 +198,9 @@ void ItemManager::update(const float elapsedSeconds)
 		ItemPtr item =  mItemMapList[mCurrentGameArea][i];
 
 		item->updateEntity(elapsedSeconds);
+
+		//Physic debugg control
+		item->setDebugEnabled(mIsDebugEnabled);
 	}
 }
 
@@ -206,12 +209,6 @@ void ItemManager::setDebugEnabled(bool isDebugEnabled)
 	if(mIsDebugEnabled != isDebugEnabled)
 	{
 		mIsDebugEnabled = isDebugEnabled;
-
-		for(int i = 0; i < mItemMapList[mCurrentGameArea].size() ; i++)
-		{
-			ItemPtr item =  mItemMapList[mCurrentGameArea][i];
-			item->setDebugEnabled(mIsDebugEnabled);
-		}
 	}
 }
 
