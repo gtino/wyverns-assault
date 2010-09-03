@@ -225,7 +225,7 @@ EnemyPtr EnemyManager::getEnemy(Ogre::String name)
 		EnemyPtr enemy = mEnemyMapList[mCurrentGameArea][i];
 
 		if( enemy->getName() == name )
-			return mEnemyMapList[mCurrentGameArea][i];
+			return enemy;
 	}
 
 	// Search in others game areas lists
@@ -238,9 +238,13 @@ EnemyPtr EnemyManager::getEnemy(Ogre::String name)
 			EnemyPtr enemy = list[i];
 
 			if( enemy->getName() == name )
-				return list[i];
+				return enemy;
 		}
 	}
+
+	EnemyPtr enemy;
+
+	return enemy;
 }
 
 EnemyPtr EnemyManager::getEnemy(Ogre::String name, int gameArea)
@@ -257,6 +261,9 @@ EnemyPtr EnemyManager::getEnemy(Ogre::String name, int gameArea)
 bool EnemyManager::removeEnemy(Ogre::String name)
 {
 	EnemyPtr enemyToErase = getEnemy(name);
+
+	if( enemyToErase == NULL )
+		return false;
 	
 	EnemyListIterator it = find(mEnemyMapList[mCurrentGameArea].begin(), mEnemyMapList[mCurrentGameArea].end(), enemyToErase);
 	
@@ -346,6 +353,7 @@ EVENTS_BEGIN_REGISTER_HANDLERS(EnemyManager)
 	EVENTS_REGISTER_HANDLER(EnemyManager, EnemyRemove)
 	EVENTS_REGISTER_HANDLER(EnemyManager, EnemyCustom);
 	EVENTS_REGISTER_HANDLER(EnemyManager, GameAreaChanged);
+	EVENTS_REGISTER_HANDLER(EnemyManager, GameAreaCleared);
 EVENTS_END_REGISTER_HANDLERS()
 
 EVENTS_BEGIN_UNREGISTER_HANDLERS(EnemyManager)
@@ -355,6 +363,7 @@ EVENTS_BEGIN_UNREGISTER_HANDLERS(EnemyManager)
 	EVENTS_UNREGISTER_HANDLER(EnemyManager, EnemyRemove)
 	EVENTS_UNREGISTER_HANDLER(EnemyManager, EnemyCustom);
 	EVENTS_UNREGISTER_HANDLER(EnemyManager, GameAreaChanged);
+	EVENTS_UNREGISTER_HANDLER(EnemyManager, GameAreaCleared);
 EVENTS_END_UNREGISTER_HANDLERS()
 
 EVENTS_DEFINE_HANDLER(EnemyManager, Collision)
@@ -451,6 +460,14 @@ EVENTS_DEFINE_HANDLER(EnemyManager, GameAreaChanged)
 
 	setEnemiesVisible(false, evt->getPreviousArea());
 	setEnemiesVisible(true, evt->getActualArea());
+
+	// Remove enemies from list when game area cleared
+	mEnemyMapList[evt->getPreviousArea()].clear();
+}
+
+EVENTS_DEFINE_HANDLER(EnemyManager, GameAreaCleared)
+{
+	Debug::Out("EnemyManager : handleGameAreaClearedEvent");	
 }
 
 // --------------------------------

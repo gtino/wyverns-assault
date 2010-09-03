@@ -119,6 +119,7 @@ namespace WyvernsAssault
 		EVENTS_HANDLER(EnemyRemove)
 		EVENTS_HANDLER(EnemyCustom)
 		EVENTS_HANDLER(GameAreaChanged)
+		EVENTS_HANDLER(GameAreaCleared)
 
 		// --------------------------------
 		// BEGIN Lua Interface Declarations
