@@ -541,6 +541,9 @@ EVENTS_DEFINE_HANDLER(PhysicsManager, GameAreaChanged)
 	// New game area
 	mCurrentGameArea = evt->getActualArea();
 	mGameAreaCleared = false;
+
+	// Remove enemies from list when game area cleared
+	mEnemyMapList[evt->getPreviousArea()].clear();
 }
 
 EVENTS_DEFINE_HANDLER(PhysicsManager, GameAreaCleared)
@@ -549,7 +552,9 @@ EVENTS_DEFINE_HANDLER(PhysicsManager, GameAreaCleared)
 
 	// Actual game area is cleared
 	if( mCurrentGameArea == evt->getGameArea() && !mGameAreaCleared)
-		mGameAreaCleared = true;
+	{
+		mGameAreaCleared = true;		
+	}
 }
 
 EVENTS_DEFINE_HANDLER(PhysicsManager, ProjectileUpdate)
