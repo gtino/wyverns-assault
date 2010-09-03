@@ -59,7 +59,7 @@ namespace WyvernsAssault
 			Wizard		= 3,
 			Soldier		= 4,					
 			Peasant		= 5,
-			Woman		= 6,			
+			Princess	= 6,			
 			Cow			= 7
 		};
 

@@ -144,8 +144,9 @@ void PhysicsManager::checkForCollisions()
 
 					enemy->setAttackHited(true);
 				}
-				// Colision with chicken if moving. Chicken mash!
-				if ( enemy->getEnemyType() == Enemy::EnemyTypes::Chicken && player->isMoving())
+				// Colision with chicken or cow if moving. Animal mash!
+				if ( ( enemy->getEnemyType() == Enemy::EnemyTypes::Chicken || enemy->getEnemyType() == Enemy::EnemyTypes::Cow  ) 
+					&& player->isMoving() )
 				{
 					EnemyHitEventPtr enemyHitEventPtr = EnemyHitEventPtr(new EnemyHitEvent(enemy, player));
 					enemyHitEventPtr->setDamage(player->getHitDamage());

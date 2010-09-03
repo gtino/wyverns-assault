@@ -90,6 +90,9 @@ EnemyPtr EnemyManager::createEnemy(Enemy::EnemyTypes type, Vector3 position)
 		case Enemy::EnemyTypes::Chicken:
 			mesh = Ogre::String("chicken.mesh");
 			break;
+		case Enemy::EnemyTypes::Cow:
+			mesh = Ogre::String("cow.mesh");
+			break;
 		case Enemy::EnemyTypes::Knight:			
 			if( subType%3 == 0 )
 				mesh = Ogre::String("knightA.mesh");
@@ -103,6 +106,9 @@ EnemyPtr EnemyManager::createEnemy(Enemy::EnemyTypes type, Vector3 position)
 			break;
 		case Enemy::EnemyTypes::Naked:
 			mesh = Ogre::String("naked.mesh");
+			break;
+		case Enemy::EnemyTypes::Princess:
+			mesh = Ogre::String("princess.mesh");
 			break;
 	}
 
@@ -393,7 +399,7 @@ EVENTS_DEFINE_HANDLER(EnemyManager, EnemyKilled)
 	}
 	else
 	{
-		if( enemy->getEnemyType() == Enemy::EnemyTypes::Chicken )
+		if( enemy->getEnemyType() == Enemy::EnemyTypes::Chicken || enemy->getEnemyType() == Enemy::EnemyTypes::Cow )
 		{
 			enemy->dieSwitch();
 		}
