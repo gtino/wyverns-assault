@@ -99,6 +99,7 @@ void AudioManager::loadResources()
 
 	// Sound FX
 	createStream( String("ChickenDie01.wav"));
+	createStream( String("CowDie01.wav"));
 	createStream( String("EnemyAttack01.wav"));
 	createStream( String("EnemyAttack02.wav"));
 	createStream( String("EnemyAttack03.wav"));
@@ -758,6 +759,10 @@ EVENTS_DEFINE_HANDLER(AudioManager, EnemyHit)
 	{
 		playSound("ChickenDie01.wav",sceneNode->_getDerivedPosition(),&channelIndex);
 	}
+	else if( enemy->getEnemyType() == Enemy::EnemyTypes::Cow )
+	{
+		playSound("CowDie01.wav",sceneNode->_getDerivedPosition(),&channelIndex);
+	}
 	else if( enemy->getEnemyType() == Enemy::EnemyTypes::Knight )
 	{
 		if( (rand()%3) == 0 )
@@ -793,6 +798,10 @@ EVENTS_DEFINE_HANDLER(AudioManager, EnemyKilled)
 	else if( enemy->getEnemyType() == Enemy::EnemyTypes::Chicken )
 	{
 		playSound("ChickenDie01.wav",sceneNode->_getDerivedPosition(),&channelIndex);
+	}
+	else if( enemy->getEnemyType() == Enemy::EnemyTypes::Cow )
+	{
+		playSound("CowDie01.wav",sceneNode->_getDerivedPosition(),&channelIndex);
 	}
 	else if( enemy->getEnemyType() == Enemy::EnemyTypes::Knight )
 	{

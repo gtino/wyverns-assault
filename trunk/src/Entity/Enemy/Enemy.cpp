@@ -13,8 +13,8 @@ static struct EnemyLogic
 	{Enemy::EnemyTypes::Wizard, "runWizardLogic"},
 	{Enemy::EnemyTypes::Soldier, "runSoldierLogic"},	
 	{Enemy::EnemyTypes::Peasant, "runPeasantLogic"},
-	{Enemy::EnemyTypes::Woman, "runWomanLogic"},
-	{Enemy::EnemyTypes::Cow, "runAnimalLogic"}
+	{Enemy::EnemyTypes::Princess, "runNakedLogic"},
+	{Enemy::EnemyTypes::Cow, "runChickenLogic"}
 };
 
 Enemy::EnemyTypes Enemy::StringToType (Ogre::String string)
@@ -28,7 +28,7 @@ Enemy::EnemyTypes Enemy::StringToType (Ogre::String string)
 	// Still not used	
 	if(strcmp ( "Soldier", str ) == 0) return Enemy::EnemyTypes::Soldier;
 	if(strcmp ( "Peasant", str ) == 0) return Enemy::EnemyTypes::Peasant;
-	if(strcmp ( "Woman", str ) == 0) return Enemy::EnemyTypes::Woman;	
+	if(strcmp ( "Princess", str ) == 0) return Enemy::EnemyTypes::Princess;	
 	if(strcmp ( "Cow", str ) == 0) return Enemy::EnemyTypes::Cow;
 
 	return Enemy::EnemyTypes::Naked;

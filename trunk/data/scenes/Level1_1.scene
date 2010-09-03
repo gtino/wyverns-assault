@@ -12,6 +12,19 @@
     <scale x="1" y="1" z="1" />
   </environment>
   <nodes>
+    <node name="Princess" id="735007744">
+      <rotation qw="1" qx="0" qy="0" qz="0" />
+      <position x="335.134" y="77.5851" z="876.028" />
+      <scale x="1" y="1" z="1" />
+      <entity name="princess" id="252723776" castshadows="true" meshFile="princess.mesh" type="Enemy" subType="Princess" animationTree="data/animations/princess.xml" life="15" points="-250" speed="50" damage="0" specialDamage="0" height="13" dieMesh="nakedDie.mesh" dieAnimation="Die">
+        <rotation qw="0.957571" qx="0" qy="-0.288196" qz="0" />
+        <position x="61.0851" y="-60.9794" z="-36.7761" />
+        <scale x="1" y="1" z="1" />
+        <subentities>
+          <subentity materialName="princess_material_2" index="0" visible="true" />
+        </subentities>
+      </entity>
+    </node>
     <node name="Scenario" id="973754112">
       <rotation qw="1" qx="0" qy="0" qz="0" />
       <position x="0" y="-149.152" z="0" />
@@ -5910,11 +5923,37 @@
       <rotation qw="1" qx="0" qy="0" qz="0" />
       <position x="0" y="0" z="0" />
       <scale x="1" y="1" z="1" />
-      <node name="Knight#8" id="847071744">
-        <rotation qw="0.983255" qx="0" qy="0.182236" qz="0" />
-        <position x="873.593" y="12" z="-360.818" />
+      <node name="Chicken#07" id="834681216">
+        <rotation qw="1" qx="0" qy="0" qz="0" />
+        <position x="308.515" y="2" z="-503.406" />
         <scale x="1" y="1" z="1" />
-        <entity name="knightA#19" id="864314752" castshadows="true" meshFile="knightA.mesh" type="Enemy" subType="Knight" animationTree="data/animations/knight.xml" life="100" points="100" speed="50" damage="2" specialDamage="0" height="11" dieMesh="nakedDie.mesh" dieAnimation="Die" physicMesh="enemyBasicPhysicBody.mesh">
+        <entity name="chicken#07" id="35096288" castshadows="false" meshFile="chicken.mesh" type="Enemy" subType="Chicken" animationTree="data/animations/chicken.xml" life="5" points="25" speed="30" damage="0" specialDamage="0" height="2" dieMesh="chickenDie.mesh" dieAnimation="">
+          <rotation qw="1" qx="0" qy="0" qz="0" />
+          <position x="0" y="0" z="0" />
+          <scale x="1" y="1" z="1" />
+          <subentities>
+            <subentity materialName="chicken_material" index="0" visible="true" />
+          </subentities>
+        </entity>
+      </node>
+      <node name="Naked#00" id="336313952">
+        <rotation qw="1" qx="0" qy="0" qz="0" />
+        <position x="1274.37" y="12" z="65.8114" />
+        <scale x="1" y="1" z="1" />
+        <entity name="naked#00" id="504135264" castshadows="true" meshFile="naked.mesh" type="Enemy" subType="Naked" animationTree="data/animations/naked.xml" life="35" points="150" speed="50" damage="0" specialDamage="0" height="13" dieMesh="nakedDie.mesh" dieAnimation="Die">
+          <rotation qw="1" qx="0" qy="0" qz="0" />
+          <position x="0" y="0" z="0" />
+          <scale x="1" y="1" z="1" />
+          <subentities>
+            <subentity materialName="Skin" index="0" visible="true" />
+          </subentities>
+        </entity>
+      </node>
+      <node name="Knight#25" id="284218880">
+        <rotation qw="0.152123" qx="0" qy="0.988362" qz="0" />
+        <position x="1181.79" y="12" z="210.337" />
+        <scale x="1" y="1" z="1" />
+        <entity name="knightA#25" id="422040448" castshadows="true" meshFile="knightA.mesh" type="Enemy" subType="Knight" animationTree="data/animations/knight.xml" life="150" points="150" speed="50" damage="2" specialDamage="0" height="11" dieMesh="nakedDie.mesh" dieAnimation="Die" physicMesh="enemyBasicPhysicBody.mesh">
           <rotation qw="1" qx="0" qy="0" qz="0" />
           <position x="0" y="0" z="0" />
           <scale x="1" y="1" z="1" />
@@ -5923,89 +5962,11 @@
           </subentities>
         </entity>
       </node>
-      <node name="Naked#00" id="336313952">
-        <rotation qw="1" qx="0" qy="0" qz="0" />
-        <position x="1301.28" y="12" z="18.1403" />
+      <node name="Knight#44" id="367564928">
+        <rotation qw="-0.143492" qx="0" qy="-0.989651" qz="0" />
+        <position x="849.351" y="12" z="-297.646" />
         <scale x="1" y="1" z="1" />
-        <entity name="naked#0" id="504135264" castshadows="true" meshFile="naked.mesh" type="Enemy" subType="Naked" animationTree="data/animations/naked.xml" life="50" points="150" speed="60" damage="0" specialDamage="0" height="11" dieMesh="nakedDie.mesh" dieAnimation="Die" physicMesh="enemyBasicPhysicBody.mesh">
-          <rotation qw="1" qx="0" qy="0" qz="0" />
-          <position x="0" y="0" z="0" />
-          <scale x="1" y="1" z="1" />
-          <subentities>
-            <subentity materialName="Skin" index="0" visible="true" />
-          </subentities>
-        </entity>
-      </node>
-      <node name="Chicken#1" id="386761056">
-        <rotation qw="1" qx="0" qy="0" qz="0" />
-        <position x="1179.2" y="2" z="365.982" />
-        <scale x="1" y="1" z="1" />
-        <entity name="chicken#6" id="306405856" castshadows="false" meshFile="chicken.mesh" type="Enemy" subType="Chicken" animationTree="data/animations/chicken.xml" life="5" points="25" speed="15" damage="0" specialDamage="0" height="2" dieMesh="chickenDie.mesh" dieAnimation="" physicMesh="enemyBasicPhysicBody.mesh">
-          <rotation qw="1" qx="0" qy="0" qz="0" />
-          <position x="0" y="0" z="0" />
-          <scale x="1" y="1" z="1" />
-          <subentities>
-            <subentity materialName="chicken_material" index="0" visible="true" />
-          </subentities>
-        </entity>
-      </node>
-      <node name="Knight##19" id="168919952">
-        <rotation qw="-0.237686" qx="0" qy="-0.971342" qz="0" />
-        <position x="157.123" y="12" z="-435.184" />
-        <scale x="1" y="1" z="1" />
-        <entity name="knightB##11" id="624103552" castshadows="true" meshFile="knightB.mesh" type="Enemy" subType="Knight" animationTree="data/animations/knight.xml" life="100" points="100" speed="50" damage="2" specialDamage="0" height="11" dieMesh="nakedDie.mesh" dieAnimation="Die" physicMesh="enemyBasicPhysicBody.mesh">
-          <rotation qw="1" qx="0" qy="0" qz="0" />
-          <position x="0" y="0" z="0" />
-          <scale x="1" y="1" z="1" />
-          <subentities>
-            <subentity materialName="knightB_material_5" index="0" visible="true" />
-          </subentities>
-        </entity>
-      </node>
-      <node name="Knight#25" id="194067200">
-        <rotation qw="0.92881" qx="0" qy="-0.370557" qz="0" />
-        <position x="1323.34" y="12" z="216.641" />
-        <scale x="1" y="1" z="1" />
-        <entity name="knightA#10" id="657612864" castshadows="true" meshFile="knightA.mesh" type="Enemy" subType="Knight" animationTree="data/animations/knight.xml" life="150" points="200" speed="50" damage="2" specialDamage="0" height="11" dieMesh="nakedDie.mesh" dieAnimation="Die" physicMesh="enemyBasicPhysicBody.mesh">
-          <rotation qw="1" qx="0" qy="0" qz="0" />
-          <position x="0" y="0" z="0" />
-          <scale x="1" y="1" z="1" />
-          <subentities>
-            <subentity materialName="knightA_material_5" index="0" visible="true" />
-          </subentities>
-        </entity>
-      </node>
-      <node name="Naked##0" id="255287312">
-        <rotation qw="1" qx="0" qy="0" qz="0" />
-        <position x="161.977" y="12" z="-385.248" />
-        <scale x="1" y="1" z="1" />
-        <entity name="naked##0" id="36622212" castshadows="true" meshFile="naked.mesh" type="Enemy" subType="Naked" animationTree="data/animations/naked.xml" life="50" points="150" speed="60" damage="0" specialDamage="0" height="11" dieMesh="nakedDie.mesh" dieAnimation="Die" physicMesh="enemyBasicPhysicBody.mesh">
-          <rotation qw="1" qx="0" qy="0" qz="0" />
-          <position x="0" y="0" z="0" />
-          <scale x="1" y="1" z="1" />
-          <subentities>
-            <subentity materialName="Skin" index="0" visible="true" />
-          </subentities>
-        </entity>
-      </node>
-      <node name="Chicken#4" id="401898272">
-        <rotation qw="1" qx="0" qy="0" qz="0" />
-        <position x="1122.94" y="2" z="127.728" />
-        <scale x="1" y="1" z="1" />
-        <entity name="chicken#9" id="727286592" castshadows="false" meshFile="chicken.mesh" type="Enemy" subType="Chicken" animationTree="data/animations/chicken.xml" life="5" points="25" speed="15" damage="0" specialDamage="0" height="2" dieMesh="chickenDie.mesh" dieAnimation="" physicMesh="enemyBasicPhysicBody.mesh">
-          <rotation qw="1" qx="0" qy="0" qz="0" />
-          <position x="0" y="0" z="0" />
-          <scale x="1" y="1" z="1" />
-          <subentities>
-            <subentity materialName="chicken_material" index="0" visible="true" />
-          </subentities>
-        </entity>
-      </node>
-      <node name="Knight##25" id="548051392">
-        <rotation qw="0.922201" qx="0" qy="0.386711" qz="0" />
-        <position x="918.837" y="12" z="-301.334" />
-        <scale x="1" y="1" z="1" />
-        <entity name="knightC##11" id="225562304" castshadows="true" meshFile="knightC.mesh" type="Enemy" subType="Knight" animationTree="data/animations/knight.xml" life="100" points="100" speed="50" damage="2" specialDamage="0" height="11" dieMesh="nakedDie.mesh" dieAnimation="Die" physicMesh="enemyBasicPhysicBody.mesh">
+        <entity name="knightC#44" id="661000384" castshadows="true" meshFile="knightC.mesh" type="Enemy" subType="Knight" animationTree="data/animations/knight.xml" life="100" points="100" speed="50" damage="1" specialDamage="0" height="13" dieMesh="nakedDie.mesh" dieAnimation="Die">
           <rotation qw="1" qx="0" qy="0" qz="0" />
           <position x="0" y="0" z="0" />
           <scale x="1" y="1" z="1" />
@@ -6014,310 +5975,11 @@
           </subentities>
         </entity>
       </node>
-      <node name="Knight#03" id="565752128">
-        <rotation qw="0.861629" qx="0" qy="-0.507538" qz="0" />
-        <position x="497.3" y="13.2234" z="720.098" />
+      <node name="Knight#03" id="375133504">
+        <rotation qw="0.809017" qx="0" qy="-0.587785" qz="0" />
+        <position x="464.968" y="13.2234" z="718.783" />
         <scale x="1" y="1" z="1" />
-        <entity name="knightA#2" id="494460896" castshadows="true" meshFile="knightA.mesh" type="Enemy" subType="Knight" animationTree="data/animations/knight.xml" life="100" points="100" speed="50" damage="2" specialDamage="0" height="11" dieMesh="nakedDie.mesh" dieAnimation="Die" physicMesh="enemyBasicPhysicBody.mesh">
-          <rotation qw="1" qx="0" qy="0" qz="0" />
-          <position x="0" y="0" z="0" />
-          <scale x="1" y="1" z="1" />
-          <subentities>
-            <subentity materialName="knightA_material" index="0" visible="true" />
-          </subentities>
-        </entity>
-      </node>
-      <node name="Knight#28" id="136539824">
-        <rotation qw="0.92881" qx="0" qy="-0.370557" qz="0" />
-        <position x="1017.83" y="12" z="-339.493" />
-        <scale x="1" y="1" z="1" />
-        <entity name="knightA#21" id="855189696" castshadows="true" meshFile="knightA.mesh" type="Enemy" subType="Knight" animationTree="data/animations/knight.xml" life="100" points="100" speed="50" damage="2" specialDamage="0" height="11" dieMesh="nakedDie.mesh" dieAnimation="Die" physicMesh="enemyBasicPhysicBody.mesh">
-          <rotation qw="1" qx="0" qy="0" qz="0" />
-          <position x="0" y="0" z="0" />
-          <scale x="1" y="1" z="1" />
-          <subentities>
-            <subentity materialName="knightA_material_4" index="0" visible="true" />
-          </subentities>
-        </entity>
-      </node>
-      <node name="Knight#30" id="699758912">
-        <rotation qw="0.816642" qx="0" qy="-0.577145" qz="0" />
-        <position x="1318.12" y="12" z="133.083" />
-        <scale x="1" y="1" z="1" />
-        <entity name="knightB#10" id="141575360" castshadows="true" meshFile="knightB.mesh" type="Enemy" subType="Knight" animationTree="data/animations/knight.xml" life="150" points="200" speed="50" damage="2" specialDamage="0" height="11" dieMesh="nakedDie.mesh" dieAnimation="Die" physicMesh="enemyBasicPhysicBody.mesh">
-          <rotation qw="1" qx="0" qy="0" qz="0" />
-          <position x="0" y="0" z="0" />
-          <scale x="1" y="1" z="1" />
-          <subentities>
-            <subentity materialName="knightB_material_5" index="0" visible="true" />
-          </subentities>
-        </entity>
-      </node>
-      <node name="Knight##4" id="727683392">
-        <rotation qw="0.816642" qx="0" qy="-0.577145" qz="0" />
-        <position x="550.674" y="12" z="686.008" />
-        <scale x="1" y="1" z="1" />
-        <entity name="knightB##2" id="43214208" castshadows="true" meshFile="knightB.mesh" type="Enemy" subType="Knight" animationTree="data/animations/knight.xml" life="100" points="100" speed="50" damage="2" specialDamage="0" height="11" dieMesh="nakedDie.mesh" dieAnimation="Die" physicMesh="enemyBasicPhysicBody.mesh">
-          <rotation qw="1" qx="0" qy="0" qz="0" />
-          <position x="0" y="0" z="0" />
-          <scale x="1" y="1" z="1" />
-          <subentities>
-            <subentity materialName="knightB_material" index="0" visible="true" />
-          </subentities>
-        </entity>
-      </node>
-      <node name="Chicken#12" id="949339264">
-        <rotation qw="0.710185" qx="0" qy="0.704015" qz="0" />
-        <position x="849.427" y="2" z="-329.466" />
-        <scale x="1" y="1" z="1" />
-        <entity name="chicken#17" id="921384320" castshadows="false" meshFile="chicken.mesh" type="Enemy" subType="Chicken" animationTree="data/animations/chicken.xml" life="5" points="25" speed="15" damage="0" specialDamage="0" height="2" dieMesh="chickenDie.mesh" dieAnimation="" physicMesh="enemyBasicPhysicBody.mesh">
-          <rotation qw="1" qx="0" qy="0" qz="0" />
-          <position x="0" y="0" z="0" />
-          <scale x="1" y="1" z="1" />
-          <subentities>
-            <subentity materialName="chicken_material" index="0" visible="true" />
-          </subentities>
-        </entity>
-      </node>
-      <node name="ChickenBig#01" id="517014080">
-        <rotation qw="0.488621" qx="0" qy="0.872496" qz="0" />
-        <position x="126.535" y="3.5" z="-302.753" />
-        <scale x="5" y="5" z="5" />
-        <entity name="chicken#16" id="662984064" castshadows="false" meshFile="chicken.mesh" type="Enemy" subType="Chicken" animationTree="data/animations/chicken.xml" life="5" points="25" speed="10" damage="0" specialDamage="0" height="10" dieMesh="chickenDie.mesh" dieAnimation="" physicMesh="enemyBasicPhysicBody.mesh">
-          <rotation qw="1" qx="0" qy="0" qz="0" />
-          <position x="0" y="0" z="0" />
-          <scale x="1" y="1" z="1" />
-          <subentities>
-            <subentity materialName="chicken_material" index="0" visible="true" />
-          </subentities>
-        </entity>
-      </node>
-      <node name="Knight#06" id="601550336">
-        <rotation qw="0.62932" qx="0" qy="0.777146" qz="0" />
-        <position x="1155.93" y="12" z="179.188" />
-        <scale x="1" y="1" z="1" />
-        <entity name="knightA#3" id="195654176" castshadows="true" meshFile="knightA.mesh" type="Enemy" subType="Knight" animationTree="data/animations/knight.xml" life="150" points="150" speed="50" damage="2" specialDamage="0" height="11" dieMesh="nakedDie.mesh" dieAnimation="Die" physicMesh="enemyBasicPhysicBody.mesh">
-          <rotation qw="1" qx="0" qy="0" qz="0" />
-          <position x="0" y="0" z="0" />
-          <scale x="1" y="1" z="1" />
-          <subentities>
-            <subentity materialName="knightA_material_3" index="0" visible="true" />
-          </subentities>
-        </entity>
-      </node>
-      <node name="Knight#12" id="26703696">
-        <rotation qw="0.350207" qx="0" qy="0.936672" qz="0" />
-        <position x="1158.98" y="12" z="203.168" />
-        <scale x="1" y="1" z="1" />
-        <entity name="knightB#3" id="578569920" castshadows="true" meshFile="knightB.mesh" type="Enemy" subType="Knight" animationTree="data/animations/knight.xml" life="150" points="150" speed="50" damage="2" specialDamage="0" height="11" dieMesh="nakedDie.mesh" dieAnimation="Die" physicMesh="enemyBasicPhysicBody.mesh">
-          <rotation qw="1" qx="0" qy="0" qz="0" />
-          <position x="0" y="0" z="0" />
-          <scale x="1" y="1" z="1" />
-          <subentities>
-            <subentity materialName="knightB_material_3" index="0" visible="true" />
-          </subentities>
-        </entity>
-      </node>
-      <node name="Knight#35" id="171788688">
-        <rotation qw="-0.284015" qx="0" qy="-0.95882" qz="0" />
-        <position x="-118.246" y="24.518" z="-135.116" />
-        <scale x="2" y="2" z="2" />
-        <entity name="knightA#22" id="974395008" castshadows="true" meshFile="knightA.mesh" type="Enemy" subType="Knight" animationTree="data/animations/knight.xml" life="300" points="1000" speed="35" damage="8" specialDamage="0" height="22" dieMesh="nakedDie.mesh" dieAnimation="Die" physicMesh="enemyBasicPhysicBody.mesh">
-          <rotation qw="1" qx="0" qy="0" qz="0" />
-          <position x="0" y="0" z="0" />
-          <scale x="1" y="1" z="1" />
-          <subentities>
-            <subentity materialName="knightA_material_5" index="0" visible="true" />
-          </subentities>
-        </entity>
-      </node>
-      <node name="Knight##9" id="436719872">
-        <rotation qw="-0.725373" qx="0" qy="-0.688356" qz="0" />
-        <position x="521.106" y="12" z="-593.425" />
-        <scale x="1" y="1" z="1" />
-        <entity name="knightC##3" id="201940976" castshadows="true" meshFile="knightC.mesh" type="Enemy" subType="Knight" animationTree="data/animations/knight.xml" life="100" points="100" speed="50" damage="2" specialDamage="0" height="11" dieMesh="nakedDie.mesh" dieAnimation="Die" physicMesh="enemyBasicPhysicBody.mesh">
-          <rotation qw="1" qx="0" qy="0" qz="0" />
-          <position x="0" y="0" z="0" />
-          <scale x="1" y="1" z="1" />
-          <subentities>
-            <subentity materialName="knightC_material_2" index="0" visible="true" />
-          </subentities>
-        </entity>
-      </node>
-      <node name="Chicken#9" id="123020112">
-        <rotation qw="0.915311" qx="0" qy="-0.402747" qz="0" />
-        <position x="330.862" y="2" z="-646.217" />
-        <scale x="1" y="1" z="1" />
-        <entity name="chicken#14" id="367809088" castshadows="false" meshFile="chicken.mesh" type="Enemy" subType="Chicken" animationTree="data/animations/chicken.xml" life="5" points="25" speed="15" damage="0" specialDamage="0" height="2" dieMesh="chickenDie.mesh" dieAnimation="" physicMesh="enemyBasicPhysicBody.mesh">
-          <rotation qw="1" qx="0" qy="0" qz="0" />
-          <position x="0" y="0" z="0" />
-          <scale x="1" y="1" z="1" />
-          <subentities>
-            <subentity materialName="chicken_material" index="0" visible="true" />
-          </subentities>
-        </entity>
-      </node>
-      <node name="Knight##11" id="577867968">
-        <rotation qw="-0.725373" qx="0" qy="-0.688356" qz="0" />
-        <position x="529.227" y="12" z="-624.455" />
-        <scale x="1" y="1" z="1" />
-        <entity name="knightC##4" id="532578528" castshadows="true" meshFile="knightC.mesh" type="Enemy" subType="Knight" animationTree="data/animations/knight.xml" life="100" points="100" speed="50" damage="2" specialDamage="0" height="11" dieMesh="nakedDie.mesh" dieAnimation="Die" physicMesh="enemyBasicPhysicBody.mesh">
-          <rotation qw="1" qx="0" qy="0" qz="0" />
-          <position x="0" y="0" z="0" />
-          <scale x="1" y="1" z="1" />
-          <subentities>
-            <subentity materialName="knightC_material_2" index="0" visible="true" />
-          </subentities>
-        </entity>
-      </node>
-      <node name="Chicken#02" id="225104528">
-        <rotation qw="0.845728" qx="0" qy="0.533615" qz="0" />
-        <position x="1119.17" y="2" z="499.891" />
-        <scale x="1" y="1" z="1" />
-        <entity name="chicken#2" id="425153344" castshadows="false" meshFile="chicken.mesh" type="Enemy" subType="Chicken" animationTree="data/animations/chicken.xml" life="5" points="25" speed="15" damage="0" specialDamage="0" height="2" dieMesh="chickenDie.mesh" dieAnimation="" physicMesh="enemyBasicPhysicBody.mesh">
-          <rotation qw="1" qx="0" qy="0" qz="0" />
-          <position x="0" y="0" z="0" />
-          <scale x="1" y="1" z="1" />
-          <subentities>
-            <subentity materialName="chicken_material" index="0" visible="true" />
-          </subentities>
-        </entity>
-      </node>
-      <node name="Knight##14" id="931516480">
-        <rotation qw="-0.725373" qx="0" qy="-0.688356" qz="0" />
-        <position x="541.252" y="12" z="-521.871" />
-        <scale x="1.5" y="1.5" z="1.5" />
-        <entity name="knightC##5" id="48432876" castshadows="true" meshFile="knightC.mesh" type="Enemy" subType="Knight" animationTree="data/animations/knight.xml" life="250" points="300" speed="40" damage="5" specialDamage="0" height="14" dieMesh="nakedDie.mesh" dieAnimation="Die" physicMesh="enemyBasicPhysicBody.mesh">
-          <rotation qw="1" qx="0" qy="0" qz="0" />
-          <position x="0" y="0" z="0" />
-          <scale x="1" y="1" z="1" />
-          <subentities>
-            <subentity materialName="knightC_material_5" index="0" visible="true" />
-          </subentities>
-        </entity>
-      </node>
-      <node name="Knight#20" id="63539536">
-        <rotation qw="0.882948" qx="0" qy="-0.469472" qz="0" />
-        <position x="909.485" y="12" z="680.415" />
-        <scale x="1" y="1" z="1" />
-        <entity name="knightB#8" id="761314752" castshadows="true" meshFile="knightB.mesh" type="Enemy" subType="Knight" animationTree="data/animations/knight.xml" life="100" points="100" speed="50" damage="2" specialDamage="0" height="11" dieMesh="nakedDie.mesh" dieAnimation="Die" physicMesh="enemyBasicPhysicBody.mesh">
-          <rotation qw="1" qx="0" qy="0" qz="0" />
-          <position x="0" y="0" z="0" />
-          <scale x="1" y="1" z="1" />
-          <subentities>
-            <subentity materialName="knightB_material" index="0" visible="true" />
-          </subentities>
-        </entity>
-      </node>
-      <node name="Knight#18" id="751548800">
-        <rotation qw="0.925541" qx="0" qy="-0.378649" qz="0" />
-        <position x="844.809" y="12" z="689.584" />
-        <scale x="1" y="1" z="1" />
-        <entity name="knightB#7" id="739188800" castshadows="true" meshFile="knightB.mesh" type="Enemy" subType="Knight" animationTree="data/animations/knight.xml" life="100" points="100" speed="50" damage="2" specialDamage="0" height="11" dieMesh="nakedDie.mesh" dieAnimation="Die" physicMesh="enemyBasicPhysicBody.mesh">
-          <rotation qw="1" qx="0" qy="0" qz="0" />
-          <position x="0" y="0" z="0" />
-          <scale x="1" y="1" z="1" />
-          <subentities>
-            <subentity materialName="knightB_material" index="0" visible="true" />
-          </subentities>
-        </entity>
-      </node>
-      <node name="Naked##5" id="736381120">
-        <rotation qw="1" qx="0" qy="0" qz="0" />
-        <position x="1123.85" y="12" z="56.5268" />
-        <scale x="1" y="1" z="1" />
-        <entity name="naked##5" id="739432960" castshadows="true" meshFile="naked.mesh" type="Enemy" subType="Naked" animationTree="data/animations/naked.xml" life="50" points="150" speed="60" damage="0" specialDamage="0" height="11" dieMesh="nakedDie.mesh" dieAnimation="Die" physicMesh="enemyBasicPhysicBody.mesh">
-          <rotation qw="1" qx="0" qy="0" qz="0" />
-          <position x="0" y="0" z="0" />
-          <scale x="1" y="1" z="1" />
-          <subentities>
-            <subentity materialName="Skin" index="0" visible="true" />
-          </subentities>
-        </entity>
-      </node>
-      <node name="Naked#02" id="457960768">
-        <rotation qw="0.83147" qx="0" qy="-0.55557" qz="0" />
-        <position x="1140.02" y="12" z="554.545" />
-        <scale x="1" y="1" z="1" />
-        <entity name="naked#3" id="744438016" castshadows="true" meshFile="naked.mesh" type="Enemy" subType="Naked" animationTree="data/animations/naked.xml" life="50" points="150" speed="60" damage="0" specialDamage="0" height="11" dieMesh="nakedDie.mesh" dieAnimation="Die" physicMesh="enemyBasicPhysicBody.mesh">
-          <rotation qw="1" qx="0" qy="0" qz="0" />
-          <position x="0" y="0" z="0" />
-          <scale x="1" y="1" z="1" />
-          <subentities>
-            <subentity materialName="Skin" index="0" visible="true" />
-          </subentities>
-        </entity>
-      </node>
-      <node name="Chicken#7" id="568742912">
-        <rotation qw="0.700909" qx="0" qy="0.713251" qz="0" />
-        <position x="-195.609" y="2" z="107.761" />
-        <scale x="1" y="1" z="1" />
-        <entity name="chicken#12" id="682241280" castshadows="false" meshFile="chicken.mesh" type="Enemy" subType="Chicken" animationTree="data/animations/chicken.xml" life="5" points="25" speed="15" damage="0" specialDamage="0" height="2" dieMesh="chickenDie.mesh" dieAnimation="" physicMesh="enemyBasicPhysicBody.mesh">
-          <rotation qw="1" qx="0" qy="0" qz="0" />
-          <position x="0" y="0" z="0" />
-          <scale x="1" y="1" z="1" />
-          <subentities>
-            <subentity materialName="chicken_material" index="0" visible="true" />
-          </subentities>
-        </entity>
-      </node>
-      <node name="Knight##26" id="106418040">
-        <rotation qw="-0.246153" qx="0" qy="-0.969231" qz="0" />
-        <position x="-32.0762" y="15.0175" z="-109.148" />
-        <scale x="1.3" y="1.3" z="1.3" />
-        <entity name="knightB##14" id="902645952" castshadows="true" meshFile="knightB.mesh" type="Enemy" subType="Knight" animationTree="data/animations/knight.xml" life="150" points="300" speed="40" damage="3" specialDamage="0" height="15" dieMesh="nakedDie.mesh" dieAnimation="Die" physicMesh="enemyBasicPhysicBody.mesh">
-          <rotation qw="1" qx="0" qy="0" qz="0" />
-          <position x="0" y="0" z="0" />
-          <scale x="1" y="1" z="1" />
-          <subentities>
-            <subentity materialName="knightB_material_4" index="0" visible="true" />
-          </subentities>
-        </entity>
-      </node>
-      <node name="Knight##1" id="188940096">
-        <rotation qw="0.816642" qx="0" qy="-0.577145" qz="0" />
-        <position x="626.499" y="12" z="776.109" />
-        <scale x="1" y="1" z="1" />
-        <entity name="knightB##0" id="604724288" castshadows="true" meshFile="knightB.mesh" type="Enemy" subType="Knight" animationTree="data/animations/knight.xml" life="100" points="100" speed="50" damage="2" specialDamage="0" height="11" dieMesh="nakedDie.mesh" dieAnimation="Die" physicMesh="enemyBasicPhysicBody.mesh">
-          <rotation qw="1" qx="0" qy="0" qz="0" />
-          <position x="0" y="0" z="0" />
-          <scale x="1" y="1" z="1" />
-          <subentities>
-            <subentity materialName="knightB_material" index="0" visible="true" />
-          </subentities>
-        </entity>
-      </node>
-      <node name="Naked##2" id="389416192">
-        <rotation qw="1" qx="0" qy="0" qz="0" />
-        <position x="312.811" y="12" z="-678.023" />
-        <scale x="1" y="1" z="1" />
-        <entity name="naked##2" id="590746752" castshadows="true" meshFile="naked.mesh" type="Enemy" subType="Naked" animationTree="data/animations/naked.xml" life="50" points="150" speed="60" damage="0" specialDamage="0" height="11" dieMesh="nakedDie.mesh" dieAnimation="Die" physicMesh="enemyBasicPhysicBody.mesh">
-          <rotation qw="1" qx="0" qy="0" qz="0" />
-          <position x="0" y="0" z="0" />
-          <scale x="1" y="1" z="1" />
-          <subentities>
-            <subentity materialName="Skin" index="0" visible="true" />
-          </subentities>
-        </entity>
-      </node>
-      <node name="Knight##23" id="402417056">
-        <rotation qw="0.986286" qx="0" qy="-0.165047" qz="0" />
-        <position x="906.297" y="12" z="-379.601" />
-        <scale x="1" y="1" z="1" />
-        <entity name="knightB##13" id="253700368" castshadows="true" meshFile="knightB.mesh" type="Enemy" subType="Knight" animationTree="data/animations/knight.xml" life="100" points="100" speed="50" damage="2" specialDamage="0" height="11" dieMesh="nakedDie.mesh" dieAnimation="Die" physicMesh="enemyBasicPhysicBody.mesh">
-          <rotation qw="1" qx="0" qy="0" qz="0" />
-          <position x="0" y="0" z="0" />
-          <scale x="1" y="1" z="1" />
-          <subentities>
-            <subentity materialName="knightB_material_3" index="0" visible="true" />
-          </subentities>
-        </entity>
-      </node>
-      <node name="Knight#05" id="184270752">
-        <rotation qw="0.952396" qx="0" qy="-0.304864" qz="0" />
-        <position x="475.8" y="13.2234" z="736.875" />
-        <scale x="1" y="1" z="1" />
-        <entity name="knightC#1" id="620380288" castshadows="false" meshFile="knightC.mesh" type="Enemy" subType="Knight" animationTree="data/animations/knight.xml" life="100" points="100" speed="50" damage="2" specialDamage="0" height="11" dieMesh="nakedDie.mesh" dieAnimation="Die" physicMesh="enemyBasicPhysicBody.mesh">
+        <entity name="knightC#03" id="80385752" castshadows="true" meshFile="knightC.mesh" type="Enemy" subType="Knight" animationTree="data/animations/knight.xml" life="100" points="100" speed="50" damage="1" specialDamage="0" height="13" dieMesh="nakedDie.mesh" dieAnimation="Die">
           <rotation qw="1" qx="0" qy="0" qz="0" />
           <position x="0" y="0" z="0" />
           <scale x="1" y="1" z="1" />
@@ -6326,310 +5988,11 @@
           </subentities>
         </entity>
       </node>
-      <node name="Knight#17" id="989989952">
-        <rotation qw="0.989651" qx="0" qy="-0.143493" qz="0" />
-        <position x="882.716" y="12" z="632.659" />
-        <scale x="1" y="1" z="1" />
-        <entity name="knightC#4" id="297799616" castshadows="true" meshFile="knightC.mesh" type="Enemy" subType="Knight" animationTree="data/animations/knight.xml" life="100" points="100" speed="50" damage="2" specialDamage="0" height="11" dieMesh="nakedDie.mesh" dieAnimation="Die" physicMesh="enemyBasicPhysicBody.mesh">
-          <rotation qw="1" qx="0" qy="0" qz="0" />
-          <position x="0" y="0" z="0" />
-          <scale x="1" y="1" z="1" />
-          <subentities>
-            <subentity materialName="knightC_material" index="0" visible="true" />
-          </subentities>
-        </entity>
-      </node>
-      <node name="Knight#32" id="426557216">
-        <rotation qw="0.816642" qx="0" qy="-0.577145" qz="0" />
-        <position x="1163.81" y="12" z="74.7587" />
-        <scale x="1" y="1" z="1" />
-        <entity name="knightC#8" id="70375680" castshadows="true" meshFile="knightC.mesh" type="Enemy" subType="Knight" animationTree="data/animations/knight.xml" life="150" points="200" speed="50" damage="2" specialDamage="0" height="11" dieMesh="nakedDie.mesh" dieAnimation="Die" physicMesh="enemyBasicPhysicBody.mesh">
-          <rotation qw="1" qx="0" qy="0" qz="0" />
-          <position x="0" y="0" z="0" />
-          <scale x="1" y="1" z="1" />
-          <subentities>
-            <subentity materialName="knightC_material_5" index="0" visible="true" />
-          </subentities>
-        </entity>
-      </node>
-      <node name="Knight##6" id="173924976">
-        <rotation qw="0.816642" qx="0" qy="-0.577145" qz="0" />
-        <position x="594.892" y="12" z="749.717" />
-        <scale x="1" y="1" z="1" />
-        <entity name="knightC##2" id="108554344" castshadows="true" meshFile="knightC.mesh" type="Enemy" subType="Knight" animationTree="data/animations/knight.xml" life="100" points="100" speed="50" damage="2" specialDamage="0" height="11" dieMesh="nakedDie.mesh" dieAnimation="Die" physicMesh="enemyBasicPhysicBody.mesh">
-          <rotation qw="1" qx="0" qy="0" qz="0" />
-          <position x="0" y="0" z="0" />
-          <scale x="1" y="1" z="1" />
-          <subentities>
-            <subentity materialName="knightB_material" index="0" visible="true" />
-          </subentities>
-        </entity>
-      </node>
-      <node name="Knight#3" id="454512160">
-        <rotation qw="-0.544638" qx="0" qy="-0.838671" qz="0" />
-        <position x="530.361" y="12" z="-458.009" />
-        <scale x="1" y="1" z="1" />
-        <entity name="knightA#9" id="752220224" castshadows="true" meshFile="knightA.mesh" type="Enemy" subType="Knight" animationTree="data/animations/knight.xml" life="100" points="100" speed="50" damage="2" specialDamage="0" height="11" dieMesh="nakedDie.mesh" dieAnimation="Die" physicMesh="enemyBasicPhysicBody.mesh">
-          <rotation qw="1" qx="0" qy="0" qz="0" />
-          <position x="0" y="0" z="0" />
-          <scale x="1" y="1" z="1" />
-          <subentities>
-            <subentity materialName="knightA_material_2" index="0" visible="true" />
-          </subentities>
-        </entity>
-      </node>
-      <node name="Chicken#10" id="834681216">
-        <rotation qw="1" qx="0" qy="0" qz="0" />
-        <position x="308.515" y="2" z="-503.406" />
-        <scale x="1" y="1" z="1" />
-        <entity name="chicken#15" id="35096288" castshadows="false" meshFile="chicken.mesh" type="Enemy" subType="Chicken" animationTree="data/animations/chicken.xml" life="5" points="25" speed="15" damage="0" specialDamage="0" height="2" dieMesh="chickenDie.mesh" dieAnimation="" physicMesh="enemyBasicPhysicBody.mesh">
-          <rotation qw="1" qx="0" qy="0" qz="0" />
-          <position x="0" y="0" z="0" />
-          <scale x="1" y="1" z="1" />
-          <subentities>
-            <subentity materialName="chicken_material" index="0" visible="true" />
-          </subentities>
-        </entity>
-      </node>
-      <node name="Chicken#01" id="484939136">
-        <rotation qw="1" qx="0" qy="0" qz="0" />
-        <position x="1029.82" y="2" z="555.245" />
-        <scale x="1" y="1" z="1" />
-        <entity name="chicken#1" id="205359056" castshadows="false" meshFile="chicken.mesh" type="Enemy" subType="Chicken" animationTree="data/animations/chicken.xml" life="5" points="25" speed="15" damage="0" specialDamage="0" height="2" dieMesh="chickenDie.mesh" dieAnimation="" physicMesh="enemyBasicPhysicBody.mesh">
-          <rotation qw="1" qx="0" qy="0" qz="0" />
-          <position x="0" y="0" z="0" />
-          <scale x="1" y="1" z="1" />
-          <subentities>
-            <subentity materialName="chicken_material" index="0" visible="true" />
-          </subentities>
-        </entity>
-      </node>
-      <node name="Knight#10" id="222327344">
-        <rotation qw="-0.612217" qx="0" qy="0.790689" qz="0" />
-        <position x="1250.61" y="12" z="150.046" />
-        <scale x="1" y="1" z="1" />
-        <entity name="knightB#2" id="636341440" castshadows="true" meshFile="knightB.mesh" type="Enemy" subType="Knight" animationTree="data/animations/knight.xml" life="150" points="150" speed="50" damage="2" specialDamage="0" height="11" dieMesh="nakedDie.mesh" dieAnimation="Die" physicMesh="enemyBasicPhysicBody.mesh">
-          <rotation qw="1" qx="0" qy="0" qz="0" />
-          <position x="0" y="0" z="0" />
-          <scale x="1" y="1" z="1" />
-          <subentities>
-            <subentity materialName="knightB_material_3" index="0" visible="true" />
-          </subentities>
-        </entity>
-      </node>
-      <node name="Knight#6" id="335947744">
-        <rotation qw="-0.544638" qx="0" qy="-0.838671" qz="0" />
-        <position x="568.138" y="12" z="-544.945" />
-        <scale x="1" y="1" z="1" />
-        <entity name="knightA#17" id="178350160" castshadows="true" meshFile="knightA.mesh" type="Enemy" subType="Knight" animationTree="data/animations/knight.xml" life="100" points="100" speed="50" damage="2" specialDamage="0" height="11" dieMesh="nakedDie.mesh" dieAnimation="Die" physicMesh="enemyBasicPhysicBody.mesh">
-          <rotation qw="1" qx="0" qy="0" qz="0" />
-          <position x="0" y="0" z="0" />
-          <scale x="1" y="1" z="1" />
-          <subentities>
-            <subentity materialName="knightA_material_2" index="0" visible="true" />
-          </subentities>
-        </entity>
-      </node>
-      <node name="Knight##17" id="596881024">
-        <rotation qw="0.991445" qx="0" qy="0.130527" qz="0" />
-        <position x="895.176" y="12" z="-418.14" />
-        <scale x="1" y="1" z="1" />
-        <entity name="knightB##10" id="721640640" castshadows="true" meshFile="knightB.mesh" type="Enemy" subType="Knight" animationTree="data/animations/knight.xml" life="100" points="100" speed="50" damage="2" specialDamage="0" height="11" dieMesh="nakedDie.mesh" dieAnimation="Die" physicMesh="enemyBasicPhysicBody.mesh">
-          <rotation qw="1" qx="0" qy="0" qz="0" />
-          <position x="0" y="0" z="0" />
-          <scale x="1" y="1" z="1" />
-          <subentities>
-            <subentity materialName="knightB_material_3" index="0" visible="true" />
-          </subentities>
-        </entity>
-      </node>
-      <node name="Knight#23" id="949583424">
-        <rotation qw="0.882948" qx="0" qy="-0.469472" qz="0" />
-        <position x="913.496" y="12" z="633.508" />
-        <scale x="1" y="1" z="1" />
-        <entity name="knightA#7" id="843043328" castshadows="false" meshFile="knightA.mesh" type="Enemy" subType="Knight" animationTree="data/animations/knight.xml" life="150" points="200" speed="40" damage="3" specialDamage="0" height="11" dieMesh="nakedDie.mesh" dieAnimation="Die" physicMesh="enemyBasicPhysicBody.mesh">
-          <rotation qw="1" qx="0" qy="0" qz="0" />
-          <position x="0" y="0" z="0" />
-          <scale x="1" y="1" z="1" />
-          <subentities>
-            <subentity materialName="knightA_material_4" index="0" visible="true" />
-          </subentities>
-        </entity>
-      </node>
-      <node name="Wizard#1" id="956114432">
-        <rotation qw="0.418659" qx="0" qy="0.908143" qz="0" />
-        <position x="154.559" y="12" z="-331.664" />
-        <scale x="1" y="1" z="1" />
-        <entity name="wizard#2" id="72267832" castshadows="true" meshFile="wizard.mesh" type="Enemy" subType="Wizard" animationTree="data/animations/wizard.xml" life="200" points="350" speed="60" damage="5" specialDamage="10" height="11" dieMesh="nakedDie.mesh" dieAnimation="Die" physicMesh="enemyBasicPhysicBody.mesh">
-          <rotation qw="1" qx="0" qy="0" qz="0" />
-          <position x="0" y="0" z="0" />
-          <scale x="1" y="1" z="1" />
-          <subentities>
-            <subentity materialName="wizard_material" index="0" visible="true" />
-          </subentities>
-        </entity>
-      </node>
-      <node name="Chicken#04" id="426221504">
-        <rotation qw="0.92388" qx="0" qy="-0.382683" qz="0" />
-        <position x="1076.52" y="2" z="540.132" />
-        <scale x="1" y="1" z="1" />
-        <entity name="chicken#4" id="104678488" castshadows="false" meshFile="chicken.mesh" type="Enemy" subType="Chicken" animationTree="data/animations/chicken.xml" life="5" points="25" speed="15" damage="0" specialDamage="0" height="2" dieMesh="chickenDie.mesh" dieAnimation="" physicMesh="enemyBasicPhysicBody.mesh">
-          <rotation qw="1" qx="0" qy="0" qz="0" />
-          <position x="0" y="0" z="0" />
-          <scale x="1" y="1" z="1" />
-          <subentities>
-            <subentity materialName="chicken_material" index="0" visible="true" />
-          </subentities>
-        </entity>
-      </node>
-      <node name="Knight#9" id="617145280">
-        <rotation qw="0.941176" qx="0" qy="0.337917" qz="0" />
-        <position x="229.202" y="12" z="-509.693" />
-        <scale x="1" y="1" z="1" />
-        <entity name="knightA#20" id="217566464" castshadows="true" meshFile="knightA.mesh" type="Enemy" subType="Knight" animationTree="data/animations/knight.xml" life="100" points="100" speed="50" damage="2" specialDamage="0" height="11" dieMesh="nakedDie.mesh" dieAnimation="Die" physicMesh="enemyBasicPhysicBody.mesh">
-          <rotation qw="1" qx="0" qy="0" qz="0" />
-          <position x="0" y="0" z="0" />
-          <scale x="1" y="1" z="1" />
-          <subentities>
-            <subentity materialName="knightA_material_5" index="0" visible="true" />
-          </subentities>
-        </entity>
-      </node>
-      <node name="Naked#01" id="726493120">
-        <rotation qw="1" qx="0" qy="0" qz="0" />
-        <position x="1285.88" y="12" z="363.561" />
-        <scale x="1" y="1" z="1" />
-        <entity name="naked#1" id="743736064" castshadows="true" meshFile="naked.mesh" type="Enemy" subType="Naked" animationTree="data/animations/naked.xml" life="50" points="150" speed="60" damage="0" specialDamage="0" height="11" dieMesh="nakedDie.mesh" dieAnimation="Die" physicMesh="enemyBasicPhysicBody.mesh">
-          <rotation qw="1" qx="0" qy="0" qz="0" />
-          <position x="0" y="0" z="0" />
-          <scale x="1" y="1" z="1" />
-          <subentities>
-            <subentity materialName="Skin" index="0" visible="true" />
-          </subentities>
-        </entity>
-      </node>
-      <node name="Chicken#2" id="18616292">
-        <rotation qw="1" qx="0" qy="0" qz="0" />
-        <position x="1279.21" y="2" z="39.1046" />
-        <scale x="1" y="1" z="1" />
-        <entity name="chicken#7" id="31037324" castshadows="false" meshFile="chicken.mesh" type="Enemy" subType="Chicken" animationTree="data/animations/chicken.xml" life="5" points="25" speed="15" damage="0" specialDamage="0" height="2" dieMesh="chickenDie.mesh" dieAnimation="" physicMesh="enemyBasicPhysicBody.mesh">
-          <rotation qw="1" qx="0" qy="0" qz="0" />
-          <position x="0" y="0" z="0" />
-          <scale x="1" y="1" z="1" />
-          <subentities>
-            <subentity materialName="chicken_material" index="0" visible="true" />
-          </subentities>
-        </entity>
-      </node>
-      <node name="Knight#26" id="123325296">
-        <rotation qw="0.92881" qx="0" qy="-0.370557" qz="0" />
-        <position x="1124.93" y="12" z="229.678" />
-        <scale x="1" y="1" z="1" />
-        <entity name="knightA#11" id="109927672" castshadows="true" meshFile="knightA.mesh" type="Enemy" subType="Knight" animationTree="data/animations/knight.xml" life="150" points="200" speed="50" damage="2" specialDamage="0" height="11" dieMesh="nakedDie.mesh" dieAnimation="Die" physicMesh="enemyBasicPhysicBody.mesh">
-          <rotation qw="1" qx="0" qy="0" qz="0" />
-          <position x="0" y="0" z="0" />
-          <scale x="1" y="1" z="1" />
-          <subentities>
-            <subentity materialName="knightA_material_5" index="0" visible="true" />
-          </subentities>
-        </entity>
-      </node>
-      <node name="Naked##7" id="79561752">
-        <rotation qw="1" qx="0" qy="0" qz="0" />
-        <position x="977.324" y="12" z="384.205" />
-        <scale x="1" y="1" z="1" />
-        <entity name="naked##7" id="75777456" castshadows="true" meshFile="naked.mesh" type="Enemy" subType="Naked" animationTree="data/animations/naked.xml" life="50" points="150" speed="60" damage="0" specialDamage="0" height="11" dieMesh="nakedDie.mesh" dieAnimation="Die" physicMesh="enemyBasicPhysicBody.mesh">
-          <rotation qw="1" qx="0" qy="0" qz="0" />
-          <position x="0" y="0" z="0" />
-          <scale x="1" y="1" z="1" />
-          <subentities>
-            <subentity materialName="Skin" index="0" visible="true" />
-          </subentities>
-        </entity>
-      </node>
-      <node name="Chicken#5" id="191351056">
-        <rotation qw="0.956305" qx="0" qy="0.292372" qz="0" />
-        <position x="311.749" y="2" z="-654.409" />
-        <scale x="1" y="1" z="1" />
-        <entity name="chicken#10" id="177892384" castshadows="false" meshFile="chicken.mesh" type="Enemy" subType="Chicken" animationTree="data/animations/chicken.xml" life="5" points="25" speed="15" damage="0" specialDamage="0" height="2" dieMesh="chickenDie.mesh" dieAnimation="" physicMesh="enemyBasicPhysicBody.mesh">
-          <rotation qw="1" qx="0" qy="0" qz="0" />
-          <position x="0" y="0" z="0" />
-          <scale x="1" y="1" z="1" />
-          <subentities>
-            <subentity materialName="chicken_material" index="0" visible="true" />
-          </subentities>
-        </entity>
-      </node>
-      <node name="Knight##24" id="66164128">
-        <rotation qw="0.740218" qx="0" qy="0.672367" qz="0" />
-        <position x="172.949" y="12" z="-543.959" />
-        <scale x="1" y="1" z="1" />
-        <entity name="knightC##10" id="427808448" castshadows="true" meshFile="knightC.mesh" type="Enemy" subType="Knight" animationTree="data/animations/knight.xml" life="100" points="100" speed="50" damage="2" specialDamage="0" height="11" dieMesh="nakedDie.mesh" dieAnimation="Die" physicMesh="enemyBasicPhysicBody.mesh">
-          <rotation qw="1" qx="0" qy="0" qz="0" />
-          <position x="0" y="0" z="0" />
-          <scale x="1" y="1" z="1" />
-          <subentities>
-            <subentity materialName="knightC_material_5" index="0" visible="true" />
-          </subentities>
-        </entity>
-      </node>
-      <node name="Knight#00" id="297280800">
-        <rotation qw="0.92881" qx="0" qy="-0.370557" qz="0" />
-        <position x="433.247" y="13.2234" z="723.758" />
-        <scale x="1" y="1" z="1" />
-        <entity name="knightA#0" id="840144064" castshadows="true" meshFile="knightA.mesh" type="Enemy" subType="Knight" animationTree="data/animations/knight.xml" life="100" points="100" speed="50" damage="2" specialDamage="0" height="11" dieMesh="nakedDie.mesh" dieAnimation="Die" physicMesh="enemyBasicPhysicBody.mesh">
-          <rotation qw="1" qx="0" qy="0" qz="0" />
-          <position x="0" y="0" z="0" />
-          <scale x="1" y="1" z="1" />
-          <subentities>
-            <subentity materialName="knightA_material" index="0" visible="true" />
-          </subentities>
-        </entity>
-      </node>
-      <node name="Knight#29" id="322122880">
-        <rotation qw="0.816642" qx="0" qy="-0.577145" qz="0" />
-        <position x="1197.25" y="12" z="76.6209" />
-        <scale x="1" y="1" z="1" />
-        <entity name="knightB#9" id="104800560" castshadows="true" meshFile="knightB.mesh" type="Enemy" subType="Knight" animationTree="data/animations/knight.xml" life="150" points="200" speed="50" damage="2" specialDamage="0" height="11" dieMesh="nakedDie.mesh" dieAnimation="Die" physicMesh="enemyBasicPhysicBody.mesh">
-          <rotation qw="1" qx="0" qy="0" qz="0" />
-          <position x="0" y="0" z="0" />
-          <scale x="1" y="1" z="1" />
-          <subentities>
-            <subentity materialName="knightB_material_5" index="0" visible="true" />
-          </subentities>
-        </entity>
-      </node>
-      <node name="Knight##3" id="911557376">
-        <rotation qw="0.816642" qx="0" qy="-0.577145" qz="0" />
-        <position x="657.798" y="12" z="777.732" />
-        <scale x="1" y="1" z="1" />
-        <entity name="knightB##1" id="614703808" castshadows="true" meshFile="knightB.mesh" type="Enemy" subType="Knight" animationTree="data/animations/knight.xml" life="100" points="100" speed="50" damage="2" specialDamage="0" height="11" dieMesh="nakedDie.mesh" dieAnimation="Die" physicMesh="enemyBasicPhysicBody.mesh">
-          <rotation qw="1" qx="0" qy="0" qz="0" />
-          <position x="0" y="0" z="0" />
-          <scale x="1" y="1" z="1" />
-          <subentities>
-            <subentity materialName="knightB_material" index="0" visible="true" />
-          </subentities>
-        </entity>
-      </node>
-      <node name="Knight##21" id="806878848">
-        <rotation qw="0.891006" qx="0" qy="0.453991" qz="0" />
-        <position x="267.167" y="12" z="-616.975" />
-        <scale x="1" y="1" z="1" />
-        <entity name="knightB##12" id="526535872" castshadows="true" meshFile="knightB.mesh" type="Enemy" subType="Knight" animationTree="data/animations/knight.xml" life="100" points="100" speed="50" damage="2" specialDamage="0" height="11" dieMesh="nakedDie.mesh" dieAnimation="Die" physicMesh="enemyBasicPhysicBody.mesh">
-          <rotation qw="1" qx="0" qy="0" qz="0" />
-          <position x="0" y="0" z="0" />
-          <scale x="1" y="1" z="1" />
-          <subentities>
-            <subentity materialName="knightB_material_5" index="0" visible="true" />
-          </subentities>
-        </entity>
-      </node>
-      <node name="Knight#07" id="786156800">
+      <node name="Knight#28" id="786156800">
         <rotation qw="0.953717" qx="0" qy="0.300706" qz="0" />
         <position x="1163.91" y="12" z="153.136" />
         <scale x="1" y="1" z="1" />
-        <entity name="knightB#1" id="656758336" castshadows="true" meshFile="knightB.mesh" type="Enemy" subType="Knight" animationTree="data/animations/knight.xml" life="150" points="150" speed="50" damage="2" specialDamage="0" height="11" dieMesh="nakedDie.mesh" dieAnimation="Die" physicMesh="enemyBasicPhysicBody.mesh">
+        <entity name="knightB#28" id="656758336" castshadows="true" meshFile="knightB.mesh" type="Enemy" subType="Knight" animationTree="data/animations/knight.xml" life="150" points="200" speed="50" damage="2" specialDamage="0" height="13" dieMesh="nakedDie.mesh" dieAnimation="Die">
           <rotation qw="1" qx="0" qy="0" qz="0" />
           <position x="0" y="0" z="0" />
           <scale x="1" y="1" z="1" />
@@ -6638,63 +6001,50 @@
           </subentities>
         </entity>
       </node>
-      <node name="Knight#15" id="608966336">
-        <rotation qw="0.935135" qx="0" qy="-0.354291" qz="0" />
-        <position x="813.751" y="12" z="643.831" />
+      <node name="Knight#30" id="222327344">
+        <rotation qw="-0.612217" qx="0" qy="0.790689" qz="0" />
+        <position x="1250.61" y="12" z="150.046" />
         <scale x="1" y="1" z="1" />
-        <entity name="knightA#5" id="316873664" castshadows="true" meshFile="knightA.mesh" type="Enemy" subType="Knight" animationTree="data/animations/knight.xml" life="100" points="100" speed="50" damage="2" specialDamage="0" height="11" dieMesh="nakedDie.mesh" dieAnimation="Die" physicMesh="enemyBasicPhysicBody.mesh">
+        <entity name="knightB#30" id="636341440" castshadows="true" meshFile="knightB.mesh" type="Enemy" subType="Knight" animationTree="data/animations/knight.xml" life="150" points="200" speed="50" damage="2" specialDamage="0" height="13" dieMesh="nakedDie.mesh" dieAnimation="Die">
           <rotation qw="1" qx="0" qy="0" qz="0" />
           <position x="0" y="0" z="0" />
           <scale x="1" y="1" z="1" />
           <subentities>
-            <subentity materialName="knightA_material" index="0" visible="true" />
+            <subentity materialName="knightB_material_3" index="0" visible="true" />
           </subentities>
         </entity>
       </node>
-      <node name="Knight#34" id="877254528">
-        <rotation qw="0.816642" qx="0" qy="-0.577145" qz="0" />
-        <position x="1253.07" y="12" z="33.1249" />
+      <node name="Knight#66" id="168919952">
+        <rotation qw="-0.237686" qx="0" qy="-0.971342" qz="0" />
+        <position x="157.123" y="12" z="-435.184" />
         <scale x="1" y="1" z="1" />
-        <entity name="knightC#10" id="821680384" castshadows="true" meshFile="knightC.mesh" type="Enemy" subType="Knight" animationTree="data/animations/knight.xml" life="150" points="200" speed="50" damage="2" specialDamage="0" height="11" dieMesh="nakedDie.mesh" dieAnimation="Die" physicMesh="enemyBasicPhysicBody.mesh">
+        <entity name="knightB#66" id="624103552" castshadows="true" meshFile="knightB.mesh" type="Enemy" subType="Knight" animationTree="data/animations/knight.xml" life="150" points="200" speed="50" damage="2" specialDamage="0" height="13" dieMesh="nakedDie.mesh" dieAnimation="Die">
           <rotation qw="1" qx="0" qy="0" qz="0" />
           <position x="0" y="0" z="0" />
           <scale x="1" y="1" z="1" />
           <subentities>
-            <subentity materialName="knightC_material_5" index="0" visible="true" />
+            <subentity materialName="knightB_material_5" index="0" visible="true" />
           </subentities>
         </entity>
       </node>
-      <node name="Knight##8" id="686147648">
-        <rotation qw="-0.725373" qx="0" qy="-0.688356" qz="0" />
-        <position x="504.81" y="12" z="-493.171" />
+      <node name="Knight#43" id="27832880">
+        <rotation qw="0.999762" qx="0" qy="0.0218154" qz="0" />
+        <position x="974.035" y="12" z="-307.724" />
         <scale x="1" y="1" z="1" />
-        <entity name="knightB##5" id="543443072" castshadows="true" meshFile="knightB.mesh" type="Enemy" subType="Knight" animationTree="data/animations/knight.xml" life="100" points="100" speed="50" damage="2" specialDamage="0" height="11" dieMesh="nakedDie.mesh" dieAnimation="Die" physicMesh="enemyBasicPhysicBody.mesh">
+        <entity name="knightC#43" id="329844064" castshadows="true" meshFile="knightC.mesh" type="Enemy" subType="Knight" animationTree="data/animations/knight.xml" life="150" points="200" speed="50" damage="2" specialDamage="0" height="13" dieMesh="nakedDie.mesh" dieAnimation="Die">
           <rotation qw="1" qx="0" qy="0" qz="0" />
           <position x="0" y="0" z="0" />
           <scale x="1" y="1" z="1" />
           <subentities>
-            <subentity materialName="knightB_material_2" index="0" visible="true" />
+            <subentity materialName="knightC_material_3" index="0" visible="true" />
           </subentities>
         </entity>
       </node>
-      <node name="Knight##12" id="628681280">
-        <rotation qw="-0.725373" qx="0" qy="-0.688356" qz="0" />
-        <position x="507.824" y="12" z="-430.491" />
+      <node name="Chicken#12" id="857936320">
+        <rotation qw="1" qx="0" qy="0" qz="0" />
+        <position x="1186.37" y="2" z="423.541" />
         <scale x="1" y="1" z="1" />
-        <entity name="knightB##7" id="160191648" castshadows="true" meshFile="knightB.mesh" type="Enemy" subType="Knight" animationTree="data/animations/knight.xml" life="100" points="100" speed="50" damage="2" specialDamage="0" height="11" dieMesh="nakedDie.mesh" dieAnimation="Die" physicMesh="enemyBasicPhysicBody.mesh">
-          <rotation qw="1" qx="0" qy="0" qz="0" />
-          <position x="0" y="0" z="0" />
-          <scale x="1" y="1" z="1" />
-          <subentities>
-            <subentity materialName="knightB_material_2" index="0" visible="true" />
-          </subentities>
-        </entity>
-      </node>
-      <node name="Chicken#03" id="817194112">
-        <rotation qw="0.0261768" qx="0" qy="0.999657" qz="0" />
-        <position x="1018.89" y="2" z="608.835" />
-        <scale x="1" y="1" z="1" />
-        <entity name="chicken#3" id="475264768" castshadows="false" meshFile="chicken.mesh" type="Enemy" subType="Chicken" animationTree="data/animations/chicken.xml" life="5" points="25" speed="15" damage="0" specialDamage="0" height="2" dieMesh="chickenDie.mesh" dieAnimation="" physicMesh="enemyBasicPhysicBody.mesh">
+        <entity name="chicken#12" id="936765696" castshadows="false" meshFile="chicken.mesh" type="Enemy" subType="Chicken" animationTree="data/animations/chicken.xml" life="5" points="25" speed="30" damage="0" specialDamage="0" height="2" dieMesh="chickenDie.mesh" dieAnimation="">
           <rotation qw="1" qx="0" qy="0" qz="0" />
           <position x="0" y="0" z="0" />
           <scale x="1" y="1" z="1" />
@@ -6703,11 +6053,76 @@
           </subentities>
         </entity>
       </node>
-      <node name="Cow#0" id="699270592">
-        <rotation qw="0.876727" qx="0" qy="-0.480989" qz="0" />
-        <position x="670.371" y="16.9841" z="754.283" />
+      <node name="Knight#06" id="976531264">
+        <rotation qw="0.816642" qx="0" qy="-0.577145" qz="0" />
+        <position x="550.695" y="12" z="758.595" />
         <scale x="1" y="1" z="1" />
-        <entity name="cow#0" id="486587104" castshadows="false" meshFile="cow.mesh" type="Enemy" subType="Cow" animationTree="data/animations/cow.xml" life="10" points="50" speed="15" damage="0" specialDamage="0" height="5" dieMesh="cowDie.mesh" dieAnimation="" physicMesh="enemyBasicPhysicBody.mesh">
+        <entity name="knightB#06" id="315012064" castshadows="true" meshFile="knightB.mesh" type="Enemy" subType="Knight" animationTree="data/animations/knight.xml" life="100" points="100" speed="50" damage="1" specialDamage="0" height="13" dieMesh="nakedDie.mesh" dieAnimation="Die">
+          <rotation qw="1" qx="0" qy="0" qz="0" />
+          <position x="0" y="0" z="0" />
+          <scale x="1" y="1" z="1" />
+          <subentities>
+            <subentity materialName="knightB_material" index="0" visible="true" />
+          </subentities>
+        </entity>
+      </node>
+      <node name="Knight#12" id="504806624">
+        <rotation qw="0.892979" qx="0" qy="-0.450098" qz="0" />
+        <position x="861.03" y="12" z="738.478" />
+        <scale x="1" y="1" z="1" />
+        <entity name="knightC#12" id="890163904" castshadows="true" meshFile="knightC.mesh" type="Enemy" subType="Knight" animationTree="data/animations/knight.xml" life="100" points="100" speed="50" damage="1" specialDamage="0" height="13" dieMesh="nakedDie.mesh" dieAnimation="Die">
+          <rotation qw="1" qx="0" qy="0" qz="0" />
+          <position x="0" y="0" z="0" />
+          <scale x="1" y="1" z="1" />
+          <subentities>
+            <subentity materialName="knightC_material" index="0" visible="true" />
+          </subentities>
+        </entity>
+      </node>
+      <node name="Knight#35" id="322122880">
+        <rotation qw="0.816642" qx="0" qy="-0.577145" qz="0" />
+        <position x="1197.25" y="12" z="76.6209" />
+        <scale x="1" y="1" z="1" />
+        <entity name="knightB#35" id="104800560" castshadows="true" meshFile="knightB.mesh" type="Enemy" subType="Knight" animationTree="data/animations/knight.xml" life="100" points="100" speed="50" damage="1" specialDamage="0" height="13" dieMesh="nakedDie.mesh" dieAnimation="Die">
+          <rotation qw="1" qx="0" qy="0" qz="0" />
+          <position x="0" y="0" z="0" />
+          <scale x="1" y="1" z="1" />
+          <subentities>
+            <subentity materialName="knightB_material_5" index="0" visible="true" />
+          </subentities>
+        </entity>
+      </node>
+      <node name="Knight#61" id="931516480">
+        <rotation qw="-0.725373" qx="0" qy="-0.688356" qz="0" />
+        <position x="541.252" y="12" z="-521.871" />
+        <scale x="1.5" y="1.5" z="1.5" />
+        <entity name="knightC#61" id="48432876" castshadows="true" meshFile="knightC.mesh" type="Enemy" subType="Knight" animationTree="data/animations/knight.xml" life="175" points="350" speed="40" damage="3" specialDamage="0" height="15" dieMesh="nakedDie.mesh" dieAnimation="Die">
+          <rotation qw="1" qx="0" qy="0" qz="0" />
+          <position x="0" y="0" z="0" />
+          <scale x="1" y="1" z="1" />
+          <subentities>
+            <subentity materialName="knightC_material_5" index="0" visible="true" />
+          </subentities>
+        </entity>
+      </node>
+      <node name="Knight#52" id="335947744">
+        <rotation qw="-0.544638" qx="0" qy="-0.838671" qz="0" />
+        <position x="568.138" y="12" z="-544.945" />
+        <scale x="1" y="1" z="1" />
+        <entity name="knightA#52" id="178350160" castshadows="true" meshFile="knightA.mesh" type="Enemy" subType="Knight" animationTree="data/animations/knight.xml" life="100" points="100" speed="50" damage="1" specialDamage="0" height="13" dieMesh="nakedDie.mesh" dieAnimation="Die">
+          <rotation qw="1" qx="0" qy="0" qz="0" />
+          <position x="0" y="0" z="0" />
+          <scale x="1" y="1" z="1" />
+          <subentities>
+            <subentity materialName="knightA_material_2" index="0" visible="true" />
+          </subentities>
+        </entity>
+      </node>
+      <node name="Cow#05" id="698507648">
+        <rotation qw="0.5373" qx="0" qy="-0.843392" qz="0" />
+        <position x="1105.01" y="16.9142" z="461.622" />
+        <scale x="1" y="1" z="1" />
+        <entity name="cow#5" id="740745216" castshadows="false" meshFile="cow.mesh" type="Enemy" subType="Cow" animationTree="data/animations/cow.xml" life="10" points="50" speed="15" damage="0" specialDamage="0" height="14" dieMesh="cowDie.mesh" dieAnimation="">
           <rotation qw="1" qx="0" qy="0" qz="0" />
           <position x="0" y="0" z="0" />
           <scale x="1" y="1" z="1" />
@@ -6716,11 +6131,24 @@
           </subentities>
         </entity>
       </node>
-      <node name="Knight#4" id="436689344">
-        <rotation qw="-0.544638" qx="0" qy="-0.838671" qz="0" />
-        <position x="513.666" y="12" z="-559.864" />
+      <node name="Chicken#02" id="225104528">
+        <rotation qw="0.845728" qx="0" qy="0.533615" qz="0" />
+        <position x="1119.17" y="2" z="499.891" />
         <scale x="1" y="1" z="1" />
-        <entity name="knightA#15" id="232428960" castshadows="true" meshFile="knightA.mesh" type="Enemy" subType="Knight" animationTree="data/animations/knight.xml" life="100" points="100" speed="50" damage="2" specialDamage="0" height="11" dieMesh="nakedDie.mesh" dieAnimation="Die" physicMesh="enemyBasicPhysicBody.mesh">
+        <entity name="chicken#02" id="425153344" castshadows="false" meshFile="chicken.mesh" type="Enemy" subType="Chicken" animationTree="data/animations/chicken.xml" life="5" points="25" speed="30" damage="0" specialDamage="0" height="2" dieMesh="chickenDie.mesh" dieAnimation="">
+          <rotation qw="1" qx="0" qy="0" qz="0" />
+          <position x="0" y="0" z="0" />
+          <scale x="1" y="1" z="1" />
+          <subentities>
+            <subentity materialName="chicken_material" index="0" visible="true" />
+          </subentities>
+        </entity>
+      </node>
+      <node name="Knight#57" id="963042112">
+        <rotation qw="-0.544638" qx="0" qy="-0.838671" qz="0" />
+        <position x="498.908" y="12" z="-532.977" />
+        <scale x="1" y="1" z="1" />
+        <entity name="knightA#57" id="695760960" castshadows="true" meshFile="knightA.mesh" type="Enemy" subType="Knight" animationTree="data/animations/knight.xml" life="100" points="100" speed="50" damage="1" specialDamage="0" height="13" dieMesh="nakedDie.mesh" dieAnimation="Die">
           <rotation qw="1" qx="0" qy="0" qz="0" />
           <position x="0" y="0" z="0" />
           <scale x="1" y="1" z="1" />
@@ -6729,50 +6157,11 @@
           </subentities>
         </entity>
       </node>
-      <node name="Knight##15" id="951719680">
-        <rotation qw="0.983255" qx="0" qy="-0.182235" qz="0" />
-        <position x="662.749" y="12" z="-649.211" />
-        <scale x="1" y="1" z="1" />
-        <entity name="knightB##9" id="611987648" castshadows="true" meshFile="knightB.mesh" type="Enemy" subType="Knight" animationTree="data/animations/knight.xml" life="100" points="100" speed="50" damage="2" specialDamage="0" height="11" dieMesh="nakedDie.mesh" dieAnimation="Die" physicMesh="enemyBasicPhysicBody.mesh">
-          <rotation qw="1" qx="0" qy="0" qz="0" />
-          <position x="0" y="0" z="0" />
-          <scale x="1" y="1" z="1" />
-          <subentities>
-            <subentity materialName="knightB_material_3" index="0" visible="true" />
-          </subentities>
-        </entity>
-      </node>
-      <node name="Knight#08" id="576677760">
-        <rotation qw="0.979046" qx="0" qy="-0.203642" qz="0" />
-        <position x="1191.55" y="12" z="167.074" />
-        <scale x="1" y="1" z="1" />
-        <entity name="knightC#2" id="455458208" castshadows="true" meshFile="knightC.mesh" type="Enemy" subType="Knight" animationTree="data/animations/knight.xml" life="150" points="150" speed="50" damage="2" specialDamage="0" height="11" dieMesh="nakedDie.mesh" dieAnimation="Die" physicMesh="enemyBasicPhysicBody.mesh">
-          <rotation qw="1" qx="0" qy="0" qz="0" />
-          <position x="0" y="0" z="0" />
-          <scale x="1" y="1" z="1" />
-          <subentities>
-            <subentity materialName="knightC_material_3" index="0" visible="true" />
-          </subentities>
-        </entity>
-      </node>
-      <node name="Knight#21" id="504806624">
-        <rotation qw="0.892979" qx="0" qy="-0.450098" qz="0" />
-        <position x="861.03" y="12" z="738.478" />
-        <scale x="1" y="1" z="1" />
-        <entity name="knightC#6" id="890163904" castshadows="true" meshFile="knightC.mesh" type="Enemy" subType="Knight" animationTree="data/animations/knight.xml" life="100" points="100" speed="50" damage="2" specialDamage="0" height="11" dieMesh="nakedDie.mesh" dieAnimation="Die" physicMesh="enemyBasicPhysicBody.mesh">
-          <rotation qw="1" qx="0" qy="0" qz="0" />
-          <position x="0" y="0" z="0" />
-          <scale x="1" y="1" z="1" />
-          <subentities>
-            <subentity materialName="knightC_material" index="0" visible="true" />
-          </subentities>
-        </entity>
-      </node>
-      <node name="Naked##4" id="604296960">
+      <node name="Naked#07" id="604296960">
         <rotation qw="1" qx="0" qy="0" qz="0" />
         <position x="45.3199" y="12" z="-588.5" />
         <scale x="1" y="1" z="1" />
-        <entity name="naked##4" id="697347968" castshadows="true" meshFile="naked.mesh" type="Enemy" subType="Naked" animationTree="data/animations/naked.xml" life="50" points="150" speed="60" damage="0" specialDamage="0" height="11" dieMesh="nakedDie.mesh" dieAnimation="Die" physicMesh="enemyBasicPhysicBody.mesh">
+        <entity name="naked#08" id="697347968" castshadows="true" meshFile="naked.mesh" type="Enemy" subType="Naked" animationTree="data/animations/naked.xml" life="35" points="150" speed="50" damage="0" specialDamage="0" height="13" dieMesh="nakedDie.mesh" dieAnimation="Die">
           <rotation qw="1" qx="0" qy="0" qz="0" />
           <position x="0" y="0" z="0" />
           <scale x="1" y="1" z="1" />
@@ -6781,232 +6170,24 @@
           </subentities>
         </entity>
       </node>
-      <node name="Chicken#0" id="905117952">
-        <rotation qw="0.461749" qx="0" qy="0.887011" qz="0" />
-        <position x="339.891" y="2" z="-515.401" />
+      <node name="Cow#10" id="785363328">
+        <rotation qw="0.876727" qx="0" qy="-0.480989" qz="0" />
+        <position x="817.76" y="17.0124" z="-541.013" />
         <scale x="1" y="1" z="1" />
-        <entity name="chicken#5" id="582049024" castshadows="false" meshFile="chicken.mesh" type="Enemy" subType="Chicken" animationTree="data/animations/chicken.xml" life="5" points="25" speed="15" damage="0" specialDamage="0" height="2" dieMesh="chickenDie.mesh" dieAnimation="" physicMesh="enemyBasicPhysicBody.mesh">
+        <entity name="cow#10" id="552812288" castshadows="false" meshFile="cow.mesh" type="Enemy" subType="Cow" animationTree="data/animations/cow.xml" life="10" points="50" speed="15" damage="0" specialDamage="0" height="14" dieMesh="cowDie.mesh" dieAnimation="">
           <rotation qw="1" qx="0" qy="0" qz="0" />
           <position x="0" y="0" z="0" />
           <scale x="1" y="1" z="1" />
           <subentities>
-            <subentity materialName="chicken_material" index="0" visible="true" />
+            <subentity materialName="CowMaterial" index="0" visible="true" />
           </subentities>
         </entity>
       </node>
-      <node name="Knight##18" id="14679404">
-        <rotation qw="0.998135" qx="0" qy="0.061049" qz="0" />
-        <position x="745.609" y="12" z="-659.777" />
+      <node name="Knight#20" id="989989952">
+        <rotation qw="0.989651" qx="0" qy="-0.143493" qz="0" />
+        <position x="882.716" y="12" z="632.659" />
         <scale x="1" y="1" z="1" />
-        <entity name="knightC##7" id="126468704" castshadows="true" meshFile="knightC.mesh" type="Enemy" subType="Knight" animationTree="data/animations/knight.xml" life="100" points="100" speed="50" damage="2" specialDamage="0" height="11" dieMesh="nakedDie.mesh" dieAnimation="Die" physicMesh="enemyBasicPhysicBody.mesh">
-          <rotation qw="1" qx="0" qy="0" qz="0" />
-          <position x="0" y="0" z="0" />
-          <scale x="1" y="1" z="1" />
-          <subentities>
-            <subentity materialName="knightC_material_3" index="0" visible="true" />
-          </subentities>
-        </entity>
-      </node>
-      <node name="Knight#24" id="806238016">
-        <rotation qw="0.918791" qx="0" qy="-0.394744" qz="0" />
-        <position x="923.762" y="12" z="654.458" />
-        <scale x="1" y="1" z="1" />
-        <entity name="knightC#7" id="626758656" castshadows="true" meshFile="knightC.mesh" type="Enemy" subType="Knight" animationTree="data/animations/knight.xml" life="150" points="200" speed="40" damage="3" specialDamage="0" height="11" dieMesh="nakedDie.mesh" dieAnimation="Die" physicMesh="enemyBasicPhysicBody.mesh">
-          <rotation qw="1" qx="0" qy="0" qz="0" />
-          <position x="0" y="0" z="0" />
-          <scale x="1" y="1" z="1" />
-          <subentities>
-            <subentity materialName="knightC_material_4" index="0" visible="true" />
-          </subentities>
-        </entity>
-      </node>
-      <node name="Knight##0" id="457441920">
-        <rotation qw="0.816642" qx="0" qy="-0.577145" qz="0" />
-        <position x="622.97" y="12" z="744.54" />
-        <scale x="1" y="1" z="1" />
-        <entity name="knightC##0" id="998016320" castshadows="true" meshFile="knightC.mesh" type="Enemy" subType="Knight" animationTree="data/animations/knight.xml" life="100" points="100" speed="50" damage="2" specialDamage="0" height="11" dieMesh="nakedDie.mesh" dieAnimation="Die" physicMesh="enemyBasicPhysicBody.mesh">
-          <rotation qw="1" qx="0" qy="0" qz="0" />
-          <position x="0" y="0" z="0" />
-          <scale x="1" y="1" z="1" />
-          <subentities>
-            <subentity materialName="knightB_material" index="0" visible="true" />
-          </subentities>
-        </entity>
-      </node>
-      <node name="Naked##1" id="196508672">
-        <rotation qw="1" qx="0" qy="0" qz="0" />
-        <position x="680.507" y="12" z="-685.07" />
-        <scale x="1" y="1" z="1" />
-        <entity name="naked##1" id="70284128" castshadows="true" meshFile="naked.mesh" type="Enemy" subType="Naked" animationTree="data/animations/naked.xml" life="50" points="150" speed="60" damage="0" specialDamage="0" height="11" dieMesh="nakedDie.mesh" dieAnimation="Die" physicMesh="enemyBasicPhysicBody.mesh">
-          <rotation qw="1" qx="0" qy="0" qz="0" />
-          <position x="0" y="0" z="0" />
-          <scale x="1" y="1" z="1" />
-          <subentities>
-            <subentity materialName="Skin" index="0" visible="true" />
-          </subentities>
-        </entity>
-      </node>
-      <node name="Knight##22" id="900601216">
-        <rotation qw="0.816642" qx="0" qy="-0.577145" qz="0" />
-        <position x="690.026" y="12" z="-507.162" />
-        <scale x="1" y="1" z="1" />
-        <entity name="knightC##9" id="144810336" castshadows="true" meshFile="knightC.mesh" type="Enemy" subType="Knight" animationTree="data/animations/knight.xml" life="100" points="100" speed="50" damage="2" specialDamage="0" height="11" dieMesh="nakedDie.mesh" dieAnimation="Die" physicMesh="enemyBasicPhysicBody.mesh">
-          <rotation qw="1" qx="0" qy="0" qz="0" />
-          <position x="0" y="0" z="0" />
-          <scale x="1" y="1" z="1" />
-          <subentities>
-            <subentity materialName="knightC_material_3" index="0" visible="true" />
-          </subentities>
-        </entity>
-      </node>
-      <node name="Knight#02" id="720908224">
-        <rotation qw="0.816642" qx="0" qy="-0.577145" qz="0" />
-        <position x="450.433" y="13.2234" z="741.615" />
-        <scale x="1" y="1" z="1" />
-        <entity name="knightB#0" id="351298560" castshadows="true" meshFile="knightB.mesh" type="Enemy" subType="Knight" animationTree="data/animations/knight.xml" life="100" points="100" speed="50" damage="2" specialDamage="0" height="11" dieMesh="nakedDie.mesh" dieAnimation="Die" physicMesh="enemyBasicPhysicBody.mesh">
-          <rotation qw="1" qx="0" qy="0" qz="0" />
-          <position x="0" y="0" z="0" />
-          <scale x="1" y="1" z="1" />
-          <subentities>
-            <subentity materialName="knightB_material" index="0" visible="true" />
-          </subentities>
-        </entity>
-      </node>
-      <node name="Knight#16" id="151554912">
-        <rotation qw="0.991445" qx="0" qy="-0.130526" qz="0" />
-        <position x="842.197" y="12" z="610.231" />
-        <scale x="1" y="1" z="1" />
-        <entity name="knightB#6" id="271889376" castshadows="true" meshFile="knightB.mesh" type="Enemy" subType="Knight" animationTree="data/animations/knight.xml" life="100" points="100" speed="50" damage="2" specialDamage="0" height="11" dieMesh="nakedDie.mesh" dieAnimation="Die" physicMesh="enemyBasicPhysicBody.mesh">
-          <rotation qw="1" qx="0" qy="0" qz="0" />
-          <position x="0" y="0" z="0" />
-          <scale x="1" y="1" z="1" />
-          <subentities>
-            <subentity materialName="knightB_material" index="0" visible="true" />
-          </subentities>
-        </entity>
-      </node>
-      <node name="Knight#31" id="692892224">
-        <rotation qw="0.816642" qx="0" qy="-0.577145" qz="0" />
-        <position x="1297.38" y="12" z="38.3834" />
-        <scale x="1" y="1" z="1" />
-        <entity name="knightB#11" id="303048800" castshadows="true" meshFile="knightB.mesh" type="Enemy" subType="Knight" animationTree="data/animations/knight.xml" life="150" points="200" speed="50" damage="2" specialDamage="0" height="11" dieMesh="nakedDie.mesh" dieAnimation="Die" physicMesh="enemyBasicPhysicBody.mesh">
-          <rotation qw="1" qx="0" qy="0" qz="0" />
-          <position x="0" y="0" z="0" />
-          <scale x="1" y="1" z="1" />
-          <subentities>
-            <subentity materialName="knightB_material_5" index="0" visible="true" />
-          </subentities>
-        </entity>
-      </node>
-      <node name="Knight##5" id="976531264">
-        <rotation qw="0.816642" qx="0" qy="-0.577145" qz="0" />
-        <position x="550.695" y="12" z="758.595" />
-        <scale x="1" y="1" z="1" />
-        <entity name="knightB##3" id="315012064" castshadows="true" meshFile="knightB.mesh" type="Enemy" subType="Knight" animationTree="data/animations/knight.xml" life="100" points="100" speed="50" damage="2" specialDamage="0" height="11" dieMesh="nakedDie.mesh" dieAnimation="Die" physicMesh="enemyBasicPhysicBody.mesh">
-          <rotation qw="1" qx="0" qy="0" qz="0" />
-          <position x="0" y="0" z="0" />
-          <scale x="1" y="1" z="1" />
-          <subentities>
-            <subentity materialName="knightB_material" index="0" visible="true" />
-          </subentities>
-        </entity>
-      </node>
-      <node name="Chicken#13" id="549546752">
-        <rotation qw="1" qx="0" qy="0" qz="0" />
-        <position x="904.628" y="2" z="-440.798" />
-        <scale x="1" y="1" z="1" />
-        <entity name="chicken#18" id="345988320" castshadows="false" meshFile="chicken.mesh" type="Enemy" subType="Chicken" animationTree="data/animations/chicken.xml" life="5" points="25" speed="15" damage="0" specialDamage="0" height="2" dieMesh="chickenDie.mesh" dieAnimation="" physicMesh="enemyBasicPhysicBody.mesh">
-          <rotation qw="1" qx="0" qy="0" qz="0" />
-          <position x="0" y="0" z="0" />
-          <scale x="1" y="1" z="1" />
-          <subentities>
-            <subentity materialName="chicken_material" index="0" visible="true" />
-          </subentities>
-        </entity>
-      </node>
-      <node name="Knight#13" id="612567552">
-        <rotation qw="0.793354" qx="0" qy="0.608761" qz="0" />
-        <position x="993.333" y="12" z="-236.944" />
-        <scale x="1.3" y="1.3" z="1.3" />
-        <entity name="knightB#4" id="396954240" castshadows="true" meshFile="knightB.mesh" type="Enemy" subType="Knight" animationTree="data/animations/knight.xml" life="300" points="500" speed="50" damage="5" specialDamage="0" height="14" dieMesh="nakedDie.mesh" dieAnimation="Die" physicMesh="enemyBasicPhysicBody.mesh">
-          <rotation qw="1" qx="0" qy="0" qz="0" />
-          <position x="0" y="0" z="0" />
-          <scale x="1" y="1" z="1" />
-          <subentities>
-            <subentity materialName="knightB_material_4" index="0" visible="true" />
-          </subentities>
-        </entity>
-      </node>
-      <node name="Knight#7" id="374248480">
-        <rotation qw="0.857167" qx="0" qy="0.515039" qz="0" />
-        <position x="604.697" y="12" z="-436.248" />
-        <scale x="1" y="1" z="1" />
-        <entity name="knightA#18" id="131626336" castshadows="true" meshFile="knightA.mesh" type="Enemy" subType="Knight" animationTree="data/animations/knight.xml" life="100" points="100" speed="50" damage="2" specialDamage="0" height="11" dieMesh="nakedDie.mesh" dieAnimation="Die" physicMesh="enemyBasicPhysicBody.mesh">
-          <rotation qw="1" qx="0" qy="0" qz="0" />
-          <position x="0" y="0" z="0" />
-          <scale x="1" y="1" z="1" />
-          <subentities>
-            <subentity materialName="knightA_material_3" index="0" visible="true" />
-          </subentities>
-        </entity>
-      </node>
-      <node name="Chicken#8" id="755851904">
-        <rotation qw="0.882948" qx="0" qy="0.469472" qz="0" />
-        <position x="334.769" y="2" z="-662.418" />
-        <scale x="1" y="1" z="1" />
-        <entity name="chicken#13" id="721915392" castshadows="false" meshFile="chicken.mesh" type="Enemy" subType="Chicken" animationTree="data/animations/chicken.xml" life="5" points="25" speed="15" damage="0" specialDamage="0" height="2" dieMesh="chickenDie.mesh" dieAnimation="" physicMesh="enemyBasicPhysicBody.mesh">
-          <rotation qw="1" qx="0" qy="0" qz="0" />
-          <position x="0" y="0" z="0" />
-          <scale x="1" y="1" z="1" />
-          <subentities>
-            <subentity materialName="chicken_material" index="0" visible="true" />
-          </subentities>
-        </entity>
-      </node>
-      <node name="Knight##10" id="696218752">
-        <rotation qw="-0.725373" qx="0" qy="-0.688356" qz="0" />
-        <position x="552.939" y="12" z="-578.709" />
-        <scale x="1" y="1" z="1" />
-        <entity name="knightB##6" id="290353088" castshadows="true" meshFile="knightB.mesh" type="Enemy" subType="Knight" animationTree="data/animations/knight.xml" life="100" points="100" speed="50" damage="2" specialDamage="0" height="11" dieMesh="nakedDie.mesh" dieAnimation="Die" physicMesh="enemyBasicPhysicBody.mesh">
-          <rotation qw="1" qx="0" qy="0" qz="0" />
-          <position x="0" y="0" z="0" />
-          <scale x="1" y="1" z="1" />
-          <subentities>
-            <subentity materialName="knightB_material_2" index="0" visible="true" />
-          </subentities>
-        </entity>
-      </node>
-      <node name="Chicken#3" id="857936320">
-        <rotation qw="1" qx="0" qy="0" qz="0" />
-        <position x="1186.37" y="2" z="423.541" />
-        <scale x="1" y="1" z="1" />
-        <entity name="chicken#8" id="936765696" castshadows="false" meshFile="chicken.mesh" type="Enemy" subType="Chicken" animationTree="data/animations/chicken.xml" life="5" points="25" speed="15" damage="0" specialDamage="0" height="2" dieMesh="chickenDie.mesh" dieAnimation="" physicMesh="enemyBasicPhysicBody.mesh">
-          <rotation qw="1" qx="0" qy="0" qz="0" />
-          <position x="0" y="0" z="0" />
-          <scale x="1" y="1" z="1" />
-          <subentities>
-            <subentity materialName="chicken_material" index="0" visible="true" />
-          </subentities>
-        </entity>
-      </node>
-      <node name="Knight#27" id="839442112">
-        <rotation qw="0.92881" qx="0" qy="-0.370557" qz="0" />
-        <position x="1270.42" y="12" z="119.841" />
-        <scale x="1" y="1" z="1" />
-        <entity name="knightA#8" id="397656160" castshadows="true" meshFile="knightA.mesh" type="Enemy" subType="Knight" animationTree="data/animations/knight.xml" life="150" points="200" speed="50" damage="2" specialDamage="0" height="11" dieMesh="nakedDie.mesh" dieAnimation="Die" physicMesh="enemyBasicPhysicBody.mesh">
-          <rotation qw="1" qx="0" qy="0" qz="0" />
-          <position x="0" y="0" z="0" />
-          <scale x="1" y="1" z="1" />
-          <subentities>
-            <subentity materialName="knightA_material_5" index="0" visible="true" />
-          </subentities>
-        </entity>
-      </node>
-      <node name="Knight#19" id="345561088">
-        <rotation qw="0.985556" qx="0" qy="-0.16935" qz="0" />
-        <position x="864.31" y="12" z="662.155" />
-        <scale x="1" y="1" z="1" />
-        <entity name="knightC#5" id="567278016" castshadows="true" meshFile="knightC.mesh" type="Enemy" subType="Knight" animationTree="data/animations/knight.xml" life="100" points="100" speed="50" damage="2" specialDamage="0" height="11" dieMesh="nakedDie.mesh" dieAnimation="Die" physicMesh="enemyBasicPhysicBody.mesh">
+        <entity name="knightC#20" id="297799616" castshadows="true" meshFile="knightC.mesh" type="Enemy" subType="Knight" animationTree="data/animations/knight.xml" life="100" points="100" speed="50" damage="1" specialDamage="0" height="13" dieMesh="nakedDie.mesh" dieAnimation="Die">
           <rotation qw="1" qx="0" qy="0" qz="0" />
           <position x="0" y="0" z="0" />
           <scale x="1" y="1" z="1" />
@@ -7015,24 +6196,50 @@
           </subentities>
         </entity>
       </node>
-      <node name="Naked##6" id="109378336">
+      <node name="Chicken#09" id="549546752">
         <rotation qw="1" qx="0" qy="0" qz="0" />
-        <position x="861.223" y="12" z="583.331" />
+        <position x="904.628" y="2" z="-440.798" />
         <scale x="1" y="1" z="1" />
-        <entity name="naked##6" id="907437376" castshadows="true" meshFile="naked.mesh" type="Enemy" subType="Naked" animationTree="data/animations/naked.xml" life="50" points="150" speed="60" damage="0" specialDamage="0" height="11" dieMesh="nakedDie.mesh" dieAnimation="Die" physicMesh="enemyBasicPhysicBody.mesh">
+        <entity name="chicken#09" id="345988320" castshadows="false" meshFile="chicken.mesh" type="Enemy" subType="Chicken" animationTree="data/animations/chicken.xml" life="5" points="25" speed="30" damage="0" specialDamage="0" height="2" dieMesh="chickenDie.mesh" dieAnimation="">
           <rotation qw="1" qx="0" qy="0" qz="0" />
           <position x="0" y="0" z="0" />
           <scale x="1" y="1" z="1" />
           <subentities>
-            <subentity materialName="Skin" index="0" visible="true" />
+            <subentity materialName="chicken_material" index="0" visible="true" />
           </subentities>
         </entity>
       </node>
-      <node name="Wizard#00" id="140263072">
-        <rotation qw="0.948323" qx="0" qy="0.317305" qz="0" />
-        <position x="1231.35" y="12" z="70.2803" />
+      <node name="ChickenBig" id="517014080">
+        <rotation qw="0.488621" qx="0" qy="0.872496" qz="0" />
+        <position x="126.535" y="3.5" z="-302.753" />
+        <scale x="5" y="5" z="5" />
+        <entity name="chicken#100" id="662984064" castshadows="false" meshFile="chicken.mesh" type="Enemy" subType="Chicken" animationTree="data/animations/chicken.xml" life="5" points="500" speed="5" damage="0" specialDamage="0" height="10" dieMesh="chickenDie.mesh" dieAnimation="">
+          <rotation qw="1" qx="0" qy="0" qz="0" />
+          <position x="0" y="0" z="0" />
+          <scale x="1" y="1" z="1" />
+          <subentities>
+            <subentity materialName="chicken_material" index="0" visible="true" />
+          </subentities>
+        </entity>
+      </node>
+      <node name="Knight#18" id="869045056">
+        <rotation qw="0.836286" qx="0" qy="-0.548293" qz="0" />
+        <position x="909.089" y="12" z="706.536" />
         <scale x="1" y="1" z="1" />
-        <entity name="wizard#0" id="189947200" castshadows="true" meshFile="wizard.mesh" type="Enemy" subType="Wizard" animationTree="data/animations/wizard.xml" life="150" points="250" speed="60" damage="4" specialDamage="10" height="11" dieMesh="nakedDie.mesh" dieAnimation="Die" physicMesh="enemyBasicPhysicBody.mesh">
+        <entity name="knightA#18" id="851222272" castshadows="true" meshFile="knightA.mesh" type="Enemy" subType="Knight" animationTree="data/animations/knight.xml" life="100" points="100" speed="50" damage="1" specialDamage="0" height="13" dieMesh="nakedDie.mesh" dieAnimation="Die">
+          <rotation qw="1" qx="0" qy="0" qz="0" />
+          <position x="0" y="0" z="0" />
+          <scale x="1" y="1" z="1" />
+          <subentities>
+            <subentity materialName="knightA_material" index="0" visible="true" />
+          </subentities>
+        </entity>
+      </node>
+      <node name="Wizard#01" id="956114432">
+        <rotation qw="0.418659" qx="0" qy="0.908143" qz="0" />
+        <position x="154.559" y="12" z="-331.664" />
+        <scale x="1" y="1" z="1" />
+        <entity name="wizard#01" id="72267832" castshadows="true" meshFile="wizard.mesh" type="Enemy" subType="Wizard" animationTree="data/animations/wizard.xml" life="150" points="250" speed="50" damage="3" specialDamage="6" height="13" dieMesh="nakedDie.mesh" dieAnimation="Die">
           <rotation qw="1" qx="0" qy="0" qz="0" />
           <position x="0" y="0" z="0" />
           <scale x="1" y="1" z="1" />
@@ -7041,50 +6248,24 @@
           </subentities>
         </entity>
       </node>
-      <node name="Chicken#6" id="732016960">
-        <rotation qw="0.27144" qx="0" qy="0.962455" qz="0" />
-        <position x="340.394" y="2" z="-500.519" />
+      <node name="Knight#58" id="686147648">
+        <rotation qw="-0.725373" qx="0" qy="-0.688356" qz="0" />
+        <position x="504.81" y="12" z="-493.171" />
         <scale x="1" y="1" z="1" />
-        <entity name="chicken#11" id="405590976" castshadows="false" meshFile="chicken.mesh" type="Enemy" subType="Chicken" animationTree="data/animations/chicken.xml" life="5" points="25" speed="15" damage="0" specialDamage="0" height="2" dieMesh="chickenDie.mesh" dieAnimation="" physicMesh="enemyBasicPhysicBody.mesh">
+        <entity name="knightB#58" id="543443072" castshadows="true" meshFile="knightB.mesh" type="Enemy" subType="Knight" animationTree="data/animations/knight.xml" life="100" points="100" speed="50" damage="1" specialDamage="0" height="13" dieMesh="nakedDie.mesh" dieAnimation="Die">
           <rotation qw="1" qx="0" qy="0" qz="0" />
           <position x="0" y="0" z="0" />
           <scale x="1" y="1" z="1" />
           <subentities>
-            <subentity materialName="chicken_material" index="0" visible="true" />
+            <subentity materialName="knightB_material_2" index="0" visible="true" />
           </subentities>
         </entity>
       </node>
-      <node name="Knight##27" id="441724896">
-        <rotation qw="-0.484809" qx="0" qy="-0.87462" qz="0" />
-        <position x="-121.112" y="16.5483" z="-192.031" />
-        <scale x="1.3" y="1.3" z="1.3" />
-        <entity name="knightC##12" id="80111088" castshadows="true" meshFile="knightC.mesh" type="Enemy" subType="Knight" animationTree="data/animations/knight.xml" life="150" points="300" speed="40" damage="3" specialDamage="0" height="15" dieMesh="nakedDie.mesh" dieAnimation="Die" physicMesh="enemyBasicPhysicBody.mesh">
-          <rotation qw="1" qx="0" qy="0" qz="0" />
-          <position x="0" y="0" z="0" />
-          <scale x="1" y="1" z="1" />
-          <subentities>
-            <subentity materialName="knightC_material_4" index="0" visible="true" />
-          </subentities>
-        </entity>
-      </node>
-      <node name="Knight#01" id="624774912">
-        <rotation qw="0.841039" qx="0" qy="-0.540974" qz="0" />
-        <position x="481.488" y="13.2234" z="757.197" />
+      <node name="Naked#02" id="457960768">
+        <rotation qw="0.83147" qx="0" qy="-0.55557" qz="0" />
+        <position x="1140.02" y="12" z="554.545" />
         <scale x="1" y="1" z="1" />
-        <entity name="knightA#1" id="584612544" castshadows="true" meshFile="knightA.mesh" type="Enemy" subType="Knight" animationTree="data/animations/knight.xml" life="100" points="100" speed="50" damage="2" specialDamage="0" height="11" dieMesh="nakedDie.mesh" dieAnimation="Die" physicMesh="enemyBasicPhysicBody.mesh">
-          <rotation qw="1" qx="0" qy="0" qz="0" />
-          <position x="0" y="0" z="0" />
-          <scale x="1" y="1" z="1" />
-          <subentities>
-            <subentity materialName="knightA_material" index="0" visible="true" />
-          </subentities>
-        </entity>
-      </node>
-      <node name="Naked##3" id="155888544">
-        <rotation qw="1" qx="0" qy="0" qz="0" />
-        <position x="670.099" y="12" z="-418.78" />
-        <scale x="1" y="1" z="1" />
-        <entity name="naked##3" id="644337280" castshadows="true" meshFile="naked.mesh" type="Enemy" subType="Naked" animationTree="data/animations/naked.xml" life="50" points="150" speed="60" damage="0" specialDamage="0" height="11" dieMesh="nakedDie.mesh" dieAnimation="Die" physicMesh="enemyBasicPhysicBody.mesh">
+        <entity name="naked#02" id="744438016" castshadows="true" meshFile="naked.mesh" type="Enemy" subType="Naked" animationTree="data/animations/naked.xml" life="35" points="150" speed="50" damage="0" specialDamage="0" height="13" dieMesh="nakedDie.mesh" dieAnimation="Die">
           <rotation qw="1" qx="0" qy="0" qz="0" />
           <position x="0" y="0" z="0" />
           <scale x="1" y="1" z="1" />
@@ -7093,11 +6274,37 @@
           </subentities>
         </entity>
       </node>
-      <node name="Chicken#14" id="388622688">
-        <rotation qw="1" qx="0" qy="0" qz="0" />
-        <position x="1141.97" y="2" z="429.596" />
+      <node name="Knight#46" id="402417056">
+        <rotation qw="0.986286" qx="0" qy="-0.165047" qz="0" />
+        <position x="906.297" y="12" z="-379.601" />
         <scale x="1" y="1" z="1" />
-        <entity name="chicken#20" id="49958800" castshadows="false" meshFile="chicken.mesh" type="Enemy" subType="Chicken" animationTree="data/animations/chicken.xml" life="5" points="25" speed="15" damage="0" specialDamage="0" height="2" dieMesh="chickenDie.mesh" dieAnimation="" physicMesh="enemyBasicPhysicBody.mesh">
+        <entity name="knightB#46" id="253700368" castshadows="true" meshFile="knightB.mesh" type="Enemy" subType="Knight" animationTree="data/animations/knight.xml" life="150" points="200" speed="50" damage="2" specialDamage="0" height="13" dieMesh="nakedDie.mesh" dieAnimation="Die">
+          <rotation qw="1" qx="0" qy="0" qz="0" />
+          <position x="0" y="0" z="0" />
+          <scale x="1" y="1" z="1" />
+          <subentities>
+            <subentity materialName="knightB_material_3" index="0" visible="true" />
+          </subentities>
+        </entity>
+      </node>
+      <node name="Wizard" id="140263072">
+        <rotation qw="0.948323" qx="0" qy="0.317305" qz="0" />
+        <position x="1219.74" y="12" z="59.0333" />
+        <scale x="1" y="1" z="1" />
+        <entity name="wizard" id="189947200" castshadows="true" meshFile="wizard.mesh" type="Enemy" subType="Wizard" animationTree="data/animations/wizard.xml" life="150" points="250" speed="50" damage="3" specialDamage="6" height="13" dieMesh="nakedDie.mesh" dieAnimation="Die">
+          <rotation qw="1" qx="0" qy="0" qz="0" />
+          <position x="0" y="0" z="0" />
+          <scale x="1" y="1" z="1" />
+          <subentities>
+            <subentity materialName="wizard_material" index="0" visible="true" />
+          </subentities>
+        </entity>
+      </node>
+      <node name="Chicken#17" id="755851904">
+        <rotation qw="0.882948" qx="0" qy="0.469472" qz="0" />
+        <position x="334.769" y="2" z="-662.418" />
+        <scale x="1" y="1" z="1" />
+        <entity name="chicken#17" id="721915392" castshadows="false" meshFile="chicken.mesh" type="Enemy" subType="Chicken" animationTree="data/animations/chicken.xml" life="5" points="25" speed="30" damage="0" specialDamage="0" height="2" dieMesh="chickenDie.mesh" dieAnimation="">
           <rotation qw="1" qx="0" qy="0" qz="0" />
           <position x="0" y="0" z="0" />
           <scale x="1" y="1" z="1" />
@@ -7106,63 +6313,37 @@
           </subentities>
         </entity>
       </node>
-      <node name="Knight##20" id="367564928">
-        <rotation qw="-0.143492" qx="0" qy="-0.989651" qz="0" />
-        <position x="849.351" y="12" z="-297.646" />
+      <node name="Cow" id="699270592">
+        <rotation qw="0.961262" qx="0" qy="0.275637" qz="0" />
+        <position x="358.366" y="16.6313" z="797.335" />
         <scale x="1" y="1" z="1" />
-        <entity name="knightC##8" id="661000384" castshadows="true" meshFile="knightC.mesh" type="Enemy" subType="Knight" animationTree="data/animations/knight.xml" life="100" points="100" speed="50" damage="2" specialDamage="0" height="11" dieMesh="nakedDie.mesh" dieAnimation="Die" physicMesh="enemyBasicPhysicBody.mesh">
+        <entity name="cow" id="486587104" castshadows="false" meshFile="cow.mesh" type="Enemy" subType="Cow" animationTree="data/animations/cow.xml" life="10" points="50" speed="15" damage="0" specialDamage="0" height="14" dieMesh="cowDie.mesh" dieAnimation="">
           <rotation qw="1" qx="0" qy="0" qz="0" />
           <position x="0" y="0" z="0" />
           <scale x="1" y="1" z="1" />
           <subentities>
-            <subentity materialName="knightC_material_4" index="0" visible="true" />
+            <subentity materialName="CowMaterial" index="0" visible="true" />
           </subentities>
         </entity>
       </node>
-      <node name="Knight#04" id="375133504">
-        <rotation qw="0.809017" qx="0" qy="-0.587785" qz="0" />
-        <position x="464.968" y="13.2234" z="718.783" />
+      <node name="Knight" id="297280800">
+        <rotation qw="0.92881" qx="0" qy="-0.370557" qz="0" />
+        <position x="402.688" y="13.2234" z="738.392" />
         <scale x="1" y="1" z="1" />
-        <entity name="knightC#0" id="80385752" castshadows="true" meshFile="knightC.mesh" type="Enemy" subType="Knight" animationTree="data/animations/knight.xml" life="100" points="100" speed="50" damage="2" specialDamage="0" height="11" dieMesh="nakedDie.mesh" dieAnimation="Die" physicMesh="enemyBasicPhysicBody.mesh">
+        <entity name="knightA" id="840144064" castshadows="true" meshFile="knightA.mesh" type="Enemy" subType="Knight" animationTree="data/animations/knight.xml" life="100" points="100" speed="50" damage="1" specialDamage="0" height="13" dieMesh="nakedDie.mesh" dieAnimation="Die">
           <rotation qw="1" qx="0" qy="0" qz="0" />
           <position x="0" y="0" z="0" />
           <scale x="1" y="1" z="1" />
           <subentities>
-            <subentity materialName="knightC_material" index="0" visible="true" />
+            <subentity materialName="knightA_material" index="0" visible="true" />
           </subentities>
         </entity>
       </node>
-      <node name="Knight#14" id="391186272">
-        <rotation qw="-0.872496" qx="0" qy="-0.488622" qz="0" />
-        <position x="1028.04" y="12" z="-269.264" />
-        <scale x="1.3" y="1.3" z="1.3" />
-        <entity name="knightB#5" id="350260928" castshadows="true" meshFile="knightB.mesh" type="Enemy" subType="Knight" animationTree="data/animations/knight.xml" life="300" points="500" speed="50" damage="5" specialDamage="0" height="14" dieMesh="nakedDie.mesh" dieAnimation="Die" physicMesh="enemyBasicPhysicBody.mesh">
-          <rotation qw="1" qx="0" qy="0" qz="0" />
-          <position x="0" y="0" z="0" />
-          <scale x="1" y="1" z="1" />
-          <subentities>
-            <subentity materialName="knightB_material_4" index="0" visible="true" />
-          </subentities>
-        </entity>
-      </node>
-      <node name="Knight#33" id="966612736">
-        <rotation qw="0.942642" qx="0" qy="-0.333806" qz="0" />
-        <position x="1232.65" y="12" z="105.603" />
-        <scale x="1" y="1" z="1" />
-        <entity name="knightC#9" id="683187392" castshadows="true" meshFile="knightC.mesh" type="Enemy" subType="Knight" animationTree="data/animations/knight.xml" life="150" points="200" speed="50" damage="2" specialDamage="0" height="11" dieMesh="nakedDie.mesh" dieAnimation="Die" physicMesh="enemyBasicPhysicBody.mesh">
-          <rotation qw="1" qx="0" qy="0" qz="0" />
-          <position x="0" y="0" z="0" />
-          <scale x="1" y="1" z="1" />
-          <subentities>
-            <subentity materialName="knightC_material_5" index="0" visible="true" />
-          </subentities>
-        </entity>
-      </node>
-      <node name="Knight##7" id="154881440">
+      <node name="Knight#05" id="727683392">
         <rotation qw="0.816642" qx="0" qy="-0.577145" qz="0" />
-        <position x="650.085" y="12" z="725.318" />
+        <position x="550.674" y="12" z="686.008" />
         <scale x="1" y="1" z="1" />
-        <entity name="knightB##4" id="326914272" castshadows="true" meshFile="knightB.mesh" type="Enemy" subType="Knight" animationTree="data/animations/knight.xml" life="100" points="100" speed="50" damage="2" specialDamage="0" height="11" dieMesh="nakedDie.mesh" dieAnimation="Die" physicMesh="enemyBasicPhysicBody.mesh">
+        <entity name="knightB#05" id="43214208" castshadows="true" meshFile="knightB.mesh" type="Enemy" subType="Knight" animationTree="data/animations/knight.xml" life="100" points="100" speed="50" damage="1" specialDamage="0" height="13" dieMesh="nakedDie.mesh" dieAnimation="Die">
           <rotation qw="1" qx="0" qy="0" qz="0" />
           <position x="0" y="0" z="0" />
           <scale x="1" y="1" z="1" />
@@ -7171,37 +6352,24 @@
           </subentities>
         </entity>
       </node>
-      <node name="Knight#2" id="869045056">
-        <rotation qw="0.836286" qx="0" qy="-0.548293" qz="0" />
-        <position x="909.089" y="12" z="706.536" />
+      <node name="Knight#17" id="151554912">
+        <rotation qw="0.991445" qx="0" qy="-0.130526" qz="0" />
+        <position x="842.197" y="12" z="610.231" />
         <scale x="1" y="1" z="1" />
-        <entity name="knightA#14" id="851222272" castshadows="true" meshFile="knightA.mesh" type="Enemy" subType="Knight" animationTree="data/animations/knight.xml" life="100" points="100" speed="50" damage="2" specialDamage="0" height="11" dieMesh="nakedDie.mesh" dieAnimation="Die" physicMesh="enemyBasicPhysicBody.mesh">
+        <entity name="knightB#17" id="271889376" castshadows="true" meshFile="knightB.mesh" type="Enemy" subType="Knight" animationTree="data/animations/knight.xml" life="100" points="100" speed="50" damage="1" specialDamage="0" height="13" dieMesh="nakedDie.mesh" dieAnimation="Die">
           <rotation qw="1" qx="0" qy="0" qz="0" />
           <position x="0" y="0" z="0" />
           <scale x="1" y="1" z="1" />
           <subentities>
-            <subentity materialName="knightA_material" index="0" visible="true" />
+            <subentity materialName="knightB_material" index="0" visible="true" />
           </subentities>
         </entity>
       </node>
-      <node name="Chicken#11" id="615710912">
-        <rotation qw="1" qx="0" qy="0" qz="0" />
-        <position x="344.135" y="2" z="816.462" />
+      <node name="Knight#32" id="699758912">
+        <rotation qw="0.816642" qx="0" qy="-0.577145" qz="0" />
+        <position x="1318.12" y="12" z="133.083" />
         <scale x="1" y="1" z="1" />
-        <entity name="chicken#19" id="654896704" castshadows="false" meshFile="chicken.mesh" type="Enemy" subType="Chicken" animationTree="data/animations/chicken.xml" life="5" points="25" speed="15" damage="0" specialDamage="0" height="2" dieMesh="chickenDie.mesh" dieAnimation="" physicMesh="enemyBasicPhysicBody.mesh">
-          <rotation qw="1" qx="0" qy="0" qz="0" />
-          <position x="0" y="0" z="0" />
-          <scale x="1" y="1" z="1" />
-          <subentities>
-            <subentity materialName="chicken_material" index="0" visible="true" />
-          </subentities>
-        </entity>
-      </node>
-      <node name="Knight##13" id="625171648">
-        <rotation qw="-0.725373" qx="0" qy="-0.688356" qz="0" />
-        <position x="535.656" y="12" z="-547.256" />
-        <scale x="1.5" y="1.5" z="1.5" />
-        <entity name="knightB##8" id="437726976" castshadows="true" meshFile="knightB.mesh" type="Enemy" subType="Knight" animationTree="data/animations/knight.xml" life="250" points="300" speed="40" damage="5" specialDamage="0" height="14" dieMesh="nakedDie.mesh" dieAnimation="Die" physicMesh="enemyBasicPhysicBody.mesh">
+        <entity name="knightB#32" id="141575360" castshadows="true" meshFile="knightB.mesh" type="Enemy" subType="Knight" animationTree="data/animations/knight.xml" life="100" points="100" speed="50" damage="1" specialDamage="0" height="13" dieMesh="nakedDie.mesh" dieAnimation="Die">
           <rotation qw="1" qx="0" qy="0" qz="0" />
           <position x="0" y="0" z="0" />
           <scale x="1" y="1" z="1" />
@@ -7210,11 +6378,24 @@
           </subentities>
         </entity>
       </node>
-      <node name="Chicken#00" id="941068800">
-        <rotation qw="1" qx="0" qy="0" qz="0" />
-        <position x="977.393" y="2" z="590.892" />
+      <node name="Knight#64" id="617145280">
+        <rotation qw="0.941176" qx="0" qy="0.337917" qz="0" />
+        <position x="229.202" y="12" z="-509.693" />
         <scale x="1" y="1" z="1" />
-        <entity name="chicken#0" id="115604120" castshadows="false" meshFile="chicken.mesh" type="Enemy" subType="Chicken" animationTree="data/animations/chicken.xml" life="5" points="25" speed="15" damage="0" specialDamage="0" height="2" dieMesh="chickenDie.mesh" dieAnimation="" physicMesh="enemyBasicPhysicBody.mesh">
+        <entity name="knightA#64" id="217566464" castshadows="true" meshFile="knightA.mesh" type="Enemy" subType="Knight" animationTree="data/animations/knight.xml" life="150" points="200" speed="50" damage="2" specialDamage="0" height="13" dieMesh="nakedDie.mesh" dieAnimation="Die">
+          <rotation qw="1" qx="0" qy="0" qz="0" />
+          <position x="0" y="0" z="0" />
+          <scale x="1" y="1" z="1" />
+          <subentities>
+            <subentity materialName="knightA_material_5" index="0" visible="true" />
+          </subentities>
+        </entity>
+      </node>
+      <node name="Chicken#10" id="388622688">
+        <rotation qw="1" qx="0" qy="0" qz="0" />
+        <position x="1141.97" y="2" z="429.596" />
+        <scale x="1" y="1" z="1" />
+        <entity name="chicken#10" id="49958800" castshadows="false" meshFile="chicken.mesh" type="Enemy" subType="Chicken" animationTree="data/animations/chicken.xml" life="5" points="25" speed="30" damage="0" specialDamage="0" height="2" dieMesh="chickenDie.mesh" dieAnimation="">
           <rotation qw="1" qx="0" qy="0" qz="0" />
           <position x="0" y="0" z="0" />
           <scale x="1" y="1" z="1" />
@@ -7223,11 +6404,167 @@
           </subentities>
         </entity>
       </node>
-      <node name="Knight#11" id="284218880">
-        <rotation qw="0.152123" qx="0" qy="0.988362" qz="0" />
-        <position x="1181.79" y="12" z="210.337" />
+      <node name="Cow#00" id="468459136">
+        <rotation qw="0.766044" qx="0" qy="-0.642788" qz="0" />
+        <position x="687.447" y="18.715" z="817.143" />
         <scale x="1" y="1" z="1" />
-        <entity name="knightA#4" id="422040448" castshadows="true" meshFile="knightA.mesh" type="Enemy" subType="Knight" animationTree="data/animations/knight.xml" life="150" points="150" speed="50" damage="2" specialDamage="0" height="11" dieMesh="nakedDie.mesh" dieAnimation="Die" physicMesh="enemyBasicPhysicBody.mesh">
+        <entity name="cow#0" id="385235136" castshadows="false" meshFile="cow.mesh" type="Enemy" subType="Cow" animationTree="data/animations/cow.xml" life="10" points="50" speed="15" damage="0" specialDamage="0" height="14" dieMesh="cowDie.mesh" dieAnimation="">
+          <rotation qw="1" qx="0" qy="0" qz="0" />
+          <position x="0" y="0" z="0" />
+          <scale x="1" y="1" z="1" />
+          <subentities>
+            <subentity materialName="CowMaterial" index="0" visible="true" />
+          </subentities>
+        </entity>
+      </node>
+      <node name="Chicken#01" id="484939136">
+        <rotation qw="1" qx="0" qy="0" qz="0" />
+        <position x="1029.82" y="2" z="555.245" />
+        <scale x="1" y="1" z="1" />
+        <entity name="chicken#01" id="205359056" castshadows="false" meshFile="chicken.mesh" type="Enemy" subType="Chicken" animationTree="data/animations/chicken.xml" life="5" points="25" speed="30" damage="0" specialDamage="0" height="2" dieMesh="chickenDie.mesh" dieAnimation="">
+          <rotation qw="1" qx="0" qy="0" qz="0" />
+          <position x="0" y="0" z="0" />
+          <scale x="1" y="1" z="1" />
+          <subentities>
+            <subentity materialName="chicken_material" index="0" visible="true" />
+          </subentities>
+        </entity>
+      </node>
+      <node name="Knight#10" id="911557376">
+        <rotation qw="0.816642" qx="0" qy="-0.577145" qz="0" />
+        <position x="657.798" y="12" z="777.732" />
+        <scale x="1" y="1" z="1" />
+        <entity name="knightB#10" id="614703808" castshadows="true" meshFile="knightB.mesh" type="Enemy" subType="Knight" animationTree="data/animations/knight.xml" life="100" points="100" speed="50" damage="1" specialDamage="0" height="13" dieMesh="nakedDie.mesh" dieAnimation="Die">
+          <rotation qw="1" qx="0" qy="0" qz="0" />
+          <position x="0" y="0" z="0" />
+          <scale x="1" y="1" z="1" />
+          <subentities>
+            <subentity materialName="knightB_material" index="0" visible="true" />
+          </subentities>
+        </entity>
+      </node>
+      <node name="Knight#37" id="877254528">
+        <rotation qw="0.816642" qx="0" qy="-0.577145" qz="0" />
+        <position x="1253.07" y="12" z="33.1249" />
+        <scale x="1" y="1" z="1" />
+        <entity name="knightC#37" id="821680384" castshadows="true" meshFile="knightC.mesh" type="Enemy" subType="Knight" animationTree="data/animations/knight.xml" life="100" points="100" speed="50" damage="1" specialDamage="0" height="13" dieMesh="nakedDie.mesh" dieAnimation="Die">
+          <rotation qw="1" qx="0" qy="0" qz="0" />
+          <position x="0" y="0" z="0" />
+          <scale x="1" y="1" z="1" />
+          <subentities>
+            <subentity materialName="knightC_material_5" index="0" visible="true" />
+          </subentities>
+        </entity>
+      </node>
+      <node name="Knight#48" id="14679404">
+        <rotation qw="0.998135" qx="0" qy="0.061049" qz="0" />
+        <position x="745.609" y="12" z="-659.777" />
+        <scale x="1" y="1" z="1" />
+        <entity name="knightC#48" id="126468704" castshadows="true" meshFile="knightC.mesh" type="Enemy" subType="Knight" animationTree="data/animations/knight.xml" life="150" points="200" speed="50" damage="2" specialDamage="0" height="13" dieMesh="nakedDie.mesh" dieAnimation="Die">
+          <rotation qw="1" qx="0" qy="0" qz="0" />
+          <position x="0" y="0" z="0" />
+          <scale x="1" y="1" z="1" />
+          <subentities>
+            <subentity materialName="knightC_material_3" index="0" visible="true" />
+          </subentities>
+        </entity>
+      </node>
+      <node name="Knight#50" id="900601216">
+        <rotation qw="0.816642" qx="0" qy="-0.577145" qz="0" />
+        <position x="690.026" y="12" z="-507.162" />
+        <scale x="1" y="1" z="1" />
+        <entity name="knightC#50" id="144810336" castshadows="true" meshFile="knightC.mesh" type="Enemy" subType="Knight" animationTree="data/animations/knight.xml" life="150" points="200" speed="50" damage="2" specialDamage="0" height="13" dieMesh="nakedDie.mesh" dieAnimation="Die">
+          <rotation qw="1" qx="0" qy="0" qz="0" />
+          <position x="0" y="0" z="0" />
+          <scale x="1" y="1" z="1" />
+          <subentities>
+            <subentity materialName="knightC_material_3" index="0" visible="true" />
+          </subentities>
+        </entity>
+      </node>
+      <node name="Cow#07" id="569200704">
+        <rotation qw="0.876727" qx="0" qy="-0.480989" qz="0" />
+        <position x="1141.14" y="17.7635" z="468.042" />
+        <scale x="1" y="1" z="1" />
+        <entity name="cow#7" id="305825984" castshadows="false" meshFile="cow.mesh" type="Enemy" subType="Cow" animationTree="data/animations/cow.xml" life="10" points="50" speed="15" damage="0" specialDamage="0" height="14" dieMesh="cowDie.mesh" dieAnimation="">
+          <rotation qw="1" qx="0" qy="0" qz="0" />
+          <position x="0" y="0" z="0" />
+          <scale x="1" y="1" z="1" />
+          <subentities>
+            <subentity materialName="CowMaterial" index="0" visible="true" />
+          </subentities>
+        </entity>
+      </node>
+      <node name="Knight#23" id="123325296">
+        <rotation qw="0.92881" qx="0" qy="-0.370557" qz="0" />
+        <position x="1124.93" y="12" z="229.678" />
+        <scale x="1" y="1" z="1" />
+        <entity name="knightA#23" id="109927672" castshadows="true" meshFile="knightA.mesh" type="Enemy" subType="Knight" animationTree="data/animations/knight.xml" life="100" points="100" speed="50" damage="1" specialDamage="0" height="13" dieMesh="nakedDie.mesh" dieAnimation="Die">
+          <rotation qw="1" qx="0" qy="0" qz="0" />
+          <position x="0" y="0" z="0" />
+          <scale x="1" y="1" z="1" />
+          <subentities>
+            <subentity materialName="knightA_material_5" index="0" visible="true" />
+          </subentities>
+        </entity>
+      </node>
+      <node name="Chicken#04" id="426221504">
+        <rotation qw="0.92388" qx="0" qy="-0.382683" qz="0" />
+        <position x="1076.52" y="2" z="540.132" />
+        <scale x="1" y="1" z="1" />
+        <entity name="chicken#04" id="104678488" castshadows="false" meshFile="chicken.mesh" type="Enemy" subType="Chicken" animationTree="data/animations/chicken.xml" life="5" points="25" speed="30" damage="0" specialDamage="0" height="2" dieMesh="chickenDie.mesh" dieAnimation="">
+          <rotation qw="1" qx="0" qy="0" qz="0" />
+          <position x="0" y="0" z="0" />
+          <scale x="1" y="1" z="1" />
+          <subentities>
+            <subentity materialName="chicken_material" index="0" visible="true" />
+          </subentities>
+        </entity>
+      </node>
+      <node name="Knight#55" id="436719872">
+        <rotation qw="-0.725373" qx="0" qy="-0.688356" qz="0" />
+        <position x="521.106" y="12" z="-593.425" />
+        <scale x="1" y="1" z="1" />
+        <entity name="knightC#55" id="201940976" castshadows="true" meshFile="knightC.mesh" type="Enemy" subType="Knight" animationTree="data/animations/knight.xml" life="100" points="100" speed="50" damage="1" specialDamage="0" height="13" dieMesh="nakedDie.mesh" dieAnimation="Die">
+          <rotation qw="1" qx="0" qy="0" qz="0" />
+          <position x="0" y="0" z="0" />
+          <scale x="1" y="1" z="1" />
+          <subentities>
+            <subentity materialName="knightC_material_2" index="0" visible="true" />
+          </subentities>
+        </entity>
+      </node>
+      <node name="Naked#01" id="726493120">
+        <rotation qw="1" qx="0" qy="0" qz="0" />
+        <position x="1285.88" y="12" z="363.561" />
+        <scale x="1" y="1" z="1" />
+        <entity name="naked#01" id="743736064" castshadows="true" meshFile="naked.mesh" type="Enemy" subType="Naked" animationTree="data/animations/naked.xml" life="35" points="150" speed="50" damage="0" specialDamage="0" height="13" dieMesh="nakedDie.mesh" dieAnimation="Die">
+          <rotation qw="1" qx="0" qy="0" qz="0" />
+          <position x="0" y="0" z="0" />
+          <scale x="1" y="1" z="1" />
+          <subentities>
+            <subentity materialName="Skin" index="0" visible="true" />
+          </subentities>
+        </entity>
+      </node>
+      <node name="Knight#26" id="26703696">
+        <rotation qw="0.350207" qx="0" qy="0.936672" qz="0" />
+        <position x="1158.98" y="12" z="203.168" />
+        <scale x="1" y="1" z="1" />
+        <entity name="knightB#26" id="578569920" castshadows="true" meshFile="knightB.mesh" type="Enemy" subType="Knight" animationTree="data/animations/knight.xml" life="150" points="200" speed="50" damage="2" specialDamage="0" height="13" dieMesh="nakedDie.mesh" dieAnimation="Die">
+          <rotation qw="1" qx="0" qy="0" qz="0" />
+          <position x="0" y="0" z="0" />
+          <scale x="1" y="1" z="1" />
+          <subentities>
+            <subentity materialName="knightB_material_3" index="0" visible="true" />
+          </subentities>
+        </entity>
+      </node>
+      <node name="Knight#45" id="847071744">
+        <rotation qw="0.983255" qx="0" qy="0.182236" qz="0" />
+        <position x="873.593" y="12" z="-360.818" />
+        <scale x="1" y="1" z="1" />
+        <entity name="knightA#45" id="864314752" castshadows="true" meshFile="knightA.mesh" type="Enemy" subType="Knight" animationTree="data/animations/knight.xml" life="150" points="200" speed="50" damage="2" specialDamage="0" height="13" dieMesh="nakedDie.mesh" dieAnimation="Die">
           <rotation qw="1" qx="0" qy="0" qz="0" />
           <position x="0" y="0" z="0" />
           <scale x="1" y="1" z="1" />
@@ -7236,24 +6573,50 @@
           </subentities>
         </entity>
       </node>
-      <node name="Knight#5" id="963042112">
-        <rotation qw="-0.544638" qx="0" qy="-0.838671" qz="0" />
-        <position x="498.908" y="12" z="-532.977" />
+      <node name="Chicken#18" id="123020112">
+        <rotation qw="0.915311" qx="0" qy="-0.402747" qz="0" />
+        <position x="330.862" y="2" z="-646.217" />
         <scale x="1" y="1" z="1" />
-        <entity name="knightA#16" id="695760960" castshadows="true" meshFile="knightA.mesh" type="Enemy" subType="Knight" animationTree="data/animations/knight.xml" life="100" points="100" speed="50" damage="2" specialDamage="0" height="11" dieMesh="nakedDie.mesh" dieAnimation="Die" physicMesh="enemyBasicPhysicBody.mesh">
+        <entity name="chicken#18" id="367809088" castshadows="false" meshFile="chicken.mesh" type="Enemy" subType="Chicken" animationTree="data/animations/chicken.xml" life="5" points="25" speed="30" damage="0" specialDamage="0" height="2" dieMesh="chickenDie.mesh" dieAnimation="">
           <rotation qw="1" qx="0" qy="0" qz="0" />
           <position x="0" y="0" z="0" />
           <scale x="1" y="1" z="1" />
           <subentities>
-            <subentity materialName="knightA_material_2" index="0" visible="true" />
+            <subentity materialName="chicken_material" index="0" visible="true" />
           </subentities>
         </entity>
       </node>
-      <node name="Knight##16" id="27832880">
-        <rotation qw="0.999762" qx="0" qy="0.0218154" qz="0" />
-        <position x="974.035" y="12" z="-307.724" />
+      <node name="Cow#08" id="744315904">
+        <rotation qw="0.876727" qx="0" qy="-0.480989" qz="0" />
+        <position x="1098.78" y="16.8216" z="578.224" />
         <scale x="1" y="1" z="1" />
-        <entity name="knightC##6" id="329844064" castshadows="true" meshFile="knightC.mesh" type="Enemy" subType="Knight" animationTree="data/animations/knight.xml" life="100" points="100" speed="50" damage="2" specialDamage="0" height="11" dieMesh="nakedDie.mesh" dieAnimation="Die" physicMesh="enemyBasicPhysicBody.mesh">
+        <entity name="cow#8" id="79348128" castshadows="false" meshFile="cow.mesh" type="Enemy" subType="Cow" animationTree="data/animations/cow.xml" life="10" points="50" speed="15" damage="0" specialDamage="0" height="14" dieMesh="cowDie.mesh" dieAnimation="">
+          <rotation qw="1" qx="0" qy="0" qz="0" />
+          <position x="0" y="0" z="0" />
+          <scale x="1" y="1" z="1" />
+          <subentities>
+            <subentity materialName="CowMaterial" index="0" visible="true" />
+          </subentities>
+        </entity>
+      </node>
+      <node name="Knight#00" id="720908224">
+        <rotation qw="0.816642" qx="0" qy="-0.577145" qz="0" />
+        <position x="450.433" y="13.2234" z="741.615" />
+        <scale x="1" y="1" z="1" />
+        <entity name="knightB#00" id="351298560" castshadows="true" meshFile="knightB.mesh" type="Enemy" subType="Knight" animationTree="data/animations/knight.xml" life="100" points="100" speed="50" damage="1" specialDamage="0" height="13" dieMesh="nakedDie.mesh" dieAnimation="Die">
+          <rotation qw="1" qx="0" qy="0" qz="0" />
+          <position x="0" y="0" z="0" />
+          <scale x="1" y="1" z="1" />
+          <subentities>
+            <subentity materialName="knightB_material" index="0" visible="true" />
+          </subentities>
+        </entity>
+      </node>
+      <node name="Knight#29" id="576677760">
+        <rotation qw="0.979046" qx="0" qy="-0.203642" qz="0" />
+        <position x="1191.55" y="12" z="167.074" />
+        <scale x="1" y="1" z="1" />
+        <entity name="knightC#29" id="455458208" castshadows="true" meshFile="knightC.mesh" type="Enemy" subType="Knight" animationTree="data/animations/knight.xml" life="150" points="200" speed="50" damage="2" specialDamage="0" height="13" dieMesh="nakedDie.mesh" dieAnimation="Die">
           <rotation qw="1" qx="0" qy="0" qz="0" />
           <position x="0" y="0" z="0" />
           <scale x="1" y="1" z="1" />
@@ -7262,24 +6625,63 @@
           </subentities>
         </entity>
       </node>
-      <node name="Knight#09" id="142429888">
-        <rotation qw="0.649448" qx="0" qy="0.760406" qz="0" />
-        <position x="1226.4" y="12" z="149.163" />
-        <scale x="1" y="1" z="1" />
-        <entity name="knightC#3" id="150761440" castshadows="true" meshFile="knightC.mesh" type="Enemy" subType="Knight" animationTree="data/animations/knight.xml" life="150" points="150" speed="50" damage="2" specialDamage="0" height="11" dieMesh="nakedDie.mesh" dieAnimation="Die" physicMesh="enemyBasicPhysicBody.mesh">
+      <node name="Knight#67" id="441724896">
+        <rotation qw="-0.484809" qx="0" qy="-0.87462" qz="0" />
+        <position x="-121.112" y="16.5483" z="-192.031" />
+        <scale x="1.3" y="1.3" z="1.3" />
+        <entity name="knightC#67" id="80111088" castshadows="true" meshFile="knightC.mesh" type="Enemy" subType="Knight" animationTree="data/animations/knight.xml" life="150" points="300" speed="40" damage="3" specialDamage="0" height="15" dieMesh="nakedDie.mesh" dieAnimation="Die" physicMesh="enemyBasicPhysicBody.mesh">
           <rotation qw="1" qx="0" qy="0" qz="0" />
           <position x="0" y="0" z="0" />
           <scale x="1" y="1" z="1" />
           <subentities>
-            <subentity materialName="knightC_material_3" index="0" visible="true" />
+            <subentity materialName="knightC_material_4" index="0" visible="true" />
           </subentities>
         </entity>
       </node>
-      <node name="Knight#22" id="147495952">
+      <node name="Knight#40" id="612567552">
+        <rotation qw="0.793354" qx="0" qy="0.608761" qz="0" />
+        <position x="993.333" y="12" z="-236.944" />
+        <scale x="1.3" y="1.3" z="1.3" />
+        <entity name="knightB#40" id="396954240" castshadows="true" meshFile="knightB.mesh" type="Enemy" subType="Knight" animationTree="data/animations/knight.xml" life="200" points="350" speed="50" damage="3" specialDamage="0" height="13" dieMesh="nakedDie.mesh" dieAnimation="Die">
+          <rotation qw="1" qx="0" qy="0" qz="0" />
+          <position x="0" y="0" z="0" />
+          <scale x="1" y="1" z="1" />
+          <subentities>
+            <subentity materialName="knightB_material_4" index="0" visible="true" />
+          </subentities>
+        </entity>
+      </node>
+      <node name="Chicken#15" id="732016960">
+        <rotation qw="0.27144" qx="0" qy="0.962455" qz="0" />
+        <position x="340.394" y="2" z="-500.519" />
+        <scale x="1" y="1" z="1" />
+        <entity name="chicken#15" id="405590976" castshadows="false" meshFile="chicken.mesh" type="Enemy" subType="Chicken" animationTree="data/animations/chicken.xml" life="5" points="25" speed="30" damage="0" specialDamage="0" height="2" dieMesh="chickenDie.mesh" dieAnimation="">
+          <rotation qw="1" qx="0" qy="0" qz="0" />
+          <position x="0" y="0" z="0" />
+          <scale x="1" y="1" z="1" />
+          <subentities>
+            <subentity materialName="chicken_material" index="0" visible="true" />
+          </subentities>
+        </entity>
+      </node>
+      <node name="Knight#07" id="173924976">
+        <rotation qw="0.816642" qx="0" qy="-0.577145" qz="0" />
+        <position x="594.892" y="12" z="749.717" />
+        <scale x="1" y="1" z="1" />
+        <entity name="knightC#07" id="108554344" castshadows="true" meshFile="knightC.mesh" type="Enemy" subType="Knight" animationTree="data/animations/knight.xml" life="100" points="100" speed="50" damage="1" specialDamage="0" height="13" dieMesh="nakedDie.mesh" dieAnimation="Die">
+          <rotation qw="1" qx="0" qy="0" qz="0" />
+          <position x="0" y="0" z="0" />
+          <scale x="1" y="1" z="1" />
+          <subentities>
+            <subentity materialName="knightB_material" index="0" visible="true" />
+          </subentities>
+        </entity>
+      </node>
+      <node name="Knight#15" id="147495952">
         <rotation qw="0.932008" qx="0" qy="-0.362438" qz="0" />
         <position x="882.003" y="12" z="698.03" />
         <scale x="1" y="1" z="1" />
-        <entity name="knightA#6" id="531327232" castshadows="true" meshFile="knightA.mesh" type="Enemy" subType="Knight" animationTree="data/animations/knight.xml" life="100" points="100" speed="50" damage="2" specialDamage="0" height="11" dieMesh="nakedDie.mesh" dieAnimation="Die" physicMesh="enemyBasicPhysicBody.mesh">
+        <entity name="knightA#15" id="531327232" castshadows="true" meshFile="knightA.mesh" type="Enemy" subType="Knight" animationTree="data/animations/knight.xml" life="100" points="100" speed="50" damage="1" specialDamage="0" height="13" dieMesh="nakedDie.mesh" dieAnimation="Die">
           <rotation qw="1" qx="0" qy="0" qz="0" />
           <position x="0" y="0" z="0" />
           <scale x="1" y="1" z="1" />
@@ -7288,16 +6690,783 @@
           </subentities>
         </entity>
       </node>
-      <node name="Wizard#0" id="524582688">
+      <node name="Knight#34" id="966612736">
+        <rotation qw="0.942642" qx="0" qy="-0.333806" qz="0" />
+        <position x="1232.65" y="12" z="105.603" />
+        <scale x="1" y="1" z="1" />
+        <entity name="knightC#34" id="683187392" castshadows="true" meshFile="knightC.mesh" type="Enemy" subType="Knight" animationTree="data/animations/knight.xml" life="100" points="100" speed="50" damage="1" specialDamage="0" height="13" dieMesh="nakedDie.mesh" dieAnimation="Die">
+          <rotation qw="1" qx="0" qy="0" qz="0" />
+          <position x="0" y="0" z="0" />
+          <scale x="1" y="1" z="1" />
+          <subentities>
+            <subentity materialName="knightC_material_5" index="0" visible="true" />
+          </subentities>
+        </entity>
+      </node>
+      <node name="Knight#62" id="625171648">
+        <rotation qw="-0.725373" qx="0" qy="-0.688356" qz="0" />
+        <position x="535.656" y="12" z="-547.256" />
+        <scale x="1.5" y="1.5" z="1.5" />
+        <entity name="knightB#62" id="437726976" castshadows="true" meshFile="knightB.mesh" type="Enemy" subType="Knight" animationTree="data/animations/knight.xml" life="175" points="350" speed="40" damage="3" specialDamage="0" height="15" dieMesh="nakedDie.mesh" dieAnimation="Die">
+          <rotation qw="1" qx="0" qy="0" qz="0" />
+          <position x="0" y="0" z="0" />
+          <scale x="1" y="1" z="1" />
+          <subentities>
+            <subentity materialName="knightB_material_5" index="0" visible="true" />
+          </subentities>
+        </entity>
+      </node>
+      <node name="Chicken" id="615710912">
+        <rotation qw="1" qx="0" qy="0" qz="0" />
+        <position x="587.206" y="2.37024" z="727.489" />
+        <scale x="1" y="1" z="1" />
+        <entity name="chicken" id="654896704" castshadows="false" meshFile="chicken.mesh" type="Enemy" subType="Chicken" animationTree="data/animations/chicken.xml" life="5" points="25" speed="30" damage="0" specialDamage="0" height="2" dieMesh="chickenDie.mesh" dieAnimation="">
+          <rotation qw="1" qx="0" qy="0" qz="0" />
+          <position x="0" y="0" z="0" />
+          <scale x="1" y="1" z="1" />
+          <subentities>
+            <subentity materialName="chicken_material" index="0" visible="true" />
+          </subentities>
+        </entity>
+      </node>
+      <node name="Naked#09" id="736381120">
+        <rotation qw="1" qx="0" qy="0" qz="0" />
+        <position x="1155.5" y="14.783" z="92.7958" />
+        <scale x="1" y="1" z="1" />
+        <entity name="naked#09" id="739432960" castshadows="true" meshFile="naked.mesh" type="Enemy" subType="Naked" animationTree="data/animations/naked.xml" life="35" points="150" speed="50" damage="0" specialDamage="0" height="13" dieMesh="nakedDie.mesh" dieAnimation="Die">
+          <rotation qw="1" qx="0" qy="0" qz="0" />
+          <position x="0" y="0" z="0" />
+          <scale x="1" y="1" z="1" />
+          <subentities>
+            <subentity materialName="Skin" index="0" visible="true" />
+          </subentities>
+        </entity>
+      </node>
+      <node name="Cow#02" id="600238016">
+        <rotation qw="0.876727" qx="0" qy="-0.480989" qz="0" />
+        <position x="1012" y="21.6614" z="506.156" />
+        <scale x="1" y="1" z="1" />
+        <entity name="cow#2" id="747215232" castshadows="false" meshFile="cow.mesh" type="Enemy" subType="Cow" animationTree="data/animations/cow.xml" life="10" points="50" speed="15" damage="0" specialDamage="0" height="14" dieMesh="cowDie.mesh" dieAnimation="">
+          <rotation qw="1" qx="0" qy="0" qz="0" />
+          <position x="0" y="0" z="0" />
+          <scale x="1" y="1" z="1" />
+          <subentities>
+            <subentity materialName="CowMaterial" index="0" visible="true" />
+          </subentities>
+        </entity>
+      </node>
+      <node name="Chicken#03" id="817194112">
+        <rotation qw="0.0261768" qx="0" qy="0.999657" qz="0" />
+        <position x="1018.89" y="2" z="608.835" />
+        <scale x="1" y="1" z="1" />
+        <entity name="chicken#03" id="475264768" castshadows="false" meshFile="chicken.mesh" type="Enemy" subType="Chicken" animationTree="data/animations/chicken.xml" life="5" points="25" speed="30" damage="0" specialDamage="0" height="2" dieMesh="chickenDie.mesh" dieAnimation="">
+          <rotation qw="1" qx="0" qy="0" qz="0" />
+          <position x="0" y="0" z="0" />
+          <scale x="1" y="1" z="1" />
+          <subentities>
+            <subentity materialName="chicken_material" index="0" visible="true" />
+          </subentities>
+        </entity>
+      </node>
+      <node name="Knight#39" id="391186272">
+        <rotation qw="-0.872496" qx="0" qy="-0.488622" qz="0" />
+        <position x="1028.04" y="12" z="-269.264" />
+        <scale x="1.3" y="1.3" z="1.3" />
+        <entity name="knightB#39" id="350260928" castshadows="true" meshFile="knightB.mesh" type="Enemy" subType="Knight" animationTree="data/animations/knight.xml" life="200" points="350" speed="50" damage="3" specialDamage="0" height="13" dieMesh="nakedDie.mesh" dieAnimation="Die">
+          <rotation qw="1" qx="0" qy="0" qz="0" />
+          <position x="0" y="0" z="0" />
+          <scale x="1" y="1" z="1" />
+          <subentities>
+            <subentity materialName="knightB_material_4" index="0" visible="true" />
+          </subentities>
+        </entity>
+      </node>
+      <node name="Knight#56" id="436689344">
+        <rotation qw="-0.544638" qx="0" qy="-0.838671" qz="0" />
+        <position x="513.666" y="12" z="-559.864" />
+        <scale x="1" y="1" z="1" />
+        <entity name="knightA#56" id="232428960" castshadows="true" meshFile="knightA.mesh" type="Enemy" subType="Knight" animationTree="data/animations/knight.xml" life="100" points="100" speed="50" damage="1" specialDamage="0" height="13" dieMesh="nakedDie.mesh" dieAnimation="Die">
+          <rotation qw="1" qx="0" qy="0" qz="0" />
+          <position x="0" y="0" z="0" />
+          <scale x="1" y="1" z="1" />
+          <subentities>
+            <subentity materialName="knightA_material_2" index="0" visible="true" />
+          </subentities>
+        </entity>
+      </node>
+      <node name="Naked#04" id="196508672">
+        <rotation qw="1" qx="0" qy="0" qz="0" />
+        <position x="680.507" y="12" z="-685.07" />
+        <scale x="1" y="1" z="1" />
+        <entity name="naked#04" id="70284128" castshadows="true" meshFile="naked.mesh" type="Enemy" subType="Naked" animationTree="data/animations/naked.xml" life="35" points="150" speed="50" damage="0" specialDamage="0" height="13" dieMesh="nakedDie.mesh" dieAnimation="Die">
+          <rotation qw="1" qx="0" qy="0" qz="0" />
+          <position x="0" y="0" z="0" />
+          <scale x="1" y="1" z="1" />
+          <subentities>
+            <subentity materialName="Skin" index="0" visible="true" />
+          </subentities>
+        </entity>
+      </node>
+      <node name="Knight#08" id="188940096">
+        <rotation qw="0.816642" qx="0" qy="-0.577145" qz="0" />
+        <position x="626.499" y="12" z="776.109" />
+        <scale x="1" y="1" z="1" />
+        <entity name="knightB#08" id="604724288" castshadows="true" meshFile="knightB.mesh" type="Enemy" subType="Knight" animationTree="data/animations/knight.xml" life="100" points="100" speed="50" damage="2" specialDamage="0" height="11" dieMesh="nakedDie.mesh" dieAnimation="Die" physicMesh="enemyBasicPhysicBody.mesh">
+          <rotation qw="1" qx="0" qy="0" qz="0" />
+          <position x="0" y="0" z="0" />
+          <scale x="1" y="1" z="1" />
+          <subentities>
+            <subentity materialName="knightB_material" index="0" visible="true" />
+          </subentities>
+        </entity>
+      </node>
+      <node name="Knight#21" id="806238016">
+        <rotation qw="0.918791" qx="0" qy="-0.394744" qz="0" />
+        <position x="923.762" y="12" z="654.458" />
+        <scale x="1" y="1" z="1" />
+        <entity name="knightC#21" id="626758656" castshadows="true" meshFile="knightC.mesh" type="Enemy" subType="Knight" animationTree="data/animations/knight.xml" life="150" points="200" speed="50" damage="2" specialDamage="0" height="13" dieMesh="nakedDie.mesh" dieAnimation="Die">
+          <rotation qw="1" qx="0" qy="0" qz="0" />
+          <position x="0" y="0" z="0" />
+          <scale x="1" y="1" z="1" />
+          <subentities>
+            <subentity materialName="knightC_material_4" index="0" visible="true" />
+          </subentities>
+        </entity>
+      </node>
+      <node name="Chicken#06" id="386761056">
+        <rotation qw="1" qx="0" qy="0" qz="0" />
+        <position x="1179.2" y="2" z="365.982" />
+        <scale x="1" y="1" z="1" />
+        <entity name="chicken#06" id="306405856" castshadows="false" meshFile="chicken.mesh" type="Enemy" subType="Chicken" animationTree="data/animations/chicken.xml" life="5" points="25" speed="30" damage="0" specialDamage="0" height="2" dieMesh="chickenDie.mesh" dieAnimation="">
+          <rotation qw="1" qx="0" qy="0" qz="0" />
+          <position x="0" y="0" z="0" />
+          <scale x="1" y="1" z="1" />
+          <subentities>
+            <subentity materialName="chicken_material" index="0" visible="true" />
+          </subentities>
+        </entity>
+      </node>
+      <node name="Naked#03" id="255287312">
+        <rotation qw="1" qx="0" qy="0" qz="0" />
+        <position x="161.977" y="12" z="-385.248" />
+        <scale x="1" y="1" z="1" />
+        <entity name="naked#03" id="36622212" castshadows="true" meshFile="naked.mesh" type="Enemy" subType="Naked" animationTree="data/animations/naked.xml" life="35" points="150" speed="50" damage="0" specialDamage="0" height="13" dieMesh="nakedDie.mesh" dieAnimation="Die">
+          <rotation qw="1" qx="0" qy="0" qz="0" />
+          <position x="0" y="0" z="0" />
+          <scale x="1" y="1" z="1" />
+          <subentities>
+            <subentity materialName="Skin" index="0" visible="true" />
+          </subentities>
+        </entity>
+      </node>
+      <node name="Knight#24" id="194067200">
+        <rotation qw="0.92881" qx="0" qy="-0.370557" qz="0" />
+        <position x="1323.34" y="12" z="216.641" />
+        <scale x="1" y="1" z="1" />
+        <entity name="knightA#24" id="657612864" castshadows="true" meshFile="knightA.mesh" type="Enemy" subType="Knight" animationTree="data/animations/knight.xml" life="100" points="100" speed="50" damage="1" specialDamage="0" height="13" dieMesh="nakedDie.mesh" dieAnimation="Die">
+          <rotation qw="1" qx="0" qy="0" qz="0" />
+          <position x="0" y="0" z="0" />
+          <scale x="1" y="1" z="1" />
+          <subentities>
+            <subentity materialName="knightA_material_5" index="0" visible="true" />
+          </subentities>
+        </entity>
+      </node>
+      <node name="Knight#47" id="596881024">
+        <rotation qw="0.991445" qx="0" qy="0.130527" qz="0" />
+        <position x="895.176" y="12" z="-418.14" />
+        <scale x="1" y="1" z="1" />
+        <entity name="knightB#47" id="721640640" castshadows="true" meshFile="knightB.mesh" type="Enemy" subType="Knight" animationTree="data/animations/knight.xml" life="150" points="200" speed="50" damage="2" specialDamage="0" height="13" dieMesh="nakedDie.mesh" dieAnimation="Die">
+          <rotation qw="1" qx="0" qy="0" qz="0" />
+          <position x="0" y="0" z="0" />
+          <scale x="1" y="1" z="1" />
+          <subentities>
+            <subentity materialName="knightB_material_3" index="0" visible="true" />
+          </subentities>
+        </entity>
+      </node>
+      <node name="Chicken#16" id="568742912">
+        <rotation qw="0.700909" qx="0" qy="0.713251" qz="0" />
+        <position x="-195.609" y="2" z="107.761" />
+        <scale x="1" y="1" z="1" />
+        <entity name="chicken#16" id="682241280" castshadows="false" meshFile="chicken.mesh" type="Enemy" subType="Chicken" animationTree="data/animations/chicken.xml" life="5" points="25" speed="30" damage="0" specialDamage="0" height="2" dieMesh="chickenDie.mesh" dieAnimation="">
+          <rotation qw="1" qx="0" qy="0" qz="0" />
+          <position x="0" y="0" z="0" />
+          <scale x="1" y="1" z="1" />
+          <subentities>
+            <subentity materialName="chicken_material" index="0" visible="true" />
+          </subentities>
+        </entity>
+      </node>
+      <node name="Knight#02" id="184270752">
+        <rotation qw="0.952396" qx="0" qy="-0.304864" qz="0" />
+        <position x="475.8" y="13.2234" z="736.875" />
+        <scale x="1" y="1" z="1" />
+        <entity name="knightC#02" id="620380288" castshadows="false" meshFile="knightC.mesh" type="Enemy" subType="Knight" animationTree="data/animations/knight.xml" life="100" points="100" speed="50" damage="1" specialDamage="0" height="13" dieMesh="nakedDie.mesh" dieAnimation="Die">
+          <rotation qw="1" qx="0" qy="0" qz="0" />
+          <position x="0" y="0" z="0" />
+          <scale x="1" y="1" z="1" />
+          <subentities>
+            <subentity materialName="knightC_material" index="0" visible="true" />
+          </subentities>
+        </entity>
+      </node>
+      <node name="Knight#16" id="345561088">
+        <rotation qw="0.985556" qx="0" qy="-0.16935" qz="0" />
+        <position x="864.31" y="12" z="662.155" />
+        <scale x="1" y="1" z="1" />
+        <entity name="knightC#16" id="567278016" castshadows="true" meshFile="knightC.mesh" type="Enemy" subType="Knight" animationTree="data/animations/knight.xml" life="100" points="100" speed="50" damage="1" specialDamage="0" height="13" dieMesh="nakedDie.mesh" dieAnimation="Die">
+          <rotation qw="1" qx="0" qy="0" qz="0" />
+          <position x="0" y="0" z="0" />
+          <scale x="1" y="1" z="1" />
+          <subentities>
+            <subentity materialName="knightC_material" index="0" visible="true" />
+          </subentities>
+        </entity>
+      </node>
+      <node name="Knight#31" id="142429888">
+        <rotation qw="0.649448" qx="0" qy="0.760406" qz="0" />
+        <position x="1226.4" y="12" z="149.163" />
+        <scale x="1" y="1" z="1" />
+        <entity name="knightC#31" id="150761440" castshadows="true" meshFile="knightC.mesh" type="Enemy" subType="Knight" animationTree="data/animations/knight.xml" life="150" points="200" speed="50" damage="2" specialDamage="0" height="13" dieMesh="nakedDie.mesh" dieAnimation="Die">
+          <rotation qw="1" qx="0" qy="0" qz="0" />
+          <position x="0" y="0" z="0" />
+          <scale x="1" y="1" z="1" />
+          <subentities>
+            <subentity materialName="knightC_material_3" index="0" visible="true" />
+          </subentities>
+        </entity>
+      </node>
+      <node name="Knight#65" id="66164128">
+        <rotation qw="0.740218" qx="0" qy="0.672367" qz="0" />
+        <position x="172.949" y="12" z="-543.959" />
+        <scale x="1" y="1" z="1" />
+        <entity name="knightC#65" id="427808448" castshadows="true" meshFile="knightC.mesh" type="Enemy" subType="Knight" animationTree="data/animations/knight.xml" life="150" points="200" speed="50" damage="2" specialDamage="0" height="13" dieMesh="nakedDie.mesh" dieAnimation="Die">
+          <rotation qw="1" qx="0" qy="0" qz="0" />
+          <position x="0" y="0" z="0" />
+          <scale x="1" y="1" z="1" />
+          <subentities>
+            <subentity materialName="knightC_material_5" index="0" visible="true" />
+          </subentities>
+        </entity>
+      </node>
+      <node name="BigKnight" id="171788688">
+        <rotation qw="-0.284015" qx="0" qy="-0.95882" qz="0" />
+        <position x="-118.246" y="24.518" z="-135.116" />
+        <scale x="2" y="2" z="2" />
+        <entity name="knightA#1000" id="974395008" castshadows="true" meshFile="knightA.mesh" type="Enemy" subType="Knight" animationTree="data/animations/knight.xml" life="300" points="1000" speed="35" damage="8" specialDamage="0" height="24" dieMesh="nakedDie.mesh" dieAnimation="Die" physicMesh="enemyBasicPhysicBody.mesh">
+          <rotation qw="1" qx="0" qy="0" qz="0" />
+          <position x="0" y="0" z="0" />
+          <scale x="1" y="1" z="1" />
+          <subentities>
+            <subentity materialName="knightA_material_5" index="0" visible="true" />
+          </subentities>
+        </entity>
+      </node>
+      <node name="Knight#42" id="548051392">
+        <rotation qw="0.922201" qx="0" qy="0.386711" qz="0" />
+        <position x="918.837" y="12" z="-301.334" />
+        <scale x="1" y="1" z="1" />
+        <entity name="knightC#42" id="225562304" castshadows="true" meshFile="knightC.mesh" type="Enemy" subType="Knight" animationTree="data/animations/knight.xml" life="100" points="100" speed="50" damage="1" specialDamage="0" height="13" dieMesh="nakedDie.mesh" dieAnimation="Die">
+          <rotation qw="1" qx="0" qy="0" qz="0" />
+          <position x="0" y="0" z="0" />
+          <scale x="1" y="1" z="1" />
+          <subentities>
+            <subentity materialName="knightC_material_4" index="0" visible="true" />
+          </subentities>
+        </entity>
+      </node>
+      <node name="Chicken#13" id="401898272">
+        <rotation qw="1" qx="0" qy="0" qz="0" />
+        <position x="1122.94" y="2" z="127.728" />
+        <scale x="1" y="1" z="1" />
+        <entity name="chicken#13" id="727286592" castshadows="false" meshFile="chicken.mesh" type="Enemy" subType="Chicken" animationTree="data/animations/chicken.xml" life="5" points="25" speed="30" damage="0" specialDamage="0" height="2" dieMesh="chickenDie.mesh" dieAnimation="">
+          <rotation qw="1" qx="0" qy="0" qz="0" />
+          <position x="0" y="0" z="0" />
+          <scale x="1" y="1" z="1" />
+          <subentities>
+            <subentity materialName="chicken_material" index="0" visible="true" />
+          </subentities>
+        </entity>
+      </node>
+      <node name="Cow#01" id="517105632">
+        <rotation qw="0.67559" qx="0" qy="0.737277" qz="0" />
+        <position x="652.643" y="17.3334" z="834.909" />
+        <scale x="1" y="1" z="1" />
+        <entity name="cow#1" id="733085120" castshadows="false" meshFile="cow.mesh" type="Enemy" subType="Cow" animationTree="data/animations/cow.xml" life="10" points="50" speed="15" damage="0" specialDamage="0" height="14" dieMesh="cowDie.mesh" dieAnimation="">
+          <rotation qw="1" qx="0" qy="0" qz="0" />
+          <position x="0" y="0" z="0" />
+          <scale x="1" y="1" z="1" />
+          <subentities>
+            <subentity materialName="CowMaterial" index="0" visible="true" />
+          </subentities>
+        </entity>
+      </node>
+      <node name="Knight#13" id="751548800">
+        <rotation qw="0.925541" qx="0" qy="-0.378649" qz="0" />
+        <position x="844.809" y="12" z="689.584" />
+        <scale x="1" y="1" z="1" />
+        <entity name="knightB#13" id="739188800" castshadows="true" meshFile="knightB.mesh" type="Enemy" subType="Knight" animationTree="data/animations/knight.xml" life="100" points="100" speed="50" damage="1" specialDamage="0" height="13" dieMesh="nakedDie.mesh" dieAnimation="Die">
+          <rotation qw="1" qx="0" qy="0" qz="0" />
+          <position x="0" y="0" z="0" />
+          <scale x="1" y="1" z="1" />
+          <subentities>
+            <subentity materialName="knightB_material" index="0" visible="true" />
+          </subentities>
+        </entity>
+      </node>
+      <node name="Knight#36" id="426557216">
+        <rotation qw="0.816642" qx="0" qy="-0.577145" qz="0" />
+        <position x="1163.81" y="12" z="74.7587" />
+        <scale x="1" y="1" z="1" />
+        <entity name="knightC#36" id="70375680" castshadows="true" meshFile="knightC.mesh" type="Enemy" subType="Knight" animationTree="data/animations/knight.xml" life="100" points="100" speed="50" damage="1" specialDamage="0" height="13" dieMesh="nakedDie.mesh" dieAnimation="Die">
+          <rotation qw="1" qx="0" qy="0" qz="0" />
+          <position x="0" y="0" z="0" />
+          <scale x="1" y="1" z="1" />
+          <subentities>
+            <subentity materialName="knightC_material_5" index="0" visible="true" />
+          </subentities>
+        </entity>
+      </node>
+      <node name="Knight#60" id="628681280">
+        <rotation qw="-0.725373" qx="0" qy="-0.688356" qz="0" />
+        <position x="507.824" y="12" z="-430.491" />
+        <scale x="1" y="1" z="1" />
+        <entity name="knightB#60" id="160191648" castshadows="true" meshFile="knightB.mesh" type="Enemy" subType="Knight" animationTree="data/animations/knight.xml" life="100" points="100" speed="50" damage="1" specialDamage="0" height="13" dieMesh="nakedDie.mesh" dieAnimation="Die">
+          <rotation qw="1" qx="0" qy="0" qz="0" />
+          <position x="0" y="0" z="0" />
+          <scale x="1" y="1" z="1" />
+          <subentities>
+            <subentity materialName="knightB_material_2" index="0" visible="true" />
+          </subentities>
+        </entity>
+      </node>
+      <node name="Knight#49" id="951719680">
+        <rotation qw="0.983255" qx="0" qy="-0.182235" qz="0" />
+        <position x="662.749" y="12" z="-649.211" />
+        <scale x="1" y="1" z="1" />
+        <entity name="knightB#49" id="611987648" castshadows="true" meshFile="knightB.mesh" type="Enemy" subType="Knight" animationTree="data/animations/knight.xml" life="150" points="200" speed="50" damage="2" specialDamage="0" height="13" dieMesh="nakedDie.mesh" dieAnimation="Die">
+          <rotation qw="1" qx="0" qy="0" qz="0" />
+          <position x="0" y="0" z="0" />
+          <scale x="1" y="1" z="1" />
+          <subentities>
+            <subentity materialName="knightB_material_3" index="0" visible="true" />
+          </subentities>
+        </entity>
+      </node>
+      <node name="Knight#53" id="696218752">
+        <rotation qw="-0.725373" qx="0" qy="-0.688356" qz="0" />
+        <position x="552.939" y="12" z="-578.709" />
+        <scale x="1" y="1" z="1" />
+        <entity name="knightB#53" id="290353088" castshadows="true" meshFile="knightB.mesh" type="Enemy" subType="Knight" animationTree="data/animations/knight.xml" life="100" points="100" speed="50" damage="1" specialDamage="0" height="13" dieMesh="nakedDie.mesh" dieAnimation="Die">
+          <rotation qw="1" qx="0" qy="0" qz="0" />
+          <position x="0" y="0" z="0" />
+          <scale x="1" y="1" z="1" />
+          <subentities>
+            <subentity materialName="knightB_material_2" index="0" visible="true" />
+          </subentities>
+        </entity>
+      </node>
+      <node name="Cow#04" id="555131648">
+        <rotation qw="0.999962" qx="0" qy="-0.0087266" qz="0" />
+        <position x="934.46" y="20.7782" z="517.077" />
+        <scale x="1" y="1" z="1" />
+        <entity name="cow#4" id="905087424" castshadows="false" meshFile="cow.mesh" type="Enemy" subType="Cow" animationTree="data/animations/cow.xml" life="10" points="50" speed="15" damage="0" specialDamage="0" height="14" dieMesh="cowDie.mesh" dieAnimation="">
+          <rotation qw="1" qx="0" qy="0" qz="0" />
+          <position x="0" y="0" z="0" />
+          <scale x="1" y="1" z="1" />
+          <subentities>
+            <subentity materialName="CowMaterial" index="0" visible="true" />
+          </subentities>
+        </entity>
+      </node>
+      <node name="Chicken#05" id="905117952">
+        <rotation qw="0.461749" qx="0" qy="0.887011" qz="0" />
+        <position x="339.891" y="2" z="-515.401" />
+        <scale x="1" y="1" z="1" />
+        <entity name="chicken#05" id="582049024" castshadows="false" meshFile="chicken.mesh" type="Enemy" subType="Chicken" animationTree="data/animations/chicken.xml" life="5" points="25" speed="30" damage="0" specialDamage="0" height="2" dieMesh="chickenDie.mesh" dieAnimation="">
+          <rotation qw="1" qx="0" qy="0" qz="0" />
+          <position x="0" y="0" z="0" />
+          <scale x="1" y="1" z="1" />
+          <subentities>
+            <subentity materialName="chicken_material" index="0" visible="true" />
+          </subentities>
+        </entity>
+      </node>
+      <node name="Knight#54" id="577867968">
+        <rotation qw="-0.725373" qx="0" qy="-0.688356" qz="0" />
+        <position x="529.227" y="12" z="-624.455" />
+        <scale x="1" y="1" z="1" />
+        <entity name="knightC#54" id="532578528" castshadows="true" meshFile="knightC.mesh" type="Enemy" subType="Knight" animationTree="data/animations/knight.xml" life="100" points="100" speed="50" damage="1" specialDamage="0" height="13" dieMesh="nakedDie.mesh" dieAnimation="Die">
+          <rotation qw="1" qx="0" qy="0" qz="0" />
+          <position x="0" y="0" z="0" />
+          <scale x="1" y="1" z="1" />
+          <subentities>
+            <subentity materialName="knightC_material_2" index="0" visible="true" />
+          </subentities>
+        </entity>
+      </node>
+      <node name="Naked#06" id="155888544">
+        <rotation qw="1" qx="0" qy="0" qz="0" />
+        <position x="670.099" y="12" z="-418.78" />
+        <scale x="1" y="1" z="1" />
+        <entity name="naked#06" id="644337280" castshadows="true" meshFile="naked.mesh" type="Enemy" subType="Naked" animationTree="data/animations/naked.xml" life="35" points="150" speed="50" damage="0" specialDamage="0" height="13" dieMesh="nakedDie.mesh" dieAnimation="Die">
+          <rotation qw="1" qx="0" qy="0" qz="0" />
+          <position x="0" y="0" z="0" />
+          <scale x="1" y="1" z="1" />
+          <subentities>
+            <subentity materialName="Skin" index="0" visible="true" />
+          </subentities>
+        </entity>
+      </node>
+      <node name="Cow#11" id="707907328">
+        <rotation qw="0.0871556" qx="0" qy="-0.996195" qz="0" />
+        <position x="765.594" y="19.0247" z="-391.286" />
+        <scale x="1" y="1" z="1" />
+        <entity name="cow#11" id="65950496" castshadows="false" meshFile="cow.mesh" type="Enemy" subType="Cow" animationTree="data/animations/cow.xml" life="10" points="50" speed="15" damage="0" specialDamage="0" height="14" dieMesh="cowDie.mesh" dieAnimation="">
+          <rotation qw="1" qx="0" qy="0" qz="0" />
+          <position x="0" y="-1.07779" z="0" />
+          <scale x="1" y="1" z="1" />
+          <subentities>
+            <subentity materialName="CowMaterial" index="0" visible="true" />
+          </subentities>
+        </entity>
+      </node>
+      <node name="Knight#27" id="601550336">
+        <rotation qw="0.62932" qx="0" qy="0.777146" qz="0" />
+        <position x="1155.93" y="12" z="179.188" />
+        <scale x="1" y="1" z="1" />
+        <entity name="knightA#27" id="195654176" castshadows="true" meshFile="knightA.mesh" type="Enemy" subType="Knight" animationTree="data/animations/knight.xml" life="150" points="200" speed="50" damage="2" specialDamage="0" height="13" dieMesh="nakedDie.mesh" dieAnimation="Die">
+          <rotation qw="1" qx="0" qy="0" qz="0" />
+          <position x="0" y="0" z="0" />
+          <scale x="1" y="1" z="1" />
+          <subentities>
+            <subentity materialName="knightA_material_3" index="0" visible="true" />
+          </subentities>
+        </entity>
+      </node>
+      <node name="Chicken#08" id="949339264">
+        <rotation qw="0.710185" qx="0" qy="0.704015" qz="0" />
+        <position x="849.427" y="2" z="-329.466" />
+        <scale x="1" y="1" z="1" />
+        <entity name="chicken#08" id="921384320" castshadows="false" meshFile="chicken.mesh" type="Enemy" subType="Chicken" animationTree="data/animations/chicken.xml" life="5" points="25" speed="30" damage="0" specialDamage="0" height="2" dieMesh="chickenDie.mesh" dieAnimation="">
+          <rotation qw="1" qx="0" qy="0" qz="0" />
+          <position x="0" y="0" z="0" />
+          <scale x="1" y="1" z="1" />
+          <subentities>
+            <subentity materialName="chicken_material" index="0" visible="true" />
+          </subentities>
+        </entity>
+      </node>
+      <node name="Knight#19" id="63539536">
+        <rotation qw="0.882948" qx="0" qy="-0.469472" qz="0" />
+        <position x="909.485" y="12" z="680.415" />
+        <scale x="1" y="1" z="1" />
+        <entity name="knightB#19" id="761314752" castshadows="true" meshFile="knightB.mesh" type="Enemy" subType="Knight" animationTree="data/animations/knight.xml" life="100" points="100" speed="50" damage="1" specialDamage="0" height="13" dieMesh="nakedDie.mesh" dieAnimation="Die">
+          <rotation qw="1" qx="0" qy="0" qz="0" />
+          <position x="0" y="0" z="0" />
+          <scale x="1" y="1" z="1" />
+          <subentities>
+            <subentity materialName="knightB_material" index="0" visible="true" />
+          </subentities>
+        </entity>
+      </node>
+      <node name="Wizard#00" id="524582688">
         <rotation qw="0.704014" qx="0" qy="0.710186" qz="0" />
         <position x="259.243" y="12" z="-561.756" />
         <scale x="1" y="1" z="1" />
-        <entity name="wizard#1" id="609637760" castshadows="true" meshFile="wizard.mesh" type="Enemy" subType="Wizard" animationTree="data/animations/wizard.xml" life="200" points="350" speed="60" damage="5" specialDamage="10" height="11" dieMesh="nakedDie.mesh" dieAnimation="Die" physicMesh="enemyBasicPhysicBody.mesh">
+        <entity name="wizard#00" id="609637760" castshadows="true" meshFile="wizard.mesh" type="Enemy" subType="Wizard" animationTree="data/animations/wizard.xml" life="150" points="250" speed="50" damage="3" specialDamage="6" height="13" dieMesh="nakedDie.mesh" dieAnimation="Die">
           <rotation qw="1" qx="0" qy="0" qz="0" />
           <position x="0" y="0" z="0" />
           <scale x="1" y="1" z="1" />
           <subentities>
             <subentity materialName="wizard_material_2" index="0" visible="true" />
+          </subentities>
+        </entity>
+      </node>
+      <node name="Cow#09" id="379131424">
+        <rotation qw="0.544639" qx="0" qy="0.838671" qz="0" />
+        <position x="1027.95" y="52.096" z="51.8579" />
+        <scale x="1" y="1" z="1" />
+        <entity name="cow#9" id="509262368" castshadows="false" meshFile="cow.mesh" type="Enemy" subType="Cow" animationTree="data/animations/cow.xml" life="10" points="50" speed="15" damage="0" specialDamage="0" height="14" dieMesh="cowDie.mesh" dieAnimation="">
+          <rotation qw="1" qx="0" qy="0" qz="0" />
+          <position x="0" y="0" z="0" />
+          <scale x="1" y="1" z="1" />
+          <subentities>
+            <subentity materialName="CowMaterial" index="0" visible="true" />
+          </subentities>
+        </entity>
+      </node>
+      <node name="Knight#59" id="454512160">
+        <rotation qw="-0.544638" qx="0" qy="-0.838671" qz="0" />
+        <position x="530.361" y="12" z="-458.009" />
+        <scale x="1" y="1" z="1" />
+        <entity name="knightA#59" id="752220224" castshadows="true" meshFile="knightA.mesh" type="Enemy" subType="Knight" animationTree="data/animations/knight.xml" life="150" points="200" speed="50" damage="2" specialDamage="0" height="13" dieMesh="nakedDie.mesh" dieAnimation="Die">
+          <rotation qw="1" qx="0" qy="0" qz="0" />
+          <position x="0" y="0" z="0" />
+          <scale x="1" y="1" z="1" />
+          <subentities>
+            <subentity materialName="knightA_material_2" index="0" visible="true" />
+          </subentities>
+        </entity>
+      </node>
+      <node name="Knight#01" id="624774912">
+        <rotation qw="0.841039" qx="0" qy="-0.540974" qz="0" />
+        <position x="481.488" y="13.2234" z="757.197" />
+        <scale x="1" y="1" z="1" />
+        <entity name="knightA#01" id="584612544" castshadows="true" meshFile="knightA.mesh" type="Enemy" subType="Knight" animationTree="data/animations/knight.xml" life="100" points="100" speed="50" damage="1" specialDamage="0" height="13" dieMesh="nakedDie.mesh" dieAnimation="Die">
+          <rotation qw="1" qx="0" qy="0" qz="0" />
+          <position x="0" y="0" z="0" />
+          <scale x="1" y="1" z="1" />
+          <subentities>
+            <subentity materialName="knightA_material" index="0" visible="true" />
+          </subentities>
+        </entity>
+      </node>
+      <node name="Knight#68" id="106418040">
+        <rotation qw="-0.246153" qx="0" qy="-0.969231" qz="0" />
+        <position x="-32.0762" y="15.0175" z="-109.148" />
+        <scale x="1.3" y="1.3" z="1.3" />
+        <entity name="knightB#68" id="902645952" castshadows="true" meshFile="knightB.mesh" type="Enemy" subType="Knight" animationTree="data/animations/knight.xml" life="150" points="300" speed="40" damage="3" specialDamage="0" height="15" dieMesh="nakedDie.mesh" dieAnimation="Die" physicMesh="enemyBasicPhysicBody.mesh">
+          <rotation qw="1" qx="0" qy="0" qz="0" />
+          <position x="0" y="0" z="0" />
+          <scale x="1" y="1" z="1" />
+          <subentities>
+            <subentity materialName="knightB_material_4" index="0" visible="true" />
+          </subentities>
+        </entity>
+      </node>
+      <node name="Knight#41" id="136539824">
+        <rotation qw="0.92881" qx="0" qy="-0.370557" qz="0" />
+        <position x="1017.83" y="12" z="-339.493" />
+        <scale x="1" y="1" z="1" />
+        <entity name="knightA#41" id="855189696" castshadows="true" meshFile="knightA.mesh" type="Enemy" subType="Knight" animationTree="data/animations/knight.xml" life="100" points="100" speed="50" damage="1" specialDamage="0" height="13" dieMesh="nakedDie.mesh" dieAnimation="Die">
+          <rotation qw="1" qx="0" qy="0" qz="0" />
+          <position x="0" y="0" z="0" />
+          <scale x="1" y="1" z="1" />
+          <subentities>
+            <subentity materialName="knightA_material_4" index="0" visible="true" />
+          </subentities>
+        </entity>
+      </node>
+      <node name="Naked#10" id="79561752">
+        <rotation qw="1" qx="0" qy="0" qz="0" />
+        <position x="977.324" y="12" z="384.205" />
+        <scale x="1" y="1" z="1" />
+        <entity name="naked#10" id="75777456" castshadows="true" meshFile="naked.mesh" type="Enemy" subType="Naked" animationTree="data/animations/naked.xml" life="35" points="150" speed="50" damage="0" specialDamage="0" height="13" dieMesh="nakedDie.mesh" dieAnimation="Die">
+          <rotation qw="1" qx="0" qy="0" qz="0" />
+          <position x="0" y="0" z="0" />
+          <scale x="1" y="1" z="1" />
+          <subentities>
+            <subentity materialName="Skin" index="0" visible="true" />
+          </subentities>
+        </entity>
+      </node>
+      <node name="Chicken#14" id="191351056">
+        <rotation qw="0.956305" qx="0" qy="0.292372" qz="0" />
+        <position x="311.749" y="2" z="-654.409" />
+        <scale x="1" y="1" z="1" />
+        <entity name="chicken#14" id="177892384" castshadows="false" meshFile="chicken.mesh" type="Enemy" subType="Chicken" animationTree="data/animations/chicken.xml" life="5" points="25" speed="30" damage="0" specialDamage="0" height="2" dieMesh="chickenDie.mesh" dieAnimation="">
+          <rotation qw="1" qx="0" qy="0" qz="0" />
+          <position x="0" y="0" z="0" />
+          <scale x="1" y="1" z="1" />
+          <subentities>
+            <subentity materialName="chicken_material" index="0" visible="true" />
+          </subentities>
+        </entity>
+      </node>
+      <node name="Knight#04" id="565752128">
+        <rotation qw="0.861629" qx="0" qy="-0.507538" qz="0" />
+        <position x="497.3" y="13.2234" z="720.098" />
+        <scale x="1" y="1" z="1" />
+        <entity name="knightA#04" id="494460896" castshadows="true" meshFile="knightA.mesh" type="Enemy" subType="Knight" animationTree="data/animations/knight.xml" life="100" points="100" speed="50" damage="1" specialDamage="0" height="13" dieMesh="nakedDie.mesh" dieAnimation="Die">
+          <rotation qw="1" qx="0" qy="0" qz="0" />
+          <position x="0" y="0" z="0" />
+          <scale x="1" y="1" z="1" />
+          <subentities>
+            <subentity materialName="knightA_material" index="0" visible="true" />
+          </subentities>
+        </entity>
+      </node>
+      <node name="Knight#14" id="608966336">
+        <rotation qw="0.935135" qx="0" qy="-0.354291" qz="0" />
+        <position x="813.751" y="12" z="643.831" />
+        <scale x="1" y="1" z="1" />
+        <entity name="knightA#14" id="316873664" castshadows="true" meshFile="knightA.mesh" type="Enemy" subType="Knight" animationTree="data/animations/knight.xml" life="100" points="100" speed="50" damage="1" specialDamage="0" height="13" dieMesh="nakedDie.mesh" dieAnimation="Die">
+          <rotation qw="1" qx="0" qy="0" qz="0" />
+          <position x="0" y="0" z="0" />
+          <scale x="1" y="1" z="1" />
+          <subentities>
+            <subentity materialName="knightA_material" index="0" visible="true" />
+          </subentities>
+        </entity>
+      </node>
+      <node name="Knight#33" id="839442112">
+        <rotation qw="0.92881" qx="0" qy="-0.370557" qz="0" />
+        <position x="1270.42" y="12" z="119.841" />
+        <scale x="1" y="1" z="1" />
+        <entity name="knightA#33" id="397656160" castshadows="true" meshFile="knightA.mesh" type="Enemy" subType="Knight" animationTree="data/animations/knight.xml" life="100" points="100" speed="50" damage="1" specialDamage="0" height="13" dieMesh="nakedDie.mesh" dieAnimation="Die">
+          <rotation qw="1" qx="0" qy="0" qz="0" />
+          <position x="0" y="0" z="0" />
+          <scale x="1" y="1" z="1" />
+          <subentities>
+            <subentity materialName="knightA_material_5" index="0" visible="true" />
+          </subentities>
+        </entity>
+      </node>
+      <node name="Knight#63" id="806878848">
+        <rotation qw="0.891006" qx="0" qy="0.453991" qz="0" />
+        <position x="267.167" y="12" z="-616.975" />
+        <scale x="1" y="1" z="1" />
+        <entity name="knightB#63" id="526535872" castshadows="true" meshFile="knightB.mesh" type="Enemy" subType="Knight" animationTree="data/animations/knight.xml" life="150" points="200" speed="50" damage="2" specialDamage="0" height="13" dieMesh="nakedDie.mesh" dieAnimation="Die">
+          <rotation qw="1" qx="0" qy="0" qz="0" />
+          <position x="0" y="0" z="0" />
+          <scale x="1" y="1" z="1" />
+          <subentities>
+            <subentity materialName="knightB_material_5" index="0" visible="true" />
+          </subentities>
+        </entity>
+      </node>
+      <node name="Chicken#11" id="18616292">
+        <rotation qw="1" qx="0" qy="0" qz="0" />
+        <position x="1266.66" y="2" z="52.8902" />
+        <scale x="1" y="1" z="1" />
+        <entity name="chicken#11" id="31037324" castshadows="false" meshFile="chicken.mesh" type="Enemy" subType="Chicken" animationTree="data/animations/chicken.xml" life="5" points="25" speed="30" damage="0" specialDamage="0" height="2" dieMesh="chickenDie.mesh" dieAnimation="">
+          <rotation qw="1" qx="0" qy="0" qz="0" />
+          <position x="0" y="0" z="0" />
+          <scale x="1" y="1" z="1" />
+          <subentities>
+            <subentity materialName="chicken_material" index="0" visible="true" />
+          </subentities>
+        </entity>
+      </node>
+      <node name="Cow#03" id="466353344">
+        <rotation qw="0.876727" qx="0" qy="-0.480989" qz="0" />
+        <position x="1179.27" y="18.0485" z="507.459" />
+        <scale x="1" y="1" z="1" />
+        <entity name="cow#3" id="634723968" castshadows="false" meshFile="cow.mesh" type="Enemy" subType="Cow" animationTree="data/animations/cow.xml" life="10" points="50" speed="15" damage="0" specialDamage="0" height="14" dieMesh="cowDie.mesh" dieAnimation="">
+          <rotation qw="1" qx="0" qy="0" qz="0" />
+          <position x="0" y="0" z="0" />
+          <scale x="1" y="1" z="1" />
+          <subentities>
+            <subentity materialName="CowMaterial" index="0" visible="true" />
+          </subentities>
+        </entity>
+      </node>
+      <node name="Chicken#00" id="941068800">
+        <rotation qw="1" qx="0" qy="0" qz="0" />
+        <position x="977.393" y="2" z="590.892" />
+        <scale x="1" y="1" z="1" />
+        <entity name="chicken#00" id="115604120" castshadows="false" meshFile="chicken.mesh" type="Enemy" subType="Chicken" animationTree="data/animations/chicken.xml" life="5" points="25" speed="30" damage="0" specialDamage="0" height="2" dieMesh="chickenDie.mesh" dieAnimation="">
+          <rotation qw="1" qx="0" qy="0" qz="0" />
+          <position x="0" y="0" z="0" />
+          <scale x="1" y="1" z="1" />
+          <subentities>
+            <subentity materialName="chicken_material" index="0" visible="true" />
+          </subentities>
+        </entity>
+      </node>
+      <node name="Knight#11" id="457441920">
+        <rotation qw="0.816642" qx="0" qy="-0.577145" qz="0" />
+        <position x="622.97" y="12" z="744.54" />
+        <scale x="1" y="1" z="1" />
+        <entity name="knightC#11" id="998016320" castshadows="true" meshFile="knightC.mesh" type="Enemy" subType="Knight" animationTree="data/animations/knight.xml" life="100" points="100" speed="50" damage="1" specialDamage="0" height="13" dieMesh="nakedDie.mesh" dieAnimation="Die">
+          <rotation qw="1" qx="0" qy="0" qz="0" />
+          <position x="0" y="0" z="0" />
+          <scale x="1" y="1" z="1" />
+          <subentities>
+            <subentity materialName="knightB_material" index="0" visible="true" />
+          </subentities>
+        </entity>
+      </node>
+      <node name="Knight#38" id="692892224">
+        <rotation qw="0.816642" qx="0" qy="-0.577145" qz="0" />
+        <position x="1297.38" y="12" z="38.3834" />
+        <scale x="1" y="1" z="1" />
+        <entity name="knightB#38" id="303048800" castshadows="true" meshFile="knightB.mesh" type="Enemy" subType="Knight" animationTree="data/animations/knight.xml" life="100" points="100" speed="50" damage="1" specialDamage="0" height="13" dieMesh="nakedDie.mesh" dieAnimation="Die">
+          <rotation qw="1" qx="0" qy="0" qz="0" />
+          <position x="0" y="0" z="0" />
+          <scale x="1" y="1" z="1" />
+          <subentities>
+            <subentity materialName="knightB_material_5" index="0" visible="true" />
+          </subentities>
+        </entity>
+      </node>
+      <node name="Naked" id="109378336">
+        <rotation qw="1" qx="0" qy="0" qz="0" />
+        <position x="861.223" y="12" z="583.331" />
+        <scale x="1" y="1" z="1" />
+        <entity name="naked" id="907437376" castshadows="true" meshFile="naked.mesh" type="Enemy" subType="Naked" animationTree="data/animations/naked.xml" life="35" points="150" speed="50" damage="0" specialDamage="0" height="13" dieMesh="nakedDie.mesh" dieAnimation="Die">
+          <rotation qw="1" qx="0" qy="0" qz="0" />
+          <position x="0" y="0" z="0" />
+          <scale x="1" y="1" z="1" />
+          <subentities>
+            <subentity materialName="Skin" index="0" visible="true" />
+          </subentities>
+        </entity>
+      </node>
+      <node name="Knight#51" id="374248480">
+        <rotation qw="0.857167" qx="0" qy="0.515039" qz="0" />
+        <position x="604.697" y="12" z="-436.248" />
+        <scale x="1" y="1" z="1" />
+        <entity name="knightA#51" id="131626336" castshadows="true" meshFile="knightA.mesh" type="Enemy" subType="Knight" animationTree="data/animations/knight.xml" life="150" points="200" speed="50" damage="2" specialDamage="0" height="13" dieMesh="nakedDie.mesh" dieAnimation="Die">
+          <rotation qw="1" qx="0" qy="0" qz="0" />
+          <position x="0" y="0" z="0" />
+          <scale x="1" y="1" z="1" />
+          <subentities>
+            <subentity materialName="knightA_material_3" index="0" visible="true" />
+          </subentities>
+        </entity>
+      </node>
+      <node name="Naked#05" id="389416192">
+        <rotation qw="1" qx="0" qy="0" qz="0" />
+        <position x="312.811" y="12" z="-678.023" />
+        <scale x="1" y="1" z="1" />
+        <entity name="naked#05" id="590746752" castshadows="true" meshFile="naked.mesh" type="Enemy" subType="Naked" animationTree="data/animations/naked.xml" life="35" points="150" speed="50" damage="0" specialDamage="0" height="13" dieMesh="nakedDie.mesh" dieAnimation="Die">
+          <rotation qw="1" qx="0" qy="0" qz="0" />
+          <position x="0" y="0" z="0" />
+          <scale x="1" y="1" z="1" />
+          <subentities>
+            <subentity materialName="Skin" index="0" visible="true" />
+          </subentities>
+        </entity>
+      </node>
+      <node name="Cow#06" id="691122176">
+        <rotation qw="0.876727" qx="0" qy="-0.480989" qz="0" />
+        <position x="1117.04" y="21.0013" z="341.281" />
+        <scale x="1" y="1" z="1" />
+        <entity name="cow#6" id="867732736" castshadows="false" meshFile="cow.mesh" type="Enemy" subType="Cow" animationTree="data/animations/cow.xml" life="10" points="50" speed="15" damage="0" specialDamage="0" height="14" dieMesh="cowDie.mesh" dieAnimation="">
+          <rotation qw="1" qx="0" qy="0" qz="0" />
+          <position x="0" y="0" z="0" />
+          <scale x="1" y="1" z="1" />
+          <subentities>
+            <subentity materialName="CowMaterial" index="0" visible="true" />
+          </subentities>
+        </entity>
+      </node>
+      <node name="Knight#09" id="154881440">
+        <rotation qw="0.816642" qx="0" qy="-0.577145" qz="0" />
+        <position x="650.085" y="12" z="725.318" />
+        <scale x="1" y="1" z="1" />
+        <entity name="knightB#09" id="326914272" castshadows="true" meshFile="knightB.mesh" type="Enemy" subType="Knight" animationTree="data/animations/knight.xml" life="100" points="100" speed="50" damage="1" specialDamage="0" height="13" dieMesh="nakedDie.mesh" dieAnimation="Die">
+          <rotation qw="1" qx="0" qy="0" qz="0" />
+          <position x="0" y="0" z="0" />
+          <scale x="1" y="1" z="1" />
+          <subentities>
+            <subentity materialName="knightB_material" index="0" visible="true" />
+          </subentities>
+        </entity>
+      </node>
+      <node name="Knight#22" id="949583424">
+        <rotation qw="0.882948" qx="0" qy="-0.469472" qz="0" />
+        <position x="913.496" y="12" z="633.508" />
+        <scale x="1" y="1" z="1" />
+        <entity name="knightA#22" id="843043328" castshadows="false" meshFile="knightA.mesh" type="Enemy" subType="Knight" animationTree="data/animations/knight.xml" life="150" points="200" speed="50" damage="2" specialDamage="0" height="13" dieMesh="nakedDie.mesh" dieAnimation="Die">
+          <rotation qw="1" qx="0" qy="0" qz="0" />
+          <position x="0" y="0" z="0" />
+          <scale x="1" y="1" z="1" />
+          <subentities>
+            <subentity materialName="knightA_material_4" index="0" visible="true" />
           </subentities>
         </entity>
       </node>
@@ -8265,40 +8434,14 @@
       <scale x="1" y="1" z="1" />
       <node name="BeerHorn#1" id="634266176">
         <rotation qw="1" qx="0" qy="0" qz="0" />
-        <position x="1213.15" y="9" z="361.13" />
+        <position x="1153.39" y="9" z="229.698" />
         <scale x="1" y="1" z="1" />
         <entity name="beerHorn#0#1" id="550401344" castshadows="true" meshFile="beerHorn.mesh" type="Item" subType="Drunk" life="0" drunkTime="3" points="200">
           <rotation qw="1" qx="0" qy="0" qz="0" />
-          <position x="11.2782" y="0" z="-189.859" />
+          <position x="0" y="0" z="0" />
           <scale x="1" y="1" z="1" />
           <subentities>
             <subentity materialName="beerHorn_material" index="0" visible="true" />
-          </subentities>
-        </entity>
-      </node>
-      <node name="Chicken#15" id="472975840">
-        <rotation qw="1" qx="0" qy="0" qz="0" />
-        <position x="1052.09" y="9" z="569.73" />
-        <scale x="1" y="1" z="1" />
-        <entity name="chickenLegItem#0#0" id="762047168" castshadows="true" meshFile="chickenLegItem.mesh" type="Item" subType="Life" life="50" drunkTime="0" points="150">
-          <rotation qw="1" qx="0" qy="0" qz="0" />
-          <position x="0" y="0" z="0" />
-          <scale x="1" y="1" z="1" />
-          <subentities>
-            <subentity materialName="chickenLegItem_material" index="0" visible="true" />
-          </subentities>
-        </entity>
-      </node>
-      <node name="Chicken#19#0" id="417920480">
-        <rotation qw="1" qx="0" qy="0" qz="0" />
-        <position x="211.934" y="10" z="-606.281" />
-        <scale x="1" y="1" z="1" />
-        <entity name="chickenItem#1#0" id="82247384" castshadows="false" meshFile="chickenItem.mesh" type="Item" subType="Life" life="100" drunkTime="0" points="150">
-          <rotation qw="1" qx="0" qy="0" qz="0" />
-          <position x="0" y="0" z="0" />
-          <scale x="1" y="1" z="1" />
-          <subentities>
-            <subentity materialName="chickenItem_material" index="0" visible="true" />
           </subentities>
         </entity>
       </node>
@@ -8328,29 +8471,16 @@
           </subentities>
         </entity>
       </node>
-      <node name="Chicken" id="657307712">
+      <node name="ChickenItem#1" id="9247109">
         <rotation qw="1" qx="0" qy="0" qz="0" />
-        <position x="1212.62" y="9" z="255.667" />
+        <position x="1172.71" y="31" z="-25.1761" />
         <scale x="1" y="1" z="1" />
-        <entity name="chickenLegItem#0" id="491897344" castshadows="true" meshFile="chickenLegItem.mesh" type="Item" subType="Life" life="35" drunkTime="0" points="150">
+        <entity name="chickenItem#0" id="643879552" castshadows="true" meshFile="chickenItem.mesh" type="Item" subType="Life" life="100" drunkTime="0" points="300">
           <rotation qw="1" qx="0" qy="0" qz="0" />
           <position x="0" y="0" z="0" />
           <scale x="1" y="1" z="1" />
           <subentities>
-            <subentity materialName="chickenLegItem_material" index="0" visible="true" />
-          </subentities>
-        </entity>
-      </node>
-      <node name="Chicken#17" id="802392640">
-        <rotation qw="1" qx="0" qy="0" qz="0" />
-        <position x="172.607" y="9" z="-460.771" />
-        <scale x="1" y="1" z="1" />
-        <entity name="chickenLegItem#0#1" id="611102656" castshadows="true" meshFile="chickenLegItem.mesh" type="Item" subType="Life" life="35" drunkTime="0" points="150">
-          <rotation qw="1" qx="0" qy="0" qz="0" />
-          <position x="0" y="0" z="0" />
-          <scale x="1" y="1" z="1" />
-          <subentities>
-            <subentity materialName="chickenLegItem_material" index="0" visible="true" />
+            <subentity materialName="chickenItem_material" index="0" visible="true" />
           </subentities>
         </entity>
       </node>
@@ -8380,16 +8510,16 @@
           </subentities>
         </entity>
       </node>
-      <node name="Chicken#16" id="9247109">
+      <node name="ChickenItem#0" id="472975840">
         <rotation qw="1" qx="0" qy="0" qz="0" />
-        <position x="1172.71" y="31" z="-25.1761" />
+        <position x="1052.09" y="9" z="569.73" />
         <scale x="1" y="1" z="1" />
-        <entity name="chickenItem#0" id="643879552" castshadows="true" meshFile="chickenItem.mesh" type="Item" subType="Life" life="100" drunkTime="0" points="300">
+        <entity name="chickenLegItem#0#0" id="762047168" castshadows="true" meshFile="chickenLegItem.mesh" type="Item" subType="Life" life="50" drunkTime="0" points="150">
           <rotation qw="1" qx="0" qy="0" qz="0" />
           <position x="0" y="0" z="0" />
           <scale x="1" y="1" z="1" />
           <subentities>
-            <subentity materialName="chickenItem_material" index="0" visible="true" />
+            <subentity materialName="chickenLegItem_material" index="0" visible="true" />
           </subentities>
         </entity>
       </node>
@@ -8419,22 +8549,22 @@
           </subentities>
         </entity>
       </node>
-      <node name="Chicken#19" id="125095368">
+      <node name="ChickenItem#3" id="258796960">
         <rotation qw="1" qx="0" qy="0" qz="0" />
-        <position x="468.507" y="10" z="-532.359" />
+        <position x="79.696" y="9" z="-550.688" />
         <scale x="1" y="1" z="1" />
-        <entity name="chickenItem#1" id="336405504" castshadows="false" meshFile="chickenItem.mesh" type="Item" subType="Life" life="100" drunkTime="0" points="150">
+        <entity name="chickenLegItem#0#2" id="891537216" castshadows="true" meshFile="chickenLegItem.mesh" type="Item" subType="Life" life="35" drunkTime="0" points="150">
           <rotation qw="1" qx="0" qy="0" qz="0" />
           <position x="0" y="0" z="0" />
           <scale x="1" y="1" z="1" />
           <subentities>
-            <subentity materialName="chickenItem_material" index="0" visible="true" />
+            <subentity materialName="chickenLegItem_material" index="0" visible="true" />
           </subentities>
         </entity>
       </node>
       <node name="Ruby" id="232093264">
         <rotation qw="1" qx="0" qy="0" qz="0" />
-        <position x="1257.4" y="9" z="452.684" />
+        <position x="1225.46" y="13.4554" z="-161.338" />
         <scale x="1" y="1" z="1" />
         <entity name="ruby#0" id="371745984" castshadows="true" meshFile="ruby.mesh" type="Item" subType="Points" life="0" drunkTime="0" points="250">
           <rotation qw="1" qx="0" qy="0" qz="0" />
@@ -8460,7 +8590,7 @@
       </node>
       <node name="BeerGlass#2" id="164860992">
         <rotation qw="1" qx="0" qy="0" qz="0" />
-        <position x="1015.39" y="12" z="-180.337" />
+        <position x="951.991" y="12" z="-206.255" />
         <scale x="1" y="1" z="1" />
         <entity name="beerGlass#0#2" id="211279648" castshadows="true" meshFile="beerGlass.mesh" type="Item" subType="Drunk" life="0" drunkTime="5" points="350">
           <rotation qw="1" qx="0" qy="0" qz="0" />
@@ -8484,11 +8614,11 @@
           </subentities>
         </entity>
       </node>
-      <node name="Chicken#18" id="258796960">
+      <node name="ChickenItem#2" id="802392640">
         <rotation qw="1" qx="0" qy="0" qz="0" />
-        <position x="79.696" y="9" z="-550.688" />
+        <position x="172.607" y="9" z="-460.771" />
         <scale x="1" y="1" z="1" />
-        <entity name="chickenLegItem#0#2" id="891537216" castshadows="true" meshFile="chickenLegItem.mesh" type="Item" subType="Life" life="35" drunkTime="0" points="150">
+        <entity name="chickenLegItem#0#1" id="611102656" castshadows="true" meshFile="chickenLegItem.mesh" type="Item" subType="Life" life="35" drunkTime="0" points="150">
           <rotation qw="1" qx="0" qy="0" qz="0" />
           <position x="0" y="0" z="0" />
           <scale x="1" y="1" z="1" />
@@ -8525,7 +8655,7 @@
       </node>
       <node name="BeerHorn#3" id="416669216">
         <rotation qw="1" qx="0" qy="0" qz="0" />
-        <position x="765.586" y="9" z="-551.161" />
+        <position x="646.648" y="9" z="-590.049" />
         <scale x="1" y="1" z="1" />
         <entity name="beerHorn#0#3" id="936124736" castshadows="true" meshFile="beerHorn.mesh" type="Item" subType="Drunk" life="0" drunkTime="3" points="200">
           <rotation qw="1" qx="0" qy="0" qz="0" />
@@ -8533,6 +8663,32 @@
           <scale x="1" y="1" z="1" />
           <subentities>
             <subentity materialName="beerHorn_material" index="0" visible="true" />
+          </subentities>
+        </entity>
+      </node>
+      <node name="ChickenItem" id="657307712">
+        <rotation qw="1" qx="0" qy="0" qz="0" />
+        <position x="1283.34" y="9" z="64.5288" />
+        <scale x="1" y="1" z="1" />
+        <entity name="chickenLegItem#0" id="491897344" castshadows="true" meshFile="chickenLegItem.mesh" type="Item" subType="Life" life="35" drunkTime="0" points="150">
+          <rotation qw="1" qx="0" qy="0" qz="0" />
+          <position x="0" y="0" z="0" />
+          <scale x="1" y="1" z="1" />
+          <subentities>
+            <subentity materialName="chickenLegItem_material" index="0" visible="true" />
+          </subentities>
+        </entity>
+      </node>
+      <node name="ChickenItem#5" id="417920480">
+        <rotation qw="1" qx="0" qy="0" qz="0" />
+        <position x="211.934" y="10" z="-606.281" />
+        <scale x="1" y="1" z="1" />
+        <entity name="chickenItem#1#0" id="82247384" castshadows="false" meshFile="chickenItem.mesh" type="Item" subType="Life" life="100" drunkTime="0" points="150">
+          <rotation qw="1" qx="0" qy="0" qz="0" />
+          <position x="0" y="0" z="0" />
+          <scale x="1" y="1" z="1" />
+          <subentities>
+            <subentity materialName="chickenItem_material" index="0" visible="true" />
           </subentities>
         </entity>
       </node>
@@ -8572,6 +8728,19 @@
           <scale x="1" y="1" z="1" />
           <subentities>
             <subentity materialName="beerHorn_material" index="0" visible="true" />
+          </subentities>
+        </entity>
+      </node>
+      <node name="ChickenItem#4" id="125095368">
+        <rotation qw="1" qx="0" qy="0" qz="0" />
+        <position x="468.507" y="10" z="-532.359" />
+        <scale x="1" y="1" z="1" />
+        <entity name="chickenItem#1" id="336405504" castshadows="false" meshFile="chickenItem.mesh" type="Item" subType="Life" life="100" drunkTime="0" points="150">
+          <rotation qw="1" qx="0" qy="0" qz="0" />
+          <position x="0" y="0" z="0" />
+          <scale x="1" y="1" z="1" />
+          <subentities>
+            <subentity materialName="chickenItem_material" index="0" visible="true" />
           </subentities>
         </entity>
       </node>
