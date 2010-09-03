@@ -226,7 +226,7 @@ void PhysicsManager::move(PlayerPtr player, const float elapsedSeconds)
 	bool objectCollision = collidesAllObjects(player, lastPosition, player->getPosition(), 0.5f, 0.0);
 
 	// Test walls collision
-	bool wallCollision = collides(lastPosition, player->getPosition(), mWallGeometry->getPhysicsMeshInfo(),0.5f,0);
+	bool wallCollision = collides(lastPosition, player->getPosition(), mWallGeometry->getPhysicsMeshInfo(),4.0f,0);
 	
 	// If player is colliding with something, undo movement
 	if( objectCollision || wallCollision  )

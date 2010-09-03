@@ -75,7 +75,7 @@ void PlayState::initialize()
 
 	// Create a single player (TEST!)
 	PlayerPtr player1 = mPlayerManager->createPlayer("Player1","redWyvern.mesh");
-	player1->setPosition(Vector3(80, 24.5, 870));
+	player1->setPosition(Vector3(-266, 40.5, 708));	// START POSITION
 	// Add particle systems
 	player1->setFireBreath(mParticleManager->create("firebreath","WyvernsAssault/DragonBreath"));
 	player1->setDust(mParticleManager->create("dust","WyvernsAssault/Dust"));
@@ -908,7 +908,12 @@ bool PlayState::keyPressed(const OIS::KeyEvent& e)
 		mCutSceneManager->skip();
 		break;
 
-	// Create enemy
+	// Move Player to end -- HACK!
+	case OIS::KeyCode::KC_DELETE:
+		player1->setPosition(Vector3(-252, 40.5, -117));	// END POSITION
+		break;
+
+	// Create enemy -- HACK!
 	case OIS::KeyCode::KC_BACK:
 		EnemyPtr enemy = mEnemyManager->createEnemy(Enemy::EnemyTypes::Knight, player1->getPosition());
 		mPhysicsManager->addPhysicEnemy(enemy, mGameAreaManager->positionGameArea(player1->getPosition()));
