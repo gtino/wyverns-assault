@@ -55,7 +55,7 @@
   <CAMERASPEED value="28"></CAMERASPEED>
   <CAMERAPOSITIONS count="1">
     <OPTION id="0" position="1417.36 9.53911 54.9741" orientation="0.707107 0 0.707107 0"></OPTION>
-    <OPTION id="1" position="-28.5265 182.15 -332.7" orientation="0.0928543 -0.0403986 0.911055 0.399655"></OPTION>
+    <OPTION id="1" position="555.378 347.876 -766.957" orientation="-0.110698 0.0455165 -0.917247 -0.379911"></OPTION>
   </CAMERAPOSITIONS>
     <LAYERS>
       <LAYER id="0" name="Layer 0" visible="true"></LAYER>
@@ -136,9 +136,9 @@
   <OBJECT object_id="2000000002" name="Viewport1" typename="Viewport Object">
     <PROPERTY id="camera::clipdistance" type="8" value="0.05 100000"></PROPERTY>
     <PROPERTY id="camera::fov" type="6" value="1"></PROPERTY>
-    <PROPERTY id="camera::orientation" type="13" value="0.0928543 -0.0403986 0.911055 0.399655"></PROPERTY>
+    <PROPERTY id="camera::orientation" type="13" value="-0.110704 0.0455187 -0.917292 -0.37993"></PROPERTY>
     <PROPERTY id="camera::polymode" type="2" value="3"></PROPERTY>
-    <PROPERTY id="camera::position" type="9" value="-28.5265 182.15 -332.7"></PROPERTY>
+    <PROPERTY id="camera::position" type="9" value="555.378 347.876 -766.957"></PROPERTY>
     <PROPERTY id="camera::viewmode" type="2" value="6"></PROPERTY>
     <PROPERTY id="colour" type="11" value="0.901961 0.901961 0.901961 1"></PROPERTY>
     <PROPERTY id="compositorcount" type="2" value="0"></PROPERTY>
@@ -6098,7 +6098,7 @@
     <PROPERTY id="layer" type="2" value="0"></PROPERTY>
     <PROPERTY id="locked" type="12" value="false"></PROPERTY>
     <PROPERTY id="orientation" type="13" value="0.5373 0 -0.843392 0"></PROPERTY>
-    <PROPERTY id="position" type="9" value="1105.01 16.9142 461.622"></PROPERTY>
+    <PROPERTY id="position" type="9" value="1105.01 -1.10258 461.622"></PROPERTY>
     <PROPERTY id="scale" type="9" value="1 1 1"></PROPERTY>
     <PROPERTY id="updatescript" type="7" value=""></PROPERTY>
     <CUSTOMPROPERTIES>
@@ -6146,7 +6146,7 @@
     <PROPERTY id="layer" type="2" value="0"></PROPERTY>
     <PROPERTY id="locked" type="12" value="false"></PROPERTY>
     <PROPERTY id="orientation" type="13" value="0.876727 0 -0.480989 0"></PROPERTY>
-    <PROPERTY id="position" type="9" value="817.76 17.0124 -541.013"></PROPERTY>
+    <PROPERTY id="position" type="9" value="817.76 1.20199 -541.013"></PROPERTY>
     <PROPERTY id="scale" type="9" value="1 1 1"></PROPERTY>
     <PROPERTY id="updatescript" type="7" value=""></PROPERTY>
     <CUSTOMPROPERTIES>
@@ -6278,7 +6278,7 @@
     <PROPERTY id="layer" type="2" value="0"></PROPERTY>
     <PROPERTY id="locked" type="12" value="false"></PROPERTY>
     <PROPERTY id="orientation" type="13" value="0.961262 0 0.275637 0"></PROPERTY>
-    <PROPERTY id="position" type="9" value="358.366 16.6313 797.335"></PROPERTY>
+    <PROPERTY id="position" type="9" value="358.366 0.606974 797.335"></PROPERTY>
     <PROPERTY id="scale" type="9" value="1 1 1"></PROPERTY>
     <PROPERTY id="updatescript" type="7" value=""></PROPERTY>
     <CUSTOMPROPERTIES>
@@ -6361,8 +6361,8 @@
     <PROPERTY id="autotracktarget" type="7" value="None"></PROPERTY>
     <PROPERTY id="layer" type="2" value="0"></PROPERTY>
     <PROPERTY id="locked" type="12" value="false"></PROPERTY>
-    <PROPERTY id="orientation" type="13" value="0.766044 0 -0.642788 0"></PROPERTY>
-    <PROPERTY id="position" type="9" value="687.447 18.715 817.143"></PROPERTY>
+    <PROPERTY id="orientation" type="13" value="0.967046 0 -0.254602 0"></PROPERTY>
+    <PROPERTY id="position" type="9" value="690.149 1.33217 726.98"></PROPERTY>
     <PROPERTY id="scale" type="9" value="1 1 1"></PROPERTY>
     <PROPERTY id="updatescript" type="7" value=""></PROPERTY>
     <CUSTOMPROPERTIES>
@@ -6434,7 +6434,19 @@
     <PROPERTY id="layer" type="2" value="0"></PROPERTY>
     <PROPERTY id="locked" type="12" value="false"></PROPERTY>
     <PROPERTY id="orientation" type="13" value="0.876727 0 -0.480989 0"></PROPERTY>
-    <PROPERTY id="position" type="9" value="1141.14 17.7635 468.042"></PROPERTY>
+    <PROPERTY id="position" type="9" value="1141.14 -3.32154 468.042"></PROPERTY>
+    <PROPERTY id="scale" type="9" value="1 1 1"></PROPERTY>
+    <PROPERTY id="updatescript" type="7" value=""></PROPERTY>
+    <CUSTOMPROPERTIES>
+    </CUSTOMPROPERTIES>
+  </OBJECT>
+
+  <OBJECT object_id="820001856" name="Cow#15" typename="Node Object" parentnode="Enemies">
+    <PROPERTY id="autotracktarget" type="7" value="None"></PROPERTY>
+    <PROPERTY id="layer" type="2" value="0"></PROPERTY>
+    <PROPERTY id="locked" type="12" value="false"></PROPERTY>
+    <PROPERTY id="orientation" type="13" value="0.936672 0 0.350207 0"></PROPERTY>
+    <PROPERTY id="position" type="9" value="11.0416 -0.275745 -485.205"></PROPERTY>
     <PROPERTY id="scale" type="9" value="1 1 1"></PROPERTY>
     <PROPERTY id="updatescript" type="7" value=""></PROPERTY>
     <CUSTOMPROPERTIES>
@@ -6530,7 +6542,7 @@
     <PROPERTY id="layer" type="2" value="0"></PROPERTY>
     <PROPERTY id="locked" type="12" value="false"></PROPERTY>
     <PROPERTY id="orientation" type="13" value="0.876727 0 -0.480989 0"></PROPERTY>
-    <PROPERTY id="position" type="9" value="1098.78 16.8216 578.224"></PROPERTY>
+    <PROPERTY id="position" type="9" value="1098.78 1.01119 578.224"></PROPERTY>
     <PROPERTY id="scale" type="9" value="1 1 1"></PROPERTY>
     <PROPERTY id="updatescript" type="7" value=""></PROPERTY>
     <CUSTOMPROPERTIES>
@@ -6674,7 +6686,7 @@
     <PROPERTY id="layer" type="2" value="0"></PROPERTY>
     <PROPERTY id="locked" type="12" value="false"></PROPERTY>
     <PROPERTY id="orientation" type="13" value="0.876727 0 -0.480989 0"></PROPERTY>
-    <PROPERTY id="position" type="9" value="1012 21.6614 506.156"></PROPERTY>
+    <PROPERTY id="position" type="9" value="1012 1.30633 506.156"></PROPERTY>
     <PROPERTY id="scale" type="9" value="1 1 1"></PROPERTY>
     <PROPERTY id="updatescript" type="7" value=""></PROPERTY>
     <CUSTOMPROPERTIES>
@@ -6723,6 +6735,18 @@
     <PROPERTY id="locked" type="12" value="false"></PROPERTY>
     <PROPERTY id="orientation" type="13" value="1 0 0 0"></PROPERTY>
     <PROPERTY id="position" type="9" value="680.507 12 -685.07"></PROPERTY>
+    <PROPERTY id="scale" type="9" value="1 1 1"></PROPERTY>
+    <PROPERTY id="updatescript" type="7" value=""></PROPERTY>
+    <CUSTOMPROPERTIES>
+    </CUSTOMPROPERTIES>
+  </OBJECT>
+
+  <OBJECT object_id="854792960" name="Cow#13" typename="Node Object" parentnode="Enemies">
+    <PROPERTY id="autotracktarget" type="7" value="None"></PROPERTY>
+    <PROPERTY id="layer" type="2" value="0"></PROPERTY>
+    <PROPERTY id="locked" type="12" value="false"></PROPERTY>
+    <PROPERTY id="orientation" type="13" value="0.964788 0 0.263031 0"></PROPERTY>
+    <PROPERTY id="position" type="9" value="353.864 0.72562 -643.641"></PROPERTY>
     <PROPERTY id="scale" type="9" value="1 1 1"></PROPERTY>
     <PROPERTY id="updatescript" type="7" value=""></PROPERTY>
     <CUSTOMPROPERTIES>
@@ -6902,7 +6926,7 @@
     <PROPERTY id="layer" type="2" value="0"></PROPERTY>
     <PROPERTY id="locked" type="12" value="false"></PROPERTY>
     <PROPERTY id="orientation" type="13" value="0.67559 0 0.737277 0"></PROPERTY>
-    <PROPERTY id="position" type="9" value="652.643 17.3334 834.909"></PROPERTY>
+    <PROPERTY id="position" type="9" value="687.049 1.49221 778.48"></PROPERTY>
     <PROPERTY id="scale" type="9" value="1 1 1"></PROPERTY>
     <PROPERTY id="updatescript" type="7" value=""></PROPERTY>
     <CUSTOMPROPERTIES>
@@ -6974,7 +6998,19 @@
     <PROPERTY id="layer" type="2" value="0"></PROPERTY>
     <PROPERTY id="locked" type="12" value="false"></PROPERTY>
     <PROPERTY id="orientation" type="13" value="0.999962 0 -0.0087266 0"></PROPERTY>
-    <PROPERTY id="position" type="9" value="934.46 20.7782 517.077"></PROPERTY>
+    <PROPERTY id="position" type="9" value="934.46 1.76641 517.077"></PROPERTY>
+    <PROPERTY id="scale" type="9" value="1 1 1"></PROPERTY>
+    <PROPERTY id="updatescript" type="7" value=""></PROPERTY>
+    <CUSTOMPROPERTIES>
+    </CUSTOMPROPERTIES>
+  </OBJECT>
+
+  <OBJECT object_id="242866288" name="Cow#14" typename="Node Object" parentnode="Enemies">
+    <PROPERTY id="autotracktarget" type="7" value="None"></PROPERTY>
+    <PROPERTY id="layer" type="2" value="0"></PROPERTY>
+    <PROPERTY id="locked" type="12" value="false"></PROPERTY>
+    <PROPERTY id="orientation" type="13" value="0.845728 0 -0.533615 0"></PROPERTY>
+    <PROPERTY id="position" type="9" value="233.579 1.35054 -584.682"></PROPERTY>
     <PROPERTY id="scale" type="9" value="1 1 1"></PROPERTY>
     <PROPERTY id="updatescript" type="7" value=""></PROPERTY>
     <CUSTOMPROPERTIES>
@@ -7022,7 +7058,7 @@
     <PROPERTY id="layer" type="2" value="0"></PROPERTY>
     <PROPERTY id="locked" type="12" value="false"></PROPERTY>
     <PROPERTY id="orientation" type="13" value="0.0871556 0 -0.996195 0"></PROPERTY>
-    <PROPERTY id="position" type="9" value="765.594 19.0247 -391.286"></PROPERTY>
+    <PROPERTY id="position" type="9" value="765.594 3.21429 -391.286"></PROPERTY>
     <PROPERTY id="scale" type="9" value="1 1 1"></PROPERTY>
     <PROPERTY id="updatescript" type="7" value=""></PROPERTY>
     <CUSTOMPROPERTIES>
@@ -7082,7 +7118,7 @@
     <PROPERTY id="layer" type="2" value="0"></PROPERTY>
     <PROPERTY id="locked" type="12" value="false"></PROPERTY>
     <PROPERTY id="orientation" type="13" value="0.544639 0 0.838671 0"></PROPERTY>
-    <PROPERTY id="position" type="9" value="1027.95 52.096 51.8579"></PROPERTY>
+    <PROPERTY id="position" type="9" value="1027.95 36.2856 51.8579"></PROPERTY>
     <PROPERTY id="scale" type="9" value="1 1 1"></PROPERTY>
     <PROPERTY id="updatescript" type="7" value=""></PROPERTY>
     <CUSTOMPROPERTIES>
@@ -7226,7 +7262,7 @@
     <PROPERTY id="layer" type="2" value="0"></PROPERTY>
     <PROPERTY id="locked" type="12" value="false"></PROPERTY>
     <PROPERTY id="orientation" type="13" value="0.876727 0 -0.480989 0"></PROPERTY>
-    <PROPERTY id="position" type="9" value="1179.27 18.0485 507.459"></PROPERTY>
+    <PROPERTY id="position" type="9" value="1179.27 0.932518 507.459"></PROPERTY>
     <PROPERTY id="scale" type="9" value="1 1 1"></PROPERTY>
     <PROPERTY id="updatescript" type="7" value=""></PROPERTY>
     <CUSTOMPROPERTIES>
@@ -7310,7 +7346,19 @@
     <PROPERTY id="layer" type="2" value="0"></PROPERTY>
     <PROPERTY id="locked" type="12" value="false"></PROPERTY>
     <PROPERTY id="orientation" type="13" value="0.876727 0 -0.480989 0"></PROPERTY>
-    <PROPERTY id="position" type="9" value="1117.04 21.0013 341.281"></PROPERTY>
+    <PROPERTY id="position" type="9" value="1117.04 1.94941 341.281"></PROPERTY>
+    <PROPERTY id="scale" type="9" value="1 1 1"></PROPERTY>
+    <PROPERTY id="updatescript" type="7" value=""></PROPERTY>
+    <CUSTOMPROPERTIES>
+    </CUSTOMPROPERTIES>
+  </OBJECT>
+
+  <OBJECT object_id="959074688" name="Cow#12" typename="Node Object" parentnode="Enemies">
+    <PROPERTY id="autotracktarget" type="7" value="None"></PROPERTY>
+    <PROPERTY id="layer" type="2" value="0"></PROPERTY>
+    <PROPERTY id="locked" type="12" value="false"></PROPERTY>
+    <PROPERTY id="orientation" type="13" value="0.967046 0 -0.254602 0"></PROPERTY>
+    <PROPERTY id="position" type="9" value="589.771 -0.106556 -609.304"></PROPERTY>
     <PROPERTY id="scale" type="9" value="1 1 1"></PROPERTY>
     <PROPERTY id="updatescript" type="7" value=""></PROPERTY>
     <CUSTOMPROPERTIES>
@@ -9974,7 +10022,7 @@
       <PROPERTY id="speed" type="6" value="15"></PROPERTY>
       <PROPERTY id="damage" type="6" value="0"></PROPERTY>
       <PROPERTY id="specialDamage" type="6" value="0"></PROPERTY>
-      <PROPERTY id="height" type="6" value="14"></PROPERTY>
+      <PROPERTY id="height" type="6" value="4"></PROPERTY>
       <PROPERTY id="dieMesh" type="7" value="cowDie.mesh"></PROPERTY>
       <PROPERTY id="dieAnimation" type="7" value=""></PROPERTY>
     </CUSTOMPROPERTIES>
@@ -10508,6 +10556,35 @@
     <PROPERTY id="subentitycount" type="2" value="1"></PROPERTY>
     <PROPERTY id="updatescript" type="7" value=""></PROPERTY>
     <CUSTOMPROPERTIES>
+    </CUSTOMPROPERTIES>
+  </OBJECT>
+
+  <OBJECT object_id="65736868" name="cow#12" typename="Entity Object" parentnode="Cow#12">
+    <PROPERTY id="autotracktarget" type="7" value="None"></PROPERTY>
+    <PROPERTY id="castshadows" type="12" value="false"></PROPERTY>
+    <PROPERTY id="layer" type="2" value="1"></PROPERTY>
+    <PROPERTY id="locked" type="12" value="false"></PROPERTY>
+    <PROPERTY id="meshfile" type="7" value="cow.mesh"></PROPERTY>
+    <PROPERTY id="orientation" type="13" value="1 0 0 0"></PROPERTY>
+    <PROPERTY id="position" type="9" value="0 0 0"></PROPERTY>
+    <PROPERTY id="renderingdistance" type="6" value="10000"></PROPERTY>
+    <PROPERTY id="scale" type="9" value="1 1 1"></PROPERTY>
+    <PROPERTY id="subentity0::material" type="7" value="CowMaterial"></PROPERTY>
+    <PROPERTY id="subentity0::visible" type="12" value="true"></PROPERTY>
+    <PROPERTY id="subentitycount" type="2" value="1"></PROPERTY>
+    <PROPERTY id="updatescript" type="7" value=""></PROPERTY>
+    <CUSTOMPROPERTIES>
+      <PROPERTY id="type" type="7" value="Enemy"></PROPERTY>
+      <PROPERTY id="subType" type="7" value="Cow"></PROPERTY>
+      <PROPERTY id="animationTree" type="7" value="data/animations/cow.xml"></PROPERTY>
+      <PROPERTY id="life" type="6" value="10"></PROPERTY>
+      <PROPERTY id="points" type="6" value="50"></PROPERTY>
+      <PROPERTY id="speed" type="6" value="15"></PROPERTY>
+      <PROPERTY id="damage" type="6" value="0"></PROPERTY>
+      <PROPERTY id="specialDamage" type="6" value="0"></PROPERTY>
+      <PROPERTY id="height" type="6" value="4"></PROPERTY>
+      <PROPERTY id="dieMesh" type="7" value="cowDie.mesh"></PROPERTY>
+      <PROPERTY id="dieAnimation" type="7" value=""></PROPERTY>
     </CUSTOMPROPERTIES>
   </OBJECT>
 
@@ -12265,7 +12342,7 @@
       <PROPERTY id="speed" type="6" value="15"></PROPERTY>
       <PROPERTY id="damage" type="6" value="0"></PROPERTY>
       <PROPERTY id="specialDamage" type="6" value="0"></PROPERTY>
-      <PROPERTY id="height" type="6" value="14"></PROPERTY>
+      <PROPERTY id="height" type="6" value="4"></PROPERTY>
       <PROPERTY id="dieMesh" type="7" value="cowDie.mesh"></PROPERTY>
       <PROPERTY id="dieAnimation" type="7" value=""></PROPERTY>
     </CUSTOMPROPERTIES>
@@ -12755,6 +12832,35 @@
     <PROPERTY id="subentitycount" type="2" value="1"></PROPERTY>
     <PROPERTY id="updatescript" type="7" value=""></PROPERTY>
     <CUSTOMPROPERTIES>
+    </CUSTOMPROPERTIES>
+  </OBJECT>
+
+  <OBJECT object_id="545091072" name="cow#15" typename="Entity Object" parentnode="Cow#15">
+    <PROPERTY id="autotracktarget" type="7" value="None"></PROPERTY>
+    <PROPERTY id="castshadows" type="12" value="false"></PROPERTY>
+    <PROPERTY id="layer" type="2" value="1"></PROPERTY>
+    <PROPERTY id="locked" type="12" value="false"></PROPERTY>
+    <PROPERTY id="meshfile" type="7" value="cow.mesh"></PROPERTY>
+    <PROPERTY id="orientation" type="13" value="1 0 0 0"></PROPERTY>
+    <PROPERTY id="position" type="9" value="0 0 0"></PROPERTY>
+    <PROPERTY id="renderingdistance" type="6" value="10000"></PROPERTY>
+    <PROPERTY id="scale" type="9" value="1 1 1"></PROPERTY>
+    <PROPERTY id="subentity0::material" type="7" value="CowMaterial"></PROPERTY>
+    <PROPERTY id="subentity0::visible" type="12" value="true"></PROPERTY>
+    <PROPERTY id="subentitycount" type="2" value="1"></PROPERTY>
+    <PROPERTY id="updatescript" type="7" value=""></PROPERTY>
+    <CUSTOMPROPERTIES>
+      <PROPERTY id="type" type="7" value="Enemy"></PROPERTY>
+      <PROPERTY id="subType" type="7" value="Cow"></PROPERTY>
+      <PROPERTY id="animationTree" type="7" value="data/animations/cow.xml"></PROPERTY>
+      <PROPERTY id="life" type="6" value="10"></PROPERTY>
+      <PROPERTY id="points" type="6" value="50"></PROPERTY>
+      <PROPERTY id="speed" type="6" value="15"></PROPERTY>
+      <PROPERTY id="damage" type="6" value="0"></PROPERTY>
+      <PROPERTY id="specialDamage" type="6" value="0"></PROPERTY>
+      <PROPERTY id="height" type="6" value="4"></PROPERTY>
+      <PROPERTY id="dieMesh" type="7" value="cowDie.mesh"></PROPERTY>
+      <PROPERTY id="dieAnimation" type="7" value=""></PROPERTY>
     </CUSTOMPROPERTIES>
   </OBJECT>
 
@@ -13802,7 +13908,7 @@
       <PROPERTY id="speed" type="6" value="15"></PROPERTY>
       <PROPERTY id="damage" type="6" value="0"></PROPERTY>
       <PROPERTY id="specialDamage" type="6" value="0"></PROPERTY>
-      <PROPERTY id="height" type="6" value="14"></PROPERTY>
+      <PROPERTY id="height" type="6" value="4"></PROPERTY>
       <PROPERTY id="dieMesh" type="7" value="cowDie.mesh"></PROPERTY>
       <PROPERTY id="dieAnimation" type="7" value=""></PROPERTY>
     </CUSTOMPROPERTIES>
@@ -14280,7 +14386,7 @@
       <PROPERTY id="speed" type="6" value="15"></PROPERTY>
       <PROPERTY id="damage" type="6" value="0"></PROPERTY>
       <PROPERTY id="specialDamage" type="6" value="0"></PROPERTY>
-      <PROPERTY id="height" type="6" value="14"></PROPERTY>
+      <PROPERTY id="height" type="6" value="4"></PROPERTY>
       <PROPERTY id="dieMesh" type="7" value="cowDie.mesh"></PROPERTY>
       <PROPERTY id="dieAnimation" type="7" value=""></PROPERTY>
     </CUSTOMPROPERTIES>
@@ -14762,6 +14868,35 @@
     <PROPERTY id="subentitycount" type="2" value="1"></PROPERTY>
     <PROPERTY id="updatescript" type="7" value=""></PROPERTY>
     <CUSTOMPROPERTIES>
+    </CUSTOMPROPERTIES>
+  </OBJECT>
+
+  <OBJECT object_id="612048704" name="cow#14" typename="Entity Object" parentnode="Cow#14">
+    <PROPERTY id="autotracktarget" type="7" value="None"></PROPERTY>
+    <PROPERTY id="castshadows" type="12" value="false"></PROPERTY>
+    <PROPERTY id="layer" type="2" value="1"></PROPERTY>
+    <PROPERTY id="locked" type="12" value="false"></PROPERTY>
+    <PROPERTY id="meshfile" type="7" value="cow.mesh"></PROPERTY>
+    <PROPERTY id="orientation" type="13" value="1 0 0 0"></PROPERTY>
+    <PROPERTY id="position" type="9" value="0 0 0"></PROPERTY>
+    <PROPERTY id="renderingdistance" type="6" value="10000"></PROPERTY>
+    <PROPERTY id="scale" type="9" value="1 1 1"></PROPERTY>
+    <PROPERTY id="subentity0::material" type="7" value="CowMaterial"></PROPERTY>
+    <PROPERTY id="subentity0::visible" type="12" value="true"></PROPERTY>
+    <PROPERTY id="subentitycount" type="2" value="1"></PROPERTY>
+    <PROPERTY id="updatescript" type="7" value=""></PROPERTY>
+    <CUSTOMPROPERTIES>
+      <PROPERTY id="type" type="7" value="Enemy"></PROPERTY>
+      <PROPERTY id="subType" type="7" value="Cow"></PROPERTY>
+      <PROPERTY id="animationTree" type="7" value="data/animations/cow.xml"></PROPERTY>
+      <PROPERTY id="life" type="6" value="10"></PROPERTY>
+      <PROPERTY id="points" type="6" value="50"></PROPERTY>
+      <PROPERTY id="speed" type="6" value="15"></PROPERTY>
+      <PROPERTY id="damage" type="6" value="0"></PROPERTY>
+      <PROPERTY id="specialDamage" type="6" value="0"></PROPERTY>
+      <PROPERTY id="height" type="6" value="4"></PROPERTY>
+      <PROPERTY id="dieMesh" type="7" value="cowDie.mesh"></PROPERTY>
+      <PROPERTY id="dieAnimation" type="7" value=""></PROPERTY>
     </CUSTOMPROPERTIES>
   </OBJECT>
 
@@ -16176,7 +16311,7 @@
       <PROPERTY id="speed" type="6" value="15"></PROPERTY>
       <PROPERTY id="damage" type="6" value="0"></PROPERTY>
       <PROPERTY id="specialDamage" type="6" value="0"></PROPERTY>
-      <PROPERTY id="height" type="6" value="14"></PROPERTY>
+      <PROPERTY id="height" type="6" value="4"></PROPERTY>
       <PROPERTY id="dieMesh" type="7" value="cowDie.mesh"></PROPERTY>
       <PROPERTY id="dieAnimation" type="7" value=""></PROPERTY>
     </CUSTOMPROPERTIES>
@@ -16701,7 +16836,7 @@
       <PROPERTY id="speed" type="6" value="15"></PROPERTY>
       <PROPERTY id="damage" type="6" value="0"></PROPERTY>
       <PROPERTY id="specialDamage" type="6" value="0"></PROPERTY>
-      <PROPERTY id="height" type="6" value="14"></PROPERTY>
+      <PROPERTY id="height" type="6" value="4"></PROPERTY>
       <PROPERTY id="dieMesh" type="7" value="cowDie.mesh"></PROPERTY>
       <PROPERTY id="dieAnimation" type="7" value=""></PROPERTY>
     </CUSTOMPROPERTIES>
@@ -16730,7 +16865,7 @@
       <PROPERTY id="speed" type="6" value="15"></PROPERTY>
       <PROPERTY id="damage" type="6" value="0"></PROPERTY>
       <PROPERTY id="specialDamage" type="6" value="0"></PROPERTY>
-      <PROPERTY id="height" type="6" value="14"></PROPERTY>
+      <PROPERTY id="height" type="6" value="4"></PROPERTY>
       <PROPERTY id="dieMesh" type="7" value="cowDie.mesh"></PROPERTY>
       <PROPERTY id="dieAnimation" type="7" value=""></PROPERTY>
     </CUSTOMPROPERTIES>
@@ -17586,7 +17721,7 @@
       <PROPERTY id="speed" type="6" value="15"></PROPERTY>
       <PROPERTY id="damage" type="6" value="0"></PROPERTY>
       <PROPERTY id="specialDamage" type="6" value="0"></PROPERTY>
-      <PROPERTY id="height" type="6" value="14"></PROPERTY>
+      <PROPERTY id="height" type="6" value="4"></PROPERTY>
       <PROPERTY id="dieMesh" type="7" value="cowDie.mesh"></PROPERTY>
       <PROPERTY id="dieAnimation" type="7" value=""></PROPERTY>
     </CUSTOMPROPERTIES>
@@ -17818,7 +17953,7 @@
       <PROPERTY id="speed" type="6" value="15"></PROPERTY>
       <PROPERTY id="damage" type="6" value="0"></PROPERTY>
       <PROPERTY id="specialDamage" type="6" value="0"></PROPERTY>
-      <PROPERTY id="height" type="6" value="14"></PROPERTY>
+      <PROPERTY id="height" type="6" value="4"></PROPERTY>
       <PROPERTY id="dieMesh" type="7" value="cowDie.mesh"></PROPERTY>
       <PROPERTY id="dieAnimation" type="7" value=""></PROPERTY>
     </CUSTOMPROPERTIES>
@@ -18464,7 +18599,7 @@
       <PROPERTY id="speed" type="6" value="15"></PROPERTY>
       <PROPERTY id="damage" type="6" value="0"></PROPERTY>
       <PROPERTY id="specialDamage" type="6" value="0"></PROPERTY>
-      <PROPERTY id="height" type="6" value="14"></PROPERTY>
+      <PROPERTY id="height" type="6" value="4"></PROPERTY>
       <PROPERTY id="dieMesh" type="7" value="cowDie.mesh"></PROPERTY>
       <PROPERTY id="dieAnimation" type="7" value=""></PROPERTY>
     </CUSTOMPROPERTIES>
@@ -18973,7 +19108,7 @@
       <PROPERTY id="speed" type="6" value="15"></PROPERTY>
       <PROPERTY id="damage" type="6" value="0"></PROPERTY>
       <PROPERTY id="specialDamage" type="6" value="0"></PROPERTY>
-      <PROPERTY id="height" type="6" value="14"></PROPERTY>
+      <PROPERTY id="height" type="6" value="4"></PROPERTY>
       <PROPERTY id="dieMesh" type="7" value="cowDie.mesh"></PROPERTY>
       <PROPERTY id="dieAnimation" type="7" value=""></PROPERTY>
     </CUSTOMPROPERTIES>
@@ -20160,7 +20295,7 @@
       <PROPERTY id="speed" type="6" value="15"></PROPERTY>
       <PROPERTY id="damage" type="6" value="0"></PROPERTY>
       <PROPERTY id="specialDamage" type="6" value="0"></PROPERTY>
-      <PROPERTY id="height" type="6" value="14"></PROPERTY>
+      <PROPERTY id="height" type="6" value="4"></PROPERTY>
       <PROPERTY id="dieMesh" type="7" value="cowDie.mesh"></PROPERTY>
       <PROPERTY id="dieAnimation" type="7" value=""></PROPERTY>
     </CUSTOMPROPERTIES>
@@ -20803,7 +20938,7 @@
       <PROPERTY id="speed" type="6" value="15"></PROPERTY>
       <PROPERTY id="damage" type="6" value="0"></PROPERTY>
       <PROPERTY id="specialDamage" type="6" value="0"></PROPERTY>
-      <PROPERTY id="height" type="6" value="14"></PROPERTY>
+      <PROPERTY id="height" type="6" value="4"></PROPERTY>
       <PROPERTY id="dieMesh" type="7" value="cowDie.mesh"></PROPERTY>
       <PROPERTY id="dieAnimation" type="7" value=""></PROPERTY>
     </CUSTOMPROPERTIES>
@@ -21321,6 +21456,35 @@
       <PROPERTY id="height" type="6" value="13"></PROPERTY>
       <PROPERTY id="dieMesh" type="7" value="nakedDie.mesh"></PROPERTY>
       <PROPERTY id="dieAnimation" type="7" value="Die"></PROPERTY>
+    </CUSTOMPROPERTIES>
+  </OBJECT>
+
+  <OBJECT object_id="828791168" name="cow#13" typename="Entity Object" parentnode="Cow#13">
+    <PROPERTY id="autotracktarget" type="7" value="None"></PROPERTY>
+    <PROPERTY id="castshadows" type="12" value="false"></PROPERTY>
+    <PROPERTY id="layer" type="2" value="1"></PROPERTY>
+    <PROPERTY id="locked" type="12" value="false"></PROPERTY>
+    <PROPERTY id="meshfile" type="7" value="cow.mesh"></PROPERTY>
+    <PROPERTY id="orientation" type="13" value="1 0 0 0"></PROPERTY>
+    <PROPERTY id="position" type="9" value="0 0 0"></PROPERTY>
+    <PROPERTY id="renderingdistance" type="6" value="10000"></PROPERTY>
+    <PROPERTY id="scale" type="9" value="1 1 1"></PROPERTY>
+    <PROPERTY id="subentity0::material" type="7" value="CowMaterial"></PROPERTY>
+    <PROPERTY id="subentity0::visible" type="12" value="true"></PROPERTY>
+    <PROPERTY id="subentitycount" type="2" value="1"></PROPERTY>
+    <PROPERTY id="updatescript" type="7" value=""></PROPERTY>
+    <CUSTOMPROPERTIES>
+      <PROPERTY id="type" type="7" value="Enemy"></PROPERTY>
+      <PROPERTY id="subType" type="7" value="Cow"></PROPERTY>
+      <PROPERTY id="animationTree" type="7" value="data/animations/cow.xml"></PROPERTY>
+      <PROPERTY id="life" type="6" value="10"></PROPERTY>
+      <PROPERTY id="points" type="6" value="50"></PROPERTY>
+      <PROPERTY id="speed" type="6" value="15"></PROPERTY>
+      <PROPERTY id="damage" type="6" value="0"></PROPERTY>
+      <PROPERTY id="specialDamage" type="6" value="0"></PROPERTY>
+      <PROPERTY id="height" type="6" value="4"></PROPERTY>
+      <PROPERTY id="dieMesh" type="7" value="cowDie.mesh"></PROPERTY>
+      <PROPERTY id="dieAnimation" type="7" value=""></PROPERTY>
     </CUSTOMPROPERTIES>
   </OBJECT>
 
