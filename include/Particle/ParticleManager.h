@@ -88,6 +88,7 @@ namespace WyvernsAssault
 
 		/** Animal particles **/
 		void chickenKill(SceneNode* node);
+		void cowKill(SceneNode* node);
 
 		/** Glow particles */
 		void glow(SceneNode* node);

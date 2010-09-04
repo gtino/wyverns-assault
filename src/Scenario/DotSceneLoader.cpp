@@ -887,6 +887,13 @@ void DotSceneLoader::processGameArea(TiXmlElement *XMLNode, SceneNode *pParent)
 	{
 		area.mEndFar = parseVector3(pElement);
 	}
+	// Process spawn points
+	pElement = XMLNode->FirstChildElement("spawnPoint");
+	while(pElement)
+	{
+		area.mSpawnPoints.push_back(parseVector3(pElement));
+		pElement = pElement->NextSiblingElement("spawnPoint");
+	}
 
 	mGameAreaManager->addGameArea(area);
 }

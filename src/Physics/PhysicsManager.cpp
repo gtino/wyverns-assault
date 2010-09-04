@@ -485,22 +485,24 @@ bool PhysicsManager::removeProjectile(ProjectilePtr projectile)
 // --------------
 EVENTS_BEGIN_REGISTER_HANDLERS(PhysicsManager)
 	EVENTS_REGISTER_HANDLER(PhysicsManager, EnemyKilled)
-	EVENTS_REGISTER_HANDLER(PhysicsManager, ItemCatch);
-	EVENTS_REGISTER_HANDLER(PhysicsManager, ObjectKilled);
-	EVENTS_REGISTER_HANDLER(PhysicsManager, GameAreaChanged);
-	EVENTS_REGISTER_HANDLER(PhysicsManager, GameAreaCleared);
-	EVENTS_REGISTER_HANDLER(PhysicsManager, ProjectileUpdate);
-	EVENTS_REGISTER_HANDLER(PhysicsManager, ProjectileRemove);
+	EVENTS_REGISTER_HANDLER(PhysicsManager, EnemyPhysics)
+	EVENTS_REGISTER_HANDLER(PhysicsManager, ItemCatch)
+	EVENTS_REGISTER_HANDLER(PhysicsManager, ObjectKilled)
+	EVENTS_REGISTER_HANDLER(PhysicsManager, GameAreaChanged)
+	EVENTS_REGISTER_HANDLER(PhysicsManager, GameAreaCleared)
+	EVENTS_REGISTER_HANDLER(PhysicsManager, ProjectileUpdate)
+	EVENTS_REGISTER_HANDLER(PhysicsManager, ProjectileRemove)
 EVENTS_END_REGISTER_HANDLERS()
 
 EVENTS_BEGIN_UNREGISTER_HANDLERS(PhysicsManager)
 	EVENTS_UNREGISTER_HANDLER(PhysicsManager, EnemyKilled)
-	EVENTS_UNREGISTER_HANDLER(PhysicsManager, ItemCatch);
-	EVENTS_UNREGISTER_HANDLER(PhysicsManager, ObjectKilled);
-	EVENTS_UNREGISTER_HANDLER(PhysicsManager, GameAreaChanged);
-	EVENTS_UNREGISTER_HANDLER(PhysicsManager, GameAreaCleared);
-	EVENTS_UNREGISTER_HANDLER(PhysicsManager, ProjectileUpdate);
-	EVENTS_UNREGISTER_HANDLER(PhysicsManager, ProjectileRemove);
+	EVENTS_UNREGISTER_HANDLER(PhysicsManager, EnemyPhysics)
+	EVENTS_UNREGISTER_HANDLER(PhysicsManager, ItemCatch)
+	EVENTS_UNREGISTER_HANDLER(PhysicsManager, ObjectKilled)
+	EVENTS_UNREGISTER_HANDLER(PhysicsManager, GameAreaChanged)
+	EVENTS_UNREGISTER_HANDLER(PhysicsManager, GameAreaCleared)
+	EVENTS_UNREGISTER_HANDLER(PhysicsManager, ProjectileUpdate)
+	EVENTS_UNREGISTER_HANDLER(PhysicsManager, ProjectileRemove)
 EVENTS_END_UNREGISTER_HANDLERS()
 
 EVENTS_DEFINE_HANDLER(PhysicsManager, EnemyKilled)
@@ -512,6 +514,13 @@ EVENTS_DEFINE_HANDLER(PhysicsManager, EnemyKilled)
 
 	// The player has just hit the enemy
    	removeEnemy(enemy);
+}
+
+EVENTS_DEFINE_HANDLER(PhysicsManager, EnemyPhysics)
+{
+	Debug::Out("PhysicsManager : handleEnemyPhysicsEvent");
+
+	addPhysicEnemy(evt->getEnemy(), evt->getGameArea());
 }
 
 EVENTS_DEFINE_HANDLER(PhysicsManager, ItemCatch)
@@ -552,9 +561,11 @@ EVENTS_DEFINE_HANDLER(PhysicsManager, GameAreaCleared)
 
 	// Actual game area is cleared
 	if( mCurrentGameArea == evt->getGameArea() && !mGameAreaCleared)
-	{
-		mGameAreaCleared = true;		
-	}
+		mGameAreaCleared = true;
+
+	// Game area cleared by time, remove enemies
+	if( evt->getType() == 1 )
+		mEnemyMapList[evt->getGameArea()].clear();
 }
 
 EVENTS_DEFINE_HANDLER(PhysicsManager, ProjectileUpdate)

@@ -128,6 +128,26 @@ EnemyCustomEvent::EnemyCustomEvent(EnemyPtr e)
 
 //----------------------
 
+EnemyCreationEvent::EnemyCreationEvent(Enemy::EnemyTypes type, int difficult, Vector3 position, int gameArea)
+:Event(EventTypes::EnemyCreation, EventPriorities::Normal)
+{
+	mType = type;
+	mDifficult = difficult;
+	mPosition = position;
+	mGameArea = gameArea;
+};
+
+//----------------------
+
+EnemyPhysicsEvent::EnemyPhysicsEvent(EnemyPtr e, int gameArea)
+:Event(EventTypes::EnemyPhysics, EventPriorities::Normal)
+{
+	mEnemy = e;
+	mGameArea = gameArea;
+};
+
+//----------------------
+
 PlayerHitEvent::PlayerHitEvent(EnemyPtr e, PlayerPtr p)
 :Event(EventTypes::PlayerHit, EventPriorities::Normal)
 {
@@ -230,10 +250,11 @@ GameAreaChangedEvent::GameAreaChangedEvent(int previousArea, int actualArea)
 
 //----------------------
 
-GameAreaClearedEvent::GameAreaClearedEvent(int gameArea)
+GameAreaClearedEvent::GameAreaClearedEvent(int gameArea, int type)
 :Event(EventTypes::GameAreaCleared, EventPriorities::Normal)
 {
 	mGameArea = gameArea;
+	mType = type;
 };
 
 //----------------------

@@ -71,8 +71,9 @@ void CameraManager::initialize(SceneManager* sceneManager, RenderWindow* window)
 	/** Debug axes node */
 	mAxes = mSceneManager->createEntity("Axes", "axes.mesh");
 	mAxesNode = mCameraNode->createChildSceneNode("AxesNode");
+	mAxesNode->attachObject(mAxes);
 	mAxesNode->setScale(0.1, 0.1, 0.1);
-	mAxesNode->setVisible(false);
+	mAxesNode->setVisible(false);	
 
 	mSceneManager->createAnimation("CameraTrack", 1);
 	mSceneManager->createAnimation("LookAtTrack", 1);
@@ -782,13 +783,11 @@ bool CameraManager::frameRenderingQueued(FrameEvent evt)
 /** Debug axes visibility */
 void CameraManager::showAxes()
 {
-	mAxesNode->attachObject(mSceneManager->getEntity("Axes"));
-	mAxesNode->getAttachedObject("Axes")->setVisible(true);
+	mAxesNode->setVisible(true);
 }
 void CameraManager::hideAxes()
 {
-	mAxesNode->getAttachedObject("Axes")->setVisible(false);
-	mAxesNode->detachObject("Axes");	
+	mAxesNode->setVisible(false);
 }
 
 // --------------
@@ -823,11 +822,11 @@ EVENTS_DEFINE_HANDLER(CameraManager,EnemyKilled)
 
 	if( enemy->hasDieAnimation() )
 	{
-		this->shake(0.5, (rand()%4));
+		this->shake(0.5, (rand()%2));
 	}
 	else
 	{
-		this->rumble(0.5, (rand()%3));
+		this->rumble(0.5, (rand()%2));
 	}
 }
 

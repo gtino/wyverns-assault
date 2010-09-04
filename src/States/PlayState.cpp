@@ -9,6 +9,7 @@ PlayState::PlayState(GraphicsManagerPtr graphicsManager, InputManagerPtr inputMa
 , mPerformancesPanel(NULL)
 , mRootSceneNode(0)
 , mElapsedSeconds(0.0f)
+, mDebugEnabled(false)
 {
 	//
 	// TODO Constructor logic HERE
@@ -27,6 +28,8 @@ PlayState::~PlayState()
 void PlayState::initialize()
 {
 	BaseState::initialize();
+
+	mDebugEnabled = false;
 
 	//
 	// Use Game camera and viewport (by default Gui ones are used!)
@@ -75,7 +78,7 @@ void PlayState::initialize()
 
 	// Create a single player (TEST!)
 	PlayerPtr player1 = mPlayerManager->createPlayer("Player1","redWyvern.mesh");
-	player1->setPosition(Vector3(-266, 40.5, 708));	// START POSITION
+	player1->setPosition(Vector3(-257, 98, 712));	// START POSITION
 	// Add particle systems
 	player1->setFireBreath(mParticleManager->create("firebreath","WyvernsAssault/DragonBreath"));
 	player1->setDust(mParticleManager->create("dust","WyvernsAssault/Dust"));
@@ -120,6 +123,8 @@ void PlayState::initialize()
 	items.push_back("");	
 	items.push_back("Game Area");
 	items.push_back("Enemies");
+	items.push_back("Finish Time");
+	items.push_back("Time");
  
 	mDetailsPanel = mTrayMgr->createParamsPanel(OgreBites::TL_NONE, "DetailsPanel", 200, items);
 	mDetailsPanel->setParamValue(12, "Bilinear");
@@ -310,6 +315,8 @@ bool PlayState::frameRenderingQueued(const Ogre::FrameEvent& evt)
 			mDetailsPanel->setParamValue(10, StringConverter::toString(mCameraManager->getCameraLookAt().z, 5));
 			mDetailsPanel->setParamValue(15, StringConverter::toString(mGameAreaManager->getGameArea()));
 			mDetailsPanel->setParamValue(16, StringConverter::toString(mEnemyManager->getCount()));
+			mDetailsPanel->setParamValue(17, StringConverter::toString(mGameAreaManager->getFinishTime()));
+			mDetailsPanel->setParamValue(18, StringConverter::toString(mGameAreaManager->getTime()));
 		}
 
 		if(mPerformancesPanel->isVisible())
@@ -607,6 +614,10 @@ void PlayState::unload()
 		mTrayMgr->hideAll();
 		mTrayMgr->clearAllTrays();
 	}
+	if(mDebugEnabled)
+	{
+		mCameraManager->hideAxes();
+	}
 	if(mRoot)
 	{
 		//
@@ -688,7 +699,8 @@ void PlayState::pause()
 		mTrayMgr->hideCursor();
 
 	// Hide axes if visible
-	mCameraManager->toogleAxes();
+	if(mDebugEnabled)
+		mCameraManager->hideAxes();
 
 	// Disable all post process
 	mPostProcessManager->pause();
@@ -715,7 +727,8 @@ void PlayState::resume()
 		mTrayMgr->hideCursor();
 
 	// Show axes if visible
-	mCameraManager->toogleAxes();
+	if(mDebugEnabled)
+		mCameraManager->showAxes();
 
 	// Resume previous camera
 	mCameraManager->resumeCamera();
@@ -778,6 +791,8 @@ bool PlayState::keyPressed(const OIS::KeyEvent& e)
 	case OIS::KeyCode::KC_G:		
 		if (mDetailsPanel->getTrayLocation() == OgreBites::TL_NONE)
 		{
+			mDebugEnabled = true;
+
 			mTrayMgr->moveWidgetToTray(mPerformancesPanel, OgreBites::TL_TOPLEFT, 0);
 			mPerformancesPanel->show();
 			mTrayMgr->moveWidgetToTray(mDetailsPanel, OgreBites::TL_TOPRIGHT, 0);
@@ -794,6 +809,8 @@ bool PlayState::keyPressed(const OIS::KeyEvent& e)
 		}
 		else
 		{
+			mDebugEnabled = false;
+
 			mTrayMgr->removeWidgetFromTray(mPerformancesPanel);
 			mPerformancesPanel->hide();
 			mTrayMgr->removeWidgetFromTray(mDetailsPanel);
@@ -911,12 +928,6 @@ bool PlayState::keyPressed(const OIS::KeyEvent& e)
 	// Move Player to end -- HACK!
 	case OIS::KeyCode::KC_DELETE:
 		player1->setPosition(Vector3(-252, 40.5, -117));	// END POSITION
-		break;
-
-	// Create enemy -- HACK!
-	case OIS::KeyCode::KC_BACK:
-		EnemyPtr enemy = mEnemyManager->createEnemy(Enemy::EnemyTypes::Knight, player1->getPosition());
-		mPhysicsManager->addPhysicEnemy(enemy, mGameAreaManager->positionGameArea(player1->getPosition()));
 		break;
 	}
 

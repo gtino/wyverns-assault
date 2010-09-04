@@ -47,6 +47,8 @@ namespace WyvernsAssault
 		EnemyKilled,
 		EnemyRemove,
 		EnemyCustom,
+		EnemyCreation,
+		EnemyPhysics,
 		ObjectHit,
 		ObjectKilled,
 		ObjectRemove,
@@ -211,6 +213,44 @@ namespace WyvernsAssault
 	};
 
 	typedef boost::shared_ptr<EnemyCustomEvent> EnemyCustomEventPtr;
+
+	// --------------------------------	
+	class EnemyCreationEvent : public Event
+	{
+	public:
+		EnemyCreationEvent(Enemy::EnemyTypes type, int difficult, Vector3 position, int gameArea);
+		~EnemyCreationEvent(){};
+		
+		Enemy::EnemyTypes getType(){return mType;}
+		int getDifficult(){return mDifficult;}
+		Vector3 getPosition(){return mPosition;}
+		int getGameArea(){return mGameArea;}
+
+	private:
+		Enemy::EnemyTypes mType;
+		int mDifficult;
+		Vector3 mPosition;
+		int mGameArea;
+	};
+
+	typedef boost::shared_ptr<EnemyCreationEvent> EnemyCreationEventPtr;
+
+	// --------------------------------	
+	class EnemyPhysicsEvent : public Event
+	{
+	public:
+		EnemyPhysicsEvent(EnemyPtr enemy, int gameArea);
+		~EnemyPhysicsEvent(){};
+		
+		EnemyPtr getEnemy(){return mEnemy;}
+		int getGameArea(){return mGameArea;}
+
+	private:
+		EnemyPtr mEnemy;
+		int mGameArea;
+	};
+
+	typedef boost::shared_ptr<EnemyPhysicsEvent> EnemyPhysicsEventPtr;
 
 	// --------------------------------
 	class PlayerHitEvent : public Event
@@ -417,13 +457,15 @@ namespace WyvernsAssault
 	class GameAreaClearedEvent : public Event
 	{
 	public:
-		GameAreaClearedEvent(int gameArea);
+		GameAreaClearedEvent(int gameArea, int type);
 		~GameAreaClearedEvent(){};
 		
 		int getGameArea(){ return mGameArea; }
+		int getType(){ return mType; }
 
 	private:
 		int mGameArea;
+		int mType;
 	};
 
 	typedef boost::shared_ptr<GameAreaClearedEvent> GameAreaClearedEventPtr;

@@ -42,46 +42,84 @@ void EnemyManager::finalize()
 }
 
 // Enemy parameters
-Enemy::EnemyParameters EnemyManager::createParameters(int difficult)
+Enemy::EnemyParameters EnemyManager::createParameters(int difficult, Enemy::EnemyTypes type)
 {
 	Enemy::EnemyParameters params;
 
-	switch ( difficult )
+	if( type == Enemy::EnemyTypes::Chicken )
 	{
-		case 0:
-			params.animationTree = "data/animations/knight.xml";
-			params.life = 100.0;
-			params.points = 100.0;
-			params.speed = 50.0;
-			params.damage = 2.0;
-			params.specialDamage = 0.0;
-			params.height = 11.0;
-			params.attackCooldown = 0.5;
-			params.dieMesh = "nakedDie.mesh";
-			params.dieAnimation = "Die";
-			break;
-
-		default:
-			params.animationTree = "data/animations/knight.xml";
-			params.life = 100.0;
-			params.points = 100.0;
-			params.speed = 50.0;
-			params.damage = 2.0;
-			params.specialDamage = 0.0;
-			params.height = 11.0;
-			params.attackCooldown = 0.5;
-			params.dieMesh = "nakedDie.mesh";
-			params.dieAnimation = "Die";
-			break;
+		params.animationTree = "data/animations/chicken.xml";
+		params.life = 5.0;
+		params.points = 25.0;
+		params.speed = 20.0;
+		params.damage = 0.0;
+		params.specialDamage = 0.0;
+		params.height = 2.0;
+		params.attackCooldown = 0.5;
+		params.dieMesh = "chickenDie.mesh";
+		params.dieAnimation = "";
 	}
+	else if( type == Enemy::EnemyTypes::Cow )
+	{
+		params.animationTree = "data/animations/cow.xml";
+		params.life = 10.0;
+		params.points = 50.0;
+		params.speed = 15.0;
+		params.damage = 0.0;
+		params.specialDamage = 0.0;
+		params.height = 0.0;
+		params.attackCooldown = 0.5;
+		params.dieMesh = "cowDie.mesh";
+		params.dieAnimation = "";
+	}
+	else if( type == Enemy::EnemyTypes::Naked )
+	{
+		params.animationTree = "data/animations/naked.xml";
+		params.life = 35.0;
+		params.points = 150.0;
+		params.speed = 50.0;
+		params.damage = 0.0;
+		params.specialDamage = 0.0;
+		params.height = 13.0;
+		params.attackCooldown = 0.5;
+		params.dieMesh = "nakedDie.mesh";
+		params.dieAnimation = "Die";
+	}
+	else if( type == Enemy::EnemyTypes::Wizard )
+	{
+		params.animationTree = "data/animations/wizard.xml";
+		params.life = 150.0;
+		params.points = 250.0;
+		params.speed = 50.0;
+		params.damage = 3.0;
+		params.specialDamage = 6.0;
+		params.height = 13.0;
+		params.attackCooldown = 0.5;
+		params.dieMesh = "nakedDie.mesh";
+		params.dieAnimation = "Die";
+	}
+	else
+	{
+		params.animationTree = "data/animations/knight.xml";
+		params.life = 75.0 * difficult;
+		params.points = 100.0 * difficult;
+		params.speed = 50.0;
+		params.damage = 1.0 * difficult;
+		params.specialDamage = 0.0;
+		params.height = 13.0;
+		params.attackCooldown = 0.5;
+		params.dieMesh = "nakedDie.mesh";
+		params.dieAnimation = "Die";
+	}	
 
 	return params;
 }
 
 // Random enemies
-EnemyPtr EnemyManager::createEnemy(Enemy::EnemyTypes type, Vector3 position)
+EnemyPtr EnemyManager::createEnemy(Enemy::EnemyTypes type, int difficult, Vector3 position)
 {
 	Ogre::String mesh;
+	Ogre::String material;
 
 	int subType = rand();
 
@@ -95,11 +133,50 @@ EnemyPtr EnemyManager::createEnemy(Enemy::EnemyTypes type, Vector3 position)
 			break;
 		case Enemy::EnemyTypes::Knight:			
 			if( subType%3 == 0 )
+			{
 				mesh = Ogre::String("knightA.mesh");
+				subType = rand();
+				if( subType%5 == 0 )
+					material = "knightA_material";
+				else if( subType%5 == 1 )
+					material = "knightA_material_2";
+				else if( subType%5 == 2 )
+					material = "knightA_material_3";
+				else if( subType%5 == 3 )
+					material = "knightA_material_4";
+				else
+					material = "knightA_material_5";
+			}
 			else if( subType%3 == 1 )
+			{
 				mesh = Ogre::String("knightB.mesh");
+				subType = rand();
+				if( subType%5 == 0 )
+					material = "knightB_material";
+				else if( subType%5 == 1 )
+					material = "knightB_material_2";
+				else if( subType%5 == 2 )
+					material = "knightB_material_3";
+				else if( subType%5 == 3 )
+					material = "knightB_material_4";
+				else
+					material = "knightB_material_5";
+			}
 			else
+			{
 				mesh = Ogre::String("knightC.mesh");
+				subType = rand();
+				if( subType%5 == 0 )
+					material = "knightC_material";
+				else if( subType%5 == 1 )
+					material = "knightC_material_2";
+				else if( subType%5 == 2 )
+					material = "knightC_material_3";
+				else if( subType%5 == 3 )
+					material = "knightC_material_4";
+				else
+					material = "knightC_material_5";
+			}
 			break;
 		case Enemy::EnemyTypes::Wizard:
 			mesh = Ogre::String("wizard.mesh");
@@ -117,10 +194,13 @@ EnemyPtr EnemyManager::createEnemy(Enemy::EnemyTypes type, Vector3 position)
 	enemyMesh->setCastShadows(true);
 	enemyMesh->setQueryFlags(SceneManager::ENTITY_TYPE_MASK);
 
+	if( type == Enemy::EnemyTypes::Knight ) 
+		enemyMesh->setMaterialName(material);
+
 	Ogre::SceneNode* sceneNode = mEnemyNode->createChildSceneNode(name + "_Node", position);
 
 	// Get standar parameters for enemy type
-	Enemy::EnemyParameters params = createParameters(0);	
+	Enemy::EnemyParameters params = createParameters(difficult, type);	
 
 	// Create enemy
 	EnemyPtr enemy = createEnemy(type, name, enemyMesh, sceneNode, params, mCurrentGameArea, true);
@@ -351,9 +431,10 @@ EVENTS_BEGIN_REGISTER_HANDLERS(EnemyManager)
 	EVENTS_REGISTER_HANDLER(EnemyManager, EnemyHit)
 	EVENTS_REGISTER_HANDLER(EnemyManager, EnemyKilled)
 	EVENTS_REGISTER_HANDLER(EnemyManager, EnemyRemove)
-	EVENTS_REGISTER_HANDLER(EnemyManager, EnemyCustom);
-	EVENTS_REGISTER_HANDLER(EnemyManager, GameAreaChanged);
-	EVENTS_REGISTER_HANDLER(EnemyManager, GameAreaCleared);
+	EVENTS_REGISTER_HANDLER(EnemyManager, EnemyCustom)
+	EVENTS_REGISTER_HANDLER(EnemyManager, EnemyCreation)
+	EVENTS_REGISTER_HANDLER(EnemyManager, GameAreaChanged)
+	EVENTS_REGISTER_HANDLER(EnemyManager, GameAreaCleared)
 EVENTS_END_REGISTER_HANDLERS()
 
 EVENTS_BEGIN_UNREGISTER_HANDLERS(EnemyManager)
@@ -361,9 +442,10 @@ EVENTS_BEGIN_UNREGISTER_HANDLERS(EnemyManager)
 	EVENTS_UNREGISTER_HANDLER(EnemyManager, EnemyHit)
 	EVENTS_UNREGISTER_HANDLER(EnemyManager, EnemyKilled)
 	EVENTS_UNREGISTER_HANDLER(EnemyManager, EnemyRemove)
-	EVENTS_UNREGISTER_HANDLER(EnemyManager, EnemyCustom);
-	EVENTS_UNREGISTER_HANDLER(EnemyManager, GameAreaChanged);
-	EVENTS_UNREGISTER_HANDLER(EnemyManager, GameAreaCleared);
+	EVENTS_UNREGISTER_HANDLER(EnemyManager, EnemyCustom)
+	EVENTS_UNREGISTER_HANDLER(EnemyManager, EnemyCreation)
+	EVENTS_UNREGISTER_HANDLER(EnemyManager, GameAreaChanged)
+	EVENTS_UNREGISTER_HANDLER(EnemyManager, GameAreaCleared)
 EVENTS_END_UNREGISTER_HANDLERS()
 
 EVENTS_DEFINE_HANDLER(EnemyManager, Collision)
@@ -452,6 +534,16 @@ EVENTS_DEFINE_HANDLER(EnemyManager, EnemyCustom)
 	EVENTS_FIRE_AFTER(eRemove, 5.0f);
 }
 
+EVENTS_DEFINE_HANDLER(EnemyManager, EnemyCreation)
+{
+	Debug::Out("EnemyManager : handleEnemyCreationEvent");
+
+	EnemyPtr enemy = createEnemy(evt->getType(), evt->getDifficult(), evt->getPosition());
+
+	EnemyPhysicsEventPtr e = EnemyPhysicsEventPtr(new EnemyPhysicsEvent(enemy, evt->getGameArea()));
+	EVENTS_FIRE(e);
+}
+
 EVENTS_DEFINE_HANDLER(EnemyManager, GameAreaChanged)
 {
 	Debug::Out("EnemyManager : handleGameAreaChangedEvent");
@@ -467,7 +559,11 @@ EVENTS_DEFINE_HANDLER(EnemyManager, GameAreaChanged)
 
 EVENTS_DEFINE_HANDLER(EnemyManager, GameAreaCleared)
 {
-	Debug::Out("EnemyManager : handleGameAreaClearedEvent");	
+	Debug::Out("EnemyManager : handleGameAreaClearedEvent");
+
+	// Game area cleared by time, remove enemies
+	if( evt->getType() == 1 )
+		mEnemyMapList[evt->getGameArea()].clear();
 }
 
 // --------------------------------
@@ -505,7 +601,7 @@ LUA_DEFINE_FUNCTION(EnemyManager, create)
 	
 	Vector3 position;
 
-	EnemyPtr enemy = EnemyManager::getSingleton().createEnemy((Enemy::EnemyTypes)type, position);
+	EnemyPtr enemy = EnemyManager::getSingleton().createEnemy((Enemy::EnemyTypes)type, 1, position);
 
 	lua_pushstring(L,enemy->getName().c_str());
 

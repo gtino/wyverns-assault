@@ -57,6 +57,8 @@ namespace WyvernsAssault
 			int				mEnemies;
 			int				mDifficult;
 			int				mType;
+
+			std::vector<Vector3> mSpawnPoints;
 		};
 
 		GameAreaManager();
@@ -71,13 +73,21 @@ namespace WyvernsAssault
 		int getGameArea() { return mCurrentGameArea; }
 		void setGameArea(int gameArea) { mCurrentGameArea = gameArea; }
 
+		// Manage game area enemy creation events
+		void manageGameArea();
+
 		// Get parameters
 		int getEnemies(){ return mGameAreas[mCurrentGameArea].mEnemies; } 
 		int getDifficult(){ return mGameAreas[mCurrentGameArea].mDifficult; }
 		int getType(){ return mGameAreas[mCurrentGameArea].mType; }
+		Real getFinishTime(){ return mGameAreas[mCurrentGameArea].mFinishTime; }
+		Real getTime(){ return mTime; }
 
 		// Get game area from a position
 		int positionGameArea(Vector3 position);
+
+		// Get a point from game area boundaries
+		Vector3 getSpawnPoint(int gameArea);
 
 		// Enable Debug Stuff
 		void setDebugEnabled(bool isDebugEnabled);

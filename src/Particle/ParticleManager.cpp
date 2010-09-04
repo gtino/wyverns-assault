@@ -215,6 +215,23 @@ void ParticleManager::chickenKill(SceneNode* node)
 	particles->start();
 }
 
+/** Cow kill particle **/
+void ParticleManager::cowKill(SceneNode* node)
+{
+	String name = node->getName();
+	ParticleUniverse::ParticleSystem* particles;
+	if( mParticleSystemManager->getParticleSystem(name + "_cowKill") == NULL)
+	{
+		particles = mParticleSystemManager->createParticleSystem( name + "_cowKill", "WyvernsAssault/CowKill", mSceneManager);
+		node->attachObject( particles );
+	}
+	else
+	{
+		particles = mParticleSystemManager->getParticleSystem( name + "_cowKill");
+	}	
+	particles->start();
+}
+
 /** Glow particle */
 void ParticleManager::glow(SceneNode* node)
 {
@@ -343,6 +360,9 @@ EVENTS_DEFINE_HANDLER(ParticleManager, EnemyKilled)
 	{
 		if( enemy->getEnemyType() == Enemy::EnemyTypes::Chicken )
 			this->chickenKill(enemy->_getSceneNode());
+
+		if( enemy->getEnemyType() == Enemy::EnemyTypes::Cow )
+			this->cowKill(enemy->_getSceneNode());
 
 		else if( enemy->isFlying() )
 		{

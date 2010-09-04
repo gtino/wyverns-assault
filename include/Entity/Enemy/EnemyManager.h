@@ -67,9 +67,9 @@ namespace WyvernsAssault
 		void finalize();
 		SceneManager* getSceneManager(){return this->mSceneManager;}
 
-		Enemy::EnemyParameters createParameters(int difficult);
+		Enemy::EnemyParameters createParameters(int difficult, Enemy::EnemyTypes type);
 
-		EnemyPtr createEnemy(Enemy::EnemyTypes type, Vector3 position);	// For random enemies creation.
+		EnemyPtr createEnemy(Enemy::EnemyTypes type, int difficult, Vector3 position);	// For random enemies creation.
 		EnemyPtr createEnemy(Enemy::EnemyTypes type, Ogre::String name, Ogre::Entity* mesh, Ogre::SceneNode* sceneNode, Enemy::EnemyParameters params, int gameArea, bool visible);
 
 		int getCount();
@@ -118,6 +118,7 @@ namespace WyvernsAssault
 		EVENTS_HANDLER(EnemyKilled)
 		EVENTS_HANDLER(EnemyRemove)
 		EVENTS_HANDLER(EnemyCustom)
+		EVENTS_HANDLER(EnemyCreation)
 		EVENTS_HANDLER(GameAreaChanged)
 		EVENTS_HANDLER(GameAreaCleared)
 
