@@ -148,6 +148,8 @@ namespace WyvernsAssault
 	protected:
 		float			buttonTimer;
 		OIS::KeyCode	lastKey;
+
+		bool			mDebugEnabled;
 		
 	};
 }

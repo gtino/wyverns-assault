@@ -141,7 +141,6 @@ namespace WyvernsAssault
 		/** Debug camera functions */
 		void setPolygonMode(PolygonMode pm){ mGameCamera->setPolygonMode(pm);}
 		PolygonMode getPolygonMode(){ return mGameCamera->getPolygonMode(); }
-		void toogleAxes(){ mAxesNode->flipVisibility(); }
 		void showAxes();
 		void hideAxes();
 

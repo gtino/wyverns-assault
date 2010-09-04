@@ -162,6 +162,7 @@ namespace WyvernsAssault
 		EVENTS_INTERFACE()
 
 		EVENTS_HANDLER(EnemyKilled)
+		EVENTS_HANDLER(EnemyPhysics)
 		EVENTS_HANDLER(ItemCatch)		
 		EVENTS_HANDLER(ObjectKilled)
 		EVENTS_HANDLER(GameAreaChanged)
