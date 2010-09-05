@@ -2,7 +2,7 @@
 
 using namespace WyvernsAssault;
 
-Object::Object(Ogre::String name, ObjectTypes type) 
+Object::Object(Ogre::String name, ObjectTypes type, Ogre::Vector3 physicBox) 
 : EntityInterface(name)
 , PhysicsInterface()
 , mOBBoxRenderable(0)
@@ -12,6 +12,7 @@ Object::Object(Ogre::String name, ObjectTypes type)
 {
 	mType = type;
 	mParameters.life = mMaxLife;
+	mPhysicSize = physicBox; 
 
 }
 
@@ -26,11 +27,11 @@ void Object::initializeEntity(Ogre::Entity* entity, Ogre::SceneNode* sceneNode, 
 	// Always call base method before!
 	EntityInterface::initializeEntity(entity, sceneNode, sceneManager);
 
-	if(mType == WyvernsAssault::ObjectTypes::DynamicObject){
-		initializePhysics(entity->getName(), Vector3(50,50,50),"OBBoxManualMaterial_Object");
+	if(mType == WyvernsAssault::ObjectTypes::DynamicObject && mPhysicSize > Vector3::ZERO){
+		initializePhysics(entity->getName(),mPhysicSize,"OBBoxManualMaterial_Object");
 		sceneNode->attachObject(getGeometry()->getMovableObject());
-
 	}
+
 }
 
 void Object::finalizeEntity()

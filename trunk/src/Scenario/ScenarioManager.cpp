@@ -62,12 +62,12 @@ ObjectPtr ScenarioManager::createObject(WyvernsAssault::ObjectTypes type, Ogre::
 
 	Ogre::SceneNode* pSceneNode = mSceneManager->getRootSceneNode()->createChildSceneNode("Object_"+name+"_Node");
 
-	return createObject(type, name, pEntity, pSceneNode, mCurrentGameArea);
+	return createObject(type, name, pEntity, pSceneNode, mCurrentGameArea, Ogre::Vector3::ZERO);
 }
 
-ObjectPtr ScenarioManager::createObject(WyvernsAssault::ObjectTypes type, Ogre::String name, Ogre::Entity* entity, Ogre::SceneNode* sceneNode, int gameArea)
+ObjectPtr ScenarioManager::createObject(WyvernsAssault::ObjectTypes type, Ogre::String name, Ogre::Entity* entity, Ogre::SceneNode* sceneNode, int gameArea, Ogre::Vector3 physicBox)
 {
-	ObjectPtr object = ObjectPtr(new Object(name, type));
+	ObjectPtr object = ObjectPtr(new Object(name, type, physicBox));
 
 	object->initializeEntity(entity, sceneNode, mSceneManager);
 
