@@ -37,6 +37,25 @@ material Particle/Smoke_02
     }
 }
 //-----------------------------------------------------------------------------------------------------------------------------------------------
+material Particle/Smoke_03
+{
+    technique
+    {
+        pass
+        {
+            lighting off
+            scene_blend add
+            depth_write off
+
+            texture_unit
+            {
+                texture particle_smoke03.png
+                tex_address_mode clamp
+            }
+        }
+    }
+}
+//-----------------------------------------------------------------------------------------------------------------------------------------------
 material Particle/Fire_01
 {
     technique
@@ -610,6 +629,82 @@ material Particle/Cloud
             texture_unit
             {
                 texture particle_cloud.png
+                tex_address_mode clamp
+            }
+        }
+    }
+}
+//-----------------------------------------------------------------------------------------------------------------------------------------------
+material Particle/Lightning_01
+{
+    technique
+    {
+        pass
+        {
+            lighting off
+            scene_blend add
+            depth_write off
+
+            texture_unit
+            {
+                texture particle_lightning01.png
+                tex_address_mode clamp
+            }
+        }
+    }
+}
+//-----------------------------------------------------------------------------------------------------------------------------------------------
+material Particle/Lightning_02
+{
+    technique
+    {
+        pass
+        {
+            lighting off
+            scene_blend add
+            depth_write off
+
+            texture_unit
+            {
+                texture particle_lightning02.png
+                tex_address_mode clamp
+            }
+        }
+    }
+}
+//-----------------------------------------------------------------------------------------------------------------------------------------------
+material Particle/Lightning_03
+{
+    technique
+    {
+        pass
+        {
+            lighting off
+            scene_blend add
+            depth_write off
+
+            texture_unit
+            {
+                texture particle_lightning03.png
+                tex_address_mode clamp
+            }
+        }
+    }
+}
+//-----------------------------------------------------------------------------------------------------------------------------------------------
+material Particle/Lightning_04
+{
+    technique
+    {
+        pass
+        {
+            lighting off
+            scene_blend add
+            depth_write off
+
+            texture_unit
+            {
+                texture particle_lightning04.png
                 tex_address_mode clamp
             }
         }

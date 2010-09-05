@@ -1,0 +1,126 @@
+system WyvernsAssault/FireCamp
+{
+    technique 
+    {
+        visual_particle_quota                   450
+        material                                Particle/Fire_03
+        renderer                                Billboard
+        {
+        }
+        emitter                                 Box 
+        {
+            emission_rate                       100
+            angle                               10
+            time_to_live                        dyn_random
+            {
+                min                             0.5
+                max                             0.6
+            }
+            velocity                            dyn_random
+            {
+                min                             10
+                max                             20
+            }
+            particle_width                      dyn_random
+            {
+                min                             8
+                max                             10
+            }
+            particle_height                     dyn_random
+            {
+                min                             3
+                max                             6
+            }
+            box_width                           4
+            box_height                          1
+            box_depth                           4
+        }
+        affector                                Gravity 
+        {
+            position                            0 130 0
+            gravity                             3000
+        }
+        affector                                Scale 
+        {
+            x_scale                             -5
+            y_scale                             dyn_random
+            {
+                min                             4
+                max                             75
+            }
+        }
+        affector                                Colour 
+        {
+            time_colour                         0    0 0 0 1
+            time_colour                         0.1  0.882353 0.443137 0 1
+            time_colour                         1    0 0 0 1
+        }
+        affector                                ParticleFollower Affector10
+        {
+            min_distance                        2
+            max_distance                        5
+        }
+    }
+    technique 
+    {
+        visual_particle_quota                   450
+        material                                Particle/Fire_04
+        renderer                                Billboard
+        {
+            billboard_type                      oriented_self
+        }
+        emitter                                 Box 
+        {
+            emission_rate                       100
+            angle                               10
+            time_to_live                        dyn_random
+            {
+                min                             0.5
+                max                             0.6
+            }
+            velocity                            dyn_random
+            {
+                min                             10
+                max                             20
+            }
+            particle_width                      dyn_random
+            {
+                min                             8
+                max                             10
+            }
+            particle_height                     dyn_random
+            {
+                min                             3
+                max                             6
+            }
+            box_width                           4
+            box_height                          1
+            box_depth                           4
+        }
+        affector                                Gravity 
+        {
+            position                            0 130 0
+            gravity                             2500
+        }
+        affector                                Scale 
+        {
+            x_scale                             -5
+            y_scale                             dyn_random
+            {
+                min                             3
+                max                             26
+            }
+        }
+        affector                                ParticleFollower 
+        {
+            min_distance                        2
+            max_distance                        4
+        }
+        affector                                Colour 
+        {
+            time_colour                         0    0 0 0 1
+            time_colour                         0.1  1 1 1 1
+            time_colour                         1    0 0 0 1
+        }
+    }
+}

@@ -377,7 +377,7 @@ void EnemyManager::update(const float elapsedSeconds)
 				if(enemy->getEnemyType() == Enemy::EnemyTypes::Wizard){
 					//Projectile event 
 					ProjectileFireEventPtr projEvt = ProjectileFireEventPtr(new ProjectileFireEvent(enemy));
-					EVENTS_FIRE(projEvt);
+					EVENTS_FIRE_AFTER(projEvt, 0.75);
 				}
 				EnemyAttackEventPtr evt = EnemyAttackEventPtr(new EnemyAttackEvent(enemy));
 				EVENTS_FIRE(evt);				

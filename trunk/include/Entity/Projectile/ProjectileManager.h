@@ -33,6 +33,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #include "..\..\Utils\Utils.h"
 #include "..\..\Entity\EntityManager.h"
 #include "..\..\Events\EventsInterface.h"
+#include "..\..\Particle\ParticleManager.h"
 
 #include "Projectile.h"
 

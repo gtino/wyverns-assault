@@ -96,6 +96,7 @@ namespace WyvernsAssault
 		/* Attack particles */
 		void blast(SceneNode* node);
 		void swing(SceneNode* node);
+		void magicBolt(SceneNode* node);
 
 		// ----------------
 		// Events interface
@@ -110,6 +111,7 @@ namespace WyvernsAssault
 		EVENTS_HANDLER(EnemyCustom)
 		EVENTS_HANDLER(ItemCreation)
 		EVENTS_HANDLER(ItemCatch)
+		EVENTS_HANDLER(ProjectileFire)
 
 		// --------------------------------
 		// BEGIN Lua Interface Declarations
