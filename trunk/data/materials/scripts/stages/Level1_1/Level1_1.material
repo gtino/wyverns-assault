@@ -283,7 +283,7 @@ material FountainWater
 				scale 0.01 0.01
 				wave_xform scroll_x sine 0.0 0.01 0.0 1.0
 				wave_xform scroll_y sine 0.0 0.01 0.03 1.0
-				tex_address_mode wrap 4.0 4.0
+				tex_address_mode wrap
 				filtering none
 			}
 		}
