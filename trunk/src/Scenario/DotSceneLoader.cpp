@@ -739,6 +739,7 @@ void DotSceneLoader::processEntity(TiXmlElement *XMLNode, SceneNode *pParent)
 	String materialFile = getAttrib(XMLNode, "materialFile");
 	bool isStatic = getAttribBool(XMLNode, "static", false);
 	bool castShadows = getAttribBool(XMLNode, "castShadows", false);
+	Ogre::Vector3 physicBox = Vector3(getAttribInt(XMLNode, "BoxX"),getAttribInt(XMLNode, "BoxY"),getAttribInt(XMLNode, "BoxZ"));
 
 	// TEMP: Maintain a list of static and dynamic objects
 	if(isStatic)
@@ -797,7 +798,7 @@ void DotSceneLoader::processEntity(TiXmlElement *XMLNode, SceneNode *pParent)
 		//
 		if( type == "DynamicObject" )
 		{
-			ObjectPtr object = mScenarioManager->createObject(ObjectTypes::DynamicObject, name, pEntity, pParent, gameArea);
+			ObjectPtr object = mScenarioManager->createObject(ObjectTypes::DynamicObject, name, pEntity, pParent, gameArea, physicBox);
 			mPhysicsManager->addPhysicObject(object, gameArea);
 		}
 		else if( type == "Enemy" )
@@ -853,7 +854,7 @@ void DotSceneLoader::processEntity(TiXmlElement *XMLNode, SceneNode *pParent)
 		}
 		else
 		{
-			ObjectPtr object = mScenarioManager->createObject(ObjectTypes::Default, name, pEntity, pParent, gameArea);
+			ObjectPtr object = mScenarioManager->createObject(ObjectTypes::Default, name, pEntity, pParent, gameArea, Vector3::ZERO);
 		}
 
 		// Process subentities
