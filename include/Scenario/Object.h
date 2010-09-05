@@ -53,7 +53,7 @@ namespace WyvernsAssault
 	class Object : public PhysicsInterface, public EntityInterface
 	{
 	public:
-		Object(Ogre::String name, ObjectTypes type);
+		Object(Ogre::String name, ObjectTypes type, Ogre::Vector3 physicBox);
 		~Object();
 
 		void _attachTo(Ogre::SceneNode* sceneNode);
@@ -89,6 +89,8 @@ namespace WyvernsAssault
 
 		Real mMaxLife;
 		ObjectParameters mParameters;
+
+		Vector3 mPhysicSize;
 
 		Entity*				mDieMesh;
 		AnimationState*		mDieAnimation;

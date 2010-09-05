@@ -7550,7 +7550,7 @@
         <rotation qw="-0.948324" qx="0" qy="-0.317304" qz="0" />
         <position x="169.613" y="0" z="-499.313" />
         <scale x="1" y="1" z="1" />
-        <entity name="MarketTent1#5" id="753318912" castshadows="false" meshFile="MarketTent1.mesh">
+        <entity name="MarketTent1#5" id="753318912" castshadows="false" meshFile="MarketTent1.mesh" type="DynamicObject" BoxX="50" BoxY="50" BoxZ="50">
           <rotation qw="0.997859" qx="0" qy="-0.0654032" qz="0" />
           <position x="2.037" y="0" z="-13.3129" />
           <scale x="1" y="1" z="1" />
@@ -7576,7 +7576,7 @@
         <rotation qw="0.942641" qx="0" qy="-0.333807" qz="0" />
         <position x="14.3416" y="-0.00305939" z="-377.228" />
         <scale x="1" y="1" z="1" />
-        <entity name="Crate1#3" id="919980480" castshadows="false" meshFile="Crate1.mesh">
+        <entity name="Crate1#3" id="919980480" castshadows="false" meshFile="Crate1.mesh" type="DynamicObject" BoxX="50" BoxY="50" BoxZ="50">
           <rotation qw="1" qx="0" qy="0" qz="0" />
           <position x="0" y="0" z="0" />
           <scale x="1" y="1" z="1" />
@@ -7589,7 +7589,7 @@
         <rotation qw="0.710185" qx="0" qy="-0.704015" qz="0" />
         <position x="36.9262" y="0" z="-525.492" />
         <scale x="1" y="1" z="1" />
-        <entity name="MarketTent0#0" id="739463488" castshadows="false" meshFile="MarketTent0.mesh">
+        <entity name="MarketTent0#0" id="739463488" castshadows="false" meshFile="MarketTent0.mesh" type="DynamicObject" BoxX="50" BoxY="50" BoxZ="50">
           <rotation qw="0.378648" qx="0" qy="-0.925541" qz="0" />
           <position x="0" y="0" z="0" />
           <scale x="1" y="1" z="1" />
@@ -7602,7 +7602,7 @@
         <rotation qw="0.932008" qx="0" qy="-0.362438" qz="0" />
         <position x="-11.6176" y="0" z="-536.876" />
         <scale x="1" y="1" z="1" />
-        <entity name="MarketTent1#1" id="815973376" castshadows="false" meshFile="MarketTent1.mesh">
+        <entity name="MarketTent1#1" id="815973376" castshadows="false" meshFile="MarketTent1.mesh" type="DynamicObject" BoxX="50" BoxY="50" BoxZ="50">
           <rotation qw="1" qx="0" qy="0" qz="0" />
           <position x="0" y="0" z="0" />
           <scale x="1" y="1" z="1" />
@@ -7615,7 +7615,7 @@
         <rotation qw="0.99863" qx="0" qy="-0.0523364" qz="0" />
         <position x="1302.25" y="20.1627" z="180.302" />
         <scale x="1" y="1" z="1" />
-        <entity name="Farm0#0Copy#0" id="630603968" castshadows="false" meshFile="House0.mesh">
+        <entity name="Farm0#0Copy#0" id="630603968" castshadows="false" meshFile="House0.mesh" type="DynamicObject" BoxX="50" BoxY="50" BoxZ="50">
           <rotation qw="1" qx="0" qy="0" qz="0" />
           <position x="0" y="0" z="0" />
           <scale x="1" y="1" z="1" />
@@ -7629,7 +7629,7 @@
         <rotation qw="1" qx="0" qy="0" qz="0" />
         <position x="517.6" y="0" z="682" />
         <scale x="1" y="1" z="1" />
-        <entity name="Tent0#0" id="279580064" castshadows="false" meshFile="Tent0.mesh">
+        <entity name="Tent0#0" id="279580064" castshadows="false" meshFile="Tent0.mesh" type="DynamicObject" BoxX="50" BoxY="50" BoxZ="50">
           <rotation qw="1" qx="0" qy="0" qz="0" />
           <position x="0" y="0" z="0" />
           <scale x="1" y="1" z="1" />
@@ -7642,7 +7642,7 @@
         <rotation qw="0.942641" qx="0" qy="-0.333807" qz="0" />
         <position x="274.118" y="-0.00305939" z="-502.837" />
         <scale x="1" y="1" z="1" />
-        <entity name="Crate1#0" id="784966592" castshadows="false" meshFile="Crate1.mesh">
+        <entity name="Crate1#0" id="784966592" castshadows="false" meshFile="Crate1.mesh" type="DynamicObject" BoxX="50" BoxY="50" BoxZ="50">
           <rotation qw="1" qx="0" qy="0" qz="0" />
           <position x="0" y="0" z="0" />
           <scale x="1" y="1" z="1" />
@@ -7655,7 +7655,7 @@
         <rotation qw="0.999391" qx="0" qy="0.0348991" qz="0" />
         <position x="-37.1138" y="0" z="-586.498" />
         <scale x="1" y="1" z="1" />
-        <entity name="MarketTent0#0Copy#0" id="725699648" castshadows="false" meshFile="MarketTent0.mesh">
+        <entity name="MarketTent0#0Copy#0" id="725699648" castshadows="false" meshFile="MarketTent0.mesh" type="DynamicObject" BoxX="50" BoxY="50" BoxZ="50">
           <rotation qw="0.378648" qx="0" qy="-0.925541" qz="0" />
           <position x="0" y="0" z="0" />
           <scale x="1" y="1" z="1" />
@@ -7668,7 +7668,7 @@
         <rotation qw="1" qx="0" qy="0" qz="0" />
         <position x="341.729" y="-1.54287" z="-701.174" />
         <scale x="1" y="1" z="1" />
-        <entity name="Tent1#2" id="548570240" castshadows="false" meshFile="Tent1.mesh">
+        <entity name="Tent1#2" id="548570240" castshadows="false" meshFile="Tent1.mesh" type="DynamicObject" BoxX="50" BoxY="50" BoxZ="50">
           <rotation qw="1" qx="0" qy="0" qz="0" />
           <position x="0" y="0" z="0" />
           <scale x="1" y="1" z="1" />
@@ -7681,7 +7681,7 @@
         <rotation qw="1" qx="0" qy="0" qz="0" />
         <position x="1130.35" y="0" z="95.1266" />
         <scale x="1" y="1" z="1" />
-        <entity name="Crate0#6" id="4272592" castshadows="false" meshFile="Crate0.mesh">
+        <entity name="Crate0#6" id="4272592" castshadows="false" meshFile="Crate0.mesh" type="DynamicObject" BoxX="50" BoxY="50" BoxZ="50">
           <rotation qw="1" qx="0" qy="0" qz="0" />
           <position x="0" y="0" z="0" />
           <scale x="1" y="1" z="1" />
@@ -7694,7 +7694,7 @@
         <rotation qw="-0.694659" qx="0" qy="-0.719339" qz="0" />
         <position x="114.015" y="0" z="-409.06" />
         <scale x="1" y="1" z="1" />
-        <entity name="MarketTent1#3" id="205725264" castshadows="false" meshFile="MarketTent1.mesh">
+        <entity name="MarketTent1#3" id="205725264" castshadows="false" meshFile="MarketTent1.mesh" type="DynamicObject" BoxX="50" BoxY="50" BoxZ="50">
           <rotation qw="1" qx="0" qy="0" qz="0" />
           <position x="0" y="0" z="0" />
           <scale x="1" y="1" z="1" />
@@ -7707,7 +7707,7 @@
         <rotation qw="-0.850352" qx="0" qy="-0.526214" qz="0" />
         <position x="511.9" y="0" z="765.6" />
         <scale x="1" y="1" z="1" />
-        <entity name="Tent1#1" id="397686688" castshadows="false" meshFile="Tent1.mesh">
+        <entity name="Tent1#1" id="397686688" castshadows="false" meshFile="Tent1.mesh" type="DynamicObject" BoxX="50" BoxY="50" BoxZ="50">
           <rotation qw="1" qx="0" qy="0" qz="0" />
           <position x="0" y="0" z="0" />
           <scale x="1" y="1" z="1" />
@@ -7720,7 +7720,7 @@
         <rotation qw="0.997564" qx="0" qy="0.0697561" qz="0" />
         <position x="1299.61" y="20.1627" z="102.314" />
         <scale x="1" y="1" z="1" />
-        <entity name="Farm0#0Copy#1" id="852565056" castshadows="false" meshFile="House0.mesh">
+        <entity name="Farm0#0Copy#1" id="852565056" castshadows="false" meshFile="House0.mesh" type="DynamicObject" BoxX="50" BoxY="50" BoxZ="50">
           <rotation qw="1" qx="0" qy="0" qz="0" />
           <position x="0" y="0" z="0" />
           <scale x="1" y="1" z="1" />
@@ -7734,7 +7734,7 @@
         <rotation qw="1" qx="0" qy="0" qz="0" />
         <position x="1154.62" y="0" z="101.705" />
         <scale x="1" y="1" z="1" />
-        <entity name="Crate0#5" id="435499136" castshadows="false" meshFile="Crate0.mesh">
+        <entity name="Crate0#5" id="435499136" castshadows="false" meshFile="Crate0.mesh" type="DynamicObject" BoxX="50" BoxY="50" BoxZ="50">
           <rotation qw="1" qx="0" qy="0" qz="0" />
           <position x="0" y="0" z="0" />
           <scale x="1" y="1" z="1" />
@@ -7747,7 +7747,7 @@
         <rotation qw="0.942641" qx="0" qy="-0.333807" qz="0" />
         <position x="291.77" y="-0.00305939" z="-486.835" />
         <scale x="1" y="1" z="1" />
-        <entity name="Crate0#1" id="300057984" castshadows="false" meshFile="Crate0.mesh">
+        <entity name="Crate0#1" id="300057984" castshadows="false" meshFile="Crate0.mesh" type="DynamicObject" BoxX="50" BoxY="50" BoxZ="50">
           <rotation qw="1" qx="0" qy="0" qz="0" />
           <position x="0" y="0" z="0" />
           <scale x="1" y="1" z="1" />
@@ -7760,7 +7760,7 @@
         <rotation qw="0.710185" qx="0" qy="-0.704015" qz="0" />
         <position x="94.5208" y="0" z="-359.417" />
         <scale x="1" y="1" z="1" />
-        <entity name="MarketTent0#2" id="254188656" castshadows="false" meshFile="MarketTent0.mesh">
+        <entity name="MarketTent0#2" id="254188656" castshadows="false" meshFile="MarketTent0.mesh" type="DynamicObject" BoxX="50" BoxY="50" BoxZ="50">
           <rotation qw="1" qx="0" qy="0" qz="0" />
           <position x="0" y="0" z="0" />
           <scale x="1" y="1" z="1" />
@@ -7773,7 +7773,7 @@
         <rotation qw="0.994968" qx="0" qy="-0.100188" qz="0" />
         <position x="1113.72" y="0" z="161.016" />
         <scale x="1" y="1" z="1" />
-        <entity name="Farm#0" id="707998848" castshadows="false" meshFile="Farm.mesh">
+        <entity name="Farm#0" id="707998848" castshadows="false" meshFile="Farm.mesh" type="DynamicObject" BoxX="50" BoxY="50" BoxZ="50">
           <rotation qw="1" qx="0" qy="0" qz="0" />
           <position x="0" y="0" z="0" />
           <scale x="1" y="1" z="1" />
@@ -7786,7 +7786,7 @@
         <rotation qw="0.971342" qx="0" qy="-0.237686" qz="0" />
         <position x="218.013" y="-0.00305939" z="-434.368" />
         <scale x="1" y="1" z="1" />
-        <entity name="Crate1#2" id="653859072" castshadows="false" meshFile="Crate1.mesh">
+        <entity name="Crate1#2" id="653859072" castshadows="false" meshFile="Crate1.mesh" type="DynamicObject" BoxX="50" BoxY="50" BoxZ="50">
           <rotation qw="1" qx="0" qy="0" qz="0" />
           <position x="0" y="0" z="0" />
           <scale x="1" y="1" z="1" />
@@ -7799,7 +7799,7 @@
         <rotation qw="-0.337917" qx="0" qy="-0.941176" qz="0" />
         <position x="10.2324" y="0" z="-562.977" />
         <scale x="1" y="1" z="1" />
-        <entity name="MarketTent1#2" id="974150848" castshadows="false" meshFile="MarketTent1.mesh">
+        <entity name="MarketTent1#2" id="974150848" castshadows="false" meshFile="MarketTent1.mesh" type="DynamicObject" BoxX="50" BoxY="50" BoxZ="50">
           <rotation qw="1" qx="0" qy="0" qz="0" />
           <position x="0" y="0" z="0" />
           <scale x="1" y="1" z="1" />
@@ -7812,7 +7812,7 @@
         <rotation qw="0.994968" qx="0" qy="-0.100188" qz="0" />
         <position x="1290.77" y="20.1627" z="262.376" />
         <scale x="1" y="1" z="1" />
-        <entity name="Farm0#0" id="265938288" castshadows="false" meshFile="House0.mesh">
+        <entity name="Farm0#0" id="265938288" castshadows="false" meshFile="House0.mesh" type="DynamicObject" BoxX="50" BoxY="50" BoxZ="50">
           <rotation qw="1" qx="0" qy="0" qz="0" />
           <position x="0" y="0" z="0" />
           <scale x="1" y="1" z="1" />
@@ -7826,7 +7826,7 @@
         <rotation qw="-0.0261771" qx="0" qy="0.999657" qz="0" />
         <position x="561.1" y="0" z="786.9" />
         <scale x="1" y="1" z="1" />
-        <entity name="Tent0#0Copy#0" id="1617482" castshadows="false" meshFile="Tent0.mesh">
+        <entity name="Tent0#0Copy#0" id="1617482" castshadows="false" meshFile="Tent0.mesh" type="DynamicObject" BoxX="50" BoxY="50" BoxZ="50">
           <rotation qw="1" qx="0" qy="0" qz="0" />
           <position x="0" y="0" z="0" />
           <scale x="1" y="1" z="1" />
@@ -7839,7 +7839,7 @@
         <rotation qw="0.942641" qx="0" qy="-0.333807" qz="0" />
         <position x="217.549" y="7.92316" z="-434.647" />
         <scale x="1" y="1" z="1" />
-        <entity name="Crate0#3" id="127231672" castshadows="false" meshFile="Crate0.mesh">
+        <entity name="Crate0#3" id="127231672" castshadows="false" meshFile="Crate0.mesh" type="DynamicObject" BoxX="50" BoxY="50" BoxZ="50">
           <rotation qw="1" qx="0" qy="0" qz="0" />
           <position x="0" y="0" z="0" />
           <scale x="1" y="1" z="1" />
@@ -7852,7 +7852,7 @@
         <rotation qw="0.889017" qx="0" qy="-0.457874" qz="0" />
         <position x="610.4" y="0" z="717.7" />
         <scale x="1" y="1" z="1" />
-        <entity name="Tent2#0" id="693533120" castshadows="false" meshFile="Tent2.mesh">
+        <entity name="Tent2#0" id="693533120" castshadows="false" meshFile="Tent2.mesh" type="DynamicObject" BoxX="50" BoxY="50" BoxZ="50">
           <rotation qw="1" qx="0" qy="0" qz="0" />
           <position x="0" y="0" z="0" />
           <scale x="1" y="1" z="1" />
@@ -7865,7 +7865,7 @@
         <rotation qw="0.891007" qx="0" qy="-0.453991" qz="0" />
         <position x="379.214" y="-1.54287" z="-683.06" />
         <scale x="1" y="1" z="1" />
-        <entity name="Tent0#1" id="848689280" castshadows="false" meshFile="Tent0.mesh">
+        <entity name="Tent0#1" id="848689280" castshadows="false" meshFile="Tent0.mesh" type="DynamicObject" BoxX="50" BoxY="50" BoxZ="50">
           <rotation qw="1" qx="0" qy="0" qz="0" />
           <position x="0" y="0" z="0" />
           <scale x="1" y="1" z="1" />
@@ -7878,7 +7878,7 @@
         <rotation qw="0.942641" qx="0" qy="-0.333807" qz="0" />
         <position x="299.822" y="-0.00305939" z="-480.183" />
         <scale x="1" y="1" z="1" />
-        <entity name="Crate0#0" id="737907072" castshadows="false" meshFile="Crate0.mesh">
+        <entity name="Crate0#0" id="737907072" castshadows="false" meshFile="Crate0.mesh" type="DynamicObject" BoxX="50" BoxY="50" BoxZ="50">
           <rotation qw="1" qx="0" qy="0" qz="0" />
           <position x="0" y="0" z="0" />
           <scale x="1" y="1" z="1" />
@@ -7891,7 +7891,7 @@
         <rotation qw="0.81612" qx="0.00234115" qy="-0.577868" qz="0.0033064" />
         <position x="180.402" y="12.6127" z="850.72" />
         <scale x="1" y="1" z="1" />
-        <entity name="BigRock1#0" id="572405184" castshadows="true" meshFile="BigRock1.mesh" type="DynamicObject">
+        <entity name="BigRock1#0" id="572405184" castshadows="true" meshFile="BigRock1.mesh" type="DynamicObject" BoxX="50" BoxY="50" BoxZ="50">
           <rotation qw="1" qx="0" qy="0" qz="0" />
           <position x="-0.00440903" y="6.23822" z="-0.0175504" />
           <scale x="1" y="1" z="1" />
@@ -7904,7 +7904,7 @@
         <rotation qw="-0.833886" qx="0" qy="0.551937" qz="0" />
         <position x="565.1" y="0" z="714.12" />
         <scale x="1" y="1" z="1" />
-        <entity name="Tent1#0" id="842097216" castshadows="false" meshFile="Tent1.mesh">
+        <entity name="Tent1#0" id="842097216" castshadows="false" meshFile="Tent1.mesh" type="DynamicObject" BoxX="50" BoxY="50" BoxZ="50">
           <rotation qw="1" qx="0" qy="0" qz="0" />
           <position x="0" y="0" z="0" />
           <scale x="1" y="1" z="1" />
@@ -7917,7 +7917,7 @@
         <rotation qw="0.710185" qx="0" qy="-0.704015" qz="0" />
         <position x="72.0279" y="0" z="-408.503" />
         <scale x="1" y="1" z="1" />
-        <entity name="MarketTent1#0" id="708761856" castshadows="false" meshFile="MarketTent1.mesh">
+        <entity name="MarketTent1#0" id="708761856" castshadows="false" meshFile="MarketTent1.mesh" type="DynamicObject" BoxX="50" BoxY="50" BoxZ="50">
           <rotation qw="1" qx="0" qy="0" qz="0" />
           <position x="0" y="0" z="0" />
           <scale x="1" y="1" z="1" />
@@ -7930,7 +7930,7 @@
         <rotation qw="0.246153" qx="0" qy="-0.969231" qz="0" />
         <position x="200.619" y="0" z="-555.213" />
         <scale x="1" y="1" z="1" />
-        <entity name="MarketTent0#1" id="624897024" castshadows="false" meshFile="MarketTent0.mesh">
+        <entity name="MarketTent0#1" id="624897024" castshadows="false" meshFile="MarketTent0.mesh" type="DynamicObject" BoxX="50" BoxY="50" BoxZ="50">
           <rotation qw="1" qx="0" qy="0" qz="0" />
           <position x="0" y="0" z="0" />
           <scale x="1" y="1" z="1" />
@@ -7943,7 +7943,7 @@
         <rotation qw="1" qx="0" qy="0" qz="0" />
         <position x="394.057" y="-1.54287" z="-647.839" />
         <scale x="1" y="1" z="1" />
-        <entity name="Tent2#2" id="208746608" castshadows="false" meshFile="Tent2.mesh">
+        <entity name="Tent2#2" id="208746608" castshadows="false" meshFile="Tent2.mesh" type="DynamicObject" BoxX="50" BoxY="50" BoxZ="50">
           <rotation qw="1" qx="0" qy="0" qz="0" />
           <position x="0" y="0" z="0" />
           <scale x="1" y="1" z="1" />
@@ -7956,7 +7956,7 @@
         <rotation qw="1" qx="0" qy="0" qz="0" />
         <position x="1143.33" y="0" z="99.3682" />
         <scale x="1" y="1" z="1" />
-        <entity name="Crate1#4" id="890224960" castshadows="false" meshFile="Crate1.mesh">
+        <entity name="Crate1#4" id="890224960" castshadows="false" meshFile="Crate1.mesh" type="DynamicObject" BoxX="50" BoxY="50" BoxZ="50">
           <rotation qw="1" qx="0" qy="0" qz="0" />
           <position x="0" y="0" z="0" />
           <scale x="1" y="1" z="1" />
@@ -7969,7 +7969,7 @@
         <rotation qw="0.296541" qx="0" qy="-0.95502" qz="0" />
         <position x="143.066" y="0" z="-542.06" />
         <scale x="1" y="1" z="1" />
-        <entity name="MarketTent1#4" id="928739328" castshadows="false" meshFile="MarketTent1.mesh">
+        <entity name="MarketTent1#4" id="928739328" castshadows="false" meshFile="MarketTent1.mesh" type="DynamicObject" BoxX="50" BoxY="50" BoxZ="50">
           <rotation qw="0.999657" qx="0" qy="-0.026177" qz="0" />
           <position x="0" y="0" z="0" />
           <scale x="1" y="1" z="1" />
@@ -7982,7 +7982,7 @@
         <rotation qw="0.942641" qx="0" qy="-0.333807" qz="0" />
         <position x="130.533" y="-0.00305939" z="-611.37" />
         <scale x="1" y="1" z="1" />
-        <entity name="Crate1#1" id="875637056" castshadows="false" meshFile="Crate1.mesh">
+        <entity name="Crate1#1" id="875637056" castshadows="false" meshFile="Crate1.mesh" type="DynamicObject" BoxX="50" BoxY="50" BoxZ="50">
           <rotation qw="1" qx="0" qy="0" qz="0" />
           <position x="0" y="0" z="0" />
           <scale x="1" y="1" z="1" />
@@ -7995,7 +7995,7 @@
         <rotation qw="0.942641" qx="0" qy="-0.333807" qz="0" />
         <position x="194.125" y="-0.00305939" z="-562.783" />
         <scale x="1" y="1" z="1" />
-        <entity name="Crate0#4" id="549577280" castshadows="false" meshFile="Crate0.mesh">
+        <entity name="Crate0#4" id="549577280" castshadows="false" meshFile="Crate0.mesh" type="DynamicObject" BoxX="50" BoxY="50" BoxZ="50">
           <rotation qw="0.98245" qx="0" qy="-0.186524" qz="0" />
           <position x="0" y="0" z="0" />
           <scale x="1" y="1" z="1" />
@@ -8008,7 +8008,7 @@
         <rotation qw="0.942641" qx="0" qy="-0.333807" qz="0" />
         <position x="283.993" y="-0.00305939" z="-495.141" />
         <scale x="1" y="1" z="1" />
-        <entity name="Crate0#2" id="943998528" castshadows="false" meshFile="Crate0.mesh">
+        <entity name="Crate0#2" id="943998528" castshadows="false" meshFile="Crate0.mesh" type="DynamicObject" BoxX="50" BoxY="50" BoxZ="50">
           <rotation qw="1" qx="0" qy="0" qz="0" />
           <position x="0" y="0" z="0" />
           <scale x="1" y="1" z="1" />
@@ -8021,7 +8021,7 @@
         <rotation qw="-0.0261771" qx="0" qy="0.999657" qz="0" />
         <position x="604.026" y="0" z="810.655" />
         <scale x="1" y="1" z="1" />
-        <entity name="Tent2#1" id="4333629" castshadows="false" meshFile="Tent2.mesh">
+        <entity name="Tent2#1" id="4333629" castshadows="false" meshFile="Tent2.mesh" type="DynamicObject" BoxX="50" BoxY="50" BoxZ="50">
           <rotation qw="1" qx="0" qy="0" qz="0" />
           <position x="0" y="0" z="0" />
           <scale x="1" y="1" z="1" />

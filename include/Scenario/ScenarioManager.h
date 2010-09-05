@@ -68,7 +68,7 @@ namespace WyvernsAssault
 		void update(const float elpasedSeconds);
 
 		ObjectPtr createObject(WyvernsAssault::ObjectTypes type, Ogre::String name, Ogre::String meshFile);
-		ObjectPtr createObject(WyvernsAssault::ObjectTypes type, Ogre::String name, Ogre::Entity* entity, Ogre::SceneNode* sceneNode, int gameArea);
+		ObjectPtr createObject(WyvernsAssault::ObjectTypes type, Ogre::String name, Ogre::Entity* entity, Ogre::SceneNode* sceneNode, int gameArea, Ogre::Vector3 physicBox);
 
 		int getCount();
 		int getCount(int gameArea);
