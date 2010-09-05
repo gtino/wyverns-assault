@@ -9,7 +9,7 @@ function runDayLight(p)
 	local totalSeconds = Logic.getTotalSeconds()
 	local elapsedSeconds =Logic.getElapsedSeconds()
 	
-	local r,g,b = Light.getLightDiffuseColor("Point1")
+	local r,g,b = Light.getLightDiffuseColor("Sun")
 	local ar,ag,ab = Light.getAmbientLight();
 	
 	-- dayTime is 24 seconds
@@ -44,10 +44,10 @@ function runDayLight(p)
 		b = 0.0
 	end
   
-	Light.setLightDiffuseColor("Point1",r,g,b)
+	Light.setLightDiffuseColor("Sun",r,g,b)
 	--Light.setAmbientLight(ar,ag,ab)
   
-	local x,y,z = Light.getLightPosition("Point1")
+	local x,y,z = Light.getLightPosition("Sun")
   
 	local degrees = (360.0 * dayTime) / dayDuration
 	local radians = math.rad(degrees)
@@ -57,7 +57,7 @@ function runDayLight(p)
 	y = 500
 	z = radius * math.cos(radians)
   
-	Light.setLightPosition("Point1",x,y,z)
+	Light.setLightPosition("Sun",x,y,z)
   
 	return true 
 end

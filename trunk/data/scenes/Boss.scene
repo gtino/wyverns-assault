@@ -1,0 +1,341 @@
+<?xml version="1.0"?>
+<scene>
+  <resourceLocations />
+  <environment>
+    <fog r="0.666667" g="0" b="0" a="1" density="0" end="1000" mode="3" start="0" />
+    <skyBox active="false" distance="5000" material="" />
+    <skyDome active="false" material="" />
+    <shadows />
+    <ambient r="0.5" g="0.5" b="0.5" a="1" />
+    <rotation qw="1" qx="0" qy="0" qz="0" />
+    <position x="0" y="0" z="0" />
+    <scale x="1" y="1" z="1" />
+  </environment>
+  <lights>
+    <light name="Sun" id="374401056" type="LT_DIRECTIONAL">
+      <attenuation distance="100" constant="1" linear="0" quadratic="0" />
+      <diffuse r="0.912" g="0.912" b="0.912" a="1" />
+      <direction x="0" y="0" z="1" />
+      <range innerAngle="15" outerAngle="30" falloff="1" />
+      <rotation qw="1" qx="0" qy="0" qz="0" />
+      <position x="0" y="0" z="0" />
+      <power value="2" />
+      <specular r="1" g="1" b="1" a="1" />
+    </light>
+  </lights>
+  <markers>
+    <marker name="Start" id="334208192">
+      <rotation qw="1" qx="0" qy="0" qz="0" />
+      <position x="-127.292" y="24.5" z="303.589" />
+      <scale x="50" y="50" z="50" />
+    </marker>
+  </markers>
+  <nodes>
+    <node name="Scenario" id="201940976">
+      <rotation qw="1" qx="0" qy="0" qz="0" />
+      <position x="0" y="0" z="0" />
+      <scale x="1" y="1" z="1" />
+      <node name="LavaLake" id="225562304">
+        <rotation qw="1" qx="0" qy="0" qz="0" />
+        <position x="-152.204" y="40.682" z="243.548" />
+        <scale x="1" y="1" z="1" />
+        <entity name="LavaLake#0" id="727683392" castshadows="false" meshFile="LavaLake.mesh">
+          <rotation qw="1" qx="0" qy="0" qz="0" />
+          <position x="152.204" y="-40.682" z="-243.548" />
+          <scale x="1" y="1" z="1" />
+          <subentities>
+            <subentity materialName="LavaLake" index="0" visible="true" />
+          </subentities>
+        </entity>
+      </node>
+      <node name="Rock#7" id="746330112">
+        <rotation qw="1" qx="0" qy="0" qz="0" />
+        <position x="327.885" y="0" z="87.3745" />
+        <scale x="3" y="3" z="3" />
+        <entity name="BigRock0#7" id="709402752" castshadows="false" meshFile="BigRock0.mesh">
+          <rotation qw="1" qx="0" qy="0" qz="0" />
+          <position x="0" y="0" z="0" />
+          <scale x="1" y="1" z="1" />
+          <subentities>
+            <subentity materialName="VulcanicRock" index="0" visible="true" />
+          </subentities>
+        </entity>
+      </node>
+      <node name="Rock#0" id="843806272">
+        <rotation qw="1" qx="0" qy="0" qz="0" />
+        <position x="-203.113" y="0" z="261.251" />
+        <scale x="10" y="10" z="10" />
+        <entity name="BigRock0#0" id="101931824" castshadows="false" meshFile="BigRock0.mesh">
+          <rotation qw="1" qx="0" qy="0" qz="0" />
+          <position x="0" y="0" z="0" />
+          <scale x="1" y="1" z="1" />
+          <subentities>
+            <subentity materialName="VulcanicRock" index="0" visible="true" />
+          </subentities>
+        </entity>
+      </node>
+      <node name="Rock#11" id="762901696">
+        <rotation qw="1" qx="0" qy="0" qz="0" />
+        <position x="37.6485" y="0" z="-282.038" />
+        <scale x="3" y="4" z="3" />
+        <entity name="BigRock0#11" id="82369456" castshadows="false" meshFile="BigRock0.mesh">
+          <rotation qw="1" qx="0" qy="0" qz="0" />
+          <position x="0" y="0" z="0" />
+          <scale x="1" y="1" z="1" />
+          <subentities>
+            <subentity materialName="VulcanicRock" index="0" visible="true" />
+          </subentities>
+        </entity>
+      </node>
+      <node name="Rock#8" id="827784064">
+        <rotation qw="1" qx="0" qy="0" qz="0" />
+        <position x="189.754" y="0" z="-27.8893" />
+        <scale x="3" y="6" z="3" />
+        <entity name="BigRock0#8" id="197546320" castshadows="false" meshFile="BigRock0.mesh">
+          <rotation qw="1" qx="0" qy="0" qz="0" />
+          <position x="0" y="0" z="0" />
+          <scale x="1" y="1" z="1" />
+          <subentities>
+            <subentity materialName="VulcanicRock" index="0" visible="true" />
+          </subentities>
+        </entity>
+      </node>
+      <node name="CaveBase" id="548051392">
+        <rotation qw="1" qx="0" qy="0" qz="0" />
+        <position x="-149.445" y="42.5791" z="239.124" />
+        <scale x="1" y="1" z="1" />
+        <entity name="CaveBase#0" id="604144384" castshadows="false" meshFile="CaveBase.mesh">
+          <rotation qw="1" qx="0" qy="0" qz="0" />
+          <position x="149.445" y="-42.5791" z="-239.124" />
+          <scale x="1" y="1" z="1" />
+          <subentities>
+            <subentity materialName="CaveInner" index="0" visible="true" />
+          </subentities>
+        </entity>
+      </node>
+      <node name="Rock#1" id="5767999">
+        <rotation qw="0.734322" qx="0" qy="0" qz="-0.678801" />
+        <position x="-254.782" y="8.00225" z="230.409" />
+        <scale x="5" y="5" z="5" />
+        <entity name="BigRock0#1" id="411603136" castshadows="false" meshFile="BigRock0.mesh">
+          <rotation qw="1" qx="0" qy="0" qz="0" />
+          <position x="0" y="0" z="0" />
+          <scale x="1" y="1" z="1" />
+          <subentities>
+            <subentity materialName="VulcanicRock" index="0" visible="true" />
+          </subentities>
+        </entity>
+      </node>
+      <node name="Rock#10" id="54139836">
+        <rotation qw="0.619094" qx="0" qy="0.785317" qz="0" />
+        <position x="104.971" y="0" z="-320.074" />
+        <scale x="5" y="6" z="7" />
+        <entity name="BigRock0#10" id="743217280" castshadows="false" meshFile="BigRock0.mesh">
+          <rotation qw="1" qx="0" qy="0" qz="0" />
+          <position x="0" y="0" z="0" />
+          <scale x="1" y="1" z="1" />
+          <subentities>
+            <subentity materialName="VulcanicRock" index="0" visible="true" />
+          </subentities>
+        </entity>
+      </node>
+      <node name="Rock#9" id="278786560">
+        <rotation qw="1" qx="0" qy="0" qz="0" />
+        <position x="231.225" y="37.5097" z="-234.973" />
+        <scale x="10" y="12" z="10" />
+        <entity name="BigRock0#9" id="862880320" castshadows="false" meshFile="BigRock0.mesh">
+          <rotation qw="1" qx="0" qy="0" qz="0" />
+          <position x="0" y="0" z="0" />
+          <scale x="1" y="1" z="1" />
+          <subentities>
+            <subentity materialName="VulcanicRock" index="0" visible="true" />
+          </subentities>
+        </entity>
+      </node>
+      <node name="Rock#2" id="935331264">
+        <rotation qw="0.540974" qx="0" qy="0" qz="-0.841039" />
+        <position x="-262.596" y="18.1031" z="-196.144" />
+        <scale x="6" y="6" z="6" />
+        <entity name="BigRock0#2" id="27436140" castshadows="false" meshFile="BigRock0.mesh">
+          <rotation qw="1" qx="0" qy="0" qz="0" />
+          <position x="0" y="0" z="0" />
+          <scale x="1" y="1" z="1" />
+          <subentities>
+            <subentity materialName="VulcanicRock" index="0" visible="true" />
+          </subentities>
+        </entity>
+      </node>
+      <node name="Rock#3" id="746909952">
+        <rotation qw="1" qx="0" qy="0" qz="0" />
+        <position x="-231.96" y="0" z="-233.162" />
+        <scale x="4" y="4" z="4" />
+        <entity name="BigRock0#3" id="169011504" castshadows="false" meshFile="BigRock0.mesh">
+          <rotation qw="1" qx="0" qy="0" qz="0" />
+          <position x="0" y="0" z="0" />
+          <scale x="1" y="1" z="1" />
+          <subentities>
+            <subentity materialName="VulcanicRock" index="0" visible="true" />
+          </subentities>
+        </entity>
+      </node>
+      <node name="CaveDome" id="573351232">
+        <rotation qw="1" qx="0" qy="0" qz="0" />
+        <position x="-168.195" y="45.7928" z="259.787" />
+        <scale x="1" y="1" z="1" />
+        <entity name="CaveDome#0" id="410718112" castshadows="false" meshFile="CaveDome.mesh">
+          <rotation qw="1" qx="0" qy="0" qz="0" />
+          <position x="168.195" y="-45.7928" z="-259.787" />
+          <scale x="1" y="1" z="1" />
+          <subentities>
+            <subentity materialName="CaveInner" index="0" visible="true" />
+          </subentities>
+        </entity>
+      </node>
+      <node name="Fire#2" id="116855376">
+        <rotation qw="0.548272" qx="0.580974" qy="-0.43423" qz="0.416307" />
+        <position x="128.06" y="-13.6655" z="-81.6345" />
+        <scale x="6.39342" y="1" z="4.93728" />
+        <entity name="2DBillboard0#2" id="902005056" castshadows="false" meshFile="2DBillboard0.mesh">
+          <rotation qw="1" qx="0" qy="0" qz="0" />
+          <position x="0" y="0" z="0" />
+          <scale x="1" y="1" z="1" />
+          <subentities>
+            <subentity materialName="Animations/Fire" index="0" visible="true" />
+          </subentities>
+        </entity>
+      </node>
+      <node name="LavaRiver" id="311349824">
+        <rotation qw="1" qx="0" qy="0" qz="0" />
+        <position x="0" y="0" z="0" />
+        <scale x="1" y="1" z="1" />
+        <entity name="LavaRiver#0" id="43214208" castshadows="false" meshFile="LavaRiver.mesh">
+          <rotation qw="1" qx="0" qy="0" qz="0" />
+          <position x="0" y="0" z="0" />
+          <scale x="1" y="1" z="1" />
+          <subentities>
+            <subentity materialName="LavaRiver" index="0" visible="true" />
+          </subentities>
+        </entity>
+      </node>
+      <node name="Rock#4" id="873836480">
+        <rotation qw="0.577145" qx="0" qy="0.816642" qz="0" />
+        <position x="-24.0703" y="11.5034" z="292.075" />
+        <scale x="6" y="6" z="12" />
+        <entity name="BigRock0#4" id="228644672" castshadows="false" meshFile="BigRock0.mesh">
+          <rotation qw="1" qx="0" qy="0" qz="0" />
+          <position x="0" y="0" z="0" />
+          <scale x="1" y="1" z="1" />
+          <subentities>
+            <subentity materialName="VulcanicRock" index="0" visible="true" />
+          </subentities>
+        </entity>
+      </node>
+      <node name="Fire#1" id="371745984">
+        <rotation qw="0.581306" qx="0.528021" qy="-0.416258" qz="0.458265" />
+        <position x="141.472" y="-24.2608" z="-71.6154" />
+        <scale x="3.21662" y="1" z="4.49472" />
+        <entity name="2DBillboard0#1" id="535569312" castshadows="false" meshFile="2DBillboard0.mesh">
+          <rotation qw="1" qx="0" qy="0" qz="0" />
+          <position x="0" y="0" z="0" />
+          <scale x="1" y="1" z="1" />
+          <subentities>
+            <subentity materialName="Animations/Fire" index="0" visible="true" />
+          </subentities>
+        </entity>
+      </node>
+      <node name="Rock#5" id="267098016">
+        <rotation qw="0.94693" qx="-0.321439" qy="0" qz="0" />
+        <position x="301.846" y="11.3619" z="149.128" />
+        <scale x="7" y="7" z="7" />
+        <entity name="BigRock0#5" id="322672192" castshadows="false" meshFile="BigRock0.mesh">
+          <rotation qw="1" qx="0" qy="0" qz="0" />
+          <position x="0" y="0" z="0" />
+          <scale x="1" y="1" z="1" />
+          <subentities>
+            <subentity materialName="VulcanicRock" index="0" visible="true" />
+          </subentities>
+        </entity>
+      </node>
+      <node name="Fire#0" id="232093264">
+        <rotation qw="0.679766" qx="0.590911" qy="-0.285022" qz="0.32788" />
+        <position x="145.962" y="-13.1575" z="-55.4581" />
+        <scale x="5.53714" y="1" z="5.53714" />
+        <entity name="2DBillboard0#0" id="183019504" castshadows="false" meshFile="2DBillboard0.mesh">
+          <rotation qw="1" qx="0" qy="0" qz="0" />
+          <position x="0" y="0" z="0" />
+          <scale x="1" y="1" z="1" />
+          <subentities>
+            <subentity materialName="Animations/Fire" index="0" visible="true" />
+          </subentities>
+        </entity>
+      </node>
+      <node name="Rock#6" id="794122176">
+        <rotation qw="0.824126" qx="0.566406" qy="0" qz="0" />
+        <position x="323.832" y="19.9298" z="47.3305" />
+        <scale x="8" y="8" z="8" />
+        <entity name="BigRock0#6" id="963194688" castshadows="false" meshFile="BigRock0.mesh">
+          <rotation qw="1" qx="0" qy="0" qz="0" />
+          <position x="0" y="0" z="0" />
+          <scale x="1" y="1" z="1" />
+          <subentities>
+            <subentity materialName="VulcanicRock" index="0" visible="true" />
+          </subentities>
+        </entity>
+      </node>
+    </node>
+    <node name="Enemies" id="770165056">
+      <rotation qw="1" qx="0" qy="0" qz="0" />
+      <position x="0" y="0" z="0" />
+      <scale x="1" y="1" z="1" />
+      <node name="Boss" id="690633920">
+        <rotation qw="0.878817" qx="0" qy="-0.477159" qz="0" />
+        <position x="0" y="137.453" z="0" />
+        <scale x="1" y="1" z="1" />
+        <entity name="Boss#0" id="982787520" castshadows="false" meshFile="Boss.mesh">
+          <rotation qw="1" qx="0" qy="0" qz="0" />
+          <position x="0" y="0" z="0" />
+          <scale x="1" y="1" z="1" />
+          <subentities>
+            <subentity materialName="Scene_Material" index="0" visible="true" />
+          </subentities>
+        </entity>
+      </node>
+    </node>
+    <node name="Objects" id="769066432">
+      <rotation qw="1" qx="0" qy="0" qz="0" />
+      <position x="0" y="0" z="0" />
+      <scale x="1" y="1" z="1" />
+    </node>
+    <node name="Physics" id="743125696">
+      <rotation qw="1" qx="0" qy="0" qz="0" />
+      <position x="0" y="0" z="0" />
+      <scale x="1" y="1" z="1" />
+      <node name="Ground" id="388103872">
+        <rotation qw="1" qx="0" qy="0" qz="0" />
+        <position x="0" y="0" z="0" />
+        <scale x="1" y="1" z="1" />
+        <entity name="Boss_Physics_Ground#0" id="733695488" castshadows="false" meshFile="Boss_Physics_Ground.mesh" type="Physics" physics="GROUND_MASK">
+          <rotation qw="1" qx="0" qy="0" qz="0" />
+          <position x="0" y="0" z="0" />
+          <scale x="1" y="1" z="1" />
+          <subentities>
+            <subentity materialName="Physics" index="0" visible="true" />
+          </subentities>
+        </entity>
+      </node>
+      <node name="Wall" id="903866688">
+        <rotation qw="1" qx="0" qy="0" qz="0" />
+        <position x="0" y="0" z="0" />
+        <scale x="1" y="1" z="1" />
+        <entity name="Boss_Physics_Wall#0" id="200170912" castshadows="false" meshFile="Boss_Physics_Wall.mesh" type="Physics" physics="WALL_MASK">
+          <rotation qw="1" qx="0" qy="0" qz="0" />
+          <position x="0" y="0" z="0" />
+          <scale x="1" y="1" z="1" />
+          <subentities>
+            <subentity materialName="Physics" index="0" visible="true" />
+          </subentities>
+        </entity>
+      </node>
+    </node>
+  </nodes>
+</scene>

@@ -1,0 +1,10 @@
+<scene>
+	<gameAreas>	
+		<gameArea id="0" time="0.0" enemies="0" difficult="1" type="0">
+			<beginNear x="-5000" y="0" z="-5000"/>
+			<endNear x="5000" y="0" z="-5000"/>
+			<beginFar x="-5000" y="0" z="5000"/>
+			<endFar x="5000" y="0" z="5000"/>			
+		</gameArea>
+	</gameAreas>
+</scene>
