@@ -30,7 +30,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
 #include "..\OBBoxRenderable.h"
 
-#define PROJECTILE_LIVE_TIME 0.8
+#define PROJECTILE_LIVE_TIME 1
 
 namespace WyvernsAssault
 {

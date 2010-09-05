@@ -623,6 +623,7 @@ EVENTS_BEGIN_REGISTER_HANDLERS(AudioManager)
 	EVENTS_REGISTER_HANDLER(AudioManager, EnemyHit);
 	EVENTS_REGISTER_HANDLER(AudioManager, EnemyKilled);	
 	EVENTS_REGISTER_HANDLER(AudioManager, ItemCatch);
+	EVENTS_REGISTER_HANDLER(AudioManager, ProjectileFire);
 EVENTS_END_REGISTER_HANDLERS()
 
 EVENTS_BEGIN_UNREGISTER_HANDLERS(AudioManager)
@@ -634,6 +635,7 @@ EVENTS_BEGIN_UNREGISTER_HANDLERS(AudioManager)
 	EVENTS_UNREGISTER_HANDLER(AudioManager, EnemyHit);
 	EVENTS_UNREGISTER_HANDLER(AudioManager, EnemyKilled);	
 	EVENTS_UNREGISTER_HANDLER(AudioManager, ItemCatch);
+	EVENTS_UNREGISTER_HANDLER(AudioManager, ProjectileFire);
 EVENTS_END_UNREGISTER_HANDLERS()
 
 
@@ -712,14 +714,7 @@ EVENTS_DEFINE_HANDLER(AudioManager, EnemyAttack)
 	SceneNode* sceneNode = enemy->_getSceneNode();
 
 	// The enemy has just attack
-	if( enemy->getEnemyType() == Enemy::EnemyTypes::Wizard )
-	{
-		if( (rand()%2) == 0 )
-			playSound("WizardAttack01.wav",sceneNode->_getDerivedPosition(),&channelIndex);
-		else 
-			playSound("WizardAttack02.wav",sceneNode->_getDerivedPosition(),&channelIndex);
-	}
-	else if ( enemy->getEnemyType() == Enemy::EnemyTypes::Knight )
+	if ( enemy->getEnemyType() == Enemy::EnemyTypes::Knight )
 	{
 		if( (rand()%3) == 0 )
 			playSound("EnemyAttack01.wav",sceneNode->_getDerivedPosition(),&channelIndex);
@@ -824,6 +819,26 @@ EVENTS_DEFINE_HANDLER(AudioManager, ItemCatch)
 
 	// The player has just catch the item
 	playSound("Item01.wav",sceneNode->_getDerivedPosition(),&channelIndex);
+}
+
+EVENTS_DEFINE_HANDLER(AudioManager, ProjectileFire)
+{
+	Debug::Out("AudioManager : handleProjectileFireEvent");
+
+	EnemyPtr enemy = evt->getEnemy();
+
+	int channelIndex = -1;
+
+	SceneNode* sceneNode = enemy->_getSceneNode();
+
+	// The enemy has just attack
+	if( enemy->getEnemyType() == Enemy::EnemyTypes::Wizard )
+	{
+		if( (rand()%2) == 0 )
+			playSound("WizardAttack01.wav",sceneNode->_getDerivedPosition(),&channelIndex);
+		else 
+			playSound("WizardAttack02.wav",sceneNode->_getDerivedPosition(),&channelIndex);
+	}
 }
 
 // --------------------------------

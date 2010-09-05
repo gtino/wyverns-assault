@@ -294,6 +294,22 @@ void ParticleManager::swing(SceneNode* node)
 	particles->start();
 }
 
+void ParticleManager::magicBolt(SceneNode* node)
+{
+	String name = node->getName();
+	ParticleUniverse::ParticleSystem* particles;
+	if( mParticleSystemManager->getParticleSystem(name + "_magicBolt") == NULL)
+	{
+		particles = mParticleSystemManager->createParticleSystem( name + "_magicBolt", "WyvernsAssault/MagicBolt", mSceneManager);
+		node->attachObject( particles );
+	}
+	else
+	{
+		particles = mParticleSystemManager->getParticleSystem( name + "_magicBolt");
+	}	
+	particles->start();
+}
+
 // --------------
 // Event handlers
 // --------------
@@ -306,6 +322,7 @@ EVENTS_BEGIN_REGISTER_HANDLERS(ParticleManager)
 	EVENTS_REGISTER_HANDLER(ParticleManager,EnemyCustom)
 	EVENTS_REGISTER_HANDLER(ParticleManager,ItemCreation)
 	EVENTS_REGISTER_HANDLER(ParticleManager,ItemCatch)
+	EVENTS_REGISTER_HANDLER(ParticleManager,ProjectileFire)
 EVENTS_END_REGISTER_HANDLERS()
 
 EVENTS_BEGIN_UNREGISTER_HANDLERS(ParticleManager)
@@ -317,6 +334,7 @@ EVENTS_BEGIN_UNREGISTER_HANDLERS(ParticleManager)
 	EVENTS_UNREGISTER_HANDLER(ParticleManager,EnemyCustom)
 	EVENTS_UNREGISTER_HANDLER(ParticleManager,ItemCreation)
 	EVENTS_UNREGISTER_HANDLER(ParticleManager,ItemCatch)
+	EVENTS_UNREGISTER_HANDLER(ParticleManager,ProjectileFire)
 EVENTS_END_REGISTER_HANDLERS()
 
 
@@ -417,6 +435,11 @@ EVENTS_DEFINE_HANDLER(ParticleManager, ItemCatch)
 	this->remove(sceneNode, item->getName()+ "_glow");
 	this->remove(sceneNode, item->getName());
 	this->glow(sceneNode);
+}
+
+EVENTS_DEFINE_HANDLER(ParticleManager, ProjectileFire)
+{
+	//this->magicBolt(sceneNode);
 }
 
 // --------------------------------

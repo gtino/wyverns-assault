@@ -1,0 +1,175 @@
+system WyvernsAssault/MagicBolt
+{
+    technique 
+    {
+        material                                Particle/Smoke_03
+        renderer                                Billboard
+        {
+        }
+        emitter                                 Point 
+        {
+            emission_rate                       70
+            angle                               360
+            time_to_live                        dyn_random
+            {
+                min                             0.2
+                max                             0.4
+            }
+            velocity                            30
+            all_particle_dimensions             dyn_random
+            {
+                min                             4
+                max                             6
+            }
+            colour                              0.447059 0.117647 0.992157 1
+        }
+        affector                                Scale 
+        {
+            xyz_scale                           40
+        }
+        affector                                Colour 
+        {
+            time_colour                         0    1 1 1 1
+            time_colour                         1    0 0 0 0
+            colour_operation                    multiply
+        }
+    }
+    technique Lightning_1
+    {
+        visual_particle_quota                   20
+        material                                Particle/Lightning_01
+        renderer                                Billboard
+        {
+            billboard_type                      oriented_self
+            billboard_origin                    top_center
+        }
+        emitter                                 Point 
+        {
+            emission_rate                       20
+            angle                               360
+            time_to_live                        dyn_random
+            {
+                min                             0.05
+                max                             0.15
+            }
+            velocity                            0.001
+            all_particle_dimensions             dyn_random
+            {
+                min                             6
+                max                             10
+            }
+            colour                              0.576471 0.32549 0.992157 1
+        }
+        affector                                Colour 
+        {
+            time_colour                         0    1 1 1 1
+            time_colour                         0.5  1 1 1 1
+            time_colour                         1    0 0 0 0
+            colour_operation                    multiply
+        }
+    }
+    technique Lightning_2
+    {
+        enabled                                 false
+        keep_local                              true
+        visual_particle_quota                   5
+        material                                Particle/Lightning_02
+        renderer                                Billboard
+        {
+            billboard_type                      oriented_self
+            billboard_origin                    top_center
+        }
+        emitter                                 Point 
+        {
+            emission_rate                       20
+            angle                               360
+            time_to_live                        dyn_random
+            {
+                min                             0.05
+                max                             0.15
+            }
+            velocity                            0.001
+            all_particle_dimensions             dyn_random
+            {
+                min                             6
+                max                             10
+            }
+            colour                              0.576471 0.32549 0.992157 1
+        }
+        affector                                Colour 
+        {
+            time_colour                         0    1 1 1 1
+            time_colour                         0.5  1 1 1 1
+            time_colour                         1    0 0 0 0
+            colour_operation                    multiply
+        }
+    }
+    technique Lightning_3
+    {
+        visual_particle_quota                   5
+        material                                Particle/Lightning_03
+        renderer                                Billboard
+        {
+            billboard_type                      oriented_self
+            billboard_origin                    top_center
+        }
+        emitter                                 Point 
+        {
+            emission_rate                       20
+            angle                               360
+            time_to_live                        dyn_random
+            {
+                min                             0.05
+                max                             0.15
+            }
+            velocity                            0.001
+            all_particle_dimensions             dyn_random
+            {
+                min                             6
+                max                             10
+            }
+            colour                              0.576471 0.32549 0.992157 1
+        }
+        affector                                Colour 
+        {
+            time_colour                         0    1 1 1 1
+            time_colour                         0.5  1 1 1 1
+            time_colour                         1    0 0 0 0
+            colour_operation                    multiply
+        }
+    }
+    technique Lightning_4
+    {
+        visual_particle_quota                   5
+        material                                Particle/Lightning_04
+        renderer                                Billboard
+        {
+            billboard_type                      oriented_self
+            billboard_origin                    top_center
+        }
+        emitter                                 Point 
+        {
+            emission_rate                       20
+            angle                               360
+            time_to_live                        dyn_random
+            {
+                min                             0.05
+                max                             0.15
+            }
+            velocity                            0.001
+            all_particle_dimensions             dyn_random
+            {
+                min                             6
+                max                             10
+            }
+            colour                              0.576471 0.32549 0.992157 1
+        }
+        affector                                Colour 
+        {
+            time_colour                         0    1 1 1 1
+            time_colour                         0.5  1 1 1 1
+            time_colour                         1    0 0 0 0
+            colour_operation                    multiply
+        }
+    }
+}

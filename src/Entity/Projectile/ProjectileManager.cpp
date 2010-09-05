@@ -44,9 +44,12 @@ ProjectilePtr ProjectileManager::createProjectile(Ogre::String name, Ogre::Scene
 
 	//Define Entity
 	Entity* entity = mSceneManager->createEntity(name,"cube.mesh");
+	entity->setVisible(false);
 	sceneNode->scale(Ogre::Vector3(0.1,0.1,0.1));
 	sceneNode->attachObject(entity);
 	projectile->initializeEntity(entity, sceneNode, mSceneManager);
+
+	ParticleManager::getSingletonPtr()->magicBolt(sceneNode);
 
 	// Store Projectile
 	mProjectileList.push_back(projectile);
