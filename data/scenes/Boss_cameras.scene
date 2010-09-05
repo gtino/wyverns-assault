@@ -5,6 +5,26 @@
 			<position x="0" y="200" z="0"/>	
 			<lookAt x="-128" y="24" z="300"/>
 		</camera>
+		<camera name="Camera1" id="1">
+			<position x="0" y="500" z="0"/>	
+			<lookAt x="0" y="0" z="0"/>
+		</camera>
+		<camera name="Camera2" id="2">
+			<position x="-430" y="300" z="-34"/>	
+			<lookAt x="0" y="0" z="0"/>
+		</camera>
+		<camera name="Camera3" id="3">
+			<position x="-132" y="50" z="99"/>	
+			<lookAt x="296" y="150" z="135"/>
+		</camera>
+		<camera name="Camera4" id="4">
+			<position x="-175" y="20" z="331"/>	
+			<lookAt x="0" y="80" z="0"/>
+		</camera>
+		<camera name="Camera5" id="5">
+			<position x="105" y="200" z="-263"/>	
+			<lookAt x="-175" y="20" z="331"/>
+		</camera>
 	</cameras>
 	
 	<!-- Camera segments for game areas -->
