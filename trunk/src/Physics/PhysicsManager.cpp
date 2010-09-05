@@ -292,7 +292,18 @@ void PhysicsManager::addPhysicScenario(Ogre::Entity* entity, Ogre::SceneNode* no
 
 	entityScenario->setQueryFlags(type);
 	nodeScenario->attachObject(entityScenario);
-	nodeScenario->setVisible(true);
+	
+	// Detach from parent	
+	SceneNode* parentNode = nodeScenario->getParentSceneNode();
+	
+	if(parentNode)
+	{
+		parentNode->removeChild(nodeScenario);
+	}
+
+	// Re-attach to physics node
+	mPhysicsNode->addChild(nodeScenario);
+	mPhysicsNode->setVisible(false);
 
 	// Initialize scenario physics geometry
 	if( type == WyvernsAssault::GROUND_MASK)
