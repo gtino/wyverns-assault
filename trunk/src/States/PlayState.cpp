@@ -921,9 +921,9 @@ bool PlayState::keyPressed(const OIS::KeyEvent& e)
 		mCutSceneManager->skip();
 		break;
 
-	// Move Player to end -- HACK!
+	// Move Player to a game area -- HACK!
 	case OIS::KeyCode::KC_DELETE:
-		player1->setPosition(Vector3(-252, 40.5, -117));	// END POSITION
+		player1->setPosition(Vector3(1216, 23, 197));
 		break;
 	}
 

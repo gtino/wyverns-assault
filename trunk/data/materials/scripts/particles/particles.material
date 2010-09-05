@@ -73,6 +73,42 @@ material Particle/Fire_02
     }
 }
 //-----------------------------------------------------------------------------------------------------------------------------------------------
+material Particle/Fire_03
+{
+    technique
+    {
+        pass
+        {
+            lighting off
+            scene_blend add
+            depth_write off
+            texture_unit
+            {
+                texture particle_flame03.png
+                tex_address_mode clamp
+            }
+        }
+    }
+}
+//---------------------------------------------------------------------
+material Particle/Fire_04
+{
+    technique
+    {
+        pass
+        {
+            lighting off
+            scene_blend add
+            depth_write off
+            texture_unit
+            {
+                texture particle_flame04.png
+                tex_address_mode clamp
+            }
+        }
+    }
+}
+//-----------------------------------------------------------------------------------------------------------------------------------------------
 material Particle/FireFlash
 {
     technique

@@ -42,6 +42,18 @@ void ParticleManager::initialize()
 	mSceneManager->getRootSceneNode()->createChildSceneNode("smokeNodeB",Vector3(-615,690,450))->attachObject(mParticleSystem);
 	mParticleSystem->start();
 
+	mParticleSystem = mParticleSystemManager->createParticleSystem("fireCampA", "WyvernsAssault/FireCamp", mSceneManager);	
+	mSceneManager->getRootSceneNode()->createChildSceneNode("fireCampA",Vector3(522, 0, 720))->attachObject(mParticleSystem);
+	mParticleSystem->start();
+
+	mParticleSystem = mParticleSystemManager->createParticleSystem("fireCampB", "WyvernsAssault/FireCamp", mSceneManager);	
+	mSceneManager->getRootSceneNode()->createChildSceneNode("fireCampB",Vector3(594.5, 0, 787))->attachObject(mParticleSystem);
+	mParticleSystem->start();
+
+	mParticleSystem = mParticleSystemManager->createParticleSystem("fireCampC", "WyvernsAssault/FireCamp", mSceneManager);	
+	mSceneManager->getRootSceneNode()->createChildSceneNode("fireCampC",Vector3(1171.5, 0, 178))->attachObject(mParticleSystem);
+	mParticleSystem->start();
+
 	mParticleSystem = mParticleSystemManager->createParticleSystem("bloodLens", "WyvernsAssault/BloodLens", mSceneManager);
 	mSceneManager->getRootSceneNode()->createChildSceneNode("bloodLensNode", Vector3::ZERO)->attachObject(mParticleSystem);
 }
