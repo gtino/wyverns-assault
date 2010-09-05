@@ -11,6 +11,25 @@
     <position x="0" y="0" z="0" />
     <scale x="1" y="1" z="1" />
   </environment>
+  <lights>
+    <light name="Sun" id="374401056" type="LT_POINT">
+      <attenuation distance="1500" constant="1" linear="0" quadratic="0" />
+      <diffuse r="0.203922" g="0.203922" b="0.101961" a="1" />
+      <direction x="0" y="0" z="1" />
+      <range innerAngle="15" outerAngle="30" falloff="1" />
+      <rotation qw="1" qx="0" qy="0" qz="0" />
+      <position x="750" y="1250" z="0" />
+      <power value="2" />
+      <specular r="0.203922" g="0.203922" b="0.101961" a="1" />
+    </light>
+  </lights>
+  <markers>
+    <marker name="Start" id="852626176">
+      <rotation qw="1" qx="0" qy="0" qz="0" />
+      <position x="-261.199" y="108.465" z="715.766" />
+      <scale x="50" y="50" z="50" />
+    </marker>
+  </markers>
   <nodes>
     <node name="Princess" id="735007744">
       <rotation qw="1" qx="0" qy="0" qz="0" />
@@ -8008,6 +8027,37 @@
           <scale x="1" y="1" z="1" />
           <subentities>
             <subentity materialName="Tent2" index="0" visible="true" />
+          </subentities>
+        </entity>
+      </node>
+    </node>
+    <node name="Physics" id="854792960">
+      <rotation qw="1" qx="0" qy="0" qz="0" />
+      <position x="0" y="0" z="0" />
+      <scale x="1" y="1" z="1" />
+      <node name="Physics_Ground" id="828791168">
+        <rotation qw="1" qx="0" qy="0" qz="0" />
+        <position x="0" y="0" z="0" />
+        <scale x="1" y="1" z="1" />
+        <entity name="Level1_1_Physics_Ground#0" id="210577712" castshadows="false" meshFile="Level1_1_Physics_Ground.mesh" type="Physics" physics="GROUND_MASK">
+          <rotation qw="1" qx="0" qy="0" qz="0" />
+          <position x="0" y="0" z="0" />
+          <scale x="1" y="1" z="1" />
+          <subentities>
+            <subentity materialName="Physics" index="0" visible="true" />
+          </subentities>
+        </entity>
+      </node>
+      <node name="Physics_Wall" id="242866288">
+        <rotation qw="1" qx="0" qy="0" qz="0" />
+        <position x="0" y="0" z="0" />
+        <scale x="1" y="1" z="1" />
+        <entity name="Level1_1_Physics_Wall#0" id="553209024" castshadows="false" meshFile="Level1_1_Physics_Wall.mesh" type="Physics" physics="WALL_MASK">
+          <rotation qw="1" qx="0" qy="0" qz="0" />
+          <position x="0" y="0" z="0" />
+          <scale x="1" y="1" z="1" />
+          <subentities>
+            <subentity materialName="Physics" index="0" visible="true" />
           </subentities>
         </entity>
       </node>

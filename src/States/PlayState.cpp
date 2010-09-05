@@ -250,15 +250,11 @@ void PlayState::initialize()
 	//
 	boost::scoped_ptr<DotSceneLoader> dotSceneLoader ( new DotSceneLoader );
 	// Game areas
-	dotSceneLoader->parseDotScene("Level1_1_gameAreas.scene","General", mSceneManager, mScenarioManager, mCameraManager, mLightsManager, mEnemyManager, mPhysicsManager, mItemManager, mParticleManager, mGameAreaManager, mCameraManager->_getSceneNode());
+	dotSceneLoader->parseDotScene(GAME_AREAS_DOTSCENE_FILE,"General", mSceneManager, mPlayerManager, mScenarioManager, mCameraManager, mLightsManager, mEnemyManager, mPhysicsManager, mItemManager, mParticleManager, mGameAreaManager, mCameraManager->_getSceneNode());
 	// Scenario, enemies and items
-	dotSceneLoader->parseDotScene("Level1_1.scene","General", mSceneManager, mScenarioManager, mCameraManager, mLightsManager, mEnemyManager, mPhysicsManager, mItemManager, mParticleManager, mGameAreaManager, mScenarioManager->_getSceneNode());
+	dotSceneLoader->parseDotScene(GAME_LEVEL_DOTSCENE_FILE,"General", mSceneManager, mPlayerManager, mScenarioManager, mCameraManager, mLightsManager, mEnemyManager, mPhysicsManager, mItemManager, mParticleManager, mGameAreaManager, mScenarioManager->_getSceneNode());
 	// Fixed cameras and camera segments
-	dotSceneLoader->parseDotScene("Level1_1_cameras.scene","General", mSceneManager, mScenarioManager, mCameraManager, mLightsManager, mEnemyManager, mPhysicsManager, mItemManager, mParticleManager, mGameAreaManager, mCameraManager->_getSceneNode());	
-	// Lights
-	dotSceneLoader->parseDotScene("Level1_1_lights.scene","General", mSceneManager, mScenarioManager, mCameraManager, mLightsManager, mEnemyManager, mPhysicsManager, mItemManager, mParticleManager, mGameAreaManager, mLightsManager->_getSceneNode());
-	// Scenario physcis
-	dotSceneLoader->parseDotScene("Level1_1_physics.scene","General", mSceneManager, mScenarioManager, mCameraManager, mLightsManager, mEnemyManager, mPhysicsManager, mItemManager, mParticleManager, mGameAreaManager, mPhysicsManager->_getSceneNode());
+	dotSceneLoader->parseDotScene(GAME_CAMERAS_DOTSCENE_FILE,"General", mSceneManager, mPlayerManager, mScenarioManager, mCameraManager, mLightsManager, mEnemyManager, mPhysicsManager, mItemManager, mParticleManager, mGameAreaManager, mCameraManager->_getSceneNode());	
 
 	Debug::Out(mSceneManager->getRootSceneNode());
 

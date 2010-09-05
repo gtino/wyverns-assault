@@ -88,6 +88,7 @@ namespace WyvernsAssault
 
 		// Add phyisic entities to manager
 		void addPhysicScenario(String mesh, String name, GroundQueryFlags type, Vector3 position, Vector3 scale);
+		void addPhysicScenario(Ogre::Entity* entity, Ogre::SceneNode* node, WyvernsAssault::GroundQueryFlags type);
 		void addPhysicPlayer(PlayerPtr player);
 		void addPhysicEnemy(EnemyPtr enemy, int gameArea);
 		void addPhysicItem(ItemPtr item, int gameArea);

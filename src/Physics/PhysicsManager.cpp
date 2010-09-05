@@ -285,6 +285,28 @@ void PhysicsManager::addPhysicScenario(Ogre::String mesh, Ogre::String name, Wyv
 	}
 }
 
+void PhysicsManager::addPhysicScenario(Ogre::Entity* entity, Ogre::SceneNode* node, WyvernsAssault::GroundQueryFlags type)
+{	
+	SceneNode* nodeScenario = node;
+	Entity* entityScenario = entity;
+
+	entityScenario->setQueryFlags(type);
+	nodeScenario->attachObject(entityScenario);
+	nodeScenario->setVisible(true);
+
+	// Initialize scenario physics geometry
+	if( type == WyvernsAssault::GROUND_MASK)
+	{
+		mGroundGeometry = GeometryPtr(new Geometry(entityScenario));
+		mGroundGeometry->initializeMeshInformation(nodeScenario->_getDerivedPosition(), nodeScenario->_getDerivedOrientation(), nodeScenario->_getDerivedScale());
+	}
+	else if(type == WyvernsAssault::WALL_MASK)
+	{
+		mWallGeometry = GeometryPtr(new Geometry(entityScenario));
+		mWallGeometry->initializeMeshInformation(nodeScenario->_getDerivedPosition(), nodeScenario->_getDerivedOrientation(), nodeScenario->_getDerivedScale());
+	}
+}
+
 // Load player physics
 void PhysicsManager::addPhysicPlayer(PlayerPtr player)
 {

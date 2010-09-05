@@ -13,6 +13,7 @@ using namespace WyvernsAssault;
 void DotSceneLoader::parseDotScene(const String &SceneName, 
 								   const String &groupName, 
 								   SceneManager *levelSceneManager, 
+								   WyvernsAssault::PlayerManagerPtr playerManager,
 								   WyvernsAssault::ScenarioManagerPtr scenarioManager,
 								   WyvernsAssault::CameraManagerPtr cameraManager, 
 								   WyvernsAssault::LightsManagerPtr lightsManager,
@@ -24,6 +25,8 @@ void DotSceneLoader::parseDotScene(const String &SceneName,
 								   SceneNode *pAttachNode, 
 								   const String &sPrependNode)
 {
+	//Set PlayerManager
+	mPlayerManager = playerManager;
 
 	//Set SceneManager
 	mSceneMgr = levelSceneManager;
@@ -187,6 +190,27 @@ void DotSceneLoader::processScene(TiXmlElement *XMLRoot)
 		processPhysics(pElement);		
 	}
 	LogManager::getSingleton().logMessage("[DotSceneLoader] Physics processed.");
+
+	// Process markers
+	pElement = XMLRoot->FirstChildElement("markers");
+	if(pElement)
+	{
+		processMarkers(pElement);			
+	}
+	LogManager::getSingleton().logMessage("[DotSceneLoader] Markers processed.");
+}
+
+void DotSceneLoader::processMarkers(TiXmlElement *XMLNode)
+{
+	TiXmlElement *pElement;
+
+	// Process marker
+	pElement = XMLNode->FirstChildElement("marker");
+	while(pElement)
+	{
+		processMarker(pElement);
+		pElement = pElement->NextSiblingElement("marker");
+	}
 }
 
 void DotSceneLoader::processNodes(TiXmlElement *XMLNode)
@@ -248,7 +272,7 @@ void DotSceneLoader::processPhysics(TiXmlElement *XMLNode)
 	TiXmlElement *pElementScale;
 
 	// Process physics element
-	pElement = XMLNode->FirstChildElement("physicGround");
+	pElement = XMLNode;
 	while(pElement)
 	{
 		Ogre::String name;
@@ -272,11 +296,11 @@ void DotSceneLoader::processPhysics(TiXmlElement *XMLNode)
 		}
 
 		// Process ground levels
-		pElementGL = pElement->FirstChildElement("groundLevel"); 
+		pElementGL = pElement->FirstChildElement("entity"); 
 		while(pElementGL)
 		{
 
-			pElementEntity = pElementGL->FirstChildElement("entity"); 
+			pElementEntity = pElementGL; 
 			
 			name = getAttrib(pElementEntity, "name");
 			mesh = getAttrib(pElementEntity, "meshFile");
@@ -290,10 +314,10 @@ void DotSceneLoader::processPhysics(TiXmlElement *XMLNode)
 			else
 				mPhysicsManager->addPhysicScenario(mesh, name, WyvernsAssault::GROUND_MASK, position, scale);
 
-			pElementGL = pElementGL->NextSiblingElement("groundLevel");
+			pElementGL = pElementGL->NextSiblingElement("entity");
 		}
 
-		pElement = pElement->NextSiblingElement("physicGround");
+		pElement = 0;
 	}
 		
 }
@@ -349,6 +373,50 @@ void DotSceneLoader::processEnvironment(TiXmlElement *XMLNode)
 		processShadows(pElement);
 
 	LogManager::getSingleton().logMessage("[DotSceneLoader] Shadows processed.");
+}
+
+void DotSceneLoader::processMarker(TiXmlElement *XMLNode, SceneNode *pParent)
+{
+	TiXmlElement *pElement;
+	Ogre::Vector3 position;
+	Ogre::Quaternion rotation;
+	Ogre::Vector3 scale = Ogre::Vector3::UNIT_SCALE;
+
+	String id = getAttrib(XMLNode, "id");
+	String name = getAttrib(XMLNode, "name"); // This is the important one! We rely on this to do different things!
+
+	// Process position
+	pElement = XMLNode->FirstChildElement("position");
+	if(pElement)
+	{
+		position = parseVector3(pElement);
+	}
+
+	// Process rotation
+	pElement = XMLNode->FirstChildElement("rotation");
+	if(pElement)
+	{
+		rotation = parseQuaternion(pElement);
+	}
+
+	// Process scale
+	//
+	// NOTE : Scale is usually not important, because it is just used in Ogitor to make the
+	// markers big enough to be 'seen'. Here we are not really interested in it...
+	pElement = XMLNode->FirstChildElement("scale");
+	if(pElement)
+	{
+		scale =parseVector3(pElement);
+	}
+
+	//
+	// Here we have our name check
+	// 
+	if(name == "Start")
+	{
+		// HACK : 
+		mPlayerManager->getPlayer(PLAYER1)->setPosition(position);
+	}
 }
 
 void DotSceneLoader::processNode(TiXmlElement *XMLNode, SceneNode *pParent)
@@ -506,7 +574,7 @@ void DotSceneLoader::processLight(TiXmlElement *XMLNode, SceneNode *pParent)
 	{
 		// Other light types
 		name = getAttrib(XMLNode, "name");
-		if (type == "point")
+		if (type == "LT_POINT")
 		{
 			lType = Light::LT_POINT;
 			// Process position
@@ -529,7 +597,7 @@ void DotSceneLoader::processLight(TiXmlElement *XMLNode, SceneNode *pParent)
 			}
 			mLightsManager->createLight(name, lType, diffuse, specular, position);
 		}
-		else if(type == "directional")
+		else if(type == "LT_DIRECTIONAL")
 		{
 			lType = Light::LT_DIRECTIONAL;
 			// Process direction
@@ -552,7 +620,7 @@ void DotSceneLoader::processLight(TiXmlElement *XMLNode, SceneNode *pParent)
 			}
 			mLightsManager->createLight(name, lType, diffuse, specular, Vector3::ZERO, direction);
 		}
-		else if(type == "spot")
+		else if(type == "LT_SPOTLIGHT")
 		{
 			lType = Light::LT_SPOTLIGHT;
 			// Process position
@@ -692,6 +760,36 @@ void DotSceneLoader::processEntity(TiXmlElement *XMLNode, SceneNode *pParent)
 		pEntity->setCastShadows(castShadows);
 		pEntity->setQueryFlags(SceneManager::ENTITY_TYPE_MASK);
 
+		if(!materialFile.empty())
+			pEntity->setMaterialName(materialFile);
+
+		
+		// Process rotation
+		pElement = XMLNode->FirstChildElement("rotation");
+		if(pElement)
+		{
+			pParent->rotate(parseQuaternion(pElement), Ogre::Node::TransformSpace::TS_PARENT);
+			pParent->setInitialState();
+		}
+
+		// Process position
+		pElement = XMLNode->FirstChildElement("position");
+		if(pElement)
+		{
+			Ogre::Vector3 pos = parseVector3(pElement);
+
+			pParent->translate(pos.x, pos.y, pos.z, Ogre::Node::TransformSpace::TS_PARENT);
+			pParent->setInitialState();
+		}
+
+		// Process scale
+		pElement = XMLNode->FirstChildElement("scale");
+		if(pElement)
+		{
+			pParent->scale(parseVector3(pElement));
+			pParent->setInitialState();
+		}
+
 		int gameArea = mGameAreaManager->positionGameArea(pParent->getPosition());
 
 		//
@@ -740,39 +838,22 @@ void DotSceneLoader::processEntity(TiXmlElement *XMLNode, SceneNode *pParent)
 			// Add the item to the physics manager
 			mPhysicsManager->addPhysicItem(item, gameArea);
 		}
+		else if(type == "Physics")
+		{
+			// Get own atributes
+			String physics = getAttrib(XMLNode,"physics");
+
+			// Create ground physic element
+			if(physics == "GROUND_MASK") 
+				mPhysicsManager->addPhysicScenario(pEntity, pParent, WyvernsAssault::GROUND_MASK);
+			else if(physics == "WALL_MASK") 
+				mPhysicsManager->addPhysicScenario(pEntity, pParent, WyvernsAssault::WALL_MASK);
+			else
+				mPhysicsManager->addPhysicScenario(pEntity, pParent, WyvernsAssault::GROUND_MASK);
+		}
 		else
 		{
 			ObjectPtr object = mScenarioManager->createObject(ObjectTypes::Default, name, pEntity, pParent, gameArea);
-		}
-
-		if(!materialFile.empty())
-			pEntity->setMaterialName(materialFile);
-
-		
-		// Process position
-		pElement = XMLNode->FirstChildElement("position");
-		if(pElement)
-		{
-			Ogre::Vector3 pos = parseVector3(pElement);
-
-			pParent->translate(pos.x, pos.y, pos.z, Ogre::Node::TransformSpace::TS_WORLD);
-			pParent->setInitialState();
-		}
-
-		// Process rotation
-		pElement = XMLNode->FirstChildElement("rotation");
-		if(pElement)
-		{
-			pParent->rotate(parseQuaternion(pElement));
-			pParent->setInitialState();
-		}
-
-		// Process scale
-		pElement = XMLNode->FirstChildElement("scale");
-		if(pElement)
-		{
-			pParent->scale(parseVector3(pElement));
-			pParent->setInitialState();
 		}
 
 		// Process subentities

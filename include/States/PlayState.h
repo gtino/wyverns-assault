@@ -50,6 +50,14 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #include <SdkTrays.h>
 #include <ParticleUniversePlugin.h>
 
+#define GAME_AREAS_DOTSCENE_FILE "Level1_1_gameAreas.scene"
+#define GAME_LEVEL_DOTSCENE_FILE "Level1_1.scene"
+#define GAME_CAMERAS_DOTSCENE_FILE "Level1_1_cameras.scene"
+
+//#define GAME_AREAS_DOTSCENE_FILE "Boss_gameAreas.scene"
+//#define GAME_LEVEL_DOTSCENE_FILE "Boss.scene"
+//#define GAME_CAMERAS_DOTSCENE_FILE "Boss_cameras.scene"
+
 namespace WyvernsAssault
 {
 	/**
@@ -65,6 +73,7 @@ namespace WyvernsAssault
 		/** Initialize current state */
 		void initialize();
 		/** Load resources */
+	public:
 		void load();
 		/** Manage input - INPUT */
 		void input();

@@ -47,6 +47,7 @@ namespace Ogre
 		void parseDotScene(const String &SceneName, 
 			const String &groupName,
 			SceneManager *levelSceneManager,
+			WyvernsAssault::PlayerManagerPtr playerManager,
 			WyvernsAssault::ScenarioManagerPtr scenarioManager,
 			WyvernsAssault::CameraManagerPtr cameraManager, 
 			WyvernsAssault::LightsManagerPtr lightsManager,
@@ -69,6 +70,9 @@ namespace Ogre
 
 		void processNodes(TiXmlElement *XMLNode);
 		void processNode(TiXmlElement *XMLNode, SceneNode *pParent = 0);
+
+		void processMarkers(TiXmlElement *XMLNode);
+		void processMarker(TiXmlElement *XMLNode, SceneNode *pParent = 0);
 
 		void processEntity(TiXmlElement *XMLNode, SceneNode *pParent);
 		void processSubEntities(TiXmlElement *XMLNode, Entity *pEntity);
@@ -114,6 +118,7 @@ namespace Ogre
 		String m_sGroupName;
 		String m_sPrependNode;
 
+		WyvernsAssault::PlayerManagerPtr mPlayerManager;
 		WyvernsAssault::ScenarioManagerPtr mScenarioManager;
 		WyvernsAssault::CameraManagerPtr mCameraManager;
 		WyvernsAssault::LightsManagerPtr mLightsManager;
