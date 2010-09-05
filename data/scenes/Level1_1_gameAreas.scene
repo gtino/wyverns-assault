@@ -34,10 +34,19 @@
 			<beginFar x="810" y="0" z="442"/>
 			<endFar x="1025" y="0" z="223"/>
 			<spawnPoint x="1042" y="10" z="625"/>
+			<spawnPoint x="1021" y="10" z="423"/>
 			<spawnPoint x="963" y="10" z="482"/>
+			<spawnPoint x="1075" y="10" z="330"/>
 			<spawnPoint x="1198" y="10" z="481"/>
 			<spawnPoint x="1087" y="10" z="321"/>
 			<spawnPoint x="1000" y="10" z="390"/>
+			<spawnPoint x="1223" y="10" z="483"/>
+			<spawnPoint x="1062" y="10" z=""/>
+			<spawnPoint x="901" y="10" z="500"/>
+			<spawnPoint x="1119" y="10" z="300"/>
+			<spawnPoint x="1133" y="10" z="360"/>
+			<spawnPoint x="955" y="10" z="381"/>
+			<spawnPoint x="1026" y="10" z="496"/>
 		</gameArea>
 		<gameArea id="4" time="0.0" enemies="15" difficult="2" type="0">
 			<beginNear x="1348" y="0" z="348"/>
