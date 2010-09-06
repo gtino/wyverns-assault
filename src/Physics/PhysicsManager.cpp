@@ -156,6 +156,36 @@ void PhysicsManager::checkForCollisions()
 			}			
 		}
 
+		// Player - Object COLLISION
+		for(int i = 0; i < mObjectMapList[mCurrentGameArea].size(); i++)
+		{
+			ObjectPtr obj = mObjectMapList[mCurrentGameArea][i];
+			AxisAlignedBox obj_box = obj->getGeometry()->getWorldBoundingBox(obj->getPosition());
+
+			// Check if player is using special (fire) and collisioning with object
+			if ( player->isSpecial() && player_firebox.intersects(obj_box)){
+				ObjectHitEventPtr objectHitEventPtr = ObjectHitEventPtr(new ObjectHitEvent(obj, player));
+				EVENTS_FIRE(objectHitEventPtr);
+			}
+
+			// Player and object are colliding
+			if(player_box.intersects(obj_box))
+			{
+				// Check if player is attacking and has changed state
+				if( player->isAttacking() && mLastAttackChecked != player->wichAttack() )
+				{
+					ObjectHitEventPtr objectHitEventPtr = ObjectHitEventPtr(new ObjectHitEvent(obj, player));
+					// If thrid strike more damage
+					if( player->wichAttack() == 3 )
+						objectHitEventPtr->setDamage(player->getComboHitDamage());
+					else
+ 						objectHitEventPtr->setDamage(player->getHitDamage());
+
+					EVENTS_FIRE(objectHitEventPtr);
+				}
+			}
+		}
+
 		// Save last player attack checked
 		mLastAttackChecked = player->wichAttack();
 	
@@ -375,6 +405,7 @@ bool PhysicsManager::collidesAllObjects(PlayerPtr player, const Vector3& fromPoi
 
 		if( player_box.intersects(obj_box) )
 			return true;
+		
 	}
 
 	return false;

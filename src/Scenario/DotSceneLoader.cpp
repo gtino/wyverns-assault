@@ -809,7 +809,9 @@ void DotSceneLoader::processEntity(TiXmlElement *XMLNode, SceneNode *pParent)
 			//
 			if( type == "DynamicObject" )
 			{
-				ObjectPtr object = mScenarioManager->createObject(ObjectTypes::DynamicObject, name, pEntity, pParent, gameArea, physicBox);
+				String dieMesh = getAttrib(XMLNode, "dieMesh");
+				String dieAnimation = getAttrib(XMLNode, "dieAnimation");
+				ObjectPtr object = mScenarioManager->createObject(ObjectTypes::DynamicObject, name, pEntity, pParent, gameArea, physicBox, dieMesh, dieAnimation);
 				mPhysicsManager->addPhysicObject(object, gameArea);
 			}
 			else if( type == "Enemy" )
@@ -865,7 +867,7 @@ void DotSceneLoader::processEntity(TiXmlElement *XMLNode, SceneNode *pParent)
 			}
 			else
 			{
-				ObjectPtr object = mScenarioManager->createObject(ObjectTypes::Default, name, pEntity, pParent, gameArea, Vector3::ZERO);
+				ObjectPtr object = mScenarioManager->createObject(ObjectTypes::Default, name, pEntity, pParent, gameArea, Vector3::ZERO, "", "");
 			}
 
 			// Process subentities

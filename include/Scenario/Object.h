@@ -31,20 +31,11 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
 namespace WyvernsAssault
 {
-	/** List of enemy types */
+	/** List of object types */
 	enum ObjectTypes
 	{
 		Default,
 		DynamicObject
-	};
-
-	struct ObjectParameters
-	{
-		Real life;
-		Real points;
-		String dieMesh;
-		String dieAnimation;
-		String physicMesh;
 	};
 
 	/**
@@ -88,7 +79,7 @@ namespace WyvernsAssault
 		ObjectTypes mType;
 
 		Real mMaxLife;
-		ObjectParameters mParameters;
+		Real life; 
 
 		Vector3 mPhysicSize;
 
