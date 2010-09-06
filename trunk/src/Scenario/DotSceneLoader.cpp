@@ -522,14 +522,6 @@ void DotSceneLoader::processNode(TiXmlElement *XMLNode, SceneNode *pParent)
 		processCameras(pElement);
 		pElement = pElement->NextSiblingElement("cameras");
 	}
-
-	// Process camera
-	pElement = XMLNode->FirstChildElement("ParticleSystems");
-	while(pElement)
-	{
-		processCameras(pElement);
-		pElement = pElement->NextSiblingElement("cameras");
-	}
 }
 
 void DotSceneLoader::processCamera(TiXmlElement *XMLNode, SceneNode *pParent)
@@ -766,8 +758,9 @@ void DotSceneLoader::processEntity(TiXmlElement *XMLNode, SceneNode *pParent)
 		{
 			// Get own atributes
 			String script = getAttrib(XMLNode, "script");
+			Real repeat = getAttribReal(XMLNode, "repeat");
 
-			mParticleManager->add(pParent, script);
+			mParticleManager->add(pParent, script, repeat);
 		}
 		else
 		{
