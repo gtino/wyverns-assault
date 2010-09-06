@@ -522,6 +522,14 @@ void DotSceneLoader::processNode(TiXmlElement *XMLNode, SceneNode *pParent)
 		processCameras(pElement);
 		pElement = pElement->NextSiblingElement("cameras");
 	}
+
+	// Process camera
+	pElement = XMLNode->FirstChildElement("ParticleSystems");
+	while(pElement)
+	{
+		processCameras(pElement);
+		pElement = pElement->NextSiblingElement("cameras");
+	}
 }
 
 void DotSceneLoader::processCamera(TiXmlElement *XMLNode, SceneNode *pParent)
@@ -753,116 +761,127 @@ void DotSceneLoader::processEntity(TiXmlElement *XMLNode, SceneNode *pParent)
 	Entity *pEntity = 0;
 	try
 	{
-		//
-		// Create entity
-		//
-		MeshManager::getSingleton().load(meshFile, m_sGroupName);
-		pEntity = mSceneMgr->createEntity(name, meshFile);
-		pEntity->setCastShadows(castShadows);
-		pEntity->setQueryFlags(SceneManager::ENTITY_TYPE_MASK);
-
-		if(!materialFile.empty())
-			pEntity->setMaterialName(materialFile);
-
-		
-		// Process rotation
-		pElement = XMLNode->FirstChildElement("rotation");
-		if(pElement)
-		{
-			pParent->rotate(parseQuaternion(pElement), Ogre::Node::TransformSpace::TS_PARENT);
-			pParent->setInitialState();
-		}
-
-		// Process position
-		pElement = XMLNode->FirstChildElement("position");
-		if(pElement)
-		{
-			Ogre::Vector3 pos = parseVector3(pElement);
-
-			pParent->translate(pos.x, pos.y, pos.z, Ogre::Node::TransformSpace::TS_PARENT);
-			pParent->setInitialState();
-		}
-
-		// Process scale
-		pElement = XMLNode->FirstChildElement("scale");
-		if(pElement)
-		{
-			pParent->scale(parseVector3(pElement));
-			pParent->setInitialState();
-		}
-
-		int gameArea = mGameAreaManager->positionGameArea(pParent->getPosition());
-
-		//
-		// Use the Object Manager to create an instance for the new Object
-		//
-		if( type == "DynamicObject" )
-		{
-			ObjectPtr object = mScenarioManager->createObject(ObjectTypes::DynamicObject, name, pEntity, pParent, gameArea, physicBox);
-			mPhysicsManager->addPhysicObject(object, gameArea);
-		}
-		else if( type == "Enemy" )
+		// If its a particle system dont create entity
+		if(type == "ParticleSystem")
 		{
 			// Get own atributes
-			String subType = getAttrib(XMLNode, "subType");
+			String script = getAttrib(XMLNode, "script");
 
-			Enemy::EnemyParameters params;
-
-			params.animationTree = getAttrib(XMLNode, "animationTree");
-			params.life = getAttribReal(XMLNode, "life");
-			params.points = getAttribReal(XMLNode, "points");
-			params.speed = getAttribReal(XMLNode, "speed");
-			params.damage = getAttribReal(XMLNode, "damage");
-			params.specialDamage = getAttribReal(XMLNode, "specialDamage");
-			params.height = getAttribReal(XMLNode, "height");
-			params.dieMesh = getAttrib(XMLNode, "dieMesh");
-			params.dieAnimation = getAttrib(XMLNode, "dieAnimation");
-
-			// Add to EnemyManager
-			EnemyPtr enemy = mEnemyManager->createEnemy(Enemy::StringToType(subType), name, pEntity, pParent, params, gameArea, false);
-			// Add the enemy to the physics manager
-			mPhysicsManager->addPhysicEnemy(enemy, gameArea);
-		}
-		else if( type == "Item" )
-		{
-			// Get own atributes
-			String subType = getAttrib(XMLNode, "subType");
-
-			Item::ItemParameters params;
-
-			params.life = getAttribReal(XMLNode, "life");
-			params.points = getAttribReal(XMLNode, "points");
-			params.drunkTime = getAttribReal(XMLNode, "drunkTime");
-
-			// Add to ItemManager
-			ItemPtr item = mItemManager->createItem(Item::StringToType(subType), name, pEntity, pParent, params, gameArea);
-			// Add the item to the physics manager
-			mPhysicsManager->addPhysicItem(item, gameArea);
-		}
-		else if(type == "Physics")
-		{
-			// Get own atributes
-			String physics = getAttrib(XMLNode,"physics");
-
-			// Create ground physic element
-			if(physics == "GROUND_MASK") 
-				mPhysicsManager->addPhysicScenario(pEntity, pParent, WyvernsAssault::GROUND_MASK);
-			else if(physics == "WALL_MASK") 
-				mPhysicsManager->addPhysicScenario(pEntity, pParent, WyvernsAssault::WALL_MASK);
-			else
-				mPhysicsManager->addPhysicScenario(pEntity, pParent, WyvernsAssault::GROUND_MASK);
+			mParticleManager->add(pParent, script);
 		}
 		else
 		{
-			ObjectPtr object = mScenarioManager->createObject(ObjectTypes::Default, name, pEntity, pParent, gameArea, Vector3::ZERO);
-		}
+			//
+			// Create entity
+			//
+			MeshManager::getSingleton().load(meshFile, m_sGroupName);
+			pEntity = mSceneMgr->createEntity(name, meshFile);
+			pEntity->setCastShadows(castShadows);
+			pEntity->setQueryFlags(SceneManager::ENTITY_TYPE_MASK);
 
-		// Process subentities
-		pElement = XMLNode->FirstChildElement("subentities");
-		while(pElement)
-		{
-			processSubEntities(pElement, pEntity);
-			pElement = pElement->NextSiblingElement("subentities");
+			if(!materialFile.empty())
+				pEntity->setMaterialName(materialFile);
+
+			
+			// Process rotation
+			pElement = XMLNode->FirstChildElement("rotation");
+			if(pElement)
+			{
+				pParent->rotate(parseQuaternion(pElement), Ogre::Node::TransformSpace::TS_PARENT);
+				pParent->setInitialState();
+			}
+
+			// Process position
+			pElement = XMLNode->FirstChildElement("position");
+			if(pElement)
+			{
+				Ogre::Vector3 pos = parseVector3(pElement);
+
+				pParent->translate(pos.x, pos.y, pos.z, Ogre::Node::TransformSpace::TS_PARENT);
+				pParent->setInitialState();
+			}
+
+			// Process scale
+			pElement = XMLNode->FirstChildElement("scale");
+			if(pElement)
+			{
+				pParent->scale(parseVector3(pElement));
+				pParent->setInitialState();
+			}
+
+			int gameArea = mGameAreaManager->positionGameArea(pParent->getPosition());
+
+			//
+			// Use the Object Manager to create an instance for the new Object
+			//
+			if( type == "DynamicObject" )
+			{
+				ObjectPtr object = mScenarioManager->createObject(ObjectTypes::DynamicObject, name, pEntity, pParent, gameArea, physicBox);
+				mPhysicsManager->addPhysicObject(object, gameArea);
+			}
+			else if( type == "Enemy" )
+			{
+				// Get own atributes
+				String subType = getAttrib(XMLNode, "subType");
+
+				Enemy::EnemyParameters params;
+
+				params.animationTree = getAttrib(XMLNode, "animationTree");
+				params.life = getAttribReal(XMLNode, "life");
+				params.points = getAttribReal(XMLNode, "points");
+				params.speed = getAttribReal(XMLNode, "speed");
+				params.damage = getAttribReal(XMLNode, "damage");
+				params.specialDamage = getAttribReal(XMLNode, "specialDamage");
+				params.height = getAttribReal(XMLNode, "height");
+				params.dieMesh = getAttrib(XMLNode, "dieMesh");
+				params.dieAnimation = getAttrib(XMLNode, "dieAnimation");
+
+				// Add to EnemyManager
+				EnemyPtr enemy = mEnemyManager->createEnemy(Enemy::StringToType(subType), name, pEntity, pParent, params, gameArea, false);
+				// Add the enemy to the physics manager
+				mPhysicsManager->addPhysicEnemy(enemy, gameArea);
+			}
+			else if( type == "Item" )
+			{
+				// Get own atributes
+				String subType = getAttrib(XMLNode, "subType");
+
+				Item::ItemParameters params;
+
+				params.life = getAttribReal(XMLNode, "life");
+				params.points = getAttribReal(XMLNode, "points");
+				params.drunkTime = getAttribReal(XMLNode, "drunkTime");
+
+				// Add to ItemManager
+				ItemPtr item = mItemManager->createItem(Item::StringToType(subType), name, pEntity, pParent, params, gameArea);
+				// Add the item to the physics manager
+				mPhysicsManager->addPhysicItem(item, gameArea);
+			}
+			else if(type == "Physics")
+			{
+				// Get own atributes
+				String physics = getAttrib(XMLNode,"physics");
+
+				// Create ground physic element
+				if(physics == "GROUND_MASK") 
+					mPhysicsManager->addPhysicScenario(pEntity, pParent, WyvernsAssault::GROUND_MASK);
+				else if(physics == "WALL_MASK") 
+					mPhysicsManager->addPhysicScenario(pEntity, pParent, WyvernsAssault::WALL_MASK);
+				else
+					mPhysicsManager->addPhysicScenario(pEntity, pParent, WyvernsAssault::GROUND_MASK);
+			}
+			else
+			{
+				ObjectPtr object = mScenarioManager->createObject(ObjectTypes::Default, name, pEntity, pParent, gameArea, Vector3::ZERO);
+			}
+
+			// Process subentities
+			pElement = XMLNode->FirstChildElement("subentities");
+			while(pElement)
+			{
+				processSubEntities(pElement, pEntity);
+				pElement = pElement->NextSiblingElement("subentities");
+			}
 		}
 	}
 	catch(Ogre::Exception &/*e*/)

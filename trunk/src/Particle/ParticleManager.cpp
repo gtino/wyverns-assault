@@ -15,6 +15,7 @@ ParticleManager& ParticleManager::getSingleton(void)
 // END SINGLETON
 
 ParticleManager::ParticleManager(SceneManager* sceneManager)
+: mId(0)
 {
 	this->mSceneManager = sceneManager;
 	mParticleSystem = NULL;
@@ -29,31 +30,10 @@ ParticleManager::~ParticleManager()
 /** Initialize the particle manager */
 void ParticleManager::initialize()
 {
-
 	// Get particle universe particle system manager
 	mParticleSystemManager = ParticleUniverse::ParticleSystemManager::getSingletonPtr();
 
-	// Create "all-time" particle systems
-	mParticleSystem = mParticleSystemManager->createParticleSystem("somkeA", "WyvernsAssault/Smoke", mSceneManager);
-	mSceneManager->getRootSceneNode()->createChildSceneNode("smokeNodeA",Vector3(-545,690,490))->attachObject(mParticleSystem);
-	mParticleSystem->start();
-
-	mParticleSystem = mParticleSystemManager->createParticleSystem("smokeB", "WyvernsAssault/Smoke", mSceneManager);	
-	mSceneManager->getRootSceneNode()->createChildSceneNode("smokeNodeB",Vector3(-615,690,450))->attachObject(mParticleSystem);
-	mParticleSystem->start();
-
-	mParticleSystem = mParticleSystemManager->createParticleSystem("fireCampA", "WyvernsAssault/FireCamp", mSceneManager);	
-	mSceneManager->getRootSceneNode()->createChildSceneNode("fireCampA",Vector3(522, 0, 720))->attachObject(mParticleSystem);
-	mParticleSystem->start();
-
-	mParticleSystem = mParticleSystemManager->createParticleSystem("fireCampB", "WyvernsAssault/FireCamp", mSceneManager);	
-	mSceneManager->getRootSceneNode()->createChildSceneNode("fireCampB",Vector3(594.5, 0, 787))->attachObject(mParticleSystem);
-	mParticleSystem->start();
-
-	mParticleSystem = mParticleSystemManager->createParticleSystem("fireCampC", "WyvernsAssault/FireCamp", mSceneManager);	
-	mSceneManager->getRootSceneNode()->createChildSceneNode("fireCampC",Vector3(1171.5, 0, 178))->attachObject(mParticleSystem);
-	mParticleSystem->start();
-
+	// Create blood lens particle system
 	mParticleSystem = mParticleSystemManager->createParticleSystem("bloodLens", "WyvernsAssault/BloodLens", mSceneManager);
 	mSceneManager->getRootSceneNode()->createChildSceneNode("bloodLensNode", Vector3::ZERO)->attachObject(mParticleSystem);
 }
@@ -64,12 +44,10 @@ void ParticleManager::finalize()
 {
 	mParticleSystemManager->destroyAllParticleSystems(mSceneManager);
 
+	mSceneManager->destroySceneNode("bloodLensNode");
+
 	mParticleSystem = NULL;
 	mParticleSystemManager = NULL;
-
-	mSceneManager->destroySceneNode("smokeNodeA");
-	mSceneManager->destroySceneNode("smokeNodeB");
-	mSceneManager->destroySceneNode("bloodLensNode");
 }
 
 void ParticleManager::update(const float elapsedSeconds)
@@ -77,13 +55,20 @@ void ParticleManager::update(const float elapsedSeconds)
 
 }
 
-/** Create particle system function */		
-ParticleUniverse::ParticleSystem* ParticleManager::create(String id, String script)
+// Create particle system
+ParticleUniverse::ParticleSystem* ParticleManager::create(String script)
 {
-	return mParticleSystemManager->createParticleSystem(id, script, mSceneManager);
+	return mParticleSystemManager->createParticleSystem(this->createUniqueId(), script, mSceneManager);
 }
 
-/** Add particle system to node and start it */
+// Create particle system, add to node and start it
+void ParticleManager::add(SceneNode* node, String script)
+{
+	ParticleUniverse::ParticleSystem* pSystem = mParticleSystemManager->createParticleSystem(this->createUniqueId(), script, mSceneManager);
+	node->attachObject( pSystem );
+	pSystem->start();
+}
+
 void ParticleManager::add(SceneNode* node, String id, String script)
 {
 	ParticleUniverse::ParticleSystem* pSystem = mParticleSystemManager->createParticleSystem(id + "_particle", script, mSceneManager);
@@ -91,8 +76,8 @@ void ParticleManager::add(SceneNode* node, String id, String script)
 	pSystem->start();
 }
 
-/** Remove particle system from node and stop it */
-void ParticleManager::remove(SceneNode* node, String id)
+// Remove particle system from node and stop it (only usable with non-unique ID particle systems)
+void ParticleManager::remove(String id)
 {
 	ParticleUniverse::ParticleSystem* pSystem = mParticleSystemManager->getParticleSystem(id + "_particle");
 	pSystem->stop();
@@ -100,39 +85,7 @@ void ParticleManager::remove(SceneNode* node, String id)
 	mParticleSystemManager->destroyParticleSystem(pSystem, mSceneManager);
 }
 
-/** Blood particles */
-void ParticleManager::bloodHit(SceneNode* node)
-{
-	String name = node->getName();
-	ParticleUniverse::ParticleSystem* particles;
-	if( mParticleSystemManager->getParticleSystem(name + "_bloodHit") == NULL)
-	{
-		particles = mParticleSystemManager->createParticleSystem( name + "_bloodHit", "WyvernsAssault/BloodHit", mSceneManager);
-		node->attachObject( particles );
-	}
-	else
-	{
-		particles = mParticleSystemManager->getParticleSystem( name + "_bloodHit");
-	}	
-	particles->start();
-}
-
-void ParticleManager::bloodKill(SceneNode* node)
-{
-	String name = node->getName();
-	ParticleUniverse::ParticleSystem* particles;
-	if( mParticleSystemManager->getParticleSystem(name + "_bloodKill") == NULL)
-	{
-		particles = mParticleSystemManager->createParticleSystem( name + "_bloodKill", "WyvernsAssault/BloodKill", mSceneManager);
-		node->attachObject( particles );
-	}
-	else
-	{
-		particles = mParticleSystemManager->getParticleSystem( name + "_bloodKill");
-	}	
-	particles->start();
-}
-
+// Blood on camera lens
 void ParticleManager::bloodLens()
 {
 	Vector3 position = mSceneManager->getCamera(GAME_CAMERA)->getParentSceneNode()->getPosition();
@@ -143,157 +96,7 @@ void ParticleManager::bloodLens()
 	particles->startAndStopFade(5);
 }
 
-/** Hit particle */
-void ParticleManager::hit(SceneNode* node)
-{
-	String name = node->getName();
-	ParticleUniverse::ParticleSystem* particles;
-	if( mParticleSystemManager->getParticleSystem(name + "_hit") == NULL)
-	{
-		particles = mParticleSystemManager->createParticleSystem( name + "_hit", "WyvernsAssault/Hit", mSceneManager);
-		node->attachObject( particles );
-	}
-	else
-	{
-		particles = mParticleSystemManager->getParticleSystem( name + "_hit");
-	}	
-	particles->start();
-}
-
-void ParticleManager::impact(SceneNode* node)
-{
-	String name = node->getName();
-	ParticleUniverse::ParticleSystem* particles;
-	if( mParticleSystemManager->getParticleSystem(name + "_impact") == NULL)
-	{
-		particles = mParticleSystemManager->createParticleSystem( name + "_impact", "WyvernsAssault/Impact", mSceneManager);
-		node->attachObject( particles );
-	}
-	else
-	{
-		particles = mParticleSystemManager->getParticleSystem( name + "_impact");
-	}	
-	particles->start();
-}
-
-/** Fire hit particle */
-void ParticleManager::fireHit(SceneNode* node)
-{
-	String name = node->getName();
-	ParticleUniverse::ParticleSystem* particles;
-	if( mParticleSystemManager->getParticleSystem(name + "_fireHit") == NULL)
-	{
-		particles = mParticleSystemManager->createParticleSystem( name + "_fireHit", "WyvernsAssault/FireHit", mSceneManager);
-		node->attachObject( particles );
-	}
-	else
-	{
-		particles = mParticleSystemManager->getParticleSystem( name + "_fireHit");
-	}	
-	particles->start();
-}
-
-/** Fire kill particle */
-void ParticleManager::fireKill(SceneNode* node)
-{
-	String name = node->getName();
-	ParticleUniverse::ParticleSystem* particles;
-	if( mParticleSystemManager->getParticleSystem(name + "_fireKill") == NULL)
-	{
-		particles = mParticleSystemManager->createParticleSystem( name + "_fireKill", "WyvernsAssault/FireKill", mSceneManager);
-		node->attachObject( particles );
-	}
-	else
-	{
-		particles = mParticleSystemManager->getParticleSystem( name + "_fireKill");
-	}	
-	particles->start();
-}
-
-/** Chicken kill particle **/
-void ParticleManager::chickenKill(SceneNode* node)
-{
-	String name = node->getName();
-	ParticleUniverse::ParticleSystem* particles;
-	if( mParticleSystemManager->getParticleSystem(name + "_chickeKill") == NULL)
-	{
-		particles = mParticleSystemManager->createParticleSystem( name + "_chickeKill", "WyvernsAssault/ChickenKill", mSceneManager);
-		node->attachObject( particles );
-	}
-	else
-	{
-		particles = mParticleSystemManager->getParticleSystem( name + "_chickeKill");
-	}	
-	particles->start();
-}
-
-/** Cow kill particle **/
-void ParticleManager::cowKill(SceneNode* node)
-{
-	String name = node->getName();
-	ParticleUniverse::ParticleSystem* particles;
-	if( mParticleSystemManager->getParticleSystem(name + "_cowKill") == NULL)
-	{
-		particles = mParticleSystemManager->createParticleSystem( name + "_cowKill", "WyvernsAssault/CowKill", mSceneManager);
-		node->attachObject( particles );
-	}
-	else
-	{
-		particles = mParticleSystemManager->getParticleSystem( name + "_cowKill");
-	}	
-	particles->start();
-}
-
-/** Glow particle */
-void ParticleManager::glow(SceneNode* node)
-{
-	String name = node->getName();
-	ParticleUniverse::ParticleSystem* particles;
-	if( mParticleSystemManager->getParticleSystem(name + "_glow") == NULL)
-	{
-		particles = mParticleSystemManager->createParticleSystem( name + "_glow", "WyvernsAssault/GlowShort", mSceneManager);
-		node->attachObject( particles );
-	}
-	else
-	{
-		particles = mParticleSystemManager->getParticleSystem( name + "_glow");
-	}	
-	particles->start();
-}
-
-/** Attack particles **/
-void ParticleManager::blast(SceneNode* node)
-{
-	String name = node->getName();
-	ParticleUniverse::ParticleSystem* particles;
-	if( mParticleSystemManager->getParticleSystem(name + "_blast") == NULL)
-	{
-		particles = mParticleSystemManager->createParticleSystem( name + "_blast", "WyvernsAssault/Blast", mSceneManager);
-		node->attachObject( particles );
-	}
-	else
-	{
-		particles = mParticleSystemManager->getParticleSystem( name + "_blast");
-	}	
-	particles->start();
-}
-
-void ParticleManager::swing(SceneNode* node)
-{
-	String name = node->getName();
-	ParticleUniverse::ParticleSystem* particles;
-	if( mParticleSystemManager->getParticleSystem(name + "_swing") == NULL)
-	{
-		particles = mParticleSystemManager->createParticleSystem( name + "_swing", "WyvernsAssault/Swing", mSceneManager);
-		node->attachObject( particles );
-	}
-	else
-	{
-		particles = mParticleSystemManager->getParticleSystem( name + "_swing");
-	}	
-	particles->start();
-}
-
+// Wizard magic bolt
 void ParticleManager::magicBolt(SceneNode* node)
 {
 	String name = node->getName();
@@ -310,6 +113,18 @@ void ParticleManager::magicBolt(SceneNode* node)
 	particles->start();
 }
 
+Ogre::String ParticleManager::createUniqueId()
+{
+	Ogre::StringStream countStrStr;
+	countStrStr << mId;
+
+	Ogre::String uniqueId = "Particle_" + countStrStr.str();
+
+	mId++;
+
+	return uniqueId;
+}
+
 // --------------
 // Event handlers
 // --------------
@@ -322,7 +137,6 @@ EVENTS_BEGIN_REGISTER_HANDLERS(ParticleManager)
 	EVENTS_REGISTER_HANDLER(ParticleManager,EnemyCustom)
 	EVENTS_REGISTER_HANDLER(ParticleManager,ItemCreation)
 	EVENTS_REGISTER_HANDLER(ParticleManager,ItemCatch)
-	EVENTS_REGISTER_HANDLER(ParticleManager,ProjectileFire)
 EVENTS_END_REGISTER_HANDLERS()
 
 EVENTS_BEGIN_UNREGISTER_HANDLERS(ParticleManager)
@@ -334,7 +148,6 @@ EVENTS_BEGIN_UNREGISTER_HANDLERS(ParticleManager)
 	EVENTS_UNREGISTER_HANDLER(ParticleManager,EnemyCustom)
 	EVENTS_UNREGISTER_HANDLER(ParticleManager,ItemCreation)
 	EVENTS_UNREGISTER_HANDLER(ParticleManager,ItemCatch)
-	EVENTS_UNREGISTER_HANDLER(ParticleManager,ProjectileFire)
 EVENTS_END_REGISTER_HANDLERS()
 
 
@@ -353,7 +166,7 @@ EVENTS_DEFINE_HANDLER(ParticleManager, PlayerHit)
 
 	SceneNode* sceneNode = player->_getSceneNode();
 
-	this->impact(sceneNode);
+	this->add(sceneNode, "WyvernsAssault/Impact");
 }
 
 EVENTS_DEFINE_HANDLER(ParticleManager, EnemyAttack)
@@ -372,12 +185,12 @@ EVENTS_DEFINE_HANDLER(ParticleManager,EnemyHit)
 
 	if( player->isSpecial() )
 	{
-		this->fireHit(enemy->_getSceneNode());
+		this->add(enemy->_getSceneNode(), "WyvernsAssault/FireHit");
 	}
 	else
 	{
-		this->bloodHit(enemy->_getSceneNode());	
-		this->hit(enemy->_getSceneNode());	
+		this->add(enemy->_getSceneNode(), "WyvernsAssault/BloodHit");	
+		this->add(enemy->_getSceneNode(), "WyvernsAssault/Hit");	
 	}
 }
 
@@ -389,18 +202,18 @@ EVENTS_DEFINE_HANDLER(ParticleManager, EnemyKilled)
 	if( !enemy->isBurning() )
 	{
 		if( enemy->getEnemyType() == Enemy::EnemyTypes::Chicken )
-			this->chickenKill(enemy->_getSceneNode());
+			this->add(enemy->_getSceneNode(), "WyvernsAssault/ChickenKill");
 
 		if( enemy->getEnemyType() == Enemy::EnemyTypes::Cow )
-			this->cowKill(enemy->_getSceneNode());
+			this->add(enemy->_getSceneNode(), "WyvernsAssault/CowKill");
 
 		else if( enemy->isFlying() )
 		{
-			this->bloodHit(enemy->_getSceneNode());
+			this->add(enemy->_getSceneNode(), "WyvernsAssault/BloodHit");
 			this->bloodLens();
 		}
 		else
-			this->bloodKill(enemy->_getSceneNode());
+			this->add(enemy->_getSceneNode(), "WyvernsAssault/BloodKill");
 	}
 }
 
@@ -409,7 +222,7 @@ EVENTS_DEFINE_HANDLER(ParticleManager, EnemyCustom)
 	EnemyPtr enemy = evt->getEnemy();
 
 	if( enemy->isBurning())
-		this->fireKill(enemy->_getSceneNode());
+		this->add(enemy->_getSceneNode(), "WyvernsAssault/FireKill");
 }
 
 EVENTS_DEFINE_HANDLER(ParticleManager, ItemCreation)
@@ -432,14 +245,9 @@ EVENTS_DEFINE_HANDLER(ParticleManager, ItemCatch)
 
 	SceneNode* sceneNode = item->_getSceneNode();
 
-	this->remove(sceneNode, item->getName()+ "_glow");
-	this->remove(sceneNode, item->getName());
-	this->glow(sceneNode);
-}
-
-EVENTS_DEFINE_HANDLER(ParticleManager, ProjectileFire)
-{
-	//this->magicBolt(sceneNode);
+	this->remove(item->getName() + "_glow");
+	this->remove(item->getName());
+	this->add(sceneNode, "WyvernsAssault/GlowShort");
 }
 
 // --------------------------------
