@@ -482,25 +482,6 @@
           </subentities>
         </entity>
       </node>
-      <node name="UfoTree_3" id="462263840">
-        <rotation qw="0.227335" qx="0" qy="-0.973817" qz="0" />
-        <position x="3515.05" y="596.607" z="-2055.08" />
-        <scale x="4" y="4" z="4" />
-        <node name="UfoTree_Mesh_5" id="767906752">
-          <rotation qw="1" qx="0" qy="-8.32667E-17" qz="0" />
-          <position x="0" y="0" z="0" />
-          <scale x="1" y="1" z="1" />
-          <entity name="Entity#56" id="50508136" castshadows="true" meshFile="UfoTree0.mesh">
-            <rotation qw="1" qx="0" qy="0" qz="0" />
-            <position x="0" y="0" z="0" />
-            <scale x="1" y="1" z="1" />
-            <subentities>
-              <subentity materialName="Wood" index="0" visible="true" />
-              <subentity materialName="TreeTop" index="1" visible="true" />
-            </subentities>
-          </entity>
-        </node>
-      </node>
       <node name="GreenMountain8" id="643269120">
         <rotation qw="0.707107" qx="0" qy="-0.707107" qz="0" />
         <position x="1509.62" y="204.208" z="118.648" />
@@ -644,44 +625,6 @@
             <subentity materialName="FireCamp_material" index="0" visible="true" />
           </subentities>
         </entity>
-      </node>
-      <node name="UfoTree_9" id="906521792">
-        <rotation qw="0.818052" qx="0" qy="0.575145" qz="0" />
-        <position x="4235.42" y="596.607" z="-1116.99" />
-        <scale x="4" y="4" z="4" />
-        <node name="UfoTree_Mesh_1" id="213476976">
-          <rotation qw="1" qx="0" qy="0" qz="0" />
-          <position x="0" y="0" z="5.68434E-14" />
-          <scale x="1" y="1" z="1" />
-          <entity name="Entity#38" id="32105472" castshadows="true" meshFile="UfoTree0.mesh">
-            <rotation qw="1" qx="0" qy="0" qz="0" />
-            <position x="0" y="0" z="0" />
-            <scale x="1" y="1" z="1" />
-            <subentities>
-              <subentity materialName="Wood" index="0" visible="true" />
-              <subentity materialName="TreeTop" index="1" visible="true" />
-            </subentities>
-          </entity>
-        </node>
-      </node>
-      <node name="UfoTree_10" id="995239168">
-        <rotation qw="0.818052" qx="0" qy="0.575145" qz="0" />
-        <position x="3697.61" y="596.607" z="-1536.66" />
-        <scale x="4" y="4" z="4" />
-        <node name="UfoTree_Mesh_8" id="59236424">
-          <rotation qw="1" qx="0" qy="0" qz="0" />
-          <position x="-5.68434E-14" y="0" z="-2.84217E-14" />
-          <scale x="1" y="1" z="1" />
-          <entity name="Entity#80" id="619190016" castshadows="true" meshFile="UfoTree0.mesh">
-            <rotation qw="1" qx="0" qy="0" qz="0" />
-            <position x="0" y="0" z="0" />
-            <scale x="1" y="1" z="1" />
-            <subentities>
-              <subentity materialName="Wood" index="0" visible="true" />
-              <subentity materialName="TreeTop" index="1" visible="true" />
-            </subentities>
-          </entity>
-        </node>
       </node>
       <node name="PineTree2d0_4Copy#7" id="427716896">
         <rotation qw="0.237575" qx="-0.0195275" qy="0.970889" qz="-0.0234792" />
@@ -1222,25 +1165,6 @@
           </subentities>
         </entity>
       </node>
-      <node name="UfoTree_2" id="288827168">
-        <rotation qw="0.227335" qx="0" qy="-0.973817" qz="0" />
-        <position x="3297.95" y="596.607" z="-1462.6" />
-        <scale x="4" y="4" z="4" />
-        <node name="UfoTree_Mesh_7" id="596850496">
-          <rotation qw="1" qx="0" qy="-8.32667E-17" qz="0" />
-          <position x="-2.84217E-14" y="0" z="0" />
-          <scale x="1" y="1" z="1" />
-          <entity name="Entity#64" id="883877120" castshadows="true" meshFile="UfoTree0.mesh">
-            <rotation qw="1" qx="0" qy="0" qz="0" />
-            <position x="0" y="0" z="0" />
-            <scale x="1" y="1" z="1" />
-            <subentities>
-              <subentity materialName="Wood" index="0" visible="true" />
-              <subentity materialName="TreeTop" index="1" visible="true" />
-            </subentities>
-          </entity>
-        </node>
-      </node>
       <node name="PineTree2d0_4Copy#10Copy#5Copy#1" id="355906848">
         <rotation qw="0.139108" qx="-0.0170769" qy="0.989806" qz="-0.0253175" />
         <position x="2517.95" y="588.943" z="-2808.14" />
@@ -1417,25 +1341,6 @@
             <subentity materialName="Hill" index="0" visible="true" />
           </subentities>
         </entity>
-      </node>
-      <node name="UfoTree_8" id="969084736">
-        <rotation qw="0.163828" qx="0" qy="0.986489" qz="0" />
-        <position x="3223.94" y="596.607" z="-1739.09" />
-        <scale x="4" y="4" z="4" />
-        <node name="UfoTree_Mesh_6" id="500442496">
-          <rotation qw="1" qx="0" qy="0" qz="0" />
-          <position x="0" y="0" z="0" />
-          <scale x="1" y="1" z="1" />
-          <entity name="Entity#58" id="706381440" castshadows="true" meshFile="UfoTree0.mesh">
-            <rotation qw="1" qx="0" qy="0" qz="0" />
-            <position x="0" y="0" z="0" />
-            <scale x="1" y="1" z="1" />
-            <subentities>
-              <subentity materialName="Wood" index="0" visible="true" />
-              <subentity materialName="TreeTop" index="1" visible="true" />
-            </subentities>
-          </entity>
-        </node>
       </node>
       <node name="PineTree2d0_4Copy#6" id="823053632">
         <rotation qw="0.194999" qx="-0.0184848" qy="0.980328" qz="-0.0243087" />
@@ -2204,25 +2109,6 @@
             <subentity materialName="Trees0" index="0" visible="true" />
           </subentities>
         </entity>
-      </node>
-      <node name="UfoTree_5" id="324930592">
-        <rotation qw="0.190655" qx="0" qy="0.981657" qz="0" />
-        <position x="2913.09" y="596.607" z="-2687.05" />
-        <scale x="4" y="4" z="4" />
-        <node name="UfoTree_Mesh_3" id="899014208">
-          <rotation qw="1" qx="0" qy="2.77556E-17" qz="0" />
-          <position x="0" y="0" z="0" />
-          <scale x="1" y="1" z="1" />
-          <entity name="Entity#45" id="201483200" castshadows="true" meshFile="UfoTree0.mesh">
-            <rotation qw="1" qx="0" qy="0" qz="0" />
-            <position x="0" y="0" z="0" />
-            <scale x="1" y="1" z="1" />
-            <subentities>
-              <subentity materialName="Wood" index="0" visible="true" />
-              <subentity materialName="TreeTop" index="1" visible="true" />
-            </subentities>
-          </entity>
-        </node>
       </node>
       <node name="Hill15" id="963194688">
         <rotation qw="0.707107" qx="0" qy="-0.707107" qz="0" />
@@ -3316,25 +3202,6 @@
           </subentities>
         </entity>
       </node>
-      <node name="UfoTree_4" id="538926336">
-        <rotation qw="0.565152" qx="0" qy="-0.824987" qz="0" />
-        <position x="4151.55" y="596.607" z="-1827.96" />
-        <scale x="4" y="4" z="4" />
-        <node name="UfoTree_Mesh_2" id="991790528">
-          <rotation qw="1" qx="0" qy="-1.66533E-16" qz="0" />
-          <position x="0" y="0" z="0" />
-          <scale x="1" y="1" z="1" />
-          <entity name="Entity#41" id="869350272" castshadows="true" meshFile="UfoTree0.mesh">
-            <rotation qw="1" qx="0" qy="0" qz="0" />
-            <position x="0" y="0" z="0" />
-            <scale x="1" y="1" z="1" />
-            <subentities>
-              <subentity materialName="Wood" index="0" visible="true" />
-              <subentity materialName="TreeTop" index="1" visible="true" />
-            </subentities>
-          </entity>
-        </node>
-      </node>
       <node name="Hill16" id="144871376">
         <rotation qw="0.707107" qx="0" qy="-0.707107" qz="0" />
         <position x="1623.53" y="561.706" z="3630.31" />
@@ -4041,25 +3908,6 @@
           </subentities>
         </entity>
       </node>
-      <node name="UfoTree_1" id="870082688">
-        <rotation qw="0.612542" qx="0" qy="-0.790438" qz="0" />
-        <position x="3598.93" y="596.607" z="-830.631" />
-        <scale x="4" y="4" z="4" />
-        <node name="UfoTree_Mesh_10" id="318063904">
-          <rotation qw="1" qx="0" qy="0" qz="0" />
-          <position x="0" y="0" z="1.42109E-14" />
-          <scale x="1" y="1" z="1" />
-          <entity name="Entity#89" id="939176640" castshadows="true" meshFile="UfoTree0.mesh">
-            <rotation qw="1" qx="0" qy="0" qz="0" />
-            <position x="0" y="0" z="0" />
-            <scale x="1" y="1" z="1" />
-            <subentities>
-              <subentity materialName="Wood" index="0" visible="true" />
-              <subentity materialName="TreeTop" index="1" visible="true" />
-            </subentities>
-          </entity>
-        </node>
-      </node>
       <node name="AppleTree0Copy#2" id="995178112">
         <rotation qw="0.819152" qx="0" qy="0.573577" qz="0" />
         <position x="5238.3" y="594.172" z="1274.63" />
@@ -4654,25 +4502,6 @@
             <subentity materialName="Trees2" index="0" visible="true" />
           </subentities>
         </entity>
-      </node>
-      <node name="UfoTree_7" id="49287392">
-        <rotation qw="0.528708" qx="0" qy="0.848804" qz="0" />
-        <position x="2617.05" y="596.607" z="-2390.81" />
-        <scale x="4" y="4" z="4" />
-        <node name="UfoTree_Mesh_9" id="79622792">
-          <rotation qw="1" qx="0" qy="0" qz="0" />
-          <position x="0" y="0" z="0" />
-          <scale x="1" y="1" z="1" />
-          <entity name="Entity#83" id="337656800" castshadows="true" meshFile="UfoTree0.mesh">
-            <rotation qw="1" qx="0" qy="0" qz="0" />
-            <position x="0" y="0" z="0" />
-            <scale x="1" y="1" z="1" />
-            <subentities>
-              <subentity materialName="Wood" index="0" visible="true" />
-              <subentity materialName="TreeTop" index="1" visible="true" />
-            </subentities>
-          </entity>
-        </node>
       </node>
       <node name="Hill17" id="762901696">
         <rotation qw="0.707107" qx="0" qy="-0.707107" qz="0" />
@@ -5602,25 +5431,6 @@
           </subentities>
         </entity>
       </node>
-      <node name="UfoTree_0" id="516525760">
-        <rotation qw="0.871971" qx="0" qy="-0.489558" qz="0" />
-        <position x="3968.98" y="596.607" z="-870.13" />
-        <scale x="4" y="4" z="4" />
-        <node name="UfoTree_Mesh_4" id="20081180">
-          <rotation qw="1" qx="0" qy="-1.11022E-16" qz="0" />
-          <position x="0" y="0" z="-2.84217E-14" />
-          <scale x="1" y="1" z="1" />
-          <entity name="Entity#54" id="6988739" castshadows="true" meshFile="UfoTree0.mesh">
-            <rotation qw="1" qx="0" qy="0" qz="0" />
-            <position x="0" y="0" z="0" />
-            <scale x="1" y="1" z="1" />
-            <subentities>
-              <subentity materialName="Wood" index="0" visible="true" />
-              <subentity materialName="TreeTop" index="1" visible="true" />
-            </subentities>
-          </entity>
-        </node>
-      </node>
       <node name="AppleTree0Copy#3" id="97506632">
         <rotation qw="0.819152" qx="0" qy="0.573577" qz="0" />
         <position x="5236.3" y="594.172" z="1374.57" />
@@ -5802,25 +5612,6 @@
             <subentity materialName="Chalk" index="0" visible="true" />
           </subentities>
         </entity>
-      </node>
-      <node name="UfoTree_6" id="818170752">
-        <rotation qw="0.190655" qx="0" qy="0.981657" qz="0" />
-        <position x="2279.56" y="596.607" z="-1839.81" />
-        <scale x="4" y="4" z="4" />
-        <node name="UfoTree_Mesh" id="124637592">
-          <rotation qw="1" qx="0" qy="2.77556E-17" qz="0" />
-          <position x="0" y="0" z="0" />
-          <scale x="1" y="1" z="1" />
-          <entity name="Entity#32" id="718894016" castshadows="true" meshFile="UfoTree0.mesh">
-            <rotation qw="1" qx="0" qy="0" qz="0" />
-            <position x="0" y="0" z="0" />
-            <scale x="1" y="1" z="1" />
-            <subentities>
-              <subentity materialName="Wood" index="0" visible="true" />
-              <subentity materialName="TreeTop" index="1" visible="true" />
-            </subentities>
-          </entity>
-        </node>
       </node>
       <node name="SwirlTree0Copy#0" id="808374272">
         <rotation qw="0.91706" qx="0" qy="0.398749" qz="0" />
@@ -7598,6 +7389,25 @@
       <rotation qw="1" qx="0" qy="0" qz="0" />
       <position x="0" y="0" z="0" />
       <scale x="1" y="1" z="1" />
+      <node name="UfoTree_4" id="538926336">
+        <rotation qw="0.565152" qx="0" qy="-0.824987" qz="0" />
+        <position x="1037.89" y="-0.000244141" z="-456.99" />
+        <scale x="1" y="1" z="1" />
+        <node name="UfoTree_Mesh_2" id="991790528">
+          <rotation qw="1" qx="0" qy="-1.66533E-16" qz="0" />
+          <position x="0" y="0" z="0" />
+          <scale x="1" y="1" z="1" />
+          <entity name="Entity#41" id="869350272" castshadows="true" meshFile="UfoTree0.mesh" type="DynamicObject" BoxX="15" BoxY="70" BoxZ="15" life="100" dieMesh="UfoTree0Die.mesh" dieAnimation="Die">
+            <rotation qw="1" qx="0" qy="0" qz="0" />
+            <position x="0" y="0" z="0" />
+            <scale x="1" y="1" z="1" />
+            <subentities>
+              <subentity materialName="Wood" index="0" visible="true" />
+              <subentity materialName="TreeTop" index="1" visible="true" />
+            </subentities>
+          </entity>
+        </node>
+      </node>
       <node name="MarketTent1Copy#1Copy#2" id="430890816">
         <rotation qw="-0.948324" qx="0" qy="-0.317304" qz="0" />
         <position x="169.613" y="0" z="-499.313" />
@@ -7623,6 +7433,25 @@
             <subentity materialName="FireCamp_material" index="0" visible="true" />
           </subentities>
         </entity>
+      </node>
+      <node name="UfoTree_1" id="870082688">
+        <rotation qw="0.612542" qx="0" qy="-0.790438" qz="0" />
+        <position x="899.732" y="-0.000244141" z="-207.658" />
+        <scale x="1" y="1" z="1" />
+        <node name="UfoTree_Mesh_10" id="318063904">
+          <rotation qw="1" qx="0" qy="0" qz="0" />
+          <position x="0" y="0" z="1.42109E-14" />
+          <scale x="1" y="1" z="1" />
+          <entity name="Entity#89" id="939176640" castshadows="true" meshFile="UfoTree0.mesh" type="DynamicObject" BoxX="15" BoxY="70" BoxZ="15" life="100" dieMesh="UfoTree0Die.mesh" dieAnimation="Die">
+            <rotation qw="1" qx="0" qy="0" qz="0" />
+            <position x="0" y="0" z="0" />
+            <scale x="1" y="1" z="1" />
+            <subentities>
+              <subentity materialName="Wood" index="0" visible="true" />
+              <subentity materialName="TreeTop" index="1" visible="true" />
+            </subentities>
+          </entity>
+        </node>
       </node>
       <node name="Crate0Copy#6" id="725028224">
         <rotation qw="0.942641" qx="0" qy="-0.333807" qz="0" />
@@ -7729,6 +7558,44 @@
           </subentities>
         </entity>
       </node>
+      <node name="UfoTree_9" id="906521792">
+        <rotation qw="0.818052" qx="0" qy="0.575145" qz="0" />
+        <position x="1058.85" y="-0.000244141" z="-279.247" />
+        <scale x="1" y="1" z="1" />
+        <node name="UfoTree_Mesh_1" id="213476976">
+          <rotation qw="1" qx="0" qy="0" qz="0" />
+          <position x="0" y="0" z="5.68434E-14" />
+          <scale x="1" y="1" z="1" />
+          <entity name="Entity#38" id="32105472" castshadows="true" meshFile="UfoTree0.mesh" type="DynamicObject" BoxX="15" BoxY="70" BoxZ="15" life="100" dieMesh="UfoTree0Die.mesh" dieAnimation="Die">
+            <rotation qw="1" qx="0" qy="0" qz="0" />
+            <position x="0" y="0" z="0" />
+            <scale x="1" y="1" z="1" />
+            <subentities>
+              <subentity materialName="Wood" index="0" visible="true" />
+              <subentity materialName="TreeTop" index="1" visible="true" />
+            </subentities>
+          </entity>
+        </node>
+      </node>
+      <node name="UfoTree_10" id="995239168">
+        <rotation qw="0.818052" qx="0" qy="0.575145" qz="0" />
+        <position x="924.403" y="-0.000244141" z="-384.165" />
+        <scale x="1" y="1" z="1" />
+        <node name="UfoTree_Mesh_8" id="59236424">
+          <rotation qw="1" qx="0" qy="0" qz="0" />
+          <position x="-5.68434E-14" y="0" z="-2.84217E-14" />
+          <scale x="1" y="1" z="1" />
+          <entity name="Entity#80" id="619190016" castshadows="true" meshFile="UfoTree0.mesh" type="DynamicObject" BoxX="15" BoxY="70" BoxZ="15" life="100" dieMesh="UfoTree0Die.mesh" dieAnimation="Die">
+            <rotation qw="1" qx="0" qy="0" qz="0" />
+            <position x="0" y="0" z="0" />
+            <scale x="1" y="1" z="1" />
+            <subentities>
+              <subentity materialName="Wood" index="0" visible="true" />
+              <subentity materialName="TreeTop" index="1" visible="true" />
+            </subentities>
+          </entity>
+        </node>
+      </node>
       <node name="FarmCrate#2" id="241096224">
         <rotation qw="1" qx="0" qy="0" qz="0" />
         <position x="1130.35" y="0" z="95.1266" />
@@ -7741,6 +7608,25 @@
             <subentity materialName="Crate0" index="0" visible="true" />
           </subentities>
         </entity>
+      </node>
+      <node name="UfoTree_2" id="288827168">
+        <rotation qw="0.227335" qx="0" qy="-0.973817" qz="0" />
+        <position x="824.487" y="-0.000244141" z="-365.65" />
+        <scale x="1" y="1" z="1" />
+        <node name="UfoTree_Mesh_7" id="596850496">
+          <rotation qw="1" qx="0" qy="-8.32667E-17" qz="0" />
+          <position x="-2.84217E-14" y="0" z="0" />
+          <scale x="1" y="1" z="1" />
+          <entity name="Entity#64" id="883877120" castshadows="true" meshFile="UfoTree0.mesh" type="DynamicObject" BoxX="15" BoxY="70" BoxZ="15" life="100" dieMesh="UfoTree0Die.mesh" dieAnimation="Die">
+            <rotation qw="1" qx="0" qy="0" qz="0" />
+            <position x="0" y="0" z="0" />
+            <scale x="1" y="1" z="1" />
+            <subentities>
+              <subentity materialName="Wood" index="0" visible="true" />
+              <subentity materialName="TreeTop" index="1" visible="true" />
+            </subentities>
+          </entity>
+        </node>
       </node>
       <node name="MarketTent1Copy#1Copy#0" id="291787488">
         <rotation qw="-0.694659" qx="0" qy="-0.719339" qz="0" />
@@ -7825,7 +7711,7 @@
         <rotation qw="0.994968" qx="0" qy="-0.100188" qz="0" />
         <position x="1113.72" y="0" z="161.016" />
         <scale x="1" y="1" z="1" />
-        <entity name="Farm#0" id="707998848" castshadows="false" meshFile="Farm.mesh" type="DynamicObject" BoxX="140" BoxY="100" BoxZ="90">
+        <entity name="Farm#0" id="707998848" castshadows="false" meshFile="Farm.mesh" type="DynamicObject" BoxX="100" BoxY="100" BoxZ="150">
           <rotation qw="1" qx="0" qy="0" qz="0" />
           <position x="0" y="0" z="0" />
           <scale x="1" y="1" z="1" />
@@ -7833,6 +7719,44 @@
             <subentity materialName="Farm" index="0" visible="true" />
           </subentities>
         </entity>
+      </node>
+      <node name="UfoTree_7" id="49287392">
+        <rotation qw="0.528708" qx="0" qy="0.848804" qz="0" />
+        <position x="654.263" y="-0.000244141" z="-597.703" />
+        <scale x="1" y="1" z="1" />
+        <node name="UfoTree_Mesh_9" id="79622792">
+          <rotation qw="1" qx="0" qy="0" qz="0" />
+          <position x="0" y="0" z="0" />
+          <scale x="1" y="1" z="1" />
+          <entity name="Entity#83" id="337656800" castshadows="true" meshFile="UfoTree0.mesh" type="DynamicObject" BoxX="15" BoxY="70" BoxZ="15" life="100" dieMesh="UfoTree0Die.mesh" dieAnimation="Die">
+            <rotation qw="1" qx="0" qy="0" qz="0" />
+            <position x="0" y="0" z="0" />
+            <scale x="1" y="1" z="1" />
+            <subentities>
+              <subentity materialName="Wood" index="0" visible="true" />
+              <subentity materialName="TreeTop" index="1" visible="true" />
+            </subentities>
+          </entity>
+        </node>
+      </node>
+      <node name="UfoTree_0" id="516525760">
+        <rotation qw="0.871971" qx="0" qy="-0.489558" qz="0" />
+        <position x="992.245" y="-0.000244141" z="-217.533" />
+        <scale x="1" y="1" z="1" />
+        <node name="UfoTree_Mesh_4" id="20081180">
+          <rotation qw="1" qx="0" qy="-1.11022E-16" qz="0" />
+          <position x="0" y="0" z="-2.84217E-14" />
+          <scale x="1" y="1" z="1" />
+          <entity name="Entity#54" id="6988739" castshadows="true" meshFile="UfoTree0.mesh" type="DynamicObject" BoxX="15" BoxY="70" BoxZ="15" life="100" dieMesh="UfoTree0Die.mesh" dieAnimation="Die">
+            <rotation qw="1" qx="0" qy="0" qz="0" />
+            <position x="0" y="0" z="0" />
+            <scale x="1" y="1" z="1" />
+            <subentities>
+              <subentity materialName="Wood" index="0" visible="true" />
+              <subentity materialName="TreeTop" index="1" visible="true" />
+            </subentities>
+          </entity>
+        </node>
       </node>
       <node name="Crate0Copy#5" id="873348160">
         <rotation qw="0.971342" qx="0" qy="-0.237686" qz="0" />
@@ -7926,6 +7850,25 @@
           </subentities>
         </entity>
       </node>
+      <node name="UfoTree_8" id="969084736">
+        <rotation qw="0.163828" qx="0" qy="0.986489" qz="0" />
+        <position x="805.985" y="-0.000244141" z="-434.772" />
+        <scale x="1" y="1" z="1" />
+        <node name="UfoTree_Mesh_6" id="500442496">
+          <rotation qw="1" qx="0" qy="0" qz="0" />
+          <position x="0" y="0" z="0" />
+          <scale x="1" y="1" z="1" />
+          <entity name="Entity#58" id="706381440" castshadows="true" meshFile="UfoTree0.mesh" type="DynamicObject" BoxX="15" BoxY="70" BoxZ="15" life="100" dieMesh="UfoTree0Die.mesh" dieAnimation="Die">
+            <rotation qw="1" qx="0" qy="0" qz="0" />
+            <position x="0" y="0" z="0" />
+            <scale x="1" y="1" z="1" />
+            <subentities>
+              <subentity materialName="Wood" index="0" visible="true" />
+              <subentity materialName="TreeTop" index="1" visible="true" />
+            </subentities>
+          </entity>
+        </node>
+      </node>
       <node name="Crate0" id="604144384">
         <rotation qw="0.942641" qx="0" qy="-0.333807" qz="0" />
         <position x="299.822" y="-0.00305939" z="-480.183" />
@@ -7938,6 +7881,25 @@
             <subentity materialName="Crate0" index="0" visible="true" />
           </subentities>
         </entity>
+      </node>
+      <node name="UfoTree_5" id="324930592">
+        <rotation qw="0.190655" qx="0" qy="0.981657" qz="0" />
+        <position x="728.273" y="-0.000244141" z="-671.763" />
+        <scale x="1" y="1" z="1" />
+        <node name="UfoTree_Mesh_3" id="899014208">
+          <rotation qw="1" qx="0" qy="2.77556E-17" qz="0" />
+          <position x="0" y="0" z="0" />
+          <scale x="1" y="1" z="1" />
+          <entity name="Entity#45" id="201483200" castshadows="true" meshFile="UfoTree0.mesh" type="DynamicObject" BoxX="15" BoxY="70" BoxZ="15" life="100" dieMesh="UfoTree0Die.mesh" dieAnimation="Die">
+            <rotation qw="1" qx="0" qy="0" qz="0" />
+            <position x="0" y="0" z="0" />
+            <scale x="1" y="1" z="1" />
+            <subentities>
+              <subentity materialName="Wood" index="0" visible="true" />
+              <subentity materialName="TreeTop" index="1" visible="true" />
+            </subentities>
+          </entity>
+        </node>
       </node>
       <node name="BigRock" id="418500320">
         <rotation qw="0.81612" qx="0.00234115" qy="-0.577868" qz="0.0033064" />
@@ -8004,6 +7966,25 @@
           </subentities>
         </entity>
       </node>
+      <node name="UfoTree_6" id="818170752">
+        <rotation qw="0.190655" qx="0" qy="0.981657" qz="0" />
+        <position x="569.89" y="-0.000244141" z="-459.953" />
+        <scale x="1" y="1" z="1" />
+        <node name="UfoTree_Mesh" id="124637592">
+          <rotation qw="1" qx="0" qy="2.77556E-17" qz="0" />
+          <position x="0" y="0" z="0" />
+          <scale x="1" y="1" z="1" />
+          <entity name="Entity#32" id="718894016" castshadows="true" meshFile="UfoTree0.mesh" type="DynamicObject" BoxX="15" BoxY="70" BoxZ="15" life="100" dieMesh="UfoTree0Die.mesh" dieAnimation="Die">
+            <rotation qw="1" qx="0" qy="0" qz="0" />
+            <position x="0" y="0" z="0" />
+            <scale x="1" y="1" z="1" />
+            <subentities>
+              <subentity materialName="Wood" index="0" visible="true" />
+              <subentity materialName="TreeTop" index="1" visible="true" />
+            </subentities>
+          </entity>
+        </node>
+      </node>
       <node name="FarmCrate#1" id="954802112">
         <rotation qw="1" qx="0" qy="0" qz="0" />
         <position x="1143.33" y="0" z="99.3682" />
@@ -8016,6 +7997,25 @@
             <subentity materialName="Crate1" index="0" visible="true" />
           </subentities>
         </entity>
+      </node>
+      <node name="UfoTree_3" id="462263840">
+        <rotation qw="0.227335" qx="0" qy="-0.973817" qz="0" />
+        <position x="878.763" y="-0.000244141" z="-513.77" />
+        <scale x="1" y="1" z="1" />
+        <node name="UfoTree_Mesh_5" id="767906752">
+          <rotation qw="1" qx="0" qy="-8.32667E-17" qz="0" />
+          <position x="0" y="0" z="0" />
+          <scale x="1" y="1" z="1" />
+          <entity name="Entity#56" id="50508136" castshadows="true" meshFile="UfoTree0.mesh" type="DynamicObject" BoxX="15" BoxY="70" BoxZ="15" life="100" dieMesh="UfoTree0Die.mesh" dieAnimation="Die">
+            <rotation qw="1" qx="0" qy="0" qz="0" />
+            <position x="0" y="0" z="0" />
+            <scale x="1" y="1" z="1" />
+            <subentities>
+              <subentity materialName="Wood" index="0" visible="true" />
+              <subentity materialName="TreeTop" index="1" visible="true" />
+            </subentities>
+          </entity>
+        </node>
       </node>
       <node name="MarketTent1Copy#1Copy#1" id="842493952">
         <rotation qw="0.296541" qx="0" qy="-0.95502" qz="0" />
