@@ -338,8 +338,8 @@ bool PlayState::frameRenderingQueued(const Ogre::FrameEvent& evt)
 			mPerformancesPanel->setParamValue(15,StringConverter::toString(TIMER_PERCENT(PostProcess,Update))); // PostProcess
 			mPerformancesPanel->setParamValue(16,StringConverter::toString(TIMER_PERCENT(Events,Update))); // Events
 			mPerformancesPanel->setParamValue(17,StringConverter::toString(TIMER_PERCENT(GameArea,Update))); // GameArea
-			mPerformancesPanel->setParamValue(17,StringConverter::toString(TIMER_PERCENT(Projectile,Update))); // Projectile
-			mPerformancesPanel->setParamValue(17,StringConverter::toString(TIMER_PERCENT(ParticleSystem,Update))); // Particle
+			mPerformancesPanel->setParamValue(18,StringConverter::toString(TIMER_PERCENT(Projectile,Update))); // Projectile
+			mPerformancesPanel->setParamValue(19,StringConverter::toString(TIMER_PERCENT(ParticleSystem,Update))); // Particle
 		}
 	}
 

@@ -153,6 +153,7 @@ namespace WyvernsAssault
 		TIMER(Events);
 		TIMER(GameArea);
 		TIMER(Projectile);
+		TIMER(ParticleSystem);
 
 	protected:
 		float			buttonTimer;

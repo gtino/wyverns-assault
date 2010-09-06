@@ -9,6 +9,8 @@ material Particle/Smoke_01
             lighting off
             scene_blend alpha_blend
             depth_write off
+			fog_override true none
+			
             texture_unit
             {
                 texture particle_smoke01.png
@@ -27,6 +29,7 @@ material Particle/Smoke_02
             lighting off
             depth_write off
             scene_blend alpha_blend
+			fog_override true none
 
             texture_unit
             {
@@ -46,6 +49,7 @@ material Particle/Smoke_03
             lighting off
             scene_blend add
             depth_write off
+			fog_override true none
 
             texture_unit
             {
@@ -65,6 +69,8 @@ material Particle/Fire_01
             lighting off
             scene_blend add
             depth_write off
+			fog_override true none
+			
             texture_unit
             {
                 texture particle_flame01.png
@@ -83,6 +89,8 @@ material Particle/Fire_02
             lighting off
             scene_blend add
             depth_write off
+			fog_override true none
+			
             texture_unit
             {
                 texture particle_flame02.png
@@ -101,6 +109,8 @@ material Particle/Fire_03
             lighting off
             scene_blend add
             depth_write off
+			fog_override true none
+				
             texture_unit
             {
                 texture particle_flame03.png
@@ -119,6 +129,8 @@ material Particle/Fire_04
             lighting off
             scene_blend add
             depth_write off
+			fog_override true none
+			
             texture_unit
             {
                 texture particle_flame04.png
@@ -138,6 +150,8 @@ material Particle/FireFlash
             scene_blend add
             depth_write off
 			depth_check off
+			fog_override true none
+			
             texture_unit
             {
                 texture particle_fireFlash.png
@@ -156,6 +170,8 @@ material Particle/BloodSpray
 			lighting off
 			scene_blend alpha_blend
 			depth_write off
+			fog_override true none
+			
             texture_unit
             {
                 texture particle_bloodSpray.dds
@@ -174,6 +190,8 @@ material Particle/BloodSplash
 			lighting off
 			scene_blend alpha_blend
 			depth_write off
+			fog_override true none
+			
             texture_unit
             {
                 texture particle_bloodSplash.dds
@@ -193,6 +211,8 @@ material Particle/BloodLens
 			scene_blend alpha_blend
 			depth_write off
 			depth_check off
+			fog_override true none
+			
             texture_unit
             {
                 texture particle_bloodSplash.dds
@@ -211,6 +231,8 @@ material Particle/BloodHit
 			lighting off
             scene_blend alpha_blend
 			depth_write off
+			fog_override true none
+			
             texture_unit
             {
                 texture particle_bloodHit.png
@@ -229,6 +251,8 @@ material Particle/BloodGreen
 			lighting off
 			scene_blend alpha_blend
 			depth_write off
+			fog_override true none
+			
             texture_unit
             {
                 texture particle_bloodGreen.png
@@ -247,7 +271,8 @@ material Particle/Flare_01
             lighting off
             scene_blend add
             depth_write off
-
+			fog_override true none
+			
             texture_unit
             {
                 texture particle_flare01.png
@@ -265,7 +290,8 @@ material Particle/Flare_02
             lighting off
             scene_blend add
             depth_write off
-
+			fog_override true none
+			
             texture_unit
             {
                 texture particle_flare02.png
@@ -284,7 +310,8 @@ material Particle/RibbonTrail
             lighting off
             scene_blend add
             depth_write off
-
+			fog_override true none
+			
             texture_unit
             {
                 texture particle_ribbontrail.png 1d
@@ -303,7 +330,8 @@ material Particle/Rain
         {
             scene_blend colour_blend
             depth_write off
-
+			fog_override true none
+			
             texture_unit
             {
                 texture particle_rain.png
@@ -322,6 +350,8 @@ material Particle/Hit
             scene_blend alpha_blend
 			depth_write off
 			depth_check off
+			fog_override true none
+			
             texture_unit
             {
                 texture particle_hit.png
@@ -340,6 +370,8 @@ material Particle/FlameLick
             lighting off
             scene_blend add
             depth_write off
+			fog_override true none
+			
             texture_unit
             {
                 texture particle_flameLick.png
@@ -357,6 +389,8 @@ material Particle/Glow_01
             lighting off
             scene_blend add
             depth_write off
+			fog_override true none
+			
             texture_unit
             {
                 texture particle_glow01.dds
@@ -374,6 +408,8 @@ material Particle/Glow_02
             lighting off
             scene_blend add
             depth_write off
+			fog_override true none
+			
             texture_unit
             {
                 texture particle_glow02.png
@@ -391,6 +427,8 @@ material Particle/TrailSpear
             lighting off
             scene_blend add
             depth_write off
+			fog_override true none
+			
             texture_unit
             {
                 texture particle_trailSpear.png
@@ -408,7 +446,8 @@ material Particle/Star_01
             lighting off
             depth_write off
             scene_blend add
-            fog_override true
+			fog_override true none
+			
             texture_unit
             {
                 texture particle_star01.png
@@ -427,6 +466,8 @@ material Particle/Star_02
             lighting off
             scene_blend add
             depth_write off
+			fog_override true none
+			
             texture_unit
             {
                 texture particle_star02.png
@@ -445,6 +486,8 @@ material Particle/Eye
 			lighting off
             scene_blend alpha_blend
 			depth_write off
+			fog_override true none
+			
             texture_unit
             {
                 texture particle_eye.png
@@ -463,6 +506,8 @@ material Particle/Feather
 			lighting off
             scene_blend alpha_blend
 			depth_write off
+			fog_override true none
+			
             texture_unit
             {
                 texture particle_feather.png
@@ -481,6 +526,8 @@ material Particle/Trail_01
 			lighting off
 			scene_blend add
 			depth_write off
+			fog_override true none
+			
             texture_unit
             {
                 texture particle_trail01.dds
@@ -499,6 +546,8 @@ material Particle/Trail_02
 			lighting off
 			scene_blend add
 			depth_write off
+			fog_override true none
+			
             texture_unit
             {
                 texture particle_trail02.dds
@@ -517,6 +566,8 @@ material Particle/Blast_01
 			lighting off
 			scene_blend add
 			depth_write off
+			fog_override true none
+			
             texture_unit
             {
                 texture particle_blast01.dds
@@ -536,6 +587,8 @@ material Particle/Streak_01
             scene_blend add
             depth_write off
 			depth_check off
+			fog_override true none
+			
             texture_unit
             {
                 texture particle_streak01.png
@@ -554,6 +607,8 @@ material Particle/Streak_02
             lighting off
             scene_blend add
             depth_write off
+			fog_override true none
+			
             texture_unit
             {
                 texture particle_streak01.png
@@ -572,6 +627,8 @@ material Particle/Skull
 			lighting off
 			scene_blend alpha_blend
 			depth_write off
+			fog_override true none
+			
             texture_unit
             {
                 texture particle_skull.png
@@ -590,6 +647,8 @@ material Particle/Heart
 			lighting off
 			scene_blend alpha_blend
 			depth_write off
+			fog_override true none
+			
             texture_unit
             {
                 texture particle_heart.png
@@ -608,6 +667,8 @@ material Particle/Money
 			lighting off
 			scene_blend alpha_blend
 			depth_write off
+			fog_override true none
+			
             texture_unit
             {
                 texture particle_money.png
@@ -626,6 +687,8 @@ material Particle/Cloud
             lighting off
             scene_blend alpha_blend
             depth_write off
+			fog_override true none
+			
             texture_unit
             {
                 texture particle_cloud.png
@@ -644,7 +707,8 @@ material Particle/Lightning_01
             lighting off
             scene_blend add
             depth_write off
-
+			fog_override true none
+			
             texture_unit
             {
                 texture particle_lightning01.png
@@ -663,7 +727,8 @@ material Particle/Lightning_02
             lighting off
             scene_blend add
             depth_write off
-
+			fog_override true none
+			
             texture_unit
             {
                 texture particle_lightning02.png
@@ -682,7 +747,8 @@ material Particle/Lightning_03
             lighting off
             scene_blend add
             depth_write off
-
+			fog_override true none
+			
             texture_unit
             {
                 texture particle_lightning03.png
@@ -701,7 +767,8 @@ material Particle/Lightning_04
             lighting off
             scene_blend add
             depth_write off
-
+			fog_override true none
+			
             texture_unit
             {
                 texture particle_lightning04.png
@@ -720,7 +787,7 @@ material Particle/ExplosionFire
             lighting off
             depth_write off
             scene_blend add
-            fog_override true
+            fog_override true none
 
             texture_unit
             {

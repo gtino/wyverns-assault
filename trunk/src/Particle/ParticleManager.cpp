@@ -54,15 +54,16 @@ void ParticleManager::finalize()
 
 void ParticleManager::update(const float elapsedSeconds)
 {
-	mTimer += elapsedSeconds;
+	mTimer = mTimer + elapsedSeconds;
 
 	for(ParticleSystemMapIterator it = mParticleSystemMap.begin(); it != mParticleSystemMap.end(); ++it )
 	{
-		if( mTimer > it->first )
+		float x = fmodf(mTimer, it->first);
+
+		if( fmodf(mTimer, it->first) < 1.0 )
 		{
 			ParticleUniverse::ParticleSystem* pSystem = it->second;
 			pSystem->start();
-			mTimer = 0.0;
 		}
 	}
 }
