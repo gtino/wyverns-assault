@@ -151,6 +151,8 @@ void PlayState::initialize()
 	fpsItems.push_back("PostProc %");
 	fpsItems.push_back("Events   %");
 	fpsItems.push_back("GameArea %");
+	fpsItems.push_back("Projectile %");
+	fpsItems.push_back("Particles %");
 
  
 	mPerformancesPanel = mTrayMgr->createParamsPanel(OgreBites::TL_NONE, "PerformancesPanel", 200, fpsItems);
@@ -336,6 +338,8 @@ bool PlayState::frameRenderingQueued(const Ogre::FrameEvent& evt)
 			mPerformancesPanel->setParamValue(15,StringConverter::toString(TIMER_PERCENT(PostProcess,Update))); // PostProcess
 			mPerformancesPanel->setParamValue(16,StringConverter::toString(TIMER_PERCENT(Events,Update))); // Events
 			mPerformancesPanel->setParamValue(17,StringConverter::toString(TIMER_PERCENT(GameArea,Update))); // GameArea
+			mPerformancesPanel->setParamValue(17,StringConverter::toString(TIMER_PERCENT(Projectile,Update))); // Projectile
+			mPerformancesPanel->setParamValue(17,StringConverter::toString(TIMER_PERCENT(ParticleSystem,Update))); // Particle
 		}
 	}
 
@@ -560,6 +564,13 @@ void PlayState::update(const float elapsedSeconds)
 	TIMER_START(PostProcess);
 	mPostProcessManager->update(elapsedSeconds);
 	TIMER_STOP(PostProcess);
+	
+	//
+	// Update particle systems
+	//
+	TIMER_START(ParticleSystem);
+	mParticleManager->update(elapsedSeconds);
+	TIMER_STOP(ParticleSystem);
 
 	//
 	// Dispatch events. Managers have probably raised events, that are now in the 

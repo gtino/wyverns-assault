@@ -38,8 +38,8 @@ using namespace Ogre;
 
 namespace WyvernsAssault 
 {
-	typedef std::map<Ogre::String,ParticleSystemPtr> ParticleSystemMap;
-	typedef std::map<Ogre::String,ParticleSystemPtr>::iterator ParticleSystemMapIterator;
+	typedef std::map<Ogre::Real,ParticleUniverse::ParticleSystem*> ParticleSystemMap;
+	typedef std::map<Ogre::Real,ParticleUniverse::ParticleSystem*>::iterator ParticleSystemMapIterator;
 
 	/**
 	Class used to manage all the particle systems
@@ -64,8 +64,8 @@ namespace WyvernsAssault
 		// Particle system function	
 		ParticleUniverse::ParticleSystem* create(String script);
 
-		void add(SceneNode* node, String script);
-		void add(SceneNode* node, String id, String script);
+		void add(SceneNode* node, String script, Real repeat = 0.0);
+		void add(SceneNode* node, String id, String script, Real repeat = 0.0);
 		void remove(String id);
 
 		// Special particle systems
@@ -108,9 +108,11 @@ namespace WyvernsAssault
 		ParticleUniverse::ParticleSystemManager*	mParticleSystemManager;
 		ParticleUniverse::ParticleSystem*			mParticleSystem;
 
+		// Map for particle system that need to be re started in time (with a loop)
 		ParticleSystemMap							mParticleSystemMap;
 
 		int		mId;
+		Real	mTimer;
 
 	private:
 		SceneManager*			mSceneManager;

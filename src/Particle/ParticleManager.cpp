@@ -16,6 +16,7 @@ ParticleManager& ParticleManager::getSingleton(void)
 
 ParticleManager::ParticleManager(SceneManager* sceneManager)
 : mId(0)
+, mTimer(0.0)
 {
 	this->mSceneManager = sceneManager;
 	mParticleSystem = NULL;
@@ -48,11 +49,22 @@ void ParticleManager::finalize()
 
 	mParticleSystem = NULL;
 	mParticleSystemManager = NULL;
+	mParticleSystemMap.clear();
 }
 
 void ParticleManager::update(const float elapsedSeconds)
 {
+	mTimer += elapsedSeconds;
 
+	for(ParticleSystemMapIterator it = mParticleSystemMap.begin(); it != mParticleSystemMap.end(); ++it )
+	{
+		if( mTimer > it->first )
+		{
+			ParticleUniverse::ParticleSystem* pSystem = it->second;
+			pSystem->start();
+			mTimer = 0.0;
+		}
+	}
 }
 
 // Create particle system
@@ -62,14 +74,19 @@ ParticleUniverse::ParticleSystem* ParticleManager::create(String script)
 }
 
 // Create particle system, add to node and start it
-void ParticleManager::add(SceneNode* node, String script)
+void ParticleManager::add(SceneNode* node, String script, Real repeat)
 {
 	ParticleUniverse::ParticleSystem* pSystem = mParticleSystemManager->createParticleSystem(this->createUniqueId(), script, mSceneManager);
 	node->attachObject( pSystem );
 	pSystem->start();
+
+	if( repeat > 0 )
+	{
+		mParticleSystemMap[repeat] = pSystem;
+	}
 }
 
-void ParticleManager::add(SceneNode* node, String id, String script)
+void ParticleManager::add(SceneNode* node, String id, String script, Real repeat)
 {
 	ParticleUniverse::ParticleSystem* pSystem = mParticleSystemManager->createParticleSystem(id + "_particle", script, mSceneManager);
 	node->attachObject( pSystem );

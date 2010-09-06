@@ -1,0 +1,169 @@
+system WyvernsAssault/Explosion
+{
+    technique 
+    {
+        material                                Particle/ExplosionFire
+        default_particle_width                  10
+        default_particle_height                 10
+        renderer                                Billboard
+        {
+        }
+        emitter                                 SphereSurface BurstEmitter1
+        {
+            emission_rate                       20
+            time_to_live                        2
+            velocity                            10
+            direction                           0 0 0
+            auto_direction                      true
+            radius                              5
+        }
+        affector                                Colour 
+        {
+            time_colour                         0    1 1 0.95 1
+            time_colour                         0.5  0.18 0.05 0.01 1
+            time_colour                         1    0 0 0 1
+        }
+        affector                                Scale 
+        {
+            xyz_scale                           25
+        }
+        observer                                OnTime Observer2
+        {
+            handler                             DoEnableComponent Handler21
+            {
+                enable_component                emitter_component BurstEmitter1 false
+            }
+            since_start_system                  true
+            on_time                             greater_than 0.7
+        }
+    }
+    technique 
+    {
+        material                                Particle/Flare_01
+        default_particle_width                  10
+        default_particle_height                 10
+        renderer                                Billboard
+        {
+        }
+        emitter                                 Point NucleusEmitter1
+        {
+            angle                               80
+            time_to_live                        10
+            velocity                            150
+            duration                            5
+            repeat_delay                        2
+            enabled                             false
+            emits                               technique_particle NucleusTechnique
+            force_emission                      true
+        }
+        affector                                LinearForce 
+        {
+            force_vector                        0 -75 0
+        }
+        observer                                OnTime Observer1
+        {
+            handler                             DoEnableComponent Handler2
+            {
+                enable_component                emitter_component NucleusEmitter1 true
+            }
+            since_start_system                  true
+            on_time                             greater_than 0.3
+        }
+        observer                                OnClear Observer4
+        {
+            handler                             DoStopSystem Handler5
+            {
+            }
+        }
+    }
+    technique NucleusTechnique
+    {
+        material                                Particle/Nucleus
+        default_particle_width                  10
+        default_particle_height                 10
+        renderer                                Billboard
+        {
+        }
+        emitter                                 Point 
+        {
+            emission_rate                       100
+            angle                               360
+            velocity                            2
+            duration                            4.5
+            repeat_delay                        5
+            direction                           0 -1 0
+        }
+        affector                                Colour 
+        {
+            time_colour                         0    0.5 0.4 0.2 1
+            time_colour                         0.1  0.5 0.2 0.05 1
+            time_colour                         0.2  0.1 0.1 0.1 1
+            time_colour                         1    0 0 0 1
+        }
+        affector                                TextureRotator 
+        {
+            use_own_rotation                    true
+            rotation                            dyn_random
+            {
+                min                             1
+                max                             90
+            }
+            rotation_speed                      dyn_random
+            {
+                min                             0.1
+                max                             1
+            }
+        }
+        affector                                Scale 
+        {
+            xyz_scale                           -5
+        }
+    }
+    technique 
+    {
+        material                                Particle/Debris
+        renderer                                Billboard
+        {
+            billboard_type                      oriented_self
+        }
+        emitter                                 Point DebrisEmitter1
+        {
+            emission_rate                       150
+            angle                               90
+            time_to_live                        4.5
+            velocity                            dyn_random
+            {
+                min                             100
+                max                             170
+            }
+            duration                            0.3
+            repeat_delay                        5
+            particle_width                      2
+            particle_height                     dyn_random
+            {
+                min                             2
+                max                             10
+            }
+            enabled                             false
+            force_emission                      true
+        }
+        affector                                Colour 
+        {
+            time_colour                         0    1 1 1 1
+            time_colour                         1    0 0 0 1
+        }
+        affector                                LinearForce 
+        {
+            force_vector                        0 -100 0
+        }
+        observer                                OnTime Observer13
+        {
+            handler                             DoEnableComponent Handler14
+            {
+                enable_component                emitter_component DebrisEmitter1 true
+            }
+            since_start_system                  true
+            on_time                             greater_than 0.3
+        }
+    }
+}

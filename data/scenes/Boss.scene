@@ -337,5 +337,23 @@
         </entity>
       </node>
     </node>
+    <node name="ParticleSystems" id="840144064">
+      <rotation qw="1" qx="0" qy="0" qz="0" />
+      <position x="0" y="0" z="0" />
+      <scale x="1" y="1" z="1" />
+      <node name="Explosion" id="677205760">
+        <rotation qw="1" qx="0" qy="0" qz="0" />
+        <position x="0" y="0" z="0" />
+        <scale x="1" y="1" z="1" />
+        <entity name="cube#0" id="918790208" castshadows="false" meshFile="cube.mesh" type="ParticleSystem" script="WyvernsAssault/Explosion" repeat="10">
+          <rotation qw="1" qx="0" qy="0" qz="0" />
+          <position x="0" y="-7.5" z="0" />
+          <scale x="0.1" y="0.1" z="0.1" />
+          <subentities>
+            <subentity materialName="BigRock" index="0" visible="true" />
+          </subentities>
+        </entity>
+      </node>
+    </node>
   </nodes>
 </scene>
