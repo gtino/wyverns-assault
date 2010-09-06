@@ -80,8 +80,8 @@ void PlayState::initialize()
 	PlayerPtr player1 = mPlayerManager->createPlayer("Player1","redWyvern.mesh");
 	player1->setPosition(Vector3(-257, 98, 712));	// START POSITION
 	// Add particle systems
-	player1->setFireBreath(mParticleManager->create("firebreath","WyvernsAssault/DragonBreath"));
-	player1->setDust(mParticleManager->create("dust","WyvernsAssault/Dust"));
+	player1->setFireBreath(mParticleManager->create("WyvernsAssault/DragonBreath"));
+	player1->setDust(mParticleManager->create("WyvernsAssault/Dust"));
 	// Set player gui
 	player1->setGuiId(GuiWidgetPlayId::UserInterface1);
 

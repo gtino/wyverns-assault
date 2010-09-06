@@ -56,48 +56,26 @@ namespace WyvernsAssault
 		static ParticleManager* getSingletonPtr(void);
 
 	public:
-		/** Initialize the particle manager */
 		void initialize();
-		/** Finalize the particle manager */
 		void finalize();
 
-		/** Update and run lua scripts */
 		void update(const float elapsedSeconds);
 
-		/** Create particle system function */		
-		ParticleUniverse::ParticleSystem* create(String id, String script);
-		
-		/** Add particle system to node and start it */
-		void add(SceneNode* node, String id, String script);		
+		// Particle system function	
+		ParticleUniverse::ParticleSystem* create(String script);
 
-		/** Remove particle system from node and stop it */
-		void remove(SceneNode* node, String id);
+		void add(SceneNode* node, String script);
+		void add(SceneNode* node, String id, String script);
+		void remove(String id);
 
-		/** Blood particles */
-		void bloodHit(SceneNode* node);
-		void bloodKill(SceneNode* node);
+		// Special particle systems
 		void bloodLens();
-
-		/** Hit particles */
-		void hit(SceneNode* node);
-		void impact(SceneNode* node);
-
-		/** Fire particles **/
-		void fireHit(SceneNode* node);
-		void fireKill(SceneNode* node);
-
-		/** Animal particles **/
-		void chickenKill(SceneNode* node);
-		void cowKill(SceneNode* node);
-
-		/** Glow particles */
-		void glow(SceneNode* node);
-
-		/* Attack particles */
-		void blast(SceneNode* node);
-		void swing(SceneNode* node);
 		void magicBolt(SceneNode* node);
 
+	private:
+		Ogre::String createUniqueId();
+
+	public:
 		// ----------------
 		// Events interface
 		// ----------------
@@ -111,12 +89,10 @@ namespace WyvernsAssault
 		EVENTS_HANDLER(EnemyCustom)
 		EVENTS_HANDLER(ItemCreation)
 		EVENTS_HANDLER(ItemCatch)
-		EVENTS_HANDLER(ProjectileFire)
 
 		// --------------------------------
 		// BEGIN Lua Interface Declarations
 		// --------------------------------
-	public:
 		LUA_INTERFACE();
 
 		//Particle Lib (exported to Lua)
@@ -130,9 +106,11 @@ namespace WyvernsAssault
 
 	private:
 		ParticleUniverse::ParticleSystemManager*	mParticleSystemManager;
-		ParticleUniverse::ParticleSystem* mParticleSystem;
+		ParticleUniverse::ParticleSystem*			mParticleSystem;
 
-		ParticleSystemMap mParticleSystemMap;
+		ParticleSystemMap							mParticleSystemMap;
+
+		int		mId;
 
 	private:
 		SceneManager*			mSceneManager;
