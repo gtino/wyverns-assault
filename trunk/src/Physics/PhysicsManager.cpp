@@ -156,7 +156,7 @@ void PhysicsManager::checkForCollisions()
 			}			
 		}
 
-		// Player - Object COLLISION
+		// Player - Object COLLISION 
 		for(int i = 0; i < mObjectMapList[mCurrentGameArea].size(); i++)
 		{
 			ObjectPtr obj = mObjectMapList[mCurrentGameArea][i];

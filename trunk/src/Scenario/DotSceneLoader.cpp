@@ -807,7 +807,7 @@ void DotSceneLoader::processEntity(TiXmlElement *XMLNode, SceneNode *pParent)
 			//
 			// Use the Object Manager to create an instance for the new Object
 			//
-			if( type == "DynamicObject" )
+			if( type == "DynamicObject" ) 
 			{
 				String dieMesh = getAttrib(XMLNode, "dieMesh");
 				String dieAnimation = getAttrib(XMLNode, "dieAnimation");
