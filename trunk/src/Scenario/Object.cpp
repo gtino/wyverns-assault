@@ -7,11 +7,12 @@ Object::Object(Ogre::String name, ObjectTypes type, Ogre::Vector3 physicBox)
 , PhysicsInterface()
 , mOBBoxRenderable(0)
 , mIsDebugEnabled(false)
-, mMaxLife(200)
+, mMaxLife(100)
+, mDieMesh(NULL)
 , mDieAnimation(NULL)
 {
 	mType = type;
-	mParameters.life = mMaxLife;
+	life = mMaxLife;
 	mPhysicSize = physicBox; 
 
 }
@@ -46,23 +47,23 @@ void Object::updateEntity(const float elapsedSeconds)
 	{
 		mDieAnimation->addTime(elapsedSeconds);
 		if( mDieAnimation->hasEnded() && hasDieMesh() )
-			mDieMesh->setVisible(false);
+			mDieMesh->setVisible(true);
 	}
 }
 
 bool Object::isHurt()
 {
-	return (mParameters.life / mMaxLife * 100.0f) < 15.0f;
+	return (life / mMaxLife * 100.0f) < 15.0f;
 }
 
 bool Object::isDying()
 {
-	return (mParameters.life <= 0.0f);
+	return (life <= 0.0f);
 }
 
 void Object::hit(float damage)
 {
-	mParameters.life -= damage;
+	life -= damage;
 }
 
 // Die function, change visible meshes
@@ -70,8 +71,6 @@ void Object::dieSwitch()
 {
 	// Main mesh visibility to false
 	setVisible(false);
-
-	mSceneNode->setScale(4,4,4);
 
 	// Die mesh visible
 	mDieMesh->setVisible(true);

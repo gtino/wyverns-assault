@@ -62,10 +62,10 @@ ObjectPtr ScenarioManager::createObject(WyvernsAssault::ObjectTypes type, Ogre::
 
 	Ogre::SceneNode* pSceneNode = mSceneManager->getRootSceneNode()->createChildSceneNode("Object_"+name+"_Node");
 
-	return createObject(type, name, pEntity, pSceneNode, mCurrentGameArea, Ogre::Vector3::ZERO);
+	return createObject(type, name, pEntity, pSceneNode, mCurrentGameArea, Ogre::Vector3::ZERO, "", "");
 }
 
-ObjectPtr ScenarioManager::createObject(WyvernsAssault::ObjectTypes type, Ogre::String name, Ogre::Entity* entity, Ogre::SceneNode* sceneNode, int gameArea, Ogre::Vector3 physicBox)
+ObjectPtr ScenarioManager::createObject(WyvernsAssault::ObjectTypes type, Ogre::String name, Ogre::Entity* entity, Ogre::SceneNode* sceneNode, int gameArea, Ogre::Vector3 physicBox, String dieMesh, String dieAnimation)
 {
 	ObjectPtr object = ObjectPtr(new Object(name, type, physicBox));
 
@@ -73,16 +73,17 @@ ObjectPtr ScenarioManager::createObject(WyvernsAssault::ObjectTypes type, Ogre::
 
 	sceneNode->attachObject(entity);
 
-	// Die mesh and animation - TEST
-	if(type == WyvernsAssault::ObjectTypes::DynamicObject && name == "Entity#383")
+	// Die mesh and animation
+	if(type == WyvernsAssault::ObjectTypes::DynamicObject && dieMesh != "") 
 	{
 		Ogre::Entity* objDieMesh = NULL;
 		Ogre::AnimationState* objDieAnimation = NULL;
-		objDieMesh = mSceneManager->createEntity(name + "Die", "BigRock0Die.mesh");
-		objDieMesh->setMaterialName("BigRock");
+		objDieMesh = mSceneManager->createEntity(name + "Die", dieMesh);
+		objDieMesh->setMaterialName(entity->getSubEntity(0)->getMaterialName());
 		sceneNode->attachObject(objDieMesh);			
-		object->setDieMesh(objDieMesh);		
-		objDieAnimation = objDieMesh->getAnimationState("Die");
+		object->setDieMesh(objDieMesh);
+		if(dieAnimation != "")
+			objDieAnimation = objDieMesh->getAnimationState(dieAnimation);
 		object->setDieAnimation(objDieAnimation);
 	}
 
@@ -216,7 +217,7 @@ EVENTS_DEFINE_HANDLER(ScenarioManager, ObjectHit)
 	ObjectPtr obj = evt->getObject();
 	PlayerPtr player = evt->getPlayer();
 
-	obj->hit(evt->getDamage());
+	obj->hit(player->getHitDamage());
 
 	if(obj->isDying())
 	{

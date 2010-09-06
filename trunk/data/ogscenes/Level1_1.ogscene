@@ -55,7 +55,7 @@
   <CAMERASPEED value="19"></CAMERASPEED>
   <CAMERAPOSITIONS count="1">
     <OPTION id="0" position="1417.36 9.53911 54.9741" orientation="0.707107 0 0.707107 0"></OPTION>
-    <OPTION id="1" position="507.177 61.238 667.008" orientation="-0.176911 0.0686275 0.915929 0.353647"></OPTION>
+    <OPTION id="1" position="544.721 67.7718 663.321" orientation="-0.176911 0.0686275 0.915929 0.353647"></OPTION>
   </CAMERAPOSITIONS>
     <LAYERS>
       <LAYER id="0" name="Layer 0" visible="true"></LAYER>
@@ -138,7 +138,7 @@
     <PROPERTY id="camera::fov" type="6" value="1"></PROPERTY>
     <PROPERTY id="camera::orientation" type="13" value="-0.176911 0.0686275 0.915929 0.353647"></PROPERTY>
     <PROPERTY id="camera::polymode" type="2" value="3"></PROPERTY>
-    <PROPERTY id="camera::position" type="9" value="507.177 61.238 667.008"></PROPERTY>
+    <PROPERTY id="camera::position" type="9" value="544.721 67.7718 663.321"></PROPERTY>
     <PROPERTY id="camera::viewmode" type="2" value="6"></PROPERTY>
     <PROPERTY id="colour" type="11" value="0.901961 0.901961 0.901961 1"></PROPERTY>
     <PROPERTY id="compositorcount" type="2" value="0"></PROPERTY>
@@ -10101,6 +10101,9 @@
       <PROPERTY id="BoxX" type="6" value="50"></PROPERTY>
       <PROPERTY id="BoxY" type="6" value="50"></PROPERTY>
       <PROPERTY id="BoxZ" type="6" value="50"></PROPERTY>
+      <PROPERTY id="life" type="2" value="100"></PROPERTY>
+      <PROPERTY id="dieMesh" type="7" value="House01Die.mesh"></PROPERTY>
+      <PROPERTY id="dieAnimation" type="7" value="Die"></PROPERTY>
     </CUSTOMPROPERTIES>
   </OBJECT>
 
@@ -10503,8 +10506,11 @@
     <CUSTOMPROPERTIES>
       <PROPERTY id="type" type="7" value="DynamicObject"></PROPERTY>
       <PROPERTY id="BoxX" type="6" value="30"></PROPERTY>
-      <PROPERTY id="BoxY" type="6" value="60"></PROPERTY>
+      <PROPERTY id="BoxY" type="6" value="65"></PROPERTY>
       <PROPERTY id="BoxZ" type="6" value="30"></PROPERTY>
+      <PROPERTY id="life" type="2" value="100"></PROPERTY>
+      <PROPERTY id="dieMesh" type="7" value="TentDie.mesh"></PROPERTY>
+      <PROPERTY id="dieAnimation" type="7" value="Die"></PROPERTY>
     </CUSTOMPROPERTIES>
   </OBJECT>
 
@@ -11174,8 +11180,11 @@
     <CUSTOMPROPERTIES>
       <PROPERTY id="type" type="7" value="DynamicObject"></PROPERTY>
       <PROPERTY id="BoxX" type="6" value="30"></PROPERTY>
-      <PROPERTY id="BoxY" type="6" value="60"></PROPERTY>
+      <PROPERTY id="BoxY" type="6" value="65"></PROPERTY>
       <PROPERTY id="BoxZ" type="6" value="30"></PROPERTY>
+      <PROPERTY id="life" type="2" value="100"></PROPERTY>
+      <PROPERTY id="dieMesh" type="7" value="TentDie.mesh"></PROPERTY>
+      <PROPERTY id="dieAnimation" type="7" value="Die"></PROPERTY>
     </CUSTOMPROPERTIES>
   </OBJECT>
 
@@ -14654,8 +14663,11 @@
     <CUSTOMPROPERTIES>
       <PROPERTY id="type" type="7" value="DynamicObject"></PROPERTY>
       <PROPERTY id="BoxX" type="6" value="30"></PROPERTY>
-      <PROPERTY id="BoxY" type="6" value="60"></PROPERTY>
+      <PROPERTY id="BoxY" type="6" value="65"></PROPERTY>
       <PROPERTY id="BoxZ" type="6" value="30"></PROPERTY>
+      <PROPERTY id="life" type="2" value="100"></PROPERTY>
+      <PROPERTY id="dieMesh" type="7" value="TentDie.mesh"></PROPERTY>
+      <PROPERTY id="dieAnimation" type="7" value="Die"></PROPERTY>
     </CUSTOMPROPERTIES>
   </OBJECT>
 
@@ -15707,8 +15719,11 @@
     <CUSTOMPROPERTIES>
       <PROPERTY id="type" type="7" value="DynamicObject"></PROPERTY>
       <PROPERTY id="BoxX" type="6" value="30"></PROPERTY>
-      <PROPERTY id="BoxY" type="6" value="60"></PROPERTY>
+      <PROPERTY id="BoxY" type="6" value="65"></PROPERTY>
       <PROPERTY id="BoxZ" type="6" value="30"></PROPERTY>
+      <PROPERTY id="life" type="2" value="100"></PROPERTY>
+      <PROPERTY id="dieMesh" type="7" value="TentDie.mesh"></PROPERTY>
+      <PROPERTY id="dieAnimation" type="7" value="Die"></PROPERTY>
     </CUSTOMPROPERTIES>
   </OBJECT>
 
@@ -15934,8 +15949,11 @@
     <CUSTOMPROPERTIES>
       <PROPERTY id="type" type="7" value="DynamicObject"></PROPERTY>
       <PROPERTY id="BoxX" type="6" value="30"></PROPERTY>
-      <PROPERTY id="BoxY" type="6" value="60"></PROPERTY>
+      <PROPERTY id="BoxY" type="6" value="65"></PROPERTY>
       <PROPERTY id="BoxZ" type="6" value="30"></PROPERTY>
+      <PROPERTY id="life" type="2" value="100"></PROPERTY>
+      <PROPERTY id="dieMesh" type="7" value="TentDie.mesh"></PROPERTY>
+      <PROPERTY id="dieAnimation" type="7" value="Die"></PROPERTY>
     </CUSTOMPROPERTIES>
   </OBJECT>
 
@@ -16255,9 +16273,9 @@
     <PROPERTY id="updatescript" type="7" value=""></PROPERTY>
     <CUSTOMPROPERTIES>
       <PROPERTY id="type" type="7" value="DynamicObject"></PROPERTY>
-      <PROPERTY id="BoxX" type="6" value="100"></PROPERTY>
+      <PROPERTY id="BoxX" type="6" value="140"></PROPERTY>
       <PROPERTY id="BoxY" type="6" value="100"></PROPERTY>
-      <PROPERTY id="BoxZ" type="6" value="100"></PROPERTY>
+      <PROPERTY id="BoxZ" type="6" value="90"></PROPERTY>
     </CUSTOMPROPERTIES>
   </OBJECT>
 
@@ -16623,6 +16641,9 @@
       <PROPERTY id="BoxX" type="6" value="50"></PROPERTY>
       <PROPERTY id="BoxY" type="6" value="50"></PROPERTY>
       <PROPERTY id="BoxZ" type="6" value="50"></PROPERTY>
+      <PROPERTY id="life" type="2" value="100"></PROPERTY>
+      <PROPERTY id="dieMesh" type="7" value="House01Die.mesh"></PROPERTY>
+      <PROPERTY id="dieAnimation" type="7" value="Die"></PROPERTY>
     </CUSTOMPROPERTIES>
   </OBJECT>
 
@@ -18324,8 +18345,11 @@
     <CUSTOMPROPERTIES>
       <PROPERTY id="type" type="7" value="DynamicObject"></PROPERTY>
       <PROPERTY id="BoxX" type="6" value="30"></PROPERTY>
-      <PROPERTY id="BoxY" type="6" value="60"></PROPERTY>
+      <PROPERTY id="BoxY" type="6" value="65"></PROPERTY>
       <PROPERTY id="BoxZ" type="6" value="30"></PROPERTY>
+      <PROPERTY id="life" type="2" value="100"></PROPERTY>
+      <PROPERTY id="dieMesh" type="7" value="TentDie.mesh"></PROPERTY>
+      <PROPERTY id="dieAnimation" type="7" value="Die"></PROPERTY>
     </CUSTOMPROPERTIES>
   </OBJECT>
 
@@ -18955,6 +18979,9 @@
       <PROPERTY id="BoxX" type="6" value="50"></PROPERTY>
       <PROPERTY id="BoxY" type="6" value="50"></PROPERTY>
       <PROPERTY id="BoxZ" type="6" value="50"></PROPERTY>
+      <PROPERTY id="life" type="2" value="100"></PROPERTY>
+      <PROPERTY id="dieMesh" type="7" value="House01Die.mesh"></PROPERTY>
+      <PROPERTY id="dieAnimation" type="7" value="Die"></PROPERTY>
     </CUSTOMPROPERTIES>
   </OBJECT>
 
@@ -19466,8 +19493,11 @@
     <CUSTOMPROPERTIES>
       <PROPERTY id="type" type="7" value="DynamicObject"></PROPERTY>
       <PROPERTY id="BoxX" type="6" value="30"></PROPERTY>
-      <PROPERTY id="BoxY" type="6" value="60"></PROPERTY>
+      <PROPERTY id="BoxY" type="6" value="65"></PROPERTY>
       <PROPERTY id="BoxZ" type="6" value="30"></PROPERTY>
+      <PROPERTY id="life" type="2" value="100"></PROPERTY>
+      <PROPERTY id="dieMesh" type="7" value="TentDie.mesh"></PROPERTY>
+      <PROPERTY id="dieAnimation" type="7" value="Die"></PROPERTY>
     </CUSTOMPROPERTIES>
   </OBJECT>
 
@@ -21926,8 +21956,11 @@
     <CUSTOMPROPERTIES>
       <PROPERTY id="type" type="7" value="DynamicObject"></PROPERTY>
       <PROPERTY id="BoxX" type="6" value="30"></PROPERTY>
-      <PROPERTY id="BoxY" type="6" value="60"></PROPERTY>
+      <PROPERTY id="BoxY" type="6" value="65"></PROPERTY>
       <PROPERTY id="BoxZ" type="6" value="30"></PROPERTY>
+      <PROPERTY id="life" type="2" value="100"></PROPERTY>
+      <PROPERTY id="dieMesh" type="7" value="TentDie.mesh"></PROPERTY>
+      <PROPERTY id="dieAnimation" type="7" value="Die"></PROPERTY>
     </CUSTOMPROPERTIES>
   </OBJECT>
 
@@ -22478,8 +22511,11 @@
     <CUSTOMPROPERTIES>
       <PROPERTY id="type" type="7" value="DynamicObject"></PROPERTY>
       <PROPERTY id="BoxX" type="6" value="30"></PROPERTY>
-      <PROPERTY id="BoxY" type="6" value="60"></PROPERTY>
+      <PROPERTY id="BoxY" type="6" value="65"></PROPERTY>
       <PROPERTY id="BoxZ" type="6" value="30"></PROPERTY>
+      <PROPERTY id="life" type="2" value="100"></PROPERTY>
+      <PROPERTY id="dieMesh" type="7" value="TentDie.mesh"></PROPERTY>
+      <PROPERTY id="dieAnimation" type="7" value="Die"></PROPERTY>
     </CUSTOMPROPERTIES>
   </OBJECT>
 
