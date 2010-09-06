@@ -79,7 +79,7 @@ ObjectPtr ScenarioManager::createObject(WyvernsAssault::ObjectTypes type, Ogre::
 		Ogre::Entity* objDieMesh = NULL;
 		Ogre::AnimationState* objDieAnimation = NULL;
 		objDieMesh = mSceneManager->createEntity(name + "Die", dieMesh);
-		objDieMesh->setMaterialName(entity->getSubEntity(0)->getMaterialName());
+		objDieMesh->setMaterialName(entity->getSubEntity(0)->getMaterialName()); 
 		sceneNode->attachObject(objDieMesh);			
 		object->setDieMesh(objDieMesh);
 		if(dieAnimation != "")
