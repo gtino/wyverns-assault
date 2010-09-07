@@ -163,7 +163,8 @@ void PhysicsManager::checkForCollisions()
 			AxisAlignedBox obj_box = obj->getGeometry()->getWorldBoundingBox(obj->getPosition());
 
 			// Check if player is using special (fire) and collisioning with object
-			if ( player->isSpecial() && player_firebox.intersects(obj_box)){
+			if ( player->isSpecial() && player_firebox.intersects(obj_box))
+			{
 				ObjectHitEventPtr objectHitEventPtr = ObjectHitEventPtr(new ObjectHitEvent(obj, player));
 				EVENTS_FIRE(objectHitEventPtr);
 			}
@@ -258,7 +259,7 @@ void PhysicsManager::move(PlayerPtr player, const float elapsedSeconds)
 	bool objectCollision = collidesAllObjects(player, lastPosition, player->getPosition(), 0.5f, 0.0);
 
 	// Test walls collision
-	bool wallCollision = collides(lastPosition, player->getPosition(), mWallGeometry->getPhysicsMeshInfo(),6.0f,0);
+	bool wallCollision = collides(lastPosition, player->getPosition(), mWallGeometry->getPhysicsMeshInfo(), 15.0f, 0.0);
 	
 	// If player is colliding with something, undo movement
 	if( objectCollision || wallCollision  )

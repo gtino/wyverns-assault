@@ -69,7 +69,7 @@ void Enemy::initializeEntity(Ogre::Entity* entity, Ogre::SceneNode* sceneNode, O
 	EntityInterface::initializeEntity(entity, sceneNode, sceneManager);
 
 	// Set physic body
-	initializePhysics(entity->getName(), Vector3(20,20,20),"OBBoxManualMaterial_Enemy");
+	initializePhysics(entity->getName(), Vector3(25,20,25),"OBBoxManualMaterial_Enemy");
 	sceneNode->attachObject(getGeometry()->getMovableObject());
 
 
