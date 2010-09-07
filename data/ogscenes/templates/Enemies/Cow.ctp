@@ -8,7 +8,7 @@
   <PROPERTY id="speed" type="6" value="15"></PROPERTY>
   <PROPERTY id="damage" type="6" value="0"></PROPERTY>
   <PROPERTY id="specialDamage" type="6" value="0"></PROPERTY>
-  <PROPERTY id="height" type="6" value="0"></PROPERTY>
+  <PROPERTY id="height" type="6" value="2"></PROPERTY>
   <PROPERTY id="dieMesh" type="7" value="cowDie.mesh"></PROPERTY>
   <PROPERTY id="dieAnimation" type="7" value=""></PROPERTY>
 </CUSTOMPROPERTIES>

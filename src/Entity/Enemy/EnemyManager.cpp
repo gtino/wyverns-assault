@@ -67,7 +67,7 @@ Enemy::EnemyParameters EnemyManager::createParameters(int difficult, Enemy::Enem
 		params.speed = 15.0;
 		params.damage = 0.0;
 		params.specialDamage = 0.0;
-		params.height = 0.0;
+		params.height = 2.0;
 		params.attackCooldown = 0.5;
 		params.dieMesh = "cowDie.mesh";
 		params.dieAnimation = "";

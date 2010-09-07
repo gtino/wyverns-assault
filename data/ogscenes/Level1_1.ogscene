@@ -55,7 +55,7 @@
   <CAMERASPEED value="19"></CAMERASPEED>
   <CAMERAPOSITIONS count="1">
     <OPTION id="0" position="1417.36 9.53911 54.9741" orientation="0.707107 0 0.707107 0"></OPTION>
-    <OPTION id="1" position="851.231 187.04 -309.921" orientation="-0.974237 0.169377 -0.146654 -0.0257993"></OPTION>
+    <OPTION id="1" position="-109.631 238.833 -492.754" orientation="-0.659194 0.284168 0.639506 0.275216"></OPTION>
   </CAMERAPOSITIONS>
     <LAYERS>
       <LAYER id="0" name="Layer 0" visible="true"></LAYER>
@@ -136,9 +136,9 @@
   <OBJECT object_id="2000000002" name="Viewport1" typename="Viewport Object">
     <PROPERTY id="camera::clipdistance" type="8" value="0.05 100000"></PROPERTY>
     <PROPERTY id="camera::fov" type="6" value="1"></PROPERTY>
-    <PROPERTY id="camera::orientation" type="13" value="-0.974244 0.169378 -0.146655 -0.0257994"></PROPERTY>
+    <PROPERTY id="camera::orientation" type="13" value="-0.659215 0.284177 0.639526 0.275225"></PROPERTY>
     <PROPERTY id="camera::polymode" type="2" value="3"></PROPERTY>
-    <PROPERTY id="camera::position" type="9" value="851.231 187.04 -309.921"></PROPERTY>
+    <PROPERTY id="camera::position" type="9" value="-109.631 238.833 -492.754"></PROPERTY>
     <PROPERTY id="camera::viewmode" type="2" value="6"></PROPERTY>
     <PROPERTY id="colour" type="11" value="0.901961 0.901961 0.901961 1"></PROPERTY>
     <PROPERTY id="compositorcount" type="2" value="0"></PROPERTY>
@@ -5852,7 +5852,7 @@
     <PROPERTY id="layer" type="2" value="0"></PROPERTY>
     <PROPERTY id="locked" type="12" value="false"></PROPERTY>
     <PROPERTY id="orientation" type="13" value="0.5373 0 -0.843392 0"></PROPERTY>
-    <PROPERTY id="position" type="9" value="1105.01 -1.10258 461.622"></PROPERTY>
+    <PROPERTY id="position" type="9" value="1105.01 1.5 461.622"></PROPERTY>
     <PROPERTY id="scale" type="9" value="1 1 1"></PROPERTY>
     <PROPERTY id="updatescript" type="7" value=""></PROPERTY>
     <CUSTOMPROPERTIES>
@@ -6032,7 +6032,7 @@
     <PROPERTY id="layer" type="2" value="0"></PROPERTY>
     <PROPERTY id="locked" type="12" value="false"></PROPERTY>
     <PROPERTY id="orientation" type="13" value="0.961262 0 0.275637 0"></PROPERTY>
-    <PROPERTY id="position" type="9" value="358.366 0.606974 797.335"></PROPERTY>
+    <PROPERTY id="position" type="9" value="358.366 1.5 797.335"></PROPERTY>
     <PROPERTY id="scale" type="9" value="1 1 1"></PROPERTY>
     <PROPERTY id="updatescript" type="7" value=""></PROPERTY>
     <CUSTOMPROPERTIES>
@@ -6188,7 +6188,7 @@
     <PROPERTY id="layer" type="2" value="0"></PROPERTY>
     <PROPERTY id="locked" type="12" value="false"></PROPERTY>
     <PROPERTY id="orientation" type="13" value="0.876727 0 -0.480989 0"></PROPERTY>
-    <PROPERTY id="position" type="9" value="1141.14 -3.32154 468.042"></PROPERTY>
+    <PROPERTY id="position" type="9" value="1141.14 1.5 468.042"></PROPERTY>
     <PROPERTY id="scale" type="9" value="1 1 1"></PROPERTY>
     <PROPERTY id="updatescript" type="7" value=""></PROPERTY>
     <CUSTOMPROPERTIES>
@@ -6200,7 +6200,7 @@
     <PROPERTY id="layer" type="2" value="0"></PROPERTY>
     <PROPERTY id="locked" type="12" value="false"></PROPERTY>
     <PROPERTY id="orientation" type="13" value="0.936672 0 0.350207 0"></PROPERTY>
-    <PROPERTY id="position" type="9" value="11.0416 -0.275745 -485.205"></PROPERTY>
+    <PROPERTY id="position" type="9" value="36.7216 1.5 -414.666"></PROPERTY>
     <PROPERTY id="scale" type="9" value="1 1 1"></PROPERTY>
     <PROPERTY id="updatescript" type="7" value=""></PROPERTY>
     <CUSTOMPROPERTIES>
@@ -6296,7 +6296,7 @@
     <PROPERTY id="layer" type="2" value="0"></PROPERTY>
     <PROPERTY id="locked" type="12" value="false"></PROPERTY>
     <PROPERTY id="orientation" type="13" value="0.876727 0 -0.480989 0"></PROPERTY>
-    <PROPERTY id="position" type="9" value="1098.78 1.01119 578.224"></PROPERTY>
+    <PROPERTY id="position" type="9" value="1098.78 1.5 578.224"></PROPERTY>
     <PROPERTY id="scale" type="9" value="1 1 1"></PROPERTY>
     <PROPERTY id="updatescript" type="7" value=""></PROPERTY>
     <CUSTOMPROPERTIES>
@@ -6440,7 +6440,7 @@
     <PROPERTY id="layer" type="2" value="0"></PROPERTY>
     <PROPERTY id="locked" type="12" value="false"></PROPERTY>
     <PROPERTY id="orientation" type="13" value="0.876727 0 -0.480989 0"></PROPERTY>
-    <PROPERTY id="position" type="9" value="1012 1.30633 506.156"></PROPERTY>
+    <PROPERTY id="position" type="9" value="1012 1.5 506.156"></PROPERTY>
     <PROPERTY id="scale" type="9" value="1 1 1"></PROPERTY>
     <PROPERTY id="updatescript" type="7" value=""></PROPERTY>
     <CUSTOMPROPERTIES>
@@ -6500,7 +6500,7 @@
     <PROPERTY id="layer" type="2" value="0"></PROPERTY>
     <PROPERTY id="locked" type="12" value="false"></PROPERTY>
     <PROPERTY id="orientation" type="13" value="0.964788 0 0.263031 0"></PROPERTY>
-    <PROPERTY id="position" type="9" value="353.864 0.72562 -643.641"></PROPERTY>
+    <PROPERTY id="position" type="9" value="353.864 1.5 -643.641"></PROPERTY>
     <PROPERTY id="scale" type="9" value="1 1 1"></PROPERTY>
     <PROPERTY id="updatescript" type="7" value=""></PROPERTY>
     <CUSTOMPROPERTIES>
@@ -6692,7 +6692,7 @@
     <PROPERTY id="layer" type="2" value="0"></PROPERTY>
     <PROPERTY id="locked" type="12" value="false"></PROPERTY>
     <PROPERTY id="orientation" type="13" value="0.67559 0 0.737277 0"></PROPERTY>
-    <PROPERTY id="position" type="9" value="687.049 1.49221 778.48"></PROPERTY>
+    <PROPERTY id="position" type="9" value="687.049 1.5 778.48"></PROPERTY>
     <PROPERTY id="scale" type="9" value="1 1 1"></PROPERTY>
     <PROPERTY id="updatescript" type="7" value=""></PROPERTY>
     <CUSTOMPROPERTIES>
@@ -6764,7 +6764,7 @@
     <PROPERTY id="layer" type="2" value="0"></PROPERTY>
     <PROPERTY id="locked" type="12" value="false"></PROPERTY>
     <PROPERTY id="orientation" type="13" value="0.999962 0 -0.0087266 0"></PROPERTY>
-    <PROPERTY id="position" type="9" value="934.46 1.76641 517.077"></PROPERTY>
+    <PROPERTY id="position" type="9" value="934.46 1.5 517.077"></PROPERTY>
     <PROPERTY id="scale" type="9" value="1 1 1"></PROPERTY>
     <PROPERTY id="updatescript" type="7" value=""></PROPERTY>
     <CUSTOMPROPERTIES>
@@ -6776,7 +6776,7 @@
     <PROPERTY id="layer" type="2" value="0"></PROPERTY>
     <PROPERTY id="locked" type="12" value="false"></PROPERTY>
     <PROPERTY id="orientation" type="13" value="0.845728 0 -0.533615 0"></PROPERTY>
-    <PROPERTY id="position" type="9" value="233.579 1.35054 -584.682"></PROPERTY>
+    <PROPERTY id="position" type="9" value="233.579 1.5 -584.682"></PROPERTY>
     <PROPERTY id="scale" type="9" value="1 1 1"></PROPERTY>
     <PROPERTY id="updatescript" type="7" value=""></PROPERTY>
     <CUSTOMPROPERTIES>
@@ -6824,7 +6824,7 @@
     <PROPERTY id="layer" type="2" value="0"></PROPERTY>
     <PROPERTY id="locked" type="12" value="false"></PROPERTY>
     <PROPERTY id="orientation" type="13" value="0.0871556 0 -0.996195 0"></PROPERTY>
-    <PROPERTY id="position" type="9" value="765.594 3.21429 -391.286"></PROPERTY>
+    <PROPERTY id="position" type="9" value="765.594 2.5 -391.286"></PROPERTY>
     <PROPERTY id="scale" type="9" value="1 1 1"></PROPERTY>
     <PROPERTY id="updatescript" type="7" value=""></PROPERTY>
     <CUSTOMPROPERTIES>
@@ -6883,8 +6883,8 @@
     <PROPERTY id="autotracktarget" type="7" value="None"></PROPERTY>
     <PROPERTY id="layer" type="2" value="0"></PROPERTY>
     <PROPERTY id="locked" type="12" value="false"></PROPERTY>
-    <PROPERTY id="orientation" type="13" value="0.544639 0 0.838671 0"></PROPERTY>
-    <PROPERTY id="position" type="9" value="1027.95 36.2856 51.8579"></PROPERTY>
+    <PROPERTY id="orientation" type="13" value="0.777146 0 0.629321 0"></PROPERTY>
+    <PROPERTY id="position" type="9" value="1027.95 34 51.8579"></PROPERTY>
     <PROPERTY id="scale" type="9" value="1 1 1"></PROPERTY>
     <PROPERTY id="updatescript" type="7" value=""></PROPERTY>
     <CUSTOMPROPERTIES>
@@ -7028,7 +7028,7 @@
     <PROPERTY id="layer" type="2" value="0"></PROPERTY>
     <PROPERTY id="locked" type="12" value="false"></PROPERTY>
     <PROPERTY id="orientation" type="13" value="0.876727 0 -0.480989 0"></PROPERTY>
-    <PROPERTY id="position" type="9" value="1179.27 0.932518 507.459"></PROPERTY>
+    <PROPERTY id="position" type="9" value="1179.27 1.5 507.459"></PROPERTY>
     <PROPERTY id="scale" type="9" value="1 1 1"></PROPERTY>
     <PROPERTY id="updatescript" type="7" value=""></PROPERTY>
     <CUSTOMPROPERTIES>
@@ -7112,7 +7112,7 @@
     <PROPERTY id="layer" type="2" value="0"></PROPERTY>
     <PROPERTY id="locked" type="12" value="false"></PROPERTY>
     <PROPERTY id="orientation" type="13" value="0.876727 0 -0.480989 0"></PROPERTY>
-    <PROPERTY id="position" type="9" value="1117.04 1.94941 341.281"></PROPERTY>
+    <PROPERTY id="position" type="9" value="1117.04 1.5 341.281"></PROPERTY>
     <PROPERTY id="scale" type="9" value="1 1 1"></PROPERTY>
     <PROPERTY id="updatescript" type="7" value=""></PROPERTY>
     <CUSTOMPROPERTIES>
@@ -7124,7 +7124,7 @@
     <PROPERTY id="layer" type="2" value="0"></PROPERTY>
     <PROPERTY id="locked" type="12" value="false"></PROPERTY>
     <PROPERTY id="orientation" type="13" value="0.967046 0 -0.254602 0"></PROPERTY>
-    <PROPERTY id="position" type="9" value="589.771 -0.106556 -609.304"></PROPERTY>
+    <PROPERTY id="position" type="9" value="589.771 1.5 -609.304"></PROPERTY>
     <PROPERTY id="scale" type="9" value="1 1 1"></PROPERTY>
     <PROPERTY id="updatescript" type="7" value=""></PROPERTY>
     <CUSTOMPROPERTIES>
@@ -10113,7 +10113,7 @@
       <PROPERTY id="speed" type="6" value="15"></PROPERTY>
       <PROPERTY id="damage" type="6" value="0"></PROPERTY>
       <PROPERTY id="specialDamage" type="6" value="0"></PROPERTY>
-      <PROPERTY id="height" type="6" value="0"></PROPERTY>
+      <PROPERTY id="height" type="6" value="2"></PROPERTY>
       <PROPERTY id="dieMesh" type="7" value="cowDie.mesh"></PROPERTY>
       <PROPERTY id="dieAnimation" type="7" value=""></PROPERTY>
     </CUSTOMPROPERTIES>
@@ -10699,7 +10699,7 @@
       <PROPERTY id="speed" type="6" value="15"></PROPERTY>
       <PROPERTY id="damage" type="6" value="0"></PROPERTY>
       <PROPERTY id="specialDamage" type="6" value="0"></PROPERTY>
-      <PROPERTY id="height" type="6" value="0"></PROPERTY>
+      <PROPERTY id="height" type="6" value="2"></PROPERTY>
       <PROPERTY id="dieMesh" type="7" value="cowDie.mesh"></PROPERTY>
       <PROPERTY id="dieAnimation" type="7" value=""></PROPERTY>
     </CUSTOMPROPERTIES>
@@ -12528,7 +12528,7 @@
       <PROPERTY id="speed" type="6" value="15"></PROPERTY>
       <PROPERTY id="damage" type="6" value="0"></PROPERTY>
       <PROPERTY id="specialDamage" type="6" value="0"></PROPERTY>
-      <PROPERTY id="height" type="6" value="0"></PROPERTY>
+      <PROPERTY id="height" type="6" value="2"></PROPERTY>
       <PROPERTY id="dieMesh" type="7" value="cowDie.mesh"></PROPERTY>
       <PROPERTY id="dieAnimation" type="7" value=""></PROPERTY>
     </CUSTOMPROPERTIES>
@@ -13075,7 +13075,7 @@
       <PROPERTY id="speed" type="6" value="15"></PROPERTY>
       <PROPERTY id="damage" type="6" value="0"></PROPERTY>
       <PROPERTY id="specialDamage" type="6" value="0"></PROPERTY>
-      <PROPERTY id="height" type="6" value="0"></PROPERTY>
+      <PROPERTY id="height" type="6" value="2"></PROPERTY>
       <PROPERTY id="dieMesh" type="7" value="cowDie.mesh"></PROPERTY>
       <PROPERTY id="dieAnimation" type="7" value=""></PROPERTY>
     </CUSTOMPROPERTIES>
@@ -14157,7 +14157,7 @@
       <PROPERTY id="speed" type="6" value="15"></PROPERTY>
       <PROPERTY id="damage" type="6" value="0"></PROPERTY>
       <PROPERTY id="specialDamage" type="6" value="0"></PROPERTY>
-      <PROPERTY id="height" type="6" value="0"></PROPERTY>
+      <PROPERTY id="height" type="6" value="2"></PROPERTY>
       <PROPERTY id="dieMesh" type="7" value="cowDie.mesh"></PROPERTY>
       <PROPERTY id="dieAnimation" type="7" value=""></PROPERTY>
     </CUSTOMPROPERTIES>
@@ -14671,7 +14671,7 @@
       <PROPERTY id="speed" type="6" value="15"></PROPERTY>
       <PROPERTY id="damage" type="6" value="0"></PROPERTY>
       <PROPERTY id="specialDamage" type="6" value="0"></PROPERTY>
-      <PROPERTY id="height" type="6" value="0"></PROPERTY>
+      <PROPERTY id="height" type="6" value="2"></PROPERTY>
       <PROPERTY id="dieMesh" type="7" value="cowDie.mesh"></PROPERTY>
       <PROPERTY id="dieAnimation" type="7" value=""></PROPERTY>
     </CUSTOMPROPERTIES>
@@ -15199,7 +15199,7 @@
       <PROPERTY id="speed" type="6" value="15"></PROPERTY>
       <PROPERTY id="damage" type="6" value="0"></PROPERTY>
       <PROPERTY id="specialDamage" type="6" value="0"></PROPERTY>
-      <PROPERTY id="height" type="6" value="0"></PROPERTY>
+      <PROPERTY id="height" type="6" value="2"></PROPERTY>
       <PROPERTY id="dieMesh" type="7" value="cowDie.mesh"></PROPERTY>
       <PROPERTY id="dieAnimation" type="7" value=""></PROPERTY>
     </CUSTOMPROPERTIES>
@@ -16656,7 +16656,7 @@
       <PROPERTY id="speed" type="6" value="15"></PROPERTY>
       <PROPERTY id="damage" type="6" value="0"></PROPERTY>
       <PROPERTY id="specialDamage" type="6" value="0"></PROPERTY>
-      <PROPERTY id="height" type="6" value="0"></PROPERTY>
+      <PROPERTY id="height" type="6" value="2"></PROPERTY>
       <PROPERTY id="dieMesh" type="7" value="cowDie.mesh"></PROPERTY>
       <PROPERTY id="dieAnimation" type="7" value=""></PROPERTY>
     </CUSTOMPROPERTIES>
@@ -17205,7 +17205,7 @@
       <PROPERTY id="speed" type="6" value="15"></PROPERTY>
       <PROPERTY id="damage" type="6" value="0"></PROPERTY>
       <PROPERTY id="specialDamage" type="6" value="0"></PROPERTY>
-      <PROPERTY id="height" type="6" value="0"></PROPERTY>
+      <PROPERTY id="height" type="6" value="2"></PROPERTY>
       <PROPERTY id="dieMesh" type="7" value="cowDie.mesh"></PROPERTY>
       <PROPERTY id="dieAnimation" type="7" value=""></PROPERTY>
     </CUSTOMPROPERTIES>
@@ -17234,7 +17234,7 @@
       <PROPERTY id="speed" type="6" value="15"></PROPERTY>
       <PROPERTY id="damage" type="6" value="0"></PROPERTY>
       <PROPERTY id="specialDamage" type="6" value="0"></PROPERTY>
-      <PROPERTY id="height" type="6" value="0"></PROPERTY>
+      <PROPERTY id="height" type="6" value="2"></PROPERTY>
       <PROPERTY id="dieMesh" type="7" value="cowDie.mesh"></PROPERTY>
       <PROPERTY id="dieAnimation" type="7" value=""></PROPERTY>
     </CUSTOMPROPERTIES>
@@ -18101,7 +18101,7 @@
       <PROPERTY id="speed" type="6" value="15"></PROPERTY>
       <PROPERTY id="damage" type="6" value="0"></PROPERTY>
       <PROPERTY id="specialDamage" type="6" value="0"></PROPERTY>
-      <PROPERTY id="height" type="6" value="0"></PROPERTY>
+      <PROPERTY id="height" type="6" value="2"></PROPERTY>
       <PROPERTY id="dieMesh" type="7" value="cowDie.mesh"></PROPERTY>
       <PROPERTY id="dieAnimation" type="7" value=""></PROPERTY>
     </CUSTOMPROPERTIES>
@@ -18340,7 +18340,7 @@
       <PROPERTY id="speed" type="6" value="15"></PROPERTY>
       <PROPERTY id="damage" type="6" value="0"></PROPERTY>
       <PROPERTY id="specialDamage" type="6" value="0"></PROPERTY>
-      <PROPERTY id="height" type="6" value="0"></PROPERTY>
+      <PROPERTY id="height" type="6" value="2"></PROPERTY>
       <PROPERTY id="dieMesh" type="7" value="cowDie.mesh"></PROPERTY>
       <PROPERTY id="dieAnimation" type="7" value=""></PROPERTY>
     </CUSTOMPROPERTIES>
@@ -19008,7 +19008,7 @@
       <PROPERTY id="speed" type="6" value="15"></PROPERTY>
       <PROPERTY id="damage" type="6" value="0"></PROPERTY>
       <PROPERTY id="specialDamage" type="6" value="0"></PROPERTY>
-      <PROPERTY id="height" type="6" value="0"></PROPERTY>
+      <PROPERTY id="height" type="6" value="2"></PROPERTY>
       <PROPERTY id="dieMesh" type="7" value="cowDie.mesh"></PROPERTY>
       <PROPERTY id="dieAnimation" type="7" value=""></PROPERTY>
     </CUSTOMPROPERTIES>
@@ -19538,7 +19538,7 @@
       <PROPERTY id="speed" type="6" value="15"></PROPERTY>
       <PROPERTY id="damage" type="6" value="0"></PROPERTY>
       <PROPERTY id="specialDamage" type="6" value="0"></PROPERTY>
-      <PROPERTY id="height" type="6" value="0"></PROPERTY>
+      <PROPERTY id="height" type="6" value="2"></PROPERTY>
       <PROPERTY id="dieMesh" type="7" value="cowDie.mesh"></PROPERTY>
       <PROPERTY id="dieAnimation" type="7" value=""></PROPERTY>
     </CUSTOMPROPERTIES>
@@ -20758,7 +20758,7 @@
       <PROPERTY id="speed" type="6" value="15"></PROPERTY>
       <PROPERTY id="damage" type="6" value="0"></PROPERTY>
       <PROPERTY id="specialDamage" type="6" value="0"></PROPERTY>
-      <PROPERTY id="height" type="6" value="0"></PROPERTY>
+      <PROPERTY id="height" type="6" value="2"></PROPERTY>
       <PROPERTY id="dieMesh" type="7" value="cowDie.mesh"></PROPERTY>
       <PROPERTY id="dieAnimation" type="7" value=""></PROPERTY>
     </CUSTOMPROPERTIES>
@@ -21437,7 +21437,7 @@
       <PROPERTY id="speed" type="6" value="15"></PROPERTY>
       <PROPERTY id="damage" type="6" value="0"></PROPERTY>
       <PROPERTY id="specialDamage" type="6" value="0"></PROPERTY>
-      <PROPERTY id="height" type="6" value="0"></PROPERTY>
+      <PROPERTY id="height" type="6" value="2"></PROPERTY>
       <PROPERTY id="dieMesh" type="7" value="cowDie.mesh"></PROPERTY>
       <PROPERTY id="dieAnimation" type="7" value=""></PROPERTY>
     </CUSTOMPROPERTIES>
@@ -22008,7 +22008,7 @@
       <PROPERTY id="speed" type="6" value="15"></PROPERTY>
       <PROPERTY id="damage" type="6" value="0"></PROPERTY>
       <PROPERTY id="specialDamage" type="6" value="0"></PROPERTY>
-      <PROPERTY id="height" type="6" value="0"></PROPERTY>
+      <PROPERTY id="height" type="6" value="2"></PROPERTY>
       <PROPERTY id="dieMesh" type="7" value="cowDie.mesh"></PROPERTY>
       <PROPERTY id="dieAnimation" type="7" value=""></PROPERTY>
     </CUSTOMPROPERTIES>

@@ -39,9 +39,8 @@ void Player::initializeEntity(Ogre::Entity* entity, Ogre::SceneNode* sceneNode, 
 	mFireMesh->setVisible(mIsDebugEnabled);
 
 	// Physic Body
-	initializePhysics(entity->getName(), Vector3(20,50,20),"OBBoxManualMaterial_Player"); 
+	initializePhysics(entity->getName(), Vector3(35,50,35),"OBBoxManualMaterial_Player"); 
 	sceneNode->attachObject(getGeometry()->getMovableObject());
-
 
 	// Animation system
 	mAnimationSystem = new tecnofreak::ogre::AnimationSystem( mEntity );

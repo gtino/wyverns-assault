@@ -5969,9 +5969,9 @@
       </node>
       <node name="Cow#05" id="698507648">
         <rotation qw="0.5373" qx="0" qy="-0.843392" qz="0" />
-        <position x="1105.01" y="-1.10258" z="461.622" />
+        <position x="1105.01" y="1.5" z="461.622" />
         <scale x="1" y="1" z="1" />
-        <entity name="cow#5" id="740745216" castshadows="false" meshFile="cow.mesh" type="Enemy" subType="Cow" animationTree="data/animations/cow.xml" life="10" points="50" speed="15" damage="0" specialDamage="0" height="0" dieMesh="cowDie.mesh" dieAnimation="">
+        <entity name="cow#5" id="740745216" castshadows="false" meshFile="cow.mesh" type="Enemy" subType="Cow" animationTree="data/animations/cow.xml" life="10" points="50" speed="15" damage="0" specialDamage="0" height="2" dieMesh="cowDie.mesh" dieAnimation="">
           <rotation qw="1" qx="0" qy="0" qz="0" />
           <position x="0" y="0" z="0" />
           <scale x="1" y="1" z="1" />
@@ -6023,7 +6023,7 @@
         <rotation qw="0.876727" qx="0" qy="-0.480989" qz="0" />
         <position x="817.76" y="1.20199" z="-541.013" />
         <scale x="1" y="1" z="1" />
-        <entity name="cow#10" id="552812288" castshadows="false" meshFile="cow.mesh" type="Enemy" subType="Cow" animationTree="data/animations/cow.xml" life="10" points="50" speed="15" damage="0" specialDamage="0" height="0" dieMesh="cowDie.mesh" dieAnimation="">
+        <entity name="cow#10" id="552812288" castshadows="false" meshFile="cow.mesh" type="Enemy" subType="Cow" animationTree="data/animations/cow.xml" life="10" points="50" speed="15" damage="0" specialDamage="0" height="2" dieMesh="cowDie.mesh" dieAnimation="">
           <rotation qw="1" qx="0" qy="0" qz="0" />
           <position x="0" y="0" z="0" />
           <scale x="1" y="1" z="1" />
@@ -6164,9 +6164,9 @@
       </node>
       <node name="Cow" id="699270592">
         <rotation qw="0.961262" qx="0" qy="0.275637" qz="0" />
-        <position x="358.366" y="0.606974" z="797.335" />
+        <position x="358.366" y="1.5" z="797.335" />
         <scale x="1" y="1" z="1" />
-        <entity name="cow" id="486587104" castshadows="false" meshFile="cow.mesh" type="Enemy" subType="Cow" animationTree="data/animations/cow.xml" life="10" points="50" speed="15" damage="0" specialDamage="0" height="0" dieMesh="cowDie.mesh" dieAnimation="">
+        <entity name="cow" id="486587104" castshadows="false" meshFile="cow.mesh" type="Enemy" subType="Cow" animationTree="data/animations/cow.xml" life="10" points="50" speed="15" damage="0" specialDamage="0" height="2" dieMesh="cowDie.mesh" dieAnimation="">
           <rotation qw="1" qx="0" qy="0" qz="0" />
           <position x="0" y="0" z="0" />
           <scale x="1" y="1" z="1" />
@@ -6257,7 +6257,7 @@
         <rotation qw="0.967046" qx="0" qy="-0.254602" qz="0" />
         <position x="690.149" y="1.33217" z="726.98" />
         <scale x="1" y="1" z="1" />
-        <entity name="cow#0" id="385235136" castshadows="false" meshFile="cow.mesh" type="Enemy" subType="Cow" animationTree="data/animations/cow.xml" life="10" points="50" speed="15" damage="0" specialDamage="0" height="0" dieMesh="cowDie.mesh" dieAnimation="">
+        <entity name="cow#0" id="385235136" castshadows="false" meshFile="cow.mesh" type="Enemy" subType="Cow" animationTree="data/animations/cow.xml" life="10" points="50" speed="15" damage="0" specialDamage="0" height="2" dieMesh="cowDie.mesh" dieAnimation="">
           <rotation qw="1" qx="0" qy="0" qz="0" />
           <position x="0" y="0" z="0" />
           <scale x="1" y="1" z="1" />
@@ -6333,9 +6333,9 @@
       </node>
       <node name="Cow#07" id="569200704">
         <rotation qw="0.876727" qx="0" qy="-0.480989" qz="0" />
-        <position x="1141.14" y="-3.32154" z="468.042" />
+        <position x="1141.14" y="1.5" z="468.042" />
         <scale x="1" y="1" z="1" />
-        <entity name="cow#7" id="305825984" castshadows="false" meshFile="cow.mesh" type="Enemy" subType="Cow" animationTree="data/animations/cow.xml" life="10" points="50" speed="15" damage="0" specialDamage="0" height="0" dieMesh="cowDie.mesh" dieAnimation="">
+        <entity name="cow#7" id="305825984" castshadows="false" meshFile="cow.mesh" type="Enemy" subType="Cow" animationTree="data/animations/cow.xml" life="10" points="50" speed="15" damage="0" specialDamage="0" height="2" dieMesh="cowDie.mesh" dieAnimation="">
           <rotation qw="1" qx="0" qy="0" qz="0" />
           <position x="0" y="0" z="0" />
           <scale x="1" y="1" z="1" />
@@ -6346,9 +6346,9 @@
       </node>
       <node name="Cow#15" id="820001856">
         <rotation qw="0.936672" qx="0" qy="0.350207" qz="0" />
-        <position x="11.0416" y="-0.275745" z="-485.205" />
+        <position x="36.7216" y="1.5" z="-414.666" />
         <scale x="1" y="1" z="1" />
-        <entity name="cow#15" id="545091072" castshadows="false" meshFile="cow.mesh" type="Enemy" subType="Cow" animationTree="data/animations/cow.xml" life="10" points="50" speed="15" damage="0" specialDamage="0" height="0" dieMesh="cowDie.mesh" dieAnimation="">
+        <entity name="cow#15" id="545091072" castshadows="false" meshFile="cow.mesh" type="Enemy" subType="Cow" animationTree="data/animations/cow.xml" life="10" points="50" speed="15" damage="0" specialDamage="0" height="2" dieMesh="cowDie.mesh" dieAnimation="">
           <rotation qw="1" qx="0" qy="0" qz="0" />
           <position x="0" y="0" z="0" />
           <scale x="1" y="1" z="1" />
@@ -6450,9 +6450,9 @@
       </node>
       <node name="Cow#08" id="744315904">
         <rotation qw="0.876727" qx="0" qy="-0.480989" qz="0" />
-        <position x="1098.78" y="1.01119" z="578.224" />
+        <position x="1098.78" y="1.5" z="578.224" />
         <scale x="1" y="1" z="1" />
-        <entity name="cow#8" id="79348128" castshadows="false" meshFile="cow.mesh" type="Enemy" subType="Cow" animationTree="data/animations/cow.xml" life="10" points="50" speed="15" damage="0" specialDamage="0" height="0" dieMesh="cowDie.mesh" dieAnimation="">
+        <entity name="cow#8" id="79348128" castshadows="false" meshFile="cow.mesh" type="Enemy" subType="Cow" animationTree="data/animations/cow.xml" life="10" points="50" speed="15" damage="0" specialDamage="0" height="2" dieMesh="cowDie.mesh" dieAnimation="">
           <rotation qw="1" qx="0" qy="0" qz="0" />
           <position x="0" y="0" z="0" />
           <scale x="1" y="1" z="1" />
@@ -6606,9 +6606,9 @@
       </node>
       <node name="Cow#02" id="600238016">
         <rotation qw="0.876727" qx="0" qy="-0.480989" qz="0" />
-        <position x="1012" y="1.30633" z="506.156" />
+        <position x="1012" y="1.5" z="506.156" />
         <scale x="1" y="1" z="1" />
-        <entity name="cow#2" id="747215232" castshadows="false" meshFile="cow.mesh" type="Enemy" subType="Cow" animationTree="data/animations/cow.xml" life="10" points="50" speed="15" damage="0" specialDamage="0" height="0" dieMesh="cowDie.mesh" dieAnimation="">
+        <entity name="cow#2" id="747215232" castshadows="false" meshFile="cow.mesh" type="Enemy" subType="Cow" animationTree="data/animations/cow.xml" life="10" points="50" speed="15" damage="0" specialDamage="0" height="2" dieMesh="cowDie.mesh" dieAnimation="">
           <rotation qw="1" qx="0" qy="0" qz="0" />
           <position x="0" y="0" z="0" />
           <scale x="1" y="1" z="1" />
@@ -6671,9 +6671,9 @@
       </node>
       <node name="Cow#13" id="854792960">
         <rotation qw="0.964788" qx="0" qy="0.263031" qz="0" />
-        <position x="353.864" y="0.72562" z="-643.641" />
+        <position x="353.864" y="1.5" z="-643.641" />
         <scale x="1" y="1" z="1" />
-        <entity name="cow#13" id="828791168" castshadows="false" meshFile="cow.mesh" type="Enemy" subType="Cow" animationTree="data/animations/cow.xml" life="10" points="50" speed="15" damage="0" specialDamage="0" height="0" dieMesh="cowDie.mesh" dieAnimation="">
+        <entity name="cow#13" id="828791168" castshadows="false" meshFile="cow.mesh" type="Enemy" subType="Cow" animationTree="data/animations/cow.xml" life="10" points="50" speed="15" damage="0" specialDamage="0" height="2" dieMesh="cowDie.mesh" dieAnimation="">
           <rotation qw="1" qx="0" qy="0" qz="0" />
           <position x="0" y="0" z="0" />
           <scale x="1" y="1" z="1" />
@@ -6879,9 +6879,9 @@
       </node>
       <node name="Cow#01" id="517105632">
         <rotation qw="0.67559" qx="0" qy="0.737277" qz="0" />
-        <position x="687.049" y="1.49221" z="778.48" />
+        <position x="687.049" y="1.5" z="778.48" />
         <scale x="1" y="1" z="1" />
-        <entity name="cow#1" id="733085120" castshadows="false" meshFile="cow.mesh" type="Enemy" subType="Cow" animationTree="data/animations/cow.xml" life="10" points="50" speed="15" damage="0" specialDamage="0" height="0" dieMesh="cowDie.mesh" dieAnimation="">
+        <entity name="cow#1" id="733085120" castshadows="false" meshFile="cow.mesh" type="Enemy" subType="Cow" animationTree="data/animations/cow.xml" life="10" points="50" speed="15" damage="0" specialDamage="0" height="2" dieMesh="cowDie.mesh" dieAnimation="">
           <rotation qw="1" qx="0" qy="0" qz="0" />
           <position x="0" y="0" z="0" />
           <scale x="1" y="1" z="1" />
@@ -6957,9 +6957,9 @@
       </node>
       <node name="Cow#04" id="555131648">
         <rotation qw="0.999962" qx="0" qy="-0.0087266" qz="0" />
-        <position x="934.46" y="1.76641" z="517.077" />
+        <position x="934.46" y="1.5" z="517.077" />
         <scale x="1" y="1" z="1" />
-        <entity name="cow#4" id="905087424" castshadows="false" meshFile="cow.mesh" type="Enemy" subType="Cow" animationTree="data/animations/cow.xml" life="10" points="50" speed="15" damage="0" specialDamage="0" height="0" dieMesh="cowDie.mesh" dieAnimation="">
+        <entity name="cow#4" id="905087424" castshadows="false" meshFile="cow.mesh" type="Enemy" subType="Cow" animationTree="data/animations/cow.xml" life="10" points="50" speed="15" damage="0" specialDamage="0" height="2" dieMesh="cowDie.mesh" dieAnimation="">
           <rotation qw="1" qx="0" qy="0" qz="0" />
           <position x="0" y="0" z="0" />
           <scale x="1" y="1" z="1" />
@@ -6970,9 +6970,9 @@
       </node>
       <node name="Cow#14" id="242866288">
         <rotation qw="0.845728" qx="0" qy="-0.533615" qz="0" />
-        <position x="233.579" y="1.35054" z="-584.682" />
+        <position x="233.579" y="1.5" z="-584.682" />
         <scale x="1" y="1" z="1" />
-        <entity name="cow#14" id="612048704" castshadows="false" meshFile="cow.mesh" type="Enemy" subType="Cow" animationTree="data/animations/cow.xml" life="10" points="50" speed="15" damage="0" specialDamage="0" height="0" dieMesh="cowDie.mesh" dieAnimation="">
+        <entity name="cow#14" id="612048704" castshadows="false" meshFile="cow.mesh" type="Enemy" subType="Cow" animationTree="data/animations/cow.xml" life="10" points="50" speed="15" damage="0" specialDamage="0" height="2" dieMesh="cowDie.mesh" dieAnimation="">
           <rotation qw="1" qx="0" qy="0" qz="0" />
           <position x="0" y="0" z="0" />
           <scale x="1" y="1" z="1" />
@@ -7022,9 +7022,9 @@
       </node>
       <node name="Cow#11" id="707907328">
         <rotation qw="0.0871556" qx="0" qy="-0.996195" qz="0" />
-        <position x="765.594" y="3.21429" z="-391.286" />
+        <position x="765.594" y="2.5" z="-391.286" />
         <scale x="1" y="1" z="1" />
-        <entity name="cow#11" id="65950496" castshadows="false" meshFile="cow.mesh" type="Enemy" subType="Cow" animationTree="data/animations/cow.xml" life="10" points="50" speed="15" damage="0" specialDamage="0" height="0" dieMesh="cowDie.mesh" dieAnimation="">
+        <entity name="cow#11" id="65950496" castshadows="false" meshFile="cow.mesh" type="Enemy" subType="Cow" animationTree="data/animations/cow.xml" life="10" points="50" speed="15" damage="0" specialDamage="0" height="2" dieMesh="cowDie.mesh" dieAnimation="">
           <rotation qw="1" qx="0" qy="0" qz="0" />
           <position x="0" y="-1.07779" z="0" />
           <scale x="1" y="1" z="1" />
@@ -7086,10 +7086,10 @@
         </entity>
       </node>
       <node name="Cow#09" id="379131424">
-        <rotation qw="0.544639" qx="0" qy="0.838671" qz="0" />
-        <position x="1027.95" y="36.2856" z="51.8579" />
+        <rotation qw="0.777146" qx="0" qy="0.629321" qz="0" />
+        <position x="1027.95" y="34" z="51.8579" />
         <scale x="1" y="1" z="1" />
-        <entity name="cow#9" id="509262368" castshadows="false" meshFile="cow.mesh" type="Enemy" subType="Cow" animationTree="data/animations/cow.xml" life="10" points="50" speed="15" damage="0" specialDamage="0" height="0" dieMesh="cowDie.mesh" dieAnimation="">
+        <entity name="cow#9" id="509262368" castshadows="false" meshFile="cow.mesh" type="Enemy" subType="Cow" animationTree="data/animations/cow.xml" life="10" points="50" speed="15" damage="0" specialDamage="0" height="2" dieMesh="cowDie.mesh" dieAnimation="">
           <rotation qw="1" qx="0" qy="0" qz="0" />
           <position x="0" y="0" z="0" />
           <scale x="1" y="1" z="1" />
@@ -7243,9 +7243,9 @@
       </node>
       <node name="Cow#03" id="466353344">
         <rotation qw="0.876727" qx="0" qy="-0.480989" qz="0" />
-        <position x="1179.27" y="0.932518" z="507.459" />
+        <position x="1179.27" y="1.5" z="507.459" />
         <scale x="1" y="1" z="1" />
-        <entity name="cow#3" id="634723968" castshadows="false" meshFile="cow.mesh" type="Enemy" subType="Cow" animationTree="data/animations/cow.xml" life="10" points="50" speed="15" damage="0" specialDamage="0" height="0" dieMesh="cowDie.mesh" dieAnimation="">
+        <entity name="cow#3" id="634723968" castshadows="false" meshFile="cow.mesh" type="Enemy" subType="Cow" animationTree="data/animations/cow.xml" life="10" points="50" speed="15" damage="0" specialDamage="0" height="2" dieMesh="cowDie.mesh" dieAnimation="">
           <rotation qw="1" qx="0" qy="0" qz="0" />
           <position x="0" y="0" z="0" />
           <scale x="1" y="1" z="1" />
@@ -7334,9 +7334,9 @@
       </node>
       <node name="Cow#06" id="691122176">
         <rotation qw="0.876727" qx="0" qy="-0.480989" qz="0" />
-        <position x="1117.04" y="1.94941" z="341.281" />
+        <position x="1117.04" y="1.5" z="341.281" />
         <scale x="1" y="1" z="1" />
-        <entity name="cow#6" id="867732736" castshadows="false" meshFile="cow.mesh" type="Enemy" subType="Cow" animationTree="data/animations/cow.xml" life="10" points="50" speed="15" damage="0" specialDamage="0" height="0" dieMesh="cowDie.mesh" dieAnimation="">
+        <entity name="cow#6" id="867732736" castshadows="false" meshFile="cow.mesh" type="Enemy" subType="Cow" animationTree="data/animations/cow.xml" life="10" points="50" speed="15" damage="0" specialDamage="0" height="2" dieMesh="cowDie.mesh" dieAnimation="">
           <rotation qw="1" qx="0" qy="0" qz="0" />
           <position x="0" y="0" z="0" />
           <scale x="1" y="1" z="1" />
@@ -7347,9 +7347,9 @@
       </node>
       <node name="Cow#12" id="959074688">
         <rotation qw="0.967046" qx="0" qy="-0.254602" qz="0" />
-        <position x="589.771" y="-0.106556" z="-609.304" />
+        <position x="589.771" y="1.5" z="-609.304" />
         <scale x="1" y="1" z="1" />
-        <entity name="cow#12" id="65736868" castshadows="false" meshFile="cow.mesh" type="Enemy" subType="Cow" animationTree="data/animations/cow.xml" life="10" points="50" speed="15" damage="0" specialDamage="0" height="0" dieMesh="cowDie.mesh" dieAnimation="">
+        <entity name="cow#12" id="65736868" castshadows="false" meshFile="cow.mesh" type="Enemy" subType="Cow" animationTree="data/animations/cow.xml" life="10" points="50" speed="15" damage="0" specialDamage="0" height="2" dieMesh="cowDie.mesh" dieAnimation="">
           <rotation qw="1" qx="0" qy="0" qz="0" />
           <position x="0" y="0" z="0" />
           <scale x="1" y="1" z="1" />
@@ -7711,7 +7711,7 @@
       </node>
       <node name="UfoTree_0" id="516525760">
         <rotation qw="0.871971" qx="0" qy="-0.489558" qz="0" />
-        <position x="992.245" y="-0.000244141" z="-217.533" />
+        <position x="992.245" y="8.2" z="-217.533" />
         <scale x="1" y="1" z="1" />
         <entity name="Entity#54" id="6988739" castshadows="true" meshFile="UfoTree0.mesh" type="DynamicObject" BoxX="15" BoxY="70" BoxZ="15" life="100" dieMesh="UfoTree0Die.mesh" dieAnimation="Die">
           <rotation qw="1" qx="0" qy="0" qz="0" />
