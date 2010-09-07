@@ -59,6 +59,8 @@ namespace WyvernsAssault
 			int				mType;
 
 			std::vector<Vector3> mSpawnPoints;
+
+			bool			mCleared;
 		};
 
 		GameAreaManager();

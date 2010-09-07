@@ -265,9 +265,14 @@ int EnemyManager::getCount()
 
 	for( int i = 0; i < mEnemyMapList[mCurrentGameArea].size(); i++ )
 	{
+		// Don' count cows and chickens
 		if( mEnemyMapList[mCurrentGameArea][i]->getEnemyType() != Enemy::EnemyTypes::Chicken && 
 			mEnemyMapList[mCurrentGameArea][i]->getEnemyType() != Enemy::EnemyTypes::Cow )
-			count++;
+		{
+			// Count alive enemies
+			if( !mEnemyMapList[mCurrentGameArea][i]->isDying() )
+				count++;
+		}
 	}
 
 	return count;
@@ -279,9 +284,14 @@ int EnemyManager::getCount(int gameArea)
 
 	for( int i = 0; i < mEnemyMapList[gameArea].size(); i++ )
 	{
+		// Don't count cows and chickens
 		if( mEnemyMapList[gameArea][i]->getEnemyType() != Enemy::EnemyTypes::Chicken && 
 			mEnemyMapList[gameArea][i]->getEnemyType() != Enemy::EnemyTypes::Cow )
-			count++;
+		{
+			// Count alive enemies
+			if( !mEnemyMapList[mCurrentGameArea][i]->isDying() )
+				count++;
+		}
 	}
 
 	return count;
@@ -508,9 +518,11 @@ EVENTS_DEFINE_HANDLER(EnemyManager, EnemyKilled)
 			}
 		}
 
-		EnemyRemoveEventPtr eRemove = EnemyRemoveEventPtr(new EnemyRemoveEvent(enemy));
- 		EVENTS_FIRE_AFTER(eRemove, 5.0f);
+		//EnemyRemoveEventPtr eRemove = EnemyRemoveEventPtr(new EnemyRemoveEvent(enemy));
+ 		//EVENTS_FIRE_AFTER(eRemove, 5.0f);
 	}
+
+	// Remove physics box
 }
 
 EVENTS_DEFINE_HANDLER(EnemyManager, EnemyRemove)
@@ -530,8 +542,8 @@ EVENTS_DEFINE_HANDLER(EnemyManager, EnemyCustom)
 	if( enemy->isBurning())
 		enemy->setVisible(false);
 
-	EnemyRemoveEventPtr eRemove = EnemyRemoveEventPtr(new EnemyRemoveEvent(enemy));
-	EVENTS_FIRE_AFTER(eRemove, 5.0f);
+	//EnemyRemoveEventPtr eRemove = EnemyRemoveEventPtr(new EnemyRemoveEvent(enemy));
+	//EVENTS_FIRE_AFTER(eRemove, 5.0f);
 }
 
 EVENTS_DEFINE_HANDLER(EnemyManager, EnemyCreation)

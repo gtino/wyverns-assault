@@ -928,13 +928,13 @@ bool PlayState::keyPressed(const OIS::KeyEvent& e)
 		break;
 
 	// Skip cutscene
-	case OIS::KeyCode::KC_RETURN:
+	case OIS::KeyCode::KC_ESCAPE:
 		mCutSceneManager->skip();
 		break;
 
 	// Move Player to a game area -- HACK!
 	case OIS::KeyCode::KC_DELETE:
-		player1->setPosition(Vector3(1216, 23, 197));
+		player1->setPosition(Vector3(1172, 31, -25));
 		break;
 	}
 

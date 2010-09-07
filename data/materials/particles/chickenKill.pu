@@ -92,8 +92,8 @@ system WyvernsAssault/ChickenKill
             }
             time_to_live                        dyn_random
             {
-                min                             4.5
-                max                             4.85
+                min                             25
+                max                             35
             }
             velocity                            0
             duration                            20
