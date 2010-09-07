@@ -55,7 +55,7 @@
   <CAMERASPEED value="19"></CAMERASPEED>
   <CAMERAPOSITIONS count="1">
     <OPTION id="0" position="1417.36 9.53911 54.9741" orientation="0.707107 0 0.707107 0"></OPTION>
-    <OPTION id="1" position="-109.631 238.833 -492.754" orientation="-0.659194 0.284168 0.639506 0.275216"></OPTION>
+    <OPTION id="1" position="917.27 823.288 -336.154" orientation="0.707107 -0.707107 0 0"></OPTION>
   </CAMERAPOSITIONS>
     <LAYERS>
       <LAYER id="0" name="Layer 0" visible="true"></LAYER>
@@ -136,9 +136,9 @@
   <OBJECT object_id="2000000002" name="Viewport1" typename="Viewport Object">
     <PROPERTY id="camera::clipdistance" type="8" value="0.05 100000"></PROPERTY>
     <PROPERTY id="camera::fov" type="6" value="1"></PROPERTY>
-    <PROPERTY id="camera::orientation" type="13" value="-0.659215 0.284177 0.639526 0.275225"></PROPERTY>
+    <PROPERTY id="camera::orientation" type="13" value="0.707107 -0.707107 0 0"></PROPERTY>
     <PROPERTY id="camera::polymode" type="2" value="3"></PROPERTY>
-    <PROPERTY id="camera::position" type="9" value="-109.631 238.833 -492.754"></PROPERTY>
+    <PROPERTY id="camera::position" type="9" value="917.27 823.288 -336.154"></PROPERTY>
     <PROPERTY id="camera::viewmode" type="2" value="6"></PROPERTY>
     <PROPERTY id="colour" type="11" value="0.901961 0.901961 0.901961 1"></PROPERTY>
     <PROPERTY id="compositorcount" type="2" value="0"></PROPERTY>
@@ -8241,6 +8241,18 @@
     <PROPERTY id="locked" type="12" value="false"></PROPERTY>
     <PROPERTY id="orientation" type="13" value="1 0 0 0"></PROPERTY>
     <PROPERTY id="position" type="9" value="521.782 2.5 720.215"></PROPERTY>
+    <PROPERTY id="scale" type="9" value="1 1 1"></PROPERTY>
+    <PROPERTY id="updatescript" type="7" value=""></PROPERTY>
+    <CUSTOMPROPERTIES>
+    </CUSTOMPROPERTIES>
+  </OBJECT>
+
+  <OBJECT object_id="505050848" name="Rain#00" typename="Node Object" parentnode="ParticleSystems">
+    <PROPERTY id="autotracktarget" type="7" value="None"></PROPERTY>
+    <PROPERTY id="layer" type="2" value="0"></PROPERTY>
+    <PROPERTY id="locked" type="12" value="false"></PROPERTY>
+    <PROPERTY id="orientation" type="13" value="1 0 0 0"></PROPERTY>
+    <PROPERTY id="position" type="9" value="873.529 200 -405.751"></PROPERTY>
     <PROPERTY id="scale" type="9" value="1 1 1"></PROPERTY>
     <PROPERTY id="updatescript" type="7" value=""></PROPERTY>
     <CUSTOMPROPERTIES>
@@ -17377,6 +17389,26 @@
     </CUSTOMPROPERTIES>
   </OBJECT>
 
+  <OBJECT object_id="662800960" name="cube#7" typename="Entity Object" parentnode="Rain#00">
+    <PROPERTY id="autotracktarget" type="7" value="None"></PROPERTY>
+    <PROPERTY id="castshadows" type="12" value="false"></PROPERTY>
+    <PROPERTY id="layer" type="2" value="0"></PROPERTY>
+    <PROPERTY id="locked" type="12" value="false"></PROPERTY>
+    <PROPERTY id="meshfile" type="7" value="cube.mesh"></PROPERTY>
+    <PROPERTY id="orientation" type="13" value="1 0 0 0"></PROPERTY>
+    <PROPERTY id="position" type="9" value="0 0 0"></PROPERTY>
+    <PROPERTY id="renderingdistance" type="6" value="10000"></PROPERTY>
+    <PROPERTY id="scale" type="9" value="0.1 0.1 0.1"></PROPERTY>
+    <PROPERTY id="subentity0::material" type="7" value="BaseWhite"></PROPERTY>
+    <PROPERTY id="subentity0::visible" type="12" value="true"></PROPERTY>
+    <PROPERTY id="subentitycount" type="2" value="1"></PROPERTY>
+    <PROPERTY id="updatescript" type="7" value=""></PROPERTY>
+    <CUSTOMPROPERTIES>
+      <PROPERTY id="type" type="7" value="ParticleSystem"></PROPERTY>
+      <PROPERTY id="script" type="7" value="WyvernsAssault/Rain"></PROPERTY>
+    </CUSTOMPROPERTIES>
+  </OBJECT>
+
   <OBJECT object_id="211279648" name="beerGlass#0#2" typename="Entity Object" parentnode="BeerGlass#2">
     <PROPERTY id="autotracktarget" type="7" value="None"></PROPERTY>
     <PROPERTY id="castshadows" type="12" value="true"></PROPERTY>
@@ -20758,7 +20790,7 @@
       <PROPERTY id="speed" type="6" value="15"></PROPERTY>
       <PROPERTY id="damage" type="6" value="0"></PROPERTY>
       <PROPERTY id="specialDamage" type="6" value="0"></PROPERTY>
-      <PROPERTY id="height" type="6" value="2"></PROPERTY>
+      <PROPERTY id="height" type="6" value="0"></PROPERTY>
       <PROPERTY id="dieMesh" type="7" value="cowDie.mesh"></PROPERTY>
       <PROPERTY id="dieAnimation" type="7" value=""></PROPERTY>
     </CUSTOMPROPERTIES>

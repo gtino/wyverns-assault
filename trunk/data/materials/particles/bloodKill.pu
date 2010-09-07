@@ -114,8 +114,8 @@ system WyvernsAssault/BloodKill
             }
             time_to_live                        dyn_random
             {
-                min                             4.9
-                max                             4.75
+                min                             25
+                max                             35
             }
             velocity                            0
             duration                            20

@@ -238,9 +238,8 @@ EVENTS_DEFINE_HANDLER(ScenarioManager, ObjectKilled)
 		obj->dieSwitch();
 	}
 
-	ObjectRemoveEventPtr oRemove = ObjectRemoveEventPtr(new ObjectRemoveEvent(obj));
- 	EVENTS_FIRE_AFTER(oRemove, 4.0f);
-
+	//ObjectRemoveEventPtr oRemove = ObjectRemoveEventPtr(new ObjectRemoveEvent(obj));
+ 	//EVENTS_FIRE_AFTER(oRemove, 4.0f);
 }
 
 EVENTS_DEFINE_HANDLER(ScenarioManager, ObjectRemove)

@@ -7089,7 +7089,7 @@
         <rotation qw="0.777146" qx="0" qy="0.629321" qz="0" />
         <position x="1027.95" y="34" z="51.8579" />
         <scale x="1" y="1" z="1" />
-        <entity name="cow#9" id="509262368" castshadows="false" meshFile="cow.mesh" type="Enemy" subType="Cow" animationTree="data/animations/cow.xml" life="10" points="50" speed="15" damage="0" specialDamage="0" height="2" dieMesh="cowDie.mesh" dieAnimation="">
+        <entity name="cow#9" id="509262368" castshadows="false" meshFile="cow.mesh" type="Enemy" subType="Cow" animationTree="data/animations/cow.xml" life="10" points="50" speed="15" damage="0" specialDamage="0" height="0" dieMesh="cowDie.mesh" dieAnimation="">
           <rotation qw="1" qx="0" qy="0" qz="0" />
           <position x="0" y="0" z="0" />
           <scale x="1" y="1" z="1" />
@@ -8552,6 +8552,19 @@
           <rotation qw="1" qx="0" qy="0" qz="0" />
           <position x="0" y="0" z="0" />
           <scale x="0.05" y="0.05" z="0.05" />
+          <subentities>
+            <subentity materialName="BaseWhite" index="0" visible="true" />
+          </subentities>
+        </entity>
+      </node>
+      <node name="Rain#00" id="505050848">
+        <rotation qw="1" qx="0" qy="0" qz="0" />
+        <position x="873.529" y="200" z="-405.751" />
+        <scale x="1" y="1" z="1" />
+        <entity name="cube#7" id="662800960" castshadows="false" meshFile="cube.mesh" type="ParticleSystem" script="WyvernsAssault/Rain">
+          <rotation qw="1" qx="0" qy="0" qz="0" />
+          <position x="0" y="0" z="0" />
+          <scale x="0.1" y="0.1" z="0.1" />
           <subentities>
             <subentity materialName="BaseWhite" index="0" visible="true" />
           </subentities>

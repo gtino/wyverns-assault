@@ -328,7 +328,7 @@ material Particle/Rain
     {
         pass
         {
-            scene_blend colour_blend
+            scene_blend add
             depth_write off
 			fog_override true none
 			
@@ -833,6 +833,24 @@ material Particle/Debris
             {
                 texture particle_derbis.png
                 tex_address_mode clamp
+            }
+        }
+    }
+}
+//-----------------------------------------------------------------------------------------------------------------------------------------------
+material Particle/Circle
+{
+    technique
+    {
+        pass
+        {
+            depth_write off
+            scene_blend alpha_blend
+			fog_override true none
+			
+            texture_unit
+            {
+                texture particle_circle.png
             }
         }
     }
