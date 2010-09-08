@@ -440,15 +440,17 @@ namespace WyvernsAssault
 	class GameAreaChangedEvent : public Event
 	{
 	public:
-		GameAreaChangedEvent(int previousArea, int actualArea);
+		GameAreaChangedEvent(int level, int previousArea, int actualArea);
 		~GameAreaChangedEvent(){};
 		
 		int getPreviousArea(){ return mPreviousArea; }
 		int getActualArea(){ return mActualArea; }
+		int getLevel(){return mLevel; };
 
 	private:
 		int mPreviousArea;
 		int mActualArea;
+		int mLevel;
 	};
 
 	typedef boost::shared_ptr<GameAreaChangedEvent> GameAreaChangedEventPtr;
@@ -457,13 +459,15 @@ namespace WyvernsAssault
 	class GameAreaClearedEvent : public Event
 	{
 	public:
-		GameAreaClearedEvent(int gameArea, int type);
+		GameAreaClearedEvent(int level, int gameArea, int type);
 		~GameAreaClearedEvent(){};
 		
 		int getGameArea(){ return mGameArea; }
 		int getType(){ return mType; }
+		int getLevel(){return mLevel; };
 
 	private:
+		int mLevel;
 		int mGameArea;
 		int mType;
 	};
@@ -474,13 +478,15 @@ namespace WyvernsAssault
 	class GameAreaEnemiesDeathEvent : public Event
 	{
 	public:
-		GameAreaEnemiesDeathEvent(int gameArea);
+		GameAreaEnemiesDeathEvent(int level, int gameArea);
 		~GameAreaEnemiesDeathEvent(){};
 		
+		int getLevel(){ return mLevel; }
 		int getGameArea(){ return mGameArea; }
 
 	private:
 		int mGameArea;
+		int mLevel;
 	};
 
 	typedef boost::shared_ptr<GameAreaEnemiesDeathEvent> GameAreaEnemiesDeathEventPtr;

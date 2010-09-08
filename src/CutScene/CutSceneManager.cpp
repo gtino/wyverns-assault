@@ -16,6 +16,7 @@ CutSceneManager& CutSceneManager::getSingleton(void)
 
 CutSceneManager::CutSceneManager(SceneManager* sceneManager)
 : mCutSceneNode(0)
+, mCurrentLevel(-1)
 , mCutSceneId(CutSceneId::Nothing)
 , mCurrentStep(0)
 , mElapsedSceneTime(0.0f)
@@ -39,10 +40,20 @@ void CutSceneManager::initialize()
 void CutSceneManager::finalize()
 {
 	mAlreadyPlayed.clear();
+
+	for(LevelToCutScenesMapIterator it = mCutScenesMap.begin(); it != mCutScenesMap.end(); ++it)
+	{
+		GameAreaToCutSceneIdMapPtr gaMap = it->second;
+
+		gaMap->clear();
+	}
+
+	mCutScenesMap.clear();
 }
 
-void CutSceneManager::play(CutSceneId id)
+void CutSceneManager::play(int level, CutSceneId id)
 {
+	mCurrentLevel = level;
 	mCutSceneId = id;
 }
 
@@ -126,6 +137,39 @@ void CutSceneManager::reset()
 	mCurrentStep = 0;
 }
 
+void CutSceneManager::add(int level, int gameArea, int id, const Ogre::String script)
+{
+	if(mCutScenesMap.find(level) == mCutScenesMap.end())
+	{
+		//
+		// Level not present yet, so create a map for it
+		//
+		mCutScenesMap[level] = GameAreaToCutSceneIdMapPtr(new GameAreaToCutSceneIdMap());
+	}
+
+	GameAreaToCutSceneIdMapPtr gameAreaMap = mCutScenesMap[level];
+
+	if(gameAreaMap->find(gameArea) != gameAreaMap->end())
+	{
+		// This should never happen, it means that we have already set a script
+		// for this area... We are not gonna overwrite it...
+		// Assert fals is not the best way but this is rush code :-)
+		assert(false);
+	}
+	else
+	{
+		// Instantiate a new cut scene
+		// assign it to the given game area.
+		//
+		// HACK! It looks like this is the only way to be able to
+		// use the [] access with this map that actually is a shared pointer!
+		//
+		GameAreaToCutSceneIdMap* m = gameAreaMap.get();
+		
+		(*m)[gameArea] = CutScenePtr(new CutScene(id,script));
+	}
+}
+
 // --------------
 // Event handlers
 // --------------
@@ -139,6 +183,7 @@ EVENTS_END_UNREGISTER_HANDLERS()
 
 EVENTS_DEFINE_HANDLER(CutSceneManager, GameAreaChanged)
 {
+	int level = evt->getLevel();
 	int previousArea = evt->getPreviousArea();
 	int actualArea = evt->getActualArea();
 
@@ -205,6 +250,7 @@ LUA_BIND(CutSceneManager, getElapsedSceneTime)
 LUA_BIND(CutSceneManager, wait)
 LUA_BIND(CutSceneManager, nextStep)
 LUA_BIND(CutSceneManager, reset)
+LUA_BIND(CutSceneManager, add)
 LUA_END_BINDING()
 
 //
@@ -299,6 +345,20 @@ LUA_DEFINE_FUNCTION(CutSceneManager, reset)
 	int n = lua_gettop(L);
 
 	CutSceneManager::getSingleton().reset();
+
+	/* return the number of results */
+	return 0;
+}
+
+LUA_DEFINE_FUNCTION(CutSceneManager, add)
+{
+	//
+	// Pass it to Lua script
+	//
+	/* get number of arguments */
+	int n = lua_gettop(L);
+
+	//CutSceneManager::getSingleton().add(level,gameArea,cutSceneId,script);
 
 	/* return the number of results */
 	return 0;

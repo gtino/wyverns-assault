@@ -50,23 +50,30 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #include <SdkTrays.h>
 #include <ParticleUniversePlugin.h>
 
-#define GAME_AREAS_DOTSCENE_FILE "Level1_1_gameAreas.scene"
-#define GAME_LEVEL_DOTSCENE_FILE "Level1_1.scene"
-#define GAME_CAMERAS_DOTSCENE_FILE "Level1_1_cameras.scene"
-
-//#define GAME_AREAS_DOTSCENE_FILE "Boss_gameAreas.scene"
-//#define GAME_LEVEL_DOTSCENE_FILE "Boss.scene"
-//#define GAME_CAMERAS_DOTSCENE_FILE "Boss_cameras.scene"
+#define GAME_LEVEL_INDEX 0
+#define GAME_CAMERAS_INDEX 1
+#define GAME_AREAS_INDEX 2
 
 namespace WyvernsAssault
 {
+	// Config files for each level
+	typedef struct LevelFiles {
+		const char* scene;
+		const char* cameras;
+		const char* gameAreas;
+	} LevelFiles;
+
 	/**
 		Play game state class
 	*/
 	class PlayState : public BaseState
 	{
 	public:
-		PlayState(GraphicsManagerPtr graphicsManager, InputManagerPtr inputManager, AudioManagerPtr audioManager, CameraManagerPtr cameraManager, GuiManagerPtr guiManager);
+		PlayState(	GraphicsManagerPtr graphicsManager, 
+					InputManagerPtr inputManager, 
+					AudioManagerPtr audioManager, 
+					CameraManagerPtr cameraManager, 
+					GuiManagerPtr guiManager);
 		~PlayState();
 
 	public:
@@ -101,6 +108,9 @@ namespace WyvernsAssault
 
 		/** Mouse input */
 		bool mouseMoved(const OIS::MouseEvent& e);
+
+		/** Get current level */
+		int getLevel(){return mLevel;}
 
 	private:
 		LightsManagerPtr mLightsManager;
@@ -155,12 +165,20 @@ namespace WyvernsAssault
 		TIMER(Projectile);
 		TIMER(ParticleSystem);
 
+		//
+		// Current level
+		//
+		int mLevel;
+
 	protected:
 		float			buttonTimer;
 		OIS::KeyCode	lastKey;
 
 		bool			mDebugEnabled;
-		
+	
+		// Levels' list
+	public:
+		 static const struct LevelFiles smLevels[];
 	};
 }
 #endif // __PLAY_STATE_H_

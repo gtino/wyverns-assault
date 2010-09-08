@@ -53,6 +53,7 @@ namespace WyvernsAssault
 		CreditsGui		= 7,
 		PauseGui		= 8,
 		OptionsGui		= 9,
+		LevelLoadingGui = 10
 	};
 
 	/** The widget map type */

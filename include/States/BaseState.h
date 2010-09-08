@@ -58,14 +58,15 @@ namespace WyvernsAssault
 		Intro			= 1,
 		MainMenu		= 2,
 		Play			= 3,
-		GameOver		= 4,
-		Ending			= 5,
-		Outro			= 6,
-		Credits			= 7,
-		Options			= 8,
-		Pause			= 9,
-		Previous		= 10,// Special state, it is just a flag to return back to whatever the previous state was.
-		Exit			= 11 // Special state, it is just a flag to exit the application
+		LevelLoading	= 4,
+		GameOver		= 5,
+		Ending			= 6,
+		Outro			= 7,
+		Credits			= 8,
+		Options			= 9,
+		Pause			= 10,
+		Previous		= 11,// Special state, it is just a flag to return back to whatever the previous state was.
+		Exit			= 12 // Special state, it is just a flag to exit the application
 	};
 
 	/**

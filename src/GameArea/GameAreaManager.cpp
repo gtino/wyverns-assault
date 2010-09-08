@@ -18,6 +18,7 @@ GameAreaManager::GameAreaManager()
 : mInitialized(false)
 , mIsDebugEnabled(false)
 , mCurrentGameArea(-1)
+, mCurrentLevel(CURRENT_LEVEL)
 , mGameAreaCleared(true)
 , mEnemiesAlive(false)
 , mTime(0.0)
@@ -55,7 +56,7 @@ void GameAreaManager::update(Vector3 playerPosition, const float elapsedSeconds)
 	// Game Area changed and game area is cleared raise event
 	if( mCurrentGameArea != playerArea && mGameAreaCleared )
 	{
-		GameAreaChangedEventPtr evt = GameAreaChangedEventPtr(new GameAreaChangedEvent(mCurrentGameArea, playerArea));
+		GameAreaChangedEventPtr evt = GameAreaChangedEventPtr(new GameAreaChangedEvent(mCurrentLevel, mCurrentGameArea, playerArea));
 		EVENTS_FIRE(evt);
 
 		mCurrentGameArea = playerArea;
@@ -75,8 +76,7 @@ void GameAreaManager::update(Vector3 playerPosition, const float elapsedSeconds)
 		if( mGameAreas[mCurrentGameArea].mFinishTime < mTime && !mGameAreaCleared )
 		{
 			mGameAreaCleared = true;
-			mGameAreas[mCurrentGameArea].mCleared = true;
-			GameAreaClearedEventPtr evt = GameAreaClearedEventPtr(new GameAreaClearedEvent(mCurrentGameArea, mGameAreas[mCurrentGameArea].mType));
+			GameAreaClearedEventPtr evt = GameAreaClearedEventPtr(new GameAreaClearedEvent(mCurrentLevel, mCurrentGameArea, mGameAreas[mCurrentGameArea].mType));
 			EVENTS_FIRE(evt);
 		}
 	}
@@ -84,8 +84,7 @@ void GameAreaManager::update(Vector3 playerPosition, const float elapsedSeconds)
 	else if( !mEnemiesAlive && !mGameAreaCleared)
 	{	
 		mGameAreaCleared = true;
-		mGameAreas[mCurrentGameArea].mCleared = true;
-		GameAreaClearedEventPtr evt = GameAreaClearedEventPtr(new GameAreaClearedEvent(mCurrentGameArea, mGameAreas[mCurrentGameArea].mType));
+		GameAreaClearedEventPtr evt = GameAreaClearedEventPtr(new GameAreaClearedEvent(mCurrentLevel, mCurrentGameArea, mGameAreas[mCurrentGameArea].mType));
 		EVENTS_FIRE(evt);
 	}
 }
@@ -93,46 +92,42 @@ void GameAreaManager::update(Vector3 playerPosition, const float elapsedSeconds)
 // Manage game area enemy creation events
 void GameAreaManager::manageGameArea()
 {
-	// Manage game area if it hasn't been cleared before
-	if( !mGameAreas[mCurrentGameArea].mCleared )
+	// Area cleared by time
+	if( mGameAreas[mCurrentGameArea].mFinishTime > 0.0 )
 	{
-		// Area cleared by time
-		if( mGameAreas[mCurrentGameArea].mFinishTime > 0.0 )
+		// Time mini-game
+		if(mGameAreas[mCurrentGameArea].mType == 1)
 		{
-			// Time mini-game
-			if(mGameAreas[mCurrentGameArea].mType == 1)
+			for(int i = 0; i < mGameAreas[mCurrentGameArea].mFinishTime * 2; i++ )
 			{
-				for(int i = 0; i < mGameAreas[mCurrentGameArea].mFinishTime * 2; i++ )
-				{
-					Enemy::EnemyTypes type;
-					int x = rand() % 3;
+				Enemy::EnemyTypes type;
+				int x = rand() % 3;
 
-					if( x == 0 )
-						type = Enemy::EnemyTypes::Naked;
-					else if( x == 1 )
-						type = Enemy::EnemyTypes::Cow;
-					else
-						type = Enemy::EnemyTypes::Chicken;
+				if( x == 0 )
+					type = Enemy::EnemyTypes::Naked;
+				else if( x == 1 )
+					type = Enemy::EnemyTypes::Cow;
+				else
+					type = Enemy::EnemyTypes::Chicken;
 
-					EnemyCreationEventPtr evt = EnemyCreationEventPtr(new EnemyCreationEvent(type, mGameAreas[mCurrentGameArea].mDifficult, getSpawnPoint(mCurrentGameArea), mCurrentGameArea));
-					float time = i / 2;
-					EVENTS_FIRE_AFTER(evt, time);
-				}
+				EnemyCreationEventPtr evt = EnemyCreationEventPtr(new EnemyCreationEvent(type, mGameAreas[mCurrentGameArea].mDifficult, getSpawnPoint(mCurrentGameArea), mCurrentGameArea));
+				float time = i / 2;
+				EVENTS_FIRE_AFTER(evt, time);
 			}
 		}
-		// Area cleared killing enemies
-		else
+	}
+	// Area cleared killing enemies
+	else
+	{
+		// Only knights spwan
+		if(mGameAreas[mCurrentGameArea].mType == 0)
 		{
-			// Only knights spwan
-			if(mGameAreas[mCurrentGameArea].mType == 0)
-			{
-				Enemy::EnemyTypes type = Enemy::EnemyTypes::Knight;
+			Enemy::EnemyTypes type = Enemy::EnemyTypes::Knight;
 
-				for(int i = 0; i < mGameAreas[mCurrentGameArea].mEnemies; i++ )
-				{
-					EnemyCreationEventPtr evt = EnemyCreationEventPtr(new EnemyCreationEvent(type, mGameAreas[mCurrentGameArea].mDifficult, getSpawnPoint(mCurrentGameArea), mCurrentGameArea));
-					EVENTS_FIRE_AFTER(evt, i+5);
-				}
+			for(int i = 0; i < mGameAreas[mCurrentGameArea].mEnemies; i++ )
+			{
+				EnemyCreationEventPtr evt = EnemyCreationEventPtr(new EnemyCreationEvent(type, mGameAreas[mCurrentGameArea].mDifficult, getSpawnPoint(mCurrentGameArea), mCurrentGameArea));
+				EVENTS_FIRE_AFTER(evt, i+5);
 			}
 		}
 	}
@@ -174,7 +169,6 @@ Vector3 GameAreaManager::getSpawnPoint(int gameArea)
 /** Add game area to vector */
 void GameAreaManager::addGameArea(GameArea area)
 {
-	area.mCleared = false;
 	mGameAreas.push_back(area);
 }
 

@@ -241,27 +241,30 @@ ObjectRemoveEvent::ObjectRemoveEvent(ObjectPtr o)
 
 //----------------------
 
-GameAreaChangedEvent::GameAreaChangedEvent(int previousArea, int actualArea)
+GameAreaChangedEvent::GameAreaChangedEvent(int level, int previousArea, int actualArea)
 :Event(EventTypes::GameAreaChanged, EventPriorities::High)
 {
+	mLevel = level;
 	mPreviousArea = previousArea;
 	mActualArea = actualArea;
 };
 
 //----------------------
 
-GameAreaClearedEvent::GameAreaClearedEvent(int gameArea, int type)
+GameAreaClearedEvent::GameAreaClearedEvent(int level, int gameArea, int type)
 :Event(EventTypes::GameAreaCleared, EventPriorities::Normal)
 {
+	mLevel = level;
 	mGameArea = gameArea;
 	mType = type;
 };
 
 //----------------------
 
-GameAreaEnemiesDeathEvent::GameAreaEnemiesDeathEvent(int gameArea)
+GameAreaEnemiesDeathEvent::GameAreaEnemiesDeathEvent(int level, int gameArea)
 :Event(EventTypes::GameAreaEnemiesDeath, EventPriorities::Normal)
 {
+	mLevel - level;
 	mGameArea = gameArea;
 };
 

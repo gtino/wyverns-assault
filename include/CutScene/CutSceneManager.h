@@ -27,6 +27,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #include <OgreSingleton.h>
 #include <boost/enable_shared_from_this.hpp>
 
+#include "CutScene.h" 
+
 #include "..\Utils\Utils.h"
 #include "..\Lua\LuaInterface.h"
 #include "..\Events\EventsInterface.h"
@@ -64,6 +66,13 @@ namespace WyvernsAssault
 	typedef std::map<CutSceneId,bool> CutScenesPlayedMap;
 	typedef std::map<CutSceneId,bool>::iterator CutScenesPlayedMapIterator;
 
+		typedef std::map<int,CutScenePtr> GameAreaToCutSceneIdMap;
+		typedef std::map<int,CutScenePtr>::iterator GameAreaToCutSceneIdMapIterator;
+		typedef boost::shared_ptr<GameAreaToCutSceneIdMap> GameAreaToCutSceneIdMapPtr;
+
+		typedef std::map<int,GameAreaToCutSceneIdMapPtr> LevelToCutScenesMap;
+		typedef std::map<int,GameAreaToCutSceneIdMapPtr>::iterator LevelToCutScenesMapIterator;
+
 	public:
 		CutSceneManager(SceneManager* sceneManager);
 		~CutSceneManager();
@@ -77,7 +86,7 @@ namespace WyvernsAssault
 		void finalize();
 		/** Update and run lua scripts */
 		void update(const float elapsedSeconds);
-		void play(CutSceneId id);
+		void play(int level, CutSceneId id);
 		void skip(){setCurrentStep(CUTSCENE_FINAL_STEP);}
 
 		Ogre::SceneNode* _getSceneNode() const { return mCutSceneNode; }
@@ -89,17 +98,22 @@ namespace WyvernsAssault
 		const bool wait(const float timeout);
 		const int nextStep(){return ++mCurrentStep;}
 		void reset();
+		void add(int level, int gameArea, int id, const Ogre::String script);
 
 	private:
 		SceneManager* mSceneManager;
 		SceneNode* mCutSceneNode;
 
+		int mCurrentLevel;
 		CutSceneId mCutSceneId;
+
 		int mCurrentStep;
 		float mElapsedSceneTime;
 		float mWaitTimer;
 
 		CutScenesPlayedMap mAlreadyPlayed;
+
+		LevelToCutScenesMap mCutScenesMap;
 
 	public:
 		// ----------------
@@ -124,6 +138,8 @@ namespace WyvernsAssault
 		LUA_FUNCTION(wait)
 		LUA_FUNCTION(nextStep)
 		LUA_FUNCTION(reset)
+		LUA_FUNCTION(play)
+		LUA_FUNCTION(add)
 
 	private:
 		// ----------------------------
