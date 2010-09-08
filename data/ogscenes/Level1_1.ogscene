@@ -55,7 +55,7 @@
   <CAMERASPEED value="19"></CAMERASPEED>
   <CAMERAPOSITIONS count="1">
     <OPTION id="0" position="1417.36 9.53911 54.9741" orientation="0.707107 0 0.707107 0"></OPTION>
-    <OPTION id="1" position="327.112 162.753 859.497" orientation="0.935217 -0.306115 -0.169112 -0.0553581"></OPTION>
+    <OPTION id="1" position="146.024 220.619 1020.86" orientation="0.966643 -0.245498 0.0707761 0.0179854"></OPTION>
   </CAMERAPOSITIONS>
     <LAYERS>
       <LAYER id="0" name="Layer 0" visible="true"></LAYER>
@@ -136,10 +136,10 @@
   <OBJECT object_id="2000000002" name="Viewport1" typename="Viewport Object">
     <PROPERTY id="camera::clipdistance" type="8" value="0.05 100000"></PROPERTY>
     <PROPERTY id="camera::fov" type="6" value="1"></PROPERTY>
-    <PROPERTY id="camera::orientation" type="13" value="0.935247 -0.306125 -0.169118 -0.0553599"></PROPERTY>
+    <PROPERTY id="camera::orientation" type="13" value="0.966643 -0.245498 0.0707761 0.0179854"></PROPERTY>
     <PROPERTY id="camera::polymode" type="2" value="3"></PROPERTY>
-    <PROPERTY id="camera::position" type="9" value="327.112 162.753 859.497"></PROPERTY>
-    <PROPERTY id="camera::viewmode" type="2" value="6"></PROPERTY>
+    <PROPERTY id="camera::position" type="9" value="146.024 220.619 1020.86"></PROPERTY>
+    <PROPERTY id="camera::viewmode" type="2" value="12"></PROPERTY>
     <PROPERTY id="colour" type="11" value="0.901961 0.901961 0.901961 1"></PROPERTY>
     <PROPERTY id="compositorcount" type="2" value="0"></PROPERTY>
     <PROPERTY id="index" type="2" value="1"></PROPERTY>
@@ -933,7 +933,7 @@
     <PROPERTY id="layer" type="2" value="0"></PROPERTY>
     <PROPERTY id="locked" type="12" value="false"></PROPERTY>
     <PROPERTY id="orientation" type="13" value="0.659188 -0.502433 -0.242185 -0.50436"></PROPERTY>
-    <PROPERTY id="position" type="9" value="759.451 709.594 2670.89"></PROPERTY>
+    <PROPERTY id="position" type="9" value="740.334 713.572 2629.23"></PROPERTY>
     <PROPERTY id="scale" type="9" value="57.6194 65.4339 45.1637"></PROPERTY>
     <PROPERTY id="updatescript" type="7" value=""></PROPERTY>
     <CUSTOMPROPERTIES>
@@ -2073,7 +2073,7 @@
     <PROPERTY id="layer" type="2" value="0"></PROPERTY>
     <PROPERTY id="locked" type="12" value="false"></PROPERTY>
     <PROPERTY id="orientation" type="13" value="0.732872 -0.0592455 -0.661862 -0.146041"></PROPERTY>
-    <PROPERTY id="position" type="9" value="550.338 637.219 3002.28"></PROPERTY>
+    <PROPERTY id="position" type="9" value="410.057 706.079 2787.94"></PROPERTY>
     <PROPERTY id="scale" type="9" value="26.3667 52.3108 20.667"></PROPERTY>
     <PROPERTY id="updatescript" type="7" value=""></PROPERTY>
     <CUSTOMPROPERTIES>
@@ -2097,7 +2097,7 @@
     <PROPERTY id="layer" type="2" value="0"></PROPERTY>
     <PROPERTY id="locked" type="12" value="false"></PROPERTY>
     <PROPERTY id="orientation" type="13" value="0.582169 -0.0281546 -0.797647 -0.155065"></PROPERTY>
-    <PROPERTY id="position" type="9" value="301.672 637.219 3144.3"></PROPERTY>
+    <PROPERTY id="position" type="9" value="-577.461 847.705 2700.29"></PROPERTY>
     <PROPERTY id="scale" type="9" value="26.3667 65.4339 20.667"></PROPERTY>
     <PROPERTY id="updatescript" type="7" value=""></PROPERTY>
     <CUSTOMPROPERTIES>
@@ -2495,18 +2495,6 @@
     <PROPERTY id="orientation" type="13" value="1 0 0 0"></PROPERTY>
     <PROPERTY id="position" type="9" value="-2.0103 3.22865 1.33487"></PROPERTY>
     <PROPERTY id="scale" type="9" value="0.0889946 0.289886 0.0889946"></PROPERTY>
-    <PROPERTY id="updatescript" type="7" value=""></PROPERTY>
-    <CUSTOMPROPERTIES>
-    </CUSTOMPROPERTIES>
-  </OBJECT>
-
-  <OBJECT object_id="247383040" name="BigRock5" typename="Node Object" parentnode="Scenario">
-    <PROPERTY id="autotracktarget" type="7" value="None"></PROPERTY>
-    <PROPERTY id="layer" type="2" value="0"></PROPERTY>
-    <PROPERTY id="locked" type="12" value="false"></PROPERTY>
-    <PROPERTY id="orientation" type="13" value="0.406186 -0.128527 -0.572883 -0.700214"></PROPERTY>
-    <PROPERTY id="position" type="9" value="-68.9917 599.75 3090.65"></PROPERTY>
-    <PROPERTY id="scale" type="9" value="57.6194 65.4339 45.1637"></PROPERTY>
     <PROPERTY id="updatescript" type="7" value=""></PROPERTY>
     <CUSTOMPROPERTIES>
     </CUSTOMPROPERTIES>
@@ -6151,8 +6139,8 @@
     <PROPERTY id="autotracktarget" type="7" value="None"></PROPERTY>
     <PROPERTY id="layer" type="2" value="0"></PROPERTY>
     <PROPERTY id="locked" type="12" value="false"></PROPERTY>
-    <PROPERTY id="orientation" type="13" value="0.998135 0 0.061049 0"></PROPERTY>
-    <PROPERTY id="position" type="9" value="745.609 12 -659.777"></PROPERTY>
+    <PROPERTY id="orientation" type="13" value="0.948324 0 0.317305 0"></PROPERTY>
+    <PROPERTY id="position" type="9" value="717.218 12 -576.57"></PROPERTY>
     <PROPERTY id="scale" type="9" value="1 1 1"></PROPERTY>
     <PROPERTY id="updatescript" type="7" value=""></PROPERTY>
     <CUSTOMPROPERTIES>
@@ -6345,6 +6333,18 @@
     <PROPERTY id="locked" type="12" value="false"></PROPERTY>
     <PROPERTY id="orientation" type="13" value="0.27144 0 0.962455 0"></PROPERTY>
     <PROPERTY id="position" type="9" value="340.394 2 -500.519"></PROPERTY>
+    <PROPERTY id="scale" type="9" value="1 1 1"></PROPERTY>
+    <PROPERTY id="updatescript" type="7" value=""></PROPERTY>
+    <CUSTOMPROPERTIES>
+    </CUSTOMPROPERTIES>
+  </OBJECT>
+
+  <OBJECT object_id="735007744" name="Woman" typename="Node Object" parentnode="Enemies">
+    <PROPERTY id="autotracktarget" type="7" value="None"></PROPERTY>
+    <PROPERTY id="layer" type="2" value="0"></PROPERTY>
+    <PROPERTY id="locked" type="12" value="false"></PROPERTY>
+    <PROPERTY id="orientation" type="13" value="0.989016 0 -0.147809 0"></PROPERTY>
+    <PROPERTY id="position" type="9" value="20.1109 18.4122 867.212"></PROPERTY>
     <PROPERTY id="scale" type="9" value="1 1 1"></PROPERTY>
     <PROPERTY id="updatescript" type="7" value=""></PROPERTY>
     <CUSTOMPROPERTIES>
@@ -6560,7 +6560,7 @@
     <PROPERTY id="layer" type="2" value="0"></PROPERTY>
     <PROPERTY id="locked" type="12" value="false"></PROPERTY>
     <PROPERTY id="orientation" type="13" value="0.94693 0 -0.321439 0"></PROPERTY>
-    <PROPERTY id="position" type="9" value="410.57 3.53825 774.431"></PROPERTY>
+    <PROPERTY id="position" type="9" value="120.296 6.17256 870.721"></PROPERTY>
     <PROPERTY id="scale" type="9" value="1 1 1"></PROPERTY>
     <PROPERTY id="updatescript" type="7" value=""></PROPERTY>
     <CUSTOMPROPERTIES>
@@ -6753,18 +6753,6 @@
     <PROPERTY id="locked" type="12" value="false"></PROPERTY>
     <PROPERTY id="orientation" type="13" value="-0.725373 0 -0.688356 0"></PROPERTY>
     <PROPERTY id="position" type="9" value="552.939 12 -578.709"></PROPERTY>
-    <PROPERTY id="scale" type="9" value="1 1 1"></PROPERTY>
-    <PROPERTY id="updatescript" type="7" value=""></PROPERTY>
-    <CUSTOMPROPERTIES>
-    </CUSTOMPROPERTIES>
-  </OBJECT>
-
-  <OBJECT object_id="735007744" name="Princess" typename="Node Object" parentnode="Enemies">
-    <PROPERTY id="autotracktarget" type="7" value="None"></PROPERTY>
-    <PROPERTY id="layer" type="2" value="0"></PROPERTY>
-    <PROPERTY id="locked" type="12" value="false"></PROPERTY>
-    <PROPERTY id="orientation" type="13" value="0.989016 0 -0.147809 0"></PROPERTY>
-    <PROPERTY id="position" type="9" value="359.931 15.8831 839.202"></PROPERTY>
     <PROPERTY id="scale" type="9" value="1 1 1"></PROPERTY>
     <PROPERTY id="updatescript" type="7" value=""></PROPERTY>
     <CUSTOMPROPERTIES>
@@ -7197,6 +7185,18 @@
     <PROPERTY id="locked" type="12" value="false"></PROPERTY>
     <PROPERTY id="orientation" type="13" value="-0.948324 0 -0.317304 0"></PROPERTY>
     <PROPERTY id="position" type="9" value="169.613 0 -499.313"></PROPERTY>
+    <PROPERTY id="scale" type="9" value="1 1 1"></PROPERTY>
+    <PROPERTY id="updatescript" type="7" value=""></PROPERTY>
+    <CUSTOMPROPERTIES>
+    </CUSTOMPROPERTIES>
+  </OBJECT>
+
+  <OBJECT object_id="247383040" name="BigRock#00" typename="Node Object" parentnode="Objects">
+    <PROPERTY id="autotracktarget" type="7" value="None"></PROPERTY>
+    <PROPERTY id="layer" type="2" value="0"></PROPERTY>
+    <PROPERTY id="locked" type="12" value="false"></PROPERTY>
+    <PROPERTY id="orientation" type="13" value="0.749046 -0.557193 0.229922 0.274959"></PROPERTY>
+    <PROPERTY id="position" type="9" value="148.062 21.7797 760.83"></PROPERTY>
     <PROPERTY id="scale" type="9" value="1 1 1"></PROPERTY>
     <PROPERTY id="updatescript" type="7" value=""></PROPERTY>
     <CUSTOMPROPERTIES>
@@ -8259,24 +8259,24 @@
     </CUSTOMPROPERTIES>
   </OBJECT>
 
-  <OBJECT object_id="505050848" name="Rain#00" typename="Node Object" parentnode="ParticleSystems">
-    <PROPERTY id="autotracktarget" type="7" value="None"></PROPERTY>
-    <PROPERTY id="layer" type="2" value="0"></PROPERTY>
-    <PROPERTY id="locked" type="12" value="false"></PROPERTY>
-    <PROPERTY id="orientation" type="13" value="1 0 0 0"></PROPERTY>
-    <PROPERTY id="position" type="9" value="873.529 200 -405.751"></PROPERTY>
-    <PROPERTY id="scale" type="9" value="1 1 1"></PROPERTY>
-    <PROPERTY id="updatescript" type="7" value=""></PROPERTY>
-    <CUSTOMPROPERTIES>
-    </CUSTOMPROPERTIES>
-  </OBJECT>
-
   <OBJECT object_id="789147584" name="Fire#04" typename="Node Object" parentnode="ParticleSystems">
     <PROPERTY id="autotracktarget" type="7" value="None"></PROPERTY>
     <PROPERTY id="layer" type="2" value="0"></PROPERTY>
     <PROPERTY id="locked" type="12" value="false"></PROPERTY>
     <PROPERTY id="orientation" type="13" value="1 0 0 0"></PROPERTY>
     <PROPERTY id="position" type="9" value="144.868 2.5 -465.503"></PROPERTY>
+    <PROPERTY id="scale" type="9" value="1 1 1"></PROPERTY>
+    <PROPERTY id="updatescript" type="7" value=""></PROPERTY>
+    <CUSTOMPROPERTIES>
+    </CUSTOMPROPERTIES>
+  </OBJECT>
+
+  <OBJECT object_id="505050848" name="Rain" typename="Node Object" parentnode="ParticleSystems">
+    <PROPERTY id="autotracktarget" type="7" value="None"></PROPERTY>
+    <PROPERTY id="layer" type="2" value="0"></PROPERTY>
+    <PROPERTY id="locked" type="12" value="false"></PROPERTY>
+    <PROPERTY id="orientation" type="13" value="0.95502 0 -0.296542 0"></PROPERTY>
+    <PROPERTY id="position" type="9" value="793.795 200 -468.306"></PROPERTY>
     <PROPERTY id="scale" type="9" value="1 1 1"></PROPERTY>
     <PROPERTY id="updatescript" type="7" value=""></PROPERTY>
     <CUSTOMPROPERTIES>
@@ -9639,7 +9639,7 @@
       <PROPERTY id="animationTree" type="7" value="data/animations/wizard.xml"></PROPERTY>
       <PROPERTY id="life" type="6" value="150"></PROPERTY>
       <PROPERTY id="points" type="6" value="250"></PROPERTY>
-      <PROPERTY id="speed" type="6" value="50"></PROPERTY>
+      <PROPERTY id="speed" type="6" value="30"></PROPERTY>
       <PROPERTY id="damage" type="6" value="3"></PROPERTY>
       <PROPERTY id="specialDamage" type="6" value="6"></PROPERTY>
       <PROPERTY id="height" type="6" value="13"></PROPERTY>
@@ -14467,7 +14467,7 @@
       <PROPERTY id="animationTree" type="7" value="data/animations/wizard.xml"></PROPERTY>
       <PROPERTY id="life" type="6" value="150"></PROPERTY>
       <PROPERTY id="points" type="6" value="250"></PROPERTY>
-      <PROPERTY id="speed" type="6" value="50"></PROPERTY>
+      <PROPERTY id="speed" type="6" value="30"></PROPERTY>
       <PROPERTY id="damage" type="6" value="3"></PROPERTY>
       <PROPERTY id="specialDamage" type="6" value="6"></PROPERTY>
       <PROPERTY id="height" type="6" value="13"></PROPERTY>
@@ -15776,24 +15776,6 @@
     </CUSTOMPROPERTIES>
   </OBJECT>
 
-  <OBJECT object_id="111575672" name="Entity#379" typename="Entity Object" parentnode="BigRock5">
-    <PROPERTY id="autotracktarget" type="7" value="None"></PROPERTY>
-    <PROPERTY id="castshadows" type="12" value="true"></PROPERTY>
-    <PROPERTY id="layer" type="2" value="0"></PROPERTY>
-    <PROPERTY id="locked" type="12" value="false"></PROPERTY>
-    <PROPERTY id="meshfile" type="7" value="BigRock0.mesh"></PROPERTY>
-    <PROPERTY id="orientation" type="13" value="1 0 0 0"></PROPERTY>
-    <PROPERTY id="position" type="9" value="0 0 0"></PROPERTY>
-    <PROPERTY id="renderingdistance" type="6" value="10000"></PROPERTY>
-    <PROPERTY id="scale" type="9" value="1 1 1"></PROPERTY>
-    <PROPERTY id="subentity0::material" type="7" value="VulcanicRock"></PROPERTY>
-    <PROPERTY id="subentity0::visible" type="12" value="true"></PROPERTY>
-    <PROPERTY id="subentitycount" type="2" value="1"></PROPERTY>
-    <PROPERTY id="updatescript" type="7" value=""></PROPERTY>
-    <CUSTOMPROPERTIES>
-    </CUSTOMPROPERTIES>
-  </OBJECT>
-
   <OBJECT object_id="779656320" name="Entity#97" typename="Entity Object" parentnode="CandyPillTree14">
     <PROPERTY id="autotracktarget" type="7" value="None"></PROPERTY>
     <PROPERTY id="castshadows" type="12" value="true"></PROPERTY>
@@ -16067,7 +16049,7 @@
       <PROPERTY id="animationTree" type="7" value="data/animations/wizard.xml"></PROPERTY>
       <PROPERTY id="life" type="6" value="150"></PROPERTY>
       <PROPERTY id="points" type="6" value="250"></PROPERTY>
-      <PROPERTY id="speed" type="6" value="50"></PROPERTY>
+      <PROPERTY id="speed" type="6" value="30"></PROPERTY>
       <PROPERTY id="damage" type="6" value="3"></PROPERTY>
       <PROPERTY id="specialDamage" type="6" value="6"></PROPERTY>
       <PROPERTY id="height" type="6" value="13"></PROPERTY>
@@ -17293,6 +17275,31 @@
     </CUSTOMPROPERTIES>
   </OBJECT>
 
+  <OBJECT object_id="5890073" name="BigRock1#1" typename="Entity Object" parentnode="BigRock#00">
+    <PROPERTY id="autotracktarget" type="7" value="None"></PROPERTY>
+    <PROPERTY id="castshadows" type="12" value="false"></PROPERTY>
+    <PROPERTY id="layer" type="2" value="3"></PROPERTY>
+    <PROPERTY id="locked" type="12" value="false"></PROPERTY>
+    <PROPERTY id="meshfile" type="7" value="BigRock1.mesh"></PROPERTY>
+    <PROPERTY id="orientation" type="13" value="1 0 0 0"></PROPERTY>
+    <PROPERTY id="position" type="9" value="0 0 0"></PROPERTY>
+    <PROPERTY id="renderingdistance" type="6" value="10000"></PROPERTY>
+    <PROPERTY id="scale" type="9" value="1 1 1"></PROPERTY>
+    <PROPERTY id="subentity0::material" type="7" value="VulcanicRock"></PROPERTY>
+    <PROPERTY id="subentity0::visible" type="12" value="true"></PROPERTY>
+    <PROPERTY id="subentitycount" type="2" value="1"></PROPERTY>
+    <PROPERTY id="updatescript" type="7" value=""></PROPERTY>
+    <CUSTOMPROPERTIES>
+      <PROPERTY id="type" type="7" value="DynamicObject"></PROPERTY>
+      <PROPERTY id="BoxX" type="6" value="60"></PROPERTY>
+      <PROPERTY id="BoxY" type="6" value="60"></PROPERTY>
+      <PROPERTY id="BoxZ" type="6" value="60"></PROPERTY>
+      <PROPERTY id="life" type="2" value="100"></PROPERTY>
+      <PROPERTY id="dieMesh" type="7" value="BigRock1Die.mesh"></PROPERTY>
+      <PROPERTY id="dieAnimation" type="7" value="Die"></PROPERTY>
+    </CUSTOMPROPERTIES>
+  </OBJECT>
+
   <OBJECT object_id="269264832" name="Entity#151" typename="Entity Object" parentnode="BigRock12">
     <PROPERTY id="autotracktarget" type="7" value="None"></PROPERTY>
     <PROPERTY id="castshadows" type="12" value="true"></PROPERTY>
@@ -17401,7 +17408,7 @@
     </CUSTOMPROPERTIES>
   </OBJECT>
 
-  <OBJECT object_id="662800960" name="cube#7" typename="Entity Object" parentnode="Rain#00">
+  <OBJECT object_id="662800960" name="cube#7" typename="Entity Object" parentnode="Rain">
     <PROPERTY id="autotracktarget" type="7" value="None"></PROPERTY>
     <PROPERTY id="castshadows" type="12" value="false"></PROPERTY>
     <PROPERTY id="layer" type="2" value="0"></PROPERTY>
@@ -18553,7 +18560,7 @@
       <PROPERTY id="animationTree" type="7" value="data/animations/wizard.xml"></PROPERTY>
       <PROPERTY id="life" type="6" value="150"></PROPERTY>
       <PROPERTY id="points" type="6" value="250"></PROPERTY>
-      <PROPERTY id="speed" type="6" value="50"></PROPERTY>
+      <PROPERTY id="speed" type="6" value="30"></PROPERTY>
       <PROPERTY id="damage" type="6" value="3"></PROPERTY>
       <PROPERTY id="specialDamage" type="6" value="6"></PROPERTY>
       <PROPERTY id="height" type="6" value="13"></PROPERTY>
@@ -19439,7 +19446,7 @@
       <PROPERTY id="damage" type="6" value="4"></PROPERTY>
       <PROPERTY id="specialDamage" type="6" value="0"></PROPERTY>
       <PROPERTY id="height" type="6" value="5"></PROPERTY>
-      <PROPERTY id="dieMesh" type="7" value=""></PROPERTY>
+      <PROPERTY id="dieMesh" type="7" value="batteringRamDie.mesh"></PROPERTY>
       <PROPERTY id="dieAnimation" type="7" value="Die"></PROPERTY>
     </CUSTOMPROPERTIES>
   </OBJECT>
@@ -19633,9 +19640,9 @@
     <PROPERTY id="updatescript" type="7" value=""></PROPERTY>
     <CUSTOMPROPERTIES>
       <PROPERTY id="type" type="7" value="DynamicObject"></PROPERTY>
-      <PROPERTY id="BoxX" type="6" value="55"></PROPERTY>
-      <PROPERTY id="BoxY" type="6" value="55"></PROPERTY>
-      <PROPERTY id="BoxZ" type="6" value="55"></PROPERTY>
+      <PROPERTY id="BoxX" type="6" value="60"></PROPERTY>
+      <PROPERTY id="BoxY" type="6" value="60"></PROPERTY>
+      <PROPERTY id="BoxZ" type="6" value="60"></PROPERTY>
       <PROPERTY id="life" type="2" value="100"></PROPERTY>
       <PROPERTY id="dieMesh" type="7" value="BigRock1Die.mesh"></PROPERTY>
       <PROPERTY id="dieAnimation" type="7" value="Die"></PROPERTY>
@@ -21004,7 +21011,7 @@
       <PROPERTY id="animationTree" type="7" value="data/animations/wizard.xml"></PROPERTY>
       <PROPERTY id="life" type="6" value="150"></PROPERTY>
       <PROPERTY id="points" type="6" value="250"></PROPERTY>
-      <PROPERTY id="speed" type="6" value="50"></PROPERTY>
+      <PROPERTY id="speed" type="6" value="30"></PROPERTY>
       <PROPERTY id="damage" type="6" value="3"></PROPERTY>
       <PROPERTY id="specialDamage" type="6" value="6"></PROPERTY>
       <PROPERTY id="height" type="6" value="13"></PROPERTY>
@@ -21784,7 +21791,7 @@
     </CUSTOMPROPERTIES>
   </OBJECT>
 
-  <OBJECT object_id="252723776" name="princess" typename="Entity Object" parentnode="Princess">
+  <OBJECT object_id="252723776" name="princess" typename="Entity Object" parentnode="Woman">
     <PROPERTY id="autotracktarget" type="7" value="None"></PROPERTY>
     <PROPERTY id="castshadows" type="12" value="true"></PROPERTY>
     <PROPERTY id="layer" type="2" value="1"></PROPERTY>
@@ -21800,8 +21807,8 @@
     <PROPERTY id="updatescript" type="7" value=""></PROPERTY>
     <CUSTOMPROPERTIES>
       <PROPERTY id="type" type="7" value="Enemy"></PROPERTY>
-      <PROPERTY id="subType" type="7" value="Princess"></PROPERTY>
-      <PROPERTY id="animationTree" type="7" value="data/animations/princess.xml"></PROPERTY>
+      <PROPERTY id="subType" type="7" value="Woman"></PROPERTY>
+      <PROPERTY id="animationTree" type="7" value="data/animations/woman.xml"></PROPERTY>
       <PROPERTY id="life" type="6" value="15"></PROPERTY>
       <PROPERTY id="points" type="6" value="-250"></PROPERTY>
       <PROPERTY id="speed" type="6" value="30"></PROPERTY>
