@@ -122,7 +122,7 @@ namespace WyvernsAssault
 		void addPhysicProjectile(ProjectilePtr projectile);
 
 		Vector3 calculateHeight(const Vector3 &point);
-		bool collidesAllObjects(PlayerPtr player, const Vector3& fromPoint, const Vector3& toPoint, const float collisionRadius = 2.5f, const float rayHeightLevel = 0.0f );
+		bool collidesAllObjects(PlayerPtr player);
 		bool collides(const Vector3& fromPoint, const Vector3& toPoint, PhysicsMeshInfo objInfo, const float collisionRadius = 2.5, const float rayHeightLevel = 0.0f);
 
 		bool raycast(const Vector3 &point, const Vector3 &normal, Vector3 &result, float &closest_distance, PhysicsMeshInfo objInfo);		

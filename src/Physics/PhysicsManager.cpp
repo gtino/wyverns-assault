@@ -256,7 +256,7 @@ void PhysicsManager::move(PlayerPtr player, const float elapsedSeconds)
 	player->translate( (direction * player->getSpeed() * elapsedSeconds) );
 
 	// Test object collision
-	bool objectCollision = collidesAllObjects(player, lastPosition, player->getPosition(), 0.5f, 0.0);
+	bool objectCollision = collidesAllObjects(player);
 
 	// Test walls collision
 	bool wallCollision = collides(lastPosition, player->getPosition(), mWallGeometry->getPhysicsMeshInfo(), 15.0f, 0.0);
@@ -396,7 +396,7 @@ Vector3 PhysicsManager::calculateHeight(const Vector3 &point)
 }
 
 // Collisions between player and scenario physic objects
-bool PhysicsManager::collidesAllObjects(PlayerPtr player, const Vector3& fromPoint, const Vector3& toPoint, const float collisionRadius, const float rayHeightLevel )
+bool PhysicsManager::collidesAllObjects(PlayerPtr player)
 {
 	AxisAlignedBox player_box = player->getGeometry("collision")->getWorldBoundingBox(player->getPosition());
 
