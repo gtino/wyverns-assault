@@ -14,7 +14,8 @@ static struct EnemyLogic
 	{Enemy::EnemyTypes::Soldier, "runSoldierLogic"},	
 	{Enemy::EnemyTypes::Peasant, "runPeasantLogic"},
 	{Enemy::EnemyTypes::Princess, "runNakedLogic"},
-	{Enemy::EnemyTypes::Cow, "runChickenLogic"}
+	{Enemy::EnemyTypes::Cow, "runChickenLogic"},
+	{Enemy::EnemyTypes::BatteringRam, "runSoldierLogic"},
 };
 
 Enemy::EnemyTypes Enemy::StringToType (Ogre::String string)
@@ -25,11 +26,11 @@ Enemy::EnemyTypes Enemy::StringToType (Ogre::String string)
 	if(strcmp ( "Chicken", str) == 0) return Enemy::EnemyTypes::Chicken;
 	if(strcmp ( "Knight", str ) == 0) return Enemy::EnemyTypes::Knight;
 	if(strcmp ( "Wizard", str ) == 0) return Enemy::EnemyTypes::Wizard;
-	// Still not used	
 	if(strcmp ( "Soldier", str ) == 0) return Enemy::EnemyTypes::Soldier;
 	if(strcmp ( "Peasant", str ) == 0) return Enemy::EnemyTypes::Peasant;
 	if(strcmp ( "Princess", str ) == 0) return Enemy::EnemyTypes::Princess;	
 	if(strcmp ( "Cow", str ) == 0) return Enemy::EnemyTypes::Cow;
+	if(strcmp ( "BatteringRam", str ) == 0) return Enemy::EnemyTypes::BatteringRam;
 
 	return Enemy::EnemyTypes::Naked;
 }

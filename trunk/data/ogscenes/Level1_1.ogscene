@@ -55,7 +55,7 @@
   <CAMERASPEED value="19"></CAMERASPEED>
   <CAMERAPOSITIONS count="1">
     <OPTION id="0" position="1417.36 9.53911 54.9741" orientation="0.707107 0 0.707107 0"></OPTION>
-    <OPTION id="1" position="917.27 823.288 -336.154" orientation="0.707107 -0.707107 0 0"></OPTION>
+    <OPTION id="1" position="327.112 162.753 859.497" orientation="0.935217 -0.306115 -0.169112 -0.0553581"></OPTION>
   </CAMERAPOSITIONS>
     <LAYERS>
       <LAYER id="0" name="Layer 0" visible="true"></LAYER>
@@ -136,9 +136,9 @@
   <OBJECT object_id="2000000002" name="Viewport1" typename="Viewport Object">
     <PROPERTY id="camera::clipdistance" type="8" value="0.05 100000"></PROPERTY>
     <PROPERTY id="camera::fov" type="6" value="1"></PROPERTY>
-    <PROPERTY id="camera::orientation" type="13" value="0.707107 -0.707107 0 0"></PROPERTY>
+    <PROPERTY id="camera::orientation" type="13" value="0.935247 -0.306125 -0.169118 -0.0553599"></PROPERTY>
     <PROPERTY id="camera::polymode" type="2" value="3"></PROPERTY>
-    <PROPERTY id="camera::position" type="9" value="917.27 823.288 -336.154"></PROPERTY>
+    <PROPERTY id="camera::position" type="9" value="327.112 162.753 859.497"></PROPERTY>
     <PROPERTY id="camera::viewmode" type="2" value="6"></PROPERTY>
     <PROPERTY id="colour" type="11" value="0.901961 0.901961 0.901961 1"></PROPERTY>
     <PROPERTY id="compositorcount" type="2" value="0"></PROPERTY>
@@ -167,18 +167,6 @@
     <PROPERTY id="position" type="9" value="750 1250 0"></PROPERTY>
     <PROPERTY id="power" type="6" value="2"></PROPERTY>
     <PROPERTY id="specular" type="11" value="0.203922 0.203922 0.101961 1"></PROPERTY>
-    <PROPERTY id="updatescript" type="7" value=""></PROPERTY>
-    <CUSTOMPROPERTIES>
-    </CUSTOMPROPERTIES>
-  </OBJECT>
-
-  <OBJECT object_id="735007744" name="Princess" typename="Node Object" parentnode="SceneManager1">
-    <PROPERTY id="autotracktarget" type="7" value="None"></PROPERTY>
-    <PROPERTY id="layer" type="2" value="0"></PROPERTY>
-    <PROPERTY id="locked" type="12" value="false"></PROPERTY>
-    <PROPERTY id="orientation" type="13" value="1 0 0 0"></PROPERTY>
-    <PROPERTY id="position" type="9" value="335.134 77.5851 876.028"></PROPERTY>
-    <PROPERTY id="scale" type="9" value="1 1 1"></PROPERTY>
     <PROPERTY id="updatescript" type="7" value=""></PROPERTY>
     <CUSTOMPROPERTIES>
     </CUSTOMPROPERTIES>
@@ -6567,6 +6555,18 @@
     </CUSTOMPROPERTIES>
   </OBJECT>
 
+  <OBJECT object_id="114535968" name="BatteringRam" typename="Node Object" parentnode="Enemies">
+    <PROPERTY id="autotracktarget" type="7" value="None"></PROPERTY>
+    <PROPERTY id="layer" type="2" value="0"></PROPERTY>
+    <PROPERTY id="locked" type="12" value="false"></PROPERTY>
+    <PROPERTY id="orientation" type="13" value="0.94693 0 -0.321439 0"></PROPERTY>
+    <PROPERTY id="position" type="9" value="410.57 3.53825 774.431"></PROPERTY>
+    <PROPERTY id="scale" type="9" value="1 1 1"></PROPERTY>
+    <PROPERTY id="updatescript" type="7" value=""></PROPERTY>
+    <CUSTOMPROPERTIES>
+    </CUSTOMPROPERTIES>
+  </OBJECT>
+
   <OBJECT object_id="194067200" name="Knight#24" typename="Node Object" parentnode="Enemies">
     <PROPERTY id="autotracktarget" type="7" value="None"></PROPERTY>
     <PROPERTY id="layer" type="2" value="0"></PROPERTY>
@@ -6753,6 +6753,18 @@
     <PROPERTY id="locked" type="12" value="false"></PROPERTY>
     <PROPERTY id="orientation" type="13" value="-0.725373 0 -0.688356 0"></PROPERTY>
     <PROPERTY id="position" type="9" value="552.939 12 -578.709"></PROPERTY>
+    <PROPERTY id="scale" type="9" value="1 1 1"></PROPERTY>
+    <PROPERTY id="updatescript" type="7" value=""></PROPERTY>
+    <CUSTOMPROPERTIES>
+    </CUSTOMPROPERTIES>
+  </OBJECT>
+
+  <OBJECT object_id="735007744" name="Princess" typename="Node Object" parentnode="Enemies">
+    <PROPERTY id="autotracktarget" type="7" value="None"></PROPERTY>
+    <PROPERTY id="layer" type="2" value="0"></PROPERTY>
+    <PROPERTY id="locked" type="12" value="false"></PROPERTY>
+    <PROPERTY id="orientation" type="13" value="0.989016 0 -0.147809 0"></PROPERTY>
+    <PROPERTY id="position" type="9" value="359.931 15.8831 839.202"></PROPERTY>
     <PROPERTY id="scale" type="9" value="1 1 1"></PROPERTY>
     <PROPERTY id="updatescript" type="7" value=""></PROPERTY>
     <CUSTOMPROPERTIES>
@@ -19403,6 +19415,35 @@
     </CUSTOMPROPERTIES>
   </OBJECT>
 
+  <OBJECT object_id="382366432" name="batteringRam" typename="Entity Object" parentnode="BatteringRam">
+    <PROPERTY id="autotracktarget" type="7" value="None"></PROPERTY>
+    <PROPERTY id="castshadows" type="12" value="false"></PROPERTY>
+    <PROPERTY id="layer" type="2" value="1"></PROPERTY>
+    <PROPERTY id="locked" type="12" value="false"></PROPERTY>
+    <PROPERTY id="meshfile" type="7" value="batteringRam.mesh"></PROPERTY>
+    <PROPERTY id="orientation" type="13" value="1 0 0 0"></PROPERTY>
+    <PROPERTY id="position" type="9" value="0 0 0"></PROPERTY>
+    <PROPERTY id="renderingdistance" type="6" value="10000"></PROPERTY>
+    <PROPERTY id="scale" type="9" value="1 1 1"></PROPERTY>
+    <PROPERTY id="subentity0::material" type="7" value="batteringRam_material"></PROPERTY>
+    <PROPERTY id="subentity0::visible" type="12" value="true"></PROPERTY>
+    <PROPERTY id="subentitycount" type="2" value="1"></PROPERTY>
+    <PROPERTY id="updatescript" type="7" value=""></PROPERTY>
+    <CUSTOMPROPERTIES>
+      <PROPERTY id="type" type="7" value="Enemy"></PROPERTY>
+      <PROPERTY id="subType" type="7" value="BatteringRam"></PROPERTY>
+      <PROPERTY id="animationTree" type="7" value="data/animations/batteringRam.xml"></PROPERTY>
+      <PROPERTY id="life" type="6" value="300"></PROPERTY>
+      <PROPERTY id="points" type="6" value="500"></PROPERTY>
+      <PROPERTY id="speed" type="6" value="15"></PROPERTY>
+      <PROPERTY id="damage" type="6" value="4"></PROPERTY>
+      <PROPERTY id="specialDamage" type="6" value="0"></PROPERTY>
+      <PROPERTY id="height" type="6" value="5"></PROPERTY>
+      <PROPERTY id="dieMesh" type="7" value=""></PROPERTY>
+      <PROPERTY id="dieAnimation" type="7" value="Die"></PROPERTY>
+    </CUSTOMPROPERTIES>
+  </OBJECT>
+
   <OBJECT object_id="27436140" name="Entity#201" typename="Entity Object" parentnode="PineTree27">
     <PROPERTY id="autotracktarget" type="7" value="None"></PROPERTY>
     <PROPERTY id="castshadows" type="12" value="true"></PROPERTY>
@@ -21750,7 +21791,7 @@
     <PROPERTY id="locked" type="12" value="false"></PROPERTY>
     <PROPERTY id="meshfile" type="7" value="princess.mesh"></PROPERTY>
     <PROPERTY id="orientation" type="13" value="0.957571 0 -0.288196 0"></PROPERTY>
-    <PROPERTY id="position" type="9" value="61.0851 -60.9794 -36.7761"></PROPERTY>
+    <PROPERTY id="position" type="9" value="0 0 0"></PROPERTY>
     <PROPERTY id="renderingdistance" type="6" value="10000"></PROPERTY>
     <PROPERTY id="scale" type="9" value="1 1 1"></PROPERTY>
     <PROPERTY id="subentity0::material" type="7" value="princess_material_2"></PROPERTY>
@@ -21763,7 +21804,7 @@
       <PROPERTY id="animationTree" type="7" value="data/animations/princess.xml"></PROPERTY>
       <PROPERTY id="life" type="6" value="15"></PROPERTY>
       <PROPERTY id="points" type="6" value="-250"></PROPERTY>
-      <PROPERTY id="speed" type="6" value="50"></PROPERTY>
+      <PROPERTY id="speed" type="6" value="30"></PROPERTY>
       <PROPERTY id="damage" type="6" value="0"></PROPERTY>
       <PROPERTY id="specialDamage" type="6" value="0"></PROPERTY>
       <PROPERTY id="height" type="6" value="13"></PROPERTY>

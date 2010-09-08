@@ -31,19 +31,6 @@
     </marker>
   </markers>
   <nodes>
-    <node name="Princess" id="735007744">
-      <rotation qw="1" qx="0" qy="0" qz="0" />
-      <position x="335.134" y="77.5851" z="876.028" />
-      <scale x="1" y="1" z="1" />
-      <entity name="princess" id="252723776" castshadows="true" meshFile="princess.mesh" type="Enemy" subType="Princess" animationTree="data/animations/princess.xml" life="15" points="-250" speed="50" damage="0" specialDamage="0" height="13" dieMesh="nakedDie.mesh" dieAnimation="Die">
-        <rotation qw="0.957571" qx="0" qy="-0.288196" qz="0" />
-        <position x="61.0851" y="-60.9794" z="-36.7761" />
-        <scale x="1" y="1" z="1" />
-        <subentities>
-          <subentity materialName="princess_material_2" index="0" visible="true" />
-        </subentities>
-      </entity>
-    </node>
     <node name="Scenario" id="973754112">
       <rotation qw="1" qx="0" qy="0" qz="0" />
       <position x="0" y="-149.152" z="0" />
@@ -6747,6 +6734,19 @@
           </subentities>
         </entity>
       </node>
+      <node name="BatteringRam" id="114535968">
+        <rotation qw="0.94693" qx="0" qy="-0.321439" qz="0" />
+        <position x="410.57" y="3.53825" z="774.431" />
+        <scale x="1" y="1" z="1" />
+        <entity name="batteringRam" id="382366432" castshadows="false" meshFile="batteringRam.mesh" type="Enemy" subType="BatteringRam" animationTree="data/animations/batteringRam.xml" life="300" points="500" speed="15" damage="4" specialDamage="0" height="5" dieMesh="" dieAnimation="Die">
+          <rotation qw="1" qx="0" qy="0" qz="0" />
+          <position x="0" y="0" z="0" />
+          <scale x="1" y="1" z="1" />
+          <subentities>
+            <subentity materialName="batteringRam_material" index="0" visible="true" />
+          </subentities>
+        </entity>
+      </node>
       <node name="Knight#24" id="194067200">
         <rotation qw="0.92881" qx="0" qy="-0.370557" qz="0" />
         <position x="1323.34" y="12" z="216.641" />
@@ -6952,6 +6952,19 @@
           <scale x="1" y="1" z="1" />
           <subentities>
             <subentity materialName="knightB_material_2" index="0" visible="true" />
+          </subentities>
+        </entity>
+      </node>
+      <node name="Princess" id="735007744">
+        <rotation qw="0.989016" qx="0" qy="-0.147809" qz="0" />
+        <position x="359.931" y="15.8831" z="839.202" />
+        <scale x="1" y="1" z="1" />
+        <entity name="princess" id="252723776" castshadows="true" meshFile="princess.mesh" type="Enemy" subType="Princess" animationTree="data/animations/princess.xml" life="15" points="-250" speed="30" damage="0" specialDamage="0" height="13" dieMesh="nakedDie.mesh" dieAnimation="Die">
+          <rotation qw="0.957571" qx="0" qy="-0.288196" qz="0" />
+          <position x="0" y="0" z="0" />
+          <scale x="1" y="1" z="1" />
+          <subentities>
+            <subentity materialName="princess_material_2" index="0" visible="true" />
           </subentities>
         </entity>
       </node>
