@@ -30,7 +30,7 @@ void Object::initializeEntity(Ogre::Entity* entity, Ogre::SceneNode* sceneNode, 
 
 	if(mType == WyvernsAssault::ObjectTypes::DynamicObject && mPhysicSize > Vector3::ZERO){
 		initializePhysics(entity->getName(),mPhysicSize,"OBBoxManualMaterial_Object");
-		sceneNode->attachObject(getGeometry("collision")->getMovableObject());
+		sceneNode->attachObject(getGeometry(PhysicBoxType::body)->getMovableObject());
 	}
 
 }
@@ -107,6 +107,6 @@ void Object::setDebugEnabled(bool isDebugEnabled)
 	{
 		mIsDebugEnabled = isDebugEnabled;
 		if(mType == WyvernsAssault::ObjectTypes::DynamicObject)
-			getGeometry("collision")->getMovableObject()->setVisible(mIsDebugEnabled);
+			getGeometry(PhysicBoxType::body)->getMovableObject()->setVisible(mIsDebugEnabled);
 	}
 }

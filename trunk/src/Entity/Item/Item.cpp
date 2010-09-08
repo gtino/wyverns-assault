@@ -24,7 +24,7 @@ void Item::initializeEntity(Ogre::Entity* entity, Ogre::SceneNode* sceneNode, Og
 	
 	// Initialize item physics
 	initializePhysics(entity->getName(), Vector3(20,20,20),"OBBoxManualMaterial_Item");
-	sceneNode->attachObject(getGeometry("collision")->getMovableObject());
+	sceneNode->attachObject(getGeometry(PhysicBoxType::body)->getMovableObject());
 
 }
 
@@ -68,6 +68,6 @@ void Item::setDebugEnabled(bool isDebugEnabled)
 	if(mIsDebugEnabled != isDebugEnabled)
 	{
 		mIsDebugEnabled = isDebugEnabled;
-		getGeometry("collision")->getMovableObject()->setVisible(mIsDebugEnabled);
+		getGeometry(PhysicBoxType::body)->getMovableObject()->setVisible(mIsDebugEnabled);
 	}
 }

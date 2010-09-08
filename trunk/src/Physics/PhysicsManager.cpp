@@ -105,14 +105,14 @@ void PhysicsManager::checkForCollisions()
 	{
 		PlayerPtr player = it_player->second;
 		AxisAlignedBox player_firebox = player->getFireBox();
-		AxisAlignedBox player_attack_box = player->getGeometry("attack")->getWorldBoundingBox(player->getPosition());
-		AxisAlignedBox player_collision_box = player->getGeometry("attack")->getWorldBoundingBox(player->getPosition());
+		AxisAlignedBox player_attack_box = player->getGeometry(PhysicBoxType::attack)->getWorldBoundingBox(player->getPosition());
+		AxisAlignedBox player_collision_box = player->getGeometry(PhysicBoxType::attack)->getWorldBoundingBox(player->getPosition());
 
 		// Player - Enemy COLLISION
 		for(int i = 0; i < mEnemyMapList[mCurrentGameArea].size(); i++)
 		{
 			EnemyPtr enemy = mEnemyMapList[mCurrentGameArea][i];
-			AxisAlignedBox enemy_box = enemy->getGeometry("collision")->getWorldBoundingBox(enemy->getPosition());
+			AxisAlignedBox enemy_box = enemy->getGeometry(PhysicBoxType::body)->getWorldBoundingBox(enemy->getPosition());
 
 			// Check if player is using special (fire) and collisioning with enemy
 			if ( player->isSpecial() && player_firebox.intersects(enemy_box))
@@ -161,7 +161,7 @@ void PhysicsManager::checkForCollisions()
 		for(int i = 0; i < mObjectMapList[mCurrentGameArea].size(); i++)
 		{
 			ObjectPtr obj = mObjectMapList[mCurrentGameArea][i];
-			AxisAlignedBox obj_box = obj->getGeometry("collision")->getWorldBoundingBox(obj->getPosition());
+			AxisAlignedBox obj_box = obj->getGeometry(PhysicBoxType::body)->getWorldBoundingBox(obj->getPosition());
 
 			// Check if player is using special (fire) and collisioning with object
 			if ( player->isSpecial() && player_firebox.intersects(obj_box))
@@ -196,7 +196,7 @@ void PhysicsManager::checkForCollisions()
 		for(int i = 0; i < mItemMapList[mCurrentGameArea].size(); i++)
 		{
 			ItemPtr item = mItemMapList[mCurrentGameArea][i];
-			AxisAlignedBox item_box = item->getGeometry("collision")->getWorldBoundingBox(item->getPosition());
+			AxisAlignedBox item_box = item->getGeometry(PhysicBoxType::body)->getWorldBoundingBox(item->getPosition());
 
 			if(player_collision_box.intersects(item_box))
 			{
@@ -210,7 +210,7 @@ void PhysicsManager::checkForCollisions()
 		for(int i = 0; i < mProjectileList.size(); i++)
 		{
 			ProjectilePtr projectile = mProjectileList[i];
-			AxisAlignedBox projectile_box = projectile->getGeometry("collision")->getWorldBoundingBox(projectile->getPosition());
+			AxisAlignedBox projectile_box = projectile->getGeometry(PhysicBoxType::body)->getWorldBoundingBox(projectile->getPosition());
 
 			if(player_collision_box.intersects(projectile_box))
 			{
@@ -384,13 +384,13 @@ Vector3 PhysicsManager::calculateHeight(const Vector3 &point)
 // Collisions between player and scenario physic objects
 bool PhysicsManager::collidesAllObjects(PlayerPtr player)
 {
-	AxisAlignedBox player_box = player->getGeometry("collision")->getWorldBoundingBox(player->getPosition());
+	AxisAlignedBox player_box = player->getGeometry(PhysicBoxType::body)->getWorldBoundingBox(player->getPosition());
 
 	for(int i = 0; i < mObjectMapList[mCurrentGameArea].size(); i++)
 	{
 		ObjectPtr obj = mObjectMapList[mCurrentGameArea][i];
 
-		AxisAlignedBox obj_box = obj->getGeometry("collision")->getWorldBoundingBox(obj->getPosition());
+		AxisAlignedBox obj_box = obj->getGeometry(PhysicBoxType::body)->getWorldBoundingBox(obj->getPosition());
 
 		if( player_box.intersects(obj_box) )
 			return true;
@@ -404,12 +404,12 @@ bool PhysicsManager::collidesAllObjects(PlayerPtr player)
 bool PhysicsManager::collidesAllEnemys(EnemyPtr enemy)
 {
 
-	AxisAlignedBox enemy_box = enemy->getGeometry("collision")->getWorldBoundingBox(enemy->getPosition());
+	AxisAlignedBox enemy_box = enemy->getGeometry(PhysicBoxType::body)->getWorldBoundingBox(enemy->getPosition());
 
 	for(int i = 0; i < mEnemyMapList[mCurrentGameArea].size(); i++)
 	{
 		EnemyPtr enemySecond =  mEnemyMapList[mCurrentGameArea][i];
-		AxisAlignedBox enemy_second_box = enemySecond->getGeometry("collision")->getWorldBoundingBox(enemySecond->getPosition());
+		AxisAlignedBox enemy_second_box = enemySecond->getGeometry(PhysicBoxType::body)->getWorldBoundingBox(enemySecond->getPosition());
 
 		if (enemy_box.intersects(enemy_second_box) && enemy != enemySecond)
 			return true;
@@ -585,6 +585,9 @@ EVENTS_DEFINE_HANDLER(PhysicsManager, EnemyKilled)
 
 	// The player has just hit the enemy
    	removeEnemy(enemy);
+
+	// Remove physics box
+	enemy->_getSceneNode()->detachObject( enemy->getGeometry(PhysicBoxType::body)->getMovableObject() );
 }
 
 EVENTS_DEFINE_HANDLER(PhysicsManager, EnemyPhysics)
@@ -612,6 +615,9 @@ EVENTS_DEFINE_HANDLER(PhysicsManager, ObjectKilled)
 
 	// The player has just cacth the item
    	removeObject(object);
+
+	// Remove physics box
+	object->_getSceneNode()->detachObject( object->getGeometry(PhysicBoxType::body)->getMovableObject() );
 }
 
 EVENTS_DEFINE_HANDLER(PhysicsManager, GameAreaChanged)
@@ -644,8 +650,7 @@ EVENTS_DEFINE_HANDLER(PhysicsManager, ProjectileUpdate)
 	Debug::Out("PhysicsManager : handleProjectileUpdateEvent");
 
 	ProjectilePtr projectile = evt->getProjectile();
-   	addPhysicProjectile(projectile);
-	
+   	addPhysicProjectile(projectile);	
 }
 
 EVENTS_DEFINE_HANDLER(PhysicsManager, ProjectileRemove)
@@ -654,7 +659,6 @@ EVENTS_DEFINE_HANDLER(PhysicsManager, ProjectileRemove)
 
 	ProjectilePtr projectile = evt->getProjectile();
    	removeProjectile(projectile);
-	
 }
 
 // --------------------------------

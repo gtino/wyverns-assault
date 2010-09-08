@@ -821,7 +821,7 @@
       </node>
       <node name="BigRock19" id="838190848">
         <rotation qw="0.659188" qx="-0.502433" qy="-0.242185" qz="-0.50436" />
-        <position x="759.451" y="709.594" z="2670.89" />
+        <position x="740.334" y="713.572" z="2629.23" />
         <scale x="57.6194" y="65.4339" z="45.1637" />
         <entity name="Entity#143" id="618518656" castshadows="true" meshFile="BigRock0.mesh">
           <rotation qw="1" qx="0" qy="0" qz="0" />
@@ -2034,7 +2034,7 @@
       </node>
       <node name="BigRock10" id="982055104">
         <rotation qw="0.732872" qx="-0.0592455" qy="-0.661862" qz="-0.146041" />
-        <position x="550.338" y="637.219" z="3002.28" />
+        <position x="410.057" y="706.079" z="2787.94" />
         <scale x="26.3667" y="52.3108" z="20.667" />
         <entity name="Entity#153" id="506454656" castshadows="true" meshFile="BigRock0.mesh">
           <rotation qw="1" qx="0" qy="0" qz="0" />
@@ -2060,7 +2060,7 @@
       </node>
       <node name="BigRock9" id="674581120">
         <rotation qw="0.582169" qx="-0.0281546" qy="-0.797647" qz="-0.155065" />
-        <position x="301.672" y="637.219" z="3144.3" />
+        <position x="-577.461" y="847.705" z="2700.29" />
         <scale x="26.3667" y="65.4339" z="20.667" />
         <entity name="Entity#375" id="460341184" castshadows="true" meshFile="BigRock0.mesh">
           <rotation qw="1" qx="0" qy="0" qz="0" />
@@ -2475,19 +2475,6 @@
           <scale x="1" y="1" z="1" />
           <subentities>
             <subentity materialName="Hill" index="0" visible="true" />
-          </subentities>
-        </entity>
-      </node>
-      <node name="BigRock5" id="247383040">
-        <rotation qw="0.406186" qx="-0.128527" qy="-0.572883" qz="-0.700214" />
-        <position x="-68.9917" y="599.75" z="3090.65" />
-        <scale x="57.6194" y="65.4339" z="45.1637" />
-        <entity name="Entity#379" id="111575672" castshadows="true" meshFile="BigRock0.mesh">
-          <rotation qw="1" qx="0" qy="0" qz="0" />
-          <position x="0" y="0" z="0" />
-          <scale x="1" y="1" z="1" />
-          <subentities>
-            <subentity materialName="VulcanicRock" index="0" visible="true" />
           </subentities>
         </entity>
       </node>
@@ -5763,7 +5750,7 @@
         <rotation qw="0.707106" qx="0" qy="0.707107" qz="0" />
         <position x="657.533" y="15.6331" z="-540.283" />
         <scale x="1" y="1" z="1" />
-        <entity name="wizard#03" id="234076960" castshadows="true" meshFile="wizard.mesh" type="Enemy" subType="Wizard" animationTree="data/animations/wizard.xml" life="150" points="250" speed="50" damage="3" specialDamage="6" height="13" dieMesh="nakedDie.mesh" dieAnimation="Die">
+        <entity name="wizard#03" id="234076960" castshadows="true" meshFile="wizard.mesh" type="Enemy" subType="Wizard" animationTree="data/animations/wizard.xml" life="150" points="250" speed="30" damage="3" specialDamage="6" height="13" dieMesh="nakedDie.mesh" dieAnimation="Die">
           <rotation qw="1" qx="0" qy="0" qz="0" />
           <position x="0" y="0" z="0" />
           <scale x="1" y="1" z="1" />
@@ -6075,7 +6062,7 @@
         <rotation qw="0.418659" qx="0" qy="0.908143" qz="0" />
         <position x="154.559" y="12" z="-331.664" />
         <scale x="1" y="1" z="1" />
-        <entity name="wizard#01" id="72267832" castshadows="true" meshFile="wizard.mesh" type="Enemy" subType="Wizard" animationTree="data/animations/wizard.xml" life="150" points="250" speed="50" damage="3" specialDamage="6" height="13" dieMesh="nakedDie.mesh" dieAnimation="Die">
+        <entity name="wizard#01" id="72267832" castshadows="true" meshFile="wizard.mesh" type="Enemy" subType="Wizard" animationTree="data/animations/wizard.xml" life="150" points="250" speed="30" damage="3" specialDamage="6" height="13" dieMesh="nakedDie.mesh" dieAnimation="Die">
           <rotation qw="1" qx="0" qy="0" qz="0" />
           <position x="0" y="0" z="0" />
           <scale x="1" y="1" z="1" />
@@ -6127,7 +6114,7 @@
         <rotation qw="0.948323" qx="0" qy="0.317305" qz="0" />
         <position x="1219.74" y="12" z="59.0333" />
         <scale x="1" y="1" z="1" />
-        <entity name="wizard" id="189947200" castshadows="true" meshFile="wizard.mesh" type="Enemy" subType="Wizard" animationTree="data/animations/wizard.xml" life="150" points="250" speed="50" damage="3" specialDamage="6" height="13" dieMesh="nakedDie.mesh" dieAnimation="Die">
+        <entity name="wizard" id="189947200" castshadows="true" meshFile="wizard.mesh" type="Enemy" subType="Wizard" animationTree="data/animations/wizard.xml" life="150" points="250" speed="30" damage="3" specialDamage="6" height="13" dieMesh="nakedDie.mesh" dieAnimation="Die">
           <rotation qw="1" qx="0" qy="0" qz="0" />
           <position x="0" y="0" z="0" />
           <scale x="1" y="1" z="1" />
@@ -6293,8 +6280,8 @@
         </entity>
       </node>
       <node name="Knight#48" id="14679404">
-        <rotation qw="0.998135" qx="0" qy="0.061049" qz="0" />
-        <position x="745.609" y="12" z="-659.777" />
+        <rotation qw="0.948324" qx="0" qy="0.317305" qz="0" />
+        <position x="717.218" y="12" z="-576.57" />
         <scale x="1" y="1" z="1" />
         <entity name="knightC#48" id="126468704" castshadows="true" meshFile="knightC.mesh" type="Enemy" subType="Knight" animationTree="data/animations/knight.xml" life="150" points="200" speed="50" damage="2" specialDamage="0" height="13" dieMesh="nakedDie.mesh" dieAnimation="Die">
           <rotation qw="1" qx="0" qy="0" qz="0" />
@@ -6513,6 +6500,19 @@
           </subentities>
         </entity>
       </node>
+      <node name="Woman" id="735007744">
+        <rotation qw="0.989016" qx="0" qy="-0.147809" qz="0" />
+        <position x="20.1109" y="18.4122" z="867.212" />
+        <scale x="1" y="1" z="1" />
+        <entity name="princess" id="252723776" castshadows="true" meshFile="princess.mesh" type="Enemy" subType="Woman" animationTree="data/animations/woman.xml" life="15" points="-250" speed="30" damage="0" specialDamage="0" height="13" dieMesh="nakedDie.mesh" dieAnimation="Die">
+          <rotation qw="0.957571" qx="0" qy="-0.288196" qz="0" />
+          <position x="0" y="0" z="0" />
+          <scale x="1" y="1" z="1" />
+          <subentities>
+            <subentity materialName="princess_material_2" index="0" visible="true" />
+          </subentities>
+        </entity>
+      </node>
       <node name="Knight#07" id="173924976">
         <rotation qw="0.816642" qx="0" qy="-0.577145" qz="0" />
         <position x="594.892" y="12" z="749.717" />
@@ -6712,7 +6712,7 @@
         <rotation qw="0.880891" qx="0" qy="0.47332" qz="0" />
         <position x="851.192" y="16.6504" z="-389.007" />
         <scale x="1" y="1" z="1" />
-        <entity name="wizard#02" id="75106056" castshadows="true" meshFile="wizard.mesh" type="Enemy" subType="Wizard" animationTree="data/animations/wizard.xml" life="150" points="250" speed="50" damage="3" specialDamage="6" height="13" dieMesh="nakedDie.mesh" dieAnimation="Die">
+        <entity name="wizard#02" id="75106056" castshadows="true" meshFile="wizard.mesh" type="Enemy" subType="Wizard" animationTree="data/animations/wizard.xml" life="150" points="250" speed="30" damage="3" specialDamage="6" height="13" dieMesh="nakedDie.mesh" dieAnimation="Die">
           <rotation qw="1" qx="0" qy="0" qz="0" />
           <position x="0" y="0" z="0" />
           <scale x="1" y="1" z="1" />
@@ -6736,9 +6736,9 @@
       </node>
       <node name="BatteringRam" id="114535968">
         <rotation qw="0.94693" qx="0" qy="-0.321439" qz="0" />
-        <position x="410.57" y="3.53825" z="774.431" />
+        <position x="120.296" y="6.17256" z="870.721" />
         <scale x="1" y="1" z="1" />
-        <entity name="batteringRam" id="382366432" castshadows="false" meshFile="batteringRam.mesh" type="Enemy" subType="BatteringRam" animationTree="data/animations/batteringRam.xml" life="300" points="500" speed="15" damage="4" specialDamage="0" height="5" dieMesh="" dieAnimation="Die">
+        <entity name="batteringRam" id="382366432" castshadows="false" meshFile="batteringRam.mesh" type="Enemy" subType="BatteringRam" animationTree="data/animations/batteringRam.xml" life="300" points="500" speed="15" damage="4" specialDamage="0" height="5" dieMesh="batteringRamDie.mesh" dieAnimation="Die">
           <rotation qw="1" qx="0" qy="0" qz="0" />
           <position x="0" y="0" z="0" />
           <scale x="1" y="1" z="1" />
@@ -6955,19 +6955,6 @@
           </subentities>
         </entity>
       </node>
-      <node name="Princess" id="735007744">
-        <rotation qw="0.989016" qx="0" qy="-0.147809" qz="0" />
-        <position x="359.931" y="15.8831" z="839.202" />
-        <scale x="1" y="1" z="1" />
-        <entity name="princess" id="252723776" castshadows="true" meshFile="princess.mesh" type="Enemy" subType="Princess" animationTree="data/animations/princess.xml" life="15" points="-250" speed="30" damage="0" specialDamage="0" height="13" dieMesh="nakedDie.mesh" dieAnimation="Die">
-          <rotation qw="0.957571" qx="0" qy="-0.288196" qz="0" />
-          <position x="0" y="0" z="0" />
-          <scale x="1" y="1" z="1" />
-          <subentities>
-            <subentity materialName="princess_material_2" index="0" visible="true" />
-          </subentities>
-        </entity>
-      </node>
       <node name="Cow#04" id="555131648">
         <rotation qw="0.999962" qx="0" qy="-0.0087266" qz="0" />
         <position x="934.46" y="1.5" z="517.077" />
@@ -7089,7 +7076,7 @@
         <rotation qw="0.704014" qx="0" qy="0.710186" qz="0" />
         <position x="259.243" y="12" z="-561.756" />
         <scale x="1" y="1" z="1" />
-        <entity name="wizard#00" id="609637760" castshadows="true" meshFile="wizard.mesh" type="Enemy" subType="Wizard" animationTree="data/animations/wizard.xml" life="150" points="250" speed="50" damage="3" specialDamage="6" height="13" dieMesh="nakedDie.mesh" dieAnimation="Die">
+        <entity name="wizard#00" id="609637760" castshadows="true" meshFile="wizard.mesh" type="Enemy" subType="Wizard" animationTree="data/animations/wizard.xml" life="150" points="250" speed="30" damage="3" specialDamage="6" height="13" dieMesh="nakedDie.mesh" dieAnimation="Die">
           <rotation qw="1" qx="0" qy="0" qz="0" />
           <position x="0" y="0" z="0" />
           <scale x="1" y="1" z="1" />
@@ -7426,6 +7413,19 @@
           <scale x="1" y="1" z="1" />
           <subentities>
             <subentity materialName="MarketTent1" index="0" visible="true" />
+          </subentities>
+        </entity>
+      </node>
+      <node name="BigRock#00" id="247383040">
+        <rotation qw="0.749046" qx="-0.557193" qy="0.229922" qz="0.274959" />
+        <position x="148.062" y="21.7797" z="760.83" />
+        <scale x="1" y="1" z="1" />
+        <entity name="BigRock1#1" id="5890073" castshadows="false" meshFile="BigRock1.mesh" type="DynamicObject" BoxX="60" BoxY="60" BoxZ="60" life="100" dieMesh="BigRock1Die.mesh" dieAnimation="Die">
+          <rotation qw="1" qx="0" qy="0" qz="0" />
+          <position x="0" y="0" z="0" />
+          <scale x="1" y="1" z="1" />
+          <subentities>
+            <subentity materialName="VulcanicRock" index="0" visible="true" />
           </subentities>
         </entity>
       </node>
@@ -7873,7 +7873,7 @@
         <rotation qw="0.81612" qx="0.00234115" qy="-0.577868" qz="0.0033064" />
         <position x="180.402" y="12.6127" z="850.72" />
         <scale x="1" y="1" z="1" />
-        <entity name="BigRock1#0" id="572405184" castshadows="true" meshFile="BigRock1.mesh" type="DynamicObject" BoxX="55" BoxY="55" BoxZ="55" life="100" dieMesh="BigRock1Die.mesh" dieAnimation="Die">
+        <entity name="BigRock1#0" id="572405184" castshadows="true" meshFile="BigRock1.mesh" type="DynamicObject" BoxX="60" BoxY="60" BoxZ="60" life="100" dieMesh="BigRock1Die.mesh" dieAnimation="Die">
           <rotation qw="1" qx="0" qy="0" qz="0" />
           <position x="-0.00440903" y="6.23822" z="-0.0175504" />
           <scale x="1" y="1" z="1" />
@@ -8570,19 +8570,6 @@
           </subentities>
         </entity>
       </node>
-      <node name="Rain#00" id="505050848">
-        <rotation qw="1" qx="0" qy="0" qz="0" />
-        <position x="873.529" y="200" z="-405.751" />
-        <scale x="1" y="1" z="1" />
-        <entity name="cube#7" id="662800960" castshadows="false" meshFile="cube.mesh" type="ParticleSystem" script="WyvernsAssault/Rain">
-          <rotation qw="1" qx="0" qy="0" qz="0" />
-          <position x="0" y="0" z="0" />
-          <scale x="0.1" y="0.1" z="0.1" />
-          <subentities>
-            <subentity materialName="BaseWhite" index="0" visible="true" />
-          </subentities>
-        </entity>
-      </node>
       <node name="Fire#04" id="789147584">
         <rotation qw="1" qx="0" qy="0" qz="0" />
         <position x="144.868" y="2.5" z="-465.503" />
@@ -8591,6 +8578,19 @@
           <rotation qw="1" qx="0" qy="0" qz="0" />
           <position x="0" y="0" z="0" />
           <scale x="0.05" y="0.05" z="0.05" />
+          <subentities>
+            <subentity materialName="BaseWhite" index="0" visible="true" />
+          </subentities>
+        </entity>
+      </node>
+      <node name="Rain" id="505050848">
+        <rotation qw="0.95502" qx="0" qy="-0.296542" qz="0" />
+        <position x="793.795" y="200" z="-468.306" />
+        <scale x="1" y="1" z="1" />
+        <entity name="cube#7" id="662800960" castshadows="false" meshFile="cube.mesh" type="ParticleSystem" script="WyvernsAssault/Rain">
+          <rotation qw="1" qx="0" qy="0" qz="0" />
+          <position x="0" y="0" z="0" />
+          <scale x="0.1" y="0.1" z="0.1" />
           <subentities>
             <subentity materialName="BaseWhite" index="0" visible="true" />
           </subentities>

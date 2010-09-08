@@ -40,11 +40,11 @@ void Player::initializeEntity(Ogre::Entity* entity, Ogre::SceneNode* sceneNode, 
 
 	// Physic Body - for Collision
 	initializePhysics(entity->getName(), Vector3(35,50,35),"OBBoxManualMaterial_Player"); 
-	sceneNode->attachObject(getGeometry("collision")->getMovableObject());
+	sceneNode->attachObject(getGeometry(PhysicBoxType::body)->getMovableObject());
 
 	// Physic Body - for Attack
 	addAttackGeometry(entity->getName(), Vector3(60,50,35), "OBBoxManualMaterial_Player"); 
-	sceneNode->createChildSceneNode(Vector3(0,0,25))->attachObject(getGeometry("attack")->getMovableObject());
+	sceneNode->createChildSceneNode(Vector3(0,0,25))->attachObject(getGeometry(PhysicBoxType::attack)->getMovableObject());
 
 	// Animation system
 	mAnimationSystem = new tecnofreak::ogre::AnimationSystem( mEntity );
@@ -319,8 +319,8 @@ void Player::setDebugEnabled(bool isDebugEnabled)
 	{
 		mIsDebugEnabled = isDebugEnabled;
 
-		getGeometry("collision")->getMovableObject()->setVisible(mIsDebugEnabled);
-		getGeometry("attack")->getMovableObject()->setVisible(mIsDebugEnabled);
+		getGeometry(PhysicBoxType::body)->getMovableObject()->setVisible(mIsDebugEnabled);
+		getGeometry(PhysicBoxType::attack)->getMovableObject()->setVisible(mIsDebugEnabled);
 
 		if(mFireOBBoxRenderable)
 			mFireOBBoxRenderable->setVisible(mIsDebugEnabled);
