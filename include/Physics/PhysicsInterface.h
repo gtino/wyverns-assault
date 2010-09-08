@@ -49,31 +49,31 @@ namespace WyvernsAssault
 	public:
 		
 		virtual void initializePhysics(Ogre::String name, Ogre::Vector3 boxDimension, Ogre::String material){
-			// Create real geometry
-			mGeometry = GeometryPtr(new Geometry(boxDimension, name, material));
+			// Create real collision geometry
+			mGeometryCollision = GeometryPtr(new Geometry(boxDimension, name, material));
+		}
+
+		virtual void addAttackGeometry(Ogre::String name, Ogre::Vector3 boxDimension, Ogre::String material){
+			mGeometryAttack = GeometryPtr(new Geometry(boxDimension, "attack"+name, material));
 		}
 
 		virtual void finalizePhysics(){return;} 
 		virtual void updatePhysics(const float elapsedSeconds){};
 
-		//virtual void setPosition(Ogre::Vector3 position) = 0;
-		//virtual Ogre::Vector3 getPosition() = 0;
-
-		//virtual void setDirection(Ogre::Vector3 direction) = 0;
-		//virtual Ogre::Vector3 getDirection() = 0;
-
-		//virtual void setOrientation(Ogre::Quaternion orientation) = 0;
-		//virtual Ogre::Quaternion getOrientation() = 0;
-
 		Ogre::Real getSpeed(){return mSpeed;}
 		void setSpeed(Ogre::Real speed){mSpeed = speed;}
 
-		virtual GeometryPtr getGeometry(){return mGeometry;}
-		virtual void setGeometry(GeometryPtr geometry) {mGeometry = geometry;}
+		virtual GeometryPtr getGeometry(Ogre::String name){
+			if(name == "collision")
+				return mGeometryCollision;
+			else if(name == "attack")
+				return mGeometryAttack;
+		}
 
 	private:
 		Ogre::Real mSpeed;
-		GeometryPtr mGeometry;
+		GeometryPtr mGeometryCollision;
+		GeometryPtr mGeometryAttack;
 
 	};
 

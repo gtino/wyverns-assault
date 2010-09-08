@@ -38,9 +38,13 @@ void Player::initializeEntity(Ogre::Entity* entity, Ogre::SceneNode* sceneNode, 
 	mFireMesh = mSceneManager->createEntity("fireMesh", "redWyvernFireCone.mesh");
 	mFireMesh->setVisible(mIsDebugEnabled);
 
-	// Physic Body
+	// Physic Body - for Collision
 	initializePhysics(entity->getName(), Vector3(35,50,35),"OBBoxManualMaterial_Player"); 
-	sceneNode->attachObject(getGeometry()->getMovableObject());
+	sceneNode->attachObject(getGeometry("collision")->getMovableObject());
+
+	// Physic Body - for Attack
+	addAttackGeometry(entity->getName(), Vector3(60,50,35), "OBBoxManualMaterial_Player"); 
+	sceneNode->createChildSceneNode(Vector3(0,0,25))->attachObject(getGeometry("attack")->getMovableObject());
 
 	// Animation system
 	mAnimationSystem = new tecnofreak::ogre::AnimationSystem( mEntity );
@@ -315,7 +319,8 @@ void Player::setDebugEnabled(bool isDebugEnabled)
 	{
 		mIsDebugEnabled = isDebugEnabled;
 
-		getGeometry()->getMovableObject()->setVisible(mIsDebugEnabled);
+		getGeometry("collision")->getMovableObject()->setVisible(mIsDebugEnabled);
+		getGeometry("attack")->getMovableObject()->setVisible(mIsDebugEnabled);
 
 		if(mFireOBBoxRenderable)
 			mFireOBBoxRenderable->setVisible(mIsDebugEnabled);
