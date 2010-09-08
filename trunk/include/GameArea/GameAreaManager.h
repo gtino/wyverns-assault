@@ -35,6 +35,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
 using namespace Ogre;
 
+#define CURRENT_LEVEL 0 // HACK, to be fixed! (0 : Level1_1, 1 : Boss)
+
 namespace WyvernsAssault 
 {
 	/**
@@ -108,7 +110,8 @@ namespace WyvernsAssault
 
 	private:
 		std::vector<GameArea> mGameAreas;
-
+		
+		int		mCurrentLevel;
 		int		mCurrentGameArea;
 		bool	mGameAreaCleared;
 

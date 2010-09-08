@@ -2,7 +2,21 @@
 
 using namespace WyvernsAssault;
 
-PlayState::PlayState(GraphicsManagerPtr graphicsManager, InputManagerPtr inputManager, AudioManagerPtr audioManager, CameraManagerPtr cameraManager, GuiManagerPtr guiManager)
+// BEGIN LEVELS LIST
+// HACK : Hardcoded, but hey we do not have time to go crazy and
+// make something more 'generic'...
+const struct LevelFiles PlayState::smLevels[] = {
+	{"Level1_1.scene","Level1_1_cameras.scene","Level1_1_gameAreas.scene"},
+	{"Boss.scene","Boss_cameras.scene","Boss_gameAreas.scene"},
+	{NULL, NULL}
+};
+// END LEVELS LIST
+
+PlayState::PlayState(GraphicsManagerPtr graphicsManager, 
+					 InputManagerPtr inputManager, 
+					 AudioManagerPtr audioManager, 
+					 CameraManagerPtr cameraManager, 
+					 GuiManagerPtr guiManager)
 : BaseState(graphicsManager,inputManager,audioManager, cameraManager, guiManager)
 , mTrayMgr(NULL)
 , mDetailsPanel(NULL)
@@ -10,6 +24,7 @@ PlayState::PlayState(GraphicsManagerPtr graphicsManager, InputManagerPtr inputMa
 , mRootSceneNode(0)
 , mElapsedSeconds(0.0f)
 , mDebugEnabled(false)
+, mLevel(0) // HACK? : Current level to load (Level1_1 : 0, Boss : 1)
 {
 	//
 	// TODO Constructor logic HERE
@@ -251,12 +266,12 @@ void PlayState::initialize()
 	// Load scene!
 	//
 	boost::scoped_ptr<DotSceneLoader> dotSceneLoader ( new DotSceneLoader );
-	// Game areas
-	dotSceneLoader->parseDotScene(GAME_AREAS_DOTSCENE_FILE,"General", mSceneManager, mPlayerManager, mScenarioManager, mCameraManager, mLightsManager, mEnemyManager, mPhysicsManager, mItemManager, mParticleManager, mGameAreaManager, mCameraManager->_getSceneNode());
+	// Game areas FIRST!
+	dotSceneLoader->parseDotScene(smLevels[mLevel].gameAreas,"General", mSceneManager, mPlayerManager, mScenarioManager, mCameraManager, mLightsManager, mEnemyManager, mPhysicsManager, mItemManager, mParticleManager, mGameAreaManager, mCameraManager->_getSceneNode());
 	// Scenario, enemies and items
-	dotSceneLoader->parseDotScene(GAME_LEVEL_DOTSCENE_FILE,"General", mSceneManager, mPlayerManager, mScenarioManager, mCameraManager, mLightsManager, mEnemyManager, mPhysicsManager, mItemManager, mParticleManager, mGameAreaManager, mScenarioManager->_getSceneNode());
+	dotSceneLoader->parseDotScene(smLevels[mLevel].scene,"General", mSceneManager, mPlayerManager, mScenarioManager, mCameraManager, mLightsManager, mEnemyManager, mPhysicsManager, mItemManager, mParticleManager, mGameAreaManager, mScenarioManager->_getSceneNode());
 	// Fixed cameras and camera segments
-	dotSceneLoader->parseDotScene(GAME_CAMERAS_DOTSCENE_FILE,"General", mSceneManager, mPlayerManager, mScenarioManager, mCameraManager, mLightsManager, mEnemyManager, mPhysicsManager, mItemManager, mParticleManager, mGameAreaManager, mCameraManager->_getSceneNode());	
+	dotSceneLoader->parseDotScene(smLevels[mLevel].cameras,"General", mSceneManager, mPlayerManager, mScenarioManager, mCameraManager, mLightsManager, mEnemyManager, mPhysicsManager, mItemManager, mParticleManager, mGameAreaManager, mCameraManager->_getSceneNode());	
 
 	Debug::Out(mSceneManager->getRootSceneNode());
 
@@ -935,6 +950,26 @@ bool PlayState::keyPressed(const OIS::KeyEvent& e)
 	// Move Player to a game area -- HACK!
 	case OIS::KeyCode::KC_DELETE:
 		player1->setPosition(Vector3(1172, 31, -25));
+		break;
+	// Switch to next level -- HACK!
+	case OIS::KeyCode::KC_N:
+		//
+		// Ok, so here we put our small level logic. It is an hack, well we should probably 
+		// implement some kind of level manager, instead of managing everything here, hardcoded.
+		// But still, we do not have enough time left, and just two levels, so I guess it
+		// is fine. 
+		//
+		if(mLevel == 0)
+		{
+			mLevel = 1;
+
+			this->mNextGameStateId = GameStateId::LevelLoading;
+		}
+		else if(mLevel == 1 )
+		{
+			mLevel = 0;
+			this->mNextGameStateId = GameStateId::Ending;
+		}		
 		break;
 	}
 

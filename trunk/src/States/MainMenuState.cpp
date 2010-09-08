@@ -134,7 +134,7 @@ bool MainMenuState::keyReleased(const OIS::KeyEvent& e)
 		switch(mMenu->getCurrentOption())
 		{
 		case GuiWidgetMenuId::PlayMenu:
-			this->mNextGameStateId = GameStateId::Play;
+			this->mNextGameStateId = GameStateId::LevelLoading;
 			break;
 		case GuiWidgetMenuId::OptionsMenu:
 			this->mNextGameStateId = GameStateId::Options;

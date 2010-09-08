@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="Windows-1252"?>
 <VisualStudioProject
 	ProjectType="Visual C++"
-	Version="9,00"
+	Version="9.00"
 	Name="WyvernsAssault"
 	ProjectGUID="{DA8BACB6-E0B2-465D-84CE-60A33C2E795E}"
 	RootNamespace="WyvernsAssault"
@@ -229,6 +229,10 @@
 				</File>
 				<File
 					RelativePath="..\src\States\IntroState.cpp"
+					>
+				</File>
+				<File
+					RelativePath="..\src\States\LevelLoadingState.cpp"
 					>
 				</File>
 				<File
@@ -556,6 +560,10 @@
 				Name="CutScene"
 				>
 				<File
+					RelativePath="..\src\CutScene\CutScene.cpp"
+					>
+				</File>
+				<File
 					RelativePath="..\src\CutScene\CutSceneManager.cpp"
 					>
 				</File>
@@ -611,6 +619,10 @@
 				</File>
 				<File
 					RelativePath="..\include\States\IntroState.h"
+					>
+				</File>
+				<File
+					RelativePath="..\include\States\LevelLoadingState.h"
 					>
 				</File>
 				<File
@@ -957,6 +969,10 @@
 			<Filter
 				Name="CutScene"
 				>
+				<File
+					RelativePath="..\include\CutScene\CutScene.h"
+					>
+				</File>
 				<File
 					RelativePath="..\include\CutScene\CutSceneManager.h"
 					>

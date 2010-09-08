@@ -19,6 +19,7 @@ EnemyManager::EnemyManager(Ogre::SceneManager* sceneManager)
 , mId(0)
 , mIsDebugEnabled(false)
 , mCurrentGameArea(-1)
+, mCurrentLevel(-1)
 {
 	mSceneManager = sceneManager;
 }
@@ -422,7 +423,7 @@ void EnemyManager::update(const float elapsedSeconds)
 	// If game area is cleared raise event
 	if( getCount() <= 0 )
 	{
-		GameAreaEnemiesDeathEventPtr evt = GameAreaEnemiesDeathEventPtr(new GameAreaEnemiesDeathEvent(mCurrentGameArea));
+		GameAreaEnemiesDeathEventPtr evt = GameAreaEnemiesDeathEventPtr(new GameAreaEnemiesDeathEvent(mCurrentLevel, mCurrentGameArea));
 		EVENTS_FIRE(evt);
 	}
 }
@@ -565,6 +566,7 @@ EVENTS_DEFINE_HANDLER(EnemyManager, GameAreaChanged)
 	Debug::Out("EnemyManager : handleGameAreaChangedEvent");
 
 	mCurrentGameArea = evt->getActualArea();
+	mCurrentLevel = evt->getLevel();
 
 	setEnemiesVisible(false, evt->getPreviousArea());
 	setEnemiesVisible(true, evt->getActualArea());

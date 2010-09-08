@@ -102,6 +102,7 @@ namespace WyvernsAssault
 
 		// Where enemies are stored and sorted by game area
 		EnemyMapList			mEnemyMapList;
+		int						mCurrentLevel;
 		int						mCurrentGameArea;
 
 		int						mId;
