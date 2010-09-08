@@ -7,4 +7,5 @@
   <PROPERTY id="life" type="2" value="100"></PROPERTY>
   <PROPERTY id="dieMesh" type="7" value="UfoTree0Die.mesh"></PROPERTY>
   <PROPERTY id="dieAnimation" type="7" value="Die"></PROPERTY>
+  <PROPERTY id="dieMaterial" type="12" value="true"></PROPERTY>
 </CUSTOMPROPERTIES>

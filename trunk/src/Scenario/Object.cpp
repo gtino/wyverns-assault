@@ -2,7 +2,7 @@
 
 using namespace WyvernsAssault;
 
-Object::Object(Ogre::String name, ObjectTypes type, Ogre::Vector3 physicBox) 
+Object::Object(Ogre::String name, ObjectTypes type, Ogre::Vector3 physicBox, int objLife) 
 : EntityInterface(name)
 , PhysicsInterface()
 , mOBBoxRenderable(0)
@@ -12,7 +12,7 @@ Object::Object(Ogre::String name, ObjectTypes type, Ogre::Vector3 physicBox)
 , mDieAnimation(NULL)
 {
 	mType = type;
-	life = mMaxLife;
+	life = objLife;
 	mPhysicSize = physicBox; 
 
 }
