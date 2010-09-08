@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <CUSTOMPROPERTIES>
   <PROPERTY id="type" type="7" value="Enemy"></PROPERTY>
-  <PROPERTY id="subType" type="7" value="Princess"></PROPERTY>
-  <PROPERTY id="animationTree" type="7" value="data/animations/princess.xml"></PROPERTY>
+  <PROPERTY id="subType" type="7" value="Woman"></PROPERTY>
+  <PROPERTY id="animationTree" type="7" value="data/animations/woman.xml"></PROPERTY>
   <PROPERTY id="life" type="6" value="15"></PROPERTY>
   <PROPERTY id="points" type="6" value="-250"></PROPERTY>
   <PROPERTY id="speed" type="6" value="30"></PROPERTY>

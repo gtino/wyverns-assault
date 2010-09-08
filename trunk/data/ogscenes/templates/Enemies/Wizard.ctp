@@ -5,7 +5,7 @@
   <PROPERTY id="animationTree" type="7" value="data/animations/wizard.xml"></PROPERTY>
   <PROPERTY id="life" type="6" value="150"></PROPERTY>
   <PROPERTY id="points" type="6" value="250"></PROPERTY>
-  <PROPERTY id="speed" type="6" value="50"></PROPERTY>
+  <PROPERTY id="speed" type="6" value="30"></PROPERTY>
   <PROPERTY id="damage" type="6" value="3"></PROPERTY>
   <PROPERTY id="specialDamage" type="6" value="6"></PROPERTY>
   <PROPERTY id="height" type="6" value="13"></PROPERTY>
