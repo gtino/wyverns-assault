@@ -41,6 +41,9 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #define ENEMY_RUN			1
 #define ENEMY_ATTACK		2
 #define ENEMY_SPECIAL		3
+#define	WOMAN_GIVE			0
+
+#define PHYSIC_SIZE			10	// HACK! -- Need to be defined in Ogitor
 
 namespace WyvernsAssault
 {
@@ -55,31 +58,30 @@ namespace WyvernsAssault
 		{
 			Naked			= 0,
 			Chicken			= 1,
-			Knight			= 2,
-			Wizard			= 3,
-			Soldier			= 4,					
-			Peasant			= 5,
-			Princess		= 6,			
-			Cow				= 7,
-			BatteringRam	= 8,
+			Cow				= 2,
+			Woman			= 3,
+			Peasant			= 4,
+			Knight			= 5,			
+			Wizard			= 6,
+			Archer			= 7,
+			BatteringRam	= 8
 		};
 
 		enum EnemyStates
 		{
-			Initial = 0,
-			Idle = 1,
-			Sleeping = 2,
-			What = 3,
-			Alert = 4,
-			Rage = 5,
-			Love = 6,
-			Fear = 7,
-			Magic = 8,
-			Patrol = 9,
-			// This is when it has been killed, but is still there spilling bool and crying!
-			Dying = 10,
-			// This is when the enemy has to been removed from the scene!
-			Dead = 11
+			Initial		=	0,
+			Idle		=	1,
+			Sleeping	=	2,
+			What		=	3,
+			Alert		=	4,
+			Rage		=	5,
+			Love		=	6,
+			Fear		=	7,
+			Magic		=	8,
+			Fire		=	9,
+			Patrol		=	10,
+			Dying		=	11,	// This is when it has been killed, but is still there spilling bool and crying		
+			Dead		=	12	// This is when the enemy has to been removed from the scene
 		};
 
 		struct EnemyParameters
@@ -94,6 +96,7 @@ namespace WyvernsAssault
 			Real attackCooldown;
 			String dieMesh;
 			String dieAnimation;
+			Vector3 physicSize;
 		};
 
 	public:
@@ -129,6 +132,7 @@ namespace WyvernsAssault
 		Real getAttackTimeout(){return mAttackTimeout;}
 		void setAttackTimeout(Real time){mAttackTimeout = time;}
 		Real getAttackCooldown(){return mParameters.attackCooldown;}
+		Vector3 getPhysicSize(){ return mParameters.physicSize; }
 
 		// Sound functions
 		int mChannel;
@@ -167,15 +171,15 @@ namespace WyvernsAssault
 		void stop();
 
 	private:
-		Enemy::EnemyTypes mType;
+		Enemy::EnemyTypes	mType;
 
-		BillboardSet* mBalloonSet;
-		Billboard* mBalloon;
+		BillboardSet*		mBalloonSet;
+		Billboard*			mBalloon;
 
-		SceneNode* mTarget;
+		SceneNode*			mTarget;
 
-		Enemy::EnemyStates mState;
-		float mStateTimeout;
+		Enemy::EnemyStates	mState;
+		float				mStateTimeout;
 		
 		EnemyParameters		mParameters;
 		Real				mMaxLife;
@@ -184,9 +188,6 @@ namespace WyvernsAssault
 
 		Entity*				mDieMesh;
 		AnimationState*		mDieAnimation;
-
-		Vector3 beginPatrolPoint;
-		Vector3 endPatrolPoint;
 
 		OBBoxRenderable* mOBBoxRenderable;
 		bool mIsDebugEnabled;

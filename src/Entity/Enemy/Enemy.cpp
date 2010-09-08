@@ -7,30 +7,30 @@ static struct EnemyLogic
 	Enemy::EnemyTypes type;
 	const char* function;
 } EnemyLogicList[] = {
-	{Enemy::EnemyTypes::Naked, "runNakedLogic"},
-	{Enemy::EnemyTypes::Chicken, "runChickenLogic"},
-	{Enemy::EnemyTypes::Knight, "runSoldierLogic"},
-	{Enemy::EnemyTypes::Wizard, "runWizardLogic"},
-	{Enemy::EnemyTypes::Soldier, "runSoldierLogic"},	
-	{Enemy::EnemyTypes::Peasant, "runPeasantLogic"},
-	{Enemy::EnemyTypes::Princess, "runNakedLogic"},
-	{Enemy::EnemyTypes::Cow, "runChickenLogic"},
-	{Enemy::EnemyTypes::BatteringRam, "runSoldierLogic"},
+	{Enemy::EnemyTypes::Naked,			"runNakedLogic"},
+	{Enemy::EnemyTypes::Chicken,		"runChickenLogic"},
+	{Enemy::EnemyTypes::Cow,			"runCowLogic"},
+	{Enemy::EnemyTypes::Woman,			"runWomanLogic"},
+	{Enemy::EnemyTypes::Peasant,		"runPeasantLogic"},
+	{Enemy::EnemyTypes::Knight,			"runSoldierLogic"},
+	{Enemy::EnemyTypes::Wizard,			"runWizardLogic"},	
+	{Enemy::EnemyTypes::Archer,			"runArcherLogic"}, 		
+	{Enemy::EnemyTypes::BatteringRam,	"runBatteringRamLogic"},
 };
 
 Enemy::EnemyTypes Enemy::StringToType (Ogre::String string)
 {
 	const char* str = string.c_str();
 
-	if(strcmp ( "Naked", str ) == 0) return Enemy::EnemyTypes::Naked;
-	if(strcmp ( "Chicken", str) == 0) return Enemy::EnemyTypes::Chicken;
-	if(strcmp ( "Knight", str ) == 0) return Enemy::EnemyTypes::Knight;
-	if(strcmp ( "Wizard", str ) == 0) return Enemy::EnemyTypes::Wizard;
-	if(strcmp ( "Soldier", str ) == 0) return Enemy::EnemyTypes::Soldier;
-	if(strcmp ( "Peasant", str ) == 0) return Enemy::EnemyTypes::Peasant;
-	if(strcmp ( "Princess", str ) == 0) return Enemy::EnemyTypes::Princess;	
-	if(strcmp ( "Cow", str ) == 0) return Enemy::EnemyTypes::Cow;
-	if(strcmp ( "BatteringRam", str ) == 0) return Enemy::EnemyTypes::BatteringRam;
+	if(strcmp ( "Naked", str ) == 0)		return Enemy::EnemyTypes::Naked;
+	if(strcmp ( "Chicken", str) == 0)		return Enemy::EnemyTypes::Chicken;
+	if(strcmp ( "Cow", str ) == 0)			return Enemy::EnemyTypes::Cow;
+	if(strcmp ( "Woman", str ) == 0)		return Enemy::EnemyTypes::Woman;	
+	if(strcmp ( "Peasant", str ) == 0)		return Enemy::EnemyTypes::Peasant;
+	if(strcmp ( "Knight", str ) == 0)		return Enemy::EnemyTypes::Knight;
+	if(strcmp ( "Wizard", str ) == 0)		return Enemy::EnemyTypes::Wizard;
+	if(strcmp ( "Archer", str ) == 0)		return Enemy::EnemyTypes::Archer;
+	if(strcmp ( "BatteringRam", str ) == 0)	return Enemy::EnemyTypes::BatteringRam;
 
 	return Enemy::EnemyTypes::Naked;
 }
@@ -45,8 +45,6 @@ Enemy::Enemy(Ogre::String name, Enemy::EnemyTypes type, Enemy::EnemyParameters p
 , mIsDebugEnabled(false)
 , mBalloonSet(0)
 , mBalloon(0)
-, beginPatrolPoint(Vector3::ZERO)
-, endPatrolPoint(Vector3::ZERO)
 , mDieMesh(NULL)
 , mDieAnimation(NULL)
 , mAttackTimeout(0)
@@ -57,6 +55,12 @@ Enemy::Enemy(Ogre::String name, Enemy::EnemyTypes type, Enemy::EnemyParameters p
 
 	// Attack cooldown
 	mParameters.attackCooldown = 0.5f;
+
+	// Physisc Size	-- HACK! Need to be defined in Ogitor	
+	if( mType == EnemyTypes::BatteringRam )
+		mParameters.physicSize = Vector3(50, 50, 50);
+	else
+		mParameters.physicSize = Vector3(PHYSIC_SIZE, PHYSIC_SIZE, PHYSIC_SIZE);
 }
 
 Enemy::~Enemy()
@@ -70,13 +74,13 @@ void Enemy::initializeEntity(Ogre::Entity* entity, Ogre::SceneNode* sceneNode, O
 	EntityInterface::initializeEntity(entity, sceneNode, sceneManager);
 
 	// Set physic body
-	initializePhysics(entity->getName(), Vector3(10,10,10),"OBBoxManualMaterial_Enemy");
-	sceneNode->attachObject(getGeometry("collision")->getMovableObject());
-
+	initializePhysics(entity->getName(), mParameters.physicSize, "OBBoxManualMaterial_Enemy");
+	
+	sceneNode->attachObject(getGeometry(PhysicBoxType::body)->getMovableObject());
 
 	// Ballon Set
 	mBalloonSet = mSceneManager->createBillboardSet(mName + "_BillboardSet");
-	mBalloonSet->setDefaultDimensions(15.0,15.0);
+	mBalloonSet->setDefaultDimensions(15.0, 15.0);
 	mBalloonSet->setMaterialName("Balloons/Initial");
 	mSceneNode->attachObject(mBalloonSet);
 
@@ -130,6 +134,10 @@ void Enemy::updateEntity(const float elapsedSeconds)
 		else if( moving )
 		{
 			mCurrentAnimation->setValue( ENEMY_RUN );
+		}
+		else if( mType == EnemyTypes::Woman && mState == EnemyStates::Love )
+		{
+			mCurrentAnimation->setValue( WOMAN_GIVE );
 		}
 		else
 		{
@@ -232,6 +240,13 @@ void Enemy::updateLogic(lua_State *L, const float elapsedSeconds)
 			setMoving(false);
 			setAttacking(true);
 			break;
+		case Enemy::EnemyStates::Fire:
+			mBalloonSet->setVisible(true);
+			mBalloonSet->setMaterialName("Balloons/Rage");
+			mDirection = Vector3::ZERO;
+			setMoving(false);
+			setAttacking(true);
+			break;
 		case Enemy::EnemyStates::Patrol:
 			mBalloonSet->setVisible(true);
 			mBalloonSet->setMaterialName("Balloons/Patrol");
@@ -251,7 +266,6 @@ void Enemy::updateLogic(lua_State *L, const float elapsedSeconds)
 			mDirection = Vector3::ZERO;
 			setMoving(false);
 			setAttacking(false);
-			setMaterialName("Skin/Blue"); // DEBUG : Make him blue so it is obvious he is dead
 			break;
 		default:
 			mBalloonSet->setVisible(false);
@@ -265,9 +279,6 @@ void Enemy::updateLogic(lua_State *L, const float elapsedSeconds)
 	}
 	else
 	{
-		//
-		// HACK! To update enemy direction every frame!
-		//
 		if(mState == Enemy::EnemyStates::Fear) 
 		{
 			setDirectionOutTarget();
@@ -354,7 +365,7 @@ void Enemy::setDirectionOutTarget()
 
 void Enemy::setDirectionRandom()
 {
-	mDirection = Vector3((rand() / 100), (rand() / 100), (rand() / 100) );
+	mDirection = Vector3((rand() / 100), 0, (rand() / 100) );
 	Vector3 src = mSceneNode->getOrientation() * Vector3::UNIT_Z;
 	src.y = 0;
 	mDirection.y = 0;
@@ -377,7 +388,7 @@ void Enemy::setDebugEnabled(bool isDebugEnabled)
 	if(mIsDebugEnabled != isDebugEnabled)
 	{
 		mIsDebugEnabled = isDebugEnabled;
-		getGeometry("collision")->getMovableObject()->setVisible(mIsDebugEnabled);
+		getGeometry(PhysicBoxType::body)->getMovableObject()->setVisible(mIsDebugEnabled);
 	}
 }
 

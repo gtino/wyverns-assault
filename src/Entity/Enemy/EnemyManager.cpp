@@ -184,7 +184,7 @@ EnemyPtr EnemyManager::createEnemy(Enemy::EnemyTypes type, int difficult, Vector
 		case Enemy::EnemyTypes::Naked:
 			mesh = Ogre::String("naked.mesh");
 			break;
-		case Enemy::EnemyTypes::Princess:
+		case Enemy::EnemyTypes::Woman:
 			mesh = Ogre::String("princess.mesh");
 			break;
 	}
@@ -234,6 +234,16 @@ EnemyPtr EnemyManager::createEnemy(Enemy::EnemyTypes type, Ogre::String name, Og
 		if( params.dieAnimation != "" )
 		{
 			enemyDieAnimation = enemyDieMesh->getAnimationState(params.dieAnimation);
+			enemy->setDieAnimation(enemyDieAnimation);
+		}
+	}
+	// Set die animation if its in same mesh
+	else
+	{
+		// Set die animation if exists
+		if( params.dieAnimation != "" )
+		{
+			enemyDieAnimation = enemyMesh->getAnimationState(params.dieAnimation);
 			enemy->setDieAnimation(enemyDieAnimation);
 		}
 	}
@@ -508,21 +518,17 @@ EVENTS_DEFINE_HANDLER(EnemyManager, EnemyKilled)
 				enemy->dieToCamera();
 			else
 			{				
-				if( enemy->hasDieAnimation() )
+				if( enemy->hasDieMesh() )
 				{
 					enemy->dieSwitch();
-					enemy->setDieMaterialName("Skin/Red");
+					if( enemy->getEnemyType() != Enemy::EnemyTypes::BatteringRam )
+						enemy->setDieMaterialName("Skin/Red");
 				}
-				else
+				else if ( !enemy->hasDieAnimation() )
 					enemy->setMaterialName("Skin/Red");
 			}
 		}
-
-		//EnemyRemoveEventPtr eRemove = EnemyRemoveEventPtr(new EnemyRemoveEvent(enemy));
- 		//EVENTS_FIRE_AFTER(eRemove, 5.0f);
 	}
-
-	// Remove physics box
 }
 
 EVENTS_DEFINE_HANDLER(EnemyManager, EnemyRemove)
@@ -541,9 +547,6 @@ EVENTS_DEFINE_HANDLER(EnemyManager, EnemyCustom)
 
 	if( enemy->isBurning())
 		enemy->setVisible(false);
-
-	//EnemyRemoveEventPtr eRemove = EnemyRemoveEventPtr(new EnemyRemoveEvent(enemy));
-	//EVENTS_FIRE_AFTER(eRemove, 5.0f);
 }
 
 EVENTS_DEFINE_HANDLER(EnemyManager, EnemyCreation)

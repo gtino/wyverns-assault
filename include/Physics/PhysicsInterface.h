@@ -40,6 +40,13 @@ namespace WyvernsAssault
 		Fake
 	};
 
+	enum PhysicBoxType
+	{
+		body = 0,
+		attack = 1,
+		specialAttack = 2
+	};
+
 	/**
 	Interface implemented by objects with physics
 	*/
@@ -63,10 +70,10 @@ namespace WyvernsAssault
 		Ogre::Real getSpeed(){return mSpeed;}
 		void setSpeed(Ogre::Real speed){mSpeed = speed;}
 
-		virtual GeometryPtr getGeometry(Ogre::String name){
-			if(name == "collision")
+		virtual GeometryPtr getGeometry(PhysicsInterface::PhysicBoxType type){
+			if( type == PhysicBoxType::body )
 				return mGeometryCollision;
-			else if(name == "attack")
+			else if( type == PhysicBoxType::attack )
 				return mGeometryAttack;
 		}
 
