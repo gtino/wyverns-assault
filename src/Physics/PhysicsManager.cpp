@@ -225,26 +225,6 @@ void PhysicsManager::checkForCollisions()
 		}
 	}
 
-	// Enemy Collisions
-	for(int i = 0; i < mEnemyMapList[mCurrentGameArea].size(); i++)
-	{
-		EnemyPtr enemy =  mEnemyMapList[mCurrentGameArea][i];
-		AxisAlignedBox enemy_box = enemy->getGeometry("collision")->getWorldBoundingBox(enemy->getPosition());
-
-		// Enemy - Enemy COLLISION
-		for(int i = 0; i < mEnemyMapList[mCurrentGameArea].size(); i++)
-		{
-			EnemyPtr enemy =  mEnemyMapList[mCurrentGameArea][i];
-			AxisAlignedBox enemy_second_box = enemy->getGeometry("collision")->getWorldBoundingBox(enemy->getPosition());
-
-			// Check if player is using special (fire) and collisioning with enemy
-			if (enemy_box.intersects(enemy_second_box))
-			{
-				// TODO: Enemy-enemy Collision
-
-			}
-		}
-	}
 }
 
 void PhysicsManager::move(PlayerPtr player, const float elapsedSeconds)
@@ -281,8 +261,14 @@ void PhysicsManager::move(EnemyPtr enemy, const float elapsedSeconds)
 
 	enemy->translate( (direction  * enemy->getSpeed() * elapsedSeconds) );
 
+	// Test enemy collision
+	bool enemyCollision = collidesAllEnemys(enemy);
+
+	// Test walls collision
+	bool wallCollision = collides(lastPosition, enemy->getPosition(), mWallGeometry->getPhysicsMeshInfo(), 0.5f, 0);
+
 	// Enemies only collides with scenario walls
-	if( collides(lastPosition, enemy->getPosition(), mWallGeometry->getPhysicsMeshInfo(), 0.5f, 0) )
+	if( enemyCollision ||  wallCollision  )
 		enemy->setPosition(lastPosition);
 }
 
@@ -409,6 +395,24 @@ bool PhysicsManager::collidesAllObjects(PlayerPtr player)
 		if( player_box.intersects(obj_box) )
 			return true;
 		
+	}
+
+	return false;
+}
+
+// Collisions between enemy and enemys
+bool PhysicsManager::collidesAllEnemys(EnemyPtr enemy)
+{
+
+	AxisAlignedBox enemy_box = enemy->getGeometry("collision")->getWorldBoundingBox(enemy->getPosition());
+
+	for(int i = 0; i < mEnemyMapList[mCurrentGameArea].size(); i++)
+	{
+		EnemyPtr enemySecond =  mEnemyMapList[mCurrentGameArea][i];
+		AxisAlignedBox enemy_second_box = enemySecond->getGeometry("collision")->getWorldBoundingBox(enemySecond->getPosition());
+
+		if (enemy_box.intersects(enemy_second_box) && enemy != enemySecond)
+			return true;
 	}
 
 	return false;
