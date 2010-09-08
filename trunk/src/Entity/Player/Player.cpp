@@ -22,6 +22,7 @@ Player::Player(Ogre::String name)
 , mSpecialDamage (REDWYVERN_SPECIAL_DAMAGE)
 , mGuiId(0)
 , mGodMode(false)
+, mAttackNode(0)
 {
 }
 
@@ -38,13 +39,14 @@ void Player::initializeEntity(Ogre::Entity* entity, Ogre::SceneNode* sceneNode, 
 	mFireMesh = mSceneManager->createEntity("fireMesh", "redWyvernFireCone.mesh");
 	mFireMesh->setVisible(mIsDebugEnabled);
 
-	// Physic Body - for Collision
+	// Physic for Collision
 	initializePhysics(entity->getName(), Vector3(35,50,35),"OBBoxManualMaterial_Player"); 
 	sceneNode->attachObject(getGeometry(PhysicBoxType::body)->getMovableObject());
 
-	// Physic Body - for Attack
-	addAttackGeometry(entity->getName(), Vector3(60,50,35), "OBBoxManualMaterial_Player"); 
-	sceneNode->createChildSceneNode(Vector3(0,0,25))->attachObject(getGeometry(PhysicBoxType::attack)->getMovableObject());
+	// Physic for Attack
+	addAttackGeometry(entity->getName(), Vector3(60,50,30), "OBBoxManualMaterial_Attack"); 
+	mAttackNode = sceneNode->createChildSceneNode(Vector3(0,0,15));
+	mAttackNode->attachObject(getGeometry(PhysicBoxType::attack)->getMovableObject());
 
 	// Animation system
 	mAnimationSystem = new tecnofreak::ogre::AnimationSystem( mEntity );

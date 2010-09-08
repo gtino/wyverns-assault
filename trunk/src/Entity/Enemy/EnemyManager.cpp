@@ -393,8 +393,9 @@ void EnemyManager::update(const float elapsedSeconds)
 		{
 			if( enemy->attackStart() )
 			{
-				//If attack comes from a wizard
-				if(enemy->getEnemyType() == Enemy::EnemyTypes::Wizard){
+				//If attack comes from ranged
+				if( enemy->isRanged() )
+				{
 					//Projectile event 
 					ProjectileFireEventPtr projEvt = ProjectileFireEventPtr(new ProjectileFireEvent(enemy));
 					EVENTS_FIRE_AFTER(projEvt, 0.75);

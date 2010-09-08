@@ -87,7 +87,7 @@ void ProjectileManager::update(const float elapsedSeconds){
 		// Physic debugg control
 		projectile->setDebugEnabled(mIsDebugEnabled);
 
-		if(projectile->getProjectileTimer() >= PROJECTILE_LIVE_TIME && projectile->isLive())
+		if( (projectile->getProjectileTimer() >= projectile->getAliveTime()) && projectile->isLive() )
 		{
 			//Projectile remove
 			ProjectileRemoveEventPtr evtRemove = ProjectileRemoveEventPtr(new ProjectileRemoveEvent(projectile));
@@ -139,11 +139,13 @@ ProjectilePtr ProjectileManager::getProjectile(Ogre::String name)
 // --------------
 EVENTS_BEGIN_REGISTER_HANDLERS(ProjectileManager)
 	EVENTS_REGISTER_HANDLER(ProjectileManager, ProjectileFire);
+	EVENTS_REGISTER_HANDLER(ProjectileManager, ProjectileHit);
 	EVENTS_REGISTER_HANDLER(ProjectileManager, ProjectileRemove);
 EVENTS_END_REGISTER_HANDLERS()
 
 EVENTS_BEGIN_UNREGISTER_HANDLERS(ProjectileManager)
 	EVENTS_UNREGISTER_HANDLER(ProjectileManager, ProjectileFire);
+	EVENTS_UNREGISTER_HANDLER(ProjectileManager, ProjectileHit);
 	EVENTS_UNREGISTER_HANDLER(ProjectileManager, ProjectileRemove);
 EVENTS_END_UNREGISTER_HANDLERS()
 
@@ -163,14 +165,24 @@ EVENTS_DEFINE_HANDLER(ProjectileManager, ProjectileFire)
 	ProjectilePtr projectile = createProjectile(createUniqueId(), projectileNode, init, finish);
 
 	projectile->setProjectileDamage(enemy->getHitDamage());
+}
 
+EVENTS_DEFINE_HANDLER(ProjectileManager, ProjectileHit)
+{
+	Debug::Out("PhysicsManager : handleProjectileHitEvent");
+
+	ProjectilePtr projectile = evt->getProjectile();
+
+	//Projectile remove
+	ProjectileRemoveEventPtr evtRemove = ProjectileRemoveEventPtr(new ProjectileRemoveEvent(projectile));
+	EVENTS_FIRE(evtRemove);
 }
 
 EVENTS_DEFINE_HANDLER(ProjectileManager, ProjectileRemove)
 {
 	Debug::Out("EnemyManager : handleProjectileRemoveEvent");
 
-	ProjectilePtr p = evt->getProjectile();
-	removeProjectile(p->getName());
-
+	ProjectilePtr projectile = evt->getProjectile();
+	projectile->death();
+	removeProjectile(projectile->getName());
 }

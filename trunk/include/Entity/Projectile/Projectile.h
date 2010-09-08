@@ -30,7 +30,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
 #include "..\OBBoxRenderable.h"
 
-#define PROJECTILE_LIVE_TIME 1
+#define PROJECTILE_LIVE_TIME 10
+#define PROJECTILE_SPEED	 80
 
 namespace WyvernsAssault
 {
@@ -57,23 +58,30 @@ namespace WyvernsAssault
 		void setDebugEnabled(bool isDebugEnabled);
 		bool getDebugEnabled(){return mIsDebugEnabled;};
 
-		void setProjectileTimer(float seconds){ aliveTime = seconds; }
-		float getProjectileTimer(){ return aliveTime; }
+		void setProjectileTimer(float seconds){ mAliveTime = seconds; }
+		float getProjectileTimer(){ return mAliveTime; }
 
-		void setProjectileDamage(Ogre::Real damage){ hitDamage = damage; }
-		Ogre::Real getProjectileDamage(){ return hitDamage; }
+		Real getAliveTime(){ return mDuration; }
 
-		void death(){ live = false; }
-		bool isLive(){ return live; }
+		void setProjectileDamage(Ogre::Real damage){ mDamage = damage; }
+		Ogre::Real getProjectileDamage(){ return mDamage; }
+
+		void setProjectileSpeed(Ogre::Real speed){ speed = mSpeed; }
+		Ogre::Real getProjectileSpeed(){ return mSpeed; }
+
+		void death(){ mLive = false; }
+		bool isLive(){ return mLive; }
 
 	private:
 
 		Vector3 initPoint;
 		Vector3 finishPoint;
 
-		Ogre::Real hitDamage;
-		float aliveTime;
-		bool live;
+		Ogre::Real	mDamage;
+		Ogre::Real	mSpeed;
+		Ogre::Real	mAliveTime;
+		Ogre::Real	mDuration;
+		bool		mLive;
 
 		OBBoxRenderable* mOBBoxRenderable;
 		bool mIsDebugEnabled;

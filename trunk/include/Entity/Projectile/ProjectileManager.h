@@ -89,6 +89,7 @@ namespace WyvernsAssault
 		EVENTS_INTERFACE()
 
 		EVENTS_HANDLER(ProjectileFire)
+		EVENTS_HANDLER(ProjectileHit)
 		EVENTS_HANDLER(ProjectileRemove)
 
 	};

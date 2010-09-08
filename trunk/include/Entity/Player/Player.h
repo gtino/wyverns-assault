@@ -100,7 +100,9 @@ namespace WyvernsAssault
 		float getSpecialLength(){ return mSpecialLength; }
 
 		// Fire attack bounding box
-		AxisAlignedBox getFireBox(){  return mFireMesh->getWorldBoundingBox(); }
+		AxisAlignedBox getFireBox(){ return mFireMesh->getWorldBoundingBox(); }
+
+		Vector3 getAttackPosition(){ return mAttackNode->_getDerivedPosition(); }
 
 		// Particle systems
 		void setFireBreath(ParticleUniverse::ParticleSystem* pSystem);
@@ -167,6 +169,8 @@ namespace WyvernsAssault
 		OBBoxRenderable* mFireOBBoxRenderable;
 		bool mIsDebugEnabled;
 		bool mGodMode;
+
+		SceneNode*		mAttackNode;
 
 	private:
 		float		mMaxLife;

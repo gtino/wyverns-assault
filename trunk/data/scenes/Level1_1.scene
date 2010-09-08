@@ -6149,6 +6149,20 @@
           </subentities>
         </entity>
       </node>
+      <node name="Archer" id="100619528">
+        <rotation qw="0.317305" qx="0" qy="-0.948324" qz="0" />
+        <position x="82.3568" y="15.8835" z="904.493" />
+        <scale x="1" y="1" z="1" />
+        <entity name="archer" id="357097088" castshadows="false" meshFile="archer.mesh" type="Enemy" subType="Archer" animationTree="data/animations/archer.xml" life="60" points="250" speed="40" damage="2" specialDamage="4" height="13" dieMesh="nakedDie.mesh" dieAnimation="Die">
+          <rotation qw="1" qx="0" qy="0" qz="0" />
+          <position x="0" y="0" z="0" />
+          <scale x="1" y="1" z="1" />
+          <subentities>
+            <subentity materialName="archer_material" index="0" visible="true" />
+            <subentity materialName="archer_material" index="1" visible="true" />
+          </subentities>
+        </entity>
+      </node>
       <node name="Knight" id="297280800">
         <rotation qw="0.92881" qx="0" qy="-0.370557" qz="0" />
         <position x="402.688" y="13.2234" z="738.392" />
