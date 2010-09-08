@@ -1,4 +1,4 @@
-#include "..\..\..\include\Entity\EntityInterface.h"
+#include "..\..\include\Entity\EntityInterface.h"
 
 using namespace WyvernsAssault;
 

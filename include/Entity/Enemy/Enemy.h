@@ -41,7 +41,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #define ENEMY_RUN			1
 #define ENEMY_ATTACK		2
 #define ENEMY_SPECIAL		3
-#define	WOMAN_GIVE			0
+#define	WOMAN_GIVE			4
 
 #define PHYSIC_SIZE			10	// HACK! -- Need to be defined in Ogitor
 
@@ -133,6 +133,10 @@ namespace WyvernsAssault
 		void setAttackTimeout(Real time){mAttackTimeout = time;}
 		Real getAttackCooldown(){return mParameters.attackCooldown;}
 		Vector3 getPhysicSize(){ return mParameters.physicSize; }
+
+		// Enemy typ functions
+		bool isRanged();
+		bool isMashable();
 
 		// Sound functions
 		int mChannel;

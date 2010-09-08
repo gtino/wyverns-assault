@@ -383,6 +383,20 @@ void Enemy::setDirectionRandom()
 	}
 }
 
+bool Enemy::isRanged()
+{
+	if( mType == EnemyTypes::Wizard || mType == EnemyTypes::Archer )
+		return true;
+	return false;
+}
+
+bool Enemy::isMashable()
+{
+	if( mType == EnemyTypes::Chicken || mType == EnemyTypes::Cow )
+		return true;
+	return false;
+}
+
 void Enemy::setDebugEnabled(bool isDebugEnabled)
 {
 	if(mIsDebugEnabled != isDebugEnabled)

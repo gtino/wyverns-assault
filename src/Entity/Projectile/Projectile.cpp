@@ -6,8 +6,11 @@ Projectile::Projectile(Ogre::String name, Ogre::Vector3 init, Ogre::Vector3 fini
 : EntityInterface(name)
 , PhysicsInterface()
 , mOBBoxRenderable(0)
-, aliveTime(0)
-, live(true)
+, mAliveTime(0.0)
+, mDuration(PROJECTILE_LIVE_TIME)
+, mLive(true)
+, mDamage(0.0)
+, mSpeed(PROJECTILE_SPEED)
 , mIsDebugEnabled(false)
 {
 	initPoint = init;

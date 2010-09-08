@@ -90,7 +90,6 @@ void PhysicsManager::update(const float elapsedSeconds)
 
 		//Update projectile move
 		move(projectile,elapsedSeconds);
-
 	}
 
 	// Call bounding box collision
@@ -105,8 +104,8 @@ void PhysicsManager::checkForCollisions()
 	{
 		PlayerPtr player = it_player->second;
 		AxisAlignedBox player_firebox = player->getFireBox();
-		AxisAlignedBox player_attack_box = player->getGeometry(PhysicBoxType::attack)->getWorldBoundingBox(player->getPosition());
-		AxisAlignedBox player_collision_box = player->getGeometry(PhysicBoxType::attack)->getWorldBoundingBox(player->getPosition());
+		AxisAlignedBox player_attack_box = player->getGeometry(PhysicBoxType::attack)->getWorldBoundingBox(player->getAttackPosition());
+		AxisAlignedBox player_collision_box = player->getGeometry(PhysicBoxType::body)->getWorldBoundingBox(player->getPosition());
 
 		// Player - Enemy COLLISION
 		for(int i = 0; i < mEnemyMapList[mCurrentGameArea].size(); i++)
@@ -115,46 +114,45 @@ void PhysicsManager::checkForCollisions()
 			AxisAlignedBox enemy_box = enemy->getGeometry(PhysicBoxType::body)->getWorldBoundingBox(enemy->getPosition());
 
 			// Check if player is using special (fire) and collisioning with enemy
-			if ( player->isSpecial() && player_firebox.intersects(enemy_box))
+			if ( player->isSpecial() && player_firebox.intersects(enemy_box) )
 			{
 				EnemyHitEventPtr enemyHitEventPtr = EnemyHitEventPtr(new EnemyHitEvent(enemy, player));
 				enemyHitEventPtr->setDamage(player->getSpecialHitDamage());
 				EVENTS_FIRE(enemyHitEventPtr);
 			}
 
-			// Player and enemy are colliding
-			if(player_attack_box.intersects(enemy_box))
+			// Player and enemy are colliding, player is attacking and has changed state
+			if( player->isAttacking() && mLastAttackChecked != player->wichAttack() && player_attack_box.intersects(enemy_box) )
 			{
-				// Check if player is attacking and has changed state
-				if( player->isAttacking() && mLastAttackChecked != player->wichAttack() )
-				{
-					EnemyHitEventPtr enemyHitEventPtr = EnemyHitEventPtr(new EnemyHitEvent(enemy, player));
-					// If thrid strike more damage
-					if( player->wichAttack() == 3 )
-						enemyHitEventPtr->setDamage(player->getComboHitDamage());
-					else
- 						enemyHitEventPtr->setDamage(player->getHitDamage());
+				EnemyHitEventPtr enemyHitEventPtr = EnemyHitEventPtr(new EnemyHitEvent(enemy, player));
+				// If thrid strike more damage
+				if( player->wichAttack() == 3 )
+					enemyHitEventPtr->setDamage(player->getComboHitDamage());
+				else
+ 					enemyHitEventPtr->setDamage(player->getHitDamage());
 
-					EVENTS_FIRE(enemyHitEventPtr);
-				}
-				// Check if enemy is attacking
-				if( enemy->isAttacking() && !enemy->hasAttackHited() && enemy->getEnemyType() != Enemy::EnemyTypes::Wizard )
+				EVENTS_FIRE(enemyHitEventPtr);
+			}
+
+			// Colision with chicken or cow if moving. Animal mash!
+			if ( enemy->isMashable() && player->isMoving() && player_collision_box.intersects(enemy_box) )
+			{
+				EnemyHitEventPtr enemyHitEventPtr = EnemyHitEventPtr(new EnemyHitEvent(enemy, player));
+				enemyHitEventPtr->setDamage(player->getHitDamage());
+				EVENTS_FIRE(enemyHitEventPtr);
+			}	
+
+			// Check if enemy is attacking and box are colliding
+			if( enemy->isAttacking() && !enemy->hasAttackHited() && enemy_box.intersects(player_collision_box) )
+			{
+				if( !enemy->isRanged() )
 				{
 					PlayerHitEventPtr playerHitEventPtr = PlayerHitEventPtr(new PlayerHitEvent(enemy, player));
 					EVENTS_FIRE_AFTER(playerHitEventPtr, 0.4);
 
 					enemy->setAttackHited(true);
 				}
-				// Colision with chicken or cow if moving. Animal mash!
-				if ( ( enemy->getEnemyType() == Enemy::EnemyTypes::Chicken || enemy->getEnemyType() == Enemy::EnemyTypes::Cow  ) 
-					&& player->isMoving() )
-				{
-					EnemyHitEventPtr enemyHitEventPtr = EnemyHitEventPtr(new EnemyHitEvent(enemy, player));
-					enemyHitEventPtr->setDamage(player->getHitDamage());
-					EVENTS_FIRE(enemyHitEventPtr);
-				}
-				// Collision withou attack
-			}			
+			}				
 		}
 
 		// Player - Object COLLISION 
@@ -170,23 +168,18 @@ void PhysicsManager::checkForCollisions()
 				EVENTS_FIRE(objectHitEventPtr);
 			}
 
-			// Player and object are colliding
-			if(player_attack_box.intersects(obj_box))
+			// Player and object are colliding, and player is attacking and has changed state
+			if( player->isAttacking() && mLastAttackChecked != player->wichAttack() &&player_attack_box.intersects(obj_box) )
 			{
-				// Check if player is attacking and has changed state
-				if( player->isAttacking() && mLastAttackChecked != player->wichAttack() )
-				{
-					ObjectHitEventPtr objectHitEventPtr = ObjectHitEventPtr(new ObjectHitEvent(obj, player));
-					// If thrid strike more damage
-					if( player->wichAttack() == 3 )
-						objectHitEventPtr->setDamage(player->getComboHitDamage());
-					else
- 						objectHitEventPtr->setDamage(player->getHitDamage());
+				ObjectHitEventPtr objectHitEventPtr = ObjectHitEventPtr(new ObjectHitEvent(obj, player));
+				// If thrid strike more damage
+				if( player->wichAttack() == 3 )
+					objectHitEventPtr->setDamage(player->getComboHitDamage());
+				else
+ 					objectHitEventPtr->setDamage(player->getHitDamage());
 
-					EVENTS_FIRE(objectHitEventPtr);
-				}
-			}
-			
+				EVENTS_FIRE(objectHitEventPtr);
+			}			
 		}
 
 		// Save last player attack checked
@@ -214,17 +207,12 @@ void PhysicsManager::checkForCollisions()
 
 			if(player_collision_box.intersects(projectile_box))
 			{
-				//Projectile atacck
+				//Projectile attack
 				ProjectileHitEventPtr evtHit = ProjectileHitEventPtr(new ProjectileHitEvent(projectile, player));
-				EVENTS_FIRE(evtHit);
-				//Projectile remove
-				ProjectileRemoveEventPtr evtRemove = ProjectileRemoveEventPtr(new ProjectileRemoveEvent(projectile));
-				EVENTS_FIRE(evtRemove);
-				projectile->death();
+				EVENTS_FIRE(evtHit);				
 			}
 		}
 	}
-
 }
 
 void PhysicsManager::move(PlayerPtr player, const float elapsedSeconds)
@@ -276,8 +264,7 @@ void PhysicsManager::move(ProjectilePtr projectile, const float elapsedSeconds)
 {
 	Vector3 direction = projectile->getDirection();
 
-	projectile->translate( (direction  * elapsedSeconds * 80)  );
-
+	projectile->translate(( direction  * projectile->getSpeed() * elapsedSeconds ));
 }
 
 // Load scenario physics
@@ -541,7 +528,7 @@ bool PhysicsManager::removeObject(ObjectPtr obj)
 bool PhysicsManager::removeProjectile(ProjectilePtr projectile)
 {
 	ProjectileListIterator it = find(mProjectileList.begin(), mProjectileList.end(), projectile);
-		if( it != mProjectileList.end() )
+	if( it != mProjectileList.end() )
 	{
 		mProjectileList.erase(it);
 		return true;

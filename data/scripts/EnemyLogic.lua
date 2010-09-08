@@ -31,7 +31,7 @@ ChaseDistance = 300
 MagicDistance = 100
 
 -- Archer
-FireDistance = 160
+FireDistance = 60
 
 -- Battering Ram
 BRAttackDistance = 35

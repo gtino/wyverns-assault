@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<animation_system>
+  <nodes>
+    <node type="ParameterNode" id="0">
+      <custom parameter="CurrentAnimation" />
+    </node>
+    <node type="AnimationNode" id="1">
+      <custom animation="Iddle" />
+    </node>
+    <node type="AnimationNode" id="2">
+      <custom animation="Run" />
+    </node>
+    <node type="TransitionSelectNode" id="3">
+      <custom size="3" />
+    </node>
+    <node type="AnimationNode" id="4">
+      <custom animation="Attack" />
+    </node>
+  </nodes>
+  <connections>
+    <connection node_in="3" port_in="select" node_out="0" />
+    <connection node_in="3" port_in="animation 0" node_out="1" />
+    <connection node_in="3" port_in="animation 1" node_out="2" />
+    <connection node_in="3" port_in="animation 2" node_out="4" />
+  </connections>
+  <output>3</output>
+  <constants>
+    <constant node_id="1" port="speed" value="1" />
+    <constant node_id="2" port="speed" value="1" />
+    <constant node_id="3" port="time in" value="0" />
+    <constant node_id="3" port="time out" value="0" />
+    <constant node_id="4" port="speed" value="1" />
+  </constants>
+  <parameters>
+    <parameter name="CurrentAnimation" value="0" />
+  </parameters>
+</animation_system>

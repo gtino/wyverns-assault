@@ -55,12 +55,13 @@ namespace WyvernsAssault
 
 	public:
 		
-		virtual void initializePhysics(Ogre::String name, Ogre::Vector3 boxDimension, Ogre::String material){
-			// Create real collision geometry
+		virtual void initializePhysics(Ogre::String name, Ogre::Vector3 boxDimension, Ogre::String material)
+		{
 			mGeometryCollision = GeometryPtr(new Geometry(boxDimension, name, material));
 		}
 
-		virtual void addAttackGeometry(Ogre::String name, Ogre::Vector3 boxDimension, Ogre::String material){
+		virtual void addAttackGeometry(Ogre::String name, Ogre::Vector3 boxDimension, Ogre::String material)
+		{
 			mGeometryAttack = GeometryPtr(new Geometry(boxDimension, "attack"+name, material));
 		}
 
@@ -70,11 +71,13 @@ namespace WyvernsAssault
 		Ogre::Real getSpeed(){return mSpeed;}
 		void setSpeed(Ogre::Real speed){mSpeed = speed;}
 
-		virtual GeometryPtr getGeometry(PhysicsInterface::PhysicBoxType type){
+		virtual GeometryPtr getGeometry(PhysicsInterface::PhysicBoxType type)
+		{
 			if( type == PhysicBoxType::body )
 				return mGeometryCollision;
 			else if( type == PhysicBoxType::attack )
 				return mGeometryAttack;
+			return mGeometryCollision;
 		}
 
 	private:
