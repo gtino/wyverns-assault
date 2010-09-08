@@ -44,7 +44,7 @@ namespace WyvernsAssault
 	class Object : public PhysicsInterface, public EntityInterface
 	{
 	public:
-		Object(Ogre::String name, ObjectTypes type, Ogre::Vector3 physicBox);
+		Object(Ogre::String name, ObjectTypes type, Ogre::Vector3 physicBox, int life);
 		~Object();
 
 		void _attachTo(Ogre::SceneNode* sceneNode);

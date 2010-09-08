@@ -7407,7 +7407,7 @@
         <rotation qw="0.565152" qx="0" qy="-0.824987" qz="0" />
         <position x="1037.89" y="-0.000244141" z="-456.99" />
         <scale x="1" y="1" z="1" />
-        <entity name="Entity#41" id="869350272" castshadows="true" meshFile="UfoTree0.mesh" type="DynamicObject" BoxX="15" BoxY="70" BoxZ="15" life="100" dieMesh="UfoTree0Die.mesh" dieAnimation="Die">
+        <entity name="Entity#41" id="869350272" castshadows="true" meshFile="UfoTree0.mesh" type="DynamicObject" BoxX="15" BoxY="70" BoxZ="15" life="100" dieMesh="UfoTree0Die.mesh" dieAnimation="Die" dieMaterial="true">
           <rotation qw="1" qx="0" qy="0" qz="0" />
           <position x="0" y="0" z="0" />
           <scale x="1" y="1" z="1" />
@@ -7460,7 +7460,7 @@
         <rotation qw="0.612542" qx="0" qy="-0.790438" qz="0" />
         <position x="899.732" y="-0.000244141" z="-207.658" />
         <scale x="1" y="1" z="1" />
-        <entity name="Entity#89" id="939176640" castshadows="true" meshFile="UfoTree0.mesh" type="DynamicObject" BoxX="15" BoxY="70" BoxZ="15" life="100" dieMesh="UfoTree0Die.mesh" dieAnimation="Die">
+        <entity name="Entity#89" id="939176640" castshadows="true" meshFile="UfoTree0.mesh" type="DynamicObject" BoxX="15" BoxY="70" BoxZ="15" life="100" dieMesh="UfoTree0Die.mesh" dieAnimation="Die" dieMaterial="true">
           <rotation qw="1" qx="0" qy="-2.98023E-08" qz="0" />
           <position x="0" y="0" z="0" />
           <scale x="1" y="1" z="1" />
@@ -7579,7 +7579,7 @@
         <rotation qw="0.818052" qx="0" qy="0.575145" qz="0" />
         <position x="1058.85" y="-0.000244141" z="-279.247" />
         <scale x="1" y="1" z="1" />
-        <entity name="Entity#38" id="32105472" castshadows="true" meshFile="UfoTree0.mesh" type="DynamicObject" BoxX="15" BoxY="70" BoxZ="15" life="100" dieMesh="UfoTree0Die.mesh" dieAnimation="Die">
+        <entity name="Entity#38" id="32105472" castshadows="true" meshFile="UfoTree0.mesh" type="DynamicObject" BoxX="15" BoxY="70" BoxZ="15" life="100" dieMesh="UfoTree0Die.mesh" dieAnimation="Die" dieMaterial="true">
           <rotation qw="1" qx="0" qy="0" qz="0" />
           <position x="0" y="0" z="0" />
           <scale x="1" y="1" z="1" />
@@ -7593,7 +7593,7 @@
         <rotation qw="0.818052" qx="0" qy="0.575145" qz="0" />
         <position x="924.403" y="-0.000244141" z="-384.165" />
         <scale x="1" y="1" z="1" />
-        <entity name="Entity#80" id="619190016" castshadows="true" meshFile="UfoTree0.mesh" type="DynamicObject" BoxX="15" BoxY="70" BoxZ="15" life="100" dieMesh="UfoTree0Die.mesh" dieAnimation="Die">
+        <entity name="Entity#80" id="619190016" castshadows="true" meshFile="UfoTree0.mesh" type="DynamicObject" BoxX="15" BoxY="70" BoxZ="15" life="100" dieMesh="UfoTree0Die.mesh" dieAnimation="Die" dieMaterial="true">
           <rotation qw="1" qx="0" qy="0" qz="0" />
           <position x="0" y="0" z="0" />
           <scale x="1" y="1" z="1" />
@@ -7620,7 +7620,7 @@
         <rotation qw="0.227335" qx="0" qy="-0.973817" qz="0" />
         <position x="824.487" y="-0.000244141" z="-365.65" />
         <scale x="1" y="1" z="1" />
-        <entity name="Entity#64" id="883877120" castshadows="true" meshFile="UfoTree0.mesh" type="DynamicObject" BoxX="15" BoxY="70" BoxZ="15" life="100" dieMesh="UfoTree0Die.mesh" dieAnimation="Die">
+        <entity name="Entity#64" id="883877120" castshadows="true" meshFile="UfoTree0.mesh" type="DynamicObject" BoxX="15" BoxY="70" BoxZ="15" life="100" dieMesh="UfoTree0Die.mesh" dieAnimation="Die" dieMaterial="true">
           <rotation qw="1" qx="0" qy="0" qz="0" />
           <position x="0" y="0" z="0" />
           <scale x="1" y="1" z="1" />
@@ -7726,7 +7726,7 @@
         <rotation qw="0.528708" qx="0" qy="0.848804" qz="0" />
         <position x="654.263" y="-0.000244141" z="-597.703" />
         <scale x="1" y="1" z="1" />
-        <entity name="Entity#83" id="337656800" castshadows="true" meshFile="UfoTree0.mesh" type="DynamicObject" BoxX="15" BoxY="70" BoxZ="15" life="100" dieMesh="UfoTree0Die.mesh" dieAnimation="Die">
+        <entity name="Entity#83" id="337656800" castshadows="true" meshFile="UfoTree0.mesh" type="DynamicObject" BoxX="15" BoxY="70" BoxZ="15" life="100" dieMesh="UfoTree0Die.mesh" dieAnimation="Die" dieMaterial="true">
           <rotation qw="1" qx="0" qy="0" qz="0" />
           <position x="0" y="0" z="0" />
           <scale x="1" y="1" z="1" />
@@ -7740,7 +7740,7 @@
         <rotation qw="0.871971" qx="0" qy="-0.489558" qz="0" />
         <position x="992.245" y="8.2" z="-217.533" />
         <scale x="1" y="1" z="1" />
-        <entity name="Entity#54" id="6988739" castshadows="true" meshFile="UfoTree0.mesh" type="DynamicObject" BoxX="15" BoxY="70" BoxZ="15" life="100" dieMesh="UfoTree0Die.mesh" dieAnimation="Die">
+        <entity name="Entity#54" id="6988739" castshadows="true" meshFile="UfoTree0.mesh" type="DynamicObject" BoxX="15" BoxY="70" BoxZ="15" life="100" dieMesh="UfoTree0Die.mesh" dieAnimation="Die" dieMaterial="true">
           <rotation qw="1" qx="0" qy="0" qz="0" />
           <position x="0" y="0" z="0" />
           <scale x="1" y="1" z="1" />
@@ -7846,7 +7846,7 @@
         <rotation qw="0.163828" qx="0" qy="0.986489" qz="0" />
         <position x="805.985" y="-0.000244141" z="-434.772" />
         <scale x="1" y="1" z="1" />
-        <entity name="Entity#58" id="706381440" castshadows="true" meshFile="UfoTree0.mesh" type="DynamicObject" BoxX="15" BoxY="70" BoxZ="15" life="100" dieMesh="UfoTree0Die.mesh" dieAnimation="Die">
+        <entity name="Entity#58" id="706381440" castshadows="true" meshFile="UfoTree0.mesh" type="DynamicObject" BoxX="15" BoxY="70" BoxZ="15" life="100" dieMesh="UfoTree0Die.mesh" dieAnimation="Die" dieMaterial="true">
           <rotation qw="1" qx="0" qy="0" qz="0" />
           <position x="0" y="0" z="0" />
           <scale x="1" y="1" z="1" />
@@ -7873,7 +7873,7 @@
         <rotation qw="0.190655" qx="0" qy="0.981657" qz="0" />
         <position x="728.273" y="-0.000244141" z="-671.763" />
         <scale x="1" y="1" z="1" />
-        <entity name="Entity#45" id="201483200" castshadows="true" meshFile="UfoTree0.mesh" type="DynamicObject" BoxX="15" BoxY="70" BoxZ="15" life="100" dieMesh="UfoTree0Die.mesh" dieAnimation="Die">
+        <entity name="Entity#45" id="201483200" castshadows="true" meshFile="UfoTree0.mesh" type="DynamicObject" BoxX="15" BoxY="70" BoxZ="15" life="100" dieMesh="UfoTree0Die.mesh" dieAnimation="Die" dieMaterial="true">
           <rotation qw="1" qx="0" qy="0" qz="0" />
           <position x="0" y="0" z="0" />
           <scale x="1" y="1" z="1" />
@@ -7952,7 +7952,7 @@
         <rotation qw="0.190655" qx="0" qy="0.981657" qz="0" />
         <position x="569.89" y="-0.000244141" z="-459.953" />
         <scale x="1" y="1" z="1" />
-        <entity name="Entity#32" id="718894016" castshadows="true" meshFile="UfoTree0.mesh" type="DynamicObject" BoxX="15" BoxY="70" BoxZ="15" life="100" dieMesh="UfoTree0Die.mesh" dieAnimation="Die">
+        <entity name="Entity#32" id="718894016" castshadows="true" meshFile="UfoTree0.mesh" type="DynamicObject" BoxX="15" BoxY="70" BoxZ="15" life="100" dieMesh="UfoTree0Die.mesh" dieAnimation="Die" dieMaterial="true">
           <rotation qw="1" qx="0" qy="0" qz="0" />
           <position x="0" y="0" z="0" />
           <scale x="1" y="1" z="1" />
@@ -7979,7 +7979,7 @@
         <rotation qw="0.227335" qx="0" qy="-0.973817" qz="0" />
         <position x="878.763" y="-0.000244141" z="-513.77" />
         <scale x="1" y="1" z="1" />
-        <entity name="Entity#56" id="50508136" castshadows="true" meshFile="UfoTree0.mesh" type="DynamicObject" BoxX="15" BoxY="70" BoxZ="15" life="100" dieMesh="UfoTree0Die.mesh" dieAnimation="Die">
+        <entity name="Entity#56" id="50508136" castshadows="true" meshFile="UfoTree0.mesh" type="DynamicObject" BoxX="15" BoxY="70" BoxZ="15" life="100" dieMesh="UfoTree0Die.mesh" dieAnimation="Die" dieMaterial="true">
           <rotation qw="1" qx="0" qy="0" qz="0" />
           <position x="0" y="0" z="0" />
           <scale x="1" y="1" z="1" />
