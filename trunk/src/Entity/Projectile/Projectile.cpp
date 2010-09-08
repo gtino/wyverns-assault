@@ -27,7 +27,7 @@ void Projectile::initializeEntity(Ogre::Entity* entity, Ogre::SceneNode* sceneNo
 
 	// Set physic body
 	initializePhysics(entity->getName(), Vector3(10,10,10),"OBBoxManualMaterial_Enemy");
-	sceneNode->attachObject(getGeometry()->getMovableObject());
+	sceneNode->attachObject(getGeometry("collision")->getMovableObject());
 
 	// Set direction of projectile
 	mDirection = finishPoint - initPoint;
@@ -45,6 +45,6 @@ void Projectile::setDebugEnabled(bool isDebugEnabled)
 	if(mIsDebugEnabled != isDebugEnabled)
 	{
 		mIsDebugEnabled = isDebugEnabled;
-		getGeometry()->getMovableObject()->setVisible(mIsDebugEnabled);
+		getGeometry("collision")->getMovableObject()->setVisible(mIsDebugEnabled);
 	}
 }

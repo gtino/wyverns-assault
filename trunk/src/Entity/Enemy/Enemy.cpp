@@ -71,7 +71,7 @@ void Enemy::initializeEntity(Ogre::Entity* entity, Ogre::SceneNode* sceneNode, O
 
 	// Set physic body
 	initializePhysics(entity->getName(), Vector3(25,20,25),"OBBoxManualMaterial_Enemy");
-	sceneNode->attachObject(getGeometry()->getMovableObject());
+	sceneNode->attachObject(getGeometry("collision")->getMovableObject());
 
 
 	// Ballon Set
@@ -377,7 +377,7 @@ void Enemy::setDebugEnabled(bool isDebugEnabled)
 	if(mIsDebugEnabled != isDebugEnabled)
 	{
 		mIsDebugEnabled = isDebugEnabled;
-		getGeometry()->getMovableObject()->setVisible(mIsDebugEnabled);
+		getGeometry("collision")->getMovableObject()->setVisible(mIsDebugEnabled);
 	}
 }
 
