@@ -17,7 +17,12 @@ BaseState::BaseState()
 	this->mIsPaused = false;
 }
 
-BaseState::BaseState(GraphicsManagerPtr graphicsManager, InputManagerPtr inputManager, AudioManagerPtr audioManager, CameraManagerPtr cameraManager, GuiManagerPtr guiManager)
+BaseState::BaseState(GraphicsManagerPtr graphicsManager, 
+					 InputManagerPtr inputManager, 
+					 AudioManagerPtr audioManager, 
+					 CameraManagerPtr cameraManager, 
+					 GuiManagerPtr guiManager, 
+					 LevelManagerPtr levelManager)
 : mSceneManager(0)
 , mRoot(0)
 , mWindow(0)
@@ -32,6 +37,7 @@ BaseState::BaseState(GraphicsManagerPtr graphicsManager, InputManagerPtr inputMa
 	this->mAudioManager		= audioManager;
 	this->mGuiManager		= guiManager;
 	this->mCameraManager	= cameraManager;
+	this->mLevelManager		= levelManager;
 }
 
 BaseState::~BaseState()

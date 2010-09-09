@@ -2,8 +2,13 @@
 
 using namespace WyvernsAssault;
 
-OutroState::OutroState(GraphicsManagerPtr graphicsManager, InputManagerPtr inputManager, AudioManagerPtr audioManager, CameraManagerPtr cameraManager, GuiManagerPtr guiManager)
-: BaseState(graphicsManager,inputManager,audioManager, cameraManager, guiManager)
+OutroState::OutroState(GraphicsManagerPtr graphicsManager, 
+					   InputManagerPtr inputManager, 
+					   AudioManagerPtr audioManager, 
+					   CameraManagerPtr cameraManager, 
+					   GuiManagerPtr guiManager,
+					   LevelManagerPtr levelManager)
+: BaseState(graphicsManager,inputManager,audioManager, cameraManager, guiManager, levelManager)
 {
 	//
 	// TODO Constructor logic HERE

@@ -50,19 +50,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #include <SdkTrays.h>
 #include <ParticleUniversePlugin.h>
 
-#define GAME_LEVEL_INDEX 0
-#define GAME_CAMERAS_INDEX 1
-#define GAME_AREAS_INDEX 2
-
 namespace WyvernsAssault
 {
-	// Config files for each level
-	typedef struct LevelFiles {
-		const char* scene;
-		const char* cameras;
-		const char* gameAreas;
-	} LevelFiles;
-
 	/**
 		Play game state class
 	*/
@@ -73,7 +62,8 @@ namespace WyvernsAssault
 					InputManagerPtr inputManager, 
 					AudioManagerPtr audioManager, 
 					CameraManagerPtr cameraManager, 
-					GuiManagerPtr guiManager);
+					GuiManagerPtr guiManager,
+					LevelManagerPtr levelManager);
 		~PlayState();
 
 	public:
@@ -108,9 +98,6 @@ namespace WyvernsAssault
 
 		/** Mouse input */
 		bool mouseMoved(const OIS::MouseEvent& e);
-
-		/** Get current level */
-		int getLevel(){return mLevel;}
 
 	private:
 		LightsManagerPtr mLightsManager;
@@ -165,20 +152,11 @@ namespace WyvernsAssault
 		TIMER(Projectile);
 		TIMER(ParticleSystem);
 
-		//
-		// Current level
-		//
-		int mLevel;
-
 	protected:
 		float			buttonTimer;
 		OIS::KeyCode	lastKey;
 
 		bool			mDebugEnabled;
-	
-		// Levels' list
-	public:
-		 static const struct LevelFiles smLevels[];
 	};
 }
 #endif // __PLAY_STATE_H_

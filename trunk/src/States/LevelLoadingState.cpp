@@ -2,8 +2,13 @@
 
 using namespace WyvernsAssault;
 
-LevelLoadingState::LevelLoadingState(GraphicsManagerPtr graphicsManager, InputManagerPtr inputManager, AudioManagerPtr audioManager, CameraManagerPtr cameraManager, GuiManagerPtr guiManager)
-: BaseState(graphicsManager,inputManager,audioManager, cameraManager, guiManager)
+LevelLoadingState::LevelLoadingState(GraphicsManagerPtr graphicsManager, 
+									 InputManagerPtr inputManager, 
+									 AudioManagerPtr audioManager, 
+									 CameraManagerPtr cameraManager, 
+									 GuiManagerPtr guiManager, 
+									 LevelManagerPtr levelManager)
+: BaseState(graphicsManager,inputManager,audioManager, cameraManager, guiManager, levelManager)
 , mLevel(0)
 {
 	//

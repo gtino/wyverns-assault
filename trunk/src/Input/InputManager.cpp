@@ -347,7 +347,7 @@ bool InputManager::povMoved(const OIS::JoyStickEvent &evt, int index)
 }
 
 // --------------------------------
-// Lua Physics Lib
+// Lua Input Lib
 // --------------------------------
 LUA_BEGIN_BINDING(InputManager, inputlib)
 LUA_BIND(InputManager, disable)

@@ -49,6 +49,11 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 //
 #include "..\GUI\GuiManager.h"
 
+//
+// Level
+//
+#include "..\Level\LevelManager.h"
+
 namespace WyvernsAssault
 {
 	/** List of game states of the game */
@@ -81,7 +86,8 @@ namespace WyvernsAssault
 					InputManagerPtr inputManager, 
 					AudioManagerPtr audioManager, 
 					CameraManagerPtr cameraManager, 
-					GuiManagerPtr guiManager);
+					GuiManagerPtr guiManager,
+					LevelManagerPtr levelManager);
 		virtual ~BaseState() = 0;
 
 	public:
@@ -135,6 +141,8 @@ namespace WyvernsAssault
 		GuiManagerPtr mGuiManager;
 		/** Camera manager*/
 		CameraManagerPtr mCameraManager;
+		/** Level Manager */
+		LevelManagerPtr mLevelManager;
 
 		/** Next Game State Id */
 		GameStateId mNextGameStateId;

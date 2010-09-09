@@ -12,6 +12,7 @@ mTotalSeconds(0.0f)
 	mStatesManager = StatesManagerPtr(new StatesManager());
 	mGuiManager = GuiManagerPtr(new GuiManager());
 	mCameraManager = CameraManagerPtr(new CameraManager());
+	mLevelManager = LevelManagerPtr(new LevelManager());
 }
 
 Game::~Game()
@@ -45,8 +46,10 @@ bool Game::initialize()
 
 		mGuiManager->initialize(mGraphicsManager->getRoot(), mGraphicsManager->getSceneManager(), mGraphicsManager->getRenderWindow());
 
+		mLevelManager->initialize(0);
+
 		// Initialize Game states (FSM) manager
-		mStatesManager->initialize(mGraphicsManager, mInputManager, mAudioManager, mGuiManager, mCameraManager);
+		mStatesManager->initialize(mGraphicsManager, mInputManager, mAudioManager, mGuiManager, mCameraManager, mLevelManager);
 	}
 
 	return carryOn;
