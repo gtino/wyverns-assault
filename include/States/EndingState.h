@@ -33,7 +33,12 @@ namespace WyvernsAssault
 	class EndingState : public BaseState
 	{
 	public:
-		EndingState(GraphicsManagerPtr graphicsManager, InputManagerPtr inputManager, AudioManagerPtr audioManager, CameraManagerPtr cameraManager, GuiManagerPtr guiManager);
+		EndingState(GraphicsManagerPtr graphicsManager, 
+					InputManagerPtr inputManager, 
+					AudioManagerPtr audioManager, 
+					CameraManagerPtr cameraManager, 
+					GuiManagerPtr guiManager,
+					LevelManagerPtr levelManager);
 		~EndingState();
 
 	public:

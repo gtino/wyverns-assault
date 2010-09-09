@@ -73,6 +73,11 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 //
 #include "..\GUI\GuiManager.h"
 
+//
+// Level
+//
+#include "..\Level\LevelManager.h"
+
 using namespace std;
 
 namespace WyvernsAssault
@@ -106,7 +111,7 @@ namespace WyvernsAssault
 
 	public:
 		/** Initialize the manager */
-		void initialize(GraphicsManagerPtr graphicsManager, InputManagerPtr gameInputManager, AudioManagerPtr audioManager, GuiManagerPtr guiManager, CameraManagerPtr cameraManager);
+		void initialize(GraphicsManagerPtr graphicsManager, InputManagerPtr gameInputManager, AudioManagerPtr audioManager, GuiManagerPtr guiManager, CameraManagerPtr cameraManager, LevelManagerPtr levelManager);
 		/** Destroy and release all resources used by the manager */
 		void finalize();
 		/** Run the current state (main loop)*/
@@ -175,6 +180,8 @@ namespace WyvernsAssault
 		GuiManagerPtr mGuiManager;
 		/** Camera Manager */
 		CameraManagerPtr mCameraManager;
+		/** Level Manager */
+		LevelManagerPtr mLevelManager;
 
 		bool mInitialized;
 	};

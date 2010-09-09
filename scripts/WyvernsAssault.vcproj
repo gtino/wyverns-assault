@@ -576,6 +576,18 @@
 					>
 				</File>
 			</Filter>
+			<Filter
+				Name="Level"
+				>
+				<File
+					RelativePath="..\src\Level\Level.cpp"
+					>
+				</File>
+				<File
+					RelativePath="..\src\Level\LevelManager.cpp"
+					>
+				</File>
+			</Filter>
 		</Filter>
 		<Filter
 			Name="Header Files"
@@ -983,6 +995,18 @@
 				>
 				<File
 					RelativePath="..\include\GameArea\GameAreaManager.h"
+					>
+				</File>
+			</Filter>
+			<Filter
+				Name="Level"
+				>
+				<File
+					RelativePath="..\include\Level\Level.h"
+					>
+				</File>
+				<File
+					RelativePath="..\include\Level\LevelManager.h"
 					>
 				</File>
 			</Filter>

@@ -33,7 +33,12 @@ namespace WyvernsAssault
 	class LevelLoadingState : public BaseState
 	{
 	public:
-		LevelLoadingState(GraphicsManagerPtr graphicsManager, InputManagerPtr inputManager, AudioManagerPtr audioManager, CameraManagerPtr cameraManager, GuiManagerPtr guiManager);
+		LevelLoadingState(	GraphicsManagerPtr graphicsManager, 
+							InputManagerPtr inputManager, 
+							AudioManagerPtr audioManager, 
+							CameraManagerPtr cameraManager, 
+							GuiManagerPtr guiManager,
+							LevelManagerPtr levelManager);
 		~LevelLoadingState();
 
 	public:

@@ -34,7 +34,7 @@ StatesManager::~StatesManager()
 	}
 }
 
-void StatesManager::initialize(GraphicsManagerPtr graphicsManager, InputManagerPtr inputManager, AudioManagerPtr audioManager, GuiManagerPtr guiManager, CameraManagerPtr cameraManager)
+void StatesManager::initialize(GraphicsManagerPtr graphicsManager, InputManagerPtr inputManager, AudioManagerPtr audioManager, GuiManagerPtr guiManager, CameraManagerPtr cameraManager, LevelManagerPtr levelManager)
 {
 	//
 	// Keep a reference to the managers
@@ -44,6 +44,7 @@ void StatesManager::initialize(GraphicsManagerPtr graphicsManager, InputManagerP
 	this->mAudioManager = audioManager;
 	this->mGuiManager = guiManager;
 	this->mCameraManager = cameraManager;
+	this->mLevelManager = levelManager;
 
 	//
 	// Register this class as listerer for the input manager (buffered input!)
@@ -57,17 +58,17 @@ void StatesManager::initialize(GraphicsManagerPtr graphicsManager, InputManagerP
 	//		Maybe it is better to provide some kind of way to load it
 	//		'on the fly', reading it from a .cfg file?
 	//
-	this->mStates[GameStateId::SplashScreen]	= new SplashScreenState(graphicsManager, inputManager, audioManager, cameraManager, guiManager);
-	this->mStates[GameStateId::Intro]			= new IntroState(graphicsManager, inputManager, audioManager, cameraManager, guiManager);
-	this->mStates[GameStateId::MainMenu]		= new MainMenuState(graphicsManager, inputManager, audioManager, cameraManager, guiManager);
-	this->mStates[GameStateId::Ending]			= new EndingState(graphicsManager, inputManager, audioManager, cameraManager, guiManager);
-	this->mStates[GameStateId::GameOver]		= new GameoverState(graphicsManager, inputManager, audioManager, cameraManager, guiManager);
-	this->mStates[GameStateId::Play]			= new PlayState(graphicsManager, inputManager, audioManager, cameraManager, guiManager);
-	this->mStates[GameStateId::LevelLoading]	= new LevelLoadingState(graphicsManager, inputManager, audioManager, cameraManager, guiManager);
-	this->mStates[GameStateId::Credits]			= new CreditsState(graphicsManager, inputManager, audioManager, cameraManager, guiManager);
-	this->mStates[GameStateId::Outro]			= new OutroState(graphicsManager, inputManager, audioManager, cameraManager, guiManager);
-	this->mStates[GameStateId::Options]			= new OptionsState(graphicsManager, inputManager, audioManager, cameraManager, guiManager);
-	this->mStates[GameStateId::Pause]			= new PauseState(graphicsManager, inputManager, audioManager, cameraManager, guiManager);
+	this->mStates[GameStateId::SplashScreen]	= new SplashScreenState(graphicsManager, inputManager, audioManager, cameraManager, guiManager, levelManager);
+	this->mStates[GameStateId::Intro]			= new IntroState(graphicsManager, inputManager, audioManager, cameraManager, guiManager, levelManager);
+	this->mStates[GameStateId::MainMenu]		= new MainMenuState(graphicsManager, inputManager, audioManager, cameraManager, guiManager, levelManager);
+	this->mStates[GameStateId::Ending]			= new EndingState(graphicsManager, inputManager, audioManager, cameraManager, guiManager, levelManager);
+	this->mStates[GameStateId::GameOver]		= new GameoverState(graphicsManager, inputManager, audioManager, cameraManager, guiManager, levelManager);
+	this->mStates[GameStateId::Play]			= new PlayState(graphicsManager, inputManager, audioManager, cameraManager, guiManager, levelManager);
+	this->mStates[GameStateId::LevelLoading]	= new LevelLoadingState(graphicsManager, inputManager, audioManager, cameraManager, guiManager, levelManager);
+	this->mStates[GameStateId::Credits]			= new CreditsState(graphicsManager, inputManager, audioManager, cameraManager, guiManager, levelManager);
+	this->mStates[GameStateId::Outro]			= new OutroState(graphicsManager, inputManager, audioManager, cameraManager, guiManager, levelManager);
+	this->mStates[GameStateId::Options]			= new OptionsState(graphicsManager, inputManager, audioManager, cameraManager, guiManager, levelManager);
+	this->mStates[GameStateId::Pause]			= new PauseState(graphicsManager, inputManager, audioManager, cameraManager, guiManager, levelManager);
 
 	//
 	// Let's start with the first state!

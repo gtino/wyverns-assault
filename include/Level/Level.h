@@ -20,49 +20,39 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
 -----------------------------------------------------------------------------
 */
-#ifndef __OUTRO_STATE_H_
-#define __OUTRO_STATE_H_
+#ifndef __LEVEL_H_
+#define __LEVEL_H_
 
-#include "BaseState.h"
+#include <Ogre.h>
+
+#include <boost/shared_ptr.hpp>
+
+#include "..\Utils\Utils.h"
+
+using namespace Ogre;
 
 namespace WyvernsAssault
-{
-	/**
-		Outro game state class
-	*/
-	class OutroState : public BaseState
+{		
+
+// Config files for each level
+	class Level 
 	{
 	public:
-		OutroState(	GraphicsManagerPtr graphicsManager, 
-					InputManagerPtr inputManager, 
-					AudioManagerPtr audioManager, 
-					CameraManagerPtr cameraManager, 
-					GuiManagerPtr guiManager,
-					LevelManagerPtr levelManager);
-		~OutroState();
+		Level(Ogre::String sceneFile, Ogre::String camerasFile, Ogre::String gameAreasFile);
+		~Level();
 
 	public:
-		/** Initialize current state */
-		void initialize();
-		/** Load resources */
-		void load();
-		/** Manage input - INPUT */
-		void input();
-		/** Update internal stuff - PROCESS */
-		void update(const float elapsedSeconds);
-		/** Render - OUTPUT */
-		void render(const float elapsedSeconds);
-		/** Unload resources */
-		void unload();
-		/** Destroy the state */
-		void finalize();
-		/** Called when the state has to be paused */
-		void pause();
-		/** Called when the state has to be resumed (from pause) */
-		void resume();
+		Ogre::String getSceneFile(){return mSceneFile;}
+		Ogre::String getCamerasFile(){return mCamerasFile;}
+		Ogre::String getGameAreasFile(){return mGameAreasFile;}
 
-		/** Get state Id */
-		GameStateId getStateId();
+	private:
+		Ogre::String mSceneFile;
+		Ogre::String mCamerasFile;
+		Ogre::String mGameAreasFile;
 	};
+
+	typedef boost::shared_ptr<Level> LevelPtr;
 }
-#endif // __OUTRO_STATE_H_
+
+#endif // __LEVEL_H_

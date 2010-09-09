@@ -36,6 +36,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #include ".\States\StatesManager.h"
 #include ".\GUI\GuiManager.h"
 #include ".\Camera\CameraManager.h"
+#include ".\Level\LevelManager.h"
 
 namespace WyvernsAssault
 {
@@ -70,6 +71,8 @@ namespace WyvernsAssault
 		CameraManagerPtr mCameraManager;
 		/** Game states (FSM) manager */
 		StatesManagerPtr mStatesManager;
+		/** Lavel Manager */
+		LevelManagerPtr mLevelManager;
 
 	private:
 		Ogre::Timer mLoopTimer;
