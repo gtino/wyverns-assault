@@ -93,6 +93,8 @@ void Game::go()
 /** Finalize the game */
 void Game::finalize()
 {
+	// Finalize level manager
+	mLevelManager.reset();
 	// GUI
 	mGuiManager.reset();
 	// Cameras
