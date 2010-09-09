@@ -377,6 +377,21 @@ bool EnemyManager::removeEnemy(Ogre::String name)
 	return false;
 }
 
+void EnemyManager::killAllEnemies(PlayerPtr player, int gameArea)
+{
+	// Current game area
+	if( gameArea == -1 )
+		gameArea = mCurrentGameArea;
+
+	for( int i = 0; i <  mEnemyMapList[gameArea].size(); i++ )
+	{
+		EnemyKilledEventPtr kill = EnemyKilledEventPtr(new EnemyKilledEvent(mEnemyMapList[mCurrentGameArea][i], player));
+		EVENTS_FIRE(kill);
+		EnemyRemoveEventPtr remove = EnemyRemoveEventPtr(new EnemyRemoveEvent(mEnemyMapList[mCurrentGameArea][i]));
+		EVENTS_FIRE_AFTER(remove, 2.0);
+	}
+}
+
 void EnemyManager::update(const float elapsedSeconds)
 {
 	for(int i = 0; i < mEnemyMapList[mCurrentGameArea].size() ; i++)
@@ -401,6 +416,7 @@ void EnemyManager::update(const float elapsedSeconds)
 					ProjectileFireEventPtr projEvt = ProjectileFireEventPtr(new ProjectileFireEvent(enemy));
 					EVENTS_FIRE_AFTER(projEvt, 0.75);
 				}
+
 				EnemyAttackEventPtr evt = EnemyAttackEventPtr(new EnemyAttackEvent(enemy));
 				EVENTS_FIRE(evt);				
 

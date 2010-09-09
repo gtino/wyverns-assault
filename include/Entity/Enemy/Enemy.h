@@ -133,6 +133,7 @@ namespace WyvernsAssault
 		void setAttackTimeout(Real time){mAttackTimeout = time;}
 		Real getAttackCooldown(){return mParameters.attackCooldown;}
 		Vector3 getPhysicSize(){ return mParameters.physicSize; }
+		void setLife(Ogre::Real life){ mParameters.life = life; }
 
 		// Enemy typ functions
 		bool isRanged();

@@ -6,6 +6,7 @@ system WyvernsAssault/FireCamp
         material                                Particle/Fire_03
         renderer                                Billboard
         {
+            billboard_type                      oriented_self
         }
         emitter                                 Box 
         {

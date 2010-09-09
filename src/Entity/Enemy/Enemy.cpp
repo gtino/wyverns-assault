@@ -498,4 +498,5 @@ void Enemy::stop()
 {
 	mTarget = NULL;
 	mState = Enemy::EnemyStates::Dead;
+	mParameters.life = 0.0;
 }

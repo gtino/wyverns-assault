@@ -96,6 +96,7 @@ namespace WyvernsAssault
 		EVENTS_HANDLER(ObjectHit)
 		EVENTS_HANDLER(ObjectKilled)
 		EVENTS_HANDLER(ObjectRemove)
+		EVENTS_HANDLER(ObjectCustom)
 		EVENTS_HANDLER(GameAreaChanged)
 
 	private:

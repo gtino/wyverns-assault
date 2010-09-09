@@ -241,6 +241,14 @@ ObjectRemoveEvent::ObjectRemoveEvent(ObjectPtr o)
 
 //----------------------
 
+ObjectCustomEvent::ObjectCustomEvent(ObjectPtr o)
+:Event(EventTypes::ObjectCustom, EventPriorities::Normal)
+{
+	mObject = o;
+};
+
+//----------------------
+
 GameAreaChangedEvent::GameAreaChangedEvent(int level, int previousArea, int actualArea)
 :Event(EventTypes::GameAreaChanged, EventPriorities::High)
 {
@@ -278,10 +286,11 @@ ProjectileFireEvent::ProjectileFireEvent(EnemyPtr e)
 
 //----------------------
 
-ProjectileUpdateEvent::ProjectileUpdateEvent(ProjectilePtr p)
+ProjectileUpdateEvent::ProjectileUpdateEvent(ProjectilePtr p, Enemy::EnemyTypes t)
 :Event(EventTypes::ProjectileUpdate, EventPriorities::Normal)
 {
 	mProjectile = p;	
+	mType = t;
 }
 
 //----------------------

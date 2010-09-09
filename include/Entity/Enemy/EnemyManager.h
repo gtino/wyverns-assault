@@ -82,6 +82,8 @@ namespace WyvernsAssault
 
 		bool removeEnemy(Ogre::String name);
 
+		void killAllEnemies(PlayerPtr player, int gameArea = -1);
+
 		void update(const float elpasedSeconds);
 
 		// Visibility

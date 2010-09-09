@@ -22,7 +22,8 @@ Dead = 12
 
 -- Common distances
 FightingDistance = 20
-LoveDistance = 40;
+LoveDistance = 40
+SaveDistance = 70
 
 -- Knight
 ChaseDistance = 300
@@ -31,14 +32,14 @@ ChaseDistance = 300
 MagicDistance = 100
 
 -- Archer
-FireDistance = 60
+FireDistance = 160
 
 -- Battering Ram
 BRAttackDistance = 35
 
 -- Animals
-ChickenAlertDistance = 50;
-CowAlertDistance = 70;
+ChickenAlertDistance = 50
+CowAlertDistance = 70
 
 function runNakedLogic(enemyId, state)	
 	
@@ -278,7 +279,7 @@ function runWizardLogic(enemyId, state)
 				newState = Idle
 			end
 		elseif state == Magic then
-			if timeout > 1 then
+			if timeout > 2 then
 				newState = Alert
 			elseif distance > MagicDistance then
 				newState = Alert
@@ -286,7 +287,7 @@ function runWizardLogic(enemyId, state)
 				newState = Fear			
 			end
 		elseif state == Fear then
-			if distance > MagicDistance then
+			if distance > SaveDistance then
 				newState = Alert
 			end
 		elseif state == Dying then 
@@ -334,7 +335,15 @@ function runArcherLogic(enemyId, state)
 				newState = Idle
 			end
 		elseif state == Fire then
-			if distance > FireDistance then
+			if timeout > 2 then
+				newState = Alert
+			elseif distance > FireDistance then
+				newState = Alert
+			elseif distance < FightingDistance then
+				newState = Fear			
+			end
+		elseif state == Fear then
+			if distance > SaveDistance then
 				newState = Alert
 			end
 		elseif state == Dying then 

@@ -199,7 +199,7 @@ void PhysicsManager::checkForCollisions()
 			}
 		}
 
-		//Player - Projectile COLLISION
+		// Player - Projectile COLLISION
 		for(int i = 0; i < mProjectileList.size(); i++)
 		{
 			ProjectilePtr projectile = mProjectileList[i];
@@ -209,7 +209,13 @@ void PhysicsManager::checkForCollisions()
 			{
 				//Projectile attack
 				ProjectileHitEventPtr evtHit = ProjectileHitEventPtr(new ProjectileHitEvent(projectile, player));
-				EVENTS_FIRE(evtHit);				
+				EVENTS_FIRE(evtHit);
+				
+				//Projectile remove
+				ProjectileRemoveEventPtr evtRemove = ProjectileRemoveEventPtr(new ProjectileRemoveEvent(projectile));
+				EVENTS_FIRE(evtRemove);
+
+				projectile->death();
 			}
 		}
 	}
@@ -264,7 +270,7 @@ void PhysicsManager::move(ProjectilePtr projectile, const float elapsedSeconds)
 {
 	Vector3 direction = projectile->getDirection();
 
-	projectile->translate(( direction  * projectile->getSpeed() * elapsedSeconds ));
+	projectile->translate(( direction * elapsedSeconds * projectile->getProjectileSpeed() ));
 }
 
 // Load scenario physics

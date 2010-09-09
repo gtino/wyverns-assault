@@ -624,6 +624,9 @@ EVENTS_BEGIN_REGISTER_HANDLERS(AudioManager)
 	EVENTS_REGISTER_HANDLER(AudioManager, EnemyKilled);	
 	EVENTS_REGISTER_HANDLER(AudioManager, ItemCatch);
 	EVENTS_REGISTER_HANDLER(AudioManager, ProjectileFire);
+	EVENTS_REGISTER_HANDLER(AudioManager, ProjectileHit);
+	EVENTS_REGISTER_HANDLER(AudioManager, ObjectHit);
+	EVENTS_REGISTER_HANDLER(AudioManager, ObjectKilled);
 EVENTS_END_REGISTER_HANDLERS()
 
 EVENTS_BEGIN_UNREGISTER_HANDLERS(AudioManager)
@@ -636,6 +639,9 @@ EVENTS_BEGIN_UNREGISTER_HANDLERS(AudioManager)
 	EVENTS_UNREGISTER_HANDLER(AudioManager, EnemyKilled);	
 	EVENTS_UNREGISTER_HANDLER(AudioManager, ItemCatch);
 	EVENTS_UNREGISTER_HANDLER(AudioManager, ProjectileFire);
+	EVENTS_UNREGISTER_HANDLER(AudioManager, ProjectileHit);
+	EVENTS_UNREGISTER_HANDLER(AudioManager, ObjectHit);
+	EVENTS_UNREGISTER_HANDLER(AudioManager, ObjectKilled);
 EVENTS_END_UNREGISTER_HANDLERS()
 
 
@@ -839,6 +845,55 @@ EVENTS_DEFINE_HANDLER(AudioManager, ProjectileFire)
 		else 
 			playSound("WizardAttack02.wav",sceneNode->_getDerivedPosition(),&channelIndex);
 	}
+}
+
+EVENTS_DEFINE_HANDLER(AudioManager, ProjectileHit)
+{
+	Debug::Out("AudioManager : handleProjectileHitEvent");
+
+	PlayerPtr player = evt->getPlayer();
+
+	int channelIndex = -1;
+
+	SceneNode* sceneNode = player->_getSceneNode();
+
+	// The enemy has just hit the player
+	if( (rand()%2) == 0)
+		playSound("PlayerHit01.wav",sceneNode->_getDerivedPosition(),&channelIndex);
+	else
+		playSound("PlayerHit02.wav",sceneNode->_getDerivedPosition(),&channelIndex);
+
+}
+
+EVENTS_DEFINE_HANDLER(AudioManager, ObjectHit)
+{
+	Debug::Out("AudioManager : handleObjectHitEvent");
+
+	ObjectPtr object = evt->getObject();
+
+	int channelIndex = -1;
+
+	SceneNode* sceneNode = object->_getSceneNode();
+
+	// The player has just hit the object
+	if( (rand()%2) == 0)
+		playSound("PlayerHit01.wav",sceneNode->_getDerivedPosition(),&channelIndex);
+	else
+		playSound("PlayerHit02.wav",sceneNode->_getDerivedPosition(),&channelIndex);
+}
+
+EVENTS_DEFINE_HANDLER(AudioManager, ObjectKilled)
+{
+	Debug::Out("AudioManager : handleObjectKilledEvent");
+
+	ObjectPtr object = evt->getObject();
+
+	int channelIndex = -1;
+
+	SceneNode* sceneNode = object->_getSceneNode();
+
+	// The enemy has kill player	
+	playSound("PlayerDie01.wav",sceneNode->_getDerivedPosition(),&channelIndex);
 }
 
 // --------------------------------

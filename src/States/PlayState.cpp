@@ -941,6 +941,12 @@ bool PlayState::keyPressed(const OIS::KeyEvent& e)
 	case OIS::KeyCode::KC_DELETE:
 		player1->setPosition(Vector3(1172, 31, -25));
 		break;
+
+	// Kill all enemies in current game area -- HACK!
+	case OIS::KeyCode::KC_RSHIFT:
+		mEnemyManager->killAllEnemies(player1);
+		break;
+
 	// Switch to next level -- HACK!
 	case OIS::KeyCode::KC_N:
 		//

@@ -61,12 +61,14 @@ namespace WyvernsAssault
 		void finalize();
 		SceneManager* getSceneManager(){return this->mSceneManager;}
 
-		ProjectilePtr createProjectile(Ogre::String name, Ogre::SceneNode* sceneNode, Ogre::Vector3 init, Ogre::Vector3 finish);
+		ProjectilePtr createProjectile(Ogre::String name, Enemy::EnemyTypes type, Ogre::SceneNode* sceneNode, Ogre::Vector3 init, Ogre::Vector3 finish);
 		bool removeProjectile(Ogre::String name);
 
 		ProjectilePtr getProjectile(Ogre::String name);
 
 		void update(const float elapsedSeconds);
+
+		void setDirectionToTarget(Vector3 begin, Vector3 end, SceneNode* node);
 
 		// Enable Debug Stuff
 		void setDebugEnabled(bool isDebugEnabled);
@@ -89,9 +91,7 @@ namespace WyvernsAssault
 		EVENTS_INTERFACE()
 
 		EVENTS_HANDLER(ProjectileFire)
-		EVENTS_HANDLER(ProjectileHit)
 		EVENTS_HANDLER(ProjectileRemove)
-
 	};
 
 	typedef boost::shared_ptr<ProjectileManager> ProjectileManagerPtr;
