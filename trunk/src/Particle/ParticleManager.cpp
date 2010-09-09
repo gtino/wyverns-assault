@@ -155,6 +155,10 @@ EVENTS_BEGIN_REGISTER_HANDLERS(ParticleManager)
 	EVENTS_REGISTER_HANDLER(ParticleManager,EnemyCustom)
 	EVENTS_REGISTER_HANDLER(ParticleManager,ItemCreation)
 	EVENTS_REGISTER_HANDLER(ParticleManager,ItemCatch)
+	EVENTS_REGISTER_HANDLER(ParticleManager,ProjectileUpdate)
+	EVENTS_REGISTER_HANDLER(ParticleManager,ProjectileHit)
+	EVENTS_REGISTER_HANDLER(ParticleManager,ObjectHit)
+	EVENTS_REGISTER_HANDLER(ParticleManager,ObjectKilled)
 EVENTS_END_REGISTER_HANDLERS()
 
 EVENTS_BEGIN_UNREGISTER_HANDLERS(ParticleManager)
@@ -166,6 +170,10 @@ EVENTS_BEGIN_UNREGISTER_HANDLERS(ParticleManager)
 	EVENTS_UNREGISTER_HANDLER(ParticleManager,EnemyCustom)
 	EVENTS_UNREGISTER_HANDLER(ParticleManager,ItemCreation)
 	EVENTS_UNREGISTER_HANDLER(ParticleManager,ItemCatch)
+	EVENTS_UNREGISTER_HANDLER(ParticleManager,ProjectileUpdate)
+	EVENTS_UNREGISTER_HANDLER(ParticleManager,ProjectileHit)
+	EVENTS_UNREGISTER_HANDLER(ParticleManager,ObjectHit)
+	EVENTS_UNREGISTER_HANDLER(ParticleManager,ObjectKilled)
 EVENTS_END_REGISTER_HANDLERS()
 
 
@@ -196,7 +204,7 @@ EVENTS_DEFINE_HANDLER(ParticleManager, EnemyAttack)
 	//this->swing(sceneNode);
 }
 
-EVENTS_DEFINE_HANDLER(ParticleManager,EnemyHit)
+EVENTS_DEFINE_HANDLER(ParticleManager, EnemyHit)
 {
 	EnemyPtr enemy = evt->getEnemy();
 	PlayerPtr player = evt->getPlayer();	
@@ -266,6 +274,50 @@ EVENTS_DEFINE_HANDLER(ParticleManager, ItemCatch)
 	this->remove(item->getName() + "_glow");
 	this->remove(item->getName());
 	this->add(sceneNode, "WyvernsAssault/GlowShort");
+}
+
+EVENTS_DEFINE_HANDLER(ParticleManager, ProjectileUpdate)
+{
+	ProjectilePtr projectile = evt->getProjectile();
+
+	// Add particles to projectile
+	if( evt->getType() == Enemy::EnemyTypes::Wizard )
+		this->add(projectile->_getSceneNode(), projectile->getName(), "WyvernsAssault/MagicBolt");
+}
+
+EVENTS_DEFINE_HANDLER(ParticleManager, ProjectileHit)
+{
+	PlayerPtr player = evt->getPlayer();
+
+	SceneNode* sceneNode = player->_getSceneNode();
+
+	this->add(sceneNode, "WyvernsAssault/Impact");
+}
+
+EVENTS_DEFINE_HANDLER(ParticleManager, ObjectHit)
+{
+	ObjectPtr object = evt->getObject();
+	PlayerPtr player = evt->getPlayer();	
+
+	if( player->isSpecial() )
+		this->add(object->_getSceneNode(), "WyvernsAssault/FireHit");
+	else
+		this->add(object->_getSceneNode(), "WyvernsAssault/Hit");	
+}
+
+EVENTS_DEFINE_HANDLER(ParticleManager, ObjectKilled)
+{
+	ObjectPtr object = evt->getObject();
+	PlayerPtr player = evt->getPlayer();	
+
+	if( !object->isBurning() )
+	{			
+		this->add(object->_getSceneNode(), "WyvernsAssault/BloodKill");
+	}
+	else
+	{
+		this->add(object->_getSceneNode(), "WyvernsAssault/FireKill");
+	}
 }
 
 // --------------------------------

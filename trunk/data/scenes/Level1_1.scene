@@ -5863,6 +5863,20 @@
           </subentities>
         </entity>
       </node>
+      <node name="Archer#3" id="585558656">
+        <rotation qw="0.987688" qx="0" qy="-0.156434" qz="0" />
+        <position x="1249.84" y="15" z="212.987" />
+        <scale x="1" y="1" z="1" />
+        <entity name="archer#3" id="7171850" castshadows="false" meshFile="archer.mesh" type="Enemy" subType="Archer" animationTree="data/animations/archer.xml" life="60" points="250" speed="40" damage="1" specialDamage="4" height="13" dieMesh="nakedDie.mesh" dieAnimation="Die">
+          <rotation qw="1" qx="0" qy="0" qz="0" />
+          <position x="0" y="0" z="0" />
+          <scale x="1" y="1" z="1" />
+          <subentities>
+            <subentity materialName="archer_material_3" index="0" visible="true" />
+            <subentity materialName="archer_material" index="1" visible="true" />
+          </subentities>
+        </entity>
+      </node>
       <node name="Chicken#12" id="857936320">
         <rotation qw="1" qx="0" qy="0" qz="0" />
         <position x="1186.37" y="2" z="423.541" />
@@ -5873,6 +5887,33 @@
           <scale x="1" y="1" z="1" />
           <subentities>
             <subentity materialName="chicken_material" index="0" visible="true" />
+          </subentities>
+        </entity>
+      </node>
+      <node name="Archer#12" id="710196288">
+        <rotation qw="-0.422618" qx="0" qy="-0.906308" qz="0" />
+        <position x="-68.3922" y="21.5911" z="-100.053" />
+        <scale x="1" y="1" z="1" />
+        <entity name="archer#12" id="728446336" castshadows="false" meshFile="archer.mesh" type="Enemy" subType="Archer" animationTree="data/animations/archer.xml" life="60" points="250" speed="40" damage="1" specialDamage="4" height="13" dieMesh="nakedDie.mesh" dieAnimation="Die">
+          <rotation qw="1" qx="0" qy="0" qz="0" />
+          <position x="0" y="0" z="0" />
+          <scale x="1" y="1" z="1" />
+          <subentities>
+            <subentity materialName="archer_material_3" index="0" visible="true" />
+            <subentity materialName="archer_material" index="1" visible="true" />
+          </subentities>
+        </entity>
+      </node>
+      <node name="BatteringRam#0" id="946104320">
+        <rotation qw="0.615661" qx="0" qy="0.788011" qz="0" />
+        <position x="601.467" y="5" z="-528.985" />
+        <scale x="1" y="1" z="1" />
+        <entity name="batteringRam#0" id="289803776" castshadows="false" meshFile="batteringRam.mesh" type="Enemy" subType="BatteringRam" animationTree="data/animations/batteringRam.xml" life="300" points="500" speed="15" damage="4" specialDamage="0" height="5" dieMesh="batteringRamDie.mesh" dieAnimation="Die">
+          <rotation qw="1" qx="0" qy="0" qz="0" />
+          <position x="0" y="0" z="0" />
+          <scale x="1" y="1" z="1" />
+          <subentities>
+            <subentity materialName="batteringRam_material_2" index="0" visible="true" />
           </subentities>
         </entity>
       </node>
@@ -5941,6 +5982,20 @@
           </subentities>
         </entity>
       </node>
+      <node name="Archer#6" id="456617952">
+        <rotation qw="-0.889017" qx="0" qy="-0.457874" qz="0" />
+        <position x="887.626" y="15" z="-311.938" />
+        <scale x="1" y="1" z="1" />
+        <entity name="archer#6" id="3753777" castshadows="false" meshFile="archer.mesh" type="Enemy" subType="Archer" animationTree="data/animations/archer.xml" life="60" points="250" speed="40" damage="1" specialDamage="4" height="13" dieMesh="nakedDie.mesh" dieAnimation="Die">
+          <rotation qw="1" qx="0" qy="0" qz="0" />
+          <position x="0" y="0" z="0" />
+          <scale x="1" y="1" z="1" />
+          <subentities>
+            <subentity materialName="archer_material" index="0" visible="true" />
+            <subentity materialName="archer_material" index="1" visible="true" />
+          </subentities>
+        </entity>
+      </node>
       <node name="Cow#05" id="698507648">
         <rotation qw="0.5373" qx="0" qy="-0.843392" qz="0" />
         <position x="1105.01" y="1.5" z="461.622" />
@@ -5951,6 +6006,20 @@
           <scale x="1" y="1" z="1" />
           <subentities>
             <subentity materialName="CowMaterial" index="0" visible="true" />
+          </subentities>
+        </entity>
+      </node>
+      <node name="Archer#17" id="911130048">
+        <rotation qw="-0.422618" qx="0" qy="-0.906308" qz="0" />
+        <position x="-107.92" y="22.6577" z="-161.881" />
+        <scale x="1" y="1" z="1" />
+        <entity name="archer#17" id="367839616" castshadows="false" meshFile="archer.mesh" type="Enemy" subType="Archer" animationTree="data/animations/archer.xml" life="60" points="250" speed="40" damage="1" specialDamage="4" height="13" dieMesh="nakedDie.mesh" dieAnimation="Die">
+          <rotation qw="1" qx="0" qy="0" qz="0" />
+          <position x="0" y="0" z="0" />
+          <scale x="1" y="1" z="1" />
+          <subentities>
+            <subentity materialName="archer_material_2" index="0" visible="true" />
+            <subentity materialName="archer_material" index="1" visible="true" />
           </subentities>
         </entity>
       </node>
@@ -6150,10 +6219,24 @@
         </entity>
       </node>
       <node name="Archer" id="100619528">
-        <rotation qw="0.317305" qx="0" qy="-0.948324" qz="0" />
-        <position x="82.3568" y="15.8835" z="904.493" />
+        <rotation qw="0.619094" qx="0" qy="-0.785317" qz="0" />
+        <position x="663.81" y="15" z="758.919" />
         <scale x="1" y="1" z="1" />
-        <entity name="archer" id="357097088" castshadows="false" meshFile="archer.mesh" type="Enemy" subType="Archer" animationTree="data/animations/archer.xml" life="60" points="250" speed="40" damage="2" specialDamage="4" height="13" dieMesh="nakedDie.mesh" dieAnimation="Die">
+        <entity name="archer" id="357097088" castshadows="false" meshFile="archer.mesh" type="Enemy" subType="Archer" animationTree="data/animations/archer.xml" life="60" points="250" speed="40" damage="1" specialDamage="4" height="13" dieMesh="nakedDie.mesh" dieAnimation="Die">
+          <rotation qw="1" qx="0" qy="0" qz="0" />
+          <position x="0" y="0" z="0" />
+          <scale x="1" y="1" z="1" />
+          <subentities>
+            <subentity materialName="archer_material" index="0" visible="true" />
+            <subentity materialName="archer_material" index="1" visible="true" />
+          </subentities>
+        </entity>
+      </node>
+      <node name="Archer#20" id="687643072">
+        <rotation qw="-0.422618" qx="0" qy="-0.906308" qz="0" />
+        <position x="-104.126" y="19.3128" z="-136.458" />
+        <scale x="1" y="1" z="1" />
+        <entity name="archer#20" id="90426344" castshadows="false" meshFile="archer.mesh" type="Enemy" subType="Archer" animationTree="data/animations/archer.xml" life="60" points="250" speed="40" damage="1" specialDamage="4" height="13" dieMesh="nakedDie.mesh" dieAnimation="Die">
           <rotation qw="1" qx="0" qy="0" qz="0" />
           <position x="0" y="0" z="0" />
           <scale x="1" y="1" z="1" />
@@ -6228,6 +6311,20 @@
           </subentities>
         </entity>
       </node>
+      <node name="Archer#5" id="855098112">
+        <rotation qw="0.987688" qx="0" qy="-0.156434" qz="0" />
+        <position x="1237.95" y="15" z="180.004" />
+        <scale x="1" y="1" z="1" />
+        <entity name="archer#5" id="64851836" castshadows="false" meshFile="archer.mesh" type="Enemy" subType="Archer" animationTree="data/animations/archer.xml" life="60" points="250" speed="40" damage="1" specialDamage="4" height="13" dieMesh="nakedDie.mesh" dieAnimation="Die">
+          <rotation qw="1" qx="0" qy="0" qz="0" />
+          <position x="0" y="0" z="0" />
+          <scale x="1" y="1" z="1" />
+          <subentities>
+            <subentity materialName="archer_material_3" index="0" visible="true" />
+            <subentity materialName="archer_material" index="1" visible="true" />
+          </subentities>
+        </entity>
+      </node>
       <node name="Chicken#10" id="388622688">
         <rotation qw="1" qx="0" qy="0" qz="0" />
         <position x="1141.97" y="2" z="429.596" />
@@ -6251,6 +6348,20 @@
           <scale x="1" y="1" z="1" />
           <subentities>
             <subentity materialName="CowMaterial" index="0" visible="true" />
+          </subentities>
+        </entity>
+      </node>
+      <node name="Archer#14" id="903866688">
+        <rotation qw="-0.422618" qx="0" qy="-0.906308" qz="0" />
+        <position x="-147.221" y="17.3939" z="-162.947" />
+        <scale x="1" y="1" z="1" />
+        <entity name="archer#14" id="308603168" castshadows="false" meshFile="archer.mesh" type="Enemy" subType="Archer" animationTree="data/animations/archer.xml" life="60" points="250" speed="40" damage="1" specialDamage="4" height="13" dieMesh="nakedDie.mesh" dieAnimation="Die">
+          <rotation qw="1" qx="0" qy="0" qz="0" />
+          <position x="0" y="0" z="0" />
+          <scale x="1" y="1" z="1" />
+          <subentities>
+            <subentity materialName="archer_material" index="0" visible="true" />
+            <subentity materialName="archer_material" index="1" visible="true" />
           </subentities>
         </entity>
       </node>
@@ -6319,6 +6430,20 @@
           </subentities>
         </entity>
       </node>
+      <node name="Archer#8" id="38575396">
+        <rotation qw="0.977231" qx="0" qy="-0.212177" qz="0" />
+        <position x="1000.44" y="15" z="-342.652" />
+        <scale x="1" y="1" z="1" />
+        <entity name="archer#8" id="252082880" castshadows="false" meshFile="archer.mesh" type="Enemy" subType="Archer" animationTree="data/animations/archer.xml" life="60" points="250" speed="40" damage="1" specialDamage="4" height="13" dieMesh="nakedDie.mesh" dieAnimation="Die">
+          <rotation qw="1" qx="0" qy="0" qz="0" />
+          <position x="0" y="0" z="0" />
+          <scale x="1" y="1" z="1" />
+          <subentities>
+            <subentity materialName="archer_material" index="0" visible="true" />
+            <subentity materialName="archer_material" index="1" visible="true" />
+          </subentities>
+        </entity>
+      </node>
       <node name="Cow#07" id="569200704">
         <rotation qw="0.876727" qx="0" qy="-0.480989" qz="0" />
         <position x="1141.14" y="1.5" z="468.042" />
@@ -6355,6 +6480,20 @@
           <scale x="1" y="1" z="1" />
           <subentities>
             <subentity materialName="knightA_material_5" index="0" visible="true" />
+          </subentities>
+        </entity>
+      </node>
+      <node name="Archer#19" id="654835648">
+        <rotation qw="-0.422618" qx="0" qy="-0.906308" qz="0" />
+        <position x="-117.566" y="26.6986" z="-110.954" />
+        <scale x="1" y="1" z="1" />
+        <entity name="archer#19" id="438520448" castshadows="false" meshFile="archer.mesh" type="Enemy" subType="Archer" animationTree="data/animations/archer.xml" life="60" points="250" speed="40" damage="1" specialDamage="4" height="13" dieMesh="nakedDie.mesh" dieAnimation="Die">
+          <rotation qw="1" qx="0" qy="0" qz="0" />
+          <position x="0" y="0" z="0" />
+          <scale x="1" y="1" z="1" />
+          <subentities>
+            <subentity materialName="archer_material" index="0" visible="true" />
+            <subentity materialName="archer_material" index="1" visible="true" />
           </subentities>
         </entity>
       </node>
@@ -6501,6 +6640,20 @@
           </subentities>
         </entity>
       </node>
+      <node name="Archer#0" id="623065920">
+        <rotation qw="0.95502" qx="0" qy="-0.296541" qz="0" />
+        <position x="781.228" y="15" z="683.044" />
+        <scale x="1" y="1" z="1" />
+        <entity name="archer#0" id="863246592" castshadows="false" meshFile="archer.mesh" type="Enemy" subType="Archer" animationTree="data/animations/archer.xml" life="60" points="250" speed="40" damage="1" specialDamage="4" height="13" dieMesh="nakedDie.mesh" dieAnimation="Die">
+          <rotation qw="1" qx="0" qy="0" qz="0" />
+          <position x="0" y="0" z="0" />
+          <scale x="1" y="1" z="1" />
+          <subentities>
+            <subentity materialName="archer_material" index="0" visible="true" />
+            <subentity materialName="archer_material" index="1" visible="true" />
+          </subentities>
+        </entity>
+      </node>
       <node name="Chicken#15" id="732016960">
         <rotation qw="0.27144" qx="0" qy="0.962455" qz="0" />
         <position x="340.394" y="2" z="-500.519" />
@@ -6524,6 +6677,47 @@
           <scale x="1" y="1" z="1" />
           <subentities>
             <subentity materialName="princess_material_2" index="0" visible="true" />
+          </subentities>
+        </entity>
+      </node>
+      <node name="Archer#11" id="407635712">
+        <rotation qw="-0.422618" qx="0" qy="-0.906308" qz="0" />
+        <position x="-59.8604" y="24.1227" z="-73.3647" />
+        <scale x="1" y="1" z="1" />
+        <entity name="archer#11" id="895321472" castshadows="false" meshFile="archer.mesh" type="Enemy" subType="Archer" animationTree="data/animations/archer.xml" life="60" points="250" speed="40" damage="1" specialDamage="4" height="13" dieMesh="nakedDie.mesh" dieAnimation="Die">
+          <rotation qw="1" qx="0" qy="0" qz="0" />
+          <position x="0" y="0" z="0" />
+          <scale x="1" y="1" z="1" />
+          <subentities>
+            <subentity materialName="archer_material_2" index="0" visible="true" />
+            <subentity materialName="archer_material" index="1" visible="true" />
+          </subentities>
+        </entity>
+      </node>
+      <node name="Archer#22" id="116855376">
+        <rotation qw="0.785317" qx="0" qy="0.619094" qz="0" />
+        <position x="645.753" y="15" z="-514.281" />
+        <scale x="1" y="1" z="1" />
+        <entity name="archer#22" id="628925440" castshadows="false" meshFile="archer.mesh" type="Enemy" subType="Archer" animationTree="data/animations/archer.xml" life="60" points="250" speed="40" damage="1" specialDamage="4" height="13" dieMesh="nakedDie.mesh" dieAnimation="Die">
+          <rotation qw="1" qx="0" qy="-2.98023E-08" qz="0" />
+          <position x="0" y="0" z="0" />
+          <scale x="1" y="1" z="1" />
+          <subentities>
+            <subentity materialName="archer_material_2" index="0" visible="true" />
+            <subentity materialName="archer_material" index="1" visible="true" />
+          </subentities>
+        </entity>
+      </node>
+      <node name="BatteringRam#3" id="544480768">
+        <rotation qw="0.333806" qx="0" qy="0.942642" qz="0" />
+        <position x="-137.443" y="5" z="-239.763" />
+        <scale x="1" y="1" z="1" />
+        <entity name="batteringRam#3" id="446333184" castshadows="false" meshFile="batteringRam.mesh" type="Enemy" subType="BatteringRam" animationTree="data/animations/batteringRam.xml" life="300" points="500" speed="15" damage="4" specialDamage="0" height="5" dieMesh="batteringRamDie.mesh" dieAnimation="Die">
+          <rotation qw="1" qx="0" qy="0" qz="0" />
+          <position x="0" y="0" z="0" />
+          <scale x="1" y="1" z="1" />
+          <subentities>
+            <subentity materialName="batteringRam_material_2" index="0" visible="true" />
           </subentities>
         </entity>
       </node>
@@ -6605,6 +6799,20 @@
           </subentities>
         </entity>
       </node>
+      <node name="Archer#7" id="750633216">
+        <rotation qw="0.999762" qx="0" qy="-0.0218146" qz="0" />
+        <position x="959.898" y="15" z="-362.761" />
+        <scale x="1" y="1" z="1" />
+        <entity name="archer#7" id="114047672" castshadows="false" meshFile="archer.mesh" type="Enemy" subType="Archer" animationTree="data/animations/archer.xml" life="60" points="250" speed="40" damage="1" specialDamage="4" height="13" dieMesh="nakedDie.mesh" dieAnimation="Die">
+          <rotation qw="1" qx="0" qy="0" qz="0" />
+          <position x="0" y="0" z="0" />
+          <scale x="1" y="1" z="1" />
+          <subentities>
+            <subentity materialName="archer_material" index="0" visible="true" />
+            <subentity materialName="archer_material" index="1" visible="true" />
+          </subentities>
+        </entity>
+      </node>
       <node name="Cow#02" id="600238016">
         <rotation qw="0.876727" qx="0" qy="-0.480989" qz="0" />
         <position x="1012" y="1.5" z="506.156" />
@@ -6615,6 +6823,20 @@
           <scale x="1" y="1" z="1" />
           <subentities>
             <subentity materialName="CowMaterial" index="0" visible="true" />
+          </subentities>
+        </entity>
+      </node>
+      <node name="Archer#16" id="139316992">
+        <rotation qw="-0.422618" qx="0" qy="-0.906308" qz="0" />
+        <position x="-141.689" y="18.0822" z="-131.679" />
+        <scale x="1" y="1" z="1" />
+        <entity name="archer#16" id="200170912" castshadows="false" meshFile="archer.mesh" type="Enemy" subType="Archer" animationTree="data/animations/archer.xml" life="60" points="250" speed="40" damage="1" specialDamage="4" height="13" dieMesh="nakedDie.mesh" dieAnimation="Die">
+          <rotation qw="1" qx="0" qy="0" qz="0" />
+          <position x="0" y="0" z="0" />
+          <scale x="1" y="1" z="1" />
+          <subentities>
+            <subentity materialName="archer_material_2" index="0" visible="true" />
+            <subentity materialName="archer_material" index="1" visible="true" />
           </subentities>
         </entity>
       </node>
@@ -6749,8 +6971,8 @@
         </entity>
       </node>
       <node name="BatteringRam" id="114535968">
-        <rotation qw="0.94693" qx="0" qy="-0.321439" qz="0" />
-        <position x="120.296" y="6.17256" z="870.721" />
+        <rotation qw="0.892979" qx="0" qy="-0.450098" qz="0" />
+        <position x="798.155" y="5" z="712.713" />
         <scale x="1" y="1" z="1" />
         <entity name="batteringRam" id="382366432" castshadows="false" meshFile="batteringRam.mesh" type="Enemy" subType="BatteringRam" animationTree="data/animations/batteringRam.xml" life="300" points="500" speed="15" damage="4" specialDamage="0" height="5" dieMesh="batteringRamDie.mesh" dieAnimation="Die">
           <rotation qw="1" qx="0" qy="0" qz="0" />
@@ -6797,6 +7019,20 @@
           <scale x="1" y="1" z="1" />
           <subentities>
             <subentity materialName="chicken_material" index="0" visible="true" />
+          </subentities>
+        </entity>
+      </node>
+      <node name="Archer#21" id="589434496">
+        <rotation qw="0.785317" qx="0" qy="0.619094" qz="0" />
+        <position x="645.267" y="15" z="-567.159" />
+        <scale x="1" y="1" z="1" />
+        <entity name="archer#21" id="10223702" castshadows="false" meshFile="archer.mesh" type="Enemy" subType="Archer" animationTree="data/animations/archer.xml" life="60" points="250" speed="40" damage="1" specialDamage="4" height="13" dieMesh="nakedDie.mesh" dieAnimation="Die">
+          <rotation qw="1" qx="0" qy="0" qz="0" />
+          <position x="0" y="0" z="0" />
+          <scale x="1" y="1" z="1" />
+          <subentities>
+            <subentity materialName="archer_material_2" index="0" visible="true" />
+            <subentity materialName="archer_material" index="1" visible="true" />
           </subentities>
         </entity>
       </node>
@@ -6852,19 +7088,6 @@
           </subentities>
         </entity>
       </node>
-      <node name="BigKnight" id="171788688">
-        <rotation qw="-0.284015" qx="0" qy="-0.95882" qz="0" />
-        <position x="-118.246" y="35.417" z="-135.116" />
-        <scale x="3" y="3" z="3" />
-        <entity name="knightA#1000" id="974395008" castshadows="true" meshFile="knightA.mesh" type="Enemy" subType="Knight" animationTree="data/animations/knight.xml" life="300" points="1000" speed="35" damage="8" specialDamage="0" height="28" dieMesh="nakedDie.mesh" dieAnimation="Die">
-          <rotation qw="1" qx="0" qy="0" qz="0" />
-          <position x="0" y="0" z="0" />
-          <scale x="1" y="1" z="1" />
-          <subentities>
-            <subentity materialName="knightA_material_5" index="0" visible="true" />
-          </subentities>
-        </entity>
-      </node>
       <node name="Knight#42" id="548051392">
         <rotation qw="0.922201" qx="0" qy="0.386711" qz="0" />
         <position x="918.837" y="12" z="-301.334" />
@@ -6875,6 +7098,20 @@
           <scale x="1" y="1" z="1" />
           <subentities>
             <subentity materialName="knightC_material_4" index="0" visible="true" />
+          </subentities>
+        </entity>
+      </node>
+      <node name="Archer#2" id="340983296">
+        <rotation qw="0.913546" qx="0" qy="-0.406736" qz="0" />
+        <position x="834.406" y="15" z="664.462" />
+        <scale x="1" y="1" z="1" />
+        <entity name="archer#2" id="319406720" castshadows="false" meshFile="archer.mesh" type="Enemy" subType="Archer" animationTree="data/animations/archer.xml" life="60" points="250" speed="40" damage="1" specialDamage="4" height="13" dieMesh="nakedDie.mesh" dieAnimation="Die">
+          <rotation qw="1" qx="0" qy="0" qz="0" />
+          <position x="0" y="0" z="0" />
+          <scale x="1" y="1" z="1" />
+          <subentities>
+            <subentity materialName="archer_material" index="0" visible="true" />
+            <subentity materialName="archer_material" index="1" visible="true" />
           </subentities>
         </entity>
       </node>
@@ -6901,6 +7138,33 @@
           <scale x="1" y="1" z="1" />
           <subentities>
             <subentity materialName="CowMaterial" index="0" visible="true" />
+          </subentities>
+        </entity>
+      </node>
+      <node name="Archer#13" id="896053952">
+        <rotation qw="-0.422618" qx="0" qy="-0.906308" qz="0" />
+        <position x="-104.383" y="20.5991" z="-90.0482" />
+        <scale x="1" y="1" z="1" />
+        <entity name="archer#13" id="393566688" castshadows="false" meshFile="archer.mesh" type="Enemy" subType="Archer" animationTree="data/animations/archer.xml" life="60" points="250" speed="40" damage="1" specialDamage="4" height="13" dieMesh="nakedDie.mesh" dieAnimation="Die">
+          <rotation qw="1" qx="0" qy="0" qz="0" />
+          <position x="0" y="0" z="0" />
+          <scale x="1" y="1" z="1" />
+          <subentities>
+            <subentity materialName="archer_material_2" index="0" visible="true" />
+            <subentity materialName="archer_material" index="1" visible="true" />
+          </subentities>
+        </entity>
+      </node>
+      <node name="BatteringRam#1" id="629474752">
+        <rotation qw="0.887011" qx="0" qy="0.461749" qz="0" />
+        <position x="324.449" y="5" z="-612.969" />
+        <scale x="1" y="1" z="1" />
+        <entity name="batteringRam#1" id="918393472" castshadows="false" meshFile="batteringRam.mesh" type="Enemy" subType="BatteringRam" animationTree="data/animations/batteringRam.xml" life="300" points="500" speed="15" damage="4" specialDamage="0" height="5" dieMesh="batteringRamDie.mesh" dieAnimation="Die">
+          <rotation qw="1" qx="0" qy="0" qz="0" />
+          <position x="0" y="0" z="0" />
+          <scale x="1" y="1" z="1" />
+          <subentities>
+            <subentity materialName="batteringRam_material" index="0" visible="true" />
           </subentities>
         </entity>
       </node>
@@ -6969,6 +7233,20 @@
           </subentities>
         </entity>
       </node>
+      <node name="Archer#9" id="153508096">
+        <rotation qw="0.992005" qx="0" qy="0.126199" qz="0" />
+        <position x="923.524" y="15" z="-335.382" />
+        <scale x="1" y="1" z="1" />
+        <entity name="archer#9" id="620319232" castshadows="false" meshFile="archer.mesh" type="Enemy" subType="Archer" animationTree="data/animations/archer.xml" life="60" points="250" speed="40" damage="1" specialDamage="4" height="13" dieMesh="nakedDie.mesh" dieAnimation="Die">
+          <rotation qw="1" qx="0" qy="0" qz="0" />
+          <position x="0" y="0" z="0" />
+          <scale x="1" y="1" z="1" />
+          <subentities>
+            <subentity materialName="archer_material" index="0" visible="true" />
+            <subentity materialName="archer_material" index="1" visible="true" />
+          </subentities>
+        </entity>
+      </node>
       <node name="Cow#04" id="555131648">
         <rotation qw="0.999962" qx="0" qy="-0.0087266" qz="0" />
         <position x="934.46" y="1.5" z="517.077" />
@@ -6992,6 +7270,20 @@
           <scale x="1" y="1" z="1" />
           <subentities>
             <subentity materialName="CowMaterial" index="0" visible="true" />
+          </subentities>
+        </entity>
+      </node>
+      <node name="Archer#18" id="203070160">
+        <rotation qw="-0.422618" qx="0" qy="-0.906308" qz="0" />
+        <position x="-74.0993" y="21.1176" z="-139.445" />
+        <scale x="1" y="1" z="1" />
+        <entity name="archer#18" id="517960128" castshadows="false" meshFile="archer.mesh" type="Enemy" subType="Archer" animationTree="data/animations/archer.xml" life="60" points="250" speed="40" damage="1" specialDamage="4" height="13" dieMesh="nakedDie.mesh" dieAnimation="Die">
+          <rotation qw="1" qx="0" qy="0" qz="0" />
+          <position x="0" y="0" z="0" />
+          <scale x="1" y="1" z="1" />
+          <subentities>
+            <subentity materialName="archer_material_2" index="0" visible="true" />
+            <subentity materialName="archer_material" index="1" visible="true" />
           </subentities>
         </entity>
       </node>
@@ -7177,6 +7469,20 @@
           </subentities>
         </entity>
       </node>
+      <node name="Archer#1" id="955717632">
+        <rotation qw="0.544639" qx="0" qy="-0.83867" qz="0" />
+        <position x="826.359" y="15" z="752.181" />
+        <scale x="1" y="1" z="1" />
+        <entity name="archer#1" id="630848128" castshadows="false" meshFile="archer.mesh" type="Enemy" subType="Archer" animationTree="data/animations/archer.xml" life="60" points="250" speed="40" damage="1" specialDamage="4" height="13" dieMesh="nakedDie.mesh" dieAnimation="Die">
+          <rotation qw="1" qx="0" qy="0" qz="0" />
+          <position x="0" y="0" z="0" />
+          <scale x="1" y="1" z="1" />
+          <subentities>
+            <subentity materialName="archer_material" index="0" visible="true" />
+            <subentity materialName="archer_material" index="1" visible="true" />
+          </subentities>
+        </entity>
+      </node>
       <node name="Chicken#14" id="191351056">
         <rotation qw="0.956305" qx="0" qy="0.292372" qz="0" />
         <position x="311.749" y="2" z="-654.409" />
@@ -7187,6 +7493,33 @@
           <scale x="1" y="1" z="1" />
           <subentities>
             <subentity materialName="chicken_material" index="0" visible="true" />
+          </subentities>
+        </entity>
+      </node>
+      <node name="Archer#10" id="664174336">
+        <rotation qw="-0.999762" qx="0" qy="-0.021815" qz="0" />
+        <position x="942.24" y="15" z="-429.994" />
+        <scale x="1" y="1" z="1" />
+        <entity name="archer#10" id="569536448" castshadows="false" meshFile="archer.mesh" type="Enemy" subType="Archer" animationTree="data/animations/archer.xml" life="60" points="250" speed="40" damage="1" specialDamage="4" height="13" dieMesh="nakedDie.mesh" dieAnimation="Die">
+          <rotation qw="1" qx="0" qy="0" qz="0" />
+          <position x="0" y="0" z="0" />
+          <scale x="1" y="1" z="1" />
+          <subentities>
+            <subentity materialName="archer_material" index="0" visible="true" />
+            <subentity materialName="archer_material" index="1" visible="true" />
+          </subentities>
+        </entity>
+      </node>
+      <node name="BatteringRam#2" id="41352580">
+        <rotation qw="0.333806" qx="0" qy="0.942642" qz="0" />
+        <position x="-1.68958" y="5" z="-90.5932" />
+        <scale x="1" y="1" z="1" />
+        <entity name="batteringRam#2" id="641346432" castshadows="false" meshFile="batteringRam.mesh" type="Enemy" subType="BatteringRam" animationTree="data/animations/batteringRam.xml" life="300" points="500" speed="15" damage="4" specialDamage="0" height="5" dieMesh="batteringRamDie.mesh" dieAnimation="Die">
+          <rotation qw="1" qx="0" qy="0" qz="0" />
+          <position x="0" y="0" z="0" />
+          <scale x="1" y="1" z="1" />
+          <subentities>
+            <subentity materialName="batteringRam_material" index="0" visible="true" />
           </subentities>
         </entity>
       </node>
@@ -7242,6 +7575,20 @@
           </subentities>
         </entity>
       </node>
+      <node name="Archer#4" id="940977216">
+        <rotation qw="0.987688" qx="0" qy="-0.156434" qz="0" />
+        <position x="1202.7" y="15" z="211.504" />
+        <scale x="1" y="1" z="1" />
+        <entity name="archer#4" id="659932224" castshadows="false" meshFile="archer.mesh" type="Enemy" subType="Archer" animationTree="data/animations/archer.xml" life="60" points="250" speed="40" damage="1" specialDamage="4" height="13" dieMesh="nakedDie.mesh" dieAnimation="Die">
+          <rotation qw="1" qx="0" qy="0" qz="0" />
+          <position x="0" y="0" z="0" />
+          <scale x="1" y="1" z="1" />
+          <subentities>
+            <subentity materialName="archer_material_3" index="0" visible="true" />
+            <subentity materialName="archer_material" index="1" visible="true" />
+          </subentities>
+        </entity>
+      </node>
       <node name="Chicken#11" id="18616292">
         <rotation qw="1" qx="0" qy="0" qz="0" />
         <position x="1266.66" y="2" z="52.8902" />
@@ -7265,6 +7612,20 @@
           <scale x="1" y="1" z="1" />
           <subentities>
             <subentity materialName="CowMaterial" index="0" visible="true" />
+          </subentities>
+        </entity>
+      </node>
+      <node name="Archer#15" id="388103872">
+        <rotation qw="-0.422618" qx="0" qy="-0.906308" qz="0" />
+        <position x="-150.051" y="15.8824" z="-203.843" />
+        <scale x="1" y="1" z="1" />
+        <entity name="archer#15" id="570574016" castshadows="false" meshFile="archer.mesh" type="Enemy" subType="Archer" animationTree="data/animations/archer.xml" life="60" points="250" speed="40" damage="1" specialDamage="4" height="13" dieMesh="nakedDie.mesh" dieAnimation="Die">
+          <rotation qw="1" qx="0" qy="0" qz="0" />
+          <position x="0" y="0" z="0" />
+          <scale x="1" y="1" z="1" />
+          <subentities>
+            <subentity materialName="archer_material_3" index="0" visible="true" />
+            <subentity materialName="archer_material" index="1" visible="true" />
           </subentities>
         </entity>
       </node>

@@ -13,8 +13,8 @@ Projectile::Projectile(Ogre::String name, Ogre::Vector3 init, Ogre::Vector3 fini
 , mSpeed(PROJECTILE_SPEED)
 , mIsDebugEnabled(false)
 {
-	initPoint = init;
-	finishPoint = finish;
+	mInitPoint = init;
+	mFinishPoint = finish;
 }
 
 Projectile::~Projectile()
@@ -24,16 +24,15 @@ Projectile::~Projectile()
 
 void Projectile::initializeEntity(Ogre::Entity* entity, Ogre::SceneNode* sceneNode, Ogre::SceneManager* sceneManager)
 {
-
 	// Always call base method before!
 	EntityInterface::initializeEntity(entity, sceneNode, sceneManager);
 
 	// Set physic body
-	initializePhysics(entity->getName(), Vector3(10,10,10),"OBBoxManualMaterial_Enemy");
-	sceneNode->attachObject(getGeometry(PhysicBoxType::body)->getMovableObject());
+	initializePhysics( entity->getName(), Vector3(10,10,10), "OBBoxManualMaterial_Enemy" );
+	sceneNode->attachObject( getGeometry(PhysicBoxType::body)->getMovableObject() );
 
 	// Set direction of projectile
-	mDirection = finishPoint - initPoint;
+	mDirection = mFinishPoint - mInitPoint;
 	mDirection.normalise();
 }
 

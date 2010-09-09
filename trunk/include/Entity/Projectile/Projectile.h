@@ -30,7 +30,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
 #include "..\OBBoxRenderable.h"
 
-#define PROJECTILE_LIVE_TIME 10
+#define PROJECTILE_LIVE_TIME 1
 #define PROJECTILE_SPEED	 80
 
 namespace WyvernsAssault
@@ -52,7 +52,7 @@ namespace WyvernsAssault
 		void initializeEntity(Ogre::Entity* entity, Ogre::SceneNode* sceneNode, Ogre::SceneManager* sceneManager);
 		void finalizeEntity();
 
-		Ogre::Vector3 getFinishPoint(){return finishPoint;}
+		Ogre::Vector3 getFinishPoint(){ return mFinishPoint; }
 
 		// Enable Debug Stuff
 		void setDebugEnabled(bool isDebugEnabled);
@@ -66,7 +66,7 @@ namespace WyvernsAssault
 		void setProjectileDamage(Ogre::Real damage){ mDamage = damage; }
 		Ogre::Real getProjectileDamage(){ return mDamage; }
 
-		void setProjectileSpeed(Ogre::Real speed){ speed = mSpeed; }
+		void setProjectileSpeed(Ogre::Real speed){ mSpeed = speed; }
 		Ogre::Real getProjectileSpeed(){ return mSpeed; }
 
 		void death(){ mLive = false; }
@@ -74,8 +74,8 @@ namespace WyvernsAssault
 
 	private:
 
-		Vector3 initPoint;
-		Vector3 finishPoint;
+		Vector3		mInitPoint;
+		Vector3		mFinishPoint;
 
 		Ogre::Real	mDamage;
 		Ogre::Real	mSpeed;

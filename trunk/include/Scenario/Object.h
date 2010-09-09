@@ -61,6 +61,8 @@ namespace WyvernsAssault
 		void hit(float damage);
 		bool isHurt();
 		bool isDying();
+		bool isBurning(){ return burning; }
+		void setBurning(bool status){ burning = status; }
 
 		void setDieMaterialName(Ogre::String material){ mDieMesh->setMaterialName(material); }
 		bool hasDieAnimation(){ return mDieAnimation != NULL; }
@@ -80,6 +82,7 @@ namespace WyvernsAssault
 
 		Real mMaxLife;
 		Real life; 
+		bool burning;
 
 		Vector3 mPhysicSize;
 

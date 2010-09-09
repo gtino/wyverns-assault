@@ -52,6 +52,7 @@ namespace WyvernsAssault
 		ObjectHit,
 		ObjectKilled,
 		ObjectRemove,
+		ObjectCustom,
 		Collision,
 		ItemCreation,
 		ItemCatch,
@@ -436,6 +437,21 @@ namespace WyvernsAssault
 
 	typedef boost::shared_ptr<ObjectRemoveEvent> ObjectRemoveEventPtr;
 
+	// --------------------------------	
+	class ObjectCustomEvent : public Event
+	{
+	public:
+		ObjectCustomEvent(ObjectPtr o);
+		~ObjectCustomEvent(){};
+		
+		ObjectPtr getObject(){return mObject;}
+
+	private:		
+		ObjectPtr mObject;
+	};
+
+	typedef boost::shared_ptr<ObjectCustomEvent> ObjectCustomEventPtr;
+
 	// --------------------------------
 	class GameAreaChangedEvent : public Event
 	{
@@ -510,13 +526,15 @@ namespace WyvernsAssault
 	class ProjectileUpdateEvent : public Event
 	{
 	public:
-		ProjectileUpdateEvent( ProjectilePtr p);
+		ProjectileUpdateEvent( ProjectilePtr p, Enemy::EnemyTypes t );
 		~ProjectileUpdateEvent(){};
 		
 		ProjectilePtr getProjectile(){return mProjectile;}
+		Enemy::EnemyTypes getType(){return mType;}
 
 	private:		
 		ProjectilePtr mProjectile;
+		Enemy::EnemyTypes mType;
 	};
 
 	typedef boost::shared_ptr<ProjectileUpdateEvent> ProjectileUpdateEventPtr;

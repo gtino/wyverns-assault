@@ -5,14 +5,12 @@ using namespace WyvernsAssault;
 Geometry::Geometry(Ogre::Entity* physicMesh)
 {
 	mPhysicEntity = physicMesh;
-
 }
 
 Geometry::Geometry(Ogre::Vector3 boxDimension, Ogre::String name, Ogre::String material)
 {
 	boundingBoxDimension = boxDimension; 
 	mDebuggGeom = debuggGeometry(name, material);
-
 }
 
 void Geometry::initializeMeshInformation(Ogre::Vector3 position, Ogre::Quaternion orient, Ogre::Vector3 scale){

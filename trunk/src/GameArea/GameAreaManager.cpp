@@ -71,9 +71,9 @@ void GameAreaManager::update(Vector3 playerPosition, const float elapsedSeconds)
 	mTime += elapsedSeconds;
 
 	// Game Area cleared by time
-	if( mGameAreas[mCurrentGameArea].mFinishTime != 0 )
+	if( mGameAreas[mCurrentGameArea].mFinishTime != 0 && !mGameAreaCleared)
 	{
-		if( mGameAreas[mCurrentGameArea].mFinishTime < mTime && !mGameAreaCleared )
+		if( mGameAreas[mCurrentGameArea].mFinishTime < mTime )
 		{
 			mGameAreaCleared = true;
 			GameAreaClearedEventPtr evt = GameAreaClearedEventPtr(new GameAreaClearedEvent(mCurrentLevel, mCurrentGameArea, mGameAreas[mCurrentGameArea].mType));

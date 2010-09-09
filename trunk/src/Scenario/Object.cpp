@@ -28,11 +28,13 @@ void Object::initializeEntity(Ogre::Entity* entity, Ogre::SceneNode* sceneNode, 
 	// Always call base method before!
 	EntityInterface::initializeEntity(entity, sceneNode, sceneManager);
 
-	if(mType == WyvernsAssault::ObjectTypes::DynamicObject && mPhysicSize > Vector3::ZERO){
+	burning = false;
+
+	if(mType == WyvernsAssault::ObjectTypes::DynamicObject && mPhysicSize > Vector3::ZERO)
+	{
 		initializePhysics(entity->getName(),mPhysicSize,"OBBoxManualMaterial_Object");
 		sceneNode->attachObject(getGeometry(PhysicBoxType::body)->getMovableObject());
 	}
-
 }
 
 void Object::finalizeEntity()

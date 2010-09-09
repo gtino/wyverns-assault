@@ -195,6 +195,7 @@ EVENTS_BEGIN_REGISTER_HANDLERS(ScenarioManager)
 	EVENTS_REGISTER_HANDLER(ScenarioManager, ObjectHit)
 	EVENTS_REGISTER_HANDLER(ScenarioManager, ObjectKilled)
 	EVENTS_REGISTER_HANDLER(ScenarioManager, ObjectRemove)
+	EVENTS_REGISTER_HANDLER(ScenarioManager, ObjectCustom)
 	EVENTS_REGISTER_HANDLER(ScenarioManager, GameAreaChanged)
 EVENTS_END_REGISTER_HANDLERS()
 
@@ -203,6 +204,7 @@ EVENTS_BEGIN_UNREGISTER_HANDLERS(ScenarioManager)
 	EVENTS_UNREGISTER_HANDLER(ScenarioManager, ObjectHit)
 	EVENTS_UNREGISTER_HANDLER(ScenarioManager, ObjectKilled)
 	EVENTS_UNREGISTER_HANDLER(ScenarioManager, ObjectRemove)
+	EVENTS_UNREGISTER_HANDLER(ScenarioManager, ObjectCustom)
 	EVENTS_UNREGISTER_HANDLER(ScenarioManager, GameAreaChanged)
 EVENTS_END_UNREGISTER_HANDLERS()
 
@@ -234,7 +236,14 @@ EVENTS_DEFINE_HANDLER(ScenarioManager, ObjectKilled)
 	ObjectPtr obj = evt->getObject();
 	PlayerPtr player = evt->getPlayer();
 
-	if( obj->hasDieAnimation() )
+	if( player->isSpecial() )
+	{
+		obj->setMaterialName("Skin/Black");
+		obj->setBurning(true);
+		ObjectCustomEventPtr oCustom = ObjectCustomEventPtr(new ObjectCustomEvent(obj));
+		EVENTS_FIRE_AFTER(oCustom, 1.0f);
+	}
+	else if( obj->hasDieAnimation() )
 	{
 		obj->dieSwitch();
 	}
@@ -246,6 +255,16 @@ EVENTS_DEFINE_HANDLER(ScenarioManager, ObjectRemove)
 
 	ObjectPtr o = evt->getObject();
 	removeObject(o->getName());
+}
+
+EVENTS_DEFINE_HANDLER(ScenarioManager, ObjectCustom)
+{
+	Debug::Out("ScenarioManager : handleObjectCustomEvent");
+
+	ObjectPtr object = evt->getObject();
+
+	if( object->isBurning())
+		object->setVisible(false);
 }
 
 EVENTS_DEFINE_HANDLER(ScenarioManager, GameAreaChanged)
