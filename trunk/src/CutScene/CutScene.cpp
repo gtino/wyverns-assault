@@ -2,9 +2,10 @@
 
 using namespace WyvernsAssault;
 
-CutScene::CutScene(int id, Ogre::String script)
+CutScene::CutScene(int level, int id, Ogre::String script)
 : mPlayed(false)
 {
+	this->mLevel = level;
 	this->mId = id;
 	this->mScript = script;
 }

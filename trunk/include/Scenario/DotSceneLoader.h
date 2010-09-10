@@ -79,12 +79,12 @@ namespace Ogre
 		void processSubEntity(TiXmlElement *XMLNode, Entity *pEntity);
 
 		void processCameras(TiXmlElement *XMLNode);
-		void processCamera(TiXmlElement *XMLNode, SceneNode *pParent = 0);
+		void processCamera(TiXmlElement *XMLNode, SceneNode *pParent = 0, int level = 0);
 
 		void processGameAreas(TiXmlElement *XMLNode);
-		void processGameArea(TiXmlElement *XMLNode, SceneNode *pParent = 0);
+		void processGameArea(TiXmlElement *XMLNode, SceneNode *pParent = 0, int level = 0);
 		void processCameraSegments(TiXmlElement *XMLNode);		
-		void processCameraSegment(TiXmlElement *XMLNode, SceneNode *pParent = 0);
+		void processCameraSegment(TiXmlElement *XMLNode, SceneNode *pParent = 0, int level = 0);
 
 		void processLights(TiXmlElement *XMLNode);		
 		void processLight(TiXmlElement *XMLNode, SceneNode *pParent = 0);

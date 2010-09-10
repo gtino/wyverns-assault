@@ -444,9 +444,10 @@ void CameraManager::createTransition(Vector3 begin, Vector3 end, Vector3 lbegin,
 }
 
 /** Add camera segment to vector */
-void CameraManager::addCameraSegment(Vector3 pbegin, Vector3 pend, Vector3 lbegin, Vector3 lend)
+void CameraManager::addCameraSegment(int level, Vector3 pbegin, Vector3 pend, Vector3 lbegin, Vector3 lend)
 {
 	CameraSegment camSeg;
+	camSeg.mLevel = level;
 	camSeg.mPositionBegin = pbegin;
 	camSeg.mPositionEnd = pend;
 	camSeg.mLookAtBegin = lbegin;	
@@ -455,10 +456,11 @@ void CameraManager::addCameraSegment(Vector3 pbegin, Vector3 pend, Vector3 lbegi
 }
 
 /** Set a fixed camera */
-void CameraManager::setFixedCamera(int camera, Vector3 position, Vector3 lookAt)
+void CameraManager::setFixedCamera(int level, int id, Vector3 position, Vector3 lookAt)
 {
 	FixedCamera fixedCamera;
-	fixedCamera.mId = camera;
+	fixedCamera.mLevel = level;
+	fixedCamera.mId = id;
 	fixedCamera.mPosition = position;
 	fixedCamera.mLookAt = lookAt;
 

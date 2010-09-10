@@ -81,17 +81,17 @@ LevelPtr LevelManager::getCurrentLevel()
 
 bool LevelManager::next()
 {
-	mCurrentLevelIndex = (mCurrentLevelIndex+1) % mLevels.size();
-	
-	mIsLast = (mCurrentLevelIndex == 0);
+	return change(mCurrentLevelIndex+1);
+}
+
+bool LevelManager::change(int newLevelIndex)
+{
+	mCurrentLevelIndex = newLevelIndex;
+
+	mIsLast = (mCurrentLevelIndex == mLevels.size());
 
 	// return 0 if it was the last level
 	return mIsLast;
-}
-
-void LevelManager::change(int newLevelIndex)
-{
-	mCurrentLevelIndex = newLevelIndex;
 }
 
 // --------------

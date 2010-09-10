@@ -597,17 +597,7 @@ void PlayState::update(const float elapsedSeconds)
 	//
 	// Check for level/game ending
 	// 
-	if(mLevel != mLevelManager->getCurrentLevelIndex())
-	{
-		if(mLevelManager->isLast())
-		{
-			mNextGameStateId = GameStateId::Ending;
-		}
-		else
-		{
-			mNextGameStateId = GameStateId::LevelLoading;
-		}
-	}
+	checkLevelEnd();
 
 	TIMER_STOP(Update);
 }
@@ -1010,4 +1000,24 @@ bool PlayState::mouseMoved(const OIS::MouseEvent& e)
 {
 	mCameraManager->freeCameraMouse(e);
 	return true;
+}
+
+void PlayState::checkLevelEnd()
+{
+	int newLevel = mLevelManager->getCurrentLevelIndex();
+	if(mLevel != newLevel)
+	{
+		if(mLevelManager->isLast())
+		{
+			mNextGameStateId = GameStateId::Ending;
+			// HACK : we do it here, but it should be automatic
+			mLevelManager->change(0);
+			mLevel = 0;
+		}
+		else
+		{
+			mNextGameStateId = GameStateId::LevelLoading;
+			mLevel = newLevel;
+		}
+	}
 }
