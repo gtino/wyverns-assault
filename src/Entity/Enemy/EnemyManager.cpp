@@ -560,16 +560,17 @@ EVENTS_DEFINE_HANDLER(EnemyManager, EnemyKilled)
 				}
 				else if ( !enemy->hasDieAnimation() )
 					enemy->setMaterialName("Skin/Red");
+
+				// If enemy has an item and its not flying will drop it
+				if( enemy->hasItem() )
+				{	
+					EnemyCreateItemEventPtr eItem = EnemyCreateItemEventPtr(new EnemyCreateItemEvent(enemy, mCurrentGameArea));
+					EVENTS_FIRE_AFTER(eItem, 1.0f);
+						
+					enemy->itemDroped();
+				}
 			}
 		}
-	}
-
-	if( enemy->hasItem() )
-	{
-		EnemyCreateItemEventPtr eItem = EnemyCreateItemEventPtr(new EnemyCreateItemEvent(enemy, mCurrentGameArea));
-		EVENTS_FIRE_AFTER(eItem, 1.0f);
-			
-		enemy->itemDroped();
 	}
 }
 
