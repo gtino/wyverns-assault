@@ -1,6 +1,6 @@
 <scene>
 	<!-- Fixed cameras -->
-	<cameras>
+	<cameras level="0"> 
 		<camera name="Camera0" id="0">
 			<position x="0" y="1250" z="1250"/>	
 			<lookAt x="0" y="0" z="300"/>
@@ -28,7 +28,7 @@
 	</cameras>
 	
 	<!-- Camera segments for game areas -->
-	<cameraSegments>	
+	<cameraSegments level="0">	
 		<cameraSegment id="0">
 			<positionBegin x="-91" y="250" z="984"/>
 			<positionEnd x="186" y="150" z="1068"/>

@@ -1,65 +1,65 @@
 <scene>
 	<!-- Fixed cameras -->
-	<cameras>
-		<camera name="Camera0" id="20">
+	<cameras level="1">
+		<camera name="Camera0" id="0">
 			<position x="0" y="200" z="0"/>	
 			<lookAt x="-128" y="24" z="300"/>
 		</camera>
-		<camera name="Camera1" id="21">
+		<camera name="Camera1" id="1">
 			<position x="0" y="500" z="0"/>	
 			<lookAt x="0" y="0" z="0"/>
 		</camera>
-		<camera name="Camera2" id="22">
+		<camera name="Camera2" id="2">
 			<position x="-430" y="300" z="-34"/>	
 			<lookAt x="0" y="0" z="0"/>
 		</camera>
-		<camera name="Camera3" id="23">
+		<camera name="Camera3" id="3">
 			<position x="-132" y="50" z="99"/>	
 			<lookAt x="296" y="150" z="135"/>
 		</camera>
-		<camera name="Camera4" id="24">
+		<camera name="Camera4" id="4">
 			<position x="-175" y="20" z="331"/>	
 			<lookAt x="0" y="80" z="0"/>
 		</camera>
-		<camera name="Camera5" id="25">
+		<camera name="Camera5" id="5">
 			<position x="105" y="200" z="-263"/>	
 			<lookAt x="-175" y="20" z="331"/>
 		</camera>
 	</cameras>
 	
 	<!-- Camera segments for game areas -->
-	<cameraSegments>	
-		<cameraSegment id="20">
+	<cameraSegments level="1">	
+		<cameraSegment id="0">
 			<positionBegin x="486" y="200" z="163"/>
 			<positionEnd x="510" y="200" z="-59"/>
 			<lookAtBegin x="105" y="20" z="27"/>
 			<lookAtEnd x="112" y="20" z="-27"/>			
 		</cameraSegment>
-		<cameraSegment id="21">
+		<cameraSegment id="1">
 			<positionBegin x="144" y="180" z="497"/>
 			<positionEnd x="406" y="180" z="332"/>
 			<lookAtBegin x="46" y="20" z="99"/>
 			<lookAtEnd x="91" y="20" z="61"/>			
 		</cameraSegment>
-		<cameraSegment id="22">
+		<cameraSegment id="2">
 			<positionBegin x="-355" y="120" z="398"/>
 			<positionEnd x="-108" y="120" z="506"/>
 			<lookAtBegin x="-71" y="40" z="84"/>
 			<lookAtEnd x="-17" y="40" z="109"/>			
 		</cameraSegment>
-		<cameraSegment id="23">
+		<cameraSegment id="3">
 			<positionBegin x="-441" y="160" z="222"/>
 			<positionEnd x="-498" y="160" z="-58"/>
 			<lookAtBegin x="-127" y="50" z="33"/>			
 			<lookAtEnd x="-135" y="50" z="-27"/>
 		</cameraSegment>
-		<cameraSegment id="24">
+		<cameraSegment id="4">
 			<positionBegin x="-418" y="180" z="-238"/>
 			<positionEnd x="-180" y="180" z="-464"/>
 			<lookAtBegin x="-116" y="20" z="-78"/>			
 			<lookAtEnd x="-73" y="20" z="-122"/>
 		</cameraSegment>
-		<cameraSegment id="25">
+		<cameraSegment id="5">
 			<positionBegin x="-7" y="200" z="-473"/>
 			<positionEnd x="317" y="200" z="-362"/>
 			<lookAtBegin x="-16" y="20" z="-113"/>

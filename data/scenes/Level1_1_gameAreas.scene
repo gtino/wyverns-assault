@@ -1,5 +1,5 @@
 <scene>
-	<gameAreas>	
+	<gameAreas level="0">	
 		<gameArea id="0" time="0.0" enemies="0" difficult="1" type="0">
 			<beginNear x="-417" y="0" z="972"/>
 			<endNear x="318" y="0" z="1016"/>

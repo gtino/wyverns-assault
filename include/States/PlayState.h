@@ -100,6 +100,9 @@ namespace WyvernsAssault
 		bool mouseMoved(const OIS::MouseEvent& e);
 
 	private:
+		void checkLevelEnd();
+
+	private:
 		LightsManagerPtr mLightsManager;
 		PlayerManagerPtr mPlayerManager;
 		EnemyManagerPtr mEnemyManager;

@@ -50,6 +50,8 @@ namespace WyvernsAssault
 		
 		struct GameArea
 		{
+			int mLevel;
+
 			Ogre::Vector3	mBeginNear;
 			Ogre::Vector3	mEndNear;
 			Ogre::Vector3	mBeginFar;
@@ -98,7 +100,7 @@ namespace WyvernsAssault
 		bool getDebugEnabled(){return mIsDebugEnabled;};
 
 		// Add game area to game area list
-		void addGameArea(GameArea area);
+		void addGameArea(int level, GameArea area);
 		int getLastGameArea();
 
 	public:
@@ -110,7 +112,10 @@ namespace WyvernsAssault
 		EVENTS_HANDLER(GameAreaEnemiesDeath)
 
 	private:
-		std::vector<GameArea> mGameAreas;
+		typedef std::vector<GameArea> GameAreaList;
+		typedef std::vector<GameArea>::iterator GameAreaIterator;
+		
+		GameAreaList mGameAreas;				
 		
 		int		mCurrentLevel;
 		int		mCurrentGameArea;

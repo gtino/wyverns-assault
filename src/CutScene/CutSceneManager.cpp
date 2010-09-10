@@ -166,7 +166,7 @@ void CutSceneManager::add(int level, int gameArea, int id, const Ogre::String sc
 		//
 		GameAreaToCutSceneIdMap* m = gameAreaMap.get();
 		
-		(*m)[gameArea] = CutScenePtr(new CutScene(id,script));
+		(*m)[gameArea] = CutScenePtr(new CutScene(level,id,script));
 	}
 }
 
@@ -190,36 +190,48 @@ EVENTS_DEFINE_HANDLER(CutSceneManager, GameAreaChanged)
 	// We do the cut scene only if we are moving forward
 	if( actualArea > previousArea )
 	{
-		switch(actualArea)
+		if(level == 0) // Level1_1
 		{
-		case 0:
-			mCutSceneId = CutSceneId::Intro;
-			break;
-		case 1:
-			mCutSceneId = CutSceneId::FirstKills;
-			break;
-		case 2:
-			mCutSceneId = CutSceneId::Beer;
-			break;
-		case 5:
-			mCutSceneId = CutSceneId::Bridge;
-			break;
-		case 7:
-			mCutSceneId = CutSceneId::Forest;
-			break;
-		case 8:
-			mCutSceneId = CutSceneId::WoodenWall;
-			break;
-		case 10:
-			mCutSceneId = CutSceneId::Village;
-			break;
-		case 11:
-			mCutSceneId = CutSceneId::Boss;
-			break;
-		default:
-			mCutSceneId = CutSceneId::Nothing;
-			break;
-			// TODO : All other cut scenes!
+			switch(actualArea)
+			{
+			case 0:
+				mCutSceneId = CutSceneId::Intro;
+				break;
+			case 1:
+				mCutSceneId = CutSceneId::FirstKills;
+				break;
+			case 2:
+				mCutSceneId = CutSceneId::Beer;
+				break;
+			case 5:
+				mCutSceneId = CutSceneId::Bridge;
+				break;
+			case 7:
+				mCutSceneId = CutSceneId::Forest;
+				break;
+			case 8:
+				mCutSceneId = CutSceneId::WoodenWall;
+				break;
+			case 10:
+				mCutSceneId = CutSceneId::Village;
+				break;
+			case 11:
+				mCutSceneId = CutSceneId::Boss;
+				break;
+			default:
+				mCutSceneId = CutSceneId::Nothing;
+				break;
+				// TODO : All other cut scenes!
+			}
+		}
+		else if(level == 1) // the Boss level
+		{
+			switch(actualArea)
+			{
+				default:
+					mCutSceneId = CutSceneId::Nothing;
+				break;
+			}
 		}
 
 		CutScenesPlayedMapIterator it = mAlreadyPlayed.find(mCutSceneId);
@@ -229,10 +241,19 @@ EVENTS_DEFINE_HANDLER(CutSceneManager, GameAreaChanged)
 			mAlreadyPlayed[mCutSceneId] = true;
 
 			//
-			// HACK : to make sue this plays from the very first frame!
+			// HACK : to make sure this plays from the very first frame!
 			//
 			if(mCutSceneId == CutSceneId::Intro)
-				playCutScene(0,"playIntroCutScene");
+			{
+				if(level == 0)
+				{
+					playCutScene(0,"playIntroCutScene");
+				}
+				else if(level == 1)
+				{
+					// TODO initial cut scene for the Boss level
+				}
+			}
 		}
 		else
 		{

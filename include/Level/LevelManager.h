@@ -62,7 +62,7 @@ namespace WyvernsAssault
 
 		void update(const float elapsedSeconds);
 
-		void change(int newLevel);
+		bool change(int newLevel);
 		bool next();
 
 		//

@@ -254,11 +254,13 @@ void DotSceneLoader::processCameras(TiXmlElement *XMLNode)
 {
 	TiXmlElement *pElement;
 
+	int level = getAttribInt(XMLNode, "level");
+
 	// Process camera
 	pElement = XMLNode->FirstChildElement("camera");
 	while(pElement)
 	{
-		processCamera(pElement);
+		processCamera(pElement, 0, level);
 		pElement = pElement->NextSiblingElement("camera");
 	}
 }
@@ -524,7 +526,7 @@ void DotSceneLoader::processNode(TiXmlElement *XMLNode, SceneNode *pParent)
 	}
 }
 
-void DotSceneLoader::processCamera(TiXmlElement *XMLNode, SceneNode *pParent)
+void DotSceneLoader::processCamera(TiXmlElement *XMLNode, SceneNode *pParent, int level)
 {
 	Vector3 position = Vector3::ZERO;
 	Vector3 lookAt = Vector3::ZERO;
@@ -545,7 +547,7 @@ void DotSceneLoader::processCamera(TiXmlElement *XMLNode, SceneNode *pParent)
 		lookAt = parseVector3(pElement);
 	}
 
-	mCameraManager->setFixedCamera(id, position, lookAt);
+	mCameraManager->setFixedCamera(level, id, position, lookAt);
 }
 
 void DotSceneLoader::processLight(TiXmlElement *XMLNode, SceneNode *pParent)
@@ -929,11 +931,13 @@ void DotSceneLoader::processGameAreas(TiXmlElement *XMLNode)
 {
 	TiXmlElement *pElement;
 
+	int level = getAttribInt(XMLNode, "level");
+
 	// Process game area
 	pElement = XMLNode->FirstChildElement("gameArea");
 	while(pElement)
 	{
-		processGameArea(pElement);
+		processGameArea(pElement, 0, level);
 		pElement = pElement->NextSiblingElement("gameArea");
 	}
 }
@@ -942,19 +946,23 @@ void DotSceneLoader::processCameraSegments(TiXmlElement *XMLNode)
 {
 	TiXmlElement *pElement;
 
+	int level = getAttribInt(XMLNode, "level");
+
 	// Process camera segment
 	pElement = XMLNode->FirstChildElement("cameraSegment");
 	while(pElement)
 	{
-		processCameraSegment(pElement);
+		processCameraSegment(pElement, 0, level);
 		pElement = pElement->NextSiblingElement("cameraSegment");
 	}
 }
 
-void DotSceneLoader::processGameArea(TiXmlElement *XMLNode, SceneNode *pParent)
+void DotSceneLoader::processGameArea(TiXmlElement *XMLNode, SceneNode *pParent, int level)
 {
 	GameAreaManager::GameArea area;
 	TiXmlElement *pElement;
+
+	area.mLevel = level;
 
 	area.mFinishTime = StringConverter::parseReal(XMLNode->Attribute("time"));
 	area.mEnemies = StringConverter::parseInt(XMLNode->Attribute("enemies"));
@@ -993,10 +1001,10 @@ void DotSceneLoader::processGameArea(TiXmlElement *XMLNode, SceneNode *pParent)
 		pElement = pElement->NextSiblingElement("spawnPoint");
 	}
 
-	mGameAreaManager->addGameArea(area);
+	mGameAreaManager->addGameArea(level, area);
 }
 
-void DotSceneLoader::processCameraSegment(TiXmlElement *XMLNode, SceneNode *pParent)
+void DotSceneLoader::processCameraSegment(TiXmlElement *XMLNode, SceneNode *pParent, int level)
 {
 	Vector3 positionBegin;
 	Vector3 positionEnd;
@@ -1029,7 +1037,7 @@ void DotSceneLoader::processCameraSegment(TiXmlElement *XMLNode, SceneNode *pPar
 		lookAtEnd = parseVector3(pElement);
 	}
 
-	mCameraManager->addCameraSegment(positionBegin, positionEnd, lookAtBegin, lookAtEnd);
+	mCameraManager->addCameraSegment(level, positionBegin, positionEnd, lookAtBegin, lookAtEnd);
 }
 
 void DotSceneLoader::processSkyBox(TiXmlElement *XMLNode)

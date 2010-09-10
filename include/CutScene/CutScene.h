@@ -37,10 +37,11 @@ namespace WyvernsAssault
 	class CutScene
 	{
 		public:
-			CutScene(int id, Ogre::String script);
+			CutScene(int level, int id, Ogre::String script);
 			~CutScene();
 
 		public:
+			int getLevel(){return mLevel;}
 			int getId(){ return mId; }
 			Ogre::String getScript(){ return mScript; }
 
@@ -48,6 +49,7 @@ namespace WyvernsAssault
 			void setPlayed(bool played){mPlayed = played;}
 
 		private:
+			int mLevel;
 			int mId;
 			Ogre::String mScript;
 			bool mPlayed;

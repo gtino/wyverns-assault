@@ -98,10 +98,10 @@ namespace WyvernsAssault
 		void createTransition(Vector3 begin, Vector3 end, Vector3 lbegin, Vector3 lend, float duration);
 
 		/** Add game area  and camera segment */
-		void addCameraSegment(Vector3 pbegin, Vector3 pend, Vector3 lbegin, Vector3 lend);
+		void addCameraSegment(int level, Vector3 pbegin, Vector3 pend, Vector3 lbegin, Vector3 lend);
 
 		/** Fixed cameras functions */
-		void setFixedCamera(int camera, Vector3 position, Vector3 lookAt);
+		void setFixedCamera(int level, int camera, Vector3 position, Vector3 lookAt);
 		
 		/** Camera effects */
 		void zoom(Real duration, Real amount);
@@ -179,6 +179,7 @@ namespace WyvernsAssault
 	private:
 		struct FixedCamera
 		{
+			int mLevel;
 			int mId;
 			Ogre::Vector3 mPosition;
 			Ogre::Vector3 mLookAt;
@@ -192,6 +193,8 @@ namespace WyvernsAssault
 
 		struct CameraSegment
 		{
+			int mLevel;
+
 			Ogre::Vector3	mPositionBegin;
 			Ogre::Vector3	mLookAtBegin;
 			
