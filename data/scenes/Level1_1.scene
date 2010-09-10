@@ -165,24 +165,6 @@
           </subentities>
         </entity>
       </node>
-      <node name="House02_1" id="645039232">
-        <rotation qw="0.956893" qx="0" qy="0.29044" qz="0" />
-        <position x="3969.74" y="594.063" z="-1673.42" />
-        <scale x="4" y="4" z="4" />
-        <node name="House02_Mesh" id="812707904">
-          <rotation qw="1" qx="0" qy="0" qz="0" />
-          <position x="0" y="0" z="0" />
-          <scale x="1" y="1" z="1" />
-          <entity name="Entity#31" id="735923328" castshadows="true" meshFile="House2.mesh">
-            <rotation qw="1" qx="0" qy="0" qz="0" />
-            <position x="0" y="0" z="0" />
-            <scale x="1" y="1" z="1" />
-            <subentities>
-              <subentity materialName="House02" index="0" visible="true" />
-            </subentities>
-          </entity>
-        </node>
-      </node>
       <node name="PineTree2d0_4Copy#2" id="908322368">
         <rotation qw="0.296403" qx="-0.0209244" qy="0.954575" qz="-0.0222433" />
         <position x="3068.39" y="593.313" z="-1268.63" />
@@ -626,25 +608,6 @@
           </subentities>
         </entity>
       </node>
-      <node name="RedwoodTree7" id="607226816">
-        <rotation qw="1" qx="0" qy="0" qz="0" />
-        <position x="3768.15" y="596.607" z="-1900.03" />
-        <scale x="4" y="4" z="4" />
-        <node name="RedwoodTree_Mesh_5" id="788232064">
-          <rotation qw="1" qx="0" qy="0" qz="0" />
-          <position x="0" y="0" z="0" />
-          <scale x="1" y="1" z="1" />
-          <entity name="Entity#52" id="422711872" castshadows="true" meshFile="RedwoodTree0.mesh">
-            <rotation qw="1" qx="0" qy="0" qz="0" />
-            <position x="0" y="0" z="0" />
-            <scale x="1" y="1" z="1" />
-            <subentities>
-              <subentity materialName="RedWood" index="0" visible="true" />
-              <subentity materialName="RedwoodLeaf" index="1" visible="true" />
-            </subentities>
-          </entity>
-        </node>
-      </node>
       <node name="GolfHill12" id="61891536">
         <rotation qw="0.707107" qx="0" qy="-0.707107" qz="0" />
         <position x="1071.79" y="574.832" z="282.08" />
@@ -761,24 +724,6 @@
             <subentity materialName="Hill" index="0" visible="true" />
           </subentities>
         </entity>
-      </node>
-      <node name="House02_0" id="771172224">
-        <rotation qw="0.471234" qx="0" qy="-0.882008" qz="0" />
-        <position x="3730.58" y="598.719" z="-998.077" />
-        <scale x="4" y="4" z="4" />
-        <node name="House02_Mesh_2" id="228247920">
-          <rotation qw="1" qx="0" qy="-1.66533E-16" qz="0" />
-          <position x="2.84217E-14" y="0" z="-2.84217E-14" />
-          <scale x="1" y="1" z="1" />
-          <entity name="Entity#39" id="556596608" castshadows="true" meshFile="House2.mesh">
-            <rotation qw="1" qx="0" qy="0" qz="0" />
-            <position x="0" y="0" z="0" />
-            <scale x="1" y="1" z="1" />
-            <subentities>
-              <subentity materialName="House02" index="0" visible="true" />
-            </subentities>
-          </entity>
-        </node>
       </node>
       <node name="PineTree2d0_4Copy#1" id="765617856">
         <rotation qw="0.42637" qx="-0.0238165" qy="0.904034" qz="-0.0191147" />
@@ -1003,24 +948,6 @@
             <subentity materialName="HighHills" index="0" visible="true" />
           </subentities>
         </entity>
-      </node>
-      <node name="House03_2" id="403881952">
-        <rotation qw="1" qx="0" qy="0" qz="0" />
-        <position x="3897.64" y="767.825" z="-530.882" />
-        <scale x="4" y="4" z="4" />
-        <node name="House03_Mesh_2" id="383617664">
-          <rotation qw="1" qx="0" qy="0" qz="0" />
-          <position x="0" y="0" z="0" />
-          <scale x="1" y="1" z="1" />
-          <entity name="Entity#63" id="27619252" castshadows="true" meshFile="House3.mesh">
-            <rotation qw="1" qx="0" qy="0" qz="0" />
-            <position x="0" y="0" z="0" />
-            <scale x="1" y="1" z="1" />
-            <subentities>
-              <subentity materialName="House03" index="0" visible="true" />
-            </subentities>
-          </entity>
-        </node>
       </node>
       <node name="TownHouse01_0" id="533127840">
         <rotation qw="0.48481" qx="0" qy="0.87462" qz="0" />
@@ -2433,25 +2360,6 @@
           </subentities>
         </entity>
       </node>
-      <node name="RedwoodTree1" id="646870336">
-        <rotation qw="1" qx="1.61029E-15" qy="1.03969E-16" qz="-1.67421E-31" />
-        <position x="2351.98" y="592.97" z="-1497.81" />
-        <scale x="4" y="4" z="4" />
-        <node name="RedwoodTree_Mesh_3" id="227729104">
-          <rotation qw="1" qx="0" qy="0" qz="0" />
-          <position x="-3.58236E-14" y="-3.27589E-17" z="0" />
-          <scale x="1" y="1" z="1" />
-          <entity name="Entity#42" id="812799424" castshadows="true" meshFile="RedwoodTree0.mesh">
-            <rotation qw="1" qx="0" qy="0" qz="0" />
-            <position x="0" y="0" z="0" />
-            <scale x="1" y="1" z="1" />
-            <subentities>
-              <subentity materialName="RedWood" index="0" visible="true" />
-              <subentity materialName="RedwoodLeaf" index="1" visible="true" />
-            </subentities>
-          </entity>
-        </node>
-      </node>
       <node name="GolfHill14" id="121738336">
         <rotation qw="0.707107" qx="0" qy="-0.707107" qz="0" />
         <position x="-2.11199" y="550.862" z="925.08" />
@@ -3093,24 +3001,6 @@
           </subentities>
         </entity>
       </node>
-      <node name="House03_0" id="559617920">
-        <rotation qw="1" qx="0" qy="0" qz="0" />
-        <position x="3760.86" y="767.825" z="-1897.69" />
-        <scale x="4" y="4" z="4" />
-        <node name="House03_Mesh_0" id="39002656">
-          <rotation qw="1" qx="0" qy="0" qz="0" />
-          <position x="0" y="0" z="0" />
-          <scale x="1" y="1" z="1" />
-          <entity name="Entity#69" id="378215872" castshadows="true" meshFile="House3.mesh">
-            <rotation qw="1" qx="0" qy="0" qz="0" />
-            <position x="0" y="0" z="0" />
-            <scale x="1" y="1" z="1" />
-            <subentities>
-              <subentity materialName="House03" index="0" visible="true" />
-            </subentities>
-          </entity>
-        </node>
-      </node>
       <node name="TownHouse01_2" id="794427328">
         <rotation qw="1" qx="0" qy="0" qz="0" />
         <position x="389.143" y="598.719" z="-2503.05" />
@@ -3319,25 +3209,6 @@
           </subentities>
         </entity>
       </node>
-      <node name="RedwoodTree4" id="865199744">
-        <rotation qw="1" qx="0" qy="0" qz="0" />
-        <position x="3894.09" y="596.607" z="-534.047" />
-        <scale x="4" y="4" z="4" />
-        <node name="RedwoodTree_Mesh_7" id="437421792">
-          <rotation qw="1" qx="0" qy="0" qz="0" />
-          <position x="0" y="0" z="0" />
-          <scale x="1" y="1" z="1" />
-          <entity name="Entity#67" id="699636800" castshadows="true" meshFile="RedwoodTree0.mesh">
-            <rotation qw="1" qx="0" qy="0" qz="0" />
-            <position x="0" y="0" z="0" />
-            <scale x="1" y="1" z="1" />
-            <subentities>
-              <subentity materialName="RedWood" index="0" visible="true" />
-              <subentity materialName="RedwoodLeaf" index="1" visible="true" />
-            </subentities>
-          </entity>
-        </node>
-      </node>
       <node name="CitySheafs0Copy#0" id="713827904">
         <rotation qw="1" qx="0" qy="0" qz="0" />
         <position x="1157.92" y="592.742" z="-2612.46" />
@@ -3494,24 +3365,6 @@
           </subentities>
         </entity>
       </node>
-      <node name="House02_3" id="432172640">
-        <rotation qw="0.999947" qx="0" qy="-0.0102758" qz="0" />
-        <position x="2578.88" y="594.68" z="-1500.45" />
-        <scale x="4" y="4" z="4" />
-        <node name="House02_Mesh_4" id="931547008">
-          <rotation qw="1" qx="0" qy="0" qz="0" />
-          <position x="-5.15143E-14" y="0" z="0" />
-          <scale x="1" y="1" z="1" />
-          <entity name="Entity#73Copy#1" id="410718112" castshadows="true" meshFile="House2.mesh">
-            <rotation qw="1" qx="0" qy="0" qz="0" />
-            <position x="0" y="0" z="0" />
-            <scale x="1" y="1" z="1" />
-            <subentities>
-              <subentity materialName="House02" index="0" visible="true" />
-            </subentities>
-          </entity>
-        </node>
-      </node>
       <node name="Sheaf0_0Copy#2Copy#0" id="747337280">
         <rotation qw="0.97237" qx="0" qy="0.233445" qz="0" />
         <position x="4524.34" y="593.26" z="976.021" />
@@ -3537,25 +3390,6 @@
             <subentity materialName="Trees0" index="0" visible="true" />
           </subentities>
         </entity>
-      </node>
-      <node name="RedwoodTree2" id="460066528">
-        <rotation qw="1" qx="0" qy="0" qz="0" />
-        <position x="2993.98" y="596.607" z="-1373.38" />
-        <scale x="4" y="4" z="4" />
-        <node name="RedwoodTree_Mesh_6" id="748161280">
-          <rotation qw="1" qx="0" qy="0" qz="0" />
-          <position x="0" y="0" z="0" />
-          <scale x="1" y="1" z="1" />
-          <entity name="Entity#61" id="351603744" castshadows="true" meshFile="RedwoodTree0.mesh">
-            <rotation qw="1" qx="0" qy="0" qz="0" />
-            <position x="0" y="0" z="0" />
-            <scale x="1" y="1" z="1" />
-            <subentities>
-              <subentity materialName="RedWood" index="0" visible="true" />
-              <subentity materialName="RedwoodLeaf" index="1" visible="true" />
-            </subentities>
-          </entity>
-        </node>
       </node>
       <node name="GolfHill15" id="987945216">
         <rotation qw="0.707107" qx="0" qy="-0.707107" qz="0" />
@@ -3739,24 +3573,6 @@
           </subentities>
         </entity>
       </node>
-      <node name="House02_5" id="498580896">
-        <rotation qw="0.013199" qx="0" qy="-0.999913" qz="0" />
-        <position x="2571.07" y="597.109" z="-1926.29" />
-        <scale x="4" y="4" z="4" />
-        <node name="House02_Mesh_5" id="80050048">
-          <rotation qw="1" qx="0" qy="3.46945E-18" qz="0" />
-          <position x="3.37508E-14" y="0" z="0" />
-          <scale x="1" y="1" z="1" />
-          <entity name="Entity#73" id="874782592" castshadows="true" meshFile="House2.mesh">
-            <rotation qw="1" qx="0" qy="0" qz="0" />
-            <position x="0" y="0" z="0" />
-            <scale x="1" y="1" z="1" />
-            <subentities>
-              <subentity materialName="House02" index="0" visible="true" />
-            </subentities>
-          </entity>
-        </node>
-      </node>
       <node name="CandyPillTree14" id="797204480">
         <rotation qw="0.73582" qx="0" qy="-0.677178" qz="0" />
         <position x="4534.19" y="656.73" z="293.318" />
@@ -3907,24 +3723,6 @@
             <subentity materialName="Tree2" index="0" visible="true" />
           </subentities>
         </entity>
-      </node>
-      <node name="House03_1" id="741813440">
-        <rotation qw="1" qx="0" qy="0" qz="0" />
-        <position x="2754.61" y="767.825" z="-1685.3" />
-        <scale x="4" y="4" z="4" />
-        <node name="House03_Mesh_1" id="716605120">
-          <rotation qw="1" qx="0" qy="0" qz="0" />
-          <position x="0" y="0" z="0" />
-          <scale x="1" y="1" z="1" />
-          <entity name="Entity#30" id="30884732" castshadows="true" meshFile="House3.mesh">
-            <rotation qw="1" qx="0" qy="0" qz="0" />
-            <position x="0" y="0" z="0" />
-            <scale x="1" y="1" z="1" />
-            <subentities>
-              <subentity materialName="House03" index="0" visible="true" />
-            </subentities>
-          </entity>
-        </node>
       </node>
       <node name="TownHouse01_3" id="501693792">
         <rotation qw="1" qx="0" qy="0" qz="0" />
@@ -4581,25 +4379,6 @@
           </subentities>
         </entity>
       </node>
-      <node name="RedwoodTree5" id="448866240">
-        <rotation qw="1" qx="0" qy="0" qz="0" />
-        <position x="4027.55" y="596.607" z="-1480.36" />
-        <scale x="4" y="4" z="4" />
-        <node name="RedwoodTree_Mesh_1" id="7568591">
-          <rotation qw="1" qx="0" qy="0" qz="0" />
-          <position x="0" y="0" z="0" />
-          <scale x="1" y="1" z="1" />
-          <entity name="Entity#35" id="228614144" castshadows="true" meshFile="RedwoodTree0.mesh">
-            <rotation qw="1" qx="0" qy="0" qz="0" />
-            <position x="0" y="0" z="0" />
-            <scale x="1" y="1" z="1" />
-            <subentities>
-              <subentity materialName="RedWood" index="0" visible="true" />
-              <subentity materialName="RedwoodLeaf" index="1" visible="true" />
-            </subentities>
-          </entity>
-        </node>
-      </node>
       <node name="GolfHill10" id="258980064">
         <rotation qw="0.707107" qx="0" qy="-0.707107" qz="0" />
         <position x="1330.17" y="574.832" z="-937.185" />
@@ -4743,24 +4522,6 @@
           </subentities>
         </entity>
       </node>
-      <node name="House02_2" id="940183680">
-        <rotation qw="0.413251" qx="0" qy="-0.910617" qz="0" />
-        <position x="3009.77" y="610.172" z="-1786.29" />
-        <scale x="4" y="4" z="4" />
-        <node name="House02_Mesh_3" id="125064848">
-          <rotation qw="1" qx="0" qy="-5.55112E-17" qz="0" />
-          <position x="5.68434E-14" y="0" z="0" />
-          <scale x="1" y="1" z="1" />
-          <entity name="Entity#46" id="849330112" castshadows="true" meshFile="House2.mesh">
-            <rotation qw="1" qx="0" qy="0" qz="0" />
-            <position x="0" y="0" z="0" />
-            <scale x="1" y="1" z="1" />
-            <subentities>
-              <subentity materialName="House02" index="0" visible="true" />
-            </subentities>
-          </entity>
-        </node>
-      </node>
       <node name="PineTree2d0_4Copy#3" id="912533952">
         <rotation qw="0.345955" qx="-0.0220599" qy="0.937754" qz="-0.0211177" />
         <position x="3369.36" y="615.124" z="-1148.26" />
@@ -4812,25 +4573,6 @@
             <subentity materialName="PillTree" index="0" visible="true" />
           </subentities>
         </entity>
-      </node>
-      <node name="RedwoodTree3" id="375072480">
-        <rotation qw="1" qx="0" qy="0" qz="0" />
-        <position x="3505.71" y="596.607" z="-1155.32" />
-        <scale x="4" y="4" z="4" />
-        <node name="RedwoodTree_Mesh" id="649830656">
-          <rotation qw="1" qx="0" qy="0" qz="0" />
-          <position x="0" y="0" z="0" />
-          <scale x="1" y="1" z="1" />
-          <entity name="Entity#33" id="915433216" castshadows="true" meshFile="RedwoodTree0.mesh">
-            <rotation qw="1" qx="0" qy="0" qz="0" />
-            <position x="0" y="0" z="0" />
-            <scale x="1" y="1" z="1" />
-            <subentities>
-              <subentity materialName="RedWood" index="0" visible="true" />
-              <subentity materialName="RedwoodLeaf" index="1" visible="true" />
-            </subentities>
-          </entity>
-        </node>
       </node>
       <node name="BigRock7" id="922299840">
         <rotation qw="0.90988" qx="0.00316565" qy="0.414852" qz="-0.00252822" />
@@ -5061,25 +4803,6 @@
           </subentities>
         </entity>
       </node>
-      <node name="RedwoodTree" id="806390592">
-        <rotation qw="1" qx="0" qy="0" qz="0" />
-        <position x="3090.79" y="596.607" z="-2257.98" />
-        <scale x="4" y="4" z="4" />
-        <node name="RedwoodTree_Mesh_2" id="852015744">
-          <rotation qw="1" qx="0" qy="0" qz="0" />
-          <position x="0" y="0" z="0" />
-          <scale x="1" y="1" z="1" />
-          <entity name="Entity#40" id="331614144" castshadows="true" meshFile="RedwoodTree0.mesh">
-            <rotation qw="1" qx="0" qy="0" qz="0" />
-            <position x="0" y="0" z="0" />
-            <scale x="1" y="1" z="1" />
-            <subentities>
-              <subentity materialName="RedWood" index="0" visible="true" />
-              <subentity materialName="RedwoodLeaf" index="1" visible="true" />
-            </subentities>
-          </entity>
-        </node>
-      </node>
       <node name="GreenMountain10" id="343119584">
         <rotation qw="0.0358865" qx="0" qy="-0.999356" qz="0" />
         <position x="1737.81" y="204.208" z="-430.121" />
@@ -5118,24 +4841,6 @@
             <subentity materialName="HighHills" index="0" visible="true" />
           </subentities>
         </entity>
-      </node>
-      <node name="House02_4" id="418469792">
-        <rotation qw="0.719284" qx="0" qy="0.694717" qz="0" />
-        <position x="2872.87" y="602.788" z="-2460.33" />
-        <scale x="4" y="4" z="4" />
-        <node name="House02_Mesh_1" id="156590480">
-          <rotation qw="1" qx="0" qy="-1.66533E-16" qz="0" />
-          <position x="0" y="0" z="-3.19744E-14" />
-          <scale x="1" y="1" z="1" />
-          <entity name="Entity#73Copy#0" id="769066432" castshadows="true" meshFile="House2.mesh">
-            <rotation qw="1" qx="0" qy="0" qz="0" />
-            <position x="0" y="0" z="0" />
-            <scale x="1" y="1" z="1" />
-            <subentities>
-              <subentity materialName="House02" index="0" visible="true" />
-            </subentities>
-          </entity>
-        </node>
       </node>
       <node name="GreenMountain1" id="256172352">
         <rotation qw="0.772591" qx="0" qy="-0.634904" qz="0" />
@@ -5644,25 +5349,6 @@
           </entity>
         </node>
       </node>
-      <node name="RedwoodTree6" id="371044032">
-        <rotation qw="0.982901" qx="0" qy="0.184133" qz="0" />
-        <position x="2763.01" y="596.607" z="-1690.19" />
-        <scale x="4" y="4" z="4" />
-        <node name="RedwoodTree_Mesh_4" id="366893536">
-          <rotation qw="1" qx="0" qy="0" qz="0" />
-          <position x="0" y="0" z="0" />
-          <scale x="1" y="1" z="1" />
-          <entity name="Entity#43" id="34974208" castshadows="true" meshFile="RedwoodTree0.mesh">
-            <rotation qw="1" qx="0" qy="0" qz="0" />
-            <position x="0" y="0" z="0" />
-            <scale x="1" y="1" z="1" />
-            <subentities>
-              <subentity materialName="RedWood" index="0" visible="true" />
-              <subentity materialName="RedwoodLeaf" index="1" visible="true" />
-            </subentities>
-          </entity>
-        </node>
-      </node>
       <node name="WheatHill1" id="689046912">
         <rotation qw="0.707107" qx="0" qy="-0.707107" qz="0" />
         <position x="3929.69" y="528.861" z="1125.97" />
@@ -5816,19 +5502,6 @@
         <position x="1163.91" y="12" z="153.136" />
         <scale x="1" y="1" z="1" />
         <entity name="knightB#28" id="656758336" castshadows="true" meshFile="knightB.mesh" type="Enemy" subType="Knight" animationTree="data/animations/knight.xml" life="150" points="200" speed="50" damage="2" specialDamage="0" height="13" dieMesh="nakedDie.mesh" dieAnimation="Die">
-          <rotation qw="1" qx="0" qy="0" qz="0" />
-          <position x="0" y="0" z="0" />
-          <scale x="1" y="1" z="1" />
-          <subentities>
-            <subentity materialName="knightB_material_3" index="0" visible="true" />
-          </subentities>
-        </entity>
-      </node>
-      <node name="Knight#30" id="222327344">
-        <rotation qw="-0.612217" qx="0" qy="0.790689" qz="0" />
-        <position x="1250.61" y="12" z="150.046" />
-        <scale x="1" y="1" z="1" />
-        <entity name="knightB#30" id="636341440" castshadows="true" meshFile="knightB.mesh" type="Enemy" subType="Knight" animationTree="data/animations/knight.xml" life="150" points="200" speed="50" damage="2" specialDamage="0" height="13" dieMesh="nakedDie.mesh" dieAnimation="Die">
           <rotation qw="1" qx="0" qy="0" qz="0" />
           <position x="0" y="0" z="0" />
           <scale x="1" y="1" z="1" />
@@ -6064,7 +5737,7 @@
       </node>
       <node name="Cow#10" id="785363328">
         <rotation qw="0.876727" qx="0" qy="-0.480989" qz="0" />
-        <position x="817.76" y="1.20199" z="-541.013" />
+        <position x="762.076" y="1.20199" z="-551.867" />
         <scale x="1" y="1" z="1" />
         <entity name="cow#10" id="552812288" castshadows="false" meshFile="cow.mesh" type="Enemy" subType="Cow" animationTree="data/animations/cow.xml" life="10" points="50" speed="15" damage="0" specialDamage="0" height="2" dieMesh="cowDie.mesh" dieAnimation="">
           <rotation qw="1" qx="0" qy="0" qz="0" />
@@ -6285,19 +5958,6 @@
           </subentities>
         </entity>
       </node>
-      <node name="Knight#32" id="699758912">
-        <rotation qw="0.816642" qx="0" qy="-0.577145" qz="0" />
-        <position x="1318.12" y="12" z="133.083" />
-        <scale x="1" y="1" z="1" />
-        <entity name="knightB#32" id="141575360" castshadows="true" meshFile="knightB.mesh" type="Enemy" subType="Knight" animationTree="data/animations/knight.xml" life="100" points="100" speed="50" damage="1" specialDamage="0" height="13" dieMesh="nakedDie.mesh" dieAnimation="Die">
-          <rotation qw="1" qx="0" qy="0" qz="0" />
-          <position x="0" y="0" z="0" />
-          <scale x="1" y="1" z="1" />
-          <subentities>
-            <subentity materialName="knightB_material_5" index="0" visible="true" />
-          </subentities>
-        </entity>
-      </node>
       <node name="Knight#64" id="617145280">
         <rotation qw="0.941176" qx="0" qy="0.337917" qz="0" />
         <position x="229.202" y="12" z="-509.693" />
@@ -6313,7 +5973,7 @@
       </node>
       <node name="Archer#5" id="855098112">
         <rotation qw="0.987688" qx="0" qy="-0.156434" qz="0" />
-        <position x="1237.95" y="15" z="180.004" />
+        <position x="1267.91" y="15" z="181.881" />
         <scale x="1" y="1" z="1" />
         <entity name="archer#5" id="64851836" castshadows="false" meshFile="archer.mesh" type="Enemy" subType="Archer" animationTree="data/animations/archer.xml" life="60" points="250" speed="40" damage="1" specialDamage="4" height="13" dieMesh="nakedDie.mesh" dieAnimation="Die">
           <rotation qw="1" qx="0" qy="0" qz="0" />
@@ -6983,19 +6643,6 @@
           </subentities>
         </entity>
       </node>
-      <node name="Knight#24" id="194067200">
-        <rotation qw="0.92881" qx="0" qy="-0.370557" qz="0" />
-        <position x="1323.34" y="12" z="216.641" />
-        <scale x="1" y="1" z="1" />
-        <entity name="knightA#24" id="657612864" castshadows="true" meshFile="knightA.mesh" type="Enemy" subType="Knight" animationTree="data/animations/knight.xml" life="100" points="100" speed="50" damage="1" specialDamage="0" height="13" dieMesh="nakedDie.mesh" dieAnimation="Die">
-          <rotation qw="1" qx="0" qy="0" qz="0" />
-          <position x="0" y="0" z="0" />
-          <scale x="1" y="1" z="1" />
-          <subentities>
-            <subentity materialName="knightA_material_5" index="0" visible="true" />
-          </subentities>
-        </entity>
-      </node>
       <node name="Knight#47" id="596881024">
         <rotation qw="0.991445" qx="0" qy="0.130527" qz="0" />
         <position x="895.176" y="12" z="-418.14" />
@@ -7062,19 +6709,6 @@
           </subentities>
         </entity>
       </node>
-      <node name="Knight#31" id="142429888">
-        <rotation qw="0.649448" qx="0" qy="0.760406" qz="0" />
-        <position x="1226.4" y="12" z="149.163" />
-        <scale x="1" y="1" z="1" />
-        <entity name="knightC#31" id="150761440" castshadows="true" meshFile="knightC.mesh" type="Enemy" subType="Knight" animationTree="data/animations/knight.xml" life="150" points="200" speed="50" damage="2" specialDamage="0" height="13" dieMesh="nakedDie.mesh" dieAnimation="Die">
-          <rotation qw="1" qx="0" qy="0" qz="0" />
-          <position x="0" y="0" z="0" />
-          <scale x="1" y="1" z="1" />
-          <subentities>
-            <subentity materialName="knightC_material_3" index="0" visible="true" />
-          </subentities>
-        </entity>
-      </node>
       <node name="Knight#65" id="66164128">
         <rotation qw="0.740218" qx="0" qy="0.672367" qz="0" />
         <position x="172.949" y="12" z="-543.959" />
@@ -7117,7 +6751,7 @@
       </node>
       <node name="Chicken#13" id="401898272">
         <rotation qw="1" qx="0" qy="0" qz="0" />
-        <position x="1122.94" y="2" z="127.728" />
+        <position x="1177.2" y="2" z="135.824" />
         <scale x="1" y="1" z="1" />
         <entity name="chicken#13" id="727286592" castshadows="false" meshFile="chicken.mesh" type="Enemy" subType="Chicken" animationTree="data/animations/chicken.xml" life="5" points="25" speed="30" damage="0" specialDamage="0" height="2" dieMesh="chickenDie.mesh" dieAnimation="">
           <rotation qw="1" qx="0" qy="0" qz="0" />
@@ -7328,7 +6962,7 @@
       </node>
       <node name="Cow#11" id="707907328">
         <rotation qw="0.0871556" qx="0" qy="-0.996195" qz="0" />
-        <position x="765.594" y="2.5" z="-391.286" />
+        <position x="818.418" y="2.5" z="-323.042" />
         <scale x="1" y="1" z="1" />
         <entity name="cow#11" id="65950496" castshadows="false" meshFile="cow.mesh" type="Enemy" subType="Cow" animationTree="data/animations/cow.xml" life="10" points="50" speed="15" damage="0" specialDamage="0" height="2" dieMesh="cowDie.mesh" dieAnimation="">
           <rotation qw="1" qx="0" qy="0" qz="0" />
@@ -7591,7 +7225,7 @@
       </node>
       <node name="Chicken#11" id="18616292">
         <rotation qw="1" qx="0" qy="0" qz="0" />
-        <position x="1266.66" y="2" z="52.8902" />
+        <position x="1229.23" y="2" z="199.732" />
         <scale x="1" y="1" z="1" />
         <entity name="chicken#11" id="31037324" castshadows="false" meshFile="chicken.mesh" type="Enemy" subType="Chicken" animationTree="data/animations/chicken.xml" life="5" points="25" speed="30" damage="0" specialDamage="0" height="2" dieMesh="chickenDie.mesh" dieAnimation="">
           <rotation qw="1" qx="0" qy="0" qz="0" />
@@ -7683,7 +7317,7 @@
       </node>
       <node name="Knight#51" id="374248480">
         <rotation qw="0.857167" qx="0" qy="0.515039" qz="0" />
-        <position x="604.697" y="12" z="-436.248" />
+        <position x="661.988" y="12" z="-469.486" />
         <scale x="1" y="1" z="1" />
         <entity name="knightA#51" id="131626336" castshadows="true" meshFile="knightA.mesh" type="Enemy" subType="Knight" animationTree="data/animations/knight.xml" life="150" points="200" speed="50" damage="2" specialDamage="0" height="13" dieMesh="nakedDie.mesh" dieAnimation="Die">
           <rotation qw="1" qx="0" qy="0" qz="0" />
@@ -7764,30 +7398,16 @@
       <rotation qw="1" qx="0" qy="0" qz="0" />
       <position x="0" y="0" z="0" />
       <scale x="1" y="1" z="1" />
-      <node name="UfoTree_4" id="538926336">
-        <rotation qw="0.565152" qx="0" qy="-0.824987" qz="0" />
-        <position x="1037.89" y="-0.000244141" z="-456.99" />
+      <node name="Crate3" id="737998592">
+        <rotation qw="0.942641" qx="0" qy="-0.333807" qz="0" />
+        <position x="217.549" y="7.92316" z="-434.647" />
         <scale x="1" y="1" z="1" />
-        <entity name="Entity#41" id="869350272" castshadows="true" meshFile="UfoTree0.mesh" type="DynamicObject" BoxX="15" BoxY="70" BoxZ="15" life="100" dieMesh="UfoTree0Die.mesh" dieAnimation="Die" dieMaterial="true">
+        <entity name="Crate0#3" id="127231672" castshadows="false" meshFile="Crate0.mesh" type="DynamicObject" BoxX="10" BoxY="15" BoxZ="10">
           <rotation qw="1" qx="0" qy="0" qz="0" />
           <position x="0" y="0" z="0" />
           <scale x="1" y="1" z="1" />
           <subentities>
-            <subentity materialName="Wood" index="0" visible="true" />
-            <subentity materialName="TreeTop" index="1" visible="true" />
-          </subentities>
-        </entity>
-      </node>
-      <node name="MarketTent1Copy#1Copy#2" id="430890816">
-        <rotation qw="-0.948324" qx="0" qy="-0.317304" qz="0" />
-        <position x="169.613" y="0" z="-499.313" />
-        <scale x="1" y="1" z="1" />
-        <entity name="MarketTent1#5" id="753318912" castshadows="false" meshFile="MarketTent1.mesh" type="DynamicObject" BoxX="50" BoxY="50" BoxZ="50">
-          <rotation qw="0.997859" qx="0" qy="-0.0654032" qz="0" />
-          <position x="2.037" y="0" z="-13.3129" />
-          <scale x="1" y="1" z="1" />
-          <subentities>
-            <subentity materialName="MarketTent1" index="0" visible="true" />
+            <subentity materialName="Crate0" index="0" visible="true" />
           </subentities>
         </entity>
       </node>
@@ -7817,30 +7437,43 @@
           </subentities>
         </entity>
       </node>
-      <node name="UfoTree_1" id="870082688">
-        <rotation qw="0.612542" qx="0" qy="-0.790438" qz="0" />
-        <position x="899.732" y="-0.000244141" z="-207.658" />
+      <node name="CityTents#0" id="491042816">
+        <rotation qw="0.891007" qx="0" qy="-0.453991" qz="0" />
+        <position x="379.214" y="-1.54287" z="-683.06" />
         <scale x="1" y="1" z="1" />
-        <entity name="Entity#89" id="939176640" castshadows="true" meshFile="UfoTree0.mesh" type="DynamicObject" BoxX="15" BoxY="70" BoxZ="15" life="100" dieMesh="UfoTree0Die.mesh" dieAnimation="Die" dieMaterial="true">
-          <rotation qw="1" qx="0" qy="-2.98023E-08" qz="0" />
-          <position x="0" y="0" z="0" />
-          <scale x="1" y="1" z="1" />
-          <subentities>
-            <subentity materialName="Wood" index="0" visible="true" />
-            <subentity materialName="TreeTop" index="1" visible="true" />
-          </subentities>
-        </entity>
-      </node>
-      <node name="Crate0Copy#6" id="725028224">
-        <rotation qw="0.942641" qx="0" qy="-0.333807" qz="0" />
-        <position x="14.3416" y="-0.00305939" z="-377.228" />
-        <scale x="1" y="1" z="1" />
-        <entity name="Crate1#3" id="919980480" castshadows="false" meshFile="Crate1.mesh" type="DynamicObject" BoxX="10" BoxY="15" BoxZ="10">
+        <entity name="Tent0#1" id="848689280" castshadows="false" meshFile="Tent0.mesh" type="DynamicObject" BoxX="30" BoxY="65" BoxZ="30" life="100" dieMesh="TentDie.mesh" dieAnimation="Die">
           <rotation qw="1" qx="0" qy="0" qz="0" />
           <position x="0" y="0" z="0" />
           <scale x="1" y="1" z="1" />
           <subentities>
-            <subentity materialName="Crate1" index="0" visible="true" />
+            <subentity materialName="Tent0" index="0" visible="true" />
+          </subentities>
+        </entity>
+      </node>
+      <node name="House#3" id="630176704">
+        <rotation qw="-0.182236" qx="0" qy="0.983255" qz="0" />
+        <position x="1202.68" y="17.9685" z="248.993" />
+        <scale x="0.75" y="0.75" z="0.75" />
+        <entity name="house#3" id="573351232" castshadows="false" meshFile="House0.mesh" type="DynamicObject" BoxX="45" BoxY="45" BoxZ="45" life="75" dieMesh="House01Die.mesh" dieAnimation="Die">
+          <rotation qw="1" qx="0" qy="0" qz="0" />
+          <position x="0" y="0" z="0" />
+          <scale x="1" y="1" z="1" />
+          <subentities>
+            <subentity materialName="House0_Building_Material5" index="0" visible="true" />
+            <subentity materialName="House0_Roof_Material5" index="1" visible="true" />
+          </subentities>
+        </entity>
+      </node>
+      <node name="GroundTreeHouse#1" id="284371456">
+        <rotation qw="0.471234" qx="0" qy="-0.882008" qz="0" />
+        <position x="948.883" y="0" z="-238.284" />
+        <scale x="1" y="1" z="1" />
+        <entity name="House02#1" id="170964688" castshadows="true" meshFile="House2.mesh" type="DynamicObject" BoxX="50" BoxY="50" BoxZ="50" life="50" dieMesh="House02Die.mesh" dieAnimation="Die">
+          <rotation qw="1" qx="0" qy="-2.98023E-08" qz="0" />
+          <position x="0" y="0" z="0" />
+          <scale x="1" y="1" z="1" />
+          <subentities>
+            <subentity materialName="House02" index="0" visible="true" />
           </subentities>
         </entity>
       </node>
@@ -7857,30 +7490,31 @@
           </subentities>
         </entity>
       </node>
-      <node name="MarketTent1Copy#0" id="858638272">
-        <rotation qw="0.932008" qx="0" qy="-0.362438" qz="0" />
-        <position x="-11.6176" y="0" z="-536.876" />
+      <node name="UfoTree#02" id="288827168">
+        <rotation qw="0.227335" qx="0" qy="-0.973817" qz="0" />
+        <position x="824.487" y="9.5" z="-365.65" />
         <scale x="1" y="1" z="1" />
-        <entity name="MarketTent1#1" id="815973376" castshadows="false" meshFile="MarketTent1.mesh" type="DynamicObject" BoxX="50" BoxY="50" BoxZ="50">
+        <entity name="ufoTree#02" id="883877120" castshadows="true" meshFile="UfoTree0.mesh" type="DynamicObject" BoxX="40" BoxY="150" BoxZ="40" life="60" dieMesh="UfoTree0Die.mesh" dieAnimation="Die" dieMaterial="true">
           <rotation qw="1" qx="0" qy="0" qz="0" />
           <position x="0" y="0" z="0" />
           <scale x="1" y="1" z="1" />
           <subentities>
-            <subentity materialName="MarketTent1" index="0" visible="true" />
+            <subentity materialName="Wood" index="0" visible="true" />
+            <subentity materialName="TreeTop" index="1" visible="true" />
           </subentities>
         </entity>
       </node>
-      <node name="Farm0_1" id="912228736">
-        <rotation qw="0.99863" qx="0" qy="-0.0523364" qz="0" />
-        <position x="1302.25" y="20.1627" z="180.302" />
+      <node name="RedwoodTree#2" id="699758912">
+        <rotation qw="1" qx="0" qy="0" qz="0" />
+        <position x="866.906" y="-0.5" z="-437.979" />
         <scale x="1" y="1" z="1" />
-        <entity name="Farm0#0Copy#0" id="630603968" castshadows="false" meshFile="House0.mesh" type="DynamicObject" BoxX="50" BoxY="50" BoxZ="50" life="100" dieMesh="House01Die.mesh" dieAnimation="Die">
+        <entity name="redwoodTree#2" id="141575360" castshadows="true" meshFile="RedwoodTree0.mesh" type="DynamicObject" BoxX="45" BoxY="150" BoxZ="45" life="60" dieMesh="RedwoodTree0Die.mesh" dieAnimation="Die" dieMaterial="true">
           <rotation qw="1" qx="0" qy="0" qz="0" />
           <position x="0" y="0" z="0" />
           <scale x="1" y="1" z="1" />
           <subentities>
-            <subentity materialName="House0_Building_Material5" index="0" visible="true" />
-            <subentity materialName="House0_Roof_Material5" index="1" visible="true" />
+            <subentity materialName="RedWood" index="0" visible="true" />
+            <subentity materialName="RedwoodLeaf" index="1" visible="true" />
           </subentities>
         </entity>
       </node>
@@ -7897,7 +7531,47 @@
           </subentities>
         </entity>
       </node>
-      <node name="Crate0Copy#3" id="313882848">
+      <node name="TreeHouse#0" id="863338112">
+        <rotation qw="1" qx="0" qy="0" qz="0" />
+        <position x="1007.06" y="38" z="-132.367" />
+        <scale x="1" y="1" z="1" />
+        <entity name="House03#0" id="87435528" castshadows="true" meshFile="House3.mesh" type="DynamicObject" BoxX="50" BoxY="50" BoxZ="50" life="20" dieMesh="House03Die.mesh" dieAnimation="Die">
+          <rotation qw="1" qx="0" qy="0" qz="0" />
+          <position x="0" y="0" z="0" />
+          <scale x="1" y="1" z="1" />
+          <subentities>
+            <subentity materialName="House03" index="0" visible="true" />
+          </subentities>
+        </entity>
+      </node>
+      <node name="MarketTent5" id="858638272">
+        <rotation qw="0.932008" qx="0" qy="-0.362438" qz="0" />
+        <position x="-11.6176" y="0" z="-536.876" />
+        <scale x="1" y="1" z="1" />
+        <entity name="MarketTent1#1" id="815973376" castshadows="false" meshFile="MarketTent1.mesh" type="DynamicObject" BoxX="50" BoxY="50" BoxZ="50">
+          <rotation qw="1" qx="0" qy="0" qz="0" />
+          <position x="0" y="0" z="0" />
+          <scale x="1" y="1" z="1" />
+          <subentities>
+            <subentity materialName="MarketTent1" index="0" visible="true" />
+          </subentities>
+        </entity>
+      </node>
+      <node name="RedwoodTree#7" id="110629592">
+        <rotation qw="0.994056" qx="0" qy="0.108867" qz="0" />
+        <position x="729.74" y="0" z="-665.451" />
+        <scale x="1" y="1" z="1" />
+        <entity name="redwoodTree#7" id="134708704" castshadows="true" meshFile="RedwoodTree0.mesh" type="DynamicObject" BoxX="45" BoxY="150" BoxZ="45" life="60" dieMesh="RedwoodTree0Die.mesh" dieAnimation="Die" dieMaterial="true">
+          <rotation qw="1" qx="0" qy="0" qz="0" />
+          <position x="0" y="0" z="0" />
+          <scale x="1" y="1" z="1" />
+          <subentities>
+            <subentity materialName="RedWood" index="0" visible="true" />
+            <subentity materialName="RedwoodLeaf" index="1" visible="true" />
+          </subentities>
+        </entity>
+      </node>
+      <node name="Crate4" id="313882848">
         <rotation qw="0.942641" qx="0" qy="-0.333807" qz="0" />
         <position x="274.118" y="-0.00305939" z="-502.837" />
         <scale x="1" y="1" z="1" />
@@ -7910,37 +7584,11 @@
           </subentities>
         </entity>
       </node>
-      <node name="MarketTent0Copy#0" id="520035392">
-        <rotation qw="0.999391" qx="0" qy="0.0348991" qz="0" />
-        <position x="-37.1138" y="0" z="-586.498" />
+      <node name="UfoTree#08" id="969084736">
+        <rotation qw="0.163828" qx="0" qy="0.986489" qz="0" />
+        <position x="797.234" y="9.5" z="-433.605" />
         <scale x="1" y="1" z="1" />
-        <entity name="MarketTent0#0Copy#0" id="725699648" castshadows="false" meshFile="MarketTent0.mesh" type="DynamicObject" BoxX="40" BoxY="40" BoxZ="40">
-          <rotation qw="0.378648" qx="0" qy="-0.925541" qz="0" />
-          <position x="0" y="0" z="0" />
-          <scale x="1" y="1" z="1" />
-          <subentities>
-            <subentity materialName="MarketTent0" index="0" visible="true" />
-          </subentities>
-        </entity>
-      </node>
-      <node name="CityTentsCopy#1" id="165623952">
-        <rotation qw="1" qx="0" qy="0" qz="0" />
-        <position x="341.729" y="-1.54287" z="-701.174" />
-        <scale x="1" y="1" z="1" />
-        <entity name="Tent1#2" id="548570240" castshadows="false" meshFile="Tent1.mesh" type="DynamicObject" BoxX="30" BoxY="65" BoxZ="30" life="100" dieMesh="TentDie.mesh" dieAnimation="Die">
-          <rotation qw="1" qx="0" qy="0" qz="0" />
-          <position x="0" y="0" z="0" />
-          <scale x="1" y="1" z="1" />
-          <subentities>
-            <subentity materialName="Tent1" index="0" visible="true" />
-          </subentities>
-        </entity>
-      </node>
-      <node name="UfoTree_9" id="906521792">
-        <rotation qw="0.818052" qx="0" qy="0.575145" qz="0" />
-        <position x="1058.85" y="-0.000244141" z="-279.247" />
-        <scale x="1" y="1" z="1" />
-        <entity name="Entity#38" id="32105472" castshadows="true" meshFile="UfoTree0.mesh" type="DynamicObject" BoxX="15" BoxY="70" BoxZ="15" life="100" dieMesh="UfoTree0Die.mesh" dieAnimation="Die" dieMaterial="true">
+        <entity name="ufoTree#08" id="706381440" castshadows="true" meshFile="UfoTree0.mesh" type="DynamicObject" BoxX="40" BoxY="150" BoxZ="40" life="60" dieMesh="UfoTree0Die.mesh" dieAnimation="Die" dieMaterial="true">
           <rotation qw="1" qx="0" qy="0" qz="0" />
           <position x="0" y="0" z="0" />
           <scale x="1" y="1" z="1" />
@@ -7950,25 +7598,11 @@
           </subentities>
         </entity>
       </node>
-      <node name="UfoTree_10" id="995239168">
-        <rotation qw="0.818052" qx="0" qy="0.575145" qz="0" />
-        <position x="924.403" y="-0.000244141" z="-384.165" />
+      <node name="Crate1" id="408978560">
+        <rotation qw="0.942641" qx="0" qy="-0.333807" qz="0" />
+        <position x="291.77" y="-0.00305939" z="-486.835" />
         <scale x="1" y="1" z="1" />
-        <entity name="Entity#80" id="619190016" castshadows="true" meshFile="UfoTree0.mesh" type="DynamicObject" BoxX="15" BoxY="70" BoxZ="15" life="100" dieMesh="UfoTree0Die.mesh" dieAnimation="Die" dieMaterial="true">
-          <rotation qw="1" qx="0" qy="0" qz="0" />
-          <position x="0" y="0" z="0" />
-          <scale x="1" y="1" z="1" />
-          <subentities>
-            <subentity materialName="Wood" index="0" visible="true" />
-            <subentity materialName="TreeTop" index="1" visible="true" />
-          </subentities>
-        </entity>
-      </node>
-      <node name="FarmCrate#2" id="241096224">
-        <rotation qw="1" qx="0" qy="0" qz="0" />
-        <position x="1130.35" y="0" z="95.1266" />
-        <scale x="1" y="1" z="1" />
-        <entity name="Crate0#6" id="4272592" castshadows="false" meshFile="Crate0.mesh" type="DynamicObject" BoxX="10" BoxY="15" BoxZ="10">
+        <entity name="Crate0#1" id="300057984" castshadows="false" meshFile="Crate0.mesh" type="DynamicObject" BoxX="10" BoxY="15" BoxZ="10">
           <rotation qw="1" qx="0" qy="0" qz="0" />
           <position x="0" y="0" z="0" />
           <scale x="1" y="1" z="1" />
@@ -7977,30 +7611,43 @@
           </subentities>
         </entity>
       </node>
-      <node name="UfoTree_2" id="288827168">
-        <rotation qw="0.227335" qx="0" qy="-0.973817" qz="0" />
-        <position x="824.487" y="-0.000244141" z="-365.65" />
+      <node name="FarmCrate#2" id="241096224">
+        <rotation qw="1" qx="0" qy="0" qz="0" />
+        <position x="1130.55" y="0" z="105.81" />
         <scale x="1" y="1" z="1" />
-        <entity name="Entity#64" id="883877120" castshadows="true" meshFile="UfoTree0.mesh" type="DynamicObject" BoxX="15" BoxY="70" BoxZ="15" life="100" dieMesh="UfoTree0Die.mesh" dieAnimation="Die" dieMaterial="true">
+        <entity name="Crate0#6" id="4272592" castshadows="false" meshFile="Crate0.mesh" type="DynamicObject" BoxX="5" BoxY="5" BoxZ="5">
           <rotation qw="1" qx="0" qy="0" qz="0" />
           <position x="0" y="0" z="0" />
           <scale x="1" y="1" z="1" />
           <subentities>
-            <subentity materialName="Wood" index="0" visible="true" />
-            <subentity materialName="TreeTop" index="1" visible="true" />
+            <subentity materialName="Crate0" index="0" visible="true" />
           </subentities>
         </entity>
       </node>
-      <node name="MarketTent1Copy#1Copy#0" id="291787488">
-        <rotation qw="-0.694659" qx="0" qy="-0.719339" qz="0" />
-        <position x="114.015" y="0" z="-409.06" />
-        <scale x="1" y="1" z="1" />
-        <entity name="MarketTent1#3" id="205725264" castshadows="false" meshFile="MarketTent1.mesh" type="DynamicObject" BoxX="50" BoxY="50" BoxZ="50">
+      <node name="House#4" id="58717612">
+        <rotation qw="0.548293" qx="0" qy="0.836286" qz="0" />
+        <position x="1224.85" y="15.6144" z="150.428" />
+        <scale x="0.75" y="0.75" z="0.75" />
+        <entity name="house#4" id="914700736" castshadows="false" meshFile="House0.mesh" type="DynamicObject" BoxX="45" BoxY="45" BoxZ="45" life="75" dieMesh="House01Die.mesh" dieAnimation="Die">
           <rotation qw="1" qx="0" qy="0" qz="0" />
           <position x="0" y="0" z="0" />
           <scale x="1" y="1" z="1" />
           <subentities>
-            <subentity materialName="MarketTent1" index="0" visible="true" />
+            <subentity materialName="House0_Building_Material5" index="0" visible="true" />
+            <subentity materialName="House0_Roof_Material5" index="1" visible="true" />
+          </subentities>
+        </entity>
+      </node>
+      <node name="GroundTreeHouse#4" id="899014208">
+        <rotation qw="0.471234" qx="0" qy="-0.882008" qz="0" />
+        <position x="609.534" y="0" z="-451.293" />
+        <scale x="1" y="1" z="1" />
+        <entity name="House02#4" id="940183680" castshadows="true" meshFile="House2.mesh" type="DynamicObject" BoxX="50" BoxY="50" BoxZ="50" life="50" dieMesh="House02Die.mesh" dieAnimation="Die">
+          <rotation qw="1" qx="0" qy="-2.98023E-08" qz="0" />
+          <position x="0" y="0" z="0" />
+          <scale x="1" y="1" z="1" />
+          <subentities>
+            <subentity materialName="House02" index="0" visible="true" />
           </subentities>
         </entity>
       </node>
@@ -8017,11 +7664,38 @@
           </subentities>
         </entity>
       </node>
-      <node name="Farm0_2" id="830591744">
-        <rotation qw="0.997564" qx="0" qy="0.0697561" qz="0" />
-        <position x="1299.61" y="20.1627" z="102.314" />
+      <node name="UfoTree#07" id="49287392">
+        <rotation qw="0.528708" qx="0" qy="0.848804" qz="0" />
+        <position x="654.263" y="9.5" z="-597.703" />
         <scale x="1" y="1" z="1" />
-        <entity name="Farm0#0Copy#1" id="852565056" castshadows="false" meshFile="House0.mesh" type="DynamicObject" BoxX="50" BoxY="50" BoxZ="50" life="100" dieMesh="House01Die.mesh" dieAnimation="Die">
+        <entity name="ufoTree#07" id="337656800" castshadows="true" meshFile="UfoTree0.mesh" type="DynamicObject" BoxX="40" BoxY="150" BoxZ="40" life="60" dieMesh="UfoTree0Die.mesh" dieAnimation="Die" dieMaterial="true">
+          <rotation qw="1" qx="0" qy="0" qz="0" />
+          <position x="0" y="0" z="0" />
+          <scale x="1" y="1" z="1" />
+          <subentities>
+            <subentity materialName="Wood" index="0" visible="true" />
+            <subentity materialName="TreeTop" index="1" visible="true" />
+          </subentities>
+        </entity>
+      </node>
+      <node name="FarmCrate" id="534226528">
+        <rotation qw="1" qx="0" qy="0" qz="0" />
+        <position x="1156.83" y="0" z="115.878" />
+        <scale x="1" y="1" z="1" />
+        <entity name="Crate0#5" id="435499136" castshadows="false" meshFile="Crate0.mesh" type="DynamicObject" BoxX="5" BoxY="5" BoxZ="5">
+          <rotation qw="1" qx="0" qy="0" qz="0" />
+          <position x="0" y="0" z="0" />
+          <scale x="1" y="1" z="1" />
+          <subentities>
+            <subentity materialName="Crate0" index="0" visible="true" />
+          </subentities>
+        </entity>
+      </node>
+      <node name="House#1" id="830591744">
+        <rotation qw="0.927184" qx="0" qy="0.374606" qz="0" />
+        <position x="1299.61" y="20.1627" z="102.314" />
+        <scale x="0.75" y="0.75" z="0.75" />
+        <entity name="house#1" id="852565056" castshadows="false" meshFile="House0.mesh" type="DynamicObject" BoxX="45" BoxY="45" BoxZ="45" life="75" dieMesh="House01Die.mesh" dieAnimation="Die">
           <rotation qw="1" qx="0" qy="0" qz="0" />
           <position x="0" y="0" z="0" />
           <scale x="1" y="1" z="1" />
@@ -8031,100 +7705,34 @@
           </subentities>
         </entity>
       </node>
-      <node name="FarmCrate" id="534226528">
-        <rotation qw="1" qx="0" qy="0" qz="0" />
-        <position x="1154.62" y="0" z="101.705" />
-        <scale x="1" y="1" z="1" />
-        <entity name="Crate0#5" id="435499136" castshadows="false" meshFile="Crate0.mesh" type="DynamicObject" BoxX="10" BoxY="15" BoxZ="10">
+      <node name="House" id="279305408">
+        <rotation qw="0.95882" qx="0" qy="-0.284015" qz="0" />
+        <position x="1283.52" y="20.1627" z="269.296" />
+        <scale x="0.75" y="0.75" z="0.75" />
+        <entity name="house" id="265938288" castshadows="false" meshFile="House0.mesh" type="DynamicObject" BoxX="45" BoxY="45" BoxZ="45" life="75" dieMesh="House01Die.mesh" dieAnimation="Die">
           <rotation qw="1" qx="0" qy="0" qz="0" />
           <position x="0" y="0" z="0" />
           <scale x="1" y="1" z="1" />
           <subentities>
-            <subentity materialName="Crate0" index="0" visible="true" />
+            <subentity materialName="House0_Building_Material5" index="0" visible="true" />
+            <subentity materialName="House0_Roof_Material5" index="1" visible="true" />
           </subentities>
         </entity>
       </node>
-      <node name="Crate0Copy#0" id="408978560">
-        <rotation qw="0.942641" qx="0" qy="-0.333807" qz="0" />
-        <position x="291.77" y="-0.00305939" z="-486.835" />
+      <node name="GroundTreeHouse#3" id="806390592">
+        <rotation qw="0.735677" qx="0" qy="-0.677333" qz="0" />
+        <position x="740.783" y="0" z="-435.131" />
         <scale x="1" y="1" z="1" />
-        <entity name="Crate0#1" id="300057984" castshadows="false" meshFile="Crate0.mesh" type="DynamicObject" BoxX="10" BoxY="15" BoxZ="10">
-          <rotation qw="1" qx="0" qy="0" qz="0" />
+        <entity name="House02#3" id="852015744" castshadows="true" meshFile="House2.mesh" type="DynamicObject" BoxX="50" BoxY="50" BoxZ="50" life="50" dieMesh="House02Die.mesh" dieAnimation="Die">
+          <rotation qw="1" qx="0" qy="-2.98023E-08" qz="0" />
           <position x="0" y="0" z="0" />
           <scale x="1" y="1" z="1" />
           <subentities>
-            <subentity materialName="Crate0" index="0" visible="true" />
+            <subentity materialName="House02" index="0" visible="true" />
           </subentities>
         </entity>
       </node>
-      <node name="MarketTent0Copy#2" id="817590912">
-        <rotation qw="0.710185" qx="0" qy="-0.704015" qz="0" />
-        <position x="94.5208" y="0" z="-359.417" />
-        <scale x="1" y="1" z="1" />
-        <entity name="MarketTent0#2" id="254188656" castshadows="false" meshFile="MarketTent0.mesh" type="DynamicObject" BoxX="40" BoxY="40" BoxZ="40">
-          <rotation qw="1" qx="0" qy="0" qz="0" />
-          <position x="0" y="0" z="0" />
-          <scale x="1" y="1" z="1" />
-          <subentities>
-            <subentity materialName="MarketTent0" index="0" visible="true" />
-          </subentities>
-        </entity>
-      </node>
-      <node name="FarmBig0" id="314065984">
-        <rotation qw="0.994968" qx="0" qy="-0.100188" qz="0" />
-        <position x="1113.72" y="0" z="161.016" />
-        <scale x="1" y="1" z="1" />
-        <entity name="Farm#0" id="707998848" castshadows="false" meshFile="Farm.mesh" type="DynamicObject" BoxX="100" BoxY="100" BoxZ="150">
-          <rotation qw="1" qx="0" qy="0" qz="0" />
-          <position x="0" y="0" z="0" />
-          <scale x="1" y="1" z="1" />
-          <subentities>
-            <subentity materialName="Farm" index="0" visible="true" />
-          </subentities>
-        </entity>
-      </node>
-      <node name="UfoTree_7" id="49287392">
-        <rotation qw="0.528708" qx="0" qy="0.848804" qz="0" />
-        <position x="654.263" y="-0.000244141" z="-597.703" />
-        <scale x="1" y="1" z="1" />
-        <entity name="Entity#83" id="337656800" castshadows="true" meshFile="UfoTree0.mesh" type="DynamicObject" BoxX="15" BoxY="70" BoxZ="15" life="100" dieMesh="UfoTree0Die.mesh" dieAnimation="Die" dieMaterial="true">
-          <rotation qw="1" qx="0" qy="0" qz="0" />
-          <position x="0" y="0" z="0" />
-          <scale x="1" y="1" z="1" />
-          <subentities>
-            <subentity materialName="Wood" index="0" visible="true" />
-            <subentity materialName="TreeTop" index="1" visible="true" />
-          </subentities>
-        </entity>
-      </node>
-      <node name="UfoTree_0" id="516525760">
-        <rotation qw="0.871971" qx="0" qy="-0.489558" qz="0" />
-        <position x="992.245" y="8.2" z="-217.533" />
-        <scale x="1" y="1" z="1" />
-        <entity name="Entity#54" id="6988739" castshadows="true" meshFile="UfoTree0.mesh" type="DynamicObject" BoxX="15" BoxY="70" BoxZ="15" life="100" dieMesh="UfoTree0Die.mesh" dieAnimation="Die" dieMaterial="true">
-          <rotation qw="1" qx="0" qy="0" qz="0" />
-          <position x="0" y="0" z="0" />
-          <scale x="1" y="1" z="1" />
-          <subentities>
-            <subentity materialName="Wood" index="0" visible="true" />
-            <subentity materialName="TreeTop" index="1" visible="true" />
-          </subentities>
-        </entity>
-      </node>
-      <node name="Crate0Copy#5" id="873348160">
-        <rotation qw="0.971342" qx="0" qy="-0.237686" qz="0" />
-        <position x="218.013" y="-0.00305939" z="-434.368" />
-        <scale x="1" y="1" z="1" />
-        <entity name="Crate1#2" id="653859072" castshadows="false" meshFile="Crate1.mesh" type="DynamicObject" BoxX="10" BoxY="15" BoxZ="10">
-          <rotation qw="1" qx="0" qy="0" qz="0" />
-          <position x="0" y="0" z="0" />
-          <scale x="1" y="1" z="1" />
-          <subentities>
-            <subentity materialName="Crate1" index="0" visible="true" />
-          </subentities>
-        </entity>
-      </node>
-      <node name="MarketTent1Copy#1" id="448530528">
+      <node name="MarketTent6" id="448530528">
         <rotation qw="-0.337917" qx="0" qy="-0.941176" qz="0" />
         <position x="10.2324" y="0" z="-562.977" />
         <scale x="1" y="1" z="1" />
@@ -8137,17 +7745,138 @@
           </subentities>
         </entity>
       </node>
-      <node name="Farm0_0" id="279305408">
-        <rotation qw="0.994968" qx="0" qy="-0.100188" qz="0" />
-        <position x="1290.77" y="20.1627" z="262.376" />
+      <node name="UfoTree#00" id="870082688">
+        <rotation qw="0.612542" qx="0" qy="-0.790438" qz="0" />
+        <position x="899.732" y="9.5" z="-207.658" />
         <scale x="1" y="1" z="1" />
-        <entity name="Farm0#0" id="265938288" castshadows="false" meshFile="House0.mesh" type="DynamicObject" BoxX="50" BoxY="50" BoxZ="50" life="100" dieMesh="House01Die.mesh" dieAnimation="Die">
+        <entity name="ufoTree#00" id="939176640" castshadows="true" meshFile="UfoTree0.mesh" type="DynamicObject" BoxX="40" BoxY="150" BoxZ="40" life="60" dieMesh="UfoTree0Die.mesh" dieAnimation="Die" dieMaterial="true">
+          <rotation qw="1" qx="0" qy="-2.98023E-08" qz="0" />
+          <position x="0" y="0" z="0" />
+          <scale x="1" y="1" z="1" />
+          <subentities>
+            <subentity materialName="Wood" index="0" visible="true" />
+            <subentity materialName="TreeTop" index="1" visible="true" />
+          </subentities>
+        </entity>
+      </node>
+      <node name="RedwoodTree#4" id="302285856">
+        <rotation qw="0.988362" qx="0" qy="-0.152123" qz="0" />
+        <position x="939.134" y="-0.5" z="-473.845" />
+        <scale x="1" y="1" z="1" />
+        <entity name="redwoodTree#4" id="311349824" castshadows="true" meshFile="RedwoodTree0.mesh" type="DynamicObject" BoxX="45" BoxY="150" BoxZ="45" life="60" dieMesh="RedwoodTree0Die.mesh" dieAnimation="Die" dieMaterial="true">
           <rotation qw="1" qx="0" qy="0" qz="0" />
+          <position x="0" y="0" z="0" />
+          <scale x="1" y="1" z="1" />
+          <subentities>
+            <subentity materialName="RedWood" index="0" visible="true" />
+            <subentity materialName="RedwoodLeaf" index="1" visible="true" />
+          </subentities>
+        </entity>
+      </node>
+      <node name="FarmBig0" id="314065984">
+        <rotation qw="0.994968" qx="0" qy="-0.100188" qz="0" />
+        <position x="1113.72" y="0" z="161.016" />
+        <scale x="0.85" y="0.85" z="0.85" />
+        <entity name="Farm#0" id="707998848" castshadows="false" meshFile="Farm.mesh" type="DynamicObject" BoxX="80" BoxY="80" BoxZ="120">
+          <rotation qw="1" qx="0" qy="0" qz="0" />
+          <position x="0" y="0" z="0" />
+          <scale x="1" y="1" z="1" />
+          <subentities>
+            <subentity materialName="Farm" index="0" visible="true" />
+          </subentities>
+        </entity>
+      </node>
+      <node name="Crate2" id="152653584">
+        <rotation qw="0.942641" qx="0" qy="-0.333807" qz="0" />
+        <position x="283.993" y="-0.00305939" z="-495.141" />
+        <scale x="1" y="1" z="1" />
+        <entity name="Crate0#2" id="943998528" castshadows="false" meshFile="Crate0.mesh" type="DynamicObject" BoxX="10" BoxY="15" BoxZ="10">
+          <rotation qw="1" qx="0" qy="0" qz="0" />
+          <position x="0" y="0" z="0" />
+          <scale x="1" y="1" z="1" />
+          <subentities>
+            <subentity materialName="Crate0" index="0" visible="true" />
+          </subentities>
+        </entity>
+      </node>
+      <node name="CityTents#1" id="165623952">
+        <rotation qw="1" qx="0" qy="0" qz="0" />
+        <position x="341.729" y="-1.54287" z="-701.174" />
+        <scale x="1" y="1" z="1" />
+        <entity name="Tent1#2" id="548570240" castshadows="false" meshFile="Tent1.mesh" type="DynamicObject" BoxX="30" BoxY="65" BoxZ="30" life="100" dieMesh="TentDie.mesh" dieAnimation="Die">
+          <rotation qw="1" qx="0" qy="0" qz="0" />
+          <position x="0" y="0" z="0" />
+          <scale x="1" y="1" z="1" />
+          <subentities>
+            <subentity materialName="Tent1" index="0" visible="true" />
+          </subentities>
+        </entity>
+      </node>
+      <node name="House#2" id="491500576">
+        <rotation qw="0.95882" qx="0" qy="-0.284015" qz="0" />
+        <position x="1297.62" y="18.7794" z="162.392" />
+        <scale x="0.75" y="0.75" z="0.75" />
+        <entity name="house#2" id="798181120" castshadows="false" meshFile="House0.mesh" type="DynamicObject" BoxX="45" BoxY="45" BoxZ="45" life="75" dieMesh="House01Die.mesh" dieAnimation="Die">
+          <rotation qw="0.99863" qx="0" qy="-0.0523359" qz="0" />
           <position x="0" y="0" z="0" />
           <scale x="1" y="1" z="1" />
           <subentities>
             <subentity materialName="House0_Building_Material5" index="0" visible="true" />
             <subentity materialName="House0_Roof_Material5" index="1" visible="true" />
+          </subentities>
+        </entity>
+      </node>
+      <node name="MarketTent3" id="817590912">
+        <rotation qw="0.710185" qx="0" qy="-0.704015" qz="0" />
+        <position x="94.5208" y="0" z="-359.417" />
+        <scale x="1" y="1" z="1" />
+        <entity name="MarketTent0#2" id="254188656" castshadows="false" meshFile="MarketTent0.mesh" type="DynamicObject" BoxX="40" BoxY="40" BoxZ="40">
+          <rotation qw="1" qx="0" qy="0" qz="0" />
+          <position x="0" y="0" z="0" />
+          <scale x="1" y="1" z="1" />
+          <subentities>
+            <subentity materialName="MarketTent0" index="0" visible="true" />
+          </subentities>
+        </entity>
+      </node>
+      <node name="UfoTree#05" id="324930592">
+        <rotation qw="0.190655" qx="0" qy="0.981657" qz="0" />
+        <position x="761.514" y="9.5" z="-579.531" />
+        <scale x="1" y="1" z="1" />
+        <entity name="ufoTree#05" id="201483200" castshadows="true" meshFile="UfoTree0.mesh" type="DynamicObject" BoxX="40" BoxY="150" BoxZ="40" life="60" dieMesh="UfoTree0Die.mesh" dieAnimation="Die" dieMaterial="true">
+          <rotation qw="1" qx="0" qy="0" qz="0" />
+          <position x="0" y="0" z="0" />
+          <scale x="1" y="1" z="1" />
+          <subentities>
+            <subentity materialName="Wood" index="0" visible="true" />
+            <subentity materialName="TreeTop" index="1" visible="true" />
+          </subentities>
+        </entity>
+      </node>
+      <node name="Crate8" id="725028224">
+        <rotation qw="0.942641" qx="0" qy="-0.333807" qz="0" />
+        <position x="14.3416" y="-0.00305939" z="-377.228" />
+        <scale x="1" y="1" z="1" />
+        <entity name="Crate1#3" id="919980480" castshadows="false" meshFile="Crate1.mesh" type="DynamicObject" BoxX="10" BoxY="15" BoxZ="10">
+          <rotation qw="1" qx="0" qy="0" qz="0" />
+          <position x="0" y="0" z="0" />
+          <scale x="1" y="1" z="1" />
+          <subentities>
+            <subentity materialName="Crate1" index="0" visible="true" />
+          </subentities>
+        </entity>
+      </node>
+      <node name="RedwoodTree#1" id="23743400">
+        <rotation qw="0.999848" qx="0" qy="0.0174524" qz="0" />
+        <position x="996.809" y="-0.5" z="-365.122" />
+        <scale x="1" y="1" z="1" />
+        <entity name="redwoodTree#1" id="375865952" castshadows="true" meshFile="RedwoodTree0.mesh" type="DynamicObject" BoxX="45" BoxY="150" BoxZ="45" life="60" dieMesh="RedwoodTree0Die.mesh" dieAnimation="Die" dieMaterial="true">
+          <rotation qw="1" qx="0" qy="0" qz="0" />
+          <position x="0" y="0" z="0" />
+          <scale x="1" y="1" z="1" />
+          <subentities>
+            <subentity materialName="RedWood" index="0" visible="true" />
+            <subentity materialName="RedwoodLeaf" index="1" visible="true" />
           </subentities>
         </entity>
       </node>
@@ -8164,16 +7893,29 @@
           </subentities>
         </entity>
       </node>
-      <node name="Crate0Copy#2" id="737998592">
-        <rotation qw="0.942641" qx="0" qy="-0.333807" qz="0" />
-        <position x="217.549" y="7.92316" z="-434.647" />
+      <node name="TreeHouse#3" id="497543232">
+        <rotation qw="0.5" qx="0" qy="-0.866026" qz="0" />
+        <position x="784.052" y="39" z="-521.465" />
         <scale x="1" y="1" z="1" />
-        <entity name="Crate0#3" id="127231672" castshadows="false" meshFile="Crate0.mesh" type="DynamicObject" BoxX="10" BoxY="15" BoxZ="10">
+        <entity name="House03#3" id="507644896" castshadows="true" meshFile="House3.mesh" type="DynamicObject" BoxX="50" BoxY="50" BoxZ="50" life="20" dieMesh="House03Die.mesh" dieAnimation="Die">
           <rotation qw="1" qx="0" qy="0" qz="0" />
           <position x="0" y="0" z="0" />
           <scale x="1" y="1" z="1" />
           <subentities>
-            <subentity materialName="Crate0" index="0" visible="true" />
+            <subentity materialName="House03" index="0" visible="true" />
+          </subentities>
+        </entity>
+      </node>
+      <node name="MarketTent4" id="262947472">
+        <rotation qw="0.710185" qx="0" qy="-0.704015" qz="0" />
+        <position x="72.0279" y="0" z="-408.503" />
+        <scale x="1" y="1" z="1" />
+        <entity name="MarketTent1#0" id="708761856" castshadows="false" meshFile="MarketTent1.mesh" type="DynamicObject" BoxX="50" BoxY="50" BoxZ="50">
+          <rotation qw="1" qx="0" qy="0" qz="0" />
+          <position x="0" y="0" z="0" />
+          <scale x="1" y="1" z="1" />
+          <subentities>
+            <subentity materialName="MarketTent1" index="0" visible="true" />
           </subentities>
         </entity>
       </node>
@@ -8190,30 +7932,56 @@
           </subentities>
         </entity>
       </node>
-      <node name="CityTentsCopy#0" id="491042816">
-        <rotation qw="0.891007" qx="0" qy="-0.453991" qz="0" />
-        <position x="379.214" y="-1.54287" z="-683.06" />
+      <node name="RedwoodTree#6" id="943021952">
+        <rotation qw="1" qx="0" qy="0" qz="0" />
+        <position x="1008.14" y="-0.5" z="-132.615" />
         <scale x="1" y="1" z="1" />
-        <entity name="Tent0#1" id="848689280" castshadows="false" meshFile="Tent0.mesh" type="DynamicObject" BoxX="30" BoxY="65" BoxZ="30" life="100" dieMesh="TentDie.mesh" dieAnimation="Die">
+        <entity name="redwoodTree#6" id="536454368" castshadows="true" meshFile="RedwoodTree0.mesh" type="DynamicObject" BoxX="45" BoxY="150" BoxZ="45" life="60" dieMesh="RedwoodTree0Die.mesh" dieAnimation="Die" dieMaterial="true">
           <rotation qw="1" qx="0" qy="0" qz="0" />
           <position x="0" y="0" z="0" />
           <scale x="1" y="1" z="1" />
           <subentities>
-            <subentity materialName="Tent0" index="0" visible="true" />
+            <subentity materialName="RedWood" index="0" visible="true" />
+            <subentity materialName="RedwoodLeaf" index="1" visible="true" />
           </subentities>
         </entity>
       </node>
-      <node name="UfoTree_8" id="969084736">
-        <rotation qw="0.163828" qx="0" qy="0.986489" qz="0" />
-        <position x="805.985" y="-0.000244141" z="-434.772" />
+      <node name="TreeHouse#4" id="363261824">
+        <rotation qw="1" qx="0" qy="0" qz="0" />
+        <position x="688.29" y="37" z="-421.165" />
         <scale x="1" y="1" z="1" />
-        <entity name="Entity#58" id="706381440" castshadows="true" meshFile="UfoTree0.mesh" type="DynamicObject" BoxX="15" BoxY="70" BoxZ="15" life="100" dieMesh="UfoTree0Die.mesh" dieAnimation="Die" dieMaterial="true">
+        <entity name="House03#4" id="112186048" castshadows="true" meshFile="House3.mesh" type="DynamicObject" BoxX="50" BoxY="50" BoxZ="50" life="20" dieMesh="House03Die.mesh" dieAnimation="Die">
           <rotation qw="1" qx="0" qy="0" qz="0" />
           <position x="0" y="0" z="0" />
           <scale x="1" y="1" z="1" />
           <subentities>
-            <subentity materialName="Wood" index="0" visible="true" />
-            <subentity materialName="TreeTop" index="1" visible="true" />
+            <subentity materialName="House03" index="0" visible="true" />
+          </subentities>
+        </entity>
+      </node>
+      <node name="Crate7" id="873348160">
+        <rotation qw="0.971342" qx="0" qy="-0.237686" qz="0" />
+        <position x="218.013" y="-0.00305939" z="-434.368" />
+        <scale x="1" y="1" z="1" />
+        <entity name="Crate1#2" id="653859072" castshadows="false" meshFile="Crate1.mesh" type="DynamicObject" BoxX="10" BoxY="15" BoxZ="10">
+          <rotation qw="1" qx="0" qy="0" qz="0" />
+          <position x="0" y="0" z="0" />
+          <scale x="1" y="1" z="1" />
+          <subentities>
+            <subentity materialName="Crate1" index="0" visible="true" />
+          </subentities>
+        </entity>
+      </node>
+      <node name="MarketTent9" id="430890816">
+        <rotation qw="-0.948324" qx="0" qy="-0.317304" qz="0" />
+        <position x="169.613" y="0" z="-499.313" />
+        <scale x="1" y="1" z="1" />
+        <entity name="MarketTent1#5" id="753318912" castshadows="false" meshFile="MarketTent1.mesh" type="DynamicObject" BoxX="50" BoxY="50" BoxZ="50">
+          <rotation qw="0.997859" qx="0" qy="-0.0654032" qz="0" />
+          <position x="2.037" y="0" z="-13.3129" />
+          <scale x="1" y="1" z="1" />
+          <subentities>
+            <subentity materialName="MarketTent1" index="0" visible="true" />
           </subentities>
         </entity>
       </node>
@@ -8230,20 +7998,6 @@
           </subentities>
         </entity>
       </node>
-      <node name="UfoTree_5" id="324930592">
-        <rotation qw="0.190655" qx="0" qy="0.981657" qz="0" />
-        <position x="728.273" y="-0.000244141" z="-671.763" />
-        <scale x="1" y="1" z="1" />
-        <entity name="Entity#45" id="201483200" castshadows="true" meshFile="UfoTree0.mesh" type="DynamicObject" BoxX="15" BoxY="70" BoxZ="15" life="100" dieMesh="UfoTree0Die.mesh" dieAnimation="Die" dieMaterial="true">
-          <rotation qw="1" qx="0" qy="0" qz="0" />
-          <position x="0" y="0" z="0" />
-          <scale x="1" y="1" z="1" />
-          <subentities>
-            <subentity materialName="Wood" index="0" visible="true" />
-            <subentity materialName="TreeTop" index="1" visible="true" />
-          </subentities>
-        </entity>
-      </node>
       <node name="BigRock" id="418500320">
         <rotation qw="0.81612" qx="0.00234115" qy="-0.577868" qz="0.0033064" />
         <position x="180.402" y="12.6127" z="850.72" />
@@ -8254,6 +8008,19 @@
           <scale x="1" y="1" z="1" />
           <subentities>
             <subentity materialName="VulcanicRock" index="0" visible="true" />
+          </subentities>
+        </entity>
+      </node>
+      <node name="GroundTreeHouse#5" id="20081180">
+        <rotation qw="0.372412" qx="0" qy="-0.928068" qz="0" />
+        <position x="769.801" y="0" z="-364.823" />
+        <scale x="1" y="1" z="1" />
+        <entity name="House02#5" id="333872512" castshadows="true" meshFile="House2.mesh" type="DynamicObject" BoxX="50" BoxY="50" BoxZ="50" life="50" dieMesh="House02Die.mesh" dieAnimation="Die">
+          <rotation qw="1" qx="0" qy="-2.98023E-08" qz="0" />
+          <position x="0" y="0" z="0" />
+          <scale x="1" y="1" z="1" />
+          <subentities>
+            <subentity materialName="House02" index="0" visible="true" />
           </subentities>
         </entity>
       </node>
@@ -8270,25 +8037,67 @@
           </subentities>
         </entity>
       </node>
-      <node name="MarketTent1" id="262947472">
-        <rotation qw="0.710185" qx="0" qy="-0.704015" qz="0" />
-        <position x="72.0279" y="0" z="-408.503" />
+      <node name="UfoTree#06" id="818170752">
+        <rotation qw="0.190655" qx="0" qy="0.981657" qz="0" />
+        <position x="569.89" y="9.5" z="-459.953" />
         <scale x="1" y="1" z="1" />
-        <entity name="MarketTent1#0" id="708761856" castshadows="false" meshFile="MarketTent1.mesh" type="DynamicObject" BoxX="50" BoxY="50" BoxZ="50">
+        <entity name="ufoTree#06" id="718894016" castshadows="true" meshFile="UfoTree0.mesh" type="DynamicObject" BoxX="40" BoxY="150" BoxZ="40" life="60" dieMesh="UfoTree0Die.mesh" dieAnimation="Die" dieMaterial="true">
           <rotation qw="1" qx="0" qy="0" qz="0" />
           <position x="0" y="0" z="0" />
           <scale x="1" y="1" z="1" />
           <subentities>
-            <subentity materialName="MarketTent1" index="0" visible="true" />
+            <subentity materialName="Wood" index="0" visible="true" />
+            <subentity materialName="TreeTop" index="1" visible="true" />
           </subentities>
         </entity>
       </node>
-      <node name="MarketTent0Copy#1" id="266090864">
-        <rotation qw="0.246153" qx="0" qy="-0.969231" qz="0" />
-        <position x="200.619" y="0" z="-555.213" />
-        <scale x="1" y="1" z="1" />
-        <entity name="MarketTent0#1" id="624897024" castshadows="false" meshFile="MarketTent0.mesh" type="DynamicObject" BoxX="40" BoxY="40" BoxZ="40">
+      <node name="House#0" id="912228736">
+        <rotation qw="0.99863" qx="0" qy="-0.0523364" qz="0" />
+        <position x="1296.81" y="20.1627" z="219.013" />
+        <scale x="0.75" y="0.75" z="0.75" />
+        <entity name="house#0" id="630603968" castshadows="false" meshFile="House0.mesh" type="DynamicObject" BoxX="45" BoxY="45" BoxZ="45" life="75" dieMesh="House01Die.mesh" dieAnimation="Die">
           <rotation qw="1" qx="0" qy="0" qz="0" />
+          <position x="0" y="0" z="0" />
+          <scale x="1" y="1" z="1" />
+          <subentities>
+            <subentity materialName="House0_Building_Material5" index="0" visible="true" />
+            <subentity materialName="House0_Roof_Material5" index="1" visible="true" />
+          </subentities>
+        </entity>
+      </node>
+      <node name="UfoTree" id="516525760">
+        <rotation qw="0.999095" qx="0" qy="0.0425467" qz="0" />
+        <position x="992.245" y="9.5" z="-217.533" />
+        <scale x="1" y="1" z="1" />
+        <entity name="ufoTree" id="6988739" castshadows="true" meshFile="UfoTree0.mesh" type="DynamicObject" BoxX="40" BoxY="150" BoxZ="40" life="60" dieMesh="UfoTree0Die.mesh" dieAnimation="Die" dieMaterial="true">
+          <rotation qw="1" qx="0" qy="0" qz="0" />
+          <position x="0" y="0" z="0" />
+          <scale x="1" y="1" z="1" />
+          <subentities>
+            <subentity materialName="Wood" index="0" visible="true" />
+            <subentity materialName="TreeTop" index="1" visible="true" />
+          </subentities>
+        </entity>
+      </node>
+      <node name="GroundTreeHouse#0" id="198156688">
+        <rotation qw="-0.775888" qx="0" qy="-0.630871" qz="0" />
+        <position x="987.405" y="0" z="-422.342" />
+        <scale x="1" y="1" z="1" />
+        <entity name="House02#0" id="46235544" castshadows="true" meshFile="House2.mesh" type="DynamicObject" BoxX="50" BoxY="50" BoxZ="50" life="50" dieMesh="House02Die.mesh" dieAnimation="Die">
+          <rotation qw="1" qx="0" qy="-2.98023E-08" qz="0" />
+          <position x="0" y="0" z="0" />
+          <scale x="1" y="1" z="1" />
+          <subentities>
+            <subentity materialName="House02" index="0" visible="true" />
+          </subentities>
+        </entity>
+      </node>
+      <node name="MarketTent1" id="520035392">
+        <rotation qw="0.999391" qx="0" qy="0.0348991" qz="0" />
+        <position x="-37.1138" y="0" z="-586.498" />
+        <scale x="1" y="1" z="1" />
+        <entity name="MarketTent0#0Copy#0" id="725699648" castshadows="false" meshFile="MarketTent0.mesh" type="DynamicObject" BoxX="40" BoxY="40" BoxZ="40">
+          <rotation qw="0.378648" qx="0" qy="-0.925541" qz="0" />
           <position x="0" y="0" z="0" />
           <scale x="1" y="1" z="1" />
           <subentities>
@@ -8296,24 +8105,11 @@
           </subentities>
         </entity>
       </node>
-      <node name="CityTentsCopy#2" id="724600960">
-        <rotation qw="1" qx="0" qy="0" qz="0" />
-        <position x="394.057" y="-1.54287" z="-647.839" />
+      <node name="UfoTree#03" id="462263840">
+        <rotation qw="-0.585804" qx="0" qy="-0.810453" qz="0" />
+        <position x="878.763" y="9.5" z="-513.77" />
         <scale x="1" y="1" z="1" />
-        <entity name="Tent2#2" id="208746608" castshadows="false" meshFile="Tent2.mesh" type="DynamicObject" BoxX="30" BoxY="65" BoxZ="30" life="100" dieMesh="TentDie.mesh" dieAnimation="Die">
-          <rotation qw="1" qx="0" qy="0" qz="0" />
-          <position x="0" y="0" z="0" />
-          <scale x="1" y="1" z="1" />
-          <subentities>
-            <subentity materialName="Tent2" index="0" visible="true" />
-          </subentities>
-        </entity>
-      </node>
-      <node name="UfoTree_6" id="818170752">
-        <rotation qw="0.190655" qx="0" qy="0.981657" qz="0" />
-        <position x="569.89" y="-0.000244141" z="-459.953" />
-        <scale x="1" y="1" z="1" />
-        <entity name="Entity#32" id="718894016" castshadows="true" meshFile="UfoTree0.mesh" type="DynamicObject" BoxX="15" BoxY="70" BoxZ="15" life="100" dieMesh="UfoTree0Die.mesh" dieAnimation="Die" dieMaterial="true">
+        <entity name="ufoTree#03" id="50508136" castshadows="true" meshFile="UfoTree0.mesh" type="DynamicObject" BoxX="40" BoxY="150" BoxZ="40" life="60" dieMesh="UfoTree0Die.mesh" dieAnimation="Die" dieMaterial="true">
           <rotation qw="1" qx="0" qy="0" qz="0" />
           <position x="0" y="0" z="0" />
           <scale x="1" y="1" z="1" />
@@ -8323,60 +8119,34 @@
           </subentities>
         </entity>
       </node>
-      <node name="FarmCrate#1" id="954802112">
-        <rotation qw="1" qx="0" qy="0" qz="0" />
-        <position x="1143.33" y="0" z="99.3682" />
+      <node name="RedwoodTree#3" id="194067200">
+        <rotation qw="0.996195" qx="0" qy="-0.0871553" qz="0" />
+        <position x="784.615" y="-0.5" z="-519.705" />
         <scale x="1" y="1" z="1" />
-        <entity name="Crate1#4" id="890224960" castshadows="false" meshFile="Crate1.mesh" type="DynamicObject" BoxX="10" BoxY="15" BoxZ="10">
+        <entity name="redwoodTree#3" id="657612864" castshadows="true" meshFile="RedwoodTree0.mesh" type="DynamicObject" BoxX="45" BoxY="150" BoxZ="45" life="60" dieMesh="RedwoodTree0Die.mesh" dieAnimation="Die" dieMaterial="true">
           <rotation qw="1" qx="0" qy="0" qz="0" />
           <position x="0" y="0" z="0" />
           <scale x="1" y="1" z="1" />
           <subentities>
-            <subentity materialName="Crate1" index="0" visible="true" />
+            <subentity materialName="RedWood" index="0" visible="true" />
+            <subentity materialName="RedwoodLeaf" index="1" visible="true" />
           </subentities>
         </entity>
       </node>
-      <node name="UfoTree_3" id="462263840">
-        <rotation qw="0.227335" qx="0" qy="-0.973817" qz="0" />
-        <position x="878.763" y="-0.000244141" z="-513.77" />
+      <node name="TreeHouse#1" id="781884224">
+        <rotation qw="0.961262" qx="0" qy="-0.275637" qz="0" />
+        <position x="913.543" y="37" z="-283.083" />
         <scale x="1" y="1" z="1" />
-        <entity name="Entity#56" id="50508136" castshadows="true" meshFile="UfoTree0.mesh" type="DynamicObject" BoxX="15" BoxY="70" BoxZ="15" life="100" dieMesh="UfoTree0Die.mesh" dieAnimation="Die" dieMaterial="true">
+        <entity name="House03#1" id="22827848" castshadows="true" meshFile="House3.mesh" type="DynamicObject" BoxX="50" BoxY="50" BoxZ="50" life="20" dieMesh="House03Die.mesh" dieAnimation="Die">
           <rotation qw="1" qx="0" qy="0" qz="0" />
           <position x="0" y="0" z="0" />
           <scale x="1" y="1" z="1" />
           <subentities>
-            <subentity materialName="Wood" index="0" visible="true" />
-            <subentity materialName="TreeTop" index="1" visible="true" />
+            <subentity materialName="House03" index="0" visible="true" />
           </subentities>
         </entity>
       </node>
-      <node name="MarketTent1Copy#1Copy#1" id="842493952">
-        <rotation qw="0.296541" qx="0" qy="-0.95502" qz="0" />
-        <position x="143.066" y="0" z="-542.06" />
-        <scale x="1" y="1" z="1" />
-        <entity name="MarketTent1#4" id="928739328" castshadows="false" meshFile="MarketTent1.mesh" type="DynamicObject" BoxX="50" BoxY="50" BoxZ="50">
-          <rotation qw="0.999657" qx="0" qy="-0.026177" qz="0" />
-          <position x="0" y="0" z="0" />
-          <scale x="1" y="1" z="1" />
-          <subentities>
-            <subentity materialName="MarketTent1" index="0" visible="true" />
-          </subentities>
-        </entity>
-      </node>
-      <node name="Crate0Copy#4" id="826685376">
-        <rotation qw="0.942641" qx="0" qy="-0.333807" qz="0" />
-        <position x="130.533" y="-0.00305939" z="-611.37" />
-        <scale x="1" y="1" z="1" />
-        <entity name="Crate1#1" id="875637056" castshadows="false" meshFile="Crate1.mesh" type="DynamicObject" BoxX="10" BoxY="15" BoxZ="10">
-          <rotation qw="1" qx="0" qy="0" qz="0" />
-          <position x="0" y="0" z="0" />
-          <scale x="1" y="1" z="1" />
-          <subentities>
-            <subentity materialName="Crate1" index="0" visible="true" />
-          </subentities>
-        </entity>
-      </node>
-      <node name="Crate0Copy#3Copy#0" id="475112128">
+      <node name="Crate5" id="475112128">
         <rotation qw="0.942641" qx="0" qy="-0.333807" qz="0" />
         <position x="194.125" y="-0.00305939" z="-562.783" />
         <scale x="1" y="1" z="1" />
@@ -8389,16 +8159,137 @@
           </subentities>
         </entity>
       </node>
-      <node name="Crate0Copy#1" id="152653584">
-        <rotation qw="0.942641" qx="0" qy="-0.333807" qz="0" />
-        <position x="283.993" y="-0.00305939" z="-495.141" />
+      <node name="UfoTree#09" id="906521792">
+        <rotation qw="0.818052" qx="0" qy="0.575145" qz="0" />
+        <position x="1058.85" y="9.5" z="-279.247" />
         <scale x="1" y="1" z="1" />
-        <entity name="Crate0#2" id="943998528" castshadows="false" meshFile="Crate0.mesh" type="DynamicObject" BoxX="10" BoxY="15" BoxZ="10">
+        <entity name="ufoTree#09" id="32105472" castshadows="true" meshFile="UfoTree0.mesh" type="DynamicObject" BoxX="40" BoxY="150" BoxZ="40" life="60" dieMesh="UfoTree0Die.mesh" dieAnimation="Die" dieMaterial="true">
           <rotation qw="1" qx="0" qy="0" qz="0" />
           <position x="0" y="0" z="0" />
           <scale x="1" y="1" z="1" />
           <subentities>
-            <subentity materialName="Crate0" index="0" visible="true" />
+            <subentity materialName="Wood" index="0" visible="true" />
+            <subentity materialName="TreeTop" index="1" visible="true" />
+          </subentities>
+        </entity>
+      </node>
+      <node name="CityTents#2" id="724600960">
+        <rotation qw="1" qx="0" qy="0" qz="0" />
+        <position x="394.057" y="-1.54287" z="-647.839" />
+        <scale x="1" y="1" z="1" />
+        <entity name="Tent2#2" id="208746608" castshadows="false" meshFile="Tent2.mesh" type="DynamicObject" BoxX="30" BoxY="65" BoxZ="30" life="100" dieMesh="TentDie.mesh" dieAnimation="Die">
+          <rotation qw="1" qx="0" qy="0" qz="0" />
+          <position x="0" y="0" z="0" />
+          <scale x="1" y="1" z="1" />
+          <subentities>
+            <subentity materialName="Tent2" index="0" visible="true" />
+          </subentities>
+        </entity>
+      </node>
+      <node name="FarmCrate#1" id="954802112">
+        <rotation qw="1" qx="0" qy="0" qz="0" />
+        <position x="1147.98" y="0" z="108.289" />
+        <scale x="1" y="1" z="1" />
+        <entity name="Crate1#4" id="890224960" castshadows="false" meshFile="Crate1.mesh" type="DynamicObject" BoxX="5" BoxY="5" BoxZ="5">
+          <rotation qw="1" qx="0" qy="0" qz="0" />
+          <position x="0" y="0" z="0" />
+          <scale x="1" y="1" z="1" />
+          <subentities>
+            <subentity materialName="Crate1" index="0" visible="true" />
+          </subentities>
+        </entity>
+      </node>
+      <node name="MarketTent2" id="266090864">
+        <rotation qw="0.246153" qx="0" qy="-0.969231" qz="0" />
+        <position x="200.619" y="0" z="-555.213" />
+        <scale x="1" y="1" z="1" />
+        <entity name="MarketTent0#1" id="624897024" castshadows="false" meshFile="MarketTent0.mesh" type="DynamicObject" BoxX="40" BoxY="40" BoxZ="40">
+          <rotation qw="1" qx="0" qy="0" qz="0" />
+          <position x="0" y="0" z="0" />
+          <scale x="1" y="1" z="1" />
+          <subentities>
+            <subentity materialName="MarketTent0" index="0" visible="true" />
+          </subentities>
+        </entity>
+      </node>
+      <node name="UfoTree#04" id="538926336">
+        <rotation qw="0.565152" qx="0" qy="-0.824987" qz="0" />
+        <position x="1037.89" y="9.5" z="-456.99" />
+        <scale x="1" y="1" z="1" />
+        <entity name="ufoTree#04" id="869350272" castshadows="true" meshFile="UfoTree0.mesh" type="DynamicObject" BoxX="40" BoxY="150" BoxZ="40" life="60" dieMesh="UfoTree0Die.mesh" dieAnimation="Die" dieMaterial="true">
+          <rotation qw="1" qx="0" qy="0" qz="0" />
+          <position x="0" y="0" z="0" />
+          <scale x="1" y="1" z="1" />
+          <subentities>
+            <subentity materialName="Wood" index="0" visible="true" />
+            <subentity materialName="TreeTop" index="1" visible="true" />
+          </subentities>
+        </entity>
+      </node>
+      <node name="RedwoodTree#0" id="521958048">
+        <rotation qw="0.979925" qx="0" qy="0.199368" qz="0" />
+        <position x="912.398" y="-0.5" z="-283.231" />
+        <scale x="1" y="1" z="1" />
+        <entity name="redwoodTree#0" id="440168480" castshadows="true" meshFile="RedwoodTree0.mesh" type="DynamicObject" BoxX="45" BoxY="150" BoxZ="45" life="60" dieMesh="RedwoodTree0Die.mesh" dieAnimation="Die" dieMaterial="true">
+          <rotation qw="1" qx="0" qy="0" qz="0" />
+          <position x="0" y="0" z="0" />
+          <scale x="1" y="1" z="1" />
+          <subentities>
+            <subentity materialName="RedWood" index="0" visible="true" />
+            <subentity materialName="RedwoodLeaf" index="1" visible="true" />
+          </subentities>
+        </entity>
+      </node>
+      <node name="TreeHouse#2" id="505539104">
+        <rotation qw="0.492424" qx="0" qy="-0.870356" qz="0" />
+        <position x="939.343" y="38" z="-474.182" />
+        <scale x="1" y="1" z="1" />
+        <entity name="House03#2" id="182927952" castshadows="true" meshFile="House3.mesh" type="DynamicObject" BoxX="50" BoxY="50" BoxZ="50" life="20" dieMesh="House03Die.mesh" dieAnimation="Die">
+          <rotation qw="1" qx="0" qy="0" qz="0" />
+          <position x="0" y="0" z="0" />
+          <scale x="1" y="1" z="1" />
+          <subentities>
+            <subentity materialName="House03" index="0" visible="true" />
+          </subentities>
+        </entity>
+      </node>
+      <node name="GroundTreeHouse#2" id="124637592">
+        <rotation qw="-0.753398" qx="0" qy="-0.657565" qz="0" />
+        <position x="717.774" y="0" z="-616.737" />
+        <scale x="1" y="1" z="1" />
+        <entity name="House02#2" id="375072480" castshadows="true" meshFile="House2.mesh" type="DynamicObject" BoxX="50" BoxY="50" BoxZ="50" life="50" dieMesh="House02Die.mesh" dieAnimation="Die">
+          <rotation qw="1" qx="0" qy="-2.98023E-08" qz="0" />
+          <position x="0" y="0" z="0" />
+          <scale x="1" y="1" z="1" />
+          <subentities>
+            <subentity materialName="House02" index="0" visible="true" />
+          </subentities>
+        </entity>
+      </node>
+      <node name="MarketTent7" id="291787488">
+        <rotation qw="-0.694659" qx="0" qy="-0.719339" qz="0" />
+        <position x="114.015" y="0" z="-409.06" />
+        <scale x="1" y="1" z="1" />
+        <entity name="MarketTent1#3" id="205725264" castshadows="false" meshFile="MarketTent1.mesh" type="DynamicObject" BoxX="50" BoxY="50" BoxZ="50">
+          <rotation qw="1" qx="0" qy="0" qz="0" />
+          <position x="0" y="0" z="0" />
+          <scale x="1" y="1" z="1" />
+          <subentities>
+            <subentity materialName="MarketTent1" index="0" visible="true" />
+          </subentities>
+        </entity>
+      </node>
+      <node name="UfoTree#01" id="995239168">
+        <rotation qw="0.818052" qx="0" qy="0.575145" qz="0" />
+        <position x="924.403" y="9.5" z="-384.165" />
+        <scale x="1" y="1" z="1" />
+        <entity name="ufoTree#01" id="619190016" castshadows="true" meshFile="UfoTree0.mesh" type="DynamicObject" BoxX="40" BoxY="150" BoxZ="40" life="60" dieMesh="UfoTree0Die.mesh" dieAnimation="Die" dieMaterial="true">
+          <rotation qw="0.771625" qx="0" qy="-0.636078" qz="0" />
+          <position x="0" y="0" z="0" />
+          <scale x="1" y="1" z="1" />
+          <subentities>
+            <subentity materialName="Wood" index="0" visible="true" />
+            <subentity materialName="TreeTop" index="1" visible="true" />
           </subentities>
         </entity>
       </node>
@@ -8412,6 +8303,46 @@
           <scale x="1" y="1" z="1" />
           <subentities>
             <subentity materialName="Tent2" index="0" visible="true" />
+          </subentities>
+        </entity>
+      </node>
+      <node name="RedwoodTree#5" id="361125536">
+        <rotation qw="0.99725" qx="0" qy="0.0741085" qz="0" />
+        <position x="687.917" y="-0.5" z="-420.874" />
+        <scale x="1" y="1" z="1" />
+        <entity name="redwoodTree#5" id="856654592" castshadows="true" meshFile="RedwoodTree0.mesh" type="DynamicObject" BoxX="45" BoxY="150" BoxZ="45" life="60" dieMesh="RedwoodTree0Die.mesh" dieAnimation="Die" dieMaterial="true">
+          <rotation qw="1" qx="0" qy="0" qz="0" />
+          <position x="0" y="0" z="0" />
+          <scale x="1" y="1" z="1" />
+          <subentities>
+            <subentity materialName="RedWood" index="0" visible="true" />
+            <subentity materialName="RedwoodLeaf" index="1" visible="true" />
+          </subentities>
+        </entity>
+      </node>
+      <node name="Crate6" id="826685376">
+        <rotation qw="0.942641" qx="0" qy="-0.333807" qz="0" />
+        <position x="130.533" y="-0.00305939" z="-611.37" />
+        <scale x="1" y="1" z="1" />
+        <entity name="Crate1#1" id="875637056" castshadows="false" meshFile="Crate1.mesh" type="DynamicObject" BoxX="10" BoxY="15" BoxZ="10">
+          <rotation qw="1" qx="0" qy="0" qz="0" />
+          <position x="0" y="0" z="0" />
+          <scale x="1" y="1" z="1" />
+          <subentities>
+            <subentity materialName="Crate1" index="0" visible="true" />
+          </subentities>
+        </entity>
+      </node>
+      <node name="MarketTent8" id="842493952">
+        <rotation qw="0.296541" qx="0" qy="-0.95502" qz="0" />
+        <position x="143.066" y="0" z="-542.06" />
+        <scale x="1" y="1" z="1" />
+        <entity name="MarketTent1#4" id="928739328" castshadows="false" meshFile="MarketTent1.mesh" type="DynamicObject" BoxX="50" BoxY="50" BoxZ="50">
+          <rotation qw="0.999657" qx="0" qy="-0.026177" qz="0" />
+          <position x="0" y="0" z="0" />
+          <scale x="1" y="1" z="1" />
+          <subentities>
+            <subentity materialName="MarketTent1" index="0" visible="true" />
           </subentities>
         </entity>
       </node>
@@ -9186,7 +9117,7 @@
       </node>
       <node name="BeerGlass#2" id="164860992">
         <rotation qw="1" qx="0" qy="0" qz="0" />
-        <position x="951.991" y="12" z="-206.255" />
+        <position x="962.807" y="12" z="-199.832" />
         <scale x="1" y="1" z="1" />
         <entity name="beerGlass#0#2" id="211279648" castshadows="true" meshFile="beerGlass.mesh" type="Item" subType="Drunk" life="0" drunkTime="5" points="350">
           <rotation qw="1" qx="0" qy="0" qz="0" />
