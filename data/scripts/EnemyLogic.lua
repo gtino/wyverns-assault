@@ -129,10 +129,8 @@ function runWomanLogic(enemyId, state)
 				newState = Idle
 			end
 		elseif state == Love then
-			if timeout > 2 then
-				newState = Fear			
-			elseif distance > LoveDistance then
-				newState = Alert
+			if timeout > 1 then
+				newState = Fear
 			end
 		elseif state == Fear then
 			if timeout > 4 then

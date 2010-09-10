@@ -551,6 +551,7 @@ EVENTS_BEGIN_REGISTER_HANDLERS(PhysicsManager)
 	EVENTS_REGISTER_HANDLER(PhysicsManager, EnemyKilled)
 	EVENTS_REGISTER_HANDLER(PhysicsManager, EnemyPhysics)
 	EVENTS_REGISTER_HANDLER(PhysicsManager, ItemCatch)
+	EVENTS_REGISTER_HANDLER(PhysicsManager, ItemPhysics)
 	EVENTS_REGISTER_HANDLER(PhysicsManager, ObjectKilled)
 	EVENTS_REGISTER_HANDLER(PhysicsManager, GameAreaChanged)
 	EVENTS_REGISTER_HANDLER(PhysicsManager, GameAreaCleared)
@@ -562,6 +563,7 @@ EVENTS_BEGIN_UNREGISTER_HANDLERS(PhysicsManager)
 	EVENTS_UNREGISTER_HANDLER(PhysicsManager, EnemyKilled)
 	EVENTS_UNREGISTER_HANDLER(PhysicsManager, EnemyPhysics)
 	EVENTS_UNREGISTER_HANDLER(PhysicsManager, ItemCatch)
+	EVENTS_UNREGISTER_HANDLER(PhysicsManager, ItemPhysics)
 	EVENTS_UNREGISTER_HANDLER(PhysicsManager, ObjectKilled)
 	EVENTS_UNREGISTER_HANDLER(PhysicsManager, GameAreaChanged)
 	EVENTS_UNREGISTER_HANDLER(PhysicsManager, GameAreaCleared)
@@ -598,6 +600,13 @@ EVENTS_DEFINE_HANDLER(PhysicsManager, ItemCatch)
 
 	// The player has just cacth the item
    	removeItem(item);
+}
+
+EVENTS_DEFINE_HANDLER(PhysicsManager, ItemPhysics)
+{
+	Debug::Out("PhysicsManager : handleItemPhysicsEvent");
+
+	addPhysicItem(evt->getItem(), evt->getGameArea());
 }
 
 EVENTS_DEFINE_HANDLER(PhysicsManager, ObjectKilled)

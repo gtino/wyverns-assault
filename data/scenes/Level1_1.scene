@@ -5445,6 +5445,32 @@
           </subentities>
         </entity>
       </node>
+      <node name="Woman#9" id="680440640">
+        <rotation qw="-0.121869" qx="0" qy="-0.992546" qz="0" />
+        <position x="-298.384" y="155" z="70.7275" />
+        <scale x="1" y="1" z="1" />
+        <entity name="princess#9" id="517654944" castshadows="true" meshFile="princess.mesh" type="Enemy" subType="Cow" animationTree="data/animations/woman.xml" life="15" points="-250" speed="30" damage="0" specialDamage="0" height="0" dieMesh="nakedDie.mesh" dieAnimation="Die">
+          <rotation qw="0.957571" qx="0" qy="-0.288196" qz="0" />
+          <position x="0" y="0" z="0" />
+          <scale x="1" y="1" z="1" />
+          <subentities>
+            <subentity materialName="princess_material_2" index="0" visible="true" />
+          </subentities>
+        </entity>
+      </node>
+      <node name="CowFake#02" id="293008224">
+        <rotation qw="0.771953" qx="0.253266" qy="0.581524" qz="0.0421296" />
+        <position x="475.506" y="54.7773" z="-648.455" />
+        <scale x="1" y="1" z="1" />
+        <entity name="cow#22" id="864375744" castshadows="false" meshFile="cow.mesh" type="Enemy" subType="Cow" animationTree="data/animations/cow.xml" life="10" points="50" speed="15" damage="0" specialDamage="0" height="0" dieMesh="cowDie.mesh" dieAnimation="">
+          <rotation qw="1" qx="0" qy="0" qz="0" />
+          <position x="0" y="0" z="0" />
+          <scale x="1" y="1" z="1" />
+          <subentities>
+            <subentity materialName="CowMaterial" index="0" visible="true" />
+          </subentities>
+        </entity>
+      </node>
       <node name="Naked#00" id="336313952">
         <rotation qw="1" qx="0" qy="0" qz="0" />
         <position x="1274.37" y="12" z="65.8114" />
@@ -5523,6 +5549,19 @@
           </subentities>
         </entity>
       </node>
+      <node name="Woman#4" id="398602240">
+        <rotation qw="0.19509" qx="0" qy="0.980785" qz="0" />
+        <position x="1028.72" y="15" z="-94.0889" />
+        <scale x="1" y="1" z="1" />
+        <entity name="princess#4" id="432782976" castshadows="true" meshFile="princess.mesh" type="Enemy" subType="Woman" animationTree="data/animations/woman.xml" life="15" points="-250" speed="30" damage="0" specialDamage="0" height="13" dieMesh="nakedDie.mesh" dieAnimation="Die">
+          <rotation qw="0.957571" qx="0" qy="-0.288196" qz="0" />
+          <position x="0" y="0" z="0" />
+          <scale x="1" y="1" z="1" />
+          <subentities>
+            <subentity materialName="princess_material_3" index="0" visible="true" />
+          </subentities>
+        </entity>
+      </node>
       <node name="Knight#43" id="27832880">
         <rotation qw="0.999762" qx="0" qy="0.0218154" qz="0" />
         <position x="974.035" y="12" z="-307.724" />
@@ -5565,7 +5604,7 @@
       </node>
       <node name="Archer#12" id="710196288">
         <rotation qw="-0.422618" qx="0" qy="-0.906308" qz="0" />
-        <position x="-68.3922" y="21.5911" z="-100.053" />
+        <position x="-68.3922" y="15" z="-100.053" />
         <scale x="1" y="1" z="1" />
         <entity name="archer#12" id="728446336" castshadows="false" meshFile="archer.mesh" type="Enemy" subType="Archer" animationTree="data/animations/archer.xml" life="60" points="250" speed="40" damage="1" specialDamage="4" height="13" dieMesh="nakedDie.mesh" dieAnimation="Die">
           <rotation qw="1" qx="0" qy="0" qz="0" />
@@ -5632,13 +5671,39 @@
       <node name="Knight#61" id="931516480">
         <rotation qw="-0.725373" qx="0" qy="-0.688356" qz="0" />
         <position x="541.252" y="12" z="-521.871" />
-        <scale x="1.5" y="1.5" z="1.5" />
-        <entity name="knightC#61" id="48432876" castshadows="true" meshFile="knightC.mesh" type="Enemy" subType="Knight" animationTree="data/animations/knight.xml" life="175" points="350" speed="40" damage="3" specialDamage="0" height="15" dieMesh="nakedDie.mesh" dieAnimation="Die">
+        <scale x="1" y="1" z="1" />
+        <entity name="knightC#61" id="48432876" castshadows="true" meshFile="knightC.mesh" type="Enemy" subType="Knight" animationTree="data/animations/knight.xml" life="175" points="350" speed="40" damage="3" specialDamage="0" height="13" dieMesh="nakedDie.mesh" dieAnimation="Die">
           <rotation qw="1" qx="0" qy="0" qz="0" />
           <position x="0" y="0" z="0" />
           <scale x="1" y="1" z="1" />
           <subentities>
             <subentity materialName="knightC_material_5" index="0" visible="true" />
+          </subentities>
+        </entity>
+      </node>
+      <node name="Woman#1" id="284249408">
+        <rotation qw="0.981627" qx="0" qy="0.190809" qz="0" />
+        <position x="1012.59" y="15" z="423.275" />
+        <scale x="1" y="1" z="1" />
+        <entity name="princess#1" id="788110016" castshadows="true" meshFile="princess.mesh" type="Enemy" subType="Woman" animationTree="data/animations/woman.xml" life="15" points="-250" speed="30" damage="0" specialDamage="0" height="13" dieMesh="nakedDie.mesh" dieAnimation="Die">
+          <rotation qw="0.957571" qx="0" qy="-0.288196" qz="0" />
+          <position x="0" y="0" z="0" />
+          <scale x="1" y="1" z="1" />
+          <subentities>
+            <subentity materialName="princess_material_2" index="0" visible="true" />
+          </subentities>
+        </entity>
+      </node>
+      <node name="Woman#10" id="969969792">
+        <rotation qw="0.104529" qx="0" qy="-0.994522" qz="0" />
+        <position x="-541.811" y="37" z="-143.694" />
+        <scale x="1" y="1" z="1" />
+        <entity name="princess#10" id="727866496" castshadows="true" meshFile="princess.mesh" type="Enemy" subType="Woman" animationTree="data/animations/woman.xml" life="15" points="-250" speed="30" damage="0" specialDamage="0" height="13" dieMesh="nakedDie.mesh" dieAnimation="Die">
+          <rotation qw="0.957571" qx="0" qy="-0.288196" qz="0" />
+          <position x="0" y="0" z="0" />
+          <scale x="1" y="1" z="1" />
+          <subentities>
+            <subentity materialName="princess_material_4" index="0" visible="true" />
           </subentities>
         </entity>
       </node>
@@ -5684,7 +5749,7 @@
       </node>
       <node name="Archer#17" id="911130048">
         <rotation qw="-0.422618" qx="0" qy="-0.906308" qz="0" />
-        <position x="-107.92" y="22.6577" z="-161.881" />
+        <position x="-107.92" y="15" z="-161.881" />
         <scale x="1" y="1" z="1" />
         <entity name="archer#17" id="367839616" castshadows="false" meshFile="archer.mesh" type="Enemy" subType="Archer" animationTree="data/animations/archer.xml" life="60" points="250" speed="40" damage="1" specialDamage="4" height="13" dieMesh="nakedDie.mesh" dieAnimation="Die">
           <rotation qw="1" qx="0" qy="0" qz="0" />
@@ -5784,6 +5849,19 @@
           <scale x="1" y="1" z="1" />
           <subentities>
             <subentity materialName="chicken_material" index="0" visible="true" />
+          </subentities>
+        </entity>
+      </node>
+      <node name="CowFake" id="379131424">
+        <rotation qw="0.777146" qx="0" qy="0.629321" qz="0" />
+        <position x="1027.95" y="34" z="51.8579" />
+        <scale x="1" y="1" z="1" />
+        <entity name="cow#9" id="509262368" castshadows="false" meshFile="cow.mesh" type="Enemy" subType="Cow" animationTree="data/animations/cow.xml" life="10" points="50" speed="15" damage="0" specialDamage="0" height="0" dieMesh="cowDie.mesh" dieAnimation="">
+          <rotation qw="1" qx="0" qy="0" qz="0" />
+          <position x="0" y="0" z="0" />
+          <scale x="1" y="1" z="1" />
+          <subentities>
+            <subentity materialName="CowMaterial" index="0" visible="true" />
           </subentities>
         </entity>
       </node>
@@ -5907,7 +5985,7 @@
       </node>
       <node name="Archer#20" id="687643072">
         <rotation qw="-0.422618" qx="0" qy="-0.906308" qz="0" />
-        <position x="-104.126" y="19.3128" z="-136.458" />
+        <position x="-104.126" y="15" z="-136.458" />
         <scale x="1" y="1" z="1" />
         <entity name="archer#20" id="90426344" castshadows="false" meshFile="archer.mesh" type="Enemy" subType="Archer" animationTree="data/animations/archer.xml" life="60" points="250" speed="40" damage="1" specialDamage="4" height="13" dieMesh="nakedDie.mesh" dieAnimation="Die">
           <rotation qw="1" qx="0" qy="0" qz="0" />
@@ -5971,6 +6049,19 @@
           </subentities>
         </entity>
       </node>
+      <node name="Woman#6" id="311136224">
+        <rotation qw="0.62932" qx="0" qy="0.777146" qz="0" />
+        <position x="129.534" y="15" z="-594.168" />
+        <scale x="1" y="1" z="1" />
+        <entity name="princess#6" id="189275808" castshadows="true" meshFile="princess.mesh" type="Enemy" subType="Woman" animationTree="data/animations/woman.xml" life="15" points="-250" speed="30" damage="0" specialDamage="0" height="13" dieMesh="nakedDie.mesh" dieAnimation="Die">
+          <rotation qw="0.957571" qx="0" qy="-0.288196" qz="0" />
+          <position x="0" y="0" z="0" />
+          <scale x="1" y="1" z="1" />
+          <subentities>
+            <subentity materialName="princess_material_4" index="0" visible="true" />
+          </subentities>
+        </entity>
+      </node>
       <node name="Archer#5" id="855098112">
         <rotation qw="0.987688" qx="0" qy="-0.156434" qz="0" />
         <position x="1267.91" y="15" z="181.881" />
@@ -6013,7 +6104,7 @@
       </node>
       <node name="Archer#14" id="903866688">
         <rotation qw="-0.422618" qx="0" qy="-0.906308" qz="0" />
-        <position x="-147.221" y="17.3939" z="-162.947" />
+        <position x="-147.221" y="15" z="-162.947" />
         <scale x="1" y="1" z="1" />
         <entity name="archer#14" id="308603168" castshadows="false" meshFile="archer.mesh" type="Enemy" subType="Archer" animationTree="data/animations/archer.xml" life="60" points="250" speed="40" damage="1" specialDamage="4" height="13" dieMesh="nakedDie.mesh" dieAnimation="Die">
           <rotation qw="1" qx="0" qy="0" qz="0" />
@@ -6061,6 +6152,19 @@
           <scale x="1" y="1" z="1" />
           <subentities>
             <subentity materialName="knightC_material_5" index="0" visible="true" />
+          </subentities>
+        </entity>
+      </node>
+      <node name="Woman#3" id="863582272">
+        <rotation qw="0.96005" qx="0" qy="-0.279829" qz="0" />
+        <position x="1206.41" y="15" z="376.469" />
+        <scale x="1" y="1" z="1" />
+        <entity name="princess#3" id="249549856" castshadows="true" meshFile="princess.mesh" type="Enemy" subType="Woman" animationTree="data/animations/woman.xml" life="15" points="-250" speed="30" damage="0" specialDamage="0" height="13" dieMesh="nakedDie.mesh" dieAnimation="Die">
+          <rotation qw="0.957571" qx="0" qy="-0.288196" qz="0" />
+          <position x="0" y="0" z="0" />
+          <scale x="1" y="1" z="1" />
+          <subentities>
+            <subentity materialName="princess_material_4" index="0" visible="true" />
           </subentities>
         </entity>
       </node>
@@ -6145,7 +6249,7 @@
       </node>
       <node name="Archer#19" id="654835648">
         <rotation qw="-0.422618" qx="0" qy="-0.906308" qz="0" />
-        <position x="-117.566" y="26.6986" z="-110.954" />
+        <position x="-117.566" y="15" z="-110.954" />
         <scale x="1" y="1" z="1" />
         <entity name="archer#19" id="438520448" castshadows="false" meshFile="archer.mesh" type="Enemy" subType="Archer" animationTree="data/animations/archer.xml" life="60" points="250" speed="40" damage="1" specialDamage="4" height="13" dieMesh="nakedDie.mesh" dieAnimation="Die">
           <rotation qw="1" qx="0" qy="0" qz="0" />
@@ -6167,6 +6271,32 @@
           <scale x="1" y="1" z="1" />
           <subentities>
             <subentity materialName="chicken_material" index="0" visible="true" />
+          </subentities>
+        </entity>
+      </node>
+      <node name="Woman#8" id="708517760">
+        <rotation qw="0.279829" qx="0" qy="-0.96005" qz="0" />
+        <position x="-178.911" y="15" z="61.6515" />
+        <scale x="1" y="1" z="1" />
+        <entity name="princess#8" id="49623096" castshadows="true" meshFile="princess.mesh" type="Enemy" subType="Woman" animationTree="data/animations/woman.xml" life="15" points="-250" speed="30" damage="0" specialDamage="0" height="13" dieMesh="nakedDie.mesh" dieAnimation="Die">
+          <rotation qw="0.957571" qx="0" qy="-0.288196" qz="0" />
+          <position x="0" y="0" z="0" />
+          <scale x="1" y="1" z="1" />
+          <subentities>
+            <subentity materialName="princess_material" index="0" visible="true" />
+          </subentities>
+        </entity>
+      </node>
+      <node name="CowFake#01" id="274971776">
+        <rotation qw="0.612217" qx="0" qy="0.79069" qz="0" />
+        <position x="-80.6083" y="103.043" z="61.1463" />
+        <scale x="1" y="1" z="1" />
+        <entity name="cow#21" id="838923328" castshadows="false" meshFile="cow.mesh" type="Enemy" subType="Cow" animationTree="data/animations/cow.xml" life="10" points="50" speed="15" damage="0" specialDamage="0" height="0" dieMesh="cowDie.mesh" dieAnimation="">
+          <rotation qw="1" qx="0" qy="0" qz="0" />
+          <position x="0" y="0" z="0" />
+          <scale x="1" y="1" z="1" />
+          <subentities>
+            <subentity materialName="CowMaterial" index="0" visible="true" />
           </subentities>
         </entity>
       </node>
@@ -6328,8 +6458,8 @@
         </entity>
       </node>
       <node name="Woman" id="735007744">
-        <rotation qw="0.989016" qx="0" qy="-0.147809" qz="0" />
-        <position x="20.1109" y="18.4122" z="867.212" />
+        <rotation qw="0.845728" qx="0" qy="-0.533614" qz="0" />
+        <position x="137.655" y="18.4122" z="883.483" />
         <scale x="1" y="1" z="1" />
         <entity name="princess" id="252723776" castshadows="true" meshFile="princess.mesh" type="Enemy" subType="Woman" animationTree="data/animations/woman.xml" life="15" points="-250" speed="30" damage="0" specialDamage="0" height="13" dieMesh="nakedDie.mesh" dieAnimation="Die">
           <rotation qw="0.957571" qx="0" qy="-0.288196" qz="0" />
@@ -6342,7 +6472,7 @@
       </node>
       <node name="Archer#11" id="407635712">
         <rotation qw="-0.422618" qx="0" qy="-0.906308" qz="0" />
-        <position x="-59.8604" y="24.1227" z="-73.3647" />
+        <position x="-59.8604" y="15" z="-73.3647" />
         <scale x="1" y="1" z="1" />
         <entity name="archer#11" id="895321472" castshadows="false" meshFile="archer.mesh" type="Enemy" subType="Archer" animationTree="data/animations/archer.xml" life="60" points="250" speed="40" damage="1" specialDamage="4" height="13" dieMesh="nakedDie.mesh" dieAnimation="Die">
           <rotation qw="1" qx="0" qy="0" qz="0" />
@@ -6423,13 +6553,39 @@
       <node name="Knight#62" id="625171648">
         <rotation qw="-0.725373" qx="0" qy="-0.688356" qz="0" />
         <position x="535.656" y="12" z="-547.256" />
-        <scale x="1.5" y="1.5" z="1.5" />
-        <entity name="knightB#62" id="437726976" castshadows="true" meshFile="knightB.mesh" type="Enemy" subType="Knight" animationTree="data/animations/knight.xml" life="175" points="350" speed="40" damage="3" specialDamage="0" height="15" dieMesh="nakedDie.mesh" dieAnimation="Die">
+        <scale x="1" y="1" z="1" />
+        <entity name="knightB#62" id="437726976" castshadows="true" meshFile="knightB.mesh" type="Enemy" subType="Knight" animationTree="data/animations/knight.xml" life="175" points="350" speed="40" damage="3" specialDamage="0" height="13" dieMesh="nakedDie.mesh" dieAnimation="Die">
           <rotation qw="1" qx="0" qy="0" qz="0" />
           <position x="0" y="0" z="0" />
           <scale x="1" y="1" z="1" />
           <subentities>
             <subentity materialName="knightB_material_5" index="0" visible="true" />
+          </subentities>
+        </entity>
+      </node>
+      <node name="Woman#0" id="769066432">
+        <rotation qw="0.746058" qx="0" qy="-0.665881" qz="0" />
+        <position x="689.804" y="15" z="757.627" />
+        <scale x="1" y="1" z="1" />
+        <entity name="princess#0" id="410718112" castshadows="true" meshFile="princess.mesh" type="Enemy" subType="Woman" animationTree="data/animations/woman.xml" life="15" points="-250" speed="30" damage="0" specialDamage="0" height="13" dieMesh="nakedDie.mesh" dieAnimation="Die">
+          <rotation qw="0.957571" qx="0" qy="-0.288196" qz="0" />
+          <position x="0" y="0" z="0" />
+          <scale x="1" y="1" z="1" />
+          <subentities>
+            <subentity materialName="princess_material" index="0" visible="true" />
+          </subentities>
+        </entity>
+      </node>
+      <node name="Woman#11" id="842646528">
+        <rotation qw="0.374607" qx="0" qy="-0.927184" qz="0" />
+        <position x="-463.525" y="145.682" z="-199.708" />
+        <scale x="1" y="1" z="1" />
+        <entity name="princess#11" id="942320000" castshadows="true" meshFile="princess.mesh" type="Enemy" subType="Cow" animationTree="data/animations/woman.xml" life="15" points="-250" speed="30" damage="0" specialDamage="0" height="0" dieMesh="nakedDie.mesh" dieAnimation="Die">
+          <rotation qw="0.957571" qx="0" qy="-0.288196" qz="0" />
+          <position x="0" y="0" z="0" />
+          <scale x="1" y="1" z="1" />
+          <subentities>
+            <subentity materialName="princess_material_3" index="0" visible="true" />
           </subentities>
         </entity>
       </node>
@@ -6488,7 +6644,7 @@
       </node>
       <node name="Archer#16" id="139316992">
         <rotation qw="-0.422618" qx="0" qy="-0.906308" qz="0" />
-        <position x="-141.689" y="18.0822" z="-131.679" />
+        <position x="-141.689" y="15" z="-131.679" />
         <scale x="1" y="1" z="1" />
         <entity name="archer#16" id="200170912" castshadows="false" meshFile="archer.mesh" type="Enemy" subType="Archer" animationTree="data/animations/archer.xml" life="60" points="250" speed="40" damage="1" specialDamage="4" height="13" dieMesh="nakedDie.mesh" dieAnimation="Die">
           <rotation qw="1" qx="0" qy="0" qz="0" />
@@ -6617,6 +6773,19 @@
           </subentities>
         </entity>
       </node>
+      <node name="CowFake#03" id="567155968">
+        <rotation qw="0.299479" qx="0.09156" qy="0.908202" qz="-0.277665" />
+        <position x="-428.496" y="139.406" z="-36.5121" />
+        <scale x="1" y="1" z="1" />
+        <entity name="cow#23" id="246436976" castshadows="false" meshFile="cow.mesh" type="Enemy" subType="Cow" animationTree="data/animations/cow.xml" life="10" points="50" speed="15" damage="0" specialDamage="0" height="0" dieMesh="cowDie.mesh" dieAnimation="">
+          <rotation qw="1" qx="0" qy="0" qz="0" />
+          <position x="0" y="0" z="0" />
+          <scale x="1" y="1" z="1" />
+          <subentities>
+            <subentity materialName="CowMaterial" index="0" visible="true" />
+          </subentities>
+        </entity>
+      </node>
       <node name="Naked#03" id="255287312">
         <rotation qw="1" qx="0" qy="0" qz="0" />
         <position x="161.977" y="12" z="-385.248" />
@@ -6722,6 +6891,19 @@
           </subentities>
         </entity>
       </node>
+      <node name="Woman#5" id="727896960">
+        <rotation qw="0.461748" qx="0" qy="0.887011" qz="0" />
+        <position x="613.673" y="15" z="-400.395" />
+        <scale x="1" y="1" z="1" />
+        <entity name="princess#5" id="31067844" castshadows="true" meshFile="princess.mesh" type="Enemy" subType="Woman" animationTree="data/animations/woman.xml" life="15" points="-250" speed="30" damage="0" specialDamage="0" height="13" dieMesh="nakedDie.mesh" dieAnimation="Die">
+          <rotation qw="0.957571" qx="0" qy="-0.288196" qz="0" />
+          <position x="0" y="0" z="0" />
+          <scale x="1" y="1" z="1" />
+          <subentities>
+            <subentity materialName="princess_material" index="0" visible="true" />
+          </subentities>
+        </entity>
+      </node>
       <node name="Knight#42" id="548051392">
         <rotation qw="0.922201" qx="0" qy="0.386711" qz="0" />
         <position x="918.837" y="12" z="-301.334" />
@@ -6777,7 +6959,7 @@
       </node>
       <node name="Archer#13" id="896053952">
         <rotation qw="-0.422618" qx="0" qy="-0.906308" qz="0" />
-        <position x="-104.383" y="20.5991" z="-90.0482" />
+        <position x="-104.383" y="15" z="-90.0482" />
         <scale x="1" y="1" z="1" />
         <entity name="archer#13" id="393566688" castshadows="false" meshFile="archer.mesh" type="Enemy" subType="Archer" animationTree="data/animations/archer.xml" life="60" points="250" speed="40" damage="1" specialDamage="4" height="13" dieMesh="nakedDie.mesh" dieAnimation="Die">
           <rotation qw="1" qx="0" qy="0" qz="0" />
@@ -6838,6 +7020,19 @@
           <scale x="1" y="1" z="1" />
           <subentities>
             <subentity materialName="knightB_material_2" index="0" visible="true" />
+          </subentities>
+        </entity>
+      </node>
+      <node name="Woman#2" id="789635904">
+        <rotation qw="0.85264" qx="0" qy="-0.522498" qz="0" />
+        <position x="1151.6" y="15" z="523.71" />
+        <scale x="1" y="1" z="1" />
+        <entity name="princess#2" id="743797120" castshadows="true" meshFile="princess.mesh" type="Enemy" subType="Woman" animationTree="data/animations/woman.xml" life="15" points="-250" speed="30" damage="0" specialDamage="0" height="13" dieMesh="nakedDie.mesh" dieAnimation="Die">
+          <rotation qw="0.957571" qx="0" qy="-0.288196" qz="0" />
+          <position x="0" y="0" z="0" />
+          <scale x="1" y="1" z="1" />
+          <subentities>
+            <subentity materialName="princess_material_3" index="0" visible="true" />
           </subentities>
         </entity>
       </node>
@@ -6909,7 +7104,7 @@
       </node>
       <node name="Archer#18" id="203070160">
         <rotation qw="-0.422618" qx="0" qy="-0.906308" qz="0" />
-        <position x="-74.0993" y="21.1176" z="-139.445" />
+        <position x="-74.0993" y="15" z="-139.445" />
         <scale x="1" y="1" z="1" />
         <entity name="archer#18" id="517960128" castshadows="false" meshFile="archer.mesh" type="Enemy" subType="Archer" animationTree="data/animations/archer.xml" life="60" points="250" speed="40" damage="1" specialDamage="4" height="13" dieMesh="nakedDie.mesh" dieAnimation="Die">
           <rotation qw="1" qx="0" qy="0" qz="0" />
@@ -6931,6 +7126,19 @@
           <scale x="1" y="1" z="1" />
           <subentities>
             <subentity materialName="chicken_material" index="0" visible="true" />
+          </subentities>
+        </entity>
+      </node>
+      <node name="CowFake#00" id="535569312">
+        <rotation qw="0.427511" qx="0.160273" qy="0.886324" qz="0.0773066" />
+        <position x="796.379" y="37.3183" z="552.592" />
+        <scale x="1" y="1" z="1" />
+        <entity name="cow#20" id="902005056" castshadows="false" meshFile="cow.mesh" type="Enemy" subType="Cow" animationTree="data/animations/cow.xml" life="10" points="50" speed="15" damage="0" specialDamage="0" height="0" dieMesh="cowDie.mesh" dieAnimation="">
+          <rotation qw="1" qx="0" qy="0" qz="0" />
+          <position x="0" y="0" z="0" />
+          <scale x="1" y="1" z="1" />
+          <subentities>
+            <subentity materialName="CowMaterial" index="0" visible="true" />
           </subentities>
         </entity>
       </node>
@@ -7022,19 +7230,6 @@
           <scale x="1" y="1" z="1" />
           <subentities>
             <subentity materialName="wizard_material_2" index="0" visible="true" />
-          </subentities>
-        </entity>
-      </node>
-      <node name="Cow#09" id="379131424">
-        <rotation qw="0.777146" qx="0" qy="0.629321" qz="0" />
-        <position x="1027.95" y="34" z="51.8579" />
-        <scale x="1" y="1" z="1" />
-        <entity name="cow#9" id="509262368" castshadows="false" meshFile="cow.mesh" type="Enemy" subType="Cow" animationTree="data/animations/cow.xml" life="10" points="50" speed="15" damage="0" specialDamage="0" height="0" dieMesh="cowDie.mesh" dieAnimation="">
-          <rotation qw="1" qx="0" qy="0" qz="0" />
-          <position x="0" y="0" z="0" />
-          <scale x="1" y="1" z="1" />
-          <subentities>
-            <subentity materialName="CowMaterial" index="0" visible="true" />
           </subentities>
         </entity>
       </node>
@@ -7209,6 +7404,19 @@
           </subentities>
         </entity>
       </node>
+      <node name="Woman#7" id="454329056">
+        <rotation qw="-0.0654037" qx="0" qy="0.997859" qz="0" />
+        <position x="-50.6122" y="15" z="-14.5236" />
+        <scale x="1" y="1" z="1" />
+        <entity name="princess#7" id="441297664" castshadows="true" meshFile="princess.mesh" type="Enemy" subType="Woman" animationTree="data/animations/woman.xml" life="15" points="-250" speed="30" damage="0" specialDamage="0" height="13" dieMesh="nakedDie.mesh" dieAnimation="Die">
+          <rotation qw="0.957571" qx="0" qy="-0.288196" qz="0" />
+          <position x="0" y="0" z="0" />
+          <scale x="1" y="1" z="1" />
+          <subentities>
+            <subentity materialName="princess_material_2" index="0" visible="true" />
+          </subentities>
+        </entity>
+      </node>
       <node name="Archer#4" id="940977216">
         <rotation qw="0.987688" qx="0" qy="-0.156434" qz="0" />
         <position x="1202.7" y="15" z="211.504" />
@@ -7251,7 +7459,7 @@
       </node>
       <node name="Archer#15" id="388103872">
         <rotation qw="-0.422618" qx="0" qy="-0.906308" qz="0" />
-        <position x="-150.051" y="15.8824" z="-203.843" />
+        <position x="-150.051" y="15" z="-203.843" />
         <scale x="1" y="1" z="1" />
         <entity name="archer#15" id="570574016" castshadows="false" meshFile="archer.mesh" type="Enemy" subType="Archer" animationTree="data/animations/archer.xml" life="60" points="250" speed="40" damage="1" specialDamage="4" height="13" dieMesh="nakedDie.mesh" dieAnimation="Die">
           <rotation qw="1" qx="0" qy="0" qz="0" />

@@ -100,6 +100,12 @@ void AudioManager::loadResources()
 	// Sound FX	
 	createStream( String("ArcherAttack01.wav"));
 	createStream( String("ArcherAttack02.wav"));
+	createStream( String("BatteringRamAttack01.wav"));
+	createStream( String("BatteringRamAttack02.wav"));
+	createStream( String("BatteringRamAttack03.wav"));
+	createStream( String("BatteringRamHit01.wav"));
+	createStream( String("BatteringRamHit02.wav"));
+	createStream( String("BatteringRamDie01.wav"));
 	createStream( String("ChickenDie01.wav"));
 	createStream( String("CowDie01.wav"));
 	createStream( String("EnemyAttack01.wav"));
@@ -113,13 +119,20 @@ void AudioManager::loadResources()
 	createStream( String("NakedDie01.wav"));
 	createStream( String("NakedHit01.wav"));
 	createStream( String("NakedHit02.wav"));
+	createStream( String("PeasantHit01.wav"));
+	createStream( String("PeasantHit02.wav"));
+	createStream( String("PeasantDie01.wav"));
 	createStream( String("WizardAttack01.wav"));
 	createStream( String("WizardAttack02.wav"));
 	createStream( String("WizardDie01.wav"));
 	createStream( String("WizardHit01.wav"));
 	createStream( String("WizardHit02.wav"));
-
-	createStream( String("Item01.wav"));
+	createStream( String("WomanHit01.wav"));
+	createStream( String("WomanHit02.wav"));
+	createStream( String("WomanDie02.wav"));
+	createStream( String("WomanGive01.wav"));
+	createStream( String("WomanGive02.wav"));
+	createStream( String("WomanGive03.wav"));		
 
 	createStream( String("Flame01.wav"));
 	createStream( String("PlayerAttack01.wav"));
@@ -131,6 +144,10 @@ void AudioManager::loadResources()
 	createStream( String("PlayerYell01.wav"));
 	createStream( String("PlayerYell02.wav"));
 	createStream( String("PlayerYell03.wav"));
+	createStream( String("Speech_Die.wav"));	
+	createStream( String("Speech_IveRuledHereForEaons.wav"));
+	createStream( String("Speech_KneelBeforeMeHuman.wav"));
+	createStream( String("Speech_YourSkillsArePathetic.wav"));
 
 	createStream( String("ObjectHit01.wav"));
 	createStream( String("ObjectHit02.wav"));
@@ -143,6 +160,10 @@ void AudioManager::loadResources()
 	createStream( String("ObjectFireHit01.wav"));
 	createStream( String("ObjectFireHit02.wav"));
 
+	createStream( String("Item01.wav"));
+	createStream( String("Drop01.wav"));
+
+	createStream( String("Select.wav"));
 
 	// Musics
 	createLoopedStream(String("soft_track.mp3"));
@@ -634,7 +655,8 @@ EVENTS_BEGIN_REGISTER_HANDLERS(AudioManager)
 	EVENTS_REGISTER_HANDLER(AudioManager, PlayerKilled);
 	EVENTS_REGISTER_HANDLER(AudioManager, EnemyAttack);
 	EVENTS_REGISTER_HANDLER(AudioManager, EnemyHit);
-	EVENTS_REGISTER_HANDLER(AudioManager, EnemyKilled);	
+	EVENTS_REGISTER_HANDLER(AudioManager, EnemyKilled);
+	EVENTS_REGISTER_HANDLER(AudioManager, EnemyCreateItem);
 	EVENTS_REGISTER_HANDLER(AudioManager, ItemCatch);
 	EVENTS_REGISTER_HANDLER(AudioManager, ProjectileFire);
 	EVENTS_REGISTER_HANDLER(AudioManager, ProjectileHit);
@@ -650,6 +672,7 @@ EVENTS_BEGIN_UNREGISTER_HANDLERS(AudioManager)
 	EVENTS_UNREGISTER_HANDLER(AudioManager, EnemyAttack);
 	EVENTS_UNREGISTER_HANDLER(AudioManager, EnemyHit);
 	EVENTS_UNREGISTER_HANDLER(AudioManager, EnemyKilled);	
+	EVENTS_UNREGISTER_HANDLER(AudioManager, EnemyCreateItem);
 	EVENTS_UNREGISTER_HANDLER(AudioManager, ItemCatch);
 	EVENTS_UNREGISTER_HANDLER(AudioManager, ProjectileFire);
 	EVENTS_UNREGISTER_HANDLER(AudioManager, ProjectileHit);
@@ -744,6 +767,17 @@ EVENTS_DEFINE_HANDLER(AudioManager, EnemyAttack)
 		else
 			playSound("EnemyAttack03.wav",sceneNode->_getDerivedPosition(),&channelIndex);
 	}
+	else if ( enemy->getEnemyType() == Enemy::EnemyTypes::BatteringRam )
+	{
+		int sound = rand()%3;
+
+		if( sound == 0 )
+			playSound("BatteringRamAttack01.wav",sceneNode->_getDerivedPosition(),&channelIndex);
+		else if( sound == 1 )
+			playSound("BatteringRamAttack02.wav",sceneNode->_getDerivedPosition(),&channelIndex);
+		else
+			playSound("BatteringRamAttack03.wav",sceneNode->_getDerivedPosition(),&channelIndex);
+	}
 }
 
 EVENTS_DEFINE_HANDLER(AudioManager, EnemyHit)
@@ -779,7 +813,28 @@ EVENTS_DEFINE_HANDLER(AudioManager, EnemyHit)
 	{
 		playSound("CowDie01.wav",sceneNode->_getDerivedPosition(),&channelIndex);
 	}
-	else if( enemy->getEnemyType() == Enemy::EnemyTypes::Knight )
+	else if( enemy->getEnemyType() == Enemy::EnemyTypes::Woman )
+	{
+		if( (rand()%2) == 0 )
+			playSound("WomanHit01.wav",sceneNode->_getDerivedPosition(),&channelIndex);
+		else 
+			playSound("WomanHit02.wav",sceneNode->_getDerivedPosition(),&channelIndex);
+	}
+	else if( enemy->getEnemyType() == Enemy::EnemyTypes::Peasant )
+	{
+		if( (rand()%2) == 0 )
+			playSound("PeasantHit01.wav",sceneNode->_getDerivedPosition(),&channelIndex);
+		else 
+			playSound("PeasantHit02.wav",sceneNode->_getDerivedPosition(),&channelIndex);
+	}
+	else if( enemy->getEnemyType() == Enemy::EnemyTypes::BatteringRam )
+	{
+		if( (rand()%2) == 0 )
+			playSound("BatteringRamHit01.wav",sceneNode->_getDerivedPosition(),&channelIndex);
+		else 
+			playSound("BatteringRamHit02.wav",sceneNode->_getDerivedPosition(),&channelIndex);
+	}
+	else if( enemy->getEnemyType() == Enemy::EnemyTypes::Knight || enemy->getEnemyType() == Enemy::EnemyTypes::Archer)
 	{
 		int sound = rand()%3;
 
@@ -821,13 +876,50 @@ EVENTS_DEFINE_HANDLER(AudioManager, EnemyKilled)
 	{
 		playSound("CowDie01.wav",sceneNode->_getDerivedPosition(),&channelIndex);
 	}
-	else if( enemy->getEnemyType() == Enemy::EnemyTypes::Knight )
+	else if( enemy->getEnemyType() == Enemy::EnemyTypes::Woman )
+	{
+		playSound("WomanDie01.wav",sceneNode->_getDerivedPosition(),&channelIndex);
+	}
+	else if( enemy->getEnemyType() == Enemy::EnemyTypes::Peasant )
+	{
+		playSound("PeasantDie01.wav",sceneNode->_getDerivedPosition(),&channelIndex);
+	}
+	else if( enemy->getEnemyType() == Enemy::EnemyTypes::BatteringRam )
+	{
+		playSound("BatteringRamDie01.wav",sceneNode->_getDerivedPosition(),&channelIndex);
+	}
+	else if( enemy->getEnemyType() == Enemy::EnemyTypes::Knight || enemy->getEnemyType() == Enemy::EnemyTypes::Archer)
 	{
 		if( (rand()%2) == 0 )
 			playSound("EnemyDie01.wav",sceneNode->_getDerivedPosition(),&channelIndex);
 		else
 			playSound("EnemyDie02.wav",sceneNode->_getDerivedPosition(),&channelIndex);
 	}
+}
+
+EVENTS_DEFINE_HANDLER(AudioManager, EnemyCreateItem)
+{
+	Debug::Out("AudioManager : handleEnemyCreateItemEvent");
+
+	EnemyPtr enemy = evt->getEnemy();
+
+	int channelIndex = -1;
+
+	SceneNode* sceneNode = enemy->_getSceneNode();
+
+	if( enemy->getEnemyType() == Enemy::EnemyTypes::Woman )
+	{
+		int sound = rand()% 3;
+
+		if( sound == 0 )
+			playSound("WomanGive01.wav",sceneNode->_getDerivedPosition(),&channelIndex);
+		if( sound == 1 )
+			playSound("WomanGive02.wav",sceneNode->_getDerivedPosition(),&channelIndex);
+		else
+			playSound("WomanGive03.wav",sceneNode->_getDerivedPosition(),&channelIndex);
+	}
+	else
+		playSound("Drop01.wav",sceneNode->_getDerivedPosition(),&channelIndex);
 }
 
 EVENTS_DEFINE_HANDLER(AudioManager, ItemCatch)

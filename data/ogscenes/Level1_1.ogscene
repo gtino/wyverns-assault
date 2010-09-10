@@ -52,10 +52,10 @@
       <DIRECTORY type="FileSystem" value="../materials/scripts/sky"></DIRECTORY>
       <DIRECTORY type="FileSystem" value="../models/stages"></DIRECTORY>
     </RESOURCEDIRECTORIES>
-  <CAMERASPEED value="18"></CAMERASPEED>
+  <CAMERASPEED value="17"></CAMERASPEED>
   <CAMERAPOSITIONS count="1">
     <OPTION id="0" position="1417.36 9.53911 54.9741" orientation="0.707107 0 0.707107 0"></OPTION>
-    <OPTION id="1" position="1316.99 273.607 -19.5498" orientation="0.797959 -0.231537 0.534395 0.155158"></OPTION>
+    <OPTION id="1" position="-388.913 293.964 -310.316" orientation="-0.122551 0.0343892 -0.95432 -0.270318"></OPTION>
   </CAMERAPOSITIONS>
     <LAYERS>
       <LAYER id="0" name="Layer 0" visible="true"></LAYER>
@@ -136,9 +136,9 @@
   <OBJECT object_id="2000000002" name="Viewport1" typename="Viewport Object">
     <PROPERTY id="camera::clipdistance" type="8" value="0.05 100000"></PROPERTY>
     <PROPERTY id="camera::fov" type="6" value="1"></PROPERTY>
-    <PROPERTY id="camera::orientation" type="13" value="0.797989 -0.231545 0.534415 0.155164"></PROPERTY>
+    <PROPERTY id="camera::orientation" type="13" value="-0.122557 0.0343909 -0.954366 -0.270331"></PROPERTY>
     <PROPERTY id="camera::polymode" type="2" value="3"></PROPERTY>
-    <PROPERTY id="camera::position" type="9" value="1316.99 273.607 -19.5498"></PROPERTY>
+    <PROPERTY id="camera::position" type="9" value="-388.913 293.964 -310.316"></PROPERTY>
     <PROPERTY id="camera::viewmode" type="2" value="0"></PROPERTY>
     <PROPERTY id="colour" type="11" value="0.901961 0.901961 0.901961 1"></PROPERTY>
     <PROPERTY id="compositorcount" type="2" value="0"></PROPERTY>
@@ -5236,6 +5236,30 @@
     </CUSTOMPROPERTIES>
   </OBJECT>
 
+  <OBJECT object_id="680440640" name="Woman#9" typename="Node Object" parentnode="Enemies">
+    <PROPERTY id="autotracktarget" type="7" value="None"></PROPERTY>
+    <PROPERTY id="layer" type="2" value="0"></PROPERTY>
+    <PROPERTY id="locked" type="12" value="false"></PROPERTY>
+    <PROPERTY id="orientation" type="13" value="-0.121869 0 -0.992546 0"></PROPERTY>
+    <PROPERTY id="position" type="9" value="-298.384 155 70.7275"></PROPERTY>
+    <PROPERTY id="scale" type="9" value="1 1 1"></PROPERTY>
+    <PROPERTY id="updatescript" type="7" value=""></PROPERTY>
+    <CUSTOMPROPERTIES>
+    </CUSTOMPROPERTIES>
+  </OBJECT>
+
+  <OBJECT object_id="293008224" name="CowFake#02" typename="Node Object" parentnode="Enemies">
+    <PROPERTY id="autotracktarget" type="7" value="None"></PROPERTY>
+    <PROPERTY id="layer" type="2" value="0"></PROPERTY>
+    <PROPERTY id="locked" type="12" value="false"></PROPERTY>
+    <PROPERTY id="orientation" type="13" value="0.771953 0.253266 0.581524 0.0421296"></PROPERTY>
+    <PROPERTY id="position" type="9" value="475.506 54.7773 -648.455"></PROPERTY>
+    <PROPERTY id="scale" type="9" value="1 1 1"></PROPERTY>
+    <PROPERTY id="updatescript" type="7" value=""></PROPERTY>
+    <CUSTOMPROPERTIES>
+    </CUSTOMPROPERTIES>
+  </OBJECT>
+
   <OBJECT object_id="336313952" name="Naked#00" typename="Node Object" parentnode="Enemies">
     <PROPERTY id="autotracktarget" type="7" value="None"></PROPERTY>
     <PROPERTY id="layer" type="2" value="0"></PROPERTY>
@@ -5319,6 +5343,18 @@
     </CUSTOMPROPERTIES>
   </OBJECT>
 
+  <OBJECT object_id="398602240" name="Woman#4" typename="Node Object" parentnode="Enemies">
+    <PROPERTY id="autotracktarget" type="7" value="None"></PROPERTY>
+    <PROPERTY id="layer" type="2" value="0"></PROPERTY>
+    <PROPERTY id="locked" type="12" value="false"></PROPERTY>
+    <PROPERTY id="orientation" type="13" value="0.19509 0 0.980785 0"></PROPERTY>
+    <PROPERTY id="position" type="9" value="1028.72 15 -94.0889"></PROPERTY>
+    <PROPERTY id="scale" type="9" value="1 1 1"></PROPERTY>
+    <PROPERTY id="updatescript" type="7" value=""></PROPERTY>
+    <CUSTOMPROPERTIES>
+    </CUSTOMPROPERTIES>
+  </OBJECT>
+
   <OBJECT object_id="27832880" name="Knight#43" typename="Node Object" parentnode="Enemies">
     <PROPERTY id="autotracktarget" type="7" value="None"></PROPERTY>
     <PROPERTY id="layer" type="2" value="0"></PROPERTY>
@@ -5360,7 +5396,7 @@
     <PROPERTY id="layer" type="2" value="0"></PROPERTY>
     <PROPERTY id="locked" type="12" value="false"></PROPERTY>
     <PROPERTY id="orientation" type="13" value="-0.422618 0 -0.906308 0"></PROPERTY>
-    <PROPERTY id="position" type="9" value="-68.3922 21.5911 -100.053"></PROPERTY>
+    <PROPERTY id="position" type="9" value="-68.3922 15 -100.053"></PROPERTY>
     <PROPERTY id="scale" type="9" value="1 1 1"></PROPERTY>
     <PROPERTY id="updatescript" type="7" value=""></PROPERTY>
     <CUSTOMPROPERTIES>
@@ -5421,7 +5457,31 @@
     <PROPERTY id="locked" type="12" value="false"></PROPERTY>
     <PROPERTY id="orientation" type="13" value="-0.725373 0 -0.688356 0"></PROPERTY>
     <PROPERTY id="position" type="9" value="541.252 12 -521.871"></PROPERTY>
-    <PROPERTY id="scale" type="9" value="1.5 1.5 1.5"></PROPERTY>
+    <PROPERTY id="scale" type="9" value="1 1 1"></PROPERTY>
+    <PROPERTY id="updatescript" type="7" value=""></PROPERTY>
+    <CUSTOMPROPERTIES>
+    </CUSTOMPROPERTIES>
+  </OBJECT>
+
+  <OBJECT object_id="284249408" name="Woman#1" typename="Node Object" parentnode="Enemies">
+    <PROPERTY id="autotracktarget" type="7" value="None"></PROPERTY>
+    <PROPERTY id="layer" type="2" value="0"></PROPERTY>
+    <PROPERTY id="locked" type="12" value="false"></PROPERTY>
+    <PROPERTY id="orientation" type="13" value="0.981627 0 0.190809 0"></PROPERTY>
+    <PROPERTY id="position" type="9" value="1012.59 15 423.275"></PROPERTY>
+    <PROPERTY id="scale" type="9" value="1 1 1"></PROPERTY>
+    <PROPERTY id="updatescript" type="7" value=""></PROPERTY>
+    <CUSTOMPROPERTIES>
+    </CUSTOMPROPERTIES>
+  </OBJECT>
+
+  <OBJECT object_id="969969792" name="Woman#10" typename="Node Object" parentnode="Enemies">
+    <PROPERTY id="autotracktarget" type="7" value="None"></PROPERTY>
+    <PROPERTY id="layer" type="2" value="0"></PROPERTY>
+    <PROPERTY id="locked" type="12" value="false"></PROPERTY>
+    <PROPERTY id="orientation" type="13" value="0.104529 0 -0.994522 0"></PROPERTY>
+    <PROPERTY id="position" type="9" value="-541.811 37 -143.694"></PROPERTY>
+    <PROPERTY id="scale" type="9" value="1 1 1"></PROPERTY>
     <PROPERTY id="updatescript" type="7" value=""></PROPERTY>
     <CUSTOMPROPERTIES>
     </CUSTOMPROPERTIES>
@@ -5468,7 +5528,7 @@
     <PROPERTY id="layer" type="2" value="0"></PROPERTY>
     <PROPERTY id="locked" type="12" value="false"></PROPERTY>
     <PROPERTY id="orientation" type="13" value="-0.422618 0 -0.906308 0"></PROPERTY>
-    <PROPERTY id="position" type="9" value="-107.92 22.6577 -161.881"></PROPERTY>
+    <PROPERTY id="position" type="9" value="-107.92 15 -161.881"></PROPERTY>
     <PROPERTY id="scale" type="9" value="1 1 1"></PROPERTY>
     <PROPERTY id="updatescript" type="7" value=""></PROPERTY>
     <CUSTOMPROPERTIES>
@@ -5554,6 +5614,18 @@
     <PROPERTY id="orientation" type="13" value="0.488621 0 0.872496 0"></PROPERTY>
     <PROPERTY id="position" type="9" value="126.535 3.5 -302.753"></PROPERTY>
     <PROPERTY id="scale" type="9" value="5 5 5"></PROPERTY>
+    <PROPERTY id="updatescript" type="7" value=""></PROPERTY>
+    <CUSTOMPROPERTIES>
+    </CUSTOMPROPERTIES>
+  </OBJECT>
+
+  <OBJECT object_id="379131424" name="CowFake" typename="Node Object" parentnode="Enemies">
+    <PROPERTY id="autotracktarget" type="7" value="None"></PROPERTY>
+    <PROPERTY id="layer" type="2" value="0"></PROPERTY>
+    <PROPERTY id="locked" type="12" value="false"></PROPERTY>
+    <PROPERTY id="orientation" type="13" value="0.777146 0 0.629321 0"></PROPERTY>
+    <PROPERTY id="position" type="9" value="1027.95 34 51.8579"></PROPERTY>
+    <PROPERTY id="scale" type="9" value="1 1 1"></PROPERTY>
     <PROPERTY id="updatescript" type="7" value=""></PROPERTY>
     <CUSTOMPROPERTIES>
     </CUSTOMPROPERTIES>
@@ -5672,7 +5744,7 @@
     <PROPERTY id="layer" type="2" value="0"></PROPERTY>
     <PROPERTY id="locked" type="12" value="false"></PROPERTY>
     <PROPERTY id="orientation" type="13" value="-0.422618 0 -0.906308 0"></PROPERTY>
-    <PROPERTY id="position" type="9" value="-104.126 19.3128 -136.458"></PROPERTY>
+    <PROPERTY id="position" type="9" value="-104.126 15 -136.458"></PROPERTY>
     <PROPERTY id="scale" type="9" value="1 1 1"></PROPERTY>
     <PROPERTY id="updatescript" type="7" value=""></PROPERTY>
     <CUSTOMPROPERTIES>
@@ -5727,6 +5799,18 @@
     </CUSTOMPROPERTIES>
   </OBJECT>
 
+  <OBJECT object_id="311136224" name="Woman#6" typename="Node Object" parentnode="Enemies">
+    <PROPERTY id="autotracktarget" type="7" value="None"></PROPERTY>
+    <PROPERTY id="layer" type="2" value="0"></PROPERTY>
+    <PROPERTY id="locked" type="12" value="false"></PROPERTY>
+    <PROPERTY id="orientation" type="13" value="0.62932 0 0.777146 0"></PROPERTY>
+    <PROPERTY id="position" type="9" value="129.534 15 -594.168"></PROPERTY>
+    <PROPERTY id="scale" type="9" value="1 1 1"></PROPERTY>
+    <PROPERTY id="updatescript" type="7" value=""></PROPERTY>
+    <CUSTOMPROPERTIES>
+    </CUSTOMPROPERTIES>
+  </OBJECT>
+
   <OBJECT object_id="855098112" name="Archer#5" typename="Node Object" parentnode="Enemies">
     <PROPERTY id="autotracktarget" type="7" value="None"></PROPERTY>
     <PROPERTY id="layer" type="2" value="0"></PROPERTY>
@@ -5768,7 +5852,7 @@
     <PROPERTY id="layer" type="2" value="0"></PROPERTY>
     <PROPERTY id="locked" type="12" value="false"></PROPERTY>
     <PROPERTY id="orientation" type="13" value="-0.422618 0 -0.906308 0"></PROPERTY>
-    <PROPERTY id="position" type="9" value="-147.221 17.3939 -162.947"></PROPERTY>
+    <PROPERTY id="position" type="9" value="-147.221 15 -162.947"></PROPERTY>
     <PROPERTY id="scale" type="9" value="1 1 1"></PROPERTY>
     <PROPERTY id="updatescript" type="7" value=""></PROPERTY>
     <CUSTOMPROPERTIES>
@@ -5805,6 +5889,18 @@
     <PROPERTY id="locked" type="12" value="false"></PROPERTY>
     <PROPERTY id="orientation" type="13" value="0.816642 0 -0.577145 0"></PROPERTY>
     <PROPERTY id="position" type="9" value="1253.07 12 33.1249"></PROPERTY>
+    <PROPERTY id="scale" type="9" value="1 1 1"></PROPERTY>
+    <PROPERTY id="updatescript" type="7" value=""></PROPERTY>
+    <CUSTOMPROPERTIES>
+    </CUSTOMPROPERTIES>
+  </OBJECT>
+
+  <OBJECT object_id="863582272" name="Woman#3" typename="Node Object" parentnode="Enemies">
+    <PROPERTY id="autotracktarget" type="7" value="None"></PROPERTY>
+    <PROPERTY id="layer" type="2" value="0"></PROPERTY>
+    <PROPERTY id="locked" type="12" value="false"></PROPERTY>
+    <PROPERTY id="orientation" type="13" value="0.96005 0 -0.279829 0"></PROPERTY>
+    <PROPERTY id="position" type="9" value="1206.41 15 376.469"></PROPERTY>
     <PROPERTY id="scale" type="9" value="1 1 1"></PROPERTY>
     <PROPERTY id="updatescript" type="7" value=""></PROPERTY>
     <CUSTOMPROPERTIES>
@@ -5888,7 +5984,7 @@
     <PROPERTY id="layer" type="2" value="0"></PROPERTY>
     <PROPERTY id="locked" type="12" value="false"></PROPERTY>
     <PROPERTY id="orientation" type="13" value="-0.422618 0 -0.906308 0"></PROPERTY>
-    <PROPERTY id="position" type="9" value="-117.566 26.6986 -110.954"></PROPERTY>
+    <PROPERTY id="position" type="9" value="-117.566 15 -110.954"></PROPERTY>
     <PROPERTY id="scale" type="9" value="1 1 1"></PROPERTY>
     <PROPERTY id="updatescript" type="7" value=""></PROPERTY>
     <CUSTOMPROPERTIES>
@@ -5901,6 +5997,30 @@
     <PROPERTY id="locked" type="12" value="false"></PROPERTY>
     <PROPERTY id="orientation" type="13" value="0.92388 0 -0.382683 0"></PROPERTY>
     <PROPERTY id="position" type="9" value="1076.52 2 540.132"></PROPERTY>
+    <PROPERTY id="scale" type="9" value="1 1 1"></PROPERTY>
+    <PROPERTY id="updatescript" type="7" value=""></PROPERTY>
+    <CUSTOMPROPERTIES>
+    </CUSTOMPROPERTIES>
+  </OBJECT>
+
+  <OBJECT object_id="708517760" name="Woman#8" typename="Node Object" parentnode="Enemies">
+    <PROPERTY id="autotracktarget" type="7" value="None"></PROPERTY>
+    <PROPERTY id="layer" type="2" value="0"></PROPERTY>
+    <PROPERTY id="locked" type="12" value="false"></PROPERTY>
+    <PROPERTY id="orientation" type="13" value="0.279829 0 -0.96005 0"></PROPERTY>
+    <PROPERTY id="position" type="9" value="-178.911 15 61.6515"></PROPERTY>
+    <PROPERTY id="scale" type="9" value="1 1 1"></PROPERTY>
+    <PROPERTY id="updatescript" type="7" value=""></PROPERTY>
+    <CUSTOMPROPERTIES>
+    </CUSTOMPROPERTIES>
+  </OBJECT>
+
+  <OBJECT object_id="274971776" name="CowFake#01" typename="Node Object" parentnode="Enemies">
+    <PROPERTY id="autotracktarget" type="7" value="None"></PROPERTY>
+    <PROPERTY id="layer" type="2" value="0"></PROPERTY>
+    <PROPERTY id="locked" type="12" value="false"></PROPERTY>
+    <PROPERTY id="orientation" type="13" value="0.612217 0 0.79069 0"></PROPERTY>
+    <PROPERTY id="position" type="9" value="-80.6083 103.043 61.1463"></PROPERTY>
     <PROPERTY id="scale" type="9" value="1 1 1"></PROPERTY>
     <PROPERTY id="updatescript" type="7" value=""></PROPERTY>
     <CUSTOMPROPERTIES>
@@ -6055,8 +6175,8 @@
     <PROPERTY id="autotracktarget" type="7" value="None"></PROPERTY>
     <PROPERTY id="layer" type="2" value="0"></PROPERTY>
     <PROPERTY id="locked" type="12" value="false"></PROPERTY>
-    <PROPERTY id="orientation" type="13" value="0.989016 0 -0.147809 0"></PROPERTY>
-    <PROPERTY id="position" type="9" value="20.1109 18.4122 867.212"></PROPERTY>
+    <PROPERTY id="orientation" type="13" value="0.845728 0 -0.533614 0"></PROPERTY>
+    <PROPERTY id="position" type="9" value="137.655 18.4122 883.483"></PROPERTY>
     <PROPERTY id="scale" type="9" value="1 1 1"></PROPERTY>
     <PROPERTY id="updatescript" type="7" value=""></PROPERTY>
     <CUSTOMPROPERTIES>
@@ -6068,7 +6188,7 @@
     <PROPERTY id="layer" type="2" value="0"></PROPERTY>
     <PROPERTY id="locked" type="12" value="false"></PROPERTY>
     <PROPERTY id="orientation" type="13" value="-0.422618 0 -0.906308 0"></PROPERTY>
-    <PROPERTY id="position" type="9" value="-59.8604 24.1227 -73.3647"></PROPERTY>
+    <PROPERTY id="position" type="9" value="-59.8604 15 -73.3647"></PROPERTY>
     <PROPERTY id="scale" type="9" value="1 1 1"></PROPERTY>
     <PROPERTY id="updatescript" type="7" value=""></PROPERTY>
     <CUSTOMPROPERTIES>
@@ -6141,7 +6261,31 @@
     <PROPERTY id="locked" type="12" value="false"></PROPERTY>
     <PROPERTY id="orientation" type="13" value="-0.725373 0 -0.688356 0"></PROPERTY>
     <PROPERTY id="position" type="9" value="535.656 12 -547.256"></PROPERTY>
-    <PROPERTY id="scale" type="9" value="1.5 1.5 1.5"></PROPERTY>
+    <PROPERTY id="scale" type="9" value="1 1 1"></PROPERTY>
+    <PROPERTY id="updatescript" type="7" value=""></PROPERTY>
+    <CUSTOMPROPERTIES>
+    </CUSTOMPROPERTIES>
+  </OBJECT>
+
+  <OBJECT object_id="769066432" name="Woman#0" typename="Node Object" parentnode="Enemies">
+    <PROPERTY id="autotracktarget" type="7" value="None"></PROPERTY>
+    <PROPERTY id="layer" type="2" value="0"></PROPERTY>
+    <PROPERTY id="locked" type="12" value="false"></PROPERTY>
+    <PROPERTY id="orientation" type="13" value="0.746058 0 -0.665881 0"></PROPERTY>
+    <PROPERTY id="position" type="9" value="689.804 15 757.627"></PROPERTY>
+    <PROPERTY id="scale" type="9" value="1 1 1"></PROPERTY>
+    <PROPERTY id="updatescript" type="7" value=""></PROPERTY>
+    <CUSTOMPROPERTIES>
+    </CUSTOMPROPERTIES>
+  </OBJECT>
+
+  <OBJECT object_id="842646528" name="Woman#11" typename="Node Object" parentnode="Enemies">
+    <PROPERTY id="autotracktarget" type="7" value="None"></PROPERTY>
+    <PROPERTY id="layer" type="2" value="0"></PROPERTY>
+    <PROPERTY id="locked" type="12" value="false"></PROPERTY>
+    <PROPERTY id="orientation" type="13" value="0.374607 0 -0.927184 0"></PROPERTY>
+    <PROPERTY id="position" type="9" value="-463.525 145.682 -199.708"></PROPERTY>
+    <PROPERTY id="scale" type="9" value="1 1 1"></PROPERTY>
     <PROPERTY id="updatescript" type="7" value=""></PROPERTY>
     <CUSTOMPROPERTIES>
     </CUSTOMPROPERTIES>
@@ -6200,7 +6344,7 @@
     <PROPERTY id="layer" type="2" value="0"></PROPERTY>
     <PROPERTY id="locked" type="12" value="false"></PROPERTY>
     <PROPERTY id="orientation" type="13" value="-0.422618 0 -0.906308 0"></PROPERTY>
-    <PROPERTY id="position" type="9" value="-141.689 18.0822 -131.679"></PROPERTY>
+    <PROPERTY id="position" type="9" value="-141.689 15 -131.679"></PROPERTY>
     <PROPERTY id="scale" type="9" value="1 1 1"></PROPERTY>
     <PROPERTY id="updatescript" type="7" value=""></PROPERTY>
     <CUSTOMPROPERTIES>
@@ -6315,6 +6459,18 @@
     </CUSTOMPROPERTIES>
   </OBJECT>
 
+  <OBJECT object_id="567155968" name="CowFake#03" typename="Node Object" parentnode="Enemies">
+    <PROPERTY id="autotracktarget" type="7" value="None"></PROPERTY>
+    <PROPERTY id="layer" type="2" value="0"></PROPERTY>
+    <PROPERTY id="locked" type="12" value="false"></PROPERTY>
+    <PROPERTY id="orientation" type="13" value="0.299479 0.09156 0.908202 -0.277665"></PROPERTY>
+    <PROPERTY id="position" type="9" value="-428.496 139.406 -36.5121"></PROPERTY>
+    <PROPERTY id="scale" type="9" value="1 1 1"></PROPERTY>
+    <PROPERTY id="updatescript" type="7" value=""></PROPERTY>
+    <CUSTOMPROPERTIES>
+    </CUSTOMPROPERTIES>
+  </OBJECT>
+
   <OBJECT object_id="255287312" name="Naked#03" typename="Node Object" parentnode="Enemies">
     <PROPERTY id="autotracktarget" type="7" value="None"></PROPERTY>
     <PROPERTY id="layer" type="2" value="0"></PROPERTY>
@@ -6411,6 +6567,18 @@
     </CUSTOMPROPERTIES>
   </OBJECT>
 
+  <OBJECT object_id="727896960" name="Woman#5" typename="Node Object" parentnode="Enemies">
+    <PROPERTY id="autotracktarget" type="7" value="None"></PROPERTY>
+    <PROPERTY id="layer" type="2" value="0"></PROPERTY>
+    <PROPERTY id="locked" type="12" value="false"></PROPERTY>
+    <PROPERTY id="orientation" type="13" value="0.461748 0 0.887011 0"></PROPERTY>
+    <PROPERTY id="position" type="9" value="613.673 15 -400.395"></PROPERTY>
+    <PROPERTY id="scale" type="9" value="1 1 1"></PROPERTY>
+    <PROPERTY id="updatescript" type="7" value=""></PROPERTY>
+    <CUSTOMPROPERTIES>
+    </CUSTOMPROPERTIES>
+  </OBJECT>
+
   <OBJECT object_id="548051392" name="Knight#42" typename="Node Object" parentnode="Enemies">
     <PROPERTY id="autotracktarget" type="7" value="None"></PROPERTY>
     <PROPERTY id="layer" type="2" value="0"></PROPERTY>
@@ -6464,7 +6632,7 @@
     <PROPERTY id="layer" type="2" value="0"></PROPERTY>
     <PROPERTY id="locked" type="12" value="false"></PROPERTY>
     <PROPERTY id="orientation" type="13" value="-0.422618 0 -0.906308 0"></PROPERTY>
-    <PROPERTY id="position" type="9" value="-104.383 20.5991 -90.0482"></PROPERTY>
+    <PROPERTY id="position" type="9" value="-104.383 15 -90.0482"></PROPERTY>
     <PROPERTY id="scale" type="9" value="1 1 1"></PROPERTY>
     <PROPERTY id="updatescript" type="7" value=""></PROPERTY>
     <CUSTOMPROPERTIES>
@@ -6513,6 +6681,18 @@
     <PROPERTY id="locked" type="12" value="false"></PROPERTY>
     <PROPERTY id="orientation" type="13" value="-0.725373 0 -0.688356 0"></PROPERTY>
     <PROPERTY id="position" type="9" value="507.824 12 -430.491"></PROPERTY>
+    <PROPERTY id="scale" type="9" value="1 1 1"></PROPERTY>
+    <PROPERTY id="updatescript" type="7" value=""></PROPERTY>
+    <CUSTOMPROPERTIES>
+    </CUSTOMPROPERTIES>
+  </OBJECT>
+
+  <OBJECT object_id="789635904" name="Woman#2" typename="Node Object" parentnode="Enemies">
+    <PROPERTY id="autotracktarget" type="7" value="None"></PROPERTY>
+    <PROPERTY id="layer" type="2" value="0"></PROPERTY>
+    <PROPERTY id="locked" type="12" value="false"></PROPERTY>
+    <PROPERTY id="orientation" type="13" value="0.85264 0 -0.522498 0"></PROPERTY>
+    <PROPERTY id="position" type="9" value="1151.6 15 523.71"></PROPERTY>
     <PROPERTY id="scale" type="9" value="1 1 1"></PROPERTY>
     <PROPERTY id="updatescript" type="7" value=""></PROPERTY>
     <CUSTOMPROPERTIES>
@@ -6584,7 +6764,7 @@
     <PROPERTY id="layer" type="2" value="0"></PROPERTY>
     <PROPERTY id="locked" type="12" value="false"></PROPERTY>
     <PROPERTY id="orientation" type="13" value="-0.422618 0 -0.906308 0"></PROPERTY>
-    <PROPERTY id="position" type="9" value="-74.0993 21.1176 -139.445"></PROPERTY>
+    <PROPERTY id="position" type="9" value="-74.0993 15 -139.445"></PROPERTY>
     <PROPERTY id="scale" type="9" value="1 1 1"></PROPERTY>
     <PROPERTY id="updatescript" type="7" value=""></PROPERTY>
     <CUSTOMPROPERTIES>
@@ -6597,6 +6777,18 @@
     <PROPERTY id="locked" type="12" value="false"></PROPERTY>
     <PROPERTY id="orientation" type="13" value="0.461749 0 0.887011 0"></PROPERTY>
     <PROPERTY id="position" type="9" value="339.891 2 -515.401"></PROPERTY>
+    <PROPERTY id="scale" type="9" value="1 1 1"></PROPERTY>
+    <PROPERTY id="updatescript" type="7" value=""></PROPERTY>
+    <CUSTOMPROPERTIES>
+    </CUSTOMPROPERTIES>
+  </OBJECT>
+
+  <OBJECT object_id="535569312" name="CowFake#00" typename="Node Object" parentnode="Enemies">
+    <PROPERTY id="autotracktarget" type="7" value="None"></PROPERTY>
+    <PROPERTY id="layer" type="2" value="0"></PROPERTY>
+    <PROPERTY id="locked" type="12" value="false"></PROPERTY>
+    <PROPERTY id="orientation" type="13" value="0.427511 0.160273 0.886324 0.0773066"></PROPERTY>
+    <PROPERTY id="position" type="9" value="796.379 37.3183 552.592"></PROPERTY>
     <PROPERTY id="scale" type="9" value="1 1 1"></PROPERTY>
     <PROPERTY id="updatescript" type="7" value=""></PROPERTY>
     <CUSTOMPROPERTIES>
@@ -6681,18 +6873,6 @@
     <PROPERTY id="locked" type="12" value="false"></PROPERTY>
     <PROPERTY id="orientation" type="13" value="0.704014 0 0.710186 0"></PROPERTY>
     <PROPERTY id="position" type="9" value="259.243 12 -561.756"></PROPERTY>
-    <PROPERTY id="scale" type="9" value="1 1 1"></PROPERTY>
-    <PROPERTY id="updatescript" type="7" value=""></PROPERTY>
-    <CUSTOMPROPERTIES>
-    </CUSTOMPROPERTIES>
-  </OBJECT>
-
-  <OBJECT object_id="379131424" name="Cow#09" typename="Node Object" parentnode="Enemies">
-    <PROPERTY id="autotracktarget" type="7" value="None"></PROPERTY>
-    <PROPERTY id="layer" type="2" value="0"></PROPERTY>
-    <PROPERTY id="locked" type="12" value="false"></PROPERTY>
-    <PROPERTY id="orientation" type="13" value="0.777146 0 0.629321 0"></PROPERTY>
-    <PROPERTY id="position" type="9" value="1027.95 34 51.8579"></PROPERTY>
     <PROPERTY id="scale" type="9" value="1 1 1"></PROPERTY>
     <PROPERTY id="updatescript" type="7" value=""></PROPERTY>
     <CUSTOMPROPERTIES>
@@ -6855,6 +7035,18 @@
     </CUSTOMPROPERTIES>
   </OBJECT>
 
+  <OBJECT object_id="454329056" name="Woman#7" typename="Node Object" parentnode="Enemies">
+    <PROPERTY id="autotracktarget" type="7" value="None"></PROPERTY>
+    <PROPERTY id="layer" type="2" value="0"></PROPERTY>
+    <PROPERTY id="locked" type="12" value="false"></PROPERTY>
+    <PROPERTY id="orientation" type="13" value="-0.0654037 0 0.997859 0"></PROPERTY>
+    <PROPERTY id="position" type="9" value="-50.6122 15 -14.5236"></PROPERTY>
+    <PROPERTY id="scale" type="9" value="1 1 1"></PROPERTY>
+    <PROPERTY id="updatescript" type="7" value=""></PROPERTY>
+    <CUSTOMPROPERTIES>
+    </CUSTOMPROPERTIES>
+  </OBJECT>
+
   <OBJECT object_id="940977216" name="Archer#4" typename="Node Object" parentnode="Enemies">
     <PROPERTY id="autotracktarget" type="7" value="None"></PROPERTY>
     <PROPERTY id="layer" type="2" value="0"></PROPERTY>
@@ -6896,7 +7088,7 @@
     <PROPERTY id="layer" type="2" value="0"></PROPERTY>
     <PROPERTY id="locked" type="12" value="false"></PROPERTY>
     <PROPERTY id="orientation" type="13" value="-0.422618 0 -0.906308 0"></PROPERTY>
-    <PROPERTY id="position" type="9" value="-150.051 15.8824 -203.843"></PROPERTY>
+    <PROPERTY id="position" type="9" value="-150.051 15 -203.843"></PROPERTY>
     <PROPERTY id="scale" type="9" value="1 1 1"></PROPERTY>
     <PROPERTY id="updatescript" type="7" value=""></PROPERTY>
     <CUSTOMPROPERTIES>
@@ -9120,6 +9312,35 @@
     </CUSTOMPROPERTIES>
   </OBJECT>
 
+  <OBJECT object_id="902005056" name="cow#20" typename="Entity Object" parentnode="CowFake#00">
+    <PROPERTY id="autotracktarget" type="7" value="None"></PROPERTY>
+    <PROPERTY id="castshadows" type="12" value="false"></PROPERTY>
+    <PROPERTY id="layer" type="2" value="1"></PROPERTY>
+    <PROPERTY id="locked" type="12" value="false"></PROPERTY>
+    <PROPERTY id="meshfile" type="7" value="cow.mesh"></PROPERTY>
+    <PROPERTY id="orientation" type="13" value="1 0 0 0"></PROPERTY>
+    <PROPERTY id="position" type="9" value="0 0 0"></PROPERTY>
+    <PROPERTY id="renderingdistance" type="6" value="10000"></PROPERTY>
+    <PROPERTY id="scale" type="9" value="1 1 1"></PROPERTY>
+    <PROPERTY id="subentity0::material" type="7" value="CowMaterial"></PROPERTY>
+    <PROPERTY id="subentity0::visible" type="12" value="true"></PROPERTY>
+    <PROPERTY id="subentitycount" type="2" value="1"></PROPERTY>
+    <PROPERTY id="updatescript" type="7" value=""></PROPERTY>
+    <CUSTOMPROPERTIES>
+      <PROPERTY id="type" type="7" value="Enemy"></PROPERTY>
+      <PROPERTY id="subType" type="7" value="Cow"></PROPERTY>
+      <PROPERTY id="animationTree" type="7" value="data/animations/cow.xml"></PROPERTY>
+      <PROPERTY id="life" type="6" value="10"></PROPERTY>
+      <PROPERTY id="points" type="6" value="50"></PROPERTY>
+      <PROPERTY id="speed" type="6" value="15"></PROPERTY>
+      <PROPERTY id="damage" type="6" value="0"></PROPERTY>
+      <PROPERTY id="specialDamage" type="6" value="0"></PROPERTY>
+      <PROPERTY id="height" type="6" value="0"></PROPERTY>
+      <PROPERTY id="dieMesh" type="7" value="cowDie.mesh"></PROPERTY>
+      <PROPERTY id="dieAnimation" type="7" value=""></PROPERTY>
+    </CUSTOMPROPERTIES>
+  </OBJECT>
+
   <OBJECT object_id="478469184" name="Entity#246" typename="Entity Object" parentnode="Bush11">
     <PROPERTY id="autotracktarget" type="7" value="None"></PROPERTY>
     <PROPERTY id="castshadows" type="12" value="true"></PROPERTY>
@@ -9963,6 +10184,35 @@
     </CUSTOMPROPERTIES>
   </OBJECT>
 
+  <OBJECT object_id="727866496" name="princess#10" typename="Entity Object" parentnode="Woman#10">
+    <PROPERTY id="autotracktarget" type="7" value="None"></PROPERTY>
+    <PROPERTY id="castshadows" type="12" value="true"></PROPERTY>
+    <PROPERTY id="layer" type="2" value="1"></PROPERTY>
+    <PROPERTY id="locked" type="12" value="false"></PROPERTY>
+    <PROPERTY id="meshfile" type="7" value="princess.mesh"></PROPERTY>
+    <PROPERTY id="orientation" type="13" value="0.957571 0 -0.288196 0"></PROPERTY>
+    <PROPERTY id="position" type="9" value="0 0 0"></PROPERTY>
+    <PROPERTY id="renderingdistance" type="6" value="10000"></PROPERTY>
+    <PROPERTY id="scale" type="9" value="1 1 1"></PROPERTY>
+    <PROPERTY id="subentity0::material" type="7" value="princess_material_4"></PROPERTY>
+    <PROPERTY id="subentity0::visible" type="12" value="true"></PROPERTY>
+    <PROPERTY id="subentitycount" type="2" value="1"></PROPERTY>
+    <PROPERTY id="updatescript" type="7" value=""></PROPERTY>
+    <CUSTOMPROPERTIES>
+      <PROPERTY id="type" type="7" value="Enemy"></PROPERTY>
+      <PROPERTY id="subType" type="7" value="Woman"></PROPERTY>
+      <PROPERTY id="animationTree" type="7" value="data/animations/woman.xml"></PROPERTY>
+      <PROPERTY id="life" type="6" value="15"></PROPERTY>
+      <PROPERTY id="points" type="6" value="-250"></PROPERTY>
+      <PROPERTY id="speed" type="6" value="30"></PROPERTY>
+      <PROPERTY id="damage" type="6" value="0"></PROPERTY>
+      <PROPERTY id="specialDamage" type="6" value="0"></PROPERTY>
+      <PROPERTY id="height" type="6" value="13"></PROPERTY>
+      <PROPERTY id="dieMesh" type="7" value="nakedDie.mesh"></PROPERTY>
+      <PROPERTY id="dieAnimation" type="7" value="Die"></PROPERTY>
+    </CUSTOMPROPERTIES>
+  </OBJECT>
+
   <OBJECT object_id="624103552" name="knightB#66" typename="Entity Object" parentnode="Knight#66">
     <PROPERTY id="autotracktarget" type="7" value="None"></PROPERTY>
     <PROPERTY id="castshadows" type="12" value="true"></PROPERTY>
@@ -10521,6 +10771,35 @@
       <PROPERTY id="life" type="6" value="0"></PROPERTY>
       <PROPERTY id="drunkTime" type="6" value="3"></PROPERTY>
       <PROPERTY id="points" type="6" value="200"></PROPERTY>
+    </CUSTOMPROPERTIES>
+  </OBJECT>
+
+  <OBJECT object_id="189275808" name="princess#6" typename="Entity Object" parentnode="Woman#6">
+    <PROPERTY id="autotracktarget" type="7" value="None"></PROPERTY>
+    <PROPERTY id="castshadows" type="12" value="true"></PROPERTY>
+    <PROPERTY id="layer" type="2" value="1"></PROPERTY>
+    <PROPERTY id="locked" type="12" value="false"></PROPERTY>
+    <PROPERTY id="meshfile" type="7" value="princess.mesh"></PROPERTY>
+    <PROPERTY id="orientation" type="13" value="0.957571 0 -0.288196 0"></PROPERTY>
+    <PROPERTY id="position" type="9" value="0 0 0"></PROPERTY>
+    <PROPERTY id="renderingdistance" type="6" value="10000"></PROPERTY>
+    <PROPERTY id="scale" type="9" value="1 1 1"></PROPERTY>
+    <PROPERTY id="subentity0::material" type="7" value="princess_material_4"></PROPERTY>
+    <PROPERTY id="subentity0::visible" type="12" value="true"></PROPERTY>
+    <PROPERTY id="subentitycount" type="2" value="1"></PROPERTY>
+    <PROPERTY id="updatescript" type="7" value=""></PROPERTY>
+    <CUSTOMPROPERTIES>
+      <PROPERTY id="type" type="7" value="Enemy"></PROPERTY>
+      <PROPERTY id="subType" type="7" value="Woman"></PROPERTY>
+      <PROPERTY id="animationTree" type="7" value="data/animations/woman.xml"></PROPERTY>
+      <PROPERTY id="life" type="6" value="15"></PROPERTY>
+      <PROPERTY id="points" type="6" value="-250"></PROPERTY>
+      <PROPERTY id="speed" type="6" value="30"></PROPERTY>
+      <PROPERTY id="damage" type="6" value="0"></PROPERTY>
+      <PROPERTY id="specialDamage" type="6" value="0"></PROPERTY>
+      <PROPERTY id="height" type="6" value="13"></PROPERTY>
+      <PROPERTY id="dieMesh" type="7" value="nakedDie.mesh"></PROPERTY>
+      <PROPERTY id="dieAnimation" type="7" value="Die"></PROPERTY>
     </CUSTOMPROPERTIES>
   </OBJECT>
 
@@ -11124,6 +11403,35 @@
     <PROPERTY id="subentitycount" type="2" value="1"></PROPERTY>
     <PROPERTY id="updatescript" type="7" value=""></PROPERTY>
     <CUSTOMPROPERTIES>
+    </CUSTOMPROPERTIES>
+  </OBJECT>
+
+  <OBJECT object_id="49623096" name="princess#8" typename="Entity Object" parentnode="Woman#8">
+    <PROPERTY id="autotracktarget" type="7" value="None"></PROPERTY>
+    <PROPERTY id="castshadows" type="12" value="true"></PROPERTY>
+    <PROPERTY id="layer" type="2" value="1"></PROPERTY>
+    <PROPERTY id="locked" type="12" value="false"></PROPERTY>
+    <PROPERTY id="meshfile" type="7" value="princess.mesh"></PROPERTY>
+    <PROPERTY id="orientation" type="13" value="0.957571 0 -0.288196 0"></PROPERTY>
+    <PROPERTY id="position" type="9" value="0 0 0"></PROPERTY>
+    <PROPERTY id="renderingdistance" type="6" value="10000"></PROPERTY>
+    <PROPERTY id="scale" type="9" value="1 1 1"></PROPERTY>
+    <PROPERTY id="subentity0::material" type="7" value="princess_material"></PROPERTY>
+    <PROPERTY id="subentity0::visible" type="12" value="true"></PROPERTY>
+    <PROPERTY id="subentitycount" type="2" value="1"></PROPERTY>
+    <PROPERTY id="updatescript" type="7" value=""></PROPERTY>
+    <CUSTOMPROPERTIES>
+      <PROPERTY id="type" type="7" value="Enemy"></PROPERTY>
+      <PROPERTY id="subType" type="7" value="Woman"></PROPERTY>
+      <PROPERTY id="animationTree" type="7" value="data/animations/woman.xml"></PROPERTY>
+      <PROPERTY id="life" type="6" value="15"></PROPERTY>
+      <PROPERTY id="points" type="6" value="-250"></PROPERTY>
+      <PROPERTY id="speed" type="6" value="30"></PROPERTY>
+      <PROPERTY id="damage" type="6" value="0"></PROPERTY>
+      <PROPERTY id="specialDamage" type="6" value="0"></PROPERTY>
+      <PROPERTY id="height" type="6" value="13"></PROPERTY>
+      <PROPERTY id="dieMesh" type="7" value="nakedDie.mesh"></PROPERTY>
+      <PROPERTY id="dieAnimation" type="7" value="Die"></PROPERTY>
     </CUSTOMPROPERTIES>
   </OBJECT>
 
@@ -11968,6 +12276,35 @@
     <PROPERTY id="subentitycount" type="2" value="1"></PROPERTY>
     <PROPERTY id="updatescript" type="7" value=""></PROPERTY>
     <CUSTOMPROPERTIES>
+    </CUSTOMPROPERTIES>
+  </OBJECT>
+
+  <OBJECT object_id="838923328" name="cow#21" typename="Entity Object" parentnode="CowFake#01">
+    <PROPERTY id="autotracktarget" type="7" value="None"></PROPERTY>
+    <PROPERTY id="castshadows" type="12" value="false"></PROPERTY>
+    <PROPERTY id="layer" type="2" value="1"></PROPERTY>
+    <PROPERTY id="locked" type="12" value="false"></PROPERTY>
+    <PROPERTY id="meshfile" type="7" value="cow.mesh"></PROPERTY>
+    <PROPERTY id="orientation" type="13" value="1 0 0 0"></PROPERTY>
+    <PROPERTY id="position" type="9" value="0 0 0"></PROPERTY>
+    <PROPERTY id="renderingdistance" type="6" value="10000"></PROPERTY>
+    <PROPERTY id="scale" type="9" value="1 1 1"></PROPERTY>
+    <PROPERTY id="subentity0::material" type="7" value="CowMaterial"></PROPERTY>
+    <PROPERTY id="subentity0::visible" type="12" value="true"></PROPERTY>
+    <PROPERTY id="subentitycount" type="2" value="1"></PROPERTY>
+    <PROPERTY id="updatescript" type="7" value=""></PROPERTY>
+    <CUSTOMPROPERTIES>
+      <PROPERTY id="type" type="7" value="Enemy"></PROPERTY>
+      <PROPERTY id="subType" type="7" value="Cow"></PROPERTY>
+      <PROPERTY id="animationTree" type="7" value="data/animations/cow.xml"></PROPERTY>
+      <PROPERTY id="life" type="6" value="10"></PROPERTY>
+      <PROPERTY id="points" type="6" value="50"></PROPERTY>
+      <PROPERTY id="speed" type="6" value="15"></PROPERTY>
+      <PROPERTY id="damage" type="6" value="0"></PROPERTY>
+      <PROPERTY id="specialDamage" type="6" value="0"></PROPERTY>
+      <PROPERTY id="height" type="6" value="0"></PROPERTY>
+      <PROPERTY id="dieMesh" type="7" value="cowDie.mesh"></PROPERTY>
+      <PROPERTY id="dieAnimation" type="7" value=""></PROPERTY>
     </CUSTOMPROPERTIES>
   </OBJECT>
 
@@ -13097,6 +13434,35 @@
     </CUSTOMPROPERTIES>
   </OBJECT>
 
+  <OBJECT object_id="441297664" name="princess#7" typename="Entity Object" parentnode="Woman#7">
+    <PROPERTY id="autotracktarget" type="7" value="None"></PROPERTY>
+    <PROPERTY id="castshadows" type="12" value="true"></PROPERTY>
+    <PROPERTY id="layer" type="2" value="1"></PROPERTY>
+    <PROPERTY id="locked" type="12" value="false"></PROPERTY>
+    <PROPERTY id="meshfile" type="7" value="princess.mesh"></PROPERTY>
+    <PROPERTY id="orientation" type="13" value="0.957571 0 -0.288196 0"></PROPERTY>
+    <PROPERTY id="position" type="9" value="0 0 0"></PROPERTY>
+    <PROPERTY id="renderingdistance" type="6" value="10000"></PROPERTY>
+    <PROPERTY id="scale" type="9" value="1 1 1"></PROPERTY>
+    <PROPERTY id="subentity0::material" type="7" value="princess_material_2"></PROPERTY>
+    <PROPERTY id="subentity0::visible" type="12" value="true"></PROPERTY>
+    <PROPERTY id="subentitycount" type="2" value="1"></PROPERTY>
+    <PROPERTY id="updatescript" type="7" value=""></PROPERTY>
+    <CUSTOMPROPERTIES>
+      <PROPERTY id="type" type="7" value="Enemy"></PROPERTY>
+      <PROPERTY id="subType" type="7" value="Woman"></PROPERTY>
+      <PROPERTY id="animationTree" type="7" value="data/animations/woman.xml"></PROPERTY>
+      <PROPERTY id="life" type="6" value="15"></PROPERTY>
+      <PROPERTY id="points" type="6" value="-250"></PROPERTY>
+      <PROPERTY id="speed" type="6" value="30"></PROPERTY>
+      <PROPERTY id="damage" type="6" value="0"></PROPERTY>
+      <PROPERTY id="specialDamage" type="6" value="0"></PROPERTY>
+      <PROPERTY id="height" type="6" value="13"></PROPERTY>
+      <PROPERTY id="dieMesh" type="7" value="nakedDie.mesh"></PROPERTY>
+      <PROPERTY id="dieAnimation" type="7" value="Die"></PROPERTY>
+    </CUSTOMPROPERTIES>
+  </OBJECT>
+
   <OBJECT object_id="800256384" name="Entity#116" typename="Entity Object" parentnode="CandyPillTree9">
     <PROPERTY id="autotracktarget" type="7" value="None"></PROPERTY>
     <PROPERTY id="castshadows" type="12" value="true"></PROPERTY>
@@ -13710,6 +14076,35 @@
     </CUSTOMPROPERTIES>
   </OBJECT>
 
+  <OBJECT object_id="517654944" name="princess#9" typename="Entity Object" parentnode="Woman#9">
+    <PROPERTY id="autotracktarget" type="7" value="None"></PROPERTY>
+    <PROPERTY id="castshadows" type="12" value="true"></PROPERTY>
+    <PROPERTY id="layer" type="2" value="1"></PROPERTY>
+    <PROPERTY id="locked" type="12" value="false"></PROPERTY>
+    <PROPERTY id="meshfile" type="7" value="princess.mesh"></PROPERTY>
+    <PROPERTY id="orientation" type="13" value="0.957571 0 -0.288196 0"></PROPERTY>
+    <PROPERTY id="position" type="9" value="0 0 0"></PROPERTY>
+    <PROPERTY id="renderingdistance" type="6" value="10000"></PROPERTY>
+    <PROPERTY id="scale" type="9" value="1 1 1"></PROPERTY>
+    <PROPERTY id="subentity0::material" type="7" value="princess_material_2"></PROPERTY>
+    <PROPERTY id="subentity0::visible" type="12" value="true"></PROPERTY>
+    <PROPERTY id="subentitycount" type="2" value="1"></PROPERTY>
+    <PROPERTY id="updatescript" type="7" value=""></PROPERTY>
+    <CUSTOMPROPERTIES>
+      <PROPERTY id="type" type="7" value="Enemy"></PROPERTY>
+      <PROPERTY id="subType" type="7" value="Cow"></PROPERTY>
+      <PROPERTY id="animationTree" type="7" value="data/animations/woman.xml"></PROPERTY>
+      <PROPERTY id="life" type="6" value="15"></PROPERTY>
+      <PROPERTY id="points" type="6" value="-250"></PROPERTY>
+      <PROPERTY id="speed" type="6" value="30"></PROPERTY>
+      <PROPERTY id="damage" type="6" value="0"></PROPERTY>
+      <PROPERTY id="specialDamage" type="6" value="0"></PROPERTY>
+      <PROPERTY id="height" type="6" value="0"></PROPERTY>
+      <PROPERTY id="dieMesh" type="7" value="nakedDie.mesh"></PROPERTY>
+      <PROPERTY id="dieAnimation" type="7" value="Die"></PROPERTY>
+    </CUSTOMPROPERTIES>
+  </OBJECT>
+
   <OBJECT object_id="861323904" name="cube#3" typename="Entity Object" parentnode="Fire#01">
     <PROPERTY id="autotracktarget" type="7" value="None"></PROPERTY>
     <PROPERTY id="castshadows" type="12" value="false"></PROPERTY>
@@ -14294,6 +14689,35 @@
     </CUSTOMPROPERTIES>
   </OBJECT>
 
+  <OBJECT object_id="864375744" name="cow#22" typename="Entity Object" parentnode="CowFake#02">
+    <PROPERTY id="autotracktarget" type="7" value="None"></PROPERTY>
+    <PROPERTY id="castshadows" type="12" value="false"></PROPERTY>
+    <PROPERTY id="layer" type="2" value="1"></PROPERTY>
+    <PROPERTY id="locked" type="12" value="false"></PROPERTY>
+    <PROPERTY id="meshfile" type="7" value="cow.mesh"></PROPERTY>
+    <PROPERTY id="orientation" type="13" value="1 0 0 0"></PROPERTY>
+    <PROPERTY id="position" type="9" value="0 0 0"></PROPERTY>
+    <PROPERTY id="renderingdistance" type="6" value="10000"></PROPERTY>
+    <PROPERTY id="scale" type="9" value="1 1 1"></PROPERTY>
+    <PROPERTY id="subentity0::material" type="7" value="CowMaterial"></PROPERTY>
+    <PROPERTY id="subentity0::visible" type="12" value="true"></PROPERTY>
+    <PROPERTY id="subentitycount" type="2" value="1"></PROPERTY>
+    <PROPERTY id="updatescript" type="7" value=""></PROPERTY>
+    <CUSTOMPROPERTIES>
+      <PROPERTY id="type" type="7" value="Enemy"></PROPERTY>
+      <PROPERTY id="subType" type="7" value="Cow"></PROPERTY>
+      <PROPERTY id="animationTree" type="7" value="data/animations/cow.xml"></PROPERTY>
+      <PROPERTY id="life" type="6" value="10"></PROPERTY>
+      <PROPERTY id="points" type="6" value="50"></PROPERTY>
+      <PROPERTY id="speed" type="6" value="15"></PROPERTY>
+      <PROPERTY id="damage" type="6" value="0"></PROPERTY>
+      <PROPERTY id="specialDamage" type="6" value="0"></PROPERTY>
+      <PROPERTY id="height" type="6" value="0"></PROPERTY>
+      <PROPERTY id="dieMesh" type="7" value="cowDie.mesh"></PROPERTY>
+      <PROPERTY id="dieAnimation" type="7" value=""></PROPERTY>
+    </CUSTOMPROPERTIES>
+  </OBJECT>
+
   <OBJECT object_id="437726976" name="knightB#62" typename="Entity Object" parentnode="Knight#62">
     <PROPERTY id="autotracktarget" type="7" value="None"></PROPERTY>
     <PROPERTY id="castshadows" type="12" value="true"></PROPERTY>
@@ -14317,7 +14741,7 @@
       <PROPERTY id="speed" type="6" value="40"></PROPERTY>
       <PROPERTY id="damage" type="6" value="3"></PROPERTY>
       <PROPERTY id="specialDamage" type="6" value="0"></PROPERTY>
-      <PROPERTY id="height" type="6" value="15"></PROPERTY>
+      <PROPERTY id="height" type="6" value="13"></PROPERTY>
       <PROPERTY id="dieMesh" type="7" value="nakedDie.mesh"></PROPERTY>
       <PROPERTY id="dieAnimation" type="7" value="Die"></PROPERTY>
     </CUSTOMPROPERTIES>
@@ -14968,6 +15392,35 @@
     </CUSTOMPROPERTIES>
   </OBJECT>
 
+  <OBJECT object_id="743797120" name="princess#2" typename="Entity Object" parentnode="Woman#2">
+    <PROPERTY id="autotracktarget" type="7" value="None"></PROPERTY>
+    <PROPERTY id="castshadows" type="12" value="true"></PROPERTY>
+    <PROPERTY id="layer" type="2" value="1"></PROPERTY>
+    <PROPERTY id="locked" type="12" value="false"></PROPERTY>
+    <PROPERTY id="meshfile" type="7" value="princess.mesh"></PROPERTY>
+    <PROPERTY id="orientation" type="13" value="0.957571 0 -0.288196 0"></PROPERTY>
+    <PROPERTY id="position" type="9" value="0 0 0"></PROPERTY>
+    <PROPERTY id="renderingdistance" type="6" value="10000"></PROPERTY>
+    <PROPERTY id="scale" type="9" value="1 1 1"></PROPERTY>
+    <PROPERTY id="subentity0::material" type="7" value="princess_material_3"></PROPERTY>
+    <PROPERTY id="subentity0::visible" type="12" value="true"></PROPERTY>
+    <PROPERTY id="subentitycount" type="2" value="1"></PROPERTY>
+    <PROPERTY id="updatescript" type="7" value=""></PROPERTY>
+    <CUSTOMPROPERTIES>
+      <PROPERTY id="type" type="7" value="Enemy"></PROPERTY>
+      <PROPERTY id="subType" type="7" value="Woman"></PROPERTY>
+      <PROPERTY id="animationTree" type="7" value="data/animations/woman.xml"></PROPERTY>
+      <PROPERTY id="life" type="6" value="15"></PROPERTY>
+      <PROPERTY id="points" type="6" value="-250"></PROPERTY>
+      <PROPERTY id="speed" type="6" value="30"></PROPERTY>
+      <PROPERTY id="damage" type="6" value="0"></PROPERTY>
+      <PROPERTY id="specialDamage" type="6" value="0"></PROPERTY>
+      <PROPERTY id="height" type="6" value="13"></PROPERTY>
+      <PROPERTY id="dieMesh" type="7" value="nakedDie.mesh"></PROPERTY>
+      <PROPERTY id="dieAnimation" type="7" value="Die"></PROPERTY>
+    </CUSTOMPROPERTIES>
+  </OBJECT>
+
   <OBJECT object_id="548783808" name="Entity#119" typename="Entity Object" parentnode="BonBonTree7">
     <PROPERTY id="autotracktarget" type="7" value="None"></PROPERTY>
     <PROPERTY id="castshadows" type="12" value="true"></PROPERTY>
@@ -15493,6 +15946,35 @@
       <PROPERTY id="life" type="6" value="0"></PROPERTY>
       <PROPERTY id="drunkTime" type="6" value="3"></PROPERTY>
       <PROPERTY id="points" type="6" value="200"></PROPERTY>
+    </CUSTOMPROPERTIES>
+  </OBJECT>
+
+  <OBJECT object_id="432782976" name="princess#4" typename="Entity Object" parentnode="Woman#4">
+    <PROPERTY id="autotracktarget" type="7" value="None"></PROPERTY>
+    <PROPERTY id="castshadows" type="12" value="true"></PROPERTY>
+    <PROPERTY id="layer" type="2" value="1"></PROPERTY>
+    <PROPERTY id="locked" type="12" value="false"></PROPERTY>
+    <PROPERTY id="meshfile" type="7" value="princess.mesh"></PROPERTY>
+    <PROPERTY id="orientation" type="13" value="0.957571 0 -0.288196 0"></PROPERTY>
+    <PROPERTY id="position" type="9" value="0 0 0"></PROPERTY>
+    <PROPERTY id="renderingdistance" type="6" value="10000"></PROPERTY>
+    <PROPERTY id="scale" type="9" value="1 1 1"></PROPERTY>
+    <PROPERTY id="subentity0::material" type="7" value="princess_material_3"></PROPERTY>
+    <PROPERTY id="subentity0::visible" type="12" value="true"></PROPERTY>
+    <PROPERTY id="subentitycount" type="2" value="1"></PROPERTY>
+    <PROPERTY id="updatescript" type="7" value=""></PROPERTY>
+    <CUSTOMPROPERTIES>
+      <PROPERTY id="type" type="7" value="Enemy"></PROPERTY>
+      <PROPERTY id="subType" type="7" value="Woman"></PROPERTY>
+      <PROPERTY id="animationTree" type="7" value="data/animations/woman.xml"></PROPERTY>
+      <PROPERTY id="life" type="6" value="15"></PROPERTY>
+      <PROPERTY id="points" type="6" value="-250"></PROPERTY>
+      <PROPERTY id="speed" type="6" value="30"></PROPERTY>
+      <PROPERTY id="damage" type="6" value="0"></PROPERTY>
+      <PROPERTY id="specialDamage" type="6" value="0"></PROPERTY>
+      <PROPERTY id="height" type="6" value="13"></PROPERTY>
+      <PROPERTY id="dieMesh" type="7" value="nakedDie.mesh"></PROPERTY>
+      <PROPERTY id="dieAnimation" type="7" value="Die"></PROPERTY>
     </CUSTOMPROPERTIES>
   </OBJECT>
 
@@ -16850,6 +17332,35 @@
     </CUSTOMPROPERTIES>
   </OBJECT>
 
+  <OBJECT object_id="246436976" name="cow#23" typename="Entity Object" parentnode="CowFake#03">
+    <PROPERTY id="autotracktarget" type="7" value="None"></PROPERTY>
+    <PROPERTY id="castshadows" type="12" value="false"></PROPERTY>
+    <PROPERTY id="layer" type="2" value="1"></PROPERTY>
+    <PROPERTY id="locked" type="12" value="false"></PROPERTY>
+    <PROPERTY id="meshfile" type="7" value="cow.mesh"></PROPERTY>
+    <PROPERTY id="orientation" type="13" value="1 0 0 0"></PROPERTY>
+    <PROPERTY id="position" type="9" value="0 0 0"></PROPERTY>
+    <PROPERTY id="renderingdistance" type="6" value="10000"></PROPERTY>
+    <PROPERTY id="scale" type="9" value="1 1 1"></PROPERTY>
+    <PROPERTY id="subentity0::material" type="7" value="CowMaterial"></PROPERTY>
+    <PROPERTY id="subentity0::visible" type="12" value="true"></PROPERTY>
+    <PROPERTY id="subentitycount" type="2" value="1"></PROPERTY>
+    <PROPERTY id="updatescript" type="7" value=""></PROPERTY>
+    <CUSTOMPROPERTIES>
+      <PROPERTY id="type" type="7" value="Enemy"></PROPERTY>
+      <PROPERTY id="subType" type="7" value="Cow"></PROPERTY>
+      <PROPERTY id="animationTree" type="7" value="data/animations/cow.xml"></PROPERTY>
+      <PROPERTY id="life" type="6" value="10"></PROPERTY>
+      <PROPERTY id="points" type="6" value="50"></PROPERTY>
+      <PROPERTY id="speed" type="6" value="15"></PROPERTY>
+      <PROPERTY id="damage" type="6" value="0"></PROPERTY>
+      <PROPERTY id="specialDamage" type="6" value="0"></PROPERTY>
+      <PROPERTY id="height" type="6" value="0"></PROPERTY>
+      <PROPERTY id="dieMesh" type="7" value="cowDie.mesh"></PROPERTY>
+      <PROPERTY id="dieAnimation" type="7" value=""></PROPERTY>
+    </CUSTOMPROPERTIES>
+  </OBJECT>
+
   <OBJECT object_id="29236732" name="Entity#109" typename="Entity Object" parentnode="CastleRock">
     <PROPERTY id="autotracktarget" type="7" value="None"></PROPERTY>
     <PROPERTY id="castshadows" type="12" value="true"></PROPERTY>
@@ -17588,6 +18099,35 @@
     </CUSTOMPROPERTIES>
   </OBJECT>
 
+  <OBJECT object_id="249549856" name="princess#3" typename="Entity Object" parentnode="Woman#3">
+    <PROPERTY id="autotracktarget" type="7" value="None"></PROPERTY>
+    <PROPERTY id="castshadows" type="12" value="true"></PROPERTY>
+    <PROPERTY id="layer" type="2" value="1"></PROPERTY>
+    <PROPERTY id="locked" type="12" value="false"></PROPERTY>
+    <PROPERTY id="meshfile" type="7" value="princess.mesh"></PROPERTY>
+    <PROPERTY id="orientation" type="13" value="0.957571 0 -0.288196 0"></PROPERTY>
+    <PROPERTY id="position" type="9" value="0 0 0"></PROPERTY>
+    <PROPERTY id="renderingdistance" type="6" value="10000"></PROPERTY>
+    <PROPERTY id="scale" type="9" value="1 1 1"></PROPERTY>
+    <PROPERTY id="subentity0::material" type="7" value="princess_material_4"></PROPERTY>
+    <PROPERTY id="subentity0::visible" type="12" value="true"></PROPERTY>
+    <PROPERTY id="subentitycount" type="2" value="1"></PROPERTY>
+    <PROPERTY id="updatescript" type="7" value=""></PROPERTY>
+    <CUSTOMPROPERTIES>
+      <PROPERTY id="type" type="7" value="Enemy"></PROPERTY>
+      <PROPERTY id="subType" type="7" value="Woman"></PROPERTY>
+      <PROPERTY id="animationTree" type="7" value="data/animations/woman.xml"></PROPERTY>
+      <PROPERTY id="life" type="6" value="15"></PROPERTY>
+      <PROPERTY id="points" type="6" value="-250"></PROPERTY>
+      <PROPERTY id="speed" type="6" value="30"></PROPERTY>
+      <PROPERTY id="damage" type="6" value="0"></PROPERTY>
+      <PROPERTY id="specialDamage" type="6" value="0"></PROPERTY>
+      <PROPERTY id="height" type="6" value="13"></PROPERTY>
+      <PROPERTY id="dieMesh" type="7" value="nakedDie.mesh"></PROPERTY>
+      <PROPERTY id="dieAnimation" type="7" value="Die"></PROPERTY>
+    </CUSTOMPROPERTIES>
+  </OBJECT>
+
   <OBJECT object_id="657612864" name="redwoodTree#3" typename="Entity Object" parentnode="RedwoodTree#3">
     <PROPERTY id="autotracktarget" type="7" value="None"></PROPERTY>
     <PROPERTY id="castshadows" type="12" value="true"></PROPERTY>
@@ -18101,6 +18641,35 @@
     <PROPERTY id="subentitycount" type="2" value="1"></PROPERTY>
     <PROPERTY id="updatescript" type="7" value=""></PROPERTY>
     <CUSTOMPROPERTIES>
+    </CUSTOMPROPERTIES>
+  </OBJECT>
+
+  <OBJECT object_id="31067844" name="princess#5" typename="Entity Object" parentnode="Woman#5">
+    <PROPERTY id="autotracktarget" type="7" value="None"></PROPERTY>
+    <PROPERTY id="castshadows" type="12" value="true"></PROPERTY>
+    <PROPERTY id="layer" type="2" value="1"></PROPERTY>
+    <PROPERTY id="locked" type="12" value="false"></PROPERTY>
+    <PROPERTY id="meshfile" type="7" value="princess.mesh"></PROPERTY>
+    <PROPERTY id="orientation" type="13" value="0.957571 0 -0.288196 0"></PROPERTY>
+    <PROPERTY id="position" type="9" value="0 0 0"></PROPERTY>
+    <PROPERTY id="renderingdistance" type="6" value="10000"></PROPERTY>
+    <PROPERTY id="scale" type="9" value="1 1 1"></PROPERTY>
+    <PROPERTY id="subentity0::material" type="7" value="princess_material"></PROPERTY>
+    <PROPERTY id="subentity0::visible" type="12" value="true"></PROPERTY>
+    <PROPERTY id="subentitycount" type="2" value="1"></PROPERTY>
+    <PROPERTY id="updatescript" type="7" value=""></PROPERTY>
+    <CUSTOMPROPERTIES>
+      <PROPERTY id="type" type="7" value="Enemy"></PROPERTY>
+      <PROPERTY id="subType" type="7" value="Woman"></PROPERTY>
+      <PROPERTY id="animationTree" type="7" value="data/animations/woman.xml"></PROPERTY>
+      <PROPERTY id="life" type="6" value="15"></PROPERTY>
+      <PROPERTY id="points" type="6" value="-250"></PROPERTY>
+      <PROPERTY id="speed" type="6" value="30"></PROPERTY>
+      <PROPERTY id="damage" type="6" value="0"></PROPERTY>
+      <PROPERTY id="specialDamage" type="6" value="0"></PROPERTY>
+      <PROPERTY id="height" type="6" value="13"></PROPERTY>
+      <PROPERTY id="dieMesh" type="7" value="nakedDie.mesh"></PROPERTY>
+      <PROPERTY id="dieAnimation" type="7" value="Die"></PROPERTY>
     </CUSTOMPROPERTIES>
   </OBJECT>
 
@@ -20010,6 +20579,35 @@
     </CUSTOMPROPERTIES>
   </OBJECT>
 
+  <OBJECT object_id="410718112" name="princess#0" typename="Entity Object" parentnode="Woman#0">
+    <PROPERTY id="autotracktarget" type="7" value="None"></PROPERTY>
+    <PROPERTY id="castshadows" type="12" value="true"></PROPERTY>
+    <PROPERTY id="layer" type="2" value="1"></PROPERTY>
+    <PROPERTY id="locked" type="12" value="false"></PROPERTY>
+    <PROPERTY id="meshfile" type="7" value="princess.mesh"></PROPERTY>
+    <PROPERTY id="orientation" type="13" value="0.957571 0 -0.288196 0"></PROPERTY>
+    <PROPERTY id="position" type="9" value="0 0 0"></PROPERTY>
+    <PROPERTY id="renderingdistance" type="6" value="10000"></PROPERTY>
+    <PROPERTY id="scale" type="9" value="1 1 1"></PROPERTY>
+    <PROPERTY id="subentity0::material" type="7" value="princess_material"></PROPERTY>
+    <PROPERTY id="subentity0::visible" type="12" value="true"></PROPERTY>
+    <PROPERTY id="subentitycount" type="2" value="1"></PROPERTY>
+    <PROPERTY id="updatescript" type="7" value=""></PROPERTY>
+    <CUSTOMPROPERTIES>
+      <PROPERTY id="type" type="7" value="Enemy"></PROPERTY>
+      <PROPERTY id="subType" type="7" value="Woman"></PROPERTY>
+      <PROPERTY id="animationTree" type="7" value="data/animations/woman.xml"></PROPERTY>
+      <PROPERTY id="life" type="6" value="15"></PROPERTY>
+      <PROPERTY id="points" type="6" value="-250"></PROPERTY>
+      <PROPERTY id="speed" type="6" value="30"></PROPERTY>
+      <PROPERTY id="damage" type="6" value="0"></PROPERTY>
+      <PROPERTY id="specialDamage" type="6" value="0"></PROPERTY>
+      <PROPERTY id="height" type="6" value="13"></PROPERTY>
+      <PROPERTY id="dieMesh" type="7" value="nakedDie.mesh"></PROPERTY>
+      <PROPERTY id="dieAnimation" type="7" value="Die"></PROPERTY>
+    </CUSTOMPROPERTIES>
+  </OBJECT>
+
   <OBJECT object_id="794122176" name="Entity#305" typename="Entity Object" parentnode="Hill23">
     <PROPERTY id="autotracktarget" type="7" value="None"></PROPERTY>
     <PROPERTY id="castshadows" type="12" value="true"></PROPERTY>
@@ -21684,7 +22282,7 @@
       <PROPERTY id="speed" type="6" value="40"></PROPERTY>
       <PROPERTY id="damage" type="6" value="3"></PROPERTY>
       <PROPERTY id="specialDamage" type="6" value="0"></PROPERTY>
-      <PROPERTY id="height" type="6" value="15"></PROPERTY>
+      <PROPERTY id="height" type="6" value="13"></PROPERTY>
       <PROPERTY id="dieMesh" type="7" value="nakedDie.mesh"></PROPERTY>
       <PROPERTY id="dieAnimation" type="7" value="Die"></PROPERTY>
     </CUSTOMPROPERTIES>
@@ -21757,7 +22355,7 @@
     </CUSTOMPROPERTIES>
   </OBJECT>
 
-  <OBJECT object_id="509262368" name="cow#9" typename="Entity Object" parentnode="Cow#09">
+  <OBJECT object_id="509262368" name="cow#9" typename="Entity Object" parentnode="CowFake">
     <PROPERTY id="autotracktarget" type="7" value="None"></PROPERTY>
     <PROPERTY id="castshadows" type="12" value="false"></PROPERTY>
     <PROPERTY id="layer" type="2" value="1"></PROPERTY>
@@ -22137,6 +22735,35 @@
       <PROPERTY id="BoxZ" type="6" value="50"></PROPERTY>
       <PROPERTY id="life" type="2" value="20"></PROPERTY>
       <PROPERTY id="dieMesh" type="7" value="House03Die.mesh"></PROPERTY>
+      <PROPERTY id="dieAnimation" type="7" value="Die"></PROPERTY>
+    </CUSTOMPROPERTIES>
+  </OBJECT>
+
+  <OBJECT object_id="942320000" name="princess#11" typename="Entity Object" parentnode="Woman#11">
+    <PROPERTY id="autotracktarget" type="7" value="None"></PROPERTY>
+    <PROPERTY id="castshadows" type="12" value="true"></PROPERTY>
+    <PROPERTY id="layer" type="2" value="1"></PROPERTY>
+    <PROPERTY id="locked" type="12" value="false"></PROPERTY>
+    <PROPERTY id="meshfile" type="7" value="princess.mesh"></PROPERTY>
+    <PROPERTY id="orientation" type="13" value="0.957571 0 -0.288196 0"></PROPERTY>
+    <PROPERTY id="position" type="9" value="0 0 0"></PROPERTY>
+    <PROPERTY id="renderingdistance" type="6" value="10000"></PROPERTY>
+    <PROPERTY id="scale" type="9" value="1 1 1"></PROPERTY>
+    <PROPERTY id="subentity0::material" type="7" value="princess_material_3"></PROPERTY>
+    <PROPERTY id="subentity0::visible" type="12" value="true"></PROPERTY>
+    <PROPERTY id="subentitycount" type="2" value="1"></PROPERTY>
+    <PROPERTY id="updatescript" type="7" value=""></PROPERTY>
+    <CUSTOMPROPERTIES>
+      <PROPERTY id="type" type="7" value="Enemy"></PROPERTY>
+      <PROPERTY id="subType" type="7" value="Cow"></PROPERTY>
+      <PROPERTY id="animationTree" type="7" value="data/animations/woman.xml"></PROPERTY>
+      <PROPERTY id="life" type="6" value="15"></PROPERTY>
+      <PROPERTY id="points" type="6" value="-250"></PROPERTY>
+      <PROPERTY id="speed" type="6" value="30"></PROPERTY>
+      <PROPERTY id="damage" type="6" value="0"></PROPERTY>
+      <PROPERTY id="specialDamage" type="6" value="0"></PROPERTY>
+      <PROPERTY id="height" type="6" value="0"></PROPERTY>
+      <PROPERTY id="dieMesh" type="7" value="nakedDie.mesh"></PROPERTY>
       <PROPERTY id="dieAnimation" type="7" value="Die"></PROPERTY>
     </CUSTOMPROPERTIES>
   </OBJECT>
@@ -22782,6 +23409,35 @@
       <PROPERTY id="life" type="6" value="0"></PROPERTY>
       <PROPERTY id="drunkTime" type="6" value="3"></PROPERTY>
       <PROPERTY id="points" type="6" value="200"></PROPERTY>
+    </CUSTOMPROPERTIES>
+  </OBJECT>
+
+  <OBJECT object_id="788110016" name="princess#1" typename="Entity Object" parentnode="Woman#1">
+    <PROPERTY id="autotracktarget" type="7" value="None"></PROPERTY>
+    <PROPERTY id="castshadows" type="12" value="true"></PROPERTY>
+    <PROPERTY id="layer" type="2" value="1"></PROPERTY>
+    <PROPERTY id="locked" type="12" value="false"></PROPERTY>
+    <PROPERTY id="meshfile" type="7" value="princess.mesh"></PROPERTY>
+    <PROPERTY id="orientation" type="13" value="0.957571 0 -0.288196 0"></PROPERTY>
+    <PROPERTY id="position" type="9" value="0 0 0"></PROPERTY>
+    <PROPERTY id="renderingdistance" type="6" value="10000"></PROPERTY>
+    <PROPERTY id="scale" type="9" value="1 1 1"></PROPERTY>
+    <PROPERTY id="subentity0::material" type="7" value="princess_material_2"></PROPERTY>
+    <PROPERTY id="subentity0::visible" type="12" value="true"></PROPERTY>
+    <PROPERTY id="subentitycount" type="2" value="1"></PROPERTY>
+    <PROPERTY id="updatescript" type="7" value=""></PROPERTY>
+    <CUSTOMPROPERTIES>
+      <PROPERTY id="type" type="7" value="Enemy"></PROPERTY>
+      <PROPERTY id="subType" type="7" value="Woman"></PROPERTY>
+      <PROPERTY id="animationTree" type="7" value="data/animations/woman.xml"></PROPERTY>
+      <PROPERTY id="life" type="6" value="15"></PROPERTY>
+      <PROPERTY id="points" type="6" value="-250"></PROPERTY>
+      <PROPERTY id="speed" type="6" value="30"></PROPERTY>
+      <PROPERTY id="damage" type="6" value="0"></PROPERTY>
+      <PROPERTY id="specialDamage" type="6" value="0"></PROPERTY>
+      <PROPERTY id="height" type="6" value="13"></PROPERTY>
+      <PROPERTY id="dieMesh" type="7" value="nakedDie.mesh"></PROPERTY>
+      <PROPERTY id="dieAnimation" type="7" value="Die"></PROPERTY>
     </CUSTOMPROPERTIES>
   </OBJECT>
 

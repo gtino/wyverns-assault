@@ -64,7 +64,9 @@ namespace WyvernsAssault
 		static ItemManager& getSingleton(void);
 		static ItemManager* getSingletonPtr(void);
 
-		ItemPtr createItem(Item::ItemTypes type); // For random item generation. Still not used
+		Item::ItemParameters createParameters(Item::ItemTypes type, int subType);
+
+		ItemPtr createItem(Item::ItemTypes type, int subType, Vector3 position);
 		ItemPtr createItem(Item::ItemTypes type, Ogre::String name, Ogre::Entity* mesh, Ogre::SceneNode* sceneNode, Item::ItemParameters params, int gameArea);
 
 		int getCount();
@@ -108,6 +110,7 @@ namespace WyvernsAssault
 		EVENTS_HANDLER(ItemCatch)
 		EVENTS_HANDLER(ItemRemove)		
 		EVENTS_HANDLER(GameAreaChanged)
+		EVENTS_HANDLER(EnemyCreateItem)
 
 		// --------------------------------
 		// BEGIN Lua Interface Declarations

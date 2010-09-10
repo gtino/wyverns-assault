@@ -433,8 +433,15 @@ void EnemyManager::update(const float elapsedSeconds)
 				enemy->setAttackHited(false);
 			}
 		}
-	}
 
+		// Womans logic
+		if( enemy->getEnemyState() == Enemy::EnemyStates::Love && enemy->getEnemyType() == Enemy::EnemyTypes::Woman && enemy->hasItem() )
+		{
+			EnemyCreateItemEventPtr evt = EnemyCreateItemEventPtr(new EnemyCreateItemEvent(enemy, mCurrentGameArea));
+			EVENTS_FIRE_AFTER(evt, 0.5);
+			enemy->itemDroped();
+		}
+	}
 
 	// If game area is cleared raise event
 	if( getCount() <= 0 )
@@ -523,6 +530,15 @@ EVENTS_DEFINE_HANDLER(EnemyManager, EnemyKilled)
 		enemy->setBurning(true);
 		EnemyCustomEventPtr eCustom = EnemyCustomEventPtr(new EnemyCustomEvent(enemy));
 		EVENTS_FIRE_AFTER(eCustom, 1.0f);
+
+		// If player burns a chicken will drop an item
+		if( enemy->getEnemyType() == Enemy::EnemyTypes::Chicken || enemy->getEnemyType() == Enemy::EnemyTypes::Cow )
+		{
+			EnemyCreateItemEventPtr eItem = EnemyCreateItemEventPtr(new EnemyCreateItemEvent(enemy, mCurrentGameArea));
+			EVENTS_FIRE_AFTER(eItem, 1.0f);
+			
+			enemy->itemDroped();
+		}
 	}
 	else
 	{
@@ -546,6 +562,14 @@ EVENTS_DEFINE_HANDLER(EnemyManager, EnemyKilled)
 					enemy->setMaterialName("Skin/Red");
 			}
 		}
+	}
+
+	if( enemy->hasItem() )
+	{
+		EnemyCreateItemEventPtr eItem = EnemyCreateItemEventPtr(new EnemyCreateItemEvent(enemy, mCurrentGameArea));
+		EVENTS_FIRE_AFTER(eItem, 1.0f);
+			
+		enemy->itemDroped();
 	}
 }
 

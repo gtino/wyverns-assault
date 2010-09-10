@@ -32,7 +32,7 @@ Enemy::EnemyTypes Enemy::StringToType (Ogre::String string)
 	if(strcmp ( "Archer", str ) == 0)		return Enemy::EnemyTypes::Archer;
 	if(strcmp ( "BatteringRam", str ) == 0)	return Enemy::EnemyTypes::BatteringRam;
 
-	return Enemy::EnemyTypes::Naked;
+	return Enemy::EnemyTypes::Cow;
 }
 
 Enemy::Enemy(Ogre::String name, Enemy::EnemyTypes type, Enemy::EnemyParameters params)
@@ -48,6 +48,7 @@ Enemy::Enemy(Ogre::String name, Enemy::EnemyTypes type, Enemy::EnemyParameters p
 , mDieMesh(NULL)
 , mDieAnimation(NULL)
 , mAttackTimeout(0)
+, mHasItem(false)
 {
 	mType = type;
 	mParameters = params;
@@ -58,9 +59,15 @@ Enemy::Enemy(Ogre::String name, Enemy::EnemyTypes type, Enemy::EnemyParameters p
 
 	// Physisc Size	-- HACK! Need to be defined in Ogitor	
 	if( mType == EnemyTypes::BatteringRam )
-		mParameters.physicSize = Vector3(50, 50, 50);
+		mParameters.physicSize = Vector3(40, 30, 40);
 	else
 		mParameters.physicSize = Vector3(PHYSIC_SIZE, PHYSIC_SIZE, PHYSIC_SIZE);
+
+	// Item drop designation
+	if( mType == EnemyTypes::Woman )
+		mHasItem = true;
+	else if( (rand() % 10) == 0)
+		mHasItem = true;
 }
 
 Enemy::~Enemy()
