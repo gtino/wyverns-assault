@@ -97,7 +97,9 @@ void AudioManager::loadResources()
 	// Load resources
 	//
 
-	// Sound FX
+	// Sound FX	
+	createStream( String("ArcherAttack01.wav"));
+	createStream( String("ArcherAttack02.wav"));
 	createStream( String("ChickenDie01.wav"));
 	createStream( String("CowDie01.wav"));
 	createStream( String("EnemyAttack01.wav"));
@@ -129,6 +131,17 @@ void AudioManager::loadResources()
 	createStream( String("PlayerYell01.wav"));
 	createStream( String("PlayerYell02.wav"));
 	createStream( String("PlayerYell03.wav"));
+
+	createStream( String("ObjectHit01.wav"));
+	createStream( String("ObjectHit02.wav"));
+	createStream( String("ObjectHit03.wav"));
+	createStream( String("ObjectHit04.wav"));
+	createStream( String("ObjectDie01.wav"));
+	createStream( String("ObjectDie02.wav"));
+	createStream( String("ObjectDie03.wav"));
+	createStream( String("ObjectDie04.wav"));
+	createStream( String("ObjectFireHit01.wav"));
+	createStream( String("ObjectFireHit02.wav"));
 
 
 	// Musics
@@ -722,9 +735,11 @@ EVENTS_DEFINE_HANDLER(AudioManager, EnemyAttack)
 	// The enemy has just attack
 	if ( enemy->getEnemyType() == Enemy::EnemyTypes::Knight )
 	{
-		if( (rand()%3) == 0 )
+		int sound = rand()%3;
+
+		if( sound == 0 )
 			playSound("EnemyAttack01.wav",sceneNode->_getDerivedPosition(),&channelIndex);
-		else if( (rand()%3) == 1 )
+		else if( sound == 1 )
 			playSound("EnemyAttack02.wav",sceneNode->_getDerivedPosition(),&channelIndex);
 		else
 			playSound("EnemyAttack03.wav",sceneNode->_getDerivedPosition(),&channelIndex);
@@ -766,9 +781,11 @@ EVENTS_DEFINE_HANDLER(AudioManager, EnemyHit)
 	}
 	else if( enemy->getEnemyType() == Enemy::EnemyTypes::Knight )
 	{
-		if( (rand()%3) == 0 )
+		int sound = rand()%3;
+
+		if( sound == 0 )
 			playSound("EnemyHit01.wav",sceneNode->_getDerivedPosition(),&channelIndex);
-		else if( (rand()%3) == 1 )
+		else if( sound == 1 )
 			playSound("EnemyHit02.wav",sceneNode->_getDerivedPosition(),&channelIndex);
 		else
 			playSound("EnemyHit03.wav",sceneNode->_getDerivedPosition(),&channelIndex);
@@ -806,7 +823,7 @@ EVENTS_DEFINE_HANDLER(AudioManager, EnemyKilled)
 	}
 	else if( enemy->getEnemyType() == Enemy::EnemyTypes::Knight )
 	{
-		if( (rand()%3) == 0 )
+		if( (rand()%2) == 0 )
 			playSound("EnemyDie01.wav",sceneNode->_getDerivedPosition(),&channelIndex);
 		else
 			playSound("EnemyDie02.wav",sceneNode->_getDerivedPosition(),&channelIndex);
@@ -845,6 +862,13 @@ EVENTS_DEFINE_HANDLER(AudioManager, ProjectileFire)
 		else 
 			playSound("WizardAttack02.wav",sceneNode->_getDerivedPosition(),&channelIndex);
 	}
+	else
+	{
+		if( (rand()%2) == 0 )
+			playSound("ArcherAttack01.wav",sceneNode->_getDerivedPosition(),&channelIndex);
+		else 
+			playSound("ArcherAttack02.wav",sceneNode->_getDerivedPosition(),&channelIndex);
+	}
 }
 
 EVENTS_DEFINE_HANDLER(AudioManager, ProjectileHit)
@@ -870,16 +894,32 @@ EVENTS_DEFINE_HANDLER(AudioManager, ObjectHit)
 	Debug::Out("AudioManager : handleObjectHitEvent");
 
 	ObjectPtr object = evt->getObject();
+	PlayerPtr player = evt->getPlayer();
 
 	int channelIndex = -1;
 
 	SceneNode* sceneNode = object->_getSceneNode();
+	int sound = rand()%4;
 
 	// The player has just hit the object
-	if( (rand()%2) == 0)
-		playSound("PlayerHit01.wav",sceneNode->_getDerivedPosition(),&channelIndex);
+	if( player->isSpecial() )
+	{
+		if( (rand()%2) == 0)
+			playSound("ObjectFireHit01.wav",sceneNode->_getDerivedPosition(),&channelIndex);
+		else
+			playSound("ObjectFireHit02.wav",sceneNode->_getDerivedPosition(),&channelIndex);
+	}
 	else
-		playSound("PlayerHit02.wav",sceneNode->_getDerivedPosition(),&channelIndex);
+	{
+		if( sound == 0)
+			playSound("ObjectHit01.wav",sceneNode->_getDerivedPosition(),&channelIndex);
+		else if( sound == 1)
+			playSound("ObjectHit02.wav",sceneNode->_getDerivedPosition(),&channelIndex);
+		else if( sound == 2)
+			playSound("ObjectHit03.wav",sceneNode->_getDerivedPosition(),&channelIndex);
+		else
+			playSound("ObjectHit04.wav",sceneNode->_getDerivedPosition(),&channelIndex);
+	}
 }
 
 EVENTS_DEFINE_HANDLER(AudioManager, ObjectKilled)
@@ -891,9 +931,27 @@ EVENTS_DEFINE_HANDLER(AudioManager, ObjectKilled)
 	int channelIndex = -1;
 
 	SceneNode* sceneNode = object->_getSceneNode();
+	int sound = rand()%4;
 
-	// The enemy has kill player	
-	playSound("PlayerDie01.wav",sceneNode->_getDerivedPosition(),&channelIndex);
+	// The player has just killed the object
+	if( !object->isBurning() )
+	{
+		if( sound == 0)
+			playSound("ObjectDie01.wav",sceneNode->_getDerivedPosition(),&channelIndex);
+		else if( sound == 1)
+			playSound("ObjectDie02.wav",sceneNode->_getDerivedPosition(),&channelIndex);
+		else if( sound == 2)
+			playSound("ObjectDie03.wav",sceneNode->_getDerivedPosition(),&channelIndex);
+		else
+			playSound("ObjectDie04.wav",sceneNode->_getDerivedPosition(),&channelIndex);
+	}
+	else
+	{
+		if( (rand()%2) == 0)
+			playSound("ObjectFireHit01.wav",sceneNode->_getDerivedPosition(),&channelIndex);
+		else
+			playSound("ObjectFireHit02.wav",sceneNode->_getDerivedPosition(),&channelIndex);
+	}
 }
 
 // --------------------------------

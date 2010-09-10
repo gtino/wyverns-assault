@@ -41,8 +41,8 @@ ProjectilePtr ProjectileManager::createProjectile(Ogre::String name, Enemy::Enem
 {
 	ProjectilePtr projectile = ProjectilePtr(new Projectile(name, init, finish));
 
-	//Define Entity
-	if( type = Enemy::EnemyTypes::Archer )
+	// Define Entity
+	if( type == Enemy::EnemyTypes::Archer )
 	{
 		Entity* entity = mSceneManager->createEntity(name, "arrow.mesh");
 		entity->setVisible(true);
@@ -180,7 +180,16 @@ EVENTS_DEFINE_HANDLER(ProjectileManager, ProjectileFire)
 	//Points
 	EnemyPtr enemy = evt->getEnemy();
 	Vector3 init = enemy->getPosition();
-	Vector3 finish = enemy->getTarget()->getPosition();
+	Vector3 finish = init;
+	try
+	{
+		finish = enemy->getTarget()->getPosition();
+	}
+	catch(...)
+	{
+		finish = init;
+	}
+
 	finish.y = init.y;	
 
 	//SceneNode

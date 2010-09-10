@@ -93,6 +93,7 @@ namespace WyvernsAssault
 		EVENTS_HANDLER(ProjectileHit)
 		EVENTS_HANDLER(ObjectHit)
 		EVENTS_HANDLER(ObjectKilled)
+		EVENTS_HANDLER(ObjectCustom)
 
 		// --------------------------------
 		// BEGIN Lua Interface Declarations

@@ -159,6 +159,7 @@ EVENTS_BEGIN_REGISTER_HANDLERS(ParticleManager)
 	EVENTS_REGISTER_HANDLER(ParticleManager,ProjectileHit)
 	EVENTS_REGISTER_HANDLER(ParticleManager,ObjectHit)
 	EVENTS_REGISTER_HANDLER(ParticleManager,ObjectKilled)
+	EVENTS_REGISTER_HANDLER(ParticleManager,ObjectCustom)
 EVENTS_END_REGISTER_HANDLERS()
 
 EVENTS_BEGIN_UNREGISTER_HANDLERS(ParticleManager)
@@ -174,6 +175,7 @@ EVENTS_BEGIN_UNREGISTER_HANDLERS(ParticleManager)
 	EVENTS_UNREGISTER_HANDLER(ParticleManager,ProjectileHit)
 	EVENTS_UNREGISTER_HANDLER(ParticleManager,ObjectHit)
 	EVENTS_UNREGISTER_HANDLER(ParticleManager,ObjectKilled)
+	EVENTS_UNREGISTER_HANDLER(ParticleManager,ObjectCustom)
 EVENTS_END_REGISTER_HANDLERS()
 
 
@@ -215,8 +217,13 @@ EVENTS_DEFINE_HANDLER(ParticleManager, EnemyHit)
 	}
 	else
 	{
-		this->add(enemy->_getSceneNode(), "WyvernsAssault/BloodHit");	
-		this->add(enemy->_getSceneNode(), "WyvernsAssault/Hit");	
+		if( enemy->getEnemyType() == Enemy::EnemyTypes::BatteringRam )
+			this->add(enemy->_getSceneNode(), "WyvernsAssault/Hit");
+		else
+		{
+			this->add(enemy->_getSceneNode(), "WyvernsAssault/BloodHit");	
+			this->add(enemy->_getSceneNode(), "WyvernsAssault/Hit");	
+		}
 	}
 }
 
@@ -239,7 +246,12 @@ EVENTS_DEFINE_HANDLER(ParticleManager, EnemyKilled)
 			this->bloodLens();
 		}
 		else
-			this->add(enemy->_getSceneNode(), "WyvernsAssault/BloodKill");
+		{
+			if( enemy->getEnemyType() == Enemy::EnemyTypes::BatteringRam )
+				this->add(enemy->_getSceneNode(), "WyvernsAssault/Hit");
+			else
+				this->add(enemy->_getSceneNode(), "WyvernsAssault/BloodKill");
+		}
 	}
 }
 
@@ -248,7 +260,12 @@ EVENTS_DEFINE_HANDLER(ParticleManager, EnemyCustom)
 	EnemyPtr enemy = evt->getEnemy();
 
 	if( enemy->isBurning())
-		this->add(enemy->_getSceneNode(), "WyvernsAssault/FireKill");
+	{
+		if( enemy->getEnemyType() == Enemy::EnemyTypes::BatteringRam )
+			this->add(enemy->_getSceneNode(), "WyvernsAssault/FireKillObject");
+		else
+			this->add(enemy->_getSceneNode(), "WyvernsAssault/FireKill");
+	}
 }
 
 EVENTS_DEFINE_HANDLER(ParticleManager, ItemCreation)
@@ -300,7 +317,7 @@ EVENTS_DEFINE_HANDLER(ParticleManager, ObjectHit)
 	PlayerPtr player = evt->getPlayer();	
 
 	if( player->isSpecial() )
-		this->add(object->_getSceneNode(), "WyvernsAssault/FireHit");
+		this->add(object->_getSceneNode(), "WyvernsAssault/FireHitObject");
 	else
 		this->add(object->_getSceneNode(), "WyvernsAssault/Hit");	
 }
@@ -310,14 +327,16 @@ EVENTS_DEFINE_HANDLER(ParticleManager, ObjectKilled)
 	ObjectPtr object = evt->getObject();
 	PlayerPtr player = evt->getPlayer();	
 
-	if( !object->isBurning() )
-	{			
-		this->add(object->_getSceneNode(), "WyvernsAssault/BloodKill");
-	}
-	else
-	{
-		this->add(object->_getSceneNode(), "WyvernsAssault/FireKill");
-	}
+	if( !object->isBurning() )		
+		this->add(object->_getSceneNode(), "WyvernsAssault/Hit");
+}
+
+EVENTS_DEFINE_HANDLER(ParticleManager, ObjectCustom)
+{
+	ObjectPtr object = evt->getObject();
+
+	if( object->isBurning())
+		this->add(object->_getSceneNode(), "WyvernsAssault/FireKillObject");
 }
 
 // --------------------------------

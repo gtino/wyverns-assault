@@ -213,7 +213,7 @@ system WyvernsAssault/FireKill
         {
             time_colour                         0    0 0 0 0
             time_colour                         0.01 0.466667 0.466667 0.466667 1
-            time_colour                         0.85 0.266667 0.266667 0.266667 1
+            time_colour                         0.1  0.266667 0.266667 0.266667 1
             time_colour                         1    0 0 0 0
         }
         affector                                PlaneCollider Affector74
