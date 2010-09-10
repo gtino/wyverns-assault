@@ -3186,6 +3186,7 @@ material Trees0
 			scene_blend alpha_blend
 			depth_check on
 			depth_write off
+			cull_hardware none
 
 			texture_unit
 			{
@@ -3208,6 +3209,7 @@ material Trees1
 			scene_blend alpha_blend
 			depth_check on
 			depth_write off
+			cull_hardware none
 
 			texture_unit
 			{
@@ -3230,6 +3232,7 @@ material Trees2
 			scene_blend alpha_blend
 			depth_check on
 			depth_write off
+			cull_hardware none
 
 			texture_unit
 			{
