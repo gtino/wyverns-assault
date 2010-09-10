@@ -151,12 +151,14 @@ namespace WyvernsAssault
 		TIMER(GameArea);
 		TIMER(Projectile);
 		TIMER(ParticleSystem);
+		TIMER(LevelManager);
 
 	protected:
 		float			buttonTimer;
 		OIS::KeyCode	lastKey;
 
 		bool			mDebugEnabled;
+		int				mLevel;
 	};
 }
 #endif // __PLAY_STATE_H_

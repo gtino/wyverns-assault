@@ -60,6 +60,8 @@ namespace WyvernsAssault
 		/** Finalize the level manager */
 		void finalize();
 
+		void update(const float elapsedSeconds);
+
 		void change(int newLevel);
 		bool next();
 
@@ -69,6 +71,7 @@ namespace WyvernsAssault
 		void disable(){mEnabled = false;}
 		void enable(){mEnabled = true;}
 		bool isEnabled(){return mEnabled;}
+		bool isLast(){return mIsLast;}
 
 		/** Get current level index */
 		LevelPtr getCurrentLevel();
@@ -80,6 +83,7 @@ namespace WyvernsAssault
 
 		int mCurrentLevelIndex;
 		LevelMap mLevels;
+		bool mIsLast;
 
 	public:
 		// ----------------

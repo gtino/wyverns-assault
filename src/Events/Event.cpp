@@ -241,30 +241,24 @@ ObjectRemoveEvent::ObjectRemoveEvent(ObjectPtr o)
 
 //----------------------
 
-ObjectCustomEvent::ObjectCustomEvent(ObjectPtr o)
-:Event(EventTypes::ObjectCustom, EventPriorities::Normal)
-{
-	mObject = o;
-};
-
-//----------------------
-
-GameAreaChangedEvent::GameAreaChangedEvent(int level, int previousArea, int actualArea)
+GameAreaChangedEvent::GameAreaChangedEvent(int level, int previousArea, int actualArea, bool isLast)
 :Event(EventTypes::GameAreaChanged, EventPriorities::High)
 {
 	mLevel = level;
 	mPreviousArea = previousArea;
 	mActualArea = actualArea;
+	mIsLast = isLast;
 };
 
 //----------------------
 
-GameAreaClearedEvent::GameAreaClearedEvent(int level, int gameArea, int type)
+GameAreaClearedEvent::GameAreaClearedEvent(int level, int gameArea, int type, bool isLast)
 :Event(EventTypes::GameAreaCleared, EventPriorities::Normal)
 {
 	mLevel = level;
 	mGameArea = gameArea;
 	mType = type;
+	mIsLast = isLast;
 };
 
 //----------------------
@@ -272,7 +266,7 @@ GameAreaClearedEvent::GameAreaClearedEvent(int level, int gameArea, int type)
 GameAreaEnemiesDeathEvent::GameAreaEnemiesDeathEvent(int level, int gameArea)
 :Event(EventTypes::GameAreaEnemiesDeath, EventPriorities::Normal)
 {
-	mLevel - level;
+	mLevel = level;
 	mGameArea = gameArea;
 };
 
@@ -286,11 +280,10 @@ ProjectileFireEvent::ProjectileFireEvent(EnemyPtr e)
 
 //----------------------
 
-ProjectileUpdateEvent::ProjectileUpdateEvent(ProjectilePtr p, Enemy::EnemyTypes t)
+ProjectileUpdateEvent::ProjectileUpdateEvent(ProjectilePtr p)
 :Event(EventTypes::ProjectileUpdate, EventPriorities::Normal)
 {
 	mProjectile = p;	
-	mType = t;
 }
 
 //----------------------
@@ -309,3 +302,13 @@ ProjectileHitEvent::ProjectileHitEvent(ProjectilePtr p, PlayerPtr player)
 	mProjectile = p;	
 	mPlayer = player;
 }
+
+//----------------------
+
+LevelCompleteEvent::LevelCompleteEvent(int previousLevel, int newLevel, bool isLast)
+:Event(EventTypes::LevelComplete, EventPriorities::High)
+{
+	mPreviousLevel = previousLevel;
+	mNewLevel = newLevel;
+	mIsLast = isLast;
+};

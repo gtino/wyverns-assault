@@ -63,7 +63,8 @@ namespace WyvernsAssault
 		ProjectileFire,
 		ProjectileUpdate,
 		ProjectileHit,
-		ProjectileRemove
+		ProjectileRemove,
+		LevelComplete
 	};
 
 	/** Event priority, used to put the event in the correct queue */
@@ -456,17 +457,19 @@ namespace WyvernsAssault
 	class GameAreaChangedEvent : public Event
 	{
 	public:
-		GameAreaChangedEvent(int level, int previousArea, int actualArea);
+		GameAreaChangedEvent(int level, int previousArea, int actualArea, bool isLast);
 		~GameAreaChangedEvent(){};
 		
 		int getPreviousArea(){ return mPreviousArea; }
 		int getActualArea(){ return mActualArea; }
-		int getLevel(){return mLevel; };
+		int getLevel(){ return mLevel; };
+		int isLast(){ return mIsLast; }
 
 	private:
 		int mPreviousArea;
 		int mActualArea;
 		int mLevel;
+		bool mIsLast;
 	};
 
 	typedef boost::shared_ptr<GameAreaChangedEvent> GameAreaChangedEventPtr;
@@ -475,17 +478,19 @@ namespace WyvernsAssault
 	class GameAreaClearedEvent : public Event
 	{
 	public:
-		GameAreaClearedEvent(int level, int gameArea, int type);
+		GameAreaClearedEvent(int level, int gameArea, int type, bool isLast);
 		~GameAreaClearedEvent(){};
 		
 		int getGameArea(){ return mGameArea; }
 		int getType(){ return mType; }
-		int getLevel(){return mLevel; };
+		int getLevel(){ return mLevel; };
+		bool isLast(){ return mIsLast; }
 
 	private:
 		int mLevel;
 		int mGameArea;
 		int mType;
+		int mIsLast;
 	};
 
 	typedef boost::shared_ptr<GameAreaClearedEvent> GameAreaClearedEventPtr;
@@ -570,6 +575,25 @@ namespace WyvernsAssault
 	};
 
 	typedef boost::shared_ptr<ProjectileHitEvent> ProjectileHitEventPtr;
+
+	// --------------------------------
+	class LevelCompleteEvent : public Event
+	{
+	public:
+		LevelCompleteEvent( int previousLevel, int newLevel, bool isLast );
+		~LevelCompleteEvent(){};
+		
+		int getPreviousLevel(){return mPreviousLevel;}
+		int getNewLevel(){return mNewLevel;}
+		bool isLast(){return mIsLast;}
+
+	private:		
+		int mPreviousLevel;
+		int mNewLevel;
+		int mIsLast;
+	};
+
+	typedef boost::shared_ptr<LevelCompleteEvent> LevelCompleteEventPtr;
 
 }
 
