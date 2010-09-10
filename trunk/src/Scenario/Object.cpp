@@ -46,11 +46,7 @@ void Object::finalizeEntity()
 void Object::updateEntity(const float elapsedSeconds)
 {
 	if( isDying() && hasDieAnimation() )
-	{
 		mDieAnimation->addTime(elapsedSeconds);
-		if( mDieAnimation->hasEnded() && hasDieMesh() )
-			mDieMesh->setVisible(true);
-	}
 }
 
 bool Object::isHurt()

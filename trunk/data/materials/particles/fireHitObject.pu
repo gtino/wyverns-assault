@@ -1,4 +1,4 @@
-system WyvernsAssault/FireHit
+system WyvernsAssault/FireHitObject
 {
     technique Technique3
     {
@@ -23,13 +23,13 @@ system WyvernsAssault/FireHit
             }
             velocity                            dyn_random
             {
-                min                             30
-                max                             35
+                min                             45
+                max                             50
             }
             all_particle_dimensions             dyn_random
             {
-                min                             1
-                max                             2.5
+                min                             3
+                max                             5
             }
             colour                              1 0.501961 0 1
             auto_direction                      true
@@ -62,8 +62,8 @@ system WyvernsAssault/FireHit
         {
             emission_rate                       dyn_random
             {
-                min                             20
-                max                             25
+                min                             30
+                max                             40
             }
             angle                               120
             time_to_live                        dyn_random
@@ -73,8 +73,8 @@ system WyvernsAssault/FireHit
             }
             velocity                            dyn_random
             {
-                min                             50
-                max                             55
+                min                             65
+                max                             70
             }
             all_particle_dimensions             dyn_random
             {
@@ -113,27 +113,27 @@ system WyvernsAssault/FireHit
         }
         emitter                                 SphereSurface Emitter30
         {
-            emission_rate                       200
+            emission_rate                       600
             angle                               10
             time_to_live                        dyn_random
             {
-                min                             0.15
-                max                             0.3
+                min                             0.1
+                max                             0.35
             }
-            velocity                            20
+            velocity                            30
             duration                            1.5
             particle_width                      dyn_random
-            {
-                min                             15
-                max                             20
-            }
-            particle_height                     dyn_random
             {
                 min                             20
                 max                             25
             }
+            particle_height                     dyn_random
+            {
+                min                             35
+                max                             50
+            }
             enabled                             false
-            radius                              3
+            radius                              7
         }
         affector                                Colour Affector48
         {
@@ -165,6 +165,7 @@ system WyvernsAssault/FireHit
     }
     technique Technique34
     {
+        visual_particle_quota                   2000
         material                                Particle/FireFlash
         renderer                                Billboard
         {
@@ -182,13 +183,13 @@ system WyvernsAssault/FireHit
             all_particle_dimensions             30
             particle_width                      dyn_random
             {
-                min                             25
-                max                             60
+                min                             35
+                max                             70
             }
             particle_height                     dyn_random
             {
-                min                             15
-                max                             20
+                min                             25
+                max                             30
             }
             auto_direction                      true
             force_emission                      true

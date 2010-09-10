@@ -243,7 +243,7 @@ EVENTS_DEFINE_HANDLER(ScenarioManager, ObjectKilled)
 		ObjectCustomEventPtr oCustom = ObjectCustomEventPtr(new ObjectCustomEvent(obj));
 		EVENTS_FIRE_AFTER(oCustom, 1.0f);
 	}
-	else if( obj->hasDieAnimation() )
+	else if( obj->hasDieMesh() )
 	{
 		obj->dieSwitch();
 	}
