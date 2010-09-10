@@ -42,31 +42,89 @@ void ItemManager::finalize()
 	Utils::Destroy(mSceneManager,ITEM_NODE_NAME);
 	mItemNode = NULL;
 }
+Item::ItemParameters ItemManager::createParameters(Item::ItemTypes type, int subType)
+{
+	Item::ItemParameters params;
+	
+	if( type == Item::ItemTypes::Life )
+	{
+		if( subType == 0 )
+		{
+			params.life = 50;
+			params.points = 100;
+			params.drunkTime = 0;
+		}
+		else
+		{
+			params.life = 100;
+			params.points = 200;
+			params.drunkTime = 0;
+		}
 
-ItemPtr ItemManager::createItem(Item::ItemTypes type)
+	}
+	else if( type == Item::ItemTypes::Points )
+	{
+		if( subType == 0 )
+		{
+			params.life = 0;
+			params.points = 250;
+			params.drunkTime = 0;
+		}
+		else
+		{
+			params.life = 0;
+			params.points = 500;
+			params.drunkTime = 0;
+		}
+
+	}
+	else
+	{
+		if( subType == 0 )
+		{
+			params.life = 0;
+			params.points = 100;
+			params.drunkTime = 3;
+		}
+		else if( subType == 1 )
+		{
+			params.life = 0;
+			params.points = 200;
+			params.drunkTime = 5;
+		}
+		else
+		{
+			params.life = 0;
+			params.points = 300;
+			params.drunkTime = 7;
+		}
+	}
+
+	return params;
+}
+
+ItemPtr ItemManager::createItem(Item::ItemTypes type, int subType, Vector3 position)
 {
 	Ogre::String mesh;
-
-	int subType = rand();
 
 	switch(type)
 	{
 	case Item::ItemTypes::Life:
-		if( subType%2 == 0 )
+		if( subType == 0 )
 			mesh = Ogre::String("chickenLegItem.mesh");
 		else
 			mesh = Ogre::String("chickenItem.mesh");
 		break;
 	case Item::ItemTypes::Points:
-		if( subType%2 == 0 )
+		if( subType == 0 )
 			mesh = Ogre::String("ruby.mesh");
 		else
 			mesh = Ogre::String("crown.mesh");
 		break;
 	case Item::ItemTypes::Drunk:
-		if( subType%3 == 0 )
+		if( subType == 0 )
 			mesh = Ogre::String("beerHorn.mesh");
-		if( subType%3 == 1 )
+		if( subType == 1 )
 			mesh = Ogre::String("beerGlass.mesh");
 		else
 			mesh = Ogre::String("beerTank.mesh");
@@ -79,12 +137,10 @@ ItemPtr ItemManager::createItem(Item::ItemTypes type)
 	itemMesh->setCastShadows(true);
 	itemMesh->setQueryFlags(SceneManager::ENTITY_TYPE_MASK);
 
-	Ogre::SceneNode* sceneNode = mItemNode->createChildSceneNode(name + "_Node");
-	sceneNode->attachObject(itemMesh);
-
-	Item::ItemParameters params;
+	Ogre::SceneNode* sceneNode = mItemNode->createChildSceneNode(name + "_Node", position);
 
 	// Get standar parameters for item type
+	Item::ItemParameters params = createParameters(type, subType);
 
 	return createItem(type, name, itemMesh, sceneNode, params, mCurrentGameArea);
 }
@@ -219,12 +275,14 @@ EVENTS_BEGIN_REGISTER_HANDLERS(ItemManager)
 	EVENTS_REGISTER_HANDLER(ItemManager,ItemCatch)
 	EVENTS_REGISTER_HANDLER(ItemManager,ItemRemove)
 	EVENTS_REGISTER_HANDLER(ItemManager,GameAreaChanged)
+	EVENTS_REGISTER_HANDLER(ItemManager,EnemyCreateItem)
 EVENTS_END_REGISTER_HANDLERS()
 
 EVENTS_BEGIN_UNREGISTER_HANDLERS(ItemManager)
 	EVENTS_UNREGISTER_HANDLER(ItemManager,ItemCatch)
 	EVENTS_UNREGISTER_HANDLER(ItemManager,ItemRemove)
 	EVENTS_UNREGISTER_HANDLER(ItemManager,GameAreaChanged)
+	EVENTS_UNREGISTER_HANDLER(ItemManager,EnemyCreateItem)
 EVENTS_END_UNREGISTER_HANDLERS()
 
 EVENTS_DEFINE_HANDLER(ItemManager,ItemCatch)
@@ -255,6 +313,38 @@ EVENTS_DEFINE_HANDLER(ItemManager,GameAreaChanged)
 	Debug::Out("ItemManager : handleGameAreaChangedEvent");
 
 	mCurrentGameArea = evt->getActualArea();
+}
+
+EVENTS_DEFINE_HANDLER(ItemManager,EnemyCreateItem)
+{
+	Debug::Out("ItemManager : handleEnemyCreateItemEvent");
+
+	EnemyPtr enemy = evt->getEnemy();
+	ItemPtr item;
+
+	if( enemy->getEnemyType() == Enemy::EnemyTypes::Chicken || enemy->getEnemyType() == Enemy::EnemyTypes::Cow )
+		item = this->createItem(Item::ItemTypes::Life, 1, enemy->getPosition());
+	else if( enemy->getEnemyType() == Enemy::EnemyTypes::Woman )
+	{
+		if( rand()%2 == 0) 
+			item = this->createItem(Item::ItemTypes::Life, (rand()%2), enemy->getPosition());
+		else
+			item = this->createItem(Item::ItemTypes::Points, (rand()%2), enemy->getPosition());
+	}
+	else
+	{
+		int type = rand()%3;
+
+		if( type == 0) 
+			item = this->createItem(Item::ItemTypes::Life, (rand()%2), enemy->getPosition());
+		else if( type == 0) 
+			item = this->createItem(Item::ItemTypes::Points, (rand()%2), enemy->getPosition());
+		else
+			item = this->createItem(Item::ItemTypes::Drunk, (rand()%3), enemy->getPosition());
+	}
+
+	ItemPhysicsEventPtr ePhysic = ItemPhysicsEventPtr(new ItemPhysicsEvent(item, evt->getGameArea()));
+	EVENTS_FIRE(ePhysic);
 }
 
 // --------------------------------

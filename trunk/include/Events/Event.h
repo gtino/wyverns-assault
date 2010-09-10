@@ -49,6 +49,7 @@ namespace WyvernsAssault
 		EnemyCustom,
 		EnemyCreation,
 		EnemyPhysics,
+		EnemyCreateItem,
 		ObjectHit,
 		ObjectKilled,
 		ObjectRemove,
@@ -57,6 +58,7 @@ namespace WyvernsAssault
 		ItemCreation,
 		ItemCatch,
 		ItemRemove,
+		ItemPhysics,
 		GameAreaChanged,
 		GameAreaCleared,
 		GameAreaEnemiesDeath,
@@ -254,6 +256,23 @@ namespace WyvernsAssault
 
 	typedef boost::shared_ptr<EnemyPhysicsEvent> EnemyPhysicsEventPtr;
 
+	// --------------------------------	
+	class EnemyCreateItemEvent : public Event
+	{
+	public:
+		EnemyCreateItemEvent(EnemyPtr e, int gameArea);
+		~EnemyCreateItemEvent(){};
+		
+		EnemyPtr getEnemy(){return mEnemy;}
+		int getGameArea(){return  mGameArea;}
+
+	private:		
+		EnemyPtr mEnemy;
+		int mGameArea;
+	};
+
+	typedef boost::shared_ptr<EnemyCreateItemEvent> EnemyCreateItemEventPtr;
+
 	// --------------------------------
 	class PlayerHitEvent : public Event
 	{
@@ -274,7 +293,6 @@ namespace WyvernsAssault
 	typedef boost::shared_ptr<PlayerHitEvent> PlayerHitEventPtr;
 
 	// --------------------------------
-
 	class PlayerKilledEvent : public Event
 	{
 	public:
@@ -383,6 +401,22 @@ namespace WyvernsAssault
 
 	typedef boost::shared_ptr<ItemRemoveEvent> ItemRemoveEventPtr;
 
+	// --------------------------------	
+	class ItemPhysicsEvent : public Event
+	{
+	public:
+		ItemPhysicsEvent(ItemPtr i, int gameArea);
+		~ItemPhysicsEvent(){};
+		
+		ItemPtr getItem(){return mItem;}
+		int getGameArea(){return mGameArea;}
+
+	private:
+		ItemPtr mItem;
+		int mGameArea;
+	};
+
+	typedef boost::shared_ptr<ItemPhysicsEvent> ItemPhysicsEventPtr;
 
 	// --------------------------------
 	class ObjectHitEvent : public Event

@@ -159,6 +159,7 @@ namespace WyvernsAssault
 		EVENTS_HANDLER(EnemyAttack)
 		EVENTS_HANDLER(EnemyHit)
 		EVENTS_HANDLER(EnemyKilled)
+		EVENTS_HANDLER(EnemyCreateItem)
 		
 		EVENTS_HANDLER(ItemCatch)
 

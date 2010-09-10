@@ -134,8 +134,11 @@ namespace WyvernsAssault
 		Real getAttackCooldown(){return mParameters.attackCooldown;}
 		Vector3 getPhysicSize(){ return mParameters.physicSize; }
 		void setLife(Ogre::Real life){ mParameters.life = life; }
+		
+		bool hasItem(){ return mHasItem; }
+		void itemDroped(){ mHasItem = false; }
 
-		// Enemy typ functions
+		// Enemy type functions
 		bool isRanged();
 		bool isMashable();
 
@@ -208,6 +211,8 @@ namespace WyvernsAssault
 		bool		attackHited;
 		bool		burning;
 		bool		flying;			
+
+		bool		mHasItem;
 
 	private:
 

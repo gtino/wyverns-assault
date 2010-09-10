@@ -148,6 +148,15 @@ EnemyPhysicsEvent::EnemyPhysicsEvent(EnemyPtr e, int gameArea)
 
 //----------------------
 
+EnemyCreateItemEvent::EnemyCreateItemEvent(EnemyPtr e, int gameArea)
+:Event(EventTypes::EnemyCreateItem, EventPriorities::Normal)
+{
+	mEnemy = e;
+	mGameArea = gameArea;
+};
+
+//----------------------
+
 PlayerHitEvent::PlayerHitEvent(EnemyPtr e, PlayerPtr p)
 :Event(EventTypes::PlayerHit, EventPriorities::Normal)
 {
@@ -210,6 +219,15 @@ ItemRemoveEvent::ItemRemoveEvent(ItemPtr i)
 :Event(EventTypes::ItemRemove, EventPriorities::Normal)
 {
 	mItem = i;
+};
+
+//----------------------
+
+ItemPhysicsEvent::ItemPhysicsEvent(ItemPtr i, int gameArea)
+:Event(EventTypes::ItemPhysics, EventPriorities::Normal)
+{
+	mItem = i;
+	mGameArea = gameArea;
 };
 
 //----------------------
