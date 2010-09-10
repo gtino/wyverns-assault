@@ -18,6 +18,7 @@ LevelManager::LevelManager()
 : mInitialized(false)
 , mEnabled(true)
 , mCurrentLevelIndex(0)
+, mIsLast(false)
 {
 	//
 	// TODO Constructor
@@ -56,6 +57,11 @@ bool LevelManager::initialize( int initialLevel )
 	return mInitialized;
 }
 
+void LevelManager::update(const float elapsedSeconds)
+{
+
+}
+
 void LevelManager::finalize()
 {
 	mLevels.clear();
@@ -76,9 +82,11 @@ LevelPtr LevelManager::getCurrentLevel()
 bool LevelManager::next()
 {
 	mCurrentLevelIndex = (mCurrentLevelIndex+1) % mLevels.size();
+	
+	mIsLast = (mCurrentLevelIndex == 0);
 
 	// return 0 if it was the last level
-	return (mCurrentLevelIndex == 0);
+	return mIsLast;
 }
 
 void LevelManager::change(int newLevelIndex)
@@ -107,6 +115,20 @@ EVENTS_DEFINE_HANDLER(LevelManager, GameAreaChanged)
 EVENTS_DEFINE_HANDLER(LevelManager, GameAreaCleared)
 {
 	Debug::Out("LevelManager : handleGameAreaClearedEvent");
+
+	// if it is last area, fire an event of level complete
+	if(evt->isLast())
+	{
+		int previous = mCurrentLevelIndex;
+
+		// Next level. It will return 'true' if this (previous) was the last one!
+		bool isLast = next();
+
+		int current = mCurrentLevelIndex;
+
+		LevelCompleteEventPtr e = LevelCompleteEventPtr(new LevelCompleteEvent(previous, current, isLast));
+		EVENTS_FIRE(e);
+	}
 }
 
 // --------------------------------

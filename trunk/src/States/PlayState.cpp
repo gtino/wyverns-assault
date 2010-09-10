@@ -19,6 +19,7 @@ PlayState::PlayState(GraphicsManagerPtr graphicsManager,
 	//
 	// TODO Constructor logic HERE
 	//
+	mLevel = levelManager->getCurrentLevelIndex();
 }
 
 PlayState::~PlayState()
@@ -578,6 +579,13 @@ void PlayState::update(const float elapsedSeconds)
 	TIMER_STOP(ParticleSystem);
 
 	//
+	// Update Level manager
+	//
+	TIMER_START(LevelManager);
+	mLevelManager->update(elapsedSeconds);
+	TIMER_STOP(LevelManager);
+
+	//
 	// Dispatch events. Managers have probably raised events, that are now in the 
 	// EventsManager queue. The events manager will then dispatch them, calling
 	// for each of them the registered handler(s).
@@ -587,10 +595,19 @@ void PlayState::update(const float elapsedSeconds)
 	TIMER_STOP(Events);
 
 	//
-	// HACK : just to let the player win!  ------> NEED TO BE CHANGED
-	//
-	if(mEnemyManager->getCount() == 0 && mGameAreaManager->getGameArea() == 11)
-		this->mNextGameStateId = GameStateId::Ending;
+	// Check for level/game ending
+	// 
+	if(mLevel != mLevelManager->getCurrentLevelIndex())
+	{
+		if(mLevelManager->isLast())
+		{
+			mNextGameStateId = GameStateId::Ending;
+		}
+		else
+		{
+			mNextGameStateId = GameStateId::LevelLoading;
+		}
+	}
 
 	TIMER_STOP(Update);
 }

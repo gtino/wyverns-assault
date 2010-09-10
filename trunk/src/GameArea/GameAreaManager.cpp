@@ -52,11 +52,12 @@ void GameAreaManager::load(Ogre::String file)
 void GameAreaManager::update(Vector3 playerPosition, const float elapsedSeconds)
 {
 	int playerArea = positionGameArea(playerPosition);
+	bool isLast = (playerArea == getLastGameArea());
 
 	// Game Area changed and game area is cleared raise event
 	if( mCurrentGameArea != playerArea && mGameAreaCleared )
 	{
-		GameAreaChangedEventPtr evt = GameAreaChangedEventPtr(new GameAreaChangedEvent(mCurrentLevel, mCurrentGameArea, playerArea));
+		GameAreaChangedEventPtr evt = GameAreaChangedEventPtr(new GameAreaChangedEvent(mCurrentLevel, mCurrentGameArea, playerArea, isLast));
 		EVENTS_FIRE(evt);
 
 		mCurrentGameArea = playerArea;
@@ -76,7 +77,7 @@ void GameAreaManager::update(Vector3 playerPosition, const float elapsedSeconds)
 		if( mGameAreas[mCurrentGameArea].mFinishTime < mTime )
 		{
 			mGameAreaCleared = true;
-			GameAreaClearedEventPtr evt = GameAreaClearedEventPtr(new GameAreaClearedEvent(mCurrentLevel, mCurrentGameArea, mGameAreas[mCurrentGameArea].mType));
+			GameAreaClearedEventPtr evt = GameAreaClearedEventPtr(new GameAreaClearedEvent(mCurrentLevel, mCurrentGameArea, mGameAreas[mCurrentGameArea].mType, isLast));
 			EVENTS_FIRE(evt);
 		}
 	}
@@ -84,9 +85,15 @@ void GameAreaManager::update(Vector3 playerPosition, const float elapsedSeconds)
 	else if( !mEnemiesAlive && !mGameAreaCleared)
 	{	
 		mGameAreaCleared = true;
-		GameAreaClearedEventPtr evt = GameAreaClearedEventPtr(new GameAreaClearedEvent(mCurrentLevel, mCurrentGameArea, mGameAreas[mCurrentGameArea].mType));
+		GameAreaClearedEventPtr evt = GameAreaClearedEventPtr(new GameAreaClearedEvent(mCurrentLevel, mCurrentGameArea, mGameAreas[mCurrentGameArea].mType, isLast));
 		EVENTS_FIRE(evt);
 	}
+}
+
+// Gets the last game area 
+int GameAreaManager::getLastGameArea()
+{
+	return mGameAreas.size()-1;
 }
 
 // Manage game area enemy creation events

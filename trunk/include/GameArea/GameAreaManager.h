@@ -99,6 +99,7 @@ namespace WyvernsAssault
 
 		// Add game area to game area list
 		void addGameArea(GameArea area);
+		int getLastGameArea();
 
 	public:
 		// ----------------
