@@ -1,123 +1,197 @@
 system WyvernsAssault/FireKillObject
 {
-    technique Technique1
+    technique 
     {
-        visual_particle_quota                   1500
-        emitted_emitter_quota                   900
-        emitted_technique_quota                 900
-        emitted_affector_quota                  900
-        emitted_system_quota                    900
+        visual_particle_quota                   1000
         material                                Particle/Smoke_01
         renderer                                Billboard
         {
+            sorting                             true
         }
-        emitter                                 Box Emitter1
+        emitter                                 Box 
         {
-            emission_rate                       800
+            emission_rate                       150
             angle                               dyn_random
             {
-                min                             0
-                max                             50
+                min                             10
+                max                             30
             }
             time_to_live                        dyn_random
             {
-                min                             25
-                max                             30
+                min                             1
+                max                             1.5
             }
             velocity                            dyn_random
             {
-                min                             80
-                max                             85
+                min                             25
+                max                             35
             }
+            duration                            7.5
             all_particle_dimensions             dyn_random
             {
-                min                             4
-                max                             10
+                min                             10
+                max                             12
             }
-            position                            0 15 0
-            direction                           0 -1 0
-            colour                              0 1 0 1
-            auto_direction                      true
-            force_emission                      true
-            box_width                           1
-            box_height                          10
-            box_depth                           1
+            box_width                           15
+            box_height                          4
+            box_depth                           15
         }
-        affector                                Colour Affector49
+        affector                                ParticleFollower 
         {
-            time_colour                         0    0 0 0 0
-            time_colour                         0.01 0.137255 0.137255 0.137255 1
-            time_colour                         0.85 0.0627451 0.0627451 0.0627451 1
-            time_colour                         1    0 0 0 0
+            min_distance                        40
+            max_distance                        40
         }
-        affector                                PlaneCollider Affector74
+        affector                                Colour 
         {
-            bouncyness                          0
-            normal                              0 1 0
+            time_colour                         0    0.627451 0.627451 0.627451 0
+            time_colour                         0.2  0.188235 0.188235 0.188235 0.784314
+            time_colour                         1    0.313726 0.313726 0.313726 0
         }
-        observer                                OnClear Observer6
+        affector                                TextureRotator 
         {
-            handler                             DoStopSystem Handler8
+            use_own_rotation                    true
+            rotation                            dyn_random
+            {
+                min                             1
+                max                             40
+            }
+            rotation_speed                      0.1
+        }
+        affector                                Scale 
+        {
+            xyz_scale                           5
+        }
+        observer                                OnClear Observer16
+        {
+            handler                             DoStopSystem Handler17
             {
             }
         }
     }
-    technique Technique4
+    technique 
     {
-        visual_particle_quota                   1500
-        emitted_technique_quota                 50
-        emitted_affector_quota                  50
-        emitted_system_quota                    50
-        material                                Particle/Fire_01
+        visual_particle_quota                   450
+        material                                Particle/Fire_03
         renderer                                Billboard
         {
+            billboard_type                      oriented_self
         }
-        emitter                                 Box Emitter4
+        emitter                                 Box 
         {
-            emission_rate                       dyn_random
-            {
-                min                             120
-                max                             150
-            }
-            angle                               dyn_random
-            {
-                min                             0
-                max                             50
-            }
+            emission_rate                       150
+            angle                               10
             time_to_live                        dyn_random
             {
-                min                             25
-                max                             30
+                min                             0.5
+                max                             0.6
             }
             velocity                            dyn_random
             {
-                min                             80
-                max                             85
+                min                             10
+                max                             20
             }
-            all_particle_dimensions             dyn_random
+            duration                            7
+            particle_width                      dyn_random
             {
-                min                             6
-                max                             12
+                min                             14
+                max                             18
             }
-            position                            0 15 0
-            direction                           0 -1 0
-            colour                              0 1 0 1
-            force_emission                      true
-            box_width                           1
-            box_height                          10
-            box_depth                           1
+            particle_height                     dyn_random
+            {
+                min                             5
+                max                             8
+            }
+            box_width                           12
+            box_height                          1
+            box_depth                           12
         }
-        affector                                Colour Affector49
+        affector                                Gravity 
         {
-            time_colour                         0    0 0 0 0
-            time_colour                         0.01 0.466667 0.466667 0.466667 1
-            time_colour                         0.15 0.266667 0.266667 0.266667 1
-            time_colour                         1    0 0 0 0
+            position                            0 130 0
+            gravity                             3000
         }
-        affector                                PlaneCollider Affector74
+        affector                                Scale 
         {
-            bouncyness                          0
-            normal                              0 1 0
+            x_scale                             -5
+            y_scale                             dyn_random
+            {
+                min                             4
+                max                             75
+            }
+        }
+        affector                                Colour 
+        {
+            time_colour                         0    0 0 0 1
+            time_colour                         0.1  0.882353 0.443137 0 1
+            time_colour                         1    0 0 0 1
+        }
+        affector                                ParticleFollower Affector10
+        {
+            min_distance                        2
+            max_distance                        5
+        }
+    }
+    technique 
+    {
+        visual_particle_quota                   450
+        material                                Particle/Fire_04
+        renderer                                Billboard
+        {
+            billboard_type                      oriented_self
+        }
+        emitter                                 Box 
+        {
+            emission_rate                       150
+            angle                               10
+            time_to_live                        dyn_random
+            {
+                min                             0.5
+                max                             0.6
+            }
+            velocity                            dyn_random
+            {
+                min                             10
+                max                             20
+            }
+            duration                            7
+            particle_width                      dyn_random
+            {
+                min                             14
+                max                             18
+            }
+            particle_height                     dyn_random
+            {
+                min                             5
+                max                             8
+            }
+            box_width                           10
+            box_height                          1
+            box_depth                           10
+        }
+        affector                                Gravity 
+        {
+            position                            0 130 0
+            gravity                             2500
+        }
+        affector                                Scale 
+        {
+            x_scale                             -5
+            y_scale                             dyn_random
+            {
+                min                             3
+                max                             26
+            }
+        }
+        affector                                ParticleFollower 
+        {
+            min_distance                        2
+            max_distance                        4
+        }
+        affector                                Colour 
+        {
+            time_colour                         0    0 0 0 1
+            time_colour                         0.1  1 1 1 1
+            time_colour                         1    0 0 0 1
         }
     }
 }

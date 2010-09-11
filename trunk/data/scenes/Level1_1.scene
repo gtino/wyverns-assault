@@ -5537,8 +5537,8 @@
         </entity>
       </node>
       <node name="Woman#4" id="398602240">
-        <rotation qw="0.19509" qx="0" qy="0.980785" qz="0" />
-        <position x="1028.72" y="15" z="-94.0889" />
+        <rotation qw="0.79069" qx="0" qy="0.612217" qz="0" />
+        <position x="1038.93" y="17.03" z="-160.818" />
         <scale x="1" y="1" z="1" />
         <entity name="princess#4" id="432782976" castshadows="true" meshFile="princess.mesh" type="Enemy" subType="Woman" animationTree="data/animations/woman.xml" life="15" points="-250" speed="30" damage="0" specialDamage="0" height="13" dieMesh="nakedDie.mesh" dieAnimation="Die">
           <rotation qw="0.957571" qx="0" qy="-0.288196" qz="0" />
@@ -7593,19 +7593,6 @@
           </subentities>
         </entity>
       </node>
-      <node name="BigRock#00" id="247383040">
-        <rotation qw="0.749046" qx="-0.557193" qy="0.229922" qz="0.274959" />
-        <position x="148.062" y="21.7797" z="760.83" />
-        <scale x="1" y="1" z="1" />
-        <entity name="BigRock1#1" id="5890073" castshadows="false" meshFile="BigRock1.mesh" type="DynamicObject" BoxX="60" BoxY="60" BoxZ="60" life="100" dieMesh="BigRock1Die.mesh" dieAnimation="Die">
-          <rotation qw="1" qx="0" qy="0" qz="0" />
-          <position x="0" y="0" z="0" />
-          <scale x="1" y="1" z="1" />
-          <subentities>
-            <subentity materialName="VulcanicRock" index="0" visible="true" />
-          </subentities>
-        </entity>
-      </node>
       <node name="CityTents" id="809778176">
         <rotation qw="1" qx="0" qy="0" qz="0" />
         <position x="357.83" y="-1.54287" z="-663.94" />
@@ -7981,6 +7968,19 @@
           </subentities>
         </entity>
       </node>
+      <node name="BigRock#01" id="895229952">
+        <rotation qw="0.854912" qx="0" qy="0.518773" qz="0" />
+        <position x="151.172" y="12.6384" z="759.548" />
+        <scale x="1" y="1" z="1" />
+        <entity name="BigRock1#1" id="142429888" castshadows="true" meshFile="BigRock1.mesh" type="DynamicObject" BoxX="60" BoxY="60" BoxZ="60" life="100" dieMesh="BigRock1Die.mesh" dieAnimation="Die">
+          <rotation qw="1" qx="0" qy="0" qz="0" />
+          <position x="0" y="0" z="0" />
+          <scale x="1" y="1" z="1" />
+          <subentities>
+            <subentity materialName="VulcanicRock" index="0" visible="true" />
+          </subentities>
+        </entity>
+      </node>
       <node name="CityTents#1" id="165623952">
         <rotation qw="1" qx="0" qy="0" qz="0" />
         <position x="341.729" y="-1.54287" z="-701.174" />
@@ -8186,7 +8186,7 @@
         <scale x="1" y="1" z="1" />
         <entity name="BigRock1#0" id="572405184" castshadows="true" meshFile="BigRock1.mesh" type="DynamicObject" BoxX="60" BoxY="60" BoxZ="60" life="100" dieMesh="BigRock1Die.mesh" dieAnimation="Die">
           <rotation qw="1" qx="0" qy="0" qz="0" />
-          <position x="-0.00440903" y="6.23822" z="-0.0175504" />
+          <position x="0" y="0" z="0" />
           <scale x="1" y="1" z="1" />
           <subentities>
             <subentity materialName="VulcanicRock" index="0" visible="true" />
