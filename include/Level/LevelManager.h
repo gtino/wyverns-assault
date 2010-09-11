@@ -101,7 +101,7 @@ namespace WyvernsAssault
 		public:
 			LUA_INTERFACE();
 
-			// Physics Lib (exported to Lua)
+			// Level Lib (exported to Lua)
 			LUA_LIBRARY("Level",levellib);
 
 			LUA_FUNCTION(change);

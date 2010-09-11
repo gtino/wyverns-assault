@@ -339,3 +339,11 @@ LevelCompleteEvent::LevelCompleteEvent(int previousLevel, int newLevel, bool isL
 	mNewLevel = newLevel;
 	mIsLast = isLast;
 };
+
+//----------------------
+
+WeatherChangedEvent::WeatherChangedEvent(WeatherTypes weatherType)
+:Event(EventTypes::WeatherChanged, EventPriorities::Normal)
+{
+	mWeatherType = weatherType;
+};

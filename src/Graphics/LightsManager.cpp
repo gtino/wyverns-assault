@@ -48,7 +48,7 @@ void LightsManager::finalize()
 
 void LightsManager::update(const float elapsedSeconds)
 {
-	this->runDayLight(0);
+	//this->runDayLight(0);
 }
 
 /** Create lights functions **/		
@@ -86,6 +86,57 @@ Ogre::ColourValue LightsManager::getAmbientLight()
 	return mSceneManager->getAmbientLight();
 }
 
+// --------------
+// Event handlers
+// --------------
+EVENTS_BEGIN_REGISTER_HANDLERS(LightsManager)
+	EVENTS_REGISTER_HANDLER(LightsManager, WeatherChanged)
+EVENTS_END_REGISTER_HANDLERS()
+
+EVENTS_BEGIN_UNREGISTER_HANDLERS(LightsManager)
+	EVENTS_UNREGISTER_HANDLER(LightsManager, WeatherChanged)
+EVENTS_END_UNREGISTER_HANDLERS()
+
+EVENTS_DEFINE_HANDLER(LightsManager, WeatherChanged)
+{
+	Debug::Out("LightsManager : handleWeatherChangedEvent");
+
+	WeatherTypes weatherType = evt->getWeatherType();
+
+	Ogre::Light* light = getLight("Sun"); // HACK : Remember that the light is called Sun!
+
+	switch(weatherType)
+	{
+	case WeatherTypes::Dawn:
+		setAmbientLight(Ogre::ColourValue(0.8,0.8,0.5,1.0));
+		light->setDiffuseColour(0.8,0.8,0.5);
+		light->setPosition(0,0,-2000);
+		break;
+	case WeatherTypes::Noon:
+		setAmbientLight(Ogre::ColourValue(0.9,0.9,0.7,1.0));
+		light->setDiffuseColour(0.9,0.9,0.7);
+		light->setPosition(0,2000,0);
+		break;
+	case WeatherTypes::Rain:
+		setAmbientLight(Ogre::ColourValue(0.4,0.4,0.4,1.0));
+		light->setDiffuseColour(0.4,0.4,0.4);
+		light->setPosition(0,2000*0.29,2000*0.71);
+		break;
+	case WeatherTypes::Sunset:
+		setAmbientLight(Ogre::ColourValue(0.8,0.5,0.5,1.0));
+		light->setDiffuseColour(0.8,0.5,0.5);
+		light->setPosition(0,0,2000);
+		break;
+	case WeatherTypes::Night:
+		setAmbientLight(Ogre::ColourValue(0.2,0.2,0.4,1.0));
+		light->setDiffuseColour(0.2,0.2,0.4);
+		light->setPosition(0,2000,0);
+		break;
+	default:
+		break;
+	}
+}
+
 // --------------------------------
 // Lua Light Lib
 // --------------------------------
@@ -102,7 +153,7 @@ LUA_END_BINDING()
 // Load lua scripts that will be used by this manager
 //
 LUA_BEGIN_LOAD_SCRIPTS(LightsManager)
-LUA_LOAD_SCRIPT(".\\data\\scripts\\Scenario.lua")
+//LUA_LOAD_SCRIPT(".\\data\\scripts\\Scenario.lua")
 LUA_END_LOAD_SCRIPTS()
 
 // ----------------------------

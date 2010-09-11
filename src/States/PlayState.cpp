@@ -201,6 +201,12 @@ void PlayState::initialize()
 	mGameAreaManager->initialize();
 
 	//
+	// Weather Manager
+	//
+	mWeatherManager = WeatherManagerPtr(new WeatherManager());
+	mWeatherManager->initialize();
+
+	//
 	// Events Manager 
 	//
 	mEventsManager = EventsManagerPtr(new EventsManager());
@@ -221,6 +227,8 @@ void PlayState::initialize()
 	mEventsManager->registerInterface(mScenarioManager);
 	mEventsManager->registerInterface(mGameAreaManager);
 	mEventsManager->registerInterface(mProjectileManager);
+	mEventsManager->registerInterface(mLightsManager);
+	mEventsManager->registerInterface(mWeatherManager);
 
 	// -----------
 	// Lua Manager
@@ -245,6 +253,7 @@ void PlayState::initialize()
 	mLuaManager->registerInterface(mPostProcessManager);
 	mLuaManager->registerInterface(mCameraManager);
 	mLuaManager->registerInterface(mInputManager);
+	mLuaManager->registerInterface(mWeatherManager);
 
 	//
 	// THIRD :	This call to 'initialize' will initialize Lua,
@@ -581,9 +590,16 @@ void PlayState::update(const float elapsedSeconds)
 	//
 	// Update Level manager
 	//
-	TIMER_START(LevelManager);
+	TIMER_START(Level);
 	mLevelManager->update(elapsedSeconds);
-	TIMER_STOP(LevelManager);
+	TIMER_STOP(Level);
+
+	//
+	// Weather Manager
+	//
+	TIMER_START(Weather);
+	mWeatherManager->update(elapsedSeconds);
+	TIMER_STOP(Weather);
 
 	//
 	// Dispatch events. Managers have probably raised events, that are now in the 
@@ -685,6 +701,8 @@ void PlayState::finalize()
 	mGameAreaManager.reset();
 
 	mProjectileManager.reset();
+
+	mWeatherManager.reset();
 
 	//mGraphicsManager->clearScene();
 

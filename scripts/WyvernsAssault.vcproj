@@ -1022,6 +1022,10 @@
 				Name="Weather"
 				>
 				<File
+					RelativePath="..\include\Weather\Weather.h"
+					>
+				</File>
+				<File
 					RelativePath="..\include\Weather\WeatherManager.h"
 					>
 				</File>

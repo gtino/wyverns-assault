@@ -30,6 +30,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #include "..\Entity\Item\Item.h"
 #include "..\Entity\Projectile\Projectile.h"
 #include "..\Scenario\Object.h"
+#include "..\Weather\Weather.h"
 
 namespace WyvernsAssault
 {
@@ -66,7 +67,8 @@ namespace WyvernsAssault
 		ProjectileUpdate,
 		ProjectileHit,
 		ProjectileRemove,
-		LevelComplete
+		LevelComplete,
+		WeatherChanged
 	};
 
 	/** Event priority, used to put the event in the correct queue */
@@ -628,6 +630,21 @@ namespace WyvernsAssault
 	};
 
 	typedef boost::shared_ptr<LevelCompleteEvent> LevelCompleteEventPtr;
+
+	// --------------------------------
+	class WeatherChangedEvent : public Event
+	{
+	public:
+		WeatherChangedEvent( WeatherTypes weatherType );
+		~WeatherChangedEvent(){};
+		
+		WeatherTypes getWeatherType(){return mWeatherType;}
+
+	private:		
+		WeatherTypes mWeatherType;
+	};
+
+	typedef boost::shared_ptr<WeatherChangedEvent> WeatherChangedEventPtr;
 
 }
 
