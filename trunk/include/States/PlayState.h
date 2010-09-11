@@ -44,6 +44,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #include "..\Graphics\PostProcessManager.h"
 #include "..\Scenario\DotSceneLoader.h"
 #include "..\GameArea\GameAreaManager.h"
+#include "..\Weather\WeatherManager.h"
 
 #include <boost/scoped_ptr.hpp>
 
@@ -117,6 +118,7 @@ namespace WyvernsAssault
 		CutSceneManagerPtr mCutSceneManager;
 		GameAreaManagerPtr mGameAreaManager;
 		ProjectileManagerPtr mProjectileManager;
+		WeatherManagerPtr mWeatherManager;
 
 		SceneNode* mRootSceneNode;
 
@@ -154,7 +156,8 @@ namespace WyvernsAssault
 		TIMER(GameArea);
 		TIMER(Projectile);
 		TIMER(ParticleSystem);
-		TIMER(LevelManager);
+		TIMER(Level);
+		TIMER(Weather);
 
 	protected:
 		float			buttonTimer;

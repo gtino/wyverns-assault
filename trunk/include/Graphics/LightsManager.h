@@ -29,8 +29,10 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #include <OgreSingleton.h>
 #include <boost/enable_shared_from_this.hpp>
 
+#include "..\Debug\Debug.h"
 #include "..\Utils\Utils.h"
 #include "..\Lua\LuaInterface.h"
+#include "..\Events\EventsInterface.h"
 
 // Light types
 #define AMBIENT		1
@@ -45,7 +47,10 @@ namespace WyvernsAssault
 	/**
 	Class used to manage all the lights
 	*/
-	class LightsManager : public Ogre::Singleton<LightsManager>, public boost::enable_shared_from_this<LightsManager>, public LuaInterface
+	class LightsManager :	public Ogre::Singleton<LightsManager>, 
+							public boost::enable_shared_from_this<LightsManager>, 
+							public LuaInterface,
+							public EventsInterface
 	{
 	public:
 		LightsManager(SceneManager* sceneManager);
@@ -77,6 +82,14 @@ namespace WyvernsAssault
 
 		SceneManager* mSceneManager;
 		SceneNode* mLightNode;
+
+	public:
+		// ----------------
+		// Events interface
+		// ----------------
+		EVENTS_INTERFACE()
+
+		EVENTS_HANDLER(WeatherChanged)
 
 	// --------------------------------
 	// BEGIN Lua Interface Declarations
