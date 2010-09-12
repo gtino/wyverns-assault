@@ -23,18 +23,19 @@ system WyvernsAssault/FireKillObject
             }
             velocity                            dyn_random
             {
-                min                             25
-                max                             35
+                min                             40
+                max                             50
             }
             duration                            7.5
             all_particle_dimensions             dyn_random
             {
-                min                             10
-                max                             12
+                min                             15
+                max                             20
             }
-            box_width                           15
+            position                            0 5 0
+            box_width                           25
             box_height                          4
-            box_depth                           15
+            box_depth                           25
         }
         affector                                ParticleFollower 
         {
@@ -43,9 +44,9 @@ system WyvernsAssault/FireKillObject
         }
         affector                                Colour 
         {
-            time_colour                         0    0.627451 0.627451 0.627451 0
-            time_colour                         0.2  0.188235 0.188235 0.188235 0.784314
-            time_colour                         1    0.313726 0.313726 0.313726 0
+            time_colour                         0    0.501961 0.501961 0.501961 0
+            time_colour                         0.2  0.188235 0.188235 0.188235 0.196078
+            time_colour                         1    0.12549 0.12549 0.12549 0
         }
         affector                                TextureRotator 
         {
@@ -82,8 +83,8 @@ system WyvernsAssault/FireKillObject
             angle                               10
             time_to_live                        dyn_random
             {
-                min                             0.5
-                max                             0.6
+                min                             0.3
+                max                             0.7
             }
             velocity                            dyn_random
             {
@@ -93,8 +94,8 @@ system WyvernsAssault/FireKillObject
             duration                            7
             particle_width                      dyn_random
             {
-                min                             14
-                max                             18
+                min                             10
+                max                             14
             }
             particle_height                     dyn_random
             {
@@ -145,8 +146,8 @@ system WyvernsAssault/FireKillObject
             angle                               10
             time_to_live                        dyn_random
             {
-                min                             0.5
-                max                             0.6
+                min                             0.3
+                max                             0.7
             }
             velocity                            dyn_random
             {
@@ -156,17 +157,17 @@ system WyvernsAssault/FireKillObject
             duration                            7
             particle_width                      dyn_random
             {
-                min                             14
-                max                             18
+                min                             10
+                max                             14
             }
             particle_height                     dyn_random
             {
                 min                             5
                 max                             8
             }
-            box_width                           10
+            box_width                           12
             box_height                          1
-            box_depth                           10
+            box_depth                           12
         }
         affector                                Gravity 
         {
