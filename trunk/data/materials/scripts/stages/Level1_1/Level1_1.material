@@ -3120,8 +3120,8 @@ material BigRock
 
 			fragment_program_ref ToonFP
 			{
-				param_named ambient float4 0.487 0 0 1
-				param_named diffuse float4 0.124 0.124 0.124 1
+				param_named ambient float4 0.159 0.159 0.159 1
+				param_named diffuse float4 0.407 0.407 0.407 1
 				param_named specular float4 0.0 0.0 0.0 1.0
 				param_named emissive float4 0.0 0.0 0.0 1.0
 			}
