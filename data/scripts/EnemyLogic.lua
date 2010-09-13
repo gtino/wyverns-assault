@@ -21,7 +21,8 @@ Dying = 11
 Dead = 12
 
 -- Common distances
-FightingDistance = 20
+FightingDistance = 30
+MinimumFightingDistance = 20
 LoveDistance = 40
 SaveDistance = 70
 
@@ -32,7 +33,7 @@ ChaseDistance = 300
 MagicDistance = 100
 
 -- Archer
-FireDistance = 160
+FireDistance = 150
 
 -- Battering Ram
 BRAttackDistance = 35
@@ -133,9 +134,11 @@ function runWomanLogic(enemyId, state)
 				newState = Fear
 			end
 		elseif state == Fear then
-			if timeout > 4 then
-				newState = Idle
+			if timeout > 3 then
+				newState = Patrol
 			end
+		elseif state == Patrol then
+			newState = Patrol
 		elseif state == Dying then 
 			newState = Dying
 		else
@@ -175,14 +178,20 @@ function runPeasantLogic(enemyId, state)
 				newState = Alert
 			end
 		elseif state == Alert then
-			if distance < FightingDistance then
-				newState = Rage
+			if distance < LoveDistance then
+				newState = Love
 			elseif distance > ChaseDistance then
 				newState = Idle
 			end
-		elseif state == Rage then
-			if distance > FightingDistance then
+		elseif state == Love then
+			if timeout > 1 then
+				newState = Fear			
+			elseif distance > LoveDistance then
 				newState = Alert
+			end
+		elseif state == Fear then
+			if timeout > 2 then
+				newState = Idle
 			end
 		elseif state == Dying then 
 			newState = Dying
@@ -192,7 +201,7 @@ function runPeasantLogic(enemyId, state)
 	end
   
 	return newState 
-
+	
 end
 
 function runSoldierLogic(enemyId, state)
@@ -203,7 +212,6 @@ function runSoldierLogic(enemyId, state)
 	local elapsedSeconds = Logic.getElapsedSeconds()
 		
 	local playerNumber = Player.getNumPlayers();
-	--local playerNumber = 0;
 	
 	if playerNumber == 0 then
 		newState = Idle -- Party state! (no players alive)
@@ -231,6 +239,8 @@ function runSoldierLogic(enemyId, state)
 			end
 		elseif state == Rage then
 			if distance > FightingDistance then
+				newState = Alert
+			elseif distance < MinimumFightingDistance then
 				newState = Alert
 			end
 		elseif state == Dying then 
@@ -373,11 +383,17 @@ function runChickenLogic(enemyId, state)
 	if state == Initial then 
 		newState = Idle
 	elseif state == Idle then
+		if distance > ChickenAlertDistance then
+			newState = Alert
+		else
+			newState = Fear
+		end
+	elseif state == Alert then
 		if distance < ChickenAlertDistance then
 			newState = Fear
 		end
 	elseif state == Fear then 
-		if distance > ChickenAlertDistance then
+		if timeout > 3 then
 			newState = Idle
 		end
 	elseif state == Dying then 
@@ -411,7 +427,7 @@ function runCowLogic(enemyId, state)
 			newState = Fear
 		end
 	elseif state == Fear then 
-		if distance > CowAlertDistance then
+		if timeout > 3 then
 			newState = Idle
 		end
 	elseif state == Dying then 
