@@ -255,8 +255,11 @@ void PhysicsManager::move(EnemyPtr enemy, const float elapsedSeconds)
 
 	enemy->translate( (direction  * enemy->getSpeed() * elapsedSeconds) );
 
-	// Test enemy collision
-	bool enemyCollision = collidesAllEnemys(enemy);
+	bool enemyCollision = false;
+
+	// Test enemy collision. Womans dont collide
+	if( enemy->getEnemyType() != Enemy::EnemyTypes::Woman )		
+		enemyCollision = collidesAllEnemys(enemy);
 
 	// Test walls collision
 	bool wallCollision = collides(lastPosition, enemy->getPosition(), mWallGeometry->getPhysicsMeshInfo(), 0.5f, 0);

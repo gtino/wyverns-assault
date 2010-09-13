@@ -367,7 +367,7 @@ void Enemy::setDirectionOutTarget()
 			Quaternion rotation = src.getRotationTo(mDirection);
 			mSceneNode->rotate(rotation);
 		}
-	}
+	}	
 }
 
 void Enemy::setDirectionRandom()

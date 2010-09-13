@@ -99,6 +99,19 @@ Enemy::EnemyParameters EnemyManager::createParameters(int difficult, Enemy::Enem
 		params.dieMesh = "nakedDie.mesh";
 		params.dieAnimation = "Die";
 	}
+	else if( type == Enemy::EnemyTypes::Peasant )
+	{
+		params.animationTree = "data/animations/peasant.xml";
+		params.life = 50.0;
+		params.points = 100.0;
+		params.speed = 50.0;
+		params.damage = 0.0;
+		params.specialDamage = 0.0;
+		params.height = 13.0;
+		params.attackCooldown = 0.5;
+		params.dieMesh = "nakedDie.mesh";
+		params.dieAnimation = "Die";
+	}
 	else
 	{
 		params.animationTree = "data/animations/knight.xml";
@@ -184,6 +197,9 @@ EnemyPtr EnemyManager::createEnemy(Enemy::EnemyTypes type, int difficult, Vector
 			break;
 		case Enemy::EnemyTypes::Naked:
 			mesh = Ogre::String("naked.mesh");
+			break;
+		case Enemy::EnemyTypes::Peasant:
+			mesh = Ogre::String("peasant.mesh");
 			break;
 		case Enemy::EnemyTypes::Woman:
 			mesh = Ogre::String("princess.mesh");
@@ -435,11 +451,20 @@ void EnemyManager::update(const float elapsedSeconds)
 		}
 
 		// Womans logic
-		if( enemy->getEnemyState() == Enemy::EnemyStates::Love && enemy->getEnemyType() == Enemy::EnemyTypes::Woman && enemy->hasItem() )
+		if( enemy->getEnemyType() == Enemy::EnemyTypes::Woman )
 		{
-			EnemyCreateItemEventPtr evt = EnemyCreateItemEventPtr(new EnemyCreateItemEvent(enemy, mCurrentGameArea));
-			EVENTS_FIRE_AFTER(evt, 0.5);
-			enemy->itemDroped();
+			if( enemy->getEnemyState() == Enemy::EnemyStates::Love && enemy->hasItem() )
+			{
+				EnemyCreateItemEventPtr evt = EnemyCreateItemEventPtr(new EnemyCreateItemEvent(enemy, mCurrentGameArea));
+				EVENTS_FIRE_AFTER(evt, 0.5);
+				enemy->itemDroped();
+			}
+			if( enemy->getEnemyState() == Enemy::EnemyStates::Patrol )
+			{
+				enemy->setVisible(false);
+				EnemyRemoveEventPtr evt = EnemyRemoveEventPtr(new EnemyRemoveEvent(enemy));
+				EVENTS_FIRE(evt);
+			}
 		}
 	}
 
@@ -562,7 +587,7 @@ EVENTS_DEFINE_HANDLER(EnemyManager, EnemyKilled)
 					enemy->setMaterialName("Skin/Red");
 
 				// If enemy has an item and its not flying will drop it
-				if( enemy->hasItem() )
+				if( enemy->hasItem() && enemy->getEnemyType() != Enemy::EnemyTypes::Woman )
 				{	
 					EnemyCreateItemEventPtr eItem = EnemyCreateItemEventPtr(new EnemyCreateItemEvent(enemy, mCurrentGameArea));
 					EVENTS_FIRE_AFTER(eItem, 1.0f);

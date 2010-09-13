@@ -111,7 +111,7 @@ void GameAreaManager::manageGameArea()
 				int x = rand() % 3;
 
 				if( x == 0 )
-					type = Enemy::EnemyTypes::Naked;
+					type = Enemy::EnemyTypes::Peasant;
 				else if( x == 1 )
 					type = Enemy::EnemyTypes::Cow;
 				else

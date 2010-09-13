@@ -30,6 +30,7 @@ void GuiImage::setImage(const Ogre::String& filename, const Ogre::String& name, 
 	mImageMaterial->getTechnique(0)->getPass(0)->setDepthWriteEnabled(true);
 	mImageMaterial->getTechnique(0)->getPass(0)->setLightingEnabled(false);
 	mImageMaterial->getTechnique(0)->getPass(0)->setSceneBlending(Ogre::SBT_TRANSPARENT_ALPHA);
+	//mImageMaterial->getTechnique(0)->getPass(0)->getTextureUnitState(0)->setTextureAddressingMode(TextureUnitState::TextureAddressingMode::TAM_MIRROR);
 
 	mRectangle2D->setMaterial(name);
 }
