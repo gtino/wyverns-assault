@@ -161,7 +161,7 @@ void GuiMenu::nextOption()
 
 				mSelectedOption = 0;
 			}			
-			element->setColour(ColourValue(1, 0.5, 0));
+			element->setColour(ColourValue(1, 0.84, 0.1));
 			// Save current
 			mCurrent = element;			
 			break;
@@ -186,7 +186,7 @@ void GuiMenu::previousOption()
 			// Deselect current
 			element->setColour(ColourValue(1, 1, 1));
 			// Select previous
-			previous->setColour(ColourValue(1, 0.5, 0));
+			previous->setColour(ColourValue(1, 0.84, 0.1));
 			// Save previous
 			mCurrent = previous;
 
@@ -205,7 +205,7 @@ void GuiMenu::previousOption()
 			// Deselect current
 			mCurrent->setColour(ColourValue(1, 1, 1));
 			// Select last
-			previous->setColour(ColourValue(1, 0.5, 0));
+			previous->setColour(ColourValue(1, 0.84, 0.1));
 			// Save last
 			mCurrent = previous;
 			break;

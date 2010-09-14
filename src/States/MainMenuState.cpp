@@ -129,10 +129,10 @@ bool MainMenuState::keyReleased(const OIS::KeyEvent& e)
 {
 	switch(e.key)
 	{
-	case OIS::KC_UP:
+	case OIS::KC_LEFT:
 		mMenu->previousOption();
 		break;
-	case OIS::KC_DOWN:
+	case OIS::KC_RIGHT:
 		mMenu->nextOption();
 		break;
 	case OIS::KC_RETURN:
