@@ -16,7 +16,9 @@ GuiManager& GuiManager::getSingleton(void)
 // END SINGLETON
 
 GuiManager::GuiManager()
+: flashCount(false)
 {
+
 }
 
 GuiManager::~GuiManager()
@@ -25,6 +27,20 @@ GuiManager::~GuiManager()
 	// TODO Destructor
 	//
 	finalize();
+}
+
+void GuiManager::update(float const elapsedSeconds)
+{
+	if(flashCount){
+		flashCount = mFlashCounterUI->update(elapsedSeconds);
+	}
+
+}
+
+void GuiManager::reset(){
+	flashCount = false;
+	if(mFlashCounterUI)
+		mFlashCounterUI->reset();
 }
 
 bool GuiManager::initialize(Ogre::Root* root, Ogre::SceneManager* sceneManager, Ogre::RenderWindow* window)
@@ -122,6 +138,7 @@ EVENTS_BEGIN_REGISTER_HANDLERS(GuiManager)
 	EVENTS_REGISTER_HANDLER(GuiManager, EnemyKilled);
 	EVENTS_REGISTER_HANDLER(GuiManager, PlayerHit);
 	EVENTS_REGISTER_HANDLER(GuiManager, PlayerStatusUpdate);
+	EVENTS_REGISTER_HANDLER(GuiManager, GameAreaFlashCounter);
 EVENTS_END_REGISTER_HANDLERS()
 
 EVENTS_BEGIN_UNREGISTER_HANDLERS(GuiManager)
@@ -130,6 +147,7 @@ EVENTS_BEGIN_UNREGISTER_HANDLERS(GuiManager)
 	EVENTS_UNREGISTER_HANDLER(GuiManager, EnemyKilled);
 	EVENTS_UNREGISTER_HANDLER(GuiManager, PlayerHit);
 	EVENTS_UNREGISTER_HANDLER(GuiManager, PlayerStatusUpdate);
+	EVENTS_UNREGISTER_HANDLER(GuiManager, GameAreaFlashCounter);
 EVENTS_END_UNREGISTER_HANDLERS()
 
 
@@ -216,6 +234,22 @@ EVENTS_DEFINE_HANDLER(GuiManager, PlayerStatusUpdate)
 	userData.points = player->getPoints();
 
 	ui->setData(&userData);
+}
+
+EVENTS_DEFINE_HANDLER(GuiManager, GameAreaFlashCounter)
+{
+	Debug::Out("GuiManager : handleGameAreaFlashCounterEvent");
+
+	int seconds = (int)evt->getSeconds();
+
+	if(!mFlashCounterUI){
+		mFlashCounterUI = GuiFlashCounterPtr( new GuiFlashCounter(mWindow->getViewport(0), GuiScreenId::FlashCounterGui, seconds) );
+	}else{
+		mFlashCounterUI->setSeconds(seconds);
+	}
+
+	flashCount = true;
+
 }
 
 // --------------------------------

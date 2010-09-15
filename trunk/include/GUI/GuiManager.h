@@ -68,12 +68,16 @@ namespace WyvernsAssault
 		bool initialize(Ogre::Root* root, Ogre::SceneManager* sceneManager, Ogre::RenderWindow* window);		
 		void finalize();
 
+		void update(const float elapsedSeconds);
+
 		GuiScreenPtr createScreen(GuiScreenId id, const Ogre::String& name);
 		bool hasScreen(GuiScreenId id);
 		void removeScreen(GuiScreenId id);
 		void showScreen(GuiScreenId id);
 		void hideScreen(GuiScreenId id);
 		GuiScreenPtr getScreen(GuiScreenId id);
+
+		void reset();
 
 	private: // InputListener
 		bool mouseMoved( const OIS::MouseEvent &arg );
@@ -89,6 +93,11 @@ namespace WyvernsAssault
 
 		GuiScreenMap	mGuiScreenMap;
 
+		bool flashCount;
+
+		// Flash Counter
+		GuiFlashCounterPtr mFlashCounterUI;
+
 		// ----------------
 		// Events interface
 		// ----------------
@@ -99,6 +108,7 @@ namespace WyvernsAssault
 		EVENTS_HANDLER(EnemyKilled)
 		EVENTS_HANDLER(PlayerHit)
 		EVENTS_HANDLER(PlayerStatusUpdate)
+		EVENTS_HANDLER(GameAreaFlashCounter)
 
 		// --------------------------------
 		// BEGIN Lua Interface Declarations

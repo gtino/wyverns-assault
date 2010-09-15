@@ -72,7 +72,7 @@ void PlayState::initialize()
 	mGuiScreen = mGuiManager->createScreen(GuiScreenId::PlayGui, "PlayScreen");
 	mPlayerUI = GuiUserInterfacePtr( new GuiUserInterface(mWindow->getViewport(0)->getCamera()->getAspectRatio(), GuiScreenId::PlayGui, GuiWidgetPlayId::UserInterface1) );
 	mGuiScreen->addWidget(mPlayerUI,GuiWidgetPlayId::UserInterface1);
-	
+
 	GuiForegroundPtr foreground = GuiForegroundPtr(new GuiForeground());
 	//foreground->setImage("intro_1.png","IntroBackground","General");
 
@@ -602,6 +602,11 @@ void PlayState::update(const float elapsedSeconds)
 	TIMER_STOP(Weather);
 
 	//
+	// Update GUI Manager
+	//
+	mGuiManager->update(elapsedSeconds);
+
+	//
 	// Dispatch events. Managers have probably raised events, that are now in the 
 	// EventsManager queue. The events manager will then dispatch them, calling
 	// for each of them the registered handler(s).
@@ -684,6 +689,8 @@ void PlayState::finalize()
 
 	mGuiScreen.reset();
 
+	mGuiManager->reset();
+
 	mPhysicsManager.reset();
 
 	mItemManager.reset();
@@ -756,7 +763,7 @@ void PlayState::resume()
 	//
 	// Show gui (hided when pause)
 	//
-	mGuiScreen->show();
+	mGuiScreen->show(); 
 
 	// Show sdktrays if was visible
 	mTrayMgr->showAll();

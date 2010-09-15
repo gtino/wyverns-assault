@@ -68,7 +68,8 @@ namespace WyvernsAssault
 		ProjectileHit,
 		ProjectileRemove,
 		LevelComplete,
-		WeatherChanged
+		WeatherChanged,
+		GameAreaFlashCounter
 	};
 
 	/** Event priority, used to put the event in the correct queue */
@@ -645,6 +646,21 @@ namespace WyvernsAssault
 	};
 
 	typedef boost::shared_ptr<WeatherChangedEvent> WeatherChangedEventPtr;
+
+	// --------------------------------
+	class GameAreaFlashCounterEvent : public Event
+	{
+	public:
+		GameAreaFlashCounterEvent(int seconds);
+		~GameAreaFlashCounterEvent(){};
+		
+		int getSeconds(){ return mSeconds; }
+
+	private:
+		int mSeconds;
+	};
+
+	typedef boost::shared_ptr<GameAreaFlashCounterEvent> GameAreaFlashCounterEventPtr;
 
 }
 

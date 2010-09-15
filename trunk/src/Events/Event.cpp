@@ -347,3 +347,11 @@ WeatherChangedEvent::WeatherChangedEvent(WeatherTypes weatherType)
 {
 	mWeatherType = weatherType;
 };
+
+//----------------------
+
+GameAreaFlashCounterEvent::GameAreaFlashCounterEvent(int seconds)
+:Event(EventTypes::GameAreaFlashCounter, EventPriorities::Normal)
+{
+	mSeconds = seconds;
+};
