@@ -65,6 +65,12 @@ void GameAreaManager::update(Vector3 playerPosition, const float elapsedSeconds)
 		mEnemiesAlive = (mGameAreas[playerArea].mEnemies != 0);
 		mTime = 0.0;
 
+		// If Game Area type is 1, launch flash counter
+		if( mGameAreas[mCurrentGameArea].mType == 1 && mGameAreas[mCurrentGameArea].mFinishTime != 0){
+			GameAreaFlashCounterEventPtr evtCounter = GameAreaFlashCounterEventPtr(new GameAreaFlashCounterEvent(mGameAreas[playerArea].mFinishTime));
+			EVENTS_FIRE(evtCounter);
+		}
+
 		// Call manage area
 		manageGameArea();
 	}
