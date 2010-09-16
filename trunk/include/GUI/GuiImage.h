@@ -40,6 +40,10 @@ namespace WyvernsAssault
 
 	public:
 		void setImage(const Ogre::String& filename, const Ogre::String& name, const Ogre::String& group);
+		void setImage(const Ogre::String& material);
+
+		int getFrames(){ mRectangle2D->getMaterial()->getTechnique(0)->getPass(0)->getTextureUnitState(0)->getNumFrames(); }
+		void setFrame(int frame){ mRectangle2D->getMaterial()->getTechnique(0)->getPass(0)->getTextureUnitState(0)->setCurrentFrame(frame); }
 
 	protected:
 		Ogre::SceneNode* mImageNode;

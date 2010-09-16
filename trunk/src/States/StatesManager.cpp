@@ -145,6 +145,10 @@ bool StatesManager::loop(const float elapsedSeconds)
 			{
 				this->pushState(newState);
 			}
+			else if(mCurrentStateId == GameStateId::MainMenu && nextStateId == GameStateId::Credits)
+			{
+				this->pushState(newState);
+			}
 			// Exit to menu
 			else if(mCurrentStateId == GameStateId::Pause && nextStateId == GameStateId::MainMenu)
 			{
@@ -154,9 +158,6 @@ bool StatesManager::loop(const float elapsedSeconds)
 			// Options from pause 
 			else if(mCurrentStateId == GameStateId::Pause && nextStateId == GameStateId::Options)
 			{
-				// 
-				// TODO
-				//
 				this->pushState(newState);
 			}
 			else if(nextStateId == GameStateId::Previous)
@@ -243,21 +244,44 @@ void StatesManager::popState()
 		mStatesStack.pop_back();
 	}
 
-	//
-	// Set new state as current state
-	//
-	this->mCurrentState = mStatesStack.back();
+	if( mStatesStack.empty() )
+	{
+		//
+		// Set new state as current state
+		//
+		this->mCurrentState = this->getGameStateById(GameStateId::MainMenu);
 
-	//
-	// Save current state Id
-	//
-	this->mCurrentStateId = this->mCurrentState->getStateId();
+		//
+		// Save current state Id
+		//
+		this->mCurrentStateId = GameStateId::MainMenu;
 
-	//
-	// Resume previous state
-	//
-	if ( !mStatesStack.empty() ) {
-		mStatesStack.back()->resume();
+		//
+		// Store and init the new state
+		//
+		mStatesStack.push_back(this->mCurrentState);
+		mStatesStack.back()->enter();
+
+	}
+	else
+	{
+
+		//
+		// Set new state as current state
+		//
+		this->mCurrentState = mStatesStack.back();
+
+		//
+		// Save current state Id
+		//
+		this->mCurrentStateId = this->mCurrentState->getStateId();
+
+		//
+		// Resume previous state
+		//
+		if ( !mStatesStack.empty() ) {
+			mStatesStack.back()->resume();
+		}
 	}
 }
 

@@ -27,6 +27,10 @@ MainMenuState::~MainMenuState()
 void MainMenuState::initialize()
 {
 	BaseState::initialize();
+
+	timer = 0.0;
+	animControl = 0;
+	isWideScreen = false;
 }
 
 /** Manage input */
@@ -41,21 +45,30 @@ void MainMenuState::input()
 /** Load resources */
 void MainMenuState::load()
 {
+	float ratio = mWindow->getViewport(0)->getCamera()->getAspectRatio();
+
+	// Common aspect ratio is 4/3
+	if( mWindow->getViewport(0)->getCamera()->getAspectRatio() > 1.34 )
+		isWideScreen = true;
+
 	//
 	// Gui Screen for this state
 	//
 	mGuiScreen = mGuiManager->createScreen(GuiScreenId::MainMenuGui, "MainMenuScreen");
 	
 	GuiBackgroundPtr guiBackground = GuiBackgroundPtr(new GuiBackground());
-	guiBackground->setImage("MainMenu.png","MainMenuBackground","General");
+	if( isWideScreen )
+		guiBackground->setImage("wide/MainMenu.png","MainMenuBackground","General");
+	else
+		guiBackground->setImage("normal/MainMenu.png","MainMenuBackground","General");
+
+	guiTitle = GuiForegroundPtr(new GuiForeground());
 
 	mGuiScreen->setBackground(guiBackground);
+	mGuiScreen->setForeground(guiTitle);
 
 	// Gui Widgets for this state
-	mMenu = new GuiMenu(mWindow->getViewport(0)->getCamera()->getAspectRatio(), GuiScreenId::MainMenuGui);
-	
-	// Add menu to screen
-	mGuiScreen->addMenu(mMenu);
+	mMenu = new GuiMenu(mWindow->getViewport(0)->getCamera()->getAspectRatio(), GuiScreenId::MainMenuGui);	
 
 	//
 	// Play soft soundtrack
@@ -66,9 +79,33 @@ void MainMenuState::load()
 /** Update internal stuff */
 void MainMenuState::update(const float elapsedSeconds)
 {
-	//
-	// TODO Update
-	//
+	timer = timer + elapsedSeconds;
+
+	if( timer > 4.0 )
+	{
+		guiTitle->setFrame(6);
+		mGuiScreen->addMenu(mMenu);
+		animControl = 1;
+	}		
+	else if( timer > 3.0 )
+		guiTitle->setFrame(5);
+	else if( timer > 2.5 )
+		guiTitle->setFrame(4);
+	else if( timer > 2.0 )
+		guiTitle->setFrame(3);
+	else if( timer > 1.5 )
+		guiTitle->setFrame(2);
+	else if( timer > 1.0 )
+		guiTitle->setFrame(1);
+	else if( timer > 0.5 )
+	{		
+		if( isWideScreen )
+			guiTitle->setImage("GUI/Title/Animation/Wide");
+		else
+			guiTitle->setImage("GUI/Title/Animation/Normal");
+
+		guiTitle->setFrame(0);				
+	}	
 }
 
 /** Render */
@@ -127,34 +164,37 @@ void MainMenuState::resume()
 /** Buffered input - keyboard key clicked */
 bool MainMenuState::keyReleased(const OIS::KeyEvent& e)
 {
-	switch(e.key)
+	if( animControl > 0 )
 	{
-	case OIS::KC_LEFT:
-		mMenu->previousOption();
-		break;
-	case OIS::KC_RIGHT:
-		mMenu->nextOption();
-		break;
-	case OIS::KC_RETURN:
-		switch(mMenu->getCurrentOption())
+		switch(e.key)
 		{
-		case GuiWidgetMenuId::PlayMenu:
-			this->mNextGameStateId = GameStateId::LevelLoading;
+		case OIS::KC_LEFT:
+			mMenu->previousOption();
 			break;
-		case GuiWidgetMenuId::OptionsMenu:
-			this->mNextGameStateId = GameStateId::Options;
+		case OIS::KC_RIGHT:
+			mMenu->nextOption();
 			break;
-		case GuiWidgetMenuId::CreditsMenu:
-			this->mNextGameStateId = GameStateId::Credits;
+		case OIS::KC_RETURN:
+			switch(mMenu->getCurrentOption())
+			{
+			case GuiWidgetMenuId::PlayMenu:
+				this->mNextGameStateId = GameStateId::LevelLoading;
+				break;
+			case GuiWidgetMenuId::OptionsMenu:
+				this->mNextGameStateId = GameStateId::Options;
+				break;
+			case GuiWidgetMenuId::CreditsMenu:
+				this->mNextGameStateId = GameStateId::Credits;
+				break;
+			case GuiWidgetMenuId::QuitMenu:
+				this->mNextGameStateId = GameStateId::Exit;
+				break;
+			}		
 			break;
-		case GuiWidgetMenuId::QuitMenu:
+		case OIS::KC_ESCAPE:
 			this->mNextGameStateId = GameStateId::Exit;
 			break;
-		}		
-		break;
-	case OIS::KC_ESCAPE:
-		this->mNextGameStateId = GameStateId::Exit;
-		break;
+		}
 	}
 
 	return true;

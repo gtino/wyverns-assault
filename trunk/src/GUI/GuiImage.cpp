@@ -34,3 +34,8 @@ void GuiImage::setImage(const Ogre::String& filename, const Ogre::String& name, 
 
 	mRectangle2D->setMaterial(name);
 }
+
+void GuiImage::setImage(const Ogre::String& material)
+{
+	mRectangle2D->setMaterial(material);	
+}

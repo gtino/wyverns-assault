@@ -190,7 +190,10 @@ void GuiScreen::show()
 			overlayManager.getByName(name)->show();
 	}
 	if(mBackgroundNode)
-		mBackgroundNode->setVisible(true);	
+		mBackgroundNode->setVisible(true);
+
+	if(mForegroundNode)
+		mForegroundNode->setVisible(true);
 
 	if(mMenu)
 		this->mMenu->show();
@@ -211,6 +214,9 @@ void GuiScreen::hide()
 	}
 	if(mBackgroundNode)
 		mBackgroundNode->setVisible(false);
+
+	if(mForegroundNode)
+		mForegroundNode->setVisible(false);
 
 	if(mMenu)
 		this->mMenu->hide();

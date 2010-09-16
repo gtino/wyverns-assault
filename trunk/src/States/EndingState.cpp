@@ -128,7 +128,6 @@ bool EndingState::keyReleased(const OIS::KeyEvent& e)
 {
 	switch(e.key)
 	{
-
 	case OIS::KC_LEFT:
 		mMenu->previousOption();
 		break;
