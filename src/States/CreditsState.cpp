@@ -20,7 +20,7 @@ CreditsState::~CreditsState()
 	//
 	// TODO Destructor
 	//
-	exit();
+	finalize();
 }
 
 /** Initialize current state */
@@ -124,7 +124,9 @@ bool CreditsState::keyReleased(const OIS::KeyEvent& e)
 	switch(e.key)
 	{
 	case OIS::KC_RETURN:
-		this->mNextGameStateId = GameStateId::MainMenu;
+		// We can reach the Credits state from different states. So we just tell the manager to 
+		// switch back to previous one. NOTE: we should always enter this state via POP! 
+		this->mNextGameStateId = GameStateId::Previous;
 		break;
 	}
 

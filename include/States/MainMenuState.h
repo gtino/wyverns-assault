@@ -66,6 +66,14 @@ namespace WyvernsAssault
 
 		/** Buffered input - keyboard key clicked */
 		bool keyReleased(const OIS::KeyEvent& e);
+
+	private:
+		float	timer;
+		int		animControl;
+
+		GuiForegroundPtr guiTitle;
+
+		bool	isWideScreen;
 	};
 }
 #endif // __MAIN_MENU_STATE_H
