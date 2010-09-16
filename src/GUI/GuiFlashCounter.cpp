@@ -12,8 +12,8 @@ GuiWidget()
 	mHikariManager = new HikariManager("\\data\\flash");
 
 	fc = mHikariManager->createFlashOverlay("FPS", viewport, 130, 91, Position(TopRight));
-	fc->load("GameTimer.swf");
-	fc->setTransparent(true);
+	fc->load("GameTimer.swf");  
+	fc->setTransparent(true); 
 	fc->setDraggable(false);
 
 	fc->callFunction("setTime", Args((int)mSeconds));

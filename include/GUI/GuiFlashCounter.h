@@ -41,6 +41,15 @@ namespace WyvernsAssault
 	{
 
 	public:
+
+		enum CounterTypes
+		{
+			Timer	= 0,
+			Manual	= 1
+		};
+
+	public:
+
 		GuiFlashCounter(Ogre::Viewport* viewport, int screenId, int seconds);
 		~GuiFlashCounter();
 
