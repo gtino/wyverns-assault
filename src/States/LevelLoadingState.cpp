@@ -59,6 +59,9 @@ void LevelLoadingState::load()
 	
 	// Add menu to screen
 	mGuiScreen->addMenu(mMenu);
+
+	// Next state is play
+	mNextGameStateId = GameStateId::Play;
 }
 
 /** Update internal stuff */
@@ -127,12 +130,12 @@ void LevelLoadingState::resume()
 /** Buffered input - keyboard key clicked */
 bool LevelLoadingState::keyReleased(const OIS::KeyEvent& e)
 {
-	switch(e.key)
+	/*switch(e.key)
 	{
 	case OIS::KC_RETURN:
 		this->mNextGameStateId = GameStateId::Play;
 		break;
-	}
+	}*/
 
 	return true;
 }
