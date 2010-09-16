@@ -33,6 +33,7 @@ This pages is used to store all the intersting links realted to the project. Eve
 
 === Photoshop ===
  * [http://www.adobetutorialz.com/articles/107/1/-How-to-Create-a-Tileable-Lava-Texture How to create e tileable lava texture]
+ * [http://www.rdrop.com/~half/Creations/Art/Photoshop/Tip1.html Depth Blur]
 
 == Game Coding ==
 
