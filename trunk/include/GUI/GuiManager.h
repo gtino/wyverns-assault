@@ -34,12 +34,14 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #include "..\Events\EventsInterface.h"
 
 #include "..\Debug\Debug.h"
+#include "Hikari.h"
 
 #include "..\GUI\GuiScreen.h"
 #include "..\GUI\GuiBackground.h"
 #include "..\GUI\GuiButton.h"
 #include "..\GUI\GuiMenu.h"
 #include "..\GUI\GuiMovieClip.h"
+
 
 using namespace Ogre;
 
@@ -68,7 +70,7 @@ namespace WyvernsAssault
 		bool initialize(Ogre::Root* root, Ogre::SceneManager* sceneManager, Ogre::RenderWindow* window);		
 		void finalize();
 
-		void update(const float elapsedSeconds);
+		void update(const float elapsedSeconds, int enemyCount);
 
 		GuiScreenPtr createScreen(GuiScreenId id, const Ogre::String& name);
 		bool hasScreen(GuiScreenId id);
@@ -76,6 +78,9 @@ namespace WyvernsAssault
 		void showScreen(GuiScreenId id);
 		void hideScreen(GuiScreenId id);
 		GuiScreenPtr getScreen(GuiScreenId id);
+
+		void hide();
+		void show();
 
 		void reset();
 
@@ -93,10 +98,11 @@ namespace WyvernsAssault
 
 		GuiScreenMap	mGuiScreenMap;
 
+		// Flash Counters
 		bool flashCount;
-
-		// Flash Counter
+		Hikari::HikariManager* mHikariManager;
 		GuiFlashCounterPtr mFlashCounterUI;
+		GuiFlashCounterPtr mFlashCounterEnemyUI;
 
 		// ----------------
 		// Events interface

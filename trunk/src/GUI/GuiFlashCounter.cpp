@@ -3,20 +3,28 @@
 using namespace WyvernsAssault;
 using namespace Hikari;
 
-GuiFlashCounter::GuiFlashCounter(Ogre::Viewport* viewport, int screenId, int seconds) :
+GuiFlashCounter::GuiFlashCounter(CounterTypes type, Ogre::Viewport* viewport, int screenId, int seconds, Hikari::HikariManager* mHikari) :
 GuiWidget()
 {
 
 	mSeconds = seconds;
+	mType = type;
 	
-	mHikariManager = new HikariManager("\\data\\flash");
+	mHikariManager = mHikari; 
 
-	fc = mHikariManager->createFlashOverlay("FPS", viewport, 130, 91, Position(TopRight));
-	fc->load("GameTimer.swf");  
+	if(type == CounterTypes::Manual){
+		fc = mHikariManager->createFlashOverlay("FPS"+type, viewport, 130, 91, Position(TopRight));
+		fc->load("GameEnemyCounter.swf");
+	}
+	else{
+		fc = mHikariManager->createFlashOverlay("FPS"+type, viewport, 130, 91, Position(TopCenter));
+		fc->load("GameTimer.swf"); 
+	}
+
 	fc->setTransparent(true); 
 	fc->setDraggable(false);
 
-	fc->callFunction("setTime", Args((int)mSeconds));
+	fc->callFunction("setTime", Args((int)mSeconds)); 
 
 }
 
@@ -41,17 +49,22 @@ void GuiFlashCounter::setSeconds(Real seconds){
 	fc->show();
 }
 
-bool GuiFlashCounter::update(const float elapsedSeconds)
+bool GuiFlashCounter::update(const float elapsedSeconds, int enemyCount)
 {
 	mHikariManager->update();
-	mSeconds = mSeconds - elapsedSeconds;
-	fc->callFunction("setTime", Args((int)mSeconds));
-	if(mSeconds <= 0){
-		fc->hide();
-		return false;
+	if(mType == CounterTypes::Timer){
+		mSeconds = mSeconds - elapsedSeconds;
+		fc->callFunction("setTime", Args((int)mSeconds));
+		if(mSeconds <= 0){
+			fc->hide();
+			return false;
+		}
+	}else{
+		fc->callFunction("setTime", Args((int)enemyCount));
 	}
 
 	return true;
+
 }
 
 
