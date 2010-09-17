@@ -79,23 +79,23 @@ void MainMenuState::update(const float elapsedSeconds)
 {
 	timer = timer + elapsedSeconds;
 
-	if( timer > 4.0 )
+	if( timer > 2.5 )
 	{
 		guiTitle->setFrame(6);
 		mGuiScreen->addMenu(mMenu);
 		animControl = 1;
 	}		
-	else if( timer > 3.0 )
-		guiTitle->setFrame(5);
-	else if( timer > 2.5 )
-		guiTitle->setFrame(4);
 	else if( timer > 2.0 )
-		guiTitle->setFrame(3);
+		guiTitle->setFrame(5);
+	else if( timer > 1.75 )
+		guiTitle->setFrame(4);
 	else if( timer > 1.5 )
+		guiTitle->setFrame(3);
+	else if( timer > 1.25 )
 		guiTitle->setFrame(2);
-	else if( timer > 1.0 )
+	else if( timer > 0.75 )
 		guiTitle->setFrame(1);
-	else if( timer > 0.5 )
+	else if( timer > 0.25 )
 	{		
 		if( isWideScreen )
 			guiTitle->setImage("GUI/Title/Animation/Wide");

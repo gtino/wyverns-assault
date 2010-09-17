@@ -133,7 +133,7 @@ function playIntroCutScene(elapsedTime)
 		Audio.playLoop("main_track.mp3"); -- Play the soundtrack
 		Camera.setCurrent(CameraMode_Game); -- Sets the current camera
 		
-		Gui.hideForeground();
+		Gui.removeForeground();
 		Gui.showUi();
 	
 		-- scene
