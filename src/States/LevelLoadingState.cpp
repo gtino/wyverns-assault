@@ -50,7 +50,12 @@ void LevelLoadingState::load()
 	mGuiScreen = mGuiManager->createScreen(GuiScreenId::LevelLoadingGui, "LevelLoading");
 	
 	GuiBackgroundPtr guiBackground = GuiBackgroundPtr(new GuiBackground());
-	guiBackground->setImage("LevelLoading.png","LevelLoadingBackground","General");
+	
+	// Common aspect ratio is 4/3
+	if( mWindow->getViewport(0)->getCamera()->getAspectRatio() > 1.34 )
+		guiBackground->setImage("wide/LevelLoading.png","LevelLoadingBackground","General");
+	else
+		guiBackground->setImage("normal/LevelLoading.png","LevelLoadingBackground","General");
 
 	mGuiScreen->setBackground(guiBackground);
 
