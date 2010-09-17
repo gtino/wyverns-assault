@@ -2,6 +2,7 @@
 
 using namespace Ogre;
 using namespace WyvernsAssault;
+using namespace Hikari;
 
 // BEGIN SINGLETON
 template<> GuiManager* Ogre::Singleton<GuiManager>::ms_Singleton = 0;
@@ -18,7 +19,7 @@ GuiManager& GuiManager::getSingleton(void)
 GuiManager::GuiManager()
 : flashCount(false)
 {
-
+	mHikariManager = new HikariManager("\\data\\flash");
 }
 
 GuiManager::~GuiManager()
@@ -29,11 +30,16 @@ GuiManager::~GuiManager()
 	finalize();
 }
 
-void GuiManager::update(float const elapsedSeconds)
+void GuiManager::update(float const elapsedSeconds, int enemyCount)
 {
-	if(flashCount){
-		flashCount = mFlashCounterUI->update(elapsedSeconds);
-	}
+	if(flashCount)
+		flashCount = mFlashCounterUI->update(elapsedSeconds, enemyCount);
+	
+
+	if(!mFlashCounterEnemyUI)
+		mFlashCounterEnemyUI = GuiFlashCounterPtr( new GuiFlashCounter(GuiFlashCounter::CounterTypes::Manual ,mWindow->getViewport(0), GuiScreenId::FlashCounterEnemyGui, 0, mHikariManager) );
+	else
+		mFlashCounterEnemyUI->update(elapsedSeconds, enemyCount);
 
 }
 
@@ -41,6 +47,8 @@ void GuiManager::reset(){
 	flashCount = false;
 	if(mFlashCounterUI)
 		mFlashCounterUI->reset();
+	if(mFlashCounterEnemyUI)
+		mFlashCounterEnemyUI->reset();
 }
 
 bool GuiManager::initialize(Ogre::Root* root, Ogre::SceneManager* sceneManager, Ogre::RenderWindow* window)
@@ -57,6 +65,25 @@ void GuiManager::finalize()
 	//
 	// TODO finalize
 	//
+}
+
+void GuiManager::hide()
+{
+	if(mFlashCounterEnemyUI)
+		mFlashCounterEnemyUI->hide();
+
+	if(mFlashCounterUI)
+		mFlashCounterUI->hide();
+
+}
+
+void GuiManager::show()
+{
+	if(mFlashCounterEnemyUI)
+		mFlashCounterEnemyUI->show();
+
+	if(mFlashCounterUI)
+		mFlashCounterUI->show();
 }
 
 GuiScreenPtr GuiManager::createScreen(GuiScreenId id, const Ogre::String& name)
@@ -243,7 +270,7 @@ EVENTS_DEFINE_HANDLER(GuiManager, GameAreaFlashCounter)
 	int seconds = (int)evt->getSeconds();
 
 	if(!mFlashCounterUI){
-		mFlashCounterUI = GuiFlashCounterPtr( new GuiFlashCounter(mWindow->getViewport(0), GuiScreenId::FlashCounterGui, seconds) );
+		mFlashCounterUI = GuiFlashCounterPtr( new GuiFlashCounter(GuiFlashCounter::CounterTypes::Timer, mWindow->getViewport(0), GuiScreenId::FlashCounterGui, seconds, mHikariManager) );
 	}else{
 		mFlashCounterUI->setSeconds(seconds);
 	}

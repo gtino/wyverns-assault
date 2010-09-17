@@ -604,7 +604,7 @@ void PlayState::update(const float elapsedSeconds)
 	//
 	// Update GUI Manager
 	//
-	mGuiManager->update(elapsedSeconds);
+	mGuiManager->update(elapsedSeconds, mEnemyManager->getCount());
 
 	//
 	// Dispatch events. Managers have probably raised events, that are now in the 
@@ -737,6 +737,8 @@ void PlayState::pause()
 	//
 	mGuiScreen->hide();
 
+	mGuiManager->hide();
+
 	// Hide sdktrays if visible
 	mTrayMgr->hideAll();
 	if(mTrayMgr->isCursorVisible()) 
@@ -764,6 +766,8 @@ void PlayState::resume()
 	// Show gui (hided when pause)
 	//
 	mGuiScreen->show(); 
+
+	mGuiManager->show();
 
 	// Show sdktrays if was visible
 	mTrayMgr->showAll();
@@ -971,7 +975,7 @@ bool PlayState::keyPressed(const OIS::KeyEvent& e)
 
 	// Move Player to a game area -- HACK!
 	case OIS::KeyCode::KC_DELETE:
-		player1->setPosition(Vector3(358, 25, -563));
+		player1->setPosition(Vector3(926, 23, 598));
 		break;
 
 	// Kill all enemies in current game area -- HACK!
