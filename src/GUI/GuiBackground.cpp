@@ -22,7 +22,7 @@ void GuiBackground::setImage(const Ogre::String& filename, const Ogre::String& n
 	GuiImage::setImage(filename,name,group);
 
 	// Render the background before everything else
-	mRectangle2D->setRenderQueueGroup(RENDER_QUEUE_BACKGROUND);
+	mRectangle2D->setRenderQueueGroup(RENDER_QUEUE_SKIES_LATE);
 
 	// Create background rectangle covering the whole screen
 	mRectangle2D->setCorners(-1.0, 1.0, 1.0, -1.0);

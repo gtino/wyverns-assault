@@ -38,7 +38,12 @@ void PauseState::load()
 	mGuiScreen = mGuiManager->createScreen(GuiScreenId::PauseGui, "PauseScreen");
 	
 	GuiBackgroundPtr guiBackground = GuiBackgroundPtr(new GuiBackground());
-	guiBackground->setImage("Pause.png","PauseBackground","General");
+
+	// Common aspect ratio is 4/3
+	if( mWindow->getViewport(0)->getCamera()->getAspectRatio() > 1.34 )
+		guiBackground->setImage("wide/Pause.png","PauseBackground","General");
+	else
+		guiBackground->setImage("normal/Pause.png","PauseBackground","General");
 
 	mGuiScreen->setBackground(guiBackground);
 

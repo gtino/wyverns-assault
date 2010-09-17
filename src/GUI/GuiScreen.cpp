@@ -176,6 +176,11 @@ void GuiScreen::hideForeground()
 	mForegroundNode->setVisible(false);
 }
 
+void GuiScreen::removeForeground()
+{
+	mForegroundNode->detachObject(mForeground->getRectangle2D());
+}
+
 void GuiScreen::show()
 {
 	OverlayManager& overlayManager = OverlayManager::getSingleton();
