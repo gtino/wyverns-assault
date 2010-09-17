@@ -38,7 +38,12 @@ void SplashScreenState::load()
 	mGuiScreen = mGuiManager->createScreen(GuiScreenId::SplashScreenGui, "SplashScreen");
 	
 	GuiBackgroundPtr guiBackground = GuiBackgroundPtr(new GuiBackground());
-	guiBackground->setImage("SplashScreen.png","SplashBackground","General");
+
+	// Common aspect ratio is 4/3
+	if( mWindow->getViewport(0)->getCamera()->getAspectRatio() > 1.34 )
+		guiBackground->setImage("wide/SplashScreen.png","SplashBackground","General");
+	else
+		guiBackground->setImage("normal/SplashScreen.png","SplashBackground","General");
 
 	mGuiScreen->setBackground(guiBackground);
 
