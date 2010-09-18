@@ -17,7 +17,7 @@ GuiWidget()
 		fc->load("GameEnemyCounter.swf");
 	}
 	else{
-		fc = mHikariManager->createFlashOverlay("FPS"+type, viewport, 130, 91, Position(TopCenter));
+		fc = mHikariManager->createFlashOverlay("FPS"+type, viewport, 210, 97, Position(TopRight));
 		fc->load("GameTimer.swf"); 
 	}
 
