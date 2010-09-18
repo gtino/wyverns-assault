@@ -39,6 +39,7 @@ namespace WyvernsAssault
 		~GuiBackground();
 
 		void setImage(const Ogre::String& filename, const Ogre::String& name, const Ogre::String& group);
+		void setImage(const Ogre::String& material);
 	};
 
 	typedef boost::shared_ptr<GuiBackground> GuiBackgroundPtr;

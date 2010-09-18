@@ -71,7 +71,7 @@ namespace WyvernsAssault
 		float	timer;
 		int		animControl;
 
-		GuiForegroundPtr guiTitle;
+		GuiBackgroundPtr guiBackground;
 
 		bool	isWideScreen;
 	};
