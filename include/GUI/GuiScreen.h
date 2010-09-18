@@ -82,7 +82,6 @@ namespace WyvernsAssault
 		void changeForeground(const Ogre::String& filename, const Ogre::String& name, const Ogre::String& group);
 		void showForeground();
 		void hideForeground();
-		void removeForeground();
 
 		void addWidget(GuiWidgetPtr widget, GuiWidgetId widgetId);
 		GuiWidgetPtr getWidget(GuiWidgetId widgetId);

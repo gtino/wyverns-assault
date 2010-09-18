@@ -176,11 +176,6 @@ void GuiScreen::hideForeground()
 	mForegroundNode->setVisible(false);
 }
 
-void GuiScreen::removeForeground()
-{
-	mForegroundNode->detachObject(mForeground->getRectangle2D());
-}
-
 void GuiScreen::show()
 {
 	OverlayManager& overlayManager = OverlayManager::getSingleton();
@@ -196,9 +191,6 @@ void GuiScreen::show()
 	}
 	if(mBackgroundNode)
 		mBackgroundNode->setVisible(true);
-
-	if(mForegroundNode)
-		mForegroundNode->setVisible(true);
 
 	if(mMenu)
 		this->mMenu->show();
@@ -219,9 +211,6 @@ void GuiScreen::hide()
 	}
 	if(mBackgroundNode)
 		mBackgroundNode->setVisible(false);
-
-	if(mForegroundNode)
-		mForegroundNode->setVisible(false);
 
 	if(mMenu)
 		this->mMenu->hide();

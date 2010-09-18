@@ -290,7 +290,6 @@ LUA_BIND(GuiManager, hideUi)
 LUA_BIND(GuiManager, showForeground)
 LUA_BIND(GuiManager, hideForeground)
 LUA_BIND(GuiManager, setForeground)
-LUA_BIND(GuiManager, removeForeground)
 LUA_END_BINDING()
 
 //
@@ -410,21 +409,6 @@ LUA_DEFINE_FUNCTION(GuiManager, setForeground)
 	GuiScreenPtr playScreen = GuiManager::getSingleton().getScreen(GuiScreenId::PlayGui);
 
 	playScreen->changeForeground(materialName+".png",materialName+"Foreground","General");
-
-	/* return the number of results */
-	return 0;
-}
-
-LUA_DEFINE_FUNCTION(GuiManager, removeForeground)
-{
-	/* get number of arguments */
-	int n = lua_gettop(L);
-
-	// n should be 1, the screen id
-
-	GuiScreenPtr playScreen = GuiManager::getSingleton().getScreen(GuiScreenId::PlayGui);
-
-	playScreen->removeForeground();
 
 	/* return the number of results */
 	return 0;

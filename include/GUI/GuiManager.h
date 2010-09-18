@@ -132,7 +132,6 @@ namespace WyvernsAssault
 		LUA_FUNCTION(showForeground);
 		LUA_FUNCTION(hideForeground);
 		LUA_FUNCTION(setForeground);
-		LUA_FUNCTION(removeForeground);
 		// ------------------------------
 		// END Lua Interface Declarations
 		// ------------------------------

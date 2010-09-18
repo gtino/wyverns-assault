@@ -54,16 +54,15 @@ void MainMenuState::load()
 	//
 	mGuiScreen = mGuiManager->createScreen(GuiScreenId::MainMenuGui, "MainMenuScreen");
 	
-	GuiBackgroundPtr guiBackground = GuiBackgroundPtr(new GuiBackground());
+	guiBackground = GuiBackgroundPtr(new GuiBackground());
 	if( isWideScreen )
-		guiBackground->setImage("wide/MainMenu.png","MainMenuBackground","General");
+		guiBackground->setImage("GUI/Title/Animation/Wide");
 	else
-		guiBackground->setImage("normal/MainMenu.png","MainMenuBackground","General");
+		guiBackground->setImage("GUI/Title/Animation/Normal");
 
-	guiTitle = GuiForegroundPtr(new GuiForeground());
+	guiBackground->setFrame(0);
 
 	mGuiScreen->setBackground(guiBackground);
-	mGuiScreen->setForeground(guiTitle);
 
 	// Gui Widgets for this state
 	mMenu = new GuiMenu(mWindow->getViewport(0)->getCamera()->getAspectRatio(), GuiScreenId::MainMenuGui);	
@@ -79,31 +78,24 @@ void MainMenuState::update(const float elapsedSeconds)
 {
 	timer = timer + elapsedSeconds;
 
-	if( timer > 2.5 )
+	if( timer > 2.75 )
 	{
-		guiTitle->setFrame(6);
+		guiBackground->setFrame(7);
 		mGuiScreen->addMenu(mMenu);
 		animControl = 1;
 	}		
-	else if( timer > 2.0 )
-		guiTitle->setFrame(5);
+	else if( timer > 2.25 )
+		guiBackground->setFrame(6);
 	else if( timer > 1.75 )
-		guiTitle->setFrame(4);
+		guiBackground->setFrame(5);
 	else if( timer > 1.5 )
-		guiTitle->setFrame(3);
+		guiBackground->setFrame(4);
 	else if( timer > 1.25 )
-		guiTitle->setFrame(2);
+		guiBackground->setFrame(3);
 	else if( timer > 0.75 )
-		guiTitle->setFrame(1);
+		guiBackground->setFrame(2);
 	else if( timer > 0.25 )
-	{		
-		if( isWideScreen )
-			guiTitle->setImage("GUI/Title/Animation/Wide");
-		else
-			guiTitle->setImage("GUI/Title/Animation/Normal");
-
-		guiTitle->setFrame(0);				
-	}	
+		guiBackground->setFrame(1);	
 }
 
 /** Render */
