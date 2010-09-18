@@ -61,6 +61,7 @@ bool GuiFlashCounter::update(const float elapsedSeconds, int enemyCount)
 		}
 	}else{
 		fc->callFunction("setTime", Args((int)enemyCount));
+		fc->show();
 	}
 
 	return true;
