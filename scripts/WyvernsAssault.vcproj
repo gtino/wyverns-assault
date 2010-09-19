@@ -256,6 +256,10 @@
 					>
 				</File>
 				<File
+					RelativePath="..\src\States\SelectionState.cpp"
+					>
+				</File>
+				<File
 					RelativePath="..\src\States\SplashScreenState.cpp"
 					>
 				</File>
@@ -667,6 +671,10 @@
 				</File>
 				<File
 					RelativePath="..\include\States\PlayState.h"
+					>
+				</File>
+				<File
+					RelativePath="..\include\States\SelectionState.h"
 					>
 				</File>
 				<File

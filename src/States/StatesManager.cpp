@@ -64,6 +64,7 @@ void StatesManager::initialize(GraphicsManagerPtr graphicsManager, InputManagerP
 	this->mStates[GameStateId::Ending]			= new EndingState(graphicsManager, inputManager, audioManager, cameraManager, guiManager, levelManager);
 	this->mStates[GameStateId::GameOver]		= new GameoverState(graphicsManager, inputManager, audioManager, cameraManager, guiManager, levelManager);
 	this->mStates[GameStateId::Play]			= new PlayState(graphicsManager, inputManager, audioManager, cameraManager, guiManager, levelManager);
+	this->mStates[GameStateId::Selection]		= new SelectionState(graphicsManager, inputManager, audioManager, cameraManager, guiManager, levelManager);
 	this->mStates[GameStateId::LevelLoading]	= new LevelLoadingState(graphicsManager, inputManager, audioManager, cameraManager, guiManager, levelManager);
 	this->mStates[GameStateId::Credits]			= new CreditsState(graphicsManager, inputManager, audioManager, cameraManager, guiManager, levelManager);
 	this->mStates[GameStateId::Outro]			= new OutroState(graphicsManager, inputManager, audioManager, cameraManager, guiManager, levelManager);

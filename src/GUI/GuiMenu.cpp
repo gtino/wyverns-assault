@@ -56,6 +56,9 @@ void GuiMenu::initialize(Real aspectRatio)
 	// LevelLoading screen
 	else if (mScreenId == 10)
 		mMenu = static_cast<OverlayContainer*>(overlayManager.createOverlayElementFromTemplate("GUI/LoadingMenu", "Panel", uiName));
+	// Selection screen
+	else if (mScreenId == 11)
+		mMenu = static_cast<OverlayContainer*>(overlayManager.createOverlayElementFromTemplate("GUI/ContinueMenu", "Panel", uiName));
 	// Others
 	else
 		mMenu = static_cast<OverlayContainer*>(overlayManager.createOverlayElementFromTemplate("GUI/Menu", "Panel", uiName));	

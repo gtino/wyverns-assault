@@ -78,14 +78,12 @@ void MainMenuState::update(const float elapsedSeconds)
 {
 	timer = timer + elapsedSeconds;
 
-	if( timer > 2.75 )
+	if( timer > 2.25 )
 	{
-		guiBackground->setFrame(7);
+		guiBackground->setFrame(6);
 		mGuiScreen->addMenu(mMenu);
 		animControl = 1;
 	}		
-	else if( timer > 2.25 )
-		guiBackground->setFrame(6);
 	else if( timer > 1.75 )
 		guiBackground->setFrame(5);
 	else if( timer > 1.5 )
@@ -168,7 +166,7 @@ bool MainMenuState::keyReleased(const OIS::KeyEvent& e)
 			switch(mMenu->getCurrentOption())
 			{
 			case GuiWidgetMenuId::PlayMenu:
-				this->mNextGameStateId = GameStateId::LevelLoading;
+				this->mNextGameStateId = GameStateId::Selection;
 				break;
 			case GuiWidgetMenuId::OptionsMenu:
 				this->mNextGameStateId = GameStateId::Options;

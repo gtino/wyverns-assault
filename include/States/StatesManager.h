@@ -51,6 +51,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #include "OptionsState.h"
 #include "PauseState.h"
 #include "LevelLoadingState.h"
+#include "SelectionState.h"
 
 //
 // Audio
