@@ -74,7 +74,6 @@ void PlayState::initialize()
 	mGuiScreen->addWidget(mPlayerUI,GuiWidgetPlayId::UserInterface1);
 
 	GuiForegroundPtr foreground = GuiForegroundPtr(new GuiForeground());
-	//foreground->setImage("intro_1.png","IntroBackground","General");
 
 	mGuiScreen->setForeground(foreground);
 
@@ -272,6 +271,8 @@ void PlayState::initialize()
 	dotSceneLoader->parseDotScene(mLevelManager->getCurrentLevel()->getSceneFile(),"General", mSceneManager, mPlayerManager, mScenarioManager, mCameraManager, mLightsManager, mEnemyManager, mPhysicsManager, mItemManager, mParticleManager, mGameAreaManager, mScenarioManager->_getSceneNode());
 	// Fixed cameras and camera segments
 	dotSceneLoader->parseDotScene(mLevelManager->getCurrentLevel()->getCamerasFile(),"General", mSceneManager, mPlayerManager, mScenarioManager, mCameraManager, mLightsManager, mEnemyManager, mPhysicsManager, mItemManager, mParticleManager, mGameAreaManager, mCameraManager->_getSceneNode());	
+	
+	//dotSceneLoader->parseDotScene("Boss_cameras.scene","General", mSceneManager, mPlayerManager, mScenarioManager, mCameraManager, mLightsManager, mEnemyManager, mPhysicsManager, mItemManager, mParticleManager, mGameAreaManager, mCameraManager->_getSceneNode());	
 
 	Debug::Out(mSceneManager->getRootSceneNode());
 
@@ -556,7 +557,7 @@ void PlayState::update(const float elapsedSeconds)
 	// Update camera
 	//
 	TIMER_START(Camera);
-	mCameraManager->updateCamera(player1->getPosition(), mGameAreaManager->getGameArea(), elapsedSeconds);
+	mCameraManager->updateCamera(player1->getPosition(), mGameAreaManager->getGameArea(), mLevelManager->getCurrentLevelIndex(), elapsedSeconds);
 	TIMER_STOP(Camera);
 
 	//
@@ -779,7 +780,7 @@ void PlayState::resume()
 		mCameraManager->showAxes();
 
 	// Resume previous camera
-	mCameraManager->resumeCamera();
+	mCameraManager->resumeCamera(mLevelManager->getCurrentLevelIndex());
 
 	// Resume all post process previous state
 	mPostProcessManager->resume();
@@ -818,22 +819,22 @@ bool PlayState::keyPressed(const OIS::KeyEvent& e)
 		mCameraManager->freeCamera();
 		break;
 	case OIS::KeyCode::KC_3:
-		mCameraManager->fixedCamera(0);
+		mCameraManager->fixedCamera(0, mLevelManager->getCurrentLevelIndex());
 		break;
 	case OIS::KeyCode::KC_4:
-		mCameraManager->fixedCamera(1);
+		mCameraManager->fixedCamera(1, mLevelManager->getCurrentLevelIndex());
 		break;
 	case OIS::KeyCode::KC_5:
-		mCameraManager->fixedCamera(2);
+		mCameraManager->fixedCamera(2, mLevelManager->getCurrentLevelIndex());
 		break;
 	case OIS::KeyCode::KC_6:
-		mCameraManager->fixedCamera(3);
+		mCameraManager->fixedCamera(3, mLevelManager->getCurrentLevelIndex());
 		break;
 	case OIS::KeyCode::KC_7:
-		mCameraManager->fixedCamera(4);
+		mCameraManager->fixedCamera(4, mLevelManager->getCurrentLevelIndex());
 		break;
 	case OIS::KeyCode::KC_8:
-		mCameraManager->fixedCamera(5);
+		mCameraManager->fixedCamera(5, mLevelManager->getCurrentLevelIndex());
 		break;
 	// Toogle visibility of debugging details
 	case OIS::KeyCode::KC_G:		

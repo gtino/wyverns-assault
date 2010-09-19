@@ -31,6 +31,8 @@ CameraManager::CameraManager()
 , mCameraEffectLook(0)
 , mGameViewport(0)
 , mCurrentGameArea(0)
+, mFixedCamera(0)
+, mMoving(false)
 {
 }
 
@@ -182,6 +184,9 @@ void CameraManager::finalize()
 	{
 		mWindow->removeAllViewports();
 	}
+
+	mFixedCameras.clear();
+	mCameraSegments.clear();	
 }
 
 void CameraManager::startCameras()
@@ -192,10 +197,6 @@ void CameraManager::startCameras()
 	this->moveTo(Vector3(2000, 1500, -2000), Vector3(0, 0, 0));
 	mCameraTransition->addTime(1);
 	mLookAtTransition->addTime(1);
-
-	/** Other variables initialization */
-	mFixedCamera = 0;
-	mMoving = false;
 }
 
 Vector3 CameraManager::getCameraPosition()
@@ -277,17 +278,17 @@ Vector3 CameraManager::getDirection(Vector3 direction)
 	return finalDirection;
 }
 
-void CameraManager::updateCamera(Vector3 player, int gameArea, Real elapsedSeconds)
+void CameraManager::updateCamera(Vector3 player, int gameArea, int gameLevel, Real elapsedSeconds)
 {
 	// Update game camera
 	if( mGameCameraMode == CameraModes::Game )
 	{
 		mCurrentGameArea = gameArea;
 
-		Vector3 begin = mCameraSegments[gameArea].mPositionBegin;
-		Vector3 end = mCameraSegments[gameArea].mPositionEnd;
-		Vector3 lbegin = mCameraSegments[gameArea].mLookAtBegin;
-		Vector3 lend = mCameraSegments[gameArea].mLookAtEnd;
+		Vector3 begin = mCameraSegments[gameLevel][gameArea].mPositionBegin;
+		Vector3 end = mCameraSegments[gameLevel][gameArea].mPositionEnd;
+		Vector3 lbegin = mCameraSegments[gameLevel][gameArea].mLookAtBegin;
+		Vector3 lend = mCameraSegments[gameLevel][gameArea].mLookAtEnd;
 
 		Vector3 position;
 		Vector3 lookAt;
@@ -446,25 +447,24 @@ void CameraManager::createTransition(Vector3 begin, Vector3 end, Vector3 lbegin,
 /** Add camera segment to vector */
 void CameraManager::addCameraSegment(int level, Vector3 pbegin, Vector3 pend, Vector3 lbegin, Vector3 lend)
 {
-	CameraSegment camSeg;
-	camSeg.mLevel = level;
+	CameraSegment camSeg;	
 	camSeg.mPositionBegin = pbegin;
 	camSeg.mPositionEnd = pend;
 	camSeg.mLookAtBegin = lbegin;	
 	camSeg.mLookAtEnd = lend;
-	mCameraSegments.push_back(camSeg);
+
+	mCameraSegments[level].push_back(camSeg);
 }
 
 /** Set a fixed camera */
 void CameraManager::setFixedCamera(int level, int id, Vector3 position, Vector3 lookAt)
 {
-	FixedCamera fixedCamera;
-	fixedCamera.mLevel = level;
+	FixedCamera fixedCamera;	
 	fixedCamera.mId = id;
 	fixedCamera.mPosition = position;
 	fixedCamera.mLookAt = lookAt;
 
-	mFixedCameras.push_back(fixedCamera);
+	mFixedCameras[level].push_back(fixedCamera);
 }
 
 /** Camera effects */
@@ -721,7 +721,7 @@ void CameraManager::freeCamera()
 	mGameCamera->setAutoTracking(false);
 	mGameViewport->setCamera(mGameCamera);
 }
-void CameraManager::fixedCamera(int camera)
+void CameraManager::fixedCamera(int camera, int level)
 {	
 	char camName[20];
 	sprintf(camName, "Fixed %d", camera);
@@ -732,7 +732,7 @@ void CameraManager::fixedCamera(int camera)
 	mGameViewport->setCamera(mGameCamera);
 
 	// Translate animation to camera scene node and look at node to current position
-	createTransition(getCameraPosition(), mFixedCameras[camera].mPosition, getCameraLookAt(), mFixedCameras[camera].mLookAt, 1.5);
+	createTransition(getCameraPosition(), mFixedCameras[level][camera].mPosition, getCameraLookAt(), mFixedCameras[level][camera].mLookAt, 1.5);
 
 	// Save fixed camera index
 	mFixedCamera = camera;
@@ -747,7 +747,7 @@ void CameraManager::cutSceneCamera()
 	mGameViewport->setCamera(mGameCamera);
 }
 
-void CameraManager::resumeCamera()
+void CameraManager::resumeCamera(int level)
 {
 	if( mGameCameraMode == CameraModes::Game )
 	{
@@ -759,7 +759,7 @@ void CameraManager::resumeCamera()
 	else if ( mGameCameraMode == CameraModes::CutScene )
 		cutSceneCamera();
 	else
-		fixedCamera(mFixedCamera);
+		fixedCamera(mFixedCamera, level);
 }
 
 /** Free camera functions */
