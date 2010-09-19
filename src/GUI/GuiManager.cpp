@@ -32,14 +32,17 @@ GuiManager::~GuiManager()
 
 void GuiManager::update(float const elapsedSeconds, int enemyCount)
 {
-	if(flashCount)
-		flashCount = mFlashCounterUI->update(elapsedSeconds, enemyCount);
 	
-
 	if(!mFlashCounterEnemyUI)
 		mFlashCounterEnemyUI = GuiFlashCounterPtr( new GuiFlashCounter(GuiFlashCounter::CounterTypes::Manual ,mWindow->getViewport(0), GuiScreenId::FlashCounterEnemyGui, 0, mHikariManager) );
 	else
 		mFlashCounterEnemyUI->update(elapsedSeconds, enemyCount);
+
+	if(flashCount){
+		flashCount = mFlashCounterUI->update(elapsedSeconds, enemyCount);
+		mFlashCounterEnemyUI->hide();
+	}else
+		mFlashCounterEnemyUI->show(); 
 
 }
 
