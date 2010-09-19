@@ -13,11 +13,11 @@ GuiWidget()
 	mHikariManager = mHikari; 
 
 	if(type == CounterTypes::Manual){
-		fc = mHikariManager->createFlashOverlay("FPS"+type, viewport, 130, 91, Position(TopRight));
+		fc = mHikariManager->createFlashOverlay("FPS"+type, viewport, 150, 130, Position(TopRight)); 
 		fc->load("GameEnemyCounter.swf");
 	}
 	else{
-		fc = mHikariManager->createFlashOverlay("FPS"+type, viewport, 210, 97, Position(TopRight));
+		fc = mHikariManager->createFlashOverlay("FPS"+type, viewport, 123, 90, Position(TopRight));
 		fc->load("GameTimer.swf"); 
 	}
 
