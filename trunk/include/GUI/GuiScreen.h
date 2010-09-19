@@ -55,8 +55,9 @@ namespace WyvernsAssault
 		PauseGui		= 8,
 		OptionsGui		= 9,
 		LevelLoadingGui = 10,
-		FlashCounterGui = 11,
-		FlashCounterEnemyGui = 12
+		SelectionGui	= 11,
+		FlashCounterGui = 12,
+		FlashCounterEnemyGui = 13		
 	};
 
 	/** The widget map type */
