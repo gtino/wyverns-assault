@@ -43,6 +43,30 @@ using namespace Ogre;
 
 namespace WyvernsAssault
 {
+	// Fixed cameras struct, list, and map
+	struct FixedCamera
+	{			
+		int mId;
+		Ogre::Vector3 mPosition;
+		Ogre::Vector3 mLookAt;
+	};
+
+	typedef std::vector<FixedCamera> FixedCameraList;
+	typedef std::map<int, FixedCameraList> FixedCameraMapList;
+
+	// Game camera segments struct, list, and map
+	struct CameraSegment
+	{
+		Ogre::Vector3	mPositionBegin;
+		Ogre::Vector3	mLookAtBegin;
+		
+		Ogre::Vector3	mPositionEnd;
+		Ogre::Vector3	mLookAtEnd;
+	};
+
+	typedef std::vector<CameraSegment> CameraSegmentList;
+	typedef std::map<int, CameraSegmentList> CameraSegmentMapList;	
+
 	/**
 		Class used to manage differents cameras
 	*/
@@ -67,13 +91,11 @@ namespace WyvernsAssault
 		static CameraManager& getSingleton(void);
 		static CameraManager* getSingletonPtr(void);
 
-	public: 
 		/** Initialize the camera manager */
 		void initialize(SceneManager* sceneManager, RenderWindow* window);
 		/** Finalize the camera manager */
 		void finalize();
 
-	public:
 		/** Start functions **/ 
 		void startCameras();
 
@@ -92,7 +114,7 @@ namespace WyvernsAssault
 		Vector3 getDirection(Vector3 direction);
 		
 		/** Update camera position in game mode */
-		void updateCamera(Vector3 player, int gameArea, Real elapsedSeconds);
+		void updateCamera(Vector3 player, int gameArea, int gameLevel, Real elapsedSeconds);
 		
 		/** Create transition animation */
 		void createTransition(Vector3 begin, Vector3 end, Vector3 lbegin, Vector3 lend, float duration);
@@ -113,9 +135,9 @@ namespace WyvernsAssault
 		/** Camera modes */		
 		void gameCamera();
 		void freeCamera();
-		void fixedCamera(int camera);
+		void fixedCamera(int camera, int level);
 		void cutSceneCamera();
-		void resumeCamera();
+		void resumeCamera(int level);
 
 		/** Free camera functions */
 		void freeCameraMouse(OIS::MouseEvent evt);
@@ -176,33 +198,11 @@ namespace WyvernsAssault
 		// Sdk Camera Manager for free look camera
 		OgreBites::SdkCameraMan*		mCameraMan;
 
-	private:
-		struct FixedCamera
-		{
-			int mLevel;
-			int mId;
-			Ogre::Vector3 mPosition;
-			Ogre::Vector3 mLookAt;
-		};
+	private:	
 
-		std::vector<FixedCamera>		mFixedCameras;
-
-		int								mFixedCamera;
-
-	private:
-
-		struct CameraSegment
-		{
-			int mLevel;
-
-			Ogre::Vector3	mPositionBegin;
-			Ogre::Vector3	mLookAtBegin;
-			
-			Ogre::Vector3	mPositionEnd;
-			Ogre::Vector3	mLookAtEnd;
-		};
-
-		std::vector<CameraSegment>		mCameraSegments;
+		int						mFixedCamera;
+		FixedCameraMapList		mFixedCameras;
+		CameraSegmentMapList	mCameraSegments;
 
 		// ----------------
 		// Events interface

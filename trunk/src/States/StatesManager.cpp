@@ -102,16 +102,6 @@ bool StatesManager::loop(const float elapsedSeconds)
 		this->mCurrentState->input();
 
 		//
-		// Process game logic/physics/state
-		//
-		this->mCurrentState->update(elapsedSeconds);
-
-		//
-		// Render output
-		//
-		this->mCurrentState->render(elapsedSeconds);
-
-		//
 		// Read next state. If it is not the current one, perform a state change!
 		// 
 		GameStateId nextStateId = mCurrentState->getNextStateId();
@@ -170,6 +160,16 @@ bool StatesManager::loop(const float elapsedSeconds)
 			}
 			
 		}
+
+		//
+		// Process game logic/physics/state
+		//
+		this->mCurrentState->update(elapsedSeconds);
+
+		//
+		// Render output
+		//
+		this->mCurrentState->render(elapsedSeconds);
 
 		//
 		// Keep going 
