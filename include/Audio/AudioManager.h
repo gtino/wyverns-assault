@@ -111,7 +111,8 @@ namespace WyvernsAssault
 		int                  createSound(String &fileName, SOUND_TYPE soundType);
 
 		void				 playSound(String soundName, Ogre::Vector3 soundPosition, int *channelIndex);
-		void                 playSound(int soundIndex, Ogre::Vector3 soundPosition, int *channelIndex);
+		void				 playSound(String soundName, int channelIndex);
+		void                 playSound(int soundIndex, Ogre::Vector3 soundPosition, int *channelIndex);		
 		void				 playSoundTrack(String name);
 		void				 stopSoundTrack();
 		void                 stopSound(int *channelIndex);

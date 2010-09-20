@@ -130,18 +130,22 @@ bool GameoverState::keyReleased(const OIS::KeyEvent& e)
 	{
 	case OIS::KC_LEFT:
 		mMenu->previousOption();
+		mAudioManager->playSound("ChangeOption.wav", -2);
 		break;
 	case OIS::KC_RIGHT:
 		mMenu->nextOption();
+		mAudioManager->playSound("ChangeOption.wav", -2);
 		break;
 	case OIS::KC_RETURN:
 		switch(mMenu->getCurrentOption())
 		{
 		case GuiWidgetGameoverId::ReturnMenu:
 			this->mNextGameStateId = GameStateId::SplashScreen;
+			mAudioManager->playSound("Select.wav", -1);
 			break;
 		case GuiWidgetGameoverId::QuitGame:
 			this->mNextGameStateId = GameStateId::Exit;
+			mAudioManager->playSound("Select.wav", -1);
 			// Unload gui NOW!
 			unload();
 			break;

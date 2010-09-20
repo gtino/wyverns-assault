@@ -140,21 +140,26 @@ bool PauseState::keyReleased(const OIS::KeyEvent& e)
 	{
 	case OIS::KC_UP:
 		mMenu->previousOption();
+		mAudioManager->playSound("ChangeOption.wav", -2);
 		break;
 	case OIS::KC_DOWN:
 		mMenu->nextOption();
+		mAudioManager->playSound("ChangeOption.wav", -2);
 		break;
 	case OIS::KC_RETURN:
 		switch(mMenu->getCurrentOption())
 		{
 		case GuiWidgetPauseId::PlayGame:
 			this->mNextGameStateId = GameStateId::Play;
+			mAudioManager->playSound("Select.wav", -1);
 			break;
 		case GuiWidgetPauseId::OptionsGame:
 			this->mNextGameStateId = GameStateId::Options;
+			mAudioManager->playSound("Select.wav", -1);
 			break;
 		case GuiWidgetPauseId::QuitToMenu:
 			this->mNextGameStateId = GameStateId::MainMenu;
+			mAudioManager->playSound("Select.wav", -1);			
 			break;
 		}		
 		break;

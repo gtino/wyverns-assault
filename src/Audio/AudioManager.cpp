@@ -163,6 +163,10 @@ void AudioManager::loadResources()
 	createStream( String("Item01.wav"));
 	createStream( String("Drop01.wav"));
 
+	createStream( String("BloodSplat01.wav"));
+	createStream( String("BloodSplat02.wav"));
+	createStream( String("BloodSplat03.wav"));
+	createStream( String("ChangeOption.wav"));
 	createStream( String("Select.wav"));
 
 	// Musics
@@ -443,6 +447,11 @@ void AudioManager::incrementNextSoundInstanceIndex(void)
 void AudioManager::playSound(String soundName, Ogre::Vector3 soundPosition, int *channelIndex)
 {
 	playSound(mSoundNameToIdMap[soundName], soundPosition, channelIndex);
+}
+
+void AudioManager::playSound(String soundName, int channelIndex)
+{
+	playSound(mSoundNameToIdMap[soundName], Vector3::ZERO, &channelIndex);
 }
 
 void AudioManager::playSound(int soundIndex, Ogre::Vector3 soundPosition, int *channelIndex)

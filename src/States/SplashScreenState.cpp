@@ -135,6 +135,7 @@ bool SplashScreenState::keyReleased(const OIS::KeyEvent& e)
 	{
 	case OIS::KC_RETURN:
 		this->mNextGameStateId = GameStateId::Intro;
+		mAudioManager->playSound("Select.wav", -1);
 		break;
 	}
 
