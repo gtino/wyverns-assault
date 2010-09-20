@@ -49,6 +49,7 @@ Enemy::Enemy(Ogre::String name, Enemy::EnemyTypes type, Enemy::EnemyParameters p
 , mDieAnimation(NULL)
 , mAttackTimeout(0)
 , mHasItem(false)
+, mLastEnemyCollision(name)
 {
 	mType = type;
 	mParameters = params;
