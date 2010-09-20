@@ -33,6 +33,8 @@ GuiManager::~GuiManager()
 void GuiManager::update(float const elapsedSeconds, int enemyCount)
 {
 	
+	mHikariManager->update();
+
 	if(!mFlashCounterEnemyUI)
 		mFlashCounterEnemyUI = GuiFlashCounterPtr( new GuiFlashCounter(GuiFlashCounter::CounterTypes::Manual ,mWindow->getViewport(0), GuiScreenId::FlashCounterEnemyGui, 0, mHikariManager) );
 	else
@@ -41,8 +43,7 @@ void GuiManager::update(float const elapsedSeconds, int enemyCount)
 	if(flashCount){
 		flashCount = mFlashCounterUI->update(elapsedSeconds, enemyCount);
 		mFlashCounterEnemyUI->hide();
-	}else
-		mFlashCounterEnemyUI->show(); 
+	}
 
 }
 
@@ -169,6 +170,8 @@ EVENTS_BEGIN_REGISTER_HANDLERS(GuiManager)
 	EVENTS_REGISTER_HANDLER(GuiManager, PlayerHit);
 	EVENTS_REGISTER_HANDLER(GuiManager, PlayerStatusUpdate);
 	EVENTS_REGISTER_HANDLER(GuiManager, GameAreaFlashCounter);
+	EVENTS_REGISTER_HANDLER(GuiManager, GameAreaCleared);
+	EVENTS_REGISTER_HANDLER(GuiManager, GameAreaChanged);
 EVENTS_END_REGISTER_HANDLERS()
 
 EVENTS_BEGIN_UNREGISTER_HANDLERS(GuiManager)
@@ -177,7 +180,8 @@ EVENTS_BEGIN_UNREGISTER_HANDLERS(GuiManager)
 	EVENTS_UNREGISTER_HANDLER(GuiManager, EnemyKilled);
 	EVENTS_UNREGISTER_HANDLER(GuiManager, PlayerHit);
 	EVENTS_UNREGISTER_HANDLER(GuiManager, PlayerStatusUpdate);
-	EVENTS_UNREGISTER_HANDLER(GuiManager, GameAreaFlashCounter);
+	EVENTS_UNREGISTER_HANDLER(GuiManager, GameAreaCleared);
+	EVENTS_UNREGISTER_HANDLER(GuiManager, GameAreaChanged);
 EVENTS_END_UNREGISTER_HANDLERS()
 
 
@@ -279,6 +283,32 @@ EVENTS_DEFINE_HANDLER(GuiManager, GameAreaFlashCounter)
 	}
 
 	flashCount = true;
+
+}
+
+EVENTS_DEFINE_HANDLER(GuiManager, GameAreaChanged)
+{
+	Debug::Out("GuiManager : handleGameAreaChangedEvent");
+
+	if(mFlashGoGo)
+		mFlashGoGo->hide();
+
+	if(mFlashCounterEnemyUI)
+		mFlashCounterEnemyUI->show();
+
+}
+
+EVENTS_DEFINE_HANDLER(GuiManager, GameAreaCleared)
+{
+	Debug::Out("GuiManager : handleGameAreaClearedEvent");
+
+	if(!mFlashGoGo)
+		mFlashGoGo = GuiFlashMoviePtr( new GuiFlashMovie(mWindow->getViewport(0), GuiScreenId::FlashMovieGoGoGui, mHikariManager ,"GoGo.swf") );
+	else
+		mFlashGoGo->show();
+
+	if(mFlashCounterEnemyUI)
+		mFlashCounterEnemyUI->hide();
 
 }
 

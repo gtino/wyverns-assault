@@ -33,6 +33,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #include "GuiImage.h"
 #include "GuiUserInterface.h"
 #include "GuiFlashCounter.h"
+#include "GuiFlashMovie.h"
 #include "GuiMenu.h"
 
 #include "..\Input\InputListener.h"
@@ -57,7 +58,8 @@ namespace WyvernsAssault
 		LevelLoadingGui = 10,
 		SelectionGui	= 11,
 		FlashCounterGui = 12,
-		FlashCounterEnemyGui = 13		
+		FlashCounterEnemyGui = 13,
+		FlashMovieGoGoGui = 14
 	};
 
 	/** The widget map type */
