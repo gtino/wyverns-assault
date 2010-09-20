@@ -52,18 +52,18 @@
       <DIRECTORY type="FileSystem" value="../materials/scripts/sky"></DIRECTORY>
       <DIRECTORY type="FileSystem" value="../models/stages"></DIRECTORY>
     </RESOURCEDIRECTORIES>
-  <CAMERASPEED value="14"></CAMERASPEED>
+  <CAMERASPEED value="13"></CAMERASPEED>
   <CAMERAPOSITIONS count="1">
     <OPTION id="0" position="1417.36 9.53911 54.9741" orientation="0.707107 0 0.707107 0"></OPTION>
-    <OPTION id="1" position="522.101 143.928 -592.89" orientation="-0.581779 0.237722 -0.719941 -0.29446"></OPTION>
+    <OPTION id="1" position="698.62 152.117 -534.082" orientation="-0.65591 0.177836 -0.707962 -0.192216"></OPTION>
   </CAMERAPOSITIONS>
     <LAYERS>
       <LAYER id="0" name="Layer 0" visible="true"></LAYER>
-      <LAYER id="1" name="Layer1" visible="true"></LAYER>
-      <LAYER id="2" name="Layer2" visible="true"></LAYER>
+      <LAYER id="1" name="Layer1" visible="false"></LAYER>
+      <LAYER id="2" name="Layer2" visible="false"></LAYER>
       <LAYER id="3" name="Objects" visible="true"></LAYER>
-      <LAYER id="4" name="Layer4" visible="true"></LAYER>
-      <LAYER id="5" name="Layer5" visible="true"></LAYER>
+      <LAYER id="4" name="Layer4" visible="false"></LAYER>
+      <LAYER id="5" name="Layer5" visible="false"></LAYER>
       <LAYER id="6" name="Layer 1" visible="true"></LAYER>
       <LAYER id="7" name="Layer 2" visible="true"></LAYER>
       <LAYER id="8" name="Layer 3" visible="true"></LAYER>
@@ -136,9 +136,9 @@
   <OBJECT object_id="2000000002" name="Viewport1" typename="Viewport Object">
     <PROPERTY id="camera::clipdistance" type="8" value="0.05 100000"></PROPERTY>
     <PROPERTY id="camera::fov" type="6" value="1"></PROPERTY>
-    <PROPERTY id="camera::orientation" type="13" value="-0.581783 0.237724 -0.719946 -0.294462"></PROPERTY>
+    <PROPERTY id="camera::orientation" type="13" value="-0.655981 0.177855 -0.708039 -0.192237"></PROPERTY>
     <PROPERTY id="camera::polymode" type="2" value="3"></PROPERTY>
-    <PROPERTY id="camera::position" type="9" value="522.101 143.928 -592.89"></PROPERTY>
+    <PROPERTY id="camera::position" type="9" value="698.62 152.117 -534.082"></PROPERTY>
     <PROPERTY id="camera::viewmode" type="2" value="0"></PROPERTY>
     <PROPERTY id="colour" type="11" value="0.901961 0.901961 0.901961 1"></PROPERTY>
     <PROPERTY id="compositorcount" type="2" value="0"></PROPERTY>
@@ -6543,6 +6543,30 @@
     </CUSTOMPROPERTIES>
   </OBJECT>
 
+  <OBJECT object_id="618854336" name="WoodenWallPole17" typename="Node Object" parentnode="Objects">
+    <PROPERTY id="autotracktarget" type="7" value="None"></PROPERTY>
+    <PROPERTY id="layer" type="2" value="0"></PROPERTY>
+    <PROPERTY id="locked" type="12" value="false"></PROPERTY>
+    <PROPERTY id="orientation" type="13" value="1 0 0 0"></PROPERTY>
+    <PROPERTY id="position" type="9" value="467.449 19.3565 -603.247"></PROPERTY>
+    <PROPERTY id="scale" type="9" value="1 1 1"></PROPERTY>
+    <PROPERTY id="updatescript" type="7" value=""></PROPERTY>
+    <CUSTOMPROPERTIES>
+    </CUSTOMPROPERTIES>
+  </OBJECT>
+
+  <OBJECT object_id="289529088" name="WoodenWallPole32" typename="Node Object" parentnode="Objects">
+    <PROPERTY id="autotracktarget" type="7" value="None"></PROPERTY>
+    <PROPERTY id="layer" type="2" value="0"></PROPERTY>
+    <PROPERTY id="locked" type="12" value="false"></PROPERTY>
+    <PROPERTY id="orientation" type="13" value="1 0 0 0"></PROPERTY>
+    <PROPERTY id="position" type="9" value="466.847 19.0371 -487.127"></PROPERTY>
+    <PROPERTY id="scale" type="9" value="1 1 1"></PROPERTY>
+    <PROPERTY id="updatescript" type="7" value=""></PROPERTY>
+    <CUSTOMPROPERTIES>
+    </CUSTOMPROPERTIES>
+  </OBJECT>
+
   <OBJECT object_id="809778176" name="CityTents" typename="Node Object" parentnode="Objects">
     <PROPERTY id="autotracktarget" type="7" value="None"></PROPERTY>
     <PROPERTY id="layer" type="2" value="0"></PROPERTY>
@@ -6574,6 +6598,42 @@
     <PROPERTY id="orientation" type="13" value="-0.182236 0 0.983255 0"></PROPERTY>
     <PROPERTY id="position" type="9" value="1202.68 17.9685 248.993"></PROPERTY>
     <PROPERTY id="scale" type="9" value="0.75 0.75 0.75"></PROPERTY>
+    <PROPERTY id="updatescript" type="7" value=""></PROPERTY>
+    <CUSTOMPROPERTIES>
+    </CUSTOMPROPERTIES>
+  </OBJECT>
+
+  <OBJECT object_id="727561216" name="WoodenWallPole10" typename="Node Object" parentnode="Objects">
+    <PROPERTY id="autotracktarget" type="7" value="None"></PROPERTY>
+    <PROPERTY id="layer" type="2" value="0"></PROPERTY>
+    <PROPERTY id="locked" type="12" value="false"></PROPERTY>
+    <PROPERTY id="orientation" type="13" value="1 0 0 0"></PROPERTY>
+    <PROPERTY id="position" type="9" value="473.234 19.4033 -412.413"></PROPERTY>
+    <PROPERTY id="scale" type="9" value="1 1 1"></PROPERTY>
+    <PROPERTY id="updatescript" type="7" value=""></PROPERTY>
+    <CUSTOMPROPERTIES>
+    </CUSTOMPROPERTIES>
+  </OBJECT>
+
+  <OBJECT object_id="649617024" name="WoodenWallPole28" typename="Node Object" parentnode="Objects">
+    <PROPERTY id="autotracktarget" type="7" value="None"></PROPERTY>
+    <PROPERTY id="layer" type="2" value="0"></PROPERTY>
+    <PROPERTY id="locked" type="12" value="false"></PROPERTY>
+    <PROPERTY id="orientation" type="13" value="1 0 0 0"></PROPERTY>
+    <PROPERTY id="position" type="9" value="465.695 17.0441 -502.742"></PROPERTY>
+    <PROPERTY id="scale" type="9" value="1 1 1"></PROPERTY>
+    <PROPERTY id="updatescript" type="7" value=""></PROPERTY>
+    <CUSTOMPROPERTIES>
+    </CUSTOMPROPERTIES>
+  </OBJECT>
+
+  <OBJECT object_id="353984192" name="WoodenWallPole8" typename="Node Object" parentnode="Objects">
+    <PROPERTY id="autotracktarget" type="7" value="None"></PROPERTY>
+    <PROPERTY id="layer" type="2" value="0"></PROPERTY>
+    <PROPERTY id="locked" type="12" value="false"></PROPERTY>
+    <PROPERTY id="orientation" type="13" value="1 0 0 0"></PROPERTY>
+    <PROPERTY id="position" type="9" value="471.65 17.794 -441.487"></PROPERTY>
+    <PROPERTY id="scale" type="9" value="1 1 1"></PROPERTY>
     <PROPERTY id="updatescript" type="7" value=""></PROPERTY>
     <CUSTOMPROPERTIES>
     </CUSTOMPROPERTIES>
@@ -6634,6 +6694,30 @@
     <PROPERTY id="orientation" type="13" value="-0.678801 0 0.734322 0"></PROPERTY>
     <PROPERTY id="position" type="9" value="223.457 0.527756 -356.413"></PROPERTY>
     <PROPERTY id="scale" type="9" value="0.25 0.25 0.25"></PROPERTY>
+    <PROPERTY id="updatescript" type="7" value=""></PROPERTY>
+    <CUSTOMPROPERTIES>
+    </CUSTOMPROPERTIES>
+  </OBJECT>
+
+  <OBJECT object_id="758842752" name="WoodenWallPole23" typename="Node Object" parentnode="Objects">
+    <PROPERTY id="autotracktarget" type="7" value="None"></PROPERTY>
+    <PROPERTY id="layer" type="2" value="0"></PROPERTY>
+    <PROPERTY id="locked" type="12" value="false"></PROPERTY>
+    <PROPERTY id="orientation" type="13" value="0.956799 0 0.29075 0"></PROPERTY>
+    <PROPERTY id="position" type="9" value="467.186 19.2097 -568.597"></PROPERTY>
+    <PROPERTY id="scale" type="9" value="1 1 1"></PROPERTY>
+    <PROPERTY id="updatescript" type="7" value=""></PROPERTY>
+    <CUSTOMPROPERTIES>
+    </CUSTOMPROPERTIES>
+  </OBJECT>
+
+  <OBJECT object_id="282357248" name="WoodenWallPole3" typename="Node Object" parentnode="Objects">
+    <PROPERTY id="autotracktarget" type="7" value="None"></PROPERTY>
+    <PROPERTY id="layer" type="2" value="0"></PROPERTY>
+    <PROPERTY id="locked" type="12" value="false"></PROPERTY>
+    <PROPERTY id="orientation" type="13" value="1 0 0 0"></PROPERTY>
+    <PROPERTY id="position" type="9" value="472.671 20.288 -423.469"></PROPERTY>
+    <PROPERTY id="scale" type="9" value="1 1 1"></PROPERTY>
     <PROPERTY id="updatescript" type="7" value=""></PROPERTY>
     <CUSTOMPROPERTIES>
     </CUSTOMPROPERTIES>
@@ -6711,385 +6795,25 @@
     </CUSTOMPROPERTIES>
   </OBJECT>
 
-  <OBJECT object_id="367503872" name="WoodenWall" typename="Node Object" parentnode="Objects">
+  <OBJECT object_id="217535936" name="WoodenWallPole26" typename="Node Object" parentnode="Objects">
     <PROPERTY id="autotracktarget" type="7" value="None"></PROPERTY>
     <PROPERTY id="layer" type="2" value="0"></PROPERTY>
     <PROPERTY id="locked" type="12" value="false"></PROPERTY>
     <PROPERTY id="orientation" type="13" value="1 0 0 0"></PROPERTY>
-    <PROPERTY id="position" type="9" value="473.658 -149.152 -436.997"></PROPERTY>
-    <PROPERTY id="scale" type="9" value="0.25 0.25 0.25"></PROPERTY>
+    <PROPERTY id="position" type="9" value="465.193 17.5803 -510.459"></PROPERTY>
+    <PROPERTY id="scale" type="9" value="1 1 1"></PROPERTY>
     <PROPERTY id="updatescript" type="7" value=""></PROPERTY>
     <CUSTOMPROPERTIES>
     </CUSTOMPROPERTIES>
   </OBJECT>
 
-  <OBJECT object_id="42298652" name="WoodenWallPole14" typename="Node Object" parentnode="WoodenWall">
+  <OBJECT object_id="223639632" name="WoodenWallPole6" typename="Node Object" parentnode="Objects">
     <PROPERTY id="autotracktarget" type="7" value="None"></PROPERTY>
     <PROPERTY id="layer" type="2" value="0"></PROPERTY>
     <PROPERTY id="locked" type="12" value="false"></PROPERTY>
     <PROPERTY id="orientation" type="13" value="1 0 0 0"></PROPERTY>
-    <PROPERTY id="position" type="9" value="-1.84336 677.474 -728.02"></PROPERTY>
-    <PROPERTY id="scale" type="9" value="4 4 4"></PROPERTY>
-    <PROPERTY id="updatescript" type="7" value=""></PROPERTY>
-    <CUSTOMPROPERTIES>
-    </CUSTOMPROPERTIES>
-  </OBJECT>
-
-  <OBJECT object_id="337473696" name="WoodenWallPole33" typename="Node Object" parentnode="WoodenWall">
-    <PROPERTY id="autotracktarget" type="7" value="None"></PROPERTY>
-    <PROPERTY id="layer" type="2" value="0"></PROPERTY>
-    <PROPERTY id="locked" type="12" value="false"></PROPERTY>
-    <PROPERTY id="orientation" type="13" value="0.983467 0 0.18109 0"></PROPERTY>
-    <PROPERTY id="position" type="9" value="-29.9735 677.474 -475.234"></PROPERTY>
-    <PROPERTY id="scale" type="9" value="4 4 4"></PROPERTY>
-    <PROPERTY id="updatescript" type="7" value=""></PROPERTY>
-    <CUSTOMPROPERTIES>
-    </CUSTOMPROPERTIES>
-  </OBJECT>
-
-  <OBJECT object_id="665120448" name="WoodenWallPole4" typename="Node Object" parentnode="WoodenWall">
-    <PROPERTY id="autotracktarget" type="7" value="None"></PROPERTY>
-    <PROPERTY id="layer" type="2" value="0"></PROPERTY>
-    <PROPERTY id="locked" type="12" value="false"></PROPERTY>
-    <PROPERTY id="orientation" type="13" value="1 0 0 0"></PROPERTY>
-    <PROPERTY id="position" type="9" value="-2.98666 677.474 41.8807"></PROPERTY>
-    <PROPERTY id="scale" type="9" value="4 4 4"></PROPERTY>
-    <PROPERTY id="updatescript" type="7" value=""></PROPERTY>
-    <CUSTOMPROPERTIES>
-    </CUSTOMPROPERTIES>
-  </OBJECT>
-
-  <OBJECT object_id="618854336" name="WoodenWallPole17" typename="Node Object" parentnode="WoodenWall">
-    <PROPERTY id="autotracktarget" type="7" value="None"></PROPERTY>
-    <PROPERTY id="layer" type="2" value="0"></PROPERTY>
-    <PROPERTY id="locked" type="12" value="false"></PROPERTY>
-    <PROPERTY id="orientation" type="13" value="1 0 0 0"></PROPERTY>
-    <PROPERTY id="position" type="9" value="-1.84336 677.474 -684.208"></PROPERTY>
-    <PROPERTY id="scale" type="9" value="4 4 4"></PROPERTY>
-    <PROPERTY id="updatescript" type="7" value=""></PROPERTY>
-    <CUSTOMPROPERTIES>
-    </CUSTOMPROPERTIES>
-  </OBJECT>
-
-  <OBJECT object_id="289529088" name="WoodenWallPole32" typename="Node Object" parentnode="WoodenWall">
-    <PROPERTY id="autotracktarget" type="7" value="None"></PROPERTY>
-    <PROPERTY id="layer" type="2" value="0"></PROPERTY>
-    <PROPERTY id="locked" type="12" value="false"></PROPERTY>
-    <PROPERTY id="orientation" type="13" value="1 0 0 0"></PROPERTY>
-    <PROPERTY id="position" type="9" value="-32.3324 666.652 -205.525"></PROPERTY>
-    <PROPERTY id="scale" type="9" value="4 4 4"></PROPERTY>
-    <PROPERTY id="updatescript" type="7" value=""></PROPERTY>
-    <CUSTOMPROPERTIES>
-    </CUSTOMPROPERTIES>
-  </OBJECT>
-
-  <OBJECT object_id="346964928" name="WoodenWallPole5" typename="Node Object" parentnode="WoodenWall">
-    <PROPERTY id="autotracktarget" type="7" value="None"></PROPERTY>
-    <PROPERTY id="layer" type="2" value="0"></PROPERTY>
-    <PROPERTY id="locked" type="12" value="false"></PROPERTY>
-    <PROPERTY id="orientation" type="13" value="1 0 0 0"></PROPERTY>
-    <PROPERTY id="position" type="9" value="-1.84336 674.548 27.6383"></PROPERTY>
-    <PROPERTY id="scale" type="9" value="4 4 4"></PROPERTY>
-    <PROPERTY id="updatescript" type="7" value=""></PROPERTY>
-    <CUSTOMPROPERTIES>
-    </CUSTOMPROPERTIES>
-  </OBJECT>
-
-  <OBJECT object_id="593127232" name="WoodenWallPole16" typename="Node Object" parentnode="WoodenWall">
-    <PROPERTY id="autotracktarget" type="7" value="None"></PROPERTY>
-    <PROPERTY id="layer" type="2" value="0"></PROPERTY>
-    <PROPERTY id="locked" type="12" value="false"></PROPERTY>
-    <PROPERTY id="orientation" type="13" value="1 0 0 0"></PROPERTY>
-    <PROPERTY id="position" type="9" value="-1.84336 677.474 -698.812"></PROPERTY>
-    <PROPERTY id="scale" type="9" value="4 4 4"></PROPERTY>
-    <PROPERTY id="updatescript" type="7" value=""></PROPERTY>
-    <CUSTOMPROPERTIES>
-    </CUSTOMPROPERTIES>
-  </OBJECT>
-
-  <OBJECT object_id="217535936" name="WoodenWallPole26" typename="Node Object" parentnode="WoodenWall">
-    <PROPERTY id="autotracktarget" type="7" value="None"></PROPERTY>
-    <PROPERTY id="layer" type="2" value="0"></PROPERTY>
-    <PROPERTY id="locked" type="12" value="false"></PROPERTY>
-    <PROPERTY id="orientation" type="13" value="1 0 0 0"></PROPERTY>
-    <PROPERTY id="position" type="9" value="-37.493 677.474 -294.295"></PROPERTY>
-    <PROPERTY id="scale" type="9" value="4 4 4"></PROPERTY>
-    <PROPERTY id="updatescript" type="7" value=""></PROPERTY>
-    <CUSTOMPROPERTIES>
-    </CUSTOMPROPERTIES>
-  </OBJECT>
-
-  <OBJECT object_id="992706048" name="WoodenWallPole31" typename="Node Object" parentnode="WoodenWall">
-    <PROPERTY id="autotracktarget" type="7" value="None"></PROPERTY>
-    <PROPERTY id="layer" type="2" value="0"></PROPERTY>
-    <PROPERTY id="locked" type="12" value="false"></PROPERTY>
-    <PROPERTY id="orientation" type="13" value="1 0 0 0"></PROPERTY>
-    <PROPERTY id="position" type="9" value="-34.4073 677.474 -220.929"></PROPERTY>
-    <PROPERTY id="scale" type="9" value="4 4 4"></PROPERTY>
-    <PROPERTY id="updatescript" type="7" value=""></PROPERTY>
-    <CUSTOMPROPERTIES>
-    </CUSTOMPROPERTIES>
-  </OBJECT>
-
-  <OBJECT object_id="223639632" name="WoodenWallPole6" typename="Node Object" parentnode="WoodenWall">
-    <PROPERTY id="autotracktarget" type="7" value="None"></PROPERTY>
-    <PROPERTY id="layer" type="2" value="0"></PROPERTY>
-    <PROPERTY id="locked" type="12" value="false"></PROPERTY>
-    <PROPERTY id="orientation" type="13" value="1 0 0 0"></PROPERTY>
-    <PROPERTY id="position" type="9" value="-0.132775 678.002 13.3958"></PROPERTY>
-    <PROPERTY id="scale" type="9" value="4 4 4"></PROPERTY>
-    <PROPERTY id="updatescript" type="7" value=""></PROPERTY>
-    <CUSTOMPROPERTIES>
-    </CUSTOMPROPERTIES>
-  </OBJECT>
-
-  <OBJECT object_id="900051904" name="WoodenWallPole11" typename="Node Object" parentnode="WoodenWall">
-    <PROPERTY id="autotracktarget" type="7" value="None"></PROPERTY>
-    <PROPERTY id="layer" type="2" value="0"></PROPERTY>
-    <PROPERTY id="locked" type="12" value="false"></PROPERTY>
-    <PROPERTY id="orientation" type="13" value="1 0 0 0"></PROPERTY>
-    <PROPERTY id="position" type="9" value="-3.55781 677.474 -57.8165"></PROPERTY>
-    <PROPERTY id="scale" type="9" value="4 4 4"></PROPERTY>
-    <PROPERTY id="updatescript" type="7" value=""></PROPERTY>
-    <CUSTOMPROPERTIES>
-    </CUSTOMPROPERTIES>
-  </OBJECT>
-
-  <OBJECT object_id="81209760" name="WoodenWallPole19" typename="Node Object" parentnode="WoodenWall">
-    <PROPERTY id="autotracktarget" type="7" value="None"></PROPERTY>
-    <PROPERTY id="layer" type="2" value="0"></PROPERTY>
-    <PROPERTY id="locked" type="12" value="false"></PROPERTY>
-    <PROPERTY id="orientation" type="13" value="0.965376 0 0.260863 0"></PROPERTY>
-    <PROPERTY id="position" type="9" value="-27.5273 669.949 -519.913"></PROPERTY>
-    <PROPERTY id="scale" type="9" value="4 4 4"></PROPERTY>
-    <PROPERTY id="updatescript" type="7" value=""></PROPERTY>
-    <CUSTOMPROPERTIES>
-    </CUSTOMPROPERTIES>
-  </OBJECT>
-
-  <OBJECT object_id="262764368" name="WoodenWallPole27" typename="Node Object" parentnode="WoodenWall">
-    <PROPERTY id="autotracktarget" type="7" value="None"></PROPERTY>
-    <PROPERTY id="layer" type="2" value="0"></PROPERTY>
-    <PROPERTY id="locked" type="12" value="false"></PROPERTY>
-    <PROPERTY id="orientation" type="13" value="1 0 0 0"></PROPERTY>
-    <PROPERTY id="position" type="9" value="-38.6364 667.903 -279.138"></PROPERTY>
-    <PROPERTY id="scale" type="9" value="4 4 4"></PROPERTY>
-    <PROPERTY id="updatescript" type="7" value=""></PROPERTY>
-    <CUSTOMPROPERTIES>
-    </CUSTOMPROPERTIES>
-  </OBJECT>
-
-  <OBJECT object_id="68910792" name="WoodenWallPole30" typename="Node Object" parentnode="WoodenWall">
-    <PROPERTY id="autotracktarget" type="7" value="None"></PROPERTY>
-    <PROPERTY id="layer" type="2" value="0"></PROPERTY>
-    <PROPERTY id="locked" type="12" value="false"></PROPERTY>
-    <PROPERTY id="orientation" type="13" value="1 0 0 0"></PROPERTY>
-    <PROPERTY id="position" type="9" value="-36.5071 677.474 -235.178"></PROPERTY>
-    <PROPERTY id="scale" type="9" value="4 4 4"></PROPERTY>
-    <PROPERTY id="updatescript" type="7" value=""></PROPERTY>
-    <CUSTOMPROPERTIES>
-    </CUSTOMPROPERTIES>
-  </OBJECT>
-
-  <OBJECT object_id="668111232" name="WoodenWallPole7" typename="Node Object" parentnode="WoodenWall">
-    <PROPERTY id="autotracktarget" type="7" value="None"></PROPERTY>
-    <PROPERTY id="layer" type="2" value="0"></PROPERTY>
-    <PROPERTY id="locked" type="12" value="false"></PROPERTY>
-    <PROPERTY id="orientation" type="13" value="1 0 0 0"></PROPERTY>
-    <PROPERTY id="position" type="9" value="-1.84336 677.474 -0.846648"></PROPERTY>
-    <PROPERTY id="scale" type="9" value="4 4 4"></PROPERTY>
-    <PROPERTY id="updatescript" type="7" value=""></PROPERTY>
-    <CUSTOMPROPERTIES>
-    </CUSTOMPROPERTIES>
-  </OBJECT>
-
-  <OBJECT object_id="106723224" name="WoodenWallPole" typename="Node Object" parentnode="WoodenWall">
-    <PROPERTY id="autotracktarget" type="7" value="None"></PROPERTY>
-    <PROPERTY id="layer" type="2" value="0"></PROPERTY>
-    <PROPERTY id="locked" type="12" value="false"></PROPERTY>
-    <PROPERTY id="orientation" type="13" value="1 0 0 0"></PROPERTY>
-    <PROPERTY id="position" type="9" value="-1.84336 677.474 98.8505"></PROPERTY>
-    <PROPERTY id="scale" type="9" value="4 4 4"></PROPERTY>
-    <PROPERTY id="updatescript" type="7" value=""></PROPERTY>
-    <CUSTOMPROPERTIES>
-    </CUSTOMPROPERTIES>
-  </OBJECT>
-
-  <OBJECT object_id="727561216" name="WoodenWallPole10" typename="Node Object" parentnode="WoodenWall">
-    <PROPERTY id="autotracktarget" type="7" value="None"></PROPERTY>
-    <PROPERTY id="layer" type="2" value="0"></PROPERTY>
-    <PROPERTY id="locked" type="12" value="false"></PROPERTY>
-    <PROPERTY id="orientation" type="13" value="1 0 0 0"></PROPERTY>
-    <PROPERTY id="position" type="9" value="-1.84336 675.991 -43.574"></PROPERTY>
-    <PROPERTY id="scale" type="9" value="4 4 4"></PROPERTY>
-    <PROPERTY id="updatescript" type="7" value=""></PROPERTY>
-    <CUSTOMPROPERTIES>
-    </CUSTOMPROPERTIES>
-  </OBJECT>
-
-  <OBJECT object_id="999664320" name="WoodenWallPole18" typename="Node Object" parentnode="WoodenWall">
-    <PROPERTY id="autotracktarget" type="7" value="None"></PROPERTY>
-    <PROPERTY id="layer" type="2" value="0"></PROPERTY>
-    <PROPERTY id="locked" type="12" value="false"></PROPERTY>
-    <PROPERTY id="orientation" type="13" value="1 0 0 0"></PROPERTY>
-    <PROPERTY id="position" type="9" value="-1.84336 677.474 -669.604"></PROPERTY>
-    <PROPERTY id="scale" type="9" value="4 4 4"></PROPERTY>
-    <PROPERTY id="updatescript" type="7" value=""></PROPERTY>
-    <CUSTOMPROPERTIES>
-    </CUSTOMPROPERTIES>
-  </OBJECT>
-
-  <OBJECT object_id="649617024" name="WoodenWallPole28" typename="Node Object" parentnode="WoodenWall">
-    <PROPERTY id="autotracktarget" type="7" value="None"></PROPERTY>
-    <PROPERTY id="layer" type="2" value="0"></PROPERTY>
-    <PROPERTY id="locked" type="12" value="false"></PROPERTY>
-    <PROPERTY id="orientation" type="13" value="1 0 0 0"></PROPERTY>
-    <PROPERTY id="position" type="9" value="-37.5806 677.474 -264.249"></PROPERTY>
-    <PROPERTY id="scale" type="9" value="4 4 4"></PROPERTY>
-    <PROPERTY id="updatescript" type="7" value=""></PROPERTY>
-    <CUSTOMPROPERTIES>
-    </CUSTOMPROPERTIES>
-  </OBJECT>
-
-  <OBJECT object_id="353984192" name="WoodenWallPole8" typename="Node Object" parentnode="WoodenWall">
-    <PROPERTY id="autotracktarget" type="7" value="None"></PROPERTY>
-    <PROPERTY id="layer" type="2" value="0"></PROPERTY>
-    <PROPERTY id="locked" type="12" value="false"></PROPERTY>
-    <PROPERTY id="orientation" type="13" value="1 0 0 0"></PROPERTY>
-    <PROPERTY id="position" type="9" value="-1.84336 670.826 -15.0891"></PROPERTY>
-    <PROPERTY id="scale" type="9" value="4 4 4"></PROPERTY>
-    <PROPERTY id="updatescript" type="7" value=""></PROPERTY>
-    <CUSTOMPROPERTIES>
-    </CUSTOMPROPERTIES>
-  </OBJECT>
-
-  <OBJECT object_id="219977408" name="WoodenWallPole1" typename="Node Object" parentnode="WoodenWall">
-    <PROPERTY id="autotracktarget" type="7" value="None"></PROPERTY>
-    <PROPERTY id="layer" type="2" value="0"></PROPERTY>
-    <PROPERTY id="locked" type="12" value="false"></PROPERTY>
-    <PROPERTY id="orientation" type="13" value="1 0 0 0"></PROPERTY>
-    <PROPERTY id="position" type="9" value="-0.689934 673.857 84.6081"></PROPERTY>
-    <PROPERTY id="scale" type="9" value="4 4 4"></PROPERTY>
-    <PROPERTY id="updatescript" type="7" value=""></PROPERTY>
-    <CUSTOMPROPERTIES>
-    </CUSTOMPROPERTIES>
-  </OBJECT>
-
-  <OBJECT object_id="255134736" name="WoodenWallPole13" typename="Node Object" parentnode="WoodenWall">
-    <PROPERTY id="autotracktarget" type="7" value="None"></PROPERTY>
-    <PROPERTY id="layer" type="2" value="0"></PROPERTY>
-    <PROPERTY id="locked" type="12" value="false"></PROPERTY>
-    <PROPERTY id="orientation" type="13" value="1 0 0 0"></PROPERTY>
-    <PROPERTY id="position" type="9" value="-1.84336 677.474 -742.624"></PROPERTY>
-    <PROPERTY id="scale" type="9" value="4 4 4"></PROPERTY>
-    <PROPERTY id="updatescript" type="7" value=""></PROPERTY>
-    <CUSTOMPROPERTIES>
-    </CUSTOMPROPERTIES>
-  </OBJECT>
-
-  <OBJECT object_id="694296064" name="WoodenWallPole21" typename="Node Object" parentnode="WoodenWall">
-    <PROPERTY id="autotracktarget" type="7" value="None"></PROPERTY>
-    <PROPERTY id="layer" type="2" value="0"></PROPERTY>
-    <PROPERTY id="locked" type="12" value="false"></PROPERTY>
-    <PROPERTY id="orientation" type="13" value="0.959474 0 0.281796 0"></PROPERTY>
-    <PROPERTY id="position" type="9" value="-27.7388 677.474 -504.112"></PROPERTY>
-    <PROPERTY id="scale" type="9" value="4 4 4"></PROPERTY>
-    <PROPERTY id="updatescript" type="7" value=""></PROPERTY>
-    <CUSTOMPROPERTIES>
-    </CUSTOMPROPERTIES>
-  </OBJECT>
-
-  <OBJECT object_id="300912512" name="WoodenWallPole29" typename="Node Object" parentnode="WoodenWall">
-    <PROPERTY id="autotracktarget" type="7" value="None"></PROPERTY>
-    <PROPERTY id="layer" type="2" value="0"></PROPERTY>
-    <PROPERTY id="locked" type="12" value="false"></PROPERTY>
-    <PROPERTY id="orientation" type="13" value="1 0 0 0"></PROPERTY>
-    <PROPERTY id="position" type="9" value="-37.2913 670.56 -250.117"></PROPERTY>
-    <PROPERTY id="scale" type="9" value="4 4 4"></PROPERTY>
-    <PROPERTY id="updatescript" type="7" value=""></PROPERTY>
-    <CUSTOMPROPERTIES>
-    </CUSTOMPROPERTIES>
-  </OBJECT>
-
-  <OBJECT object_id="52949616" name="WoodenWallPole9" typename="Node Object" parentnode="WoodenWall">
-    <PROPERTY id="autotracktarget" type="7" value="None"></PROPERTY>
-    <PROPERTY id="layer" type="2" value="0"></PROPERTY>
-    <PROPERTY id="locked" type="12" value="false"></PROPERTY>
-    <PROPERTY id="orientation" type="13" value="1 0 0 0"></PROPERTY>
-    <PROPERTY id="position" type="9" value="-3.55789 677.474 -29.3316"></PROPERTY>
-    <PROPERTY id="scale" type="9" value="4 4 4"></PROPERTY>
-    <PROPERTY id="updatescript" type="7" value=""></PROPERTY>
-    <CUSTOMPROPERTIES>
-    </CUSTOMPROPERTIES>
-  </OBJECT>
-
-  <OBJECT object_id="794946112" name="WoodenWallPole12" typename="Node Object" parentnode="WoodenWall">
-    <PROPERTY id="autotracktarget" type="7" value="None"></PROPERTY>
-    <PROPERTY id="layer" type="2" value="0"></PROPERTY>
-    <PROPERTY id="locked" type="12" value="false"></PROPERTY>
-    <PROPERTY id="orientation" type="13" value="1 0 0 0"></PROPERTY>
-    <PROPERTY id="position" type="9" value="-1.84336 677.474 -757.228"></PROPERTY>
-    <PROPERTY id="scale" type="9" value="4 4 4"></PROPERTY>
-    <PROPERTY id="updatescript" type="7" value=""></PROPERTY>
-    <CUSTOMPROPERTIES>
-    </CUSTOMPROPERTIES>
-  </OBJECT>
-
-  <OBJECT object_id="531998624" name="WoodenWallPole2" typename="Node Object" parentnode="WoodenWall">
-    <PROPERTY id="autotracktarget" type="7" value="None"></PROPERTY>
-    <PROPERTY id="layer" type="2" value="0"></PROPERTY>
-    <PROPERTY id="locked" type="12" value="false"></PROPERTY>
-    <PROPERTY id="orientation" type="13" value="1 0 0 0"></PROPERTY>
-    <PROPERTY id="position" type="9" value="-1.84336 668.752 70.3656"></PROPERTY>
-    <PROPERTY id="scale" type="9" value="4 4 4"></PROPERTY>
-    <PROPERTY id="updatescript" type="7" value=""></PROPERTY>
-    <CUSTOMPROPERTIES>
-    </CUSTOMPROPERTIES>
-  </OBJECT>
-
-  <OBJECT object_id="57405316" name="WoodenWallPole22" typename="Node Object" parentnode="WoodenWall">
-    <PROPERTY id="autotracktarget" type="7" value="None"></PROPERTY>
-    <PROPERTY id="layer" type="2" value="0"></PROPERTY>
-    <PROPERTY id="locked" type="12" value="false"></PROPERTY>
-    <PROPERTY id="orientation" type="13" value="0.959985 0 0.28005 0"></PROPERTY>
-    <PROPERTY id="position" type="9" value="-30.1742 665.997 -490.31"></PROPERTY>
-    <PROPERTY id="scale" type="9" value="4 4 4"></PROPERTY>
-    <PROPERTY id="updatescript" type="7" value=""></PROPERTY>
-    <CUSTOMPROPERTIES>
-    </CUSTOMPROPERTIES>
-  </OBJECT>
-
-  <OBJECT object_id="978881152" name="WoodenWallPole15" typename="Node Object" parentnode="WoodenWall">
-    <PROPERTY id="autotracktarget" type="7" value="None"></PROPERTY>
-    <PROPERTY id="layer" type="2" value="0"></PROPERTY>
-    <PROPERTY id="locked" type="12" value="false"></PROPERTY>
-    <PROPERTY id="orientation" type="13" value="1 0 0 0"></PROPERTY>
-    <PROPERTY id="position" type="9" value="-1.84336 677.474 -713.416"></PROPERTY>
-    <PROPERTY id="scale" type="9" value="4 4 4"></PROPERTY>
-    <PROPERTY id="updatescript" type="7" value=""></PROPERTY>
-    <CUSTOMPROPERTIES>
-    </CUSTOMPROPERTIES>
-  </OBJECT>
-
-  <OBJECT object_id="758842752" name="WoodenWallPole23" typename="Node Object" parentnode="WoodenWall">
-    <PROPERTY id="autotracktarget" type="7" value="None"></PROPERTY>
-    <PROPERTY id="layer" type="2" value="0"></PROPERTY>
-    <PROPERTY id="locked" type="12" value="false"></PROPERTY>
-    <PROPERTY id="orientation" type="13" value="0.956799 0 0.29075 0"></PROPERTY>
-    <PROPERTY id="position" type="9" value="-27.0316 677.474 -533.039"></PROPERTY>
-    <PROPERTY id="scale" type="9" value="4 4 4"></PROPERTY>
-    <PROPERTY id="updatescript" type="7" value=""></PROPERTY>
-    <CUSTOMPROPERTIES>
-    </CUSTOMPROPERTIES>
-  </OBJECT>
-
-  <OBJECT object_id="282357248" name="WoodenWallPole3" typename="Node Object" parentnode="WoodenWall">
-    <PROPERTY id="autotracktarget" type="7" value="None"></PROPERTY>
-    <PROPERTY id="layer" type="2" value="0"></PROPERTY>
-    <PROPERTY id="locked" type="12" value="false"></PROPERTY>
-    <PROPERTY id="orientation" type="13" value="1 0 0 0"></PROPERTY>
-    <PROPERTY id="position" type="9" value="-2.40641 673.107 56.1232"></PROPERTY>
-    <PROPERTY id="scale" type="9" value="4 4 4"></PROPERTY>
+    <PROPERTY id="position" type="9" value="473.895 20.8454 -434.589"></PROPERTY>
+    <PROPERTY id="scale" type="9" value="1 1 1"></PROPERTY>
     <PROPERTY id="updatescript" type="7" value=""></PROPERTY>
     <CUSTOMPROPERTIES>
     </CUSTOMPROPERTIES>
@@ -7125,6 +6849,18 @@
     <PROPERTY id="locked" type="12" value="false"></PROPERTY>
     <PROPERTY id="orientation" type="13" value="0.163828 0 0.986489 0"></PROPERTY>
     <PROPERTY id="position" type="9" value="797.234 9.5 -433.605"></PROPERTY>
+    <PROPERTY id="scale" type="9" value="1 1 1"></PROPERTY>
+    <PROPERTY id="updatescript" type="7" value=""></PROPERTY>
+    <CUSTOMPROPERTIES>
+    </CUSTOMPROPERTIES>
+  </OBJECT>
+
+  <OBJECT object_id="999664320" name="WoodenWallPole18" typename="Node Object" parentnode="Objects">
+    <PROPERTY id="autotracktarget" type="7" value="None"></PROPERTY>
+    <PROPERTY id="layer" type="2" value="0"></PROPERTY>
+    <PROPERTY id="locked" type="12" value="false"></PROPERTY>
+    <PROPERTY id="orientation" type="13" value="1 0 0 0"></PROPERTY>
+    <PROPERTY id="position" type="9" value="470.598 19.3565 -445.147"></PROPERTY>
     <PROPERTY id="scale" type="9" value="1 1 1"></PROPERTY>
     <PROPERTY id="updatescript" type="7" value=""></PROPERTY>
     <CUSTOMPROPERTIES>
@@ -7174,6 +6910,18 @@
     <PROPERTY id="orientation" type="13" value="0.548293 0 0.836286 0"></PROPERTY>
     <PROPERTY id="position" type="9" value="1224.85 15.6144 150.428"></PROPERTY>
     <PROPERTY id="scale" type="9" value="0.75 0.75 0.75"></PROPERTY>
+    <PROPERTY id="updatescript" type="7" value=""></PROPERTY>
+    <CUSTOMPROPERTIES>
+    </CUSTOMPROPERTIES>
+  </OBJECT>
+
+  <OBJECT object_id="978881152" name="WoodenWallPole15" typename="Node Object" parentnode="Objects">
+    <PROPERTY id="autotracktarget" type="7" value="None"></PROPERTY>
+    <PROPERTY id="layer" type="2" value="0"></PROPERTY>
+    <PROPERTY id="locked" type="12" value="false"></PROPERTY>
+    <PROPERTY id="orientation" type="13" value="1 0 0 0"></PROPERTY>
+    <PROPERTY id="position" type="9" value="467.449 19.3565 -610.527"></PROPERTY>
+    <PROPERTY id="scale" type="9" value="1 1 1"></PROPERTY>
     <PROPERTY id="updatescript" type="7" value=""></PROPERTY>
     <CUSTOMPROPERTIES>
     </CUSTOMPROPERTIES>
@@ -7323,6 +7071,30 @@
     </CUSTOMPROPERTIES>
   </OBJECT>
 
+  <OBJECT object_id="219977408" name="WoodenWallPole1" typename="Node Object" parentnode="Objects">
+    <PROPERTY id="autotracktarget" type="7" value="None"></PROPERTY>
+    <PROPERTY id="layer" type="2" value="0"></PROPERTY>
+    <PROPERTY id="locked" type="12" value="false"></PROPERTY>
+    <PROPERTY id="orientation" type="13" value="1 0 0 0"></PROPERTY>
+    <PROPERTY id="position" type="9" value="474.388 19.0858 -416.342"></PROPERTY>
+    <PROPERTY id="scale" type="9" value="1 1 1"></PROPERTY>
+    <PROPERTY id="updatescript" type="7" value=""></PROPERTY>
+    <CUSTOMPROPERTIES>
+    </CUSTOMPROPERTIES>
+  </OBJECT>
+
+  <OBJECT object_id="694296064" name="WoodenWallPole21" typename="Node Object" parentnode="Objects">
+    <PROPERTY id="autotracktarget" type="7" value="None"></PROPERTY>
+    <PROPERTY id="layer" type="2" value="0"></PROPERTY>
+    <PROPERTY id="locked" type="12" value="false"></PROPERTY>
+    <PROPERTY id="orientation" type="13" value="0.959474 0 0.281796 0"></PROPERTY>
+    <PROPERTY id="position" type="9" value="465.991 18.5863 -560.297"></PROPERTY>
+    <PROPERTY id="scale" type="9" value="1 1 1"></PROPERTY>
+    <PROPERTY id="updatescript" type="7" value=""></PROPERTY>
+    <CUSTOMPROPERTIES>
+    </CUSTOMPROPERTIES>
+  </OBJECT>
+
   <OBJECT object_id="302285856" name="RedwoodTree#4" typename="Node Object" parentnode="Objects">
     <PROPERTY id="autotracktarget" type="7" value="None"></PROPERTY>
     <PROPERTY id="layer" type="2" value="0"></PROPERTY>
@@ -7371,12 +7143,48 @@
     </CUSTOMPROPERTIES>
   </OBJECT>
 
+  <OBJECT object_id="665120448" name="WoodenWallPole4" typename="Node Object" parentnode="Objects">
+    <PROPERTY id="autotracktarget" type="7" value="None"></PROPERTY>
+    <PROPERTY id="layer" type="2" value="0"></PROPERTY>
+    <PROPERTY id="locked" type="12" value="false"></PROPERTY>
+    <PROPERTY id="orientation" type="13" value="1 0 0 0"></PROPERTY>
+    <PROPERTY id="position" type="9" value="473.153 20.9153 -426.949"></PROPERTY>
+    <PROPERTY id="scale" type="9" value="1 1 1"></PROPERTY>
+    <PROPERTY id="updatescript" type="7" value=""></PROPERTY>
+    <CUSTOMPROPERTIES>
+    </CUSTOMPROPERTIES>
+  </OBJECT>
+
   <OBJECT object_id="152653584" name="Crate2" typename="Node Object" parentnode="Objects">
     <PROPERTY id="autotracktarget" type="7" value="None"></PROPERTY>
     <PROPERTY id="layer" type="2" value="0"></PROPERTY>
     <PROPERTY id="locked" type="12" value="false"></PROPERTY>
     <PROPERTY id="orientation" type="13" value="0.942641 0 -0.333807 0"></PROPERTY>
     <PROPERTY id="position" type="9" value="283.993 -0.00305939 -495.141"></PROPERTY>
+    <PROPERTY id="scale" type="9" value="1 1 1"></PROPERTY>
+    <PROPERTY id="updatescript" type="7" value=""></PROPERTY>
+    <CUSTOMPROPERTIES>
+    </CUSTOMPROPERTIES>
+  </OBJECT>
+
+  <OBJECT object_id="593127232" name="WoodenWallPole16" typename="Node Object" parentnode="Objects">
+    <PROPERTY id="autotracktarget" type="7" value="None"></PROPERTY>
+    <PROPERTY id="layer" type="2" value="0"></PROPERTY>
+    <PROPERTY id="locked" type="12" value="false"></PROPERTY>
+    <PROPERTY id="orientation" type="13" value="1 0 0 0"></PROPERTY>
+    <PROPERTY id="position" type="9" value="467.449 17.7178 -606.89"></PROPERTY>
+    <PROPERTY id="scale" type="9" value="1 1 1"></PROPERTY>
+    <PROPERTY id="updatescript" type="7" value=""></PROPERTY>
+    <CUSTOMPROPERTIES>
+    </CUSTOMPROPERTIES>
+  </OBJECT>
+
+  <OBJECT object_id="992706048" name="WoodenWallPole31" typename="Node Object" parentnode="Objects">
+    <PROPERTY id="autotracktarget" type="7" value="None"></PROPERTY>
+    <PROPERTY id="layer" type="2" value="0"></PROPERTY>
+    <PROPERTY id="locked" type="12" value="false"></PROPERTY>
+    <PROPERTY id="orientation" type="13" value="1 0 0 0"></PROPERTY>
+    <PROPERTY id="position" type="9" value="467.304 18.7073 -491.216"></PROPERTY>
     <PROPERTY id="scale" type="9" value="1 1 1"></PROPERTY>
     <PROPERTY id="updatescript" type="7" value=""></PROPERTY>
     <CUSTOMPROPERTIES>
@@ -7414,6 +7222,42 @@
     <PROPERTY id="orientation" type="13" value="0.95882 0 -0.284015 0"></PROPERTY>
     <PROPERTY id="position" type="9" value="1297.62 18.7794 162.392"></PROPERTY>
     <PROPERTY id="scale" type="9" value="0.75 0.75 0.75"></PROPERTY>
+    <PROPERTY id="updatescript" type="7" value=""></PROPERTY>
+    <CUSTOMPROPERTIES>
+    </CUSTOMPROPERTIES>
+  </OBJECT>
+
+  <OBJECT object_id="255134736" name="WoodenWallPole13" typename="Node Object" parentnode="Objects">
+    <PROPERTY id="autotracktarget" type="7" value="None"></PROPERTY>
+    <PROPERTY id="layer" type="2" value="0"></PROPERTY>
+    <PROPERTY id="locked" type="12" value="false"></PROPERTY>
+    <PROPERTY id="orientation" type="13" value="1 0 0 0"></PROPERTY>
+    <PROPERTY id="position" type="9" value="467.449 19.3565 -617.755"></PROPERTY>
+    <PROPERTY id="scale" type="9" value="1 1 1"></PROPERTY>
+    <PROPERTY id="updatescript" type="7" value=""></PROPERTY>
+    <CUSTOMPROPERTIES>
+    </CUSTOMPROPERTIES>
+  </OBJECT>
+
+  <OBJECT object_id="300912512" name="WoodenWallPole29" typename="Node Object" parentnode="Objects">
+    <PROPERTY id="autotracktarget" type="7" value="None"></PROPERTY>
+    <PROPERTY id="layer" type="2" value="0"></PROPERTY>
+    <PROPERTY id="locked" type="12" value="false"></PROPERTY>
+    <PROPERTY id="orientation" type="13" value="1 0 0 0"></PROPERTY>
+    <PROPERTY id="position" type="9" value="465.189 14.0925 -498.985"></PROPERTY>
+    <PROPERTY id="scale" type="9" value="1 1 1"></PROPERTY>
+    <PROPERTY id="updatescript" type="7" value=""></PROPERTY>
+    <CUSTOMPROPERTIES>
+    </CUSTOMPROPERTIES>
+  </OBJECT>
+
+  <OBJECT object_id="52949616" name="WoodenWallPole9" typename="Node Object" parentnode="Objects">
+    <PROPERTY id="autotracktarget" type="7" value="None"></PROPERTY>
+    <PROPERTY id="layer" type="2" value="0"></PROPERTY>
+    <PROPERTY id="locked" type="12" value="false"></PROPERTY>
+    <PROPERTY id="orientation" type="13" value="1 0 0 0"></PROPERTY>
+    <PROPERTY id="position" type="9" value="471.52 19.7876 -452.145"></PROPERTY>
+    <PROPERTY id="scale" type="9" value="1 1 1"></PROPERTY>
     <PROPERTY id="updatescript" type="7" value=""></PROPERTY>
     <CUSTOMPROPERTIES>
     </CUSTOMPROPERTIES>
@@ -7551,6 +7395,30 @@
     </CUSTOMPROPERTIES>
   </OBJECT>
 
+  <OBJECT object_id="262764368" name="WoodenWallPole27" typename="Node Object" parentnode="Objects">
+    <PROPERTY id="autotracktarget" type="7" value="None"></PROPERTY>
+    <PROPERTY id="layer" type="2" value="0"></PROPERTY>
+    <PROPERTY id="locked" type="12" value="false"></PROPERTY>
+    <PROPERTY id="orientation" type="13" value="1 0 0 0"></PROPERTY>
+    <PROPERTY id="position" type="9" value="464.721 15.8944 -506.584"></PROPERTY>
+    <PROPERTY id="scale" type="9" value="1 1 1"></PROPERTY>
+    <PROPERTY id="updatescript" type="7" value=""></PROPERTY>
+    <CUSTOMPROPERTIES>
+    </CUSTOMPROPERTIES>
+  </OBJECT>
+
+  <OBJECT object_id="668111232" name="WoodenWallPole7" typename="Node Object" parentnode="Objects">
+    <PROPERTY id="autotracktarget" type="7" value="None"></PROPERTY>
+    <PROPERTY id="layer" type="2" value="0"></PROPERTY>
+    <PROPERTY id="locked" type="12" value="false"></PROPERTY>
+    <PROPERTY id="orientation" type="13" value="1 0 0 0"></PROPERTY>
+    <PROPERTY id="position" type="9" value="471.515 18.4849 -438.05"></PROPERTY>
+    <PROPERTY id="scale" type="9" value="1 1 1"></PROPERTY>
+    <PROPERTY id="updatescript" type="7" value=""></PROPERTY>
+    <CUSTOMPROPERTIES>
+    </CUSTOMPROPERTIES>
+  </OBJECT>
+
   <OBJECT object_id="943021952" name="RedwoodTree#6" typename="Node Object" parentnode="Objects">
     <PROPERTY id="autotracktarget" type="7" value="None"></PROPERTY>
     <PROPERTY id="layer" type="2" value="0"></PROPERTY>
@@ -7605,6 +7473,18 @@
     <PROPERTY id="locked" type="12" value="false"></PROPERTY>
     <PROPERTY id="orientation" type="13" value="0.942641 0 -0.333807 0"></PROPERTY>
     <PROPERTY id="position" type="9" value="299.822 -0.00305939 -480.183"></PROPERTY>
+    <PROPERTY id="scale" type="9" value="1 1 1"></PROPERTY>
+    <PROPERTY id="updatescript" type="7" value=""></PROPERTY>
+    <CUSTOMPROPERTIES>
+    </CUSTOMPROPERTIES>
+  </OBJECT>
+
+  <OBJECT object_id="42298652" name="WoodenWallPole14" typename="Node Object" parentnode="Objects">
+    <PROPERTY id="autotracktarget" type="7" value="None"></PROPERTY>
+    <PROPERTY id="layer" type="2" value="0"></PROPERTY>
+    <PROPERTY id="locked" type="12" value="false"></PROPERTY>
+    <PROPERTY id="orientation" type="13" value="1 0 0 0"></PROPERTY>
+    <PROPERTY id="position" type="9" value="467.449 17.7739 -614.241"></PROPERTY>
     <PROPERTY id="scale" type="9" value="1 1 1"></PROPERTY>
     <PROPERTY id="updatescript" type="7" value=""></PROPERTY>
     <CUSTOMPROPERTIES>
@@ -7677,6 +7557,18 @@
     <PROPERTY id="locked" type="12" value="false"></PROPERTY>
     <PROPERTY id="orientation" type="13" value="0.999095 0 0.0425467 0"></PROPERTY>
     <PROPERTY id="position" type="9" value="992.245 9.5 -217.533"></PROPERTY>
+    <PROPERTY id="scale" type="9" value="1 1 1"></PROPERTY>
+    <PROPERTY id="updatescript" type="7" value=""></PROPERTY>
+    <CUSTOMPROPERTIES>
+    </CUSTOMPROPERTIES>
+  </OBJECT>
+
+  <OBJECT object_id="900051904" name="WoodenWallPole11" typename="Node Object" parentnode="Objects">
+    <PROPERTY id="autotracktarget" type="7" value="None"></PROPERTY>
+    <PROPERTY id="layer" type="2" value="0"></PROPERTY>
+    <PROPERTY id="locked" type="12" value="false"></PROPERTY>
+    <PROPERTY id="orientation" type="13" value="1 0 0 0"></PROPERTY>
+    <PROPERTY id="position" type="9" value="471.52 19.2114 -448.797"></PROPERTY>
     <PROPERTY id="scale" type="9" value="1 1 1"></PROPERTY>
     <PROPERTY id="updatescript" type="7" value=""></PROPERTY>
     <CUSTOMPROPERTIES>
@@ -7767,6 +7659,30 @@
     </CUSTOMPROPERTIES>
   </OBJECT>
 
+  <OBJECT object_id="531998624" name="WoodenWallPole2" typename="Node Object" parentnode="Objects">
+    <PROPERTY id="autotracktarget" type="7" value="None"></PROPERTY>
+    <PROPERTY id="layer" type="2" value="0"></PROPERTY>
+    <PROPERTY id="locked" type="12" value="false"></PROPERTY>
+    <PROPERTY id="orientation" type="13" value="1 0 0 0"></PROPERTY>
+    <PROPERTY id="position" type="9" value="473.234 20.0663 -419.958"></PROPERTY>
+    <PROPERTY id="scale" type="9" value="1 1 1"></PROPERTY>
+    <PROPERTY id="updatescript" type="7" value=""></PROPERTY>
+    <CUSTOMPROPERTIES>
+    </CUSTOMPROPERTIES>
+  </OBJECT>
+
+  <OBJECT object_id="57405316" name="WoodenWallPole22" typename="Node Object" parentnode="Objects">
+    <PROPERTY id="autotracktarget" type="7" value="None"></PROPERTY>
+    <PROPERTY id="layer" type="2" value="0"></PROPERTY>
+    <PROPERTY id="locked" type="12" value="false"></PROPERTY>
+    <PROPERTY id="orientation" type="13" value="0.959985 0 0.28005 0"></PROPERTY>
+    <PROPERTY id="position" type="9" value="466.368 20.8394 -556.248"></PROPERTY>
+    <PROPERTY id="scale" type="9" value="1 1 1"></PROPERTY>
+    <PROPERTY id="updatescript" type="7" value=""></PROPERTY>
+    <CUSTOMPROPERTIES>
+    </CUSTOMPROPERTIES>
+  </OBJECT>
+
   <OBJECT object_id="194067200" name="RedwoodTree#3" typename="Node Object" parentnode="Objects">
     <PROPERTY id="autotracktarget" type="7" value="None"></PROPERTY>
     <PROPERTY id="layer" type="2" value="0"></PROPERTY>
@@ -7815,6 +7731,18 @@
     </CUSTOMPROPERTIES>
   </OBJECT>
 
+  <OBJECT object_id="346964928" name="WoodenWallPole5" typename="Node Object" parentnode="Objects">
+    <PROPERTY id="autotracktarget" type="7" value="None"></PROPERTY>
+    <PROPERTY id="layer" type="2" value="0"></PROPERTY>
+    <PROPERTY id="locked" type="12" value="false"></PROPERTY>
+    <PROPERTY id="orientation" type="13" value="1 0 0 0"></PROPERTY>
+    <PROPERTY id="position" type="9" value="473.234 21.516 -430.756"></PROPERTY>
+    <PROPERTY id="scale" type="9" value="1 1 1"></PROPERTY>
+    <PROPERTY id="updatescript" type="7" value=""></PROPERTY>
+    <CUSTOMPROPERTIES>
+    </CUSTOMPROPERTIES>
+  </OBJECT>
+
   <OBJECT object_id="475112128" name="Crate5" typename="Node Object" parentnode="Objects">
     <PROPERTY id="autotracktarget" type="7" value="None"></PROPERTY>
     <PROPERTY id="layer" type="2" value="0"></PROPERTY>
@@ -7839,6 +7767,30 @@
     </CUSTOMPROPERTIES>
   </OBJECT>
 
+  <OBJECT object_id="81209760" name="WoodenWallPole19" typename="Node Object" parentnode="Objects">
+    <PROPERTY id="autotracktarget" type="7" value="None"></PROPERTY>
+    <PROPERTY id="layer" type="2" value="0"></PROPERTY>
+    <PROPERTY id="locked" type="12" value="false"></PROPERTY>
+    <PROPERTY id="orientation" type="13" value="0.965376 0 0.260863 0"></PROPERTY>
+    <PROPERTY id="position" type="9" value="465.033 17.8897 -564.47"></PROPERTY>
+    <PROPERTY id="scale" type="9" value="1 1 1"></PROPERTY>
+    <PROPERTY id="updatescript" type="7" value=""></PROPERTY>
+    <CUSTOMPROPERTIES>
+    </CUSTOMPROPERTIES>
+  </OBJECT>
+
+  <OBJECT object_id="68910792" name="WoodenWallPole30" typename="Node Object" parentnode="Objects">
+    <PROPERTY id="autotracktarget" type="7" value="None"></PROPERTY>
+    <PROPERTY id="layer" type="2" value="0"></PROPERTY>
+    <PROPERTY id="locked" type="12" value="false"></PROPERTY>
+    <PROPERTY id="orientation" type="13" value="1 0 0 0"></PROPERTY>
+    <PROPERTY id="position" type="9" value="465.779 17.833 -495.227"></PROPERTY>
+    <PROPERTY id="scale" type="9" value="1 1 1"></PROPERTY>
+    <PROPERTY id="updatescript" type="7" value=""></PROPERTY>
+    <CUSTOMPROPERTIES>
+    </CUSTOMPROPERTIES>
+  </OBJECT>
+
   <OBJECT object_id="724600960" name="CityTents#2" typename="Node Object" parentnode="Objects">
     <PROPERTY id="autotracktarget" type="7" value="None"></PROPERTY>
     <PROPERTY id="layer" type="2" value="0"></PROPERTY>
@@ -7857,6 +7809,18 @@
     <PROPERTY id="locked" type="12" value="false"></PROPERTY>
     <PROPERTY id="orientation" type="13" value="1 0 0 0"></PROPERTY>
     <PROPERTY id="position" type="9" value="1147.98 0 108.289"></PROPERTY>
+    <PROPERTY id="scale" type="9" value="1 1 1"></PROPERTY>
+    <PROPERTY id="updatescript" type="7" value=""></PROPERTY>
+    <CUSTOMPROPERTIES>
+    </CUSTOMPROPERTIES>
+  </OBJECT>
+
+  <OBJECT object_id="794946112" name="WoodenWallPole12" typename="Node Object" parentnode="Objects">
+    <PROPERTY id="autotracktarget" type="7" value="None"></PROPERTY>
+    <PROPERTY id="layer" type="2" value="0"></PROPERTY>
+    <PROPERTY id="locked" type="12" value="false"></PROPERTY>
+    <PROPERTY id="orientation" type="13" value="1 0 0 0"></PROPERTY>
+    <PROPERTY id="position" type="9" value="467.449 19.3565 -621.623"></PROPERTY>
     <PROPERTY id="scale" type="9" value="1 1 1"></PROPERTY>
     <PROPERTY id="updatescript" type="7" value=""></PROPERTY>
     <CUSTOMPROPERTIES>
@@ -7966,6 +7930,18 @@
     <PROPERTY id="orientation" type="13" value="0.995805 0 0.0915014 0"></PROPERTY>
     <PROPERTY id="position" type="9" value="-17.9899 0.527756 -384.867"></PROPERTY>
     <PROPERTY id="scale" type="9" value="0.25 0.25 0.25"></PROPERTY>
+    <PROPERTY id="updatescript" type="7" value=""></PROPERTY>
+    <CUSTOMPROPERTIES>
+    </CUSTOMPROPERTIES>
+  </OBJECT>
+
+  <OBJECT object_id="106723224" name="WoodenWallPole" typename="Node Object" parentnode="Objects">
+    <PROPERTY id="autotracktarget" type="7" value="None"></PROPERTY>
+    <PROPERTY id="layer" type="2" value="0"></PROPERTY>
+    <PROPERTY id="locked" type="12" value="false"></PROPERTY>
+    <PROPERTY id="orientation" type="13" value="1 0 0 0"></PROPERTY>
+    <PROPERTY id="position" type="9" value="473.234 21.8605 -408.554"></PROPERTY>
+    <PROPERTY id="scale" type="9" value="1 1 1"></PROPERTY>
     <PROPERTY id="updatescript" type="7" value=""></PROPERTY>
     <CUSTOMPROPERTIES>
     </CUSTOMPROPERTIES>
@@ -13130,8 +13106,8 @@
     <PROPERTY id="updatescript" type="7" value=""></PROPERTY>
     <CUSTOMPROPERTIES>
       <PROPERTY id="type" type="7" value="DynamicObject"></PROPERTY>
-      <PROPERTY id="BoxX" type="6" value="10"></PROPERTY>
-      <PROPERTY id="BoxY" type="6" value="50"></PROPERTY>
+      <PROPERTY id="BoxX" type="6" value="30"></PROPERTY>
+      <PROPERTY id="BoxY" type="6" value="30"></PROPERTY>
       <PROPERTY id="BoxZ" type="6" value="50"></PROPERTY>
       <PROPERTY id="life" type="2" value="60"></PROPERTY>
       <PROPERTY id="dieMesh" type="7" value="CityPortal0Die.mesh"></PROPERTY>
@@ -13200,9 +13176,9 @@
     <PROPERTY id="updatescript" type="7" value=""></PROPERTY>
     <CUSTOMPROPERTIES>
       <PROPERTY id="type" type="7" value="DynamicObject"></PROPERTY>
-      <PROPERTY id="BoxX" type="6" value="30"></PROPERTY>
-      <PROPERTY id="BoxY" type="6" value="100"></PROPERTY>
-      <PROPERTY id="BoxZ" type="6" value="30"></PROPERTY>
+      <PROPERTY id="BoxX" type="6" value="40"></PROPERTY>
+      <PROPERTY id="BoxY" type="6" value="200"></PROPERTY>
+      <PROPERTY id="BoxZ" type="6" value="40"></PROPERTY>
     </CUSTOMPROPERTIES>
   </OBJECT>
 
@@ -15785,9 +15761,9 @@
     <PROPERTY id="updatescript" type="7" value=""></PROPERTY>
     <CUSTOMPROPERTIES>
       <PROPERTY id="type" type="7" value="DynamicObject"></PROPERTY>
-      <PROPERTY id="BoxX" type="6" value="30"></PROPERTY>
-      <PROPERTY id="BoxY" type="6" value="100"></PROPERTY>
-      <PROPERTY id="BoxZ" type="6" value="30"></PROPERTY>
+      <PROPERTY id="BoxX" type="6" value="40"></PROPERTY>
+      <PROPERTY id="BoxY" type="6" value="200"></PROPERTY>
+      <PROPERTY id="BoxZ" type="6" value="40"></PROPERTY>
     </CUSTOMPROPERTIES>
   </OBJECT>
 
@@ -16522,28 +16498,6 @@
       <PROPERTY id="height" type="6" value="2"></PROPERTY>
       <PROPERTY id="dieMesh" type="7" value="cowDie.mesh"></PROPERTY>
       <PROPERTY id="dieAnimation" type="7" value=""></PROPERTY>
-    </CUSTOMPROPERTIES>
-  </OBJECT>
-
-  <OBJECT object_id="241889696" name="Entity#156" typename="Entity Object" parentnode="WoodenWallPole33">
-    <PROPERTY id="autotracktarget" type="7" value="None"></PROPERTY>
-    <PROPERTY id="castshadows" type="12" value="true"></PROPERTY>
-    <PROPERTY id="layer" type="2" value="0"></PROPERTY>
-    <PROPERTY id="locked" type="12" value="false"></PROPERTY>
-    <PROPERTY id="meshfile" type="7" value="WoodenWallPole0.mesh"></PROPERTY>
-    <PROPERTY id="orientation" type="13" value="1 0 0 0"></PROPERTY>
-    <PROPERTY id="position" type="9" value="0 0 0"></PROPERTY>
-    <PROPERTY id="renderingdistance" type="6" value="10000"></PROPERTY>
-    <PROPERTY id="scale" type="9" value="1 1 1"></PROPERTY>
-    <PROPERTY id="subentity0::material" type="7" value="WoodenPole"></PROPERTY>
-    <PROPERTY id="subentity0::visible" type="12" value="true"></PROPERTY>
-    <PROPERTY id="subentitycount" type="2" value="1"></PROPERTY>
-    <PROPERTY id="updatescript" type="7" value=""></PROPERTY>
-    <CUSTOMPROPERTIES>
-      <PROPERTY id="type" type="7" value="DynamicObject"></PROPERTY>
-      <PROPERTY id="BoxX" type="6" value="5"></PROPERTY>
-      <PROPERTY id="BoxY" type="6" value="50"></PROPERTY>
-      <PROPERTY id="BoxZ" type="6" value="5"></PROPERTY>
     </CUSTOMPROPERTIES>
   </OBJECT>
 

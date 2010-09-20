@@ -6874,6 +6874,32 @@
           </subentities>
         </entity>
       </node>
+      <node name="WoodenWallPole17" id="618854336">
+        <rotation qw="1" qx="0" qy="0" qz="0" />
+        <position x="467.449" y="19.3565" z="-603.247" />
+        <scale x="1" y="1" z="1" />
+        <entity name="Entity#172" id="594775232" castshadows="true" meshFile="WoodenWallPole0.mesh" type="DynamicObject" BoxX="5" BoxY="50" BoxZ="5">
+          <rotation qw="1" qx="0" qy="0" qz="0" />
+          <position x="0" y="0" z="0" />
+          <scale x="1" y="1" z="1" />
+          <subentities>
+            <subentity materialName="WoodenPole" index="0" visible="true" />
+          </subentities>
+        </entity>
+      </node>
+      <node name="WoodenWallPole32" id="289529088">
+        <rotation qw="1" qx="0" qy="0" qz="0" />
+        <position x="466.847" y="19.0371" z="-487.127" />
+        <scale x="1" y="1" z="1" />
+        <entity name="Entity#157" id="50965912" castshadows="true" meshFile="WoodenWallPole0.mesh" type="DynamicObject" BoxX="5" BoxY="50" BoxZ="5">
+          <rotation qw="1" qx="0" qy="0" qz="0" />
+          <position x="0" y="0" z="0" />
+          <scale x="1" y="1" z="1" />
+          <subentities>
+            <subentity materialName="WoodenPole" index="0" visible="true" />
+          </subentities>
+        </entity>
+      </node>
       <node name="CityTents" id="809778176">
         <rotation qw="1" qx="0" qy="0" qz="0" />
         <position x="357.83" y="-1.54287" z="-663.94" />
@@ -6911,6 +6937,45 @@
           <subentities>
             <subentity materialName="House0_Building_Material5" index="0" visible="true" />
             <subentity materialName="House0_Roof_Material5" index="1" visible="true" />
+          </subentities>
+        </entity>
+      </node>
+      <node name="WoodenWallPole10" id="727561216">
+        <rotation qw="1" qx="0" qy="0" qz="0" />
+        <position x="473.234" y="19.4033" z="-412.413" />
+        <scale x="1" y="1" z="1" />
+        <entity name="Entity#179" id="206488240" castshadows="true" meshFile="WoodenWallPole0.mesh" type="DynamicObject" BoxX="5" BoxY="50" BoxZ="5">
+          <rotation qw="1" qx="0" qy="0" qz="0" />
+          <position x="0" y="0" z="0" />
+          <scale x="1" y="1" z="1" />
+          <subentities>
+            <subentity materialName="WoodenPole" index="0" visible="true" />
+          </subentities>
+        </entity>
+      </node>
+      <node name="WoodenWallPole28" id="649617024">
+        <rotation qw="1" qx="0" qy="0" qz="0" />
+        <position x="465.695" y="17.0441" z="-502.742" />
+        <scale x="1" y="1" z="1" />
+        <entity name="Entity#161" id="83681752" castshadows="true" meshFile="WoodenWallPole0.mesh" type="DynamicObject" BoxX="5" BoxY="50" BoxZ="5">
+          <rotation qw="1" qx="0" qy="0" qz="0" />
+          <position x="0" y="0" z="0" />
+          <scale x="1" y="1" z="1" />
+          <subentities>
+            <subentity materialName="WoodenPole" index="0" visible="true" />
+          </subentities>
+        </entity>
+      </node>
+      <node name="WoodenWallPole8" id="353984192">
+        <rotation qw="1" qx="0" qy="0" qz="0" />
+        <position x="471.65" y="17.794" z="-441.487" />
+        <scale x="1" y="1" z="1" />
+        <entity name="Entity#181" id="361247584" castshadows="true" meshFile="WoodenWallPole0.mesh" type="DynamicObject" BoxX="5" BoxY="50" BoxZ="5">
+          <rotation qw="1" qx="0" qy="0" qz="0" />
+          <position x="0" y="0" z="0" />
+          <scale x="1" y="1" z="1" />
+          <subentities>
+            <subentity materialName="WoodenPole" index="0" visible="true" />
           </subentities>
         </entity>
       </node>
@@ -6977,6 +7042,32 @@
           <scale x="1" y="1" z="1" />
           <subentities>
             <subentity materialName="TownHouse0" index="0" visible="true" />
+          </subentities>
+        </entity>
+      </node>
+      <node name="WoodenWallPole23" id="758842752">
+        <rotation qw="0.956799" qx="0" qy="0.29075" qz="0" />
+        <position x="467.186" y="19.2097" z="-568.597" />
+        <scale x="1" y="1" z="1" />
+        <entity name="Entity#166" id="333811456" castshadows="true" meshFile="WoodenWallPole0.mesh">
+          <rotation qw="1" qx="0" qy="0" qz="0" />
+          <position x="0" y="0" z="0" />
+          <scale x="1" y="1" z="1" />
+          <subentities>
+            <subentity materialName="WoodenPole" index="0" visible="true" />
+          </subentities>
+        </entity>
+      </node>
+      <node name="WoodenWallPole3" id="282357248">
+        <rotation qw="1" qx="0" qy="0" qz="0" />
+        <position x="472.671" y="20.288" z="-423.469" />
+        <scale x="1" y="1" z="1" />
+        <entity name="Entity#186" id="355449088" castshadows="true" meshFile="WoodenWallPole0.mesh" type="DynamicObject" BoxX="5" BoxY="50" BoxZ="5">
+          <rotation qw="1" qx="0" qy="0" qz="0" />
+          <position x="0" y="0" z="0" />
+          <scale x="1" y="1" z="1" />
+          <subentities>
+            <subentity materialName="WoodenPole" index="0" visible="true" />
           </subentities>
         </entity>
       </node>
@@ -7059,413 +7150,31 @@
           </subentities>
         </entity>
       </node>
-      <node name="WoodenWall" id="367503872">
+      <node name="WoodenWallPole26" id="217535936">
         <rotation qw="1" qx="0" qy="0" qz="0" />
-        <position x="473.658" y="-149.152" z="-436.997" />
-        <scale x="0.25" y="0.25" z="0.25" />
-        <node name="WoodenWallPole14" id="42298652">
+        <position x="465.193" y="17.5803" z="-510.459" />
+        <scale x="1" y="1" z="1" />
+        <entity name="Entity#163" id="562578176" castshadows="true" meshFile="WoodenWallPole0.mesh" type="DynamicObject" BoxX="5" BoxY="50" BoxZ="5">
           <rotation qw="1" qx="0" qy="0" qz="0" />
-          <position x="-1.84336" y="677.474" z="-728.02" />
-          <scale x="4" y="4" z="4" />
-          <entity name="Entity#175" id="239051488" castshadows="true" meshFile="WoodenWallPole0.mesh" type="DynamicObject" BoxX="5" BoxY="50" BoxZ="5">
-            <rotation qw="1" qx="0" qy="0" qz="0" />
-            <position x="0" y="0" z="0" />
-            <scale x="1" y="1" z="1" />
-            <subentities>
-              <subentity materialName="WoodenPole" index="0" visible="true" />
-            </subentities>
-          </entity>
-        </node>
-        <node name="WoodenWallPole33" id="337473696">
-          <rotation qw="0.983467" qx="0" qy="0.18109" qz="0" />
-          <position x="-29.9735" y="677.474" z="-475.234" />
-          <scale x="4" y="4" z="4" />
-          <entity name="Entity#156" id="241889696" castshadows="true" meshFile="WoodenWallPole0.mesh" type="DynamicObject" BoxX="5" BoxY="50" BoxZ="5">
-            <rotation qw="1" qx="0" qy="0" qz="0" />
-            <position x="0" y="0" z="0" />
-            <scale x="1" y="1" z="1" />
-            <subentities>
-              <subentity materialName="WoodenPole" index="0" visible="true" />
-            </subentities>
-          </entity>
-        </node>
-        <node name="WoodenWallPole4" id="665120448">
+          <position x="0" y="0" z="0" />
+          <scale x="1" y="1" z="1" />
+          <subentities>
+            <subentity materialName="WoodenPole" index="0" visible="true" />
+          </subentities>
+        </entity>
+      </node>
+      <node name="WoodenWallPole6" id="223639632">
+        <rotation qw="1" qx="0" qy="0" qz="0" />
+        <position x="473.895" y="20.8454" z="-434.589" />
+        <scale x="1" y="1" z="1" />
+        <entity name="Entity#183" id="895779328" castshadows="true" meshFile="WoodenWallPole0.mesh" type="DynamicObject" BoxX="5" BoxY="50" BoxZ="5">
           <rotation qw="1" qx="0" qy="0" qz="0" />
-          <position x="-2.98666" y="677.474" z="41.8807" />
-          <scale x="4" y="4" z="4" />
-          <entity name="Entity#185" id="201666304" castshadows="true" meshFile="WoodenWallPole0.mesh" type="DynamicObject" BoxX="5" BoxY="50" BoxZ="5">
-            <rotation qw="1" qx="0" qy="0" qz="0" />
-            <position x="0" y="0" z="0" />
-            <scale x="1" y="1" z="1" />
-            <subentities>
-              <subentity materialName="WoodenPole" index="0" visible="true" />
-            </subentities>
-          </entity>
-        </node>
-        <node name="WoodenWallPole17" id="618854336">
-          <rotation qw="1" qx="0" qy="0" qz="0" />
-          <position x="-1.84336" y="677.474" z="-684.208" />
-          <scale x="4" y="4" z="4" />
-          <entity name="Entity#172" id="594775232" castshadows="true" meshFile="WoodenWallPole0.mesh" type="DynamicObject" BoxX="5" BoxY="50" BoxZ="5">
-            <rotation qw="1" qx="0" qy="0" qz="0" />
-            <position x="0" y="0" z="0" />
-            <scale x="1" y="1" z="1" />
-            <subentities>
-              <subentity materialName="WoodenPole" index="0" visible="true" />
-            </subentities>
-          </entity>
-        </node>
-        <node name="WoodenWallPole32" id="289529088">
-          <rotation qw="1" qx="0" qy="0" qz="0" />
-          <position x="-32.3324" y="666.652" z="-205.525" />
-          <scale x="4" y="4" z="4" />
-          <entity name="Entity#157" id="50965912" castshadows="true" meshFile="WoodenWallPole0.mesh" type="DynamicObject" BoxX="5" BoxY="50" BoxZ="5">
-            <rotation qw="1" qx="0" qy="0" qz="0" />
-            <position x="0" y="0" z="0" />
-            <scale x="1" y="1" z="1" />
-            <subentities>
-              <subentity materialName="WoodenPole" index="0" visible="true" />
-            </subentities>
-          </entity>
-        </node>
-        <node name="WoodenWallPole5" id="346964928">
-          <rotation qw="1" qx="0" qy="0" qz="0" />
-          <position x="-1.84336" y="674.548" z="27.6383" />
-          <scale x="4" y="4" z="4" />
-          <entity name="Entity#184" id="953520320" castshadows="true" meshFile="WoodenWallPole0.mesh" type="DynamicObject" BoxX="5" BoxY="50" BoxZ="5">
-            <rotation qw="1" qx="0" qy="0" qz="0" />
-            <position x="0" y="0" z="0" />
-            <scale x="1" y="1" z="1" />
-            <subentities>
-              <subentity materialName="WoodenPole" index="0" visible="true" />
-            </subentities>
-          </entity>
-        </node>
-        <node name="WoodenWallPole16" id="593127232">
-          <rotation qw="1" qx="0" qy="0" qz="0" />
-          <position x="-1.84336" y="677.474" z="-698.812" />
-          <scale x="4" y="4" z="4" />
-          <entity name="Entity#173" id="194250320" castshadows="true" meshFile="WoodenWallPole0.mesh" type="DynamicObject" BoxX="5" BoxY="50" BoxZ="5">
-            <rotation qw="1" qx="0" qy="0" qz="0" />
-            <position x="0" y="0" z="0" />
-            <scale x="1" y="1" z="1" />
-            <subentities>
-              <subentity materialName="WoodenPole" index="0" visible="true" />
-            </subentities>
-          </entity>
-        </node>
-        <node name="WoodenWallPole26" id="217535936">
-          <rotation qw="1" qx="0" qy="0" qz="0" />
-          <position x="-37.493" y="677.474" z="-294.295" />
-          <scale x="4" y="4" z="4" />
-          <entity name="Entity#163" id="562578176" castshadows="true" meshFile="WoodenWallPole0.mesh" type="DynamicObject" BoxX="5" BoxY="50" BoxZ="5">
-            <rotation qw="1" qx="0" qy="0" qz="0" />
-            <position x="0" y="0" z="0" />
-            <scale x="1" y="1" z="1" />
-            <subentities>
-              <subentity materialName="WoodenPole" index="0" visible="true" />
-            </subentities>
-          </entity>
-        </node>
-        <node name="WoodenWallPole31" id="992706048">
-          <rotation qw="1" qx="0" qy="0" qz="0" />
-          <position x="-34.4073" y="677.474" z="-220.929" />
-          <scale x="4" y="4" z="4" />
-          <entity name="Entity#158" id="172460096" castshadows="true" meshFile="WoodenWallPole0.mesh" type="DynamicObject" BoxX="5" BoxY="50" BoxZ="5">
-            <rotation qw="1" qx="0" qy="0" qz="0" />
-            <position x="0" y="0" z="0" />
-            <scale x="1" y="1" z="1" />
-            <subentities>
-              <subentity materialName="WoodenPole" index="0" visible="true" />
-            </subentities>
-          </entity>
-        </node>
-        <node name="WoodenWallPole6" id="223639632">
-          <rotation qw="1" qx="0" qy="0" qz="0" />
-          <position x="-0.132775" y="678.002" z="13.3958" />
-          <scale x="4" y="4" z="4" />
-          <entity name="Entity#183" id="895779328" castshadows="true" meshFile="WoodenWallPole0.mesh" type="DynamicObject" BoxX="5" BoxY="50" BoxZ="5">
-            <rotation qw="1" qx="0" qy="0" qz="0" />
-            <position x="0" y="0" z="0" />
-            <scale x="1" y="1" z="1" />
-            <subentities>
-              <subentity materialName="WoodenPole" index="0" visible="true" />
-            </subentities>
-          </entity>
-        </node>
-        <node name="WoodenWallPole11" id="900051904">
-          <rotation qw="1" qx="0" qy="0" qz="0" />
-          <position x="-3.55781" y="677.474" z="-57.8165" />
-          <scale x="4" y="4" z="4" />
-          <entity name="Entity#178" id="379436640" castshadows="true" meshFile="WoodenWallPole0.mesh" type="DynamicObject" BoxX="5" BoxY="50" BoxZ="5">
-            <rotation qw="1" qx="0" qy="0" qz="0" />
-            <position x="0" y="0" z="0" />
-            <scale x="1" y="1" z="1" />
-            <subentities>
-              <subentity materialName="WoodenPole" index="0" visible="true" />
-            </subentities>
-          </entity>
-        </node>
-        <node name="WoodenWallPole19" id="81209760">
-          <rotation qw="0.965376" qx="0" qy="0.260863" qz="0" />
-          <position x="-27.5273" y="669.949" z="-519.913" />
-          <scale x="4" y="4" z="4" />
-          <entity name="Entity#170" id="795403904" castshadows="true" meshFile="WoodenWallPole0.mesh" type="DynamicObject" BoxX="5" BoxY="50" BoxZ="5">
-            <rotation qw="1" qx="0" qy="0" qz="0" />
-            <position x="0" y="0" z="0" />
-            <scale x="1" y="1" z="1" />
-            <subentities>
-              <subentity materialName="WoodenPole" index="0" visible="true" />
-            </subentities>
-          </entity>
-        </node>
-        <node name="WoodenWallPole27" id="262764368">
-          <rotation qw="1" qx="0" qy="0" qz="0" />
-          <position x="-38.6364" y="667.903" z="-279.138" />
-          <scale x="4" y="4" z="4" />
-          <entity name="Entity#162" id="136478784" castshadows="true" meshFile="WoodenWallPole0.mesh" type="DynamicObject" BoxX="5" BoxY="50" BoxZ="5">
-            <rotation qw="1" qx="0" qy="0" qz="0" />
-            <position x="0" y="0" z="0" />
-            <scale x="1" y="1" z="1" />
-            <subentities>
-              <subentity materialName="WoodenPole" index="0" visible="true" />
-            </subentities>
-          </entity>
-        </node>
-        <node name="WoodenWallPole30" id="68910792">
-          <rotation qw="1" qx="0" qy="0" qz="0" />
-          <position x="-36.5071" y="677.474" z="-235.178" />
-          <scale x="4" y="4" z="4" />
-          <entity name="Entity#159" id="220130016" castshadows="true" meshFile="WoodenWallPole0.mesh" type="DynamicObject" BoxX="5" BoxY="50" BoxZ="5">
-            <rotation qw="1" qx="0" qy="0" qz="0" />
-            <position x="0" y="0" z="0" />
-            <scale x="1" y="1" z="1" />
-            <subentities>
-              <subentity materialName="WoodenPole" index="0" visible="true" />
-            </subentities>
-          </entity>
-        </node>
-        <node name="WoodenWallPole7" id="668111232">
-          <rotation qw="1" qx="0" qy="0" qz="0" />
-          <position x="-1.84336" y="677.474" z="-0.846648" />
-          <scale x="4" y="4" z="4" />
-          <entity name="Entity#182" id="976043008" castshadows="true" meshFile="WoodenWallPole0.mesh" type="DynamicObject" BoxX="5" BoxY="50" BoxZ="5">
-            <rotation qw="1" qx="0" qy="0" qz="0" />
-            <position x="0" y="0" z="0" />
-            <scale x="1" y="1" z="1" />
-            <subentities>
-              <subentity materialName="WoodenPole" index="0" visible="true" />
-            </subentities>
-          </entity>
-        </node>
-        <node name="WoodenWallPole" id="106723224">
-          <rotation qw="1" qx="0" qy="0" qz="0" />
-          <position x="-1.84336" y="677.474" z="98.8505" />
-          <scale x="4" y="4" z="4" />
-          <entity name="Entity#189" id="709341696" castshadows="true" meshFile="WoodenWallPole0.mesh" type="DynamicObject" BoxX="5" BoxY="50" BoxZ="5">
-            <rotation qw="1" qx="0" qy="0" qz="0" />
-            <position x="0" y="0" z="0" />
-            <scale x="1" y="1" z="1" />
-            <subentities>
-              <subentity materialName="WoodenPole" index="0" visible="true" />
-            </subentities>
-          </entity>
-        </node>
-        <node name="WoodenWallPole10" id="727561216">
-          <rotation qw="1" qx="0" qy="0" qz="0" />
-          <position x="-1.84336" y="675.991" z="-43.574" />
-          <scale x="4" y="4" z="4" />
-          <entity name="Entity#179" id="206488240" castshadows="true" meshFile="WoodenWallPole0.mesh" type="DynamicObject" BoxX="5" BoxY="50" BoxZ="5">
-            <rotation qw="1" qx="0" qy="0" qz="0" />
-            <position x="0" y="0" z="0" />
-            <scale x="1" y="1" z="1" />
-            <subentities>
-              <subentity materialName="WoodenPole" index="0" visible="true" />
-            </subentities>
-          </entity>
-        </node>
-        <node name="WoodenWallPole18" id="999664320">
-          <rotation qw="1" qx="0" qy="0" qz="0" />
-          <position x="-1.84336" y="677.474" z="-669.604" />
-          <scale x="4" y="4" z="4" />
-          <entity name="Entity#171" id="634998592" castshadows="true" meshFile="WoodenWallPole0.mesh" type="DynamicObject" BoxX="5" BoxY="50" BoxZ="5">
-            <rotation qw="1" qx="0" qy="0" qz="0" />
-            <position x="0" y="0" z="0" />
-            <scale x="1" y="1" z="1" />
-            <subentities>
-              <subentity materialName="WoodenPole" index="0" visible="true" />
-            </subentities>
-          </entity>
-        </node>
-        <node name="WoodenWallPole28" id="649617024">
-          <rotation qw="1" qx="0" qy="0" qz="0" />
-          <position x="-37.5806" y="677.474" z="-264.249" />
-          <scale x="4" y="4" z="4" />
-          <entity name="Entity#161" id="83681752" castshadows="true" meshFile="WoodenWallPole0.mesh" type="DynamicObject" BoxX="5" BoxY="50" BoxZ="5">
-            <rotation qw="1" qx="0" qy="0" qz="0" />
-            <position x="0" y="0" z="0" />
-            <scale x="1" y="1" z="1" />
-            <subentities>
-              <subentity materialName="WoodenPole" index="0" visible="true" />
-            </subentities>
-          </entity>
-        </node>
-        <node name="WoodenWallPole8" id="353984192">
-          <rotation qw="1" qx="0" qy="0" qz="0" />
-          <position x="-1.84336" y="670.826" z="-15.0891" />
-          <scale x="4" y="4" z="4" />
-          <entity name="Entity#181" id="361247584" castshadows="true" meshFile="WoodenWallPole0.mesh" type="DynamicObject" BoxX="5" BoxY="50" BoxZ="5">
-            <rotation qw="1" qx="0" qy="0" qz="0" />
-            <position x="0" y="0" z="0" />
-            <scale x="1" y="1" z="1" />
-            <subentities>
-              <subentity materialName="WoodenPole" index="0" visible="true" />
-            </subentities>
-          </entity>
-        </node>
-        <node name="WoodenWallPole1" id="219977408">
-          <rotation qw="1" qx="0" qy="0" qz="0" />
-          <position x="-0.689934" y="673.857" z="84.6081" />
-          <scale x="4" y="4" z="4" />
-          <entity name="Entity#188" id="99612416" castshadows="true" meshFile="WoodenWallPole0.mesh" type="DynamicObject" BoxX="5" BoxY="50" BoxZ="5">
-            <rotation qw="1" qx="0" qy="0" qz="0" />
-            <position x="0" y="0" z="0" />
-            <scale x="1" y="1" z="1" />
-            <subentities>
-              <subentity materialName="WoodenPole" index="0" visible="true" />
-            </subentities>
-          </entity>
-        </node>
-        <node name="WoodenWallPole13" id="255134736">
-          <rotation qw="1" qx="0" qy="0" qz="0" />
-          <position x="-1.84336" y="677.474" z="-742.624" />
-          <scale x="4" y="4" z="4" />
-          <entity name="Entity#176" id="406811744" castshadows="true" meshFile="WoodenWallPole0.mesh" type="DynamicObject" BoxX="5" BoxY="50" BoxZ="5">
-            <rotation qw="1" qx="0" qy="0" qz="0" />
-            <position x="0" y="0" z="0" />
-            <scale x="1" y="1" z="1" />
-            <subentities>
-              <subentity materialName="WoodenPole" index="0" visible="true" />
-            </subentities>
-          </entity>
-        </node>
-        <node name="WoodenWallPole21" id="694296064">
-          <rotation qw="0.959474" qx="0" qy="0.281796" qz="0" />
-          <position x="-27.7388" y="677.474" z="-504.112" />
-          <scale x="4" y="4" z="4" />
-          <entity name="Entity#168" id="873256640" castshadows="true" meshFile="WoodenWallPole0.mesh" type="DynamicObject" BoxX="5" BoxY="50" BoxZ="5">
-            <rotation qw="1" qx="0" qy="0" qz="0" />
-            <position x="0" y="0" z="0" />
-            <scale x="1" y="1" z="1" />
-            <subentities>
-              <subentity materialName="WoodenPole" index="0" visible="true" />
-            </subentities>
-          </entity>
-        </node>
-        <node name="WoodenWallPole29" id="300912512">
-          <rotation qw="1" qx="0" qy="0" qz="0" />
-          <position x="-37.2913" y="670.56" z="-250.117" />
-          <scale x="4" y="4" z="4" />
-          <entity name="Entity#160" id="786858752" castshadows="true" meshFile="WoodenWallPole0.mesh" type="DynamicObject" BoxX="5" BoxY="50" BoxZ="5">
-            <rotation qw="1" qx="0" qy="0" qz="0" />
-            <position x="0" y="0" z="0" />
-            <scale x="1" y="1" z="1" />
-            <subentities>
-              <subentity materialName="WoodenPole" index="0" visible="true" />
-            </subentities>
-          </entity>
-        </node>
-        <node name="WoodenWallPole9" id="52949616">
-          <rotation qw="1" qx="0" qy="0" qz="0" />
-          <position x="-3.55789" y="677.474" z="-29.3316" />
-          <scale x="4" y="4" z="4" />
-          <entity name="Entity#180" id="604571712" castshadows="true" meshFile="WoodenWallPole0.mesh" type="DynamicObject" BoxX="5" BoxY="50" BoxZ="5">
-            <rotation qw="1" qx="0" qy="0" qz="0" />
-            <position x="0" y="0" z="0" />
-            <scale x="1" y="1" z="1" />
-            <subentities>
-              <subentity materialName="WoodenPole" index="0" visible="true" />
-            </subentities>
-          </entity>
-        </node>
-        <node name="WoodenWallPole12" id="794946112">
-          <rotation qw="1" qx="0" qy="0" qz="0" />
-          <position x="-1.84336" y="677.474" z="-757.228" />
-          <scale x="4" y="4" z="4" />
-          <entity name="Entity#177" id="272469248" castshadows="true" meshFile="WoodenWallPole0.mesh" type="DynamicObject" BoxX="5" BoxY="50" BoxZ="5">
-            <rotation qw="1" qx="0" qy="0" qz="0" />
-            <position x="0" y="0" z="0" />
-            <scale x="1" y="1" z="1" />
-            <subentities>
-              <subentity materialName="WoodenPole" index="0" visible="true" />
-            </subentities>
-          </entity>
-        </node>
-        <node name="WoodenWallPole2" id="531998624">
-          <rotation qw="1" qx="0" qy="0" qz="0" />
-          <position x="-1.84336" y="668.752" z="70.3656" />
-          <scale x="4" y="4" z="4" />
-          <entity name="Entity#187" id="290993984" castshadows="true" meshFile="WoodenWallPole0.mesh" type="DynamicObject" BoxX="5" BoxY="50" BoxZ="5">
-            <rotation qw="1" qx="0" qy="0" qz="0" />
-            <position x="0" y="0" z="0" />
-            <scale x="1" y="1" z="1" />
-            <subentities>
-              <subentity materialName="WoodenPole" index="0" visible="true" />
-            </subentities>
-          </entity>
-        </node>
-        <node name="WoodenWallPole22" id="57405316">
-          <rotation qw="0.959985" qx="0" qy="0.28005" qz="0" />
-          <position x="-30.1742" y="665.997" z="-490.31" />
-          <scale x="4" y="4" z="4" />
-          <entity name="Entity#167" id="282509824" castshadows="true" meshFile="WoodenWallPole0.mesh">
-            <rotation qw="1" qx="0" qy="0" qz="0" />
-            <position x="0" y="0" z="0" />
-            <scale x="1" y="1" z="1" />
-            <subentities>
-              <subentity materialName="WoodenPole" index="0" visible="true" />
-            </subentities>
-          </entity>
-        </node>
-        <node name="WoodenWallPole15" id="978881152">
-          <rotation qw="1" qx="0" qy="0" qz="0" />
-          <position x="-1.84336" y="677.474" z="-713.416" />
-          <scale x="4" y="4" z="4" />
-          <entity name="Entity#174" id="231513408" castshadows="true" meshFile="WoodenWallPole0.mesh" type="DynamicObject" BoxX="5" BoxY="50" BoxZ="5">
-            <rotation qw="1" qx="0" qy="0" qz="0" />
-            <position x="0" y="0" z="0" />
-            <scale x="1" y="1" z="1" />
-            <subentities>
-              <subentity materialName="WoodenPole" index="0" visible="true" />
-            </subentities>
-          </entity>
-        </node>
-        <node name="WoodenWallPole23" id="758842752">
-          <rotation qw="0.956799" qx="0" qy="0.29075" qz="0" />
-          <position x="-27.0316" y="677.474" z="-533.039" />
-          <scale x="4" y="4" z="4" />
-          <entity name="Entity#166" id="333811456" castshadows="true" meshFile="WoodenWallPole0.mesh">
-            <rotation qw="1" qx="0" qy="0" qz="0" />
-            <position x="0" y="0" z="0" />
-            <scale x="1" y="1" z="1" />
-            <subentities>
-              <subentity materialName="WoodenPole" index="0" visible="true" />
-            </subentities>
-          </entity>
-        </node>
-        <node name="WoodenWallPole3" id="282357248">
-          <rotation qw="1" qx="0" qy="0" qz="0" />
-          <position x="-2.40641" y="673.107" z="56.1232" />
-          <scale x="4" y="4" z="4" />
-          <entity name="Entity#186" id="355449088" castshadows="true" meshFile="WoodenWallPole0.mesh" type="DynamicObject" BoxX="5" BoxY="50" BoxZ="5">
-            <rotation qw="1" qx="0" qy="0" qz="0" />
-            <position x="0" y="0" z="0" />
-            <scale x="1" y="1" z="1" />
-            <subentities>
-              <subentity materialName="WoodenPole" index="0" visible="true" />
-            </subentities>
-          </entity>
-        </node>
+          <position x="0" y="0" z="0" />
+          <scale x="1" y="1" z="1" />
+          <subentities>
+            <subentity materialName="WoodenPole" index="0" visible="true" />
+          </subentities>
+        </entity>
       </node>
       <node name="RedwoodTree#7" id="110629592">
         <rotation qw="0.994056" qx="0" qy="0.108867" qz="0" />
@@ -7508,11 +7217,24 @@
           </subentities>
         </entity>
       </node>
+      <node name="WoodenWallPole18" id="999664320">
+        <rotation qw="1" qx="0" qy="0" qz="0" />
+        <position x="470.598" y="19.3565" z="-445.147" />
+        <scale x="1" y="1" z="1" />
+        <entity name="Entity#171" id="634998592" castshadows="true" meshFile="WoodenWallPole0.mesh" type="DynamicObject" BoxX="5" BoxY="50" BoxZ="5">
+          <rotation qw="1" qx="0" qy="0" qz="0" />
+          <position x="0" y="0" z="0" />
+          <scale x="1" y="1" z="1" />
+          <subentities>
+            <subentity materialName="WoodenPole" index="0" visible="true" />
+          </subentities>
+        </entity>
+      </node>
       <node name="DefensiveTowerRight" id="561296384">
         <rotation qw="1" qx="0" qy="0" qz="0" />
         <position x="459.883" y="24.564" z="-586.858" />
         <scale x="1" y="1" z="1" />
-        <entity name="DefensiveTower#1" id="119785152" castshadows="true" meshFile="DefensiveWoodTower0.mesh" type="DynamicObject" BoxX="30" BoxY="100" BoxZ="30">
+        <entity name="DefensiveTower#1" id="119785152" castshadows="true" meshFile="DefensiveWoodTower0.mesh" type="DynamicObject" BoxX="40" BoxY="200" BoxZ="40">
           <rotation qw="1" qx="0" qy="0" qz="0" />
           <position x="0" y="-23.3346" z="0" />
           <scale x="1" y="1" z="1" />
@@ -7561,6 +7283,19 @@
           <subentities>
             <subentity materialName="House0_Building_Material5" index="0" visible="true" />
             <subentity materialName="House0_Roof_Material5" index="1" visible="true" />
+          </subentities>
+        </entity>
+      </node>
+      <node name="WoodenWallPole15" id="978881152">
+        <rotation qw="1" qx="0" qy="0" qz="0" />
+        <position x="467.449" y="19.3565" z="-610.527" />
+        <scale x="1" y="1" z="1" />
+        <entity name="Entity#174" id="231513408" castshadows="true" meshFile="WoodenWallPole0.mesh" type="DynamicObject" BoxX="5" BoxY="50" BoxZ="5">
+          <rotation qw="1" qx="0" qy="0" qz="0" />
+          <position x="0" y="0" z="0" />
+          <scale x="1" y="1" z="1" />
+          <subentities>
+            <subentity materialName="WoodenPole" index="0" visible="true" />
           </subentities>
         </entity>
       </node>
@@ -7724,6 +7459,32 @@
           </subentities>
         </entity>
       </node>
+      <node name="WoodenWallPole1" id="219977408">
+        <rotation qw="1" qx="0" qy="0" qz="0" />
+        <position x="474.388" y="19.0858" z="-416.342" />
+        <scale x="1" y="1" z="1" />
+        <entity name="Entity#188" id="99612416" castshadows="true" meshFile="WoodenWallPole0.mesh" type="DynamicObject" BoxX="5" BoxY="50" BoxZ="5">
+          <rotation qw="1" qx="0" qy="0" qz="0" />
+          <position x="0" y="0" z="0" />
+          <scale x="1" y="1" z="1" />
+          <subentities>
+            <subentity materialName="WoodenPole" index="0" visible="true" />
+          </subentities>
+        </entity>
+      </node>
+      <node name="WoodenWallPole21" id="694296064">
+        <rotation qw="0.959474" qx="0" qy="0.281796" qz="0" />
+        <position x="465.991" y="18.5863" z="-560.297" />
+        <scale x="1" y="1" z="1" />
+        <entity name="Entity#168" id="873256640" castshadows="true" meshFile="WoodenWallPole0.mesh" type="DynamicObject" BoxX="5" BoxY="50" BoxZ="5">
+          <rotation qw="1" qx="0" qy="0" qz="0" />
+          <position x="0" y="0" z="0" />
+          <scale x="1" y="1" z="1" />
+          <subentities>
+            <subentity materialName="WoodenPole" index="0" visible="true" />
+          </subentities>
+        </entity>
+      </node>
       <node name="RedwoodTree#4" id="302285856">
         <rotation qw="0.988362" qx="0" qy="-0.152123" qz="0" />
         <position x="939.134" y="-0.5" z="-473.845" />
@@ -7742,7 +7503,7 @@
         <rotation qw="1" qx="0" qy="0" qz="0" />
         <position x="461.615" y="24.564" z="-469.733" />
         <scale x="1" y="1" z="1" />
-        <entity name="DefensiveTower#0" id="958830528" castshadows="true" meshFile="DefensiveWoodTower0.mesh" type="DynamicObject" BoxX="30" BoxY="100" BoxZ="30">
+        <entity name="DefensiveTower#0" id="958830528" castshadows="true" meshFile="DefensiveWoodTower0.mesh" type="DynamicObject" BoxX="40" BoxY="200" BoxZ="40">
           <rotation qw="1" qx="0" qy="0" qz="0" />
           <position x="0" y="-23.3346" z="0" />
           <scale x="1" y="1" z="1" />
@@ -7780,6 +7541,19 @@
           </subentities>
         </entity>
       </node>
+      <node name="WoodenWallPole4" id="665120448">
+        <rotation qw="1" qx="0" qy="0" qz="0" />
+        <position x="473.153" y="20.9153" z="-426.949" />
+        <scale x="1" y="1" z="1" />
+        <entity name="Entity#185" id="201666304" castshadows="true" meshFile="WoodenWallPole0.mesh" type="DynamicObject" BoxX="5" BoxY="50" BoxZ="5">
+          <rotation qw="1" qx="0" qy="0" qz="0" />
+          <position x="0" y="0" z="0" />
+          <scale x="1" y="1" z="1" />
+          <subentities>
+            <subentity materialName="WoodenPole" index="0" visible="true" />
+          </subentities>
+        </entity>
+      </node>
       <node name="Crate2" id="152653584">
         <rotation qw="0.942641" qx="0" qy="-0.333807" qz="0" />
         <position x="283.993" y="-0.00305939" z="-495.141" />
@@ -7790,6 +7564,32 @@
           <scale x="1" y="1" z="1" />
           <subentities>
             <subentity materialName="Crate0" index="0" visible="true" />
+          </subentities>
+        </entity>
+      </node>
+      <node name="WoodenWallPole16" id="593127232">
+        <rotation qw="1" qx="0" qy="0" qz="0" />
+        <position x="467.449" y="17.7178" z="-606.89" />
+        <scale x="1" y="1" z="1" />
+        <entity name="Entity#173" id="194250320" castshadows="true" meshFile="WoodenWallPole0.mesh" type="DynamicObject" BoxX="5" BoxY="50" BoxZ="5">
+          <rotation qw="1" qx="0" qy="0" qz="0" />
+          <position x="0" y="0" z="0" />
+          <scale x="1" y="1" z="1" />
+          <subentities>
+            <subentity materialName="WoodenPole" index="0" visible="true" />
+          </subentities>
+        </entity>
+      </node>
+      <node name="WoodenWallPole31" id="992706048">
+        <rotation qw="1" qx="0" qy="0" qz="0" />
+        <position x="467.304" y="18.7073" z="-491.216" />
+        <scale x="1" y="1" z="1" />
+        <entity name="Entity#158" id="172460096" castshadows="true" meshFile="WoodenWallPole0.mesh" type="DynamicObject" BoxX="5" BoxY="50" BoxZ="5">
+          <rotation qw="1" qx="0" qy="0" qz="0" />
+          <position x="0" y="0" z="0" />
+          <scale x="1" y="1" z="1" />
+          <subentities>
+            <subentity materialName="WoodenPole" index="0" visible="true" />
           </subentities>
         </entity>
       </node>
@@ -7830,6 +7630,45 @@
           <subentities>
             <subentity materialName="House0_Building_Material5" index="0" visible="true" />
             <subentity materialName="House0_Roof_Material5" index="1" visible="true" />
+          </subentities>
+        </entity>
+      </node>
+      <node name="WoodenWallPole13" id="255134736">
+        <rotation qw="1" qx="0" qy="0" qz="0" />
+        <position x="467.449" y="19.3565" z="-617.755" />
+        <scale x="1" y="1" z="1" />
+        <entity name="Entity#176" id="406811744" castshadows="true" meshFile="WoodenWallPole0.mesh" type="DynamicObject" BoxX="5" BoxY="50" BoxZ="5">
+          <rotation qw="1" qx="0" qy="0" qz="0" />
+          <position x="0" y="0" z="0" />
+          <scale x="1" y="1" z="1" />
+          <subentities>
+            <subentity materialName="WoodenPole" index="0" visible="true" />
+          </subentities>
+        </entity>
+      </node>
+      <node name="WoodenWallPole29" id="300912512">
+        <rotation qw="1" qx="0" qy="0" qz="0" />
+        <position x="465.189" y="14.0925" z="-498.985" />
+        <scale x="1" y="1" z="1" />
+        <entity name="Entity#160" id="786858752" castshadows="true" meshFile="WoodenWallPole0.mesh" type="DynamicObject" BoxX="5" BoxY="50" BoxZ="5">
+          <rotation qw="1" qx="0" qy="0" qz="0" />
+          <position x="0" y="0" z="0" />
+          <scale x="1" y="1" z="1" />
+          <subentities>
+            <subentity materialName="WoodenPole" index="0" visible="true" />
+          </subentities>
+        </entity>
+      </node>
+      <node name="WoodenWallPole9" id="52949616">
+        <rotation qw="1" qx="0" qy="0" qz="0" />
+        <position x="471.52" y="19.7876" z="-452.145" />
+        <scale x="1" y="1" z="1" />
+        <entity name="Entity#180" id="604571712" castshadows="true" meshFile="WoodenWallPole0.mesh" type="DynamicObject" BoxX="5" BoxY="50" BoxZ="5">
+          <rotation qw="1" qx="0" qy="0" qz="0" />
+          <position x="0" y="0" z="0" />
+          <scale x="1" y="1" z="1" />
+          <subentities>
+            <subentity materialName="WoodenPole" index="0" visible="true" />
           </subentities>
         </entity>
       </node>
@@ -7978,6 +7817,32 @@
           </subentities>
         </entity>
       </node>
+      <node name="WoodenWallPole27" id="262764368">
+        <rotation qw="1" qx="0" qy="0" qz="0" />
+        <position x="464.721" y="15.8944" z="-506.584" />
+        <scale x="1" y="1" z="1" />
+        <entity name="Entity#162" id="136478784" castshadows="true" meshFile="WoodenWallPole0.mesh" type="DynamicObject" BoxX="5" BoxY="50" BoxZ="5">
+          <rotation qw="1" qx="0" qy="0" qz="0" />
+          <position x="0" y="0" z="0" />
+          <scale x="1" y="1" z="1" />
+          <subentities>
+            <subentity materialName="WoodenPole" index="0" visible="true" />
+          </subentities>
+        </entity>
+      </node>
+      <node name="WoodenWallPole7" id="668111232">
+        <rotation qw="1" qx="0" qy="0" qz="0" />
+        <position x="471.515" y="18.4849" z="-438.05" />
+        <scale x="1" y="1" z="1" />
+        <entity name="Entity#182" id="976043008" castshadows="true" meshFile="WoodenWallPole0.mesh" type="DynamicObject" BoxX="5" BoxY="50" BoxZ="5">
+          <rotation qw="1" qx="0" qy="0" qz="0" />
+          <position x="0" y="0" z="0" />
+          <scale x="1" y="1" z="1" />
+          <subentities>
+            <subentity materialName="WoodenPole" index="0" visible="true" />
+          </subentities>
+        </entity>
+      </node>
       <node name="RedwoodTree#6" id="943021952">
         <rotation qw="1" qx="0" qy="0" qz="0" />
         <position x="1008.14" y="-0.5" z="-132.615" />
@@ -8041,6 +7906,19 @@
           <scale x="1" y="1" z="1" />
           <subentities>
             <subentity materialName="Crate0" index="0" visible="true" />
+          </subentities>
+        </entity>
+      </node>
+      <node name="WoodenWallPole14" id="42298652">
+        <rotation qw="1" qx="0" qy="0" qz="0" />
+        <position x="467.449" y="17.7739" z="-614.241" />
+        <scale x="1" y="1" z="1" />
+        <entity name="Entity#175" id="239051488" castshadows="true" meshFile="WoodenWallPole0.mesh" type="DynamicObject" BoxX="5" BoxY="50" BoxZ="5">
+          <rotation qw="1" qx="0" qy="0" qz="0" />
+          <position x="0" y="0" z="0" />
+          <scale x="1" y="1" z="1" />
+          <subentities>
+            <subentity materialName="WoodenPole" index="0" visible="true" />
           </subentities>
         </entity>
       </node>
@@ -8125,11 +8003,24 @@
           </subentities>
         </entity>
       </node>
+      <node name="WoodenWallPole11" id="900051904">
+        <rotation qw="1" qx="0" qy="0" qz="0" />
+        <position x="471.52" y="19.2114" z="-448.797" />
+        <scale x="1" y="1" z="1" />
+        <entity name="Entity#178" id="379436640" castshadows="true" meshFile="WoodenWallPole0.mesh" type="DynamicObject" BoxX="5" BoxY="50" BoxZ="5">
+          <rotation qw="1" qx="0" qy="0" qz="0" />
+          <position x="0" y="0" z="0" />
+          <scale x="1" y="1" z="1" />
+          <subentities>
+            <subentity materialName="WoodenPole" index="0" visible="true" />
+          </subentities>
+        </entity>
+      </node>
       <node name="CityPortal" id="267921984">
         <rotation qw="0.707082" qx="0" qy="0.707132" qz="0" />
         <position x="464.438" y="1.57251" z="-533.507" />
         <scale x="1" y="1" z="1" />
-        <entity name="WoodenPortal" id="718771904" castshadows="true" meshFile="CityPortal0.mesh" type="DynamicObject" BoxX="10" BoxY="50" BoxZ="50" life="60" dieMesh="CityPortal0Die.mesh" dieAnimation="Die" dieMaterial="true">
+        <entity name="WoodenPortal" id="718771904" castshadows="true" meshFile="CityPortal0.mesh" type="DynamicObject" BoxX="30" BoxY="30" BoxZ="50" life="60" dieMesh="CityPortal0Die.mesh" dieAnimation="Die" dieMaterial="true">
           <rotation qw="1" qx="0" qy="0" qz="0" />
           <position x="0" y="0" z="0" />
           <scale x="1" y="1" z="1" />
@@ -8219,6 +8110,32 @@
           </subentities>
         </entity>
       </node>
+      <node name="WoodenWallPole2" id="531998624">
+        <rotation qw="1" qx="0" qy="0" qz="0" />
+        <position x="473.234" y="20.0663" z="-419.958" />
+        <scale x="1" y="1" z="1" />
+        <entity name="Entity#187" id="290993984" castshadows="true" meshFile="WoodenWallPole0.mesh" type="DynamicObject" BoxX="5" BoxY="50" BoxZ="5">
+          <rotation qw="1" qx="0" qy="0" qz="0" />
+          <position x="0" y="0" z="0" />
+          <scale x="1" y="1" z="1" />
+          <subentities>
+            <subentity materialName="WoodenPole" index="0" visible="true" />
+          </subentities>
+        </entity>
+      </node>
+      <node name="WoodenWallPole22" id="57405316">
+        <rotation qw="0.959985" qx="0" qy="0.28005" qz="0" />
+        <position x="466.368" y="20.8394" z="-556.248" />
+        <scale x="1" y="1" z="1" />
+        <entity name="Entity#167" id="282509824" castshadows="true" meshFile="WoodenWallPole0.mesh">
+          <rotation qw="1" qx="0" qy="0" qz="0" />
+          <position x="0" y="0" z="0" />
+          <scale x="1" y="1" z="1" />
+          <subentities>
+            <subentity materialName="WoodenPole" index="0" visible="true" />
+          </subentities>
+        </entity>
+      </node>
       <node name="RedwoodTree#3" id="194067200">
         <rotation qw="0.996195" qx="0" qy="-0.0871553" qz="0" />
         <position x="784.615" y="-0.5" z="-519.705" />
@@ -8272,6 +8189,19 @@
           </subentities>
         </entity>
       </node>
+      <node name="WoodenWallPole5" id="346964928">
+        <rotation qw="1" qx="0" qy="0" qz="0" />
+        <position x="473.234" y="21.516" z="-430.756" />
+        <scale x="1" y="1" z="1" />
+        <entity name="Entity#184" id="953520320" castshadows="true" meshFile="WoodenWallPole0.mesh" type="DynamicObject" BoxX="5" BoxY="50" BoxZ="5">
+          <rotation qw="1" qx="0" qy="0" qz="0" />
+          <position x="0" y="0" z="0" />
+          <scale x="1" y="1" z="1" />
+          <subentities>
+            <subentity materialName="WoodenPole" index="0" visible="true" />
+          </subentities>
+        </entity>
+      </node>
       <node name="Crate5" id="475112128">
         <rotation qw="0.942641" qx="0" qy="-0.333807" qz="0" />
         <position x="228.532" y="-0.00305939" z="-633.215" />
@@ -8299,6 +8229,32 @@
           </subentities>
         </entity>
       </node>
+      <node name="WoodenWallPole19" id="81209760">
+        <rotation qw="0.965376" qx="0" qy="0.260863" qz="0" />
+        <position x="465.033" y="17.8897" z="-564.47" />
+        <scale x="1" y="1" z="1" />
+        <entity name="Entity#170" id="795403904" castshadows="true" meshFile="WoodenWallPole0.mesh" type="DynamicObject" BoxX="5" BoxY="50" BoxZ="5">
+          <rotation qw="1" qx="0" qy="0" qz="0" />
+          <position x="0" y="0" z="0" />
+          <scale x="1" y="1" z="1" />
+          <subentities>
+            <subentity materialName="WoodenPole" index="0" visible="true" />
+          </subentities>
+        </entity>
+      </node>
+      <node name="WoodenWallPole30" id="68910792">
+        <rotation qw="1" qx="0" qy="0" qz="0" />
+        <position x="465.779" y="17.833" z="-495.227" />
+        <scale x="1" y="1" z="1" />
+        <entity name="Entity#159" id="220130016" castshadows="true" meshFile="WoodenWallPole0.mesh" type="DynamicObject" BoxX="5" BoxY="50" BoxZ="5">
+          <rotation qw="1" qx="0" qy="0" qz="0" />
+          <position x="0" y="0" z="0" />
+          <scale x="1" y="1" z="1" />
+          <subentities>
+            <subentity materialName="WoodenPole" index="0" visible="true" />
+          </subentities>
+        </entity>
+      </node>
       <node name="CityTents#2" id="724600960">
         <rotation qw="1" qx="0" qy="0" qz="0" />
         <position x="394.057" y="-1.54287" z="-647.839" />
@@ -8322,6 +8278,19 @@
           <scale x="1" y="1" z="1" />
           <subentities>
             <subentity materialName="Crate1" index="0" visible="true" />
+          </subentities>
+        </entity>
+      </node>
+      <node name="WoodenWallPole12" id="794946112">
+        <rotation qw="1" qx="0" qy="0" qz="0" />
+        <position x="467.449" y="19.3565" z="-621.623" />
+        <scale x="1" y="1" z="1" />
+        <entity name="Entity#177" id="272469248" castshadows="true" meshFile="WoodenWallPole0.mesh" type="DynamicObject" BoxX="5" BoxY="50" BoxZ="5">
+          <rotation qw="1" qx="0" qy="0" qz="0" />
+          <position x="0" y="0" z="0" />
+          <scale x="1" y="1" z="1" />
+          <subentities>
+            <subentity materialName="WoodenPole" index="0" visible="true" />
           </subentities>
         </entity>
       </node>
@@ -8442,6 +8411,19 @@
           <scale x="1" y="1" z="1" />
           <subentities>
             <subentity materialName="TownHouse2" index="0" visible="true" />
+          </subentities>
+        </entity>
+      </node>
+      <node name="WoodenWallPole" id="106723224">
+        <rotation qw="1" qx="0" qy="0" qz="0" />
+        <position x="473.234" y="21.8605" z="-408.554" />
+        <scale x="1" y="1" z="1" />
+        <entity name="Entity#189" id="709341696" castshadows="true" meshFile="WoodenWallPole0.mesh" type="DynamicObject" BoxX="5" BoxY="50" BoxZ="5">
+          <rotation qw="1" qx="0" qy="0" qz="0" />
+          <position x="0" y="0" z="0" />
+          <scale x="1" y="1" z="1" />
+          <subentities>
+            <subentity materialName="WoodenPole" index="0" visible="true" />
           </subentities>
         </entity>
       </node>
