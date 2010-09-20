@@ -78,22 +78,34 @@ void MainMenuState::update(const float elapsedSeconds)
 {
 	timer = timer + elapsedSeconds;
 
-	if( timer > 2.25 )
+	if( timer > 2.75 )
 	{
 		guiBackground->setFrame(6);
 		mGuiScreen->addMenu(mMenu);
 		animControl = 1;
 	}		
-	else if( timer > 1.75 )
+	else if( timer > 2.25 )
+	{
 		guiBackground->setFrame(5);
-	else if( timer > 1.5 )
-		guiBackground->setFrame(4);
+		//mAudioManager->playSound("BloodSplat03.wav", 5);
+	}
+	else if( timer > 1.75 )
+	{
+		mAudioManager->playSound("BloodSplat03.wav", 4);
+		guiBackground->setFrame(4);		
+	}
 	else if( timer > 1.25 )
-		guiBackground->setFrame(3);
+	{
+		mAudioManager->playSound("BloodSplat02.wav", 3);
+		guiBackground->setFrame(3);		
+	}
 	else if( timer > 0.75 )
+	{
+		mAudioManager->playSound("BloodSplat01.wav", 3);
 		guiBackground->setFrame(2);
+	}
 	else if( timer > 0.25 )
-		guiBackground->setFrame(1);	
+		guiBackground->setFrame(1);
 }
 
 /** Render */
@@ -158,24 +170,30 @@ bool MainMenuState::keyReleased(const OIS::KeyEvent& e)
 		{
 		case OIS::KC_LEFT:
 			mMenu->previousOption();
+			mAudioManager->playSound("ChangeOption.wav", -2);
 			break;
 		case OIS::KC_RIGHT:
-			mMenu->nextOption();
+			mMenu->nextOption();			
+			mAudioManager->playSound("ChangeOption.wav", -2);
 			break;
 		case OIS::KC_RETURN:
 			switch(mMenu->getCurrentOption())
 			{
 			case GuiWidgetMenuId::PlayMenu:
 				this->mNextGameStateId = GameStateId::Selection;
+				mAudioManager->playSound("Select.wav", -1);
 				break;
 			case GuiWidgetMenuId::OptionsMenu:
 				this->mNextGameStateId = GameStateId::Options;
+				mAudioManager->playSound("Select.wav", -1);
 				break;
 			case GuiWidgetMenuId::CreditsMenu:
 				this->mNextGameStateId = GameStateId::Credits;
+				mAudioManager->playSound("Select.wav", -1);
 				break;
 			case GuiWidgetMenuId::QuitMenu:
 				this->mNextGameStateId = GameStateId::Exit;
+				mAudioManager->playSound("Select.wav", -1);
 				break;
 			}		
 			break;
