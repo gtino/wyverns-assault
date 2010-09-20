@@ -101,8 +101,11 @@ namespace WyvernsAssault
 		// Flash Counters
 		bool flashCount;
 		Hikari::HikariManager* mHikariManager;
+
 		GuiFlashCounterPtr mFlashCounterUI;
 		GuiFlashCounterPtr mFlashCounterEnemyUI;
+
+		GuiFlashMoviePtr mFlashGoGo;
 
 		// ----------------
 		// Events interface
@@ -115,6 +118,8 @@ namespace WyvernsAssault
 		EVENTS_HANDLER(PlayerHit)
 		EVENTS_HANDLER(PlayerStatusUpdate)
 		EVENTS_HANDLER(GameAreaFlashCounter)
+		EVENTS_HANDLER(GameAreaChanged)
+		EVENTS_HANDLER(GameAreaCleared)
 
 		// --------------------------------
 		// BEGIN Lua Interface Declarations

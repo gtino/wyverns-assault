@@ -408,8 +408,10 @@ bool PhysicsManager::collidesAllEnemys(EnemyPtr enemy)
 		AxisAlignedBox enemy_second_box = enemySecond->getGeometry(PhysicBoxType::body)->getWorldBoundingBox(enemySecond->getPosition());
 
 		if (enemy_box.intersects(enemy_second_box) && enemy != enemySecond && enemy->getLastEnemyCollision() != enemySecond->getName()){
-			enemy->setLastEnemyCollision(enemySecond->getName());
-			return true;
+			if(enemySecond->getLastEnemyCollision() != enemy->getName()){
+				enemy->setLastEnemyCollision(enemySecond->getName());
+				return true;
+			}
 		}
 	}
 
