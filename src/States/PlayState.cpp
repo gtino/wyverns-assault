@@ -976,7 +976,7 @@ bool PlayState::keyPressed(const OIS::KeyEvent& e)
 
 	// Move Player to a game area -- HACK!
 	case OIS::KeyCode::KC_DELETE:
-		player1->setPosition(Vector3(926, 23, 598));
+		player1->setPosition(Vector3(527, 23, -533));
 		break;
 
 	// Kill all enemies in current game area -- HACK!
