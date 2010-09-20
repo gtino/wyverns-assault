@@ -47,6 +47,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
 namespace WyvernsAssault
 {
+
 	/**
 	Class used to manage all the enemies
 	*/
@@ -151,6 +152,10 @@ namespace WyvernsAssault
 		void setDebugEnabled(bool isDebugEnabled);
 		bool getDebugEnabled(){return mIsDebugEnabled;}
 
+		// Last enemy collision
+		void setLastEnemyCollision(String enemy){mLastEnemyCollision = enemy;}
+		String getLastEnemyCollision(){return mLastEnemyCollision;}
+
 		// Visibility function
 		void setVisible(bool visibility);
 
@@ -196,6 +201,8 @@ namespace WyvernsAssault
 
 		Entity*				mDieMesh;
 		AnimationState*		mDieAnimation;
+
+		String			mLastEnemyCollision;
 
 		OBBoxRenderable* mOBBoxRenderable;
 		bool mIsDebugEnabled;
