@@ -13,8 +13,10 @@ Object::Object(Ogre::String name, ObjectTypes type, Ogre::Vector3 physicBox, int
 {
 	mType = type;
 	life = objLife;
+	// If life == 0, its an undestructible object
+	if( life == 0 )
+		life = -250;
 	mPhysicSize = physicBox; 
-
 }
 
 
@@ -56,7 +58,7 @@ bool Object::isHurt()
 
 bool Object::isDying()
 {
-	return (life <= 0.0f);
+	return (life <= 0.0f && life > -200);	// If an item has life < -200, its a undestructible object!
 }
 
 void Object::hit(float damage)
