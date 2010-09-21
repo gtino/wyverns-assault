@@ -44,7 +44,8 @@ void ParticleManager::initialize()
 void ParticleManager::finalize()
 {
 	mParticleSystemManager->destroyAllParticleSystems(mSceneManager);
-
+	mParticleSystemManager->destroyAllAliasses();
+	
 	mSceneManager->destroySceneNode("bloodLensNode");
 
 	mParticleSystem = NULL;
