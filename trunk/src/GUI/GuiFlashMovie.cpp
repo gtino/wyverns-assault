@@ -9,7 +9,7 @@ GuiWidget()
 	
 	mHikariManager = mHikari; 
 
-	fm = mHikariManager->createFlashOverlay("FM"+resource, viewport, 340, 270, Position(Right));
+	fm = mHikariManager->createFlashOverlay("FM"+resource, viewport, viewport->getActualWidth()/2, viewport->getActualHeight()/2, Position(Right));
 	fm->load(resource);
 	fm->setTransparent(true); 
 	fm->setDraggable(false);
