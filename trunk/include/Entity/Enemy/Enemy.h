@@ -43,7 +43,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #define ENEMY_SPECIAL		3
 #define	WOMAN_GIVE			4
 
-#define PHYSIC_SIZE			5
+#define PHYSIC_SIZE			20
 
 namespace WyvernsAssault
 {
