@@ -1,0 +1,69 @@
+system WyvernsAssault/StoneRain
+{
+    technique 
+    {
+        visual_particle_quota                   100
+        material                                VulcanicRock
+        renderer                                Entity
+        {
+            mesh_name                           BigRock1.mesh
+        }
+        emitter                                 Circle 
+        {
+            emission_rate                       dyn_random
+            {
+                min                             8
+                max                             15
+            }
+            angle                               dyn_random
+            {
+                min                             0
+                max                             20
+            }
+            time_to_live                        dyn_random
+            {
+                min                             4
+                max                             7
+            }
+            velocity                            dyn_random
+            {
+                min                             150
+                max                             250
+            }
+            duration                            2
+            repeat_delay                        dyn_random
+            {
+                min                             10
+                max                             15
+            }
+            all_particle_dimensions             dyn_random
+            {
+                min                             20
+                max                             50
+            }
+            position                            0 300 0
+            direction                           0 -1 0
+            radius                              275
+            step                                1
+        }
+        affector                                GeometryRotator Affector13
+        {
+            use_own_rotation                    true
+            rotation_axis                       1 1 1
+            rotation_speed                      1
+        }
+        affector                                BoxCollider Affector14
+        {
+            bouncyness                          0.2
+            intersection                        box
+            box_width                           1000
+            box_height                          1
+            box_depth                           1000
+        }
+        affector                                Gravity Affector39
+        {
+            position                            0 -750 0
+            gravity                             100000
+        }
+    }
+}

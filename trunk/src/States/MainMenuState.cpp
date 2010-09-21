@@ -78,33 +78,35 @@ void MainMenuState::update(const float elapsedSeconds)
 {
 	timer = timer + elapsedSeconds;
 
-	if( timer > 2.75 )
+	if( timer > 2.75 && animControl == 3 )
 	{
 		guiBackground->setFrame(6);
 		mGuiScreen->addMenu(mMenu);
-		animControl = 1;
+		animControl = 4;
 	}		
-	else if( timer > 2.25 )
+	else if( timer > 2.25 && animControl == 2 )
 	{
 		guiBackground->setFrame(5);
-		//mAudioManager->playSound("BloodSplat03.wav", 5);
+		mAudioManager->playSound("BloodSplat03.wav", 5);
+		animControl = 3;
 	}
-	else if( timer > 1.75 )
+	else if( timer > 1.75 && animControl == 1 )
 	{
+		guiBackground->setFrame(4);
 		mAudioManager->playSound("BloodSplat03.wav", 4);
-		guiBackground->setFrame(4);		
+		animControl = 2;
 	}
-	else if( timer > 1.25 )
+	else if( timer > 1.25 && animControl == 0)
 	{
+		guiBackground->setFrame(3);
 		mAudioManager->playSound("BloodSplat02.wav", 3);
-		guiBackground->setFrame(3);		
+		animControl = 1;
 	}
-	else if( timer > 0.75 )
+	else if( timer > 0.75 && animControl == 0)
 	{
-		mAudioManager->playSound("BloodSplat01.wav", 3);
 		guiBackground->setFrame(2);
 	}
-	else if( timer > 0.25 )
+	else if( timer > 0.25 && animControl == 0)
 		guiBackground->setFrame(1);
 }
 
@@ -164,7 +166,7 @@ void MainMenuState::resume()
 /** Buffered input - keyboard key clicked */
 bool MainMenuState::keyReleased(const OIS::KeyEvent& e)
 {
-	if( animControl > 0 )
+	if( animControl > 3 )
 	{
 		switch(e.key)
 		{

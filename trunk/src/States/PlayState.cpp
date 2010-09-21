@@ -35,6 +35,8 @@ void PlayState::initialize()
 {
 	BaseState::initialize();
 
+	mLevel = mLevelManager->getCurrentLevelIndex();
+
 	mDebugEnabled = false;
 
 	//
@@ -270,9 +272,7 @@ void PlayState::initialize()
 	// Scenario, enemies and items
 	dotSceneLoader->parseDotScene(mLevelManager->getCurrentLevel()->getSceneFile(),"General", mSceneManager, mPlayerManager, mScenarioManager, mCameraManager, mLightsManager, mEnemyManager, mPhysicsManager, mItemManager, mParticleManager, mGameAreaManager, mScenarioManager->_getSceneNode());
 	// Fixed cameras and camera segments
-	dotSceneLoader->parseDotScene(mLevelManager->getCurrentLevel()->getCamerasFile(),"General", mSceneManager, mPlayerManager, mScenarioManager, mCameraManager, mLightsManager, mEnemyManager, mPhysicsManager, mItemManager, mParticleManager, mGameAreaManager, mCameraManager->_getSceneNode());	
-	
-	//dotSceneLoader->parseDotScene("Boss_cameras.scene","General", mSceneManager, mPlayerManager, mScenarioManager, mCameraManager, mLightsManager, mEnemyManager, mPhysicsManager, mItemManager, mParticleManager, mGameAreaManager, mCameraManager->_getSceneNode());	
+	dotSceneLoader->parseDotScene(mLevelManager->getCurrentLevel()->getCamerasFile(),"General", mSceneManager, mPlayerManager, mScenarioManager, mCameraManager, mLightsManager, mEnemyManager, mPhysicsManager, mItemManager, mParticleManager, mGameAreaManager, mCameraManager->_getSceneNode());
 
 	Debug::Out(mSceneManager->getRootSceneNode());
 
@@ -672,6 +672,10 @@ void PlayState::unload()
 void PlayState::finalize()
 {	
 	////// FIRST!
+	mEventsManager.reset();
+
+	mParticleManager.reset();
+
 	mScenarioManager.reset();
 
 	mLightsManager.reset();
@@ -698,10 +702,6 @@ void PlayState::finalize()
 
 	mLogicManager.reset();
 
-	mEventsManager.reset();
-
-	mParticleManager.reset();
-
 	mPostProcessManager.reset();
 
 	mCutSceneManager.reset();
@@ -717,8 +717,6 @@ void PlayState::finalize()
 	BaseState::finalize();
 
 	Debug::Out("**************************");
-
-	//Debug::Out(mSceneManager->getRootSceneNode());
 }
 
 /** Get state Id */
