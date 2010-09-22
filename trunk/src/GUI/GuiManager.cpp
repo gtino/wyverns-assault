@@ -53,6 +53,8 @@ void GuiManager::reset(){
 		mFlashCounterUI->reset();
 	if(mFlashCounterEnemyUI)
 		mFlashCounterEnemyUI->reset();
+	if(mFlashGoGo)
+		mFlashGoGo->reset();
 }
 
 bool GuiManager::initialize(Ogre::Root* root, Ogre::SceneManager* sceneManager, Ogre::RenderWindow* window)
@@ -79,6 +81,9 @@ void GuiManager::hide()
 	if(mFlashCounterUI)
 		mFlashCounterUI->hide();
 
+	if(mFlashGoGo)
+		mFlashGoGo->hide();
+
 }
 
 void GuiManager::show()
@@ -88,6 +93,9 @@ void GuiManager::show()
 
 	if(mFlashCounterUI)
 		mFlashCounterUI->show();
+
+	if(mFlashGoGo)
+		mFlashGoGo->show();
 }
 
 GuiScreenPtr GuiManager::createScreen(GuiScreenId id, const Ogre::String& name)
