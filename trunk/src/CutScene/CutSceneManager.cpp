@@ -228,6 +228,9 @@ EVENTS_DEFINE_HANDLER(CutSceneManager, GameAreaChanged)
 		{
 			switch(actualArea)
 			{
+				case 2:
+					mCutSceneId = CutSceneId::Boss;
+					break;
 				default:
 					mCutSceneId = CutSceneId::Nothing;
 				break;
@@ -251,7 +254,7 @@ EVENTS_DEFINE_HANDLER(CutSceneManager, GameAreaChanged)
 				}
 				else if(level == 1)
 				{
-					// TODO initial cut scene for the Boss level
+					//playCutScene(0,"playBossCutScene");
 				}
 			}
 		}

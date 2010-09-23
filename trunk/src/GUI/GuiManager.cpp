@@ -317,7 +317,6 @@ EVENTS_DEFINE_HANDLER(GuiManager, GameAreaCleared)
 
 	if(mFlashCounterEnemyUI)
 		mFlashCounterEnemyUI->hide();
-
 }
 
 // --------------------------------

@@ -56,7 +56,7 @@ void SplashScreenState::load()
 	//
 	// Play soft soundtrack
 	//
-	mAudioManager->playSoundTrack("hard_track.mp3");
+	mAudioManager->playSoundTrack("Menu.mp3");
 }
 
 /** Manage input */

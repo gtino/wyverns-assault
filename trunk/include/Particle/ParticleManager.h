@@ -38,8 +38,8 @@ using namespace Ogre;
 
 namespace WyvernsAssault 
 {
-	typedef std::map<Ogre::Real,ParticleUniverse::ParticleSystem*> ParticleSystemMap;
-	typedef std::map<Ogre::Real,ParticleUniverse::ParticleSystem*>::iterator ParticleSystemMapIterator;
+	typedef std::vector<ParticleSystemPtr> ParticleSystemList;
+	typedef std::vector<ParticleSystemPtr>::iterator ParticleSystemListIterator;
 
 	/**
 	Class used to manage all the particle systems
@@ -55,7 +55,6 @@ namespace WyvernsAssault
 		static ParticleManager& getSingleton(void);
 		static ParticleManager* getSingletonPtr(void);
 
-	public:
 		void initialize();
 		void finalize();
 
@@ -64,9 +63,14 @@ namespace WyvernsAssault
 		// Particle system function	
 		ParticleUniverse::ParticleSystem* create(String script);
 
-		void add(SceneNode* node, String script, Real repeat = 0.0);
-		void add(SceneNode* node, String id, String script, Real repeat = 0.0);
-		void remove(String id);
+		void add(SceneNode* node, ParticleSystem::ParticleSystemParameters params);
+		void add(SceneNode* node, String id, ParticleSystem::ParticleSystemParameters params);
+
+		bool remove(String id);
+
+		ParticleSystemPtr getParticleSystem(String id);
+
+		WyvernsAssault::ParticleSystem::ParticleSystemParameters defaultParameters(String script);
 
 		// Special particle systems
 		void bloodLens();
@@ -81,9 +85,7 @@ namespace WyvernsAssault
 		// ----------------
 		EVENTS_INTERFACE()
 
-		EVENTS_HANDLER(PlayerAttack)
 		EVENTS_HANDLER(PlayerHit)
-		EVENTS_HANDLER(EnemyAttack)
 		EVENTS_HANDLER(EnemyHit)
 		EVENTS_HANDLER(EnemyKilled)
 		EVENTS_HANDLER(EnemyCustom)
@@ -113,14 +115,12 @@ namespace WyvernsAssault
 		ParticleUniverse::ParticleSystemManager*	mParticleSystemManager;
 		ParticleUniverse::ParticleSystem*			mParticleSystem;
 
-		// Map for particle system that need to be re started in time (with a loop)
-		ParticleSystemMap							mParticleSystemMap;
-
-		int		mId;
-		Real	mTimer;
+		ParticleSystemList							mParticleSystemList;
 
 	private:
-		SceneManager*			mSceneManager;
+		int				mId;
+		Real			mTimer;
+		SceneManager*	mSceneManager;
 	};
 
 	typedef boost::shared_ptr<ParticleManager> ParticleManagerPtr;

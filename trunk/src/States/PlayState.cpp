@@ -160,6 +160,7 @@ void PlayState::initialize()
 	fpsItems.push_back("GameArea %");
 	fpsItems.push_back("Projectile %");
 	fpsItems.push_back("Particles %");
+	fpsItems.push_back("GUI		 %");
 
  
 	mPerformancesPanel = mTrayMgr->createParamsPanel(OgreBites::TL_NONE, "PerformancesPanel", 200, fpsItems);
@@ -285,7 +286,7 @@ void PlayState::initialize()
 	//
 	// Audio: playState track
 	//
-	//mAudioManager->playSoundTrack("main_track.mp3"); // Lua will do this from the cut scene
+	//mAudioManager->playSoundTrack("Level1_1.mp3"); // Lua will do this from the cut scene
 
 	buttonTimer = 0.0;
 	lastKey = OIS::KeyCode::KC_UNASSIGNED;
@@ -356,6 +357,7 @@ bool PlayState::frameRenderingQueued(const Ogre::FrameEvent& evt)
 			mPerformancesPanel->setParamValue(17,StringConverter::toString(TIMER_PERCENT(GameArea,Update))); // GameArea
 			mPerformancesPanel->setParamValue(18,StringConverter::toString(TIMER_PERCENT(Projectile,Update))); // Projectile
 			mPerformancesPanel->setParamValue(19,StringConverter::toString(TIMER_PERCENT(ParticleSystem,Update))); // Particle
+			mPerformancesPanel->setParamValue(20,StringConverter::toString(TIMER_PERCENT(GUI,Update))); // GUI
 		}
 	}
 
@@ -605,7 +607,9 @@ void PlayState::update(const float elapsedSeconds)
 	//
 	// Update GUI Manager
 	//
+	TIMER_START(GUI);
 	mGuiManager->update(elapsedSeconds, mEnemyManager->getCount());
+	TIMER_STOP(GUI);
 
 	//
 	// Dispatch events. Managers have probably raised events, that are now in the 

@@ -1,9 +1,17 @@
-#include "..\include\Particle\ParticleManager.h"
+#include "..\include\Particle\ParticleSystem.h"
 
 using namespace WyvernsAssault;
 
-WyvernsAssault::ParticleSystem::ParticleSystem(Ogre::String id, Ogre::String script)
+WyvernsAssault::ParticleSystem::ParticleSystem(SceneNode* sceneNode, ParticleUniverse::ParticleSystem* particleSystem, ParticleSystemParameters params, String id)
 {
+	mSceneNode = sceneNode;
+	mParticleSystem = particleSystem;
+	mParameters = params;
+	mId = id;
+
+	mRepeat = fmodf(rand(), ( mParameters.repeatMax - mParameters.repeatMin )) + mParameters.repeatMin;
+
+	mSceneNode->attachObject( mParticleSystem );
 }
 
 WyvernsAssault::ParticleSystem::~ParticleSystem()
@@ -27,7 +35,6 @@ void WyvernsAssault::ParticleSystem::stop(void)
 
 void WyvernsAssault::ParticleSystem::update(const float elapsedSeconds)
 {
-
 }
 	
 void WyvernsAssault::ParticleSystem::attachTo(SceneNode* node)
