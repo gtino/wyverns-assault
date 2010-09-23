@@ -103,12 +103,13 @@ ParticleUniverse::ParticleSystem* ParticleManager::create(String script)
 }
 
 // Create particle system, add to node and start it
-void ParticleManager::add(SceneNode* node, WyvernsAssault::ParticleSystem::ParticleSystemParameters params)
+void ParticleManager::add(SceneNode* node, WyvernsAssault::ParticleSystem::ParticleSystemParameters params, bool start)
 {
 	ParticleUniverse::ParticleSystem* ps = this->create(params.script);
 
 	ParticleSystemPtr pSystem = ParticleSystemPtr(new ParticleSystem(node, ps, params, this->createUniqueId()));
-	pSystem->start();
+	if( start )
+		pSystem->start();
 
 	mParticleSystemList.push_back(pSystem);
 }

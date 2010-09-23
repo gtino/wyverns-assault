@@ -110,6 +110,7 @@ namespace WyvernsAssault
 		EVENTS_INTERFACE()
 
 		EVENTS_HANDLER(GameAreaEnemiesDeath)
+		EVENTS_HANDLER(EnemyCreation)
 
 	private:
 		typedef std::vector<GameArea> GameAreaList;

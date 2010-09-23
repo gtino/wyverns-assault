@@ -4,6 +4,9 @@ material RedWyvernBody
 	{	
 		pass
 		{		
+			fog_override true none
+			lighting off
+			
 			vertex_program_ref ToonVP
 			{
 				param_named shininess float4 35.0 1.0 1.0 1.0
@@ -30,6 +33,8 @@ material RedWyvernBody
 		pass
 		{
 			cull_hardware anticlockwise
+			fog_override true none
+			lighting off
 			
 			vertex_program_ref Outline
 			{
@@ -48,6 +53,9 @@ material RedWyvernHead
 	{
 		pass
 		{
+			fog_override true none
+			lighting off
+			
 			vertex_program_ref ToonVP
 			{
 				param_named shininess float4 35.0 1.0 1.0 1.0
@@ -74,6 +82,8 @@ material RedWyvernHead
 		pass
 		{
 			cull_hardware anticlockwise
+			fog_override true none
+			lighting off
 			
 			vertex_program_ref Outline
 			{
@@ -98,6 +108,8 @@ material Grid1_Material
 			specular 0.7 0.7 0.7 1 10
 			cull_hardware none
 			cull_software none
+			fog_override true none
+			lighting off
 		}
 	}
 }
@@ -112,6 +124,8 @@ material Grid2_Material
 			specular 0.7 0.7 0.7 1 10
 			cull_hardware none
 			cull_software none
+			fog_override true none
+			lighting off
 		}
 	}
 }
@@ -126,6 +140,8 @@ material Grid3_Material
 			specular 0.7 0.7 0.7 1 10
 			cull_hardware none
 			cull_software none
+			fog_override true none
+			lighting off
 		}
 	}
 }
@@ -140,6 +156,8 @@ material Grid4_Material
 			specular 0.7 0.7 0.7 1 10
 			cull_hardware none
 			cull_software none
+			fog_override true none
+			lighting off
 		}
 	}
 }
@@ -154,6 +172,8 @@ material Grid5_Material
 			specular 0.7 0.7 0.7 1 10
 			cull_hardware none
 			cull_software none
+			fog_override true none
+			lighting off
 		}
 	}
 }
@@ -168,6 +188,8 @@ material Grid6_Material
 			specular 0.7 0.7 0.7 1 10
 			cull_hardware none
 			cull_software none
+			fog_override true none
+			lighting off
 		}
 	}
 }
@@ -182,6 +204,8 @@ material Grid7_Material
 			specular 0.7 0.7 0.7 1 10
 			cull_hardware none
 			cull_software none
+			fog_override true none
+			lighting off
 		}
 	}
 }
@@ -196,6 +220,8 @@ material Grid8_Material
 			specular 0.7 0.7 0.7 1 10
 			cull_hardware none
 			cull_software none
+			fog_override true none
+			lighting off
 		}
 	}
 }

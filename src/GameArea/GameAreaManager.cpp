@@ -66,7 +66,8 @@ void GameAreaManager::update(Vector3 playerPosition, const float elapsedSeconds)
 		mTime = 0.0;
 
 		// If Game Area type is 1, launch flash counter
-		if( mGameAreas[mCurrentGameArea].mType == 1 && mGameAreas[mCurrentGameArea].mFinishTime != 0){
+		if( mGameAreas[mCurrentGameArea].mType == 1 && mGameAreas[mCurrentGameArea].mFinishTime != 0)
+		{
 			GameAreaFlashCounterEventPtr evtCounter = GameAreaFlashCounterEventPtr(new GameAreaFlashCounterEvent(mGameAreas[playerArea].mFinishTime));
 			EVENTS_FIRE(evtCounter);
 		}
@@ -88,11 +89,20 @@ void GameAreaManager::update(Vector3 playerPosition, const float elapsedSeconds)
 		}
 	}
 	// Cleared by killing enemies
-	else if( !mEnemiesAlive && !mGameAreaCleared)
+	else if( !mEnemiesAlive && !mGameAreaCleared && mGameAreas[mCurrentGameArea].mEnemies == 0)
 	{	
 		mGameAreaCleared = true;
 		GameAreaClearedEventPtr evt = GameAreaClearedEventPtr(new GameAreaClearedEvent(mGameAreas[playerArea].mLevel, mCurrentGameArea, mGameAreas[mCurrentGameArea].mType, isLast));
-		EVENTS_FIRE(evt);
+
+		// First game area cleared event launched later
+		if( mCurrentGameArea == 0 )
+		{
+			EVENTS_FIRE_AFTER(evt, 10.0);
+		}
+		else
+		{
+			EVENTS_FIRE(evt);
+		}
 	}
 }
 
@@ -136,8 +146,9 @@ void GameAreaManager::manageGameArea()
 		if(mGameAreas[mCurrentGameArea].mType == 0)
 		{
 			Enemy::EnemyTypes type = Enemy::EnemyTypes::Knight;
+			int totalEnemies = mGameAreas[mCurrentGameArea].mEnemies;
 
-			for(int i = 0; i < mGameAreas[mCurrentGameArea].mEnemies; i++ )
+			for(int i = 0; i < totalEnemies; i++ )
 			{
 				EnemyCreationEventPtr evt = EnemyCreationEventPtr(new EnemyCreationEvent(type, mGameAreas[mCurrentGameArea].mDifficult, getSpawnPoint(mCurrentGameArea), mCurrentGameArea));
 				EVENTS_FIRE_AFTER(evt, i+5);
@@ -191,10 +202,12 @@ void GameAreaManager::addGameArea(int level, GameArea area)
 // --------------
 EVENTS_BEGIN_REGISTER_HANDLERS(GameAreaManager)
 	EVENTS_REGISTER_HANDLER(GameAreaManager, GameAreaEnemiesDeath)
+	EVENTS_REGISTER_HANDLER(GameAreaManager, EnemyCreation)
 EVENTS_END_REGISTER_HANDLERS()
 
 EVENTS_BEGIN_UNREGISTER_HANDLERS(GameAreaManager)
 	EVENTS_UNREGISTER_HANDLER(GameAreaManager, GameAreaEnemiesDeath)
+	EVENTS_UNREGISTER_HANDLER(GameAreaManager, EnemyCreation)
 EVENTS_END_UNREGISTER_HANDLERS()
 
 EVENTS_DEFINE_HANDLER(GameAreaManager, GameAreaEnemiesDeath)
@@ -203,4 +216,11 @@ EVENTS_DEFINE_HANDLER(GameAreaManager, GameAreaEnemiesDeath)
 
 	if( mCurrentGameArea == evt->getGameArea() )
 		mEnemiesAlive = false;
+}
+
+EVENTS_DEFINE_HANDLER(GameAreaManager, EnemyCreation)
+{
+	Debug::Out("GameAreaManager : handleEnemyCreationEvent");
+
+	mGameAreas[evt->getGameArea()].mEnemies--;
 }

@@ -47,16 +47,13 @@ namespace WyvernsAssault
 		GuiFlashMovie(Ogre::Viewport* viewport, int screenId, Hikari::HikariManager* mHikari, Ogre::String resource);
 		~GuiFlashMovie();
 
-		void reset();
-
-		void hide(){ fm->hide();}
-		void show(){ fm->show();}
+		void hide(){ mFlashControl->hide();}
+		void show(){ mFlashControl->show();}
 
 	protected:
 
-		Hikari::HikariManager* mHikariManager;
-		Hikari::FlashControl *fm;
-
+		Hikari::HikariManager*	mHikariManager;
+		Hikari::FlashControl*	mFlashControl;
 
 	};
 

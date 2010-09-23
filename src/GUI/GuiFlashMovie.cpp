@@ -9,20 +9,14 @@ GuiWidget()
 	
 	mHikariManager = mHikari; 
 
-	fm = mHikariManager->createFlashOverlay("FM"+resource, viewport, viewport->getActualWidth()/2, viewport->getActualHeight()/2, Position(Right));
-	fm->load(resource);
-	fm->setTransparent(true); 
-	fm->setDraggable(false);
+	mFlashControl = mHikariManager->createFlashOverlay("FM"+resource, viewport, viewport->getActualWidth()/2, viewport->getActualHeight()/2, Position(Right));
+	mFlashControl->load(resource);
+	mFlashControl->setTransparent(true); 
+	mFlashControl->setDraggable(false);
 
 }
 
 GuiFlashMovie::~GuiFlashMovie()
 {
-	//TODO
+	mFlashControl = NULL;
 }
-
-void GuiFlashMovie::reset(){
-	fm->hide();
-}
-
-

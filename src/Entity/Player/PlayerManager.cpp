@@ -218,6 +218,8 @@ EVENTS_BEGIN_REGISTER_HANDLERS(PlayerManager)
 	EVENTS_REGISTER_HANDLER(PlayerManager,ItemCatch)
 	EVENTS_REGISTER_HANDLER(PlayerManager,EnemyKilled)
 	EVENTS_REGISTER_HANDLER(PlayerManager,ProjectileHit)
+	EVENTS_REGISTER_HANDLER(PlayerManager,GameAreaChanged)
+	EVENTS_REGISTER_HANDLER(PlayerManager,GameAreaCleared)
 EVENTS_END_REGISTER_HANDLERS()
 
 EVENTS_BEGIN_UNREGISTER_HANDLERS(PlayerManager)
@@ -226,6 +228,8 @@ EVENTS_BEGIN_UNREGISTER_HANDLERS(PlayerManager)
 	EVENTS_UNREGISTER_HANDLER(PlayerManager,ItemCatch)
 	EVENTS_UNREGISTER_HANDLER(PlayerManager,EnemyKilled)
 	EVENTS_UNREGISTER_HANDLER(PlayerManager,ProjectileHit)
+	EVENTS_UNREGISTER_HANDLER(PlayerManager,GameAreaChanged)
+	EVENTS_UNREGISTER_HANDLER(PlayerManager,GameAreaCleared)
 EVENTS_END_UNREGISTER_HANDLERS()
 
 EVENTS_DEFINE_HANDLER(PlayerManager, PlayerHit)
@@ -284,6 +288,47 @@ EVENTS_DEFINE_HANDLER(PlayerManager, ProjectileHit)
 	if(!player->isGodModeOn()) // DEBUG : God mode!
 	{
 		player->hurt( projectile->getProjectileDamage() );
+	}
+}
+
+EVENTS_DEFINE_HANDLER(PlayerManager, GameAreaChanged)
+{
+	Debug::Out("PlayerManager : handleGameAreaChangedEvent");
+
+	int level = evt->getLevel();
+	int previousArea = evt->getPreviousArea();
+	int actualArea = evt->getActualArea();
+
+	if( level == 0)
+	{
+		// Bonus area, double players speed
+		if( previousArea == 2 && actualArea == 3 )
+		{
+			for(int i = 0; i < mPlayerList.size() ; i++)
+			{
+				mPlayerList[i]->doubleSpeed();
+			}
+		}			
+	}
+}
+
+EVENTS_DEFINE_HANDLER(PlayerManager, GameAreaCleared)
+{
+	Debug::Out("PlayerManager : handleGameAreaClearedEvent");
+
+	int level = evt->getLevel();
+	int gameArea = evt->getGameArea();
+	
+	if( level == 0)
+	{
+		// Return players to normal speed when bonus finished
+		if( gameArea == 3 )
+		{
+			for(int i = 0; i < mPlayerList.size() ; i++)
+			{
+				mPlayerList[i]->resetSpeed();
+			}
+		}			
 	}
 }
 

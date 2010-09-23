@@ -12,60 +12,54 @@ GuiWidget()
 	
 	mHikariManager = mHikari; 
 
-	if(type == CounterTypes::Manual){
-		fc = mHikariManager->createFlashOverlay("FPS"+type, viewport, 170, 150, Position(TopRight)); 
-		fc->load("GameEnemyCounter.swf");
+	if(type == CounterTypes::Manual)
+	{
+		mFlashControl = mHikariManager->createFlashOverlay("FPS"+type, viewport, 170, 150, Position(TopRight)); 
+		mFlashControl->load("GameEnemyCounter.swf");
 	}
-	else{
-		fc = mHikariManager->createFlashOverlay("FPS"+type, viewport, 143, 110, Position(TopRight));
-		fc->load("GameTimer.swf"); 
+	else
+	{
+		mFlashControl = mHikariManager->createFlashOverlay("FPS"+type, viewport, 143, 110, Position(TopRight));
+		mFlashControl->load("GameTimer.swf"); 
 	}
 
-	fc->setTransparent(true); 
-	fc->setDraggable(false);
+	mFlashControl->setTransparent(true); 
+	mFlashControl->setDraggable(false);
 
-	fc->callFunction("setTime", Args((int)mSeconds)); 
+	mFlashControl->callFunction("setTime", Args((int)mSeconds)); 
 
 }
 
 GuiFlashCounter::~GuiFlashCounter()
 {
-	//finalize();
+	mSeconds = 0.0;
+	mFlashControl = NULL;
 }
 
-void GuiFlashCounter::finalize(){
-	if(mHikariManager)
-		delete mHikariManager;
-
-}
-
-void GuiFlashCounter::reset(){
-	mSeconds = 0;
-	fc->hide();
-}
-
-void GuiFlashCounter::setSeconds(Real seconds){
+void GuiFlashCounter::setSeconds(Real seconds)
+{
 	mSeconds = seconds;
-	fc->show();
+	mFlashControl->show();
 }
 
 bool GuiFlashCounter::update(const float elapsedSeconds, int enemyCount)
 {
 
-	if(mType == CounterTypes::Timer){
+	if(mType == CounterTypes::Timer)
+	{
 		mSeconds = mSeconds - elapsedSeconds;
-		fc->callFunction("setTime", Args((int)mSeconds));
-		if(mSeconds <= 0){
-			fc->hide();
+		mFlashControl->callFunction("setTime", Args((int)mSeconds));
+
+		if(mSeconds <= 0)
+		{
+			mFlashControl->hide();
 			return false;
 		}
-	}else{
-		fc->callFunction("setTime", Args((int)enemyCount));
-		//fc->show();
+	}
+	else
+	{
+		mFlashControl->callFunction("setTime", Args((int)enemyCount));
 	}
 
 	return true;
-
 }
-
-
