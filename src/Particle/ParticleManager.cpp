@@ -15,12 +15,12 @@ ParticleManager& ParticleManager::getSingleton(void)
 // END SINGLETON
 
 ParticleManager::ParticleManager(SceneManager* sceneManager)
-: mId(0)
+: mParticleSystem(0)
+, mParticleSystemManager(0)
+, mId(0)
 , mTimer(0.0)
 {
 	this->mSceneManager = sceneManager;
-	mParticleSystem = NULL;
-	mParticleSystemManager = NULL;
 }
 
 ParticleManager::~ParticleManager()
@@ -50,21 +50,48 @@ void ParticleManager::finalize()
 
 	mParticleSystem = NULL;
 	mParticleSystemManager = NULL;
-	mParticleSystemMap.clear();
+	mParticleSystemList.clear();
 }
 
 void ParticleManager::update(const float elapsedSeconds)
 {
-	mTimer = mTimer + elapsedSeconds;
-
-	for(ParticleSystemMapIterator it = mParticleSystemMap.begin(); it != mParticleSystemMap.end(); ++it )
+	for(int i = 0; i < mParticleSystemList.size(); i++ )
 	{
-		float x = fmodf(mTimer, it->first);
-
-		if( fmodf(mTimer, it->first) < 1.0 )
+		// Only check particle systems thar need to be repeated
+		if( mParticleSystemList[i]->getRepeat() > 0 )
 		{
-			ParticleUniverse::ParticleSystem* pSystem = it->second;
-			pSystem->start();
+			mParticleSystemList[i]->setTimer( mParticleSystemList[i]->getTimer() + elapsedSeconds );
+
+			// If total time (mTimer) mod particle system repeat time < 1, need to be restarted
+			if( mParticleSystemList[i]->getTimer() > mParticleSystemList[i]->getRepeat() )
+			{
+				mParticleSystemList[i]->start();
+				mParticleSystemList[i]->newRepeat();
+				mParticleSystemList[i]->setTimer(0.0);
+
+				// It has camera special effect
+				if( mParticleSystemList[i]->getParameters().subtype > -1 )
+				{
+					// Rumble
+					if( mParticleSystemList[i]->getParameters().subtype == 0 )
+					{
+						SpecialEffectEventPtr evt = SpecialEffectEventPtr(new SpecialEffectEvent(SpecialEffectEvent::EffectType::Rumble, 0.5, 1.0));
+						EVENTS_FIRE(evt);
+					}
+					// Shake
+					else if( mParticleSystemList[i]->getParameters().subtype == 1 )
+					{
+						SpecialEffectEventPtr evt = SpecialEffectEventPtr(new SpecialEffectEvent(SpecialEffectEvent::EffectType::Rumble, 1.0, 1.0));
+						EVENTS_FIRE(evt);
+					}
+					// Tremor
+					else if( mParticleSystemList[i]->getParameters().subtype == 2 )
+					{
+						SpecialEffectEventPtr evt = SpecialEffectEventPtr(new SpecialEffectEvent(SpecialEffectEvent::EffectType::Tremor, 2.0, 0.5));
+						EVENTS_FIRE(evt);
+					}
+				}
+			}
 		}
 	}
 }
@@ -76,32 +103,73 @@ ParticleUniverse::ParticleSystem* ParticleManager::create(String script)
 }
 
 // Create particle system, add to node and start it
-void ParticleManager::add(SceneNode* node, String script, Real repeat)
+void ParticleManager::add(SceneNode* node, WyvernsAssault::ParticleSystem::ParticleSystemParameters params)
 {
-	ParticleUniverse::ParticleSystem* pSystem = mParticleSystemManager->createParticleSystem(this->createUniqueId(), script, mSceneManager);
-	node->attachObject( pSystem );
+	ParticleUniverse::ParticleSystem* ps = this->create(params.script);
+
+	ParticleSystemPtr pSystem = ParticleSystemPtr(new ParticleSystem(node, ps, params, this->createUniqueId()));
 	pSystem->start();
 
-	if( repeat > 0 )
-	{
-		mParticleSystemMap[repeat] = pSystem;
-	}
+	mParticleSystemList.push_back(pSystem);
 }
 
-void ParticleManager::add(SceneNode* node, String id, String script, Real repeat)
+void ParticleManager::add(SceneNode* node, String id, WyvernsAssault::ParticleSystem::ParticleSystemParameters params)
 {
-	ParticleUniverse::ParticleSystem* pSystem = mParticleSystemManager->createParticleSystem(id + "_particle", script, mSceneManager);
-	node->attachObject( pSystem );
+	ParticleUniverse::ParticleSystem* ps = mParticleSystemManager->createParticleSystem(id + "_particle", params.script, mSceneManager);
+
+	ParticleSystemPtr pSystem = ParticleSystemPtr(new ParticleSystem(node, ps, params, id + "_particle"));
 	pSystem->start();
+
+	mParticleSystemList.push_back(pSystem);
 }
 
 // Remove particle system from node and stop it (only usable with non-unique ID particle systems)
-void ParticleManager::remove(String id)
+bool ParticleManager::remove(String id)
 {
-	ParticleUniverse::ParticleSystem* pSystem = mParticleSystemManager->getParticleSystem(id + "_particle");
-	pSystem->stop();
-	pSystem->detachFromParent();
-	mParticleSystemManager->destroyParticleSystem(pSystem, mSceneManager);
+	ParticleSystemPtr pSystem = this->getParticleSystem(id + "_particle");
+
+	if( pSystem == NULL )
+		return false;
+	
+	ParticleSystemListIterator it = find(mParticleSystemList.begin(), mParticleSystemList.end(), pSystem);
+	
+	if( it != mParticleSystemList.end() )
+	{
+		mParticleSystemList.erase(it);
+
+		// Plugin special destroy
+		mParticleSystemManager->getParticleSystem(id + "_particle")->stop();
+		pSystem->getSceneNode()->detachObject(mParticleSystemManager->getParticleSystem(id + "_particle"));
+		mParticleSystemManager->destroyParticleSystem(mParticleSystemManager->getParticleSystem(id + "_particle"), mSceneManager);
+
+		return true;
+	}
+
+	return false;
+}
+
+ParticleSystemPtr ParticleManager::getParticleSystem(String id)
+{
+	for(int i = 0; i < mParticleSystemList.size(); i++ )
+	{
+		if( mParticleSystemList[i]->getId() == id )
+			return mParticleSystemList[i];
+	}
+
+	ParticleSystemPtr pSystem;
+
+	return pSystem;
+}
+
+WyvernsAssault::ParticleSystem::ParticleSystemParameters ParticleManager::defaultParameters(String script)
+{
+	WyvernsAssault::ParticleSystem::ParticleSystemParameters params;
+	params.script = script;
+	params.subtype = -1;
+	params.repeatMax = -1;
+	params.repeatMin = -1;
+
+	return params;
 }
 
 // Blood on camera lens
@@ -148,9 +216,7 @@ Ogre::String ParticleManager::createUniqueId()
 // Event handlers
 // --------------
 EVENTS_BEGIN_REGISTER_HANDLERS(ParticleManager)
-	EVENTS_REGISTER_HANDLER(ParticleManager,PlayerAttack)
 	EVENTS_REGISTER_HANDLER(ParticleManager,PlayerHit)
-	EVENTS_REGISTER_HANDLER(ParticleManager,EnemyAttack)
 	EVENTS_REGISTER_HANDLER(ParticleManager,EnemyHit)
 	EVENTS_REGISTER_HANDLER(ParticleManager,EnemyKilled)
 	EVENTS_REGISTER_HANDLER(ParticleManager,EnemyCustom)
@@ -164,9 +230,7 @@ EVENTS_BEGIN_REGISTER_HANDLERS(ParticleManager)
 EVENTS_END_REGISTER_HANDLERS()
 
 EVENTS_BEGIN_UNREGISTER_HANDLERS(ParticleManager)
-	EVENTS_UNREGISTER_HANDLER(ParticleManager,PlayerAttack)
 	EVENTS_UNREGISTER_HANDLER(ParticleManager,PlayerHit)
-	EVENTS_UNREGISTER_HANDLER(ParticleManager,EnemyAttack)
 	EVENTS_UNREGISTER_HANDLER(ParticleManager,EnemyHit)
 	EVENTS_UNREGISTER_HANDLER(ParticleManager,EnemyKilled)
 	EVENTS_UNREGISTER_HANDLER(ParticleManager,EnemyCustom)
@@ -180,31 +244,13 @@ EVENTS_BEGIN_UNREGISTER_HANDLERS(ParticleManager)
 EVENTS_END_REGISTER_HANDLERS()
 
 
-EVENTS_DEFINE_HANDLER(ParticleManager, PlayerAttack)
-{
-	PlayerPtr player = evt->getPlayer();
-
-	SceneNode* sceneNode = player->_getSceneNode();
-
-	//this->blast(sceneNode);
-}
-
 EVENTS_DEFINE_HANDLER(ParticleManager, PlayerHit)
 {
 	PlayerPtr player = evt->getPlayer();
 
 	SceneNode* sceneNode = player->_getSceneNode();
 
-	this->add(sceneNode, "WyvernsAssault/Impact");
-}
-
-EVENTS_DEFINE_HANDLER(ParticleManager, EnemyAttack)
-{
-	EnemyPtr enemy = evt->getEnemy();
-
-	SceneNode* sceneNode = enemy->_getSceneNode();
-
-	//this->swing(sceneNode);
+	this->add(sceneNode, this->defaultParameters("WyvernsAssault/Impact"));
 }
 
 EVENTS_DEFINE_HANDLER(ParticleManager, EnemyHit)
@@ -214,16 +260,16 @@ EVENTS_DEFINE_HANDLER(ParticleManager, EnemyHit)
 
 	if( player->isSpecial() )
 	{
-		this->add(enemy->_getSceneNode(), "WyvernsAssault/FireHit");
+		this->add(enemy->_getSceneNode(), this->defaultParameters("WyvernsAssault/FireHit"));
 	}
 	else
 	{
 		if( enemy->getEnemyType() == Enemy::EnemyTypes::BatteringRam )
-			this->add(enemy->_getSceneNode(), "WyvernsAssault/Hit");
+			this->add(enemy->_getSceneNode(), this->defaultParameters("WyvernsAssault/Hit"));
 		else
 		{
-			this->add(enemy->_getSceneNode(), "WyvernsAssault/BloodHit");	
-			this->add(enemy->_getSceneNode(), "WyvernsAssault/Hit");	
+			this->add(enemy->_getSceneNode(), this->defaultParameters("WyvernsAssault/BloodHit"));
+			this->add(enemy->_getSceneNode(), this->defaultParameters("WyvernsAssault/Hit"));	
 		}
 	}
 }
@@ -236,22 +282,22 @@ EVENTS_DEFINE_HANDLER(ParticleManager, EnemyKilled)
 	if( !enemy->isBurning() )
 	{
 		if( enemy->getEnemyType() == Enemy::EnemyTypes::Chicken )
-			this->add(enemy->_getSceneNode(), "WyvernsAssault/ChickenKill");
+			this->add(enemy->_getSceneNode(), this->defaultParameters("WyvernsAssault/ChickenKill"));
 
 		if( enemy->getEnemyType() == Enemy::EnemyTypes::Cow )
-			this->add(enemy->_getSceneNode(), "WyvernsAssault/CowKill");
+			this->add(enemy->_getSceneNode(), this->defaultParameters("WyvernsAssault/CowKill"));
 
 		else if( enemy->isFlying() )
 		{
-			this->add(enemy->_getSceneNode(), "WyvernsAssault/BloodHit");
+			this->add(enemy->_getSceneNode(), this->defaultParameters("WyvernsAssault/BloodHit"));
 			this->bloodLens();
 		}
 		else
 		{
 			if( enemy->getEnemyType() == Enemy::EnemyTypes::BatteringRam )
-				this->add(enemy->_getSceneNode(), "WyvernsAssault/Hit");
+				this->add(enemy->_getSceneNode(), this->defaultParameters("WyvernsAssault/Hit"));
 			else
-				this->add(enemy->_getSceneNode(), "WyvernsAssault/BloodKill");
+				this->add(enemy->_getSceneNode(), this->defaultParameters("WyvernsAssault/BloodKill"));
 		}
 	}
 }
@@ -263,9 +309,9 @@ EVENTS_DEFINE_HANDLER(ParticleManager, EnemyCustom)
 	if( enemy->isBurning())
 	{
 		if( enemy->getEnemyType() == Enemy::EnemyTypes::BatteringRam )
-			this->add(enemy->_getSceneNode(), "WyvernsAssault/FireKillObject");
+			this->add(enemy->_getSceneNode(), this->defaultParameters("WyvernsAssault/FireKillObject"));
 		else
-			this->add(enemy->_getSceneNode(), "WyvernsAssault/FireKill");
+			this->add(enemy->_getSceneNode(), this->defaultParameters("WyvernsAssault/FireKill"));
 	}
 }
 
@@ -273,14 +319,14 @@ EVENTS_DEFINE_HANDLER(ParticleManager, ItemCreation)
 {
 	ItemPtr item = evt->getItem();
 
-	this->add(item->_getSceneNode(), item->getName() + "_glow", "WyvernsAssault/ItemGlow");
+	this->add(item->_getSceneNode(), item->getName() + "_glow", this->defaultParameters("WyvernsAssault/ItemGlow"));
 
 	if ( item->getType() == Item::ItemTypes::Life )
-		this->add(item->_getSceneNode(), item->getName(), "WyvernsAssault/Heart");
+		this->add(item->_getSceneNode(), item->getName(), this->defaultParameters("WyvernsAssault/Heart"));
 	else if ( item->getType() == Item::ItemTypes::Drunk )
-		this->add(item->_getSceneNode(), item->getName(), "WyvernsAssault/Skull");
+		this->add(item->_getSceneNode(), item->getName(), this->defaultParameters("WyvernsAssault/Skull"));
 	else if ( item->getType() == Item::ItemTypes::Points )
-		this->add(item->_getSceneNode(), item->getName(), "WyvernsAssault/Money");
+		this->add(item->_getSceneNode(), item->getName(), this->defaultParameters("WyvernsAssault/Money"));
 }
 
 EVENTS_DEFINE_HANDLER(ParticleManager, ItemCatch)
@@ -291,7 +337,7 @@ EVENTS_DEFINE_HANDLER(ParticleManager, ItemCatch)
 
 	this->remove(item->getName() + "_glow");
 	this->remove(item->getName());
-	this->add(sceneNode, "WyvernsAssault/GlowShort");
+	this->add(sceneNode, this->defaultParameters("WyvernsAssault/GlowShort"));
 }
 
 EVENTS_DEFINE_HANDLER(ParticleManager, ProjectileUpdate)
@@ -300,7 +346,7 @@ EVENTS_DEFINE_HANDLER(ParticleManager, ProjectileUpdate)
 
 	// Add particles to projectile
 	if( evt->getType() == Enemy::EnemyTypes::Wizard )
-		this->add(projectile->_getSceneNode(), projectile->getName(), "WyvernsAssault/MagicBolt");
+		this->add(projectile->_getSceneNode(), projectile->getName(), this->defaultParameters("WyvernsAssault/MagicBolt"));
 }
 
 EVENTS_DEFINE_HANDLER(ParticleManager, ProjectileHit)
@@ -309,7 +355,7 @@ EVENTS_DEFINE_HANDLER(ParticleManager, ProjectileHit)
 
 	SceneNode* sceneNode = player->_getSceneNode();
 
-	this->add(sceneNode, "WyvernsAssault/Impact");
+	this->add(sceneNode, this->defaultParameters("WyvernsAssault/Impact"));
 }
 
 EVENTS_DEFINE_HANDLER(ParticleManager, ObjectHit)
@@ -318,9 +364,9 @@ EVENTS_DEFINE_HANDLER(ParticleManager, ObjectHit)
 	PlayerPtr player = evt->getPlayer();	
 
 	if( player->isSpecial() )
-		this->add(object->_getSceneNode(), "WyvernsAssault/FireHitObject");
+		this->add(object->_getSceneNode(), this->defaultParameters("WyvernsAssault/FireHitObject"));
 	else
-		this->add(object->_getSceneNode(), "WyvernsAssault/Hit");	
+		this->add(object->_getSceneNode(), this->defaultParameters("WyvernsAssault/Hit"));
 }
 
 EVENTS_DEFINE_HANDLER(ParticleManager, ObjectKilled)
@@ -329,7 +375,7 @@ EVENTS_DEFINE_HANDLER(ParticleManager, ObjectKilled)
 	PlayerPtr player = evt->getPlayer();	
 
 	if( !object->isBurning() )		
-		this->add(object->_getSceneNode(), "WyvernsAssault/Hit");
+		this->add(object->_getSceneNode(), this->defaultParameters("WyvernsAssault/Hit"));
 }
 
 EVENTS_DEFINE_HANDLER(ParticleManager, ObjectCustom)
@@ -337,7 +383,7 @@ EVENTS_DEFINE_HANDLER(ParticleManager, ObjectCustom)
 	ObjectPtr object = evt->getObject();
 
 	if( object->isBurning())
-		this->add(object->_getSceneNode(), "WyvernsAssault/FireKillObject");
+		this->add(object->_getSceneNode(), this->defaultParameters("WyvernsAssault/FireKillObject"));
 }
 
 // --------------------------------

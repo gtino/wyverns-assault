@@ -355,3 +355,13 @@ GameAreaFlashCounterEvent::GameAreaFlashCounterEvent(int seconds)
 {
 	mSeconds = seconds;
 };
+
+//----------------------
+
+SpecialEffectEvent::SpecialEffectEvent(EffectType type, float time, float amount)
+:Event(EventTypes::SpecialEffect, EventPriorities::Normal)
+{
+	mType = type;
+	mTime = time;
+	mAmount = amount;
+};

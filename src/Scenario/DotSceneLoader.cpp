@@ -758,11 +758,12 @@ void DotSceneLoader::processEntity(TiXmlElement *XMLNode, SceneNode *pParent)
 		// If its a particle system dont create entity
 		if(type == "ParticleSystem")
 		{
-			// Get own atributes
-			String script = getAttrib(XMLNode, "script");
-			Real repeat = getAttribReal(XMLNode, "repeat");
+			WyvernsAssault::ParticleSystem::ParticleSystemParameters params = mParticleManager->defaultParameters(getAttrib(XMLNode, "script"));
+			params.subtype = getAttribInt(XMLNode, "subType");
+			params.repeatMax = getAttribReal(XMLNode, "repeatMax");
+			params.repeatMin = getAttribReal(XMLNode, "repeatMin");			
 
-			mParticleManager->add(pParent, script, repeat);
+			mParticleManager->add(pParent, params);
 		}
 		else
 		{

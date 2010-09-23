@@ -46,6 +46,7 @@ function playBossCutScene(elapsedTime)
 			CutScene.nextStep(); -- Simply go to next step
 		end
 	else
+		Audio.playLoop("Boss1.mp3")
 		Camera.setCurrent(CameraMode_Game); -- Sets the current camera
 		
 		Gui.hideForeground();

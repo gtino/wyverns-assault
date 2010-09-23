@@ -127,9 +127,9 @@ void AudioManager::loadResources()
 	createStream( String("WizardDie01.wav"));
 	createStream( String("WizardHit01.wav"));
 	createStream( String("WizardHit02.wav"));
+	createStream( String("WomanDie01.wav"));
 	createStream( String("WomanHit01.wav"));
-	createStream( String("WomanHit02.wav"));
-	createStream( String("WomanDie02.wav"));
+	createStream( String("WomanHit02.wav"));	
 	createStream( String("WomanGive01.wav"));
 	createStream( String("WomanGive02.wav"));
 	createStream( String("WomanGive03.wav"));		
@@ -169,11 +169,17 @@ void AudioManager::loadResources()
 	createStream( String("ChangeOption.wav"));
 	createStream( String("Select.wav"));
 
+	createStream( String("LavaExplosion.wav"));
+	createStream( String("StoneRain.wav"));
+
 	// Musics
-	createLoopedStream(String("soft_track.mp3"));
-	createLoopedStream(String("hard_track.mp3"));
-	createLoopedStream(String("main_track.mp3"));
-	createLoopedStream(String("intro.mp3"));
+	createLoopedStream(String("Boss1.mp3"));
+	createLoopedStream(String("GameEnd.mp3"));
+	createLoopedStream(String("GameOver.mp3"));
+	createLoopedStream(String("Intro.mp3"));
+	createLoopedStream(String("Level1_1 - Intro.mp3"));
+	createLoopedStream(String("Level1_1.mp3"));
+	createLoopedStream(String("Menu.mp3"));
 
 	Debug::Out("AudioManager : Resources loaded");
 }
@@ -528,7 +534,7 @@ void AudioManager::playSoundTrack(String name)
 	mSystem->getChannel(mSoundTrackChannelIndex, &channel);
 	
 	if(channel)
-		channel->setVolume(0.5);
+		channel->setVolume(0.75);
 }
 
 void AudioManager::stopSoundTrack()
@@ -671,6 +677,7 @@ EVENTS_BEGIN_REGISTER_HANDLERS(AudioManager)
 	EVENTS_REGISTER_HANDLER(AudioManager, ProjectileHit);
 	EVENTS_REGISTER_HANDLER(AudioManager, ObjectHit);
 	EVENTS_REGISTER_HANDLER(AudioManager, ObjectKilled);
+	EVENTS_REGISTER_HANDLER(AudioManager, SpecialEffect);
 EVENTS_END_REGISTER_HANDLERS()
 
 EVENTS_BEGIN_UNREGISTER_HANDLERS(AudioManager)
@@ -687,6 +694,7 @@ EVENTS_BEGIN_UNREGISTER_HANDLERS(AudioManager)
 	EVENTS_UNREGISTER_HANDLER(AudioManager, ProjectileHit);
 	EVENTS_UNREGISTER_HANDLER(AudioManager, ObjectHit);
 	EVENTS_UNREGISTER_HANDLER(AudioManager, ObjectKilled);
+	EVENTS_UNREGISTER_HANDLER(AudioManager, SpecialEffect);
 EVENTS_END_UNREGISTER_HANDLERS()
 
 
@@ -1054,6 +1062,29 @@ EVENTS_DEFINE_HANDLER(AudioManager, ObjectKilled)
 			playSound("ObjectFireHit02.wav",sceneNode->_getDerivedPosition(),&channelIndex);
 	}
 }
+
+EVENTS_DEFINE_HANDLER(AudioManager, SpecialEffect)
+{
+	Debug::Out("AudioManager : handleSpecialEffectEvent");
+
+	int channelIndex = -1;
+
+	switch(evt->getType())
+	{
+		case SpecialEffectEvent::EffectType::Rumble:
+			playSound("LavaExplosion.wav", channelIndex);
+			break;
+
+		case SpecialEffectEvent::EffectType::Shake:
+			playSound("LavaExplosion.wav", channelIndex);
+			break;
+
+		case SpecialEffectEvent::EffectType::Tremor:
+			playSound("StoneRain.wav", channelIndex);
+			break;
+	}
+}
+
 
 // --------------------------------
 // Lua Audio Lib

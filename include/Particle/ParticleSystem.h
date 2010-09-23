@@ -37,7 +37,16 @@ namespace WyvernsAssault
 	class ParticleSystem
 	{
 	public:
-		ParticleSystem(Ogre::String id, Ogre::String script);
+		struct ParticleSystemParameters
+		{
+			String	script;
+			int		subtype;
+			float	repeatMin;
+			float	repeatMax;
+		};
+
+	public:
+		ParticleSystem(SceneNode* sceneNode, ParticleUniverse::ParticleSystem* particleSystem, ParticleSystemParameters params, String id);
 		~ParticleSystem();
 		
 		void start(void);
@@ -48,10 +57,26 @@ namespace WyvernsAssault
 		void attachTo(SceneNode* node);
 		void detachFrom(SceneNode* node);
 
-	private:
-		ParticleUniverse::ParticleSystem* mParticleSystem;
+		// Parameters functions
+		ParticleUniverse::ParticleSystem* getParticleSystem(){ return mParticleSystem; }
+		ParticleSystemParameters getParameters(){ return mParameters; }
+		SceneNode* getSceneNode(){ return mSceneNode; }
+		String getId(){ return mId; }
 
-		Ogre::SceneNode* mSceneNode;
+		// Time functions
+		float getRepeat(){ return mRepeat; }
+		void newRepeat(){ fmodf(rand(), ( mParameters.repeatMax - mParameters.repeatMin )) + mParameters.repeatMin; }
+		float getTimer(){ return mTimer; }
+		void setTimer(float time){ mTimer = time; }
+
+	private:
+		ParticleUniverse::ParticleSystem*	mParticleSystem;
+		ParticleSystemParameters			mParameters;
+		Ogre::SceneNode*					mSceneNode;
+		String								mId;
+
+		float		mRepeat;
+		float		mTimer;
 	};
 
 	typedef boost::shared_ptr<ParticleSystem> ParticleSystemPtr;

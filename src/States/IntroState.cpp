@@ -66,7 +66,7 @@ void IntroState::load()
 	// Add menu to screen
 	mGuiScreen->addMenu(mMenu);
 
-	mAudioManager->playSoundTrack("intro.mp3");
+	mAudioManager->playSoundTrack("Intro.mp3");
 	mVideoManager->play();
 }
 

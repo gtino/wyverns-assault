@@ -54,16 +54,16 @@
       <DIRECTORY type="FileSystem" value="../materials/scripts/sky"></DIRECTORY>
       <DIRECTORY type="FileSystem" value="../models/stages"></DIRECTORY>
     </RESOURCEDIRECTORIES>
-  <CAMERASPEED value="9"></CAMERASPEED>
+  <CAMERASPEED value="13"></CAMERASPEED>
   <CAMERAPOSITIONS count="0">
-    <OPTION id="0" position="-152.243 223.206 377.561" orientation="0.969056 -0.146994 -0.196064 -0.029712"></OPTION>
+    <OPTION id="0" position="-164.066 159.06 372.864" orientation="0.936895 -0.286447 -0.191691 -0.0585766"></OPTION>
   </CAMERAPOSITIONS>
     <LAYERS>
       <LAYER id="0" name="Layer0" visible="true"></LAYER>
       <LAYER id="1" name="Layer1" visible="true"></LAYER>
       <LAYER id="2" name="Layer2" visible="true"></LAYER>
       <LAYER id="3" name="Layer3" visible="true"></LAYER>
-      <LAYER id="4" name="Layer4" visible="false"></LAYER>
+      <LAYER id="4" name="Layer4" visible="true"></LAYER>
       <LAYER id="5" name="Layer 1" visible="true"></LAYER>
       <LAYER id="6" name="Layer 2" visible="true"></LAYER>
       <LAYER id="7" name="Layer 3" visible="true"></LAYER>
@@ -137,9 +137,9 @@
   <OBJECT object_id="2000000002" name="Viewport1" typename="Viewport Object">
     <PROPERTY id="camera::clipdistance" type="8" value="1 3000"></PROPERTY>
     <PROPERTY id="camera::fov" type="6" value="1"></PROPERTY>
-    <PROPERTY id="camera::orientation" type="13" value="0.969056 -0.146994 -0.196064 -0.029712"></PROPERTY>
+    <PROPERTY id="camera::orientation" type="13" value="0.936895 -0.286447 -0.191691 -0.0585766"></PROPERTY>
     <PROPERTY id="camera::polymode" type="2" value="3"></PROPERTY>
-    <PROPERTY id="camera::position" type="9" value="-152.243 223.206 377.561"></PROPERTY>
+    <PROPERTY id="camera::position" type="9" value="-164.066 159.06 372.864"></PROPERTY>
     <PROPERTY id="camera::viewmode" type="2" value="0"></PROPERTY>
     <PROPERTY id="colour" type="11" value="0 0 0 1"></PROPERTY>
     <PROPERTY id="compositorcount" type="2" value="0"></PROPERTY>
@@ -413,24 +413,12 @@
     </CUSTOMPROPERTIES>
   </OBJECT>
 
-  <OBJECT object_id="770165056" name="Enemies" typename="Node Object" parentnode="SceneManager">
+  <OBJECT object_id="568742912" name="Enemies" typename="Node Object" parentnode="SceneManager">
     <PROPERTY id="autotracktarget" type="7" value="None"></PROPERTY>
     <PROPERTY id="layer" type="2" value="0"></PROPERTY>
     <PROPERTY id="locked" type="12" value="false"></PROPERTY>
     <PROPERTY id="orientation" type="13" value="1 0 0 0"></PROPERTY>
     <PROPERTY id="position" type="9" value="0 0 0"></PROPERTY>
-    <PROPERTY id="scale" type="9" value="1 1 1"></PROPERTY>
-    <PROPERTY id="updatescript" type="7" value=""></PROPERTY>
-    <CUSTOMPROPERTIES>
-    </CUSTOMPROPERTIES>
-  </OBJECT>
-
-  <OBJECT object_id="690633920" name="Boss" typename="Node Object" parentnode="Enemies">
-    <PROPERTY id="autotracktarget" type="7" value="None"></PROPERTY>
-    <PROPERTY id="layer" type="2" value="0"></PROPERTY>
-    <PROPERTY id="locked" type="12" value="false"></PROPERTY>
-    <PROPERTY id="orientation" type="13" value="0.878817 0 -0.477159 0"></PROPERTY>
-    <PROPERTY id="position" type="9" value="0 137.453 0"></PROPERTY>
     <PROPERTY id="scale" type="9" value="1 1 1"></PROPERTY>
     <PROPERTY id="updatescript" type="7" value=""></PROPERTY>
     <CUSTOMPROPERTIES>
@@ -650,7 +638,9 @@
     <CUSTOMPROPERTIES>
       <PROPERTY id="type" type="7" value="ParticleSystem"></PROPERTY>
       <PROPERTY id="script" type="7" value="WyvernsAssault/Explosion"></PROPERTY>
-      <PROPERTY id="repeat" type="6" value="10"></PROPERTY>
+      <PROPERTY id="subType" type="2" value="0"></PROPERTY>
+      <PROPERTY id="repeatMin" type="6" value="5"></PROPERTY>
+      <PROPERTY id="repeatMax" type="6" value="20"></PROPERTY>
     </CUSTOMPROPERTIES>
   </OBJECT>
 
@@ -743,6 +733,9 @@
     <CUSTOMPROPERTIES>
       <PROPERTY id="type" type="7" value="ParticleSystem"></PROPERTY>
       <PROPERTY id="script" type="7" value="WyvernsAssault/StoneRain"></PROPERTY>
+      <PROPERTY id="subType" type="2" value="2"></PROPERTY>
+      <PROPERTY id="repeatMin" type="6" value="10"></PROPERTY>
+      <PROPERTY id="repeatMax" type="6" value="25"></PROPERTY>
     </CUSTOMPROPERTIES>
   </OBJECT>
 
@@ -890,24 +883,6 @@
     </CUSTOMPROPERTIES>
   </OBJECT>
 
-  <OBJECT object_id="982787520" name="Boss#0" typename="Entity Object" parentnode="Boss">
-    <PROPERTY id="autotracktarget" type="7" value="None"></PROPERTY>
-    <PROPERTY id="castshadows" type="12" value="false"></PROPERTY>
-    <PROPERTY id="layer" type="2" value="2"></PROPERTY>
-    <PROPERTY id="locked" type="12" value="false"></PROPERTY>
-    <PROPERTY id="meshfile" type="7" value="Boss.mesh"></PROPERTY>
-    <PROPERTY id="orientation" type="13" value="1 0 0 0"></PROPERTY>
-    <PROPERTY id="position" type="9" value="0 0 0"></PROPERTY>
-    <PROPERTY id="renderingdistance" type="6" value="5000"></PROPERTY>
-    <PROPERTY id="scale" type="9" value="1 1 1"></PROPERTY>
-    <PROPERTY id="subentity0::material" type="7" value="Scene_Material"></PROPERTY>
-    <PROPERTY id="subentity0::visible" type="12" value="true"></PROPERTY>
-    <PROPERTY id="subentitycount" type="2" value="1"></PROPERTY>
-    <PROPERTY id="updatescript" type="7" value=""></PROPERTY>
-    <CUSTOMPROPERTIES>
-    </CUSTOMPROPERTIES>
-  </OBJECT>
-
   <OBJECT object_id="902005056" name="2DBillboard0#2" typename="Entity Object" parentnode="Fire#2">
     <PROPERTY id="autotracktarget" type="7" value="None"></PROPERTY>
     <PROPERTY id="castshadows" type="12" value="false"></PROPERTY>
@@ -967,8 +942,8 @@
     <PROPERTY id="colour" type="11" value="1 0 0 1"></PROPERTY>
     <PROPERTY id="layer" type="2" value="0"></PROPERTY>
     <PROPERTY id="locked" type="12" value="false"></PROPERTY>
-    <PROPERTY id="orientation" type="13" value="1 0 0 0"></PROPERTY>
-    <PROPERTY id="position" type="9" value="-127.292 24.5 303.589"></PROPERTY>
+    <PROPERTY id="orientation" type="13" value="0.833886 0 0.551937 0"></PROPERTY>
+    <PROPERTY id="position" type="9" value="-120 25 250"></PROPERTY>
     <PROPERTY id="scale" type="9" value="50 50 50"></PROPERTY>
     <PROPERTY id="updatescript" type="7" value=""></PROPERTY>
     <CUSTOMPROPERTIES>

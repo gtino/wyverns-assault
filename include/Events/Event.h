@@ -69,7 +69,8 @@ namespace WyvernsAssault
 		ProjectileRemove,
 		LevelComplete,
 		WeatherChanged,
-		GameAreaFlashCounter
+		GameAreaFlashCounter,
+		SpecialEffect
 	};
 
 	/** Event priority, used to put the event in the correct queue */
@@ -661,6 +662,35 @@ namespace WyvernsAssault
 	};
 
 	typedef boost::shared_ptr<GameAreaFlashCounterEvent> GameAreaFlashCounterEventPtr;
+
+	// --------------------------------
+	class SpecialEffectEvent : public Event
+	{
+	public:
+
+		enum EffectType
+		{
+			Rumble,
+			Shake,
+			Tremor,
+			Drunk, 
+			Zoom
+		};
+
+		SpecialEffectEvent(EffectType type, float time, float amount);
+		~SpecialEffectEvent(){};
+		
+		EffectType getType(){ return mType; }
+		float getTime(){ return mTime; }
+		float getAmount(){ return mAmount; }
+
+	private:
+		EffectType mType;
+		float mTime;
+		float mAmount;
+	};
+
+	typedef boost::shared_ptr<SpecialEffectEvent> SpecialEffectEventPtr;
 
 }
 

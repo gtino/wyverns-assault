@@ -25,8 +25,8 @@
   </lights>
   <markers>
     <marker name="Start" id="334208192">
-      <rotation qw="1" qx="0" qy="0" qz="0" />
-      <position x="-127.292" y="24.5" z="303.589" />
+      <rotation qw="0.833886" qx="0" qy="0.551937" qz="0" />
+      <position x="-120" y="25" z="250" />
       <scale x="50" y="50" z="50" />
     </marker>
   </markers>
@@ -283,23 +283,10 @@
         </entity>
       </node>
     </node>
-    <node name="Enemies" id="770165056">
+    <node name="Enemies" id="568742912">
       <rotation qw="1" qx="0" qy="0" qz="0" />
       <position x="0" y="0" z="0" />
       <scale x="1" y="1" z="1" />
-      <node name="Boss" id="690633920">
-        <rotation qw="0.878817" qx="0" qy="-0.477159" qz="0" />
-        <position x="0" y="137.453" z="0" />
-        <scale x="1" y="1" z="1" />
-        <entity name="Boss#0" id="982787520" castshadows="false" meshFile="Boss.mesh">
-          <rotation qw="1" qx="0" qy="0" qz="0" />
-          <position x="0" y="0" z="0" />
-          <scale x="1" y="1" z="1" />
-          <subentities>
-            <subentity materialName="Scene_Material" index="0" visible="true" />
-          </subentities>
-        </entity>
-      </node>
     </node>
     <node name="Objects" id="769066432">
       <rotation qw="1" qx="0" qy="0" qz="0" />
@@ -345,7 +332,7 @@
         <rotation qw="1" qx="0" qy="0" qz="0" />
         <position x="0" y="-9" z="0" />
         <scale x="1" y="1" z="1" />
-        <entity name="cube#0" id="918790208" castshadows="false" meshFile="cube.mesh" type="ParticleSystem" script="WyvernsAssault/Explosion" repeat="10">
+        <entity name="cube#0" id="918790208" castshadows="false" meshFile="cube.mesh" type="ParticleSystem" script="WyvernsAssault/Explosion" subType="0" repeatMin="5" repeatMax="20">
           <rotation qw="1" qx="0" qy="0" qz="0" />
           <position x="0" y="0" z="0" />
           <scale x="0.1" y="0.1" z="0.1" />
@@ -358,7 +345,7 @@
         <rotation qw="1" qx="0" qy="0" qz="0" />
         <position x="0" y="0" z="0" />
         <scale x="1" y="1" z="1" />
-        <entity name="cube#1" id="108279672" castshadows="false" meshFile="cube.mesh" type="ParticleSystem" script="WyvernsAssault/StoneRain">
+        <entity name="cube#1" id="108279672" castshadows="false" meshFile="cube.mesh" type="ParticleSystem" script="WyvernsAssault/StoneRain" subType="2" repeatMin="10" repeatMax="25">
           <rotation qw="1" qx="0" qy="0" qz="0" />
           <position x="0" y="0" z="0" />
           <scale x="0.1" y="0.1" z="0.1" />

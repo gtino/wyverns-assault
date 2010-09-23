@@ -70,7 +70,7 @@ void MainMenuState::load()
 	//
 	// Play soft soundtrack
 	//
-	mAudioManager->playSoundTrack("hard_track.mp3");
+	mAudioManager->playSoundTrack("Menu.mp3");
 }
 
 /** Update internal stuff */

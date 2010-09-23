@@ -799,12 +799,14 @@ EVENTS_BEGIN_REGISTER_HANDLERS(CameraManager)
 	EVENTS_REGISTER_HANDLER(CameraManager,EnemyKilled)
 	EVENTS_REGISTER_HANDLER(CameraManager,ItemCatch)
 	EVENTS_REGISTER_HANDLER(CameraManager,PlayerAttack)
+	EVENTS_REGISTER_HANDLER(CameraManager,SpecialEffect)
 EVENTS_END_REGISTER_HANDLERS()
 
 EVENTS_BEGIN_UNREGISTER_HANDLERS(CameraManager)
 	EVENTS_UNREGISTER_HANDLER(CameraManager,EnemyKilled)
 	EVENTS_UNREGISTER_HANDLER(CameraManager,ItemCatch)
 	EVENTS_UNREGISTER_HANDLER(CameraManager,PlayerAttack)
+	EVENTS_UNREGISTER_HANDLER(CameraManager,SpecialEffect)
 EVENTS_END_UNREGISTER_HANDLERS()
 
 EVENTS_DEFINE_HANDLER(CameraManager,PlayerAttack)
@@ -838,6 +840,36 @@ EVENTS_DEFINE_HANDLER(CameraManager, ItemCatch)
 
 	if ( item->getDrunkTime() > 0 )
 		this->drunk(item->getDrunkTime() / 2 , item->getDrunkTime());
+}
+
+EVENTS_DEFINE_HANDLER(CameraManager, SpecialEffect)
+{
+	switch(evt->getType())
+	{
+		case SpecialEffectEvent::EffectType::Rumble:
+			this->rumble(evt->getTime(), evt->getAmount());
+			break;
+
+		case SpecialEffectEvent::EffectType::Shake:
+			this->shake(evt->getTime(), evt->getAmount());
+			break;
+
+		case SpecialEffectEvent::EffectType::Tremor:
+			this->tremor(evt->getTime(), evt->getAmount());
+			break;
+
+		case SpecialEffectEvent::EffectType::Zoom:
+			this->zoom(evt->getTime(), evt->getAmount());
+			break;
+
+		case SpecialEffectEvent::EffectType::Drunk:
+			this->drunk(evt->getTime(), evt->getAmount());
+			break;
+
+		default:
+			this->rumble(evt->getTime(), evt->getAmount());
+			break;
+	}
 }
 
 // --------------------------------

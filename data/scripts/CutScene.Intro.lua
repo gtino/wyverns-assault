@@ -36,7 +36,7 @@ function playIntroCutScene(elapsedTime)
 		Camera.setCurrent(CameraMode_CutScene); -- Sets the current camera
 		Camera.moveTo(2000, 1500, -2000, 80, 24, 870); -- Start from some point far away	
 		
-		Audio.playLoop("soft_track.mp3"); -- Play the soundtrack
+		Audio.playLoop("Level1_1 - Intro.mp3"); -- Play the soundtrack
 
 		CutScene.nextStep(); -- Simply go to next step
 	elseif step == 1 then
@@ -130,7 +130,7 @@ function playIntroCutScene(elapsedTime)
 			CutScene.nextStep();
 		end
 	else
-		Audio.playLoop("main_track.mp3"); -- Play the soundtrack
+		Audio.playLoop("Level1_1.mp3"); -- Play the soundtrack
 		Camera.setCurrent(CameraMode_Game); -- Sets the current camera
 		
 		Gui.hideForeground();

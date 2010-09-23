@@ -158,6 +158,7 @@ namespace WyvernsAssault
 		TIMER(ParticleSystem);
 		TIMER(Level);
 		TIMER(Weather);
+		TIMER(GUI);
 
 	protected:
 		float			buttonTimer;

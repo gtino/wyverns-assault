@@ -51,7 +51,7 @@ void EndingState::load()
 	//
 	// Audio manager
 	//
-	mAudioManager->playSoundTrack("soft_track.mp3");
+	mAudioManager->playSoundTrack("GameEnd.mp3");
 }
 
 /** Manage input */

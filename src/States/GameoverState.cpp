@@ -60,7 +60,7 @@ void GameoverState::load()
 	//
 	// Audio manager
 	//
-	mAudioManager->playSoundTrack("soft_track.mp3");
+	mAudioManager->playSoundTrack("GameOver.mp3");
 }
 
 /** Update internal stuff */
