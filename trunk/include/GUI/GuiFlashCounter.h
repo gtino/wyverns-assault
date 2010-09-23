@@ -53,24 +53,20 @@ namespace WyvernsAssault
 		GuiFlashCounter(CounterTypes type, Ogre::Viewport* viewport, int screenId, int seconds, Hikari::HikariManager* mHikari);
 		~GuiFlashCounter();
 
-		void finalize();
-		void reset();
-
 		bool update(const float elapsedSeconds, int enemyCount);
 		void setSeconds(Real seconds);
 		Real getSeconds(){return mSeconds; }
 
-		void hide(){ fc->hide();}
-		void show(){ fc->show();}
+		void hide(){ mFlashControl->hide();}
+		void show(){ mFlashControl->show();}
 
 	protected:
 
-		Hikari::HikariManager* mHikariManager;
-		Hikari::FlashControl *fc;
-		CounterTypes mType;
-		Real	mSeconds;
-
-
+		Hikari::HikariManager*	mHikariManager;
+		Hikari::FlashControl*	mFlashControl;
+		
+		CounterTypes			mType;
+		Real					mSeconds;
 	};
 
 	typedef boost::shared_ptr<GuiFlashCounter> GuiFlashCounterPtr;

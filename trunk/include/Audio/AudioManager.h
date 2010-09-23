@@ -172,6 +172,9 @@ namespace WyvernsAssault
 
 		EVENTS_HANDLER(SpecialEffect)
 
+		EVENTS_HANDLER(GameAreaChanged)
+		EVENTS_HANDLER(GameAreaCleared)
+
 		// --------------------------------
 		// BEGIN Lua Interface Declarations
 		// --------------------------------

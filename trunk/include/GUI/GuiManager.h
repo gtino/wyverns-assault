@@ -70,6 +70,8 @@ namespace WyvernsAssault
 		bool initialize(Ogre::Root* root, Ogre::SceneManager* sceneManager, Ogre::RenderWindow* window);		
 		void finalize();
 
+		void reset();
+
 		void update(const float elapsedSeconds, int enemyCount);
 
 		GuiScreenPtr createScreen(GuiScreenId id, const Ogre::String& name);
@@ -81,8 +83,6 @@ namespace WyvernsAssault
 
 		void hide();
 		void show();
-
-		void reset();
 
 	private: // InputListener
 		bool mouseMoved( const OIS::MouseEvent &arg );
@@ -99,13 +99,13 @@ namespace WyvernsAssault
 		GuiScreenMap	mGuiScreenMap;
 
 		// Flash Counters
-		bool flashCount;
-		Hikari::HikariManager* mHikariManager;
+		bool					flashCount;
 
-		GuiFlashCounterPtr mFlashCounterUI;
-		GuiFlashCounterPtr mFlashCounterEnemyUI;
+		Hikari::HikariManager*	mHikariManager;
 
-		GuiFlashMoviePtr mFlashGoGo;
+		GuiFlashCounterPtr		mFlashCounterUI;
+		GuiFlashCounterPtr		mFlashCounterEnemyUI;
+		GuiFlashMoviePtr		mFlashGoGo;
 
 		// ----------------
 		// Events interface

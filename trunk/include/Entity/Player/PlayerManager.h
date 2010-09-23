@@ -99,6 +99,8 @@ namespace WyvernsAssault
 		EVENTS_HANDLER(ItemCatch)
 		EVENTS_HANDLER(EnemyKilled)
 		EVENTS_HANDLER(ProjectileHit)
+		EVENTS_HANDLER(GameAreaChanged)
+		EVENTS_HANDLER(GameAreaCleared)
 
 	private:
 		PlayerList getPlayerList(){ return mPlayerList; }

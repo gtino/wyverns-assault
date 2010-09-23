@@ -173,6 +173,7 @@ void AudioManager::loadResources()
 	createStream( String("StoneRain.wav"));
 
 	// Musics
+	createLoopedStream(String("Bonus.mp3"));
 	createLoopedStream(String("Boss1.mp3"));
 	createLoopedStream(String("GameEnd.mp3"));
 	createLoopedStream(String("GameOver.mp3"));
@@ -678,6 +679,8 @@ EVENTS_BEGIN_REGISTER_HANDLERS(AudioManager)
 	EVENTS_REGISTER_HANDLER(AudioManager, ObjectHit);
 	EVENTS_REGISTER_HANDLER(AudioManager, ObjectKilled);
 	EVENTS_REGISTER_HANDLER(AudioManager, SpecialEffect);
+	EVENTS_REGISTER_HANDLER(AudioManager, GameAreaChanged);
+	EVENTS_REGISTER_HANDLER(AudioManager, GameAreaCleared);
 EVENTS_END_REGISTER_HANDLERS()
 
 EVENTS_BEGIN_UNREGISTER_HANDLERS(AudioManager)
@@ -695,6 +698,8 @@ EVENTS_BEGIN_UNREGISTER_HANDLERS(AudioManager)
 	EVENTS_UNREGISTER_HANDLER(AudioManager, ObjectHit);
 	EVENTS_UNREGISTER_HANDLER(AudioManager, ObjectKilled);
 	EVENTS_UNREGISTER_HANDLER(AudioManager, SpecialEffect);
+	EVENTS_UNREGISTER_HANDLER(AudioManager, GameAreaChanged);
+	EVENTS_UNREGISTER_HANDLER(AudioManager, GameAreaCleared);
 EVENTS_END_UNREGISTER_HANDLERS()
 
 
@@ -1082,6 +1087,41 @@ EVENTS_DEFINE_HANDLER(AudioManager, SpecialEffect)
 		case SpecialEffectEvent::EffectType::Tremor:
 			playSound("StoneRain.wav", channelIndex);
 			break;
+	}
+}
+
+EVENTS_DEFINE_HANDLER(AudioManager, GameAreaChanged)
+{
+	Debug::Out("AudioManager : handleGameAreaChangedEvent");
+
+	int channelIndex = -1;
+
+	int level = evt->getLevel();
+	int previousArea = evt->getPreviousArea();
+	int actualArea = evt->getActualArea();
+
+	if( level == 0)
+	{
+		// Bonus music
+		if( previousArea == 2 && actualArea == 3 )
+			playSoundTrack("Bonus.mp3");
+	}
+}
+
+EVENTS_DEFINE_HANDLER(AudioManager, GameAreaCleared)
+{
+	Debug::Out("AudioManager : handleGameAreaClearedEvent");
+
+	int channelIndex = -1;
+
+	int level = evt->getLevel();
+	int gameArea = evt->getGameArea();
+
+	if( level == 0)
+	{
+		// Play level music
+		if( gameArea == 3 )
+			playSoundTrack("Level1_1.mp3");		
 	}
 }
 

@@ -24,15 +24,11 @@ GuiManager::GuiManager()
 
 GuiManager::~GuiManager()
 {
-	//
-	// TODO Destructor
-	//
 	finalize();
 }
 
 void GuiManager::update(float const elapsedSeconds, int enemyCount)
 {
-	
 	mHikariManager->update();
 
 	if(!mFlashCounterEnemyUI)
@@ -40,21 +36,11 @@ void GuiManager::update(float const elapsedSeconds, int enemyCount)
 	else
 		mFlashCounterEnemyUI->update(elapsedSeconds, enemyCount);
 
-	if(flashCount){
+	if(flashCount)
+	{
 		flashCount = mFlashCounterUI->update(elapsedSeconds, enemyCount);
 		mFlashCounterEnemyUI->hide();
 	}
-
-}
-
-void GuiManager::reset(){
-	flashCount = false;
-	if(mFlashCounterUI)
-		mFlashCounterUI->reset();
-	if(mFlashCounterEnemyUI)
-		mFlashCounterEnemyUI->reset();
-	if(mFlashGoGo)
-		mFlashGoGo->reset();
 }
 
 bool GuiManager::initialize(Ogre::Root* root, Ogre::SceneManager* sceneManager, Ogre::RenderWindow* window)
@@ -68,9 +54,28 @@ bool GuiManager::initialize(Ogre::Root* root, Ogre::SceneManager* sceneManager, 
 
 void GuiManager::finalize()
 {
-	//
-	// TODO finalize
-	//
+	flashCount = false;
+
+	this->hide();
+
+	if( mFlashCounterUI )
+		mFlashCounterUI.reset();
+
+	if( mFlashCounterEnemyUI )
+		mFlashCounterEnemyUI.reset(); 
+
+	if( mFlashGoGo )
+		mFlashGoGo.reset();
+
+	if( mHikariManager )
+		mHikariManager = NULL;
+
+	mGuiScreenMap.clear();
+}
+
+void GuiManager::reset()
+{
+	this->hide();
 }
 
 void GuiManager::hide()
@@ -83,7 +88,6 @@ void GuiManager::hide()
 
 	if(mFlashGoGo)
 		mFlashGoGo->hide();
-
 }
 
 void GuiManager::show()

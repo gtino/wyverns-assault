@@ -763,7 +763,10 @@ void DotSceneLoader::processEntity(TiXmlElement *XMLNode, SceneNode *pParent)
 			params.repeatMax = getAttribReal(XMLNode, "repeatMax");
 			params.repeatMin = getAttribReal(XMLNode, "repeatMin");			
 
-			mParticleManager->add(pParent, params);
+			if( params.repeatMin > 0 )
+				mParticleManager->add(pParent, params, false);
+			else
+				mParticleManager->add(pParent, params);
 		}
 		else
 		{

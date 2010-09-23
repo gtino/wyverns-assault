@@ -145,6 +145,8 @@ namespace WyvernsAssault
 
 		// Movement speed
 		float getSpeed(){ return mSpeed; }
+		void doubleSpeed(){ mSpeed = mSpeed * 2; }
+		void resetSpeed(){ mSpeed = REDWYVERN_SPEED; }
 
 		// Distance from center to ground
 		float getHeight(){ return mHeight; }

@@ -31,6 +31,11 @@ void MainMenuState::initialize()
 	timer = 0.0;
 	animControl = 0;
 	isWideScreen = false;
+
+	// Set level to 0, beging level
+	mLevelManager->change(0);
+	// Reset camera starting position
+	mCameraManager->startCameras();
 }
 
 /** Manage input */
