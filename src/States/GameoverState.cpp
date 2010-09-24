@@ -47,7 +47,12 @@ void GameoverState::load()
 	mGuiScreen = mGuiManager->createScreen(GuiScreenId::GameOverGui, "GameOverScreen");
 	
 	GuiBackgroundPtr guiBackground = GuiBackgroundPtr(new GuiBackground());
-	guiBackground->setImage("GameOver.png","GameOverBackground","General");
+
+	// Common aspect ratio is 4/3
+	if( mWindow->getViewport(0)->getCamera()->getAspectRatio() > 1.34 )
+		guiBackground->setImage("wide/GameOver.png","GameOverBackground","General");
+	else
+		guiBackground->setImage("normal/GameOver.png","GameOverBackground","General");
 
 	mGuiScreen->setBackground(guiBackground);
 
