@@ -32,6 +32,9 @@ ChaseDistance = 300
 -- Wizard
 MagicDistance = 100
 
+-- Woman
+ItemDistance = 75
+
 -- Archer
 FireDistance = 150
 
@@ -124,7 +127,7 @@ function runWomanLogic(enemyId, state)
 				newState = Alert
 			end
 		elseif state == Alert then
-			if distance < LoveDistance then
+			if distance < ItemDistance then
 				newState = Love
 			elseif distance > ChaseDistance then
 				newState = Idle

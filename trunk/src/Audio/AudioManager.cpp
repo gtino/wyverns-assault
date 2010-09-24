@@ -171,6 +171,8 @@ void AudioManager::loadResources()
 
 	createStream( String("LavaExplosion.wav"));
 	createStream( String("StoneRain.wav"));
+	createStream( String("Thunder01.wav"));
+	createStream( String("Thunder02.wav"));
 
 	// Musics
 	createLoopedStream(String("Bonus.mp3"));
@@ -1076,16 +1078,19 @@ EVENTS_DEFINE_HANDLER(AudioManager, SpecialEffect)
 
 	switch(evt->getType())
 	{
-		case SpecialEffectEvent::EffectType::Rumble:
+		case SpecialEffectEvent::EffectType::Explosion:
 			playSound("LavaExplosion.wav", channelIndex);
 			break;
 
-		case SpecialEffectEvent::EffectType::Shake:
-			playSound("LavaExplosion.wav", channelIndex);
-			break;
-
-		case SpecialEffectEvent::EffectType::Tremor:
+		case SpecialEffectEvent::EffectType::Quake:
 			playSound("StoneRain.wav", channelIndex);
+			break;
+
+		case SpecialEffectEvent::EffectType::Lightning:
+			if( evt->getAmount() == 1.0 )
+				playSound("Thunder01.wav", 2);
+			else
+				playSound("Thunder02.wav", 3);
 			break;
 	}
 }

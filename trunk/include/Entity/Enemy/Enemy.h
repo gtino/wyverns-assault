@@ -34,7 +34,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #include "Ogre/AnimationSystem.h"
 
 
-#define ENEMY_BILLBOARD_SHOW_TIME 2.0f // seconds
+#define ENEMY_BILLBOARD_SHOW_TIME 1.0f // seconds
 
 // Enemies animations number in tree
 #define ENEMY_IDDLE			0
@@ -158,6 +158,7 @@ namespace WyvernsAssault
 
 		// Visibility function
 		void setVisible(bool visibility);
+		void hideBalloon(){ mBalloonSet->setVisible(false); }
 
 		// Animation functions
 		void setMoving(bool move){ moving = move; }

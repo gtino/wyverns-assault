@@ -23,6 +23,9 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #ifndef __WEATHER_MANAGER_H_
 #define __WEATHER_MANAGER_H_
 
+#define LIGHTNING_MIN_TIME	5.0
+#define LIGHTNING_MAX_TIME	15.0
+
 #include <Ogre.h>
 #include <OgreRenderWindow.h>
 
@@ -72,6 +75,14 @@ namespace WyvernsAssault
 		bool mInitialized;
 		bool mEnabled;
 
+	private:
+		int mCurrentGameArea;
+		int mCurrentLevel;
+
+		// Lightning
+		float	mTimer;
+		float	mRepeat;
+
 	public:
 		// ----------------
 		// Events interface
@@ -80,6 +91,7 @@ namespace WyvernsAssault
 
 		EVENTS_HANDLER(GameAreaChanged)
 		EVENTS_HANDLER(GameAreaCleared)
+		EVENTS_HANDLER(SpecialEffect)
 
 	public:
 		// --------------------------------

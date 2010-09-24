@@ -298,10 +298,11 @@ GameAreaEnemiesDeathEvent::GameAreaEnemiesDeathEvent(int level, int gameArea)
 
 //----------------------
 
-ProjectileFireEvent::ProjectileFireEvent(EnemyPtr e)
+ProjectileFireEvent::ProjectileFireEvent(EnemyPtr e, Vector3 target)
 :Event(EventTypes::ProjectileFire, EventPriorities::Normal)
 {
-	mEnemy = e;	
+	mEnemy = e;
+	mTarget = target;
 }
 
 //----------------------

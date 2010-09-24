@@ -287,6 +287,8 @@ void Enemy::updateLogic(lua_State *L, const float elapsedSeconds)
 	}
 	else
 	{
+		mStateTimeout += elapsedSeconds;
+
 		if(mState == Enemy::EnemyStates::Fear) 
 		{
 			setDirectionOutTarget();
@@ -294,9 +296,7 @@ void Enemy::updateLogic(lua_State *L, const float elapsedSeconds)
 		else if( mState == Enemy::EnemyStates::Alert )
 		{
 			setDirectionToTarget();
-		}
-
-		mStateTimeout += elapsedSeconds;
+		}		
 	}
 
 	if((mStateTimeout > ENEMY_BILLBOARD_SHOW_TIME) && (mState != Enemy::EnemyStates::Sleeping))

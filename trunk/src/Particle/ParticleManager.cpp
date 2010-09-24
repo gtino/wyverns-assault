@@ -72,22 +72,22 @@ void ParticleManager::update(const float elapsedSeconds)
 				// It has camera special effect
 				if( mParticleSystemList[i]->getParameters().subtype > -1 )
 				{
-					// Rumble
+					// Explosion
 					if( mParticleSystemList[i]->getParameters().subtype == 0 )
 					{
-						SpecialEffectEventPtr evt = SpecialEffectEventPtr(new SpecialEffectEvent(SpecialEffectEvent::EffectType::Rumble, 0.5, 1.0));
+						SpecialEffectEventPtr evt = SpecialEffectEventPtr(new SpecialEffectEvent(SpecialEffectEvent::EffectType::Explosion, 0.5, 1.0));
 						EVENTS_FIRE(evt);
 					}
-					// Shake
+					// Explosion
 					else if( mParticleSystemList[i]->getParameters().subtype == 1 )
 					{
-						SpecialEffectEventPtr evt = SpecialEffectEventPtr(new SpecialEffectEvent(SpecialEffectEvent::EffectType::Rumble, 1.0, 1.0));
+						SpecialEffectEventPtr evt = SpecialEffectEventPtr(new SpecialEffectEvent(SpecialEffectEvent::EffectType::Explosion, 1.0, 1.0));
 						EVENTS_FIRE(evt);
 					}
-					// Tremor
+					// Quake
 					else if( mParticleSystemList[i]->getParameters().subtype == 2 )
 					{
-						SpecialEffectEventPtr evt = SpecialEffectEventPtr(new SpecialEffectEvent(SpecialEffectEvent::EffectType::Tremor, 2.0, 0.5));
+						SpecialEffectEventPtr evt = SpecialEffectEventPtr(new SpecialEffectEvent(SpecialEffectEvent::EffectType::Quake, 2.0, 0.5));
 						EVENTS_FIRE(evt);
 					}
 				}

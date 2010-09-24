@@ -35,7 +35,8 @@ namespace WyvernsAssault
 		Noon,
 		Rain,
 		Sunset,
-		Night
+		Night, 
+		Lightning
 	};
 }
 

@@ -554,13 +554,15 @@ namespace WyvernsAssault
 	class ProjectileFireEvent : public Event
 	{
 	public:
-		ProjectileFireEvent( EnemyPtr e);
+		ProjectileFireEvent( EnemyPtr e, Vector3 target );
 		~ProjectileFireEvent(){};
 		
-		EnemyPtr getEnemy(){return mEnemy;}
+		EnemyPtr getEnemy(){ return mEnemy; }
+		Vector3 getTarget(){ return mTarget; }
 
 	private:		
 		EnemyPtr mEnemy;
+		Vector3 mTarget;
 	};
 
 	typedef boost::shared_ptr<ProjectileFireEvent> ProjectileFireEventPtr;
@@ -670,11 +672,9 @@ namespace WyvernsAssault
 
 		enum EffectType
 		{
-			Rumble,
-			Shake,
-			Tremor,
-			Drunk, 
-			Zoom
+			Explosion,
+			Quake,
+			Lightning
 		};
 
 		SpecialEffectEvent(EffectType type, float time, float amount);
