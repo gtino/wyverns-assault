@@ -3,6 +3,7 @@
 using namespace WyvernsAssault;
 
 WyvernsAssault::ParticleSystem::ParticleSystem(SceneNode* sceneNode, ParticleUniverse::ParticleSystem* particleSystem, ParticleSystemParameters params, String id)
+: mTimer(0.0)
 {
 	mSceneNode = sceneNode;
 	mParticleSystem = particleSystem;

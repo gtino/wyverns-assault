@@ -429,7 +429,7 @@ void EnemyManager::update(const float elapsedSeconds)
 				if( enemy->isRanged() )
 				{
 					//Projectile event 
-					ProjectileFireEventPtr projEvt = ProjectileFireEventPtr(new ProjectileFireEvent(enemy));
+					ProjectileFireEventPtr projEvt = ProjectileFireEventPtr(new ProjectileFireEvent( enemy, enemy->getTarget()->getPosition() ));
 					EVENTS_FIRE_AFTER(projEvt, 0.75);
 				}
 
@@ -466,6 +466,10 @@ void EnemyManager::update(const float elapsedSeconds)
 				EVENTS_FIRE(evt);
 			}
 		}
+
+		// Bonus game area, hide ballon
+		if( mCurrentGameArea == 3 )
+			enemy->hideBalloon();
 	}
 
 	// If game area is cleared raise event

@@ -1,6 +1,6 @@
 <scene>
 	<gameAreas level="0">	
-		<gameArea id="0" time="0.0" enemies="0" difficult="1" type="0">
+		<gameArea id="0" time="0.0" enemies="0" difficult="1" type="2">
 			<beginNear x="-417" y="0" z="972"/>
 			<endNear x="318" y="0" z="1016"/>
 			<beginFar x="-307" y="0" z="527"/>
@@ -57,7 +57,7 @@
 			<spawnPoint x="1302" y="10" z="180"/>
 			<spawnPoint x="1299" y="10" z="102"/>
 		</gameArea>
-		<gameArea id="5" time="0.0" enemies="0" difficult="1" type="0">
+		<gameArea id="5" time="0.0" enemies="0" difficult="1" type="2">
 			<beginNear x="1368" y="0" z="4"/>
 			<endNear x="1247" y="0" z="-260"/>	
 			<beginFar x="1016" y="0" z="89"/>

@@ -17,10 +17,14 @@ WeatherManager& WeatherManager::getSingleton(void)
 WeatherManager::WeatherManager()
 : mInitialized(false)
 , mEnabled(true)
+, mCurrentGameArea(0)
+, mCurrentLevel(0)
+, mTimer(0.0)
 {
 	//
 	// TODO Constructor
 	//
+	mRepeat = fmodf(rand(), ( LIGHTNING_MAX_TIME - LIGHTNING_MIN_TIME )) + LIGHTNING_MIN_TIME;
 }
 
 WeatherManager::~WeatherManager()
@@ -47,7 +51,26 @@ bool WeatherManager::initialize()
 
 void WeatherManager::update(const float elapsedSeconds)
 {
+	// HACK - making lightning and thunder in game areas 5, 6 and 7 from level 0
+	if( mCurrentLevel == 0 )
+	{
+		if( mCurrentGameArea > 4 && mCurrentGameArea < 8 )
+		{
+			mTimer = mTimer + elapsedSeconds;
 
+			if( mTimer > mRepeat )
+			{
+				// Create lightning effect
+				SpecialEffectEventPtr evt = SpecialEffectEventPtr(new SpecialEffectEvent(SpecialEffectEvent::EffectType::Lightning, 1.0, 2.0));
+				EVENTS_FIRE(evt);
+				evt = SpecialEffectEventPtr(new SpecialEffectEvent(SpecialEffectEvent::EffectType::Lightning, 1.0, 1.0));
+				EVENTS_FIRE_AFTER(evt, 0.7);
+
+				mRepeat = fmodf(rand(), ( LIGHTNING_MAX_TIME - LIGHTNING_MIN_TIME )) + LIGHTNING_MIN_TIME;
+				mTimer = 0.0;
+			}
+		}
+	}
 }
 
 void WeatherManager::finalize()
@@ -61,25 +84,27 @@ void WeatherManager::finalize()
 EVENTS_BEGIN_REGISTER_HANDLERS(WeatherManager)
 	EVENTS_REGISTER_HANDLER(WeatherManager, GameAreaChanged)
 	EVENTS_REGISTER_HANDLER(WeatherManager, GameAreaCleared)
+	EVENTS_REGISTER_HANDLER(WeatherManager, SpecialEffect)
 EVENTS_END_REGISTER_HANDLERS()
 
 EVENTS_BEGIN_UNREGISTER_HANDLERS(WeatherManager)
 	EVENTS_UNREGISTER_HANDLER(WeatherManager, GameAreaChanged)
 	EVENTS_UNREGISTER_HANDLER(WeatherManager, GameAreaCleared)
+	EVENTS_UNREGISTER_HANDLER(WeatherManager, SpecialEffect)
 EVENTS_END_UNREGISTER_HANDLERS()
 
 EVENTS_DEFINE_HANDLER(WeatherManager, GameAreaChanged)
 {
 	Debug::Out("WeatherManager : handleGameAreaChangedEvent");
 
-	int gameArea = evt->getActualArea();
-	int level = evt->getLevel();
+	mCurrentGameArea = evt->getActualArea();
+	mCurrentLevel = evt->getLevel();
 
-	if(level == 0) // first level Level1_1
+	if(mCurrentLevel == 0) // first level Level1_1
 	{
 		WeatherTypes weatherType = WeatherTypes::None;
 
-		switch(gameArea)
+		switch(mCurrentGameArea)
 		{
 		case 0:
 			weatherType = WeatherTypes::Dawn;
@@ -106,9 +131,9 @@ EVENTS_DEFINE_HANDLER(WeatherManager, GameAreaChanged)
 			EVENTS_FIRE(e);
 		}
 	}
-	else if(level == 1) // Boss level
+	else if(mCurrentLevel == 1) // Boss level
 	{
-		switch(gameArea)
+		switch(mCurrentGameArea)
 		{
 		case 0:
 			break;
@@ -122,6 +147,69 @@ EVENTS_DEFINE_HANDLER(WeatherManager, GameAreaCleared)
 {
 	Debug::Out("WeatherManager : handleGameAreaClearedEvent");
 }
+
+EVENTS_DEFINE_HANDLER(WeatherManager, SpecialEffect)
+{
+	Debug::Out("WeatherManager : handleSpecialEffectEvent");
+
+
+	// Only with lightning effect
+	if( evt->getType() == SpecialEffectEvent::EffectType::Lightning )
+	{
+		WeatherChangedEventPtr e = WeatherChangedEventPtr(new WeatherChangedEvent(WeatherTypes::Lightning));
+		EVENTS_FIRE(e);
+	}
+
+	// Restore weather
+	if(mCurrentLevel == 0)
+	{
+		WeatherTypes weatherType = WeatherTypes::None;
+
+		switch(mCurrentGameArea)
+		{
+		case 0:
+			weatherType = WeatherTypes::Dawn;
+			break;
+		case 2:
+			weatherType = WeatherTypes::Noon;
+			break;
+		case 5:
+			weatherType = WeatherTypes::Rain;
+			break;
+		case 6:
+			weatherType = WeatherTypes::Rain;
+			break;
+		case 7:
+			weatherType = WeatherTypes::Rain;
+			break;
+		case 8:
+			weatherType = WeatherTypes::Sunset;
+			break;
+		case 10:
+			weatherType = WeatherTypes::Night;
+			break;
+		default:
+			break;
+		}
+
+		if(weatherType != WeatherTypes::None)
+		{
+			WeatherChangedEventPtr e = WeatherChangedEventPtr(new WeatherChangedEvent(weatherType));
+			EVENTS_FIRE_AFTER(e, 0.4);
+		}
+	}
+	else if(mCurrentLevel == 1) // Boss level
+	{
+		switch(mCurrentGameArea)
+		{
+		case 0:
+			break;
+		default:
+			break;
+		}
+	}
+}
+
 
 // --------------------------------
 // Lua Level Lib

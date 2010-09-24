@@ -846,28 +846,16 @@ EVENTS_DEFINE_HANDLER(CameraManager, SpecialEffect)
 {
 	switch(evt->getType())
 	{
-		case SpecialEffectEvent::EffectType::Rumble:
+		case SpecialEffectEvent::EffectType::Explosion:
 			this->rumble(evt->getTime(), evt->getAmount());
 			break;
 
-		case SpecialEffectEvent::EffectType::Shake:
-			this->shake(evt->getTime(), evt->getAmount());
-			break;
-
-		case SpecialEffectEvent::EffectType::Tremor:
+		case SpecialEffectEvent::EffectType::Quake:
 			this->tremor(evt->getTime(), evt->getAmount());
 			break;
 
-		case SpecialEffectEvent::EffectType::Zoom:
-			this->zoom(evt->getTime(), evt->getAmount());
-			break;
-
-		case SpecialEffectEvent::EffectType::Drunk:
-			this->drunk(evt->getTime(), evt->getAmount());
-			break;
-
-		default:
-			this->rumble(evt->getTime(), evt->getAmount());
+		case SpecialEffectEvent::EffectType::Lightning:
+			this->shake(evt->getTime(), evt->getAmount());
 			break;
 	}
 }

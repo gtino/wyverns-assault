@@ -180,15 +180,7 @@ EVENTS_DEFINE_HANDLER(ProjectileManager, ProjectileFire)
 	//Points
 	EnemyPtr enemy = evt->getEnemy();
 	Vector3 init = enemy->getPosition();
-	Vector3 finish = init;
-	try
-	{
-		finish = enemy->getTarget()->getPosition();
-	}
-	catch(...)
-	{
-		finish = init;
-	}
+	Vector3 finish = evt->getTarget();
 
 	finish.y = init.y;	
 

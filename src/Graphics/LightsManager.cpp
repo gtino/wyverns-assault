@@ -132,6 +132,11 @@ EVENTS_DEFINE_HANDLER(LightsManager, WeatherChanged)
 		light->setDiffuseColour(0.2,0.2,0.4);
 		light->setPosition(0,2000,0);
 		break;
+	case WeatherTypes::Lightning:
+		setAmbientLight(Ogre::ColourValue(1,1,1,1));
+		light->setDiffuseColour(1,1,1);
+		light->setPosition(0,2000,0);
+		break;
 	default:
 		break;
 	}
