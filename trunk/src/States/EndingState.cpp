@@ -38,7 +38,12 @@ void EndingState::load()
 	mGuiScreen = mGuiManager->createScreen(GuiScreenId::EndingGui, "EndingScreen");
 	
 	GuiBackgroundPtr guiBackground = GuiBackgroundPtr(new GuiBackground());
-	guiBackground->setImage("Ending.png","EndingBackground","General");
+
+	// Common aspect ratio is 4/3
+	if( mWindow->getViewport(0)->getCamera()->getAspectRatio() > 1.34 )
+		guiBackground->setImage("wide/GameEnd.png","EndingBackground","General");
+	else
+		guiBackground->setImage("normal/GameEnd.png","EndingBackground","General");
 
 	mGuiScreen->setBackground(guiBackground);
 

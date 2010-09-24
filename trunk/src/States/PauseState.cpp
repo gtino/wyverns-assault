@@ -10,9 +10,7 @@ PauseState::PauseState(GraphicsManagerPtr graphicsManager,
 					   LevelManagerPtr levelManager)
 : BaseState(graphicsManager,inputManager,audioManager, cameraManager, guiManager, levelManager)
 {
-	//
-	// TODO Constructor
-	//
+	guiBackground = GuiBackgroundPtr(new GuiBackground());
 }
 
 PauseState::~PauseState()
@@ -37,13 +35,21 @@ void PauseState::load()
 	//
 	mGuiScreen = mGuiManager->createScreen(GuiScreenId::PauseGui, "PauseScreen");
 	
-	GuiBackgroundPtr guiBackground = GuiBackgroundPtr(new GuiBackground());
-
 	// Common aspect ratio is 4/3
 	if( mWindow->getViewport(0)->getCamera()->getAspectRatio() > 1.34 )
-		guiBackground->setImage("wide/Pause.png","PauseBackground","General");
+	{
+		if( mLevelManager->getCurrentLevelIndex() == 1 )
+			guiBackground->setImage("wide/PauseBoss.png","PauseBossBackground","General");
+		else
+			guiBackground->setImage("wide/Pause.png","PauseBackground","General");
+	}
 	else
-		guiBackground->setImage("normal/Pause.png","PauseBackground","General");
+	{
+		if( mLevelManager->getCurrentLevelIndex() == 1 )
+			guiBackground->setImage("normal/PauseBoss.png","PauseBossBackground","General");
+		else
+			guiBackground->setImage("normal/Pause.png","PauseBackground","General");
+	}
 
 	mGuiScreen->setBackground(guiBackground);
 
@@ -67,7 +73,7 @@ void PauseState::input()
 void PauseState::update(const float elapsedSeconds)
 {
 	//
-	// TODO Update
+	// TODO update
 	//
 }
 

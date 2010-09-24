@@ -66,6 +66,10 @@ namespace WyvernsAssault
 
 		/** Buffered input - keyboard key clicked */
 		bool keyReleased(const OIS::KeyEvent& e);
+
+	private:
+		GuiBackgroundPtr guiBackground;
+
 	};
 }
 #endif // __PAUSE_STATE_H_
