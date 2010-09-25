@@ -607,11 +607,8 @@ void PlayState::update(const float elapsedSeconds)
 	//
 	// Update GUI Manager
 	//
-	TIMER_START(GUI);
-	if( mLevel == 0 )
-		mGuiManager->update(elapsedSeconds, mEnemyManager->getCount());
-	else
-		mGuiManager->hide();
+	TIMER_START(GUI);	
+	mGuiManager->update(elapsedSeconds, mEnemyManager->getCount());		
 	TIMER_STOP(GUI);
 
 	//

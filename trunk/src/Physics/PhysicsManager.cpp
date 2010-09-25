@@ -18,6 +18,7 @@ PhysicsManager::PhysicsManager(SceneManager* sceneManager)
 : mPhysicsNode(0)
 , mLastAttackChecked(0)
 , mCurrentGameArea(-1)
+, mCurrentLevel(0)
 , mGameAreaCleared(true)
 {
 	mSceneManager = sceneManager;
@@ -246,7 +247,6 @@ void PhysicsManager::move(PlayerPtr player, const float elapsedSeconds)
 			player->setPosition(lastPosition);
 	}
 }
-
 
 void PhysicsManager::move(EnemyPtr enemy, const float elapsedSeconds)
 {
@@ -635,6 +635,7 @@ EVENTS_DEFINE_HANDLER(PhysicsManager, GameAreaChanged)
 
 	// New game area
 	mCurrentGameArea = evt->getActualArea();
+	mCurrentLevel =  evt->getLevel();
 	mGameAreaCleared = false;
 
 	// Remove enemies from list when game area cleared

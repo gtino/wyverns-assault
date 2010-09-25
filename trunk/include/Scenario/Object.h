@@ -64,6 +64,8 @@ namespace WyvernsAssault
 		bool isBurning(){ return burning; }
 		void setBurning(bool status){ burning = status; }
 
+		Real getPoints(){ return points; }
+
 		void setDieMaterialName(Ogre::String material){ mDieMesh->setMaterialName(material); }
 		bool hasDieAnimation(){ return mDieAnimation != NULL; }
 		bool hasDieMesh(){ return mDieMesh != NULL; }
@@ -81,7 +83,9 @@ namespace WyvernsAssault
 		ObjectTypes mType;
 
 		Real mMaxLife;
-		Real life; 
+		Real life;
+		Real points;
+
 		bool burning;
 
 		Vector3 mPhysicSize;

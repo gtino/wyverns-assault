@@ -147,6 +147,7 @@ namespace WyvernsAssault
 		ProjectileList  mProjectileList;
 
 		int				mCurrentGameArea;
+		int				mCurrentLevel;
 		bool			mGameAreaCleared;
 
 		int				mLastAttackChecked;

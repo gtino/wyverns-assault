@@ -61,6 +61,14 @@ namespace WyvernsAssault
 			int				mEnemies;
 			int				mDifficult;
 			int				mType;
+			//
+			// Game Area Types
+			//
+			// 0: Cleared by kkiling enemies
+			// 1: Cleared by time
+			// 2: No need to be cleared
+			//
+			// 10: Boos game area, no need to be cleared
 
 			std::vector<Vector3> mSpawnPoints;
 

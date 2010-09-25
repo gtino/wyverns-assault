@@ -217,6 +217,7 @@ EVENTS_BEGIN_REGISTER_HANDLERS(PlayerManager)
 	EVENTS_REGISTER_HANDLER(PlayerManager,PlayerKilled)
 	EVENTS_REGISTER_HANDLER(PlayerManager,ItemCatch)
 	EVENTS_REGISTER_HANDLER(PlayerManager,EnemyKilled)
+	EVENTS_REGISTER_HANDLER(PlayerManager,ObjectKilled)
 	EVENTS_REGISTER_HANDLER(PlayerManager,ProjectileHit)
 	EVENTS_REGISTER_HANDLER(PlayerManager,GameAreaChanged)
 	EVENTS_REGISTER_HANDLER(PlayerManager,GameAreaCleared)
@@ -227,6 +228,7 @@ EVENTS_BEGIN_UNREGISTER_HANDLERS(PlayerManager)
 	EVENTS_UNREGISTER_HANDLER(PlayerManager,PlayerKilled)
 	EVENTS_UNREGISTER_HANDLER(PlayerManager,ItemCatch)
 	EVENTS_UNREGISTER_HANDLER(PlayerManager,EnemyKilled)
+	EVENTS_UNREGISTER_HANDLER(PlayerManager,ObjectKilled)
 	EVENTS_UNREGISTER_HANDLER(PlayerManager,ProjectileHit)
 	EVENTS_UNREGISTER_HANDLER(PlayerManager,GameAreaChanged)
 	EVENTS_UNREGISTER_HANDLER(PlayerManager,GameAreaCleared)
@@ -270,12 +272,22 @@ EVENTS_DEFINE_HANDLER(PlayerManager, ItemCatch)
 
 EVENTS_DEFINE_HANDLER(PlayerManager, EnemyKilled)
 {
-	Debug::Out("PlayerManager : handleEnemyKilled");
+	Debug::Out("PlayerManager : handleEnemyKilledEvent");
 
 	PlayerPtr player = evt->getPlayer();
 	EnemyPtr enemy = evt->getEnemy();
 
 	player->addPoints(enemy->getPoints());
+}
+
+EVENTS_DEFINE_HANDLER(PlayerManager, ObjectKilled)
+{
+	Debug::Out("PlayerManager : handleObjectKilledEvent");
+
+	PlayerPtr player = evt->getPlayer();
+	ObjectPtr object = evt->getObject();
+
+	player->addPoints(object->getPoints());
 }
 
 EVENTS_DEFINE_HANDLER(PlayerManager, ProjectileHit)

@@ -14,12 +14,12 @@ GuiWidget()
 
 	if(type == CounterTypes::Manual)
 	{
-		mFlashControl = mHikariManager->createFlashOverlay("FPS"+type, viewport, 170, 150, Position(TopRight)); 
+		mFlashControl = mHikariManager->createFlashOverlay("FPS"+type, viewport, 220, 160, Position(TopRight)); 
 		mFlashControl->load("GameEnemyCounter.swf");
 	}
 	else
 	{
-		mFlashControl = mHikariManager->createFlashOverlay("FPS"+type, viewport, 143, 110, Position(TopRight));
+		mFlashControl = mHikariManager->createFlashOverlay("FPS"+type, viewport, 225, 200, Position(TopRight));
 		mFlashControl->load("GameTimer.swf"); 
 	}
 
@@ -27,7 +27,6 @@ GuiWidget()
 	mFlashControl->setDraggable(false);
 
 	mFlashControl->callFunction("setTime", Args((int)mSeconds)); 
-
 }
 
 GuiFlashCounter::~GuiFlashCounter()

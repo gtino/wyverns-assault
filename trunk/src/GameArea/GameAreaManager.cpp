@@ -79,7 +79,7 @@ void GameAreaManager::update(Vector3 playerPosition, const float elapsedSeconds)
 	mTime += elapsedSeconds;
 
 	// Game area cleared from begining
-	if( mGameAreas[mCurrentGameArea].mType == 2 && !mGameAreaCleared)
+	if( mGameAreas[mCurrentGameArea].mType == 2 && !mGameAreaCleared )
 	{
 		mGameAreaCleared = true;
 		GameAreaClearedEventPtr evt = GameAreaClearedEventPtr(new GameAreaClearedEvent(mGameAreas[playerArea].mLevel, mCurrentGameArea, mGameAreas[mCurrentGameArea].mType, isLast));
@@ -94,7 +94,7 @@ void GameAreaManager::update(Vector3 playerPosition, const float elapsedSeconds)
 		}
 	}
 	// Game Area cleared by time
-	else if( mGameAreas[mCurrentGameArea].mType == 1 && !mGameAreaCleared)
+	else if( mGameAreas[mCurrentGameArea].mType == 1 && !mGameAreaCleared )
 	{
 		if( mGameAreas[mCurrentGameArea].mFinishTime < mTime )
 		{
@@ -109,6 +109,13 @@ void GameAreaManager::update(Vector3 playerPosition, const float elapsedSeconds)
 		mGameAreaCleared = true;
 		GameAreaClearedEventPtr evt = GameAreaClearedEventPtr(new GameAreaClearedEvent(mGameAreas[playerArea].mLevel, mCurrentGameArea, mGameAreas[mCurrentGameArea].mType, isLast));
 		EVENTS_FIRE_AFTER(evt, 2.0);
+	}
+	// Boss game area
+	else if( mGameAreas[mCurrentGameArea].mType == 10 && !mGameAreaCleared )
+	{
+		mGameAreaCleared = true;
+		GameAreaClearedEventPtr evt = GameAreaClearedEventPtr(new GameAreaClearedEvent(mGameAreas[playerArea].mLevel, mCurrentGameArea, mGameAreas[mCurrentGameArea].mType, isLast));
+		EVENTS_FIRE(evt);
 	}
 }
 
