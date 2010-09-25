@@ -839,10 +839,21 @@ void DotSceneLoader::processEntity(TiXmlElement *XMLNode, SceneNode *pParent)
 				params.dieMesh = getAttrib(XMLNode, "dieMesh");
 				params.dieAnimation = getAttrib(XMLNode, "dieAnimation");
 
-				// Add to EnemyManager
-				EnemyPtr enemy = mEnemyManager->createEnemy(Enemy::StringToType(subType), name, pEntity, pParent, params, gameArea, false);
-				// Add the enemy to the physics manager
-				mPhysicsManager->addPhysicEnemy(enemy, gameArea);
+				// Add a boss
+				if( Enemy::StringToType(subType) == Enemy::EnemyTypes::Boss )
+				{
+					// Add to EnemyManager
+					EnemyPtr enemy = mEnemyManager->createEnemy(Enemy::StringToType(subType), name, pEntity, pParent, params, -10, true);
+					// Add the enemy to the physics manager
+					mPhysicsManager->addPhysicEnemy(enemy, -10);
+				}				
+				else
+				{
+					// Add to EnemyManager
+					EnemyPtr enemy = mEnemyManager->createEnemy(Enemy::StringToType(subType), name, pEntity, pParent, params, gameArea, false);
+					// Add the enemy to the physics manager
+					mPhysicsManager->addPhysicEnemy(enemy, gameArea);
+				}
 			}
 			else if( type == "Item" )
 			{

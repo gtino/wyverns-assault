@@ -43,6 +43,11 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #define ENEMY_SPECIAL		3
 #define	WOMAN_GIVE			4
 
+#define BOSS_ATTACK1		11
+#define BOSS_ATTACK2		12
+#define BOSS_ATTACK3		13
+#define BOSS_ATTACK4		14
+
 #define PHYSIC_SIZE			20
 
 namespace WyvernsAssault
@@ -65,7 +70,8 @@ namespace WyvernsAssault
 			Knight			= 5,			
 			Wizard			= 6,
 			Archer			= 7,
-			BatteringRam	= 8
+			BatteringRam	= 8,
+			Boss			= 9
 		};
 
 		enum EnemyStates
@@ -110,11 +116,13 @@ namespace WyvernsAssault
 		void initializeEntity(Ogre::Entity* entity, Ogre::SceneNode* sceneNode, Ogre::SceneManager* sceneManager);
 		void finalizeEntity();
 		void updateEntity(const float elapsedSeconds);
+		void updateBossEntity(const float elapsedSeconds);
 		
 		//
 		// Logic Interface
 		//
 		void updateLogic(lua_State *L, const float elapsedSeconds);
+		void updateBossLogic(lua_State *L, const float elapsedSeconds);
 
 		float getStateTimeout(){return mStateTimeout;}
 

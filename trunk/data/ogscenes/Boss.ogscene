@@ -13,8 +13,8 @@
       <DIRECTORY type="FileSystem" value="../animations"></DIRECTORY>
       <DIRECTORY type="FileSystem" value="../"></DIRECTORY>
       <DIRECTORY type="FileSystem" value="../materials/scripts/stages/Level1_1"></DIRECTORY>
-      <DIRECTORY type="FileSystem" value="../materials/scripts/stages/Boss"></DIRECTORY>
       <DIRECTORY type="FileSystem" value="../materials/scripts/characters/enemies"></DIRECTORY>
+      <DIRECTORY type="FileSystem" value="../models/stages/Boss/Physics"></DIRECTORY>
       <DIRECTORY type="FileSystem" value="../gui"></DIRECTORY>
       <DIRECTORY type="FileSystem" value="../materials/scripts/characters/princesses"></DIRECTORY>
       <DIRECTORY type="FileSystem" value="../sound/FX"></DIRECTORY>
@@ -28,17 +28,16 @@
       <DIRECTORY type="FileSystem" value="../materials/scripts/stages"></DIRECTORY>
       <DIRECTORY type="FileSystem" value="../materials/scripts/characters/animals"></DIRECTORY>
       <DIRECTORY type="FileSystem" value="../models/items"></DIRECTORY>
+      <DIRECTORY type="FileSystem" value="../materials/scripts/stages/Boss"></DIRECTORY>
       <DIRECTORY type="FileSystem" value="../models/characters/dragons"></DIRECTORY>
       <DIRECTORY type="FileSystem" value="../materials/textures/animations/fire"></DIRECTORY>
       <DIRECTORY type="FileSystem" value="../scenes"></DIRECTORY>
       <DIRECTORY type="FileSystem" value="../materials/scripts/characters/dragons"></DIRECTORY>
       <DIRECTORY type="FileSystem" value="../models/characters/animals"></DIRECTORY>
       <DIRECTORY type="FileSystem" value="../models/stages/Level1_1"></DIRECTORY>
-      <DIRECTORY type="FileSystem" value="../models/stages/Boss"></DIRECTORY>
       <DIRECTORY type="FileSystem" value="../materials/programs"></DIRECTORY>
       <DIRECTORY type="FileSystem" value="../scripts"></DIRECTORY>
       <DIRECTORY type="FileSystem" value="../materials/compositors"></DIRECTORY>
-      <DIRECTORY type="FileSystem" value="../models/stages/Boss/Physics"></DIRECTORY>
       <DIRECTORY type="FileSystem" value="../packs"></DIRECTORY>
       <DIRECTORY type="FileSystem" value="../materials"></DIRECTORY>
       <DIRECTORY type="FileSystem" value="../sound"></DIRECTORY>
@@ -53,17 +52,19 @@
       <DIRECTORY type="FileSystem" value="../materials/scripts/items"></DIRECTORY>
       <DIRECTORY type="FileSystem" value="../materials/scripts/sky"></DIRECTORY>
       <DIRECTORY type="FileSystem" value="../models/stages"></DIRECTORY>
+      <DIRECTORY type="FileSystem" value="../models/stages/Boss"></DIRECTORY>
+      <DIRECTORY type="FileSystem" value="../models/characters/enemies/boss"></DIRECTORY>
     </RESOURCEDIRECTORIES>
-  <CAMERASPEED value="13"></CAMERASPEED>
+  <CAMERASPEED value="42"></CAMERASPEED>
   <CAMERAPOSITIONS count="0">
-    <OPTION id="0" position="-164.066 159.06 372.864" orientation="0.936895 -0.286447 -0.191691 -0.0585766"></OPTION>
+    <OPTION id="0" position="-127.278 118.681 251.707" orientation="-0.944487 0.233308 0.224582 0.0554501"></OPTION>
   </CAMERAPOSITIONS>
     <LAYERS>
       <LAYER id="0" name="Layer0" visible="true"></LAYER>
       <LAYER id="1" name="Layer1" visible="true"></LAYER>
       <LAYER id="2" name="Layer2" visible="true"></LAYER>
-      <LAYER id="3" name="Layer3" visible="true"></LAYER>
-      <LAYER id="4" name="Layer4" visible="true"></LAYER>
+      <LAYER id="3" name="Layer3" visible="false"></LAYER>
+      <LAYER id="4" name="Layer4" visible="false"></LAYER>
       <LAYER id="5" name="Layer 1" visible="true"></LAYER>
       <LAYER id="6" name="Layer 2" visible="true"></LAYER>
       <LAYER id="7" name="Layer 3" visible="true"></LAYER>
@@ -92,10 +93,10 @@
       <LAYER id="30" name="Layer 26" visible="true"></LAYER>
     </LAYERS>
   <LAYERCOUNT value="5"></LAYERCOUNT>
-  <SELECTIONRECTCOLOUR value="0.498039 0 1 1"></SELECTIONRECTCOLOUR>
+  <SELECTIONRECTCOLOUR value="0.494118 0 1 1"></SELECTIONRECTCOLOUR>
   <SELECTIONCOLOUR value="1 1 1 1"></SELECTIONCOLOUR>
-  <HIGHLIGHTCOLOUR value="0.909804 0.188235 0.188235 1"></HIGHLIGHTCOLOUR>
-  <SELECTHIGHLIGHTCOLOUR value="0.188235 0.909804 0.188235 1"></SELECTHIGHLIGHTCOLOUR>
+  <HIGHLIGHTCOLOUR value="0.909804 0.184314 0.184314 1"></HIGHLIGHTCOLOUR>
+  <SELECTHIGHLIGHTCOLOUR value="0.184314 0.909804 0.184314 1"></SELECTHIGHLIGHTCOLOUR>
   <GRIDCOLOUR value="1 1 1 1"></GRIDCOLOUR>
   <GRIDSPACING value="1"></GRIDSPACING>
   <SNAPANGLE value="0"></SNAPANGLE>
@@ -137,9 +138,9 @@
   <OBJECT object_id="2000000002" name="Viewport1" typename="Viewport Object">
     <PROPERTY id="camera::clipdistance" type="8" value="1 3000"></PROPERTY>
     <PROPERTY id="camera::fov" type="6" value="1"></PROPERTY>
-    <PROPERTY id="camera::orientation" type="13" value="0.936895 -0.286447 -0.191691 -0.0585766"></PROPERTY>
+    <PROPERTY id="camera::orientation" type="13" value="-0.944487 0.233308 0.224582 0.0554501"></PROPERTY>
     <PROPERTY id="camera::polymode" type="2" value="3"></PROPERTY>
-    <PROPERTY id="camera::position" type="9" value="-164.066 159.06 372.864"></PROPERTY>
+    <PROPERTY id="camera::position" type="9" value="-127.278 118.681 251.707"></PROPERTY>
     <PROPERTY id="camera::viewmode" type="2" value="0"></PROPERTY>
     <PROPERTY id="colour" type="11" value="0 0 0 1"></PROPERTY>
     <PROPERTY id="compositorcount" type="2" value="0"></PROPERTY>
@@ -414,6 +415,18 @@
   </OBJECT>
 
   <OBJECT object_id="568742912" name="Enemies" typename="Node Object" parentnode="SceneManager">
+    <PROPERTY id="autotracktarget" type="7" value="None"></PROPERTY>
+    <PROPERTY id="layer" type="2" value="0"></PROPERTY>
+    <PROPERTY id="locked" type="12" value="false"></PROPERTY>
+    <PROPERTY id="orientation" type="13" value="1 0 0 0"></PROPERTY>
+    <PROPERTY id="position" type="9" value="0 0 0"></PROPERTY>
+    <PROPERTY id="scale" type="9" value="1 1 1"></PROPERTY>
+    <PROPERTY id="updatescript" type="7" value=""></PROPERTY>
+    <CUSTOMPROPERTIES>
+    </CUSTOMPROPERTIES>
+  </OBJECT>
+
+  <OBJECT object_id="426221504" name="Boss" typename="Node Object" parentnode="Enemies">
     <PROPERTY id="autotracktarget" type="7" value="None"></PROPERTY>
     <PROPERTY id="layer" type="2" value="0"></PROPERTY>
     <PROPERTY id="locked" type="12" value="false"></PROPERTY>
@@ -934,6 +947,37 @@
     <PROPERTY id="subentitycount" type="2" value="1"></PROPERTY>
     <PROPERTY id="updatescript" type="7" value=""></PROPERTY>
     <CUSTOMPROPERTIES>
+    </CUSTOMPROPERTIES>
+  </OBJECT>
+
+  <OBJECT object_id="92623672" name="bossOctopus" typename="Entity Object" parentnode="Boss">
+    <PROPERTY id="autotracktarget" type="7" value="None"></PROPERTY>
+    <PROPERTY id="castshadows" type="12" value="false"></PROPERTY>
+    <PROPERTY id="layer" type="2" value="0"></PROPERTY>
+    <PROPERTY id="locked" type="12" value="false"></PROPERTY>
+    <PROPERTY id="meshfile" type="7" value="bossOctopus.mesh"></PROPERTY>
+    <PROPERTY id="orientation" type="13" value="1 0 0 0"></PROPERTY>
+    <PROPERTY id="position" type="9" value="0 0 0"></PROPERTY>
+    <PROPERTY id="renderingdistance" type="6" value="5000"></PROPERTY>
+    <PROPERTY id="scale" type="9" value="1 1 1"></PROPERTY>
+    <PROPERTY id="subentity0::material" type="7" value="VulcanicRock"></PROPERTY>
+    <PROPERTY id="subentity0::visible" type="12" value="true"></PROPERTY>
+    <PROPERTY id="subentity1::material" type="7" value="Volcano"></PROPERTY>
+    <PROPERTY id="subentity1::visible" type="12" value="true"></PROPERTY>
+    <PROPERTY id="subentitycount" type="2" value="2"></PROPERTY>
+    <PROPERTY id="updatescript" type="7" value=""></PROPERTY>
+    <CUSTOMPROPERTIES>
+      <PROPERTY id="type" type="7" value="Enemy"></PROPERTY>
+      <PROPERTY id="subType" type="7" value="Boss"></PROPERTY>
+      <PROPERTY id="animationTree" type="7" value="data/animations/bossOctopus.xml"></PROPERTY>
+      <PROPERTY id="life" type="6" value="1500"></PROPERTY>
+      <PROPERTY id="points" type="6" value="2000"></PROPERTY>
+      <PROPERTY id="speed" type="6" value="30"></PROPERTY>
+      <PROPERTY id="damage" type="6" value="5"></PROPERTY>
+      <PROPERTY id="specialDamage" type="6" value="10"></PROPERTY>
+      <PROPERTY id="height" type="6" value="0"></PROPERTY>
+      <PROPERTY id="dieMesh" type="7" value="bossOctopusDie.mesh"></PROPERTY>
+      <PROPERTY id="dieAnimation" type="7" value="Die"></PROPERTY>
     </CUSTOMPROPERTIES>
   </OBJECT>
 
