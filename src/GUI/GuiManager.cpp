@@ -179,6 +179,7 @@ EVENTS_BEGIN_REGISTER_HANDLERS(GuiManager)
 	EVENTS_REGISTER_HANDLER(GuiManager, ItemCatch);
 	EVENTS_REGISTER_HANDLER(GuiManager, PlayerAttackSpecial);
 	EVENTS_REGISTER_HANDLER(GuiManager, EnemyKilled);
+	EVENTS_REGISTER_HANDLER(GuiManager, ObjectKilled);
 	EVENTS_REGISTER_HANDLER(GuiManager, PlayerHit);
 	EVENTS_REGISTER_HANDLER(GuiManager, PlayerStatusUpdate);
 	EVENTS_REGISTER_HANDLER(GuiManager, GameAreaFlashCounter);
@@ -190,6 +191,7 @@ EVENTS_BEGIN_UNREGISTER_HANDLERS(GuiManager)
 	EVENTS_UNREGISTER_HANDLER(GuiManager, ItemCatch);
 	EVENTS_UNREGISTER_HANDLER(GuiManager, PlayerAttackSpecial);
 	EVENTS_UNREGISTER_HANDLER(GuiManager, EnemyKilled);
+	EVENTS_UNREGISTER_HANDLER(GuiManager, ObjectKilled);
 	EVENTS_UNREGISTER_HANDLER(GuiManager, PlayerHit);
 	EVENTS_UNREGISTER_HANDLER(GuiManager, PlayerStatusUpdate);
 	EVENTS_UNREGISTER_HANDLER(GuiManager, GameAreaCleared);
@@ -248,6 +250,23 @@ EVENTS_DEFINE_HANDLER(GuiManager, EnemyKilled)
 	ui->setData(&userData);
 }
 
+EVENTS_DEFINE_HANDLER(GuiManager, ObjectKilled)
+{
+	Debug::Out("GuiManager : handleObjectKilledEvent");
+
+	PlayerPtr player = evt->getPlayer();
+
+	GuiWidgetPtr ui = mGuiScreenMap[GuiScreenId::PlayGui]->getWidget( player->getGuiId() );
+
+	GuiUserInterface::UserInterfaceData userData;
+
+	userData.life = player->getLife();
+	userData.special = player->getSpecial();
+	userData.points = player->getPoints();
+
+	ui->setData(&userData);
+}
+
 EVENTS_DEFINE_HANDLER(GuiManager, PlayerHit)
 {
 	Debug::Out("GuiManager : handlePlayerHitEvent");
@@ -288,39 +307,42 @@ EVENTS_DEFINE_HANDLER(GuiManager, GameAreaFlashCounter)
 
 	int seconds = (int)evt->getSeconds();
 
-	if(!mFlashCounterUI){
+	if(!mFlashCounterUI)
 		mFlashCounterUI = GuiFlashCounterPtr( new GuiFlashCounter(GuiFlashCounter::CounterTypes::Timer, mWindow->getViewport(0), GuiScreenId::FlashCounterGui, seconds, mHikariManager) );
-	}else{
+	else
 		mFlashCounterUI->setSeconds(seconds);
-	}
 
 	flashCount = true;
-
 }
 
 EVENTS_DEFINE_HANDLER(GuiManager, GameAreaChanged)
 {
 	Debug::Out("GuiManager : handleGameAreaChangedEvent");
 
-	if(mFlashGoGo)
-		mFlashGoGo->hide();
+	if( evt->getLevel() != 1 )
+	{
+		if(mFlashGoGo)
+			mFlashGoGo->hide();
 
-	if(mFlashCounterEnemyUI)
-		mFlashCounterEnemyUI->show();
-
+		if(mFlashCounterEnemyUI)
+			mFlashCounterEnemyUI->show();
+	}
 }
 
 EVENTS_DEFINE_HANDLER(GuiManager, GameAreaCleared)
 {
 	Debug::Out("GuiManager : handleGameAreaClearedEvent");
 
-	if(!mFlashGoGo)
-		mFlashGoGo = GuiFlashMoviePtr( new GuiFlashMovie(mWindow->getViewport(0), GuiScreenId::FlashMovieGoGoGui, mHikariManager ,"GoGo.swf") );
-	else
-		mFlashGoGo->show();
+	if( evt->getLevel() != 1 )
+	{
+		if(!mFlashGoGo)
+			mFlashGoGo = GuiFlashMoviePtr( new GuiFlashMovie(mWindow->getViewport(0), GuiScreenId::FlashMovieGoGoGui, mHikariManager ,"GoGo.swf") );
+		else
+			mFlashGoGo->show();
 
-	if(mFlashCounterEnemyUI)
-		mFlashCounterEnemyUI->hide();
+		if(mFlashCounterEnemyUI)
+			mFlashCounterEnemyUI->hide();
+	}
 }
 
 // --------------------------------

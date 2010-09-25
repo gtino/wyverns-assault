@@ -7177,7 +7177,7 @@
         </entity>
       </node>
       <node name="RedwoodTree#7" id="110629592">
-        <rotation qw="0.994056" qx="0" qy="0.108867" qz="0" />
+        <rotation qw="0.806445" qx="0" qy="0.591309" qz="0" />
         <position x="729.74" y="0" z="-665.451" />
         <scale x="1" y="1" z="1" />
         <entity name="redwoodTree#7" id="134708704" castshadows="true" meshFile="RedwoodTree0.mesh" type="DynamicObject" BoxX="45" BoxY="150" BoxZ="45" life="60" dieMesh="RedwoodTree0Die.mesh" dieAnimation="Die" dieMaterial="true">

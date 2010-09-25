@@ -115,6 +115,7 @@ namespace WyvernsAssault
 		EVENTS_HANDLER(ItemCatch)
 		EVENTS_HANDLER(PlayerAttackSpecial)
 		EVENTS_HANDLER(EnemyKilled)
+		EVENTS_HANDLER(ObjectKilled)
 		EVENTS_HANDLER(PlayerHit)
 		EVENTS_HANDLER(PlayerStatusUpdate)
 		EVENTS_HANDLER(GameAreaFlashCounter)

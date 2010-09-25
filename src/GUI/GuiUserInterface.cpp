@@ -119,7 +119,7 @@ void GuiUserInterface::setTextGodMode(bool enabled)
 	mGodModeOn = enabled;
 
 	if(mGodModeOn)
-		sprintf(uiText, "GodMode!" );
+		sprintf(uiText, "GOD MODE!" );
 	else
 		sprintf(uiText, "");
 

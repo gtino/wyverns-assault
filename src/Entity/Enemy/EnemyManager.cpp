@@ -577,7 +577,7 @@ EVENTS_DEFINE_HANDLER(EnemyManager, EnemyKilled)
 		}
 		else 
 		{
-			if( (rand()%6) == 0 )
+			if( (rand()%6) == 0 && enemy->getEnemyType() != Enemy::EnemyTypes::Woman)
 				enemy->dieToCamera();
 			else
 			{				
