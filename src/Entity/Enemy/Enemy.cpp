@@ -16,6 +16,7 @@ static struct EnemyLogic
 	{Enemy::EnemyTypes::Wizard,			"runWizardLogic"},	
 	{Enemy::EnemyTypes::Archer,			"runArcherLogic"}, 		
 	{Enemy::EnemyTypes::BatteringRam,	"runBatteringRamLogic"},
+	{Enemy::EnemyTypes::Boss,			"runBossLogic"},
 };
 
 Enemy::EnemyTypes Enemy::StringToType (Ogre::String string)
@@ -31,6 +32,7 @@ Enemy::EnemyTypes Enemy::StringToType (Ogre::String string)
 	if(strcmp ( "Wizard", str ) == 0)		return Enemy::EnemyTypes::Wizard;
 	if(strcmp ( "Archer", str ) == 0)		return Enemy::EnemyTypes::Archer;
 	if(strcmp ( "BatteringRam", str ) == 0)	return Enemy::EnemyTypes::BatteringRam;
+	if(strcmp ( "Boss", str ) == 0)			return Enemy::EnemyTypes::Boss;
 
 	return Enemy::EnemyTypes::Cow;
 }
@@ -61,6 +63,8 @@ Enemy::Enemy(Ogre::String name, Enemy::EnemyTypes type, Enemy::EnemyParameters p
 	// Physisc Size	-- HACK! Need to be defined in Ogitor	
 	if( mType == EnemyTypes::BatteringRam )
 		mParameters.physicSize = Vector3(40, 30, 40);
+	else if( mType == EnemyTypes::Boss )
+		mParameters.physicSize = Vector3(400, 400, 400);
 	else
 		mParameters.physicSize = Vector3(PHYSIC_SIZE, PHYSIC_SIZE, PHYSIC_SIZE);
 
@@ -158,6 +162,32 @@ void Enemy::updateEntity(const float elapsedSeconds)
 			if( mEntity->getAnimationState("Attack")->getTimePosition() + elapsedSeconds > mEntity->getAnimationState("Attack")->getLength() )
 				newAttack = true;
 		}
+
+		mAnimationSystem->update( elapsedSeconds );
+	}
+	// Update in case that has dying animation
+	else
+	{
+		if( hasDieAnimation() )
+		{
+			mDieAnimation->addTime(elapsedSeconds);
+		}
+	}
+}
+
+void Enemy::updateBossEntity(const float elapsedSeconds)
+{
+	// Update boss is not dying
+	if ( !isDying() )
+	{
+		if( mState == EnemyStates::Idle )
+		{
+			mCurrentAnimation->setValue( 0 );
+		}
+		else if( mState == EnemyStates::Rage )
+		{
+			mCurrentAnimation->setValue( 4 );
+		}		
 
 		mAnimationSystem->update( elapsedSeconds );
 	}
@@ -303,6 +333,54 @@ void Enemy::updateLogic(lua_State *L, const float elapsedSeconds)
 	{
 		mBalloonSet->setVisible(false);
 	}
+}
+
+void Enemy::updateBossLogic(lua_State *L, const float elapsedSeconds)
+{
+	///* the function name */
+	lua_getglobal(L,EnemyLogicList[mType].function);
+	///* push arguments */
+	lua_pushstring(L, getName().c_str());
+	lua_pushnumber(L, mState);
+
+	///* call the function with 1 argument, return 1 result */
+	lua_call(L, 2, 1);
+
+	///* get the result */
+	Enemy::EnemyStates newState = (Enemy::EnemyStates)luaL_checkint(L, -1);
+	lua_pop(L, 1);
+
+	// state is the new state for the player
+	// Do something if and only if the state has changed!
+	if(newState != mState)
+	{
+		switch(newState)
+		{
+		case Enemy::EnemyStates::Idle:			
+			setMoving(true);
+			setAttacking(false);
+			break;
+		case Enemy::EnemyStates::Rage:			
+			setMoving(false);
+			setAttacking(true);
+			break;
+		default:			
+			mDirection = Vector3::ZERO;
+			break;
+		}
+
+		mState = newState;	
+		mStateTimeout = 0.0f;
+	}
+	else
+	{
+		mStateTimeout = mStateTimeout + elapsedSeconds;
+	}
+
+	if( moving)
+		setDirectionToTarget();
+
+	mBalloonSet->setVisible(false);
 }
 
 void Enemy::setTarget(SceneNode* target)

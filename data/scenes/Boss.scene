@@ -287,6 +287,20 @@
       <rotation qw="1" qx="0" qy="0" qz="0" />
       <position x="0" y="0" z="0" />
       <scale x="1" y="1" z="1" />
+      <node name="Boss" id="426221504">
+        <rotation qw="1" qx="0" qy="0" qz="0" />
+        <position x="0" y="0" z="0" />
+        <scale x="1" y="1" z="1" />
+        <entity name="bossOctopus" id="92623672" castshadows="false" meshFile="bossOctopus.mesh" type="Enemy" subType="Boss" animationTree="data/animations/bossOctopus.xml" life="1500" points="2000" speed="30" damage="5" specialDamage="10" height="0" dieMesh="bossOctopusDie.mesh" dieAnimation="Die">
+          <rotation qw="1" qx="0" qy="0" qz="0" />
+          <position x="0" y="0" z="0" />
+          <scale x="1" y="1" z="1" />
+          <subentities>
+            <subentity materialName="VulcanicRock" index="0" visible="true" />
+            <subentity materialName="Volcano" index="1" visible="true" />
+          </subentities>
+        </entity>
+      </node>
     </node>
     <node name="Objects" id="769066432">
       <rotation qw="1" qx="0" qy="0" qz="0" />

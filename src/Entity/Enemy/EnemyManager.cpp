@@ -265,7 +265,6 @@ EnemyPtr EnemyManager::createEnemy(Enemy::EnemyTypes type, Ogre::String name, Og
 		}
 	}
 
-	// Store enemy in its game area
 	mEnemyMapList[gameArea].push_back(enemy);
 
 	// Set visible false by default
@@ -468,15 +467,27 @@ void EnemyManager::update(const float elapsedSeconds)
 		}
 
 		// Bonus game area, hide ballon
-		if( mCurrentGameArea == 3 )
+		if( mCurrentGameArea == 3 && mCurrentLevel == 0)
 			enemy->hideBalloon();
 	}
 
-	// If game area is cleared raise event
-	if( getCount() <= 0 )
+	// If no enemies alive, raise event
+	if( getCount() <= 0 && mCurrentLevel != 1 )
 	{
 		GameAreaEnemiesDeathEventPtr evt = GameAreaEnemiesDeathEventPtr(new GameAreaEnemiesDeathEvent(mCurrentLevel, mCurrentGameArea));
 		EVENTS_FIRE(evt);
+	}
+
+	// Update for boss (game area -10)
+	if( !mEnemyMapList[-10].empty() )
+	{
+		EnemyPtr enemy =  mEnemyMapList[-10][0];
+
+		enemy->updateBossLogic(L,elapsedSeconds);		
+		enemy->updateBossEntity(elapsedSeconds);
+		
+		// Physic debugg control
+		enemy->setDebugEnabled(mIsDebugEnabled);
 	}
 }
 
@@ -650,7 +661,7 @@ EVENTS_DEFINE_HANDLER(EnemyManager, GameAreaCleared)
 	Debug::Out("EnemyManager : handleGameAreaClearedEvent");
 
 	// Game area cleared by time, remove enemies
-	if( evt->getType() == 1 )
+	if( evt->getType() == 1 && mCurrentLevel != 1)
 		mEnemyMapList[evt->getGameArea()].clear();
 }
 
@@ -676,6 +687,7 @@ LUA_END_BINDING()
 //
 LUA_BEGIN_LOAD_SCRIPTS(EnemyManager)
 LUA_LOAD_SCRIPT(".\\data\\scripts\\EnemyLogic.lua")
+LUA_LOAD_SCRIPT(".\\data\\scripts\\BossLogic.lua")
 LUA_END_LOAD_SCRIPTS()
 
 LUA_DEFINE_FUNCTION(EnemyManager, create)
