@@ -263,14 +263,14 @@ material FountainWater
 	{
 		pass
 		{
-      lighting off
+			lighting off
 			scene_blend alpha_blend
 			depth_check on
 			depth_write off
 
 			texture_unit
 			{
-        colour_op_ex blend_current_alpha 
+				//colour_op alpha_blend				
 				texture Sea_Base.png
 				tex_address_mode wrap
 				filtering none
@@ -279,7 +279,7 @@ material FountainWater
 			texture_unit
 			{
 				texture Sea_Waves.png
-				colour_op_ex blend_current_alpha 
+				colour_op alpha_blend
 				scale 0.01 0.01
 				wave_xform scroll_x sine 0.0 0.01 0.0 1.0
 				wave_xform scroll_y sine 0.0 0.01 0.03 1.0
@@ -3559,14 +3559,14 @@ material Sea
 	{
 		pass
 		{
-      lighting off
+			lighting off
 			scene_blend alpha_blend
 			depth_check on
 			depth_write off
 
 			texture_unit
 			{
-        colour_op_ex blend_current_alpha 
+				colour_op alpha_blend
 				texture Sea_Base.png
 				tex_address_mode wrap
 				filtering none
@@ -3575,11 +3575,11 @@ material Sea
 			texture_unit
 			{
 				texture Sea_Waves.png
-				colour_op_ex blend_current_alpha 
+				colour_op alpha_blend
 				scale 0.1 0.1
 				wave_xform scroll_x sine 0.0 0.01 0.0 1.0
 				wave_xform scroll_y sine 0.0 0.01 0.03 1.0
-				tex_address_mode wrap 4.0 4.0
+				tex_address_mode wrap
 				filtering none
 			}
 		}
@@ -3593,7 +3593,7 @@ material Clouds0
 	{
 		pass 
 		{
-      lighting off
+			lighting off
 			scene_blend alpha_blend
 			depth_check on
 			depth_write off
@@ -3604,13 +3604,10 @@ material Clouds0
 				//alpha_op_ex source1 src_manual src_texture 0.9
 				scroll_anim 0.005 0.0
 				tex_address_mode wrap
-				filtering none
+				filtering linear linear none
 			}
-
 		}
-
 	}
-
 }
 
 material Clouds1
@@ -3619,7 +3616,7 @@ material Clouds1
 	{
 		pass 
 		{
-      lighting off
+		lighting off
 			scene_blend alpha_blend
 			depth_check on
 			depth_write off
@@ -3630,11 +3627,8 @@ material Clouds1
 				//alpha_op_ex source1 src_manual src_texture 0.9
 				scroll_anim 0.01 0.0
 				tex_address_mode wrap
-				filtering none
+				filtering linear linear none
 			}
-
 		}
-
 	}
-
 }
