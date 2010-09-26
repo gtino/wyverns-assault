@@ -17,7 +17,10 @@ GuiManager& GuiManager::getSingleton(void)
 // END SINGLETON
 
 GuiManager::GuiManager()
-: flashCount(false)
+: flashCount(false),
+cutScene(false),
+goGo(false),
+level(true)
 {
 	mHikariManager = new HikariManager("\\data\\flash");
 }
@@ -39,6 +42,15 @@ void GuiManager::update(float const elapsedSeconds, int enemyCount)
 	if(flashCount)
 	{
 		flashCount = mFlashCounterUI->update(elapsedSeconds, enemyCount);
+		mFlashCounterEnemyUI->hide();
+	}
+
+	if(cutScene)
+		hide();
+	else if(!cutScene && !flashCount && !goGo && level)
+		mFlashCounterEnemyUI->show();
+	else if(goGo && level){
+		mFlashGoGo->show();
 		mFlashCounterEnemyUI->hide();
 	}
 }
@@ -326,6 +338,11 @@ EVENTS_DEFINE_HANDLER(GuiManager, GameAreaChanged)
 
 		if(mFlashCounterEnemyUI)
 			mFlashCounterEnemyUI->show();
+
+		goGo = false;
+	}else{
+		hide();
+		level = false;
 	}
 }
 
@@ -333,7 +350,7 @@ EVENTS_DEFINE_HANDLER(GuiManager, GameAreaCleared)
 {
 	Debug::Out("GuiManager : handleGameAreaClearedEvent");
 
-	if( evt->getLevel() != 1 )
+	if( evt->getLevel() != 1)
 	{
 		if(!mFlashGoGo)
 			mFlashGoGo = GuiFlashMoviePtr( new GuiFlashMovie(mWindow->getViewport(0), GuiScreenId::FlashMovieGoGoGui, mHikariManager ,"GoGo.swf") );
@@ -342,6 +359,12 @@ EVENTS_DEFINE_HANDLER(GuiManager, GameAreaCleared)
 
 		if(mFlashCounterEnemyUI)
 			mFlashCounterEnemyUI->hide();
+		
+		goGo = true;
+
+	}else{
+		hide();
+		level = false;
 	}
 }
 
@@ -410,6 +433,8 @@ LUA_DEFINE_FUNCTION(GuiManager,showUi)
 
 	widget1->show();
 
+	GuiManager::getSingleton().setCutScene(false);
+
 	/* return the number of results */
 	return 0;
 }
@@ -426,6 +451,8 @@ LUA_DEFINE_FUNCTION(GuiManager,hideUi)
 	GuiWidgetPtr widget1 = playScreen->getWidget(GuiWidgetPlayId::UserInterface1);
 
 	widget1->hide();
+
+	GuiManager::getSingleton().setCutScene(true);
 
 	/* return the number of results */
 	return 0;

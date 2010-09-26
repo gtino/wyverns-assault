@@ -81,6 +81,9 @@ namespace WyvernsAssault
 		void hideScreen(GuiScreenId id);
 		GuiScreenPtr getScreen(GuiScreenId id);
 
+		bool getCutScene(){ return cutScene;}
+		void setCutScene(bool cutSceneVideo){ cutScene = cutSceneVideo;}
+
 		void hide();
 		void show();
 
@@ -106,6 +109,10 @@ namespace WyvernsAssault
 		GuiFlashCounterPtr		mFlashCounterUI;
 		GuiFlashCounterPtr		mFlashCounterEnemyUI;
 		GuiFlashMoviePtr		mFlashGoGo;
+
+		bool cutScene;
+		bool goGo;
+		bool level;
 
 		// ----------------
 		// Events interface
