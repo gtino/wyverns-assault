@@ -687,7 +687,6 @@ LUA_END_BINDING()
 //
 LUA_BEGIN_LOAD_SCRIPTS(EnemyManager)
 LUA_LOAD_SCRIPT(".\\data\\scripts\\EnemyLogic.lua")
-LUA_LOAD_SCRIPT(".\\data\\scripts\\BossLogic.lua")
 LUA_END_LOAD_SCRIPTS()
 
 LUA_DEFINE_FUNCTION(EnemyManager, create)
