@@ -17,7 +17,7 @@ Object::Object(Ogre::String name, ObjectTypes type, Ogre::Vector3 physicBox, int
 	if( life == 0 )
 		life = -250;
 	mPhysicSize = physicBox; 
-	points = 100 + ((rand() % 25) * 100);
+	points = 100 + ((rand() % 25) * 10);
 }
 
 

@@ -55,14 +55,14 @@
       <DIRECTORY type="FileSystem" value="../models/stages/Boss"></DIRECTORY>
       <DIRECTORY type="FileSystem" value="../models/characters/enemies/boss"></DIRECTORY>
     </RESOURCEDIRECTORIES>
-  <CAMERASPEED value="42"></CAMERASPEED>
+  <CAMERASPEED value="28"></CAMERASPEED>
   <CAMERAPOSITIONS count="0">
-    <OPTION id="0" position="-127.278 118.681 251.707" orientation="-0.944487 0.233308 0.224582 0.0554501"></OPTION>
+    <OPTION id="0" position="-294.557 204.894 249.092" orientation="-0.896813 0.154114 0.408712 0.070207"></OPTION>
   </CAMERAPOSITIONS>
     <LAYERS>
       <LAYER id="0" name="Layer0" visible="true"></LAYER>
-      <LAYER id="1" name="Layer1" visible="true"></LAYER>
-      <LAYER id="2" name="Layer2" visible="true"></LAYER>
+      <LAYER id="1" name="Layer1" visible="false"></LAYER>
+      <LAYER id="2" name="Layer2" visible="false"></LAYER>
       <LAYER id="3" name="Layer3" visible="false"></LAYER>
       <LAYER id="4" name="Layer4" visible="false"></LAYER>
       <LAYER id="5" name="Layer 1" visible="true"></LAYER>
@@ -136,11 +136,11 @@
   </OBJECT>
 
   <OBJECT object_id="2000000002" name="Viewport1" typename="Viewport Object">
-    <PROPERTY id="camera::clipdistance" type="8" value="1 3000"></PROPERTY>
+    <PROPERTY id="camera::clipdistance" type="8" value="200 3000"></PROPERTY>
     <PROPERTY id="camera::fov" type="6" value="1"></PROPERTY>
-    <PROPERTY id="camera::orientation" type="13" value="-0.944487 0.233308 0.224582 0.0554501"></PROPERTY>
+    <PROPERTY id="camera::orientation" type="13" value="-0.896814 0.154114 0.408712 0.0702071"></PROPERTY>
     <PROPERTY id="camera::polymode" type="2" value="3"></PROPERTY>
-    <PROPERTY id="camera::position" type="9" value="-127.278 118.681 251.707"></PROPERTY>
+    <PROPERTY id="camera::position" type="9" value="-294.557 204.894 249.092"></PROPERTY>
     <PROPERTY id="camera::viewmode" type="2" value="0"></PROPERTY>
     <PROPERTY id="colour" type="11" value="0 0 0 1"></PROPERTY>
     <PROPERTY id="compositorcount" type="2" value="0"></PROPERTY>
@@ -953,7 +953,7 @@
   <OBJECT object_id="92623672" name="bossOctopus" typename="Entity Object" parentnode="Boss">
     <PROPERTY id="autotracktarget" type="7" value="None"></PROPERTY>
     <PROPERTY id="castshadows" type="12" value="false"></PROPERTY>
-    <PROPERTY id="layer" type="2" value="0"></PROPERTY>
+    <PROPERTY id="layer" type="2" value="2"></PROPERTY>
     <PROPERTY id="locked" type="12" value="false"></PROPERTY>
     <PROPERTY id="meshfile" type="7" value="bossOctopus.mesh"></PROPERTY>
     <PROPERTY id="orientation" type="13" value="1 0 0 0"></PROPERTY>
@@ -984,7 +984,7 @@
   <OBJECT object_id="334208192" name="Start" typename="Marker Object" parentnode="SceneManager">
     <PROPERTY id="autotracktarget" type="7" value="None"></PROPERTY>
     <PROPERTY id="colour" type="11" value="1 0 0 1"></PROPERTY>
-    <PROPERTY id="layer" type="2" value="0"></PROPERTY>
+    <PROPERTY id="layer" type="2" value="1"></PROPERTY>
     <PROPERTY id="locked" type="12" value="false"></PROPERTY>
     <PROPERTY id="orientation" type="13" value="0.833886 0 0.551937 0"></PROPERTY>
     <PROPERTY id="position" type="9" value="-120 25 250"></PROPERTY>
