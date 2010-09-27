@@ -489,10 +489,10 @@ end
 ------ BOSS Logic ------
 
 -- BossTimes
-IdleTime = 5;
-IdleSpecialTime = 8;
-AttackBasicTime = 2;
-AttackSpecialTime = 10;
+IdleTime = 3;
+IdleSpecialTime = 5;
+AttackBasicTime = 1;
+AttackSpecialTime = 4;
 
 function runBossLogic(enemyId, state)	
 	

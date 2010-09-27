@@ -43,6 +43,7 @@ Enemy::Enemy(Ogre::String name, Enemy::EnemyTypes type, Enemy::EnemyParameters p
 , LogicInterface()
 , mStateTimeout(0.0f)
 , mState(Enemy::EnemyStates::Initial)
+, mLastState(Enemy::EnemyStates::Initial)
 , mOBBoxRenderable(0)
 , mIsDebugEnabled(false)
 , mBalloonSet(0)
@@ -53,6 +54,8 @@ Enemy::Enemy(Ogre::String name, Enemy::EnemyTypes type, Enemy::EnemyParameters p
 , mHasItem(false)
 , mLastEnemyCollision(name)
 , mPhysicsList(0)
+, mBossRandomAttack(2)
+, animationTime(0)
 {
 	mType = type;
 	mParameters = params;
@@ -220,19 +223,23 @@ void Enemy::updateBossEntity(const float elapsedSeconds)
 	{
 		if( mState == EnemyStates::Idle )
 		{
-			mCurrentAnimation->setValue( 0 );
+			mCurrentAnimation->setValue( BOSS_IDDLE ); 
 		}
 		else if( mState == EnemyStates::Rage )
 		{
-			mCurrentAnimation->setValue( 4 );
+			mCurrentAnimation->setValue( BOSS_ATTACK4 );
 		}
 		else if( mState == EnemyStates::IdleSpecial )
 		{
-			mCurrentAnimation->setValue( 0 );
+			mCurrentAnimation->setValue( BOSS_IDDLE );
 		}	
 		else if( mState == EnemyStates::Special )
 		{
-			mCurrentAnimation->setValue( 4 );
+			if(mLastState != mState){
+				//Random value 1-2-3
+				mBossRandomAttack = int(Ogre::Math::RangeRandom(1,4));
+			}
+			mCurrentAnimation->setValue( mBossRandomAttack );
 		}	
 
 		mAnimationSystem->update( elapsedSeconds );
@@ -245,6 +252,9 @@ void Enemy::updateBossEntity(const float elapsedSeconds)
 			mDieAnimation->addTime(elapsedSeconds);
 		}
 	}
+	
+	mLastState = mState;
+
 }
 
 void Enemy::updateLogic(lua_State *L, const float elapsedSeconds)
