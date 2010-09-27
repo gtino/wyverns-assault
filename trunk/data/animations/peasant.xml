@@ -21,8 +21,8 @@
   </connections>
   <output>1</output>
   <constants>
-    <constant node_id="1" port="time in" value="0" />
-    <constant node_id="1" port="time out" value="0" />
+    <constant node_id="1" port="time in" value="0.3" />
+    <constant node_id="1" port="time out" value="0.3" />
     <constant node_id="2" port="speed" value="1" />
     <constant node_id="3" port="speed" value="1" />
   </constants>

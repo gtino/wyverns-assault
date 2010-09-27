@@ -43,8 +43,8 @@
     <constant node_id="4" port="speed" value="1" />
     <constant node_id="5" port="speed" value="1" />
     <constant node_id="6" port="speed" value="1" />
-    <constant node_id="7" port="time in" value="0" />
-    <constant node_id="7" port="time out" value="0" />
+    <constant node_id="7" port="time in" value="1" />
+    <constant node_id="7" port="time out" value="1" />
   </constants>
   <parameters>
     <parameter name="CurrentAnimation" value="0" />
