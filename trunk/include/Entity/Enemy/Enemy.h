@@ -88,7 +88,9 @@ namespace WyvernsAssault
 			Fire		=	9,
 			Patrol		=	10,
 			Dying		=	11,	// This is when it has been killed, but is still there spilling bool and crying		
-			Dead		=	12	// This is when the enemy has to been removed from the scene
+			Dead		=	12,	// This is when the enemy has to been removed from the scene
+			IdleSpecial	=	13, // This is for special attack 
+			Special		=	14
 		};
 
 		struct EnemyParameters

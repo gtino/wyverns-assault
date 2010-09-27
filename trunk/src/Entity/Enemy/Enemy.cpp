@@ -187,7 +187,15 @@ void Enemy::updateBossEntity(const float elapsedSeconds)
 		else if( mState == EnemyStates::Rage )
 		{
 			mCurrentAnimation->setValue( 4 );
-		}		
+		}
+		else if( mState == EnemyStates::IdleSpecial )
+		{
+			mCurrentAnimation->setValue( 0 );
+		}	
+		else if( mState == EnemyStates::Special )
+		{
+			mCurrentAnimation->setValue( 4 );
+		}	
 
 		mAnimationSystem->update( elapsedSeconds );
 	}
@@ -361,6 +369,14 @@ void Enemy::updateBossLogic(lua_State *L, const float elapsedSeconds)
 			setAttacking(false);
 			break;
 		case Enemy::EnemyStates::Rage:			
+			setMoving(false);
+			setAttacking(true);
+			break;
+		case Enemy::EnemyStates::IdleSpecial:
+			setMoving(true);
+			setAttacking(false);
+			break;
+		case Enemy::EnemyStates::Special:
 			setMoving(false);
 			setAttacking(true);
 			break;

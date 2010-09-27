@@ -19,6 +19,8 @@ Fire = 9
 Patrol = 10
 Dying = 11
 Dead = 12
+IdleSpecial = 13
+Special = 14
 
 -- Common distances
 FightingDistance = 30
@@ -487,11 +489,10 @@ end
 ------ BOSS Logic ------
 
 -- BossTimes
-IdleTime = 3;
-AttackBasic = 2;
-AttackSpecial1 = 10
-AttackSpecial2 = 10
-AttackSpecial3 = 10
+IdleTime = 5;
+IdleSpecialTime = 8;
+AttackBasicTime = 2;
+AttackSpecialTime = 10;
 
 function runBossLogic(enemyId, state)	
 	
@@ -521,7 +522,15 @@ function runBossLogic(enemyId, state)
 				newState = Rage
 			end
 		elseif state == Rage then
-			if timeout > AttackBasic then
+			if timeout > AttackBasicTime then
+				newState = IdleSpecial
+			end
+		elseif state == IdleSpecial then
+			if timeout > IdleSpecialTime then
+				newState = Special
+			end
+		elseif state == Special then
+			if timeout > AttackSpecialTime then
 				newState = Idle
 			end
 		else
