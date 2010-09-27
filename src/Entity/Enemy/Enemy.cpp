@@ -68,7 +68,7 @@ Enemy::Enemy(Ogre::String name, Enemy::EnemyTypes type, Enemy::EnemyParameters p
 	if( mType == EnemyTypes::BatteringRam )
 		mParameters.physicSize = Vector3(40, 30, 40);
 	else if( mType == EnemyTypes::Boss )
-		mParameters.physicSize = Vector3(100, 50, 50);
+		mParameters.physicSize = Vector3(100, 30, 30);
 	else
 		mParameters.physicSize = Vector3(PHYSIC_SIZE, PHYSIC_SIZE, PHYSIC_SIZE);
 
@@ -113,6 +113,7 @@ void Enemy::initializeEntity(Ogre::Entity* entity, Ogre::SceneNode* sceneNode, O
 	// States control variables
 	moving = false;
 	attacking = false;
+	special = false;
 	newAttack = false;
 	attackHited = false;
 	burning = false;
@@ -152,6 +153,7 @@ void Enemy::initializeBossEntity(Ogre::Entity* entity, Ogre::SceneNode* sceneNod
 	// States control variables
 	moving = false;
 	attacking = false;
+	special = false;
 
 	// Random animation start time
 	mAnimationSystem->update( rand() );
@@ -235,7 +237,8 @@ void Enemy::updateBossEntity(const float elapsedSeconds)
 		}	
 		else if( mState == EnemyStates::Special )
 		{
-			if(mLastState != mState){
+			if(mLastState != mState)
+			{
 				//Random value 1-2-3
 				mBossRandomAttack = int(Ogre::Math::RangeRandom(1,4));
 			}
@@ -254,7 +257,18 @@ void Enemy::updateBossEntity(const float elapsedSeconds)
 	}
 	
 	mLastState = mState;
+}
 
+Real Enemy::getSpecialAttackTime()
+{
+	if( mBossRandomAttack == 1 )
+		return 1.0;
+	else if( mBossRandomAttack == 2 )
+		return 2.0;
+	else if( mBossRandomAttack == 3 )
+		return 2.0;
+	else
+		return 1.0;
 }
 
 void Enemy::updateLogic(lua_State *L, const float elapsedSeconds)
@@ -415,18 +429,22 @@ void Enemy::updateBossLogic(lua_State *L, const float elapsedSeconds)
 		case Enemy::EnemyStates::Idle:			
 			setMoving(true);
 			setAttacking(false);
+			setSpecial(false);
 			break;
 		case Enemy::EnemyStates::Rage:			
 			setMoving(false);
-			setAttacking(true);
+			setSpecial(false);
+			attackHited = false;
 			break;
 		case Enemy::EnemyStates::IdleSpecial:
 			setMoving(true);
 			setAttacking(false);
+			setSpecial(false);
 			break;
 		case Enemy::EnemyStates::Special:
 			setMoving(false);
-			setAttacking(true);
+			setSpecial(true);
+			attackHited = false;
 			break;
 		default:			
 			mDirection = Vector3::ZERO;
@@ -439,6 +457,11 @@ void Enemy::updateBossLogic(lua_State *L, const float elapsedSeconds)
 	else
 	{
 		mStateTimeout = mStateTimeout + elapsedSeconds;
+
+		if( (mState == Enemy::EnemyStates::Rage || mState == Enemy::EnemyStates::Special ) && mStateTimeout > 1.0 )
+		{
+			setAttacking(true);			
+		}
 	}
 
 	if( moving)

@@ -243,7 +243,10 @@ EVENTS_DEFINE_HANDLER(PlayerManager, PlayerHit)
 	
 	if(!player->isGodModeOn()) // DEBUG : God mode!
 	{
-		player->hurt( enemy->getHitDamage() );
+		if( enemy->isSpecial() )
+			player->hurt( enemy->getSpecialHitDamage() );
+		else
+			player->hurt( enemy->getHitDamage() );
 	}
 }
 

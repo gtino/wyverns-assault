@@ -147,6 +147,7 @@ namespace WyvernsAssault
 		
 		// Parameters functions
 		Ogre::Real getHitDamage(){return mParameters.damage;}
+		Ogre::Real getSpecialHitDamage(){return mParameters.specialDamage;}
 		void hit(float damage);
 		float getPoints(){ return mParameters.points; }
 		float getSpeed(){return mParameters.speed;}
@@ -185,6 +186,8 @@ namespace WyvernsAssault
 		void setMoving(bool move){ moving = move; }
 		void setAttacking(bool attack);
 		bool isAttacking(){ return attacking; }
+		void setSpecial(bool value){ special = value; }
+		bool isSpecial(){ return special; }
 		bool attackStart(){ return newAttack; }
 		void attackFinished(){ newAttack = false; }
 		void setAttackHited(bool value){ attackHited = value; }
@@ -207,7 +210,8 @@ namespace WyvernsAssault
 
 	public:
 		// Boss exclusive
-		Vector3 getPhysicsPosition(int index){ return mPhysicsList[index]->getPosition(); }
+		Vector3 getPhysicsPosition(int index){ return mPhysicsList[index]->_getDerivedPosition(); }
+		Real getSpecialAttackTime();
 
 	private:
 		Enemy::EnemyTypes	mType;
@@ -248,6 +252,7 @@ namespace WyvernsAssault
 		// State control
 		bool		moving;
 		bool		attacking;
+		bool		special;
 		bool		newAttack;
 		bool		attackHited;
 		bool		burning;
