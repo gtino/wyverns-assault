@@ -182,9 +182,6 @@ void PhysicsManager::checkForCollisions()
 				EVENTS_FIRE(objectHitEventPtr);
 			}			
 		}
-
-		// Save last player attack checked
-		mLastAttackChecked = player->wichAttack();
 	
 		// Player - Item COLLISION
 		for(int i = 0; i < mItemMapList[mCurrentGameArea].size(); i++)
@@ -219,6 +216,51 @@ void PhysicsManager::checkForCollisions()
 				projectile->death();
 			}
 		}
+
+		// Player - Boss COLLISION
+		if( !mEnemyMapList[-10].empty() )
+		{
+			EnemyPtr enemy = mEnemyMapList[-10][0];
+
+			for(int i = 0; i < 8; i++)
+			{				
+				AxisAlignedBox enemy_box = enemy->getBossGeometry(i)->getWorldBoundingBox( enemy->getPhysicsPosition(i) );
+
+				// Check if player is using special (fire) and collisioning with enemy
+				/*if ( player->isSpecial() && player_firebox.intersects(enemy_box) )
+				{
+					EnemyHitEventPtr enemyHitEventPtr = EnemyHitEventPtr(new EnemyHitEvent(enemy, player));
+					enemyHitEventPtr->setDamage(player->getSpecialHitDamage());
+					EVENTS_FIRE(enemyHitEventPtr);
+				}*/
+
+				// Player and enemy are colliding, player is attacking and has changed state
+				if( player->isAttacking() && mLastAttackChecked != player->wichAttack() && player_attack_box.intersects(enemy_box) )
+				{
+					EnemyHitEventPtr enemyHitEventPtr = EnemyHitEventPtr(new EnemyHitEvent(enemy, player));
+					// If thrid strike more damage
+					if( player->wichAttack() == 3 )
+						enemyHitEventPtr->setDamage(player->getComboHitDamage());
+					else
+ 						enemyHitEventPtr->setDamage(player->getHitDamage());
+
+					EVENTS_FIRE(enemyHitEventPtr);
+				}
+
+				// Check if enemy is attacking and box are colliding
+				if( enemy->isAttacking() && !enemy->hasAttackHited() && enemy_box.intersects(player_collision_box) )
+				{
+					PlayerHitEventPtr playerHitEventPtr = PlayerHitEventPtr(new PlayerHitEvent(enemy, player));
+					//EVENTS_FIRE_AFTER(playerHitEventPtr, enemy->getSpecialAttackTime());
+					EVENTS_FIRE(playerHitEventPtr);
+
+					enemy->setAttackHited(true);
+				}
+			}
+		}
+
+		// Save last player attack checked
+		mLastAttackChecked = player->wichAttack();
 	}
 }
 
