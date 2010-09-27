@@ -52,6 +52,7 @@ Enemy::Enemy(Ogre::String name, Enemy::EnemyTypes type, Enemy::EnemyParameters p
 , mAttackTimeout(0)
 , mHasItem(false)
 , mLastEnemyCollision(name)
+, mPhysicsList(0)
 {
 	mType = type;
 	mParameters = params;
@@ -60,11 +61,11 @@ Enemy::Enemy(Ogre::String name, Enemy::EnemyTypes type, Enemy::EnemyParameters p
 	// Attack cooldown
 	mParameters.attackCooldown = 0.5f;
 
-	// Physisc Size	-- HACK! Need to be defined in Ogitor	
+	// Physisc Size
 	if( mType == EnemyTypes::BatteringRam )
 		mParameters.physicSize = Vector3(40, 30, 40);
 	else if( mType == EnemyTypes::Boss )
-		mParameters.physicSize = Vector3(400, 400, 400);
+		mParameters.physicSize = Vector3(100, 50, 50);
 	else
 		mParameters.physicSize = Vector3(PHYSIC_SIZE, PHYSIC_SIZE, PHYSIC_SIZE);
 
@@ -73,6 +74,8 @@ Enemy::Enemy(Ogre::String name, Enemy::EnemyTypes type, Enemy::EnemyParameters p
 		mHasItem = true;
 	else if( (rand() % 10) == 0)
 		mHasItem = true;
+
+	mOBBoxRenderable = new OBBoxRenderable("OBBoxManualMaterial_Enemy");
 }
 
 Enemy::~Enemy()
@@ -111,6 +114,41 @@ void Enemy::initializeEntity(Ogre::Entity* entity, Ogre::SceneNode* sceneNode, O
 	attackHited = false;
 	burning = false;
 	flying = false;
+
+	// Random animation start time
+	mAnimationSystem->update( rand() );
+}
+
+void Enemy::initializeBossEntity(Ogre::Entity* entity, Ogre::SceneNode* sceneNode, Ogre::SceneManager* sceneManager)
+{
+	// Always call base method before!
+	EntityInterface::initializeEntity(entity, sceneNode, sceneManager);
+
+	// Set physics for every leg
+	initializeBossPhysics(entity->getName(), mParameters.physicSize, "OBBoxManualMaterial_Enemy");
+	
+	// Attach every physics box to correct bone, and save position in list with correct order
+	mPhysicsList.push_back( entity->attachObjectToBone( "bone4", getBossGeometry(0)->getMovableObject()) );
+	mPhysicsList.push_back( entity->attachObjectToBone( "bone29", getBossGeometry(1)->getMovableObject()) );
+	mPhysicsList.push_back( entity->attachObjectToBone( "bone34", getBossGeometry(2)->getMovableObject()) );
+	mPhysicsList.push_back( entity->attachObjectToBone( "bone39", getBossGeometry(3)->getMovableObject()) );
+	mPhysicsList.push_back( entity->attachObjectToBone( "bone24", getBossGeometry(4)->getMovableObject()) );
+	mPhysicsList.push_back( entity->attachObjectToBone( "bone19", getBossGeometry(5)->getMovableObject()) );
+	mPhysicsList.push_back( entity->attachObjectToBone( "bone14", getBossGeometry(6)->getMovableObject()) );
+	mPhysicsList.push_back( entity->attachObjectToBone( "bone9", getBossGeometry(7)->getMovableObject()) );
+
+	// Balloon (not used)
+	mBalloonSet = mSceneManager->createBillboardSet(mName + "_BillboardSet");
+	mBalloonSet->setVisible(false);
+
+	// Animation system
+	mAnimationSystem = new tecnofreak::ogre::AnimationSystem( entity );
+	mAnimationSystem->loadAnimationTree( mParameters.animationTree );	
+	mCurrentAnimation = mAnimationSystem->getParameter( "CurrentAnimation" );
+
+	// States control variables
+	moving = false;
+	attacking = false;
 
 	// Random animation start time
 	mAnimationSystem->update( rand() );
@@ -504,7 +542,15 @@ void Enemy::setDebugEnabled(bool isDebugEnabled)
 	if(mIsDebugEnabled != isDebugEnabled)
 	{
 		mIsDebugEnabled = isDebugEnabled;
-		getGeometry(PhysicBoxType::body)->getMovableObject()->setVisible(mIsDebugEnabled);
+		if( mType == EnemyTypes::Boss )
+		{
+			for( int i = 0; i < 8; i++)
+			{
+				getBossGeometry(i)->getMovableObject()->setVisible(mIsDebugEnabled);
+			}
+		}
+		else
+			getGeometry(PhysicBoxType::body)->getMovableObject()->setVisible(mIsDebugEnabled);
 	}
 }
 

@@ -234,7 +234,12 @@ EnemyPtr EnemyManager::createEnemy(Enemy::EnemyTypes type, Ogre::String name, Og
 	sceneNode->attachObject(enemyMesh);
 
 	EnemyPtr enemy = EnemyPtr(new Enemy(name, type, params));
-	enemy->initializeEntity(enemyMesh, sceneNode, mSceneManager);
+
+	// Boss needs different initialization
+	if( type == Enemy::EnemyTypes::Boss )
+		enemy->initializeBossEntity(enemyMesh, sceneNode, mSceneManager);
+	else
+		enemy->initializeEntity(enemyMesh, sceneNode, mSceneManager);
 
 	// Die mesh and animation
 	Ogre::Entity* enemyDieMesh = NULL;

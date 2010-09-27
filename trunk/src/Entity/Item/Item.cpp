@@ -26,6 +26,7 @@ void Item::initializeEntity(Ogre::Entity* entity, Ogre::SceneNode* sceneNode, Og
 	initializePhysics(entity->getName(), Vector3(20,20,20),"OBBoxManualMaterial_Item");
 	sceneNode->attachObject(getGeometry(PhysicBoxType::body)->getMovableObject());
 
+	mOBBoxRenderable = new OBBoxRenderable("OBBoxManualMaterial_Item");
 }
 
 void Item::finalizeEntity()

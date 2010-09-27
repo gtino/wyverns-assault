@@ -44,6 +44,7 @@ void Player::initializeEntity(Ogre::Entity* entity, Ogre::SceneNode* sceneNode, 
 	sceneNode->attachObject(getGeometry(PhysicBoxType::body)->getMovableObject());
 
 	// Physic for Attack
+	mOBBoxRenderable = new OBBoxRenderable("OBBoxManualMaterial_Attack");
 	addAttackGeometry(entity->getName(), Vector3(60,50,30), "OBBoxManualMaterial_Attack"); 
 	mAttackNode = sceneNode->createChildSceneNode(Vector3(0,0,15));
 	mAttackNode->attachObject(getGeometry(PhysicBoxType::attack)->getMovableObject());

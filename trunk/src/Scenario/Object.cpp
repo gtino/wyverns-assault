@@ -35,6 +35,7 @@ void Object::initializeEntity(Ogre::Entity* entity, Ogre::SceneNode* sceneNode, 
 
 	if(mType == WyvernsAssault::ObjectTypes::DynamicObject && mPhysicSize > Vector3::ZERO)
 	{
+		mOBBoxRenderable = new OBBoxRenderable("OBBoxManualMaterial_Object");
 		initializePhysics(entity->getName(),mPhysicSize,"OBBoxManualMaterial_Object");
 		sceneNode->attachObject(getGeometry(PhysicBoxType::body)->getMovableObject());
 	}

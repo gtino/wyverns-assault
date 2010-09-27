@@ -24,6 +24,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #define __ENEMY_H__
 
 #include <Ogre.h>
+#include <OgreTagpoint.h>
 
 #include "..\EntityInterface.h"
 #include "..\..\Physics\PhysicsInterface.h"
@@ -116,6 +117,7 @@ namespace WyvernsAssault
 		// Entity Interface
 		//
 		void initializeEntity(Ogre::Entity* entity, Ogre::SceneNode* sceneNode, Ogre::SceneManager* sceneManager);
+		void initializeBossEntity(Ogre::Entity* entity, Ogre::SceneNode* sceneNode, Ogre::SceneManager* sceneManager);
 		void finalizeEntity();
 		void updateEntity(const float elapsedSeconds);
 		void updateBossEntity(const float elapsedSeconds);
@@ -194,6 +196,10 @@ namespace WyvernsAssault
 		bool isFlying(){ return flying; }
 		void stop();
 
+	public:
+		// Boss exclusive
+		Vector3 getPhysicsPosition(int index){ return mPhysicsList[index]->getPosition(); }
+
 	private:
 		Enemy::EnemyTypes	mType;
 
@@ -231,6 +237,10 @@ namespace WyvernsAssault
 		bool		flying;			
 
 		bool		mHasItem;
+
+	private:
+		// Boss exclusive
+		std::vector<Ogre::TagPoint*>		mPhysicsList;
 
 	private:
 
