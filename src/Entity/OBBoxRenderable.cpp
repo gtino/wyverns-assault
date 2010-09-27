@@ -70,7 +70,7 @@ void OBBoxRenderable::initialize(Ogre::String material)
 		else if(material=="OBBoxManualMaterial_Attack")
 		{
 			matptrOBBoxManualMaterial->getTechnique(0)->getPass(0)->setDiffuse(0.9, 0, 0, 0);
-			matptrOBBoxManualMaterial->getTechnique(0)->getPass(0)->setAmbient(0.5, 0.5, 0.5);
+			matptrOBBoxManualMaterial->getTechnique(0)->getPass(0)->setAmbient(0.9, 0.0, 0.0);
 			matptrOBBoxManualMaterial->getTechnique(0)->getPass(0)->setSelfIllumination(0.9, 0, 0);
 		}
 		else 

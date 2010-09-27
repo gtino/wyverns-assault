@@ -28,7 +28,8 @@ void Projectile::initializeEntity(Ogre::Entity* entity, Ogre::SceneNode* sceneNo
 	EntityInterface::initializeEntity(entity, sceneNode, sceneManager);
 
 	// Set physic body
-	initializePhysics( entity->getName(), Vector3(10,10,10), "OBBoxManualMaterial_Enemy" );
+	mOBBoxRenderable = new OBBoxRenderable("OBBoxManualMaterial_Enemy");
+	initializePhysics( entity->getName(), Vector3(10,10,10), "OBBoxManualMaterial_Enemy" );	
 	sceneNode->attachObject( getGeometry(PhysicBoxType::body)->getMovableObject() );
 
 	// Set direction of projectile

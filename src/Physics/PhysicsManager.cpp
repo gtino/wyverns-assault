@@ -399,7 +399,6 @@ bool PhysicsManager::collidesAllObjects(PlayerPtr player)
 // Collisions between enemy and enemys
 bool PhysicsManager::collidesAllEnemys(EnemyPtr enemy)
 {
-
 	AxisAlignedBox enemy_box = enemy->getGeometry(PhysicBoxType::body)->getWorldBoundingBox(enemy->getPosition());
 
 	for(int i = 0; i < mEnemyMapList[mCurrentGameArea].size(); i++)
@@ -407,8 +406,10 @@ bool PhysicsManager::collidesAllEnemys(EnemyPtr enemy)
 		EnemyPtr enemySecond =  mEnemyMapList[mCurrentGameArea][i];
 		AxisAlignedBox enemy_second_box = enemySecond->getGeometry(PhysicBoxType::body)->getWorldBoundingBox(enemySecond->getPosition());
 
-		if (enemy_box.intersects(enemy_second_box) && enemy != enemySecond && enemy->getLastEnemyCollision() != enemySecond->getName()){
-			if(enemySecond->getLastEnemyCollision() != enemy->getName()){
+		if (enemy_box.intersects(enemy_second_box) && enemy != enemySecond && enemy->getLastEnemyCollision() != enemySecond->getName())
+		{
+			if(enemySecond->getLastEnemyCollision() != enemy->getName())
+			{
 				enemy->setLastEnemyCollision(enemySecond->getName());
 				return true;
 			}

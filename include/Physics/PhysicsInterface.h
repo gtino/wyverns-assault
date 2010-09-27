@@ -31,6 +31,9 @@ using namespace Ogre;
 
 namespace WyvernsAssault
 {
+	typedef std::vector<GeometryPtr> GeometryList;
+	typedef std::vector<GeometryPtr>::iterator GeometryListIterator;
+
 	enum PhysicsTypes
 	{
 		Ground,
@@ -57,7 +60,19 @@ namespace WyvernsAssault
 		
 		virtual void initializePhysics(Ogre::String name, Ogre::Vector3 boxDimension, Ogre::String material)
 		{
-			mGeometryCollision = GeometryPtr(new Geometry(boxDimension, name, material));
+			mGeometryList.push_back( GeometryPtr(new Geometry(boxDimension, name, material)) );
+		}
+
+		virtual void initializeBossPhysics(Ogre::String name, Ogre::Vector3 boxDimension, Ogre::String material)
+		{
+			for(int i = 0; i < 8; i ++)
+			{
+				// One box for every leg
+				char boxName[20];
+				sprintf(boxName, "%s_%d", name.c_str(), i);
+				GeometryPtr geom = GeometryPtr(new Geometry(boxDimension, boxName, material));
+				mGeometryList.push_back( geom );
+			}
 		}
 
 		virtual void addAttackGeometry(Ogre::String name, Ogre::Vector3 boxDimension, Ogre::String material)
@@ -74,16 +89,22 @@ namespace WyvernsAssault
 		virtual GeometryPtr getGeometry(PhysicsInterface::PhysicBoxType type)
 		{
 			if( type == PhysicBoxType::body )
-				return mGeometryCollision;
+				return mGeometryList[0];
 			else if( type == PhysicBoxType::attack )
 				return mGeometryAttack;
-			return mGeometryCollision;
+			return mGeometryList[0];
 		}
 
+		virtual GeometryPtr getBossGeometry(int index){ return mGeometryList[index]; }
+
 	private:
-		Ogre::Real mSpeed;
-		GeometryPtr mGeometryCollision;
-		GeometryPtr mGeometryAttack;
+		Ogre::Real		mSpeed;
+
+		// List of physics geometry
+		GeometryList	mGeometryList;
+		
+		// Attack geometry
+		GeometryPtr		mGeometryAttack;
 
 	};
 
