@@ -57,6 +57,7 @@ Enemy::Enemy(Ogre::String name, Enemy::EnemyTypes type, Enemy::EnemyParameters p
 , mBossRandomAttack(2)
 , mAnimationTime(0)
 , mBossControlTimeHit(false)
+, mBossControlTimeSpecial(false)
 {
 	mType = type;
 	mParameters = params;
@@ -421,10 +422,10 @@ void Enemy::updateBossLogic( const float elapsedSeconds)
 		mAnimationTime = 0;
 
 	// 15 seconds block
-	if(mAnimationTime > 4 && !mBossControlTimeHit){
+	if(mAnimationTime > 4 && mAnimationTime < 5 && !mBossControlTimeHit){
 		mState = EnemyStates::Rage;
 		mBossControlTimeHit = true;
-	}else if(mAnimationTime > 10 && mBossControlTimeHit){
+	}else if(mAnimationTime > 10 && mAnimationTime < 11 && mBossControlTimeHit){
 		mState = EnemyStates::Special;
 		mBossControlTimeHit = false;
 	}
@@ -470,7 +471,7 @@ void Enemy::updateBossLogic( const float elapsedSeconds)
 			break;
 		}
 
-		mLastState = mState;	
+		//mLastState = mState;	
 	}
 	else
 	{
