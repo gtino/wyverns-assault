@@ -55,7 +55,8 @@ Enemy::Enemy(Ogre::String name, Enemy::EnemyTypes type, Enemy::EnemyParameters p
 , mLastEnemyCollision(name)
 , mPhysicsList(0)
 , mBossRandomAttack(2)
-, animationTime(0)
+, mAnimationTime(0)
+, mBossControlTimeHit(false)
 {
 	mType = type;
 	mParameters = params;
@@ -147,8 +148,14 @@ void Enemy::initializeBossEntity(Ogre::Entity* entity, Ogre::SceneNode* sceneNod
 
 	// Animation system
 	mAnimationSystem = new tecnofreak::ogre::AnimationSystem( entity );
-	mAnimationSystem->loadAnimationTree( mParameters.animationTree );	
+	mAnimationSystem->loadAnimationTree( mParameters.animationTree );
 	mCurrentAnimation = mAnimationSystem->getParameter( "CurrentAnimation" );
+
+	// Set loop animation to false
+	entity->getAnimationState("Attack_1")->setLoop(false);
+	entity->getAnimationState("Attack_2")->setLoop(false);
+	entity->getAnimationState("Attack_3")->setLoop(false);
+	entity->getAnimationState("Attack_4")->setLoop(false);
 
 	// States control variables
 	moving = false;
@@ -157,6 +164,9 @@ void Enemy::initializeBossEntity(Ogre::Entity* entity, Ogre::SceneNode* sceneNod
 
 	// Random animation start time
 	mAnimationSystem->update( rand() );
+
+	//Set state to idle
+	mState = EnemyStates::Idle;
 }
 
 void Enemy::finalizeEntity()
@@ -220,6 +230,7 @@ void Enemy::updateEntity(const float elapsedSeconds)
 
 void Enemy::updateBossEntity(const float elapsedSeconds)
 {
+
 	// Update boss is not dying
 	if ( !isDying() )
 	{
@@ -230,10 +241,6 @@ void Enemy::updateBossEntity(const float elapsedSeconds)
 		else if( mState == EnemyStates::Rage )
 		{
 			mCurrentAnimation->setValue( BOSS_ATTACK4 );
-		}
-		else if( mState == EnemyStates::IdleSpecial )
-		{
-			mCurrentAnimation->setValue( BOSS_IDDLE );
 		}	
 		else if( mState == EnemyStates::Special )
 		{
@@ -243,7 +250,7 @@ void Enemy::updateBossEntity(const float elapsedSeconds)
 				mBossRandomAttack = int(Ogre::Math::RangeRandom(1,4));
 			}
 			mCurrentAnimation->setValue( mBossRandomAttack );
-		}	
+		}
 
 		mAnimationSystem->update( elapsedSeconds );
 	}
@@ -405,29 +412,46 @@ void Enemy::updateLogic(lua_State *L, const float elapsedSeconds)
 	}
 }
 
-void Enemy::updateBossLogic(lua_State *L, const float elapsedSeconds)
+void Enemy::updateBossLogic( const float elapsedSeconds)
 {
-	///* the function name */
-	lua_getglobal(L,EnemyLogicList[mType].function);
-	///* push arguments */
-	lua_pushstring(L, getName().c_str());
-	lua_pushnumber(L, mState);
 
-	///* call the function with 1 argument, return 1 result */
-	lua_call(L, 2, 1);
+	// Animation time control
+	mAnimationTime = mAnimationTime + elapsedSeconds;
+	if(mAnimationTime > 15)
+		mAnimationTime = 0;
 
-	///* get the result */
-	Enemy::EnemyStates newState = (Enemy::EnemyStates)luaL_checkint(L, -1);
-	lua_pop(L, 1);
+	// 15 seconds block
+	if(mAnimationTime > 4 && !mBossControlTimeHit){
+		mState = EnemyStates::Rage;
+		mBossControlTimeHit = true;
+	}else if(mAnimationTime > 10 && mBossControlTimeHit){
+		mState = EnemyStates::Special;
+		mBossControlTimeHit = false;
+	}
+
+	if( mCurrentAnimation->getFloatValue() ==  BOSS_ATTACK1 ){
+			if( mEntity->getAnimationState("Attack_1")->getTimePosition() + elapsedSeconds > mEntity->getAnimationState("Attack_1")->getLength() )
+				mState = EnemyStates::Idle;
+	}else if( mCurrentAnimation->getFloatValue() ==  BOSS_ATTACK2 ){
+			if( mEntity->getAnimationState("Attack_2")->getTimePosition() + elapsedSeconds > mEntity->getAnimationState("Attack_2")->getLength() )
+				mState = EnemyStates::Idle;
+	}else if( mCurrentAnimation->getFloatValue() ==  BOSS_ATTACK3 ){
+			if( mEntity->getAnimationState("Attack_3")->getTimePosition() + elapsedSeconds > mEntity->getAnimationState("Attack_3")->getLength() )
+				mState = EnemyStates::Idle;
+	}else if( mCurrentAnimation->getFloatValue() ==  BOSS_ATTACK4 ){
+			if( mEntity->getAnimationState("Attack_4")->getTimePosition() + elapsedSeconds > mEntity->getAnimationState("Attack_4")->getLength() )
+				mState = EnemyStates::Idle;
+	}
+		
 
 	// state is the new state for the player
 	// Do something if and only if the state has changed!
-	if(newState != mState)
+	if(mState != mLastState)
 	{
-		switch(newState)
+		switch(mState)
 		{
 		case Enemy::EnemyStates::Idle:			
-			setMoving(true);
+			setMoving(false);
 			setAttacking(false);
 			setSpecial(false);
 			break;
@@ -435,11 +459,6 @@ void Enemy::updateBossLogic(lua_State *L, const float elapsedSeconds)
 			setMoving(false);
 			setSpecial(false);
 			attackHited = false;
-			break;
-		case Enemy::EnemyStates::IdleSpecial:
-			setMoving(true);
-			setAttacking(false);
-			setSpecial(false);
 			break;
 		case Enemy::EnemyStates::Special:
 			setMoving(false);
@@ -451,8 +470,7 @@ void Enemy::updateBossLogic(lua_State *L, const float elapsedSeconds)
 			break;
 		}
 
-		mState = newState;	
-		mStateTimeout = 0.0f;
+		mLastState = mState;	
 	}
 	else
 	{
@@ -464,8 +482,8 @@ void Enemy::updateBossLogic(lua_State *L, const float elapsedSeconds)
 		}
 	}
 
-	if( moving)
-		setDirectionToTarget();
+	//if( moving)
+	//	setDirectionToTarget();
 
 	mBalloonSet->setVisible(false);
 }
