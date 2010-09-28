@@ -173,6 +173,7 @@ void PlayerManager::attackSpecial(Ogre::String name)
 			PlayerAttackSpecialEventPtr evt = PlayerAttackSpecialEventPtr(new PlayerAttackSpecialEvent(player));
 			EVENTS_FIRE(evt);
 			player->attackFinished();
+			player->setAttackHited(false);
 		}
 	}
 }
