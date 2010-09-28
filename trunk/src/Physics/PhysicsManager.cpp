@@ -119,11 +119,11 @@ void PhysicsManager::checkForCollisions()
 			{
 				EnemyHitEventPtr enemyHitEventPtr = EnemyHitEventPtr(new EnemyHitEvent(enemy, player));
 				enemyHitEventPtr->setDamage(player->getSpecialHitDamage());
-				EVENTS_FIRE(enemyHitEventPtr);
+				EVENTS_FIRE(enemyHitEventPtr);				
 			}
 
 			// Player and enemy are colliding, player is attacking and has changed state
-			if( player->isAttacking() && mLastAttackChecked != player->wichAttack() && player_attack_box.intersects(enemy_box) )
+			if( player->isAttacking() && player->wichAttack() != mLastAttackChecked && player_attack_box.intersects(enemy_box) )
 			{
 				EnemyHitEventPtr enemyHitEventPtr = EnemyHitEventPtr(new EnemyHitEvent(enemy, player));
 				// If thrid strike more damage
@@ -166,11 +166,11 @@ void PhysicsManager::checkForCollisions()
 			if ( player->isSpecial() && player_firebox.intersects(obj_box))
 			{
 				ObjectHitEventPtr objectHitEventPtr = ObjectHitEventPtr(new ObjectHitEvent(obj, player));
-				EVENTS_FIRE(objectHitEventPtr);
+				EVENTS_FIRE(objectHitEventPtr);				
 			}
 
 			// Player and object are colliding, and player is attacking and has changed state
-			if( player->isAttacking() && mLastAttackChecked != player->wichAttack() &&player_attack_box.intersects(obj_box) )
+			if( player->isAttacking() && player->wichAttack() != mLastAttackChecked && player_attack_box.intersects(obj_box) )
 			{
 				ObjectHitEventPtr objectHitEventPtr = ObjectHitEventPtr(new ObjectHitEvent(obj, player));
 				// If thrid strike more damage
@@ -189,7 +189,7 @@ void PhysicsManager::checkForCollisions()
 			ItemPtr item = mItemMapList[mCurrentGameArea][i];
 			AxisAlignedBox item_box = item->getGeometry(PhysicBoxType::body)->getWorldBoundingBox(item->getPosition());
 
-			if(player_collision_box.intersects(item_box))
+			if( player_collision_box.intersects(item_box) )
 			{
 				//Item chatched
 				ItemCatchEventPtr evt = ItemCatchEventPtr(new ItemCatchEvent(player, item));
@@ -203,7 +203,7 @@ void PhysicsManager::checkForCollisions()
 			ProjectilePtr projectile = mProjectileList[i];
 			AxisAlignedBox projectile_box = projectile->getGeometry(PhysicBoxType::body)->getWorldBoundingBox(projectile->getPosition());
 
-			if(player_collision_box.intersects(projectile_box))
+			if( player_collision_box.intersects(projectile_box) )
 			{
 				//Projectile attack
 				ProjectileHitEventPtr evtHit = ProjectileHitEventPtr(new ProjectileHitEvent(projectile, player));
@@ -227,15 +227,18 @@ void PhysicsManager::checkForCollisions()
 				AxisAlignedBox enemy_box = enemy->getBossGeometry(i)->getWorldBoundingBox( enemy->getPhysicsPosition(i) );
 
 				// Check if player is using special (fire) and collisioning with enemy
-				/*if ( player->isSpecial() && player_firebox.intersects(enemy_box) )
+				if ( player->isSpecial() && player_firebox.intersects(enemy_box) && !player->hasAttackHited() )
 				{
 					EnemyHitEventPtr enemyHitEventPtr = EnemyHitEventPtr(new EnemyHitEvent(enemy, player));
 					enemyHitEventPtr->setDamage(player->getSpecialHitDamage());
 					EVENTS_FIRE(enemyHitEventPtr);
-				}*/
+
+					// One collision enough
+					player->setAttackHited(true);
+				}
 
 				// Player and enemy are colliding, player is attacking and has changed state
-				if( player->isAttacking() && mLastAttackChecked != player->wichAttack() && player_attack_box.intersects(enemy_box) )
+				if( player->isAttacking() && player->wichAttack() != mLastAttackChecked && player_attack_box.intersects(enemy_box) )
 				{
 					EnemyHitEventPtr enemyHitEventPtr = EnemyHitEventPtr(new EnemyHitEvent(enemy, player));
 					// If thrid strike more damage
@@ -248,12 +251,12 @@ void PhysicsManager::checkForCollisions()
 				}
 
 				// Check if enemy is attacking and box are colliding
-				if( enemy->isAttacking() && !enemy->hasAttackHited() && enemy_box.intersects(player_collision_box) )
+				if( enemy->isAttacking() && enemy_box.intersects(player_collision_box) )
 				{
 					PlayerHitEventPtr playerHitEventPtr = PlayerHitEventPtr(new PlayerHitEvent(enemy, player));
-					//EVENTS_FIRE_AFTER(playerHitEventPtr, enemy->getSpecialAttackTime());
 					EVENTS_FIRE(playerHitEventPtr);
 
+					enemy->setAttacking(false);
 					enemy->setAttackHited(true);
 				}
 			}

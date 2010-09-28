@@ -46,7 +46,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #define REDWYVERN_HEIGHT			24
 #define REDWYVERN_SPEED				60
 #define REDWYVERN_ATTACK_DAMAGE		30
-#define REDWYVERN_SPECIAL_DAMAGE	250
+#define REDWYVERN_SPECIAL_DAMAGE	150
 
 #define PLAYER_MAX_LIFE 100.0f
 #define PLAYER_MAX_SPECIAL 100.0f
@@ -80,16 +80,22 @@ namespace WyvernsAssault
 
 		// Control functions
 		bool isMoving(){ return moving; }
-		bool isAttacking(){ return attackNumber != 0 ; }
+
+		bool isAttacking(){ return attackNumber != 0 ; }		
 		float wichAttack(){ return attackNumber; }
 		bool attackStart() { return newAttack; }
 		void attackFinished() { newAttack = false; }
 		void setAttackHited(bool value){ attackHited = value; }
 		bool hasAttackHited() { return attackHited; }
+
 		bool isSpecial(){ return special; }
+		void setSpecial(bool value){ special = value; }
+
 		bool isDeath() { return !live; }
 		bool isDying() { return timeDeath <= 3; }
-		void hurt(float damage){ 
+
+		void hurt(float damage)
+		{ 
 			mLife -= damage * (1 / mDrunkMult); 
 			if(mLife < 0) mLife = 0;
 		} 

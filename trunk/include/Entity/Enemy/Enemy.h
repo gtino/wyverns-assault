@@ -177,10 +177,13 @@ namespace WyvernsAssault
 
 		// Animation functions
 		void setMoving(bool move){ moving = move; }
+
 		void setAttacking(bool attack);
 		bool isAttacking(){ return attacking; }
+
 		void setSpecial(bool value){ special = value; }
 		bool isSpecial(){ return special; }
+
 		bool attackStart(){ return newAttack; }
 		void attackFinished(){ newAttack = false; }
 		void setAttackHited(bool value){ attackHited = value; }

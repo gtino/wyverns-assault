@@ -230,7 +230,6 @@ void Enemy::updateEntity(const float elapsedSeconds)
 
 void Enemy::updateBossEntity(const float elapsedSeconds)
 {
-
 	// Update boss is not dying
 	if ( !isDying() )
 	{
@@ -421,26 +420,36 @@ void Enemy::updateBossLogic( const float elapsedSeconds)
 		mAnimationTime = 0;
 
 	// 15 seconds block
-	if(mAnimationTime > 4 && mAnimationTime < 5 && !mBossControlTimeHit){
+	if(mAnimationTime > 4 && mAnimationTime < 5 && !mBossControlTimeHit)
+	{
 		mState = EnemyStates::Rage;
 		mBossControlTimeHit = true;
-	}else if(mAnimationTime > 10 && mAnimationTime < 11 && mBossControlTimeHit){
+	}
+	else if(mAnimationTime > 10 && mAnimationTime < 11 && mBossControlTimeHit)
+	{
 		mState = EnemyStates::Special;
 		mBossControlTimeHit = false;
 	}
 
-	if( mCurrentAnimation->getFloatValue() ==  BOSS_ATTACK1 ){
-			if( mEntity->getAnimationState("Attack_1")->getTimePosition() + elapsedSeconds > mEntity->getAnimationState("Attack_1")->getLength() )
-				mState = EnemyStates::Idle;
-	}else if( mCurrentAnimation->getFloatValue() ==  BOSS_ATTACK2 ){
-			if( mEntity->getAnimationState("Attack_2")->getTimePosition() + elapsedSeconds > mEntity->getAnimationState("Attack_2")->getLength() )
-				mState = EnemyStates::Idle;
-	}else if( mCurrentAnimation->getFloatValue() ==  BOSS_ATTACK3 ){
-			if( mEntity->getAnimationState("Attack_3")->getTimePosition() + elapsedSeconds > mEntity->getAnimationState("Attack_3")->getLength() )
-				mState = EnemyStates::Idle;
-	}else if( mCurrentAnimation->getFloatValue() ==  BOSS_ATTACK4 ){
-			if( mEntity->getAnimationState("Attack_4")->getTimePosition() + elapsedSeconds > mEntity->getAnimationState("Attack_4")->getLength() )
-				mState = EnemyStates::Idle;
+	if( mCurrentAnimation->getFloatValue() ==  BOSS_ATTACK1 )
+	{
+		if( mEntity->getAnimationState("Attack_1")->getTimePosition() + elapsedSeconds > mEntity->getAnimationState("Attack_1")->getLength() )
+			mState = EnemyStates::Idle;
+	}
+	else if( mCurrentAnimation->getFloatValue() ==  BOSS_ATTACK2 )
+	{
+		if( mEntity->getAnimationState("Attack_2")->getTimePosition() + elapsedSeconds > mEntity->getAnimationState("Attack_2")->getLength() )
+			mState = EnemyStates::Idle;
+	}
+	else if( mCurrentAnimation->getFloatValue() ==  BOSS_ATTACK3 )
+	{
+		if( mEntity->getAnimationState("Attack_3")->getTimePosition() + elapsedSeconds > mEntity->getAnimationState("Attack_3")->getLength() )
+			mState = EnemyStates::Idle;
+	}
+	else if( mCurrentAnimation->getFloatValue() ==  BOSS_ATTACK4 )
+	{
+		if( mEntity->getAnimationState("Attack_4")->getTimePosition() + elapsedSeconds > mEntity->getAnimationState("Attack_4")->getLength() )
+			mState = EnemyStates::Idle;
 	}
 		
 
@@ -470,13 +479,13 @@ void Enemy::updateBossLogic( const float elapsedSeconds)
 			break;
 		}
 
-		//mLastState = mState;	
+		mStateTimeout = 0.0;
 	}
 	else
 	{
 		mStateTimeout = mStateTimeout + elapsedSeconds;
 
-		if( (mState == Enemy::EnemyStates::Rage || mState == Enemy::EnemyStates::Special ) && mStateTimeout > 1.0 )
+		if( (mState == Enemy::EnemyStates::Rage || mState == Enemy::EnemyStates::Special ) && mStateTimeout > 1.0 && !attackHited )
 		{
 			setAttacking(true);			
 		}
