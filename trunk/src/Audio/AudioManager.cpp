@@ -132,7 +132,23 @@ void AudioManager::loadResources()
 	createStream( String("WomanHit02.wav"));	
 	createStream( String("WomanGive01.wav"));
 	createStream( String("WomanGive02.wav"));
-	createStream( String("WomanGive03.wav"));		
+	createStream( String("WomanGive03.wav"));
+
+	createStream( String("BossAttack01.wav"));
+	createStream( String("BossAttack02.wav"));
+	createStream( String("BossAttack03.wav"));
+	createStream( String("BossAttack04.wav"));
+	createStream( String("BossDie01.wav"));
+	createStream( String("BossDie02.wav"));
+	createStream( String("BossDie03.wav"));
+	createStream( String("BossDie04.wav"));
+	createStream( String("BossFinish01.wav"));
+	createStream( String("BossHit01.wav"));
+	createStream( String("BossHit02.wav"));
+	createStream( String("BossHit03.wav"));
+	createStream( String("BossHit04.wav"));
+	createStream( String("BossHit05.wav"));
+	createStream( String("BossHit06.wav"));
 
 	createStream( String("Flame01.wav"));
 	createStream( String("PlayerAttack01.wav"));
@@ -802,6 +818,19 @@ EVENTS_DEFINE_HANDLER(AudioManager, EnemyAttack)
 		else
 			playSound("BatteringRamAttack03.wav",sceneNode->_getDerivedPosition(),&channelIndex);
 	}
+	else if ( enemy->getEnemyType() == Enemy::EnemyTypes::Boss )
+	{
+		int sound = rand()%4;
+
+		if( sound == 0 )
+			playSound("BossAttack01.wav",sceneNode->_getDerivedPosition(),&channelIndex);
+		else if( sound == 1 )
+			playSound("BossAttack02.wav",sceneNode->_getDerivedPosition(),&channelIndex);
+		else if( sound == 2 )
+			playSound("BossAttack03.wav",sceneNode->_getDerivedPosition(),&channelIndex);
+		else
+			playSound("BossAttack04.wav",sceneNode->_getDerivedPosition(),&channelIndex);
+	}
 }
 
 EVENTS_DEFINE_HANDLER(AudioManager, EnemyHit)
@@ -858,7 +887,7 @@ EVENTS_DEFINE_HANDLER(AudioManager, EnemyHit)
 		else 
 			playSound("BatteringRamHit02.wav",sceneNode->_getDerivedPosition(),&channelIndex);
 	}
-	else if( enemy->getEnemyType() == Enemy::EnemyTypes::Knight || enemy->getEnemyType() == Enemy::EnemyTypes::Archer)
+	else if( enemy->getEnemyType() == Enemy::EnemyTypes::Knight || enemy->getEnemyType() == Enemy::EnemyTypes::Archer )
 	{
 		int sound = rand()%3;
 
@@ -868,6 +897,23 @@ EVENTS_DEFINE_HANDLER(AudioManager, EnemyHit)
 			playSound("EnemyHit02.wav",sceneNode->_getDerivedPosition(),&channelIndex);
 		else
 			playSound("EnemyHit03.wav",sceneNode->_getDerivedPosition(),&channelIndex);
+	}
+	else if( enemy->getEnemyType() == Enemy::EnemyTypes::Boss )
+	{
+		int sound = rand()%6;
+
+		if( sound == 0 )
+			playSound("BossHit01.wav",sceneNode->_getDerivedPosition(),&channelIndex);
+		else if( sound == 1 )
+			playSound("BossHit02.wav",sceneNode->_getDerivedPosition(),&channelIndex);
+		else if( sound == 2 )
+			playSound("BossHit03.wav",sceneNode->_getDerivedPosition(),&channelIndex);
+		else if( sound == 3 )
+			playSound("BossHit04.wav",sceneNode->_getDerivedPosition(),&channelIndex);
+		else if( sound == 4 )
+			playSound("BossHit05.wav",sceneNode->_getDerivedPosition(),&channelIndex);
+		else
+			playSound("BossHit06.wav",sceneNode->_getDerivedPosition(),&channelIndex);
 	}
 }
 
@@ -918,6 +964,10 @@ EVENTS_DEFINE_HANDLER(AudioManager, EnemyKilled)
 			playSound("EnemyDie01.wav",sceneNode->_getDerivedPosition(),&channelIndex);
 		else
 			playSound("EnemyDie02.wav",sceneNode->_getDerivedPosition(),&channelIndex);
+	}
+	else if( enemy->getEnemyType() == Enemy::EnemyTypes::Boss )
+	{
+		playSound("BossFinish01.wav",sceneNode->_getDerivedPosition(),&channelIndex);
 	}
 }
 

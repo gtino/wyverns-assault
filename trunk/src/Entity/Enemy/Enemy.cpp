@@ -161,6 +161,7 @@ void Enemy::initializeBossEntity(Ogre::Entity* entity, Ogre::SceneNode* sceneNod
 	moving = false;
 	attacking = false;
 	special = false;
+	newAttack = false;
 
 	// Random animation start time
 	mAnimationSystem->update( rand() );
@@ -468,11 +469,13 @@ void Enemy::updateBossLogic( const float elapsedSeconds)
 			setMoving(false);
 			setSpecial(false);
 			attackHited = false;
+			newAttack = true;
 			break;
 		case Enemy::EnemyStates::Special:
 			setMoving(false);
 			setSpecial(true);
 			attackHited = false;
+			newAttack = true;
 			break;
 		default:			
 			mDirection = Vector3::ZERO;
@@ -487,7 +490,7 @@ void Enemy::updateBossLogic( const float elapsedSeconds)
 
 		if( (mState == Enemy::EnemyStates::Rage || mState == Enemy::EnemyStates::Special ) && mStateTimeout > 1.0 && !attackHited )
 		{
-			setAttacking(true);			
+			attacking = true;			
 		}
 	}
 
