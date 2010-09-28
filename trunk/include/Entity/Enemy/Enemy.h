@@ -232,6 +232,7 @@ namespace WyvernsAssault
 		// Boss special control
 		int mBossRandomAttack;
 		bool mBossControlTimeHit;
+		bool mBossControlTimeSpecial;
 
 		// Boss control animation times
 		float mAnimationTime;
