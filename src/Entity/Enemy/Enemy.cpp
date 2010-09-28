@@ -461,18 +461,18 @@ void Enemy::updateBossLogic( const float elapsedSeconds)
 		switch(mState)
 		{
 		case Enemy::EnemyStates::Idle:			
-			setMoving(false);
+			//setMoving(false);
 			setAttacking(false);
 			setSpecial(false);
 			break;
-		case Enemy::EnemyStates::Rage:			
-			setMoving(false);
+		case Enemy::EnemyStates::Rage:
+			//setMoving(false);
 			setSpecial(false);
 			attackHited = false;
 			newAttack = true;
 			break;
 		case Enemy::EnemyStates::Special:
-			setMoving(false);
+			//setMoving(false);
 			setSpecial(true);
 			attackHited = false;
 			newAttack = true;
@@ -496,6 +496,9 @@ void Enemy::updateBossLogic( const float elapsedSeconds)
 
 	//if( moving)
 	//	setDirectionToTarget();
+
+	//Rotate boss
+	mSceneNode->rotate(Ogre::Vector3::UNIT_Y,Degree(0.5));
 
 	mBalloonSet->setVisible(false);
 }
