@@ -16,7 +16,6 @@ static struct EnemyLogic
 	{Enemy::EnemyTypes::Wizard,			"runWizardLogic"},	
 	{Enemy::EnemyTypes::Archer,			"runArcherLogic"}, 		
 	{Enemy::EnemyTypes::BatteringRam,	"runBatteringRamLogic"},
-	{Enemy::EnemyTypes::Boss,			"runBossLogic"},
 };
 
 Enemy::EnemyTypes Enemy::StringToType (Ogre::String string)
