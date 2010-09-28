@@ -493,6 +493,15 @@ void EnemyManager::update(const float elapsedSeconds)
 		
 		// Physic debugg control
 		enemy->setDebugEnabled(mIsDebugEnabled);
+
+		if( enemy->attackStart() )
+		{
+			EnemyAttackEventPtr evt = EnemyAttackEventPtr(new EnemyAttackEvent(enemy));
+			EVENTS_FIRE(evt);				
+
+			enemy->setAttackTimeout(elapsedSeconds);
+			enemy->attackFinished();
+		}
 	}
 }
 
