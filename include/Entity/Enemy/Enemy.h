@@ -51,13 +51,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #define BOSS_ATTACK4		4
 #define BOSS_HIT			5
 
-#define BOSS_ATTACK1_TIME		2
-#define BOSS_ATTACK2_TIME		2
-#define BOSS_ATTACK3_TIME		2
-#define BOSS_ATTACK4_TIME		2
-#define BOSS_IDLE_TIME			3
-#define BOSS_SPECIAL_IDLE_TIME  5
-
 #define PHYSIC_SIZE			20
 
 namespace WyvernsAssault
@@ -135,7 +128,7 @@ namespace WyvernsAssault
 		// Logic Interface
 		//
 		void updateLogic(lua_State *L, const float elapsedSeconds);
-		void updateBossLogic(lua_State *L, const float elapsedSeconds);
+		void updateBossLogic(const float elapsedSeconds);
 
 		float getStateTimeout(){return mStateTimeout;}
 
@@ -238,9 +231,10 @@ namespace WyvernsAssault
 
 		// Boss special control
 		int mBossRandomAttack;
+		bool mBossControlTimeHit;
 
 		// Boss control animation times
-		int animationTime;
+		float mAnimationTime;
 
 		OBBoxRenderable* mOBBoxRenderable;
 		bool mIsDebugEnabled;

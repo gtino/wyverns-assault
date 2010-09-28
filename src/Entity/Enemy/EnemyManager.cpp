@@ -488,7 +488,7 @@ void EnemyManager::update(const float elapsedSeconds)
 	{
 		EnemyPtr enemy =  mEnemyMapList[-10][0];
 
-		enemy->updateBossLogic(L,elapsedSeconds);		
+		enemy->updateBossLogic(elapsedSeconds);		
 		enemy->updateBossEntity(elapsedSeconds);
 		
 		// Physic debugg control
