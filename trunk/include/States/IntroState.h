@@ -73,6 +73,8 @@ namespace WyvernsAssault
 
 	private:
 		VideoManagerPtr mVideoManager;
+		
+		bool mIsWideScreen;
 	};
 }
 #endif // __INTRO_STATE_H_

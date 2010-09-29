@@ -40,6 +40,7 @@ namespace WyvernsAssault
 
 	public:
 		void setMovieClip(const Ogre::String& materialName);
+		void setAspectRatio(bool isWideWindow, bool isWideMovie);
 
 	protected:
 		Ogre::SceneNode* mMovieClipNode;
