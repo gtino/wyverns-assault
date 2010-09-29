@@ -27,6 +27,8 @@ function playFirstKillsCutScene(elapsedTime)
 		Gui.hideUi();
 		Gui.showForeground();
 		Gui.setForeground("firstKills_1");
+		Gui.showFrame();
+		Gui.setFrame("Frame_Normal");
 		
 		local inputEnabled = Input.isEnabled(); -- Checks if input is enabled
 		local logicEnabled = Logic.isEnabled(); -- Checks if logic is enabled
@@ -48,6 +50,7 @@ function playFirstKillsCutScene(elapsedTime)
 	else
 		Camera.setCurrent(CameraMode_Game); -- Sets the current camera
 		
+		Gui.hideFrame();
 		Gui.hideForeground();
 		Gui.showUi();
 	

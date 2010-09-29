@@ -76,8 +76,10 @@ void PlayState::initialize()
 	mGuiScreen->addWidget(mPlayerUI,GuiWidgetPlayId::UserInterface1);
 
 	GuiForegroundPtr foreground = GuiForegroundPtr(new GuiForeground());
-
 	mGuiScreen->setForeground(foreground);
+
+	GuiFramePtr frame = GuiFramePtr(new GuiFrame());
+	mGuiScreen->setFrame(frame);
 
 	// Player manager constructor
 	mPlayerManager = PlayerManagerPtr(new PlayerManager(mSceneManager));
