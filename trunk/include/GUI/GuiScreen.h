@@ -29,6 +29,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #include "GuiWidget.h"
 #include "GuiBackground.h"
 #include "GuiForeground.h"
+#include "GuiFrame.h"
 #include "GuiButton.h"
 #include "GuiImage.h"
 #include "GuiUserInterface.h"
@@ -85,6 +86,11 @@ namespace WyvernsAssault
 		void changeForeground(const Ogre::String& filename, const Ogre::String& name, const Ogre::String& group);
 		void showForeground();
 		void hideForeground();
+
+		void setFrame(GuiFramePtr frame);
+		void changeFrame(const Ogre::String& filename, const Ogre::String& name, const Ogre::String& group);
+		void showFrame();
+		void hideFrame();
 
 		void addWidget(GuiWidgetPtr widget, GuiWidgetId widgetId);
 		GuiWidgetPtr getWidget(GuiWidgetId widgetId);
@@ -147,6 +153,9 @@ namespace WyvernsAssault
 
 		GuiForegroundPtr mForeground;
 		SceneNode* mForegroundNode;
+
+		GuiFramePtr mFrame;
+		SceneNode* mFrameNode;
 
 		GuiButton* mButton;
 		GuiImage* mImage;

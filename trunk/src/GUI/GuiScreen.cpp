@@ -15,8 +15,11 @@ GuiScreen::GuiScreen(Ogre::SceneManager* sceneManager, GuiScreenId id, const Ogr
 	//// Attach background to the scene
 	mBackgroundNode = mSceneManager->getRootSceneNode()->createChildSceneNode(mGuiScreenName+"_Background");
 
-	//// Attach background to the scene
+	//// Attach foreround to the scene
 	mForegroundNode = mSceneManager->getRootSceneNode()->createChildSceneNode(mGuiScreenName+"_Foreground");
+
+	//// Attach frame to the scene
+	mFrameNode = mSceneManager->getRootSceneNode()->createChildSceneNode(mGuiScreenName+"_Frame");
 	
 	mMenu = NULL;
 }
@@ -25,6 +28,7 @@ GuiScreen::~GuiScreen()
 {
 	mBackgroundNode = NULL;
 	mForegroundNode = NULL;
+	mFrameNode = NULL;
 	mMenu = NULL;
 }
 
@@ -109,6 +113,11 @@ void GuiScreen::removeGui()
 		mSceneManager->destroySceneNode(mForegroundNode);
 		mForegroundNode = NULL;
 	}
+	if(mFrameNode)
+	{
+		mSceneManager->destroySceneNode(mFrameNode);
+		mFrameNode = NULL;
+	}
 	if(mMenu)
 	{
 		removeMenu();
@@ -174,6 +183,28 @@ void GuiScreen::showForeground()
 void GuiScreen::hideForeground()
 {
 	mForegroundNode->setVisible(false);
+}
+
+void GuiScreen::showFrame()
+{
+	mFrameNode->setVisible(true);
+}
+
+void GuiScreen::hideFrame()
+{
+	mFrameNode->setVisible(false);
+}
+
+void GuiScreen::changeFrame(const Ogre::String& filename, const Ogre::String& name, const Ogre::String& group)
+{
+	mFrame->setImage(filename,name,group);
+}
+
+void GuiScreen::setFrame(GuiFramePtr frame)
+{
+	mFrame= frame;
+
+	mFrameNode->attachObject(mFrame->getRectangle2D());
 }
 
 void GuiScreen::show()

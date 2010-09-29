@@ -140,6 +140,9 @@ namespace WyvernsAssault
 
 		LUA_FUNCTION(showScreen);
 		LUA_FUNCTION(hideScreen);
+		LUA_FUNCTION(showFrame);
+		LUA_FUNCTION(hideFrame);
+		LUA_FUNCTION(setFrame);
 		LUA_FUNCTION(showUi);
 		LUA_FUNCTION(hideUi);
 		LUA_FUNCTION(showForeground);

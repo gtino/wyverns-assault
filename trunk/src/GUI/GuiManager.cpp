@@ -374,6 +374,9 @@ EVENTS_DEFINE_HANDLER(GuiManager, GameAreaCleared)
 LUA_BEGIN_BINDING(GuiManager, guilib)
 LUA_BIND(GuiManager, showScreen)
 LUA_BIND(GuiManager, hideScreen)
+LUA_BIND(GuiManager, showFrame)
+LUA_BIND(GuiManager, hideFrame)
+LUA_BIND(GuiManager, setFrame)
 LUA_BIND(GuiManager, showUi)
 LUA_BIND(GuiManager, hideUi)
 LUA_BIND(GuiManager, showForeground)
@@ -485,6 +488,55 @@ LUA_DEFINE_FUNCTION(GuiManager, hideForeground)
 	GuiScreenPtr playScreen = GuiManager::getSingleton().getScreen(GuiScreenId::PlayGui);
 
 	playScreen->hideForeground();
+
+	/* return the number of results */
+	return 0;
+}
+
+LUA_DEFINE_FUNCTION(GuiManager,showFrame)
+{
+	/* get number of arguments */
+	int n = lua_gettop(L);
+
+	// n should be 1, the screen id
+
+	//int id = luaL_checkint(L, 1);
+
+	GuiScreenPtr playScreen = GuiManager::getSingleton().getScreen(GuiScreenId::PlayGui);
+
+	playScreen->showFrame();
+
+	/* return the number of results */
+	return 0;
+}
+
+LUA_DEFINE_FUNCTION(GuiManager, hideFrame)
+{
+	/* get number of arguments */
+	int n = lua_gettop(L);
+
+	// n should be 1, the screen id
+
+	GuiScreenPtr playScreen = GuiManager::getSingleton().getScreen(GuiScreenId::PlayGui);
+
+	playScreen->hideFrame();
+
+	/* return the number of results */
+	return 0;
+}
+
+LUA_DEFINE_FUNCTION(GuiManager, setFrame)
+{
+	/* get number of arguments */
+	int n = lua_gettop(L);
+
+	// n should be 1, the screen id
+
+	Ogre::String materialName = luaL_checkstring(L, 1);
+
+	GuiScreenPtr playScreen = GuiManager::getSingleton().getScreen(GuiScreenId::PlayGui);
+
+	playScreen->changeFrame(materialName+".png",materialName+"Frame","General");
 
 	/* return the number of results */
 	return 0;
