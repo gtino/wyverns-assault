@@ -16,6 +16,7 @@ static struct EnemyLogic
 	{Enemy::EnemyTypes::Wizard,			"runWizardLogic"},	
 	{Enemy::EnemyTypes::Archer,			"runArcherLogic"}, 		
 	{Enemy::EnemyTypes::BatteringRam,	"runBatteringRamLogic"},
+	{Enemy::EnemyTypes::Boss,			"runBossTarget"},
 };
 
 Enemy::EnemyTypes Enemy::StringToType (Ogre::String string)
@@ -166,8 +167,6 @@ void Enemy::initializeBossEntity(Ogre::Entity* entity, Ogre::SceneNode* sceneNod
 	// Random animation start time
 	mAnimationSystem->update( rand() );
 
-	//Set state to idle
-	mState = EnemyStates::Idle;
 }
 
 void Enemy::finalizeEntity()
@@ -276,6 +275,15 @@ Real Enemy::getSpecialAttackTime()
 		return 2.0;
 	else
 		return 1.0;
+}
+
+void Enemy::setBossTarget(lua_State *L){
+	///* the function name */
+	lua_getglobal(L,EnemyLogicList[mType].function);
+	///* push arguments */
+	lua_pushstring(L, getName().c_str());
+	///* call the function with 1 argument, return 1 result */
+	lua_call(L, 1, 0);
 }
 
 void Enemy::updateLogic(lua_State *L, const float elapsedSeconds)
@@ -412,13 +420,16 @@ void Enemy::updateLogic(lua_State *L, const float elapsedSeconds)
 	}
 }
 
-void Enemy::updateBossLogic( const float elapsedSeconds)
+void Enemy::updateBossLogic(lua_State *L, const float elapsedSeconds)
 {
 
 	// Animation time control
 	mAnimationTime = mAnimationTime + elapsedSeconds;
 	if(mAnimationTime > 15)
 		mAnimationTime = 0;
+
+	// Set mTarget from lua
+	setBossTarget(L);
 
 	// 15 seconds block
 	if(mAnimationTime > 4 && mAnimationTime < 5 && !mBossControlTimeHit)
@@ -452,7 +463,6 @@ void Enemy::updateBossLogic( const float elapsedSeconds)
 		if( mEntity->getAnimationState("Attack_4")->getTimePosition() + elapsedSeconds > mEntity->getAnimationState("Attack_4")->getLength() )
 			mState = EnemyStates::Idle;
 	}
-		
 
 	// state is the new state for the player
 	// Do something if and only if the state has changed!
@@ -460,19 +470,19 @@ void Enemy::updateBossLogic( const float elapsedSeconds)
 	{
 		switch(mState)
 		{
+		case Enemy::EnemyStates::Initial:
+			mState = EnemyStates::Idle;
+			break;
 		case Enemy::EnemyStates::Idle:			
-			//setMoving(false);
 			setAttacking(false);
 			setSpecial(false);
 			break;
 		case Enemy::EnemyStates::Rage:
-			//setMoving(false);
 			setSpecial(false);
 			attackHited = false;
 			newAttack = true;
 			break;
 		case Enemy::EnemyStates::Special:
-			//setMoving(false);
 			setSpecial(true);
 			attackHited = false;
 			newAttack = true;
@@ -494,11 +504,22 @@ void Enemy::updateBossLogic( const float elapsedSeconds)
 		}
 	}
 
-	//if( moving)
-	//	setDirectionToTarget();
-
 	//Rotate boss
-	mSceneNode->rotate(Ogre::Vector3::UNIT_Y,Degree(0.5));
+	if(mTarget && mState == EnemyStates::Idle){
+
+		Ogre::Vector3 directionPlayerBoss = mTarget->getPosition() - mSceneNode->getPosition();
+		Vector3 bossOrientation = mSceneNode->getOrientation() * Vector3(1,0,1);
+		bossOrientation.y = 0;
+		directionPlayerBoss.y = 0;
+		directionPlayerBoss.normalise();
+		bossOrientation.normalise();
+
+		Ogre::Radian angleBetween = bossOrientation.angleBetween(directionPlayerBoss);
+
+		if(angleBetween > Ogre::Radian(0.1) || angleBetween < Ogre::Radian(-0.1))
+			mSceneNode->rotate(Ogre::Vector3::UNIT_Y,Degree(0.5));
+
+	}
 
 	mBalloonSet->setVisible(false);
 }

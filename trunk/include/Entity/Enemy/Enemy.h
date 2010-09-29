@@ -128,7 +128,9 @@ namespace WyvernsAssault
 		// Logic Interface
 		//
 		void updateLogic(lua_State *L, const float elapsedSeconds);
-		void updateBossLogic(const float elapsedSeconds);
+		void updateBossLogic(lua_State *L, const float elapsedSeconds);
+
+		void setBossTarget(lua_State *L);
 
 		float getStateTimeout(){return mStateTimeout;}
 
