@@ -296,8 +296,8 @@
           <position x="0" y="0" z="0" />
           <scale x="1" y="1" z="1" />
           <subentities>
-            <subentity materialName="VulcanicRock" index="0" visible="true" />
-            <subentity materialName="Volcano" index="1" visible="true" />
+            <subentity materialName="Scene_Material" index="0" visible="true" />
+            <subentity materialName="Scene_Material" index="1" visible="true" />
           </subentities>
         </entity>
       </node>

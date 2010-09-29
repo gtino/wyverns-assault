@@ -76,6 +76,7 @@ namespace WyvernsAssault
 		virtual Ogre::Quaternion getOrientation(){return mSceneNode->getOrientation(); }
 
 		virtual void setMaterialName(const Ogre::String materialName) { mEntity->setMaterialName(materialName);}
+		virtual Ogre::String getMaterialName() { return mEntity->getSubEntity(0)->getMaterialName(); }
 
 		virtual void setVisible(bool visible){ mEntity->setVisible(visible); }
 		virtual void isVisible(){ mEntity->isVisible(); }

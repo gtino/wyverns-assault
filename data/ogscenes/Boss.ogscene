@@ -62,7 +62,7 @@
     <LAYERS>
       <LAYER id="0" name="Layer0" visible="true"></LAYER>
       <LAYER id="1" name="Layer1" visible="false"></LAYER>
-      <LAYER id="2" name="Layer2" visible="false"></LAYER>
+      <LAYER id="2" name="Layer2" visible="true"></LAYER>
       <LAYER id="3" name="Layer3" visible="false"></LAYER>
       <LAYER id="4" name="Layer4" visible="false"></LAYER>
       <LAYER id="5" name="Layer 1" visible="true"></LAYER>
@@ -138,7 +138,7 @@
   <OBJECT object_id="2000000002" name="Viewport1" typename="Viewport Object">
     <PROPERTY id="camera::clipdistance" type="8" value="200 3000"></PROPERTY>
     <PROPERTY id="camera::fov" type="6" value="1"></PROPERTY>
-    <PROPERTY id="camera::orientation" type="13" value="-0.896814 0.154114 0.408712 0.0702071"></PROPERTY>
+    <PROPERTY id="camera::orientation" type="13" value="-0.896813 0.154114 0.408712 0.070207"></PROPERTY>
     <PROPERTY id="camera::polymode" type="2" value="3"></PROPERTY>
     <PROPERTY id="camera::position" type="9" value="-294.557 204.894 249.092"></PROPERTY>
     <PROPERTY id="camera::viewmode" type="2" value="0"></PROPERTY>
@@ -960,9 +960,9 @@
     <PROPERTY id="position" type="9" value="0 0 0"></PROPERTY>
     <PROPERTY id="renderingdistance" type="6" value="5000"></PROPERTY>
     <PROPERTY id="scale" type="9" value="1 1 1"></PROPERTY>
-    <PROPERTY id="subentity0::material" type="7" value="VulcanicRock"></PROPERTY>
+    <PROPERTY id="subentity0::material" type="7" value="Scene_Material"></PROPERTY>
     <PROPERTY id="subentity0::visible" type="12" value="true"></PROPERTY>
-    <PROPERTY id="subentity1::material" type="7" value="Volcano"></PROPERTY>
+    <PROPERTY id="subentity1::material" type="7" value="Scene_Material"></PROPERTY>
     <PROPERTY id="subentity1::visible" type="12" value="true"></PROPERTY>
     <PROPERTY id="subentitycount" type="2" value="2"></PROPERTY>
     <PROPERTY id="updatescript" type="7" value=""></PROPERTY>

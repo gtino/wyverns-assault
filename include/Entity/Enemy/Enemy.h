@@ -209,6 +209,10 @@ namespace WyvernsAssault
 	public:
 		// Boss exclusive
 		Vector3 getPhysicsPosition(int index){ return mPhysicsList[index]->_getDerivedPosition(); }
+		SceneNode* getPhysicsNode(int index){ return mPhysicsList[index]; }		
+		int getPhysicPositionIndex(){ return mPhysicsListIndex; }
+		void setPhysicPositionIndex(int value){ mPhysicsListIndex = value; }
+
 		Real getSpecialAttackTime();
 
 	private:
@@ -234,14 +238,6 @@ namespace WyvernsAssault
 
 		String			mLastEnemyCollision;
 
-		// Boss special control
-		int mBossRandomAttack;
-		bool mBossControlTimeHit;
-		bool mBossControlTimeSpecial;
-
-		// Boss control animation times
-		float mAnimationTime;
-
 		OBBoxRenderable* mOBBoxRenderable;
 		bool mIsDebugEnabled;
 
@@ -262,7 +258,16 @@ namespace WyvernsAssault
 
 	private:
 		// Boss exclusive
-		std::vector<Ogre::TagPoint*>		mPhysicsList;
+		std::vector<Ogre::SceneNode*>		mPhysicsList;
+		int									mPhysicsListIndex;
+
+		// Boss special control
+		int			mBossRandomAttack;
+		bool		mBossControlTimeHit;
+		bool		mBossControlTimeSpecial;
+
+		// Boss control animation times
+		float		mAnimationTime;
 
 	private:
 

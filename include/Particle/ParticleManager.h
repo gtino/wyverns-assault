@@ -64,6 +64,7 @@ namespace WyvernsAssault
 		ParticleUniverse::ParticleSystem* create(String script);
 
 		void add(SceneNode* node, ParticleSystem::ParticleSystemParameters params, bool start = true);
+		void add(SceneNode* node, Vector3 position, ParticleSystem::ParticleSystemParameters params, bool start = true);
 		void add(SceneNode* node, String id, ParticleSystem::ParticleSystemParameters params);
 
 		bool remove(String id);

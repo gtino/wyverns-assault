@@ -819,7 +819,7 @@ EVENTS_DEFINE_HANDLER(AudioManager, EnemyAttack)
 			playSound("BatteringRamAttack03.wav",sceneNode->_getDerivedPosition(),&channelIndex);
 	}
 	else if ( enemy->getEnemyType() == Enemy::EnemyTypes::Boss )
-	{
+	{		
 		int sound = rand()%4;
 
 		if( sound == 0 )
@@ -900,6 +900,8 @@ EVENTS_DEFINE_HANDLER(AudioManager, EnemyHit)
 	}
 	else if( enemy->getEnemyType() == Enemy::EnemyTypes::Boss )
 	{
+		sceneNode = enemy->getPhysicsNode(enemy->getPhysicPositionIndex());
+
 		int sound = rand()%6;
 
 		if( sound == 0 )
