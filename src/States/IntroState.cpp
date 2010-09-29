@@ -9,6 +9,7 @@ IntroState::IntroState(GraphicsManagerPtr graphicsManager,
 					   GuiManagerPtr guiManager,
 					   LevelManagerPtr levelManager)
 : BaseState(graphicsManager,inputManager,audioManager, cameraManager, guiManager, levelManager)
+, mIsWideScreen(false)
 {
 	//
 	// TODO Constructor
@@ -27,6 +28,9 @@ IntroState::~IntroState()
 void IntroState::initialize()
 {
 	BaseState::initialize();
+
+	// HACK : gotta detect it!
+	mIsWideScreen = false;
 
 	//
 	// Set game camera 
@@ -56,6 +60,7 @@ void IntroState::load()
 	mGuiScreen = mGuiManager->createScreen(GuiScreenId::IntroGui, "IntroScreen");
 	
 	GuiMovieClipPtr guiMovieClip = GuiMovieClipPtr(new GuiMovieClip());
+	guiMovieClip->setAspectRatio(mIsWideScreen,true);
 	guiMovieClip->setMovieClip("video_material");
 
 	mGuiScreen->setBackground(guiMovieClip);
