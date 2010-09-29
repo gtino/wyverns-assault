@@ -222,42 +222,55 @@ void PhysicsManager::checkForCollisions()
 		{
 			EnemyPtr enemy = mEnemyMapList[-10][0];
 
-			for(int i = 0; i < 8; i++)
-			{				
-				AxisAlignedBox enemy_box = enemy->getBossGeometry(i)->getWorldBoundingBox( enemy->getPhysicsPosition(i) );
+			if( !enemy->isDying() )
+			{
+				for(int i = 0; i < 8; i++)
+				{				
+					AxisAlignedBox enemy_box = enemy->getBossGeometry(i)->getWorldBoundingBox( enemy->getPhysicsPosition(i) );
 
-				// Check if player is using special (fire) and collisioning with enemy
-				if ( player->isSpecial() && player_firebox.intersects(enemy_box) && !player->hasAttackHited() )
-				{
-					EnemyHitEventPtr enemyHitEventPtr = EnemyHitEventPtr(new EnemyHitEvent(enemy, player));
-					enemyHitEventPtr->setDamage(player->getSpecialHitDamage());
-					EVENTS_FIRE(enemyHitEventPtr);
+					// Check if player is using special (fire) and collisioning with enemy
+					if ( player->isSpecial() && player_firebox.intersects(enemy_box) && !player->hasAttackHited() )
+					{
+						EnemyHitEventPtr enemyHitEventPtr = EnemyHitEventPtr(new EnemyHitEvent(enemy, player));
+						enemyHitEventPtr->setDamage(player->getSpecialHitDamage());
+						
+						// Set physic box hited by player
+						enemy->setPhysicPositionIndex(i);
 
-					// One collision enough
-					player->setAttackHited(true);
-				}
+						EVENTS_FIRE(enemyHitEventPtr);
 
-				// Player and enemy are colliding, player is attacking and has changed state
-				if( player->isAttacking() && player->wichAttack() != mLastAttackChecked && player_attack_box.intersects(enemy_box) )
-				{
-					EnemyHitEventPtr enemyHitEventPtr = EnemyHitEventPtr(new EnemyHitEvent(enemy, player));
-					// If thrid strike more damage
-					if( player->wichAttack() == 3 )
-						enemyHitEventPtr->setDamage(player->getComboHitDamage());
-					else
- 						enemyHitEventPtr->setDamage(player->getHitDamage());
+						// One collision enough
+						player->setAttackHited(true);
+					}
 
-					EVENTS_FIRE(enemyHitEventPtr);
-				}
+					// Player and enemy are colliding, player is attacking and has changed state
+					if( player->isAttacking() && player->wichAttack() != mLastAttackChecked && player_attack_box.intersects(enemy_box) )
+					{
+						EnemyHitEventPtr enemyHitEventPtr = EnemyHitEventPtr(new EnemyHitEvent(enemy, player));
+						// If thrid strike more damage
+						if( player->wichAttack() == 3 )
+							enemyHitEventPtr->setDamage(player->getComboHitDamage());
+						else
+ 							enemyHitEventPtr->setDamage(player->getHitDamage());
 
-				// Check if enemy is attacking and box are colliding
-				if( enemy->isAttacking() && enemy_box.intersects(player_collision_box) )
-				{
-					PlayerHitEventPtr playerHitEventPtr = PlayerHitEventPtr(new PlayerHitEvent(enemy, player));
-					EVENTS_FIRE(playerHitEventPtr);
+						// Set physic box hited by player
+						enemy->setPhysicPositionIndex(i);
 
-					enemy->setAttacking(false);
-					enemy->setAttackHited(true);
+						EVENTS_FIRE(enemyHitEventPtr);
+					}
+
+					// Check if enemy is attacking and box are colliding
+					if( enemy->isAttacking() && enemy_box.intersects(player_collision_box) )
+					{
+						PlayerHitEventPtr playerHitEventPtr = PlayerHitEventPtr(new PlayerHitEvent(enemy, player));
+						EVENTS_FIRE(playerHitEventPtr);
+
+						// Set physic box that has hited to player
+						enemy->setPhysicPositionIndex(i);
+
+						enemy->setAttacking(false);
+						enemy->setAttackHited(true);
+					}
 				}
 			}
 		}
@@ -634,8 +647,9 @@ EVENTS_DEFINE_HANDLER(PhysicsManager, EnemyKilled)
 	// The player has just hit the enemy
    	removeEnemy(enemy);
 
-	// Remove physics box
-	enemy->_getSceneNode()->detachObject( enemy->getGeometry(PhysicBoxType::body)->getMovableObject() );
+	if( enemy->getEnemyType() != Enemy::EnemyTypes::Boss )
+		// Remove physics box
+		enemy->_getSceneNode()->detachObject( enemy->getGeometry(PhysicBoxType::body)->getMovableObject() );
 }
 
 EVENTS_DEFINE_HANDLER(PhysicsManager, EnemyPhysics)

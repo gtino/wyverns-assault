@@ -578,50 +578,73 @@ EVENTS_DEFINE_HANDLER(EnemyManager, EnemyKilled)
 	// Stop the enemy from rotating and moving
 	enemy->stop();
 
-	if( player->isSpecial() )
+	if( enemy->getEnemyType() == Enemy::EnemyTypes::Boss )
 	{
-		enemy->setMaterialName("Skin/Black");
-		enemy->setBurning(true);
-		EnemyCustomEventPtr eCustom = EnemyCustomEventPtr(new EnemyCustomEvent(enemy));
-		EVENTS_FIRE_AFTER(eCustom, 1.0f);
+		// Rotate to face player!!
+		SceneNode* enemyNode = enemy->_getSceneNode();			
+		Vector3 direction = player->getPosition()- enemy->getPosition();
+		Vector3 src = enemyNode->getOrientation() * Vector3::UNIT_Z;
+		src.y = 0;
+		direction.y = 0;
+		direction.normalise();
+		src.normalise();
 
-		// If player burns a chicken will drop an item
-		if( enemy->getEnemyType() == Enemy::EnemyTypes::Chicken || enemy->getEnemyType() == Enemy::EnemyTypes::Cow )
-		{
-			EnemyCreateItemEventPtr eItem = EnemyCreateItemEventPtr(new EnemyCreateItemEvent(enemy, mCurrentGameArea));
-			EVENTS_FIRE_AFTER(eItem, 1.0f);
-			
-			enemy->itemDroped();
-		}
+		Quaternion rotation = src.getRotationTo(direction);
+		enemyNode->translate(Vector3(0, 20, 0));
+		enemyNode->rotate(rotation);		
+
+		enemy->dieSwitch();
+		//enemy->setDieMaterialName(enemy->getMaterialName());
 	}
 	else
 	{
-		if( enemy->getEnemyType() == Enemy::EnemyTypes::Chicken || enemy->getEnemyType() == Enemy::EnemyTypes::Cow )
+		if( player->isSpecial() )
 		{
-			enemy->dieSwitch();
-		}
-		else 
-		{
-			if( (rand()%6) == 0 && enemy->getEnemyType() != Enemy::EnemyTypes::Woman)
-				enemy->dieToCamera();
-			else
-			{				
-				if( enemy->hasDieMesh() )
-				{
-					enemy->dieSwitch();
-					if( enemy->getEnemyType() != Enemy::EnemyTypes::BatteringRam )
-						enemy->setDieMaterialName("Skin/Red");
-				}
-				else if ( !enemy->hasDieAnimation() )
-					enemy->setMaterialName("Skin/Red");
+			enemy->setMaterialName("Skin/Black");
+			enemy->setBurning(true);
+			EnemyCustomEventPtr eCustom = EnemyCustomEventPtr(new EnemyCustomEvent(enemy));
+			EVENTS_FIRE_AFTER(eCustom, 1.0f);
 
-				// If enemy has an item and its not flying will drop it
-				if( enemy->hasItem() && enemy->getEnemyType() != Enemy::EnemyTypes::Woman )
-				{	
-					EnemyCreateItemEventPtr eItem = EnemyCreateItemEventPtr(new EnemyCreateItemEvent(enemy, mCurrentGameArea));
-					EVENTS_FIRE_AFTER(eItem, 1.0f);
-						
-					enemy->itemDroped();
+			// If player burns a chicken will drop an item
+			if( enemy->getEnemyType() == Enemy::EnemyTypes::Chicken || enemy->getEnemyType() == Enemy::EnemyTypes::Cow )
+			{
+				EnemyCreateItemEventPtr eItem = EnemyCreateItemEventPtr(new EnemyCreateItemEvent(enemy, mCurrentGameArea));
+				EVENTS_FIRE_AFTER(eItem, 1.0f);
+				
+				enemy->itemDroped();
+			}
+		}
+		else
+		{
+			if( enemy->getEnemyType() == Enemy::EnemyTypes::Chicken || enemy->getEnemyType() == Enemy::EnemyTypes::Cow )
+			{
+				enemy->dieSwitch();
+			}
+			else 
+			{
+				if( (rand()%6) == 0 && enemy->getEnemyType() != Enemy::EnemyTypes::Woman)
+					enemy->dieToCamera();
+				else
+				{				
+					if( enemy->hasDieMesh() )
+					{
+						enemy->dieSwitch();
+						if( enemy->getEnemyType() != Enemy::EnemyTypes::BatteringRam )
+							enemy->setDieMaterialName("Skin/Red");
+						else
+							enemy->setDieMaterialName(enemy->getMaterialName());
+					}
+					else if ( !enemy->hasDieAnimation() )
+						enemy->setMaterialName("Skin/Red");
+
+					// If enemy has an item and its not flying will drop it
+					if( enemy->hasItem() && enemy->getEnemyType() != Enemy::EnemyTypes::Woman )
+					{	
+						EnemyCreateItemEventPtr eItem = EnemyCreateItemEventPtr(new EnemyCreateItemEvent(enemy, mCurrentGameArea));
+						EVENTS_FIRE_AFTER(eItem, 1.0f);
+							
+						enemy->itemDroped();
+					}
 				}
 			}
 		}

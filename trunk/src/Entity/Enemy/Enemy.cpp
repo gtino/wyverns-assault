@@ -54,6 +54,7 @@ Enemy::Enemy(Ogre::String name, Enemy::EnemyTypes type, Enemy::EnemyParameters p
 , mHasItem(false)
 , mLastEnemyCollision(name)
 , mPhysicsList(0)
+, mPhysicsListIndex(0)
 , mBossRandomAttack(2)
 , mAnimationTime(0)
 , mBossControlTimeHit(false)
@@ -134,14 +135,22 @@ void Enemy::initializeBossEntity(Ogre::Entity* entity, Ogre::SceneNode* sceneNod
 	initializeBossPhysics(entity->getName(), mParameters.physicSize, "OBBoxManualMaterial_Enemy");
 	
 	// Attach every physics box to correct bone, and save position in list with correct order
-	mPhysicsList.push_back( entity->attachObjectToBone( "bone4", getBossGeometry(0)->getMovableObject()) );
-	mPhysicsList.push_back( entity->attachObjectToBone( "bone29", getBossGeometry(1)->getMovableObject()) );
-	mPhysicsList.push_back( entity->attachObjectToBone( "bone34", getBossGeometry(2)->getMovableObject()) );
-	mPhysicsList.push_back( entity->attachObjectToBone( "bone39", getBossGeometry(3)->getMovableObject()) );
-	mPhysicsList.push_back( entity->attachObjectToBone( "bone24", getBossGeometry(4)->getMovableObject()) );
-	mPhysicsList.push_back( entity->attachObjectToBone( "bone19", getBossGeometry(5)->getMovableObject()) );
-	mPhysicsList.push_back( entity->attachObjectToBone( "bone14", getBossGeometry(6)->getMovableObject()) );
-	mPhysicsList.push_back( entity->attachObjectToBone( "bone9", getBossGeometry(7)->getMovableObject()) );
+	TagPoint* tag = entity->attachObjectToBone( "bone4", getBossGeometry(0)->getMovableObject());
+	mPhysicsList.push_back( mSceneNode->createChildSceneNode(tag->_getDerivedPosition()));
+	tag = entity->attachObjectToBone( "bone29", getBossGeometry(1)->getMovableObject());
+	mPhysicsList.push_back( mSceneNode->createChildSceneNode(tag->_getDerivedPosition()));
+	tag = entity->attachObjectToBone( "bone34", getBossGeometry(2)->getMovableObject());
+	mPhysicsList.push_back( mSceneNode->createChildSceneNode(tag->_getDerivedPosition()));
+	tag = entity->attachObjectToBone( "bone39", getBossGeometry(3)->getMovableObject());
+	mPhysicsList.push_back( mSceneNode->createChildSceneNode(tag->_getDerivedPosition()));
+	tag = entity->attachObjectToBone( "bone24", getBossGeometry(4)->getMovableObject());
+	mPhysicsList.push_back( mSceneNode->createChildSceneNode(tag->_getDerivedPosition()));
+	tag = entity->attachObjectToBone( "bone19", getBossGeometry(5)->getMovableObject());
+	mPhysicsList.push_back( mSceneNode->createChildSceneNode(tag->_getDerivedPosition()));
+	tag = entity->attachObjectToBone( "bone14", getBossGeometry(6)->getMovableObject());
+	mPhysicsList.push_back( mSceneNode->createChildSceneNode(tag->_getDerivedPosition()));
+	tag = entity->attachObjectToBone( "bone9", getBossGeometry(7)->getMovableObject());
+	mPhysicsList.push_back( mSceneNode->createChildSceneNode(tag->_getDerivedPosition()));
 
 	// Balloon (not used)
 	mBalloonSet = mSceneManager->createBillboardSet(mName + "_BillboardSet");
@@ -182,6 +191,8 @@ void Enemy::finalizeEntity()
 		mSceneManager->destroyAnimationState(mDieAnimation->getAnimationName());
 		mDieAnimation = NULL;
 	}
+
+	mPhysicsList.clear();
 
 	// Always call base method before!
 	EntityInterface::finalizeEntity();
@@ -422,106 +433,107 @@ void Enemy::updateLogic(lua_State *L, const float elapsedSeconds)
 
 void Enemy::updateBossLogic(lua_State *L, const float elapsedSeconds)
 {
+	if( !isDying() )
+	{
+		// Animation time control
+		mAnimationTime = mAnimationTime + elapsedSeconds;
+		if(mAnimationTime > 15)
+			mAnimationTime = 0;
 
-	// Animation time control
-	mAnimationTime = mAnimationTime + elapsedSeconds;
-	if(mAnimationTime > 15)
-		mAnimationTime = 0;
+		// Set mTarget from lua
+		setBossTarget(L);
 
-	// Set mTarget from lua
-	setBossTarget(L);
-
-	// 15 seconds block
-	if(mAnimationTime > 4 && mAnimationTime < 5 && !mBossControlTimeHit)
-	{
-		mState = EnemyStates::Rage;
-		mBossControlTimeHit = true;
-	}
-	else if(mAnimationTime > 10 && mAnimationTime < 11 && mBossControlTimeHit)
-	{
-		mState = EnemyStates::Special;
-		mBossControlTimeHit = false;
-	}
-
-	if( mCurrentAnimation->getFloatValue() ==  BOSS_ATTACK1 )
-	{
-		if( mEntity->getAnimationState("Attack_1")->getTimePosition() + elapsedSeconds > mEntity->getAnimationState("Attack_1")->getLength() )
-			mState = EnemyStates::Idle;
-	}
-	else if( mCurrentAnimation->getFloatValue() ==  BOSS_ATTACK2 )
-	{
-		if( mEntity->getAnimationState("Attack_2")->getTimePosition() + elapsedSeconds > mEntity->getAnimationState("Attack_2")->getLength() )
-			mState = EnemyStates::Idle;
-	}
-	else if( mCurrentAnimation->getFloatValue() ==  BOSS_ATTACK3 )
-	{
-		if( mEntity->getAnimationState("Attack_3")->getTimePosition() + elapsedSeconds > mEntity->getAnimationState("Attack_3")->getLength() )
-			mState = EnemyStates::Idle;
-	}
-	else if( mCurrentAnimation->getFloatValue() ==  BOSS_ATTACK4 )
-	{
-		if( mEntity->getAnimationState("Attack_4")->getTimePosition() + elapsedSeconds > mEntity->getAnimationState("Attack_4")->getLength() )
-			mState = EnemyStates::Idle;
-	}
-
-	// state is the new state for the player
-	// Do something if and only if the state has changed!
-	if(mState != mLastState)
-	{
-		switch(mState)
+		// 15 seconds block
+		if(mAnimationTime > 4 && mAnimationTime < 5 && !mBossControlTimeHit)
 		{
-		case Enemy::EnemyStates::Initial:
-			mState = EnemyStates::Idle;
-			break;
-		case Enemy::EnemyStates::Idle:			
-			setAttacking(false);
-			setSpecial(false);
-			break;
-		case Enemy::EnemyStates::Rage:
-			setSpecial(false);
-			attackHited = false;
-			newAttack = true;
-			break;
-		case Enemy::EnemyStates::Special:
-			setSpecial(true);
-			attackHited = false;
-			newAttack = true;
-			break;
-		default:			
-			mDirection = Vector3::ZERO;
-			break;
+			mState = EnemyStates::Rage;
+			mBossControlTimeHit = true;
+		}
+		else if(mAnimationTime > 10 && mAnimationTime < 11 && mBossControlTimeHit)
+		{
+			mState = EnemyStates::Special;
+			mBossControlTimeHit = false;
 		}
 
-		mStateTimeout = 0.0;
-	}
-	else
-	{
-		mStateTimeout = mStateTimeout + elapsedSeconds;
-
-		if( (mState == Enemy::EnemyStates::Rage || mState == Enemy::EnemyStates::Special ) && mStateTimeout > 1.0 && !attackHited )
-		{
-			attacking = true;			
+		if( mCurrentAnimation->getFloatValue() ==  BOSS_ATTACK1 )
+		{		
+			if( mEntity->getAnimationState("Attack_1")->getTimePosition() + elapsedSeconds > mEntity->getAnimationState("Attack_1")->getLength() )
+				mState = EnemyStates::Idle;
 		}
+		else if( mCurrentAnimation->getFloatValue() ==  BOSS_ATTACK2 )
+		{
+			if( mEntity->getAnimationState("Attack_2")->getTimePosition() + elapsedSeconds > mEntity->getAnimationState("Attack_2")->getLength() )
+				mState = EnemyStates::Idle;
+		}
+		else if( mCurrentAnimation->getFloatValue() ==  BOSS_ATTACK3 )
+		{
+			if( mEntity->getAnimationState("Attack_3")->getTimePosition() + elapsedSeconds > mEntity->getAnimationState("Attack_3")->getLength() )
+				mState = EnemyStates::Idle;
+		}
+		else if( mCurrentAnimation->getFloatValue() ==  BOSS_ATTACK4 )
+		{
+			if( mEntity->getAnimationState("Attack_4")->getTimePosition() + elapsedSeconds > mEntity->getAnimationState("Attack_4")->getLength() )
+				mState = EnemyStates::Idle;
+		}			
+
+		// state is the new state for the player
+		// Do something if and only if the state has changed!
+		if(mState != mLastState)
+		{
+			switch(mState)
+			{
+			case Enemy::EnemyStates::Idle:			
+				//setMoving(false);
+				setAttacking(false);
+				setSpecial(false);
+				break;
+			case Enemy::EnemyStates::Rage:
+				//setMoving(false);
+				setSpecial(false);
+				attackHited = false;
+				newAttack = true;
+				break;
+			case Enemy::EnemyStates::Special:
+				//setMoving(false);
+				setSpecial(true);
+				attackHited = false;
+				newAttack = true;
+				break;
+			default:			
+				mDirection = Vector3::ZERO;
+				break;
+			}
+
+			mStateTimeout = 0.0;
+		}
+		else
+		{
+			mStateTimeout = mStateTimeout + elapsedSeconds;
+
+			if( (mState == Enemy::EnemyStates::Rage || mState == Enemy::EnemyStates::Special ) && mStateTimeout > 1.0 && !attackHited )
+			{
+				attacking = true;			
+			}
+		}	
+		
+		//Rotate boss
+		if(mTarget && mState == EnemyStates::Idle)
+		{	
+			Ogre::Vector3 directionPlayerBoss = mTarget->getPosition() - mSceneNode->getPosition();
+			Vector3 bossOrientation = mSceneNode->getOrientation() * Vector3(1,0,1);
+			bossOrientation.y = 0;
+			directionPlayerBoss.y = 0;
+			directionPlayerBoss.normalise();
+			bossOrientation.normalise();
+
+			Ogre::Radian angleBetween = bossOrientation.angleBetween(directionPlayerBoss);
+
+			if(angleBetween > Ogre::Radian(0.1) || angleBetween < Ogre::Radian(-0.1))
+				mSceneNode->rotate(Ogre::Vector3::UNIT_Y,Degree(0.5));
+		}
+		
+		mBalloonSet->setVisible(false);
 	}
-
-	//Rotate boss
-	if(mTarget && mState == EnemyStates::Idle){
-
-		Ogre::Vector3 directionPlayerBoss = mTarget->getPosition() - mSceneNode->getPosition();
-		Vector3 bossOrientation = mSceneNode->getOrientation() * Vector3(1,0,1);
-		bossOrientation.y = 0;
-		directionPlayerBoss.y = 0;
-		directionPlayerBoss.normalise();
-		bossOrientation.normalise();
-
-		Ogre::Radian angleBetween = bossOrientation.angleBetween(directionPlayerBoss);
-
-		if(angleBetween > Ogre::Radian(0.1) || angleBetween < Ogre::Radian(-0.1))
-			mSceneNode->rotate(Ogre::Vector3::UNIT_Y,Degree(0.5));
-
-	}
-
-	mBalloonSet->setVisible(false);
 }
 
 void Enemy::setTarget(SceneNode* target)
@@ -678,9 +690,12 @@ void Enemy::dieSwitch()
 	// Rotate random if has die animation
 	if( hasDieAnimation() )
 	{
-		int angle = rand() * 200;
-		mSceneNode->rotate(Quaternion(Degree(angle), Vector3(0,1,0)));
-		mSceneNode->translate(0, getHeight()/2, 0);
+		if( mType != EnemyTypes::Boss )
+		{
+			int angle = rand() * 200;
+			mSceneNode->rotate(Quaternion(Degree(angle), Vector3(0,1,0)));
+			mSceneNode->translate(0, getHeight()/2, 0);
+		}
 	}
 }
 

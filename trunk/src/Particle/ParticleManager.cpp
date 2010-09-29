@@ -114,6 +114,18 @@ void ParticleManager::add(SceneNode* node, WyvernsAssault::ParticleSystem::Parti
 	mParticleSystemList.push_back(pSystem);
 }
 
+void ParticleManager::add(SceneNode* node, Vector3 position, WyvernsAssault::ParticleSystem::ParticleSystemParameters params, bool start)
+{
+	ParticleUniverse::ParticleSystem* ps = this->create(params.script);
+
+	ParticleSystemPtr pSystem = ParticleSystemPtr(new ParticleSystem(node->createChildSceneNode(position), ps, params, this->createUniqueId()));
+	if( start )
+		pSystem->start();
+
+	mParticleSystemList.push_back(pSystem);
+
+}
+
 void ParticleManager::add(SceneNode* node, String id, WyvernsAssault::ParticleSystem::ParticleSystemParameters params)
 {
 	ParticleUniverse::ParticleSystem* ps = mParticleSystemManager->createParticleSystem(id + "_particle", params.script, mSceneManager);
@@ -261,12 +273,17 @@ EVENTS_DEFINE_HANDLER(ParticleManager, EnemyHit)
 
 	if( player->isSpecial() )
 	{
-		this->add(enemy->_getSceneNode(), this->defaultParameters("WyvernsAssault/FireHit"));
+		if( enemy->getEnemyType() == Enemy::EnemyTypes::Boss )
+			this->add(enemy->getPhysicsNode(enemy->getPhysicPositionIndex()), this->defaultParameters("WyvernsAssault/FireHit"));
+		else
+			this->add(enemy->_getSceneNode(), this->defaultParameters("WyvernsAssault/FireHit"));
 	}
 	else
 	{
 		if( enemy->getEnemyType() == Enemy::EnemyTypes::BatteringRam )
 			this->add(enemy->_getSceneNode(), this->defaultParameters("WyvernsAssault/Hit"));
+		else if( enemy->getEnemyType() == Enemy::EnemyTypes::Boss )
+			this->add(enemy->getPhysicsNode(enemy->getPhysicPositionIndex()), this->defaultParameters("WyvernsAssault/Hit"));
 		else
 		{
 			this->add(enemy->_getSceneNode(), this->defaultParameters("WyvernsAssault/BloodHit"));
@@ -282,10 +299,14 @@ EVENTS_DEFINE_HANDLER(ParticleManager, EnemyKilled)
 
 	if( !enemy->isBurning() )
 	{
-		if( enemy->getEnemyType() == Enemy::EnemyTypes::Chicken )
+		if( enemy->getEnemyType() == Enemy::EnemyTypes::Boss )
+		{			
+			this->add(enemy->_getSceneNode(), this->defaultParameters("WyvernsAssault/BloodKill"));
+		}
+		else if( enemy->getEnemyType() == Enemy::EnemyTypes::Chicken )
 			this->add(enemy->_getSceneNode(), this->defaultParameters("WyvernsAssault/ChickenKill"));
 
-		if( enemy->getEnemyType() == Enemy::EnemyTypes::Cow )
+		else if( enemy->getEnemyType() == Enemy::EnemyTypes::Cow )
 			this->add(enemy->_getSceneNode(), this->defaultParameters("WyvernsAssault/CowKill"));
 
 		else if( enemy->isFlying() )
