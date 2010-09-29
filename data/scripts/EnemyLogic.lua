@@ -486,4 +486,12 @@ function runBatteringRamLogic(enemyId, state)
 	return newState 
 end
 
-
+function runBossTarget(enemyId)
+		
+	local playerNumber = Player.getNumPlayers();
+	if playerNumber > 0 then
+		local player = Physics.getNearestPlayer(enemyId);
+		Enemy.setTarget(enemyId,player);
+	end	
+		
+end
