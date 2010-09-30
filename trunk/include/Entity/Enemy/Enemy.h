@@ -256,7 +256,7 @@ namespace WyvernsAssault
 		bool		attackHited;
 		bool		burning;
 		bool		flying;			
-
+		bool		mSearchPlayer;
 		bool		mHasItem;
 
 	private:

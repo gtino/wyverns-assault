@@ -188,6 +188,7 @@ void Enemy::initializeBossEntity(Ogre::Entity* entity, Ogre::SceneNode* sceneNod
 
 	bossHitAnimation = 0;
 	hitControl = false;
+	mSearchPlayer = true;
 
 	// Random animation start time
 	mAnimationSystem->update( rand() );
@@ -497,8 +498,10 @@ void Enemy::updateBossLogic(lua_State *L, const float elapsedSeconds)
 	{
 		// Animation time control
 		mAnimationTime = mAnimationTime + elapsedSeconds;
-		if(mAnimationTime > 15)
+		if(mAnimationTime > 15){
 			mAnimationTime = 0;
+			mSearchPlayer = true;
+		}
 
 		// Set mTarget from lua
 		setBossTarget(L);
@@ -559,6 +562,7 @@ void Enemy::updateBossLogic(lua_State *L, const float elapsedSeconds)
 				setSpecial(false);
 				attackHited = false;
 				newAttack = true;
+				mSearchPlayer = false;
 				break;
 			case Enemy::EnemyStates::Special:
 				//setMoving(false);
@@ -585,7 +589,7 @@ void Enemy::updateBossLogic(lua_State *L, const float elapsedSeconds)
 		}	
 		
 		//Rotate boss
-		if(mTarget && mState == EnemyStates::Idle)
+		if(mTarget && mState == EnemyStates::Idle && mSearchPlayer)
 		{	
 			Ogre::Vector3 directionPlayerBoss = mTarget->getPosition() - mSceneNode->getPosition();
 			Vector3 bossOrientation = mSceneNode->getOrientation() * Vector3(1,0,1);
@@ -596,13 +600,14 @@ void Enemy::updateBossLogic(lua_State *L, const float elapsedSeconds)
 
 			Ogre::Radian angleBetween = bossOrientation.angleBetween(directionPlayerBoss);
 			
-			//if(!(angleBetween == Ogre::Radian(1.0046924))){
+			if(angleBetween > Ogre::Radian(0.95) && angleBetween < Ogre::Radian(1.05))
+				angleBetween = 1;
+
 			if(angleBetween > Ogre::Radian(1)){
 				mSceneNode->rotate(Ogre::Vector3::UNIT_Y,Degree(-0.5));
 			}else if(angleBetween < Ogre::Radian(1)){
 				mSceneNode->rotate(Ogre::Vector3::UNIT_Y,Degree(0.5));
 			}
-			//}
 		
 		}
 		
