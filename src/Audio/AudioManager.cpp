@@ -138,6 +138,7 @@ void AudioManager::loadResources()
 	createStream( String("BossAttack02.wav"));
 	createStream( String("BossAttack03.wav"));
 	createStream( String("BossAttack04.wav"));
+	createStream( String("BossAttack05.wav"));
 	createStream( String("BossDie01.wav"));
 	createStream( String("BossDie02.wav"));
 	createStream( String("BossDie03.wav"));
@@ -820,7 +821,7 @@ EVENTS_DEFINE_HANDLER(AudioManager, EnemyAttack)
 	}
 	else if ( enemy->getEnemyType() == Enemy::EnemyTypes::Boss )
 	{		
-		int sound = rand()%4;
+		int sound = enemy->getAttackNumber();
 
 		if( sound == 0 )
 			playSound("BossAttack01.wav",sceneNode->_getDerivedPosition(),&channelIndex);
@@ -828,7 +829,7 @@ EVENTS_DEFINE_HANDLER(AudioManager, EnemyAttack)
 			playSound("BossAttack02.wav",sceneNode->_getDerivedPosition(),&channelIndex);
 		else if( sound == 2 )
 			playSound("BossAttack03.wav",sceneNode->_getDerivedPosition(),&channelIndex);
-		else
+		else if( sound == 3 )
 			playSound("BossAttack04.wav",sceneNode->_getDerivedPosition(),&channelIndex);
 	}
 }

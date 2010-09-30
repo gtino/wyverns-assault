@@ -500,7 +500,7 @@ void EnemyManager::update(const float elapsedSeconds)
 			if( enemy->attackStart() )
 			{
 				EnemyAttackEventPtr evt = EnemyAttackEventPtr(new EnemyAttackEvent(enemy));
-				EVENTS_FIRE_AFTER(evt, enemy->getAttackTime());
+				EVENTS_FIRE_AFTER(evt, enemy->getAttackStartTime());
 
 				enemy->setAttackTimeout(elapsedSeconds);
 				enemy->attackFinished();

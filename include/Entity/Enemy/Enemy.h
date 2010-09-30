@@ -208,12 +208,13 @@ namespace WyvernsAssault
 
 	public:
 		// Boss exclusive
-		Vector3 getPhysicsPosition(int index){ return mPhysicsList[index]->_getDerivedPosition(); }
+		Vector3 getPhysicsPosition(int index){ return mPhysicsListPosition[index]->_getDerivedPosition(); }
 		SceneNode* getPhysicsNode(int index){ return mPhysicsList[index]; }		
 		int getPhysicPositionIndex(){ return mPhysicsListIndex; }
 		void setPhysicPositionIndex(int value){ mPhysicsListIndex = value; }
 
-		Real getAttackTime();
+		Real getAttackStartTime();
+		int getAttackNumber(){ return mBossRandomAttack; }
 
 	private:
 		Enemy::EnemyTypes	mType;
@@ -261,6 +262,7 @@ namespace WyvernsAssault
 	private:
 		// Boss exclusive
 		std::vector<Ogre::SceneNode*>		mPhysicsList;
+		std::vector<Ogre::TagPoint*>		mPhysicsListPosition;
 		int									mPhysicsListIndex;
 
 		// Boss special control

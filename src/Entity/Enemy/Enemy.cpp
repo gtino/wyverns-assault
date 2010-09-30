@@ -54,6 +54,7 @@ Enemy::Enemy(Ogre::String name, Enemy::EnemyTypes type, Enemy::EnemyParameters p
 , mHasItem(false)
 , mLastEnemyCollision(name)
 , mPhysicsList(0)
+, mPhysicsListPosition(0)
 , mPhysicsListIndex(0)
 , mBossRandomAttack(2)
 , mAnimationTime(0)
@@ -137,20 +138,35 @@ void Enemy::initializeBossEntity(Ogre::Entity* entity, Ogre::SceneNode* sceneNod
 	
 	// Attach every physics box to correct bone, and save position in list with correct order
 	TagPoint* tag = entity->attachObjectToBone( "bone4", getBossGeometry(0)->getMovableObject());
+	mPhysicsListPosition.push_back(tag);
 	mPhysicsList.push_back( mSceneNode->createChildSceneNode(tag->_getDerivedPosition()));
+
 	tag = entity->attachObjectToBone( "bone29", getBossGeometry(1)->getMovableObject());
+	mPhysicsListPosition.push_back(tag);
 	mPhysicsList.push_back( mSceneNode->createChildSceneNode(tag->_getDerivedPosition()));
+
 	tag = entity->attachObjectToBone( "bone34", getBossGeometry(2)->getMovableObject());
+	mPhysicsListPosition.push_back(tag);
 	mPhysicsList.push_back( mSceneNode->createChildSceneNode(tag->_getDerivedPosition()));
+
 	tag = entity->attachObjectToBone( "bone39", getBossGeometry(3)->getMovableObject());
+	mPhysicsListPosition.push_back(tag);
 	mPhysicsList.push_back( mSceneNode->createChildSceneNode(tag->_getDerivedPosition()));
+
 	tag = entity->attachObjectToBone( "bone24", getBossGeometry(4)->getMovableObject());
+	mPhysicsListPosition.push_back(tag);
 	mPhysicsList.push_back( mSceneNode->createChildSceneNode(tag->_getDerivedPosition()));
+
 	tag = entity->attachObjectToBone( "bone19", getBossGeometry(5)->getMovableObject());
+	mPhysicsListPosition.push_back(tag);
 	mPhysicsList.push_back( mSceneNode->createChildSceneNode(tag->_getDerivedPosition()));
+
 	tag = entity->attachObjectToBone( "bone14", getBossGeometry(6)->getMovableObject());
+	mPhysicsListPosition.push_back(tag);
 	mPhysicsList.push_back( mSceneNode->createChildSceneNode(tag->_getDerivedPosition()));
+
 	tag = entity->attachObjectToBone( "bone9", getBossGeometry(7)->getMovableObject());
+	mPhysicsListPosition.push_back(tag);
 	mPhysicsList.push_back( mSceneNode->createChildSceneNode(tag->_getDerivedPosition()));
 
 	// Animation system
@@ -218,6 +234,7 @@ void Enemy::finalizeEntity()
 	}
 
 	mPhysicsList.clear();
+	mPhysicsListPosition.clear();
 
 	// Always call base method before!
 	EntityInterface::finalizeEntity();
@@ -317,16 +334,16 @@ void Enemy::updateBossEntity(const float elapsedSeconds)
 	mLastState = mState;
 }
 
-Real Enemy::getAttackTime()
+Real Enemy::getAttackStartTime()
 {
 	if( mBossRandomAttack == 0 )
-		return 1.0;
+		return 1.4;
 	else if( mBossRandomAttack == 1 )
-		return 1.0;
+		return 0.7;
 	else if( mBossRandomAttack == 2 )
-		return 2.0;
+		return 1.3;
 	else if( mBossRandomAttack == 3 )
-		return 2.0;
+		return 0.8;
 	else
 		return 1.0;
 }
@@ -561,7 +578,7 @@ void Enemy::updateBossLogic(lua_State *L, const float elapsedSeconds)
 		{
 			mStateTimeout = mStateTimeout + elapsedSeconds;
 
-			if( (mState == Enemy::EnemyStates::Rage || mState == Enemy::EnemyStates::Special ) && mStateTimeout > 1.0 && !attackHited )
+			if( (mState == Enemy::EnemyStates::Rage || mState == Enemy::EnemyStates::Special ) && mStateTimeout > getAttackStartTime() && !attackHited )
 			{
 				attacking = true;			
 			}
