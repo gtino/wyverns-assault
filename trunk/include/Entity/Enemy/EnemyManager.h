@@ -95,6 +95,13 @@ namespace WyvernsAssault
 
 		Ogre::SceneNode* _getSceneNode() const { return mEnemyNode; }
 
+		//
+		// Enable/disable the manager
+		//
+		void disable(){mEnabled = false;}
+		void enable(){mEnabled = true;}
+		bool isEnabled(){return mEnabled;}
+
 	private:
 		Ogre::String createUniqueId();
 
@@ -109,6 +116,7 @@ namespace WyvernsAssault
 
 		int						mId;
 		bool					mIsDebugEnabled;
+		bool					mEnabled;
 
 	public:
 		// ----------------
@@ -145,6 +153,9 @@ namespace WyvernsAssault
 		LUA_FUNCTION(isHurt)
 		LUA_FUNCTION(isDying)
 		LUA_FUNCTION(remove)
+		LUA_FUNCTION(enable);
+		LUA_FUNCTION(disable);
+		LUA_FUNCTION(isEnabled);
 		// ------------------------------
 		// END Lua Interface Declarations
 		// ------------------------------

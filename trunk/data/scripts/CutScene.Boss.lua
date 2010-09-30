@@ -23,10 +23,14 @@ function playBossCutScene(elapsedTime)
 		Player.disable(); -- Suspend player input until the end of the cut scene
 		Logic.disable(); -- Suspend enemy logic
 		Physics.disable(); -- Suspend gae physics
+		Enemy.disable(); -- Suspend enemy animations
+		Item.disable(); -- Suspend items animation
 		
 		Gui.hideUi();
 		Gui.showForeground();
 		Gui.setForeground("boss_1");
+		Gui.showFrame();
+		Gui.setFrame("Frame_Normal");
 		
 		local inputEnabled = Input.isEnabled(); -- Checks if input is enabled
 		local logicEnabled = Logic.isEnabled(); -- Checks if logic is enabled
@@ -49,6 +53,7 @@ function playBossCutScene(elapsedTime)
 		Audio.playLoop("Boss1.mp3")
 		Camera.setCurrent(CameraMode_Game); -- Sets the current camera
 		
+		Gui.hideFrame();
 		Gui.hideForeground();
 		Gui.showUi();
 	
@@ -56,6 +61,8 @@ function playBossCutScene(elapsedTime)
 		Player.enable(); -- Resume player input
 		Logic.enable(); -- Resume enemy logic
 		Physics.enable(); -- Resume game physics
+		Enemy.enable(); -- Resume enemy animations
+		Item.enable(); -- Resume items animation
 		
 		CutScene.reset();		
 		finished = true; -- Scene has ended

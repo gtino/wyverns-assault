@@ -20,6 +20,7 @@ EnemyManager::EnemyManager(Ogre::SceneManager* sceneManager)
 , mIsDebugEnabled(false)
 , mCurrentGameArea(-1)
 , mCurrentLevel(-1)
+, mEnabled(true)
 {
 	mSceneManager = sceneManager;
 }
@@ -414,93 +415,96 @@ void EnemyManager::killAllEnemies(PlayerPtr player, int gameArea)
 
 void EnemyManager::update(const float elapsedSeconds)
 {
-	for(int i = 0; i < mEnemyMapList[mCurrentGameArea].size() ; i++)
+	if(mEnabled)
 	{
-		EnemyPtr enemy =  mEnemyMapList[mCurrentGameArea][i];
-
-		enemy->updateLogic(L,elapsedSeconds);		
-		enemy->updateEntity(elapsedSeconds); // this updates animations too!
-		
-		// Physic debugg control
-		enemy->setDebugEnabled(mIsDebugEnabled);
-
-		// Attack cooldown
-		if( enemy->getAttackTimeout() == 0 )
+		for(int i = 0; i < mEnemyMapList[mCurrentGameArea].size() ; i++)
 		{
+			EnemyPtr enemy =  mEnemyMapList[mCurrentGameArea][i];
+
+			enemy->updateLogic(L,elapsedSeconds);		
+			enemy->updateEntity(elapsedSeconds); // this updates animations too!
+			
+			// Physic debugg control
+			enemy->setDebugEnabled(mIsDebugEnabled);
+
+			// Attack cooldown
+			if( enemy->getAttackTimeout() == 0 )
+			{
+				if( enemy->attackStart() )
+				{
+					//If attack comes from ranged
+					if( enemy->isRanged() )
+					{
+						//Projectile event 
+						ProjectileFireEventPtr projEvt = ProjectileFireEventPtr(new ProjectileFireEvent( enemy, enemy->getTarget()->getPosition() ));
+						EVENTS_FIRE_AFTER(projEvt, 0.75);
+					}
+
+					EnemyAttackEventPtr evt = EnemyAttackEventPtr(new EnemyAttackEvent(enemy));
+					EVENTS_FIRE(evt);				
+
+					enemy->setAttackTimeout(elapsedSeconds);
+				}
+			}
+			else
+			{
+				enemy->setAttackTimeout(enemy->getAttackTimeout() + elapsedSeconds);
+				if( enemy->getAttackTimeout() > enemy->getAttackCooldown() )
+				{
+					enemy->setAttackTimeout(0);
+					enemy->attackFinished();
+					enemy->setAttackHited(false);
+				}
+			}
+
+			// Womans logic
+			if( enemy->getEnemyType() == Enemy::EnemyTypes::Woman )
+			{
+				if( enemy->getEnemyState() == Enemy::EnemyStates::Love && enemy->hasItem() )
+				{
+					EnemyCreateItemEventPtr evt = EnemyCreateItemEventPtr(new EnemyCreateItemEvent(enemy, mCurrentGameArea));
+					EVENTS_FIRE_AFTER(evt, 0.5);
+					enemy->itemDroped();
+				}
+				if( enemy->getEnemyState() == Enemy::EnemyStates::Patrol )
+				{
+					enemy->setVisible(false);
+					EnemyRemoveEventPtr evt = EnemyRemoveEventPtr(new EnemyRemoveEvent(enemy));
+					EVENTS_FIRE(evt);
+				}
+			}
+
+			// Bonus game area, hide ballon
+			if( mCurrentGameArea == 3 && mCurrentLevel == 0)
+				enemy->hideBalloon();
+		}
+
+		// If no enemies alive, raise event
+		if( getCount() <= 0 && mCurrentLevel != 1 )
+		{
+			GameAreaEnemiesDeathEventPtr evt = GameAreaEnemiesDeathEventPtr(new GameAreaEnemiesDeathEvent(mCurrentLevel, mCurrentGameArea));
+			EVENTS_FIRE(evt);
+		}
+
+		// Update for boss (game area -10)
+		if( !mEnemyMapList[-10].empty() )
+		{
+			EnemyPtr enemy =  mEnemyMapList[-10][0];
+
+			enemy->updateBossLogic(L, elapsedSeconds);		
+			enemy->updateBossEntity(elapsedSeconds);
+			
+			// Physic debugg control
+			enemy->setDebugEnabled(mIsDebugEnabled);
+
 			if( enemy->attackStart() )
 			{
-				//If attack comes from ranged
-				if( enemy->isRanged() )
-				{
-					//Projectile event 
-					ProjectileFireEventPtr projEvt = ProjectileFireEventPtr(new ProjectileFireEvent( enemy, enemy->getTarget()->getPosition() ));
-					EVENTS_FIRE_AFTER(projEvt, 0.75);
-				}
-
 				EnemyAttackEventPtr evt = EnemyAttackEventPtr(new EnemyAttackEvent(enemy));
-				EVENTS_FIRE(evt);				
+				EVENTS_FIRE_AFTER(evt, enemy->getAttackTime());
 
 				enemy->setAttackTimeout(elapsedSeconds);
-			}
-		}
-		else
-		{
-			enemy->setAttackTimeout(enemy->getAttackTimeout() + elapsedSeconds);
-			if( enemy->getAttackTimeout() > enemy->getAttackCooldown() )
-			{
-				enemy->setAttackTimeout(0);
 				enemy->attackFinished();
-				enemy->setAttackHited(false);
 			}
-		}
-
-		// Womans logic
-		if( enemy->getEnemyType() == Enemy::EnemyTypes::Woman )
-		{
-			if( enemy->getEnemyState() == Enemy::EnemyStates::Love && enemy->hasItem() )
-			{
-				EnemyCreateItemEventPtr evt = EnemyCreateItemEventPtr(new EnemyCreateItemEvent(enemy, mCurrentGameArea));
-				EVENTS_FIRE_AFTER(evt, 0.5);
-				enemy->itemDroped();
-			}
-			if( enemy->getEnemyState() == Enemy::EnemyStates::Patrol )
-			{
-				enemy->setVisible(false);
-				EnemyRemoveEventPtr evt = EnemyRemoveEventPtr(new EnemyRemoveEvent(enemy));
-				EVENTS_FIRE(evt);
-			}
-		}
-
-		// Bonus game area, hide ballon
-		if( mCurrentGameArea == 3 && mCurrentLevel == 0)
-			enemy->hideBalloon();
-	}
-
-	// If no enemies alive, raise event
-	if( getCount() <= 0 && mCurrentLevel != 1 )
-	{
-		GameAreaEnemiesDeathEventPtr evt = GameAreaEnemiesDeathEventPtr(new GameAreaEnemiesDeathEvent(mCurrentLevel, mCurrentGameArea));
-		EVENTS_FIRE(evt);
-	}
-
-	// Update for boss (game area -10)
-	if( !mEnemyMapList[-10].empty() )
-	{
-		EnemyPtr enemy =  mEnemyMapList[-10][0];
-
-		enemy->updateBossLogic(L, elapsedSeconds);		
-		enemy->updateBossEntity(elapsedSeconds);
-		
-		// Physic debugg control
-		enemy->setDebugEnabled(mIsDebugEnabled);
-
-		if( enemy->attackStart() )
-		{
-			EnemyAttackEventPtr evt = EnemyAttackEventPtr(new EnemyAttackEvent(enemy));
-			EVENTS_FIRE_AFTER(evt, enemy->getAttackTime());
-
-			enemy->setAttackTimeout(elapsedSeconds);
-			enemy->attackFinished();
 		}
 	}
 }
@@ -716,6 +720,9 @@ LUA_BIND(EnemyManager, getStateTimeout)
 LUA_BIND(EnemyManager, isHurt)
 LUA_BIND(EnemyManager, isDying)
 LUA_BIND(EnemyManager, remove)
+LUA_BIND(EnemyManager, enable)
+LUA_BIND(EnemyManager, disable)
+LUA_BIND(EnemyManager, isEnabled)
 LUA_END_BINDING()
 
 //
@@ -899,6 +906,47 @@ LUA_DEFINE_FUNCTION(EnemyManager,isDying)
 	EnemyPtr enemy = EnemyManager::getSingleton().getEnemy(enemyId);
 
 	lua_pushboolean(L,enemy->isDying());
+
+	/* return the number of results */
+	return 1;
+}
+
+LUA_DEFINE_FUNCTION(EnemyManager, disable)
+{
+	/* get number of arguments */
+	int n = lua_gettop(L);
+
+	// n should be 0
+
+	EnemyManager::getSingleton().disable();
+
+	/* return the number of results */
+	return 0;
+}
+
+LUA_DEFINE_FUNCTION(EnemyManager, enable)
+{
+	/* get number of arguments */
+	int n = lua_gettop(L);
+
+	// n should be 0
+
+	EnemyManager::getSingleton().enable();
+
+	/* return the number of results */
+	return 0;
+}
+
+LUA_DEFINE_FUNCTION(EnemyManager, isEnabled)
+{
+	/* get number of arguments */
+	int n = lua_gettop(L);
+
+	// n should be 0
+
+	bool isEnabled = EnemyManager::getSingleton().isEnabled();
+
+	lua_pushboolean(L, isEnabled);
 
 	/* return the number of results */
 	return 1;

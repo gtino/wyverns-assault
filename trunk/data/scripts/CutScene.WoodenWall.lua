@@ -22,11 +22,15 @@ function playWoodenWallCutScene(elapsedTime)
 		-- Initialize cut scene
 		Player.disable(); -- Suspend player input until the end of the cut scene
 		Logic.disable(); -- Suspend enemy logic
-		Physics.disable(); -- Suspend gae physics
+		Physics.disable(); -- Suspend physics
+		Enemy.disable(); -- Suspend enemy animations
+		Item.disable(); -- Suspend items animation
 		
 		Gui.hideUi();
 		Gui.showForeground();
 		Gui.setForeground("woodenWall_1");	
+		Gui.showFrame();
+		Gui.setFrame("Frame_Normal");
 		
 		local inputEnabled = Input.isEnabled(); -- Checks if input is enabled
 		local logicEnabled = Logic.isEnabled(); -- Checks if logic is enabled
@@ -48,6 +52,7 @@ function playWoodenWallCutScene(elapsedTime)
 	else
 		Camera.setCurrent(CameraMode_Game); -- Sets the current camera
 		
+		Gui.hideFrame();
 		Gui.hideForeground();
 		Gui.showUi();
 	
@@ -55,6 +60,8 @@ function playWoodenWallCutScene(elapsedTime)
 		Player.enable(); -- Resume player input
 		Logic.enable(); -- Resume enemy logic
 		Physics.enable(); -- Resume game physics
+		Enemy.enable(); -- Resume enemy animations
+		Item.enable(); -- Resume items animation
 		
 		CutScene.reset();		
 		finished = true; -- Scene has ended
