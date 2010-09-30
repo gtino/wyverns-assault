@@ -797,6 +797,25 @@ material Particle/ExplosionFire
         }
     }
 }
+//---------------------------------------------------------------------
+material Particle/AtlasSmoke
+{
+    technique
+    {
+        pass
+        {
+            lighting off
+            scene_blend alpha_blend
+            depth_write off
+
+            texture_unit
+            {
+                texture particle_atlas_smoke.png
+                tex_address_mode clamp
+            }
+        }
+    }
+}
 //-----------------------------------------------------------------------------------------------------------------------------------------------
 material Particle/Nucleus
 {

@@ -497,7 +497,7 @@ void EnemyManager::update(const float elapsedSeconds)
 		if( enemy->attackStart() )
 		{
 			EnemyAttackEventPtr evt = EnemyAttackEventPtr(new EnemyAttackEvent(enemy));
-			EVENTS_FIRE(evt);				
+			EVENTS_FIRE_AFTER(evt, enemy->getAttackTime());
 
 			enemy->setAttackTimeout(elapsedSeconds);
 			enemy->attackFinished();
@@ -590,7 +590,6 @@ EVENTS_DEFINE_HANDLER(EnemyManager, EnemyKilled)
 		src.normalise();
 
 		Quaternion rotation = src.getRotationTo(direction);
-		enemyNode->translate(Vector3(0, 20, 0));
 		enemyNode->rotate(rotation);		
 
 		enemy->dieSwitch();
