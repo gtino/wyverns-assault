@@ -577,14 +577,14 @@ void Enemy::updateBossLogic(lua_State *L, const float elapsedSeconds)
 			directionPlayerBoss.normalise();
 			bossOrientation.normalise();
 
-			//if(angleBetween > Ogre::Radian(180)){
-			//	mSceneNode->rotate(Ogre::Vector3::UNIT_Y,Degree(-0.5));
-			//}else if(angleBetween < Ogre::Radian(180)){
-			//	mSceneNode->rotate(Ogre::Vector3::UNIT_Y,Degree(0.5));
-			//}
-
-			//if(angleBetween > Ogre::Radian(0.1) || angleBetween < Ogre::Radian(-0.1)){
-			//	mSceneNode->rotate(Ogre::Vector3::UNIT_Y,Degree(0.5));
+			Ogre::Radian angleBetween = bossOrientation.angleBetween(directionPlayerBoss);
+			
+			//if(!(angleBetween == Ogre::Radian(1.0046924))){
+			if(angleBetween > Ogre::Radian(1)){
+				mSceneNode->rotate(Ogre::Vector3::UNIT_Y,Degree(-0.5));
+			}else if(angleBetween < Ogre::Radian(1)){
+				mSceneNode->rotate(Ogre::Vector3::UNIT_Y,Degree(0.5));
+			}
 			//}
 		
 		}
