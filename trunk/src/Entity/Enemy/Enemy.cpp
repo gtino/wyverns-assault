@@ -443,7 +443,7 @@ void Enemy::updateLogic(lua_State *L, const float elapsedSeconds)
 			setAttacking(true);
 			break;
 		case Enemy::EnemyStates::Patrol:
-			mBalloonSet->setVisible(true);
+			mBalloonSet->setVisible(false);
 			mBalloonSet->setMaterialName("Balloons/Patrol");
 			setMoving(false);
 			setAttacking(false);
