@@ -190,6 +190,8 @@ void Enemy::initializeBossEntity(Ogre::Entity* entity, Ogre::SceneNode* sceneNod
 	hitControl = false;
 	mSearchPlayer = true;
 
+	hitAlert = false;
+
 	// Random animation start time
 	mAnimationSystem->update( rand() );
 
@@ -565,6 +567,9 @@ void Enemy::updateBossLogic(lua_State *L, const float elapsedSeconds)
 				newAttack = true;
 				mSearchPlayer = false;
 				break;
+			case Enemy::EnemyStates::Alert:
+				if(!hitAlert && mLastState != EnemyStates::Alert)
+					hitAlert = true;
 			case Enemy::EnemyStates::Special:
 				//setMoving(false);
 				setSpecial(true);
