@@ -238,6 +238,8 @@ namespace WyvernsAssault
 
 		String			mLastEnemyCollision;
 
+
+
 		OBBoxRenderable* mOBBoxRenderable;
 		bool mIsDebugEnabled;
 
@@ -268,6 +270,12 @@ namespace WyvernsAssault
 
 		// Boss control animation times
 		float		mAnimationTime;
+
+
+		int bossHitAnimation;
+		bool hitControl;
+
+
 
 	private:
 
