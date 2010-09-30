@@ -145,6 +145,9 @@ function playIntroCutScene(elapsedTime)
 		Enemy.enable(); -- Resume enemy animations
 		Item.enable(); -- Resume items animation
 		
+		-- This is in case the user skips the cut scene
+		PostProcess.disableCompositor("OldMovie"); -- Disable compositor
+		
 		CutScene.reset();		
 		finished = true; -- Scene has ended
 	end
