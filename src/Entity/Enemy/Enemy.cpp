@@ -169,6 +169,9 @@ void Enemy::initializeBossEntity(Ogre::Entity* entity, Ogre::SceneNode* sceneNod
 	special = false;
 	newAttack = false;
 
+	bossHitAnimation = 0;
+	hitControl = false;
+
 	// Random animation start time
 	mAnimationSystem->update( rand() );
 
@@ -265,23 +268,32 @@ void Enemy::updateBossEntity(const float elapsedSeconds)
 	// Update boss is not dying
 	if ( !isDying() )
 	{
-		if( mState == EnemyStates::Idle )
-		{
-			mCurrentAnimation->setValue( BOSS_IDDLE );			
+
+		//Hit animation control
+		if(((mParameters.life < (mMaxLife*3)/4 && bossHitAnimation == 0) || (mParameters.life < mMaxLife/2 && bossHitAnimation == 1) || (mParameters.life < mMaxLife/4 && bossHitAnimation == 2)) || hitControl){
+    		mCurrentAnimation->setValue( BOSS_HIT );
+ 			hitControl = true;
 		}
-		else if( mState == EnemyStates::Rage )
-		{
-			mCurrentAnimation->setValue( BOSS_ATTACK4 );
-			mBossRandomAttack = 0;
-		}	
-		else if( mState == EnemyStates::Special )
-		{
-			if(mLastState != mState)
+
+		if(!hitControl){
+			if( mState == EnemyStates::Idle )
 			{
-				//Random value 1-2-3
-				mBossRandomAttack = int(Ogre::Math::RangeRandom(1,4));
+				mCurrentAnimation->setValue( BOSS_IDDLE ); 
 			}
-			mCurrentAnimation->setValue( mBossRandomAttack );			
+			else if( mState == EnemyStates::Rage )
+			{
+				mCurrentAnimation->setValue( BOSS_ATTACK4 );
+				mBossRandomAttack = 0;
+			}	
+			else if( mState == EnemyStates::Special )
+			{
+				if(mLastState != mState)
+				{
+					//Random value 1-2-3
+					mBossRandomAttack = int(Ogre::Math::RangeRandom(1,4));
+				}
+				mCurrentAnimation->setValue( mBossRandomAttack );
+			}
 		}
 
 		mAnimationSystem->update( elapsedSeconds );
@@ -504,7 +516,14 @@ void Enemy::updateBossLogic(lua_State *L, const float elapsedSeconds)
 		{
 			if( mEntity->getAnimationState("Attack_4")->getTimePosition() + elapsedSeconds > mEntity->getAnimationState("Attack_4")->getLength() )
 				mState = EnemyStates::Idle;
-		}			
+		}else if( mCurrentAnimation->getFloatValue() ==  BOSS_HIT )
+		{
+			if( mEntity->getAnimationState("Hit")->getTimePosition() + elapsedSeconds > mEntity->getAnimationState("Hit")->getLength() ){
+				mState = EnemyStates::Idle;
+				hitControl = false;
+				bossHitAnimation++;
+			}
+		}		
 
 		// state is the new state for the player
 		// Do something if and only if the state has changed!
@@ -557,10 +576,16 @@ void Enemy::updateBossLogic(lua_State *L, const float elapsedSeconds)
 			directionPlayerBoss.normalise();
 			bossOrientation.normalise();
 
-			Ogre::Radian angleBetween = bossOrientation.angleBetween(directionPlayerBoss);
+			//if(angleBetween > Ogre::Radian(180)){
+			//	mSceneNode->rotate(Ogre::Vector3::UNIT_Y,Degree(-0.5));
+			//}else if(angleBetween < Ogre::Radian(180)){
+			//	mSceneNode->rotate(Ogre::Vector3::UNIT_Y,Degree(0.5));
+			//}
 
-			if(angleBetween > Ogre::Radian(0.1) || angleBetween < Ogre::Radian(-0.1))
-				mSceneNode->rotate(Ogre::Vector3::UNIT_Y,Degree(0.5));
+			//if(angleBetween > Ogre::Radian(0.1) || angleBetween < Ogre::Radian(-0.1)){
+			//	mSceneNode->rotate(Ogre::Vector3::UNIT_Y,Degree(0.5));
+			//}
+		
 		}
 		
 		if( mStateTimeout > 2.0 && mState != Enemy::EnemyStates::Sleeping )
