@@ -16,12 +16,14 @@ GameAreaManager& GameAreaManager::getSingleton(void)
 
 GameAreaManager::GameAreaManager()
 : mInitialized(false)
+, mEnabled(true)
 , mIsDebugEnabled(false)
 , mCurrentGameArea(-1)
 , mCurrentLevel(CURRENT_LEVEL)
 , mGameAreaCleared(true)
 , mEnemiesAlive(false)
 , mTime(0.0)
+, mAreaManaged(false)
 {
 
 }
@@ -51,71 +53,76 @@ void GameAreaManager::load(Ogre::String file)
 
 void GameAreaManager::update(Vector3 playerPosition, const float elapsedSeconds)
 {
-	int playerArea = positionGameArea(playerPosition);
-	bool isLast = (playerArea == getLastGameArea());
-
-	// Game Area changed and game area is cleared raise event
-	if( mCurrentGameArea != playerArea && mGameAreaCleared )
+	if( mEnabled )
 	{
-		GameAreaChangedEventPtr evt = GameAreaChangedEventPtr(new GameAreaChangedEvent(mGameAreas[playerArea].mLevel, mCurrentGameArea, playerArea, isLast));
-		EVENTS_FIRE(evt);
+		int playerArea = positionGameArea(playerPosition);
+		bool isLast = (playerArea == getLastGameArea());
 
-		mCurrentGameArea = playerArea;
-		mGameAreaCleared = false;
-		mEnemiesAlive = (mGameAreas[playerArea].mEnemies != 0);
-		mTime = 0.0;
-
-		// If Game Area type is 1, launch flash counter
-		if( mGameAreas[mCurrentGameArea].mType == 1 && mGameAreas[mCurrentGameArea].mFinishTime != 0)
+		// Game Area changed and game area is cleared raise event
+		if( mCurrentGameArea != playerArea && mGameAreaCleared )
 		{
-			GameAreaFlashCounterEventPtr evtCounter = GameAreaFlashCounterEventPtr(new GameAreaFlashCounterEvent(mGameAreas[playerArea].mFinishTime));
-			EVENTS_FIRE(evtCounter);
+			GameAreaChangedEventPtr evt = GameAreaChangedEventPtr(new GameAreaChangedEvent(mGameAreas[playerArea].mLevel, mCurrentGameArea, playerArea, isLast));
+			EVENTS_FIRE(evt);
+
+			mCurrentGameArea = playerArea;
+			mGameAreaCleared = false;
+			mEnemiesAlive = (mGameAreas[playerArea].mEnemies != 0);
+			mTime = 0.0;
+			mAreaManaged = false;
+
+			// If Game Area type is 1, launch flash counter
+			if( mGameAreas[mCurrentGameArea].mType == 1 && mGameAreas[mCurrentGameArea].mFinishTime != 0)
+			{
+				GameAreaFlashCounterEventPtr evtCounter = GameAreaFlashCounterEventPtr(new GameAreaFlashCounterEvent(mGameAreas[playerArea].mFinishTime));
+				EVENTS_FIRE(evtCounter);
+			}		
 		}
 
-		// Call manage area
-		manageGameArea();
-	}
+		mTime += elapsedSeconds;
 
-	mTime += elapsedSeconds;
+		// Manage game area when player time > half second
+		if( mTime > 0.5 && !mAreaManaged )
+			manageGameArea();
 
-	// Game area cleared from begining
-	if( mGameAreas[mCurrentGameArea].mType == 2 && !mGameAreaCleared )
-	{
-		mGameAreaCleared = true;
-		GameAreaClearedEventPtr evt = GameAreaClearedEventPtr(new GameAreaClearedEvent(mGameAreas[playerArea].mLevel, mCurrentGameArea, mGameAreas[mCurrentGameArea].mType, isLast));
-
-		if( mCurrentGameArea == 0 )
+		// Game area cleared from begining
+		if( mGameAreas[mCurrentGameArea].mType == 2 && !mGameAreaCleared )
 		{
-			EVENTS_FIRE_AFTER(evt, 15.0);
+			mGameAreaCleared = true;
+			GameAreaClearedEventPtr evt = GameAreaClearedEventPtr(new GameAreaClearedEvent(mGameAreas[playerArea].mLevel, mCurrentGameArea, mGameAreas[mCurrentGameArea].mType, isLast));
+
+			if( mCurrentGameArea == 0 )
+			{
+				EVENTS_FIRE_AFTER(evt, 15.0);
+			}
+			else
+			{
+				EVENTS_FIRE_AFTER(evt, 5.0);
+			}
 		}
-		else
+		// Game Area cleared by time
+		else if( mGameAreas[mCurrentGameArea].mType == 1 && !mGameAreaCleared )
 		{
-			EVENTS_FIRE_AFTER(evt, 5.0);
+			if( mGameAreas[mCurrentGameArea].mFinishTime < mTime )
+			{
+				mGameAreaCleared = true;
+				GameAreaClearedEventPtr evt = GameAreaClearedEventPtr(new GameAreaClearedEvent(mGameAreas[playerArea].mLevel, mCurrentGameArea, mGameAreas[mCurrentGameArea].mType, isLast));
+				EVENTS_FIRE_AFTER(evt, 2.0);
+			}
 		}
-	}
-	// Game Area cleared by time
-	else if( mGameAreas[mCurrentGameArea].mType == 1 && !mGameAreaCleared )
-	{
-		if( mGameAreas[mCurrentGameArea].mFinishTime < mTime )
-		{
+		// Cleared by killing enemies
+		else if( mGameAreas[mCurrentGameArea].mType == 0 && !mEnemiesAlive && mGameAreas[mCurrentGameArea].mEnemies == 0 && !mGameAreaCleared)
+		{	
 			mGameAreaCleared = true;
 			GameAreaClearedEventPtr evt = GameAreaClearedEventPtr(new GameAreaClearedEvent(mGameAreas[playerArea].mLevel, mCurrentGameArea, mGameAreas[mCurrentGameArea].mType, isLast));
 			EVENTS_FIRE_AFTER(evt, 2.0);
 		}
-	}
-	// Cleared by killing enemies
-	else if( mGameAreas[mCurrentGameArea].mType == 0 && !mEnemiesAlive && mGameAreas[mCurrentGameArea].mEnemies == 0 && !mGameAreaCleared)
-	{	
-		mGameAreaCleared = true;
-		GameAreaClearedEventPtr evt = GameAreaClearedEventPtr(new GameAreaClearedEvent(mGameAreas[playerArea].mLevel, mCurrentGameArea, mGameAreas[mCurrentGameArea].mType, isLast));
-		EVENTS_FIRE_AFTER(evt, 2.0);
-	}
-	// Boss game area
-	else if( mGameAreas[mCurrentGameArea].mType == 10 && !mGameAreaCleared )
-	{
-		mGameAreaCleared = true;
-		GameAreaClearedEventPtr evt = GameAreaClearedEventPtr(new GameAreaClearedEvent(mGameAreas[playerArea].mLevel, mCurrentGameArea, mGameAreas[mCurrentGameArea].mType, isLast));
-		EVENTS_FIRE(evt);
+		// Boss game area
+		else if( mGameAreas[mCurrentGameArea].mType == 10 && !mGameAreaCleared )
+		{
+			mGameAreaCleared = true;
+			GameAreaClearedEventPtr evt = GameAreaClearedEventPtr(new GameAreaClearedEvent(mGameAreas[playerArea].mLevel, mCurrentGameArea, mGameAreas[mCurrentGameArea].mType, isLast));
+			EVENTS_FIRE(evt);
+		}
 	}
 }
 
@@ -128,6 +135,8 @@ int GameAreaManager::getLastGameArea()
 // Manage game area enemy creation events
 void GameAreaManager::manageGameArea()
 {
+	mAreaManaged = true;
+
 	// Area cleared by time
 	if( mGameAreas[mCurrentGameArea].mFinishTime > 0.0 )
 	{
@@ -237,4 +246,65 @@ EVENTS_DEFINE_HANDLER(GameAreaManager, EnemyCreation)
 
 	mEnemiesAlive = true;
 	mGameAreas[evt->getGameArea()].mEnemies--;
+}
+
+// --------------------------------
+// Lua Particle Lib
+// --------------------------------
+LUA_BEGIN_BINDING(GameAreaManager, gameArealib)
+LUA_BIND(GameAreaManager, disable)
+LUA_BIND(GameAreaManager, enable)
+LUA_BIND(GameAreaManager, isEnabled)
+LUA_END_BINDING()
+
+
+//
+// Load lua scripts that will be used by this manager
+//
+LUA_BEGIN_LOAD_SCRIPTS(GameAreaManager)
+// 
+// TODO : Load scripts if needed
+//
+LUA_END_LOAD_SCRIPTS()
+
+
+LUA_DEFINE_FUNCTION(GameAreaManager, disable)
+{
+	/* get number of arguments */
+	int n = lua_gettop(L);
+
+	// n should be 0
+
+	GameAreaManager::getSingleton().disable();
+
+	/* return the number of results */
+	return 0;
+}
+
+LUA_DEFINE_FUNCTION(GameAreaManager, enable)
+{
+	/* get number of arguments */
+	int n = lua_gettop(L);
+
+	// n should be 0
+
+	GameAreaManager::getSingleton().enable();
+
+	/* return the number of results */
+	return 0;
+}
+
+LUA_DEFINE_FUNCTION(GameAreaManager, isEnabled)
+{
+	/* get number of arguments */
+	int n = lua_gettop(L);
+
+	// n should be 0
+
+	bool isEnabled = GameAreaManager::getSingleton().isEnabled();
+
+	lua_pushboolean(L, isEnabled);
+
+	/* return the number of results */
+	return 1;
 }

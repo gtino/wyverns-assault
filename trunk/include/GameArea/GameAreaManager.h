@@ -33,6 +33,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #include "..\Utils\Utils.h"
 #include "..\Events\EventsInterface.h"
 
+#include "..\Lua\LuaInterface.h"
+
 using namespace Ogre;
 
 #define CURRENT_LEVEL 0 // HACK, to be fixed! (0 : Level1_1, 1 : Boss)
@@ -45,6 +47,7 @@ namespace WyvernsAssault
 	class GameAreaManager	: public Ogre::Singleton<GameAreaManager>
 							, public boost::enable_shared_from_this<GameAreaManager>
 							, public EventsInterface
+							, public LuaInterface
 	{
 	public:
 		
@@ -111,6 +114,32 @@ namespace WyvernsAssault
 		void addGameArea(int level, GameArea area);
 		int getLastGameArea();
 
+		//
+		// Enable/disable the manager
+		//
+		void disable(){mEnabled = false;}
+		void enable(){mEnabled = true;}
+		bool isEnabled(){return mEnabled;}
+
+	private:
+
+		std::vector<GameArea> mGameAreas;				
+		
+		int		mCurrentLevel;
+		int		mCurrentGameArea;
+		bool	mGameAreaCleared;
+
+		bool	mEnemiesAlive;
+		Real	mTime;
+		bool	mAreaManaged;
+
+		bool	mIsDebugEnabled;
+		bool	mEnabled;
+
+	private:
+
+		bool mInitialized;
+
 	public:
 		// ----------------
 		// Events interface
@@ -120,24 +149,21 @@ namespace WyvernsAssault
 		EVENTS_HANDLER(GameAreaEnemiesDeath)
 		EVENTS_HANDLER(EnemyCreation)
 
-	private:
-		typedef std::vector<GameArea> GameAreaList;
-		typedef std::vector<GameArea>::iterator GameAreaIterator;
+		// --------------------------------
+		// BEGIN Lua Interface Declarations
+		// --------------------------------
+	public:
+		LUA_INTERFACE();
+
+		//Particle Lib (exported to Lua)
+		LUA_LIBRARY("GameArea",gameArealib);
 		
-		GameAreaList mGameAreas;				
-		
-		int		mCurrentLevel;
-		int		mCurrentGameArea;
-		bool	mGameAreaCleared;
-
-		bool	mEnemiesAlive;
-		Real	mTime;
-
-		bool	mIsDebugEnabled;
-
-	private:
-
-		bool mInitialized;
+		LUA_FUNCTION(enable);
+		LUA_FUNCTION(disable);
+		LUA_FUNCTION(isEnabled);
+		// ------------------------------
+		// END Lua Interface Declarations
+		// ------------------------------
 
 	};
 

@@ -260,6 +260,7 @@ void PlayState::initialize()
 	mLuaManager->registerInterface(mWeatherManager);
 	mLuaManager->registerInterface(mEnemyManager);
 	mLuaManager->registerInterface(mItemManager);
+	mLuaManager->registerInterface(mGameAreaManager);
 
 	//
 	// THIRD :	This call to 'initialize' will initialize Lua,

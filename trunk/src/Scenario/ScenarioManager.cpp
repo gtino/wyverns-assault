@@ -237,9 +237,9 @@ EVENTS_DEFINE_HANDLER(ScenarioManager, ObjectKilled)
 	PlayerPtr player = evt->getPlayer();
 
 	if( player->isSpecial() )
-	{
-		obj->setMaterialName("Skin/Black");
+	{	
 		obj->setBurning(true);
+		obj->setMaterialName("Skin/Black");
 		ObjectCustomEventPtr oCustom = ObjectCustomEventPtr(new ObjectCustomEvent(obj));
 		EVENTS_FIRE_AFTER(oCustom, 1.0f);
 	}
@@ -264,7 +264,7 @@ EVENTS_DEFINE_HANDLER(ScenarioManager, ObjectCustom)
 	ObjectPtr object = evt->getObject();
 
 	if( object->isBurning())
-		object->setVisible(false);
+		object->dieSwitch(true);
 }
 
 EVENTS_DEFINE_HANDLER(ScenarioManager, GameAreaChanged)

@@ -25,6 +25,7 @@ function playBeerCutScene(elapsedTime)
 		Physics.disable(); -- Suspend gae physics
 		Enemy.disable(); -- Suspend enemy animations
 		Item.disable(); -- Suspend items animation
+		GameArea.disable(); -- Suspend game area update
 		
 		Gui.hideUi();
 		Gui.showFrame();
@@ -101,6 +102,7 @@ function playBeerCutScene(elapsedTime)
 		Physics.enable(); -- Resume game physics
 		Enemy.enable(); -- Resume enemy animations
 		Item.enable(); -- Resume items animation
+		GameArea.enable() -- Resume game area update
 		
 		-- This is in case the user skips the cut scene
 		PostProcess.disableCompositor("MotionBlur"); -- Disable compositor

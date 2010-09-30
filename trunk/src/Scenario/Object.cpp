@@ -32,6 +32,7 @@ void Object::initializeEntity(Ogre::Entity* entity, Ogre::SceneNode* sceneNode, 
 	EntityInterface::initializeEntity(entity, sceneNode, sceneManager);
 
 	burning = false;
+	dead = false;
 
 	if(mType == WyvernsAssault::ObjectTypes::DynamicObject && mPhysicSize > Vector3::ZERO)
 	{
@@ -49,7 +50,7 @@ void Object::finalizeEntity()
 
 void Object::updateEntity(const float elapsedSeconds)
 {
-	if( isDying() && hasDieAnimation() )
+	if( isDead() && hasDieAnimation() )
 		mDieAnimation->addTime(elapsedSeconds);
 }
 
@@ -69,13 +70,18 @@ void Object::hit(float damage)
 }
 
 // Die function, change visible meshes
-void Object::dieSwitch()
+void Object::dieSwitch(bool burning)
 {
 	// Main mesh visibility to false
 	setVisible(false);
 
 	// Die mesh visible
 	mDieMesh->setVisible(true);
+
+	dead = true;
+	
+	if(burning)
+		mDieMesh->setMaterialName("Skin/Black");
 }
 
 // Set die mesh and set invisible

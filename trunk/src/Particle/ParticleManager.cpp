@@ -239,7 +239,6 @@ EVENTS_BEGIN_REGISTER_HANDLERS(ParticleManager)
 	EVENTS_REGISTER_HANDLER(ParticleManager,ProjectileHit)
 	EVENTS_REGISTER_HANDLER(ParticleManager,ObjectHit)
 	EVENTS_REGISTER_HANDLER(ParticleManager,ObjectKilled)
-	EVENTS_REGISTER_HANDLER(ParticleManager,ObjectCustom)
 EVENTS_END_REGISTER_HANDLERS()
 
 EVENTS_BEGIN_UNREGISTER_HANDLERS(ParticleManager)
@@ -253,7 +252,6 @@ EVENTS_BEGIN_UNREGISTER_HANDLERS(ParticleManager)
 	EVENTS_UNREGISTER_HANDLER(ParticleManager,ProjectileHit)
 	EVENTS_UNREGISTER_HANDLER(ParticleManager,ObjectHit)
 	EVENTS_UNREGISTER_HANDLER(ParticleManager,ObjectKilled)
-	EVENTS_UNREGISTER_HANDLER(ParticleManager,ObjectCustom)
 EVENTS_END_REGISTER_HANDLERS()
 
 
@@ -396,16 +394,10 @@ EVENTS_DEFINE_HANDLER(ParticleManager, ObjectKilled)
 	ObjectPtr object = evt->getObject();
 	PlayerPtr player = evt->getPlayer();	
 
-	if( !object->isBurning() )		
-		this->add(object->_getSceneNode(), this->defaultParameters("WyvernsAssault/Hit"));
-}
-
-EVENTS_DEFINE_HANDLER(ParticleManager, ObjectCustom)
-{
-	ObjectPtr object = evt->getObject();
-
-	if( object->isBurning())
+	if( player->isSpecial() )		
 		this->add(object->_getSceneNode(), this->defaultParameters("WyvernsAssault/FireKillObject"));
+	else
+		this->add(object->_getSceneNode(), this->defaultParameters("WyvernsAssault/Hit"));
 }
 
 // --------------------------------
