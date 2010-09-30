@@ -292,6 +292,7 @@ void Enemy::updateBossEntity(const float elapsedSeconds)
 		if(((mParameters.life < (mMaxLife*3)/4 && bossHitAnimation == 0) || (mParameters.life < mMaxLife/2 && bossHitAnimation == 1) || (mParameters.life < mMaxLife/4 && bossHitAnimation == 2)) || hitControl){
     		mCurrentAnimation->setValue( BOSS_HIT );
  			hitControl = true;
+			mState = EnemyStates::Alert;
 		}
 
 		if(!hitControl){
