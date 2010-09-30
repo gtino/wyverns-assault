@@ -61,6 +61,7 @@ namespace WyvernsAssault
 		void hit(float damage);
 		bool isHurt();
 		bool isDying();
+		bool isDead(){ return dead; }
 		bool isBurning(){ return burning; }
 		void setBurning(bool status){ burning = status; }
 
@@ -71,7 +72,7 @@ namespace WyvernsAssault
 		bool hasDieMesh(){ return mDieMesh != NULL; }
 		void setDieMesh(Ogre::Entity* entity);
 		void setDieAnimation(Ogre::AnimationState* dieAnimation);
-		void dieSwitch();
+		void dieSwitch(bool burning = false);
 
 		//
 		// Entity Interface
@@ -87,6 +88,7 @@ namespace WyvernsAssault
 		Real points;
 
 		bool burning;
+		bool dead;
 
 		Vector3 mPhysicSize;
 

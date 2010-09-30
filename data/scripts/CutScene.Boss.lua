@@ -25,6 +25,7 @@ function playBossCutScene(elapsedTime)
 		Physics.disable(); -- Suspend gae physics
 		Enemy.disable(); -- Suspend enemy animations
 		Item.disable(); -- Suspend items animation
+		GameArea.disable(); -- Suspend game area update
 		
 		Gui.hideUi();
 		Gui.showForeground();
@@ -63,6 +64,7 @@ function playBossCutScene(elapsedTime)
 		Physics.enable(); -- Resume game physics
 		Enemy.enable(); -- Resume enemy animations
 		Item.enable(); -- Resume items animation
+		GameArea.enable() -- Resume game area update
 		
 		CutScene.reset();		
 		finished = true; -- Scene has ended
