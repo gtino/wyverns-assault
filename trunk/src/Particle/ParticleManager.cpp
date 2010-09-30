@@ -297,13 +297,13 @@ EVENTS_DEFINE_HANDLER(ParticleManager, EnemyKilled)
 	EnemyPtr enemy = evt->getEnemy();
 	PlayerPtr player = evt->getPlayer();	
 
-	if( !enemy->isBurning() )
-	{
-		if( enemy->getEnemyType() == Enemy::EnemyTypes::Boss )
-		{			
-			this->add(enemy->_getSceneNode(), this->defaultParameters("WyvernsAssault/BloodKill"));
-		}
-		else if( enemy->getEnemyType() == Enemy::EnemyTypes::Chicken )
+	if( enemy->getEnemyType() == Enemy::EnemyTypes::Boss )
+	{			
+		this->add(enemy->_getSceneNode(), this->defaultParameters("WyvernsAssault/BossExplosion"));
+	}
+	else if( !enemy->isBurning() )
+	{		
+		if( enemy->getEnemyType() == Enemy::EnemyTypes::Chicken )
 			this->add(enemy->_getSceneNode(), this->defaultParameters("WyvernsAssault/ChickenKill"));
 
 		else if( enemy->getEnemyType() == Enemy::EnemyTypes::Cow )

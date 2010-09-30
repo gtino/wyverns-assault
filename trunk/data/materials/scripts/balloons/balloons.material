@@ -195,3 +195,21 @@ material Balloons/Dying
     }
   }
 }
+
+material Balloons/Help
+{
+  technique
+  {
+    pass
+    {
+      lighting off
+      scene_blend alpha_blend
+      depth_write off
+      texture_unit
+      {
+        texture balloon_help.png
+        tex_address_mode clamp
+      }
+    }
+  }
+}

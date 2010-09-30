@@ -152,10 +152,6 @@ void Enemy::initializeBossEntity(Ogre::Entity* entity, Ogre::SceneNode* sceneNod
 	tag = entity->attachObjectToBone( "bone9", getBossGeometry(7)->getMovableObject());
 	mPhysicsList.push_back( mSceneNode->createChildSceneNode(tag->_getDerivedPosition()));
 
-	// Balloon (not used)
-	mBalloonSet = mSceneManager->createBillboardSet(mName + "_BillboardSet");
-	mBalloonSet->setVisible(false);
-
 	// Animation system
 	mAnimationSystem = new tecnofreak::ogre::AnimationSystem( entity );
 	mAnimationSystem->loadAnimationTree( mParameters.animationTree );
@@ -176,6 +172,31 @@ void Enemy::initializeBossEntity(Ogre::Entity* entity, Ogre::SceneNode* sceneNod
 	// Random animation start time
 	mAnimationSystem->update( rand() );
 
+	//
+	// Boss EXTRAS
+	//
+
+	// Princess in jail
+	Entity* extra = mSceneManager->createEntity("bossPrincess", "bossPrincess.mesh");
+	extra->getAnimationState("Iddle")->setEnabled(1);
+	extra->getAnimationState("Iddle")->setWeight(1);
+	entity->attachObjectToBone("null5", extra, Quaternion::IDENTITY, Vector3(0, -34, -5));
+	
+	// Ballon Set for princess
+	mBalloonSet = mSceneManager->createBillboardSet(mName + "_BillboardSet");
+	mBalloonSet->setDefaultDimensions(15.0, 15.0);
+	mBalloonSet->setMaterialName("Balloons/Help");
+	entity->attachObjectToBone("null5", mBalloonSet);
+
+	Vector3 balloonPosition(10, 20, 15);
+	mBalloon = mBalloonSet->createBillboard(balloonPosition);
+
+	// Pilot
+	extra = mSceneManager->createEntity("bossPilot", "bossPilot.mesh");
+	extra->setMaterialName("Skin/Blue");
+	extra->getAnimationState("Iddle")->setEnabled(1);
+	extra->getAnimationState("Iddle")->setWeight(1);
+	entity->attachObjectToBone("null5", extra, Quaternion::IDENTITY, Vector3(0, -34, -5));
 }
 
 void Enemy::finalizeEntity()
@@ -246,11 +267,12 @@ void Enemy::updateBossEntity(const float elapsedSeconds)
 	{
 		if( mState == EnemyStates::Idle )
 		{
-			mCurrentAnimation->setValue( BOSS_IDDLE ); 
+			mCurrentAnimation->setValue( BOSS_IDDLE );			
 		}
 		else if( mState == EnemyStates::Rage )
 		{
 			mCurrentAnimation->setValue( BOSS_ATTACK4 );
+			mBossRandomAttack = 0;
 		}	
 		else if( mState == EnemyStates::Special )
 		{
@@ -259,10 +281,16 @@ void Enemy::updateBossEntity(const float elapsedSeconds)
 				//Random value 1-2-3
 				mBossRandomAttack = int(Ogre::Math::RangeRandom(1,4));
 			}
-			mCurrentAnimation->setValue( mBossRandomAttack );
+			mCurrentAnimation->setValue( mBossRandomAttack );			
 		}
 
 		mAnimationSystem->update( elapsedSeconds );
+
+		// Princess in jail
+		mSceneManager->getEntity("bossPrincess")->getAnimationState("Iddle")->addTime(elapsedSeconds);
+
+		// Pilot
+		mSceneManager->getEntity("bossPilot")->getAnimationState("Iddle")->addTime(elapsedSeconds);
 	}
 	// Update in case that has dying animation
 	else
@@ -276,9 +304,11 @@ void Enemy::updateBossEntity(const float elapsedSeconds)
 	mLastState = mState;
 }
 
-Real Enemy::getSpecialAttackTime()
+Real Enemy::getAttackTime()
 {
-	if( mBossRandomAttack == 1 )
+	if( mBossRandomAttack == 0 )
+		return 1.0;
+	else if( mBossRandomAttack == 1 )
 		return 1.0;
 	else if( mBossRandomAttack == 2 )
 		return 2.0;
@@ -505,6 +535,7 @@ void Enemy::updateBossLogic(lua_State *L, const float elapsedSeconds)
 			}
 
 			mStateTimeout = 0.0;
+			mBalloonSet->setVisible(true);
 		}
 		else
 		{
@@ -532,7 +563,10 @@ void Enemy::updateBossLogic(lua_State *L, const float elapsedSeconds)
 				mSceneNode->rotate(Ogre::Vector3::UNIT_Y,Degree(0.5));
 		}
 		
-		mBalloonSet->setVisible(false);
+		if( mStateTimeout > 2.0 && mState != Enemy::EnemyStates::Sleeping )
+		{
+			mBalloonSet->setVisible(false);
+		}	
 	}
 }
 

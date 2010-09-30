@@ -213,7 +213,7 @@ namespace WyvernsAssault
 		int getPhysicPositionIndex(){ return mPhysicsListIndex; }
 		void setPhysicPositionIndex(int value){ mPhysicsListIndex = value; }
 
-		Real getSpecialAttackTime();
+		Real getAttackTime();
 
 	private:
 		Enemy::EnemyTypes	mType;
