@@ -104,6 +104,7 @@ void Enemy::initializeEntity(Ogre::Entity* entity, Ogre::SceneNode* sceneNode, O
 	mBalloonSet->setDefaultDimensions(15.0, 15.0);
 	mBalloonSet->setMaterialName("Balloons/Initial");
 	mSceneNode->attachObject(mBalloonSet);
+	mBalloonSet->setVisible(false);
 
 	Vector3 balloonPosition(0, 15, 0);
 	mBalloon = mBalloonSet->createBillboard(balloonPosition);
@@ -799,7 +800,7 @@ void Enemy::dieToCamera()
 void Enemy::setVisible(bool visibility)
 {
 	mEntity->setVisible(visibility);
-	mBalloonSet->setVisible(visibility);
+	//mBalloonSet->setVisible(visibility);
 }
 
 // Stop all enemy actions
