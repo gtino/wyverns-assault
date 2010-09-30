@@ -203,19 +203,19 @@ EVENTS_DEFINE_HANDLER(CutSceneManager, GameAreaChanged)
 			case 2:
 				mCutSceneId = CutSceneId::Beer;
 				break;
-			case 5:
+			case 4:
 				mCutSceneId = CutSceneId::Bridge;
 				break;
-			case 7:
+			case 6:
 				mCutSceneId = CutSceneId::Forest;
 				break;
-			case 8:
+			case 7:
 				mCutSceneId = CutSceneId::WoodenWall;
 				break;
-			case 10:
+			case 8:
 				mCutSceneId = CutSceneId::Village;
 				break;
-			case 11:
+			case 9:
 				mCutSceneId = CutSceneId::Boss;
 				break;
 			default:

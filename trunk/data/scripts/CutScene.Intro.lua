@@ -15,7 +15,7 @@ function playIntroCutScene(elapsedTime)
 	local finished = false;
 
 	-- Internal step position and play time
-	local step = 9999;--CutScene.getCurrentStep();
+	local step = CutScene.getCurrentStep();
 	local elapsedSceneTime = CutScene.getElapsedSceneTime();
 	
 	if step == 0 then
@@ -45,7 +45,7 @@ function playIntroCutScene(elapsedTime)
 		if Camera.hasArrived() then
 			Gui.setForeground("intro_1");
 			-- First part of the scene: camera flyes from the sky to the wyverns cave	
-			Camera.flyTo(80, 180, 1140, 76.8, -100, 630, 5);		
+			Camera.flyTo(-158, 144, 772, -199, 133, 745, 5);		
 			CutScene.nextStep(); -- Simply go to next step
 		end
 	elseif step == 2 then
@@ -67,7 +67,7 @@ function playIntroCutScene(elapsedTime)
 		end
 	elseif step == 5 then 
 		-- Zoom closer to the wyvern
-		Camera.flyTo(93,79.5,956,92.5,55.5,913,1);
+		Camera.flyTo(14,42,893,61.5,38.5,877.6,1);
 		CutScene.nextStep();
 	elseif step == 6 then
 		if Camera.hasArrived() then
@@ -75,7 +75,7 @@ function playIntroCutScene(elapsedTime)
 			CutScene.nextStep(); -- Simply go to next step
 		end
 	elseif step == 7 then
-		Camera.flyTo(158,37.8,898,204,35.5,878,1);
+		Camera.flyTo(79,42.8,835,128.5,35,838,1);
 		CutScene.nextStep();
 	elseif step == 8 then
 		if Camera.hasArrived() then
@@ -91,7 +91,7 @@ function playIntroCutScene(elapsedTime)
 			CutScene.nextStep(); -- Simply go to next step
 		end
 	elseif step == 10 then -- rotate to the player 1
-		Camera.moveTo(159,45,902,108,31,891);
+		Camera.moveTo(-59, 129.9, 812.8, -100, 126.3, 784.5, 2);
 		CutScene.nextStep();
 	elseif step == 11 then
 		if Camera.hasArrived() then
@@ -108,7 +108,7 @@ function playIntroCutScene(elapsedTime)
 		end
 	elseif step == 13 then
 		-- First part of the scene: camera flyes from the sky to the wyverns cave	
-		Camera.flyTo(80, 180, 1140, 76.8, -100, 630, 2);		
+		Camera.flyTo(-161.5, 185, 874.6, -186, 168, 834, 1);		
 		CutScene.nextStep(); -- Simply go to next step
 	elseif step == 14 then
 		if Camera.hasArrived() then
