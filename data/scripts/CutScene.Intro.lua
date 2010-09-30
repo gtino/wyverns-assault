@@ -15,7 +15,7 @@ function playIntroCutScene(elapsedTime)
 	local finished = false;
 
 	-- Internal step position and play time
-	local step = CutScene.getCurrentStep();
+	local step = 9999;--CutScene.getCurrentStep();
 	local elapsedSceneTime = CutScene.getElapsedSceneTime();
 	
 	if step == 0 then
@@ -23,6 +23,8 @@ function playIntroCutScene(elapsedTime)
 		Player.disable(); -- Suspend player input until the end of the cut scene
 		Logic.disable(); -- Suspend enemy logic
 		Physics.disable(); -- Suspend gae physics
+		Enemy.disable(); -- Suspend enemy animations
+		Item.disable(); -- Suspend items animation
 		
 		Gui.hideUi();
 		Gui.showForeground();
@@ -140,6 +142,8 @@ function playIntroCutScene(elapsedTime)
 		Player.enable(); -- Resume player input
 		Logic.enable(); -- Resume enemy logic
 		Physics.enable(); -- Resume game physics
+		Enemy.enable(); -- Resume enemy animations
+		Item.enable(); -- Resume items animation
 		
 		CutScene.reset();		
 		finished = true; -- Scene has ended

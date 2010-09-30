@@ -52,7 +52,11 @@ namespace WyvernsAssault
 	/**
 	Class used to manage all the items
 	*/
-	class ItemManager : public Ogre::Singleton<ItemManager>, public boost::enable_shared_from_this<ItemManager>, public EntityManager, public EventsInterface
+	class ItemManager : public Ogre::Singleton<ItemManager>, 
+						public boost::enable_shared_from_this<ItemManager>, 
+						public EntityManager, 
+						public EventsInterface,
+						public LuaInterface
 	{
 	public:
 		ItemManager(Ogre::SceneManager* sceneManager);
@@ -87,6 +91,13 @@ namespace WyvernsAssault
 
 		Ogre::SceneNode* _getSceneNode() const { return mItemNode; }
 
+		//
+		// Enable/disable the manager
+		//
+		void disable(){mEnabled = false;}
+		void enable(){mEnabled = true;}
+		bool isEnabled(){return mEnabled;}
+
 	private:
 		Ogre::String createUniqueId();
 
@@ -100,6 +111,7 @@ namespace WyvernsAssault
 
 		int						mId;
 		bool					mIsDebugEnabled;
+		bool					mEnabled;
 
 	public:
 		// ----------------
@@ -123,6 +135,9 @@ namespace WyvernsAssault
 
 		LUA_FUNCTION(create);
 		LUA_FUNCTION(remove);
+		LUA_FUNCTION(enable);
+		LUA_FUNCTION(disable);
+		LUA_FUNCTION(isEnabled);
 		// ------------------------------
 		// END Lua Interface Declarations
 		// ------------------------------

@@ -19,6 +19,7 @@ ItemManager::ItemManager(Ogre::SceneManager* sceneManager)
 , mItemNode(0)
 , mIsDebugEnabled(false)
 , mCurrentGameArea(-1)
+, mEnabled(true)
 {
 	mSceneManager = sceneManager;
 }
@@ -249,14 +250,17 @@ bool ItemManager::removeItem(Ogre::String name)
 
 void ItemManager::update(const float elapsedSeconds)
 {
-	for(int i = 0; i < mItemMapList[mCurrentGameArea].size() ; i++)
+	if(mEnabled)
 	{
-		ItemPtr item =  mItemMapList[mCurrentGameArea][i];
+		for(int i = 0; i < mItemMapList[mCurrentGameArea].size() ; i++)
+		{
+			ItemPtr item =  mItemMapList[mCurrentGameArea][i];
 
-		item->updateEntity(elapsedSeconds);
+			item->updateEntity(elapsedSeconds);
 
-		//Physic debugg control
-		item->setDebugEnabled(mIsDebugEnabled);
+			//Physic debugg control
+			item->setDebugEnabled(mIsDebugEnabled);
+		}
 	}
 }
 
@@ -353,6 +357,9 @@ EVENTS_DEFINE_HANDLER(ItemManager,EnemyCreateItem)
 LUA_BEGIN_BINDING(ItemManager, itemlib)
 LUA_BIND(ItemManager, create)
 LUA_BIND(ItemManager, remove)
+LUA_BIND(ItemManager, disable)
+LUA_BIND(ItemManager, enable)
+LUA_BIND(ItemManager, isEnabled)
 LUA_END_BINDING()
 
 //
@@ -377,6 +384,47 @@ LUA_DEFINE_FUNCTION(ItemManager, remove)
 {
 	/* get number of arguments */
 	int n = lua_gettop(L);
+
+	/* return the number of results */
+	return 1;
+}
+
+LUA_DEFINE_FUNCTION(ItemManager, disable)
+{
+	/* get number of arguments */
+	int n = lua_gettop(L);
+
+	// n should be 0
+
+	ItemManager::getSingleton().disable();
+
+	/* return the number of results */
+	return 0;
+}
+
+LUA_DEFINE_FUNCTION(ItemManager, enable)
+{
+	/* get number of arguments */
+	int n = lua_gettop(L);
+
+	// n should be 0
+
+	ItemManager::getSingleton().enable();
+
+	/* return the number of results */
+	return 0;
+}
+
+LUA_DEFINE_FUNCTION(ItemManager, isEnabled)
+{
+	/* get number of arguments */
+	int n = lua_gettop(L);
+
+	// n should be 0
+
+	bool isEnabled = ItemManager::getSingleton().isEnabled();
+
+	lua_pushboolean(L, isEnabled);
 
 	/* return the number of results */
 	return 1;
