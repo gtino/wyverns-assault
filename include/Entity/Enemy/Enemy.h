@@ -206,6 +206,9 @@ namespace WyvernsAssault
 		bool isFlying(){ return flying; }
 		void stop();
 
+		void setHitAlert(bool h){hitAlert = h;}
+		bool getHitAlert(){return hitAlert;}
+
 	public:
 		// Boss exclusive
 		Vector3 getPhysicsPosition(int index){ return mPhysicsListPosition[index]->_getDerivedPosition(); }
@@ -276,7 +279,7 @@ namespace WyvernsAssault
 
 		int bossHitAnimation;
 		bool hitControl;
-
+		bool hitAlert;
 
 
 	private:
