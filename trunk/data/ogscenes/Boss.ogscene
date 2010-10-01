@@ -54,6 +54,7 @@
       <DIRECTORY type="FileSystem" value="../models/stages"></DIRECTORY>
       <DIRECTORY type="FileSystem" value="../models/stages/Boss"></DIRECTORY>
       <DIRECTORY type="FileSystem" value="../models/characters/enemies/boss"></DIRECTORY>
+      <DIRECTORY type="FileSystem" value="../materials/scripts/characters/enemies/boss"></DIRECTORY>
     </RESOURCEDIRECTORIES>
   <CAMERASPEED value="12"></CAMERASPEED>
   <CAMERAPOSITIONS count="0">
@@ -138,7 +139,7 @@
   <OBJECT object_id="2000000002" name="Viewport1" typename="Viewport Object">
     <PROPERTY id="camera::clipdistance" type="8" value="1 3000"></PROPERTY>
     <PROPERTY id="camera::fov" type="6" value="1"></PROPERTY>
-    <PROPERTY id="camera::orientation" type="13" value="0.815803 -0.223332 -0.514766 -0.140864"></PROPERTY>
+    <PROPERTY id="camera::orientation" type="13" value="0.815705 -0.223306 -0.514705 -0.140847"></PROPERTY>
     <PROPERTY id="camera::polymode" type="2" value="3"></PROPERTY>
     <PROPERTY id="camera::position" type="9" value="-179.532 231.504 267.322"></PROPERTY>
     <PROPERTY id="camera::viewmode" type="2" value="0"></PROPERTY>
@@ -1147,9 +1148,9 @@
     <PROPERTY id="position" type="9" value="0 0 0"></PROPERTY>
     <PROPERTY id="renderingdistance" type="6" value="5000"></PROPERTY>
     <PROPERTY id="scale" type="9" value="1 1 1"></PROPERTY>
-    <PROPERTY id="subentity0::material" type="7" value="Scene_Material"></PROPERTY>
+    <PROPERTY id="subentity0::material" type="7" value="Boss_Nucleus"></PROPERTY>
     <PROPERTY id="subentity0::visible" type="12" value="true"></PROPERTY>
-    <PROPERTY id="subentity1::material" type="7" value="Scene_Material"></PROPERTY>
+    <PROPERTY id="subentity1::material" type="7" value="Boss_Tentacles"></PROPERTY>
     <PROPERTY id="subentity1::visible" type="12" value="true"></PROPERTY>
     <PROPERTY id="subentitycount" type="2" value="2"></PROPERTY>
     <PROPERTY id="updatescript" type="7" value=""></PROPERTY>
@@ -1157,11 +1158,11 @@
       <PROPERTY id="type" type="7" value="Enemy"></PROPERTY>
       <PROPERTY id="subType" type="7" value="Boss"></PROPERTY>
       <PROPERTY id="animationTree" type="7" value="data/animations/bossOctopus.xml"></PROPERTY>
-      <PROPERTY id="life" type="6" value="1500"></PROPERTY>
-      <PROPERTY id="points" type="6" value="2000"></PROPERTY>
+      <PROPERTY id="life" type="6" value="3000"></PROPERTY>
+      <PROPERTY id="points" type="6" value="2500"></PROPERTY>
       <PROPERTY id="speed" type="6" value="30"></PROPERTY>
-      <PROPERTY id="damage" type="6" value="5"></PROPERTY>
-      <PROPERTY id="specialDamage" type="6" value="10"></PROPERTY>
+      <PROPERTY id="damage" type="6" value="8"></PROPERTY>
+      <PROPERTY id="specialDamage" type="15" value="10"></PROPERTY>
       <PROPERTY id="height" type="6" value="0"></PROPERTY>
       <PROPERTY id="dieMesh" type="7" value="bossOctopusDie.mesh"></PROPERTY>
       <PROPERTY id="dieAnimation" type="7" value="Die"></PROPERTY>

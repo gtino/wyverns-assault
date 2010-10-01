@@ -26,10 +26,23 @@ material Boss_Tentacles
 			
 			texture_unit 
 			{
-				texture Boss_Tentacles.png
+				texture BossTexture_Tentacles.png
 				tex_address_mode clamp
 				filtering linear linear none
 			}
+		}
+		// Black outline
+		pass
+		{
+			cull_hardware anticlockwise
+			
+			vertex_program_ref Outline
+			{
+				param_named offset float 0.3
+			}			
+			fragment_program_ref Black
+			{
+			}		
 		}
 	}
 }
@@ -62,10 +75,23 @@ material Boss_Nucleus
 			
 			texture_unit 
 			{
-				texture Boss_Nucleus.png
+				texture BossTexture_Nucleus.png
 				tex_address_mode clamp
 				filtering linear linear none
 			}
+		}
+		// Black outline
+		pass
+		{
+			cull_hardware anticlockwise
+			
+			vertex_program_ref Outline
+			{
+				param_named offset float 0.3
+			}			
+			fragment_program_ref Black
+			{
+			}		
 		}
 	}
 }
