@@ -568,7 +568,7 @@ void Enemy::updateBossLogic(lua_State *L, const float elapsedSeconds)
 				mSearchPlayer = false;
 				break;
 			case Enemy::EnemyStates::Alert:
-				if(!hitAlert && mLastState != EnemyStates::Alert)
+				if(!hitAlert)
 					hitAlert = true;
 			case Enemy::EnemyStates::Special:
 				//setMoving(false);
