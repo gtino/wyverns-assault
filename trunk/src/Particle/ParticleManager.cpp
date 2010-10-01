@@ -123,7 +123,6 @@ void ParticleManager::add(SceneNode* node, Vector3 position, WyvernsAssault::Par
 		pSystem->start();
 
 	mParticleSystemList.push_back(pSystem);
-
 }
 
 void ParticleManager::add(SceneNode* node, String id, WyvernsAssault::ParticleSystem::ParticleSystemParameters params)
@@ -326,7 +325,7 @@ EVENTS_DEFINE_HANDLER(ParticleManager, EnemyCustom)
 {
 	EnemyPtr enemy = evt->getEnemy();
 
-	if( enemy->isBurning())
+	if( enemy->isBurning() && enemy->getEnemyType() != Enemy::EnemyTypes::Boss )
 	{
 		if( enemy->getEnemyType() == Enemy::EnemyTypes::BatteringRam )
 			this->add(enemy->_getSceneNode(), this->defaultParameters("WyvernsAssault/FireKillObject"));

@@ -161,6 +161,7 @@ namespace WyvernsAssault
 		EVENTS_HANDLER(EnemyHit)
 		EVENTS_HANDLER(EnemyKilled)
 		EVENTS_HANDLER(EnemyCreateItem)
+		EVENTS_HANDLER(EnemyCustom)
 		
 		EVENTS_HANDLER(ItemCatch)
 

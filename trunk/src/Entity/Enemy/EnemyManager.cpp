@@ -505,6 +505,25 @@ void EnemyManager::update(const float elapsedSeconds)
 				enemy->setAttackTimeout(elapsedSeconds);
 				enemy->attackFinished();
 			}
+
+			// Enemy lost a part of his life
+			if( enemy->getHitAlert() )
+			{
+				// Set boss particle systems
+				enemy->setBossSmoke( ParticleManager::getSingletonPtr()->create("WyvernsAssault/BossSmoke"), 
+					ParticleManager::getSingletonPtr()->create("WyvernsAssault/BossSmoke"),
+					ParticleManager::getSingletonPtr()->create("WyvernsAssault/BossSmoke") );
+				enemy->setBossExplosion( ParticleManager::getSingletonPtr()->create("WyvernsAssault/BossExplosionSmall"), 
+					ParticleManager::getSingletonPtr()->create("WyvernsAssault/BossExplosionSmall"),
+					ParticleManager::getSingletonPtr()->create("WyvernsAssault/BossExplosionSmall") );
+				enemy->setBossSmoke( ParticleManager::getSingletonPtr()->create("WyvernsAssault/BossSpark"), 
+					ParticleManager::getSingletonPtr()->create("WyvernsAssault/BossSpark"),
+					ParticleManager::getSingletonPtr()->create("WyvernsAssault/BossSpark") );
+				// Boss sound
+				EnemyCustomEventPtr evt = EnemyCustomEventPtr(new EnemyCustomEvent(enemy));
+				EVENTS_FIRE(evt);
+				enemy->setHitAlert(false);
+			}
 		}
 	}
 }
@@ -668,7 +687,7 @@ EVENTS_DEFINE_HANDLER(EnemyManager, EnemyCustom)
 
 	EnemyPtr enemy = evt->getEnemy();
 
-	if( enemy->isBurning())
+	if( enemy->isBurning() && enemy->getEnemyType() != Enemy::EnemyTypes::Boss )
 		enemy->setVisible(false);
 }
 

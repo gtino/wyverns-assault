@@ -1,0 +1,69 @@
+system WyvernsAssault/BossSpark
+{
+    technique 
+    {
+        visual_particle_quota                   1000
+        material                                Particle/Debris
+        renderer                                Billboard
+        {
+            billboard_type                      oriented_self
+        }
+        emitter                                 Point Debris
+        {
+            emission_rate                       dyn_random
+            {
+                min                             70
+                max                             80
+            }
+            angle                               360
+            time_to_live                        4
+            velocity                            dyn_random
+            {
+                min                             50
+                max                             70
+            }
+            duration                            dyn_random
+            {
+                min                             0.8
+                max                             1
+            }
+            repeat_delay                        dyn_random
+            {
+                min                             0.5
+                max                             1
+            }
+            particle_width                      dyn_random
+            {
+                min                             1
+                max                             2
+            }
+            particle_height                     dyn_random
+            {
+                min                             10
+                max                             12
+            }
+        }
+        affector                                Scale 
+        {
+            y_scale                             dyn_curved_linear
+            {
+                control_point                   0 -20
+                control_point                   0.3 -2
+                control_point                   1 0
+            }
+        }
+        affector                                Jet 
+        {
+            acceleration                        -0.2
+        }
+        affector                                LinearForce 
+        {
+            force_vector                        0 -10 0
+        }
+        affector                                Colour 
+        {
+            time_colour                         0    0.8 1 1 1
+            time_colour                         1    0 0 0 1
+        }
+    }
+}
