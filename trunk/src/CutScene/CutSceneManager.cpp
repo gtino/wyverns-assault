@@ -91,8 +91,17 @@ void CutSceneManager::update(const float elapsedSeconds)
 	case CutSceneId::Village:
 		finished = playCutScene(elapsedSeconds, "playVillageCutScene");
 		break;
+	case CutSceneId::Siege:
+		finished = playCutScene(elapsedSeconds, "playSiegeCutScene");
+		break;
+	case CutSceneId::Castle:
+		finished = playCutScene(elapsedSeconds, "playCastleCutScene");
+		break;
 	case CutSceneId::Boss:
 		finished = playCutScene(elapsedSeconds, "playBossCutScene");
+		break;
+	case CutSceneId::Final:
+		finished = playCutScene(elapsedSeconds, "playFinalCutScene");
 		break;
 	default:
 		finished = true;
@@ -175,10 +184,12 @@ void CutSceneManager::add(int level, int gameArea, int id, const Ogre::String sc
 // --------------
 EVENTS_BEGIN_REGISTER_HANDLERS(CutSceneManager)
 	EVENTS_REGISTER_HANDLER(CutSceneManager, GameAreaChanged)
+	EVENTS_REGISTER_HANDLER(CutSceneManager, GameAreaCleared)
 EVENTS_END_REGISTER_HANDLERS()
 
 EVENTS_BEGIN_UNREGISTER_HANDLERS(CutSceneManager)
 	EVENTS_UNREGISTER_HANDLER(CutSceneManager, GameAreaChanged)
+	EVENTS_UNREGISTER_HANDLER(CutSceneManager, GameAreaCleared)
 EVENTS_END_UNREGISTER_HANDLERS()
 
 EVENTS_DEFINE_HANDLER(CutSceneManager, GameAreaChanged)
@@ -216,7 +227,10 @@ EVENTS_DEFINE_HANDLER(CutSceneManager, GameAreaChanged)
 				mCutSceneId = CutSceneId::Village;
 				break;
 			case 9:
-				mCutSceneId = CutSceneId::Boss;
+				mCutSceneId = CutSceneId::Siege;
+				break;
+			case 10: // FIXME : it will probably a new area, I gueen number 11!
+				mCutSceneId = CutSceneId::Castle;
 				break;
 			default:
 				mCutSceneId = CutSceneId::Nothing;
@@ -265,6 +279,18 @@ EVENTS_DEFINE_HANDLER(CutSceneManager, GameAreaChanged)
 	}
 }
 
+
+EVENTS_DEFINE_HANDLER(CutSceneManager, GameAreaCleared)
+{
+	int level = evt->getLevel();
+	int area = evt->getGameArea();
+
+	if(level == 1) // The boss has been destroyed!
+	{
+		mCutSceneId = CutSceneId::Final;
+	}
+}
+
 // --------------------------------
 // Lua CutScene Lib
 // --------------------------------
@@ -288,7 +314,10 @@ LUA_LOAD_SCRIPT(".\\data\\scripts\\CutScene.Bridge.lua")
 LUA_LOAD_SCRIPT(".\\data\\scripts\\CutScene.Forest.lua")
 LUA_LOAD_SCRIPT(".\\data\\scripts\\CutScene.WoodenWall.lua")
 LUA_LOAD_SCRIPT(".\\data\\scripts\\CutScene.Village.lua")
+LUA_LOAD_SCRIPT(".\\data\\scripts\\CutScene.Siege.lua")
+LUA_LOAD_SCRIPT(".\\data\\scripts\\CutScene.Castle.lua")
 LUA_LOAD_SCRIPT(".\\data\\scripts\\CutScene.Boss.lua")
+LUA_LOAD_SCRIPT(".\\data\\scripts\\CutScene.Final.lua")
 LUA_END_LOAD_SCRIPTS()
 
 //--------------------------------
