@@ -498,7 +498,7 @@ void Enemy::updateBossLogic(lua_State *L, const float elapsedSeconds)
 	{
 		// Animation time control
 		mAnimationTime = mAnimationTime + elapsedSeconds;
-		if(mAnimationTime > 15){
+		if(mAnimationTime > 10){
 			mAnimationTime = 0;
 			mSearchPlayer = true;
 		}
@@ -510,12 +510,12 @@ void Enemy::updateBossLogic(lua_State *L, const float elapsedSeconds)
 			mState = EnemyStates::Alert;
 
 		// 15 seconds block
-		if(mAnimationTime > 4 && mAnimationTime < 5 && !mBossControlTimeHit)
+		if(mAnimationTime > 3 && mAnimationTime < 4 && !mBossControlTimeHit)
 		{
 			mState = EnemyStates::Rage;
 			mBossControlTimeHit = true;
 		}
-		else if(mAnimationTime > 10 && mAnimationTime < 11 && mBossControlTimeHit)
+		else if(mAnimationTime > 7 && mAnimationTime < 8 && mBossControlTimeHit)
 		{
 			mState = EnemyStates::Special;
 			mBossControlTimeHit = false;
