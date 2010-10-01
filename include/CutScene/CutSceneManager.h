@@ -60,7 +60,10 @@ namespace WyvernsAssault
 			Forest = 5,
 			WoodenWall = 6,
 			Village = 7,
-			Boss = 8
+			Siege = 8,
+			Castle = 9,
+			Boss = 10,
+			Final = 11
 		};
 
 	typedef std::map<CutSceneId,bool> CutScenesPlayedMap;
@@ -122,6 +125,7 @@ namespace WyvernsAssault
 		EVENTS_INTERFACE();
 
 		EVENTS_HANDLER(GameAreaChanged);
+		EVENTS_HANDLER(GameAreaCleared);
 
 	// --------------------------------
 	// BEGIN Lua Interface Declarations
