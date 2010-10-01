@@ -37,6 +37,12 @@ void PlayState::initialize()
 
 	mLevel = mLevelManager->getCurrentLevelIndex();
 
+	// Set near clipping plane
+	if(mLevel == 0 )
+		mCameraManager->setNearClipping(100);
+	else
+		mCameraManager->setNearClipping(200);	
+
 	mDebugEnabled = false;
 
 	//
@@ -400,91 +406,82 @@ void PlayState::update(const float elapsedSeconds)
 	if ( !player1->isDeath() )
 	{
 		// Movement
-		if(mCameraManager->getCameraMode() == CameraManager::CameraModes::Game)
+
+		// Trick for key hit inaccuracies
+		buttonTimer += elapsedSeconds;
+		if ( buttonTimer >= 0.2)
 		{
-			// Trick for key hit inaccuracies
-			buttonTimer += elapsedSeconds;
-			if ( buttonTimer >= 0.2)
-			{
-				buttonTimer = 0;
-				lastKey = OIS::KeyCode::KC_UNASSIGNED;
-			}
+			buttonTimer = 0;
+			lastKey = OIS::KeyCode::KC_UNASSIGNED;
+		}
 
-			// Special Attack
-			if ( this->mInputManager->getKeyboard()->isKeyDown(OIS::KeyCode::KC_LCONTROL) && lastKey != OIS::KeyCode::KC_LCONTROL )
-			{
-				mPlayerManager->attackSpecial(PLAYER1);
-				lastKey = OIS::KeyCode::KC_LCONTROL;		
-			}
-			// Main attack
-			else if( this->mInputManager->getKeyboard()->isKeyDown(OIS::KeyCode::KC_SPACE) && lastKey != OIS::KeyCode::KC_SPACE )
-			{
-				mPlayerManager->attack(PLAYER1);
-				lastKey = OIS::KeyCode::KC_SPACE;				
-			}
+		// Special Attack
+		if ( this->mInputManager->getKeyboard()->isKeyDown(OIS::KeyCode::KC_LCONTROL) && lastKey != OIS::KeyCode::KC_LCONTROL )
+		{
+			mPlayerManager->attackSpecial(PLAYER1);
+			lastKey = OIS::KeyCode::KC_LCONTROL;		
+		}
+		// Main attack
+		else if( this->mInputManager->getKeyboard()->isKeyDown(OIS::KeyCode::KC_SPACE) && lastKey != OIS::KeyCode::KC_SPACE )
+		{
+			mPlayerManager->attack(PLAYER1);
+			lastKey = OIS::KeyCode::KC_SPACE;				
+		}
 
-			// Movement if not attacking
-			if( !player1->isAttacking() && !player1->isSpecial() )
+		// Movement if not attacking
+		if( !player1->isAttacking() && !player1->isSpecial() )
+		{
+			// 8 directions move
+			if(this->mInputManager->getKeyboard()->isKeyDown(OIS::KeyCode::KC_RIGHT) && this->mInputManager->getKeyboard()->isKeyDown(OIS::KeyCode::KC_UP))
 			{
-				// 8 directions move
-				if(this->mInputManager->getKeyboard()->isKeyDown(OIS::KeyCode::KC_RIGHT) && this->mInputManager->getKeyboard()->isKeyDown(OIS::KeyCode::KC_UP))
-				{
-					mPlayerManager->move(PLAYER1,mCameraManager->getDirection(UP_RIGHT_DIRECTION));
-					lastKey = OIS::KeyCode::KC_UP;
-				}
-				else if(this->mInputManager->getKeyboard()->isKeyDown(OIS::KeyCode::KC_RIGHT) && this->mInputManager->getKeyboard()->isKeyDown(OIS::KeyCode::KC_DOWN))
-				{
-					mPlayerManager->move(PLAYER1,mCameraManager->getDirection(DOWN_RIGHT_DIRECTION));
-					lastKey = OIS::KeyCode::KC_DOWN;
-				}
-				else if(this->mInputManager->getKeyboard()->isKeyDown(OIS::KeyCode::KC_LEFT) && this->mInputManager->getKeyboard()->isKeyDown(OIS::KeyCode::KC_UP))
-				{
-					mPlayerManager->move(PLAYER1,mCameraManager->getDirection(UP_LEFT_DIRECTION));
-					lastKey = OIS::KeyCode::KC_UP;
-				}
-				else if(this->mInputManager->getKeyboard()->isKeyDown(OIS::KeyCode::KC_LEFT) && this->mInputManager->getKeyboard()->isKeyDown(OIS::KeyCode::KC_DOWN))
-				{
-					mPlayerManager->move(PLAYER1,mCameraManager->getDirection(DOWN_LEFT_DIRECTION));
-					lastKey = OIS::KeyCode::KC_DOWN;
-				}
-				else if(this->mInputManager->getKeyboard()->isKeyDown(OIS::KeyCode::KC_RIGHT))
-				{
-					mPlayerManager->move(PLAYER1,mCameraManager->getDirection(RIGHT_DIRECTION));
-					lastKey = OIS::KeyCode::KC_RIGHT;
-				}
-				else if(this->mInputManager->getKeyboard()->isKeyDown(OIS::KeyCode::KC_LEFT))
-				{
-					mPlayerManager->move(PLAYER1,mCameraManager->getDirection(LEFT_DIRECTION));
-					lastKey = OIS::KeyCode::KC_LEFT;
-				}
-				else if(this->mInputManager->getKeyboard()->isKeyDown(OIS::KeyCode::KC_UP))
-				{
-					mPlayerManager->move(PLAYER1,mCameraManager->getDirection(UP_DIRECTION));
-					lastKey = OIS::KeyCode::KC_UP;
-				}
-				else if(this->mInputManager->getKeyboard()->isKeyDown(OIS::KeyCode::KC_DOWN))
-				{
-					mPlayerManager->move(PLAYER1,mCameraManager->getDirection(DOWN_DIRECTION));
-					lastKey = OIS::KeyCode::KC_DOWN;
-				}
-				else
-				{
-					// Iddle
-					mPlayerManager->move(PLAYER1,Vector3::ZERO);
-				}
+				mPlayerManager->move(PLAYER1,mCameraManager->getDirection(UP_RIGHT_DIRECTION));
+				lastKey = OIS::KeyCode::KC_UP;
+			}
+			else if(this->mInputManager->getKeyboard()->isKeyDown(OIS::KeyCode::KC_RIGHT) && this->mInputManager->getKeyboard()->isKeyDown(OIS::KeyCode::KC_DOWN))
+			{
+				mPlayerManager->move(PLAYER1,mCameraManager->getDirection(DOWN_RIGHT_DIRECTION));
+				lastKey = OIS::KeyCode::KC_DOWN;
+			}
+			else if(this->mInputManager->getKeyboard()->isKeyDown(OIS::KeyCode::KC_LEFT) && this->mInputManager->getKeyboard()->isKeyDown(OIS::KeyCode::KC_UP))
+			{
+				mPlayerManager->move(PLAYER1,mCameraManager->getDirection(UP_LEFT_DIRECTION));
+				lastKey = OIS::KeyCode::KC_UP;
+			}
+			else if(this->mInputManager->getKeyboard()->isKeyDown(OIS::KeyCode::KC_LEFT) && this->mInputManager->getKeyboard()->isKeyDown(OIS::KeyCode::KC_DOWN))
+			{
+				mPlayerManager->move(PLAYER1,mCameraManager->getDirection(DOWN_LEFT_DIRECTION));
+				lastKey = OIS::KeyCode::KC_DOWN;
+			}
+			else if(this->mInputManager->getKeyboard()->isKeyDown(OIS::KeyCode::KC_RIGHT))
+			{
+				mPlayerManager->move(PLAYER1,mCameraManager->getDirection(RIGHT_DIRECTION));
+				lastKey = OIS::KeyCode::KC_RIGHT;
+			}
+			else if(this->mInputManager->getKeyboard()->isKeyDown(OIS::KeyCode::KC_LEFT))
+			{
+				mPlayerManager->move(PLAYER1,mCameraManager->getDirection(LEFT_DIRECTION));
+				lastKey = OIS::KeyCode::KC_LEFT;
+			}
+			else if(this->mInputManager->getKeyboard()->isKeyDown(OIS::KeyCode::KC_UP))
+			{
+				mPlayerManager->move(PLAYER1,mCameraManager->getDirection(UP_DIRECTION));
+				lastKey = OIS::KeyCode::KC_UP;
+			}
+			else if(this->mInputManager->getKeyboard()->isKeyDown(OIS::KeyCode::KC_DOWN))
+			{
+				mPlayerManager->move(PLAYER1,mCameraManager->getDirection(DOWN_DIRECTION));
+				lastKey = OIS::KeyCode::KC_DOWN;
 			}
 			else
 			{
-				// No movement
-				mPlayerManager->stop(PLAYER1);
+				// Iddle
+				mPlayerManager->move(PLAYER1,Vector3::ZERO);				
 			}
 		}
-		// Other cameras not allowing movement
 		else
 		{
-			// No movement, iddle animation
-			mPlayerManager->move(PLAYER1,Vector3::ZERO);
-			lastKey = OIS::KeyCode::KC_UNASSIGNED;
+			// No movement
+			mPlayerManager->stop(PLAYER1);
 		}
 	}
 	else
@@ -808,9 +805,7 @@ bool PlayState::keyPressed(const OIS::KeyEvent& e)
 		this->mPlayerManager->toggleGodMode();
 		this->mPlayerUI->setGodMode(this->mPlayerManager->getPlayer(PLAYER1)->isGodModeOn());
 		break;
-	case OIS::KeyCode::KC_I:
-		this->mNextGameStateId = GameStateId::Ending;
-		break;
+	// Player Die
 	case OIS::KeyCode::KC_O:
 		player1->die();		
 		break;
@@ -944,55 +939,36 @@ bool PlayState::keyPressed(const OIS::KeyEvent& e)
 		else
 			mLuaManager->enable();
 		break;
-
-/*
-	// Attack A
-	case OIS::KeyCode::KC_SPACE:
-		mPlayerManager->attack("Player1");
-		break;
-	// Special Attack
-	case OIS::KeyCode::KC_LCONTROL:
-		mPlayerManager->attackSpecial("Player1");
-		break;
-*/
-
 	// Depth of Field
 	case OIS::KeyCode::KC_K:
 		mPostProcessManager->depthOfField();
-		break;	
-
+		break;
 	// Radial Blur
 	case OIS::KeyCode::KC_L:
 		mPostProcessManager->radialBlur(2);
 		break;
-
 	// Normals On/Off
 	case OIS::KeyCode::KC_HOME:
 		mPostProcessManager->showNormal();
-		break;	
-
+		break;
 	// Depth On/Off
 	case OIS::KeyCode::KC_END:
 		mPostProcessManager->showDepth();
 		break;
-
 	// Skip cutscene
 	case OIS::KeyCode::KC_ESCAPE:
 		mCutSceneManager->skip();
 		break;
-
 	// Move Player to a game area -- HACK!
 	case OIS::KeyCode::KC_DELETE:
 		//player1->setPosition(Vector3(527, 23, -533)); // Uncomment this to go to the wooden wall
 		//player1->setPosition(Vector3(-420, 44, -167)); // Uncomment this to go to the castle
 		player1->setPosition(Vector3(-605, 143, 38)); // Uncomment this to go to the final portal
 		break;
-
 	// Kill all enemies in current game area -- HACK!
 	case OIS::KeyCode::KC_RSHIFT:
 		mEnemyManager->killAllEnemies(player1);
 		break;
-
 	// Switch to next level -- HACK!
 	case OIS::KeyCode::KC_N:
 		//
@@ -1017,7 +993,8 @@ bool PlayState::keyPressed(const OIS::KeyEvent& e)
 	// Free camera mode move
 	if(mCameraManager->getCameraMode() == CameraManager::CameraModes::Free)
 	{
-		mCameraManager->freeCameraKeyboardDown(e);
+		if( e.key != OIS::KC_UP && e.key != OIS::KC_DOWN &&	e.key != OIS::KC_RIGHT && e.key != OIS::KC_LEFT && e.key != OIS::KC_SPACE && e.key != OIS::KC_LCONTROL )
+			mCameraManager->freeCameraKeyboardDown(e);
 	}
 
 	return true;
@@ -1028,7 +1005,8 @@ bool PlayState::keyReleased(const OIS::KeyEvent& e)
 	// Free camera mode move
 	if(mCameraManager->getCameraMode() == CameraManager::CameraModes::Free)
 	{
-		mCameraManager->freeCameraKeyboardUp(e);
+		if( e.key != OIS::KC_UP && e.key != OIS::KC_DOWN &&	e.key != OIS::KC_RIGHT && e.key != OIS::KC_LEFT && e.key != OIS::KC_SPACE && e.key != OIS::KC_LCONTROL )
+			mCameraManager->freeCameraKeyboardUp(e);
 	}
 
 	return true;

@@ -60,7 +60,7 @@ void CameraManager::initialize(SceneManager* sceneManager, RenderWindow* window)
 	mGameViewport->setBackgroundColour( Ogre::ColourValue( 0.0, 0.0, 0.0 ) );
 
 	/** Game camera cofiguration */
-	mGameCamera->setNearClipDistance(50);
+	mGameCamera->setNearClipDistance(100);
 	mGameCamera->setFarClipDistance(20000);
 	mGameCamera->setAspectRatio(Real(mGameViewport->getActualWidth()) / Real(mGameViewport->getActualHeight()));	
 

@@ -36,7 +36,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #include "Ogre/AnimationSystem.h"
 
 
-#define ENEMY_BILLBOARD_SHOW_TIME 1.0f // seconds
+#define ENEMY_BILLBOARD_SHOW_TIME	0.75f // seconds
+#define ENEMY_DAMAGE_MULTIPLIER		0.5f  // damage multiplier (difficult setting)
 
 // Enemies animations number in tree
 #define ENEMY_IDDLE			0
@@ -142,7 +143,13 @@ namespace WyvernsAssault
 		SceneNode* getTarget(){return mTarget;}
 		
 		// Parameters functions
-		Ogre::Real getHitDamage(){return mParameters.damage;}
+		Ogre::Real getHitDamage()
+		{
+			if(mType != EnemyTypes::Boss )
+				return mParameters.damage * ENEMY_DAMAGE_MULTIPLIER;
+			else
+				return mParameters.damage;
+		}
 		Ogre::Real getSpecialHitDamage(){return mParameters.specialDamage;}
 		void hit(float damage);
 		float getPoints(){ return mParameters.points; }
