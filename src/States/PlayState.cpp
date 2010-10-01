@@ -39,7 +39,7 @@ void PlayState::initialize()
 
 	// Set near clipping plane
 	if(mLevel == 0 )
-		mCameraManager->setNearClipping(100);
+		mCameraManager->setNearClipping(50);
 	else
 		mCameraManager->setNearClipping(200);	
 

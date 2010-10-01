@@ -37,7 +37,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
 
 #define ENEMY_BILLBOARD_SHOW_TIME	0.75f // seconds
-#define ENEMY_DAMAGE_MULTIPLIER		0.5f  // damage multiplier (difficult setting)
+#define ENEMY_DAMAGE_MULTIPLIER		0.75f  // damage multiplier (difficult setting)
 
 // Enemies animations number in tree
 #define ENEMY_IDDLE			0
