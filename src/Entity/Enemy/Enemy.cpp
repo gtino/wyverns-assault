@@ -185,12 +185,11 @@ void Enemy::initializeBossEntity(Ogre::Entity* entity, Ogre::SceneNode* sceneNod
 	attacking = false;
 	special = false;
 	newAttack = false;
+	hitAlert = false;
 
 	bossHitAnimation = 0;
 	hitControl = false;
 	mSearchPlayer = true;
-
-	hitAlert = false;
 
 	// Random animation start time
 	mAnimationSystem->update( rand() );
@@ -216,7 +215,6 @@ void Enemy::initializeBossEntity(Ogre::Entity* entity, Ogre::SceneNode* sceneNod
 
 	// Pilot
 	extra = mSceneManager->createEntity("bossPilot", "bossPilot.mesh");
-	extra->setMaterialName("Skin/Blue");
 	extra->getAnimationState("Iddle")->setEnabled(1);
 	extra->getAnimationState("Iddle")->setWeight(1);
 	entity->attachObjectToBone("null5", extra, Quaternion::IDENTITY, Vector3(0, -34, -5));
@@ -542,9 +540,11 @@ void Enemy::updateBossLogic(lua_State *L, const float elapsedSeconds)
 		{
 			if( mEntity->getAnimationState("Attack_4")->getTimePosition() + elapsedSeconds > mEntity->getAnimationState("Attack_4")->getLength() )
 				mState = EnemyStates::Idle;
-		}else if( mCurrentAnimation->getFloatValue() ==  BOSS_HIT )
+		}
+		else if( mCurrentAnimation->getFloatValue() ==  BOSS_HIT )
 		{
-			if( mEntity->getAnimationState("Hit")->getTimePosition() + elapsedSeconds > mEntity->getAnimationState("Hit")->getLength() ){
+			if( mEntity->getAnimationState("Hit")->getTimePosition() + elapsedSeconds > mEntity->getAnimationState("Hit")->getLength() )
+			{
 				mState = EnemyStates::Idle;
 				hitControl = false;
 				bossHitAnimation++;
@@ -572,6 +572,7 @@ void Enemy::updateBossLogic(lua_State *L, const float elapsedSeconds)
 			case Enemy::EnemyStates::Alert:
  				if(!hitAlert)
 					hitAlert = true;
+				break;
 			case Enemy::EnemyStates::Special:
 				//setMoving(false);
 				setSpecial(true);
@@ -839,4 +840,97 @@ void Enemy::stop()
 	mTarget = NULL;
 	mState = Enemy::EnemyStates::Dead;
 	mParameters.life = 0.0;
+}
+
+void Enemy::setBossSmoke(ParticleUniverse::ParticleSystem* pSystem, ParticleUniverse::ParticleSystem* pSystem2, ParticleUniverse::ParticleSystem* pSystem3)
+{
+	if( bossHitAnimation == 0 )
+	{		
+		mEntity->attachObjectToBone( "bone2", pSystem );
+		mEntity->attachObjectToBone( "bone18", pSystem2 );
+		mEntity->attachObjectToBone( "bone29", pSystem3 );
+		pSystem->start();
+		pSystem2->start();
+		pSystem3->start();
+	}
+	else if( bossHitAnimation == 1 )
+	{
+		mEntity->attachObjectToBone( "bone34", pSystem );
+		mEntity->attachObjectToBone( "bone6", pSystem2 );
+		mEntity->attachObjectToBone( "bone20", pSystem3 );
+		pSystem->start();
+		pSystem2->start();
+		pSystem3->start();
+	}
+	else if( bossHitAnimation == 2 )
+	{
+		mEntity->attachObjectToBone( "bone13", pSystem );
+		mEntity->attachObjectToBone( "bone37", pSystem2 );
+		mEntity->attachObjectToBone( "bone5", pSystem3 );
+		pSystem->start();
+		pSystem2->start();
+		pSystem3->start();
+	}
+}
+
+void Enemy::setBossSpark(ParticleUniverse::ParticleSystem* pSystem, ParticleUniverse::ParticleSystem* pSystem2, ParticleUniverse::ParticleSystem* pSystem3)
+{
+	if( bossHitAnimation == 0 )
+	{		
+		mEntity->attachObjectToBone( "bone6", pSystem );
+		mEntity->attachObjectToBone( "bone23", pSystem2 );
+		mEntity->attachObjectToBone( "bone16", pSystem3 );
+		pSystem->start();
+		pSystem2->start();
+		pSystem3->start();
+	}
+	else if( bossHitAnimation == 1 )
+	{
+		mEntity->attachObjectToBone( "bone26", pSystem );
+		mEntity->attachObjectToBone( "bone14", pSystem2 );
+		mEntity->attachObjectToBone( "bone4", pSystem3 );
+		pSystem->start();
+		pSystem2->start();
+		pSystem3->start();
+	}
+	else if( bossHitAnimation == 2 )
+	{
+		mEntity->attachObjectToBone( "bone17", pSystem );
+		mEntity->attachObjectToBone( "bone34", pSystem2 );
+		mEntity->attachObjectToBone( "bone39", pSystem3 );
+		pSystem->start();
+		pSystem2->start();
+		pSystem3->start();
+	}
+}
+
+void Enemy::setBossExplosion(ParticleUniverse::ParticleSystem* pSystem, ParticleUniverse::ParticleSystem* pSystem2, ParticleUniverse::ParticleSystem* pSystem3)
+{
+	if( bossHitAnimation == 0 )
+	{		
+		mEntity->attachObjectToBone( "bone10", pSystem );
+		mEntity->attachObjectToBone( "bone28", pSystem2 );
+		mEntity->attachObjectToBone( "bone22", pSystem3 );
+		pSystem->start();
+		pSystem2->start();
+		pSystem3->start();
+	}
+	else if( bossHitAnimation == 1 )
+	{
+		mEntity->attachObjectToBone( "bone34", pSystem );
+		mEntity->attachObjectToBone( "bone11", pSystem2 );
+		mEntity->attachObjectToBone( "bone27", pSystem3 );
+		pSystem->start();
+		pSystem2->start();
+		pSystem3->start();
+	}
+	else if( bossHitAnimation == 2 )
+	{
+		mEntity->attachObjectToBone( "bone22", pSystem );
+		mEntity->attachObjectToBone( "bone2", pSystem2 );
+		mEntity->attachObjectToBone( "bone10", pSystem3 );
+		pSystem->start();
+		pSystem2->start();
+		pSystem3->start();
+	}
 }

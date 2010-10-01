@@ -141,8 +141,6 @@ void AudioManager::loadResources()
 	createStream( String("BossAttack05.wav"));
 	createStream( String("BossDie01.wav"));
 	createStream( String("BossDie02.wav"));
-	createStream( String("BossDie03.wav"));
-	createStream( String("BossDie04.wav"));
 	createStream( String("BossFinish01.wav"));
 	createStream( String("BossHit01.wav"));
 	createStream( String("BossHit02.wav"));
@@ -692,6 +690,7 @@ EVENTS_BEGIN_REGISTER_HANDLERS(AudioManager)
 	EVENTS_REGISTER_HANDLER(AudioManager, EnemyHit);
 	EVENTS_REGISTER_HANDLER(AudioManager, EnemyKilled);
 	EVENTS_REGISTER_HANDLER(AudioManager, EnemyCreateItem);
+	EVENTS_REGISTER_HANDLER(AudioManager, EnemyCustom);
 	EVENTS_REGISTER_HANDLER(AudioManager, ItemCatch);
 	EVENTS_REGISTER_HANDLER(AudioManager, ProjectileFire);
 	EVENTS_REGISTER_HANDLER(AudioManager, ProjectileHit);
@@ -711,6 +710,7 @@ EVENTS_BEGIN_UNREGISTER_HANDLERS(AudioManager)
 	EVENTS_UNREGISTER_HANDLER(AudioManager, EnemyHit);
 	EVENTS_UNREGISTER_HANDLER(AudioManager, EnemyKilled);	
 	EVENTS_UNREGISTER_HANDLER(AudioManager, EnemyCreateItem);
+	EVENTS_UNREGISTER_HANDLER(AudioManager, EnemyCustom);
 	EVENTS_UNREGISTER_HANDLER(AudioManager, ItemCatch);
 	EVENTS_UNREGISTER_HANDLER(AudioManager, ProjectileFire);
 	EVENTS_UNREGISTER_HANDLER(AudioManager, ProjectileHit);
@@ -997,6 +997,27 @@ EVENTS_DEFINE_HANDLER(AudioManager, EnemyCreateItem)
 	}
 	else
 		playSound("Drop01.wav",sceneNode->_getDerivedPosition(),&channelIndex);
+}
+
+EVENTS_DEFINE_HANDLER(AudioManager, EnemyCustom)
+{
+	Debug::Out("AudioManager : handleEnemyCustomEvent");
+
+	EnemyPtr enemy = evt->getEnemy();
+
+	int channelIndex = -1;
+
+	SceneNode* sceneNode = enemy->_getSceneNode();
+
+	if( enemy->getEnemyType() == Enemy::EnemyTypes::Boss )
+	{
+		int sound = rand()% 2;
+
+		if( sound == 0 )
+			playSound("BossDie01.wav",sceneNode->_getDerivedPosition(),&channelIndex);
+		else
+			playSound("BossDie02.wav",sceneNode->_getDerivedPosition(),&channelIndex);
+	}
 }
 
 EVENTS_DEFINE_HANDLER(AudioManager, ItemCatch)

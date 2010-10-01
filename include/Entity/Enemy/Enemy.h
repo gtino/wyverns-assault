@@ -25,6 +25,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
 #include <Ogre.h>
 #include <OgreTagpoint.h>
+#include <ParticleUniversePlugin.h>
 
 #include "..\EntityInterface.h"
 #include "..\..\Physics\PhysicsInterface.h"
@@ -206,9 +207,6 @@ namespace WyvernsAssault
 		bool isFlying(){ return flying; }
 		void stop();
 
-		void setHitAlert(bool h){hitAlert = h;}
-		bool getHitAlert(){return hitAlert;}
-
 	public:
 		// Boss exclusive
 		Vector3 getPhysicsPosition(int index){ return mPhysicsListPosition[index]->_getDerivedPosition(); }
@@ -218,6 +216,13 @@ namespace WyvernsAssault
 
 		Real getAttackStartTime();
 		int getAttackNumber(){ return mBossRandomAttack; }
+
+		void setHitAlert(bool h){hitAlert = h;}
+		bool getHitAlert(){return hitAlert;}
+
+		void setBossSmoke(ParticleUniverse::ParticleSystem* pSystem, ParticleUniverse::ParticleSystem* pSystem2, ParticleUniverse::ParticleSystem* pSystem3);
+		void setBossSpark(ParticleUniverse::ParticleSystem* pSystem, ParticleUniverse::ParticleSystem* pSystem2, ParticleUniverse::ParticleSystem* pSystem3);
+		void setBossExplosion(ParticleUniverse::ParticleSystem* pSystem, ParticleUniverse::ParticleSystem* pSystem2, ParticleUniverse::ParticleSystem* pSystem3);
 
 	private:
 		Enemy::EnemyTypes	mType;
