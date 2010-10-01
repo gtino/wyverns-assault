@@ -294,7 +294,6 @@ void Enemy::updateBossEntity(const float elapsedSeconds)
 		if(((mParameters.life < (mMaxLife*3)/4 && bossHitAnimation == 0) || (mParameters.life < mMaxLife/2 && bossHitAnimation == 1) || (mParameters.life < mMaxLife/4 && bossHitAnimation == 2)) || hitControl){
     		mCurrentAnimation->setValue( BOSS_HIT );
  			hitControl = true;
-			mState = EnemyStates::Alert;
 		}
 
 		if(!hitControl){
@@ -509,6 +508,9 @@ void Enemy::updateBossLogic(lua_State *L, const float elapsedSeconds)
 		// Set mTarget from lua
 		setBossTarget(L);
 
+		if(hitControl)
+			mState = EnemyStates::Alert;
+
 		// 15 seconds block
 		if(mAnimationTime > 4 && mAnimationTime < 5 && !mBossControlTimeHit)
 		{
@@ -568,7 +570,7 @@ void Enemy::updateBossLogic(lua_State *L, const float elapsedSeconds)
 				mSearchPlayer = false;
 				break;
 			case Enemy::EnemyStates::Alert:
-				if(!hitAlert)
+ 				if(!hitAlert)
 					hitAlert = true;
 			case Enemy::EnemyStates::Special:
 				//setMoving(false);
