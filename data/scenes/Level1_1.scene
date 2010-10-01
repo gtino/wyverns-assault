@@ -5003,19 +5003,6 @@
           </subentities>
         </entity>
       </node>
-      <node name="ChickenBig" id="517014080">
-        <rotation qw="0.258819" qx="0" qy="0.965926" qz="0" />
-        <position x="126.535" y="3.5" z="-302.753" />
-        <scale x="5" y="5" z="5" />
-        <entity name="chicken#100" id="662984064" castshadows="false" meshFile="chicken.mesh" type="Enemy" subType="Chicken" animationTree="data/animations/chicken.xml" life="300" points="500" speed="10" damage="0" specialDamage="0" height="10" dieMesh="chickenDie.mesh" dieAnimation="">
-          <rotation qw="1" qx="0" qy="0" qz="0" />
-          <position x="0" y="0" z="0" />
-          <scale x="1" y="1" z="1" />
-          <subentities>
-            <subentity materialName="chicken_material" index="0" visible="true" />
-          </subentities>
-        </entity>
-      </node>
       <node name="CowFake" id="379131424">
         <rotation qw="0.777146" qx="0" qy="0.629321" qz="0" />
         <position x="1027.95" y="34" z="51.8579" />
@@ -5762,7 +5749,7 @@
           <position x="0" y="0" z="0" />
           <scale x="1" y="1" z="1" />
           <subentities>
-            <subentity materialName="woman_material_2" index="0" visible="true" />
+            <subentity materialName="woman_material" index="0" visible="true" />
           </subentities>
         </entity>
       </node>

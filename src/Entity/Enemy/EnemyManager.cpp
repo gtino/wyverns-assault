@@ -610,13 +610,13 @@ EVENTS_DEFINE_HANDLER(EnemyManager, EnemyKilled)
 		src.y = 0;
 		direction.y = 0;
 		direction.normalise();
-		src.normalise();
+		src.normalise();		
 
 		Quaternion rotation = src.getRotationTo(direction);
-		enemyNode->rotate(rotation);		
+		enemyNode->rotate(rotation);
+		enemyNode->rotate( Quaternion(Degree(10), Vector3(0,1,0)) );		
 
 		enemy->dieSwitch();
-		//enemy->setDieMaterialName(enemy->getMaterialName());
 	}
 	else
 	{

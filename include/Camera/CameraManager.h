@@ -96,6 +96,8 @@ namespace WyvernsAssault
 		/** Finalize the camera manager */
 		void finalize();
 
+		void setNearClipping(int distance){ mGameCamera->setNearClipDistance(distance); }
+
 		/** Start functions **/ 
 		void startCameras();
 

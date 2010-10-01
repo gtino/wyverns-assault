@@ -337,14 +337,15 @@ EVENTS_DEFINE_HANDLER(ItemManager,EnemyCreateItem)
 	}
 	else
 	{
-		int type = rand()%3;
+		int type = rand()%5;
 
 		if( type == 0) 
-			item = this->createItem(Item::ItemTypes::Life, (rand()%2), enemy->getPosition());
-		else if( type == 0) 
+			item = this->createItem(Item::ItemTypes::Drunk, (rand()%2), enemy->getPosition());			
+		else if( type == 1 || type == 2) 
 			item = this->createItem(Item::ItemTypes::Points, (rand()%2), enemy->getPosition());
 		else
-			item = this->createItem(Item::ItemTypes::Drunk, (rand()%3), enemy->getPosition());
+			item = this->createItem(Item::ItemTypes::Life, (rand()%2), enemy->getPosition());
+			
 	}
 
 	ItemPhysicsEventPtr ePhysic = ItemPhysicsEventPtr(new ItemPhysicsEvent(item, evt->getGameArea()));

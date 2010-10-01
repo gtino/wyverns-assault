@@ -271,7 +271,10 @@ EVENTS_DEFINE_HANDLER(PlayerManager, ItemCatch)
 	player->addPoints(item->getPoints());
 
 	if ( item->getDrunkTime() > 0 )
+	{
 		player->drunk(item->getDrunkTime() / 2, item->getDrunkTime());
+		player->setSpecial(100.0f);
+	}
 }
 
 EVENTS_DEFINE_HANDLER(PlayerManager, EnemyKilled)
