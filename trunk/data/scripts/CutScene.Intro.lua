@@ -29,6 +29,8 @@ function playIntroCutScene(elapsedTime)
 		
 		Gui.hideUi();
 		Gui.showForeground();
+		Gui.showFrame();
+		Gui.setFrame("Frame_Normal");
 		
 		local inputEnabled = Input.isEnabled(); -- Checks if input is enabled
 		local logicEnabled = Logic.isEnabled(); -- Checks if logic is enabled
@@ -136,6 +138,7 @@ function playIntroCutScene(elapsedTime)
 		Audio.playLoop("Level1_1.mp3"); -- Play the soundtrack
 		Camera.setCurrent(CameraMode_Game); -- Sets the current camera
 		
+		Gui.hideFrame();
 		Gui.hideForeground();
 		Gui.showUi();
 	
