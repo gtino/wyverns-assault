@@ -983,7 +983,9 @@ bool PlayState::keyPressed(const OIS::KeyEvent& e)
 
 	// Move Player to a game area -- HACK!
 	case OIS::KeyCode::KC_DELETE:
-		player1->setPosition(Vector3(527, 23, -533));
+		//player1->setPosition(Vector3(527, 23, -533)); // Uncomment this to go to the wooden wall
+		//player1->setPosition(Vector3(-420, 44, -167)); // Uncomment this to go to the castle
+		player1->setPosition(Vector3(-605, 143, 38)); // Uncomment this to go to the final portal
 		break;
 
 	// Kill all enemies in current game area -- HACK!
