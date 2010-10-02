@@ -60,7 +60,12 @@ void IntroState::load()
 	mGuiScreen = mGuiManager->createScreen(GuiScreenId::IntroGui, "IntroScreen");
 	
 	GuiMovieClipPtr guiMovieClip = GuiMovieClipPtr(new GuiMovieClip());
-	guiMovieClip->setAspectRatio(mIsWideScreen,true);
+
+	if( mWindow->getViewport(0)->getCamera()->getAspectRatio() > 1.34 )
+		guiMovieClip->setAspectRatio(mIsWideScreen,false);
+	else
+		guiMovieClip->setAspectRatio(mIsWideScreen,true);
+
 	guiMovieClip->setMovieClip("video_material");
 
 	mGuiScreen->setBackground(guiMovieClip);
