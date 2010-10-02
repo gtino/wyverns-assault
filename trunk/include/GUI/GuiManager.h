@@ -116,6 +116,8 @@ namespace WyvernsAssault
 		bool goGo;
 		bool level;
 
+		bool showGui;
+
 		// ----------------
 		// Events interface
 		// ----------------
