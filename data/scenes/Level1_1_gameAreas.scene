@@ -6,7 +6,7 @@
 			<beginFar x="-307" y="0" z="527"/>
 			<endFar x="218" y="0" z="685"/>			
 		</gameArea>
-		<gameArea id="1" time="0.0" enemies="20" difficult="1" type="0">
+		<gameArea id="1" time="0.0" enemies="15" difficult="1" type="0">
 			<beginNear x="318" y="0" z="1016"/>
 			<endNear x="765" y="0" z="889"/>
 			<beginFar x="218" y="0" z="685"/>
@@ -82,7 +82,7 @@
 			<spawnPoint x="460" y="10" z="-588"/>
 			<spawnPoint x="462" y="10" z="-467"/>
 		</gameArea>
-		<gameArea id="8" time="0.0" enemies="50" difficult="1" type="0">
+		<gameArea id="8" time="0.0" enemies="30" difficult="1" type="0">
 			<beginNear x="387" y="0" z="-932"/>
 			<endNear x="-235" y="0" z="-657"/>
 			<beginFar x="434" y="0" z="-365"/>
@@ -104,15 +104,13 @@
 			<spawnPoint x="-177" y="10" z="-112"/>
 			<spawnPoint x="106" y="-5" z="52"/>
 		</gameArea>		
-		<gameArea id="10" time="0.0" enemies="20" difficult="3" type="0">
+		<gameArea id="10" time="0.0" enemies="10" difficult="2" type="0">
 			<beginNear x="-308" y="0" z="-341"/>
 			<endNear x="-849" y="0" z="-360"/>
 			<beginFar x="41" y="0" z="283"/>
 			<endFar x="-777" y="0" z="-75"/>
 			<spawnPoint x="-305" y="15" z="-190"/>
 			<spawnPoint x="-468" y="15" z="-201"/>
-			<spawnPoint x="-776" y="25" z="-281"/>
-			<spawnPoint x="-776" y="25" z="-210"/>
 		</gameArea>	
 		<gameArea id="11" time="0.0" enemies="0" difficult="0" type="0">
 			<beginNear x="41" y="0" z="283"/>

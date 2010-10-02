@@ -52,10 +52,10 @@
       <DIRECTORY type="FileSystem" value="../materials/scripts/sky"></DIRECTORY>
       <DIRECTORY type="FileSystem" value="../models/stages"></DIRECTORY>
     </RESOURCEDIRECTORIES>
-  <CAMERASPEED value="13"></CAMERASPEED>
+  <CAMERASPEED value="28"></CAMERASPEED>
   <CAMERAPOSITIONS count="1">
     <OPTION id="0" position="1417.36 9.53911 54.9741" orientation="0.707107 0 0.707107 0"></OPTION>
-    <OPTION id="1" position="-154.907 164.176 -301.263" orientation="0.0365289 -0.00629445 0.984187 0.173209"></OPTION>
+    <OPTION id="1" position="-169.568 303.773 907.209" orientation="0.925947 -0.363206 0.0962626 0.0379019"></OPTION>
   </CAMERAPOSITIONS>
     <LAYERS>
       <LAYER id="0" name="Layer 0" visible="true"></LAYER>
@@ -136,9 +136,9 @@
   <OBJECT object_id="2000000002" name="Viewport1" typename="Viewport Object">
     <PROPERTY id="camera::clipdistance" type="8" value="0.05 100000"></PROPERTY>
     <PROPERTY id="camera::fov" type="6" value="1"></PROPERTY>
-    <PROPERTY id="camera::orientation" type="13" value="0.0365346 -0.00629544 0.984342 0.173236"></PROPERTY>
+    <PROPERTY id="camera::orientation" type="13" value="0.92595 -0.363208 0.0962629 0.037902"></PROPERTY>
     <PROPERTY id="camera::polymode" type="2" value="3"></PROPERTY>
-    <PROPERTY id="camera::position" type="9" value="-154.907 164.176 -301.263"></PROPERTY>
+    <PROPERTY id="camera::position" type="9" value="-169.568 303.773 907.209"></PROPERTY>
     <PROPERTY id="camera::viewmode" type="2" value="0"></PROPERTY>
     <PROPERTY id="colour" type="11" value="0.901961 0.901961 0.901961 1"></PROPERTY>
     <PROPERTY id="compositorcount" type="2" value="0"></PROPERTY>
@@ -24611,7 +24611,7 @@
     <PROPERTY id="colour" type="11" value="1 0 0 1"></PROPERTY>
     <PROPERTY id="layer" type="2" value="0"></PROPERTY>
     <PROPERTY id="locked" type="12" value="false"></PROPERTY>
-    <PROPERTY id="orientation" type="13" value="1 0 0 0"></PROPERTY>
+    <PROPERTY id="orientation" type="13" value="0.659346 0 0.75184 0"></PROPERTY>
     <PROPERTY id="position" type="9" value="-261.199 108.465 715.766"></PROPERTY>
     <PROPERTY id="scale" type="9" value="50 50 50"></PROPERTY>
     <PROPERTY id="updatescript" type="7" value=""></PROPERTY>
