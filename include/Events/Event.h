@@ -31,6 +31,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #include "..\Entity\Projectile\Projectile.h"
 #include "..\Scenario\Object.h"
 #include "..\Weather\Weather.h"
+#include "..\CutScene\CutScene.h"
 
 namespace WyvernsAssault
 {
@@ -46,6 +47,7 @@ namespace WyvernsAssault
 		EnemyAttack,
 		EnemyHit,
 		EnemyKilled,
+		EnemyDead,
 		EnemyRemove,
 		EnemyCustom,
 		EnemyCreation,
@@ -70,7 +72,9 @@ namespace WyvernsAssault
 		LevelComplete,
 		WeatherChanged,
 		GameAreaFlashCounter,
-		SpecialEffect
+		SpecialEffect,
+		CutSceneStart,
+		CutSceneEnd
 	};
 
 	/** Event priority, used to put the event in the correct queue */
@@ -191,6 +195,21 @@ namespace WyvernsAssault
 	};
 
 	typedef boost::shared_ptr<EnemyKilledEvent> EnemyKilledEventPtr;
+
+	// --------------------------------
+	class EnemyDeadEvent : public Event
+	{
+	public:
+		EnemyDeadEvent(EnemyPtr e);
+		~EnemyDeadEvent(){};
+		
+		EnemyPtr getEnemy(){return mEnemy;}
+
+	private:
+		EnemyPtr mEnemy;
+	};
+
+	typedef boost::shared_ptr<EnemyDeadEvent> EnemyDeadEventPtr;
 
 	// --------------------------------
 	class EnemyRemoveEvent : public Event
@@ -692,6 +711,35 @@ namespace WyvernsAssault
 
 	typedef boost::shared_ptr<SpecialEffectEvent> SpecialEffectEventPtr;
 
+	// --------------------------------	
+	class CutSceneStartEvent : public Event
+	{
+	public:
+		CutSceneStartEvent(CutScene::CutSceneId id);
+		~CutSceneStartEvent(){};
+		
+		CutScene::CutSceneId getId(){return mId;}
+
+	private:		
+		CutScene::CutSceneId mId;
+	};
+
+	typedef boost::shared_ptr<CutSceneStartEvent> CutSceneStartEventPtr;
+
+	// --------------------------------	
+	class CutSceneEndEvent : public Event
+	{
+	public:
+		CutSceneEndEvent(CutScene::CutSceneId id);
+		~CutSceneEndEvent(){};
+		
+		CutScene::CutSceneId getId(){return mId;}
+
+	private:		
+		CutScene::CutSceneId mId;
+	};
+
+	typedef boost::shared_ptr<CutSceneEndEvent> CutSceneEndEventPtr;
 }
 
 #endif // __EVENT_H_

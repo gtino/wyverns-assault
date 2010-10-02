@@ -48,26 +48,8 @@ namespace WyvernsAssault
 							, public LuaInterface
 							, public EventsInterface
 	{
-
-	public:
-		typedef enum CutSceneId
-		{
-			Nothing = 0,
-			Intro = 1,
-			FirstKills = 2,
-			Beer = 3,
-			Bridge = 4,
-			Forest = 5,
-			WoodenWall = 6,
-			Village = 7,
-			Siege = 8,
-			Castle = 9,
-			Boss = 10,
-			Final = 11
-		};
-
-	typedef std::map<CutSceneId,bool> CutScenesPlayedMap;
-	typedef std::map<CutSceneId,bool>::iterator CutScenesPlayedMapIterator;
+		typedef std::map<CutScene::CutSceneId,bool> CutScenesPlayedMap;
+		typedef std::map<CutScene::CutSceneId,bool>::iterator CutScenesPlayedMapIterator;
 
 		typedef std::map<int,CutScenePtr> GameAreaToCutSceneIdMap;
 		typedef std::map<int,CutScenePtr>::iterator GameAreaToCutSceneIdMapIterator;
@@ -89,7 +71,7 @@ namespace WyvernsAssault
 		void finalize();
 		/** Update and run lua scripts */
 		void update(const float elapsedSeconds);
-		void play(int level, CutSceneId id);
+		void play(int level, CutScene::CutSceneId id);
 		void skip(){setCurrentStep(CUTSCENE_FINAL_STEP);}
 
 		Ogre::SceneNode* _getSceneNode() const { return mCutSceneNode; }
@@ -108,7 +90,7 @@ namespace WyvernsAssault
 		SceneNode* mCutSceneNode;
 
 		int mCurrentLevel;
-		CutSceneId mCutSceneId;
+		CutScene::CutSceneId mCutSceneId;
 
 		int mCurrentStep;
 		float mElapsedSceneTime;
@@ -126,6 +108,7 @@ namespace WyvernsAssault
 
 		EVENTS_HANDLER(GameAreaChanged);
 		EVENTS_HANDLER(GameAreaCleared);
+		EVENTS_HANDLER(EnemyKilled);
 
 	// --------------------------------
 	// BEGIN Lua Interface Declarations

@@ -120,6 +120,15 @@ EnemyRemoveEvent::EnemyRemoveEvent(EnemyPtr e)
 
 //----------------------
 
+EnemyDeadEvent::EnemyDeadEvent(EnemyPtr e)
+:Event(EventTypes::EnemyDead, EventPriorities::Normal)
+{
+	mEnemy = e;
+};
+
+
+//----------------------
+
 EnemyCustomEvent::EnemyCustomEvent(EnemyPtr e)
 :Event(EventTypes::EnemyCustom, EventPriorities::Normal)
 {
@@ -365,4 +374,20 @@ SpecialEffectEvent::SpecialEffectEvent(EffectType type, float time, float amount
 	mType = type;
 	mTime = time;
 	mAmount = amount;
+};
+
+//----------------------
+
+CutSceneStartEvent::CutSceneStartEvent(CutScene::CutSceneId id)
+:Event(EventTypes::CutSceneStart, EventPriorities::Normal)
+{
+	mId = id;
+};
+
+//----------------------
+
+CutSceneEndEvent::CutSceneEndEvent(CutScene::CutSceneId id)
+:Event(EventTypes::CutSceneEnd, EventPriorities::Normal)
+{
+	mId = id;
 };

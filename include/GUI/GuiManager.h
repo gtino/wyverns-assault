@@ -33,6 +33,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #include "..\Lua\LuaInterface.h"
 #include "..\Events\EventsInterface.h"
 
+#include "..\Entity\Enemy\EnemyManager.h"
+
 #include "..\Debug\Debug.h"
 #include "Hikari.h"
 

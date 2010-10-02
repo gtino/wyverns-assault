@@ -133,6 +133,7 @@ void AudioManager::loadResources()
 	createStream( String("WomanGive01.wav"));
 	createStream( String("WomanGive02.wav"));
 	createStream( String("WomanGive03.wav"));
+	createStream( String("WomanKiss01.wav"));
 
 	createStream( String("BossAttack01.wav"));
 	createStream( String("BossAttack02.wav"));
