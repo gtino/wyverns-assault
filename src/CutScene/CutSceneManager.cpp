@@ -120,9 +120,6 @@ void CutSceneManager::update(const float elapsedSeconds)
 	if(finished)
 	{
 		reset();
-
-		CutSceneEndEventPtr evt = CutSceneEndEventPtr(new CutSceneEndEvent(mCutSceneId));
-		EVENTS_FIRE(evt);
 	}
 	else
 	{
@@ -152,6 +149,9 @@ const bool CutSceneManager::wait(const float timeout)
 
 void CutSceneManager::reset()
 {
+	CutSceneEndEventPtr evt = CutSceneEndEventPtr(new CutSceneEndEvent(mCutSceneId));
+	EVENTS_FIRE(evt);
+
 	mCutSceneId = CutScene::CutSceneId::Nothing;
 	mElapsedSceneTime = 0.0f;
 	mWaitTimer = 0.0f;
@@ -227,6 +227,9 @@ EVENTS_DEFINE_HANDLER(CutSceneManager, GameAreaChanged)
 				break;
 			case 2:
 				mCutSceneId = CutScene::CutSceneId::Beer;
+				break;
+			case 3:
+				mCutSceneId = CutScene::CutSceneId::Wheat;
 				break;
 			case 4:
 				mCutSceneId = CutScene::CutSceneId::Bridge;
@@ -310,7 +313,7 @@ EVENTS_DEFINE_HANDLER(CutSceneManager, GameAreaCleared)
 
 EVENTS_DEFINE_HANDLER(CutSceneManager, EnemyKilled)
 {
-	EnemyPtr e = evt->getEnemy();
+  	EnemyPtr e = evt->getEnemy();
 
 	Enemy::EnemyTypes type = e->getEnemyType();
 

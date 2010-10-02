@@ -142,10 +142,28 @@ EVENTS_DEFINE_HANDLER(LevelManager, CutSceneEnd)
 	if(id == CutScene::CutSceneId::Portal)
 	{
 		// Level 1 completed
+		int previous = mCurrentLevelIndex;
+
+		// Next level. It will return 'true' if this (previous) was the last one!
+		bool isLast = next();
+
+		int current = mCurrentLevelIndex;
+
+		LevelCompleteEventPtr e = LevelCompleteEventPtr(new LevelCompleteEvent(previous, current, isLast));
+		EVENTS_FIRE(e);
 	}
 	else if(id == CutScene::CutSceneId::Final)
 	{
 		// Game completed!
+		int previous = mCurrentLevelIndex;
+
+		// Next level. It will return 'true' if this (previous) was the last one!
+		bool isLast = next();
+
+		int current = mCurrentLevelIndex;
+
+		LevelCompleteEventPtr e = LevelCompleteEventPtr(new LevelCompleteEvent(previous, current, isLast));
+		EVENTS_FIRE(e);
 	}
 }
 

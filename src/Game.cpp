@@ -46,7 +46,7 @@ bool Game::initialize()
 
 		mGuiManager->initialize(mGraphicsManager->getRoot(), mGraphicsManager->getSceneManager(), mGraphicsManager->getRenderWindow());
 
-		mLevelManager->initialize(0);
+		mLevelManager->initialize(0); // Initial level : 0 - Level1_1, 1 - Boss 
 
 		// Initialize Game states (FSM) manager
 		mStatesManager->initialize(mGraphicsManager, mInputManager, mAudioManager, mGuiManager, mCameraManager, mLevelManager);
