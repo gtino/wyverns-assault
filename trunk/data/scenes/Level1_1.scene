@@ -25,7 +25,7 @@
   </lights>
   <markers>
     <marker name="Start" id="852626176">
-      <rotation qw="1" qx="0" qy="0" qz="0" />
+      <rotation qw="0.659346" qx="0" qy="0.75184" qz="0" />
       <position x="-261.199" y="108.465" z="715.766" />
       <scale x="50" y="50" z="50" />
     </marker>

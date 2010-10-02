@@ -62,6 +62,8 @@ namespace WyvernsAssault
 		virtual Ogre::Vector3 getPosition() { return mSceneNode->getPosition(); } 
 		virtual Ogre::Vector3 getInitialPosition() { return mSceneNode->getInitialPosition(); } 
 
+		virtual void setRotation(const Ogre::Quaternion rotation) { mSceneNode->rotate(rotation); }
+
 		virtual void translate(const Ogre::Vector3 translation) { mSceneNode->translate(translation); }
 
 		virtual Ogre::Vector3 getDerivedPosition() {return mSceneNode->_getDerivedPosition();}

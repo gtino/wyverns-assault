@@ -418,6 +418,7 @@ void DotSceneLoader::processMarker(TiXmlElement *XMLNode, SceneNode *pParent)
 	{
 		// HACK : 
 		mPlayerManager->getPlayer(PLAYER1)->setPosition(position);
+		mPlayerManager->getPlayer(PLAYER1)->setRotation(rotation);
 	}
 }
 

@@ -41,7 +41,7 @@ void PlayState::initialize()
 	if(mLevel == 0 )
 		mCameraManager->setNearClipping(50);
 	else
-		mCameraManager->setNearClipping(200);	
+		mCameraManager->setNearClipping(150);	
 
 	mDebugEnabled = false;
 
@@ -93,7 +93,6 @@ void PlayState::initialize()
 
 	// Create a single player (TEST!)
 	PlayerPtr player1 = mPlayerManager->createPlayer("Player1","redWyvern.mesh");
-	player1->setPosition(Vector3(-257, 98, 712));	// START POSITION
 	// Add particle systems
 	player1->setFireBreath(mParticleManager->create("WyvernsAssault/DragonBreath"));
 	player1->setDust(mParticleManager->create("WyvernsAssault/Dust"));
@@ -926,11 +925,11 @@ bool PlayState::keyPressed(const OIS::KeyEvent& e)
 		mDetailsPanel->setParamValue(13, newVal);
 		break;
 	// Reload all textures
-	case OIS::KeyCode::KC_F5:
+	case OIS::KeyCode::KC_F11:
 		TextureManager::getSingleton().reloadAll();
 		break;
 	// Reload all Lua scripts
-	case OIS::KeyCode::KC_F6:
+	case OIS::KeyCode::KC_F12:
 		mLuaManager->reload();
 		break;
 	// Toggle Lua manager active state
@@ -960,12 +959,24 @@ bool PlayState::keyPressed(const OIS::KeyEvent& e)
 	case OIS::KeyCode::KC_ESCAPE:
 		mCutSceneManager->skip();
 		break;
-	// Move Player to a game area -- HACK!
-	case OIS::KeyCode::KC_DELETE:
-		player1->setPosition(Vector3(1024, 23, 547)); // Uncomment this to go to the wheat
-		//player1->setPosition(Vector3(527, 23, -533)); // Uncomment this to go to the wooden wall
-		//player1->setPosition(Vector3(-420, 44, -167)); // Uncomment this to go to the castle
-		//player1->setPosition(Vector3(-605, 143, 38)); // Uncomment this to go to the final portal
+	// Move Player to a game area -- Teleport HACK!
+	case OIS::KeyCode::KC_F1:
+		player1->setPosition(Vector3(1024, 23, 547)); // Go to the wheat		
+		break;
+	case OIS::KeyCode::KC_F2:
+		player1->setPosition(Vector3(1228, 23, 282)); // Go to the village
+		break;
+	case OIS::KeyCode::KC_F3:
+		player1->setPosition(Vector3(1177, 40, -25)); // Go to the bridge
+		break;
+	case OIS::KeyCode::KC_F4:
+		player1->setPosition(Vector3(527, 23, -533)); // Go to the wooden wall
+		break;
+	case OIS::KeyCode::KC_F5:
+		player1->setPosition(Vector3(-420, 44, -167)); // Go to the castle
+		break;
+	case OIS::KeyCode::KC_F6:
+		player1->setPosition(Vector3(-605, 143, 38)); // Go to the final portal
 		break;
 	// Kill all enemies in current game area -- HACK!
 	case OIS::KeyCode::KC_RSHIFT:
