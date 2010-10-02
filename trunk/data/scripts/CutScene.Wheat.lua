@@ -11,7 +11,7 @@ CameraMode_CutScene = 3
 
 Game_Screen = 3
 
-function playFinalCutScene(elapsedTime)
+function playWheatCutScene(elapsedTime)
 	local finished = false;
 
 	-- Internal step position and play time
@@ -20,12 +20,16 @@ function playFinalCutScene(elapsedTime)
 	
 	if step == 0 then
 		-- Initialize cut scene
-		Input.disable();
+		Player.disable(); -- Suspend player input until the end of the cut scene
 		Logic.disable(); -- Suspend enemy logic
 		Physics.disable(); -- Suspend gae physics
+		Enemy.disable(); -- Suspend enemy animations
+		Item.disable(); -- Suspend items animation
 		GameArea.disable(); -- Suspend game area update
 		
 		Gui.hideUi();
+		Gui.showForeground();
+		Gui.setForeground("wheat_1");
 		Gui.showFrame();
 		Gui.setFrame("Frame_Normal");
 		
@@ -41,34 +45,9 @@ function playFinalCutScene(elapsedTime)
 			CutScene.nextStep(); -- Simply go to next step
 		end
 	elseif step == 2 then
+		-- Wait 3 seconds
 		if CutScene.wait(5) then
-			Audio.playOnce("PlayerYell01.wav");
-			Gui.showForeground();
-			Gui.setForeground("boss_2");
-			CutScene.nextStep();
-		end
-	elseif step == 3 then
-		-- Wait 3 seconds
-		if CutScene.wait(2) then
-			Gui.setForeground("boss_3");
-			CutScene.nextStep(); -- Simply go to next step
-		end
-	elseif step == 4 then
-		-- Wait 3 seconds
-		if CutScene.wait(3) then
-			Gui.setForeground("boss_4");
-			CutScene.nextStep(); -- Simply go to next step
-		end
-	elseif step == 5 then
-		-- Wait 3 seconds
-		if CutScene.wait(3) then
-			Audio.playOnce("WomanKiss01.wav");
-			Gui.setForeground("boss_5");
-			CutScene.nextStep(); -- Simply go to next step
-		end
-	elseif step == 6 then
-		-- Wait 3 seconds
-		if CutScene.wait(3) then
+			Gui.hideForeground();
 			CutScene.nextStep(); -- Simply go to next step
 		end
 	else
@@ -82,8 +61,9 @@ function playFinalCutScene(elapsedTime)
 		Player.enable(); -- Resume player input
 		Logic.enable(); -- Resume enemy logic
 		Physics.enable(); -- Resume game physics
+		Enemy.enable(); -- Resume enemy animations
+		Item.enable(); -- Resume items animation
 		GameArea.enable() -- Resume game area update
-		Input.enable();
 		
 		CutScene.reset();		
 		finished = true; -- Scene has ended

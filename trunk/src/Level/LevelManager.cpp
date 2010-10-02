@@ -100,11 +100,13 @@ bool LevelManager::change(int newLevelIndex)
 EVENTS_BEGIN_REGISTER_HANDLERS(LevelManager)
 	EVENTS_REGISTER_HANDLER(LevelManager, GameAreaChanged)
 	EVENTS_REGISTER_HANDLER(LevelManager, GameAreaCleared)
+	EVENTS_REGISTER_HANDLER(LevelManager, CutSceneEnd)
 EVENTS_END_REGISTER_HANDLERS()
 
 EVENTS_BEGIN_UNREGISTER_HANDLERS(LevelManager)
 	EVENTS_UNREGISTER_HANDLER(LevelManager, GameAreaChanged)
 	EVENTS_UNREGISTER_HANDLER(LevelManager, GameAreaCleared)
+	EVENTS_UNREGISTER_HANDLER(LevelManager, CutSceneEnd)
 EVENTS_END_UNREGISTER_HANDLERS()
 
 EVENTS_DEFINE_HANDLER(LevelManager, GameAreaChanged)
@@ -128,6 +130,22 @@ EVENTS_DEFINE_HANDLER(LevelManager, GameAreaCleared)
 
 		LevelCompleteEventPtr e = LevelCompleteEventPtr(new LevelCompleteEvent(previous, current, isLast));
 		EVENTS_FIRE(e);
+	}
+}
+
+EVENTS_DEFINE_HANDLER(LevelManager, CutSceneEnd)
+{
+	Debug::Out("LevelManager : handleCutSceneEnd");
+
+	CutScene::CutSceneId id = evt->getId();
+
+	if(id == CutScene::CutSceneId::Portal)
+	{
+		// Level 1 completed
+	}
+	else if(id == CutScene::CutSceneId::Final)
+	{
+		// Game completed!
 	}
 }
 

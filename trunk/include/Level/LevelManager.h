@@ -93,6 +93,7 @@ namespace WyvernsAssault
 
 		EVENTS_HANDLER(GameAreaChanged)
 		EVENTS_HANDLER(GameAreaCleared)
+		EVENTS_HANDLER(CutSceneEnd)
 
 	public:
 		// --------------------------------

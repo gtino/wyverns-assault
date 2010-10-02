@@ -17,7 +17,7 @@ CutSceneManager& CutSceneManager::getSingleton(void)
 CutSceneManager::CutSceneManager(SceneManager* sceneManager)
 : mCutSceneNode(0)
 , mCurrentLevel(-1)
-, mCutSceneId(CutSceneId::Nothing)
+, mCutSceneId(CutScene::CutSceneId::Nothing)
 , mCurrentStep(0)
 , mElapsedSceneTime(0.0f)
 , mWaitTimer(0.0f)
@@ -51,17 +51,20 @@ void CutSceneManager::finalize()
 	mCutScenesMap.clear();
 }
 
-void CutSceneManager::play(int level, CutSceneId id)
+void CutSceneManager::play(int level, CutScene::CutSceneId id)
 {
 	mCurrentLevel = level;
 	mCutSceneId = id;
+
+	CutSceneStartEventPtr evt = CutSceneStartEventPtr(new CutSceneStartEvent(mCutSceneId));
+	EVENTS_FIRE(evt);
 }
 
 void CutSceneManager::update(const float elapsedSeconds)
 {
 	//return; // NOTE : Disabled until Lua scripts are not ready
 
-	if(mCutSceneId == CutSceneId::Nothing)
+	if(mCutSceneId == CutScene::CutSceneId::Nothing)
 		return;
 
 	// Checks if the current cut scene has ended.
@@ -70,37 +73,43 @@ void CutSceneManager::update(const float elapsedSeconds)
 
 	switch(mCutSceneId)
 	{
-	case CutSceneId::Intro:
+	case CutScene::CutSceneId::Intro:
 		finished = playCutScene(elapsedSeconds, "playIntroCutScene");
 		break;
-	case CutSceneId::FirstKills:
+	case CutScene::CutSceneId::FirstKills:
 		finished = playCutScene(elapsedSeconds, "playFirstKillsCutScene");
 		break;
-	case CutSceneId::Beer:
+	case CutScene::CutSceneId::Beer:
 		finished = playCutScene(elapsedSeconds, "playBeerCutScene");
 		break;
-	case CutSceneId::Bridge:
+	case CutScene::CutSceneId::Wheat:
+		finished = playCutScene(elapsedSeconds, "playWheatCutScene");
+		break;
+	case CutScene::CutSceneId::Bridge:
 		finished = playCutScene(elapsedSeconds, "playBridgeCutScene");
 		break;
-	case CutSceneId::Forest:
+	case CutScene::CutSceneId::Forest:
 		finished = playCutScene(elapsedSeconds, "playForestCutScene");
 		break;
-	case CutSceneId::WoodenWall:
+	case CutScene::CutSceneId::WoodenWall:
 		finished = playCutScene(elapsedSeconds, "playWoodenWallCutScene");
 		break;
-	case CutSceneId::Village:
+	case CutScene::CutSceneId::Village:
 		finished = playCutScene(elapsedSeconds, "playVillageCutScene");
 		break;
-	case CutSceneId::Siege:
+	case CutScene::CutSceneId::Siege:
 		finished = playCutScene(elapsedSeconds, "playSiegeCutScene");
 		break;
-	case CutSceneId::Castle:
+	case CutScene::CutSceneId::Castle:
 		finished = playCutScene(elapsedSeconds, "playCastleCutScene");
 		break;
-	case CutSceneId::Boss:
+	case CutScene::CutSceneId::Portal:
+		finished = playCutScene(elapsedSeconds, "playPortalCutScene");
+		break;
+	case CutScene::CutSceneId::Boss:
 		finished = playCutScene(elapsedSeconds, "playBossCutScene");
 		break;
-	case CutSceneId::Final:
+	case CutScene::CutSceneId::Final:
 		finished = playCutScene(elapsedSeconds, "playFinalCutScene");
 		break;
 	default:
@@ -111,6 +120,9 @@ void CutSceneManager::update(const float elapsedSeconds)
 	if(finished)
 	{
 		reset();
+
+		CutSceneEndEventPtr evt = CutSceneEndEventPtr(new CutSceneEndEvent(mCutSceneId));
+		EVENTS_FIRE(evt);
 	}
 	else
 	{
@@ -140,7 +152,7 @@ const bool CutSceneManager::wait(const float timeout)
 
 void CutSceneManager::reset()
 {
-	mCutSceneId = CutSceneId::Nothing;
+	mCutSceneId = CutScene::CutSceneId::Nothing;
 	mElapsedSceneTime = 0.0f;
 	mWaitTimer = 0.0f;
 	mCurrentStep = 0;
@@ -185,11 +197,13 @@ void CutSceneManager::add(int level, int gameArea, int id, const Ogre::String sc
 EVENTS_BEGIN_REGISTER_HANDLERS(CutSceneManager)
 	EVENTS_REGISTER_HANDLER(CutSceneManager, GameAreaChanged)
 	EVENTS_REGISTER_HANDLER(CutSceneManager, GameAreaCleared)
+	EVENTS_REGISTER_HANDLER(CutSceneManager, EnemyKilled)
 EVENTS_END_REGISTER_HANDLERS()
 
 EVENTS_BEGIN_UNREGISTER_HANDLERS(CutSceneManager)
 	EVENTS_UNREGISTER_HANDLER(CutSceneManager, GameAreaChanged)
 	EVENTS_UNREGISTER_HANDLER(CutSceneManager, GameAreaCleared)
+	EVENTS_UNREGISTER_HANDLER(CutSceneManager, EnemyKilled)
 EVENTS_END_UNREGISTER_HANDLERS()
 
 EVENTS_DEFINE_HANDLER(CutSceneManager, GameAreaChanged)
@@ -206,34 +220,37 @@ EVENTS_DEFINE_HANDLER(CutSceneManager, GameAreaChanged)
 			switch(actualArea)
 			{
 			case 0:
-				mCutSceneId = CutSceneId::Intro;
+				mCutSceneId = CutScene::CutSceneId::Intro;
 				break;
 			case 1:
-				mCutSceneId = CutSceneId::FirstKills;
+				mCutSceneId = CutScene::CutSceneId::FirstKills;
 				break;
 			case 2:
-				mCutSceneId = CutSceneId::Beer;
+				mCutSceneId = CutScene::CutSceneId::Beer;
 				break;
 			case 4:
-				mCutSceneId = CutSceneId::Bridge;
+				mCutSceneId = CutScene::CutSceneId::Bridge;
 				break;
 			case 6:
-				mCutSceneId = CutSceneId::Forest;
+				mCutSceneId = CutScene::CutSceneId::Forest;
 				break;
 			case 7:
-				mCutSceneId = CutSceneId::WoodenWall;
+				mCutSceneId = CutScene::CutSceneId::WoodenWall;
 				break;
 			case 8:
-				mCutSceneId = CutSceneId::Village;
+				mCutSceneId = CutScene::CutSceneId::Village;
 				break;
 			case 9:
-				mCutSceneId = CutSceneId::Siege;
+				mCutSceneId = CutScene::CutSceneId::Siege;
 				break;
-			case 10: // FIXME : it will probably a new area, I gueen number 11!
-				mCutSceneId = CutSceneId::Castle;
+			case 10: 
+				mCutSceneId = CutScene::CutSceneId::Castle;
+				break;
+			case 11: 
+				mCutSceneId = CutScene::CutSceneId::Portal;
 				break;
 			default:
-				mCutSceneId = CutSceneId::Nothing;
+				mCutSceneId = CutScene::CutSceneId::Nothing;
 				break;
 				// TODO : All other cut scenes!
 			}
@@ -243,10 +260,10 @@ EVENTS_DEFINE_HANDLER(CutSceneManager, GameAreaChanged)
 			switch(actualArea)
 			{
 				case 2:
-					mCutSceneId = CutSceneId::Boss;
+					mCutSceneId = CutScene::CutSceneId::Boss;
 					break;
 				default:
-					mCutSceneId = CutSceneId::Nothing;
+					mCutSceneId = CutScene::CutSceneId::Nothing;
 				break;
 			}
 		}
@@ -260,7 +277,7 @@ EVENTS_DEFINE_HANDLER(CutSceneManager, GameAreaChanged)
 			//
 			// HACK : to make sure this plays from the very first frame!
 			//
-			if(mCutSceneId == CutSceneId::Intro)
+			if(mCutSceneId == CutScene::CutSceneId::Intro)
 			{
 				if(level == 0)
 				{
@@ -274,7 +291,7 @@ EVENTS_DEFINE_HANDLER(CutSceneManager, GameAreaChanged)
 		}
 		else
 		{
-			mCutSceneId = CutSceneId::Nothing;
+			mCutSceneId = CutScene::CutSceneId::Nothing;
 		}
 	}
 }
@@ -287,7 +304,19 @@ EVENTS_DEFINE_HANDLER(CutSceneManager, GameAreaCleared)
 
 	if(level == 1) // The boss has been destroyed!
 	{
-		mCutSceneId = CutSceneId::Final;
+		//mCutSceneId = CutSceneId::Final;
+	}
+}
+
+EVENTS_DEFINE_HANDLER(CutSceneManager, EnemyKilled)
+{
+	EnemyPtr e = evt->getEnemy();
+
+	Enemy::EnemyTypes type = e->getEnemyType();
+
+	if(type == Enemy::EnemyTypes::Boss)
+	{
+		mCutSceneId = CutScene::CutSceneId::Final;
 	}
 }
 
@@ -310,12 +339,14 @@ LUA_BEGIN_LOAD_SCRIPTS(CutSceneManager)
 LUA_LOAD_SCRIPT(".\\data\\scripts\\CutScene.Intro.lua")
 LUA_LOAD_SCRIPT(".\\data\\scripts\\CutScene.FirstKills.lua")
 LUA_LOAD_SCRIPT(".\\data\\scripts\\CutScene.Beer.lua")
+LUA_LOAD_SCRIPT(".\\data\\scripts\\CutScene.Wheat.lua")
 LUA_LOAD_SCRIPT(".\\data\\scripts\\CutScene.Bridge.lua")
 LUA_LOAD_SCRIPT(".\\data\\scripts\\CutScene.Forest.lua")
 LUA_LOAD_SCRIPT(".\\data\\scripts\\CutScene.WoodenWall.lua")
 LUA_LOAD_SCRIPT(".\\data\\scripts\\CutScene.Village.lua")
 LUA_LOAD_SCRIPT(".\\data\\scripts\\CutScene.Siege.lua")
 LUA_LOAD_SCRIPT(".\\data\\scripts\\CutScene.Castle.lua")
+LUA_LOAD_SCRIPT(".\\data\\scripts\\CutScene.Portal.lua")
 LUA_LOAD_SCRIPT(".\\data\\scripts\\CutScene.Boss.lua")
 LUA_LOAD_SCRIPT(".\\data\\scripts\\CutScene.Final.lua")
 LUA_END_LOAD_SCRIPTS()

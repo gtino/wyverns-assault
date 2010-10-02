@@ -33,9 +33,27 @@ using namespace Ogre;
 
 namespace WyvernsAssault
 {		
-
 	class CutScene
 	{
+		public:
+			typedef enum CutSceneId
+			{
+				Nothing = 0,
+				Intro = 1,
+				FirstKills = 2,
+				Beer = 3,
+				Wheat = 4,
+				Bridge = 5,
+				Forest = 6,
+				WoodenWall = 7,
+				Village = 8,
+				Siege = 9,
+				Castle = 10,
+				Portal = 11,
+				Boss = 12,
+				Final = 13
+			};
+
 		public:
 			CutScene(int level, int id, Ogre::String script);
 			~CutScene();
