@@ -229,7 +229,7 @@ EVENTS_DEFINE_HANDLER(CutSceneManager, GameAreaChanged)
 				mCutSceneId = CutScene::CutSceneId::Beer;
 				break;
 			case 3:
-				mCutSceneId = CutScene::CutSceneId::Wheat;
+				//mCutSceneId = CutScene::CutSceneId::Wheat; // The flash counter is a mess and hiding the UI makes it go crazy. Avoid this cut scene...
 				break;
 			case 4:
 				mCutSceneId = CutScene::CutSceneId::Bridge;
