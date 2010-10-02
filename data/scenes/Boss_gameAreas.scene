@@ -36,5 +36,12 @@
 			<beginFar x="330" y="0" z="-273"/>
 			<endFar x="137" y="0" z="-80"/>
 		</gameArea>
+		<!-- Fake game area -->
+		<gameArea id="6" time="0.0" enemies="0" difficult="1" type="10">
+			<beginNear x="1" y="0" z="1"/>
+			<endNear x="-1" y="0" z="-1"/>
+			<beginFar x="1" y="0" z="1"/>
+			<endFar x="-1" y="0" z="-1"/>
+		</gameArea>
 	</gameAreas>
 </scene>

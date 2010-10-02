@@ -816,9 +816,13 @@ bool PlayState::keyPressed(const OIS::KeyEvent& e)
 	// Camera keys
 	case OIS::KeyCode::KC_1:		
 		mCameraManager->gameCamera();
+		mGuiScreen->show();
+		mGuiManager->show();
 		break;
 	case OIS::KeyCode::KC_2:
 		mCameraManager->freeCamera();
+		mGuiScreen->hide();
+		mGuiManager->hide();
 		break;
 	case OIS::KeyCode::KC_3:
 		mCameraManager->fixedCamera(0, mLevelManager->getCurrentLevelIndex());
