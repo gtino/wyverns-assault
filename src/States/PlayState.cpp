@@ -965,21 +965,24 @@ bool PlayState::keyPressed(const OIS::KeyEvent& e)
 		break;
 	// Move Player to a game area -- Teleport HACK!
 	case OIS::KeyCode::KC_F1:
-		player1->setPosition(Vector3(1024, 23, 547)); // Go to the wheat		
+		player1->setPosition(Vector3(798, 23, 712)); // Go to previous wheat		
 		break;
 	case OIS::KeyCode::KC_F2:
-		player1->setPosition(Vector3(1228, 23, 282)); // Go to the village
+		player1->setPosition(Vector3(1024, 23, 547)); // Go to the wheat		
 		break;
 	case OIS::KeyCode::KC_F3:
-		player1->setPosition(Vector3(1177, 40, -25)); // Go to the bridge
+		player1->setPosition(Vector3(1228, 23, 282)); // Go to the village
 		break;
 	case OIS::KeyCode::KC_F4:
-		player1->setPosition(Vector3(527, 23, -533)); // Go to the wooden wall
+		player1->setPosition(Vector3(1177, 40, -25)); // Go to the bridge
 		break;
 	case OIS::KeyCode::KC_F5:
-		player1->setPosition(Vector3(-420, 44, -167)); // Go to the castle
+		player1->setPosition(Vector3(527, 23, -533)); // Go to the wooden wall
 		break;
 	case OIS::KeyCode::KC_F6:
+		player1->setPosition(Vector3(-420, 44, -167)); // Go to the castle
+		break;
+	case OIS::KeyCode::KC_F7:
 		player1->setPosition(Vector3(-605, 143, 38)); // Go to the final portal
 		break;
 	// Kill all enemies in current game area -- HACK!

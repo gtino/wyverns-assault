@@ -204,9 +204,6 @@ bool MainMenuState::keyReleased(const OIS::KeyEvent& e)
 				break;
 			}		
 			break;
-		case OIS::KC_ESCAPE:
-			this->mNextGameStateId = GameStateId::Exit;
-			break;
 		}
 	}
 

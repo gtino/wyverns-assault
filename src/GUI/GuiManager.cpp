@@ -40,22 +40,30 @@ void GuiManager::update(float const elapsedSeconds, int enemyCount)
 	else
 		mFlashCounterEnemyUI->update(elapsedSeconds, enemyCount);
 
-	if(flashCount)
+	if( showGui && level )
 	{
-		flashCount = mFlashCounterUI->update(elapsedSeconds, enemyCount);
-		mFlashCounterEnemyUI->hide();
-	}
-
-	if(!flashCount && !goGo && level && showGui)
-	{
-		mFlashCounterEnemyUI->show();
-		if(mFlashGoGo)
-			mFlashGoGo->hide();
-	}
-	else if(goGo && level && showGui)
-	{
-		mFlashGoGo->show();
-		mFlashCounterEnemyUI->hide();
+		if(flashCount)
+		{
+			flashCount = mFlashCounterUI->update(elapsedSeconds, enemyCount);
+			mFlashCounterEnemyUI->hide();
+			if(mFlashGoGo)
+				mFlashGoGo->hide();
+		}
+		else if(goGo && level)
+		{
+			mFlashGoGo->show();
+			mFlashCounterEnemyUI->hide();
+			if(mFlashCounterUI)
+				mFlashCounterUI->hide();
+		}
+		else
+		{
+			mFlashCounterEnemyUI->show();
+			if(mFlashGoGo)
+				mFlashGoGo->hide();
+			if(mFlashCounterUI)
+				mFlashCounterUI->hide();
+		}		
 	}
 }
 
