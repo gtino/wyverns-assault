@@ -85,43 +85,39 @@ void GameAreaManager::update(Vector3 playerPosition, const float elapsedSeconds)
 			manageGameArea();
 
 		// Game area cleared from begining
-		if( mGameAreas[mCurrentGameArea].mType == 2 && !mGameAreaCleared )
+		if (!mGameAreaCleared && mTime > 0.5 )
 		{
-			mGameAreaCleared = true;
-			GameAreaClearedEventPtr evt = GameAreaClearedEventPtr(new GameAreaClearedEvent(mGameAreas[playerArea].mLevel, mCurrentGameArea, mGameAreas[mCurrentGameArea].mType, isLast));
+			if( mGameAreas[mCurrentGameArea].mType == 2)
+			{
+				mGameAreaCleared = true;
+				GameAreaClearedEventPtr evt = GameAreaClearedEventPtr(new GameAreaClearedEvent(mGameAreas[playerArea].mLevel, mCurrentGameArea, mGameAreas[mCurrentGameArea].mType, isLast));
 
-			if( mCurrentGameArea == 0 )
-			{
-				EVENTS_FIRE_AFTER(evt, 15.0);
-			}
-			else
-			{
 				EVENTS_FIRE_AFTER(evt, 5.0);
 			}
-		}
-		// Game Area cleared by time
-		else if( mGameAreas[mCurrentGameArea].mType == 1 && !mGameAreaCleared )
-		{
-			if( mGameAreas[mCurrentGameArea].mFinishTime < mTime )
+			// Game Area cleared by time
+			else if( mGameAreas[mCurrentGameArea].mType == 1 )
 			{
+				if( mGameAreas[mCurrentGameArea].mFinishTime < mTime )
+				{
+					mGameAreaCleared = true;
+					GameAreaClearedEventPtr evt = GameAreaClearedEventPtr(new GameAreaClearedEvent(mGameAreas[playerArea].mLevel, mCurrentGameArea, mGameAreas[mCurrentGameArea].mType, isLast));
+					EVENTS_FIRE_AFTER(evt, 2.0);
+				}
+			}
+			// Cleared by killing enemies
+			else if( mGameAreas[mCurrentGameArea].mType == 0 && !mEnemiesAlive && mGameAreas[mCurrentGameArea].mEnemies == 0 && !mGameAreaCleared)
+			{	
 				mGameAreaCleared = true;
 				GameAreaClearedEventPtr evt = GameAreaClearedEventPtr(new GameAreaClearedEvent(mGameAreas[playerArea].mLevel, mCurrentGameArea, mGameAreas[mCurrentGameArea].mType, isLast));
 				EVENTS_FIRE_AFTER(evt, 2.0);
 			}
-		}
-		// Cleared by killing enemies
-		else if( mGameAreas[mCurrentGameArea].mType == 0 && !mEnemiesAlive && mGameAreas[mCurrentGameArea].mEnemies == 0 && !mGameAreaCleared)
-		{	
-			mGameAreaCleared = true;
-			GameAreaClearedEventPtr evt = GameAreaClearedEventPtr(new GameAreaClearedEvent(mGameAreas[playerArea].mLevel, mCurrentGameArea, mGameAreas[mCurrentGameArea].mType, isLast));
-			EVENTS_FIRE_AFTER(evt, 2.0);
-		}
-		// Boss game area
-		else if( mGameAreas[mCurrentGameArea].mType == 10 && !mGameAreaCleared )
-		{
-			mGameAreaCleared = true;
-			GameAreaClearedEventPtr evt = GameAreaClearedEventPtr(new GameAreaClearedEvent(mGameAreas[playerArea].mLevel, mCurrentGameArea, mGameAreas[mCurrentGameArea].mType, isLast));
-			EVENTS_FIRE(evt);
+			// Boss game area
+			else if( mGameAreas[mCurrentGameArea].mType == 10 )
+			{
+				mGameAreaCleared = true;
+				GameAreaClearedEventPtr evt = GameAreaClearedEventPtr(new GameAreaClearedEvent(mGameAreas[playerArea].mLevel, mCurrentGameArea, mGameAreas[mCurrentGameArea].mType, isLast));
+				EVENTS_FIRE(evt);
+			}
 		}
 	}
 }
