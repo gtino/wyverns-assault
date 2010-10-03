@@ -199,7 +199,11 @@ void Enemy::initializeBossEntity(Ogre::Entity* entity, Ogre::SceneNode* sceneNod
 	//
 
 	// Princess in jail
-	Entity* extra = mSceneManager->createEntity("bossPrincess", "bossPrincess.mesh");
+	Entity* extra;
+	if( mSceneManager->hasEntity("bossPrincess") )
+		extra = mSceneManager->getEntity("bossPrincess"); 
+	else
+		extra = mSceneManager->createEntity("bossPrincess", "bossPrincess.mesh");
 	extra->getAnimationState("Iddle")->setEnabled(1);
 	extra->getAnimationState("Iddle")->setWeight(1);
 	entity->attachObjectToBone("null5", extra, Quaternion::IDENTITY, Vector3(0, -34, -5));
@@ -214,7 +218,10 @@ void Enemy::initializeBossEntity(Ogre::Entity* entity, Ogre::SceneNode* sceneNod
 	mBalloon = mBalloonSet->createBillboard(balloonPosition);
 
 	// Pilot
-	extra = mSceneManager->createEntity("bossPilot", "bossPilot.mesh");
+	if( mSceneManager->hasEntity("bossPilot") )
+		extra = mSceneManager->getEntity("bossPilot"); 
+	else
+		extra = mSceneManager->createEntity("bossPilot", "bossPilot.mesh");
 	extra->getAnimationState("Iddle")->setEnabled(1);
 	extra->getAnimationState("Iddle")->setWeight(1);
 	entity->attachObjectToBone("null5", extra, Quaternion::IDENTITY, Vector3(0, -34, -5));
