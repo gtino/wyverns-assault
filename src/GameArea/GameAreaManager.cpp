@@ -101,7 +101,7 @@ void GameAreaManager::update(Vector3 playerPosition, const float elapsedSeconds)
 				{
 					mGameAreaCleared = true;
 					GameAreaClearedEventPtr evt = GameAreaClearedEventPtr(new GameAreaClearedEvent(mGameAreas[playerArea].mLevel, mCurrentGameArea, mGameAreas[mCurrentGameArea].mType, isLast));
-					EVENTS_FIRE_AFTER(evt, 2.0);
+					EVENTS_FIRE(evt);
 				}
 			}
 			// Cleared by killing enemies
